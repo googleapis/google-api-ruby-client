@@ -72,7 +72,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -84,7 +84,7 @@ module Google
       # ]
       # `,
       # `
-      # "service": "fooservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com"
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -92,16 +92,16 @@ module Google
       # `
       # "log_type": "DATA_WRITE",
       # "exempted_members": [
-      # "user:bar@gmail.com"
+      # "user:aliya@example.com"
       # ]
       # `
       # ]
       # `
       # ]
       # `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
-      # bar@gmail.com from DATA_WRITE logging.
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and
+      # aliya@example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -135,7 +135,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -144,7 +144,7 @@ module Google
       # ]
       # `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
+      # jose@example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -248,7 +248,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -569,7 +569,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

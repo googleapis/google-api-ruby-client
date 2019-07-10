@@ -549,6 +549,7 @@ module Google
       
           collection :rules, as: 'rules', class: Google::Apis::ServicenetworkingV1beta::DocumentationRule, decorator: Google::Apis::ServicenetworkingV1beta::DocumentationRule::Representation
       
+          property :service_root_url, as: 'serviceRootUrl'
           property :summary, as: 'summary'
         end
       end

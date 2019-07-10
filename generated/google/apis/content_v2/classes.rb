@@ -9628,11 +9628,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The ContentAPI feed id.
-        # Corresponds to the JSON property `feedId`
-        # @return [Fixnum]
-        attr_accessor :feed_id
-      
         # The ID of the managing account.
         # Corresponds to the JSON property `merchantId`
         # @return [Fixnum]
@@ -9662,7 +9657,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @batch_id = args[:batch_id] if args.key?(:batch_id)
-          @feed_id = args[:feed_id] if args.key?(:feed_id)
           @merchant_id = args[:merchant_id] if args.key?(:merchant_id)
           @request_method = args[:request_method] if args.key?(:request_method)
           @product = args[:product] if args.key?(:product)

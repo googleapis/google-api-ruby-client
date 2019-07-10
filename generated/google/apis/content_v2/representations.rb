@@ -4286,7 +4286,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :batch_id, as: 'batchId'
-          property :feed_id, :numeric_string => true, as: 'feedId'
           property :merchant_id, :numeric_string => true, as: 'merchantId'
           property :request_method, as: 'method'
           property :product, as: 'product', class: Google::Apis::ContentV2::Product, decorator: Google::Apis::ContentV2::Product::Representation

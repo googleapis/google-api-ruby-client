@@ -7661,7 +7661,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :batch_id
       
-        # The ContentAPI feed id.
+        # The Content API feed id.
         # Corresponds to the JSON property `feedId`
         # @return [Fixnum]
         attr_accessor :feed_id

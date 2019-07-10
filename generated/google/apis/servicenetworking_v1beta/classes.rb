@@ -559,8 +559,8 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Output only.
-        # The name of the VPC Network Peering connection that was created by the
+        # Output only. The name of the VPC Network Peering connection that was created
+        # by the
         # service producer.
         # Corresponds to the JSON property `peering`
         # @return [String]
@@ -575,8 +575,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :reserved_peering_ranges
       
-        # Output only.
-        # The name of the peering service that's associated with this connection, in
+        # Output only. The name of the peering service that's associated with this
+        # connection, in
         # the following format: `services/`service name``.
         # Corresponds to the JSON property `service`
         # @return [String]
@@ -883,6 +883,14 @@ module Google
         # @return [Array<Google::Apis::ServicenetworkingV1beta::DocumentationRule>]
         attr_accessor :rules
       
+        # Specifies the service root url if the default one (the service name
+        # from the yaml file) is not suitable. This can be seen in any fully
+        # specified service urls as well as sections that show a base that other
+        # urls are relative to.
+        # Corresponds to the JSON property `serviceRootUrl`
+        # @return [String]
+        attr_accessor :service_root_url
+      
         # A short summary of what the service does. Can only be provided by
         # plain text.
         # Corresponds to the JSON property `summary`
@@ -899,6 +907,7 @@ module Google
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
           @rules = args[:rules] if args.key?(:rules)
+          @service_root_url = args[:service_root_url] if args.key?(:service_root_url)
           @summary = args[:summary] if args.key?(:summary)
         end
       end

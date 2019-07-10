@@ -130,6 +130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpCacheControlResponseHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpLoadBalancing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -609,6 +615,8 @@ module Google
       class GetJsonWebKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_header, as: 'cacheHeader', class: Google::Apis::ContainerV1::HttpCacheControlResponseHeader, decorator: Google::Apis::ContainerV1::HttpCacheControlResponseHeader::Representation
+      
           collection :keys, as: 'keys', class: Google::Apis::ContainerV1::Jwk, decorator: Google::Apis::ContainerV1::Jwk::Representation
       
         end
@@ -617,6 +625,8 @@ module Google
       class GetOpenIdConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_header, as: 'cacheHeader', class: Google::Apis::ContainerV1::HttpCacheControlResponseHeader, decorator: Google::Apis::ContainerV1::HttpCacheControlResponseHeader::Representation
+      
           collection :claims_supported, as: 'claims_supported'
           collection :grant_types, as: 'grant_types'
           collection :id_token_signing_alg_values_supported, as: 'id_token_signing_alg_values_supported'
@@ -631,6 +641,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class HttpCacheControlResponseHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age, :numeric_string => true, as: 'age'
+          property :directive, as: 'directive'
+          property :expires, as: 'expires'
         end
       end
       

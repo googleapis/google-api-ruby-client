@@ -2420,10 +2420,34 @@ module Google
       class Backend
         include Google::Apis::Core::Hashable
       
-        # Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL
-        # load balancing, the default is UTILIZATION. Valid values are UTILIZATION, RATE
-        # (for HTTP(S)) and CONNECTION (for TCP/SSL).
-        # For Internal Load Balancing, the default and only supported mode is CONNECTION.
+        # Specifies the balancing mode for the backend.
+        # When choosing a balancing mode, you need to consider the loadBalancingScheme,
+        # and protocol for the backend service, as well as the type of backend (instance
+        # group or NEG).
+        # 
+        # - If the load balancing mode is CONNECTION, then the load is spread based on
+        # how many concurrent connections the backend can handle.
+        # The CONNECTION balancing mode is only available if the protocol for the
+        # backend service is SSL, TCP, or UDP.
+        # If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and
+        # TCP Proxy load balancers), you must also specify exactly one of the following
+        # parameters: maxConnections, maxConnectionsPerInstance, or
+        # maxConnectionsPerEndpoint.
+        # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
+        # UDP load balancers), you cannot specify any additional parameters.
+        # 
+        # - If the load balancing mode is RATE, then the load is spread based on the
+        # rate of HTTP requests per second (RPS).
+        # The RATE balancing mode is only available if the protocol for the backend
+        # service is HTTP or HTTPS. You must specify exactly one of the following
+        # parameters: maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+        # 
+        # - If the load balancing mode is UTILIZATION, then the load is spread based on
+        # the CPU utilization of instances in an instance group.
+        # The UTILIZATION balancing mode is only available if the loadBalancingScheme of
+        # the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED
+        # and the backend is made up of instance groups. There are no restrictions on
+        # the backend service protocol.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -2451,47 +2475,61 @@ module Google
         attr_accessor :failover
         alias_method :failover?, :failover
       
-        # The fully-qualified URL of an Instance Group or Network Endpoint Group
-        # resource. In case of instance group this defines the list of instances that
-        # serve traffic. Member virtual machine instances from each instance group must
-        # live in the same zone as the instance group itself. No two backends in a
-        # backend service are allowed to use same Instance Group resource.
-        # For Network Endpoint Groups this defines list of endpoints. All endpoints of
-        # Network Endpoint Group must be hosted on instances located in the same zone as
-        # the Network Endpoint Group.
-        # Backend service can not contain mix of Instance Group and Network Endpoint
-        # Group backends.
-        # Note that you must specify an Instance Group or Network Endpoint Group
-        # resource using the fully-qualified URL, rather than a partial URL.
-        # When the BackendService has load balancing scheme INTERNAL, the instance group
-        # must be within the same region as the BackendService. Network Endpoint Groups
-        # are not supported for INTERNAL load balancing scheme.
+        # The fully-qualified URL of an instance group or network endpoint group (NEG)
+        # resource. The type of backend that a backend service supports depends on the
+        # backend service's loadBalancingScheme.
+        # 
+        # - When the loadBalancingScheme for the backend service is EXTERNAL,
+        # INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the backend can be either an
+        # instance group or a NEG. The backends on the backend service must be either
+        # all instance groups or all NEGs. You cannot mix instance group and NEG
+        # backends on the same backend service.
+        # - When the loadBalancingScheme for the backend service is INTERNAL, the
+        # backend must be an instance group in the same region as the backend service.
+        # NEGs are not supported.
+        # You must use the fully-qualified URL (starting with https://www.googleapis.com/
+        # ) to specify the instance group or NEG. Partial URLs are not supported.
         # Corresponds to the JSON property `group`
         # @return [String]
         attr_accessor :group
       
-        # The max number of simultaneous connections for the group. Can be used with
-        # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
-        # maxConnections or maxConnectionsPerInstance must be set.
-        # This cannot be used for internal load balancing.
+        # Defines a maximum target for simultaneous connections for the entire backend (
+        # instance group or NEG). If the backend's balancingMode is UTILIZATION, this is
+        # an optional parameter. If the backend's balancingMode is CONNECTION, and
+        # backend is attached to a backend service whose loadBalancingScheme is EXTERNAL,
+        # you must specify either this parameter, maxConnectionsPerInstance, or
+        # maxConnectionsPerEndpoint.
+        # Not available if the backend's balancingMode is RATE. If the
+        # loadBalancingScheme is INTERNAL, then maxConnections is not supported, even
+        # though the backend requires a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # The max number of simultaneous connections that a single backend network
-        # endpoint can handle. This is used to calculate the capacity of the group. Can
-        # be used in either CONNECTION or UTILIZATION balancing modes. For CONNECTION
-        # mode, either maxConnections or maxConnectionsPerEndpoint must be set.
-        # This cannot be used for internal load balancing.
+        # Defines a maximum target for simultaneous connections for an endpoint of a NEG.
+        # This is multiplied by the number of endpoints in the NEG to implicitly
+        # calculate a maximum number of target maximum simultaneous connections for the
+        # NEG. If the backend's balancingMode is CONNECTION, and the backend is attached
+        # to a backend service whose loadBalancingScheme is EXTERNAL, you must specify
+        # either this parameter, maxConnections, or maxConnectionsPerInstance.
+        # Not available if the backend's balancingMode is RATE. Internal TCP/UDP load
+        # balancing does not support setting maxConnectionsPerEndpoint even though its
+        # backends require a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnectionsPerEndpoint`
         # @return [Fixnum]
         attr_accessor :max_connections_per_endpoint
       
-        # The max number of simultaneous connections that a single backend instance can
-        # handle. This is used to calculate the capacity of the group. Can be used in
-        # either CONNECTION or UTILIZATION balancing modes. For CONNECTION mode, either
-        # maxConnections or maxConnectionsPerInstance must be set.
-        # This cannot be used for internal load balancing.
+        # Defines a maximum target for simultaneous connections for a single VM in a
+        # backend instance group. This is multiplied by the number of instances in the
+        # instance group to implicitly calculate a target maximum number of simultaneous
+        # connections for the whole instance group. If the backend's balancingMode is
+        # UTILIZATION, this is an optional parameter. If the backend's balancingMode is
+        # CONNECTION, and backend is attached to a backend service whose
+        # loadBalancingScheme is EXTERNAL, you must specify either this parameter,
+        # maxConnections, or maxConnectionsPerEndpoint.
+        # Not available if the backend's balancingMode is RATE. Internal TCP/UDP load
+        # balancing does not support setting maxConnectionsPerInstance even though its
+        # backends require a balancing mode of CONNECTION.
         # Corresponds to the JSON property `maxConnectionsPerInstance`
         # @return [Fixnum]
         attr_accessor :max_connections_per_instance
@@ -2504,27 +2542,33 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_rate
       
-        # The max requests per second (RPS) that a single backend network endpoint can
-        # handle. This is used to calculate the capacity of the group. Can be used in
-        # either balancing mode. For RATE mode, either maxRate or maxRatePerEndpoint
-        # must be set.
-        # This cannot be used for internal load balancing.
+        # Defines a maximum target for requests per second (RPS) for an endpoint of a
+        # NEG. This is multiplied by the number of endpoints in the NEG to implicitly
+        # calculate a target maximum rate for the NEG.
+        # If the backend's balancingMode is RATE, you must specify either this parameter,
+        # maxRate, or maxRatePerInstance.
+        # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerEndpoint`
         # @return [Float]
         attr_accessor :max_rate_per_endpoint
       
-        # The max requests per second (RPS) that a single backend instance can handle.
-        # This is used to calculate the capacity of the group. Can be used in either
-        # balancing mode. For RATE mode, either maxRate or maxRatePerInstance must be
-        # set.
-        # This cannot be used for internal load balancing.
+        # Defines a maximum target for requests per second (RPS) for a single VM in a
+        # backend instance group. This is multiplied by the number of instances in the
+        # instance group to implicitly calculate a target maximum rate for the whole
+        # instance group.
+        # If the backend's balancingMode is UTILIZATION, this is an optional parameter.
+        # If the backend's balancingMode is RATE, you must specify either this parameter,
+        # maxRate, or maxRatePerEndpoint.
+        # Not available if the backend's balancingMode is CONNECTION.
         # Corresponds to the JSON property `maxRatePerInstance`
         # @return [Float]
         attr_accessor :max_rate_per_instance
       
-        # Used when balancingMode is UTILIZATION. This ratio defines the CPU utilization
-        # target for the group. The default is 0.8. Valid range is [0.0, 1.0].
-        # This cannot be used for internal load balancing.
+        # Defines the maximum average CPU utilization of a backend VM in an instance
+        # group. The valid range is [0.0, 1.0]. This is an optional parameter if the
+        # backend's balancingMode is UTILIZATION.
+        # This parameter can be used in conjunction with maxRate, maxRatePerInstance,
+        # maxConnections, or maxConnectionsPerInstance.
         # Corresponds to the JSON property `maxUtilization`
         # @return [Float]
         attr_accessor :max_utilization
@@ -2550,7 +2594,9 @@ module Google
         end
       end
       
-      # A BackendBucket resource. This resource defines a Cloud Storage bucket.
+      # Represents a Cloud Storage Bucket resource.
+      # This Cloud Storage bucket resource is referenced by a URL map of a load
+      # balancer. For more information, read Backend Buckets.
       class BackendBucket
         include Google::Apis::Core::Hashable
       
@@ -2778,16 +2824,22 @@ module Google
         end
       end
       
-      # A BackendService resource. This resource defines a group of backend virtual
-      # machines and their serving capacity. (== resource_for v1.backendService ==) (==
-      # resource_for beta.backendService ==)
+      # Represents a Backend Service resource.
+      # Backend services must have an associated health check. Backend services also
+      # store information about session affinity. For more information, read Backend
+      # Services.
+      # A backendServices resource represents a global backend service. Global backend
+      # services are used for HTTP(S), SSL Proxy, TCP Proxy load balancing and Traffic
+      # Director.
+      # A regionBackendServices resource represents a regional backend service.
+      # Regional backend services are used for internal TCP/UDP load balancing. For
+      # more information, read Internal TCP/UDP Load balancing. (== resource_for v1.
+      # backendService ==) (== resource_for beta.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
-        # Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set
-        # to 0, the cookie is non-persistent and lasts only until the end of the browser
-        # session (or equivalent). The maximum allowed value for TTL is one day.
-        # When the load balancing scheme is INTERNAL, this field is not used.
+        # If set to 0, the cookie is non-persistent and lasts only until the end of the
+        # browser session (or equivalent). The maximum allowed value is one day (86,400).
         # Corresponds to the JSON property `affinityCookieTtlSec`
         # @return [Fixnum]
         attr_accessor :affinity_cookie_ttl_sec
@@ -2833,14 +2885,15 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # If true, enable Cloud CDN for this BackendService.
-        # When the load balancing scheme is INTERNAL, this field is not used.
+        # If true, enables Cloud CDN for the backend service. Only applicable if the
+        # loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
         # Corresponds to the JSON property `enableCDN`
         # @return [Boolean]
         attr_accessor :enable_cdn
         alias_method :enable_cdn?, :enable_cdn
       
-        # 
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing. Requires at
+        # least one backend instance group to be defined as a backup (failover) backend.
         # Corresponds to the JSON property `failoverPolicy`
         # @return [Google::Apis::ComputeAlpha::BackendServiceFailoverPolicy]
         attr_accessor :failover_policy
@@ -2948,23 +3001,27 @@ module Google
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80.
-        # This cannot be used for internal load balancing.
+        # This cannot be used if the loadBalancingScheme is INTERNAL (Internal TCP/UDP
+        # Load Balancing).
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
       
-        # Name of backend port. The same name should appear in the instance groups
-        # referenced by this service. Required when the load balancing scheme is
-        # EXTERNAL.
-        # When the load balancing scheme is INTERNAL, this field is not used.
+        # A named port on a backend instance group representing the port for
+        # communication to the backend VMs in that group. Required when the
+        # loadBalancingScheme is EXTERNAL and the backends are instance groups. The
+        # named port must be defined on each backend instance group. This parameter has
+        # no meaning if the backends are NEGs.
+        # Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
+        # Load Blaancing).
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, TCP, and SSL. The default is HTTP.
-        # For internal load balancing, the possible values are TCP and UDP, and the
-        # default is TCP.
+        # Possible values are HTTP, HTTPS, TCP, SSL, or UDP, depending on the chosen
+        # load balancer or Traffic Director configuration. Refer to the documentation
+        # for the load balancer or for Traffic director for more information.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -2998,18 +3055,22 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # Type of session affinity to use. The default is NONE.
-        # When the load balancing scheme is EXTERNAL, can be NONE, CLIENT_IP, or
-        # GENERATED_COOKIE.
-        # When the load balancing scheme is INTERNAL, can be NONE, CLIENT_IP,
+        # Type of session affinity to use. The default is NONE. Session affinity is not
+        # applicable if the --protocol is UDP.
+        # When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP,
+        # or GENERATED_COOKIE. GENERATED_COOKIE is only available if the protocol is
+        # HTTP or HTTPS.
+        # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-        # When the protocol is UDP, this field is not used.
+        # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, possible values are
+        # NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
       
-        # How many seconds to wait for the backend before considering it a failed
-        # request. Default is 30 seconds.
+        # The backend service timeout has a different meaning depending on the type of
+        # load balancer. For more information read,  Backend service settings The
+        # default is 30 seconds.
         # Corresponds to the JSON property `timeoutSec`
         # @return [Fixnum]
         attr_accessor :timeout_sec
@@ -3214,11 +3275,6 @@ module Google
       class BackendServiceFailoverPolicy
         include Google::Apis::Core::Hashable
       
-        # On failover or failback, this field indicates whether connection drain will be
-        # honored. Setting this to true has the following effect: connections to the old
-        # active pool are not drained. Connections to the new active pool use the
-        # timeout of 10 min (currently fixed). Setting to false has the following effect:
-        # both old and new connections will have a drain timeout of 10 min.
         # This can be set to true only if the protocol is TCP.
         # The default is false.
         # Corresponds to the JSON property `disableConnectionDrainOnFailover`
@@ -3226,23 +3282,22 @@ module Google
         attr_accessor :disable_connection_drain_on_failover
         alias_method :disable_connection_drain_on_failover?, :disable_connection_drain_on_failover
       
-        # This option is used only when no healthy VMs are detected in the primary and
-        # backup instance groups. When set to true, traffic is dropped. When set to
-        # false, new connections are sent across all VMs in the primary group.
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing. If set to
+        # true, connections to the load balancer are dropped when all primary and all
+        # backup backend VMs are unhealthy. If set to false, connections are distributed
+        # among all primary VMs when all primary and all backup backend VMs are
+        # unhealthy.
         # The default is false.
         # Corresponds to the JSON property `dropTrafficIfUnhealthy`
         # @return [Boolean]
         attr_accessor :drop_traffic_if_unhealthy
         alias_method :drop_traffic_if_unhealthy?, :drop_traffic_if_unhealthy
       
-        # The value of the field must be in [0, 1]. If the ratio of the healthy VMs in
-        # the primary backend is at or below this number, traffic arriving at the load-
-        # balanced IP will be directed to the failover backend.
-        # In case where 'failoverRatio' is not set or all the VMs in the backup backend
-        # are unhealthy, the traffic will be directed back to the primary backend in the
-        # "force" mode, where traffic will be spread to the healthy VMs with the best
-        # effort, or to all VMs when no VM is healthy.
-        # This field is only used with l4 load balancing.
+        # Applicable only to Failover for Internal TCP/UDP Load Balancing. The value of
+        # the field must be in the range [0, 1]. If the value is 0, the load balancer
+        # performs a failover when the number of healthy primary VMs equals zero. For
+        # all other values, the load balancer performs a failover when the total number
+        # of healthy primary VMs is less than this ratio.
         # Corresponds to the JSON property `failoverRatio`
         # @return [Float]
         attr_accessor :failover_ratio
@@ -4699,8 +4754,9 @@ module Google
       class ConnectionDraining
         include Google::Apis::Core::Hashable
       
-        # Time for which instance will be drained (not accept new connections, but still
-        # work to finish started).
+        # The amount of time in seconds to allow existing connections to persist while
+        # on unhealthy backend VMs. Only applicable if the protocol is not UDP. The
+        # valid range is [0, 3600].
         # Corresponds to the JSON property `drainingTimeoutSec`
         # @return [Fixnum]
         attr_accessor :draining_timeout_sec
@@ -7233,13 +7289,32 @@ module Google
         end
       end
       
-      # A ForwardingRule resource. A ForwardingRule resource specifies which pool of
-      # target virtual machines to forward a packet to if it matches the given [
-      # IPAddress, IPProtocol, ports] tuple. (== resource_for beta.forwardingRules ==)
-      # (== resource_for v1.forwardingRules ==) (== resource_for beta.
-      # globalForwardingRules ==) (== resource_for v1.globalForwardingRules ==) (==
-      # resource_for beta.regionForwardingRules ==) (== resource_for v1.
-      # regionForwardingRules ==)
+      # Represents a Forwarding Rule resource.
+      # A forwardingRules resource represents a regional forwarding rule.
+      # Regional external forwarding rules can reference any of the following
+      # resources:
+      # 
+      # - A target instance
+      # - A Cloud VPN Classic gateway (targetVpnGateway),
+      # - A target pool for a Network Load Balancer
+      # - A global target HTTP(S) proxy for an HTTP(S) load balancer using Standard
+      # Tier
+      # - A target SSL proxy for a SSL Proxy load balancer using Standard Tier
+      # - A target TCP proxy for a TCP Proxy load balancer using Standard Tier.
+      # Regional internal forwarding rules can reference the backend service of an
+      # internal TCP/UDP load balancer.
+      # For regional internal forwarding rules, the following applies:
+      # - If the loadBalancingScheme for the load balancer is INTERNAL, then the
+      # forwarding rule references a regional internal backend service.
+      # - If the loadBalancingScheme for the load balancer is INTERNAL_MANAGED, then
+      # the forwarding rule must reference a regional target HTTP(S) proxy.
+      # For more information, read Using Forwarding rules.
+      # A globalForwardingRules resource represents a global forwarding rule.
+      # Global forwarding rules are only used by load balancers that use Premium Tier.
+      # (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules =
+      # =) (== resource_for beta.globalForwardingRules ==) (== resource_for v1.
+      # globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (==
+      # resource_for v1.regionForwardingRules ==)
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -8410,9 +8485,11 @@ module Google
         end
       end
       
-      # An HealthCheck resource. This resource defines a template for how individual
-      # virtual machines should be checked for health, via one of the supported
-      # protocols.
+      # Represents a Health Check resource.
+      # Health checks are used for most GCP load balancers and managed instance group
+      # auto-healing. For more information, read Health Check Concepts.
+      # To perform health checks on network load balancers, you must use either
+      # httpHealthChecks or httpsHealthChecks.
       class HealthCheck
         include Google::Apis::Core::Hashable
       
@@ -9585,8 +9662,9 @@ module Google
         end
       end
       
-      # An HttpHealthCheck resource. This resource defines a template for how
-      # individual instances should be checked for health, via HTTP.
+      # Represents a legacy HTTP Health Check resource.
+      # Legacy health checks are required by network load balancers. For more
+      # information, read Health Check Concepts.
       class HttpHealthCheck
         include Google::Apis::Core::Hashable
       
@@ -9647,6 +9725,7 @@ module Google
         attr_accessor :port
       
         # The request path of the HTTP health check request. The default value is /.
+        # This field does not support query parameters.
         # Corresponds to the JSON property `requestPath`
         # @return [String]
         attr_accessor :request_path
@@ -10208,8 +10287,9 @@ module Google
         end
       end
       
-      # An HttpsHealthCheck resource. This resource defines a template for how
-      # individual instances should be checked for health, via HTTPS.
+      # Represents a legacy HTTPS Health Check resource.
+      # Legacy health checks are required by network load balancers. For more
+      # information, read Health Check Concepts.
       class HttpsHealthCheck
         include Google::Apis::Core::Hashable
       
@@ -19215,19 +19295,18 @@ module Google
       
         # This field will be deprecated soon. Use the exchange_subnet_routes field
         # instead. Indicates whether full mesh connectivity is created and managed
-        # automatically. When it is set to true, Google Compute Engine will
-        # automatically create and manage the routes between two networks when the state
-        # is ACTIVE. Otherwise, user needs to create routes manually to route packets to
-        # peer network.
+        # automatically between peered networks. Currently this field should always be
+        # true since Google Compute Engine will automatically create and manage
+        # subnetwork routes between two networks when peering state is ACTIVE.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
         alias_method :auto_create_routes?, :auto_create_routes
       
-        # Whether full mesh connectivity is created and managed automatically. When it
-        # is set to true, Google Compute Engine will automatically create and manage the
-        # routes between two networks when the peering state is ACTIVE. Otherwise, user
-        # needs to create routes manually to route packets to peer network.
+        # Indicates whether full mesh connectivity is created and managed automatically
+        # between peered networks. Currently this field should always be true since
+        # Google Compute Engine will automatically create and manage subnetwork routes
+        # between two networks when peering state is ACTIVE.
         # Corresponds to the JSON property `exchangeSubnetRoutes`
         # @return [Boolean]
         attr_accessor :exchange_subnet_routes
@@ -19347,8 +19426,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # This field will be deprecated soon. Use exchange_subnet_routes in
-        # network_peering instead. Whether Google Compute Engine manages the routes
-        # automatically.
+        # network_peering instead. Indicates whether full mesh connectivity is created
+        # and managed automatically between peered networks. Currently this field should
+        # always be true since Google Compute Engine will automatically create and
+        # manage subnetwork routes between two networks when peering state is ACTIVE.
         # Corresponds to the JSON property `autoCreateRoutes`
         # @return [Boolean]
         attr_accessor :auto_create_routes
@@ -25213,9 +25294,13 @@ module Google
       class RegionUrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
-        # A UrlMap resource. This resource defines the mapping from URL to the
-        # BackendService resource, based on the "longest-match" of the URL's host and
-        # path.
+        # Represents a URL Map resource.
+        # A URL map resource is a component of certain types of load balancers. This
+        # resource defines mappings from host names and URL paths to either a backend
+        # service or a backend bucket.
+        # To use this resource, the backend service must have a loadBalancingScheme of
+        # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
+        # information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource
@@ -28388,7 +28473,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_node_cpus
       
-        # A set of node affinity and anti-affinity.
+        # A set of node affinity and anti-affinity configurations. Refer to Configuring
+        # node affinity for more information.
         # Corresponds to the JSON property `nodeAffinities`
         # @return [Array<Google::Apis::ComputeAlpha::SchedulingNodeAffinity>]
         attr_accessor :node_affinities
@@ -28434,7 +28520,8 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # Defines the operation of node selection.
+        # Defines the operation of node selection. Valid operators are IN for affinity
+        # and NOT_IN for anti-affinity.
         # Corresponds to the JSON property `operator`
         # @return [String]
         attr_accessor :operator
@@ -28513,9 +28600,11 @@ module Google
         end
       end
       
-      # A security policy is comprised of one or more rules. It can also be associated
-      # with one or more 'targets'. (== resource_for v1.securityPolicies ==) (==
-      # resource_for beta.securityPolicies ==)
+      # Represents a Cloud Armor Security Policy resource.
+      # Only external backend services that use load balancers can reference a
+      # Security Policy. For more information, read  Cloud Armor Security Policy
+      # Concepts. (== resource_for v1.securityPolicies ==) (== resource_for beta.
+      # securityPolicies ==)
       class SecurityPolicy
         include Google::Apis::Core::Hashable
       
@@ -29958,10 +30047,11 @@ module Google
         end
       end
       
-      # An SslCertificate resource. This resource provides a mechanism to upload an
-      # SSL key and certificate to the load balancer to serve secure connections from
-      # the user. (== resource_for beta.sslCertificates ==) (== resource_for v1.
-      # sslCertificates ==)
+      # Represents an SSL Certificate resource.
+      # This SSL certificate resource also contains a private key. You can use SSL
+      # keys and certificates to secure connections to a load balancer. For more
+      # information, read  Creating and Using SSL Certificates. (== resource_for beta.
+      # sslCertificates ==) (== resource_for v1.sslCertificates ==)
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -30603,10 +30693,11 @@ module Google
         end
       end
       
-      # A SSL policy specifies the server-side support for SSL features. This can be
-      # attached to a TargetHttpsProxy or a TargetSslProxy. This affects connections
-      # between clients and the HTTPS or SSL proxy load balancer. They do not affect
-      # the connection between the load balancers and the backends.
+      # Represents a Cloud Armor Security Policy resource.
+      # Only external backend services used by HTTP or HTTPS load balancers can
+      # reference a Security Policy. For more information, read read  Cloud Armor
+      # Security Policy Concepts. (== resource_for beta.sslPolicies ==) (==
+      # resource_for v1.sslPolicies ==)
       class SslPolicy
         include Google::Apis::Core::Hashable
       
@@ -31792,7 +31883,10 @@ module Google
         end
       end
       
-      # A TargetHttpProxy resource. This resource defines an HTTP proxy. (==
+      # Represents a Target HTTP Proxy resource.
+      # A target HTTP proxy is a component of certain types of load balancers. Global
+      # forwarding rules reference a target HTTP proxy, and the target proxy then
+      # references a URL map. For more information, read Using Target Proxies. (==
       # resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies =
       # =)
       class TargetHttpProxy
@@ -32246,7 +32340,10 @@ module Google
         end
       end
       
-      # A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (==
+      # Represents a Target HTTPS Proxy resource.
+      # A target HTTPS proxy is a component of certain types of load balancers. Global
+      # forwarding rules reference a target HTTPS proxy, and the target proxy then
+      # references a URL map. For more information, read Using Target Proxies. (==
       # resource_for beta.targetHttpsProxies ==) (== resource_for v1.
       # targetHttpsProxies ==)
       class TargetHttpsProxy
@@ -33023,9 +33120,12 @@ module Google
         end
       end
       
-      # A TargetPool resource. This resource defines a pool of instances, an
-      # associated HttpHealthCheck resource, and the fallback target pool. (==
-      # resource_for beta.targetPools ==) (== resource_for v1.targetPools ==)
+      # Represents a Target Pool resource.
+      # Target pools are used for network TCP/UDP load balancing. A target pool
+      # references member instances, an associated legacy HttpHealthCheck resource,
+      # and, optionally, a backup target pool. For more information, read Using target
+      # pools. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools ==
+      # )
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -33670,8 +33770,12 @@ module Google
         end
       end
       
-      # A TargetSslProxy resource. This resource defines an SSL proxy. (==
-      # resource_for beta.targetSslProxies ==) (== resource_for v1.targetSslProxies ==)
+      # Represents a Target SSL Proxy resource.
+      # A target SSL proxy is a component of a SSL Proxy load balancer. Global
+      # forwarding rules reference a target SSL proxy, and the target proxy then
+      # references an external backend service. For more information, read Using
+      # Target Proxies. (== resource_for beta.targetSslProxies ==) (== resource_for v1.
+      # targetSslProxies ==)
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -33913,8 +34017,12 @@ module Google
         end
       end
       
-      # A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for
-      # beta.targetTcpProxies ==) (== resource_for v1.targetTcpProxies ==)
+      # Represents a Target TCP Proxy resource.
+      # A target TCP proxy is a component of a TCP Proxy load balancer. Global
+      # forwarding rules reference ta target TCP proxy, and the target proxy then
+      # references an external backend service. For more information, read TCP Proxy
+      # Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (==
+      # resource_for v1.targetTcpProxies ==)
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
@@ -34779,9 +34887,13 @@ module Google
         end
       end
       
-      # A UrlMap resource. This resource defines the mapping from URL to the
-      # BackendService resource, based on the "longest-match" of the URL's host and
-      # path.
+      # Represents a URL Map resource.
+      # A URL map resource is a component of certain types of load balancers. This
+      # resource defines mappings from host names and URL paths to either a backend
+      # service or a backend bucket.
+      # To use this resource, the backend service must have a loadBalancingScheme of
+      # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
+      # information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -35356,9 +35468,13 @@ module Google
       class UrlMapsValidateRequest
         include Google::Apis::Core::Hashable
       
-        # A UrlMap resource. This resource defines the mapping from URL to the
-        # BackendService resource, based on the "longest-match" of the URL's host and
-        # path.
+        # Represents a URL Map resource.
+        # A URL map resource is a component of certain types of load balancers. This
+        # resource defines mappings from host names and URL paths to either a backend
+        # service or a backend bucket.
+        # To use this resource, the backend service must have a loadBalancingScheme of
+        # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
+        # information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeAlpha::UrlMap]
         attr_accessor :resource

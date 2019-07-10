@@ -401,7 +401,7 @@ module Google
         #   `accessPolicies/`policy_id`/accessLevels/`short_name``
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessLevel] access_level_object
         # @param [String] update_mask
-        #   Required.  Mask to control which fields get updated. Must be non-empty.
+        #   Required. Mask to control which fields get updated. Must be non-empty.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

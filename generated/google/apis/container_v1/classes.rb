@@ -924,6 +924,11 @@ module Google
       class GetJsonWebKeysResponse
         include Google::Apis::Core::Hashable
       
+        # RFC-2616: cache control support
+        # Corresponds to the JSON property `cacheHeader`
+        # @return [Google::Apis::ContainerV1::HttpCacheControlResponseHeader]
+        attr_accessor :cache_header
+      
         # The public component of the keys used by the cluster to sign token
         # requests.
         # Corresponds to the JSON property `keys`
@@ -936,6 +941,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_header = args[:cache_header] if args.key?(:cache_header)
           @keys = args[:keys] if args.key?(:keys)
         end
       end
@@ -944,6 +950,11 @@ module Google
       # See the OpenID Connect Discovery 1.0 specification for details.
       class GetOpenIdConfigResponse
         include Google::Apis::Core::Hashable
+      
+        # RFC-2616: cache control support
+        # Corresponds to the JSON property `cacheHeader`
+        # @return [Google::Apis::ContainerV1::HttpCacheControlResponseHeader]
+        attr_accessor :cache_header
       
         # Supported claims.
         # Corresponds to the JSON property `claims_supported`
@@ -986,6 +997,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_header = args[:cache_header] if args.key?(:cache_header)
           @claims_supported = args[:claims_supported] if args.key?(:claims_supported)
           @grant_types = args[:grant_types] if args.key?(:grant_types)
           @id_token_signing_alg_values_supported = args[:id_token_signing_alg_values_supported] if args.key?(:id_token_signing_alg_values_supported)
@@ -1017,6 +1029,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # RFC-2616: cache control support
+      class HttpCacheControlResponseHeader
+        include Google::Apis::Core::Hashable
+      
+        # 14.6 response cache age, in seconds since the response is generated
+        # Corresponds to the JSON property `age`
+        # @return [Fixnum]
+        attr_accessor :age
+      
+        # 14.9 request and response directives
+        # Corresponds to the JSON property `directive`
+        # @return [String]
+        attr_accessor :directive
+      
+        # 14.21 response cache expires, in RFC 1123 date format
+        # Corresponds to the JSON property `expires`
+        # @return [String]
+        attr_accessor :expires
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age = args[:age] if args.key?(:age)
+          @directive = args[:directive] if args.key?(:directive)
+          @expires = args[:expires] if args.key?(:expires)
         end
       end
       

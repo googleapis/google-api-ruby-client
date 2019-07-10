@@ -922,6 +922,14 @@ module Google
         # @return [Array<Google::Apis::ServiceconsumermanagementV1::DocumentationRule>]
         attr_accessor :rules
       
+        # Specifies the service root url if the default one (the service name
+        # from the yaml file) is not suitable. This can be seen in any fully
+        # specified service urls as well as sections that show a base that other
+        # urls are relative to.
+        # Corresponds to the JSON property `serviceRootUrl`
+        # @return [String]
+        attr_accessor :service_root_url
+      
         # A short summary of what the service does. Can only be provided by
         # plain text.
         # Corresponds to the JSON property `summary`
@@ -938,6 +946,7 @@ module Google
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
           @rules = args[:rules] if args.key?(:rules)
+          @service_root_url = args[:service_root_url] if args.key?(:service_root_url)
           @summary = args[:summary] if args.key?(:summary)
         end
       end
@@ -3993,8 +4002,7 @@ module Google
         # @return [String]
         attr_accessor :email
       
-        # The IAM resource name of the service account in the following format:
-        # projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`.
+        # Deprecated. See b/136209818.
         # Corresponds to the JSON property `iamAccountName`
         # @return [String]
         attr_accessor :iam_account_name
