@@ -235,8 +235,8 @@ module Google
         # - The cohort definition date ranges need not be aligned to the calendar
         # week and month boundaries.
         # - The `viewId` must be an
-        # [app view ID](https://support.google.com/analytics/answer/2649553#
-        # WebVersusAppViews)
+        # [app view
+        # ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)
         # Corresponds to the JSON property `lifetimeValue`
         # @return [Boolean]
         attr_accessor :lifetime_value
@@ -613,15 +613,18 @@ module Google
         attr_accessor :report_requests
       
         # Enables
-        # [resource based quotas](/analytics/devguides/reporting/core/v4/limits-quotas#
+        # [resource based
+        # quotas](/analytics/devguides/reporting/core/v4/limits-quotas#
         # analytics_reporting_api_v4),
         # (defaults to `False`). If this field is set to `True` the
         # per view (profile) quotas are governed by the computational
         # cost of the request. Note that using cost based quotas will
         # higher enable sampling rates. (10 Million for `SMALL`,
         # 100M for `LARGE`. See the
-        # [limits and quotas documentation](/analytics/devguides/reporting/core/v4/
-        # limits-quotas#analytics_reporting_api_v4) for details.
+        # [limits and quotas
+        # documentation](/analytics/devguides/reporting/core/v4/limits-quotas#
+        # analytics_reporting_api_v4)
+        # for details.
         # Corresponds to the JSON property `useResourceQuotas`
         # @return [Boolean]
         attr_accessor :use_resource_quotas
@@ -1358,8 +1361,9 @@ module Google
         # following expression selects `ga:browser` dimension which starts with
         # Firefox; `ga:browser=~^Firefox`. For more information on dimensions
         # and metric filters, see
-        # [Filters reference](https://developers.google.com/analytics/devguides/
-        # reporting/core/v3/reference#filters).
+        # [Filters
+        # reference](https://developers.google.com/analytics/devguides/reporting/core/v3/
+        # reference#filters).
         # Corresponds to the JSON property `filtersExpression`
         # @return [String]
         attr_accessor :filters_expression

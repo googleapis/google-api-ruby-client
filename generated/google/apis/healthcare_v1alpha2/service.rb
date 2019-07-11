@@ -560,7 +560,8 @@ module Google
         # the resource does not exist. Returns an empty policy if the resource exists
         # but does not have a policy set.
         # Authorization requires the Google IAM permission
-        # `healthcare.AnnotationStores.getIamPolicy` on the specified resource
+        # `healthcare.AnnotationStores.getIamPolicy` on the specified
+        # resource
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -681,7 +682,8 @@ module Google
         # Sets the access control policy for a resource. Replaces any existing
         # policy.
         # Authorization requires the Google IAM permission
-        # 'healthcare.annotationStores.setIamPolicy' on the specified resource
+        # `healthcare.annotationStores.setIamPolicy` on the specified
+        # resource
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -2256,8 +2258,8 @@ module Google
         # FHIR store. Returns NOT_FOUND error if the resource does not exist. Returns
         # an empty policy if the resource exists but does not have a policy set.
         # Authorization requires the Google IAM permission
-        # 'healthcare.fhirStores.getIamPolicy' for a FHIR store or
-        # 'healthcare.securityLabels.getIamPolicy' for a security label
+        # `healthcare.fhirStores.getIamPolicy` for a FHIR store or
+        # `healthcare.securityLabels.getIamPolicy` for a security label
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -2438,8 +2440,8 @@ module Google
         # Sets the access control policy for a FHIR store or security label within a
         # FHIR store. Replaces any existing policy.
         # Authorization requires the Google IAM permission
-        # 'healthcare.fhirStores.setIamPolicy' for a FHIR store or
-        # 'healthcare.securityLabels.setIamPolicy' for a security label
+        # `healthcare.fhirStores.setIamPolicy` for a FHIR store or
+        # `healthcare.securityLabels.setIamPolicy` for a security label
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -3298,8 +3300,8 @@ module Google
         # FHIR store. Returns NOT_FOUND error if the resource does not exist. Returns
         # an empty policy if the resource exists but does not have a policy set.
         # Authorization requires the Google IAM permission
-        # 'healthcare.fhirStores.getIamPolicy' for a FHIR store or
-        # 'healthcare.securityLabels.getIamPolicy' for a security label
+        # `healthcare.fhirStores.getIamPolicy` for a FHIR store or
+        # `healthcare.securityLabels.getIamPolicy` for a security label
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -3339,8 +3341,8 @@ module Google
         # Sets the access control policy for a FHIR store or security label within a
         # FHIR store. Replaces any existing policy.
         # Authorization requires the Google IAM permission
-        # 'healthcare.fhirStores.setIamPolicy' for a FHIR store or
-        # 'healthcare.securityLabels.setIamPolicy' for a security label
+        # `healthcare.fhirStores.setIamPolicy` for a FHIR store or
+        # `healthcare.securityLabels.setIamPolicy` for a security label
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.

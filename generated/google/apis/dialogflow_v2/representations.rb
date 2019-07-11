@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -437,6 +443,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1Context
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1ConversationModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -461,6 +473,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ExportAgentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1InputDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -736,6 +754,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -743,6 +767,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1WebhookResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleLongrunningListOperationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1467,6 +1497,13 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_type, as: 'modelType'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1489,6 +1526,22 @@ module Google
           property :lifespan_count, as: 'lifespanCount'
           property :name, as: 'name'
           hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1ConversationModel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :article_suggestion_model_metadata, as: 'articleSuggestionModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata::Representation
+      
+          property :create_time, as: 'createTime'
+          collection :datasets, as: 'datasets', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1InputDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1InputDataset::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata::Representation
+      
+          property :state, as: 'state'
         end
       end
       
@@ -1526,6 +1579,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1InputDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
         end
       end
       
@@ -2004,6 +2064,12 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1WebhookRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2031,6 +2097,15 @@ module Google
       
           hash :payload, as: 'payload'
           property :source, as: 'source'
+        end
+      end
+      
+      class GoogleLongrunningListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::DialogflowV2::GoogleLongrunningOperation, decorator: Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
+      
         end
       end
       

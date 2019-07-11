@@ -223,6 +223,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
+        # Specifies whether principals can be exempted for the same LogType in
+        # lower-level resource policies. If true, any lower-level exemptions will
+        # be ignored.
+        # Corresponds to the JSON property `ignoreChildExemptions`
+        # @return [Boolean]
+        attr_accessor :ignore_child_exemptions
+        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
+      
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
@@ -235,6 +243,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -1169,6 +1178,14 @@ module Google
         # @return [Array<Google::Apis::ServicemanagementV1::DocumentationRule>]
         attr_accessor :rules
       
+        # Specifies the service root url if the default one (the service name
+        # from the yaml file) is not suitable. This can be seen in any fully
+        # specified service urls as well as sections that show a base that other
+        # urls are relative to.
+        # Corresponds to the JSON property `serviceRootUrl`
+        # @return [String]
+        attr_accessor :service_root_url
+      
         # A short summary of what the service does. Can only be provided by
         # plain text.
         # Corresponds to the JSON property `summary`
@@ -1185,6 +1202,7 @@ module Google
           @overview = args[:overview] if args.key?(:overview)
           @pages = args[:pages] if args.key?(:pages)
           @rules = args[:rules] if args.key?(:rules)
+          @service_root_url = args[:service_root_url] if args.key?(:service_root_url)
           @summary = args[:summary] if args.key?(:summary)
         end
       end

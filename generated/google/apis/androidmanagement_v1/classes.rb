@@ -3095,7 +3095,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The current version of the app.<p>Note that the version can automatically
+        # The current version of the app.Note that the version can automatically
         # increase during the lifetime of the web app, while Google does internal
         # housekeeping to keep the web app up-to-date.
         # Corresponds to the JSON property `versionCode`
@@ -3157,7 +3157,7 @@ module Google
         attr_accessor :parent_frame_url
       
         # Permissions available to an admin in the embedded UI. An admin must have all
-        # of these permissions in order to view the UI.
+        # of these permissions in order to view the UI. This field is deprecated.
         # Corresponds to the JSON property `permissions`
         # @return [Array<String>]
         attr_accessor :permissions

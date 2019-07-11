@@ -575,6 +575,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -794,6 +795,7 @@ module Google
       
           collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::DocumentationRule, decorator: Google::Apis::ServicemanagementV1::DocumentationRule::Representation
       
+          property :service_root_url, as: 'serviceRootUrl'
           property :summary, as: 'summary'
         end
       end

@@ -1291,6 +1291,10 @@ module Google
       
         # The intent detection confidence. Values range from 0.0
         # (completely uncertain) to 1.0 (completely certain).
+        # This value is for informational purpose only and is only used to
+        # help match the best intent within the classification threshold.
+        # This value may change for the same end-user expression at any time due to a
+        # model retraining or change in implementation.
         # If there are `multiple knowledge_answers` messages, this value is set to
         # the greatest `knowledgeAnswers.match_confidence` value in the list.
         # Corresponds to the JSON property `intentDetectionConfidence`
@@ -1661,6 +1665,26 @@ module Google
         end
       end
       
+      # Metadata for article suggestion models.
+      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of the article suggestion model. The available values are:
+        # *   `article-suggestion-gbt-1` - (default) Article Suggestion Gbt model.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_type = args[:model_type] if args.key?(:model_type)
+        end
+      end
+      
       # The request message for EntityTypes.BatchCreateEntities.
       class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest
         include Google::Apis::Core::Hashable
@@ -1973,6 +1997,63 @@ module Google
           @lifespan_count = args[:lifespan_count] if args.key?(:lifespan_count)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Represents a conversation model.
+      class GoogleCloudDialogflowV2beta1ConversationModel
+        include Google::Apis::Core::Hashable
+      
+        # Metadata for article suggestion models.
+        # Corresponds to the JSON property `articleSuggestionModelMetadata`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata]
+        attr_accessor :article_suggestion_model_metadata
+      
+        # Output only. Creation time of this model.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required. Datasets used to create model.
+        # Corresponds to the JSON property `datasets`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDataset>]
+        attr_accessor :datasets
+      
+        # Required. The display name of the model. At most 64 bytes long.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. ConversationModel resource name. Format:
+        # `projects/<Project ID>/conversationModels/<Conversation Model ID>`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Metadata for smart reply models.
+        # Corresponds to the JSON property `smartReplyModelMetadata`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata]
+        attr_accessor :smart_reply_model_metadata
+      
+        # Output only. State of the model. A model can only serve prediction requests
+        # after it gets deployed.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @article_suggestion_model_metadata = args[:article_suggestion_model_metadata] if args.key?(:article_suggestion_model_metadata)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @datasets = args[:datasets] if args.key?(:datasets)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -2501,6 +2582,29 @@ module Google
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
+        end
+      end
+      
+      # InputDataset used to create model or do evaluation.
+      class GoogleCloudDialogflowV2beta1InputDataset
+        include Google::Apis::Core::Hashable
+      
+        # Required. ConversationDataset resource name. Format:
+        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`
+        # or
+        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset
+        # ID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
         end
       end
       
@@ -4518,6 +4622,10 @@ module Google
       
         # The intent detection confidence. Values range from 0.0
         # (completely uncertain) to 1.0 (completely certain).
+        # This value is for informational purpose only and is only used to
+        # help match the best intent within the classification threshold.
+        # This value may change for the same end-user expression at any time due to a
+        # model retraining or change in implementation.
         # If there are `multiple knowledge_answers` messages, this value is set to
         # the greatest `knowledgeAnswers.match_confidence` value in the list.
         # Corresponds to the JSON property `intentDetectionConfidence`
@@ -4813,6 +4921,19 @@ module Google
         end
       end
       
+      # Metadata for smart reply models.
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Configuration of how speech should be synthesized.
       class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig
         include Google::Apis::Core::Hashable
@@ -5074,6 +5195,31 @@ module Google
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @payload = args[:payload] if args.key?(:payload)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # The response message for Operations.ListOperations.
+      class GoogleLongrunningListOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A list of operations that matches the specified filter in the request.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
         end
       end
       

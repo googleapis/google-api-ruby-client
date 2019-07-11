@@ -39,14 +39,13 @@ module Google
         # @return [String]
         attr_accessor :binding_id
       
-        # Output only.
-        # Timestamp for when the binding was created.
+        # Output only. Timestamp for when the binding was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only.
-        # String containing the Deployment Manager deployment name that was created
+        # Output only. String containing the Deployment Manager deployment name that was
+        # created
         # for this binding,
         # Corresponds to the JSON property `deploymentName`
         # @return [String]
@@ -64,8 +63,7 @@ module Google
         # @return [String]
         attr_accessor :plan_id
       
-        # Output only.
-        # The resource name of the binding, e.g.
+        # Output only. The resource name of the binding, e.g.
         # projects/project_id/brokers/broker_id/service_instances/instance_id/bindings/
         # binding_id.
         # Corresponds to the JSON property `resourceName`
@@ -102,8 +100,7 @@ module Google
       class GoogleCloudServicebrokerV1beta1Broker
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # Timestamp for when the broker was created.
+        # Output only. Timestamp for when the broker was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -122,8 +119,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only.
-        # URL of the broker OSB-compliant endpoint, for example:
+        # Output only. URL of the broker OSB-compliant endpoint, for example:
         # https://servicebroker.googleapis.com/projects/<project>/brokers/<broker>
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -340,8 +336,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Output only.
-        # The resource name of the binding, e.g.
+        # Output only. The resource name of the binding, e.g.
         # projects/project_id/brokers/broker_id/service_instances/instance_id/bindings/
         # binding_id.
         # Corresponds to the JSON property `resourceName`
@@ -727,14 +722,13 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :context
       
-        # Output only.
-        # Timestamp for when the instance was created.
+        # Output only. Timestamp for when the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only.
-        # String containing the Deployment Manager deployment name that was created
+        # Output only. String containing the Deployment Manager deployment name that was
+        # created
         # for this instance,
         # Corresponds to the JSON property `deploymentName`
         # @return [String]
@@ -779,8 +773,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :previous_values
       
-        # Output only.
-        # The resource name of the instance, e.g.
+        # Output only. The resource name of the instance, e.g.
         # projects/project_id/brokers/broker_id/service_instances/instance_id
         # Corresponds to the JSON property `resourceName`
         # @return [String]
@@ -869,7 +862,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -952,7 +945,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
