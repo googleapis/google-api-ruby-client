@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetVulnzOccurrencesSummaryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -676,6 +682,15 @@ module Google
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::ContaineranalysisV1alpha1::GetPolicyOptions, decorator: Google::Apis::ContaineranalysisV1alpha1::GetPolicyOptions::Representation
+      
+        end
+      end
+      
+      class GetPolicyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_policy_version, as: 'requestedPolicyVersion'
         end
       end
       

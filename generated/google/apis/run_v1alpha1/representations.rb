@@ -577,6 +577,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -888,7 +889,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :int_val, as: 'intVal'
           property :str_val, as: 'strVal'
-          property :type, :numeric_string => true, as: 'type'
+          property :type, as: 'type'
         end
       end
       
@@ -1303,9 +1304,9 @@ module Google
       
           property :privileged, as: 'privileged'
           property :read_only_root_filesystem, as: 'readOnlyRootFilesystem'
-          property :run_as_group, :numeric_string => true, as: 'runAsGroup'
+          property :run_as_group, as: 'runAsGroup'
           property :run_as_non_root, as: 'runAsNonRoot'
-          property :run_as_user, :numeric_string => true, as: 'runAsUser'
+          property :run_as_user, as: 'runAsUser'
           property :se_linux_options, as: 'seLinuxOptions', class: Google::Apis::RunV1alpha1::SeLinuxOptions, decorator: Google::Apis::RunV1alpha1::SeLinuxOptions::Representation
       
         end

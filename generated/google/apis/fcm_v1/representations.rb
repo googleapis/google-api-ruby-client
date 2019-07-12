@@ -120,6 +120,7 @@ module Google
           property :click_action, as: 'clickAction'
           property :color, as: 'color'
           property :icon, as: 'icon'
+          property :image, as: 'image'
           property :sound, as: 'sound'
           property :tag, as: 'tag'
           property :title, as: 'title'
@@ -142,6 +143,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics_label, as: 'analyticsLabel'
+          property :image, as: 'image'
         end
       end
       
@@ -177,6 +179,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :body, as: 'body'
+          property :image, as: 'image'
           property :title, as: 'title'
         end
       end

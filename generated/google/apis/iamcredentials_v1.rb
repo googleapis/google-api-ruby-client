@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     module IamcredentialsV1
       VERSION = 'V1'
-      REVISION = '20190222'
+      REVISION = '20190704'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

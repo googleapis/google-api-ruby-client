@@ -170,6 +170,13 @@ module Google
         # @return [String]
         attr_accessor :icon
       
+        # Contains the URL of an image that is going to be displayed in a
+        # notification. If present, it will override
+        # google.firebase.fcm.v1.Notification.image.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
         # The sound to play when the device receives the notification.
         # Supports "default" or the filename of a sound resource bundled in the app.
         # Sound files must reside in /res/raw/.
@@ -220,6 +227,7 @@ module Google
           @click_action = args[:click_action] if args.key?(:click_action)
           @color = args[:color] if args.key?(:color)
           @icon = args[:icon] if args.key?(:icon)
+          @image = args[:image] if args.key?(:image)
           @sound = args[:sound] if args.key?(:sound)
           @tag = args[:tag] if args.key?(:tag)
           @title = args[:title] if args.key?(:title)
@@ -273,6 +281,13 @@ module Google
         # @return [String]
         attr_accessor :analytics_label
       
+        # Contains the URL of an image that is going to be displayed in a
+        # notification. If present, it will override
+        # google.firebase.fcm.v1.Notification.image.
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
         def initialize(**args)
            update!(**args)
         end
@@ -280,6 +295,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
+          @image = args[:image] if args.key?(:image)
         end
       end
       
@@ -388,6 +404,18 @@ module Google
         # @return [String]
         attr_accessor :body
       
+        # Contains the URL of an image that is going to be downloaded on the device
+        # and displayed in a notification.
+        # JPEG, PNG, BMP have full support across platforms. Animated GIF and video
+        # only work on iOS. WebP and HEIF have varying levels of support across
+        # platforms and platform versions.
+        # Android has 1MB image size limit.
+        # Quota usage and implications/costs for hosting image on Firebase Storage:
+        # https://firebase.google.com/pricing
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
         # The notification's title.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -400,6 +428,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @body = args[:body] if args.key?(:body)
+          @image = args[:image] if args.key?(:image)
           @title = args[:title] if args.key?(:title)
         end
       end

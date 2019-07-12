@@ -119,42 +119,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # 
-        # @param [String] name
-        #   The resource name of the service account for which the credentials
-        #   are requested, in the following format:
-        #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
-        #   character is required; replacing it with a project ID is invalid.
-        # @param [Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenRequest] generate_identity_binding_access_token_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def generate_service_account_identity_binding_access_token(name, generate_identity_binding_access_token_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+name}:generateIdentityBindingAccessToken', options)
-          command.request_representation = Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenRequest::Representation
-          command.request_object = generate_identity_binding_access_token_request_object
-          command.response_representation = Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenResponse::Representation
-          command.response_class = Google::Apis::IamcredentialsV1::GenerateIdentityBindingAccessTokenResponse
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Signs a blob using a service account's system-managed private key.
         # @param [String] name
         #   The resource name of the service account for which the credentials
