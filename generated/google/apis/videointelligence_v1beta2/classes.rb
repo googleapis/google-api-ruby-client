@@ -672,6 +672,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment]
+        attr_accessor :segment
+      
         # Topical label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
@@ -712,6 +717,7 @@ module Google
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
@@ -1801,6 +1807,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment]
+        attr_accessor :segment
+      
         # Topical label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
@@ -1841,6 +1852,7 @@ module Google
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
@@ -2642,6 +2654,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment]
+        attr_accessor :segment
+      
         # Topical label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
@@ -2682,6 +2699,7 @@ module Google
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
@@ -3426,6 +3444,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
+        attr_accessor :segment
+      
         # Topical label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
@@ -3466,6 +3489,7 @@ module Google
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
@@ -4437,6 +4461,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Video segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
+        attr_accessor :segment
+      
         # Topical label annotations on video level or user specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
@@ -4478,6 +4507,7 @@ module Google
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)

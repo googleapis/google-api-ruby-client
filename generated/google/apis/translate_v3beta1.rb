@@ -12,25 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/videointelligence_v1p1beta1/service.rb'
-require 'google/apis/videointelligence_v1p1beta1/classes.rb'
-require 'google/apis/videointelligence_v1p1beta1/representations.rb'
+require 'google/apis/translate_v3beta1/service.rb'
+require 'google/apis/translate_v3beta1/classes.rb'
+require 'google/apis/translate_v3beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Video Intelligence API
+    # Cloud Translation API
     #
-    # Detects objects, explicit content, and scene changes in videos. It also
-    # specifies the region for annotation and transcribes speech to text. Supports
-    # both asynchronous API and streaming API.
+    # Integrates text translation into your website or application.
     #
-    # @see https://cloud.google.com/video-intelligence/docs/
-    module VideointelligenceV1p1beta1
-      VERSION = 'V1p1beta1'
-      REVISION = '20190713'
+    # @see https://cloud.google.com/translate/docs/quickstarts
+    module TranslateV3beta1
+      VERSION = 'V3beta1'
+      REVISION = '20190704'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Translate text from one language to another using Google Translate
+      AUTH_CLOUD_TRANSLATION = 'https://www.googleapis.com/auth/cloud-translation'
     end
   end
 end

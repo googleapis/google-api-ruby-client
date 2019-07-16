@@ -978,6 +978,8 @@ module Google
           property :input_uri, as: 'inputUri'
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation::Representation
       
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
@@ -1204,6 +1206,8 @@ module Google
           property :input_uri, as: 'inputUri'
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation::Representation
       
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
       
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
@@ -1429,6 +1433,8 @@ module Google
       
           property :input_uri, as: 'inputUri'
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation::Representation
+      
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
       
@@ -1731,6 +1737,8 @@ module Google
       
           property :input_uri, as: 'inputUri'
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation::Representation
+      
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
       
@@ -2049,6 +2057,8 @@ module Google
           collection :logo_recognition_annotations, as: 'logoRecognitionAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation::Representation
       
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation::Representation
+      
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment::Representation
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
       

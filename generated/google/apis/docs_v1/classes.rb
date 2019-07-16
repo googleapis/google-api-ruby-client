@@ -3725,6 +3725,11 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
         attr_accessor :update_paragraph_style
       
+        # Updates the style of a range of table cells.
+        # Corresponds to the JSON property `updateTableCellStyle`
+        # @return [Google::Apis::DocsV1::UpdateTableCellStyleRequest]
+        attr_accessor :update_table_cell_style
+      
         # Updates the
         # TableColumnProperties of columns
         # in a table.
@@ -3765,6 +3770,7 @@ module Google
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
+          @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
           @update_table_column_properties = args[:update_table_column_properties] if args.key?(:update_table_column_properties)
           @update_table_row_style = args[:update_table_row_style] if args.key?(:update_table_row_style)
           @update_text_style = args[:update_text_style] if args.key?(:update_text_style)
@@ -4935,6 +4941,47 @@ module Google
         end
       end
       
+      # A table range represents a reference to a subset of a table.
+      # It's important to note that the cells specified by a table range do not
+      # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+      # where all the cells of the last row are merged together. The table looks
+      # like this:
+      # 
+      # [             ]
+      # A table range with table cell location = (table_start_location, row = 0,
+      # column = 0), row span = 3 and column span = 2 specifies the following cells:
+      # x     x
+      # [ x    x    x ]
+      class TableRange
+        include Google::Apis::Core::Hashable
+      
+        # The column span of the table range.
+        # Corresponds to the JSON property `columnSpan`
+        # @return [Fixnum]
+        attr_accessor :column_span
+      
+        # The row span of the table range.
+        # Corresponds to the JSON property `rowSpan`
+        # @return [Fixnum]
+        attr_accessor :row_span
+      
+        # Location of a single cell within a table.
+        # Corresponds to the JSON property `tableCellLocation`
+        # @return [Google::Apis::DocsV1::TableCellLocation]
+        attr_accessor :table_cell_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @column_span = args[:column_span] if args.key?(:column_span)
+          @row_span = args[:row_span] if args.key?(:row_span)
+          @table_cell_location = args[:table_cell_location] if args.key?(:table_cell_location)
+        end
+      end
+      
       # The contents and style of a row in a Table.
       class TableRow
         include Google::Apis::Core::Hashable
@@ -5359,6 +5406,62 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @paragraph_style = args[:paragraph_style] if args.key?(:paragraph_style)
           @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Updates the style of a range of table cells.
+      class UpdateTableCellStyleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `tableCellStyle` is implied
+        # and should not be specified. A single `"*"` can be used as short-hand for
+        # listing every field.
+        # For example to update the table cell background color, set `fields` to
+        # `"backgroundColor"`.
+        # To reset a property to its default value, include its field name in the
+        # field mask but leave the field itself unset.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The style of a TableCell.
+        # Inherited table cell styles are represented as unset fields in this message.
+        # A table cell style can inherit from the table's style.
+        # Corresponds to the JSON property `tableCellStyle`
+        # @return [Google::Apis::DocsV1::TableCellStyle]
+        attr_accessor :table_cell_style
+      
+        # A table range represents a reference to a subset of a table.
+        # It's important to note that the cells specified by a table range do not
+        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+        # where all the cells of the last row are merged together. The table looks
+        # like this:
+        # 
+        # [             ]
+        # A table range with table cell location = (table_start_location, row = 0,
+        # column = 0), row span = 3 and column span = 2 specifies the following cells:
+        # x     x
+        # [ x    x    x ]
+        # Corresponds to the JSON property `tableRange`
+        # @return [Google::Apis::DocsV1::TableRange]
+        attr_accessor :table_range
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `tableStartLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :table_start_location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @table_cell_style = args[:table_cell_style] if args.key?(:table_cell_style)
+          @table_range = args[:table_range] if args.key?(:table_range)
+          @table_start_location = args[:table_start_location] if args.key?(:table_start_location)
         end
       end
       
