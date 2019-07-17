@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteContactPhotoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainMembership
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -310,6 +316,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateContactPhotoRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateContactPhotoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Url
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -454,6 +472,14 @@ module Google
           property :day, as: 'day'
           property :month, as: 'month'
           property :year, as: 'year'
+        end
+      end
+      
+      class DeleteContactPhotoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person, as: 'person', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
         end
       end
       
@@ -882,6 +908,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :contact_group, as: 'contactGroup', class: Google::Apis::PeopleV1::ContactGroup, decorator: Google::Apis::PeopleV1::ContactGroup::Representation
+      
+        end
+      end
+      
+      class UpdateContactPhotoRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person_fields, as: 'personFields'
+          property :photo_bytes, :base64 => true, as: 'photoBytes'
+        end
+      end
+      
+      class UpdateContactPhotoResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :person, as: 'person', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
       
         end
       end

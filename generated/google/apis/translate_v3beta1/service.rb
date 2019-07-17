@@ -49,9 +49,11 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id`` or
+        #   `projects/`project-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
         #   Only models within the same region (has same location-id) can be used.
         #   Otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3beta1::DetectLanguageRequest] detect_language_request_object
@@ -86,9 +88,12 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`` or
+        #   `projects/`project-id`/locations/`location-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
+        #   Non-global location is required for AutoML models.
         #   Only models within the same region (have same location-id) can be used,
         #   otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [String] display_language_code
@@ -136,9 +141,13 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`` or
+        #   `projects/`project-id`/locations/`location-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
+        #   Non-global location is required for requests using AutoML models or
+        #   custom glossaries.
         #   Models and glossaries must be within the same region (have same
         #   location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3beta1::TranslateTextRequest] translate_text_request_object
@@ -216,9 +225,11 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id`` or
+        #   `projects/`project-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
         #   Only models within the same region (has same location-id) can be used.
         #   Otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3beta1::DetectLanguageRequest] detect_language_request_object
@@ -253,9 +264,12 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`` or
+        #   `projects/`project-id`/locations/`location-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
+        #   Non-global location is required for AutoML models.
         #   Only models within the same region (have same location-id) can be used,
         #   otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [String] display_language_code
@@ -303,9 +317,13 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Location to make a regional or global call.
-        #   Format: `projects/`project-id`/locations/`location-id``.
-        #   For global calls, use `projects/`project-id`/locations/global`.
+        #   Required. Target project or location to make a call.
+        #   Format: `projects/`project-id`` or
+        #   `projects/`project-id`/locations/`location-id``.
+        #   For global calls, use `projects/`project-id`/locations/global` or
+        #   `projects/`project-id``.
+        #   Non-global location is required for requests using AutoML models or
+        #   custom glossaries.
         #   Models and glossaries must be within the same region (have same
         #   location-id), otherwise an INVALID_ARGUMENT (400) error is returned.
         # @param [Google::Apis::TranslateV3beta1::TranslateTextRequest] translate_text_request_object

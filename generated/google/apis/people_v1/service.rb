@@ -354,6 +354,71 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Delete a contact's photo.
+        # @param [String] resource_name
+        #   The resource name of the contact whose photo will be deleted.
+        # @param [String] person_fields
+        #   **Optional.** Not specifying any fields will skip the post mutate read.
+        #   A field mask to restrict which fields on the person are
+        #   returned. Multiple fields can be specified by separating them with commas.
+        #   Valid values are:
+        #   * addresses
+        #   * ageRanges
+        #   * biographies
+        #   * birthdays
+        #   * braggingRights
+        #   * coverPhotos
+        #   * emailAddresses
+        #   * events
+        #   * genders
+        #   * imClients
+        #   * interests
+        #   * locales
+        #   * memberships
+        #   * metadata
+        #   * names
+        #   * nicknames
+        #   * occupations
+        #   * organizations
+        #   * phoneNumbers
+        #   * photos
+        #   * relations
+        #   * relationshipInterests
+        #   * relationshipStatuses
+        #   * residences
+        #   * sipAddresses
+        #   * skills
+        #   * taglines
+        #   * urls
+        #   * userDefined
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::DeleteContactPhotoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::DeleteContactPhotoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_person_contact_photo(resource_name, person_fields: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+resourceName}:deleteContactPhoto', options)
+          command.response_representation = Google::Apis::PeopleV1::DeleteContactPhotoResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::DeleteContactPhotoResponse
+          command.params['resourceName'] = resource_name unless resource_name.nil?
+          command.query['personFields'] = person_fields unless person_fields.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Provides information about a person by specifying a resource name. Use
         # `people/me` to indicate the authenticated user.
         # <br>
@@ -577,6 +642,39 @@ module Google
           command.response_class = Google::Apis::PeopleV1::Person
           command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['updatePersonFields'] = update_person_fields unless update_person_fields.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update a contact's photo.
+        # @param [String] resource_name
+        #   Person resource name
+        # @param [Google::Apis::PeopleV1::UpdateContactPhotoRequest] update_contact_photo_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::PeopleV1::UpdateContactPhotoResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::PeopleV1::UpdateContactPhotoResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_person_contact_photo(resource_name, update_contact_photo_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+resourceName}:updateContactPhoto', options)
+          command.request_representation = Google::Apis::PeopleV1::UpdateContactPhotoRequest::Representation
+          command.request_object = update_contact_photo_request_object
+          command.response_representation = Google::Apis::PeopleV1::UpdateContactPhotoResponse::Representation
+          command.response_class = Google::Apis::PeopleV1::UpdateContactPhotoResponse
+          command.params['resourceName'] = resource_name unless resource_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
