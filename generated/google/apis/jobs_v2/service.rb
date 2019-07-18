@@ -80,8 +80,7 @@ module Google
         
         # Deletes the specified company.
         # @param [String] name
-        #   Required.
-        #   The resource name of the company to be deleted,
+        #   Required. The resource name of the company to be deleted,
         #   such as, "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -112,8 +111,7 @@ module Google
         
         # Retrieves the specified company.
         # @param [String] name
-        #   Required.
-        #   Resource name of the company to retrieve,
+        #   Required. Resource name of the company to retrieve,
         #   such as "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -144,18 +142,15 @@ module Google
         
         # Lists all companies associated with a Cloud Talent Solution account.
         # @param [Boolean] must_have_open_jobs
-        #   Optional.
-        #   Set to true if the companies request must have open jobs.
+        #   Optional. Set to true if the companies request must have open jobs.
         #   Defaults to false.
         #   If true, at most page_size of companies are fetched, among which
         #   only those with open jobs are returned.
         # @param [Fixnum] page_size
-        #   Optional.
-        #   The maximum number of companies to be returned, at most 100.
+        #   Optional. The maximum number of companies to be returned, at most 100.
         #   Default is 100 if a non-positive number is provided.
         # @param [String] page_token
-        #   Optional.
-        #   The starting indicator from which to return results.
+        #   Optional. The starting indicator from which to return results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -246,12 +241,11 @@ module Google
         # Deprecated. Use ListJobs instead.
         # Lists all jobs associated with a company.
         # @param [String] company_name
-        #   Required.
-        #   The resource name of the company that owns the jobs to be listed,
+        #   Required. The resource name of the company that owns the jobs to be listed,
         #   such as, "companies/0000aaaa-1111-bbbb-2222-cccc3333dddd".
         # @param [Boolean] ids_only
-        #   Optional.
-        #   If set to `true`, only job ID, job requisition ID and language code will be
+        #   Optional. If set to `true`, only job ID, job requisition ID and language code
+        #   will be
         #   returned.
         #   A typical use is to synchronize job repositories.
         #   Defaults to false.
@@ -262,19 +256,17 @@ module Google
         #   Set to true if the total number of open jobs is to be returned.
         #   Defaults to false.
         # @param [String] job_requisition_id
-        #   Optional.
-        #   The requisition ID, also known as posting ID, assigned by the company
+        #   Optional. The requisition ID, also known as posting ID, assigned by the
+        #   company
         #   to the job.
         #   The maximum number of allowable characters is 225.
         # @param [Fixnum] page_size
-        #   Optional.
-        #   The maximum number of jobs to be returned per page of results.
+        #   Optional. The maximum number of jobs to be returned per page of results.
         #   If ids_only is set to true, the maximum allowed page size
         #   is 1000. Otherwise, the maximum allowed page size is 100.
         #   Default is 100 if empty or a number < 1 is specified.
         # @param [String] page_token
-        #   Optional.
-        #   The starting point of a query result.
+        #   Optional. The starting point of a query result.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -373,8 +365,7 @@ module Google
         # Typically, the job becomes unsearchable within 10 seconds, but it may take
         # up to 5 minutes.
         # @param [String] name
-        #   Required.
-        #   The resource name of the job to be deleted, such as "jobs/11111111".
+        #   Required. The resource name of the job to be deleted, such as "jobs/11111111".
         # @param [Boolean] disable_fast_process
         #   Deprecated. This field is not working anymore.
         #   Optional.
@@ -445,8 +436,7 @@ module Google
         # Retrieves the specified job, whose status is OPEN or recently EXPIRED
         # within the last 90 days.
         # @param [String] name
-        #   Required.
-        #   The resource name of the job to retrieve, such as "jobs/11111111".
+        #   Required. The resource name of the job to retrieve, such as "jobs/11111111".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -516,8 +506,7 @@ module Google
         
         # Lists jobs by filter.
         # @param [String] filter
-        #   Required.
-        #   The filter string specifies the jobs to be enumerated.
+        #   Required. The filter string specifies the jobs to be enumerated.
         #   Supported operator: =, AND
         #   The fields eligible for filtering are:
         #   * `companyName` (Required)
@@ -526,20 +515,17 @@ module Google
         #   * companyName = "companies/123"
         #   * companyName = "companies/123" AND requisitionId = "req-1"
         # @param [Boolean] ids_only
-        #   Optional.
-        #   If set to `true`, only Job.name, Job.requisition_id and
+        #   Optional. If set to `true`, only Job.name, Job.requisition_id and
         #   Job.language_code will be returned.
         #   A typical use case is to synchronize job repositories.
         #   Defaults to false.
         # @param [Fixnum] page_size
-        #   Optional.
-        #   The maximum number of jobs to be returned per page of results.
+        #   Optional. The maximum number of jobs to be returned per page of results.
         #   If ids_only is set to true, the maximum allowed page size
         #   is 1000. Otherwise, the maximum allowed page size is 100.
         #   Default is 100 if empty or a number < 1 is specified.
         # @param [String] page_token
-        #   Optional.
-        #   The starting point of a query result.
+        #   Optional. The starting point of a query result.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -681,11 +667,9 @@ module Google
         # Completes the specified prefix with job keyword suggestions.
         # Intended for use by a job search auto-complete search box.
         # @param [String] company_name
-        #   Optional.
-        #   If provided, restricts completion to the specified company.
+        #   Optional. If provided, restricts completion to the specified company.
         # @param [String] language_code
-        #   Required.
-        #   The language of the query. This is
+        #   Required. The language of the query. This is
         #   the BCP-47 language code, such as "en-US" or "sr-Latn".
         #   For more information, see
         #   [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
@@ -698,18 +682,14 @@ module Google
         #   language_code or companies having open jobs with same
         #   language_code are returned.
         # @param [Fixnum] page_size
-        #   Required.
-        #   Completion result count.
+        #   Required. Completion result count.
         #   The maximum allowed page size is 10.
         # @param [String] query
-        #   Required.
-        #   The query used to generate suggestions.
+        #   Required. The query used to generate suggestions.
         # @param [String] scope
-        #   Optional.
-        #   The scope of the completion. The defaults is CompletionScope.PUBLIC.
+        #   Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC.
         # @param [String] type
-        #   Optional.
-        #   The completion topic. The default is CompletionType.COMBINED.
+        #   Optional. The completion topic. The default is CompletionType.COMBINED.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

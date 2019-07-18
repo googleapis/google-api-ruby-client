@@ -424,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -730,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1LabelConversationResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -749,12 +761,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SentimentAnalysisResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1497,6 +1503,19 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completed_example_count, :numeric_string => true, as: 'completedExampleCount'
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :example_count, :numeric_string => true, as: 'exampleCount'
+          property :name, as: 'name'
+          property :question_type_name, as: 'questionTypeName'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1539,8 +1558,6 @@ module Google
       
           property :display_name, as: 'displayName'
           property :name, as: 'name'
-          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata::Representation
-      
           property :state, as: 'state'
         end
       end
@@ -2012,6 +2029,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1LabelConversationResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotated_conversation_dataset, as: 'annotatedConversationDataset', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1AnnotatedConversationDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1AnnotatedConversationDataset::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2061,12 +2086,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

@@ -1665,6 +1665,73 @@ module Google
         end
       end
       
+      # Represents an annotated conversation dataset.
+      # ConversationDataset can have multiple AnnotatedConversationDataset, each of
+      # them represents one result from one annotation task.
+      # AnnotatedConversationDataset can only be generated from annotation task,
+      # which will be triggered by LabelConversation.
+      class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Number of examples that have annotations in the annotated
+        # conversation dataset.
+        # Corresponds to the JSON property `completedExampleCount`
+        # @return [Fixnum]
+        attr_accessor :completed_example_count
+      
+        # Output only. Creation time of this annotated conversation dataset.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The description of the annotated conversation dataset.
+        # Maximum of 10000 bytes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. The display name of the annotated conversation dataset.
+        # It's specified when user starts an annotation task. Maximum of 64 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Number of examples in the annotated conversation dataset.
+        # Corresponds to the JSON property `exampleCount`
+        # @return [Fixnum]
+        attr_accessor :example_count
+      
+        # Output only. AnnotatedConversationDataset resource name. Format:
+        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset
+        # ID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Question type name that identifies a labeling task.
+        # A question is a single task that a worker answers. A question type is set
+        # of related questions. Each question belongs to a particular question type.
+        # It can be used in CrowdCompute UI to filter and manage labeling tasks.
+        # Corresponds to the JSON property `questionTypeName`
+        # @return [String]
+        attr_accessor :question_type_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completed_example_count = args[:completed_example_count] if args.key?(:completed_example_count)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @example_count = args[:example_count] if args.key?(:example_count)
+          @name = args[:name] if args.key?(:name)
+          @question_type_name = args[:question_type_name] if args.key?(:question_type_name)
+        end
+      end
+      
       # Metadata for article suggestion models.
       class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
         include Google::Apis::Core::Hashable
@@ -2030,11 +2097,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Metadata for smart reply models.
-        # Corresponds to the JSON property `smartReplyModelMetadata`
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata]
-        attr_accessor :smart_reply_model_metadata
-      
         # Output only. State of the model. A model can only serve prediction requests
         # after it gets deployed.
         # Corresponds to the JSON property `state`
@@ -2052,7 +2114,6 @@ module Google
           @datasets = args[:datasets] if args.key?(:datasets)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
-          @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -4221,6 +4282,30 @@ module Google
         end
       end
       
+      # The response for
+      # ConversationDatasets.LabelConversation
+      class GoogleCloudDialogflowV2beta1LabelConversationResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents an annotated conversation dataset.
+        # ConversationDataset can have multiple AnnotatedConversationDataset, each of
+        # them represents one result from one annotation task.
+        # AnnotatedConversationDataset can only be generated from annotation task,
+        # which will be triggered by LabelConversation.
+        # Corresponds to the JSON property `annotatedConversationDataset`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1AnnotatedConversationDataset]
+        attr_accessor :annotated_conversation_dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotated_conversation_dataset = args[:annotated_conversation_dataset] if args.key?(:annotated_conversation_dataset)
+        end
+      end
+      
       # The response message for Contexts.ListContexts.
       class GoogleCloudDialogflowV2beta1ListContextsResponse
         include Google::Apis::Core::Hashable
@@ -4918,19 +5003,6 @@ module Google
           @entities = args[:entities] if args.key?(:entities)
           @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Metadata for smart reply models.
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
         end
       end
       

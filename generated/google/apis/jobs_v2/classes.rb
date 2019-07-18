@@ -27,8 +27,7 @@ module Google
       class BatchDeleteJobsRequest
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # The filter string specifies the jobs to be deleted.
+        # Required. The filter string specifies the jobs to be deleted.
         # Supported operator: =, AND
         # The fields eligible for filtering are:
         # * `companyName` (Required)
@@ -134,8 +133,7 @@ module Google
       class CommutePreference
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # If `true`, jobs without street level addresses may also be returned.
+        # Optional. If `true`, jobs without street level addresses may also be returned.
         # For city level addresses, the city center is used. For state and coarser
         # level addresses, text matching is used.
         # If this field is set to `false` or is not specified, only jobs that include
@@ -145,22 +143,19 @@ module Google
         attr_accessor :allow_non_street_level_address
         alias_method :allow_non_street_level_address?, :allow_non_street_level_address
       
-        # Optional.
-        # The departure hour to use to calculate traffic impact. Accepts an
+        # Optional. The departure hour to use to calculate traffic impact. Accepts an
         # integer between 0 and 23, representing the hour in the time zone of the
         # start_location. Must not be present if road_traffic is specified.
         # Corresponds to the JSON property `departureHourLocal`
         # @return [Fixnum]
         attr_accessor :departure_hour_local
       
-        # Required.
-        # The method of transportation for which to calculate the commute time.
+        # Required. The method of transportation for which to calculate the commute time.
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Optional.
-        # Specifies the traffic density to use when calculating commute time.
+        # Optional. Specifies the traffic density to use when calculating commute time.
         # Must not be present if departure_hour_local is specified.
         # Corresponds to the JSON property `roadTraffic`
         # @return [String]
@@ -175,8 +170,8 @@ module Google
         # @return [Google::Apis::JobsV2::LatLng]
         attr_accessor :start_location
       
-        # Required.
-        # The maximum travel time in seconds. The maximum allowed value is `3600s`
+        # Required. The maximum travel time in seconds. The maximum allowed value is `
+        # 3600s`
         # (one hour). Format is `123s`.
         # Corresponds to the JSON property `travelTime`
         # @return [String]
@@ -203,22 +198,21 @@ module Google
       class Company
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The URL to employer's career site or careers page on the employer's web
+        # Optional. The URL to employer's career site or careers page on the employer's
+        # web
         # site.
         # Corresponds to the JSON property `careerPageLink`
         # @return [String]
         attr_accessor :career_page_link
       
-        # Optional.
-        # Identifiers external to the application that help to further identify
+        # Optional. Identifiers external to the application that help to further
+        # identify
         # the employer.
         # Corresponds to the JSON property `companyInfoSources`
         # @return [Array<Google::Apis::JobsV2::CompanyInfoSource>]
         attr_accessor :company_info_sources
       
-        # Optional.
-        # The employer's company size.
+        # Optional. The employer's company size.
         # Corresponds to the JSON property `companySize`
         # @return [String]
         attr_accessor :company_size
@@ -231,15 +225,13 @@ module Google
         attr_accessor :disable_location_optimization
         alias_method :disable_location_optimization?, :disable_location_optimization
       
-        # Required.
-        # The name of the employer to be displayed with the job,
+        # Required. The name of the employer to be displayed with the job,
         # for example, "Google, LLC.".
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Optional.
-        # The unique company identifier provided by the client to identify an
+        # Optional. The unique company identifier provided by the client to identify an
         # employer for billing purposes. Recommended practice is to use
         # the distributor_company_id.
         # Defaults to same value as distributor_company_id when a value
@@ -248,8 +240,7 @@ module Google
         # @return [String]
         attr_accessor :distributor_billing_company_id
       
-        # Required.
-        # A client's company identifier, used to uniquely identify the
+        # Required. A client's company identifier, used to uniquely identify the
         # company. If an employer has a subsidiary or sub-brand, such as "Alphabet"
         # and "Google", which the client wishes to use as the company displayed on
         # the job. Best practice is to create a distinct company identifier for each
@@ -259,8 +250,7 @@ module Google
         # @return [String]
         attr_accessor :distributor_company_id
       
-        # Optional.
-        # Equal Employment Opportunity legal disclaimer text to be
+        # Optional. Equal Employment Opportunity legal disclaimer text to be
         # associated with all jobs, and typically to be displayed in all
         # roles.
         # The maximum number of allowed characters is 500.
@@ -268,8 +258,7 @@ module Google
         # @return [String]
         attr_accessor :eeo_text
       
-        # Optional.
-        # Set to true if it is the hiring agency that post jobs for other
+        # Optional. Set to true if it is the hiring agency that post jobs for other
         # employers.
         # Defaults to false if not provided.
         # Corresponds to the JSON property `hiringAgency`
@@ -277,8 +266,7 @@ module Google
         attr_accessor :hiring_agency
         alias_method :hiring_agency?, :hiring_agency
       
-        # Optional.
-        # The street address of the company's main headquarters, which may be
+        # Optional. The street address of the company's main headquarters, which may be
         # different from the job location. The service attempts
         # to geolocate the provided address, and populates a more specific
         # location wherever possible in structured_company_hq_location.
@@ -286,8 +274,7 @@ module Google
         # @return [String]
         attr_accessor :hq_location
       
-        # Optional.
-        # A URL that hosts the employer's company logo. If provided,
+        # Optional. A URL that hosts the employer's company logo. If provided,
         # the logo image should be squared at 80x80 pixels.
         # The url must be a Google Photos or Google Album url.
         # Only images in these Google sub-domains are accepted.
@@ -295,8 +282,7 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
-        # Optional.
-        # A list of keys of filterable Job.custom_attributes, whose
+        # Optional. A list of keys of filterable Job.custom_attributes, whose
         # corresponding `string_values` are used in keyword search. Jobs with
         # `string_values` under these specified field keys are returned if any
         # of the values matches the search keyword. Custom field values with
@@ -332,8 +318,8 @@ module Google
         # @return [Google::Apis::JobsV2::JobLocation]
         attr_accessor :structured_company_hq_location
       
-        # Output only.
-        # Indicates whether a company is flagged to be suspended from public
+        # Output only. Indicates whether a company is flagged to be suspended from
+        # public
         # availability by the service when job content appears suspicious,
         # abusive, or spammy.
         # Corresponds to the JSON property `suspended`
@@ -349,8 +335,7 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Optional.
-        # The URL representing the company's primary web site or home page,
+        # Optional. The URL representing the company's primary web site or home page,
         # such as, "www.google.com".
         # Corresponds to the JSON property `website`
         # @return [String]
@@ -389,27 +374,24 @@ module Google
       class CompanyInfoSource
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The Google's Knowledge Graph value for the employer's company.
+        # Optional. The Google's Knowledge Graph value for the employer's company.
         # Corresponds to the JSON property `freebaseMid`
         # @return [String]
         attr_accessor :freebase_mid
       
-        # Optional.
-        # The numeric identifier for the employer's Google+ business page.
+        # Optional. The numeric identifier for the employer's Google+ business page.
         # Corresponds to the JSON property `gplusId`
         # @return [String]
         attr_accessor :gplus_id
       
-        # Optional.
-        # The numeric identifier for the employer's headquarters on Google Maps,
+        # Optional. The numeric identifier for the employer's headquarters on Google
+        # Maps,
         # namely, the Google Maps CID (cell id).
         # Corresponds to the JSON property `mapsCid`
         # @return [String]
         attr_accessor :maps_cid
       
-        # Optional.
-        # A Google identifier that does not match any of the other types.
+        # Optional. A Google identifier that does not match any of the other types.
         # Corresponds to the JSON property `unknownTypeId`
         # @return [String]
         attr_accessor :unknown_type_id
@@ -442,16 +424,14 @@ module Google
         # @return [Google::Apis::JobsV2::Money]
         attr_accessor :amount
       
-        # Optional.
-        # Compensation description.  For example, could
+        # Optional. Compensation description.  For example, could
         # indicate equity terms or provide additional context to an estimated
         # bonus.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Optional.
-        # Expected number of units paid each year. If not specified, when
+        # Optional. Expected number of units paid each year. If not specified, when
         # Job.employment_types is FULLTIME, a default value is inferred
         # based on unit. Default values:
         # - HOURLY: 2080
@@ -468,14 +448,12 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationRange]
         attr_accessor :range
       
-        # Required.
-        # Compensation type.
+        # Required. Compensation type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional.
-        # Frequency of the specified amount.
+        # Optional. Frequency of the specified amount.
         # Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         # Corresponds to the JSON property `unit`
         # @return [String]
@@ -501,8 +479,7 @@ module Google
       class CompensationFilter
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # Whether to include jobs whose compensation range is unspecified.
+        # Optional. Whether to include jobs whose compensation range is unspecified.
         # Corresponds to the JSON property `includeJobsWithUnspecifiedCompensationRange`
         # @return [Boolean]
         attr_accessor :include_jobs_with_unspecified_compensation_range
@@ -513,14 +490,12 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationRange]
         attr_accessor :range
       
-        # Required.
-        # Type of filter.
+        # Required. Type of filter.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Required.
-        # Specify desired `base compensation entry's`
+        # Required. Specify desired `base compensation entry's`
         # CompensationInfo.CompensationUnit.
         # Corresponds to the JSON property `units`
         # @return [Array<String>]
@@ -550,8 +525,8 @@ module Google
         # @return [Google::Apis::JobsV2::NumericBucketingOption]
         attr_accessor :bucketing_option
       
-        # Required.
-        # Type of the request, representing which field the histogramming should be
+        # Required. Type of the request, representing which field the histogramming
+        # should be
         # performed over. A single request can only specify one histogram of each
         # `CompensationHistogramRequestType`.
         # Corresponds to the JSON property `type`
@@ -616,8 +591,7 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationRange]
         attr_accessor :annualized_total_compensation_range
       
-        # Optional.
-        # Job compensation information.
+        # Optional. Job compensation information.
         # At most one entry can be of type
         # CompensationInfo.CompensationType.BASE, which is
         # referred as ** base compensation entry ** for the job.
@@ -787,8 +761,7 @@ module Google
       class CustomAttribute
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # If the `filterable` flag is true, custom field values are searchable.
+        # Optional. If the `filterable` flag is true, custom field values are searchable.
         # If false, values are not searchable.
         # Default is false.
         # Corresponds to the JSON property `filterable`
@@ -828,8 +801,8 @@ module Google
       class CustomAttributeHistogramRequest
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # Specifies the custom field key to perform a histogram on. If specified
+        # Required. Specifies the custom field key to perform a histogram on. If
+        # specified
         # without `long_value_histogram_bucketing_option`, histogram on string values
         # of the given `key` is triggered, otherwise histogram is performed on long
         # values.
@@ -900,8 +873,7 @@ module Google
       class CustomField
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The values of the custom data.
+        # Optional. The values of the custom data.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values
@@ -921,14 +893,12 @@ module Google
       class CustomFieldFilter
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # The query strings for the filter.
+        # Required. The query strings for the filter.
         # Corresponds to the JSON property `queries`
         # @return [Array<String>]
         attr_accessor :queries
       
-        # Optional.
-        # The type of filter.
+        # Optional. The type of filter.
         # Defaults to FilterType.OR.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -995,8 +965,7 @@ module Google
       class DeleteJobsByFilterRequest
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # If set to true, this call waits for all processing steps to complete
+        # Optional. If set to true, this call waits for all processing steps to complete
         # before the job is cleaned up. Otherwise, the call returns while some
         # steps are still taking place asynchronously, hence faster.
         # Corresponds to the JSON property `disableFastProcess`
@@ -1029,14 +998,13 @@ module Google
       class DeviceInfo
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # Type of the device.
+        # Optional. Type of the device.
         # Corresponds to the JSON property `deviceType`
         # @return [String]
         attr_accessor :device_type
       
-        # Optional.
-        # A device-specific ID. The ID must be a unique identifier that distinguishes
+        # Optional. A device-specific ID. The ID must be a unique identifier that
+        # distinguishes
         # the device from other devices.
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -1084,30 +1052,26 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationInfoCompensationRange]
         attr_accessor :compensation_range
       
-        # Required.
-        # Specify desired `base compensation entry's`
+        # Required. Specify desired `base compensation entry's`
         # ExtendedCompensationInfo.CompensationUnit.
         # Corresponds to the JSON property `compensationUnits`
         # @return [Array<String>]
         attr_accessor :compensation_units
       
-        # Optional.
-        # Specify currency in 3-letter
+        # Optional. Specify currency in 3-letter
         # [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format. If
         # unspecified, jobs are returned regardless of currency.
         # Corresponds to the JSON property `currency`
         # @return [String]
         attr_accessor :currency
       
-        # Optional.
-        # Whether to include jobs whose compensation range is unspecified.
+        # Optional. Whether to include jobs whose compensation range is unspecified.
         # Corresponds to the JSON property `includeJobWithUnspecifiedCompensationRange`
         # @return [Boolean]
         attr_accessor :include_job_with_unspecified_compensation_range
         alias_method :include_job_with_unspecified_compensation_range?, :include_job_with_unspecified_compensation_range
       
-        # Required.
-        # Type of filter.
+        # Required. Type of filter.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1137,8 +1101,8 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationInfoCompensationRange]
         attr_accessor :annualized_base_compensation_range
       
-        # Output only.
-        # Indicates annualized base compensation range cannot be derived, due to
+        # Output only. Indicates annualized base compensation range cannot be derived,
+        # due to
         # the job's base compensation entry cannot be annualized.
         # See CompensationEntry for explanation on annualization and base
         # compensation entry.
@@ -1153,8 +1117,8 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationInfoCompensationRange]
         attr_accessor :annualized_total_compensation_range
       
-        # Output only.
-        # Indicates annualized total compensation range cannot be derived, due to
+        # Output only. Indicates annualized total compensation range cannot be derived,
+        # due to
         # the job's all CompensationEntry cannot be annualized.
         # See CompensationEntry for explanation on annualization and base
         # compensation entry.
@@ -1163,15 +1127,14 @@ module Google
         attr_accessor :annualized_total_compensation_unspecified
         alias_method :annualized_total_compensation_unspecified?, :annualized_total_compensation_unspecified
       
-        # Optional.
-        # A 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html)
+        # Optional. A 3-letter [ISO 4217](https://www.iso.org/iso-4217-currency-codes.
+        # html)
         # currency code.
         # Corresponds to the JSON property `currency`
         # @return [String]
         attr_accessor :currency
       
-        # Optional.
-        # Job compensation information.
+        # Optional. Job compensation information.
         # At most one entry can be of type
         # ExtendedCompensationInfo.CompensationType.BASE, which is
         # referred as ** base compensation entry ** for the job.
@@ -1211,8 +1174,7 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationInfoDecimal]
         attr_accessor :amount
       
-        # Optional.
-        # Compensation description.
+        # Optional. Compensation description.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1229,21 +1191,18 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationInfoCompensationRange]
         attr_accessor :range
       
-        # Required.
-        # Compensation type.
+        # Required. Compensation type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Optional.
-        # Frequency of the specified amount.
+        # Optional. Frequency of the specified amount.
         # Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit
       
-        # Optional.
-        # Indicates compensation amount and range are unset.
+        # Optional. Indicates compensation amount and range are unset.
         # Corresponds to the JSON property `unspecified`
         # @return [Boolean]
         attr_accessor :unspecified
@@ -1330,8 +1289,8 @@ module Google
       class Filter
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # The requisition ID (or posting ID) assigned by the client to identify a
+        # Required. The requisition ID (or posting ID) assigned by the client to
+        # identify a
         # job. This is intended for client identification and tracking of
         # listings.
         # name takes precedence over this field
@@ -1357,8 +1316,8 @@ module Google
       class GetHistogramRequest
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # Controls whether to broaden the search to avoid too few results for a
+        # Optional. Controls whether to broaden the search to avoid too few results for
+        # a
         # given query in instances where a search has sparse results. Results from a
         # broadened query is a superset of the results from the original query.
         # Defaults to false.
@@ -1388,8 +1347,7 @@ module Google
         # @return [Google::Apis::JobsV2::RequestMetadata]
         attr_accessor :request_metadata
       
-        # Required.
-        # A list of facets that specify the histogram data to be calculated
+        # Required. A list of facets that specify the histogram data to be calculated
         # against and returned.
         # Histogram response times can be slow, and counts
         # can be approximations. This call may be temporarily or permanently removed
@@ -1447,15 +1405,13 @@ module Google
       class HistogramFacets
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # Specifies compensation field-based histogram requests.
+        # Optional. Specifies compensation field-based histogram requests.
         # Duplicate values of CompensationHistogramRequest.type are not allowed.
         # Corresponds to the JSON property `compensationHistogramFacets`
         # @return [Array<Google::Apis::JobsV2::CompensationHistogramRequest>]
         attr_accessor :compensation_histogram_facets
       
-        # Optional.
-        # Specifies the custom attributes histogram requests.
+        # Optional. Specifies the custom attributes histogram requests.
         # Duplicate values of CustomAttributeHistogramRequest.key are not
         # allowed.
         # Corresponds to the JSON property `customAttributeHistogramFacets`
@@ -1587,14 +1543,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :application_urls
       
-        # Optional.
-        # The benefits included with the job.
+        # Optional. The benefits included with the job.
         # Corresponds to the JSON property `benefits`
         # @return [Array<String>]
         attr_accessor :benefits
       
-        # Output only.
-        # The name of the company listing the job.
+        # Output only. The name of the company listing the job.
         # Corresponds to the JSON property `companyDisplayName`
         # @return [String]
         attr_accessor :company_display_name
@@ -1620,14 +1574,13 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationInfo]
         attr_accessor :compensation_info
       
-        # Output only.
-        # The timestamp when this job was created.
+        # Output only. The timestamp when this job was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Optional.
-        # A map of fields to hold both filterable and non-filterable custom job
+        # Optional. A map of fields to hold both filterable and non-filterable custom
+        # job
         # attributes that are not covered by the provided structured fields.
         # This field is a more general combination of the deprecated id-based
         # filterable_custom_fields and string-based
@@ -1643,16 +1596,15 @@ module Google
         # @return [Hash<String,Google::Apis::JobsV2::CustomAttribute>]
         attr_accessor :custom_attributes
       
-        # Optional.
-        # The department or functional area within the company with the open
+        # Optional. The department or functional area within the company with the open
         # position.
         # The maximum number of allowed characters is 255.
         # Corresponds to the JSON property `department`
         # @return [String]
         attr_accessor :department
       
-        # Required.
-        # The description of the job, which typically includes a multi-paragraph
+        # Required. The description of the job, which typically includes a multi-
+        # paragraph
         # description of the company and related information. Separate fields are
         # provided on the job object for responsibilities,
         # qualifications, and other job characteristics. Use of
@@ -1674,15 +1626,13 @@ module Google
         # @return [String]
         attr_accessor :distributor_company_id
       
-        # Optional.
-        # The desired education level for the job, such as
+        # Optional. The desired education level for the job, such as
         # "Bachelors", "Masters", "Doctorate".
         # Corresponds to the JSON property `educationLevels`
         # @return [Array<String>]
         attr_accessor :education_levels
       
-        # Optional.
-        # The employment type(s) of a job, for example,
+        # Optional. The employment type(s) of a job, for example,
         # full time or
         # part time.
         # Corresponds to the JSON property `employmentTypes`
@@ -1773,29 +1723,25 @@ module Google
         # @return [Hash<String,Google::Apis::JobsV2::CustomField>]
         attr_accessor :filterable_custom_fields
       
-        # Optional.
-        # A description of bonus, commission, and other compensation
+        # Optional. A description of bonus, commission, and other compensation
         # incentives associated with the job not including salary or pay.
         # The maximum number of allowed characters is 10,000.
         # Corresponds to the JSON property `incentives`
         # @return [String]
         attr_accessor :incentives
       
-        # Output only.
-        # Structured locations of the job, resolved from locations.
+        # Output only. Structured locations of the job, resolved from locations.
         # Corresponds to the JSON property `jobLocations`
         # @return [Array<Google::Apis::JobsV2::JobLocation>]
         attr_accessor :job_locations
       
-        # Required.
-        # The title of the job, such as "Software Engineer"
+        # Required. The title of the job, such as "Software Engineer"
         # The maximum number of allowed characters is 500.
         # Corresponds to the JSON property `jobTitle`
         # @return [String]
         attr_accessor :job_title
       
-        # Optional.
-        # The language of the posting. This field is distinct from
+        # Optional. The language of the posting. This field is distinct from
         # any requirements for fluency that are associated with the job.
         # Language codes must be in BCP-47 format, such as "en-US" or "sr-Latn".
         # For more information, see
@@ -1808,8 +1754,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Optional.
-        # The experience level associated with the job, such as "Entry Level".
+        # Optional. The experience level associated with the job, such as "Entry Level".
         # Corresponds to the JSON property `level`
         # @return [String]
         attr_accessor :level
@@ -1839,8 +1784,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional.
-        # A promotion value of the job, as determined by the client.
+        # Optional. A promotion value of the job, as determined by the client.
         # The value determines the sort order of the jobs returned when searching for
         # jobs using the featured jobs search call, with higher promotional values
         # being returned first and ties being resolved by relevance sort. Only the
@@ -1862,8 +1806,7 @@ module Google
         # @return [Google::Apis::JobsV2::Date]
         attr_accessor :publish_date
       
-        # Optional.
-        # A description of the qualifications required to perform the
+        # Optional. A description of the qualifications required to perform the
         # job. The use of this field is recommended
         # as an alternative to using the more general description field.
         # This field accepts and sanitizes HTML input, and also accepts
@@ -1873,14 +1816,13 @@ module Google
         # @return [String]
         attr_accessor :qualifications
       
-        # Output only.
-        # The URL of a web page that displays job details.
+        # Output only. The URL of a web page that displays job details.
         # Corresponds to the JSON property `referenceUrl`
         # @return [String]
         attr_accessor :reference_url
       
-        # Optional.
-        # The job Region (for example, state, country) throughout which the job
+        # Optional. The job Region (for example, state, country) throughout which the
+        # job
         # is available. If this field is set, a
         # LocationFilter in a search query within the job region
         # finds this job if an exact location match is not specified.
@@ -1890,8 +1832,8 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # Required.
-        # The requisition ID, also referred to as the posting ID, assigned by the
+        # Required. The requisition ID, also referred to as the posting ID, assigned by
+        # the
         # client to identify a job. This field is intended to be used by clients
         # for client identification and tracking of listings. A job is not allowed
         # to be created if there is another job with the same requisition_id,
@@ -1901,8 +1843,7 @@ module Google
         # @return [String]
         attr_accessor :requisition_id
       
-        # Optional.
-        # A description of job responsibilities. The use of this field is
+        # Optional. A description of job responsibilities. The use of this field is
         # recommended as an alternative to using the more general description
         # field.
         # This field accepts and sanitizes HTML input, and also accepts
@@ -1935,14 +1876,12 @@ module Google
         # @return [Hash<String,Google::Apis::JobsV2::CustomField>]
         attr_accessor :unindexed_custom_fields
       
-        # Output only.
-        # The timestamp when this job was last updated.
+        # Output only. The timestamp when this job was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Optional.
-        # The visibility of the job.
+        # Optional. The visibility of the job.
         # Defaults to JobVisibility.PRIVATE if not specified.
         # Currently only JobVisibility.PRIVATE is supported.
         # Corresponds to the JSON property `visibility`
@@ -2002,8 +1941,8 @@ module Google
       class JobFilters
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The category filter specifies the categories of jobs to search against.
+        # Optional. The category filter specifies the categories of jobs to search
+        # against.
         # See Category for more information.
         # If a value is not specified, jobs from any category are searched against.
         # If multiple values are specified, jobs from any of the specified
@@ -2018,8 +1957,7 @@ module Google
         # @return [Google::Apis::JobsV2::CommutePreference]
         attr_accessor :commute_filter
       
-        # Optional.
-        # The company names filter specifies the company entities to search
+        # Optional. The company names filter specifies the company entities to search
         # against.
         # If a value is not specified, jobs are searched for against all companies.
         # If multiple values are specified, jobs are searched against the
@@ -2029,8 +1967,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :company_names
       
-        # Optional.
-        # This filter specifies the exact company titles
+        # Optional. This filter specifies the exact company titles
         # of jobs to search against.
         # If a value is not specified, jobs within the search results can be
         # associated with any company.
@@ -2047,8 +1984,7 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationFilter]
         attr_accessor :compensation_filter
       
-        # Optional.
-        # This filter specifies a structured syntax to match against the
+        # Optional. This filter specifies a structured syntax to match against the
         # Job.custom_attributes that are marked as `filterable`.
         # The syntax for this expression is a subset of Google SQL syntax.
         # Supported operators are: =, !=, <, <=, >, >= where the left of the operator
@@ -2079,8 +2015,7 @@ module Google
         # @return [Hash<String,Google::Apis::JobsV2::CustomFieldFilter>]
         attr_accessor :custom_field_filters
       
-        # Optional.
-        # This flag controls the spell-check feature. If false, the
+        # Optional. This flag controls the spell-check feature. If false, the
         # service attempts to correct a misspelled query,
         # for example, "enginee" is corrected to "engineer".
         # Defaults to false: a spell check is performed.
@@ -2089,8 +2024,7 @@ module Google
         attr_accessor :disable_spell_check
         alias_method :disable_spell_check?, :disable_spell_check
       
-        # Optional.
-        # The employment type filter specifies the employment type of jobs to
+        # Optional. The employment type filter specifies the employment type of jobs to
         # search against, such as EmploymentType.FULL_TIME.
         # If a value is not specified, jobs in the search results include any
         # employment type.
@@ -2107,8 +2041,7 @@ module Google
         # @return [Google::Apis::JobsV2::ExtendedCompensationFilter]
         attr_accessor :extended_compensation_filter
       
-        # Optional.
-        # This filter specifies the locale of jobs to search against,
+        # Optional. This filter specifies the locale of jobs to search against,
         # for example, "en-US".
         # If a value is not specified, the search results may contain jobs in any
         # locale.
@@ -2120,8 +2053,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :language_codes
       
-        # Optional.
-        # The location filter specifies geo-regions containing the jobs to
+        # Optional. The location filter specifies geo-regions containing the jobs to
         # search against. See LocationFilter for more information.
         # If a location value is not specified, jobs are retrieved
         # from all locations.
@@ -2134,8 +2066,7 @@ module Google
         # @return [Array<Google::Apis::JobsV2::LocationFilter>]
         attr_accessor :location_filters
       
-        # Optional.
-        # Jobs published within a range specified by this filter are searched
+        # Optional. Jobs published within a range specified by this filter are searched
         # against, for example, DateRange.PAST_MONTH. If a value is not
         # specified, all open jobs are searched against regardless of the
         # date they were published.
@@ -2143,8 +2074,7 @@ module Google
         # @return [String]
         attr_accessor :publish_date_range
       
-        # Optional.
-        # The query filter contains the keywords that match against the job
+        # Optional. The query filter contains the keywords that match against the job
         # title, description, and location fields.
         # The maximum query size is 255 bytes/characters.
         # Corresponds to the JSON property `query`
@@ -2217,7 +2147,7 @@ module Google
         # existing data, depending on the type of process.
         # Advice on address input / editing:
         # - Use an i18n-ready address widget such as
-        # https://github.com/googlei18n/libaddressinput)
+        # https://github.com/google/libaddressinput)
         # - Users should not be presented with UI elements for input or editing of
         # fields outside countries where that field is used.
         # For more guidance on how to use this schema, please see:
@@ -2253,16 +2183,14 @@ module Google
       class JobProcessingOptions
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # If set to `true`, the service does not attempt to resolve a
+        # Optional. If set to `true`, the service does not attempt to resolve a
         # more precise address for the job.
         # Corresponds to the JSON property `disableStreetAddressResolution`
         # @return [Boolean]
         attr_accessor :disable_street_address_resolution
         alias_method :disable_street_address_resolution?, :disable_street_address_resolution
       
-        # Optional.
-        # Option for job HTML content sanitization. Applied fields are:
+        # Optional. Option for job HTML content sanitization. Applied fields are:
         # * description
         # * applicationInstruction
         # * incentives
@@ -2290,8 +2218,8 @@ module Google
       class JobQuery
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The category filter specifies the categories of jobs to search against.
+        # Optional. The category filter specifies the categories of jobs to search
+        # against.
         # See Category for more information.
         # If a value is not specified, jobs from any category are searched against.
         # If multiple values are specified, jobs from any of the specified
@@ -2306,8 +2234,7 @@ module Google
         # @return [Google::Apis::JobsV2::CommutePreference]
         attr_accessor :commute_filter
       
-        # Optional.
-        # This filter specifies the exact company display
+        # Optional. This filter specifies the exact company display
         # name of the jobs to search against.
         # If a value isn't specified, jobs within the search results are
         # associated with any company.
@@ -2318,8 +2245,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :company_display_names
       
-        # Optional.
-        # This filter specifies the company entities to search against.
+        # Optional. This filter specifies the company entities to search against.
         # If a value isn't specified, jobs are searched for against all
         # companies.
         # If multiple values are specified, jobs are searched against the
@@ -2335,8 +2261,7 @@ module Google
         # @return [Google::Apis::JobsV2::CompensationFilter]
         attr_accessor :compensation_filter
       
-        # Optional.
-        # This filter specifies a structured syntax to match against the
+        # Optional. This filter specifies a structured syntax to match against the
         # Job.custom_attributes marked as `filterable`.
         # The syntax for this expression is a subset of Google SQL syntax.
         # Supported operators are: =, !=, <, <=, >, >= where the left of the operator
@@ -2355,8 +2280,7 @@ module Google
         # @return [String]
         attr_accessor :custom_attribute_filter
       
-        # Optional.
-        # This flag controls the spell-check feature. If false, the
+        # Optional. This flag controls the spell-check feature. If false, the
         # service attempts to correct a misspelled query,
         # for example, "enginee" is corrected to "engineer".
         # Defaults to false: a spell check is performed.
@@ -2365,8 +2289,7 @@ module Google
         attr_accessor :disable_spell_check
         alias_method :disable_spell_check?, :disable_spell_check
       
-        # Optional.
-        # The employment type filter specifies the employment type of jobs to
+        # Optional. The employment type filter specifies the employment type of jobs to
         # search against, such as EmploymentType.FULL_TIME.
         # If a value is not specified, jobs in the search results include any
         # employment type.
@@ -2376,8 +2299,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :employment_types
       
-        # Optional.
-        # This filter specifies the locale of jobs to search against,
+        # Optional. This filter specifies the locale of jobs to search against,
         # for example, "en-US".
         # If a value isn't specified, the search results can contain jobs in any
         # locale.
@@ -2389,8 +2311,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :language_codes
       
-        # Optional.
-        # The location filter specifies geo-regions containing the jobs to
+        # Optional. The location filter specifies geo-regions containing the jobs to
         # search against. See LocationFilter for more information.
         # If a location value isn't specified, jobs fitting the other search
         # criteria are retrieved regardless of where they're located.
@@ -2403,8 +2324,7 @@ module Google
         # @return [Array<Google::Apis::JobsV2::LocationFilter>]
         attr_accessor :location_filters
       
-        # Optional.
-        # Jobs published within a range specified by this filter are searched
+        # Optional. Jobs published within a range specified by this filter are searched
         # against, for example, DateRange.PAST_MONTH. If a value isn't
         # specified, all open jobs are searched against regardless of their
         # published date.
@@ -2412,8 +2332,8 @@ module Google
         # @return [String]
         attr_accessor :publish_date_range
       
-        # Optional.
-        # The query string that matches against the job title, description, and
+        # Optional. The query string that matches against the job title, description,
+        # and
         # location fields.
         # The maximum query size is 255 bytes.
         # Corresponds to the JSON property `query`
@@ -2590,16 +2510,15 @@ module Google
       class LocationFilter
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # The distance_in_miles is applied when the location being searched for is
+        # Optional. The distance_in_miles is applied when the location being searched
+        # for is
         # identified as a city or smaller. When the location being searched for is a
         # state or larger, this field is ignored.
         # Corresponds to the JSON property `distanceInMiles`
         # @return [Float]
         attr_accessor :distance_in_miles
       
-        # Optional.
-        # Allows the client to return jobs without a
+        # Optional. Allows the client to return jobs without a
         # set location, specifically, telecommuting jobs (telecomuting is considered
         # by the service as a special location.
         # Job.allow_telecommute indicates if a job permits telecommuting.
@@ -2626,14 +2545,13 @@ module Google
         # @return [Google::Apis::JobsV2::LatLng]
         attr_accessor :lat_lng
       
-        # Optional.
-        # The address name, such as "Mountain View" or "Bay Area".
+        # Optional. The address name, such as "Mountain View" or "Bay Area".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Optional.
-        # CLDR region code of the country/region of the address. This will be used
+        # Optional. CLDR region code of the country/region of the address. This will be
+        # used
         # to address ambiguity of the user-input location, e.g. "Liverpool"
         # against "Liverpool, NY, US" or "Liverpool, UK".
         # Set this field if all the jobs to search against are from a same region,
@@ -2754,8 +2672,7 @@ module Google
       class NumericBucketingOption
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # Two adjacent values form a histogram bucket. Values should be in
+        # Required. Two adjacent values form a histogram bucket. Values should be in
         # ascending order. For example, if [5, 10, 15] are provided, four buckets are
         # created: (-inf, 5), 5, 10), [10, 15), [15, inf). At most 20
         # [buckets_bound is supported.
@@ -2763,8 +2680,7 @@ module Google
         # @return [Array<Float>]
         attr_accessor :bucket_bounds
       
-        # Optional.
-        # If set to true, the histogram result includes minimum/maximum
+        # Optional. If set to true, the histogram result includes minimum/maximum
         # value of the numeric field.
         # Corresponds to the JSON property `requiresMinMax`
         # @return [Boolean]
@@ -2826,7 +2742,7 @@ module Google
       # existing data, depending on the type of process.
       # Advice on address input / editing:
       # - Use an i18n-ready address widget such as
-      # https://github.com/googlei18n/libaddressinput)
+      # https://github.com/google/libaddressinput)
       # - Users should not be presented with UI elements for input or editing of
       # fields outside countries where that field is used.
       # For more guidance on how to use this schema, please see:
@@ -2976,8 +2892,8 @@ module Google
         # @return [Google::Apis::JobsV2::DeviceInfo]
         attr_accessor :device_info
       
-        # Required.
-        # The client-defined scope or source of the service call, which typically
+        # Required. The client-defined scope or source of the service call, which
+        # typically
         # is the domain on
         # which the service has been implemented and is currently being run.
         # For example, if the service is being run by client <em>Foo, Inc.</em>, on
@@ -2991,8 +2907,7 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Required.
-        # A unique session identification string. A session is defined as the
+        # Required. A unique session identification string. A session is defined as the
         # duration of an end user's interaction with the service over a period.
         # Obfuscate this field for privacy concerns before
         # providing it to the API.
@@ -3003,8 +2918,8 @@ module Google
         # @return [String]
         attr_accessor :session_id
       
-        # Required.
-        # A unique user identification string, as determined by the client. The
+        # Required. A unique user identification string, as determined by the client.
+        # The
         # client is responsible for ensuring client-level uniqueness of this value
         # in order to have the strongest positive impact on search quality.
         # Obfuscate this field for privacy concerns before
@@ -3071,8 +2986,7 @@ module Google
       class SearchJobsRequest
         include Google::Apis::Core::Hashable
       
-        # Optional.
-        # Controls whether to disable relevance thresholding. Relevance
+        # Optional. Controls whether to disable relevance thresholding. Relevance
         # thresholding removes jobs that have low relevance in search results,
         # for example, removing "Assistant to the CEO" positions from the search
         # results of a search for "CEO".
@@ -3084,8 +2998,8 @@ module Google
         attr_accessor :disable_relevance_thresholding
         alias_method :disable_relevance_thresholding?, :disable_relevance_thresholding
       
-        # Optional.
-        # Controls whether to broaden the search when it produces sparse results.
+        # Optional. Controls whether to broaden the search when it produces sparse
+        # results.
         # Broadened queries append results to the end of the matching results
         # list.
         # Defaults to false.
@@ -3094,8 +3008,7 @@ module Google
         attr_accessor :enable_broadening
         alias_method :enable_broadening?, :enable_broadening
       
-        # Optional.
-        # Controls if the search job request requires the return of a precise
+        # Optional. Controls if the search job request requires the return of a precise
         # count of the first 300 results. Setting this to `true` ensures
         # consistency in the number of results per page. Best practice is to set this
         # value to true if a client allows users to jump directly to a
@@ -3120,21 +3033,19 @@ module Google
         # @return [Google::Apis::JobsV2::HistogramFacets]
         attr_accessor :histogram_facets
       
-        # Optional.
-        # The number of job attributes returned for jobs in the
+        # Optional. The number of job attributes returned for jobs in the
         # search response. Defaults to JobView.SMALL if no value is specified.
         # Corresponds to the JSON property `jobView`
         # @return [String]
         attr_accessor :job_view
       
-        # Required.
-        # Mode of a search.
+        # Required. Mode of a search.
         # Corresponds to the JSON property `mode`
         # @return [String]
         attr_accessor :mode
       
-        # Optional.
-        # An integer that specifies the current offset (that is, starting result
+        # Optional. An integer that specifies the current offset (that is, starting
+        # result
         # location, amongst the jobs deemed by the API as relevant) in search
         # results. This field is only considered if page_token is unset.
         # For example, 0 means to  return results starting from the first matching
@@ -3153,16 +3064,14 @@ module Google
         # @return [String]
         attr_accessor :order_by
       
-        # Optional.
-        # A limit on the number of jobs returned in the search results.
+        # Optional. A limit on the number of jobs returned in the search results.
         # Increasing this value above the default value of 10 can increase search
         # response time. The value can be between 1 and 100.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # Optional.
-        # The token specifying the current offset within
+        # Optional. The token specifying the current offset within
         # search results. See SearchJobsResponse.next_page_token for
         # an explanation of how to obtain the next set of query results.
         # Corresponds to the JSON property `pageToken`
@@ -3183,8 +3092,7 @@ module Google
         # @return [Google::Apis::JobsV2::RequestMetadata]
         attr_accessor :request_metadata
       
-        # Optional.
-        # The criteria determining how search results are sorted.
+        # Optional. The criteria determining how search results are sorted.
         # Defaults to SortBy.RELEVANCE_DESC if no value is specified.
         # Corresponds to the JSON property `sortBy`
         # @return [String]
@@ -3343,8 +3251,7 @@ module Google
       class StringValues
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # String values.
+        # Required. String values.
         # Corresponds to the JSON property `values`
         # @return [Array<String>]
         attr_accessor :values

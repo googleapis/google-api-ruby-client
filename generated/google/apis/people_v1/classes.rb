@@ -514,29 +514,6 @@ module Google
         end
       end
       
-      # The response for deleteing a contact's photo.
-      class DeleteContactPhotoResponse
-        include Google::Apis::Core::Hashable
-      
-        # Information about a person merged from various data sources such as the
-        # authenticated user's contacts and profile data.
-        # Most fields can have multiple items. The items in a field have no guaranteed
-        # order, but each non-empty field is guaranteed to have exactly one field with
-        # `metadata.primary` set to true.
-        # Corresponds to the JSON property `person`
-        # @return [Google::Apis::PeopleV1::Person]
-        attr_accessor :person
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @person = args[:person] if args.key?(:person)
-        end
-      end
-      
       # A read-only G Suite Domain membership.
       class DomainMembership
         include Google::Apis::Core::Hashable
@@ -2121,88 +2098,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @contact_group = args[:contact_group] if args.key?(:contact_group)
-        end
-      end
-      
-      # A request to update an existing contact's photo.
-      # All requests must have a valid photo format: JPEG or PNG.
-      class UpdateContactPhotoRequest
-        include Google::Apis::Core::Hashable
-      
-        # **Optional.** Not specifying any fields will skip the post mutate read.
-        # A field mask to restrict which fields on the person are
-        # returned. Multiple fields can be specified by separating them with commas.
-        # Valid values are:
-        # * addresses
-        # * ageRanges
-        # * biographies
-        # * birthdays
-        # * braggingRights
-        # * coverPhotos
-        # * emailAddresses
-        # * events
-        # * genders
-        # * imClients
-        # * interests
-        # * locales
-        # * memberships
-        # * metadata
-        # * names
-        # * nicknames
-        # * occupations
-        # * organizations
-        # * phoneNumbers
-        # * photos
-        # * relations
-        # * relationshipInterests
-        # * relationshipStatuses
-        # * residences
-        # * sipAddresses
-        # * skills
-        # * taglines
-        # * urls
-        # * userDefined
-        # Corresponds to the JSON property `personFields`
-        # @return [String]
-        attr_accessor :person_fields
-      
-        # Raw photo bytes
-        # Corresponds to the JSON property `photoBytes`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :photo_bytes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @person_fields = args[:person_fields] if args.key?(:person_fields)
-          @photo_bytes = args[:photo_bytes] if args.key?(:photo_bytes)
-        end
-      end
-      
-      # The response for updating a contact's photo.
-      class UpdateContactPhotoResponse
-        include Google::Apis::Core::Hashable
-      
-        # Information about a person merged from various data sources such as the
-        # authenticated user's contacts and profile data.
-        # Most fields can have multiple items. The items in a field have no guaranteed
-        # order, but each non-empty field is guaranteed to have exactly one field with
-        # `metadata.primary` set to true.
-        # Corresponds to the JSON property `person`
-        # @return [Google::Apis::PeopleV1::Person]
-        attr_accessor :person
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @person = args[:person] if args.key?(:person)
         end
       end
       
