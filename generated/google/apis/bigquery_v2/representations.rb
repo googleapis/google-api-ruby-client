@@ -1288,6 +1288,8 @@ module Google
           property :num_dml_affected_rows, :numeric_string => true, as: 'numDmlAffectedRows'
           collection :query_plan, as: 'queryPlan', class: Google::Apis::BigqueryV2::ExplainQueryStage, decorator: Google::Apis::BigqueryV2::ExplainQueryStage::Representation
       
+          collection :referenced_routines, as: 'referencedRoutines', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
+      
           collection :referenced_tables, as: 'referencedTables', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics2::ReservationUsage::Representation

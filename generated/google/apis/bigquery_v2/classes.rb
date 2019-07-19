@@ -2969,6 +2969,12 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::ExplainQueryStage>]
         attr_accessor :query_plan
       
+        # [Output-only] Referenced routines (persistent user-defined functions and
+        # stored procedures) for the job.
+        # Corresponds to the JSON property `referencedRoutines`
+        # @return [Array<Google::Apis::BigqueryV2::RoutineReference>]
+        attr_accessor :referenced_routines
+      
         # [Output-only] Referenced tables for the job. Queries that reference more than
         # 50 tables will not have a complete list.
         # Corresponds to the JSON property `referencedTables`
@@ -3064,6 +3070,7 @@ module Google
           @model_training_expected_total_iteration = args[:model_training_expected_total_iteration] if args.key?(:model_training_expected_total_iteration)
           @num_dml_affected_rows = args[:num_dml_affected_rows] if args.key?(:num_dml_affected_rows)
           @query_plan = args[:query_plan] if args.key?(:query_plan)
+          @referenced_routines = args[:referenced_routines] if args.key?(:referenced_routines)
           @referenced_tables = args[:referenced_tables] if args.key?(:referenced_tables)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @schema = args[:schema] if args.key?(:schema)
