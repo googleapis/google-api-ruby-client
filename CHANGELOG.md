@@ -1,3 +1,22 @@
+# 0.30.7
+* Backwards compatible changes:
+  * Added `translate_v3beta1`
+  * Updated `bigquery_v2`
+  * Updated `cloudiot_v1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `docs_v1`
+  * Updated `jobs_v2`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `people_v1`
+  * Updated `slides_v1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `videointelligence_v1p2beta1`
+  * Updated `videointelligence_v1p3beta1`
+
 # 0.30.6
 * Backwards compatible changes:
   * Added `run_v1beta1`
