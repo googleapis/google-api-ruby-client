@@ -575,6 +575,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :instance, as: 'instance'
+          property :machine_type, as: 'machineType'
           property :zone, as: 'zone'
         end
       end

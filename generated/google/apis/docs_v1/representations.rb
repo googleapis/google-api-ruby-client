@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDocumentStyleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateParagraphStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1799,6 +1805,8 @@ module Google
       
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::DocsV1::ReplaceAllTextRequest, decorator: Google::Apis::DocsV1::ReplaceAllTextRequest::Representation
       
+          property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
+      
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
       
           property :update_table_cell_style, as: 'updateTableCellStyle', class: Google::Apis::DocsV1::UpdateTableCellStyleRequest, decorator: Google::Apis::DocsV1::UpdateTableCellStyleRequest::Representation
@@ -2260,6 +2268,15 @@ module Google
           property :strikethrough_suggested, as: 'strikethroughSuggested'
           property :underline_suggested, as: 'underlineSuggested'
           property :weighted_font_family_suggested, as: 'weightedFontFamilySuggested'
+        end
+      end
+      
+      class UpdateDocumentStyleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_style, as: 'documentStyle', class: Google::Apis::DocsV1::DocumentStyle, decorator: Google::Apis::DocsV1::DocumentStyle::Representation
+      
+          property :fields, as: 'fields'
         end
       end
       

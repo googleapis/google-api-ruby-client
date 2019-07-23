@@ -839,11 +839,13 @@ module Google
         attr_accessor :background
       
         # The ID of the default footer. If not set, there is no default footer.
+        # This property is read-only.
         # Corresponds to the JSON property `defaultFooterId`
         # @return [String]
         attr_accessor :default_footer_id
       
         # The ID of the default header. If not set, there is no default header.
+        # This property is read-only.
         # Corresponds to the JSON property `defaultHeaderId`
         # @return [String]
         attr_accessor :default_header_id
@@ -852,6 +854,7 @@ module Google
         # use_even_page_header_footer determines
         # whether to use the default_footer_id or this value for the
         # footer on even pages. If not set, there is no even page footer.
+        # This property is read-only.
         # Corresponds to the JSON property `evenPageFooterId`
         # @return [String]
         attr_accessor :even_page_footer_id
@@ -860,6 +863,7 @@ module Google
         # use_even_page_header_footer determines
         # whether to use the default_header_id or this value for the
         # header on even pages. If not set, there is no even page header.
+        # This property is read-only.
         # Corresponds to the JSON property `evenPageHeaderId`
         # @return [String]
         attr_accessor :even_page_header_id
@@ -869,6 +873,7 @@ module Google
         # use_first_page_header_footer determines
         # whether to use the default_footer_id or this value for the
         # footer on the first page. If not set, there is no first page footer.
+        # This property is read-only.
         # Corresponds to the JSON property `firstPageFooterId`
         # @return [String]
         attr_accessor :first_page_footer_id
@@ -878,6 +883,7 @@ module Google
         # The value of use_first_page_header_footer determines
         # whether to use the default_header_id or this value for the
         # header on the first page. If not set, there is no first page header.
+        # This property is read-only.
         # Corresponds to the JSON property `firstPageHeaderId`
         # @return [String]
         attr_accessor :first_page_header_id
@@ -914,6 +920,7 @@ module Google
       
         # Indicates whether to use the even page header / footer IDs for the even
         # pages.
+        # This property is read-only.
         # Corresponds to the JSON property `useEvenPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_even_page_header_footer
@@ -921,6 +928,7 @@ module Google
       
         # Indicates whether to use the first page header / footer IDs for the first
         # page.
+        # This property is read-only.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -3110,7 +3118,8 @@ module Google
         attr_accessor :direction
       
         # The heading ID of the paragraph. If empty, then this paragraph is not a
-        # heading. This property is read-only.
+        # heading.
+        # This property is read-only.
         # Corresponds to the JSON property `headingId`
         # @return [String]
         attr_accessor :heading_id
@@ -3180,7 +3189,8 @@ module Google
         attr_accessor :spacing_mode
       
         # A list of the tab stops for this paragraph. The list of tab stops is not
-        # inherited. This property is read-only.
+        # inherited.
+        # This property is read-only.
         # Corresponds to the JSON property `tabStops`
         # @return [Array<Google::Apis::DocsV1::TabStop>]
         attr_accessor :tab_stops
@@ -3720,6 +3730,11 @@ module Google
         # @return [Google::Apis::DocsV1::ReplaceAllTextRequest]
         attr_accessor :replace_all_text
       
+        # Updates the DocumentStyle.
+        # Corresponds to the JSON property `updateDocumentStyle`
+        # @return [Google::Apis::DocsV1::UpdateDocumentStyleRequest]
+        attr_accessor :update_document_style
+      
         # Update the styling of all paragraphs that overlap with the given range.
         # Corresponds to the JSON property `updateParagraphStyle`
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
@@ -3769,6 +3784,7 @@ module Google
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
+          @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
           @update_table_column_properties = args[:update_table_column_properties] if args.key?(:update_table_column_properties)
@@ -4724,7 +4740,8 @@ module Google
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_top
       
-        # The column span of the cell. This property is read-only.
+        # The column span of the cell.
+        # This property is read-only.
         # Corresponds to the JSON property `columnSpan`
         # @return [Fixnum]
         attr_accessor :column_span
@@ -4755,7 +4772,8 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :padding_top
       
-        # The row span of the cell. This property is read-only.
+        # The row span of the cell.
+        # This property is read-only.
         # Corresponds to the JSON property `rowSpan`
         # @return [Fixnum]
         attr_accessor :row_span
@@ -5356,6 +5374,35 @@ module Google
           @strikethrough_suggested = args[:strikethrough_suggested] if args.key?(:strikethrough_suggested)
           @underline_suggested = args[:underline_suggested] if args.key?(:underline_suggested)
           @weighted_font_family_suggested = args[:weighted_font_family_suggested] if args.key?(:weighted_font_family_suggested)
+        end
+      end
+      
+      # Updates the DocumentStyle.
+      class UpdateDocumentStyleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The style of the document.
+        # Corresponds to the JSON property `documentStyle`
+        # @return [Google::Apis::DocsV1::DocumentStyle]
+        attr_accessor :document_style
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `document_style` is
+        # implied and should not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the background, set `fields` to `"background"`.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_style = args[:document_style] if args.key?(:document_style)
+          @fields = args[:fields] if args.key?(:fields)
         end
       end
       

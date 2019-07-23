@@ -3838,6 +3838,79 @@ module Google
         end
       end
       
+      # Removes rows within this range containing duplicate values in the specified
+      # columns. Rows with identical values but different letter cases, formatting,
+      # or formulas are considered to be duplicates.
+      # This request also removes duplicate rows hidden from view (for example, due
+      # to a filter). When removing duplicates, the first instance of each duplicate
+      # row scanning from the top downwards is kept in the resulting range. Content
+      # outside of the specified range isn't removed, and rows considered duplicates
+      # do not have to be adjacent to each other in the range.
+      class DeleteDuplicatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The columns in the range to analyze for duplicate values. If no columns are
+        # selected then all columns are analyzed for duplicates.
+        # Corresponds to the JSON property `comparisonColumns`
+        # @return [Array<Google::Apis::SheetsV4::DimensionRange>]
+        attr_accessor :comparison_columns
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison_columns = args[:comparison_columns] if args.key?(:comparison_columns)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # The result of removing duplicates in a range.
+      class DeleteDuplicatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of duplicate rows removed.
+        # Corresponds to the JSON property `duplicatesRemovedCount`
+        # @return [Fixnum]
+        attr_accessor :duplicates_removed_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duplicates_removed_count = args[:duplicates_removed_count] if args.key?(:duplicates_removed_count)
+        end
+      end
+      
       # Deletes the embedded object with the given ID.
       class DeleteEmbeddedObjectRequest
         include Google::Apis::Core::Hashable
@@ -7099,6 +7172,18 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteDimensionGroupRequest]
         attr_accessor :delete_dimension_group
       
+        # Removes rows within this range containing duplicate values in the specified
+        # columns. Rows with identical values but different letter cases, formatting,
+        # or formulas are considered to be duplicates.
+        # This request also removes duplicate rows hidden from view (for example, due
+        # to a filter). When removing duplicates, the first instance of each duplicate
+        # row scanning from the top downwards is kept in the resulting range. Content
+        # outside of the specified range isn't removed, and rows considered duplicates
+        # do not have to be adjacent to each other in the range.
+        # Corresponds to the JSON property `deleteDuplicates`
+        # @return [Google::Apis::SheetsV4::DeleteDuplicatesRequest]
+        attr_accessor :delete_duplicates
+      
         # Deletes the embedded object with the given ID.
         # Corresponds to the JSON property `deleteEmbeddedObject`
         # @return [Google::Apis::SheetsV4::DeleteEmbeddedObjectRequest]
@@ -7210,6 +7295,16 @@ module Google
         # Corresponds to the JSON property `textToColumns`
         # @return [Google::Apis::SheetsV4::TextToColumnsRequest]
         attr_accessor :text_to_columns
+      
+        # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
+        # the specified range. This request removes all whitespace from the start and
+        # end of each cell's text, and reduces any sub-sequence of remaining whitespace
+        # characters to a single space. If the resulting trimmed text starts with a '+'
+        # or '=' character, the text remains as a string value and is not interpreted
+        # as a formula.
+        # Corresponds to the JSON property `trimWhitespace`
+        # @return [Google::Apis::SheetsV4::TrimWhitespaceRequest]
+        attr_accessor :trim_whitespace
       
         # Unmerges cells in the given range.
         # Corresponds to the JSON property `unmergeCells`
@@ -7333,6 +7428,7 @@ module Google
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @delete_dimension = args[:delete_dimension] if args.key?(:delete_dimension)
           @delete_dimension_group = args[:delete_dimension_group] if args.key?(:delete_dimension_group)
+          @delete_duplicates = args[:delete_duplicates] if args.key?(:delete_duplicates)
           @delete_embedded_object = args[:delete_embedded_object] if args.key?(:delete_embedded_object)
           @delete_filter_view = args[:delete_filter_view] if args.key?(:delete_filter_view)
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
@@ -7353,6 +7449,7 @@ module Google
           @set_data_validation = args[:set_data_validation] if args.key?(:set_data_validation)
           @sort_range = args[:sort_range] if args.key?(:sort_range)
           @text_to_columns = args[:text_to_columns] if args.key?(:text_to_columns)
+          @trim_whitespace = args[:trim_whitespace] if args.key?(:trim_whitespace)
           @unmerge_cells = args[:unmerge_cells] if args.key?(:unmerge_cells)
           @update_banding = args[:update_banding] if args.key?(:update_banding)
           @update_borders = args[:update_borders] if args.key?(:update_borders)
@@ -7430,6 +7527,11 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteDimensionGroupResponse]
         attr_accessor :delete_dimension_group
       
+        # The result of removing duplicates in a range.
+        # Corresponds to the JSON property `deleteDuplicates`
+        # @return [Google::Apis::SheetsV4::DeleteDuplicatesResponse]
+        attr_accessor :delete_duplicates
+      
         # The result of a filter view being duplicated.
         # Corresponds to the JSON property `duplicateFilterView`
         # @return [Google::Apis::SheetsV4::DuplicateFilterViewResponse]
@@ -7444,6 +7546,11 @@ module Google
         # Corresponds to the JSON property `findReplace`
         # @return [Google::Apis::SheetsV4::FindReplaceResponse]
         attr_accessor :find_replace
+      
+        # The result of trimming whitespace in cells.
+        # Corresponds to the JSON property `trimWhitespace`
+        # @return [Google::Apis::SheetsV4::TrimWhitespaceResponse]
+        attr_accessor :trim_whitespace
       
         # The result of updating a conditional format rule.
         # Corresponds to the JSON property `updateConditionalFormatRule`
@@ -7477,9 +7584,11 @@ module Google
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
           @delete_dimension_group = args[:delete_dimension_group] if args.key?(:delete_dimension_group)
+          @delete_duplicates = args[:delete_duplicates] if args.key?(:delete_duplicates)
           @duplicate_filter_view = args[:duplicate_filter_view] if args.key?(:duplicate_filter_view)
           @duplicate_sheet = args[:duplicate_sheet] if args.key?(:duplicate_sheet)
           @find_replace = args[:find_replace] if args.key?(:find_replace)
+          @trim_whitespace = args[:trim_whitespace] if args.key?(:trim_whitespace)
           @update_conditional_format_rule = args[:update_conditional_format_rule] if args.key?(:update_conditional_format_rule)
           @update_developer_metadata = args[:update_developer_metadata] if args.key?(:update_developer_metadata)
           @update_embedded_object_position = args[:update_embedded_object_position] if args.key?(:update_embedded_object_position)
@@ -9061,6 +9170,70 @@ module Google
           @parent_labels = args[:parent_labels] if args.key?(:parent_labels)
           @size_data = args[:size_data] if args.key?(:size_data)
           @text_format = args[:text_format] if args.key?(:text_format)
+        end
+      end
+      
+      # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
+      # the specified range. This request removes all whitespace from the start and
+      # end of each cell's text, and reduces any sub-sequence of remaining whitespace
+      # characters to a single space. If the resulting trimmed text starts with a '+'
+      # or '=' character, the text remains as a string value and is not interpreted
+      # as a formula.
+      class TrimWhitespaceRequest
+        include Google::Apis::Core::Hashable
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # The result of trimming whitespace in cells.
+      class TrimWhitespaceResponse
+        include Google::Apis::Core::Hashable
+      
+        # The number of cells that were trimmed of whitespace.
+        # Corresponds to the JSON property `cellsChangedCount`
+        # @return [Fixnum]
+        attr_accessor :cells_changed_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells_changed_count = args[:cells_changed_count] if args.key?(:cells_changed_count)
         end
       end
       

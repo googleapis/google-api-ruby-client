@@ -484,6 +484,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteDuplicatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteDuplicatesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteEmbeddedObjectRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -977,6 +989,18 @@ module Google
       end
       
       class TreemapChartSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrimWhitespaceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrimWhitespaceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1944,6 +1968,23 @@ module Google
         end
       end
       
+      class DeleteDuplicatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :comparison_columns, as: 'comparisonColumns', class: Google::Apis::SheetsV4::DimensionRange, decorator: Google::Apis::SheetsV4::DimensionRange::Representation
+      
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class DeleteDuplicatesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duplicates_removed_count, as: 'duplicatesRemovedCount'
+        end
+      end
+      
       class DeleteEmbeddedObjectRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2634,6 +2675,8 @@ module Google
       
           property :delete_dimension_group, as: 'deleteDimensionGroup', class: Google::Apis::SheetsV4::DeleteDimensionGroupRequest, decorator: Google::Apis::SheetsV4::DeleteDimensionGroupRequest::Representation
       
+          property :delete_duplicates, as: 'deleteDuplicates', class: Google::Apis::SheetsV4::DeleteDuplicatesRequest, decorator: Google::Apis::SheetsV4::DeleteDuplicatesRequest::Representation
+      
           property :delete_embedded_object, as: 'deleteEmbeddedObject', class: Google::Apis::SheetsV4::DeleteEmbeddedObjectRequest, decorator: Google::Apis::SheetsV4::DeleteEmbeddedObjectRequest::Representation
       
           property :delete_filter_view, as: 'deleteFilterView', class: Google::Apis::SheetsV4::DeleteFilterViewRequest, decorator: Google::Apis::SheetsV4::DeleteFilterViewRequest::Representation
@@ -2673,6 +2716,8 @@ module Google
           property :sort_range, as: 'sortRange', class: Google::Apis::SheetsV4::SortRangeRequest, decorator: Google::Apis::SheetsV4::SortRangeRequest::Representation
       
           property :text_to_columns, as: 'textToColumns', class: Google::Apis::SheetsV4::TextToColumnsRequest, decorator: Google::Apis::SheetsV4::TextToColumnsRequest::Representation
+      
+          property :trim_whitespace, as: 'trimWhitespace', class: Google::Apis::SheetsV4::TrimWhitespaceRequest, decorator: Google::Apis::SheetsV4::TrimWhitespaceRequest::Representation
       
           property :unmerge_cells, as: 'unmergeCells', class: Google::Apis::SheetsV4::UnmergeCellsRequest, decorator: Google::Apis::SheetsV4::UnmergeCellsRequest::Representation
       
@@ -2732,11 +2777,15 @@ module Google
       
           property :delete_dimension_group, as: 'deleteDimensionGroup', class: Google::Apis::SheetsV4::DeleteDimensionGroupResponse, decorator: Google::Apis::SheetsV4::DeleteDimensionGroupResponse::Representation
       
+          property :delete_duplicates, as: 'deleteDuplicates', class: Google::Apis::SheetsV4::DeleteDuplicatesResponse, decorator: Google::Apis::SheetsV4::DeleteDuplicatesResponse::Representation
+      
           property :duplicate_filter_view, as: 'duplicateFilterView', class: Google::Apis::SheetsV4::DuplicateFilterViewResponse, decorator: Google::Apis::SheetsV4::DuplicateFilterViewResponse::Representation
       
           property :duplicate_sheet, as: 'duplicateSheet', class: Google::Apis::SheetsV4::DuplicateSheetResponse, decorator: Google::Apis::SheetsV4::DuplicateSheetResponse::Representation
       
           property :find_replace, as: 'findReplace', class: Google::Apis::SheetsV4::FindReplaceResponse, decorator: Google::Apis::SheetsV4::FindReplaceResponse::Representation
+      
+          property :trim_whitespace, as: 'trimWhitespace', class: Google::Apis::SheetsV4::TrimWhitespaceResponse, decorator: Google::Apis::SheetsV4::TrimWhitespaceResponse::Representation
       
           property :update_conditional_format_rule, as: 'updateConditionalFormatRule', class: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse, decorator: Google::Apis::SheetsV4::UpdateConditionalFormatRuleResponse::Representation
       
@@ -2977,6 +3026,21 @@ module Google
       
           property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
+        end
+      end
+      
+      class TrimWhitespaceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+        end
+      end
+      
+      class TrimWhitespaceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cells_changed_count, as: 'cellsChangedCount'
         end
       end
       

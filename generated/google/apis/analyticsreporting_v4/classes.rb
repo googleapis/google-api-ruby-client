@@ -1350,7 +1350,7 @@ module Google
         attr_accessor :dimension_filter_clauses
       
         # The dimensions requested.
-        # Requests can have a total of 7 dimensions.
+        # Requests can have a total of 9 dimensions.
         # Corresponds to the JSON property `dimensions`
         # @return [Array<Google::Apis::AnalyticsreportingV4::Dimension>]
         attr_accessor :dimensions

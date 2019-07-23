@@ -1392,6 +1392,11 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # The machine type that was assigned for the worker.
+        # Corresponds to the JSON property `machineType`
+        # @return [String]
+        attr_accessor :machine_type
+      
         # The zone the worker is running in.
         # Corresponds to the JSON property `zone`
         # @return [String]
@@ -1404,6 +1409,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instance = args[:instance] if args.key?(:instance)
+          @machine_type = args[:machine_type] if args.key?(:machine_type)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
