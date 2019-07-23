@@ -35,6 +35,7 @@ module Google
       class Names
         ActiveSupport::Inflector.inflections do |inflections|
           inflections.uncountable('send_as', 'as')
+          inflections.irregular('drive', 'drives')
           inflections.irregular('teamdrive', 'teamdrives')
         end
 
