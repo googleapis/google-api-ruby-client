@@ -156,7 +156,7 @@ module Google
             normalize_unicode = options.normalize_unicode
           end
           self.url = url.expand(params, nil, normalize_unicode) if url.is_a?(Addressable::Template)
-          url.query_values = query.merge(url.query_values || {})
+          url.query_values = normalize_query_values(query).merge(url.query_values || {})
 
           if allow_form_encoding?
             @form_encoded = true
@@ -419,6 +419,13 @@ module Google
           when 503 then 14 # UNAVAILABLE
           when 504 then 4 # DEADLINE_EXCEEDED
           else 2 # UNKNOWN
+          end
+        end
+
+        def normalize_query_values(input)
+          input.inject({}) do |h, (k, v)|
+            h[k] = normalize_query_value(v)
+            h
           end
         end
 
