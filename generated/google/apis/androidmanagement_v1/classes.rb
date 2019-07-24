@@ -193,7 +193,9 @@ module Google
         # @return [String]
         attr_accessor :install_type
       
-        # Whether the app is allowed to lock itself in full-screen mode.
+        # Whether the app is allowed to lock itself in full-screen mode. DEPRECATED. Use
+        # InstallType KIOSK or kioskCustomLauncherEnabled to to configure a dedicated
+        # device.
         # Corresponds to the JSON property `lockTaskAllowed`
         # @return [Boolean]
         attr_accessor :lock_task_allowed
@@ -1939,6 +1941,8 @@ module Google
       end
       
       # A default activity for handling intents that match a particular intent filter.
+      # Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent
+      # preferred activities.
       class PersistentPreferredActivity
         include Google::Apis::Core::Hashable
       
@@ -2180,9 +2184,8 @@ module Google
       
         # Whether the kiosk custom launcher is enabled. This replaces the home screen
         # with a launcher that locks down the device to the apps installed via the
-        # applications setting. The apps appear on a single page in alphabetical order.
-        # It is recommended to also use status_bar_disabled to block access to device
-        # settings.
+        # applications setting. Apps appear on a single page in alphabetical order. The
+        # status bar is disabled when this is set.
         # Corresponds to the JSON property `kioskCustomLauncherEnabled`
         # @return [Boolean]
         attr_accessor :kiosk_custom_launcher_enabled
@@ -2387,6 +2390,8 @@ module Google
       
         # Whether the status bar is disabled. This disables notifications, quick
         # settings, and other screen overlays that allow escape from full-screen mode.
+        # DEPRECATED. To disable the status bar on a kiosk device, use InstallType KIOSK
+        # or kioskCustomLauncherEnabled.
         # Corresponds to the JSON property `statusBarDisabled`
         # @return [Boolean]
         attr_accessor :status_bar_disabled
