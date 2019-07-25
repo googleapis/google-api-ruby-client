@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpCacheControlResponseHeader
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpLoadBalancing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -460,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedNodes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +701,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
+          property :shielded_nodes, as: 'shieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
+      
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
@@ -744,6 +758,8 @@ module Google
           property :desired_private_cluster_config, as: 'desiredPrivateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
+      
+          property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
@@ -817,6 +833,8 @@ module Google
       class GetJsonWebKeysResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_header, as: 'cacheHeader', class: Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader, decorator: Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader::Representation
+      
           collection :keys, as: 'keys', class: Google::Apis::ContainerV1beta1::Jwk, decorator: Google::Apis::ContainerV1beta1::Jwk::Representation
       
         end
@@ -825,6 +843,8 @@ module Google
       class GetOpenIdConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cache_header, as: 'cacheHeader', class: Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader, decorator: Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader::Representation
+      
           collection :claims_supported, as: 'claims_supported'
           collection :grant_types, as: 'grant_types'
           collection :id_token_signing_alg_values_supported, as: 'id_token_signing_alg_values_supported'
@@ -839,6 +859,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disabled, as: 'disabled'
+        end
+      end
+      
+      class HttpCacheControlResponseHeader
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :age, :numeric_string => true, as: 'age'
+          property :directive, as: 'directive'
+          property :expires, as: 'expires'
         end
       end
       
@@ -1377,6 +1406,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
+        end
+      end
+      
+      class ShieldedNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

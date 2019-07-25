@@ -113,6 +113,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. Host to which clients can connect to initiate HTTPS or WSS
+        # connections with the environment.
+        # Corresponds to the JSON property `webHost`
+        # @return [String]
+        attr_accessor :web_host
+      
         def initialize(**args)
            update!(**args)
         end
@@ -127,6 +133,7 @@ module Google
           @ssh_port = args[:ssh_port] if args.key?(:ssh_port)
           @ssh_username = args[:ssh_username] if args.key?(:ssh_username)
           @state = args[:state] if args.key?(:state)
+          @web_host = args[:web_host] if args.key?(:web_host)
         end
       end
       

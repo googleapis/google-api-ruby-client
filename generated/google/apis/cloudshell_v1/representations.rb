@@ -100,6 +100,7 @@ module Google
           property :ssh_port, as: 'sshPort'
           property :ssh_username, as: 'sshUsername'
           property :state, as: 'state'
+          property :web_host, as: 'webHost'
         end
       end
       

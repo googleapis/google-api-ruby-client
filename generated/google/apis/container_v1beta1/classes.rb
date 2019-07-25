@@ -656,6 +656,11 @@ module Google
         # @return [String]
         attr_accessor :services_ipv4_cidr
       
+        # Configuration of Shielded Nodes feature.
+        # Corresponds to the JSON property `shieldedNodes`
+        # @return [Google::Apis::ContainerV1beta1::ShieldedNodes]
+        attr_accessor :shielded_nodes
+      
         # [Output only] The current status of this cluster.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -759,6 +764,7 @@ module Google
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
+          @shielded_nodes = args[:shielded_nodes] if args.key?(:shielded_nodes)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -949,6 +955,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # Configuration of Shielded Nodes feature.
+        # Corresponds to the JSON property `desiredShieldedNodes`
+        # @return [Google::Apis::ContainerV1beta1::ShieldedNodes]
+        attr_accessor :desired_shielded_nodes
+      
         # VerticalPodAutoscaling contains global, per-cluster information
         # required by Vertical Pod Autoscaler to automatically adjust
         # the resources of pods controlled by it.
@@ -985,6 +996,7 @@ module Google
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
@@ -1231,6 +1243,11 @@ module Google
       class GetJsonWebKeysResponse
         include Google::Apis::Core::Hashable
       
+        # RFC-2616: cache control support
+        # Corresponds to the JSON property `cacheHeader`
+        # @return [Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader]
+        attr_accessor :cache_header
+      
         # The public component of the keys used by the cluster to sign token
         # requests.
         # Corresponds to the JSON property `keys`
@@ -1243,6 +1260,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_header = args[:cache_header] if args.key?(:cache_header)
           @keys = args[:keys] if args.key?(:keys)
         end
       end
@@ -1251,6 +1269,11 @@ module Google
       # See the OpenID Connect Discovery 1.0 specification for details.
       class GetOpenIdConfigResponse
         include Google::Apis::Core::Hashable
+      
+        # RFC-2616: cache control support
+        # Corresponds to the JSON property `cacheHeader`
+        # @return [Google::Apis::ContainerV1beta1::HttpCacheControlResponseHeader]
+        attr_accessor :cache_header
       
         # Supported claims.
         # Corresponds to the JSON property `claims_supported`
@@ -1293,6 +1316,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cache_header = args[:cache_header] if args.key?(:cache_header)
           @claims_supported = args[:claims_supported] if args.key?(:claims_supported)
           @grant_types = args[:grant_types] if args.key?(:grant_types)
           @id_token_signing_alg_values_supported = args[:id_token_signing_alg_values_supported] if args.key?(:id_token_signing_alg_values_supported)
@@ -1324,6 +1348,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disabled = args[:disabled] if args.key?(:disabled)
+        end
+      end
+      
+      # RFC-2616: cache control support
+      class HttpCacheControlResponseHeader
+        include Google::Apis::Core::Hashable
+      
+        # 14.6 response cache age, in seconds since the response is generated
+        # Corresponds to the JSON property `age`
+        # @return [Fixnum]
+        attr_accessor :age
+      
+        # 14.9 request and response directives
+        # Corresponds to the JSON property `directive`
+        # @return [String]
+        attr_accessor :directive
+      
+        # 14.21 response cache expires, in RFC 1123 date format
+        # Corresponds to the JSON property `expires`
+        # @return [String]
+        attr_accessor :expires
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @age = args[:age] if args.key?(:age)
+          @directive = args[:directive] if args.key?(:directive)
+          @expires = args[:expires] if args.key?(:expires)
         end
       end
       
@@ -3613,6 +3668,26 @@ module Google
         def update!(**args)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+        end
+      end
+      
+      # Configuration of Shielded Nodes feature.
+      class ShieldedNodes
+        include Google::Apis::Core::Hashable
+      
+        # Whether Shielded Nodes features are enabled on all nodes in this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
