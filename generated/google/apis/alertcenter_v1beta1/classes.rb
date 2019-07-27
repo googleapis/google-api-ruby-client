@@ -191,7 +191,7 @@ module Google
         # * Mobile device management
         # * Gmail phishing
         # * Domain wide takeout
-        # * Government attack warning
+        # * State sponsored attack
         # * Google identity
         # Corresponds to the JSON property `source`
         # @return [String]
