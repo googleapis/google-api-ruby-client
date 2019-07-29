@@ -1,3 +1,26 @@
+# 0.30.8
+* Backwards compatible changes:
+  * Updated `alertcenter_v1beta1`
+  * Updated `analyticsreporting_v4`
+  * Updated `androidmanagement_v1`
+  * Updated `cloudasset_v1`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `container_v1beta1`
+  * Updated `docs_v1`
+  * Updated `genomics_v1`
+  * Updated `genomics_v1alpha2`
+  * Updated `genomics_v2alpha1`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `sheets_v4`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+
 # 0.30.7
 * Backwards compatible changes:
   * Added `translate_v3beta1`
