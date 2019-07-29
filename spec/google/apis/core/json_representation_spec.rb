@@ -23,6 +23,7 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
   end
 
   let(:model_class) do
+    rep_class = representer_class
     Class.new do
       attr_accessor :unset_value
       attr_accessor :nil_value
@@ -39,6 +40,8 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
       attr_accessor :items
       attr_accessor :child
       attr_accessor :children
+      const_set(:Representation, rep_class)
+      include Google::Apis::Core::JsonObjectSupport
     end
   end
 
@@ -150,6 +153,15 @@ RSpec.describe Google::Apis::Core::JsonRepresentation do
 
     include_examples 'it serializes'
 
+    it 'supports standard serialization from JSON gem' do
+      str = JSON.generate(model)
+      expect(str).to start_with("{\"")
+    end
+
+    it 'supports pretty serialization from JSON gem' do
+      str = JSON.pretty_generate(model)
+      expect(str).to start_with("{\n  ")
+    end
   end
 
   context 'with hash' do
