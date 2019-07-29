@@ -419,6 +419,17 @@ RSpec.describe Google::Apis::Core::HttpCommand do
     command.execute(client)
   end
 
+  it 'should send DateTime query parameters' do
+    stub_request(:get, 'https://www.googleapis.com/zoo/animals?a=2019-06-22T13:51:37-07:00&b=2019-06-22T13:51:37-07:00&b=2019-07-23T14:54:12-07:00')
+      .to_return(status: [200, ''])
+    command = Google::Apis::Core::HttpCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    date1 = DateTime.new(2019, 6, 22, 13, 51, 37, "-0700")
+    date2 = DateTime.new(2019, 7, 23, 14, 54, 12, "-0700")
+    command.query['a'] = date1
+    command.query['b'] = [date1, date2]
+    command.execute(client)
+  end
+
   it 'should form encode parameters when method is POST and no body present' do
     stub_request(:post, 'https://www.googleapis.com/zoo/animals')
         .with(body: 'a=1&a=2&a=3&b=hello&c=&d=0')
