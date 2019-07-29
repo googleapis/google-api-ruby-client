@@ -13,6 +13,7 @@
 # limitations under the License.
 
 require 'json'
+require 'googleauth'
 
 
 module Google
@@ -147,8 +148,6 @@ module Google
       end
 
       def to_authorization
-        gem 'signet', '>= 0.4.0'
-        require 'signet/oauth_2/client'
         # NOTE: Do not rely on this default value, as it may change
         new_authorization = Signet::OAuth2::Client.new
         new_authorization.client_id = self.client_id
