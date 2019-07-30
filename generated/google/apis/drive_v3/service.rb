@@ -547,7 +547,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_drife(request_id, drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def create_drive(request_id, drive_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives', options)
           command.request_representation = Google::Apis::DriveV3::Drive::Representation
           command.request_object = drive_object
@@ -583,7 +583,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'drives/{driveId}', options)
           command.params['driveId'] = drive_id unless drive_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -618,7 +618,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_drife(drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_drive(drive_id, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'drives/{driveId}', options)
           command.response_representation = Google::Apis::DriveV3::Drive::Representation
           command.response_class = Google::Apis::DriveV3::Drive
@@ -652,7 +652,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def hide_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def hide_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives/{driveId}/hide', options)
           command.response_representation = Google::Apis::DriveV3::Drive::Representation
           command.response_class = Google::Apis::DriveV3::Drive
@@ -728,7 +728,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unhide_drife(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def unhide_drive(drive_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'drives/{driveId}/unhide', options)
           command.response_representation = Google::Apis::DriveV3::Drive::Representation
           command.response_class = Google::Apis::DriveV3::Drive
@@ -766,7 +766,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_drife(drive_id, drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_drive(drive_id, drive_object = nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'drives/{driveId}', options)
           command.request_representation = Google::Apis::DriveV3::Drive::Representation
           command.request_object = drive_object
