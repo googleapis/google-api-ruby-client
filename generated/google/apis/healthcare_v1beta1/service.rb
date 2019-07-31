@@ -635,7 +635,8 @@ module Google
         # Imports data into the DICOM store by copying it from the specified source.
         # For errors, the Operation will be populated with error details (in the form
         # of ImportDicomDataErrorDetails in error.details), which will hold
-        # finer-grained error information.
+        # finer-grained error information. Errors are also logged to Stackdriver
+        # (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
         # The metadata field type is
         # OperationMetadata.
         # @param [String] name
@@ -2652,6 +2653,12 @@ module Google
         # be overridden by the `_count` parameter up to a maximum limit of 1000. If
         # there are additional results, the returned `Bundle` will contain
         # pagination links.
+        # Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases.
+        # Note: FHIR resources are indexed asynchronously, so there might be a slight
+        # delay between the time a resource is created or changes and when the change
+        # is reflected in search results.
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1beta1::SearchResourcesRequest] search_resources_request_object
@@ -3205,6 +3212,9 @@ module Google
         end
         
         # Lists all the messages in the given HL7v2 store with support for filtering.
+        # Note: HL7v2 messages are indexed asynchronously, so there might be a slight
+        # delay between the time a message is created and when it can be found
+        # through a filter.
         # @param [String] parent
         #   Name of the HL7v2 store to retrieve messages from.
         # @param [String] filter
@@ -3216,7 +3226,7 @@ module Google
         #   *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
         #   the dataset's time_zone, from the MSH-7 segment; for example
         #   `send_date < "2017-01-02"`
-        #   *  `send_time`, the timestamp of when the message was sent, using the
+        #   *  `send_time`, the timestamp when the message was sent, using the
         #   RFC3339 time format for comparisons, from the MSH-7 segment; for example
         #   `send_time < "2017-01-02T00:00:00-05:00"`
         #   *  `send_facility`, the care center that the message came from, from the

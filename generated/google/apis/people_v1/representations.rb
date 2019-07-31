@@ -625,6 +625,7 @@ module Google
       class ModifyContactGroupMembersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :can_not_remove_last_contact_group_resource_names, as: 'canNotRemoveLastContactGroupResourceNames'
           collection :not_found_resource_names, as: 'notFoundResourceNames'
         end
       end

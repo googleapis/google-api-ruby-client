@@ -1116,7 +1116,8 @@ module Google
         # Imports data into the DICOM store by copying it from the specified source.
         # For errors, the Operation will be populated with error details (in the form
         # of ImportDicomDataErrorDetails in error.details), which will hold
-        # finer-grained error information.
+        # finer-grained error information. Errors are also logged to Stackdriver
+        # (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
         # The metadata field type is
         # OperationMetadata.
         # @param [String] name
@@ -2254,12 +2255,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a FHIR store or security label within a
-        # FHIR store. Returns NOT_FOUND error if the resource does not exist. Returns
-        # an empty policy if the resource exists but does not have a policy set.
-        # Authorization requires the Google IAM permission
-        # `healthcare.fhirStores.getIamPolicy` for a FHIR store or
-        # `healthcare.securityLabels.getIamPolicy` for a security label
+        # Gets the access control policy for a resource.
+        # Returns an empty policy if the resource exists and does not have a policy
+        # set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -2437,11 +2435,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy for a FHIR store or security label within a
-        # FHIR store. Replaces any existing policy.
-        # Authorization requires the Google IAM permission
-        # `healthcare.fhirStores.setIamPolicy` for a FHIR store or
-        # `healthcare.securityLabels.setIamPolicy` for a security label
+        # Sets the access control policy on the specified resource. Replaces any
+        # existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -2475,10 +2470,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.  If the
-        # resource does not exist, this will return an empty set of permissions, not
-        # a NOT_FOUND error.
-        # There is no permission required to make this API call.
+        # Returns permissions that a caller has on the specified resource.
+        # If the resource does not exist, this will return an empty set of
+        # permissions, not a NOT_FOUND error.
+        # Note: This operation is designed to be used for building permission-aware
+        # UIs and command-line tools, not for authorization checking. This operation
+        # may "fail open" without warning.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy detail is being requested.
         #   See the operation documentation for the appropriate value for this field.
@@ -3176,6 +3173,12 @@ module Google
         # be overridden by the `_count` parameter up to a maximum limit of 1000. If
         # there are additional results, the returned `Bundle` will contain
         # pagination links.
+        # Resources with a total size larger than 5MB or a field count larger than
+        # 50,000 might not be fully searchable as the server might trim its generated
+        # search index in those cases.
+        # Note: FHIR resources are indexed asynchronously, so there might be a slight
+        # delay between the time a resource is created or changes and when the change
+        # is reflected in search results.
         # @param [String] parent
         #   Name of the FHIR store to retrieve resources from.
         # @param [Google::Apis::HealthcareV1alpha2::SearchResourcesRequest] search_resources_request_object
@@ -3291,86 +3294,6 @@ module Google
           command.response_representation = Google::Apis::HealthcareV1alpha2::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1alpha2::HttpBody
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the access control policy for a FHIR store or security label within a
-        # FHIR store. Returns NOT_FOUND error if the resource does not exist. Returns
-        # an empty policy if the resource exists but does not have a policy set.
-        # Authorization requires the Google IAM permission
-        # `healthcare.fhirStores.getIamPolicy` for a FHIR store or
-        # `healthcare.securityLabels.getIamPolicy` for a security label
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being requested.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned.
-        #   Acceptable values are 0 and 1.
-        #   If the value is 0, or the field is omitted, policy format version 1 will be
-        #   returned.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::HealthcareV1alpha2::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::HealthcareV1alpha2::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_dataset_fhir_store_security_label_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha2/{+resource}:getIamPolicy', options)
-          command.response_representation = Google::Apis::HealthcareV1alpha2::Policy::Representation
-          command.response_class = Google::Apis::HealthcareV1alpha2::Policy
-          command.params['resource'] = resource unless resource.nil?
-          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy for a FHIR store or security label within a
-        # FHIR store. Replaces any existing policy.
-        # Authorization requires the Google IAM permission
-        # `healthcare.fhirStores.setIamPolicy` for a FHIR store or
-        # `healthcare.securityLabels.setIamPolicy` for a security label
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::HealthcareV1alpha2::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::HealthcareV1alpha2::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::HealthcareV1alpha2::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_security_label_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha2/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::HealthcareV1alpha2::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::HealthcareV1alpha2::Policy::Representation
-          command.response_class = Google::Apis::HealthcareV1alpha2::Policy
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3809,6 +3732,9 @@ module Google
         end
         
         # Lists all the messages in the given HL7v2 store with support for filtering.
+        # Note: HL7v2 messages are indexed asynchronously, so there might be a slight
+        # delay between the time a message is created and when it can be found
+        # through a filter.
         # @param [String] parent
         #   Name of the HL7v2 store to retrieve messages from.
         # @param [String] filter
@@ -3820,7 +3746,7 @@ module Google
         #   *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
         #   the dataset's time_zone, from the MSH-7 segment; for example
         #   `send_date < "2017-01-02"`
-        #   *  `send_time`, the timestamp of when the message was sent, using the
+        #   *  `send_time`, the timestamp when the message was sent, using the
         #   RFC3339 time format for comparisons, from the MSH-7 segment; for example
         #   `send_time < "2017-01-02T00:00:00-05:00"`
         #   *  `send_facility`, the care center that the message came from, from the

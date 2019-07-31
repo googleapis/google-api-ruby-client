@@ -47,6 +47,8 @@ module Google
         attr_accessor :last_change_time
       
         # The assigned regions for the site and platform.
+        # No longer populated, because there is no longer any semantic difference
+        # between sites in different regions.
         # Corresponds to the JSON property `region`
         # @return [Array<String>]
         attr_accessor :region

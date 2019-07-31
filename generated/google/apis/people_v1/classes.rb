@@ -1027,6 +1027,12 @@ module Google
       class ModifyContactGroupMembersResponse
         include Google::Apis::Core::Hashable
       
+        # The contact people resource names that cannot be removed from their
+        # last contact group.
+        # Corresponds to the JSON property `canNotRemoveLastContactGroupResourceNames`
+        # @return [Array<String>]
+        attr_accessor :can_not_remove_last_contact_group_resource_names
+      
         # The contact people resource names that were not found.
         # Corresponds to the JSON property `notFoundResourceNames`
         # @return [Array<String>]
@@ -1038,6 +1044,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @can_not_remove_last_contact_group_resource_names = args[:can_not_remove_last_contact_group_resource_names] if args.key?(:can_not_remove_last_contact_group_resource_names)
           @not_found_resource_names = args[:not_found_resource_names] if args.key?(:not_found_resource_names)
         end
       end
