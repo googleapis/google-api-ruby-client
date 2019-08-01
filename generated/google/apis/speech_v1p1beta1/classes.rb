@@ -270,23 +270,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :audio_channel_count
       
-        # *Optional* Config to enable speaker diarization and set additional
-        # parameters to make diarization better suited for your application.
-        # Note: When this is enabled, we send all the words from the beginning of the
-        # audio for the top alternative in every consecutive STREAMING responses.
-        # This is done in order to improve our speaker tags as our models learn to
-        # identify the speakers in the conversation over time.
-        # For non-streaming requests, the diarization results will be provided only
-        # in the top alternative of the FINAL SpeechRecognitionResult.
+        # *Optional* Config to enable speaker diarization.
         # Corresponds to the JSON property `diarizationConfig`
         # @return [Google::Apis::SpeechV1p1beta1::SpeakerDiarizationConfig]
         attr_accessor :diarization_config
       
         # *Optional*
         # If set, specifies the estimated number of speakers in the conversation.
-        # If not set, defaults to '2'.
-        # Ignored unless enable_speaker_diarization is set to true."
-        # Note: Use diarization_config instead. This field will be DEPRECATED soon.
+        # Defaults to '2'. Ignored unless enable_speaker_diarization is set to true.
+        # Note: Use diarization_config instead.
         # Corresponds to the JSON property `diarizationSpeakerCount`
         # @return [Fixnum]
         attr_accessor :diarization_speaker_count
@@ -317,7 +309,7 @@ module Google
         # *Optional* If 'true', enables speaker detection for each recognized word in
         # the top alternative of the recognition result using a speaker_tag provided
         # in the WordInfo.
-        # Note: Use diarization_config instead. This field will be DEPRECATED soon.
+        # Note: Use diarization_config instead.
         # Corresponds to the JSON property `enableSpeakerDiarization`
         # @return [Boolean]
         attr_accessor :enable_speaker_diarization
@@ -607,7 +599,7 @@ module Google
         end
       end
       
-      # 
+      # *Optional* Config to enable speaker diarization.
       class SpeakerDiarizationConfig
         include Google::Apis::Core::Hashable
       
@@ -619,7 +611,7 @@ module Google
         attr_accessor :enable_speaker_diarization
         alias_method :enable_speaker_diarization?, :enable_speaker_diarization
       
-        # *Optional* Only used if diarization_speaker_count is not set.
+        # *Optional*
         # Maximum number of speakers in the conversation. This range gives you more
         # flexibility by allowing the system to automatically determine the correct
         # number of speakers. If not set, the default value is 6.
@@ -627,7 +619,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_speaker_count
       
-        # *Optional* Only used if diarization_speaker_count is not set.
+        # *Optional*
         # Minimum number of speakers in the conversation. This range gives you more
         # flexibility by allowing the system to automatically determine the correct
         # number of speakers. If not set, the default value is 2.

@@ -66,6 +66,38 @@ module Google
       end
       
       # 
+      class AddGoogleAnalyticsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID for the existing
+        # [Google Analytics account](http://www.google.com/analytics/) that you
+        # want to link with your `FirebaseProject`.
+        # <br>
+        # <br>Specifying this field will provision a new Google Analytics
+        # property in your Google Analytics account and associate the new property
+        # with your `FirebaseProject`.
+        # Corresponds to the JSON property `analyticsAccountId`
+        # @return [String]
+        attr_accessor :analytics_account_id
+      
+        # The ID for the existing Google Analytics property that you want to
+        # associate with your `FirebaseProject`.
+        # Corresponds to the JSON property `analyticsPropertyId`
+        # @return [String]
+        attr_accessor :analytics_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_account_id = args[:analytics_account_id] if args.key?(:analytics_account_id)
+          @analytics_property_id = args[:analytics_property_id] if args.key?(:analytics_property_id)
+        end
+      end
+      
+      # 
       class AdminSdkConfig
         include Google::Apis::Core::Hashable
       
@@ -107,6 +139,65 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)
+        end
+      end
+      
+      # 
+      class AnalyticsDetails
+        include Google::Apis::Core::Hashable
+      
+        # Details of a Google Analytics property
+        # Corresponds to the JSON property `analyticsProperty`
+        # @return [Google::Apis::FirebaseV1beta1::AnalyticsProperty]
+        attr_accessor :analytics_property
+      
+        # A map of `AppId` to `StreamId` for each Firebase App in the specified
+        # `FirebaseProject`. Each `AppId` and `StreamId` appears only once.
+        # Corresponds to the JSON property `streamMappings`
+        # @return [Array<Google::Apis::FirebaseV1beta1::StreamMapping>]
+        attr_accessor :stream_mappings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_property = args[:analytics_property] if args.key?(:analytics_property)
+          @stream_mappings = args[:stream_mappings] if args.key?(:stream_mappings)
+        end
+      end
+      
+      # Details of a Google Analytics property
+      class AnalyticsProperty
+        include Google::Apis::Core::Hashable
+      
+        # The display name of the Google Analytics property associated with the
+        # specified `FirebaseProject`.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The globally unique, Google-assigned identifier of the Google Analytics
+        # property associated with the specified `FirebaseProject`.
+        # <br>
+        # <br>If you called
+        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) to link
+        # your `FirebaseProject` with a Google Analytics account, the value in this
+        # `id` field is the same as the ID of the property either specified or
+        # provisioned with that call to `AddGoogleAnalytics`.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @id = args[:id] if args.key?(:id)
         end
       end
       
@@ -829,6 +920,33 @@ module Google
       end
       
       # 
+      class RemoveAnalyticsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The ID of the Google Analytics property associated with the
+        # specified `FirebaseProject`.
+        # <ul>
+        # <li>If not set, then the Google Analytics property that is currently
+        # associated with the specified `FirebaseProject` is removed.</li>
+        # <li>If set, and the specified `FirebaseProject` is currently associated
+        # with a <em>different</em> Google Analytics property, then the response is a
+        # `412 Precondition Failed` error.</li>
+        # </ul>
+        # Corresponds to the JSON property `analyticsPropertyId`
+        # @return [String]
+        attr_accessor :analytics_property_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @analytics_property_id = args[:analytics_property_id] if args.key?(:analytics_property_id)
+        end
+      end
+      
+      # 
       class SearchFirebaseAppsResponse
         include Google::Apis::Core::Hashable
       
@@ -993,6 +1111,40 @@ module Google
           @message_set = args[:message_set] if args.key?(:message_set)
           @payload = args[:payload] if args.key?(:payload)
           @space = args[:space] if args.key?(:space)
+        end
+      end
+      
+      # A mapping of a Firebase App to a Google Analytics data stream
+      class StreamMapping
+        include Google::Apis::Core::Hashable
+      
+        # The fully qualified resource name of the Firebase App associated with the
+        # Google Analytics data stream, in the format:
+        # <br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>
+        # or
+        # <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
+        # Corresponds to the JSON property `app`
+        # @return [String]
+        attr_accessor :app
+      
+        # The unique Google-assigned identifier of the Google Analytics data stream
+        # associated with the Firebase App.
+        # <br>
+        # <br>Learn more about Google Analytics data streams in the
+        # [Analytics
+        # documentation](https://support.google.com/analytics/answer/9303323).
+        # Corresponds to the JSON property `streamId`
+        # @return [Fixnum]
+        attr_accessor :stream_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app = args[:app] if args.key?(:app)
+          @stream_id = args[:stream_id] if args.key?(:stream_id)
         end
       end
       

@@ -186,8 +186,8 @@ module Google
         attr_accessor :error_count
       
         # Error samples.
-        # No more than 100 error log entries may be recorded for a given
-        # error code for a single task.
+        # At most 5 error log entries will be recorded for a given
+        # error code for a single transfer operation.
         # Corresponds to the JSON property `errorLogEntries`
         # @return [Array<Google::Apis::StoragetransferV1::ErrorLogEntry>]
         attr_accessor :error_log_entries

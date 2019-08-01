@@ -198,6 +198,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Links a FirebaseProject with an existing
+        # [Google Analytics account](http://www.google.com/analytics/).
+        # <br>
+        # <br>Using this call, you can either:
+        # <ul>
+        # <li>Provision a new Google Analytics property and associate the new
+        # property with your `FirebaseProject`.</li>
+        # <li>Associate an existing Google Analytics property with your
+        # `FirebaseProject`.</li>
+        # </ul>
+        # <br>
+        # Note that when you call `AddGoogleAnalytics`:
+        # <ul>
+        # <li>Any Firebase Apps already in your `FirebaseProject` are
+        # automatically provisioned as new <em>data streams</em> in the Google
+        # Analytics property.</li>
+        # <li>Any <em>data streams</em> already in the Google Analytics property are
+        # automatically associated with their corresponding Firebase Apps (only
+        # applies when an app's `packageName` or `bundleId` match those for an
+        # existing data stream).</li>
+        # </ul>
+        # Learn more about the hierarchy and structure of Google Analytics
+        # accounts in the
+        # [Analytics
+        # documentation](https://support.google.com/analytics/answer/9303323).
+        # <br>
+        # <br>The result of this call is an [`Operation`](../../v1beta1/operations).
+        # Poll the `Operation` to track the provisioning process by calling
+        # GetOperation until
+        # [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When
+        # `done` is `true`, the `Operation` has either succeeded or failed. If the
+        # `Operation` succeeded, its
+        # [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to
+        # an AnalyticsDetails; if the `Operation` failed, its
+        # [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a
+        # google.rpc.Status.
+        # <br>
+        # <br>To call `AddGoogleAnalytics`, a member must be an Owner for
+        # the existing `FirebaseProject` and have the
+        # [`Edit` permission](https://support.google.com/analytics/answer/2884495)
+        # for the Google Analytics account.
+        # <br>
+        # <br>If a `FirebaseProject` already has Google Analytics enabled, and you
+        # call `AddGoogleAnalytics` using an `analyticsPropertyId` that's different
+        # from the currently associated property, then the call will fail. Analytics
+        # may have already been enabled in the Firebase console or by specifying
+        # `timeZone` and `regionCode` in the call to
+        # [`AddFirebase`](../../v1beta1/projects/addFirebase).
+        # @param [String] parent
+        #   The parent `FirebaseProject` to link to an existing Google Analytics
+        #   account, in the format:
+        #   <br><code>projects/<var>projectId</var></code>
+        # @param [Google::Apis::FirebaseV1beta1::AddGoogleAnalyticsRequest] add_google_analytics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_google_analytics(parent, add_google_analytics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:addGoogleAnalytics', options)
+          command.request_representation = Google::Apis::FirebaseV1beta1::AddGoogleAnalyticsRequest::Representation
+          command.request_object = add_google_analytics_request_object
+          command.response_representation = Google::Apis::FirebaseV1beta1::Operation::Representation
+          command.response_class = Google::Apis::FirebaseV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the FirebaseProject identified by the specified resource name.
         # @param [String] name
         #   The fully qualified resource name of the Project, in the format:
@@ -259,6 +341,41 @@ module Google
           command = make_simple_command(:get, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::FirebaseV1beta1::AdminSdkConfig::Representation
           command.response_class = Google::Apis::FirebaseV1beta1::AdminSdkConfig
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Google Analytics details currently associated with a
+        # FirebaseProject.
+        # <br>
+        # <br>If the `FirebaseProject` is not yet linked to Google Analytics, then
+        # the response to `GetAnalyticsDetails` is NOT_FOUND.
+        # @param [String] name
+        #   The fully qualified resource name, in the format:
+        #   <br><code>projects/<var>projectId</var>/analyticsDetails</code>
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseV1beta1::AnalyticsDetails] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseV1beta1::AnalyticsDetails]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_analytics_details(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::FirebaseV1beta1::AnalyticsDetails::Representation
+          command.response_class = Google::Apis::FirebaseV1beta1::AnalyticsDetails
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -357,6 +474,54 @@ module Google
           command.response_class = Google::Apis::FirebaseV1beta1::FirebaseProject
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Unlinks the specified `FirebaseProject` from its Google Analytics account.
+        # <br>
+        # <br>This call removes the association of the specified `FirebaseProject`
+        # with its current Google Analytics property. However, this call does not
+        # delete the Google Analytics resources, such as the Google Analytics
+        # property or any data streams.
+        # <br>
+        # <br>These resources may be re-associated later to the `FirebaseProject` by
+        # calling
+        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and
+        # specifying the same `analyticsPropertyId`.
+        # <br>
+        # <br>To call `RemoveAnalytics`, a member must be an Owner for
+        # the `FirebaseProject`.
+        # @param [String] parent
+        #   The parent `FirebaseProject` to unlink from its Google Analytics account,
+        #   in the format:
+        #   <br><code>projects/<var>projectId</var></code>
+        # @param [Google::Apis::FirebaseV1beta1::RemoveAnalyticsRequest] remove_analytics_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::FirebaseV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::FirebaseV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_project_analytics(parent, remove_analytics_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}:removeAnalytics', options)
+          command.request_representation = Google::Apis::FirebaseV1beta1::RemoveAnalyticsRequest::Representation
+          command.request_object = remove_analytics_request_object
+          command.response_representation = Google::Apis::FirebaseV1beta1::Empty::Representation
+          command.response_class = Google::Apis::FirebaseV1beta1::Empty
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -28,7 +28,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddGoogleAnalyticsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdminSdkConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyticsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AnalyticsProperty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -154,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveAnalyticsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchFirebaseAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -173,6 +197,12 @@ module Google
       end
       
       class StatusProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamMapping
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -205,6 +235,14 @@ module Google
         end
       end
       
+      class AddGoogleAnalyticsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_account_id, as: 'analyticsAccountId'
+          property :analytics_property_id, as: 'analyticsPropertyId'
+        end
+      end
+      
       class AdminSdkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -212,6 +250,24 @@ module Google
           property :location_id, as: 'locationId'
           property :project_id, as: 'projectId'
           property :storage_bucket, as: 'storageBucket'
+        end
+      end
+      
+      class AnalyticsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_property, as: 'analyticsProperty', class: Google::Apis::FirebaseV1beta1::AnalyticsProperty, decorator: Google::Apis::FirebaseV1beta1::AnalyticsProperty::Representation
+      
+          collection :stream_mappings, as: 'streamMappings', class: Google::Apis::FirebaseV1beta1::StreamMapping, decorator: Google::Apis::FirebaseV1beta1::StreamMapping::Representation
+      
+        end
+      end
+      
+      class AnalyticsProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :id, as: 'id'
         end
       end
       
@@ -395,6 +451,13 @@ module Google
         end
       end
       
+      class RemoveAnalyticsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_property_id, as: 'analyticsPropertyId'
+        end
+      end
+      
       class SearchFirebaseAppsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -433,6 +496,14 @@ module Google
           property :payload, as: 'payload', class: Google::Apis::FirebaseV1beta1::TypedMessage, decorator: Google::Apis::FirebaseV1beta1::TypedMessage::Representation
       
           property :space, as: 'space'
+        end
+      end
+      
+      class StreamMapping
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app, as: 'app'
+          property :stream_id, :numeric_string => true, as: 'streamId'
         end
       end
       
