@@ -236,7 +236,7 @@ module Google
         # allAuthenticatedUsers: A special identifier that represents anyone  who is
         # authenticated with a Google account or a service account.
         # user:`emailid`: An email address that represents a specific Google  account.
-        # For example, alice@gmail.com .
+        # For example, alice@example.com .
         # serviceAccount:`emailid`: An email address that represents a service  account.
         # For example, my-other-app@appspot.gserviceaccount.com.
         # group:`emailid`: An email address that represents a Google group.  For example,
@@ -1201,8 +1201,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Compute Engine accelerator configuration for these instances.
-        # Beta Feature: This feature is still under development. It may be changed
-        # before final release.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::DataprocV1beta2::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -1724,6 +1722,12 @@ module Google
         # @return [String]
         attr_accessor :idle_delete_ttl
       
+        # Output only. The time when cluster became idle (most recent job finished) and
+        # became eligible for deletion due to idleness.
+        # Corresponds to the JSON property `idleStartTime`
+        # @return [String]
+        attr_accessor :idle_start_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1733,6 +1737,7 @@ module Google
           @auto_delete_time = args[:auto_delete_time] if args.key?(:auto_delete_time)
           @auto_delete_ttl = args[:auto_delete_ttl] if args.key?(:auto_delete_ttl)
           @idle_delete_ttl = args[:idle_delete_ttl] if args.key?(:idle_delete_ttl)
+          @idle_start_time = args[:idle_start_time] if args.key?(:idle_start_time)
         end
       end
       
@@ -2275,7 +2280,7 @@ module Google
         # in the response to getIamPolicy, and systems are expected to put that etag in
         # the request to setIamPolicy to ensure that their change will be applied to the
         # same version of the policy.If no etag is provided in the call to setIamPolicy,
-        # then the existing policy is overwritten blindly.
+        # then the existing policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

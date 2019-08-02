@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -694,6 +700,14 @@ module Google
         end
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_count, :numeric_string => true, as: 'acceleratorCount'
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -795,6 +809,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator, as: 'accelerator', class: Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig, decorator: Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig::Representation
+      
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'

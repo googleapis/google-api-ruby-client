@@ -886,6 +886,7 @@ module Google
           property :auto_delete_time, as: 'autoDeleteTime'
           property :auto_delete_ttl, as: 'autoDeleteTtl'
           property :idle_delete_ttl, as: 'idleDeleteTtl'
+          property :idle_start_time, as: 'idleStartTime'
         end
       end
       

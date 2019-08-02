@@ -196,8 +196,8 @@ module Google
         # will complete when entire workflow is finished.The running workflow can be
         # aborted via operations.cancel. This will cause any inflight jobs to be
         # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
-        # will be WorkflowMetadata.On successful completion, Operation.response will be
-        # Empty.
+        # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
         # @param [String] name
         #   Required. The "resource name" of the workflow template, as described in https:/
         #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
@@ -238,8 +238,8 @@ module Google
         # of workflow by polling operations.get. The Operation will complete when entire
         # workflow is finished.The running workflow can be aborted via operations.cancel.
         # This will cause any inflight jobs to be cancelled and workflow-owned clusters
-        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
-        # completion, Operation.response will be Empty.
+        # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
+        # WorkflowMetadata.On successful completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The "resource name" of the workflow template region, as described in
         #   https://cloud.google.com/apis/design/resource_names of the form projects/`
@@ -1615,8 +1615,8 @@ module Google
         # will complete when entire workflow is finished.The running workflow can be
         # aborted via operations.cancel. This will cause any inflight jobs to be
         # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
-        # will be WorkflowMetadata.On successful completion, Operation.response will be
-        # Empty.
+        # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
+        # completion, Operation.response will be Empty.
         # @param [String] name
         #   Required. The "resource name" of the workflow template, as described in https:/
         #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
@@ -1657,8 +1657,8 @@ module Google
         # of workflow by polling operations.get. The Operation will complete when entire
         # workflow is finished.The running workflow can be aborted via operations.cancel.
         # This will cause any inflight jobs to be cancelled and workflow-owned clusters
-        # to be deleted.The Operation.metadata will be WorkflowMetadata.On successful
-        # completion, Operation.response will be Empty.
+        # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
+        # WorkflowMetadata.On successful completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The "resource name" of the workflow template region, as described in
         #   https://cloud.google.com/apis/design/resource_names of the form projects/`

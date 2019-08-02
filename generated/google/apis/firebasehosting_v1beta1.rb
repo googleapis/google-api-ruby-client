@@ -27,7 +27,7 @@ module Google
     # @see https://firebase.google.com/docs/hosting/
     module FirebasehostingV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190418'
+      REVISION = '20190801'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LifecycleConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListClustersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -451,6 +457,8 @@ module Google
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1::GceClusterConfig, decorator: Google::Apis::DataprocV1::GceClusterConfig::Representation
       
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1::NodeInitializationAction, decorator: Google::Apis::DataprocV1::NodeInitializationAction::Representation
+      
+          property :lifecycle_config, as: 'lifecycleConfig', class: Google::Apis::DataprocV1::LifecycleConfig, decorator: Google::Apis::DataprocV1::LifecycleConfig::Representation
       
           property :master_config, as: 'masterConfig', class: Google::Apis::DataprocV1::InstanceGroupConfig, decorator: Google::Apis::DataprocV1::InstanceGroupConfig::Representation
       
@@ -738,6 +746,16 @@ module Google
           property :tgt_lifetime_hours, as: 'tgtLifetimeHours'
           property :truststore_password_uri, as: 'truststorePasswordUri'
           property :truststore_uri, as: 'truststoreUri'
+        end
+      end
+      
+      class LifecycleConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete_time, as: 'autoDeleteTime'
+          property :auto_delete_ttl, as: 'autoDeleteTtl'
+          property :idle_delete_ttl, as: 'idleDeleteTtl'
+          property :idle_start_time, as: 'idleStartTime'
         end
       end
       
