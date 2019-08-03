@@ -61,7 +61,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -512,7 +512,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -682,22 +682,22 @@ module Google
       class PushConfig
         include Google::Apis::Core::Hashable
       
-        # Endpoint configuration attributes.
-        # Every endpoint has a set of API supported attributes that can be used to
-        # control different aspects of the message delivery.
-        # The currently supported attribute is `x-goog-version`, which you can
+        # Endpoint configuration attributes that can be used to control different
+        # aspects of the message delivery.
+        # The only currently supported attribute is `x-goog-version`, which you can
         # use to change the format of the pushed message. This attribute
         # indicates the version of the data expected by the endpoint. This
         # controls the shape of the pushed message (i.e., its fields and metadata).
-        # The endpoint version is based on the version of the Pub/Sub API.
         # If not present during the `CreateSubscription` call, it will default to
-        # the version of the API used to make such call. If not present during a
+        # the version of the Pub/Sub API used to make such call. If not present in a
         # `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
         # calls will always return a valid version, even if the subscription was
         # created without this attribute.
-        # The possible values for this attribute are:
+        # The only supported values for the `x-goog-version` attribute are:
         # * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
         # * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+        # For example:
+        # <pre><code>attributes ` "x-goog-version": "v1" ` </code></pre>
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes

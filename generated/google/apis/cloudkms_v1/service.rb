@@ -229,12 +229,15 @@ module Google
         #   Required. The resource name of the location associated with the
         #   KeyRings, in the format `projects/*/locations/*`.
         # @param [String] filter
-        #   Optional. Only include resources that match the filter in the response
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order.  For more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of KeyRings to include in the
         #   response.  Further KeyRings can subsequently be obtained by
@@ -544,12 +547,15 @@ module Google
         #   Required. The resource name of the KeyRing to list, in the format
         #   `projects/*/locations/*/keyRings/*`.
         # @param [String] filter
-        #   Optional. Only include resources that match the filter in the response
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of CryptoKeys to include in the
         #   response.  Further CryptoKeys can subsequently be obtained by
@@ -993,12 +999,15 @@ module Google
         #   Required. The resource name of the CryptoKey to list, in the format
         #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         # @param [String] filter
-        #   Optional. Only include resources that match the filter in the response
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of CryptoKeyVersions to
         #   include in the response. Further CryptoKeyVersions can
@@ -1235,12 +1244,15 @@ module Google
         #   Required. The resource name of the KeyRing to list, in the format
         #   `projects/*/locations/*/keyRings/*`.
         # @param [String] filter
-        #   Optional. Only include resources that match the filter in the response
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   Optional. Only include resources that match the filter in the response. For
+        #   more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [String] order_by
         #   Optional. Specify how the results should be sorted. If not specified, the
-        #   results will be sorted in the default order
-        #   (https://cloud.google.com/kms/docs/sorting-and-filtering).
+        #   results will be sorted in the default order. For more information, see
+        #   [Sorting and filtering list
+        #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
         #   Optional limit on the number of ImportJobs to include in the
         #   response. Further ImportJobs can subsequently be obtained by

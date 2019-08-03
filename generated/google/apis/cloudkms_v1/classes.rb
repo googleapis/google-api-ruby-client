@@ -86,6 +86,12 @@ module Google
       class AsymmetricSignResponse
         include Google::Apis::Core::Hashable
       
+        # The resource name of the CryptoKeyVersion used for signing. Check
+        # this field to verify that the intended resource was used for signing.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The created signature.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -98,6 +104,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @signature = args[:signature] if args.key?(:signature)
         end
       end
@@ -119,7 +126,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -131,7 +138,7 @@ module Google
       # ]
       # `,
       # `
-      # "service": "fooservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com"
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -139,16 +146,16 @@ module Google
       # `
       # "log_type": "DATA_WRITE",
       # "exempted_members": [
-      # "user:bar@gmail.com"
+      # "user:aliya@example.com"
       # ]
       # `
       # ]
       # `
       # ]
       # `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
-      # bar@gmail.com from DATA_WRITE logging.
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and
+      # aliya@example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -182,7 +189,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -191,7 +198,7 @@ module Google
       # ]
       # `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
+      # jose@example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -237,7 +244,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -643,7 +650,8 @@ module Google
         # @return [String]
         attr_accessor :ciphertext
       
-        # The resource name of the CryptoKeyVersion used in encryption.
+        # The resource name of the CryptoKeyVersion used in encryption. Check
+        # this field to verify that the intended resource was used for encryption.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1202,7 +1210,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1237,6 +1245,12 @@ module Google
         # @return [String]
         attr_accessor :algorithm
       
+        # The name of the CryptoKeyVersion public key.
+        # Provided here for verification.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The public key, encoded in PEM format. For more information, see the
         # [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
         # [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
@@ -1253,6 +1267,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @name = args[:name] if args.key?(:name)
           @pem = args[:pem] if args.key?(:pem)
         end
       end

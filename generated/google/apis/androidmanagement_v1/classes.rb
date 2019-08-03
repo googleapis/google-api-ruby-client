@@ -701,6 +701,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :previous_device_names
       
+        # . Device's security posture value that reflects how secure the device is.
+        # Corresponds to the JSON property `securityPosture`
+        # @return [Google::Apis::AndroidmanagementV1::SecurityPosture]
+        attr_accessor :security_posture
+      
         # Information about device software.
         # Corresponds to the JSON property `softwareInfo`
         # @return [Google::Apis::AndroidmanagementV1::SoftwareInfo]
@@ -762,6 +767,7 @@ module Google
           @policy_name = args[:policy_name] if args.key?(:policy_name)
           @power_management_events = args[:power_management_events] if args.key?(:power_management_events)
           @previous_device_names = args[:previous_device_names] if args.key?(:previous_device_names)
+          @security_posture = args[:security_posture] if args.key?(:security_posture)
           @software_info = args[:software_info] if args.key?(:software_info)
           @state = args[:state] if args.key?(:state)
           @system_properties = args[:system_properties] if args.key?(:system_properties)
@@ -2590,6 +2596,32 @@ module Google
         end
       end
       
+      # Detail that provides further information if the device is not in the most
+      # secure state.
+      class PostureDetail
+        include Google::Apis::Core::Hashable
+      
+        # Corresponding pieces of advice to mitigate the security risk.
+        # Corresponds to the JSON property `advice`
+        # @return [Array<Google::Apis::AndroidmanagementV1::UserFacingMessage>]
+        attr_accessor :advice
+      
+        # The risk that makes the device not in the most secure state.
+        # Corresponds to the JSON property `securityRisk`
+        # @return [String]
+        attr_accessor :security_risk
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advice = args[:advice] if args.key?(:advice)
+          @security_risk = args[:security_risk] if args.key?(:security_risk)
+        end
+      end
+      
       # A power management event.
       class PowerManagementEvent
         include Google::Apis::Core::Hashable
@@ -2657,6 +2689,32 @@ module Google
           @host = args[:host] if args.key?(:host)
           @pac_uri = args[:pac_uri] if args.key?(:pac_uri)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # . Device's security posture value that reflects how secure the device is.
+      class SecurityPosture
+        include Google::Apis::Core::Hashable
+      
+        # Device's security posture value.
+        # Corresponds to the JSON property `devicePosture`
+        # @return [String]
+        attr_accessor :device_posture
+      
+        # Details that provide further information if the device is not in the most
+        # secure state.
+        # Corresponds to the JSON property `postureDetails`
+        # @return [Array<Google::Apis::AndroidmanagementV1::PostureDetail>]
+        attr_accessor :posture_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_posture = args[:device_posture] if args.key?(:device_posture)
+          @posture_details = args[:posture_details] if args.key?(:posture_details)
         end
       end
       

@@ -25,13 +25,16 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigqueryV2
       VERSION = 'V2'
-      REVISION = '20190712'
+      REVISION = '20190724'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
 
       # Insert data into Google BigQuery
       AUTH_BIGQUERY_INSERTDATA = 'https://www.googleapis.com/auth/bigquery.insertdata'
+
+      # View your data in Google BigQuery
+      AUTH_BIGQUERY_READONLY = 'https://www.googleapis.com/auth/bigquery.readonly'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

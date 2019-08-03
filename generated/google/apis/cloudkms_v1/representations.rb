@@ -263,6 +263,7 @@ module Google
       class AsymmetricSignResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
           property :signature, :base64 => true, as: 'signature'
         end
       end
@@ -519,6 +520,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :algorithm, as: 'algorithm'
+          property :name, as: 'name'
           property :pem, as: 'pem'
         end
       end

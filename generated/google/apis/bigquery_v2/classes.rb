@@ -1270,7 +1270,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
         attr_accessor :multi_class_classification_metrics
       
-        # Evaluation metrics for regression models.
+        # Evaluation metrics for regression and explicit feedback type matrix
+        # factorization models.
         # Corresponds to the JSON property `regressionMetrics`
         # @return [Google::Apis::BigqueryV2::RegressionMetrics]
         attr_accessor :regression_metrics
@@ -4096,7 +4097,8 @@ module Google
         end
       end
       
-      # Evaluation metrics for regression models.
+      # Evaluation metrics for regression and explicit feedback type matrix
+      # factorization models.
       class RegressionMetrics
         include Google::Apis::Core::Hashable
       

@@ -274,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PostureDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PowerManagementEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +287,12 @@ module Google
       end
       
       class ProxyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPosture
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -539,6 +551,8 @@ module Google
           collection :power_management_events, as: 'powerManagementEvents', class: Google::Apis::AndroidmanagementV1::PowerManagementEvent, decorator: Google::Apis::AndroidmanagementV1::PowerManagementEvent::Representation
       
           collection :previous_device_names, as: 'previousDeviceNames'
+          property :security_posture, as: 'securityPosture', class: Google::Apis::AndroidmanagementV1::SecurityPosture, decorator: Google::Apis::AndroidmanagementV1::SecurityPosture::Representation
+      
           property :software_info, as: 'softwareInfo', class: Google::Apis::AndroidmanagementV1::SoftwareInfo, decorator: Google::Apis::AndroidmanagementV1::SoftwareInfo::Representation
       
           property :state, as: 'state'
@@ -955,6 +969,15 @@ module Google
         end
       end
       
+      class PostureDetail
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :advice, as: 'advice', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
+      
+          property :security_risk, as: 'securityRisk'
+        end
+      end
+      
       class PowerManagementEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -971,6 +994,15 @@ module Google
           property :host, as: 'host'
           property :pac_uri, as: 'pacUri'
           property :port, as: 'port'
+        end
+      end
+      
+      class SecurityPosture
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_posture, as: 'devicePosture'
+          collection :posture_details, as: 'postureDetails', class: Google::Apis::AndroidmanagementV1::PostureDetail, decorator: Google::Apis::AndroidmanagementV1::PostureDetail::Representation
+      
         end
       end
       
