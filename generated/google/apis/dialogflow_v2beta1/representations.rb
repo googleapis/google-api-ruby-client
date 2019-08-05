@@ -700,6 +700,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,6 +773,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1492,6 +1504,8 @@ module Google
           collection :phrase_hints, as: 'phraseHints'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :single_utterance, as: 'singleUtterance'
+          collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext::Representation
+      
         end
       end
       
@@ -2003,6 +2017,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :samples_with_intent_detected, as: 'samplesWithIntentDetected'
+          property :state, as: 'state'
+          property :total_samples, as: 'totalSamples'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2132,6 +2155,14 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SpeechContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          collection :phrases, as: 'phrases'
         end
       end
       

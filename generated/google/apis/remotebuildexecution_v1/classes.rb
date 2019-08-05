@@ -1592,6 +1592,32 @@ module Google
         end
       end
       
+      # AcceleratorConfig defines the accelerator cards to attach to the VM.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
+        include Google::Apis::Core::Hashable
+      
+        # The number of the guest accelerator cards exposed to this VM.
+        # Corresponds to the JSON property `acceleratorCount`
+        # @return [Fixnum]
+        attr_accessor :accelerator_count
+      
+        # The type of accelerator to attach to this VM, e.g. "nvidia-tesla-k80" for
+        # nVidia Tesla K80.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_count = args[:accelerator_count] if args.key?(:accelerator_count)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+        end
+      end
+      
       # The request used for `CreateInstance`.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         include Google::Apis::Core::Hashable
@@ -1939,6 +1965,11 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
         include Google::Apis::Core::Hashable
       
+        # AcceleratorConfig defines the accelerator cards to attach to the VM.
+        # Corresponds to the JSON property `accelerator`
+        # @return [Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig]
+        attr_accessor :accelerator
+      
         # Required. Size of the disk attached to the worker, in GB.
         # See https://cloud.google.com/compute/docs/disks/
         # Corresponds to the JSON property `diskSizeGb`
@@ -1992,6 +2023,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator = args[:accelerator] if args.key?(:accelerator)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @labels = args[:labels] if args.key?(:labels)

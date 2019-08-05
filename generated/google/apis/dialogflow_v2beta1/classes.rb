@@ -2629,6 +2629,15 @@ module Google
         attr_accessor :single_utterance
         alias_method :single_utterance?, :single_utterance
       
+        # Optional. Context information to assist speech recognition.
+        # See [the Cloud Speech
+        # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
+        # hints)
+        # for more details.
+        # Corresponds to the JSON property `speechContexts`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SpeechContext>]
+        attr_accessor :speech_contexts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2643,6 +2652,7 @@ module Google
           @phrase_hints = args[:phrase_hints] if args.key?(:phrase_hints)
           @sample_rate_hertz = args[:sample_rate_hertz] if args.key?(:sample_rate_hertz)
           @single_utterance = args[:single_utterance] if args.key?(:single_utterance)
+          @speech_contexts = args[:speech_contexts] if args.key?(:speech_contexts)
         end
       end
       
@@ -4466,6 +4476,40 @@ module Google
         end
       end
       
+      # The status update for performing NLU model evaluation given a dataset.
+      # Metadata of the returned long running operation for
+      # ModelEvaluations.EvaluateModel.
+      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Number of samples that have already received the predicted
+        # intents from Dialogflow server.
+        # Corresponds to the JSON property `samplesWithIntentDetected`
+        # @return [Fixnum]
+        attr_accessor :samples_with_intent_detected
+      
+        # Required. Represents the job that the batch worker is currently working on.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Required. Total number of samples in the dataset.
+        # Corresponds to the JSON property `totalSamples`
+        # @return [Fixnum]
+        attr_accessor :total_samples
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @samples_with_intent_detected = args[:samples_with_intent_detected] if args.key?(:samples_with_intent_detected)
+          @state = args[:state] if args.key?(:state)
+          @total_samples = args[:total_samples] if args.key?(:total_samples)
+        end
+      end
+      
       # Represents the contents of the original request that was passed to
       # the `[Streaming]DetectIntent` call.
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
@@ -5003,6 +5047,47 @@ module Google
           @entities = args[:entities] if args.key?(:entities)
           @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
           @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Hints for the speech recognizer to help with recognition in a specific
+      # conversation state.
+      class GoogleCloudDialogflowV2beta1SpeechContext
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Boost for this context compared to other contexts:
+        # * If the boost is positive, Dialogflow will increase the probability that
+        # the phrases in this context are recognized over similar sounding phrases.
+        # * If the boost is unspecified or non-positive, Dialogflow will not apply
+        # any boost.
+        # Dialogflow recommends that you use boosts in the range (0, 20] and that you
+        # find a value that fits your use case with binary search.
+        # Corresponds to the JSON property `boost`
+        # @return [Float]
+        attr_accessor :boost
+      
+        # Optional. A list of strings containing words and phrases that the speech
+        # recognizer should recognize with higher likelihood.
+        # This list can be used to:
+        # * improve accuracy for words and phrases you expect the user to say,
+        # e.g. typical commands for your Dialogflow agent
+        # * add additional words to the speech recognizer vocabulary
+        # * ...
+        # See the [Cloud Speech
+        # documentation](https://cloud.google.com/speech-to-text/quotas) for usage
+        # limits.
+        # Corresponds to the JSON property `phrases`
+        # @return [Array<String>]
+        attr_accessor :phrases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @boost = args[:boost] if args.key?(:boost)
+          @phrases = args[:phrases] if args.key?(:phrases)
         end
       end
       
