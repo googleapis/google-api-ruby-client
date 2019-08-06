@@ -3786,6 +3786,11 @@ module Google
         # @return [DateTime]
         attr_accessor :actual_start_time
       
+        # 
+        # Corresponds to the JSON property `broadcastType`
+        # @return [String]
+        attr_accessor :broadcast_type
+      
         # The ID that YouTube uses to uniquely identify the channel that is publishing
         # the broadcast.
         # Corresponds to the JSON property `channelId`
@@ -3848,6 +3853,7 @@ module Google
         def update!(**args)
           @actual_end_time = args[:actual_end_time] if args.key?(:actual_end_time)
           @actual_start_time = args[:actual_start_time] if args.key?(:actual_start_time)
+          @broadcast_type = args[:broadcast_type] if args.key?(:broadcast_type)
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @description = args[:description] if args.key?(:description)
           @is_default_broadcast = args[:is_default_broadcast] if args.key?(:is_default_broadcast)

@@ -699,11 +699,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the metadata for the specified asset. This method supports patch
-        # semantics.
+        # Patches the metadata for the specified asset.
         # @param [String] asset_id
         #   The assetId parameter specifies the YouTube asset ID of the asset being
-        #   updated.
+        #   patched.
         # @param [Google::Apis::YoutubePartnerV1::Asset] asset_object
         # @param [String] on_behalf_of_content_owner
         #   The onBehalfOfContentOwner parameter identifies the content owner that the

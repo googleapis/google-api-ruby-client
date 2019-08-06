@@ -2039,6 +2039,7 @@ module Google
       
           property :actual_start_time, as: 'actualStartTime', type: DateTime
       
+          property :broadcast_type, as: 'broadcastType'
           property :channel_id, as: 'channelId'
           property :description, as: 'description'
           property :is_default_broadcast, as: 'isDefaultBroadcast'

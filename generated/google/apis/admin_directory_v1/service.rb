@@ -269,7 +269,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 100
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] org_unit_path
@@ -933,7 +933,7 @@ module Google
         #   Name of the domain. Fill this field to get groups from only this domain. To
         #   return all groups in a multi-domain fill customer field instead.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 200
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -945,8 +945,9 @@ module Google
         #   Whether to return results in ascending or descending order. Only of use when
         #   orderBy is also used
         # @param [String] user_key
-        #   Email or immutable Id of the user if only those groups are to be listed, the
-        #   given user is a member of. If Id, it should match with id of user object
+        #   Email or immutable ID of the user if only those groups are to be listed, the
+        #   given user is a member of. If it's an ID, it should match with the ID of the
+        #   user object.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1312,7 +1313,7 @@ module Google
         # @param [Boolean] include_derived_membership
         #   Whether to list indirect memberships. Default: false.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 200
+        #   Maximum number of results to return.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] roles
@@ -1548,7 +1549,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 100
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -3682,7 +3683,7 @@ module Google
         # @param [String] event
         #   Event on which subscription is intended (if subscribing)
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 100. Max allowed is 500
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -3693,7 +3694,7 @@ module Google
         #   Query string search. Should be of the form "". Complete documentation is at
         #   https://developers.google.com/admin-sdk/directory/v1/guides/search-users
         # @param [String] show_deleted
-        #   If set to true retrieves the list of deleted users. Default is false
+        #   If set to true, retrieves the list of deleted users. (Default: false)
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order.
         # @param [String] view_type
@@ -3895,7 +3896,7 @@ module Google
         # @param [String] event
         #   Event on which subscription is intended (if subscribing)
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Default is 100. Max allowed is 500
+        #   Maximum number of results to return.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -3906,7 +3907,7 @@ module Google
         #   Query string search. Should be of the form "". Complete documentation is at
         #   https://developers.google.com/admin-sdk/directory/v1/guides/search-users
         # @param [String] show_deleted
-        #   If set to true retrieves the list of deleted users. Default is false
+        #   If set to true, retrieves the list of deleted users. (Default: false)
         # @param [String] sort_order
         #   Whether to return results in ascending or descending order.
         # @param [String] view_type

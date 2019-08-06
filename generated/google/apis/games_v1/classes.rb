@@ -2662,8 +2662,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The player's current profile visibility. This field is visible to both 1P and
-        # 3P APIs.
+        # 
         # Corresponds to the JSON property `profileVisible`
         # @return [Boolean]
         attr_accessor :profile_visible

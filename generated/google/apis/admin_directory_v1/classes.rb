@@ -685,6 +685,12 @@ module Google
         # @return [String]
         attr_accessor :annotated_user
       
+        # (Read-only) The timestamp after which the device will stop receiving Chrome
+        # updates or support
+        # Corresponds to the JSON property `autoUpdateExpiration`
+        # @return [Fixnum]
+        attr_accessor :auto_update_expiration
+      
         # Chromebook boot mode (Read-only)
         # Corresponds to the JSON property `bootMode`
         # @return [String]
@@ -710,6 +716,17 @@ module Google
         # @return [Array<Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport>]
         attr_accessor :disk_volume_reports
       
+        # (Read-only) Built-in MAC address for the docking station that the device
+        # connected to. Factory sets Media access control address (MAC address) assigned
+        # for use by a dock. Currently this is only supported on the Dell Arcada /
+        # Sarien devices and the Dell WD19 / WD19TB Docking Station. It is reserved
+        # specifically for MAC pass through device policy. The format is twelve (12)
+        # hexadecimal digits without any delimiter (uppercase letters). This is only
+        # relevant for Dell devices.
+        # Corresponds to the JSON property `dockMacAddress`
+        # @return [String]
+        attr_accessor :dock_mac_address
+      
         # ETag of the resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -719,6 +736,14 @@ module Google
         # Corresponds to the JSON property `ethernetMacAddress`
         # @return [String]
         attr_accessor :ethernet_mac_address
+      
+        # (Read-only) MAC address used by the Chromebook’s internal ethernet port, and
+        # for onboard network (ethernet) interface. The format is twelve (12)
+        # hexadecimal digits without any delimiter (uppercase letters). This is only
+        # relevant for Dell devices.
+        # Corresponds to the JSON property `ethernetMacAddress0`
+        # @return [String]
+        attr_accessor :ethernet_mac_address0
       
         # Chromebook firmware version (Read-only)
         # Corresponds to the JSON property `firmwareVersion`
@@ -745,6 +770,11 @@ module Google
         # Corresponds to the JSON property `macAddress`
         # @return [String]
         attr_accessor :mac_address
+      
+        # (Read-only) The date the device was manufactured in yyyy-mm-dd format.
+        # Corresponds to the JSON property `manufactureDate`
+        # @return [String]
+        attr_accessor :manufacture_date
       
         # Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-
         # only)
@@ -833,18 +863,22 @@ module Google
           @annotated_asset_id = args[:annotated_asset_id] if args.key?(:annotated_asset_id)
           @annotated_location = args[:annotated_location] if args.key?(:annotated_location)
           @annotated_user = args[:annotated_user] if args.key?(:annotated_user)
+          @auto_update_expiration = args[:auto_update_expiration] if args.key?(:auto_update_expiration)
           @boot_mode = args[:boot_mode] if args.key?(:boot_mode)
           @cpu_status_reports = args[:cpu_status_reports] if args.key?(:cpu_status_reports)
           @device_files = args[:device_files] if args.key?(:device_files)
           @device_id = args[:device_id] if args.key?(:device_id)
           @disk_volume_reports = args[:disk_volume_reports] if args.key?(:disk_volume_reports)
+          @dock_mac_address = args[:dock_mac_address] if args.key?(:dock_mac_address)
           @etag = args[:etag] if args.key?(:etag)
           @ethernet_mac_address = args[:ethernet_mac_address] if args.key?(:ethernet_mac_address)
+          @ethernet_mac_address0 = args[:ethernet_mac_address0] if args.key?(:ethernet_mac_address0)
           @firmware_version = args[:firmware_version] if args.key?(:firmware_version)
           @kind = args[:kind] if args.key?(:kind)
           @last_enrollment_time = args[:last_enrollment_time] if args.key?(:last_enrollment_time)
           @last_sync = args[:last_sync] if args.key?(:last_sync)
           @mac_address = args[:mac_address] if args.key?(:mac_address)
+          @manufacture_date = args[:manufacture_date] if args.key?(:manufacture_date)
           @meid = args[:meid] if args.key?(:meid)
           @model = args[:model] if args.key?(:model)
           @notes = args[:notes] if args.key?(:notes)
@@ -1762,8 +1796,9 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Unique identifier of customer member (Read-only) Unique identifier of group (
-        # Read-only) Unique identifier of member (Read-only)
+        # The unique ID of the group member. A member id can be used as a member request
+        # URI's memberKey. Unique identifier of group (Read-only) Unique identifier of
+        # member (Read-only)
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2460,7 +2495,8 @@ module Google
         # @return [String]
         attr_accessor :privilege_name
       
-        # The obfuscated ID of the service this privilege is for.
+        # The obfuscated ID of the service this privilege is for. This value is returned
+        # with Privileges.list().
         # Corresponds to the JSON property `serviceId`
         # @return [String]
         attr_accessor :service_id
@@ -2588,7 +2624,8 @@ module Google
           # @return [String]
           attr_accessor :privilege_name
         
-          # The obfuscated ID of the service this privilege is for.
+          # The obfuscated ID of the service this privilege is for. This value is returned
+          # with Privileges.list().
           # Corresponds to the JSON property `serviceId`
           # @return [String]
           attr_accessor :service_id
@@ -3878,7 +3915,7 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # The full-time equivalent percent within the organization (100000 = 100%).
+        # The full-time equivalent millipercent within the organization (100000 = 100%).
         # Corresponds to the JSON property `fullTimeEquivalent`
         # @return [Fixnum]
         attr_accessor :full_time_equivalent

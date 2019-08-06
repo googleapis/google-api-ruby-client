@@ -1075,6 +1075,12 @@ module Google
         # @return [Google::Apis::SheetsV4::TextPosition]
         attr_accessor :title_text_position
       
+        # The options that define a "view window" for a chart (such as the visible
+        # values in an axis).
+        # Corresponds to the JSON property `viewWindowOptions`
+        # @return [Google::Apis::SheetsV4::ChartAxisViewWindowOptions]
+        attr_accessor :view_window_options
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1085,6 +1091,7 @@ module Google
           @position = args[:position] if args.key?(:position)
           @title = args[:title] if args.key?(:title)
           @title_text_position = args[:title_text_position] if args.key?(:title_text_position)
+          @view_window_options = args[:view_window_options] if args.key?(:view_window_options)
         end
       end
       
@@ -2700,6 +2707,40 @@ module Google
           @text_rotation = args[:text_rotation] if args.key?(:text_rotation)
           @vertical_alignment = args[:vertical_alignment] if args.key?(:vertical_alignment)
           @wrap_strategy = args[:wrap_strategy] if args.key?(:wrap_strategy)
+        end
+      end
+      
+      # The options that define a "view window" for a chart (such as the visible
+      # values in an axis).
+      class ChartAxisViewWindowOptions
+        include Google::Apis::Core::Hashable
+      
+        # The maximum numeric value to be shown in this view window. If unset, will
+        # automatically determine a maximum value that looks good for the data.
+        # Corresponds to the JSON property `viewWindowMax`
+        # @return [Float]
+        attr_accessor :view_window_max
+      
+        # The minimum numeric value to be shown in this view window. If unset, will
+        # automatically determine a minimum value that looks good for the data.
+        # Corresponds to the JSON property `viewWindowMin`
+        # @return [Float]
+        attr_accessor :view_window_min
+      
+        # The view window's mode.
+        # Corresponds to the JSON property `viewWindowMode`
+        # @return [String]
+        attr_accessor :view_window_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @view_window_max = args[:view_window_max] if args.key?(:view_window_max)
+          @view_window_min = args[:view_window_min] if args.key?(:view_window_min)
+          @view_window_mode = args[:view_window_mode] if args.key?(:view_window_mode)
         end
       end
       

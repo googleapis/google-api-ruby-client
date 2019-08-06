@@ -53,7 +53,7 @@ module Google
         
         # Gets one resource by id.
         # @param [String] group_unique_id
-        #   The resource ID
+        #   The group's email address.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -87,7 +87,7 @@ module Google
         
         # Updates an existing resource. This method supports patch semantics.
         # @param [String] group_unique_id
-        #   The resource ID
+        #   The group's email address.
         # @param [Google::Apis::GroupssettingsV1::Groups] groups_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -124,7 +124,7 @@ module Google
         
         # Updates an existing resource.
         # @param [String] group_unique_id
-        #   The resource ID
+        #   The group's email address.
         # @param [Google::Apis::GroupssettingsV1::Groups] groups_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

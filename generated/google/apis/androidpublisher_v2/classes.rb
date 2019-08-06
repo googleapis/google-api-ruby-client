@@ -679,6 +679,11 @@ module Google
         # @return [String]
         attr_accessor :sha1
       
+        # A sha256 hash of the image that was uploaded.
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
         # A URL that will serve a preview of the image.
         # Corresponds to the JSON property `url`
         # @return [String]
@@ -692,6 +697,7 @@ module Google
         def update!(**args)
           @id = args[:id] if args.key?(:id)
           @sha1 = args[:sha1] if args.key?(:sha1)
+          @sha256 = args[:sha256] if args.key?(:sha256)
           @url = args[:url] if args.key?(:url)
         end
       end

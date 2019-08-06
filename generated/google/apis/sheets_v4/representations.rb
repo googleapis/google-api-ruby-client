@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ChartAxisViewWindowOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ChartData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1367,6 +1373,8 @@ module Google
           property :title, as: 'title'
           property :title_text_position, as: 'titleTextPosition', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
       
+          property :view_window_options, as: 'viewWindowOptions', class: Google::Apis::SheetsV4::ChartAxisViewWindowOptions, decorator: Google::Apis::SheetsV4::ChartAxisViewWindowOptions::Representation
+      
         end
       end
       
@@ -1708,6 +1716,15 @@ module Google
       
           property :vertical_alignment, as: 'verticalAlignment'
           property :wrap_strategy, as: 'wrapStrategy'
+        end
+      end
+      
+      class ChartAxisViewWindowOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :view_window_max, as: 'viewWindowMax'
+          property :view_window_min, as: 'viewWindowMin'
+          property :view_window_mode, as: 'viewWindowMode'
         end
       end
       

@@ -589,14 +589,11 @@ module Google
         # step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution
         # does not exist
         # @param [String] project_id
-        #   A Project id.
-        #   Required.
+        #   Required. A Project id.
         # @param [String] history_id
-        #   A History id.
-        #   Required.
+        #   Required. A History id.
         # @param [String] execution_id
-        #   A Execution id.
-        #   Required.
+        #   Required. An Execution id.
         # @param [Google::Apis::ToolresultsV1beta3::Step] step_object
         # @param [String] request_id
         #   A unique request ID for server to detect duplicated requests. For example, a

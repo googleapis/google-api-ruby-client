@@ -564,6 +564,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :sha1, as: 'sha1'
+          property :sha256, as: 'sha256'
           property :url, as: 'url'
         end
       end

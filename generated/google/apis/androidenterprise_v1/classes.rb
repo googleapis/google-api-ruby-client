@@ -86,7 +86,8 @@ module Google
         attr_accessor :managed_configurations
       
         # The URI of the parent frame hosting the iframe. To prevent XSS, the iframe may
-        # not be hosted at other URIs. This URI must be https.
+        # not be hosted at other URIs. This URI must be https. Use whitespaces to
+        # separate multiple parent URIs.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent

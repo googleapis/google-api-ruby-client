@@ -881,6 +881,8 @@ module Google
       class TestCase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :elapsed_time, as: 'elapsedTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
           property :end_time, as: 'endTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
       
           property :skipped_message, as: 'skippedMessage'

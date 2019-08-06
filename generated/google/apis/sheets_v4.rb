@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/sheets/
     module SheetsV4
       VERSION = 'V4'
-      REVISION = '20190715'
+      REVISION = '20190730'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

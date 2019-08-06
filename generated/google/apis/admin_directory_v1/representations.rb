@@ -699,6 +699,7 @@ module Google
           property :annotated_asset_id, as: 'annotatedAssetId'
           property :annotated_location, as: 'annotatedLocation'
           property :annotated_user, as: 'annotatedUser'
+          property :auto_update_expiration, :numeric_string => true, as: 'autoUpdateExpiration'
           property :boot_mode, as: 'bootMode'
           collection :cpu_status_reports, as: 'cpuStatusReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::CpuStatusReport::Representation
       
@@ -707,8 +708,10 @@ module Google
           property :device_id, as: 'deviceId'
           collection :disk_volume_reports, as: 'diskVolumeReports', class: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport, decorator: Google::Apis::AdminDirectoryV1::ChromeOsDevice::DiskVolumeReport::Representation
       
+          property :dock_mac_address, as: 'dockMacAddress'
           property :etag, as: 'etag'
           property :ethernet_mac_address, as: 'ethernetMacAddress'
+          property :ethernet_mac_address0, as: 'ethernetMacAddress0'
           property :firmware_version, as: 'firmwareVersion'
           property :kind, as: 'kind'
           property :last_enrollment_time, as: 'lastEnrollmentTime', type: DateTime
@@ -716,6 +719,7 @@ module Google
           property :last_sync, as: 'lastSync', type: DateTime
       
           property :mac_address, as: 'macAddress'
+          property :manufacture_date, as: 'manufactureDate'
           property :meid, as: 'meid'
           property :model, as: 'model'
           property :notes, as: 'notes'
