@@ -78,7 +78,7 @@ module Google
         end
         
         # Updates the settings associated with a project, folder, or organization.
-        # Completely replaces the existing settings.
+        # Settings to update are determined by the value of field_mask.
         # @param [String] name
         #   The resource name of the settings. Format is one of:
         #   <ol>
@@ -87,6 +87,13 @@ module Google
         #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
+        # @param [String] update_mask
+        #   The update mask applies to the settings. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        #   If this field is left unset, only the notification_emails field will be
+        #   updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -104,13 +111,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_folder_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_folder_access_approval_settings(name, access_approval_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -301,7 +309,7 @@ module Google
         end
         
         # Updates the settings associated with a project, folder, or organization.
-        # Completely replaces the existing settings.
+        # Settings to update are determined by the value of field_mask.
         # @param [String] name
         #   The resource name of the settings. Format is one of:
         #   <ol>
@@ -310,6 +318,13 @@ module Google
         #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
+        # @param [String] update_mask
+        #   The update mask applies to the settings. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        #   If this field is left unset, only the notification_emails field will be
+        #   updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -327,13 +342,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_organization_access_approval_settings(name, access_approval_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -524,7 +540,7 @@ module Google
         end
         
         # Updates the settings associated with a project, folder, or organization.
-        # Completely replaces the existing settings.
+        # Settings to update are determined by the value of field_mask.
         # @param [String] name
         #   The resource name of the settings. Format is one of:
         #   <ol>
@@ -533,6 +549,13 @@ module Google
         #   <li>"organizations/`organization_id`/accessApprovalSettings"</li>
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
+        # @param [String] update_mask
+        #   The update mask applies to the settings. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        #   If this field is left unset, only the notification_emails field will be
+        #   updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -550,13 +573,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_project_access_approval_settings(name, access_approval_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_project_access_approval_settings(name, access_approval_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
           command.request_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.request_object = access_approval_settings_object
           command.response_representation = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings::Representation
           command.response_class = Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings
           command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

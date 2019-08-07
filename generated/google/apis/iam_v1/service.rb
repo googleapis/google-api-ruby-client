@@ -959,9 +959,10 @@ module Google
         # effect.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT_UNIQUE_ID`'.
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
-        #   the account.
+        #   the account. The `ACCOUNT` value can be the `email` address or the
+        #   `unique_id` of the service account.
         # @param [Google::Apis::IamV1::EnableServiceAccountRequest] enable_service_account_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1045,7 +1046,7 @@ module Google
         #   See the operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The policy format version to be returned.
-        #   Acceptable values are 0 and 1.
+        #   Acceptable values are 0, 1, and 3.
         #   If the value is 0, or the field is omitted, policy format version 1 will be
         #   returned.
         # @param [String] fields
@@ -1334,7 +1335,7 @@ module Google
         # not always be restorable.
         # @param [String] name
         #   The resource name of the service account in the following format:
-        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT_UNIQUE_ID`'.
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT_UNIQUE_ID``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account.
         # @param [Google::Apis::IamV1::UndeleteServiceAccountRequest] undelete_service_account_request_object

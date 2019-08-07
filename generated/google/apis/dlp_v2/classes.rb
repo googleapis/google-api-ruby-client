@@ -3172,7 +3172,7 @@ module Google
       
         # Unique resource name for the triggeredJob, assigned by the service when the
         # triggeredJob is created, for example
-        # `projects/dlp-test-project/triggeredJobs/53234423`.
+        # `projects/dlp-test-project/jobTriggers/53234423`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

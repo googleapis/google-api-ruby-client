@@ -64,7 +64,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -76,7 +76,7 @@ module Google
       # ]
       # `,
       # `
-      # "service": "fooservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com"
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -84,16 +84,16 @@ module Google
       # `
       # "log_type": "DATA_WRITE",
       # "exempted_members": [
-      # "user:bar@gmail.com"
+      # "user:aliya@example.com"
       # ]
       # `
       # ]
       # `
       # ]
       # `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
-      # bar@gmail.com from DATA_WRITE logging.
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and
+      # aliya@example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -127,7 +127,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -136,7 +136,7 @@ module Google
       # ]
       # `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
+      # jose@example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -219,7 +219,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -1142,6 +1142,62 @@ module Google
       end
       
       # 
+      class EventTypeImporter
+        include Google::Apis::Core::Hashable
+      
+        # The API version of the importer CRD.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of the importer CRD.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Parameters required to create an importer for the EventType.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::RunV1alpha1::EventTypeParameter>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # 
+      class EventTypeParameter
+        include Google::Apis::Core::Hashable
+      
+        # Description of the parameter. E.g. "Google Cloud Project Id."
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Name of the parameter. E.g. googleCloudProject.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # 
       class EventTypeSpec
         include Google::Apis::Core::Hashable
       
@@ -1155,6 +1211,11 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # The importer that provides this EventType to the eventing mesh.
+        # Corresponds to the JSON property `importer`
+        # @return [Google::Apis::RunV1alpha1::EventTypeImporter]
+        attr_accessor :importer
       
         # Schema is a URI with the EventType schema. It may be a JSON schema, a
         # protobuf schema, etc.
@@ -1183,6 +1244,7 @@ module Google
         def update!(**args)
           @broker = args[:broker] if args.key?(:broker)
           @description = args[:description] if args.key?(:description)
+          @importer = args[:importer] if args.key?(:importer)
           @schema = args[:schema] if args.key?(:schema)
           @source = args[:source] if args.key?(:source)
           @type = args[:type] if args.key?(:type)
@@ -2405,7 +2467,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -4079,6 +4141,32 @@ module Google
         end
       end
       
+      # 
+      class TriggerImporterSpec
+        include Google::Apis::Core::Hashable
+      
+        # Arguments to use for the importer. These must match the parameters in the
+        # EventType's importer.
+        # Corresponds to the JSON property `arguments`
+        # @return [Hash<String,String>]
+        attr_accessor :arguments
+      
+        # Name of the EventType that this importer provides.
+        # Corresponds to the JSON property `eventTypeName`
+        # @return [String]
+        attr_accessor :event_type_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arguments = args[:arguments] if args.key?(:arguments)
+          @event_type_name = args[:event_type_name] if args.key?(:event_type_name)
+        end
+      end
+      
       # The desired state of the Trigger.
       class TriggerSpec
         include Google::Apis::Core::Hashable
@@ -4091,12 +4179,17 @@ module Google
         attr_accessor :broker
       
         # Filter is the filter to apply against all events from the Broker. Only
-        # events that pass this filter will be sent to the Subscriber. If not
-        # specified, will default to allowing all events.
-        # This must be specified in Cloud Run.
+        # events that pass this filter will be sent to the Subscriber.
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::RunV1alpha1::TriggerFilter]
         attr_accessor :filter
+      
+        # Specification of the importers that will provide events to the trigger.
+        # Note, for Cloud Run, the importers will only be used if a filter is not
+        # specified.
+        # Corresponds to the JSON property `importers`
+        # @return [Array<Google::Apis::RunV1alpha1::TriggerImporterSpec>]
+        attr_accessor :importers
       
         # Subscriber is the addressable that receives events from the Broker that
         # pass the Filter. It is required.
@@ -4114,6 +4207,7 @@ module Google
         def update!(**args)
           @broker = args[:broker] if args.key?(:broker)
           @filter = args[:filter] if args.key?(:filter)
+          @importers = args[:importers] if args.key?(:importers)
           @subscriber = args[:subscriber] if args.key?(:subscriber)
         end
       end

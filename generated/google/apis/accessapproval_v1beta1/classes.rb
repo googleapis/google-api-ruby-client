@@ -26,6 +26,18 @@ module Google
       class AccessApprovalSettings
         include Google::Apis::Core::Hashable
       
+        # A list of Google Cloud Services for which the given resource has Access
+        # Approval enrolled. Access requests for the resource given by name against
+        # any of these services contained here will be required to have explicit
+        # approval. If name refers to an organization, enrollment can be done for
+        # individual services. If name refers to a folder or project, enrollment can
+        # only be done on an all or nothing basis.
+        # If a cloud_product is repeated in this list, the first entry will be
+        # honored and all following entries will be discarded.
+        # Corresponds to the JSON property `enrolledServices`
+        # @return [Array<Google::Apis::AccessapprovalV1beta1::EnrolledService>]
+        attr_accessor :enrolled_services
+      
         # The resource name of the settings. Format is one of:
         # <ol>
         # <li>"projects/`project_id`/accessApprovalSettings"</li>
@@ -49,6 +61,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enrolled_services = args[:enrolled_services] if args.key?(:enrolled_services)
           @name = args[:name] if args.key?(:name)
           @notification_emails = args[:notification_emails] if args.key?(:notification_emails)
         end
@@ -280,6 +293,44 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dismiss_time = args[:dismiss_time] if args.key?(:dismiss_time)
+        end
+      end
+      
+      # Represents the enrollment of a cloud resource into a specific service.
+      class EnrolledService
+        include Google::Apis::Core::Hashable
+      
+        # The product for which Access Approval will be enrolled. Allowed values are
+        # listed below (case-sensitive):
+        # <ol>
+        # <li>all</li>
+        # <li>appengine.googleapis.com</li>
+        # <li>bigquery.googleapis.com</li>
+        # <li>bigtable.googleapis.com</li>
+        # <li>cloudkms.googleapis.com</li>
+        # <li>compute.googleapis.com</li>
+        # <li>dataflow.googleapis.com</li>
+        # <li>iam.googleapis.com</li>
+        # <li>pubsub.googleapis.com</li>
+        # <li>storage.googleapis.com</li>
+        # <ol>
+        # Corresponds to the JSON property `cloudProduct`
+        # @return [String]
+        attr_accessor :cloud_product
+      
+        # The enrollment level of the service.
+        # Corresponds to the JSON property `enrollmentLevel`
+        # @return [String]
+        attr_accessor :enrollment_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_product = args[:cloud_product] if args.key?(:cloud_product)
+          @enrollment_level = args[:enrollment_level] if args.key?(:enrollment_level)
         end
       end
       

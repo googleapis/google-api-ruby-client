@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EventTypeImporter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EventTypeParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EventTypeSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -526,6 +538,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TriggerImporterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TriggerSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -808,11 +826,31 @@ module Google
         end
       end
       
+      class EventTypeImporter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          collection :parameters, as: 'parameters', class: Google::Apis::RunV1alpha1::EventTypeParameter, decorator: Google::Apis::RunV1alpha1::EventTypeParameter::Representation
+      
+        end
+      end
+      
+      class EventTypeParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :name, as: 'name'
+        end
+      end
+      
       class EventTypeSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :broker, as: 'broker'
           property :description, as: 'description'
+          property :importer, as: 'importer', class: Google::Apis::RunV1alpha1::EventTypeImporter, decorator: Google::Apis::RunV1alpha1::EventTypeImporter::Representation
+      
           property :schema, as: 'schema'
           property :source, as: 'source'
           property :type, as: 'type'
@@ -1503,11 +1541,21 @@ module Google
         end
       end
       
+      class TriggerImporterSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :arguments, as: 'arguments'
+          property :event_type_name, as: 'eventTypeName'
+        end
+      end
+      
       class TriggerSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :broker, as: 'broker'
           property :filter, as: 'filter', class: Google::Apis::RunV1alpha1::TriggerFilter, decorator: Google::Apis::RunV1alpha1::TriggerFilter::Representation
+      
+          collection :importers, as: 'importers', class: Google::Apis::RunV1alpha1::TriggerImporterSpec, decorator: Google::Apis::RunV1alpha1::TriggerImporterSpec::Representation
       
           property :subscriber, as: 'subscriber', class: Google::Apis::RunV1alpha1::SubscriberSpec, decorator: Google::Apis::RunV1alpha1::SubscriberSpec::Representation
       

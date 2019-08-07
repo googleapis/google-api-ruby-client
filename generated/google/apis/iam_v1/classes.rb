@@ -811,6 +811,12 @@ module Google
         attr_accessor :only_in_predefined_roles
         alias_method :only_in_predefined_roles?, :only_in_predefined_roles
       
+        # The preferred name for this permission. If present, then this permission is
+        # an alias of, and equivalent to, the listed primary_permission.
+        # Corresponds to the JSON property `primaryPermission`
+        # @return [String]
+        attr_accessor :primary_permission
+      
         # The current launch stage of the permission.
         # Corresponds to the JSON property `stage`
         # @return [String]
@@ -832,6 +838,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @only_in_predefined_roles = args[:only_in_predefined_roles] if args.key?(:only_in_predefined_roles)
+          @primary_permission = args[:primary_permission] if args.key?(:primary_permission)
           @stage = args[:stage] if args.key?(:stage)
           @title = args[:title] if args.key?(:title)
         end
@@ -1166,7 +1173,7 @@ module Google
         # The name of the role.
         # When Role is used in CreateRole, the role name must not be set.
         # When Role is used in output and other input such as UpdateRole, the role
-        # name is the complete path, e.g., roles/logging.viewer for curated roles
+        # name is the complete path, e.g., roles/logging.viewer for predefined roles
         # and organizations/`ORGANIZATION_ID`/roles/logging.viewer for custom roles.
         # Corresponds to the JSON property `name`
         # @return [String]

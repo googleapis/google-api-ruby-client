@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnrolledService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListApprovalRequestsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -85,6 +91,8 @@ module Google
       class AccessApprovalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enrolled_services, as: 'enrolledServices', class: Google::Apis::AccessapprovalV1beta1::EnrolledService, decorator: Google::Apis::AccessapprovalV1beta1::EnrolledService::Representation
+      
           property :name, as: 'name'
           collection :notification_emails, as: 'notificationEmails'
         end
@@ -151,6 +159,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dismiss_time, as: 'dismissTime'
+        end
+      end
+      
+      class EnrolledService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_product, as: 'cloudProduct'
+          property :enrollment_level, as: 'enrollmentLevel'
         end
       end
       

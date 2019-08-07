@@ -479,6 +479,7 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           property :only_in_predefined_roles, as: 'onlyInPredefinedRoles'
+          property :primary_permission, as: 'primaryPermission'
           property :stage, as: 'stage'
           property :title, as: 'title'
         end
