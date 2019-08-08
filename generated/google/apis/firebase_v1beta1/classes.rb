@@ -28,7 +28,7 @@ module Google
       
         # Deprecated. Instead, to set your project's default GCP resource location,
         # call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize)
-        # after you add Firebase services to your project.
+        # after you add Firebase resources to your project.
         # <br>
         # <br>The ID of the project's default GCP resource location. The location
         # must be one of the available
@@ -38,7 +38,11 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # The region code (CLDR) that the account will use for Firebase Analytics
+        # Deprecated. Instead, to link your Project with a Google Analytics account,
+        # call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
+        # after you add Firebase resources to your Project.
+        # <br>
+        # <br>The region code (CLDR) that the account will use for Firebase Analytics
         # data.
         # <br>For example: US, GB, or DE
         # <br>
@@ -47,7 +51,11 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
-        # The time zone that the account will use for Firebase Analytics data.
+        # Deprecated. Instead, to link your Project with a Google Analytics account,
+        # call [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)
+        # after you add Firebase resources to your Project.
+        # <br>
+        # <br>The time zone that the account will use for Firebase Analytics data.
         # <br>For example: America/Los_Angeles or Africa/Abidjan
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -895,7 +903,7 @@ module Google
         # means that the project does not yet have a default GCP resource location.
         # To set your project's default GCP resource location, call
         # [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you
-        # add Firebase services to your project.
+        # add Firebase resources to your project.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id

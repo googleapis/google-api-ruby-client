@@ -2857,12 +2857,6 @@ module Google
       class TextConfig
         include Google::Apis::Core::Hashable
       
-        # Experimental de-identification config to use. For internal use only.
-        # If not specified, it is ignored and standard DLP is used.
-        # Corresponds to the JSON property `experimentalConfig`
-        # @return [String]
-        attr_accessor :experimental_config
-      
         # The transformations to apply to the detected data.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::HealthcareV1alpha2::InfoTypeTransformation>]
@@ -2874,7 +2868,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @experimental_config = args[:experimental_config] if args.key?(:experimental_config)
           @transformations = args[:transformations] if args.key?(:transformations)
         end
       end

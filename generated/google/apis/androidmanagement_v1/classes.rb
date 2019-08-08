@@ -2990,6 +2990,12 @@ module Google
         attr_accessor :software_info_enabled
         alias_method :software_info_enabled?, :software_info_enabled
       
+        # Whether system properties reporting is enabled.
+        # Corresponds to the JSON property `systemPropertiesEnabled`
+        # @return [Boolean]
+        attr_accessor :system_properties_enabled
+        alias_method :system_properties_enabled?, :system_properties_enabled
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3005,6 +3011,7 @@ module Google
           @network_info_enabled = args[:network_info_enabled] if args.key?(:network_info_enabled)
           @power_management_events_enabled = args[:power_management_events_enabled] if args.key?(:power_management_events_enabled)
           @software_info_enabled = args[:software_info_enabled] if args.key?(:software_info_enabled)
+          @system_properties_enabled = args[:system_properties_enabled] if args.key?(:system_properties_enabled)
         end
       end
       

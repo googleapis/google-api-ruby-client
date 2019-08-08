@@ -156,8 +156,6 @@ module Google
         # <br>This method does not modify any billing account information on the
         # underlying GCP `Project`.
         # <br>
-        # <br>All fields listed in the [request body](#request-body) are required.
-        # <br>
         # <br>To call `AddFirebase`, a member must be an Editor or Owner for the
         # existing GCP `Project`. Service accounts cannot call `AddFirebase`.
         # @param [String] project

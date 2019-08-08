@@ -604,6 +604,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderCustomerLoyaltyInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderCustomerMarketingRightsInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2444,8 +2450,19 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :full_name, as: 'fullName'
+          property :invoice_receiving_email, as: 'invoiceReceivingEmail'
+          property :loyalty_info, as: 'loyaltyInfo', class: Google::Apis::ContentV2_1::OrderCustomerLoyaltyInfo, decorator: Google::Apis::ContentV2_1::OrderCustomerLoyaltyInfo::Representation
+      
           property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2_1::OrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2_1::OrderCustomerMarketingRightsInfo::Representation
       
+        end
+      end
+      
+      class OrderCustomerLoyaltyInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :loyalty_number, as: 'loyaltyNumber'
+          property :name, as: 'name'
         end
       end
       
@@ -2677,6 +2694,7 @@ module Google
           property :id, as: 'id'
           collection :line_items, as: 'lineItems', class: Google::Apis::ContentV2_1::OrderShipmentLineItemShipment, decorator: Google::Apis::ContentV2_1::OrderShipmentLineItemShipment::Representation
       
+          property :shipment_group_id, as: 'shipmentGroupId'
           property :status, as: 'status'
           property :tracking_id, as: 'trackingId'
         end

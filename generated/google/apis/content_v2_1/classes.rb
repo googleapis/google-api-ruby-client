@@ -1908,7 +1908,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in the excluded_destination field.
+        # unless provided in excludedDestinations.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -3671,6 +3671,17 @@ module Google
         # @return [String]
         attr_accessor :full_name
       
+        # Email address for receiving merchant issued value-added tax or invoice
+        # documentation of this order.
+        # Corresponds to the JSON property `invoiceReceivingEmail`
+        # @return [String]
+        attr_accessor :invoice_receiving_email
+      
+        # Loyalty program information.
+        # Corresponds to the JSON property `loyaltyInfo`
+        # @return [Google::Apis::ContentV2_1::OrderCustomerLoyaltyInfo]
+        attr_accessor :loyalty_info
+      
         # Customer's marketing preferences. Contains the marketing opt-in information
         # that is current at the time that the merchant call. User preference selections
         # can change from one order to the next so preferences must be checked with
@@ -3686,7 +3697,34 @@ module Google
         # Update properties of this object
         def update!(**args)
           @full_name = args[:full_name] if args.key?(:full_name)
+          @invoice_receiving_email = args[:invoice_receiving_email] if args.key?(:invoice_receiving_email)
+          @loyalty_info = args[:loyalty_info] if args.key?(:loyalty_info)
           @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
+        end
+      end
+      
+      # 
+      class OrderCustomerLoyaltyInfo
+        include Google::Apis::Core::Hashable
+      
+        # The loyalty card/membership number.
+        # Corresponds to the JSON property `loyaltyNumber`
+        # @return [String]
+        attr_accessor :loyalty_number
+      
+        # Name of card/membership holder, this field will be populated when
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @loyalty_number = args[:loyalty_number] if args.key?(:loyalty_number)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4511,6 +4549,9 @@ module Google
         # - "gls"
         # - "dpd"
         # - "bpost"
+        # - "colis priv�"
+        # - "boxtal"
+        # - "geodis"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -4536,6 +4577,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderShipmentLineItemShipment>]
         attr_accessor :line_items
       
+        # The shipment group ID of the shipment. This is set in shiplineitems request.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
         # The status of the shipment.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -4557,6 +4603,7 @@ module Google
           @delivery_date = args[:delivery_date] if args.key?(:delivery_date)
           @id = args[:id] if args.key?(:id)
           @line_items = args[:line_items] if args.key?(:line_items)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
           @status = args[:status] if args.key?(:status)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
         end
@@ -6939,7 +6986,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in the excluded_destination field.
+        # unless provided in excludedDestinations.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -8813,8 +8860,9 @@ module Google
         attr_accessor :promotions
       
         # The price of shipping for all items. Shipping tax is automatically calculated
-        # for MFL orders. For non-MFL orders, tax settings from Merchant Center are
-        # applied. Note that shipping is not taxed in certain states.
+        # for orders where marketplace facilitator tax laws are applicable. Otherwise,
+        # tax settings from Merchant Center are applied. Note that shipping is not taxed
+        # in certain states.
         # Corresponds to the JSON property `shippingCost`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :shipping_cost
@@ -8929,8 +8977,9 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The price for the product. Tax is automatically calculated for MFL orders. For
-        # non-MFL orders, tax settings from Merchant Center are applied.
+        # The price for the product. Tax is automatically calculated for orders where
+        # marketplace facilitator tax laws are applicable. Otherwise, tax settings from
+        # Merchant Center are applied.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price

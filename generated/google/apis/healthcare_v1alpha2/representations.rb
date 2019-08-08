@@ -1313,7 +1313,6 @@ module Google
       class TextConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :experimental_config, as: 'experimentalConfig'
           collection :transformations, as: 'transformations', class: Google::Apis::HealthcareV1alpha2::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1alpha2::InfoTypeTransformation::Representation
       
         end

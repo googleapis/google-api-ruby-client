@@ -2100,7 +2100,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in the excluded_destination field.
+        # unless provided in excludedDestinations.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -5187,6 +5187,9 @@ module Google
         # - "gls"
         # - "dpd"
         # - "bpost"
+        # - "colis priv�"
+        # - "boxtal"
+        # - "geodis"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -10612,8 +10615,9 @@ module Google
         attr_accessor :promotions
       
         # The price of shipping for all items. Shipping tax is automatically calculated
-        # for MFL orders. For non-MFL orders, tax settings from Merchant Center are
-        # applied. Note that shipping is not taxed in certain states.
+        # for orders where marketplace facilitator tax laws are applicable. Otherwise,
+        # tax settings from Merchant Center are applied. Note that shipping is not taxed
+        # in certain states.
         # Corresponds to the JSON property `shippingCost`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :shipping_cost
@@ -10810,8 +10814,9 @@ module Google
         # @return [String]
         attr_accessor :offer_id
       
-        # The price for the product. Tax is automatically calculated for MFL orders. For
-        # non-MFL orders, tax settings from Merchant Center are applied.
+        # The price for the product. Tax is automatically calculated for orders where
+        # marketplace facilitator tax laws are applicable. Otherwise, tax settings from
+        # Merchant Center are applied.
         # Corresponds to the JSON property `price`
         # @return [Google::Apis::ContentV2::Price]
         attr_accessor :price

@@ -2623,8 +2623,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Notifies that item return and refund was handled directly by merchant outside
-        # of Google payments processing (e.g. cash refund done in store).
+        # Deprecated. Notifies that item return and refund was handled directly by
+        # merchant outside of Google payments processing (e.g. cash refund done in store)
+        # .
         # Note: We recommend calling the returnrefundlineitem method to refund in-store
         # returns. We will issue the refund directly to the customer. This helps to
         # prevent possible differences arising between merchant and Google transaction

@@ -205,6 +205,7 @@ module Google
         
         # Enable multiple services on a project. The operation is atomic: if enabling
         # any service fails, then the entire batch fails, and no state changes occur.
+        # To enable a single service, use the `EnableService` method instead.
         # @param [String] parent
         #   Parent to enable services on.
         #   An example name would be:

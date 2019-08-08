@@ -25,7 +25,10 @@ module Google
     # @see https://cloud.google.com/security-scanner/
     module WebsecurityscannerV1
       VERSION = 'V1'
-      REVISION = '20190622'
+      REVISION = '20190805'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

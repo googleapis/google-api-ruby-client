@@ -1073,6 +1073,7 @@ module Google
           property :network_info_enabled, as: 'networkInfoEnabled'
           property :power_management_events_enabled, as: 'powerManagementEventsEnabled'
           property :software_info_enabled, as: 'softwareInfoEnabled'
+          property :system_properties_enabled, as: 'systemPropertiesEnabled'
         end
       end
       

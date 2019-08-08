@@ -2295,19 +2295,66 @@ module Google
         end
         
         # Import resources to the FHIR store by loading data from the specified
-        # sources. Each resource must have a client-supplied ID, which is retained
-        # by the server.
-        # The import operation is idempotent. Upon retry, the most recent data
-        # (matching the client-supplied ID) is overwritten, without creating a new
-        # resource version. If partial failures occur during the import, successful
-        # changes are not rolled back.
-        # If history imports are enabled
-        # (enable_history_import is set in the
-        # FHIR store's configuration), you can import historical versions of a
-        # resource by supplying a bundle of type `history`. The historical versions
-        # in the bundle must have `lastUpdated` timestamps. If a current or
-        # historical version with the supplied resource ID already exists, the
-        # bundle is rejected.
+        # sources. This method is optimized to load large quantities of data using
+        # import semantics that ignore some FHIR store configuration options and are
+        # not suitable for all use cases. It is primarily intended to load data into
+        # an empty FHIR store that is not being used by other clients. In cases
+        # where this method is not appropriate, consider using ExecuteBundle to
+        # load data.
+        # Every resource in the input must contain a client-supplied ID, and will be
+        # stored using that ID regardless of the
+        # enable_update_create setting on the FHIR
+        # store.
+        # The import process does not enforce referential integrity, regardless of
+        # the
+        # disable_referential_integrity
+        # setting on the FHIR store. This allows the import of resources with
+        # arbitrary interdependencies without considering grouping or ordering, but
+        # if the input data contains invalid references or if some resources fail to
+        # be imported, the FHIR store might be left in a state that violates
+        # referential integrity.
+        # If a resource with the specified ID already exists, the most recent
+        # version of the resource is overwritten without creating a new historical
+        # version, regardless of the
+        # disable_resource_versioning
+        # setting on the FHIR store. If transient failures occur during the import,
+        # it is possible that successfully imported resources will be overwritten
+        # more than once.
+        # The import operation is idempotent unless the input data contains multiple
+        # valid resources with the same ID but different contents. In that case,
+        # after the import completes, the store will contain exactly one resource
+        # with that ID but there is no ordering guarantee on which version of the
+        # contents it will have. The operation result counters do not count
+        # duplicate IDs as an error and will count one success for each resource in
+        # the input, which might result in a success count larger than the number
+        # of resources in the FHIR store. This often occurs when importing data
+        # organized in bundles produced by Patient-everything
+        # where each bundle contains its own copy of a resource such as Practitioner
+        # that might be referred to by many patients.
+        # If some resources fail to import, for example due to parsing errors,
+        # successfully imported resources are not rolled back.
+        # The location and format of the input data is specified by the parameters
+        # below. Note that if no format is specified, this method assumes the
+        # `BUNDLE` format. When using the `BUNDLE` format this method ignores the
+        # `Bundle.type` field, except for the special case of `history`, and does
+        # not apply any of the bundle processing semantics for batch or transaction
+        # bundles. Unlike in ExecuteBundle, transaction bundles are not executed
+        # as a single transaction and bundle-internal references are not rewritten.
+        # The bundle is treated as a collection of resources to be written as
+        # provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As
+        # an example, this allows the import of `searchset` bundles produced by a
+        # FHIR search or
+        # Patient-everything operation.
+        # If history imports are enabled by setting
+        # enable_history_import in the FHIR
+        # store's configuration, this method can import historical versions
+        # of a resource by supplying a bundle of type `history` and using the
+        # `BUNDLE` format. The historical versions in the bundle must have
+        # `lastUpdated` timestamps, and the resulting resource history on the server
+        # will appear as if the versions had been created at those timestamps. If a
+        # current or historical version with the supplied resource ID already
+        # exists, the bundle is rejected to avoid creating an inconsistent sequence
+        # of resource versions.
         # This method returns an Operation that can
         # be used to track the status of the import by calling
         # GetOperation.
