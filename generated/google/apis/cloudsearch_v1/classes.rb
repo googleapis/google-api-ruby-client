@@ -4167,15 +4167,6 @@ module Google
       class SourceCrowdingConfig
         include Google::Apis::Core::Hashable
       
-        # Use a field to control results crowding. For example, if you want to
-        # control overly similar results from Gmail topics, use `thread_id`.
-        # For similar pages from Google Sites, you can use `webspace_id`.
-        # When matching query results contain the same field value in
-        # `GenericMetadata`, crowding limits are set on those records.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
         # Maximum number of results allowed from a source.
         # No limits will be set on results if this value is less than or equal to 0.
         # Corresponds to the JSON property `numResults`
@@ -4188,23 +4179,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_suggestions
       
-        # Control results by content source. This option limits the total number
-        # of results from a given source and ignores field-based crowding control.
-        # Corresponds to the JSON property `source`
-        # @return [Boolean]
-        attr_accessor :source
-        alias_method :source?, :source
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @field = args[:field] if args.key?(:field)
           @num_results = args[:num_results] if args.key?(:num_results)
           @num_suggestions = args[:num_suggestions] if args.key?(:num_suggestions)
-          @source = args[:source] if args.key?(:source)
         end
       end
       

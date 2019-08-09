@@ -165,6 +165,7 @@ module Google
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_defined_name, as: 'consumerDefinedName'
           property :create_time, as: 'createTime'
           hash :labels, as: 'labels'
           hash :maintenance_policy_names, as: 'maintenancePolicyNames'

@@ -2067,10 +2067,8 @@ module Google
       class SourceCrowdingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
           property :num_results, as: 'numResults'
           property :num_suggestions, as: 'numSuggestions'
-          property :source, as: 'source'
         end
       end
       

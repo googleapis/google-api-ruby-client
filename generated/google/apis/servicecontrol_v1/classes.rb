@@ -1084,6 +1084,12 @@ module Google
         # @return [String]
         attr_accessor :severity
       
+        # Additional information about the source code location that produced the log
+        # entry.
+        # Corresponds to the JSON property `sourceLocation`
+        # @return [Google::Apis::ServicecontrolV1::LogEntrySourceLocation]
+        attr_accessor :source_location
+      
         # The log entry payload, represented as a structure that
         # is expressed as a JSON object.
         # Corresponds to the JSON property `structPayload`
@@ -1122,6 +1128,7 @@ module Google
           @operation = args[:operation] if args.key?(:operation)
           @proto_payload = args[:proto_payload] if args.key?(:proto_payload)
           @severity = args[:severity] if args.key?(:severity)
+          @source_location = args[:source_location] if args.key?(:source_location)
           @struct_payload = args[:struct_payload] if args.key?(:struct_payload)
           @text_payload = args[:text_payload] if args.key?(:text_payload)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
@@ -1169,6 +1176,45 @@ module Google
           @id = args[:id] if args.key?(:id)
           @last = args[:last] if args.key?(:last)
           @producer = args[:producer] if args.key?(:producer)
+        end
+      end
+      
+      # Additional information about the source code location that produced the log
+      # entry.
+      class LogEntrySourceLocation
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Source file name. Depending on the runtime environment, this
+        # might be a simple name or a fully-qualified name.
+        # Corresponds to the JSON property `file`
+        # @return [String]
+        attr_accessor :file
+      
+        # Optional. Human-readable name of the function or method being invoked, with
+        # optional context such as the class or package name. This information may be
+        # used in contexts such as the logs viewer, where a file and line number are
+        # less meaningful. The format can vary by language. For example:
+        # `qual.if.ied.Class.method` (Java), `dir/package.func` (Go), `function`
+        # (Python).
+        # Corresponds to the JSON property `function`
+        # @return [String]
+        attr_accessor :function
+      
+        # Optional. Line within the source file. 1-based; 0 indicates no line number
+        # available.
+        # Corresponds to the JSON property `line`
+        # @return [Fixnum]
+        attr_accessor :line
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @file = args[:file] if args.key?(:file)
+          @function = args[:function] if args.key?(:function)
+          @line = args[:line] if args.key?(:line)
         end
       end
       
@@ -1458,8 +1504,8 @@ module Google
       
       # This message defines attributes for a node that handles a network request.
       # The node can be either a service or an application that sends, forwards,
-      # or receives the request. Service peers should fill in the `service`,
-      # `principal`, and `labels` as appropriate.
+      # or receives the request. Service peers should fill in
+      # `principal` and `labels` as appropriate.
       class Peer
         include Google::Apis::Core::Hashable
       
@@ -1492,12 +1538,6 @@ module Google
         # @return [String]
         attr_accessor :region_code
       
-        # The canonical service name of the peer.
-        # NOTE: different systems may have different service naming schemes.
-        # Corresponds to the JSON property `service`
-        # @return [String]
-        attr_accessor :service
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1509,7 +1549,6 @@ module Google
           @port = args[:port] if args.key?(:port)
           @principal = args[:principal] if args.key?(:principal)
           @region_code = args[:region_code] if args.key?(:region_code)
-          @service = args[:service] if args.key?(:service)
         end
       end
       
@@ -1848,11 +1887,6 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::Auth]
         attr_accessor :auth
       
-        # The HTTP URL fragment. No URL decoding is performed.
-        # Corresponds to the JSON property `fragment`
-        # @return [String]
-        attr_accessor :fragment
-      
         # The HTTP request headers. If multiple headers share the same key, they
         # must be merged according to the HTTP spec. All header keys must be
         # lowercased, because HTTP header keys are case-insensitive.
@@ -1926,7 +1960,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth = args[:auth] if args.key?(:auth)
-          @fragment = args[:fragment] if args.key?(:fragment)
           @headers = args[:headers] if args.key?(:headers)
           @host = args[:host] if args.key?(:host)
           @id = args[:id] if args.key?(:id)
@@ -1985,8 +2018,8 @@ module Google
       
         # This message defines attributes for a node that handles a network request.
         # The node can be either a service or an application that sends, forwards,
-        # or receives the request. Service peers should fill in the `service`,
-        # `principal`, and `labels` as appropriate.
+        # or receives the request. Service peers should fill in
+        # `principal` and `labels` as appropriate.
         # Corresponds to the JSON property `destinationAttributes`
         # @return [Google::Apis::ServicecontrolV1::Peer]
         attr_accessor :destination_attributes
@@ -2045,8 +2078,9 @@ module Google
         # @return [String]
         attr_accessor :service
       
-        # The type of the resource. The scheme is platform-specific because
+        # The type of the resource. The syntax is platform-specific because
         # different platforms define their resources differently.
+        # For Google APIs, the type format must be "`service`/`kind`".
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

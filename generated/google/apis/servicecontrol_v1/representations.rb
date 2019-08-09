@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogEntrySourceLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MetricValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -513,6 +519,8 @@ module Google
       
           hash :proto_payload, as: 'protoPayload'
           property :severity, as: 'severity'
+          property :source_location, as: 'sourceLocation', class: Google::Apis::ServicecontrolV1::LogEntrySourceLocation, decorator: Google::Apis::ServicecontrolV1::LogEntrySourceLocation::Representation
+      
           hash :struct_payload, as: 'structPayload'
           property :text_payload, as: 'textPayload'
           property :timestamp, as: 'timestamp'
@@ -527,6 +535,15 @@ module Google
           property :id, as: 'id'
           property :last, as: 'last'
           property :producer, as: 'producer'
+        end
+      end
+      
+      class LogEntrySourceLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :file, as: 'file'
+          property :function, as: 'function'
+          property :line, :numeric_string => true, as: 'line'
         end
       end
       
@@ -596,7 +613,6 @@ module Google
           property :port, :numeric_string => true, as: 'port'
           property :principal, as: 'principal'
           property :region_code, as: 'regionCode'
-          property :service, as: 'service'
         end
       end
       
@@ -683,7 +699,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth, as: 'auth', class: Google::Apis::ServicecontrolV1::Auth, decorator: Google::Apis::ServicecontrolV1::Auth::Representation
       
-          property :fragment, as: 'fragment'
           hash :headers, as: 'headers'
           property :host, as: 'host'
           property :id, as: 'id'

@@ -713,9 +713,9 @@ module Google
         end
         
         # Creates an upload session for uploading item content. For items smaller
-        # than 100 KiB, it's easier to embed the content
+        # than 100 KB, it's easier to embed the content
         # inline within
-        # update.
+        # an index request.
         # @param [String] name
         #   Name of the Item to start a resumable upload.
         #   Format: datasources/`source_id`/items/`item_id`.
@@ -751,13 +751,21 @@ module Google
         
         # Uploads media for indexing.
         # The upload endpoint supports direct and resumable upload protocols and
-        # is intended for large items that can not be inlined during index requests. To
-        # index large content:
-        # 1. Call upload to begin
-        # a session and get the item reference.
-        # 1. Upload the content using the item reference's resource name.
-        # 1. Call index with the item
-        # reference as the content.
+        # is intended for large items that can not be
+        # [inlined during index requests](https://developers.google.com/cloud-search/
+        # docs/reference/rest/v1/indexing.datasources.items#itemcontent).
+        # To index large content:
+        # 1. Call
+        # indexing.datasources.items.upload
+        # with the resource name to begin an upload session and retrieve the
+        # UploadItemRef.
+        # 1. Call media.upload to upload the content using the same resource name from
+        # step 1.
+        # 1. Call indexing.datasources.items.index
+        # to index the item. Populate the
+        # [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.
+        # items#ItemContent)
+        # with the UploadItemRef from step 1.
         # For additional information, see
         # [Create a content connector using the REST API](https://developers.google.com/
         # cloud-search/docs/guides/content-connector#rest).

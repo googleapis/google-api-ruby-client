@@ -152,11 +152,21 @@ module Google
       # "seconds": 1535406431,
       # `,
       # `
-      # `
+      # `,
+      # "consumer_defined_name": "my-sql-instance1",
       # `
       # ```
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         include Google::Apis::Core::Hashable
+      
+        # consumer_defined_name is the name that is set by the consumer. On the other
+        # hand Name field represents system-assigned id of an instance so consumers
+        # are not necessarily aware of it.
+        # consumer_defined_name is used for notification/UI purposes for consumer to
+        # recognize their instances.
+        # Corresponds to the JSON property `consumerDefinedName`
+        # @return [String]
+        attr_accessor :consumer_defined_name
       
         # Output only. Timestamp when the resource was created.
         # Corresponds to the JSON property `createTime`
@@ -249,6 +259,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @consumer_defined_name = args[:consumer_defined_name] if args.key?(:consumer_defined_name)
           @create_time = args[:create_time] if args.key?(:create_time)
           @labels = args[:labels] if args.key?(:labels)
           @maintenance_policy_names = args[:maintenance_policy_names] if args.key?(:maintenance_policy_names)
