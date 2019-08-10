@@ -445,6 +445,8 @@ module Google
           property :name, as: 'name'
           collection :notification_channels, as: 'notificationChannels'
           hash :user_labels, as: 'userLabels'
+          property :validity, as: 'validity', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
         end
       end
       
@@ -530,6 +532,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          property :matcher, as: 'matcher'
         end
       end
       
@@ -675,6 +678,7 @@ module Google
           property :path, as: 'path'
           property :port, as: 'port'
           property :use_ssl, as: 'useSsl'
+          property :validate_ssl, as: 'validateSsl'
         end
       end
       

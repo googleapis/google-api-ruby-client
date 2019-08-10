@@ -173,7 +173,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -185,7 +185,7 @@ module Google
       # ]
       # `,
       # `
-      # "service": "fooservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com"
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -193,16 +193,16 @@ module Google
       # `
       # "log_type": "DATA_WRITE",
       # "exempted_members": [
-      # "user:bar@gmail.com"
+      # "user:aliya@example.com"
       # ]
       # `
       # ]
       # `
       # ]
       # `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
-      # bar@gmail.com from DATA_WRITE logging.
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and
+      # aliya@example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -236,7 +236,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -245,7 +245,7 @@ module Google
       # ]
       # `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
+      # jose@example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -255,6 +255,14 @@ module Google
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
+      
+        # Specifies whether principals can be exempted for the same LogType in
+        # lower-level resource policies. If true, any lower-level exemptions will
+        # be ignored.
+        # Corresponds to the JSON property `ignoreChildExemptions`
+        # @return [Boolean]
+        attr_accessor :ignore_child_exemptions
+        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
       
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
@@ -268,6 +276,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -321,7 +330,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -1105,7 +1114,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The policy format version to be returned.
-        # Acceptable values are 0 and 1.
+        # Acceptable values are 0, 1, and 3.
         # If the value is 0, or the field is omitted, policy format version 1 will be
         # returned.
         # Corresponds to the JSON property `requestedPolicyVersion`
@@ -1244,8 +1253,7 @@ module Google
       class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # Git commit hash.
+        # Required. Git commit hash.
         # Corresponds to the JSON property `revisionId`
         # @return [String]
         attr_accessor :revision_id
@@ -1671,7 +1679,7 @@ module Google
         attr_accessor :long_description
       
         # The name of the note in the form
-        # "providers/`provider_id`/notes/`NOTE_ID`"
+        # "projects/`provider_project_id`/notes/`NOTE_ID`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1699,6 +1707,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # An Upgrade Note represents a potential upgrade of a package to a given
+        # version. For each package version combination (i.e. bash 4.0, bash 4.1,
+        # bash 4.1.2), there will be a Upgrade Note.
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::UpgradeNote]
+        attr_accessor :upgrade
+      
         # VulnerabilityType provides metadata about a security vulnerability.
         # Corresponds to the JSON property `vulnerabilityType`
         # @return [Google::Apis::ContaineranalysisV1alpha1::VulnerabilityType]
@@ -1724,6 +1739,7 @@ module Google
           @related_url = args[:related_url] if args.key?(:related_url)
           @short_description = args[:short_description] if args.key?(:short_description)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability_type = args[:vulnerability_type] if args.key?(:vulnerability_type)
         end
       end
@@ -1818,6 +1834,13 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # An Upgrade Occurrence represents that a specific resource_url could install a
+        # specific upgrade. This presence is supplied via local sources (i.e. it is
+        # present in the mirror and the running system has noticed its availability).
+        # Corresponds to the JSON property `upgrade`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence]
+        attr_accessor :upgrade
+      
         # Used by Occurrence to point to where the vulnerability exists and how
         # to fix it.
         # Corresponds to the JSON property `vulnerabilityDetails`
@@ -1844,6 +1867,7 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @upgrade = args[:upgrade] if args.key?(:upgrade)
           @vulnerability_details = args[:vulnerability_details] if args.key?(:vulnerability_details)
         end
       end
@@ -2089,7 +2113,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2548,6 +2572,123 @@ module Google
         def update!(**args)
           @operation = args[:operation] if args.key?(:operation)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # The Upgrade Distribution represents metadata about the Upgrade for each
+      # operating system (CPE). Some distributions have additional metadata around
+      # updates, classifying them into various categories and severities.
+      class UpgradeDistribution
+        include Google::Apis::Core::Hashable
+      
+        # The operating system classification of this Upgrade, as specified by the
+        # upstream operating system upgrade feed.
+        # Corresponds to the JSON property `classification`
+        # @return [String]
+        attr_accessor :classification
+      
+        # Required - The specific operating system this metadata applies to. See
+        # https://cpe.mitre.org/specification/.
+        # Corresponds to the JSON property `cpeUri`
+        # @return [String]
+        attr_accessor :cpe_uri
+      
+        # The cve that would be resolved by this upgrade.
+        # Corresponds to the JSON property `cve`
+        # @return [Array<String>]
+        attr_accessor :cve
+      
+        # The severity as specified by the upstream operating system.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @classification = args[:classification] if args.key?(:classification)
+          @cpe_uri = args[:cpe_uri] if args.key?(:cpe_uri)
+          @cve = args[:cve] if args.key?(:cve)
+          @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # An Upgrade Note represents a potential upgrade of a package to a given
+      # version. For each package version combination (i.e. bash 4.0, bash 4.1,
+      # bash 4.1.2), there will be a Upgrade Note.
+      class UpgradeNote
+        include Google::Apis::Core::Hashable
+      
+        # Metadata about the upgrade for each specific operating system.
+        # Corresponds to the JSON property `distributions`
+        # @return [Array<Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution>]
+        attr_accessor :distributions
+      
+        # Required - The package this Upgrade is for.
+        # Corresponds to the JSON property `package`
+        # @return [String]
+        attr_accessor :package
+      
+        # Version contains structured information about the version of the package.
+        # For a discussion of this in Debian/Ubuntu:
+        # http://serverfault.com/questions/604541/debian-packages-version-convention
+        # For a discussion of this in Redhat/Fedora/Centos:
+        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Corresponds to the JSON property `version`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distributions = args[:distributions] if args.key?(:distributions)
+          @package = args[:package] if args.key?(:package)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # An Upgrade Occurrence represents that a specific resource_url could install a
+      # specific upgrade. This presence is supplied via local sources (i.e. it is
+      # present in the mirror and the running system has noticed its availability).
+      class UpgradeOccurrence
+        include Google::Apis::Core::Hashable
+      
+        # The Upgrade Distribution represents metadata about the Upgrade for each
+        # operating system (CPE). Some distributions have additional metadata around
+        # updates, classifying them into various categories and severities.
+        # Corresponds to the JSON property `distribution`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution]
+        attr_accessor :distribution
+      
+        # Required - The package this Upgrade is for.
+        # Corresponds to the JSON property `package`
+        # @return [String]
+        attr_accessor :package
+      
+        # Version contains structured information about the version of the package.
+        # For a discussion of this in Debian/Ubuntu:
+        # http://serverfault.com/questions/604541/debian-packages-version-convention
+        # For a discussion of this in Redhat/Fedora/Centos:
+        # http://blog.jasonantman.com/2014/07/how-yum-and-rpm-compare-versions/
+        # Corresponds to the JSON property `parsedVersion`
+        # @return [Google::Apis::ContaineranalysisV1alpha1::Version]
+        attr_accessor :parsed_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distribution = args[:distribution] if args.key?(:distribution)
+          @package = args[:package] if args.key?(:package)
+          @parsed_version = args[:parsed_version] if args.key?(:parsed_version)
         end
       end
       

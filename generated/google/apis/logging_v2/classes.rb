@@ -508,8 +508,8 @@ module Google
       class ListLogsResponse
         include Google::Apis::Core::Hashable
       
-        # A list of log names. For example, "projects/my-project/syslog" or "
-        # organizations/123/cloudresourcemanager.googleapis.com%2Factivity".
+        # A list of log names. For example, "projects/my-project/logs/syslog" or "
+        # organizations/123/logs/cloudresourcemanager.googleapis.com%2Factivity".
         # Corresponds to the JSON property `logNames`
         # @return [Array<String>]
         attr_accessor :log_names

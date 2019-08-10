@@ -518,6 +518,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -709,6 +710,7 @@ module Google
           property :package, as: 'package'
           property :package_type, as: 'packageType'
           property :severity_name, as: 'severityName'
+          property :source_update_time, as: 'sourceUpdateTime'
         end
       end
       
@@ -1220,6 +1222,7 @@ module Google
           collection :details, as: 'details', class: Google::Apis::ContaineranalysisV1beta1::Detail, decorator: Google::Apis::ContaineranalysisV1beta1::Detail::Representation
       
           property :severity, as: 'severity'
+          property :source_update_time, as: 'sourceUpdateTime'
           collection :windows_details, as: 'windowsDetails', class: Google::Apis::ContaineranalysisV1beta1::WindowsDetail, decorator: Google::Apis::ContaineranalysisV1beta1::WindowsDetail::Representation
       
         end

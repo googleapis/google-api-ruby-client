@@ -400,6 +400,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeDistribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeNote
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeOccurrence
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -470,6 +488,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -873,6 +892,8 @@ module Google
       
           property :short_description, as: 'shortDescription'
           property :update_time, as: 'updateTime'
+          property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeNote::Representation
+      
           property :vulnerability_type, as: 'vulnerabilityType', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityType, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityType::Representation
       
         end
@@ -902,6 +923,8 @@ module Google
       
           property :resource_url, as: 'resourceUrl'
           property :update_time, as: 'updateTime'
+          property :upgrade, as: 'upgrade', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeOccurrence::Representation
+      
           property :vulnerability_details, as: 'vulnerabilityDetails', class: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityDetails, decorator: Google::Apis::ContaineranalysisV1alpha1::VulnerabilityDetails::Representation
       
         end
@@ -1073,6 +1096,38 @@ module Google
           property :operation, as: 'operation', class: Google::Apis::ContaineranalysisV1alpha1::Operation, decorator: Google::Apis::ContaineranalysisV1alpha1::Operation::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class UpgradeDistribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :classification, as: 'classification'
+          property :cpe_uri, as: 'cpeUri'
+          collection :cve, as: 'cve'
+          property :severity, as: 'severity'
+        end
+      end
+      
+      class UpgradeNote
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :distributions, as: 'distributions', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution::Representation
+      
+          property :package, as: 'package'
+          property :version, as: 'version', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
+      
+        end
+      end
+      
+      class UpgradeOccurrence
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distribution, as: 'distribution', class: Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution, decorator: Google::Apis::ContaineranalysisV1alpha1::UpgradeDistribution::Representation
+      
+          property :package, as: 'package'
+          property :parsed_version, as: 'parsedVersion', class: Google::Apis::ContaineranalysisV1alpha1::Version, decorator: Google::Apis::ContaineranalysisV1alpha1::Version::Representation
+      
         end
       end
       

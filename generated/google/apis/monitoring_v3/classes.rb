@@ -171,6 +171,16 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :user_labels
       
+        # The Status type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+        # (https://github.com/grpc). Each Status message contains three pieces of data:
+        # error code, error message, and error details.You can find out more about this
+        # error model and how to work with it in the API Design Guide (https://cloud.
+        # google.com/apis/design/errors).
+        # Corresponds to the JSON property `validity`
+        # @return [Google::Apis::MonitoringV3::Status]
+        attr_accessor :validity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -187,6 +197,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+          @validity = args[:validity] if args.key?(:validity)
         end
       end
       
@@ -506,6 +517,13 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # The matcher representing content match options which the check will run with.
+        # If the field is not specified (in previous versions), the option is set to be
+        # CONTAINS_STRING which performs content substring matching.
+        # Corresponds to the JSON property `matcher`
+        # @return [String]
+        attr_accessor :matcher
+      
         def initialize(**args)
            update!(**args)
         end
@@ -513,6 +531,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @matcher = args[:matcher] if args.key?(:matcher)
         end
       end
       
@@ -1130,6 +1149,13 @@ module Google
         attr_accessor :use_ssl
         alias_method :use_ssl?, :use_ssl
       
+        # Boolean specifying whether to validate SSL certificates. Only applies to
+        # uptime_url checks. If use_ssl is false, setting this to true has no effect.
+        # Corresponds to the JSON property `validateSsl`
+        # @return [Boolean]
+        attr_accessor :validate_ssl
+        alias_method :validate_ssl?, :validate_ssl
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1142,6 +1168,7 @@ module Google
           @path = args[:path] if args.key?(:path)
           @port = args[:port] if args.key?(:port)
           @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
+          @validate_ssl = args[:validate_ssl] if args.key?(:validate_ssl)
         end
       end
       
