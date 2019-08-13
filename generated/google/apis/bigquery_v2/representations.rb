@@ -88,6 +88,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CategoricalValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CategoryCount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ClusterInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +209,12 @@ module Google
       end
       
       class ExternalDataConfiguration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeatureValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -754,6 +778,32 @@ module Google
         end
       end
       
+      class CategoricalValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :category_counts, as: 'categoryCounts', class: Google::Apis::BigqueryV2::CategoryCount, decorator: Google::Apis::BigqueryV2::CategoryCount::Representation
+      
+        end
+      end
+      
+      class CategoryCount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :count, :numeric_string => true, as: 'count'
+        end
+      end
+      
+      class Cluster
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :centroid_id, :numeric_string => true, as: 'centroidId'
+          property :count, :numeric_string => true, as: 'count'
+          collection :feature_values, as: 'featureValues', class: Google::Apis::BigqueryV2::FeatureValue, decorator: Google::Apis::BigqueryV2::FeatureValue::Representation
+      
+        end
+      end
+      
       class ClusterInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -773,6 +823,8 @@ module Google
       class ClusteringMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters', class: Google::Apis::BigqueryV2::Cluster, decorator: Google::Apis::BigqueryV2::Cluster::Representation
+      
           property :davies_bouldin_index, as: 'daviesBouldinIndex'
           property :mean_squared_distance, as: 'meanSquaredDistance'
         end
@@ -981,6 +1033,16 @@ module Google
       
           property :source_format, as: 'sourceFormat'
           collection :source_uris, as: 'sourceUris'
+        end
+      end
+      
+      class FeatureValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :categorical_value, as: 'categoricalValue', class: Google::Apis::BigqueryV2::CategoricalValue, decorator: Google::Apis::BigqueryV2::CategoricalValue::Representation
+      
+          property :feature_column, as: 'featureColumn'
+          property :numerical_value, as: 'numericalValue'
         end
       end
       
@@ -1878,6 +1940,8 @@ module Google
           property :early_stop, as: 'earlyStop'
           property :initial_learn_rate, as: 'initialLearnRate'
           collection :input_label_columns, as: 'inputLabelColumns'
+          property :kmeans_initialization_column, as: 'kmeansInitializationColumn'
+          property :kmeans_initialization_method, as: 'kmeansInitializationMethod'
           property :l1_regularization, as: 'l1Regularization'
           property :l2_regularization, as: 'l2Regularization'
           hash :label_class_weights, as: 'labelClassWeights'

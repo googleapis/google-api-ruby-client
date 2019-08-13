@@ -617,6 +617,85 @@ module Google
         end
       end
       
+      # Representative value of a categorical feature.
+      class CategoricalValue
+        include Google::Apis::Core::Hashable
+      
+        # Counts of all categories for the categorical feature. If there are
+        # more than ten categories, we return top ten (by count) and return
+        # one more CategoryCount with category "_OTHER_" and count as
+        # aggregate counts of remaining categories.
+        # Corresponds to the JSON property `categoryCounts`
+        # @return [Array<Google::Apis::BigqueryV2::CategoryCount>]
+        attr_accessor :category_counts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category_counts = args[:category_counts] if args.key?(:category_counts)
+        end
+      end
+      
+      # Represents the count of a single category within the cluster.
+      class CategoryCount
+        include Google::Apis::Core::Hashable
+      
+        # The name of category.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The count of training samples matching the category within the
+        # cluster.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @count = args[:count] if args.key?(:count)
+        end
+      end
+      
+      # Message containing the information about one cluster.
+      class Cluster
+        include Google::Apis::Core::Hashable
+      
+        # Centroid id.
+        # Corresponds to the JSON property `centroidId`
+        # @return [Fixnum]
+        attr_accessor :centroid_id
+      
+        # Count of training data rows that were assigned to this cluster.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # Values of highly variant features for this cluster.
+        # Corresponds to the JSON property `featureValues`
+        # @return [Array<Google::Apis::BigqueryV2::FeatureValue>]
+        attr_accessor :feature_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @centroid_id = args[:centroid_id] if args.key?(:centroid_id)
+          @count = args[:count] if args.key?(:count)
+          @feature_values = args[:feature_values] if args.key?(:feature_values)
+        end
+      end
+      
       # Information about a single cluster for clustering model.
       class ClusterInfo
         include Google::Apis::Core::Hashable
@@ -675,6 +754,11 @@ module Google
       class ClusteringMetrics
         include Google::Apis::Core::Hashable
       
+        # [Beta] Information for all clusters.
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<Google::Apis::BigqueryV2::Cluster>]
+        attr_accessor :clusters
+      
         # Davies-Bouldin index.
         # Corresponds to the JSON property `daviesBouldinIndex`
         # @return [Float]
@@ -691,6 +775,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @clusters = args[:clusters] if args.key?(:clusters)
           @davies_bouldin_index = args[:davies_bouldin_index] if args.key?(:davies_bouldin_index)
           @mean_squared_distance = args[:mean_squared_distance] if args.key?(:mean_squared_distance)
         end
@@ -1623,6 +1708,38 @@ module Google
         end
       end
       
+      # Representative value of a single feature within the cluster.
+      class FeatureValue
+        include Google::Apis::Core::Hashable
+      
+        # Representative value of a categorical feature.
+        # Corresponds to the JSON property `categoricalValue`
+        # @return [Google::Apis::BigqueryV2::CategoricalValue]
+        attr_accessor :categorical_value
+      
+        # The feature column name.
+        # Corresponds to the JSON property `featureColumn`
+        # @return [String]
+        attr_accessor :feature_column
+      
+        # The numerical feature value. This is the centroid value for this
+        # feature.
+        # Corresponds to the JSON property `numericalValue`
+        # @return [Float]
+        attr_accessor :numerical_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categorical_value = args[:categorical_value] if args.key?(:categorical_value)
+          @feature_column = args[:feature_column] if args.key?(:feature_column)
+          @numerical_value = args[:numerical_value] if args.key?(:numerical_value)
+        end
+      end
+      
       # 
       class GetQueryResultsResponse
         include Google::Apis::Core::Hashable
@@ -1828,7 +1945,7 @@ module Google
       class IterationResult
         include Google::Apis::Core::Hashable
       
-        # [Beta] Information about top clusters for clustering models.
+        # Information about top clusters for clustering models.
         # Corresponds to the JSON property `clusterInfos`
         # @return [Array<Google::Apis::BigqueryV2::ClusterInfo>]
         attr_accessor :cluster_infos
@@ -5212,7 +5329,7 @@ module Google
         # @return [String]
         attr_accessor :data_split_method
       
-        # [Beta] Distance type for clustering models.
+        # Distance type for clustering models.
         # Corresponds to the JSON property `distanceType`
         # @return [String]
         attr_accessor :distance_type
@@ -5235,6 +5352,17 @@ module Google
         # Corresponds to the JSON property `inputLabelColumns`
         # @return [Array<String>]
         attr_accessor :input_label_columns
+      
+        # The column used to provide the initial centroids for kmeans algorithm
+        # when kmeans_initialization_method is CUSTOM.
+        # Corresponds to the JSON property `kmeansInitializationColumn`
+        # @return [String]
+        attr_accessor :kmeans_initialization_column
+      
+        # The method used to initialize the centroids for kmeans algorithm.
+        # Corresponds to the JSON property `kmeansInitializationMethod`
+        # @return [String]
+        attr_accessor :kmeans_initialization_method
       
         # L1 regularization coefficient.
         # Corresponds to the JSON property `l1Regularization`
@@ -5286,7 +5414,7 @@ module Google
         # @return [String]
         attr_accessor :model_uri
       
-        # [Beta] Number of clusters for clustering models.
+        # Number of clusters for clustering models.
         # Corresponds to the JSON property `numClusters`
         # @return [Fixnum]
         attr_accessor :num_clusters
@@ -5315,6 +5443,8 @@ module Google
           @early_stop = args[:early_stop] if args.key?(:early_stop)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
+          @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
+          @kmeans_initialization_method = args[:kmeans_initialization_method] if args.key?(:kmeans_initialization_method)
           @l1_regularization = args[:l1_regularization] if args.key?(:l1_regularization)
           @l2_regularization = args[:l2_regularization] if args.key?(:l2_regularization)
           @label_class_weights = args[:label_class_weights] if args.key?(:label_class_weights)
