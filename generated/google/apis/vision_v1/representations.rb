@@ -2086,6 +2086,7 @@ module Google
       class AsyncBatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AsyncAnnotateFileRequest, decorator: Google::Apis::VisionV1::AsyncAnnotateFileRequest::Representation
       
         end
@@ -2104,6 +2105,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1::OutputConfig, decorator: Google::Apis::VisionV1::OutputConfig::Representation
       
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AnnotateImageRequest, decorator: Google::Apis::VisionV1::AnnotateImageRequest::Representation
       
         end
@@ -2120,6 +2122,7 @@ module Google
       class BatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AnnotateFileRequest, decorator: Google::Apis::VisionV1::AnnotateFileRequest::Representation
       
         end
@@ -2136,6 +2139,7 @@ module Google
       class BatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1::AnnotateImageRequest, decorator: Google::Apis::VisionV1::AnnotateImageRequest::Representation
       
         end
@@ -4055,6 +4059,7 @@ module Google
       class GoogleCloudVisionV1p4beta1ImageQuality
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :quality_score, as: 'qualityScore'
         end
       end
       
@@ -4242,10 +4247,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       
@@ -4795,10 +4806,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       
@@ -5316,10 +5333,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       

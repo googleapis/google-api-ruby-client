@@ -1252,7 +1252,97 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReturnAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnAddressAddress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicyPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnPolicySeasonalOverride
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReturnShipment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnaddressCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnaddressCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnaddressCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnaddressCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnaddressListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnpolicyCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnpolicyCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnpolicyCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnpolicyCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReturnpolicyListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2504,6 +2594,7 @@ module Google
           property :quantity_pending, as: 'quantityPending'
           property :quantity_returned, as: 'quantityReturned'
           property :quantity_shipped, as: 'quantityShipped'
+          property :quantity_undeliverable, as: 'quantityUndeliverable'
           property :return_info, as: 'returnInfo', class: Google::Apis::ContentV2_1::OrderLineItemReturnInfo, decorator: Google::Apis::ContentV2_1::OrderLineItemReturnInfo::Representation
       
           collection :returns, as: 'returns', class: Google::Apis::ContentV2_1::OrderReturn, decorator: Google::Apis::ContentV2_1::OrderReturn::Representation
@@ -3709,6 +3800,67 @@ module Google
         end
       end
       
+      class ReturnAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::ContentV2_1::ReturnAddressAddress, decorator: Google::Apis::ContentV2_1::ReturnAddressAddress::Representation
+      
+          property :country, as: 'country'
+          property :kind, as: 'kind'
+          property :label, as: 'label'
+          property :phone_number, as: 'phoneNumber'
+          property :return_address_id, as: 'returnAddressId'
+        end
+      end
+      
+      class ReturnAddressAddress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :locality, as: 'locality'
+          property :postal_code, as: 'postalCode'
+          property :recipient_name, as: 'recipientName'
+          property :region, as: 'region'
+          collection :street_address, as: 'streetAddress'
+        end
+      end
+      
+      class ReturnPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :country, as: 'country'
+          property :kind, as: 'kind'
+          property :label, as: 'label'
+          property :name, as: 'name'
+          collection :non_free_return_reasons, as: 'nonFreeReturnReasons'
+          property :policy, as: 'policy', class: Google::Apis::ContentV2_1::ReturnPolicyPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicyPolicy::Representation
+      
+          property :return_policy_id, as: 'returnPolicyId'
+          collection :seasonal_overrides, as: 'seasonalOverrides', class: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride, decorator: Google::Apis::ContentV2_1::ReturnPolicySeasonalOverride::Representation
+      
+        end
+      end
+      
+      class ReturnPolicyPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_return_date, as: 'lastReturnDate'
+          property :number_of_days, :numeric_string => true, as: 'numberOfDays'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ReturnPolicySeasonalOverride
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :name, as: 'name'
+          property :policy, as: 'policy', class: Google::Apis::ContentV2_1::ReturnPolicyPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicyPolicy::Representation
+      
+          property :start_date, as: 'startDate'
+        end
+      end
+      
       class ReturnShipment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3720,6 +3872,107 @@ module Google
       
           property :shipping_date, as: 'shippingDate'
           property :state, as: 'state'
+        end
+      end
+      
+      class ReturnaddressCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::ReturnaddressCustomBatchRequestEntry, decorator: Google::Apis::ContentV2_1::ReturnaddressCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class ReturnaddressCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :return_address, as: 'returnAddress', class: Google::Apis::ContentV2_1::ReturnAddress, decorator: Google::Apis::ContentV2_1::ReturnAddress::Representation
+      
+          property :return_address_id, as: 'returnAddressId'
+        end
+      end
+      
+      class ReturnaddressCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::ReturnaddressCustomBatchResponseEntry, decorator: Google::Apis::ContentV2_1::ReturnaddressCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class ReturnaddressCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2_1::Errors, decorator: Google::Apis::ContentV2_1::Errors::Representation
+      
+          property :kind, as: 'kind'
+          property :return_address, as: 'returnAddress', class: Google::Apis::ContentV2_1::ReturnAddress, decorator: Google::Apis::ContentV2_1::ReturnAddress::Representation
+      
+        end
+      end
+      
+      class ReturnaddressListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::ReturnAddress, decorator: Google::Apis::ContentV2_1::ReturnAddress::Representation
+      
+        end
+      end
+      
+      class ReturnpolicyCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::ReturnpolicyCustomBatchRequestEntry, decorator: Google::Apis::ContentV2_1::ReturnpolicyCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class ReturnpolicyCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :return_policy, as: 'returnPolicy', class: Google::Apis::ContentV2_1::ReturnPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicy::Representation
+      
+          property :return_policy_id, as: 'returnPolicyId'
+        end
+      end
+      
+      class ReturnpolicyCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::ReturnpolicyCustomBatchResponseEntry, decorator: Google::Apis::ContentV2_1::ReturnpolicyCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class ReturnpolicyCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2_1::Errors, decorator: Google::Apis::ContentV2_1::Errors::Representation
+      
+          property :kind, as: 'kind'
+          property :return_policy, as: 'returnPolicy', class: Google::Apis::ContentV2_1::ReturnPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicy::Representation
+      
+        end
+      end
+      
+      class ReturnpolicyListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::ReturnPolicy, decorator: Google::Apis::ContentV2_1::ReturnPolicy::Representation
+      
         end
       end
       

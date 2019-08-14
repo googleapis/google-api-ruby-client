@@ -1216,6 +1216,41 @@ module Google
         end
       end
       
+      # Configurations for logging request-response pairs. Currently only BigQuery
+      # logging is supported. The request and response will be converted to raw
+      # string and stored within the specified BigQuery table. The schema is:
+      # model: STRING
+      # version: STRING
+      # time: Timestamp
+      # raw_data: STRING
+      # raw_prediction: STRING
+      # ground_truth: STRING
+      class GoogleCloudMlV1RequestLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fully qualified BigQuery table name in the format of
+        # "[project_id].[dataset_name].[table_name]".
+        # Corresponds to the JSON property `bigqueryTableName`
+        # @return [String]
+        attr_accessor :bigquery_table_name
+      
+        # Percentage of the request being logged. The sampling window is the lifetime
+        # of the Version. Defaults to 0.
+        # Corresponds to the JSON property `samplingPercentage`
+        # @return [Float]
+        attr_accessor :sampling_percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_table_name = args[:bigquery_table_name] if args.key?(:bigquery_table_name)
+          @sampling_percentage = args[:sampling_percentage] if args.key?(:sampling_percentage)
+        end
+      end
+      
       # Request message for the SetDefaultVersion request.
       class GoogleCloudMlV1SetDefaultVersionRequest
         include Google::Apis::Core::Hashable
@@ -1760,6 +1795,19 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
+        # Configurations for logging request-response pairs. Currently only BigQuery
+        # logging is supported. The request and response will be converted to raw
+        # string and stored within the specified BigQuery table. The schema is:
+        # model: STRING
+        # version: STRING
+        # time: Timestamp
+        # raw_data: STRING
+        # raw_prediction: STRING
+        # ground_truth: STRING
+        # Corresponds to the JSON property `requestLoggingConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig]
+        attr_accessor :request_logging_config
+      
         # Optional. The AI Platform runtime version to use for this deployment.
         # If not set, AI Platform uses the default stable version, 1.0. For more
         # information, see the
@@ -1801,6 +1849,7 @@ module Google
           @package_uris = args[:package_uris] if args.key?(:package_uris)
           @prediction_class = args[:prediction_class] if args.key?(:prediction_class)
           @python_version = args[:python_version] if args.key?(:python_version)
+          @request_logging_config = args[:request_logging_config] if args.key?(:request_logging_config)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)

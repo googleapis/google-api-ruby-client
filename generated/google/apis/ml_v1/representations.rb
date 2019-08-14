@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1RequestLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +545,14 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1RequestLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_table_name, as: 'bigqueryTableName'
+          property :sampling_percentage, as: 'samplingPercentage'
+        end
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -609,6 +623,8 @@ module Google
           collection :package_uris, as: 'packageUris'
           property :prediction_class, as: 'predictionClass'
           property :python_version, as: 'pythonVersion'
+          property :request_logging_config, as: 'requestLoggingConfig', class: Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig::Representation
+      
           property :runtime_version, as: 'runtimeVersion'
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'

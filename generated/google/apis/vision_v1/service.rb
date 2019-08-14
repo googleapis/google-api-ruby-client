@@ -371,6 +371,358 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Service that performs image detection and annotation for a batch of files.
+        # Now only "application/pdf", "image/tiff" and "image/gif" are supported.
+        # This service will extract at most 5 (customers can specify which 5 in
+        # AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        # file provided and perform detection and annotation for each image
+        # extracted.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::BatchAnnotateFilesRequest] batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::BatchAnnotateFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_project_file(parent, batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/files:annotate', options)
+          command.request_representation = Google::Apis::VisionV1::BatchAnnotateFilesRequest::Representation
+          command.request_object = batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1::BatchAnnotateFilesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::BatchAnnotateFilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of generic
+        # files, such as PDF files, which may contain multiple pages and multiple
+        # images per page. Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::AsyncBatchAnnotateFilesRequest] async_batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_project_file_batch_annotate(parent, async_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/files:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateFilesRequest::Representation
+          command.request_object = async_batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run image detection and annotation for a batch of images.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::BatchAnnotateImagesRequest] batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateImagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::BatchAnnotateImagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_project_image(parent, batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/images:annotate', options)
+          command.request_representation = Google::Apis::VisionV1::BatchAnnotateImagesRequest::Representation
+          command.request_object = batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::BatchAnnotateImagesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::BatchAnnotateImagesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of images.
+        # Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
+        # This service will write image annotation outputs to json files in customer
+        # GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest] async_batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_project_image_batch_annotate(parent, async_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/images:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest::Representation
+          command.request_object = async_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service that performs image detection and annotation for a batch of files.
+        # Now only "application/pdf", "image/tiff" and "image/gif" are supported.
+        # This service will extract at most 5 (customers can specify which 5 in
+        # AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each
+        # file provided and perform detection and annotation for each image
+        # extracted.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::BatchAnnotateFilesRequest] batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateFilesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::BatchAnnotateFilesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_project_location_file(parent, batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/files:annotate', options)
+          command.request_representation = Google::Apis::VisionV1::BatchAnnotateFilesRequest::Representation
+          command.request_object = batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1::BatchAnnotateFilesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::BatchAnnotateFilesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of generic
+        # files, such as PDF files, which may contain multiple pages and multiple
+        # images per page. Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::AsyncBatchAnnotateFilesRequest] async_batch_annotate_files_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_project_location_file_batch_annotate(parent, async_batch_annotate_files_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/files:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateFilesRequest::Representation
+          command.request_object = async_batch_annotate_files_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run image detection and annotation for a batch of images.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::BatchAnnotateImagesRequest] batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::BatchAnnotateImagesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::BatchAnnotateImagesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def annotate_project_location_image(parent, batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/images:annotate', options)
+          command.request_representation = Google::Apis::VisionV1::BatchAnnotateImagesRequest::Representation
+          command.request_object = batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::BatchAnnotateImagesResponse::Representation
+          command.response_class = Google::Apis::VisionV1::BatchAnnotateImagesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Run asynchronous image detection and annotation for a list of images.
+        # Progress and results can be retrieved through the
+        # `google.longrunning.Operations` interface.
+        # `Operation.metadata` contains `OperationMetadata` (metadata).
+        # `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results).
+        # This service will write image annotation outputs to json files in customer
+        # GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+        # @param [String] parent
+        #   Optional. Target project and location to make a call.
+        #   Format: `projects/`project-id`/locations/`location-id``.
+        #   If no parent is specified, a region will be chosen automatically.
+        #   Supported location-ids:
+        #   `us`: USA country only,
+        #   `asia`: East asia areas, like Japan, Taiwan,
+        #   `eu`: The European Union.
+        #   Example: `projects/project-A/locations/eu`.
+        # @param [Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest] async_batch_annotate_images_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def async_project_location_image_batch_annotate(parent, async_batch_annotate_images_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/images:asyncBatchAnnotate', options)
+          command.request_representation = Google::Apis::VisionV1::AsyncBatchAnnotateImagesRequest::Representation
+          command.request_object = async_batch_annotate_images_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.

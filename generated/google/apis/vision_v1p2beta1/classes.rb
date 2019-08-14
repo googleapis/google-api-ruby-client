@@ -3031,6 +3031,18 @@ module Google
       class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Target project and location to make a call.
+        # Format: `projects/`project-id`/locations/`location-id``.
+        # If no parent is specified, a region will be chosen automatically.
+        # Supported location-ids:
+        # `us`: USA country only,
+        # `asia`: East asia areas, like Japan, Taiwan,
+        # `eu`: The European Union.
+        # Example: `projects/project-A/locations/eu`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # Individual async file annotation requests for this batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest>]
@@ -3042,6 +3054,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
       end
@@ -3075,6 +3088,18 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1OutputConfig]
         attr_accessor :output_config
       
+        # Optional. Target project and location to make a call.
+        # Format: `projects/`project-id`/locations/`location-id``.
+        # If no parent is specified, a region will be chosen automatically.
+        # Supported location-ids:
+        # `us`: USA country only,
+        # `asia`: East asia areas, like Japan, Taiwan,
+        # `eu`: The European Union.
+        # Example: `projects/project-A/locations/eu`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # Individual image annotation requests for this batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest>]
@@ -3087,6 +3112,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @output_config = args[:output_config] if args.key?(:output_config)
+          @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
       end
@@ -3094,6 +3120,18 @@ module Google
       # A list of requests to annotate files using the BatchAnnotateFiles API.
       class GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest
         include Google::Apis::Core::Hashable
+      
+        # Optional. Target project and location to make a call.
+        # Format: `projects/`project-id`/locations/`location-id``.
+        # If no parent is specified, a region will be chosen automatically.
+        # Supported location-ids:
+        # `us`: USA country only,
+        # `asia`: East asia areas, like Japan, Taiwan,
+        # `eu`: The European Union.
+        # Example: `projects/project-A/locations/eu`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
       
         # The list of file annotation requests. Right now we support only one
         # AnnotateFileRequest in BatchAnnotateFilesRequest.
@@ -3107,6 +3145,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
       end
@@ -3135,6 +3174,18 @@ module Google
       class GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest
         include Google::Apis::Core::Hashable
       
+        # Optional. Target project and location to make a call.
+        # Format: `projects/`project-id`/locations/`location-id``.
+        # If no parent is specified, a region will be chosen automatically.
+        # Supported location-ids:
+        # `us`: USA country only,
+        # `asia`: East asia areas, like Japan, Taiwan,
+        # `eu`: The European Union.
+        # Example: `projects/project-A/locations/eu`.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # Individual image annotation requests for this batch.
         # Corresponds to the JSON property `requests`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest>]
@@ -3146,6 +3197,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
           @requests = args[:requests] if args.key?(:requests)
         end
       end
@@ -7741,12 +7793,21 @@ module Google
       class GoogleCloudVisionV1p4beta1ImageQuality
         include Google::Apis::Core::Hashable
       
+        # A score representing the aesthetic/technical quality of the image. The
+        # score is in range [0, 1]. Higher value corresponds to more professional
+        # looking photos. 0 means the image looks very bad, 1 means the image with
+        # very high quality.
+        # Corresponds to the JSON property `qualityScore`
+        # @return [Float]
+        attr_accessor :quality_score
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @quality_score = args[:quality_score] if args.key?(:quality_score)
         end
       end
       
@@ -8396,10 +8457,28 @@ module Google
         # @return [String]
         attr_accessor :adult
       
+        # Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `adultConfidence`
+        # @return [Float]
+        attr_accessor :adult_confidence
+      
         # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
+      
+        # Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `medicalConfidence`
+        # @return [Float]
+        attr_accessor :medical_confidence
+      
+        # Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `nsfwConfidence`
+        # @return [Float]
+        attr_accessor :nsfw_confidence
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
@@ -8409,6 +8488,12 @@ module Google
         # @return [String]
         attr_accessor :racy
       
+        # Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `racyConfidence`
+        # @return [Float]
+        attr_accessor :racy_confidence
+      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -8416,10 +8501,22 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
+        # Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `spoofConfidence`
+        # @return [Float]
+        attr_accessor :spoof_confidence
+      
         # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
+      
+        # Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `violenceConfidence`
+        # @return [Float]
+        attr_accessor :violence_confidence
       
         def initialize(**args)
            update!(**args)
@@ -8428,10 +8525,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
+          @adult_confidence = args[:adult_confidence] if args.key?(:adult_confidence)
           @medical = args[:medical] if args.key?(:medical)
+          @medical_confidence = args[:medical_confidence] if args.key?(:medical_confidence)
+          @nsfw_confidence = args[:nsfw_confidence] if args.key?(:nsfw_confidence)
           @racy = args[:racy] if args.key?(:racy)
+          @racy_confidence = args[:racy_confidence] if args.key?(:racy_confidence)
           @spoof = args[:spoof] if args.key?(:spoof)
+          @spoof_confidence = args[:spoof_confidence] if args.key?(:spoof_confidence)
           @violence = args[:violence] if args.key?(:violence)
+          @violence_confidence = args[:violence_confidence] if args.key?(:violence_confidence)
         end
       end
       
@@ -10380,10 +10483,28 @@ module Google
         # @return [String]
         attr_accessor :adult
       
+        # Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `adultConfidence`
+        # @return [Float]
+        attr_accessor :adult_confidence
+      
         # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
+      
+        # Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `medicalConfidence`
+        # @return [Float]
+        attr_accessor :medical_confidence
+      
+        # Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `nsfwConfidence`
+        # @return [Float]
+        attr_accessor :nsfw_confidence
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
@@ -10393,6 +10514,12 @@ module Google
         # @return [String]
         attr_accessor :racy
       
+        # Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `racyConfidence`
+        # @return [Float]
+        attr_accessor :racy_confidence
+      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -10400,10 +10527,22 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
+        # Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `spoofConfidence`
+        # @return [Float]
+        attr_accessor :spoof_confidence
+      
         # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
+      
+        # Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `violenceConfidence`
+        # @return [Float]
+        attr_accessor :violence_confidence
       
         def initialize(**args)
            update!(**args)
@@ -10412,10 +10551,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
+          @adult_confidence = args[:adult_confidence] if args.key?(:adult_confidence)
           @medical = args[:medical] if args.key?(:medical)
+          @medical_confidence = args[:medical_confidence] if args.key?(:medical_confidence)
+          @nsfw_confidence = args[:nsfw_confidence] if args.key?(:nsfw_confidence)
           @racy = args[:racy] if args.key?(:racy)
+          @racy_confidence = args[:racy_confidence] if args.key?(:racy_confidence)
           @spoof = args[:spoof] if args.key?(:spoof)
+          @spoof_confidence = args[:spoof_confidence] if args.key?(:spoof_confidence)
           @violence = args[:violence] if args.key?(:violence)
+          @violence_confidence = args[:violence_confidence] if args.key?(:violence_confidence)
         end
       end
       
@@ -11682,10 +11827,28 @@ module Google
         # @return [String]
         attr_accessor :adult
       
+        # Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `adultConfidence`
+        # @return [Float]
+        attr_accessor :adult_confidence
+      
         # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
+      
+        # Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `medicalConfidence`
+        # @return [Float]
+        attr_accessor :medical_confidence
+      
+        # Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `nsfwConfidence`
+        # @return [Float]
+        attr_accessor :nsfw_confidence
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
@@ -11695,6 +11858,12 @@ module Google
         # @return [String]
         attr_accessor :racy
       
+        # Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very
+        # confident.
+        # Corresponds to the JSON property `racyConfidence`
+        # @return [Float]
+        attr_accessor :racy_confidence
+      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -11702,10 +11871,22 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
+        # Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `spoofConfidence`
+        # @return [Float]
+        attr_accessor :spoof_confidence
+      
         # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
+      
+        # Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means
+        # very confident.
+        # Corresponds to the JSON property `violenceConfidence`
+        # @return [Float]
+        attr_accessor :violence_confidence
       
         def initialize(**args)
            update!(**args)
@@ -11714,10 +11895,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
+          @adult_confidence = args[:adult_confidence] if args.key?(:adult_confidence)
           @medical = args[:medical] if args.key?(:medical)
+          @medical_confidence = args[:medical_confidence] if args.key?(:medical_confidence)
+          @nsfw_confidence = args[:nsfw_confidence] if args.key?(:nsfw_confidence)
           @racy = args[:racy] if args.key?(:racy)
+          @racy_confidence = args[:racy_confidence] if args.key?(:racy_confidence)
           @spoof = args[:spoof] if args.key?(:spoof)
+          @spoof_confidence = args[:spoof_confidence] if args.key?(:spoof_confidence)
           @violence = args[:violence] if args.key?(:violence)
+          @violence_confidence = args[:violence_confidence] if args.key?(:violence_confidence)
         end
       end
       

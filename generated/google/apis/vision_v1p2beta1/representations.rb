@@ -2723,6 +2723,7 @@ module Google
       class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AsyncAnnotateFileRequest::Representation
       
         end
@@ -2741,6 +2742,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :output_config, as: 'outputConfig', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1OutputConfig, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1OutputConfig::Representation
       
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest::Representation
       
         end
@@ -2749,6 +2751,7 @@ module Google
       class GoogleCloudVisionV1p2beta1BatchAnnotateFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateFileRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateFileRequest::Representation
       
         end
@@ -2765,6 +2768,7 @@ module Google
       class GoogleCloudVisionV1p2beta1BatchAnnotateImagesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
           collection :requests, as: 'requests', class: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest, decorator: Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1AnnotateImageRequest::Representation
       
         end
@@ -4032,6 +4036,7 @@ module Google
       class GoogleCloudVisionV1p4beta1ImageQuality
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :quality_score, as: 'qualityScore'
         end
       end
       
@@ -4219,10 +4224,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       
@@ -4772,10 +4783,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       
@@ -5153,10 +5170,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
+          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
+          property :medical_confidence, as: 'medicalConfidence'
+          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
+          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
+          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
+          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       

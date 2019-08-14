@@ -1978,6 +1978,7 @@ module Google
           property :id, as: 'id', class: Google::Apis::AnalyticsV3::UserDeletionRequest::Id, decorator: Google::Apis::AnalyticsV3::UserDeletionRequest::Id::Representation
       
           property :kind, as: 'kind'
+          property :property_id, as: 'propertyId'
           property :web_property_id, as: 'webPropertyId'
         end
         

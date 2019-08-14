@@ -5325,6 +5325,11 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Property ID
+        # Corresponds to the JSON property `propertyId`
+        # @return [String]
+        attr_accessor :property_id
+      
         # Web property ID of the form UA-XXXXX-YY.
         # Corresponds to the JSON property `webPropertyId`
         # @return [String]
@@ -5340,6 +5345,7 @@ module Google
           @firebase_project_id = args[:firebase_project_id] if args.key?(:firebase_project_id)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @property_id = args[:property_id] if args.key?(:property_id)
           @web_property_id = args[:web_property_id] if args.key?(:web_property_id)
         end
         
