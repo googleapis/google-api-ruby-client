@@ -177,6 +177,8 @@ module Google
           call.header.each do |key, value|
             request_head << sprintf("\r\n%s: %s", key, value)
           end
+          token = call.options.authorization
+          request_head << "\r\nAuthorization: Bearer #{token}" unless token.nil?
           request_head << sprintf("\r\nHost: %s", call.url.host)
           request_head << "\r\n\r\n"
           StringIO.new(request_head)
