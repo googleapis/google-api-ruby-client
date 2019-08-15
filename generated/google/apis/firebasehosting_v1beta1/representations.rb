@@ -229,6 +229,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :glob, as: 'glob'
           hash :headers, as: 'headers'
+          property :regex, as: 'regex'
         end
       end
       
@@ -279,6 +280,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :glob, as: 'glob'
           property :location, as: 'location'
+          property :regex, as: 'regex'
           property :status_code, as: 'statusCode'
         end
       end
@@ -304,6 +306,7 @@ module Google
           property :function, as: 'function'
           property :glob, as: 'glob'
           property :path, as: 'path'
+          property :regex, as: 'regex'
           property :run, as: 'run', class: Google::Apis::FirebasehostingV1beta1::CloudRunRewrite, decorator: Google::Apis::FirebasehostingV1beta1::CloudRunRewrite::Representation
       
         end

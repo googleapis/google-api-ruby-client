@@ -204,13 +204,13 @@ module Google
         end
       end
       
-      # In a GcsData resource, an object's name is the Google Cloud Storage object's
+      # In a GcsData resource, an object's name is the Cloud Storage object's
       # name and its `lastModificationTime` refers to the object's updated time,
       # which changes when the content or the metadata of the object is updated.
       class GcsData
         include Google::Apis::Core::Hashable
       
-        # Required. Google Cloud Storage bucket name (see
+        # Required. Cloud Storage bucket name (see
         # [Bucket Name
         # Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         # Corresponds to the JSON property `bucketName`
@@ -268,7 +268,7 @@ module Google
       # bytes, the object transfer will fail. For more information, see
       # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
       # * Ensure that each URL you specify is publicly accessible. For
-      # example, in Google Cloud Storage you can
+      # example, in Cloud Storage you can
       # [share an object publicly]
       # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
       # a link to it.
@@ -348,7 +348,7 @@ module Google
       end
       
       # Conditions that determine which objects will be transferred. Applies only
-      # to S3 and GCS objects.
+      # to S3 and Cloud Storage objects.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
@@ -396,7 +396,8 @@ module Google
         # `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
         # `lastModificationTime` refers to the time of the last change to the
         # object's content or metadata - specifically, this would be the `updated`
-        # property of GCS objects and the `LastModified` field of S3 objects.
+        # property of Cloud Storage objects and the `LastModified` field of S3
+        # objects.
         # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :max_time_elapsed_since_last_modification
@@ -408,7 +409,8 @@ module Google
         # `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
         # `lastModificationTime` refers to the time of the last change to the
         # object's content or metadata - specifically, this would be the `updated`
-        # property of GCS objects and the `LastModified` field of S3 objects.
+        # property of Cloud Storage objects and the `LastModified` field of S3
+        # objects.
         # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :min_time_elapsed_since_last_modification
@@ -950,14 +952,14 @@ module Google
         # @return [Google::Apis::StoragetransferV1::AwsS3Data]
         attr_accessor :aws_s3_data_source
       
-        # In a GcsData resource, an object's name is the Google Cloud Storage object's
+        # In a GcsData resource, an object's name is the Cloud Storage object's
         # name and its `lastModificationTime` refers to the object's updated time,
         # which changes when the content or the metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSink`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_sink
       
-        # In a GcsData resource, an object's name is the Google Cloud Storage object's
+        # In a GcsData resource, an object's name is the Cloud Storage object's
         # name and its `lastModificationTime` refers to the object's updated time,
         # which changes when the content or the metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSource`
@@ -986,7 +988,7 @@ module Google
         # bytes, the object transfer will fail. For more information, see
         # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
         # * Ensure that each URL you specify is publicly accessible. For
-        # example, in Google Cloud Storage you can
+        # example, in Cloud Storage you can
         # [share an object publicly]
         # (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get
         # a link to it.
@@ -1000,7 +1002,7 @@ module Google
         attr_accessor :http_data_source
       
         # Conditions that determine which objects will be transferred. Applies only
-        # to S3 and GCS objects.
+        # to S3 and Cloud Storage objects.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions

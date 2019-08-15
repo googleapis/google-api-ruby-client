@@ -297,8 +297,8 @@ module Google
       class Header
         include Google::Apis::Core::Hashable
       
-        # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # The user-supplied [glob
+        # pattern](/docs/hosting/full-config#glob_pattern_matching) to match
         # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
@@ -309,6 +309,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :headers
       
+        # The user-supplied RE2 regular expression to match against the request
+        # URL path.
+        # Corresponds to the JSON property `regex`
+        # @return [String]
+        attr_accessor :regex
+      
         def initialize(**args)
            update!(**args)
         end
@@ -317,6 +323,7 @@ module Google
         def update!(**args)
           @glob = args[:glob] if args.key?(:glob)
           @headers = args[:headers] if args.key?(:headers)
+          @regex = args[:regex] if args.key?(:regex)
         end
       end
       
@@ -456,8 +463,8 @@ module Google
       class Redirect
         include Google::Apis::Core::Hashable
       
-        # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # The user-supplied [glob
+        # pattern](/docs/hosting/full-config#glob_pattern_matching) to match
         # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
@@ -475,6 +482,12 @@ module Google
         # @return [String]
         attr_accessor :location
       
+        # The user-supplied RE2 regular expression to match against the request
+        # URL path.
+        # Corresponds to the JSON property `regex`
+        # @return [String]
+        attr_accessor :regex
+      
         # Required. The status HTTP code to return in the response. It must be a
         # valid 3xx status code.
         # Corresponds to the JSON property `statusCode`
@@ -489,6 +502,7 @@ module Google
         def update!(**args)
           @glob = args[:glob] if args.key?(:glob)
           @location = args[:location] if args.key?(:location)
+          @regex = args[:regex] if args.key?(:regex)
           @status_code = args[:status_code] if args.key?(:status_code)
         end
       end
@@ -571,8 +585,8 @@ module Google
         # @return [String]
         attr_accessor :function
       
-        # Required. The user-supplied
-        # [glob pattern](/docs/hosting/full-config#glob_pattern_matching) to match
+        # The user-supplied [glob
+        # pattern](/docs/hosting/full-config#glob_pattern_matching) to match
         # against the request URL path.
         # Corresponds to the JSON property `glob`
         # @return [String]
@@ -582,6 +596,12 @@ module Google
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
+      
+        # The user-supplied RE2 regular expression to match against the request
+        # URL path.
+        # Corresponds to the JSON property `regex`
+        # @return [String]
+        attr_accessor :regex
       
         # A configured rewrite that directs requests to a Cloud Run service. If the
         # Cloud Run service does not exist when setting or updating your Firebase
@@ -602,6 +622,7 @@ module Google
           @function = args[:function] if args.key?(:function)
           @glob = args[:glob] if args.key?(:glob)
           @path = args[:path] if args.key?(:path)
+          @regex = args[:regex] if args.key?(:regex)
           @run = args[:run] if args.key?(:run)
         end
       end

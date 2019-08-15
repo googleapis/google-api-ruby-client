@@ -1129,7 +1129,7 @@ module Google
         attr_accessor :email
       
         # List of scopes to be enabled for this service account on the VM, in
-        # addition to the Cloud Genomics API scope.
+        # addition to the cloud-platform API scope that will be added by default.
         # Corresponds to the JSON property `scopes`
         # @return [Array<String>]
         attr_accessor :scopes

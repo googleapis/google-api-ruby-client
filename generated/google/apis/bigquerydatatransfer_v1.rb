@@ -26,10 +26,13 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigquerydatatransferV1
       VERSION = 'V1'
-      REVISION = '20190615'
+      REVISION = '20190811'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
+
+      # View your data in Google BigQuery
+      AUTH_BIGQUERY_READONLY = 'https://www.googleapis.com/auth/bigquery.readonly'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -3879,9 +3879,10 @@ module Google
         end
       end
       
-      # Removes rows within this range containing duplicate values in the specified
-      # columns. Rows with identical values but different letter cases, formatting,
-      # or formulas are considered to be duplicates.
+      # Removes rows within this range that contain values in the specified columns
+      # that are duplicates of values in any previous row. Rows with identical values
+      # but different letter cases, formatting, or formulas are considered to be
+      # duplicates.
       # This request also removes duplicate rows hidden from view (for example, due
       # to a filter). When removing duplicates, the first instance of each duplicate
       # row scanning from the top downwards is kept in the resulting range. Content
@@ -7213,9 +7214,10 @@ module Google
         # @return [Google::Apis::SheetsV4::DeleteDimensionGroupRequest]
         attr_accessor :delete_dimension_group
       
-        # Removes rows within this range containing duplicate values in the specified
-        # columns. Rows with identical values but different letter cases, formatting,
-        # or formulas are considered to be duplicates.
+        # Removes rows within this range that contain values in the specified columns
+        # that are duplicates of values in any previous row. Rows with identical values
+        # but different letter cases, formatting, or formulas are considered to be
+        # duplicates.
         # This request also removes duplicate rows hidden from view (for example, due
         # to a filter). When removing duplicates, the first instance of each duplicate
         # row scanning from the top downwards is kept in the resulting range. Content
@@ -7339,9 +7341,9 @@ module Google
       
         # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
         # the specified range. This request removes all whitespace from the start and
-        # end of each cell's text, and reduces any sub-sequence of remaining whitespace
+        # end of each cell's text, and reduces any subsequence of remaining whitespace
         # characters to a single space. If the resulting trimmed text starts with a '+'
-        # or '=' character, the text remains as a string value and is not interpreted
+        # or '=' character, the text remains as a string value and isn't interpreted
         # as a formula.
         # Corresponds to the JSON property `trimWhitespace`
         # @return [Google::Apis::SheetsV4::TrimWhitespaceRequest]
@@ -9216,9 +9218,9 @@ module Google
       
       # Trims the whitespace (such as spaces, tabs, or new lines) in every cell in
       # the specified range. This request removes all whitespace from the start and
-      # end of each cell's text, and reduces any sub-sequence of remaining whitespace
+      # end of each cell's text, and reduces any subsequence of remaining whitespace
       # characters to a single space. If the resulting trimmed text starts with a '+'
-      # or '=' character, the text remains as a string value and is not interpreted
+      # or '=' character, the text remains as a string value and isn't interpreted
       # as a formula.
       class TrimWhitespaceRequest
         include Google::Apis::Core::Hashable
