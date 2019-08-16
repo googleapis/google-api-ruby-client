@@ -52,6 +52,7 @@ module Google
         #
         # @return [void]
         def prepare!
+          set_xgac
           if options && options.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
@@ -124,6 +125,17 @@ module Google
         end
 
         private
+
+        def set_xgac
+          old_xgac = header
+            .find_all { |k, v| k.downcase == 'x-goog-api-client' }
+            .map { |(a, b)| b }
+            .join(' ')
+          xgac = "gl-ruby/#{RUBY_VERSION} gdcl/#{Google::Apis::VERSION}"
+          xgac = old_xgac.empty? ? xgac : "#{old_xgac} #{xgac}"
+          header.delete_if { |k, v| k.downcase == 'x-goog-api-client' }
+          header['X-Goog-Api-Client'] = xgac
+        end
 
         # Attempt to parse a JSON error message
         # @param [String] body
