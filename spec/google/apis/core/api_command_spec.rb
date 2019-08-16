@@ -32,6 +32,33 @@ RSpec.describe Google::Apis::Core::ApiCommand do
     end
   end
 
+  let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{Google::Apis::VERSION}" }
+
+  context('with preparation') do
+    let(:command) do
+      Google::Apis::Core::ApiCommand.new(:get, 'https://www.googleapis.com/zoo/animals')
+    end
+
+    it 'should set X-Goog-Api-Client header if none is set' do
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql x_goog_api_client_value
+    end
+
+    it 'should append to x-goog-api-client header with case difference' do
+      command.header['x-goog-api-client'] = "foo/1.2.3"
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql "foo/1.2.3 #{x_goog_api_client_value}"
+    end
+
+    it 'should append to multiple x-goog-api-client headers' do
+      command.header['x-goog-api-client'] = "foo/1.2.3"
+      command.header['X-Goog-Api-Client'] = "bar/4.5.6"
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql "foo/1.2.3 bar/4.5.6 #{x_goog_api_client_value}"
+      expect(command.header['x-goog-api-client']).to be nil
+    end
+  end
+
   context('with a request body') do
     let(:command) do
       request = model_class.new

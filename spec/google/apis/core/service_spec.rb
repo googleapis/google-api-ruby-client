@@ -21,6 +21,7 @@ RSpec.describe Google::Apis::Core::BaseService do
   include TestHelpers
 
   let(:service) { Google::Apis::Core::BaseService.new('https://www.googleapis.com/', '') }
+  let(:x_goog_api_client_value) { "gl-ruby/#{RUBY_VERSION} gdcl/#{Google::Apis::VERSION}" }
 
   before do
     Google::Apis::ClientOptions.default.application_name = 'test'
@@ -120,6 +121,13 @@ RSpec.describe Google::Apis::Core::BaseService do
     it 'should build a correct URL' do
       url = command.url.expand({}).to_s
       expect(url).to eql 'https://www.googleapis.com/zoo/animals'
+    end
+
+    it 'should send the command with x-goog-api-client header' do
+      stub_request(:get, 'https://www.googleapis.com/zoo/animals').to_return(body: '')
+      service.send(:execute_or_queue_command, command)
+      expected_headers = {'X-Goog-Api-Client': x_goog_api_client_value}
+      expect(a_request(:get, 'https://www.googleapis.com/zoo/animals').with(headers: expected_headers)).to have_been_made
     end
 
     include_examples 'with options'
@@ -269,10 +277,11 @@ EOF
 --outer
 Content-Type: application/http
 Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
-Content-Length: 303
+Content-Length: 349
 Content-Transfer-Encoding: binary
 
 POST /upload/zoo/animals? HTTP/1.1
+X-Goog-Api-Client: #{x_goog_api_client_value}
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
 Host: www.googleapis.com
