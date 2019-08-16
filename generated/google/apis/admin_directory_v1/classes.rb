@@ -3338,6 +3338,17 @@ module Google
         # @return [String]
         attr_accessor :primary_email
       
+        # Recovery email of the user.
+        # Corresponds to the JSON property `recoveryEmail`
+        # @return [String]
+        attr_accessor :recovery_email
+      
+        # Recovery phone of the user. The phone number must be in the E.164 format,
+        # starting with the plus sign (+). Example: +16506661212.
+        # Corresponds to the JSON property `recoveryPhone`
+        # @return [String]
+        attr_accessor :recovery_phone
+      
         # 
         # Corresponds to the JSON property `relations`
         # @return [Object]
@@ -3417,6 +3428,8 @@ module Google
           @phones = args[:phones] if args.key?(:phones)
           @posix_accounts = args[:posix_accounts] if args.key?(:posix_accounts)
           @primary_email = args[:primary_email] if args.key?(:primary_email)
+          @recovery_email = args[:recovery_email] if args.key?(:recovery_email)
+          @recovery_phone = args[:recovery_phone] if args.key?(:recovery_phone)
           @relations = args[:relations] if args.key?(:relations)
           @ssh_public_keys = args[:ssh_public_keys] if args.key?(:ssh_public_keys)
           @suspended = args[:suspended] if args.key?(:suspended)

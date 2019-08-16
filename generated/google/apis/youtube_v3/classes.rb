@@ -3493,6 +3493,25 @@ module Google
         end
       end
       
+      # 
+      class LevelDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
       # A liveBroadcast resource represents an event that will be streamed, via live
       # video, on YouTube.
       class LiveBroadcast
@@ -5175,6 +5194,303 @@ module Google
         def update!(**args)
           @language = args[:language] if args.key?(:language)
           @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # A member resource represents a member for a YouTube channel. A member provides
+      # recurring monetary support to a creator and receives special benefits.
+      class Member
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the member.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # member".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the member.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::MemberSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class MemberListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of members that match the request criteria.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::Member>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # memberListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token that can be used as the value of the pageToken parameter to retrieve
+        # the next page in the result set.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Paging details for lists of resources, including total number of items
+        # available and number of resources returned in a single page.
+        # Corresponds to the JSON property `pageInfo`
+        # @return [Google::Apis::YoutubeV3::PageInfo]
+        attr_accessor :page_info
+      
+        # Stub token pagination template to suppress results.
+        # Corresponds to the JSON property `tokenPagination`
+        # @return [Google::Apis::YoutubeV3::TokenPagination]
+        attr_accessor :token_pagination
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @page_info = args[:page_info] if args.key?(:page_info)
+          @token_pagination = args[:token_pagination] if args.key?(:token_pagination)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # 
+      class MemberSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The id of the channel that's offering memberships.
+        # Corresponds to the JSON property `creatorChannelId`
+        # @return [String]
+        attr_accessor :creator_channel_id
+      
+        # Details about the member.
+        # Corresponds to the JSON property `memberDetails`
+        # @return [Google::Apis::YoutubeV3::ChannelProfileDetails]
+        attr_accessor :member_details
+      
+        # Details about the user's membership.
+        # Corresponds to the JSON property `membershipsDetails`
+        # @return [Google::Apis::YoutubeV3::MembershipsDetails]
+        attr_accessor :memberships_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creator_channel_id = args[:creator_channel_id] if args.key?(:creator_channel_id)
+          @member_details = args[:member_details] if args.key?(:member_details)
+          @memberships_details = args[:memberships_details] if args.key?(:memberships_details)
+        end
+      end
+      
+      # 
+      class MembershipsDetails
+        include Google::Apis::Core::Hashable
+      
+        # All levels that the user has access to. This includes the purchased level and
+        # all other levels that are included because of a higher purchase.
+        # Corresponds to the JSON property `accessibleLevels`
+        # @return [Array<String>]
+        attr_accessor :accessible_levels
+      
+        # The date and time when the user became a continuous member across all levels.
+        # Corresponds to the JSON property `memberSince`
+        # @return [String]
+        attr_accessor :member_since
+      
+        # The date and time when the user started to continuously have access to the
+        # currently highest level.
+        # Corresponds to the JSON property `memberSinceCurrentLevel`
+        # @return [String]
+        attr_accessor :member_since_current_level
+      
+        # The cumulative time the user has been a member across all levels in complete
+        # months (the time is rounded down to the nearest integer).
+        # Corresponds to the JSON property `memberTotalDuration`
+        # @return [Fixnum]
+        attr_accessor :member_total_duration
+      
+        # The cumulative time the user has had access to the currently highest level in
+        # complete months (the time is rounded down to the nearest integer).
+        # Corresponds to the JSON property `memberTotalDurationCurrentLevel`
+        # @return [Fixnum]
+        attr_accessor :member_total_duration_current_level
+      
+        # The highest level the user has access to at the moment.
+        # Corresponds to the JSON property `purchasedLevel`
+        # @return [String]
+        attr_accessor :purchased_level
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accessible_levels = args[:accessible_levels] if args.key?(:accessible_levels)
+          @member_since = args[:member_since] if args.key?(:member_since)
+          @member_since_current_level = args[:member_since_current_level] if args.key?(:member_since_current_level)
+          @member_total_duration = args[:member_total_duration] if args.key?(:member_total_duration)
+          @member_total_duration_current_level = args[:member_total_duration_current_level] if args.key?(:member_total_duration_current_level)
+          @purchased_level = args[:purchased_level] if args.key?(:purchased_level)
+        end
+      end
+      
+      # A membershipsLevel resource represents an offer made by YouTube creators for
+      # their fans. Users can become members of the channel by joining one of the
+      # available levels. They will provide recurring monetary support and receives
+      # special benefits.
+      class MembershipsLevel
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The ID that YouTube assigns to uniquely identify the memberships level.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # membershipsLevel".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The snippet object contains basic details about the level.
+        # Corresponds to the JSON property `snippet`
+        # @return [Google::Apis::YoutubeV3::MembershipsLevelSnippet]
+        attr_accessor :snippet
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @snippet = args[:snippet] if args.key?(:snippet)
+        end
+      end
+      
+      # 
+      class MembershipsLevelListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Etag of this resource.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Serialized EventId of the request which produced this response.
+        # Corresponds to the JSON property `eventId`
+        # @return [String]
+        attr_accessor :event_id
+      
+        # A list of pricing levels offered by a creator to the fans.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::YoutubeV3::MembershipsLevel>]
+        attr_accessor :items
+      
+        # Identifies what kind of resource this is. Value: the fixed string "youtube#
+        # membershipsLevelListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The visitorId identifies the visitor.
+        # Corresponds to the JSON property `visitorId`
+        # @return [String]
+        attr_accessor :visitor_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @event_id = args[:event_id] if args.key?(:event_id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @visitor_id = args[:visitor_id] if args.key?(:visitor_id)
+        end
+      end
+      
+      # 
+      class MembershipsLevelSnippet
+        include Google::Apis::Core::Hashable
+      
+        # The id of the channel that's offering channel memberships.
+        # Corresponds to the JSON property `creatorChannelId`
+        # @return [String]
+        attr_accessor :creator_channel_id
+      
+        # 
+        # Corresponds to the JSON property `levelDetails`
+        # @return [Google::Apis::YoutubeV3::LevelDetails]
+        attr_accessor :level_details
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creator_channel_id = args[:creator_channel_id] if args.key?(:creator_channel_id)
+          @level_details = args[:level_details] if args.key?(:level_details)
         end
       end
       

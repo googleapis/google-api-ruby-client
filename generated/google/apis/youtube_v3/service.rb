@@ -2635,6 +2635,91 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists members for a channel.
+        # @param [String] part
+        #   The part parameter specifies the member resource parts that the API response
+        #   will include. Supported values are id and snippet.
+        # @param [String] has_access_to_level
+        #   The hasAccessToLevel parameter specifies, when set, the ID of a pricing level
+        #   that members from the results set should have access to. When not set, all
+        #   members will be considered, regardless of their active pricing level.
+        # @param [Fixnum] max_results
+        #   The maxResults parameter specifies the maximum number of items that should be
+        #   returned in the result set.
+        # @param [String] mode
+        #   The mode parameter specifies which channel members to return.
+        # @param [String] page_token
+        #   The pageToken parameter identifies a specific page in the result set that
+        #   should be returned. In an API response, the nextPageToken and prevPageToken
+        #   properties identify other pages that could be retrieved.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::MemberListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::MemberListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_members(part, has_access_to_level: nil, max_results: nil, mode: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'members', options)
+          command.response_representation = Google::Apis::YoutubeV3::MemberListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::MemberListResponse
+          command.query['hasAccessToLevel'] = has_access_to_level unless has_access_to_level.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['mode'] = mode unless mode.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists pricing levels for a channel.
+        # @param [String] part
+        #   The part parameter specifies the membershipsLevel resource parts that the API
+        #   response will include. Supported values are id and snippet.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::YoutubeV3::MembershipsLevelListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::YoutubeV3::MembershipsLevelListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_memberships_levels(part, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, 'membershipsLevels', options)
+          command.response_representation = Google::Apis::YoutubeV3::MembershipsLevelListResponse::Representation
+          command.response_class = Google::Apis::YoutubeV3::MembershipsLevelListResponse
+          command.query['part'] = part unless part.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes a playlist item.
         # @param [String] id
         #   The id parameter specifies the YouTube playlist item ID for the playlist item

@@ -269,7 +269,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results to return. Max allowed value is 200.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] org_unit_path
@@ -933,7 +933,7 @@ module Google
         #   Name of the domain. Fill this field to get groups from only this domain. To
         #   return all groups in a multi-domain fill customer field instead.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results to return. Max allowed value is 200.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token
@@ -1313,7 +1313,7 @@ module Google
         # @param [Boolean] include_derived_membership
         #   Whether to list indirect memberships. Default: false.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results to return. Max allowed value is 200.
         # @param [String] page_token
         #   Token to specify next page in the list
         # @param [String] roles
@@ -1549,7 +1549,7 @@ module Google
         # @param [String] customer_id
         #   Immutable ID of the G Suite account
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results to return. Max allowed value is 100.
         # @param [String] order_by
         #   Column to use for sorting results
         # @param [String] page_token

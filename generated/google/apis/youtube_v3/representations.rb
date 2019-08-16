@@ -430,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LevelDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LiveBroadcast
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -641,6 +647,48 @@ module Google
       end
       
       class LocalizedString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Member
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemberListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemberSnippet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipsDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipsLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipsLevelListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipsLevelSnippet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1973,6 +2021,13 @@ module Google
         end
       end
       
+      class LevelDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+        end
+      end
+      
       class LiveBroadcast
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2423,6 +2478,89 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language, as: 'language'
           property :value, as: 'value'
+        end
+      end
+      
+      class Member
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::MemberSnippet, decorator: Google::Apis::YoutubeV3::MemberSnippet::Representation
+      
+        end
+      end
+      
+      class MemberListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::Member, decorator: Google::Apis::YoutubeV3::Member::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubeV3::PageInfo, decorator: Google::Apis::YoutubeV3::PageInfo::Representation
+      
+          property :token_pagination, as: 'tokenPagination', class: Google::Apis::YoutubeV3::TokenPagination, decorator: Google::Apis::YoutubeV3::TokenPagination::Representation
+      
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class MemberSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creator_channel_id, as: 'creatorChannelId'
+          property :member_details, as: 'memberDetails', class: Google::Apis::YoutubeV3::ChannelProfileDetails, decorator: Google::Apis::YoutubeV3::ChannelProfileDetails::Representation
+      
+          property :memberships_details, as: 'membershipsDetails', class: Google::Apis::YoutubeV3::MembershipsDetails, decorator: Google::Apis::YoutubeV3::MembershipsDetails::Representation
+      
+        end
+      end
+      
+      class MembershipsDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accessible_levels, as: 'accessibleLevels'
+          property :member_since, as: 'memberSince'
+          property :member_since_current_level, as: 'memberSinceCurrentLevel'
+          property :member_total_duration, as: 'memberTotalDuration'
+          property :member_total_duration_current_level, as: 'memberTotalDurationCurrentLevel'
+          property :purchased_level, as: 'purchasedLevel'
+        end
+      end
+      
+      class MembershipsLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::MembershipsLevelSnippet, decorator: Google::Apis::YoutubeV3::MembershipsLevelSnippet::Representation
+      
+        end
+      end
+      
+      class MembershipsLevelListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :event_id, as: 'eventId'
+          collection :items, as: 'items', class: Google::Apis::YoutubeV3::MembershipsLevel, decorator: Google::Apis::YoutubeV3::MembershipsLevel::Representation
+      
+          property :kind, as: 'kind'
+          property :visitor_id, as: 'visitorId'
+        end
+      end
+      
+      class MembershipsLevelSnippet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creator_channel_id, as: 'creatorChannelId'
+          property :level_details, as: 'levelDetails', class: Google::Apis::YoutubeV3::LevelDetails, decorator: Google::Apis::YoutubeV3::LevelDetails::Representation
+      
         end
       end
       
