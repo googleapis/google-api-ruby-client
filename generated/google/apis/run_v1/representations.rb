@@ -22,10 +22,25 @@ module Google
   module Apis
     module RunV1
       
+      class ListLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::RunV1::Location, decorator: Google::Apis::RunV1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
       end
       
       class Location

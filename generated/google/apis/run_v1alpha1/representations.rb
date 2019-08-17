@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfigMapKeySelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigMapVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -143,6 +149,12 @@ module Google
       end
       
       class EnvVar
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnvVarSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +430,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecretKeySelector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecretVolumeSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -595,7 +613,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
-          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -629,6 +646,16 @@ module Google
       class ConfigMapEnvSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1alpha1::LocalObjectReference, decorator: Google::Apis::RunV1alpha1::LocalObjectReference::Representation
+      
+          property :optional, as: 'optional'
+        end
+      end
+      
+      class ConfigMapKeySelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1alpha1::LocalObjectReference, decorator: Google::Apis::RunV1alpha1::LocalObjectReference::Representation
       
           property :optional, as: 'optional'
@@ -811,6 +838,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
           property :value, as: 'value'
+          property :value_from, as: 'valueFrom', class: Google::Apis::RunV1alpha1::EnvVarSource, decorator: Google::Apis::RunV1alpha1::EnvVarSource::Representation
+      
+        end
+      end
+      
+      class EnvVarSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config_map_key_ref, as: 'configMapKeyRef', class: Google::Apis::RunV1alpha1::ConfigMapKeySelector, decorator: Google::Apis::RunV1alpha1::ConfigMapKeySelector::Representation
+      
+          property :secret_key_ref, as: 'secretKeyRef', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
         end
       end
       
@@ -1317,6 +1356,16 @@ module Google
       class SecretEnvSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1alpha1::LocalObjectReference, decorator: Google::Apis::RunV1alpha1::LocalObjectReference::Representation
+      
+          property :optional, as: 'optional'
+        end
+      end
+      
+      class SecretKeySelector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1alpha1::LocalObjectReference, decorator: Google::Apis::RunV1alpha1::LocalObjectReference::Representation
       
           property :optional, as: 'optional'

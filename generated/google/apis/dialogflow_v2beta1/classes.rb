@@ -4476,40 +4476,6 @@ module Google
         end
       end
       
-      # The status update for performing NLU model evaluation given a dataset.
-      # Metadata of the returned long running operation for
-      # ModelEvaluations.EvaluateModel.
-      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Number of samples that have already received the predicted
-        # intents from Dialogflow server.
-        # Corresponds to the JSON property `samplesWithIntentDetected`
-        # @return [Fixnum]
-        attr_accessor :samples_with_intent_detected
-      
-        # Required. Represents the job that the batch worker is currently working on.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # Required. Total number of samples in the dataset.
-        # Corresponds to the JSON property `totalSamples`
-        # @return [Fixnum]
-        attr_accessor :total_samples
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @samples_with_intent_detected = args[:samples_with_intent_detected] if args.key?(:samples_with_intent_detected)
-          @state = args[:state] if args.key?(:state)
-          @total_samples = args[:total_samples] if args.key?(:total_samples)
-        end
-      end
-      
       # Represents the contents of the original request that was passed to
       # the `[Streaming]DetectIntent` call.
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest

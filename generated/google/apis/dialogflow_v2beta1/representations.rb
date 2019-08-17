@@ -700,12 +700,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2014,15 +2008,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :samples_with_intent_detected, as: 'samplesWithIntentDetected'
-          property :state, as: 'state'
-          property :total_samples, as: 'totalSamples'
         end
       end
       

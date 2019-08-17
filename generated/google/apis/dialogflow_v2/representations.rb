@@ -742,12 +742,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2040,15 +2034,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :annotated_conversation_dataset, as: 'annotatedConversationDataset', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1AnnotatedConversationDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1AnnotatedConversationDataset::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1ModelEvaluationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :samples_with_intent_detected, as: 'samplesWithIntentDetected'
-          property :state, as: 'state'
-          property :total_samples, as: 'totalSamples'
         end
       end
       

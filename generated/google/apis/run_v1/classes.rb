@@ -22,6 +22,31 @@ module Google
   module Apis
     module RunV1
       
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::RunV1::Location>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # A resource that represents Google Cloud Platform location.
       class Location
         include Google::Apis::Core::Hashable

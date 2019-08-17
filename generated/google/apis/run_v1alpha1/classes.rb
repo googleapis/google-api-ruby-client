@@ -147,14 +147,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies whether principals can be exempted for the same LogType in
-        # lower-level resource policies. If true, any lower-level exemptions will
-        # be ignored.
-        # Corresponds to the JSON property `ignoreChildExemptions`
-        # @return [Boolean]
-        attr_accessor :ignore_child_exemptions
-        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
-      
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
@@ -167,7 +159,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -301,6 +292,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @optional = args[:optional] if args.key?(:optional)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # Selects a key from a ConfigMap.
+      class ConfigMapKeySelector
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # The key to select.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # LocalObjectReference contains enough information to let you locate the
+        # referenced object inside the same namespace.
+        # Corresponds to the JSON property `localObjectReference`
+        # @return [Google::Apis::RunV1alpha1::LocalObjectReference]
+        attr_accessor :local_object_reference
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # Specify whether the ConfigMap or its key must be defined
+        # +optional
+        # Corresponds to the JSON property `optional`
+        # @return [Boolean]
+        attr_accessor :optional
+        alias_method :optional?, :optional
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
           @optional = args[:optional] if args.key?(:optional)
         end
@@ -1092,6 +1123,13 @@ module Google
         # @return [String]
         attr_accessor :value
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # EnvVarSource represents a source for the value of an EnvVar.
+        # Corresponds to the JSON property `valueFrom`
+        # @return [Google::Apis::RunV1alpha1::EnvVarSource]
+        attr_accessor :value_from
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1100,6 +1138,38 @@ module Google
         def update!(**args)
           @name = args[:name] if args.key?(:name)
           @value = args[:value] if args.key?(:value)
+          @value_from = args[:value_from] if args.key?(:value_from)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # EnvVarSource represents a source for the value of an EnvVar.
+      class EnvVarSource
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # Selects a key from a ConfigMap.
+        # Corresponds to the JSON property `configMapKeyRef`
+        # @return [Google::Apis::RunV1alpha1::ConfigMapKeySelector]
+        attr_accessor :config_map_key_ref
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `secretKeyRef`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :secret_key_ref
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config_map_key_ref = args[:config_map_key_ref] if args.key?(:config_map_key_ref)
+          @secret_key_ref = args[:secret_key_ref] if args.key?(:secret_key_ref)
         end
       end
       
@@ -3239,6 +3309,46 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @optional = args[:optional] if args.key?(:optional)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # SecretKeySelector selects a key of a Secret.
+      class SecretKeySelector
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # The key of the secret to select from.  Must be a valid secret key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # LocalObjectReference contains enough information to let you locate the
+        # referenced object inside the same namespace.
+        # Corresponds to the JSON property `localObjectReference`
+        # @return [Google::Apis::RunV1alpha1::LocalObjectReference]
+        attr_accessor :local_object_reference
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # Specify whether the Secret or its key must be defined
+        # +optional
+        # Corresponds to the JSON property `optional`
+        # @return [Boolean]
+        attr_accessor :optional
+        alias_method :optional?, :optional
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
           @optional = args[:optional] if args.key?(:optional)
         end
