@@ -277,13 +277,14 @@ EOF
 --outer
 Content-Type: application/http
 Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
-Content-Length: 349
+Content-Length: 380
 Content-Transfer-Encoding: binary
 
 POST /upload/zoo/animals? HTTP/1.1
 X-Goog-Api-Client: #{x_goog_api_client_value}
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
+Authorization: Bearer a token
 Host: www.googleapis.com
 
 --inner
