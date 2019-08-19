@@ -163,6 +163,8 @@ module Google
         #   the serialized request
         def to_part(call)
           call.prepare!
+          # This will add the Authorization header if needed.
+          call.apply_request_options(call.header)
           parts = []
           parts << build_head(call)
           parts << build_body(call) unless call.body.nil?
@@ -177,8 +179,6 @@ module Google
           call.header.each do |key, value|
             request_head << sprintf("\r\n%s: %s", key, value)
           end
-          token = call.options.authorization
-          request_head << "\r\nAuthorization: Bearer #{token}" unless token.nil?
           request_head << sprintf("\r\nHost: %s", call.url.host)
           request_head << "\r\n\r\n"
           StringIO.new(request_head)

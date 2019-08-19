@@ -121,6 +121,59 @@ EOF
     expect(a_request(:post, 'https://www.googleapis.com/batch').with(body: expected_body)).to have_been_made
   end
 
+  it 'should send content with authorization header when set' do
+    b = ->(_res, _err) {}
+    signet_auth = object_double(Signet::OAuth2::Client.new).tap do |a|
+      allow(a).to receive(:apply!) do |header|
+        header['Authorization'] = 'Bearer a_token_value'
+      end
+    end
+    command.add(get_command.tap { |c| c.options.authorization = 'oauthtoken' }, &b)
+    command.add(post_with_string_command.tap { |c| c.options.authorization = signet_auth }, &b)
+    command.add(post_with_io_command, &b)
+    command.execute(client)
+
+    expected_body = <<EOF.gsub(/\n/, "\r\n")
+--123abc
+Content-Type: application/http
+Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+0>
+Content-Length: 92
+Content-Transfer-Encoding: binary
+
+GET /zoo/animals/1? HTTP/1.1
+Authorization: Bearer oauthtoken
+Host: www.googleapis.com
+
+
+--123abc
+Content-Type: application/http
+Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+1>
+Content-Length: 133
+Content-Transfer-Encoding: binary
+
+POST /zoo/animals/2? HTTP/1.1
+Content-Type: text/plain
+Authorization: Bearer a_token_value
+Host: www.googleapis.com
+
+Hello world
+--123abc
+Content-Type: application/http
+Content-Id: <ffe23d1b-e8f7-47f5-8c01-2a30cf8ecb8f+2>
+Content-Length: 93
+Content-Transfer-Encoding: binary
+
+POST /zoo/animals/3? HTTP/1.1
+Content-Type: text/plain
+Host: www.googleapis.com
+
+Goodbye!
+--123abc--
+
+EOF
+    expect(a_request(:post, 'https://www.googleapis.com/batch').with(body: expected_body)).to have_been_made
+  end
+
   it 'should send decode responses' do
     expect do |b|
       command.add(get_command) do |res, err|
