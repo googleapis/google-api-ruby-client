@@ -1886,8 +1886,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
-        # The token that was generated when a purchase was made. This uniquely
-        # identifies a purchase.
+        # The token which uniquely identifies a one-time purchase or subscription. To
+        # uniquely identify subscription renewals use order_id (available starting from
+        # version 3 of the API).
         # Corresponds to the JSON property `purchaseToken`
         # @return [String]
         attr_accessor :purchase_token

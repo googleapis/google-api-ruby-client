@@ -2246,22 +2246,33 @@ module Google
         #   The package name of the application for which voided purchases need to be
         #   returned (for example, 'com.some.thing').
         # @param [Fixnum] end_time
-        #   The time, in milliseconds since the Epoch, of the newest voided in-app product
-        #   purchase that you want to see in the response. The value of this parameter
-        #   cannot be greater than the current time and is ignored if a pagination token
-        #   is set. Default value is current time. Note: This filter is applied on the
-        #   time at which the record is seen as voided by our systems and not the actual
-        #   voided time returned in the response.
+        #   The time, in milliseconds since the Epoch, of the newest voided purchase that
+        #   you want to see in the response. The value of this parameter cannot be greater
+        #   than the current time and is ignored if a pagination token is set. Default
+        #   value is current time. Note: This filter is applied on the time at which the
+        #   record is seen as voided by our systems and not the actual voided time
+        #   returned in the response.
         # @param [Fixnum] max_results
         # @param [Fixnum] start_index
         # @param [Fixnum] start_time
-        #   The time, in milliseconds since the Epoch, of the oldest voided in-app product
-        #   purchase that you want to see in the response. The value of this parameter
-        #   cannot be older than 30 days and is ignored if a pagination token is set.
-        #   Default value is current time minus 30 days. Note: This filter is applied on
-        #   the time at which the record is seen as voided by our systems and not the
-        #   actual voided time returned in the response.
+        #   The time, in milliseconds since the Epoch, of the oldest voided purchase that
+        #   you want to see in the response. The value of this parameter cannot be older
+        #   than 30 days and is ignored if a pagination token is set. Default value is
+        #   current time minus 30 days. Note: This filter is applied on the time at which
+        #   the record is seen as voided by our systems and not the actual voided time
+        #   returned in the response.
         # @param [String] token
+        # @param [Fixnum] type
+        #   The type of voided purchases that you want to see in the response. Possible
+        #   values are:
+        #   - 0: Only voided in-app product purchases will be returned in the response.
+        #   This is the default value.
+        #   - 1: Both voided in-app purchases and voided subscription purchases will be
+        #   returned in the response.  Note: Before requesting to receive voided
+        #   subscription purchases, you must switch to use orderId in the response which
+        #   uniquely identifies one-time purchases and subscriptions. Otherwise, you will
+        #   receive multiple subscription orders with the same PurchaseToken, because
+        #   subscription renewal orders share the same PurchaseToken.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2281,7 +2292,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_purchase_voidedpurchases(package_name, end_time: nil, max_results: nil, start_index: nil, start_time: nil, token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_purchase_voidedpurchases(package_name, end_time: nil, max_results: nil, start_index: nil, start_time: nil, token: nil, type: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{packageName}/purchases/voidedpurchases', options)
           command.response_representation = Google::Apis::AndroidpublisherV3::VoidedPurchasesListResponse::Representation
           command.response_class = Google::Apis::AndroidpublisherV3::VoidedPurchasesListResponse
@@ -2291,6 +2302,7 @@ module Google
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['token'] = token unless token.nil?
+          command.query['type'] = type unless type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

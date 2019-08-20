@@ -147,23 +147,21 @@ module Google
         # by it.
         # See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
         # more information on connecting Cloud projects.
-        # This feature is currently in alpha, available only for whitelisted users.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
-        # Required. The runtime in which the function is going to run. Choices:
-        # * `nodejs6`: Node.js 6
-        # * `nodejs8`: Node.js 8
-        # * `nodejs10`: Node.js 10
-        # * `python37`: Python 3.7
-        # * `go111`: Go 1.11
+        # The runtime in which to run the function. Required when deploying a new
+        # function, optional when updating an existing function. For a complete
+        # list of possible choices, see the
+        # [`gcloud` command
+        # reference](/sdk/gcloud/reference/functions/deploy#--runtime).
         # Corresponds to the JSON property `runtime`
         # @return [String]
         attr_accessor :runtime
       
         # The email of the function's service account. If empty, defaults to
-        # `project_id`@appspot.gserviceaccount.com.
+        # ``project_id`@appspot.gserviceaccount.com`.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -219,8 +217,8 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only.
-        # The version identifier of the Cloud Function. Each deployment attempt
+        # Output only. The version identifier of the Cloud Function. Each deployment
+        # attempt
         # results in a new version of a function being created.
         # Corresponds to the JSON property `versionId`
         # @return [Fixnum]
@@ -234,7 +232,6 @@ module Google
         # replace it.
         # See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for
         # more information on connecting Cloud projects.
-        # This feature is currently in alpha, available only for whitelisted users.
         # Corresponds to the JSON property `vpcConnector`
         # @return [String]
         attr_accessor :vpc_connector

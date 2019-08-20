@@ -957,8 +957,11 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+          property :order_id, as: 'orderId'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_token, as: 'purchaseToken'
+          property :voided_reason, as: 'voidedReason'
+          property :voided_source, as: 'voidedSource'
           property :voided_time_millis, :numeric_string => true, as: 'voidedTimeMillis'
         end
       end

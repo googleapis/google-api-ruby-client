@@ -2075,17 +2075,45 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The order id which uniquely identifies a one-time purchase, subscription
+        # purchase, or subscription renewal.
+        # Corresponds to the JSON property `orderId`
+        # @return [String]
+        attr_accessor :order_id
+      
         # The time at which the purchase was made, in milliseconds since the epoch (Jan
         # 1, 1970).
         # Corresponds to the JSON property `purchaseTimeMillis`
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
-        # The token that was generated when a purchase was made. This uniquely
-        # identifies a purchase.
+        # The token which uniquely identifies a one-time purchase or subscription. To
+        # uniquely identify subscription renewals use order_id (available starting from
+        # version 3 of the API).
         # Corresponds to the JSON property `purchaseToken`
         # @return [String]
         attr_accessor :purchase_token
+      
+        # The reason why the purchase was voided, possible values are:
+        # - Other
+        # - Remorse
+        # - Not_received
+        # - Defective
+        # - Accidental_purchase
+        # - Fraud
+        # - Friendly_fraud
+        # - Chargeback
+        # Corresponds to the JSON property `voidedReason`
+        # @return [Fixnum]
+        attr_accessor :voided_reason
+      
+        # The initiator of voided purchase, possible values are:
+        # - User
+        # - Developer
+        # - Google
+        # Corresponds to the JSON property `voidedSource`
+        # @return [Fixnum]
+        attr_accessor :voided_source
       
         # The time at which the purchase was canceled/refunded/charged-back, in
         # milliseconds since the epoch (Jan 1, 1970).
@@ -2100,8 +2128,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+          @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
+          @voided_reason = args[:voided_reason] if args.key?(:voided_reason)
+          @voided_source = args[:voided_source] if args.key?(:voided_source)
           @voided_time_millis = args[:voided_time_millis] if args.key?(:voided_time_millis)
         end
       end
