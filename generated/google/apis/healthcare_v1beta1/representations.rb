@@ -443,7 +443,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
-          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -544,6 +543,7 @@ module Google
       
           property :remove_list, as: 'removeList', class: Google::Apis::HealthcareV1beta1::TagFilterList, decorator: Google::Apis::HealthcareV1beta1::TagFilterList::Representation
       
+          property :skip_id_redaction, as: 'skipIdRedaction'
         end
       end
       

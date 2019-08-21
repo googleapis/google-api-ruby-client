@@ -506,6 +506,11 @@ module Google
         # @return [Array<Google::Apis::FirebaserulesV1::FunctionMock>]
         attr_accessor :function_mocks
       
+        # Specifies whether paths (such as request.path) are encoded and how.
+        # Corresponds to the JSON property `pathEncoding`
+        # @return [String]
+        attr_accessor :path_encoding
+      
         # Request context.
         # The exact format of the request context is service-dependent. See the
         # appropriate service documentation for information about the supported
@@ -541,6 +546,7 @@ module Google
         def update!(**args)
           @expectation = args[:expectation] if args.key?(:expectation)
           @function_mocks = args[:function_mocks] if args.key?(:function_mocks)
+          @path_encoding = args[:path_encoding] if args.key?(:path_encoding)
           @request = args[:request] if args.key?(:request)
           @resource = args[:resource] if args.key?(:resource)
         end

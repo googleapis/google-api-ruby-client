@@ -162,6 +162,47 @@ module Google
         # @return [String]
         attr_accessor :color
       
+        # If set to true, use the Android framework's default LED light settings for
+        # the notification. Default values are specified in
+        # [config.xml](https://android.googlesource.com/platform/frameworks/base/+/
+        # master/core/res/res/values/config.xml).
+        # If `default_light_settings` is set to true and `light_settings` is also
+        # set, the user-specified `light_settings` is used instead of the
+        # default value.
+        # Corresponds to the JSON property `defaultLightSettings`
+        # @return [Boolean]
+        attr_accessor :default_light_settings
+        alias_method :default_light_settings?, :default_light_settings
+      
+        # If set to true, use the Android framework's default sound for the
+        # notification. Default values are specified in
+        # [config.xml](https://android.googlesource.com/platform/frameworks/base/+/
+        # master/core/res/res/values/config.xml).
+        # Corresponds to the JSON property `defaultSound`
+        # @return [Boolean]
+        attr_accessor :default_sound
+        alias_method :default_sound?, :default_sound
+      
+        # If set to true, use the Android framework's default vibrate pattern for the
+        # notification. Default values are specified in
+        # [config.xml](https://android.googlesource.com/platform/frameworks/base/+/
+        # master/core/res/res/values/config.xml).
+        # If `default_vibrate_timings` is set to true and `vibrate_timings` is also
+        # set, the default value is used instead of the user-specified
+        # `vibrate_timings`.
+        # Corresponds to the JSON property `defaultVibrateTimings`
+        # @return [Boolean]
+        attr_accessor :default_vibrate_timings
+        alias_method :default_vibrate_timings?, :default_vibrate_timings
+      
+        # Set the time that the event in the notification occurred. Notifications in
+        # the panel are sorted by this time. A point in time is represented using
+        # [protobuf.Timestamp](https://developers.google.com/protocol-buffers/docs/
+        # reference/java/com/google/protobuf/Timestamp).
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
         # The notification's icon.
         # Sets the notification icon to myicon for drawable resource myicon.
         # If you don't send this key in the request, FCM displays the launcher icon
@@ -177,12 +218,64 @@ module Google
         # @return [String]
         attr_accessor :image
       
+        # Settings to control notification LED.
+        # Corresponds to the JSON property `lightSettings`
+        # @return [Google::Apis::FcmV1::LightSettings]
+        attr_accessor :light_settings
+      
+        # Set whether or not this notification is relevant only to the current
+        # device. Some notifications can be bridged to other devices for remote
+        # display, such as a Wear OS watch. This hint can be set to recommend this
+        # notification not be bridged. See [Wear OS
+        # guides](https://developer.android.com/training/wearables/notifications/bridger#
+        # existing-method-of-preventing-bridging)
+        # Corresponds to the JSON property `localOnly`
+        # @return [Boolean]
+        attr_accessor :local_only
+        alias_method :local_only?, :local_only
+      
+        # Sets the number of items this notification represents. May be displayed as
+        # a badge count for launchers that support badging.See [Notification
+        # Badge](https://developer.android.com/training/notify-user/badges).
+        # For example, this might be useful if you're using just one notification to
+        # represent multiple new messages but you want the count here to represent
+        # the number of total new messages.
+        # If zero or unspecified, systems that support badging use the default, which
+        # is to increment a number displayed on the long-press menu each time a new
+        # notification arrives.
+        # Corresponds to the JSON property `notificationCount`
+        # @return [Fixnum]
+        attr_accessor :notification_count
+      
+        # Set the relative priority for this notification. Priority is an indication
+        # of how much of the user's attention should be consumed by this
+        # notification. Low-priority notifications may be hidden from the user in
+        # certain situations, while the user might be interrupted for a
+        # higher-priority notification. The effect of setting the same priorities may
+        # differ slightly on different platforms. Note this priority differs from
+        # `AndroidMessagePriority`. This priority is processed by the client after
+        # the message has been delivered, whereas
+        # [AndroidMessagePriority](https://firebase.google.com/docs/reference/fcm/rest/
+        # v1/projects.messages#androidmessagepriority)
+        # is an FCM concept that controls when the message is delivered.
+        # Corresponds to the JSON property `notificationPriority`
+        # @return [String]
+        attr_accessor :notification_priority
+      
         # The sound to play when the device receives the notification.
         # Supports "default" or the filename of a sound resource bundled in the app.
         # Sound files must reside in /res/raw/.
         # Corresponds to the JSON property `sound`
         # @return [String]
         attr_accessor :sound
+      
+        # When set to false or unset, the notification is automatically
+        # dismissed when the user clicks it in the panel. When set to true, the
+        # notification persists even when the user clicks it.
+        # Corresponds to the JSON property `sticky`
+        # @return [Boolean]
+        attr_accessor :sticky
+        alias_method :sticky?, :sticky
       
         # Identifier used to replace existing notifications in the notification
         # drawer.
@@ -192,6 +285,13 @@ module Google
         # Corresponds to the JSON property `tag`
         # @return [String]
         attr_accessor :tag
+      
+        # Sets the "ticker" text, which is sent to accessibility services.
+        # Prior to API level 21 (`Lollipop`), sets the text that is displayed in the
+        # status bar when the notification first arrives.
+        # Corresponds to the JSON property `ticker`
+        # @return [String]
+        attr_accessor :ticker
       
         # The notification's title. If present, it will override
         # google.firebase.fcm.v1.Notification.title.
@@ -214,6 +314,27 @@ module Google
         # @return [String]
         attr_accessor :title_loc_key
       
+        # Set the vibration pattern to use. Pass in an array of
+        # [protobuf.Duration](https://developers.google.com/protocol-buffers/docs/
+        # reference/google.protobuf#google.protobuf.Duration)
+        # to turn on or off the vibrator. The first value indicates the `Duration` to
+        # wait before turning the vibrator on. The next value indicates the
+        # `Duration` to keep the vibrator on. Subsequent values alternate between
+        # `Duration` to turn the vibrator off and to turn the vibrator on.
+        # If `vibrate_timings` is set and `default_vibrate_timings` is set to `true`,
+        # the default value is used instead of the user-specified `vibrate_timings`.
+        # Corresponds to the JSON property `vibrateTimings`
+        # @return [Array<String>]
+        attr_accessor :vibrate_timings
+      
+        # Set the
+        # [Notification.visibility](https://developer.android.com/reference/android/app/
+        # Notification.html#visibility)
+        # of the notification.
+        # Corresponds to the JSON property `visibility`
+        # @return [String]
+        attr_accessor :visibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -226,13 +347,25 @@ module Google
           @channel_id = args[:channel_id] if args.key?(:channel_id)
           @click_action = args[:click_action] if args.key?(:click_action)
           @color = args[:color] if args.key?(:color)
+          @default_light_settings = args[:default_light_settings] if args.key?(:default_light_settings)
+          @default_sound = args[:default_sound] if args.key?(:default_sound)
+          @default_vibrate_timings = args[:default_vibrate_timings] if args.key?(:default_vibrate_timings)
+          @event_time = args[:event_time] if args.key?(:event_time)
           @icon = args[:icon] if args.key?(:icon)
           @image = args[:image] if args.key?(:image)
+          @light_settings = args[:light_settings] if args.key?(:light_settings)
+          @local_only = args[:local_only] if args.key?(:local_only)
+          @notification_count = args[:notification_count] if args.key?(:notification_count)
+          @notification_priority = args[:notification_priority] if args.key?(:notification_priority)
           @sound = args[:sound] if args.key?(:sound)
+          @sticky = args[:sticky] if args.key?(:sticky)
           @tag = args[:tag] if args.key?(:tag)
+          @ticker = args[:ticker] if args.key?(:ticker)
           @title = args[:title] if args.key?(:title)
           @title_loc_args = args[:title_loc_args] if args.key?(:title_loc_args)
           @title_loc_key = args[:title_loc_key] if args.key?(:title_loc_key)
+          @vibrate_timings = args[:vibrate_timings] if args.key?(:vibrate_timings)
+          @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
       
@@ -299,6 +432,153 @@ module Google
         end
       end
       
+      # Represents a color in the RGBA color space. This representation is designed
+      # for simplicity of conversion to/from color representations in various
+      # languages over compactness; for example, the fields of this representation
+      # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+      # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+      # method in iOS; and, with just a little work, it can be easily formatted into
+      # a CSS "rgba()" string in JavaScript, as well.
+      # Note: this proto does not carry information about the absolute color space
+      # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+      # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+      # space.
+      # Example (Java):
+      # import com.google.type.Color;
+      # // ...
+      # public static java.awt.Color fromProto(Color protocolor) `
+      # float alpha = protocolor.hasAlpha()
+      # ? protocolor.getAlpha().getValue()
+      # : 1.0;
+      # return new java.awt.Color(
+      # protocolor.getRed(),
+      # protocolor.getGreen(),
+      # protocolor.getBlue(),
+      # alpha);
+      # `
+      # public static Color toProto(java.awt.Color color) `
+      # float red = (float) color.getRed();
+      # float green = (float) color.getGreen();
+      # float blue = (float) color.getBlue();
+      # float denominator = 255.0;
+      # Color.Builder resultBuilder =
+      # Color
+      # .newBuilder()
+      # .setRed(red / denominator)
+      # .setGreen(green / denominator)
+      # .setBlue(blue / denominator);
+      # int alpha = color.getAlpha();
+      # if (alpha != 255) `
+      # result.setAlpha(
+      # FloatValue
+      # .newBuilder()
+      # .setValue(((float) alpha) / denominator)
+      # .build());
+      # `
+      # return resultBuilder.build();
+      # `
+      # // ...
+      # Example (iOS / Obj-C):
+      # // ...
+      # static UIColor* fromProto(Color* protocolor) `
+      # float red = [protocolor red];
+      # float green = [protocolor green];
+      # float blue = [protocolor blue];
+      # FloatValue* alpha_wrapper = [protocolor alpha];
+      # float alpha = 1.0;
+      # if (alpha_wrapper != nil) `
+      # alpha = [alpha_wrapper value];
+      # `
+      # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+      # `
+      # static Color* toProto(UIColor* color) `
+      # CGFloat red, green, blue, alpha;
+      # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+      # return nil;
+      # `
+      # Color* result = [[Color alloc] init];
+      # [result setRed:red];
+      # [result setGreen:green];
+      # [result setBlue:blue];
+      # if (alpha <= 0.9999) `
+      # [result setAlpha:floatWrapperWithValue(alpha)];
+      # `
+      # [result autorelease];
+      # return result;
+      # `
+      # // ...
+      # Example (JavaScript):
+      # // ...
+      # var protoToCssColor = function(rgb_color) `
+      # var redFrac = rgb_color.red || 0.0;
+      # var greenFrac = rgb_color.green || 0.0;
+      # var blueFrac = rgb_color.blue || 0.0;
+      # var red = Math.floor(redFrac * 255);
+      # var green = Math.floor(greenFrac * 255);
+      # var blue = Math.floor(blueFrac * 255);
+      # if (!('alpha' in rgb_color)) `
+      # return rgbToCssColor_(red, green, blue);
+      # `
+      # var alphaFrac = rgb_color.alpha.value || 0.0;
+      # var rgbParams = [red, green, blue].join(',');
+      # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+      # `;
+      # var rgbToCssColor_ = function(red, green, blue) `
+      # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+      # var hexString = rgbNumber.toString(16);
+      # var missingZeros = 6 - hexString.length;
+      # var resultBuilder = ['#'];
+      # for (var i = 0; i < missingZeros; i++) `
+      # resultBuilder.push('0');
+      # `
+      # resultBuilder.push(hexString);
+      # return resultBuilder.join('');
+      # `;
+      # // ...
+      class Color
+        include Google::Apis::Core::Hashable
+      
+        # The fraction of this color that should be applied to the pixel. That is,
+        # the final pixel color is defined by the equation:
+        # pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
+        # This means that a value of 1.0 corresponds to a solid color, whereas
+        # a value of 0.0 corresponds to a completely transparent color. This
+        # uses a wrapper message rather than a simple float scalar so that it is
+        # possible to distinguish between a default value and the value being unset.
+        # If omitted, this color object is to be rendered as a solid color
+        # (as if the alpha value had been explicitly given with a value of 1.0).
+        # Corresponds to the JSON property `alpha`
+        # @return [Float]
+        attr_accessor :alpha
+      
+        # The amount of blue in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `blue`
+        # @return [Float]
+        attr_accessor :blue
+      
+        # The amount of green in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `green`
+        # @return [Float]
+        attr_accessor :green
+      
+        # The amount of red in the color as a value in the interval [0, 1].
+        # Corresponds to the JSON property `red`
+        # @return [Float]
+        attr_accessor :red
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alpha = args[:alpha] if args.key?(:alpha)
+          @blue = args[:blue] if args.key?(:blue)
+          @green = args[:green] if args.key?(:green)
+          @red = args[:red] if args.key?(:red)
+        end
+      end
+      
       # Platform independent options for features provided by the FCM SDKs.
       class FcmOptions
         include Google::Apis::Core::Hashable
@@ -315,6 +595,145 @@ module Google
         # Update properties of this object
         def update!(**args)
           @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
+        end
+      end
+      
+      # Settings to control notification LED.
+      class LightSettings
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::FcmV1::Color]
+        attr_accessor :color
+      
+        # Required. Along with `light_on_duration `, define the blink rate of LED
+        # flashes. Resolution defined by
+        # [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#google.protobuf.Duration)
+        # Corresponds to the JSON property `lightOffDuration`
+        # @return [String]
+        attr_accessor :light_off_duration
+      
+        # Required. Along with `light_off_duration`, define the blink rate of LED
+        # flashes. Resolution defined by
+        # [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/
+        # google.protobuf#google.protobuf.Duration)
+        # Corresponds to the JSON property `lightOnDuration`
+        # @return [String]
+        attr_accessor :light_on_duration
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color = args[:color] if args.key?(:color)
+          @light_off_duration = args[:light_off_duration] if args.key?(:light_off_duration)
+          @light_on_duration = args[:light_on_duration] if args.key?(:light_on_duration)
         end
       end
       

@@ -569,7 +569,6 @@ module Google
           property :master_config, as: 'masterConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
           property :master_type, as: 'masterType'
-          property :max_running_time, as: 'maxRunningTime'
           collection :package_uris, as: 'packageUris'
           property :parameter_server_config, as: 'parameterServerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       

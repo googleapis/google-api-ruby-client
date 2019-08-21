@@ -122,14 +122,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies whether principals can be exempted for the same LogType in
-        # lower-level resource policies. If true, any lower-level exemptions will
-        # be ignored.
-        # Corresponds to the JSON property `ignoreChildExemptions`
-        # @return [Boolean]
-        attr_accessor :ignore_child_exemptions
-        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
-      
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
@@ -142,7 +134,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -243,8 +234,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # An AES 128/192/256 bit key. Causes the hash to be computed based on this
-        # key. A default key is generated for each DeidentifyDataset operation and is
-        # used wherever crypto_key is not specified.
+        # key. A default key is generated for each Deidentify operation and is used
+        # wherever crypto_key is not specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -299,8 +290,7 @@ module Google
       
         # An AES 128/192/256 bit key. Causes the shift to be computed based on this
         # key and the patient ID. A default key is generated for each
-        # DeidentifyDataset operation and is used wherever crypto_key is not
-        # specified.
+        # Deidentify operation and is used wherever crypto_key is not specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -470,6 +460,20 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::TagFilterList]
         attr_accessor :remove_list
       
+        # If true, skip replacing StudyInstanceUID, SeriesInstanceUID,
+        # SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched.
+        # The Cloud Healthcare API regenerates these UIDs by default based on the
+        # DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly
+        # to an individual out of context, given access to the original images, or
+        # to a database of the original images containing the UIDs, it would be
+        # possible to recover the individual's identity."
+        # http://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.
+        # html
+        # Corresponds to the JSON property `skipIdRedaction`
+        # @return [Boolean]
+        attr_accessor :skip_id_redaction
+        alias_method :skip_id_redaction?, :skip_id_redaction
+      
         def initialize(**args)
            update!(**args)
         end
@@ -479,6 +483,7 @@ module Google
           @filter_profile = args[:filter_profile] if args.key?(:filter_profile)
           @keep_list = args[:keep_list] if args.key?(:keep_list)
           @remove_list = args[:remove_list] if args.key?(:remove_list)
+          @skip_id_redaction = args[:skip_id_redaction] if args.key?(:skip_id_redaction)
         end
       end
       

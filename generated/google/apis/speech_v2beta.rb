@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/healthcare_v1alpha2/service.rb'
-require 'google/apis/healthcare_v1alpha2/classes.rb'
-require 'google/apis/healthcare_v1alpha2/representations.rb'
+require 'google/apis/speech_v2beta/service.rb'
+require 'google/apis/speech_v2beta/classes.rb'
+require 'google/apis/speech_v2beta/representations.rb'
 
 module Google
   module Apis
-    # Cloud Healthcare API
+    # Cloud Speech-to-Text API
     #
-    # Manage, store, and access healthcare data in Google Cloud Platform.
+    # Converts audio to text by applying powerful neural network models.
     #
-    # @see https://cloud.google.com/healthcare
-    module HealthcareV1alpha2
-      VERSION = 'V1alpha2'
-      REVISION = '20190809'
+    # @see https://cloud.google.com/speech-to-text/docs/quickstart-protocol
+    module SpeechV2beta
+      VERSION = 'V2beta'
+      REVISION = '20190819'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

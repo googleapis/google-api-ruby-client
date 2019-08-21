@@ -52,7 +52,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Color
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FcmOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LightSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -119,13 +131,26 @@ module Google
           property :channel_id, as: 'channelId'
           property :click_action, as: 'clickAction'
           property :color, as: 'color'
+          property :default_light_settings, as: 'defaultLightSettings'
+          property :default_sound, as: 'defaultSound'
+          property :default_vibrate_timings, as: 'defaultVibrateTimings'
+          property :event_time, as: 'eventTime'
           property :icon, as: 'icon'
           property :image, as: 'image'
+          property :light_settings, as: 'lightSettings', class: Google::Apis::FcmV1::LightSettings, decorator: Google::Apis::FcmV1::LightSettings::Representation
+      
+          property :local_only, as: 'localOnly'
+          property :notification_count, as: 'notificationCount'
+          property :notification_priority, as: 'notificationPriority'
           property :sound, as: 'sound'
+          property :sticky, as: 'sticky'
           property :tag, as: 'tag'
+          property :ticker, as: 'ticker'
           property :title, as: 'title'
           collection :title_loc_args, as: 'titleLocArgs'
           property :title_loc_key, as: 'titleLocKey'
+          collection :vibrate_timings, as: 'vibrateTimings'
+          property :visibility, as: 'visibility'
         end
       end
       
@@ -147,10 +172,30 @@ module Google
         end
       end
       
+      class Color
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alpha, as: 'alpha'
+          property :blue, as: 'blue'
+          property :green, as: 'green'
+          property :red, as: 'red'
+        end
+      end
+      
       class FcmOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :analytics_label, as: 'analyticsLabel'
+        end
+      end
+      
+      class LightSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::FcmV1::Color, decorator: Google::Apis::FcmV1::Color::Representation
+      
+          property :light_off_duration, as: 'lightOffDuration'
+          property :light_on_duration, as: 'lightOnDuration'
         end
       end
       

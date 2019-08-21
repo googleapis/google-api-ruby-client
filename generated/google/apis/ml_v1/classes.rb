@@ -1408,11 +1408,6 @@ module Google
         # @return [String]
         attr_accessor :master_type
       
-        # Optional. The maximum job running time. The default is 7 days.
-        # Corresponds to the JSON property `maxRunningTime`
-        # @return [String]
-        attr_accessor :max_running_time
-      
         # Required. The Google Cloud Storage location of the packages with
         # the training program and any additional dependencies.
         # The maximum number of package URIs is 100.
@@ -1526,7 +1521,6 @@ module Google
           @job_dir = args[:job_dir] if args.key?(:job_dir)
           @master_config = args[:master_config] if args.key?(:master_config)
           @master_type = args[:master_type] if args.key?(:master_type)
-          @max_running_time = args[:max_running_time] if args.key?(:max_running_time)
           @package_uris = args[:package_uris] if args.key?(:package_uris)
           @parameter_server_config = args[:parameter_server_config] if args.key?(:parameter_server_config)
           @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)

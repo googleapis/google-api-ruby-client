@@ -283,6 +283,7 @@ module Google
           property :expectation, as: 'expectation'
           collection :function_mocks, as: 'functionMocks', class: Google::Apis::FirebaserulesV1::FunctionMock, decorator: Google::Apis::FirebaserulesV1::FunctionMock::Representation
       
+          property :path_encoding, as: 'pathEncoding'
           property :request, as: 'request'
           property :resource, as: 'resource'
         end
