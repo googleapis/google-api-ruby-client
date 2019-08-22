@@ -1561,6 +1561,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Upload public key for a given service account.
+        # This rpc will create a
+        # ServiceAccountKey that has the
+        # provided public key and returns it.
+        # @param [String] name
+        #   The resource name of the service account in the following format:
+        #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
+        #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+        #   the account. The `ACCOUNT` value can be the `email` address or the
+        #   `unique_id` of the service account.
+        # @param [Google::Apis::IamV1::UploadServiceAccountKeyRequest] upload_service_account_key_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IamV1::ServiceAccountKey] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IamV1::ServiceAccountKey]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def upload_service_account_key(name, upload_service_account_key_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}/keys:upload', options)
+          command.request_representation = Google::Apis::IamV1::UploadServiceAccountKeyRequest::Representation
+          command.request_object = upload_service_account_key_request_object
+          command.response_representation = Google::Apis::IamV1::ServiceAccountKey::Representation
+          command.response_class = Google::Apis::IamV1::ServiceAccountKey
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a Role definition.
         # @param [String] name
         #   The `name` parameter's value depends on the target resource for the

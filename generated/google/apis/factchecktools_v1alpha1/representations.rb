@@ -114,6 +114,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :best_rating, as: 'bestRating'
           property :image_url, as: 'imageUrl'
+          property :rating_explanation, as: 'ratingExplanation'
           property :rating_value, as: 'ratingValue'
           property :textual_rating, as: 'textualRating'
           property :worst_rating, as: 'worstRating'

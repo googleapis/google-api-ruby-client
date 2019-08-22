@@ -286,6 +286,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UploadServiceAccountKeyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AdminAuditData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -678,6 +684,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :restored_account, as: 'restoredAccount', class: Google::Apis::IamV1::ServiceAccount, decorator: Google::Apis::IamV1::ServiceAccount::Representation
       
+        end
+      end
+      
+      class UploadServiceAccountKeyRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :public_key_data, :base64 => true, as: 'publicKeyData'
         end
       end
     end

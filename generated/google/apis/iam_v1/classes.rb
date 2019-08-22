@@ -1648,6 +1648,29 @@ module Google
           @restored_account = args[:restored_account] if args.key?(:restored_account)
         end
       end
+      
+      # The service account key upload request.
+      class UploadServiceAccountKeyRequest
+        include Google::Apis::Core::Hashable
+      
+        # A field that allows clients to upload their own public key. If set,
+        # use this public key data to create a service account key for given
+        # service account.
+        # Please note, the expected format for this field is X509_PEM.
+        # Corresponds to the JSON property `publicKeyData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :public_key_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_key_data = args[:public_key_data] if args.key?(:public_key_data)
+        end
+      end
     end
   end
 end

@@ -783,8 +783,8 @@ module Google
       class GetPolicyOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. The policy format version to be returned. Acceptable values are 0
-        # and 1. If the value is 0, or the field is omitted, policy format version 1
+        # Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        # and 3. If the value is 0, or the field is omitted, policy format version 1
         # will be returned.
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
@@ -942,6 +942,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Compute Engine accelerator configuration for these instances.
+        # Beta Feature: This feature is still under development. It may be changed
+        # before final release.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::DataprocV1::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -2624,7 +2626,14 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. The "resource name" of the template.
+        # Output only. The resource name of the workflow template as described in https:/
+        # /cloud.google.com/apis/design/resource_names.
+        # For projects.regions.workflowTemplates, the resource name of the  template has
+        # the following format:  projects/`project_id`/regions/`region`/
+        # workflowTemplates/`template_id`
+        # For projects.locations.workflowTemplates, the resource name of the  template
+        # has the following format:  projects/`project_id`/locations/`location`/
+        # workflowTemplates/`template_id`
         # Corresponds to the JSON property `template`
         # @return [String]
         attr_accessor :template
@@ -2728,9 +2737,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The "resource name" of the template, as described in https://
-        # cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        # regions/`region`/workflowTemplates/`template_id`
+        # Output only. The resource name of the workflow template, as described in https:
+        # //cloud.google.com/apis/design/resource_names.
+        # For projects.regions.workflowTemplates, the resource name of the  template has
+        # the following format:  projects/`project_id`/regions/`region`/
+        # workflowTemplates/`template_id`
+        # For projects.locations.workflowTemplates, the resource name of the  template
+        # has the following format:  projects/`project_id`/locations/`location`/
+        # workflowTemplates/`template_id`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

@@ -49,9 +49,12 @@ module Google
         
         # Creates new autoscaling policy.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`.
+        #   Required. The "resource name" of the region or location, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.create, the resource name  has the
+        #   following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.autoscalingPolicies.create, the resource name  has the
+        #   following format:  projects/`project_id`/locations/`location`
         # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -86,8 +89,13 @@ module Google
         # that is in use by one or more clusters.
         # @param [String] name
         #   Required. The "resource name" of the autoscaling policy, as described in https:
-        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
-        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.delete, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies.delete, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -118,8 +126,13 @@ module Google
         # Retrieves autoscaling policy.
         # @param [String] name
         #   Required. The "resource name" of the autoscaling policy, as described in https:
-        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
-        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.get, the resource name  of the policy
+        #   has the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies.get, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -153,8 +166,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -186,9 +199,12 @@ module Google
         
         # Lists autoscaling policies in the project.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The "resource name" of the region or location, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.list, the resource name  of the
+        #   region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.autoscalingPolicies.list, the resource name  of the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return in each response. Must be
         #   less than or equal to 1000. Defaults to 100.
@@ -300,9 +316,14 @@ module Google
         # Updates (replaces) autoscaling policy.Disabled check for update_mask, because
         # all updates will be full replacements.
         # @param [String] name
-        #   Output only. The "resource name" of the policy, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/autoscalingPolicies/`policy_id`.
+        #   Output only. The "resource name" of the autoscaling policy, as described in
+        #   https://cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies, the resource name of the  policy has
+        #   the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies, the resource name of the  policy
+        #   has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -335,9 +356,12 @@ module Google
         
         # Creates new workflow template.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,create, the resource name of the
+        #   region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.create, the resource name of  the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -370,9 +394,14 @@ module Google
         
         # Deletes a workflow template. It does not cancel in-progress workflows.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.delete, the resource name of the
+        #   template has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.instantiate, the resource name  of
+        #   the template has the following format:  projects/`project_id`/locations/`
+        #   location`/workflowTemplates/`template_id`
         # @param [Fixnum] version
         #   Optional. The version of workflow template to delete. If specified, will only
         #   delete the template if the current server version matches specified version.
@@ -407,12 +436,17 @@ module Google
         # Retrieves the latest workflow template.Can retrieve previously instantiated
         # template by specifying optional version parameter.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.get, the resource name of the  template
+        #   has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.get, the resource name of the
+        #   template has the following format:  projects/`project_id`/locations/`location`/
+        #   workflowTemplates/`template_id`
         # @param [Fixnum] version
         #   Optional. The version of workflow template to retrieve. Only previously
-        #   instatiated versions can be retrieved.If unspecified, retrieves the current
+        #   instantiated versions can be retrieved.If unspecified, retrieves the current
         #   version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -448,8 +482,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -487,9 +521,14 @@ module Google
         # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
         # completion, Operation.response will be Empty.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.instantiate, the resource name of the
+        #   template has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.instantiate, the resource name  of
+        #   the template has the following format:  projects/`project_id`/locations/`
+        #   location`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -529,9 +568,13 @@ module Google
         # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
         # WorkflowMetadata.On successful completion, Operation.response will be Empty.
         # @param [String] parent
-        #   Required. The "resource name" of the workflow template region, as described in
-        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
-        #   project_id`/regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,instantiateinline, the resource  name
+        #   of the region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.instantiateinline, the  resource name
+        #   of the location has the following format:  projects/`project_id`/locations/`
+        #   location`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] instance_id
         #   Deprecated. Please use request_id field instead.
@@ -575,9 +618,12 @@ module Google
         
         # Lists workflows that match the specified filter in the request.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,list, the resource  name of the region
+        #   has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.list, the  resource name of the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return in each response.
         # @param [String] page_token
@@ -688,9 +734,14 @@ module Google
         # Updates (replaces) workflow template. The updated template must contain
         # version that matches the current server version.
         # @param [String] name
-        #   Output only. The "resource name" of the template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Output only. The resource name of the workflow template, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates, the resource name of the  template has
+        #   the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates, the resource name of the  template
+        #   has the following format:  projects/`project_id`/locations/`location`/
+        #   workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -723,9 +774,12 @@ module Google
         
         # Creates new autoscaling policy.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`.
+        #   Required. The "resource name" of the region or location, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.create, the resource name  has the
+        #   following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.autoscalingPolicies.create, the resource name  has the
+        #   following format:  projects/`project_id`/locations/`location`
         # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -760,8 +814,13 @@ module Google
         # that is in use by one or more clusters.
         # @param [String] name
         #   Required. The "resource name" of the autoscaling policy, as described in https:
-        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
-        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.delete, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies.delete, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -792,8 +851,13 @@ module Google
         # Retrieves autoscaling policy.
         # @param [String] name
         #   Required. The "resource name" of the autoscaling policy, as described in https:
-        #   //cloud.google.com/apis/design/resource_names of the form projects/`project_id`
-        #   /regions/`region`/autoscalingPolicies/`policy_id`.
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.get, the resource name  of the policy
+        #   has the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies.get, the resource name  of the
+        #   policy has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -827,8 +891,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -860,9 +924,12 @@ module Google
         
         # Lists autoscaling policies in the project.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The "resource name" of the region or location, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies.list, the resource name  of the
+        #   region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.autoscalingPolicies.list, the resource name  of the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return in each response. Must be
         #   less than or equal to 1000. Defaults to 100.
@@ -974,9 +1041,14 @@ module Google
         # Updates (replaces) autoscaling policy.Disabled check for update_mask, because
         # all updates will be full replacements.
         # @param [String] name
-        #   Output only. The "resource name" of the policy, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/autoscalingPolicies/`policy_id`.
+        #   Output only. The "resource name" of the autoscaling policy, as described in
+        #   https://cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.autoscalingPolicies, the resource name of the  policy has
+        #   the following format:  projects/`project_id`/regions/`region`/
+        #   autoscalingPolicies/`policy_id`
+        #   For projects.locations.autoscalingPolicies, the resource name of the  policy
+        #   has the following format:  projects/`project_id`/locations/`location`/
+        #   autoscalingPolicies/`policy_id`
         # @param [Google::Apis::DataprocV1beta2::AutoscalingPolicy] autoscaling_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1007,7 +1079,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a cluster in a project.
+        # Creates a cluster in a project. The returned Operation.metadata will be
+        # ClusterOperationMetadata.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1053,7 +1126,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a cluster in a project.
+        # Deletes a cluster in a project. The returned Operation.metadata will be
+        # ClusterOperationMetadata.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1103,8 +1177,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets cluster diagnostic information. After the operation completes, the
-        # Operation.response field contains DiagnoseClusterOutputLocation.
+        # Gets cluster diagnostic information. The returned Operation.metadata will be
+        # ClusterOperationMetadata. After the operation completes, Operation.response
+        # contains DiagnoseClusterResults.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1187,8 +1262,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1271,7 +1346,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a cluster in a project.
+        # Updates a cluster in a project. The returned Operation.metadata will be
+        # ClusterOperationMetadata.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
@@ -1575,8 +1651,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1925,8 +2001,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2077,9 +2153,12 @@ module Google
         
         # Creates new workflow template.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,create, the resource name of the
+        #   region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.create, the resource name of  the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2112,9 +2191,14 @@ module Google
         
         # Deletes a workflow template. It does not cancel in-progress workflows.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.delete, the resource name of the
+        #   template has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.instantiate, the resource name  of
+        #   the template has the following format:  projects/`project_id`/locations/`
+        #   location`/workflowTemplates/`template_id`
         # @param [Fixnum] version
         #   Optional. The version of workflow template to delete. If specified, will only
         #   delete the template if the current server version matches specified version.
@@ -2149,12 +2233,17 @@ module Google
         # Retrieves the latest workflow template.Can retrieve previously instantiated
         # template by specifying optional version parameter.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.get, the resource name of the  template
+        #   has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.get, the resource name of the
+        #   template has the following format:  projects/`project_id`/locations/`location`/
+        #   workflowTemplates/`template_id`
         # @param [Fixnum] version
         #   Optional. The version of workflow template to retrieve. Only previously
-        #   instatiated versions can be retrieved.If unspecified, retrieves the current
+        #   instantiated versions can be retrieved.If unspecified, retrieves the current
         #   version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2190,8 +2279,8 @@ module Google
         #   REQUIRED: The resource for which the policy is being requested. See the
         #   operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
-        #   Optional. The policy format version to be returned. Acceptable values are 0
-        #   and 1. If the value is 0, or the field is omitted, policy format version 1
+        #   Optional. The policy format version to be returned. Acceptable values are 0, 1,
+        #   and 3. If the value is 0, or the field is omitted, policy format version 1
         #   will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2229,9 +2318,14 @@ module Google
         # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
         # completion, Operation.response will be Empty.
         # @param [String] name
-        #   Required. The "resource name" of the workflow template, as described in https:/
-        #   /cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Required. The resource name of the workflow template, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates.instantiate, the resource name of the
+        #   template has the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates.instantiate, the resource name  of
+        #   the template has the following format:  projects/`project_id`/locations/`
+        #   location`/workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::InstantiateWorkflowTemplateRequest] instantiate_workflow_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2271,9 +2365,13 @@ module Google
         # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
         # WorkflowMetadata.On successful completion, Operation.response will be Empty.
         # @param [String] parent
-        #   Required. The "resource name" of the workflow template region, as described in
-        #   https://cloud.google.com/apis/design/resource_names of the form projects/`
-        #   project_id`/regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,instantiateinline, the resource  name
+        #   of the region has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.instantiateinline, the  resource name
+        #   of the location has the following format:  projects/`project_id`/locations/`
+        #   location`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] instance_id
         #   Deprecated. Please use request_id field instead.
@@ -2317,9 +2415,12 @@ module Google
         
         # Lists workflows that match the specified filter in the request.
         # @param [String] parent
-        #   Required. The "resource name" of the region, as described in https://cloud.
-        #   google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`
+        #   Required. The resource name of the region or location, as described in https://
+        #   cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates,list, the resource  name of the region
+        #   has the following format:  projects/`project_id`/regions/`region`
+        #   For projects.locations.workflowTemplates.list, the  resource name of the
+        #   location has the following format:  projects/`project_id`/locations/`location`
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return in each response.
         # @param [String] page_token
@@ -2430,9 +2531,14 @@ module Google
         # Updates (replaces) workflow template. The updated template must contain
         # version that matches the current server version.
         # @param [String] name
-        #   Output only. The "resource name" of the template, as described in https://
-        #   cloud.google.com/apis/design/resource_names of the form projects/`project_id`/
-        #   regions/`region`/workflowTemplates/`template_id`
+        #   Output only. The resource name of the workflow template, as described in https:
+        #   //cloud.google.com/apis/design/resource_names.
+        #   For projects.regions.workflowTemplates, the resource name of the  template has
+        #   the following format:  projects/`project_id`/regions/`region`/
+        #   workflowTemplates/`template_id`
+        #   For projects.locations.workflowTemplates, the resource name of the  template
+        #   has the following format:  projects/`project_id`/locations/`location`/
+        #   workflowTemplates/`template_id`
         # @param [Google::Apis::DataprocV1beta2::WorkflowTemplate] workflow_template_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

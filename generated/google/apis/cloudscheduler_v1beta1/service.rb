@@ -118,8 +118,7 @@ module Google
         
         # Creates a job.
         # @param [String] parent
-        #   Required.
-        #   The location name. For example:
+        #   Required. The location name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID`.
         # @param [Google::Apis::CloudschedulerV1beta1::Job] job_object
         # @param [String] fields
@@ -153,8 +152,7 @@ module Google
         
         # Deletes a job.
         # @param [String] name
-        #   Required.
-        #   The job name. For example:
+        #   Required. The job name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -185,8 +183,7 @@ module Google
         
         # Gets a job.
         # @param [String] name
-        #   Required.
-        #   The job name. For example:
+        #   Required. The job name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -217,8 +214,7 @@ module Google
         
         # Lists jobs.
         # @param [String] parent
-        #   Required.
-        #   The location name. For example:
+        #   Required. The location name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID`.
         # @param [Fixnum] page_size
         #   Requested page size.
@@ -327,8 +323,7 @@ module Google
         # will be set to Job.State.PAUSED. A job must be in Job.State.ENABLED
         # to be paused.
         # @param [String] name
-        #   Required.
-        #   The job name. For example:
+        #   Required. The job name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # @param [Google::Apis::CloudschedulerV1beta1::PauseJobRequest] pause_job_request_object
         # @param [String] fields
@@ -366,8 +361,7 @@ module Google
         # will be set to Job.State.ENABLED. A job must be in
         # Job.State.PAUSED to be resumed.
         # @param [String] name
-        #   Required.
-        #   The job name. For example:
+        #   Required. The job name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # @param [Google::Apis::CloudschedulerV1beta1::ResumeJobRequest] resume_job_request_object
         # @param [String] fields
@@ -403,8 +397,7 @@ module Google
         # When this method is called, Cloud Scheduler will dispatch the job, even
         # if the job is already running.
         # @param [String] name
-        #   Required.
-        #   The job name. For example:
+        #   Required. The job name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
         # @param [Google::Apis::CloudschedulerV1beta1::RunJobRequest] run_job_request_object
         # @param [String] fields

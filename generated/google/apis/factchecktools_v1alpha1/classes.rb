@@ -113,6 +113,11 @@ module Google
         # @return [String]
         attr_accessor :image_url
       
+        # Corresponds to `ClaimReview.reviewRating.ratingExplanation`.
+        # Corresponds to the JSON property `ratingExplanation`
+        # @return [String]
+        attr_accessor :rating_explanation
+      
         # A numeric rating of this claim, in the range worstRating — bestRating
         # inclusive.<br>
         # Corresponds to `ClaimReview.reviewRating.ratingValue`.
@@ -141,6 +146,7 @@ module Google
         def update!(**args)
           @best_rating = args[:best_rating] if args.key?(:best_rating)
           @image_url = args[:image_url] if args.key?(:image_url)
+          @rating_explanation = args[:rating_explanation] if args.key?(:rating_explanation)
           @rating_value = args[:rating_value] if args.key?(:rating_value)
           @textual_rating = args[:textual_rating] if args.key?(:textual_rating)
           @worst_rating = args[:worst_rating] if args.key?(:worst_rating)
