@@ -630,8 +630,9 @@ module Google
       class PullRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of messages returned for this request. The Pub/Sub
-        # system may return fewer than the number specified.
+        # The maximum number of messages to return for this request. Must be a
+        # positive integer. The Pub/Sub system may return fewer than the number
+        # specified.
         # Corresponds to the JSON property `maxMessages`
         # @return [Fixnum]
         attr_accessor :max_messages

@@ -47,7 +47,11 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Runs a pipeline.
+        # Runs a pipeline.  The returned Operation's metadata field will contain a
+        # google.genomics.v2alpha1.Metadata object describing the status of the
+        # pipeline execution.  The [response] field will contain a
+        # google.genomics.v2alpha1.RunPipelineResponse object if the pipeline
+        # completes successfully.
         # **Note:** Before you can use this method, the Genomics Service Agent
         # must have access to your project. This is done automatically when the
         # Cloud Genomics API is first enabled, but if you delete this permission,

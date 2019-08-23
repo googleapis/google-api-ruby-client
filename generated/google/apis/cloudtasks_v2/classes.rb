@@ -46,11 +46,10 @@ module Google
       # protocol.
       # The AppEngineRouting used to construct the URL that the task is
       # delivered to can be set at the queue-level or task-level:
-      # * If set,
-      # app_engine_routing_override
-      # is used for all tasks in the queue, no matter what the setting
-      # is for the
-      # task-level app_engine_routing.
+      # * If app_engine_routing_override is set on the
+      # queue, this value is used for all
+      # tasks in the queue, no matter what the setting is for the task-level
+      # app_engine_routing.
       # The `url` that the task will be sent to is:
       # * `url =` host `+`
       # relative_uri
@@ -94,6 +93,12 @@ module Google
         # and [App Engine Flex request
         # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
         # are-routed).
+        # Using AppEngineRouting requires
+        # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+        # api/access-control)
+        # Google IAM permission for the project
+        # and the following scope:
+        # `https://www.googleapis.com/auth/cloud-platform`
         # Corresponds to the JSON property `appEngineRouting`
         # @return [Google::Apis::CloudtasksV2::AppEngineRouting]
         attr_accessor :app_engine_routing
@@ -199,6 +204,12 @@ module Google
       # and [App Engine Flex request
       # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
       # are-routed).
+      # Using AppEngineRouting requires
+      # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+      # api/access-control)
+      # Google IAM permission for the project
+      # and the following scope:
+      # `https://www.googleapis.com/auth/cloud-platform`
       class AppEngineRouting
         include Google::Apis::Core::Hashable
       
@@ -347,7 +358,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -480,12 +491,40 @@ module Google
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Encapsulates settings provided to GetIamPolicy.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::CloudtasksV2::GetPolicyOptions]
+        attr_accessor :options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
+      # Encapsulates settings provided to GetIamPolicy.
+      class GetPolicyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The policy format version to be returned.
+        # Acceptable values are 0, 1, and 3.
+        # If the value is 0, or the field is omitted, policy format version 1 will be
+        # returned.
+        # Corresponds to the JSON property `requestedPolicyVersion`
+        # @return [Fixnum]
+        attr_accessor :requested_policy_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
         end
       end
       
@@ -687,7 +726,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -745,6 +784,12 @@ module Google
         # and [App Engine Flex request
         # routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-
         # are-routed).
+        # Using AppEngineRouting requires
+        # [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-
+        # api/access-control)
+        # Google IAM permission for the project
+        # and the following scope:
+        # `https://www.googleapis.com/auth/cloud-platform`
         # Corresponds to the JSON property `appEngineRoutingOverride`
         # @return [Google::Apis::CloudtasksV2::AppEngineRouting]
         attr_accessor :app_engine_routing_override
@@ -849,7 +894,7 @@ module Google
         # Cloud Tasks will pick the value of `max_burst_size` based on the
         # value of
         # max_dispatches_per_second.
-        # For App Engine queues that were created or updated using
+        # For queues that were created or updated using
         # `queue.yaml/xml`, `max_burst_size` is equal to
         # [bucket_size](https://cloud.google.com/appengine/docs/standard/python/config/
         # queueref#bucket_size).
@@ -883,8 +928,7 @@ module Google
         # The maximum rate at which tasks are dispatched from this queue.
         # If unspecified when the queue is created, Cloud Tasks will pick the
         # default.
-        # * For App Engine queues, the maximum allowed value
-        # is 500.
+        # * The maximum allowed value is 500.
         # This field has the same meaning as
         # [rate in
         # queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/
@@ -1179,11 +1223,10 @@ module Google
         # protocol.
         # The AppEngineRouting used to construct the URL that the task is
         # delivered to can be set at the queue-level or task-level:
-        # * If set,
-        # app_engine_routing_override
-        # is used for all tasks in the queue, no matter what the setting
-        # is for the
-        # task-level app_engine_routing.
+        # * If app_engine_routing_override is set on the
+        # queue, this value is used for all
+        # tasks in the queue, no matter what the setting is for the task-level
+        # app_engine_routing.
         # The `url` that the task will be sent to is:
         # * `url =` host `+`
         # relative_uri
@@ -1292,8 +1335,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :response_count
       
-        # The time when the task is scheduled to be attempted.
-        # For App Engine queues, this is when the task will be attempted or retried.
+        # The time when the task is scheduled to be attempted or retried.
         # `schedule_time` will be truncated to the nearest microsecond.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]

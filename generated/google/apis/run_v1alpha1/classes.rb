@@ -1392,6 +1392,45 @@ module Google
         end
       end
       
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      class GoogleRpcStatus
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details.  There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
       # HTTPGetAction describes an action based on HTTP Get requests.
       class HttpGetAction
         include Google::Apis::Core::Hashable
@@ -1694,6 +1733,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -1709,6 +1754,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1739,6 +1785,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1749,6 +1801,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
         end
       end
       
@@ -1778,6 +1831,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -1793,6 +1852,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1899,6 +1959,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -1914,6 +1980,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1944,6 +2011,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -1959,6 +2032,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -1989,6 +2063,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -2004,6 +2084,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -2034,6 +2115,12 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ListMeta]
         attr_accessor :metadata
       
+        # Details for the regions used during a global call including any failures.
+        # This is not populated when targeting a specific region.
+        # Corresponds to the JSON property `regionDetails`
+        # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
+        attr_accessor :region_details
+      
         # Locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
@@ -2049,6 +2136,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @region_details = args[:region_details] if args.key?(:region_details)
           @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
@@ -2643,6 +2731,30 @@ module Google
         # Update properties of this object
         def update!(**args)
           @string = args[:string] if args.key?(:string)
+        end
+      end
+      
+      # Information for a regional call used for a global API.
+      class RegionDetails
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::RunV1alpha1::GoogleRpcStatus]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error = args[:error] if args.key?(:error)
         end
       end
       

@@ -77,8 +77,8 @@ module Google
         attr_accessor :entrypoint
       
         # The environment to pass into the container. This environment is merged
-        # with any values specified in the `Pipeline` message. These values
-        # overwrite any in the `Pipeline` message.
+        # with values specified in the google.genomics.v2alpha1.Pipeline
+        # message, overwriting any duplicate values.
         # In addition to the values passed here, a few other values are
         # automatically injected into the environment. These cannot be hidden or
         # overwritten.
@@ -98,10 +98,19 @@ module Google
         # @return [Array<String>]
         attr_accessor :flags
       
-        # The URI to pull the container image from. Note that all images referenced
+        # Required. The URI to pull the container image from. Note that all images
+        # referenced
         # by actions in the pipeline are pulled before the first action runs. If
         # multiple actions reference the same image, it is only pulled once,
         # ensuring that the same image is used for all actions in a single pipeline.
+        # The image URI can be either a complete host and image specification (e.g.,
+        # quay.io/biocontainers/samtools), a library and image name (e.g.,
+        # google/cloud-sdk) or a bare image name ('bash') to pull from the default
+        # library.  No schema is required in any of these cases.
+        # If the specified image is not public, the service account specified for
+        # the Virtual Machine must have access to pull the images from GCR, or
+        # appropriate credentials must be specified in the
+        # google.genomics.v2alpha1.Action.credentials field.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -1265,8 +1274,9 @@ module Google
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
         # Optional set of labels to apply to the VM and any attached disk resources.
-        # These labels must adhere to the name and value restrictions on VM labels
-        # imposed by Compute Engine.
+        # These labels must adhere to the [name and value
+        # restrictions](https://cloud.google.com/compute/docs/labeling-resources) on
+        # VM labels imposed by Compute Engine.
         # Labels keys with the prefix 'google-' are reserved for use by Google.
         # Labels applied at creation time to the VM. Applied on a best-effort basis
         # to attached disk resources shortly after VM creation.
@@ -1274,7 +1284,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The machine type of the virtual machine to create. Must be the short name
+        # Required. The machine type of the virtual machine to create. Must be the short
+        # name
         # of a standard machine type (such as "n1-standard-1") or a custom machine
         # type (such as "custom-1-4096", where "1" indicates the number of vCPUs and
         # "4096" indicates the memory in MB). See

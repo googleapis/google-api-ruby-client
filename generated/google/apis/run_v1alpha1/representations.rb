@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleRpcStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HttpGetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -347,6 +353,12 @@ module Google
       end
       
       class Quantity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -913,6 +925,15 @@ module Google
         end
       end
       
+      class GoogleRpcStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
+        end
+      end
+      
       class HttpGetAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1007,6 +1028,8 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
+      
           collection :unreachable, as: 'unreachable'
         end
       end
@@ -1020,6 +1043,8 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
+      
         end
       end
       
@@ -1031,6 +1056,8 @@ module Google
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1063,6 +1090,8 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
+      
           collection :unreachable, as: 'unreachable'
         end
       end
@@ -1075,6 +1104,8 @@ module Google
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1089,6 +1120,8 @@ module Google
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
       
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
+      
           collection :unreachable, as: 'unreachable'
         end
       end
@@ -1101,6 +1134,8 @@ module Google
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -1202,6 +1237,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :string, as: 'string'
+        end
+      end
+      
+      class RegionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::RunV1alpha1::GoogleRpcStatus, decorator: Google::Apis::RunV1alpha1::GoogleRpcStatus::Representation
+      
         end
       end
       

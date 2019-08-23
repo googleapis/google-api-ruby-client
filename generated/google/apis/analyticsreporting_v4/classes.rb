@@ -33,7 +33,9 @@ module Google
       class Activity
         include Google::Apis::Core::Hashable
       
-        # Timestamp of the activity.
+        # Timestamp of the activity. If activities for a visit cross midnight and
+        # occur in two separate dates, then two sessions (one per date)
+        # share the session identifier.
         # Corresponds to the JSON property `activityTime`
         # @return [String]
         attr_accessor :activity_time

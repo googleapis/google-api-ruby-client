@@ -12,26 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/pubsub_v1/service.rb'
-require 'google/apis/pubsub_v1/classes.rb'
-require 'google/apis/pubsub_v1/representations.rb'
+require 'google/apis/bigqueryreservation_v1/service.rb'
+require 'google/apis/bigqueryreservation_v1/classes.rb'
+require 'google/apis/bigqueryreservation_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Pub/Sub API
+    # BigQuery Reservation API
     #
-    # Provides reliable, many-to-many, asynchronous messaging between applications.
+    # A service to modify your BigQuery flat-rate reservations.
     #
-    # @see https://cloud.google.com/pubsub/docs
-    module PubsubV1
+    # @see https://cloud.google.com/bigquery/
+    module BigqueryreservationV1
       VERSION = 'V1'
-      REVISION = '20190812'
+      REVISION = '20190816'
+
+      # View and manage your data in Google BigQuery
+      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View and manage Pub/Sub topics and subscriptions
-      AUTH_PUBSUB = 'https://www.googleapis.com/auth/pubsub'
     end
   end
 end
