@@ -177,6 +177,24 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # Optional. `etag` is used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates of an alert from overwriting each other.
+        # It is strongly suggested that systems make use of the `etag` in the
+        # read-modify-write cycle to perform alert updates in order to avoid race
+        # conditions: An `etag` is returned in the response which contains alerts,
+        # and systems are expected to put that etag in the request to update alert to
+        # ensure that their change will be applied to the same version of the alert.
+        # If no `etag` is provided in the call to update alert, then the existing
+        # alert is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # An alert metadata.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::AlertcenterV1beta1::AlertMetadata]
+        attr_accessor :metadata
+      
         # Output only. An optional
         # [Security Investigation Tool](https://support.google.com/a/answer/7575955)
         # query for this alert.
@@ -228,6 +246,8 @@ module Google
           @data = args[:data] if args.key?(:data)
           @deleted = args[:deleted] if args.key?(:deleted)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @etag = args[:etag] if args.key?(:etag)
+          @metadata = args[:metadata] if args.key?(:metadata)
           @security_investigation_tool_link = args[:security_investigation_tool_link] if args.key?(:security_investigation_tool_link)
           @source = args[:source] if args.key?(:source)
           @start_time = args[:start_time] if args.key?(:start_time)
@@ -282,6 +302,80 @@ module Google
           @email = args[:email] if args.key?(:email)
           @feedback_id = args[:feedback_id] if args.key?(:feedback_id)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # An alert metadata.
+      class AlertMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The alert identifier.
+        # Corresponds to the JSON property `alertId`
+        # @return [String]
+        attr_accessor :alert_id
+      
+        # The email address of the user assigned to the alert.
+        # Corresponds to the JSON property `assignee`
+        # @return [String]
+        attr_accessor :assignee
+      
+        # Output only. The unique identifier of the Google account of the customer.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        # Optional. `etag` is used for optimistic concurrency control as a way to
+        # help prevent simultaneous updates of an alert metadata from overwriting
+        # each other. It is strongly suggested that systems make use of the `etag` in
+        # the read-modify-write cycle to perform metatdata updates in order to avoid
+        # race conditions: An `etag` is returned in the response which contains alert
+        # metadata, and systems are expected to put that etag in the request to
+        # update alert metadata to ensure that their change will be applied to the
+        # same version of the alert metadata.
+        # If no `etag` is provided in the call to update alert metadata, then the
+        # existing alert metadata is overwritten blindly.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The severity value of the alert. Alert Center will set this field at alert
+        # creation time, default's to an empty string when it could not be
+        # determined.
+        # The supported values for update actions on this field are the following:
+        # * HIGH
+        # * MEDIUM
+        # * LOW
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # The current status of the alert.
+        # The supported values are the following:
+        # * NOT_STARTED
+        # * IN_PROGRESS
+        # * CLOSED
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # Output only. The time this metadata was last updated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @assignee = args[:assignee] if args.key?(:assignee)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @severity = args[:severity] if args.key?(:severity)
+          @status = args[:status] if args.key?(:status)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -341,6 +435,108 @@ module Google
           @malicious_entity = args[:malicious_entity] if args.key?(:malicious_entity)
           @messages = args[:messages] if args.key?(:messages)
           @source_ip = args[:source_ip] if args.key?(:source_ip)
+        end
+      end
+      
+      # A request to perform batch delete on alerts.
+      class BatchDeleteAlertsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. list of alert ids.
+        # Corresponds to the JSON property `alertId`
+        # @return [Array<String>]
+        attr_accessor :alert_id
+      
+        # Optional. The unique identifier of the G Suite organization account of the
+        # customer the alerts are associated with.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # Response to batch delete operation on alerts.
+      class BatchDeleteAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status details for each failed alert_id.
+        # Corresponds to the JSON property `failedAlertStatus`
+        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
+        attr_accessor :failed_alert_status
+      
+        # The successful list of alert ids.
+        # Corresponds to the JSON property `successAlertIds`
+        # @return [Array<String>]
+        attr_accessor :success_alert_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
+          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
+        end
+      end
+      
+      # A request to perform batch undelete on alerts.
+      class BatchUndeleteAlertsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. list of alert ids.
+        # Corresponds to the JSON property `alertId`
+        # @return [Array<String>]
+        attr_accessor :alert_id
+      
+        # Optional. The unique identifier of the G Suite organization account of the
+        # customer the alerts are associated with.
+        # Corresponds to the JSON property `customerId`
+        # @return [String]
+        attr_accessor :customer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @alert_id = args[:alert_id] if args.key?(:alert_id)
+          @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # Response to batch undelete operation on alerts.
+      class BatchUndeleteAlertsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status details for each failed alert_id.
+        # Corresponds to the JSON property `failedAlertStatus`
+        # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
+        attr_accessor :failed_alert_status
+      
+        # The successful list of alert ids.
+        # Corresponds to the JSON property `successAlertIds`
+        # @return [Array<String>]
+        attr_accessor :success_alert_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failed_alert_status = args[:failed_alert_status] if args.key?(:failed_alert_status)
+          @success_alert_ids = args[:success_alert_ids] if args.key?(:success_alert_ids)
         end
       end
       
@@ -909,6 +1105,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @email = args[:email] if args.key?(:email)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # The status code, which should be an enum value of google.rpc.Code.
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # A list of messages that carry the error details.  There is a common set of
+        # message types for APIs to use.
+        # Corresponds to the JSON property `details`
+        # @return [Array<Hash<String,Object>>]
+        attr_accessor :details
+      
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
         end
       end
       

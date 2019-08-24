@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AlertMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +59,30 @@ module Google
       end
       
       class BadWhitelist
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteAlertsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchDeleteAlertsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUndeleteAlertsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchUndeleteAlertsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SuspiciousActivity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +262,9 @@ module Google
           hash :data, as: 'data'
           property :deleted, as: 'deleted'
           property :end_time, as: 'endTime'
+          property :etag, as: 'etag'
+          property :metadata, as: 'metadata', class: Google::Apis::AlertcenterV1beta1::AlertMetadata, decorator: Google::Apis::AlertcenterV1beta1::AlertMetadata::Representation
+      
           property :security_investigation_tool_link, as: 'securityInvestigationToolLink'
           property :source, as: 'source'
           property :start_time, as: 'startTime'
@@ -243,6 +282,19 @@ module Google
           property :email, as: 'email'
           property :feedback_id, as: 'feedbackId'
           property :type, as: 'type'
+        end
+      end
+      
+      class AlertMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :alert_id, as: 'alertId'
+          property :assignee, as: 'assignee'
+          property :customer_id, as: 'customerId'
+          property :etag, as: 'etag'
+          property :severity, as: 'severity'
+          property :status, as: 'status'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -264,6 +316,40 @@ module Google
           collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
           property :source_ip, as: 'sourceIp'
+        end
+      end
+      
+      class BatchDeleteAlertsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_id, as: 'alertId'
+          property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class BatchDeleteAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::Status, decorator: Google::Apis::AlertcenterV1beta1::Status::Representation
+      
+          collection :success_alert_ids, as: 'successAlertIds'
+        end
+      end
+      
+      class BatchUndeleteAlertsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :alert_id, as: 'alertId'
+          property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class BatchUndeleteAlertsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :failed_alert_status, as: 'failedAlertStatus', class: Google::Apis::AlertcenterV1beta1::Status, decorator: Google::Apis::AlertcenterV1beta1::Status::Representation
+      
+          collection :success_alert_ids, as: 'successAlertIds'
         end
       end
       
@@ -438,6 +524,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

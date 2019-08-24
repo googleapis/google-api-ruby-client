@@ -46,18 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuditConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AuditLogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Basis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -472,23 +460,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :human_readable_name, as: 'humanReadableName'
-        end
-      end
-      
-      class AuditConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::ContaineranalysisV1alpha1::AuditLogConfig, decorator: Google::Apis::ContaineranalysisV1alpha1::AuditLogConfig::Representation
-      
-          property :service, as: 'service'
-        end
-      end
-      
-      class AuditLogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :exempted_members, as: 'exemptedMembers'
-          property :log_type, as: 'logType'
         end
       end
       
@@ -973,8 +944,6 @@ module Google
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::ContaineranalysisV1alpha1::AuditConfig, decorator: Google::Apis::ContaineranalysisV1alpha1::AuditConfig::Representation
-      
           collection :bindings, as: 'bindings', class: Google::Apis::ContaineranalysisV1alpha1::Binding, decorator: Google::Apis::ContaineranalysisV1alpha1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
@@ -1027,7 +996,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::ContaineranalysisV1alpha1::Policy, decorator: Google::Apis::ContaineranalysisV1alpha1::Policy::Representation
       
-          property :update_mask, as: 'updateMask'
         end
       end
       

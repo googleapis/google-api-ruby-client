@@ -47,6 +47,66 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Performs batch delete operation on alerts.
+        # @param [Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsRequest] batch_delete_alerts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_delete_alerts(batch_delete_alerts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/alerts:batchDelete', options)
+          command.request_representation = Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsRequest::Representation
+          command.request_object = batch_delete_alerts_request_object
+          command.response_representation = Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsResponse::Representation
+          command.response_class = Google::Apis::AlertcenterV1beta1::BatchDeleteAlertsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Performs batch undelete operation on alerts.
+        # @param [Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsRequest] batch_undelete_alerts_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_undelete_alerts(batch_undelete_alerts_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/alerts:batchUndelete', options)
+          command.request_representation = Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsRequest::Representation
+          command.request_object = batch_undelete_alerts_request_object
+          command.response_representation = Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsResponse::Representation
+          command.response_class = Google::Apis::AlertcenterV1beta1::BatchUndeleteAlertsResponse
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Marks the specified alert for deletion. An alert that has been marked for
         # deletion is removed from Alert Center after 30 days.
         # Marking an alert for deletion has no effect on an alert which has
@@ -115,6 +175,42 @@ module Google
           command = make_simple_command(:get, 'v1beta1/alerts/{alertId}', options)
           command.response_representation = Google::Apis::AlertcenterV1beta1::Alert::Representation
           command.response_class = Google::Apis::AlertcenterV1beta1::Alert
+          command.params['alertId'] = alert_id unless alert_id.nil?
+          command.query['customerId'] = customer_id unless customer_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the metadata of an alert. Attempting to get metadata for
+        # a non-existent alert returns `NOT_FOUND` error.
+        # @param [String] alert_id
+        #   Required. The identifier of the alert this metadata belongs to.
+        # @param [String] customer_id
+        #   Optional. The unique identifier of the G Suite organization account of the
+        #   customer the alert metadata is associated with.
+        #   Inferred from the caller identity if not provided.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AlertcenterV1beta1::AlertMetadata] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AlertcenterV1beta1::AlertMetadata]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_alert_metadata(alert_id, customer_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/alerts/{alertId}/metadata', options)
+          command.response_representation = Google::Apis::AlertcenterV1beta1::AlertMetadata::Representation
+          command.response_class = Google::Apis::AlertcenterV1beta1::AlertMetadata
           command.params['alertId'] = alert_id unless alert_id.nil?
           command.query['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -217,7 +313,9 @@ module Google
         end
         
         # Creates new feedback for an alert. Attempting to create a feedback for
-        # a non-existent alert returns `NOT_FOUND` error.
+        # a non-existent alert returns `NOT_FOUND` error. Attempting to create a
+        # feedback for an alert that is marked for deletion returns
+        # `FAILED_PRECONDITION' error.
         # @param [String] alert_id
         #   Required. The identifier of the alert this feedback belongs to.
         # @param [Google::Apis::AlertcenterV1beta1::AlertFeedback] alert_feedback_object

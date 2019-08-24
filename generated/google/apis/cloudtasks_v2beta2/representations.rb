@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LeaseTasksRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -320,6 +326,15 @@ module Google
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::CloudtasksV2beta2::GetPolicyOptions, decorator: Google::Apis::CloudtasksV2beta2::GetPolicyOptions::Representation
+      
+        end
+      end
+      
+      class GetPolicyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_policy_version, as: 'requestedPolicyVersion'
         end
       end
       

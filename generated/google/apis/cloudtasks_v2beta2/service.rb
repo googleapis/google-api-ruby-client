@@ -128,8 +128,7 @@ module Google
         # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
         # this method.
         # @param [String] parent
-        #   Required.
-        #   The location name in which the queue will be created.
+        #   Required. The location name in which the queue will be created.
         #   For example: `projects/PROJECT_ID/locations/LOCATION_ID`
         #   The list of allowed locations can be obtained by calling Cloud
         #   Tasks' implementation of
@@ -175,8 +174,7 @@ module Google
         # queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
         # this method.
         # @param [String] name
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -207,8 +205,7 @@ module Google
         
         # Gets a queue.
         # @param [String] name
-        #   Required.
-        #   The resource name of the queue. For example:
+        #   Required. The resource name of the queue. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -280,8 +277,7 @@ module Google
         # Lists queues.
         # Queues are returned in lexicographical order.
         # @param [String] parent
-        #   Required.
-        #   The location name.
+        #   Required. The location name.
         #   For example: `projects/PROJECT_ID/locations/LOCATION_ID`
         # @param [String] filter
         #   `filter` can be used to specify a subset of queues. Any Queue
@@ -410,8 +406,7 @@ module Google
         # when the queue is paused. A queue is paused if its
         # state is PAUSED.
         # @param [String] name
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::PauseQueueRequest] pause_queue_request_object
         # @param [String] fields
@@ -448,8 +443,7 @@ module Google
         # Purge operations can take up to one minute to take effect. Tasks
         # might be dispatched before the purge takes effect. A purge is irreversible.
         # @param [String] name
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::PurgeQueueRequest] purge_queue_request_object
         # @param [String] fields
@@ -493,8 +487,7 @@ module Google
         # [Managing Cloud Tasks Scaling
         # Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).
         # @param [String] name
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::ResumeQueueRequest] resume_queue_request_object
         # @param [String] fields
@@ -618,8 +611,7 @@ module Google
         # GetTask, or
         # ListTasks.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::AcknowledgeTaskRequest] acknowledge_task_request_object
         # @param [String] fields
@@ -657,8 +649,7 @@ module Google
         # make the task available to be leased to the next caller of
         # LeaseTasks.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::CancelLeaseRequest] cancel_lease_request_object
         # @param [String] fields
@@ -696,8 +687,7 @@ module Google
         # 100KB.
         # * For pull queues, the maximum task size is 1MB.
         # @param [String] parent
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         #   The queue must already exist.
         # @param [Google::Apis::CloudtasksV2beta2::CreateTaskRequest] create_task_request_object
@@ -735,8 +725,7 @@ module Google
         # cannot be deleted if it has completed successfully or permanently
         # failed.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -767,8 +756,7 @@ module Google
         
         # Gets a task.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [String] response_view
         #   The response_view specifies which subset of the Task will be
@@ -829,8 +817,7 @@ module Google
         # max_tasks_dispatched_per_second
         # is exceeded.
         # @param [String] parent
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [Google::Apis::CloudtasksV2beta2::LeaseTasksRequest] lease_tasks_request_object
         # @param [String] fields
@@ -870,8 +857,7 @@ module Google
         # The tasks may be returned in any order. The ordering may change at any
         # time.
         # @param [String] parent
-        #   Required.
-        #   The queue name. For example:
+        #   Required. The queue name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         # @param [Fixnum] page_size
         #   Maximum page size.
@@ -934,8 +920,7 @@ module Google
         # duration, starting from now. The new task lease will be
         # returned in the task's schedule_time.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::RenewLeaseRequest] renew_lease_request_object
         # @param [String] fields
@@ -989,8 +974,7 @@ module Google
         # RunTask cannot be called on a
         # pull task.
         # @param [String] name
-        #   Required.
-        #   The task name. For example:
+        #   Required. The task name. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         # @param [Google::Apis::CloudtasksV2beta2::RunTaskRequest] run_task_request_object
         # @param [String] fields

@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'compute/v1/projects/')
+          super('https://compute.googleapis.com/', 'compute/v1/projects/')
           @batch_path = 'batch/compute/v1'
         end
         

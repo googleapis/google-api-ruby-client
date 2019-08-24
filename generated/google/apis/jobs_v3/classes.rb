@@ -1341,7 +1341,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Optional. The visibility of the job.
+        # Deprecated. The job is only visible to the owner.
+        # The visibility of the job.
         # Defaults to Visibility.ACCOUNT_ONLY if not specified.
         # Corresponds to the JSON property `visibility`
         # @return [String]

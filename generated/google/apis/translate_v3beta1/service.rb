@@ -49,7 +49,8 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`/locations/`location-id`` or
         #   `projects/`project-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or
@@ -88,7 +89,8 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`` or
         #   `projects/`project-id`/locations/`location-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or
@@ -141,7 +143,8 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`` or
         #   `projects/`project-id`/locations/`location-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or
@@ -187,7 +190,7 @@ module Google
         # This call returns immediately and you can
         # use google.longrunning.Operation.name to poll the status of the call.
         # @param [String] parent
-        #   Required. Location to make a regional call.
+        #   Required. Location to make a call. Must refer to a caller's project.
         #   Format: `projects/`project-id`/locations/`location-id``.
         #   The `global` location is not supported for batch translation.
         #   Only AutoML Translation models or glossaries within the same region (have
@@ -225,7 +228,8 @@ module Google
         
         # Detects the language of text within a request.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`/locations/`location-id`` or
         #   `projects/`project-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or
@@ -294,7 +298,8 @@ module Google
         
         # Returns a list of supported languages for translation.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`` or
         #   `projects/`project-id`/locations/`location-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or
@@ -386,7 +391,8 @@ module Google
         
         # Translates input text and returns translated text.
         # @param [String] parent
-        #   Required. Target project or location to make a call.
+        #   Required. Project or location to make a call. Must refer to a caller's
+        #   project.
         #   Format: `projects/`project-id`` or
         #   `projects/`project-id`/locations/`location-id``.
         #   For global calls, use `projects/`project-id`/locations/global` or

@@ -27,8 +27,7 @@ module Google
       class AcknowledgeTaskRequest
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # The task's current schedule time, available in the
+        # Required. The task's current schedule time, available in the
         # schedule_time returned by
         # LeaseTasks response or
         # RenewLease response. This restriction is
@@ -456,7 +455,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -504,8 +503,7 @@ module Google
         # @return [String]
         attr_accessor :response_view
       
-        # Required.
-        # The task's current schedule time, available in the
+        # Required. The task's current schedule time, available in the
         # schedule_time returned by
         # LeaseTasks response or
         # RenewLease response. This restriction is
@@ -629,12 +627,40 @@ module Google
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Encapsulates settings provided to GetIamPolicy.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::CloudtasksV2beta2::GetPolicyOptions]
+        attr_accessor :options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
+      # Encapsulates settings provided to GetIamPolicy.
+      class GetPolicyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The policy format version to be returned.
+        # Acceptable values are 0, 1, and 3.
+        # If the value is 0, or the field is omitted, policy format version 1 will be
+        # returned.
+        # Corresponds to the JSON property `requestedPolicyVersion`
+        # @return [Fixnum]
+        attr_accessor :requested_policy_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
         end
       end
       
@@ -668,8 +694,7 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # Required.
-        # The duration of the lease.
+        # Required. The duration of the lease.
         # Each task returned in the response will
         # have its schedule_time set to the current
         # time plus the `lease_duration`. The task is leased until its
@@ -943,7 +968,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1230,8 +1255,7 @@ module Google
       class RenewLeaseRequest
         include Google::Apis::Core::Hashable
       
-        # Required.
-        # The desired new lease duration, starting from now.
+        # Required. The desired new lease duration, starting from now.
         # The maximum lease duration is 1 week.
         # `lease_duration` will be truncated to the nearest second.
         # Corresponds to the JSON property `leaseDuration`
@@ -1252,8 +1276,7 @@ module Google
         # @return [String]
         attr_accessor :response_view
       
-        # Required.
-        # The task's current schedule time, available in the
+        # Required. The task's current schedule time, available in the
         # schedule_time returned by
         # LeaseTasks response or
         # RenewLease response. This restriction is
