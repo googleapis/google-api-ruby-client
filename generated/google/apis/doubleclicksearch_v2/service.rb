@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module DoubleclicksearchV2
-      # DoubleClick Search API
+      # Search Ads 360 API
       #
       # Reports and modifies your advertising data in DoubleClick Search (for example,
       #  campaigns, ad groups, keywords, and conversions).

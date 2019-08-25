@@ -18,7 +18,7 @@ require 'google/apis/doubleclicksearch_v2/representations.rb'
 
 module Google
   module Apis
-    # DoubleClick Search API
+    # Search Ads 360 API
     #
     # Reports and modifies your advertising data in DoubleClick Search (for example,
     # campaigns, ad groups, keywords, and conversions).
@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/doubleclick-search/
     module DoubleclicksearchV2
       VERSION = 'V2'
-      REVISION = '20181030'
+      REVISION = '20190821'
 
       # View and manage your advertising data in DoubleClick Search
       AUTH_DOUBLECLICKSEARCH = 'https://www.googleapis.com/auth/doubleclicksearch'

@@ -392,7 +392,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Asynchronous report only. Contains a list of generated report files once the
-        # report has succesfully completed.
+        # report has successfully completed.
         # Corresponds to the JSON property `files`
         # @return [Array<Google::Apis::DoubleclicksearchV2::Report::File>]
         attr_accessor :files
