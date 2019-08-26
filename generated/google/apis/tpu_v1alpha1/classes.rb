@@ -80,6 +80,11 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -88,6 +93,7 @@ module Google
         def update!(**args)
           @accelerator_types = args[:accelerator_types] if args.key?(:accelerator_types)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -186,6 +192,11 @@ module Google
         # @return [Array<Google::Apis::TpuV1alpha1::TensorFlowVersion>]
         attr_accessor :tensorflow_versions
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -194,6 +205,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tensorflow_versions = args[:tensorflow_versions] if args.key?(:tensorflow_versions)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       

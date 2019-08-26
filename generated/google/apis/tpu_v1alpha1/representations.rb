@@ -150,6 +150,7 @@ module Google
           collection :accelerator_types, as: 'acceleratorTypes', class: Google::Apis::TpuV1alpha1::AcceleratorType, decorator: Google::Apis::TpuV1alpha1::AcceleratorType::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -187,6 +188,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :tensorflow_versions, as: 'tensorflowVersions', class: Google::Apis::TpuV1alpha1::TensorFlowVersion, decorator: Google::Apis::TpuV1alpha1::TensorFlowVersion::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
