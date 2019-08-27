@@ -727,7 +727,9 @@ module Google
       class RepoSource
         include Google::Apis::Core::Hashable
       
-        # Name of the branch to build.
+        # Regex matching branches to build.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `branchName`
         # @return [String]
         attr_accessor :branch_name
@@ -756,7 +758,9 @@ module Google
         # @return [String]
         attr_accessor :repo_name
       
-        # Name of the tag to build.
+        # Regex matching tags to build.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `tagName`
         # @return [String]
         attr_accessor :tag_name

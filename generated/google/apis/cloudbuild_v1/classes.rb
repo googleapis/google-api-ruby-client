@@ -649,6 +649,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_files
       
+        # User assigned name of the trigger. Must be unique within the project.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # Substitutions data for Build resource.
         # Corresponds to the JSON property `substitutions`
         # @return [Hash<String,String>]
@@ -679,6 +684,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @ignored_files = args[:ignored_files] if args.key?(:ignored_files)
           @included_files = args[:included_files] if args.key?(:included_files)
+          @name = args[:name] if args.key?(:name)
           @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tags = args[:tags] if args.key?(:tags)
           @trigger_template = args[:trigger_template] if args.key?(:trigger_template)
@@ -1029,14 +1035,14 @@ module Google
       class PushFilter
         include Google::Apis::Core::Hashable
       
-        # Regexes of branches to match.
+        # Regexes matching branches to build.
         # The syntax of the regular expressions accepted is the syntax accepted by
         # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `branch`
         # @return [String]
         attr_accessor :branch
       
-        # Regexes of tags to match.
+        # Regexes matching tags to build.
         # The syntax of the regular expressions accepted is the syntax accepted by
         # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `tag`
@@ -1058,7 +1064,9 @@ module Google
       class RepoSource
         include Google::Apis::Core::Hashable
       
-        # Name of the branch to build.
+        # Regex matching branches to build.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `branchName`
         # @return [String]
         attr_accessor :branch_name
@@ -1087,7 +1095,9 @@ module Google
         # @return [String]
         attr_accessor :repo_name
       
-        # Name of the tag to build.
+        # Regex matching tags to build.
+        # The syntax of the regular expressions accepted is the syntax accepted by
+        # RE2 and described at https://github.com/google/re2/wiki/Syntax
         # Corresponds to the JSON property `tagName`
         # @return [String]
         attr_accessor :tag_name

@@ -1320,6 +1320,58 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Asynchronous API to delete all Products in a ProductSet or all Products
+        # that are in no ProductSet.
+        # If a Product is a member of the specified ProductSet in addition to other
+        # ProductSets, the Product will still be deleted.
+        # It is recommended to not delete the specified ProductSet until after this
+        # operation has completed. It is also recommended to not add any of the
+        # Products involved in the batch delete to a new ProductSet while this
+        # operation is running because those Products may still end up deleted.
+        # It's not possible to undo the PurgeProducts operation. Therefore, it is
+        # recommended to keep the csv files used in ImportProductSets (if that was
+        # how you originally built the Product Set) before starting PurgeProducts, in
+        # case you need to re-import the data after deletion.
+        # If the plan is to purge all of the Products from a ProductSet and then
+        # re-use the empty ProductSet to re-import new Products into the empty
+        # ProductSet, you must wait until the PurgeProducts operation has finished
+        # for that ProductSet.
+        # The google.longrunning.Operation API can be used to keep track of the
+        # progress and results of the request.
+        # `Operation.metadata` contains `BatchOperationMetadata`. (progress)
+        # @param [String] parent
+        #   The project and location in which the Products should be deleted.
+        #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
+        # @param [Google::Apis::VisionV1::PurgeProductsRequest] purge_products_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::VisionV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::VisionV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def purge_products(parent, purge_products_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/products:purge', options)
+          command.request_representation = Google::Apis::VisionV1::PurgeProductsRequest::Representation
+          command.request_object = purge_products_request_object
+          command.response_representation = Google::Apis::VisionV1::Operation::Representation
+          command.response_class = Google::Apis::VisionV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates and returns a new ReferenceImage resource.
         # The `bounding_poly` field is optional. If `bounding_poly` is not specified,
         # the system will try to detect regions of interest in the image that are

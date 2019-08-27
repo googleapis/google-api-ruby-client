@@ -334,6 +334,7 @@ module Google
           property :id, as: 'id'
           collection :ignored_files, as: 'ignoredFiles'
           collection :included_files, as: 'includedFiles'
+          property :name, as: 'name'
           hash :substitutions, as: 'substitutions'
           collection :tags, as: 'tags'
           property :trigger_template, as: 'triggerTemplate', class: Google::Apis::CloudbuildV1::RepoSource, decorator: Google::Apis::CloudbuildV1::RepoSource::Representation

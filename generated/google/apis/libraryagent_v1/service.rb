@@ -49,7 +49,7 @@ module Google
         
         # Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
         # @param [String] name
-        #   The name of the shelf to retrieve.
+        #   Required. The name of the shelf to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,7 +120,7 @@ module Google
         # Returns quota exceeded error if the amount of books borrowed exceeds
         # allocation quota in any dimensions.
         # @param [String] name
-        #   The name of the book to borrow.
+        #   Required. The name of the book to borrow.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -150,7 +150,7 @@ module Google
         
         # Gets a book. Returns NOT_FOUND if the book does not exist.
         # @param [String] name
-        #   The name of the book to retrieve.
+        #   Required. The name of the book to retrieve.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,7 +182,7 @@ module Google
         # created books will not necessarily be added to the end of this list.
         # Returns NOT_FOUND if the shelf does not exist.
         # @param [String] parent
-        #   The name of the shelf whose books we'd like to list.
+        #   Required. The name of the shelf whose books we'd like to list.
         # @param [Fixnum] page_size
         #   Requested page size. Server may return fewer books than requested.
         #   If unspecified, server will pick an appropriate default.
@@ -225,7 +225,7 @@ module Google
         # Returns error if the book does not belong to the library
         # or the users didn't borrow before.
         # @param [String] name
-        #   The name of the book to return.
+        #   Required. The name of the book to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

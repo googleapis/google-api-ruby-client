@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p1beta1ProductSearchResultsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +695,12 @@ module Google
       end
       
       class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -971,6 +983,12 @@ module Google
       end
       
       class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1277,6 +1295,12 @@ module Google
       end
       
       class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1594,6 +1618,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p5beta1ProductSearchResultsResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1774,6 +1804,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1915,6 +1951,8 @@ module Google
       class AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::InputConfig, decorator: Google::Apis::VisionV1p1beta1::InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::AnnotateImageResponse::Representation
@@ -2156,6 +2194,8 @@ module Google
       class GoogleCloudVisionV1p1beta1AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1InputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1AnnotateImageResponse::Representation
@@ -2631,8 +2671,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -2800,6 +2852,8 @@ module Google
       class GoogleCloudVisionV1p2beta1AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1InputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1AnnotateImageResponse::Representation
@@ -3126,8 +3180,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -3288,6 +3354,8 @@ module Google
       class GoogleCloudVisionV1p3beta1AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1InputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1AnnotateImageResponse::Representation
@@ -3633,8 +3701,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -3805,6 +3885,8 @@ module Google
       class GoogleCloudVisionV1p4beta1AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1InputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1AnnotateImageResponse::Representation
@@ -4177,8 +4259,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -4364,6 +4458,8 @@ module Google
       class GoogleCloudVisionV1p5beta1AnnotateFileResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::VisionV1p1beta1::Status, decorator: Google::Apis::VisionV1p1beta1::Status::Representation
+      
           property :input_config, as: 'inputConfig', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1InputConfig, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1InputConfig::Representation
       
           collection :responses, as: 'responses', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1AnnotateImageResponse, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1AnnotateImageResponse::Representation
@@ -4745,8 +4841,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsResult::Representation
       
+        end
+      end
+      
+      class GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
@@ -4955,6 +5063,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bounding_poly, as: 'boundingPoly', class: Google::Apis::VisionV1p1beta1::BoundingPoly, decorator: Google::Apis::VisionV1p1beta1::BoundingPoly::Representation
       
+          collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VisionV1p1beta1::ObjectAnnotation, decorator: Google::Apis::VisionV1p1beta1::ObjectAnnotation::Representation
+      
           collection :results, as: 'results', class: Google::Apis::VisionV1p1beta1::Result, decorator: Google::Apis::VisionV1p1beta1::Result::Representation
       
         end
@@ -5046,6 +5156,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :x, as: 'x'
           property :y, as: 'y'
+        end
+      end
+      
+      class ObjectAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language_code, as: 'languageCode'
+          property :mid, as: 'mid'
+          property :name, as: 'name'
+          property :score, as: 'score'
         end
       end
       
