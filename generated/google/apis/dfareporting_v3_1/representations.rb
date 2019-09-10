@@ -430,12 +430,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreativeSettings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreativesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -527,24 +521,6 @@ module Google
       end
       
       class DirectorySite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DirectorySiteContact
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DirectorySiteContactAssignment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DirectorySiteContactsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1740,8 +1716,6 @@ module Google
           property :kind, as: 'kind'
           property :last_modified_info, as: 'lastModifiedInfo', class: Google::Apis::DfareportingV3_1::LastModifiedInfo, decorator: Google::Apis::DfareportingV3_1::LastModifiedInfo::Representation
       
-          property :lookback_configuration, as: 'lookbackConfiguration', class: Google::Apis::DfareportingV3_1::LookbackConfiguration, decorator: Google::Apis::DfareportingV3_1::LookbackConfiguration::Representation
-      
           property :name, as: 'name'
           property :nielsen_ocr_enabled, as: 'nielsenOcrEnabled'
           property :start_date, as: 'startDate', type: Date
@@ -1951,9 +1925,11 @@ module Google
           property :kind, as: 'kind'
           property :limit_ad_tracking, as: 'limitAdTracking'
           property :mobile_device_id, as: 'mobileDeviceId'
+          property :non_personalized_ad, as: 'nonPersonalizedAd'
           property :ordinal, as: 'ordinal'
           property :quantity, :numeric_string => true, as: 'quantity'
           property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
+          property :treatment_for_underage, as: 'treatmentForUnderage'
           property :value, as: 'value'
         end
       end
@@ -2047,6 +2023,8 @@ module Google
           property :active, as: 'active'
           property :ad_parameters, as: 'adParameters'
           collection :ad_tag_keys, as: 'adTagKeys'
+          collection :additional_sizes, as: 'additionalSizes', class: Google::Apis::DfareportingV3_1::Size, decorator: Google::Apis::DfareportingV3_1::Size::Representation
+      
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :allow_script_access, as: 'allowScriptAccess'
           property :archived, as: 'archived'
@@ -2094,7 +2072,6 @@ module Google
           property :media_duration, as: 'mediaDuration'
           property :name, as: 'name'
           property :override_css, as: 'overrideCss'
-          property :polite_load_asset_id, :numeric_string => true, as: 'politeLoadAssetId'
           property :progress_offset, as: 'progressOffset', class: Google::Apis::DfareportingV3_1::VideoOffset, decorator: Google::Apis::DfareportingV3_1::VideoOffset::Representation
       
           property :redirect_url, as: 'redirectUrl'
@@ -2133,6 +2110,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action_script3, as: 'actionScript3'
           property :active, as: 'active'
+          collection :additional_sizes, as: 'additionalSizes', class: Google::Apis::DfareportingV3_1::Size, decorator: Google::Apis::DfareportingV3_1::Size::Representation
+      
           property :alignment, as: 'alignment'
           property :artwork_type, as: 'artworkType'
           property :asset_identifier, as: 'assetIdentifier', class: Google::Apis::DfareportingV3_1::CreativeAssetId, decorator: Google::Apis::DfareportingV3_1::CreativeAssetId::Representation
@@ -2379,14 +2358,6 @@ module Google
         end
       end
       
-      class CreativeSettings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :i_frame_footer, as: 'iFrameFooter'
-          property :i_frame_header, as: 'iFrameHeader'
-        end
-      end
-      
       class CreativesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2551,11 +2522,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active, as: 'active'
-          collection :contact_assignments, as: 'contactAssignments', class: Google::Apis::DfareportingV3_1::DirectorySiteContactAssignment, decorator: Google::Apis::DfareportingV3_1::DirectorySiteContactAssignment::Representation
-      
-          property :country_id, :numeric_string => true, as: 'countryId'
-          property :currency_id, :numeric_string => true, as: 'currencyId'
-          property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV3_1::DimensionValue, decorator: Google::Apis::DfareportingV3_1::DimensionValue::Representation
       
@@ -2563,44 +2529,9 @@ module Google
           collection :interstitial_tag_formats, as: 'interstitialTagFormats'
           property :kind, as: 'kind'
           property :name, as: 'name'
-          property :parent_id, :numeric_string => true, as: 'parentId'
           property :settings, as: 'settings', class: Google::Apis::DfareportingV3_1::DirectorySiteSettings, decorator: Google::Apis::DfareportingV3_1::DirectorySiteSettings::Representation
       
           property :url, as: 'url'
-        end
-      end
-      
-      class DirectorySiteContact
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :address, as: 'address'
-          property :email, as: 'email'
-          property :first_name, as: 'firstName'
-          property :id, :numeric_string => true, as: 'id'
-          property :kind, as: 'kind'
-          property :last_name, as: 'lastName'
-          property :phone, as: 'phone'
-          property :role, as: 'role'
-          property :title, as: 'title'
-          property :type, as: 'type'
-        end
-      end
-      
-      class DirectorySiteContactAssignment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :contact_id, :numeric_string => true, as: 'contactId'
-          property :visibility, as: 'visibility'
-        end
-      end
-      
-      class DirectorySiteContactsListResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :directory_site_contacts, as: 'directorySiteContacts', class: Google::Apis::DfareportingV3_1::DirectorySiteContact, decorator: Google::Apis::DfareportingV3_1::DirectorySiteContact::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -2612,9 +2543,6 @@ module Google
       
           property :instream_video_placement_accepted, as: 'instreamVideoPlacementAccepted'
           property :interstitial_placement_accepted, as: 'interstitialPlacementAccepted'
-          property :nielsen_ocr_opt_out, as: 'nielsenOcrOptOut'
-          property :verification_tag_opt_out, as: 'verificationTagOptOut'
-          property :video_active_view_opt_out, as: 'videoActiveViewOptOut'
         end
       end
       
@@ -2788,7 +2716,6 @@ module Google
           property :floodlight_configuration_id_dimension_value, as: 'floodlightConfigurationIdDimensionValue', class: Google::Apis::DfareportingV3_1::DimensionValue, decorator: Google::Apis::DfareportingV3_1::DimensionValue::Representation
       
           property :floodlight_tag_type, as: 'floodlightTagType'
-          property :hidden, as: 'hidden'
           property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV3_1::DimensionValue, decorator: Google::Apis::DfareportingV3_1::DimensionValue::Representation
       
@@ -3343,6 +3270,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, :numeric_string => true, as: 'accountId'
           property :ad_blocking_opt_out, as: 'adBlockingOptOut'
+          collection :additional_sizes, as: 'additionalSizes', class: Google::Apis::DfareportingV3_1::Size, decorator: Google::Apis::DfareportingV3_1::Size::Representation
+      
           property :advertiser_id, :numeric_string => true, as: 'advertiserId'
           property :advertiser_id_dimension_value, as: 'advertiserIdDimensionValue', class: Google::Apis::DfareportingV3_1::DimensionValue, decorator: Google::Apis::DfareportingV3_1::DimensionValue::Representation
       
@@ -3582,7 +3511,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cap_cost_option, as: 'capCostOption'
-          property :disregard_overdelivery, as: 'disregardOverdelivery'
           property :end_date, as: 'endDate', type: Date
       
           property :flighted, as: 'flighted'
@@ -4010,11 +3938,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :active_view_opt_out, as: 'activeViewOptOut'
           property :ad_blocking_opt_out, as: 'adBlockingOptOut'
-          property :creative_settings, as: 'creativeSettings', class: Google::Apis::DfareportingV3_1::CreativeSettings, decorator: Google::Apis::DfareportingV3_1::CreativeSettings::Representation
-      
           property :disable_new_cookie, as: 'disableNewCookie'
-          property :lookback_configuration, as: 'lookbackConfiguration', class: Google::Apis::DfareportingV3_1::LookbackConfiguration, decorator: Google::Apis::DfareportingV3_1::LookbackConfiguration::Representation
-      
           property :tag_setting, as: 'tagSetting', class: Google::Apis::DfareportingV3_1::TagSetting, decorator: Google::Apis::DfareportingV3_1::TagSetting::Representation
       
           property :video_active_view_opt_out_template, as: 'videoActiveViewOptOutTemplate'

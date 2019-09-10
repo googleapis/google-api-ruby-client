@@ -948,6 +948,14 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
+        # If this flag is `TRUE`, all tables will be deleted from the dataset before
+        # the new exported tables are written. If the flag is not set and the
+        # destination dataset contains tables, the export call returns an error.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
         # Configuration for the FHIR BigQuery schema. Determines how the server
         # generates the schema.
         # Corresponds to the JSON property `schemaConfig`
@@ -961,14 +969,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @dataset_uri = args[:dataset_uri] if args.key?(:dataset_uri)
+          @force = args[:force] if args.key?(:force)
           @schema_config = args[:schema_config] if args.key?(:schema_config)
         end
       end
       
-      # Final response of exporting resources.
+      # Response when errors occur while exporting resources.
+      # This structure is included in the
+      # error details to describe the
+      # detailed outcome. It is only included when the operation finishes with
+      # errors.
+      class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The number of resources that had errors.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # The name of the FHIR store where resources have been exported, in the
+        # format
+        # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``.
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        # The total number of resources included in the export operation. This is
+        # the sum of the success and error counts.
+        # Corresponds to the JSON property `resourceCount`
+        # @return [Fixnum]
+        attr_accessor :resource_count
+      
+        # The number of resources that were exported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
+          @resource_count = args[:resource_count] if args.key?(:resource_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
+      # Response when all resources export successfully.
       # This structure will be included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes.
+      # outcome. It will only be included when the operation finishes successfully.
       class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
         include Google::Apis::Core::Hashable
       

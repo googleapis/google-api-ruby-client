@@ -1161,12 +1161,12 @@ module Google
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
-        # Specifies number of resources that are allocated.
+        # Specifies the number of resources that are allocated.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # [OutputOnly] Indicates how many resource are in use.
+        # [OutputOnly] Indicates how many instances are in use.
         # Corresponds to the JSON property `inUseCount`
         # @return [Fixnum]
         attr_accessor :in_use_count
@@ -1354,7 +1354,9 @@ module Google
         # @return [String]
         attr_accessor :disk_name
       
-        # Specifies the size of the disk in base-2 GB.
+        # Specifies the size of the disk in base-2 GB. If not specified, the disk will
+        # be the same size as the image (usually 10GB). If specified, the size must be
+        # equal to or larger than 10GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -1474,14 +1476,14 @@ module Google
       # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
       # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
-      # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
+      # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
       # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # fooservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
-      # ` "log_type": "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] ` ] `
-      # ] `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
-      # com from DATA_WRITE logging.
+      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
+      # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
+      # ] ` ] ` ] `
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and aliya@
+      # example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -1516,9 +1518,9 @@ module Google
       
       # Provides the configuration for logging a type of permissions. Example:
       # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:foo@gmail.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.
-      # com from DATA_READ logging.
+      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
+      # example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -1527,6 +1529,13 @@ module Google
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
+      
+        # Specifies whether principals can be exempted for the same LogType in lower-
+        # level resource policies. If true, any lower-level exemptions will be ignored.
+        # Corresponds to the JSON property `ignoreChildExemptions`
+        # @return [Boolean]
+        attr_accessor :ignore_child_exemptions
+        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
       
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
@@ -1540,6 +1549,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -2427,8 +2437,8 @@ module Google
         # 
         # - If the load balancing mode is CONNECTION, then the load is spread based on
         # how many concurrent connections the backend can handle.
-        # The CONNECTION balancing mode is only available if the protocol for the
-        # backend service is SSL, TCP, or UDP.
+        # You can use the CONNECTION balancing mode if the protocol for the backend
+        # service is SSL, TCP, or UDP.
         # If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and
         # TCP Proxy load balancers), you must also specify exactly one of the following
         # parameters: maxConnections, maxConnectionsPerInstance, or
@@ -2436,18 +2446,18 @@ module Google
         # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
         # UDP load balancers), you cannot specify any additional parameters.
         # 
-        # - If the load balancing mode is RATE, then the load is spread based on the
-        # rate of HTTP requests per second (RPS).
-        # The RATE balancing mode is only available if the protocol for the backend
-        # service is HTTP or HTTPS. You must specify exactly one of the following
-        # parameters: maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+        # - If the load balancing mode is RATE, the load is spread based on the rate of
+        # HTTP requests per second (RPS).
+        # You can use the RATE balancing mode if the protocol for the backend service is
+        # HTTP or HTTPS. You must specify exactly one of the following parameters:
+        # maxRate, maxRatePerInstance, or maxRatePerEndpoint.
         # 
-        # - If the load balancing mode is UTILIZATION, then the load is spread based on
-        # the CPU utilization of instances in an instance group.
-        # The UTILIZATION balancing mode is only available if the loadBalancingScheme of
-        # the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED
-        # and the backend is made up of instance groups. There are no restrictions on
-        # the backend service protocol.
+        # - If the load balancing mode is UTILIZATION, the load is spread based on the
+        # CPU utilization of instances in an instance group.
+        # You can use the UTILIZATION balancing mode if the loadBalancingScheme of the
+        # backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and
+        # the backends are instance groups. There are no restrictions on the backend
+        # service protocol.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -3058,8 +3068,8 @@ module Google
         # Type of session affinity to use. The default is NONE. Session affinity is not
         # applicable if the --protocol is UDP.
         # When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP,
-        # or GENERATED_COOKIE. GENERATED_COOKIE is only available if the protocol is
-        # HTTP or HTTPS.
+        # or GENERATED_COOKIE. You can use GENERATED_COOKIE if the protocol is HTTP or
+        # HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, possible values are
@@ -3865,8 +3875,7 @@ module Google
         # @return [String]
         attr_accessor :local_state
       
-        # Negotiated transmit interval for control packets. When echo mode is enabled
-        # this will reflect the negotiated slow timer interval.
+        # Negotiated transmit interval for control packets.
         # Corresponds to the JSON property `negotiatedLocalControlTxIntervalMs`
         # @return [Fixnum]
         attr_accessor :negotiated_local_control_tx_interval_ms
@@ -3977,7 +3986,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
         # authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@gmail.com` .
+        # For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
@@ -4309,7 +4318,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of reservations for this commitment.
+        # List of reservations in this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -5285,7 +5294,9 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # [Output Only] The status of disk creation.
+        # [Output Only] The status of disk creation. CREATING: Disk is provisioning.
+        # RESTORING: Source data is being copied into the disk. FAILED: Disk creation
+        # failed. READY: Disk is ready for use. DELETING: Disk is deleting.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -7318,32 +7329,20 @@ module Google
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
-        # The IP address that this forwarding rule is serving on behalf of.
-        # Addresses are restricted based on the forwarding rule's load balancing scheme (
-        # EXTERNAL or INTERNAL) and scope (global or regional).
-        # When the load balancing scheme is EXTERNAL, for global forwarding rules, the
-        # address must be a global IP, and for regional forwarding rules, the address
-        # must live in the same region as the forwarding rule. If this field is empty,
-        # an ephemeral IPv4 address from the same scope (global or regional) will be
-        # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
-        # rule supports either IPv4 or IPv6.
-        # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
-        # reference to an existing Address resource ( internal regional static IP
-        # address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
-        # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
-        # address belonging to the network/subnet configured for the forwarding rule. By
-        # default, if this field is empty, an ephemeral internal IP address will be
-        # automatically allocated from the IP range of the subnet or network configured
-        # for this forwarding rule.
-        # An address can be specified either by a literal IP address or a URL reference
-        # to an existing Address resource. The following examples are all valid:
-        # - 100.1.2.3
-        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
-        # addresses/address
-        # - projects/project/regions/region/addresses/address
-        # - regions/region/addresses/address
-        # - global/addresses/address
-        # - address
+        # IP address that this forwarding rule serves. When a client sends traffic to
+        # this IP address, the forwarding rule directs the traffic to the target that
+        # you specify in the forwarding rule.
+        # If you don't specify a reserved IP address, an ephemeral IP address is
+        # assigned. Methods for specifying an IP address:
+        # * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.
+        # googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-
+        # name * Partial URL or by name, as in: * projects/project_id/regions/region/
+        # addresses/address-name * regions/region/addresses/address-name * global/
+        # addresses/address-name * address-name
+        # The loadBalancingScheme and the forwarding rule's target determine the type of
+        # IP address that you can use. For detailed information, refer to [IP address
+        # specifications](/load-balancing/docs/forwarding-rule-concepts#
+        # ip_address_specifications).
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -7510,13 +7509,23 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # This field is used along with the target field for TargetHttpProxy,
-        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
-        # TargetInstance.
-        # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
-        # to ports in the specified range will be forwarded to target. Forwarding rules
-        # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
-        # Some types of forwarding target have constraints on the acceptable ports:
+        # This field is deprecated. See the port
+        # field.
+        # Corresponds to the JSON property `portRange`
+        # @return [String]
+        attr_accessor :port_range
+      
+        # List of comma-separated ports. The forwarding rule forwards packets with
+        # matching destination ports. If the forwarding rule's loadBalancingScheme is
+        # EXTERNAL, and the forwarding rule references a target pool, specifying ports
+        # is optional. You can specify an unlimited number of ports, but they must be
+        # contiguous. If you omit ports, GCP forwards traffic on any port of the
+        # forwarding rule's protocol.
+        # If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding
+        # rule references a target HTTP proxy, target HTTPS proxy, target TCP proxy,
+        # target SSL proxy, or target VPN gateway, you must specify ports using the
+        # following constraints:
+        # 
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -7524,16 +7533,16 @@ module Google
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetVpnGateway: 500, 4500
-        # Corresponds to the JSON property `portRange`
-        # @return [String]
-        attr_accessor :port_range
-      
-        # This field is used along with the backend_service field for internal load
-        # balancing.
-        # When the load balancing scheme is INTERNAL, a list of ports can be configured,
-        # for example, ['80'], ['8000','9000'] etc. Only packets addressed to these
-        # ports will be forwarded to the backends configured with this forwarding rule.
-        # You may specify a maximum of up to 5 ports.
+        # If the forwarding rule's loadBalancingScheme is INTERNAL, you must specify
+        # ports in one of the following ways:
+        # * A list of up to five ports, which can be non-contiguous * Keyword ALL, which
+        # causes the forwarding rule to forward traffic on any port of the forwarding
+        # rule's protocol.
+        # The ports field is used along with the target field for TargetHttpProxy,
+        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
+        # TargetInstance.
+        # Applicable only when IPProtocol is TCP, UDP, or SCTP. Forwarding rules with
+        # the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -7557,7 +7566,7 @@ module Google
         attr_accessor :self_link_with_id
       
         # An optional prefix to the service name for this Forwarding Rule. If specified,
-        # will be the first label of the fully qualified service name.
+        # the prefix is the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
         # the label must be 1-63 characters long and match the regular expression `[a-z](
         # [-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
@@ -8766,12 +8775,6 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Specifies the desired filtering of logs on this health check. If this is
-        # unspecified and enable is true, logs are exported with LOG_TRANSITION filter.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
         def initialize(**args)
            update!(**args)
         end
@@ -8779,7 +8782,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
-          @filter = args[:filter] if args.key?(:filter)
         end
       end
       
@@ -10720,7 +10722,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # GCS bucket storage location of the image (regional or multi-regional).
+        # Cloud Storage bucket storage location of the image (regional or multi-regional)
+        # .
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -11015,7 +11018,10 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
-        # 
+        # Specifies the hostname of the instance. The specified hostname must be RFC1035
+        # compliant. If hostname is not specified, the default hostname is [
+        # INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [
+        # INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
@@ -12438,7 +12444,11 @@ module Google
       class InstanceGroupManagerUpdatePolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # The  instance redistribution policy for regional managed instance groups.
+        # Valid values are:
+        # - PROACTIVE (default): The group attempts to maintain an even distribution of
+        # VM instances across zones in the region.
+        # - NONE: For non-autoscaled groups, proactive redistribution is disabled.
         # Corresponds to the JSON property `instanceRedistributionType`
         # @return [String]
         attr_accessor :instance_redistribution_type
@@ -14811,6 +14821,8 @@ module Google
         # - BPS_2G: 2 Gbit/s
         # - BPS_5G: 5 Gbit/s
         # - BPS_10G: 10 Gbit/s
+        # - BPS_20G: 20 Gbit/s
+        # - BPS_50G: 50 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -14905,6 +14917,13 @@ module Google
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
+      
+        # Maximum Transmission Unit (MTU), in bytes, of packets passing through this
+        # interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the
+        # value will default to 1440.
+        # Corresponds to the JSON property `mtu`
+        # @return [Fixnum]
+        attr_accessor :mtu
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -15037,6 +15056,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
+          @mtu = args[:mtu] if args.key?(:mtu)
           @name = args[:name] if args.key?(:name)
           @operational_status = args[:operational_status] if args.key?(:operational_status)
           @pairing_key = args[:pairing_key] if args.key?(:pairing_key)
@@ -17128,6 +17148,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :storage_locations
       
+        # [Output Only] Total size of the storage used by the machine image.
+        # Corresponds to the JSON property `totalStorageBytes`
+        # @return [Fixnum]
+        attr_accessor :total_storage_bytes
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17148,6 +17173,7 @@ module Google
           @source_instance_properties = args[:source_instance_properties] if args.key?(:source_instance_properties)
           @status = args[:status] if args.key?(:status)
           @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
+          @total_storage_bytes = args[:total_storage_bytes] if args.key?(:total_storage_bytes)
         end
       end
       
@@ -17826,7 +17852,9 @@ module Google
         # @return [String]
         attr_accessor :health_check
       
-        # [Output Only] The current instance health state.
+        # [Output Only] The current instance health state. This field will not get
+        # promoted to beta/GA and might be removed from alpha APIs after 01/12/2019.
+        # Please use detailed_health_state field instead.
         # Corresponds to the JSON property `healthState`
         # @return [String]
         attr_accessor :health_state
@@ -18323,9 +18351,10 @@ module Google
         attr_accessor :instance
       
         # Optional IPv4 address of network endpoint. The IP address must belong to a VM
-        # in GCE (either the primary IP or as part of an aliased IP range). If the IP
-        # address is not specified, then the primary IP address for the VM instance in
-        # the network that the network endpoint group belongs to will be used.
+        # in Compute Engine (either the primary IP or as part of an aliased IP range).
+        # If the IP address is not specified, then the primary IP address for the VM
+        # instance in the network that the network endpoint group belongs to will be
+        # used.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -19814,6 +19843,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_size
       
+        # 
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -19822,6 +19856,7 @@ module Google
         def update!(**args)
           @max_size = args[:max_size] if args.key?(:max_size)
           @min_size = args[:min_size] if args.key?(:min_size)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -20015,7 +20050,7 @@ module Google
       class NodeGroupsDeleteNodesRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # Names of the nodes to delete.
         # Corresponds to the JSON property `nodes`
         # @return [Array<String>]
         attr_accessor :nodes
@@ -21480,7 +21515,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_error_status_code
       
-        # [Output Only] The unique identifier for the resource. This identifier is
+        # [Output Only] The unique identifier for the operation. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -21498,7 +21533,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Name of the resource.
+        # [Output Only] Name of the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -23294,7 +23329,7 @@ module Google
         # that etag in the request to `setIamPolicy` to ensure that their change will be
         # applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -23731,6 +23766,809 @@ module Google
         end
       end
       
+      # A public advertised prefix represents an aggregated IP prefix or netblock
+      # which customers bring to cloud. The IP prefix is a single unit of route
+      # advertisement and is announced globally to the internet.
+      class PublicAdvertisedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IPv4 address to be used for reverse DNS verification.
+        # Corresponds to the JSON property `dnsVerificationIp`
+        # @return [String]
+        attr_accessor :dns_verification_ip
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be
+        # provided in order to update the PublicAdvertisedPrefix, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # PublicAdvertisedPrefix.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The IPv4 address range, in CIDR format, represented by this public advertised
+        # prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for
+        # public advertised prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The list of public delegated prefixes that exist for this public
+        # advertised prefix.
+        # Corresponds to the JSON property `publicDelegatedPrefixs`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicAdvertisedPrefixPublicDelegatedPrefix>]
+        attr_accessor :public_delegated_prefixs
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL with id for the resource.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] The shared secret to be used for reverse DNS verification.
+        # Corresponds to the JSON property `sharedSecret`
+        # @return [String]
+        attr_accessor :shared_secret
+      
+        # The status of the public advertised prefix.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @dns_verification_ip = args[:dns_verification_ip] if args.key?(:dns_verification_ip)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @id = args[:id] if args.key?(:id)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @public_delegated_prefixs = args[:public_delegated_prefixs] if args.key?(:public_delegated_prefixs)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @shared_secret = args[:shared_secret] if args.key?(:shared_secret)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicAdvertisedPrefixList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicAdvertisedPrefix resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicAdvertisedPrefix>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#publicAdvertisedPrefix for
+        # public advertised prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::PublicAdvertisedPrefixList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::PublicAdvertisedPrefixList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a CIDR range which can be used to assign addresses.
+      class PublicAdvertisedPrefixPublicDelegatedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # The name of the public delegated prefix
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The region of the public delegated prefix if it is regional. If absent, the
+        # prefix is global.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # The status of the public delegated prefix. Possible values are: ACTIVE: The
+        # public delegated prefix is active DRAINED: The public delegated prefix is
+        # drained.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # A PublicDelegatedPrefix resource represents an IP block within a
+      # PublicAdvertisedPrefix that is configured within a single cloud scope (global
+      # or region). IPs in the block can be allocated to resources within that scope.
+      # Public delegated prefixes may be further broken up into smaller IP blocks in
+      # the same scope as the parent block.
+      class PublicDelegatedPrefix
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be
+        # provided in order to update the PublicDelegatedPrefix, otherwise the request
+        # will fail with error 412 conditionNotMet.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # PublicDelegatedPrefix.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The list of Google announcements that exist for this delegated prefix.
+        # Corresponds to the JSON property `googleAnnouncements`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixGoogleAnnouncement>]
+        attr_accessor :google_announcements
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # The IPv4 address range, in CIDR format, represented by this public delegated
+        # prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # [Output Only] Type of the resource. Always compute#publicDelegatedPrefix for
+        # public delegated prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The URL of parent prefix. Either PublicAdvertisedPrefix or
+        # PublicDelegatedPrefix.
+        # Corresponds to the JSON property `parentPrefix`
+        # @return [String]
+        attr_accessor :parent_prefix
+      
+        # The list of sub public delegated prefixes that exist for this public delegated
+        # prefix.
+        # Corresponds to the JSON property `publicDelegatedSubPrefixs`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixPublicDelegatedSubPrefix>]
+        attr_accessor :public_delegated_sub_prefixs
+      
+        # [Output Only] URL of the region where the public delegated prefix resides.
+        # This field applies only to the region resource. You must specify this field as
+        # part of the HTTP request URL. It is not settable as a field in the request
+        # body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Server-defined URL with id for the resource.
+        # Corresponds to the JSON property `selfLinkWithId`
+        # @return [String]
+        attr_accessor :self_link_with_id
+      
+        # [Output Only] The status of the public delegated prefix.
+        # Corresponds to the JSON property `status`
+        # @return [Object]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @google_announcements = args[:google_announcements] if args.key?(:google_announcements)
+          @id = args[:id] if args.key?(:id)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @parent_prefix = args[:parent_prefix] if args.key?(:parent_prefix)
+          @public_delegated_sub_prefixs = args[:public_delegated_sub_prefixs] if args.key?(:public_delegated_sub_prefixs)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicDelegatedPrefixesScopedList resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeAlpha::PublicDelegatedPrefixesScopedList>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#
+        # publicDelegatedPrefixAggregatedList for aggregated lists of public delegated
+        # prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::PublicDelegatedPrefixAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # A Google announcement advertises the prefix internally within Google's network
+      # backbone from the specified scope.
+      class PublicDelegatedPrefixGoogleAnnouncement
+        include Google::Apis::Core::Hashable
+      
+        # The name of a Google announcement. The name must be 1-63 characters long, and
+        # comply with  RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first // character must be a lowercase letter, and all following characters
+        # must be a dash, lowercase letter, or digit, except the last character, which
+        # cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The status of this Google announcement.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PublicDelegatedPrefix resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefix>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#publicDelegatedPrefixList
+        # for public delegated prefixes.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::PublicDelegatedPrefixList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # Represents a sub PublicDelegatedPrefix.
+      class PublicDelegatedPrefixPublicDelegatedSubPrefix
+        include Google::Apis::Core::Hashable
+      
+        # Name of the project scoping this PublicDelegatedSubPrefix.
+        # Corresponds to the JSON property `delegateeProject`
+        # @return [String]
+        attr_accessor :delegatee_project
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The IPv4 address range, in CIDR format, represented by this sub public
+        # delegated prefix.
+        # Corresponds to the JSON property `ipCidrRange`
+        # @return [String]
+        attr_accessor :ip_cidr_range
+      
+        # Whether the sub prefix is delegated to create Address resources in the
+        # delegatee project.
+        # Corresponds to the JSON property `isAddress`
+        # @return [Boolean]
+        attr_accessor :is_address
+        alias_method :is_address?, :is_address
+      
+        # The name of the sub public delegated prefix.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # [Output Only] The region of the sub public delegated prefix if it is regional.
+        # If absent, the sub prefix is global.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] The status of the sub public delegated prefix.
+        # Corresponds to the JSON property `status`
+        # @return [Object]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @delegatee_project = args[:delegatee_project] if args.key?(:delegatee_project)
+          @description = args[:description] if args.key?(:description)
+          @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @is_address = args[:is_address] if args.key?(:is_address)
+          @name = args[:name] if args.key?(:name)
+          @region = args[:region] if args.key?(:region)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class PublicDelegatedPrefixesScopedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A list of PublicDelegatedPrefixes contained in this scope.
+        # Corresponds to the JSON property `publicDelegatedPrefixes`
+        # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefix>]
+        attr_accessor :public_delegated_prefixes
+      
+        # [Output Only] Informational warning which replaces the list of public
+        # delegated prefixes when the list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::PublicDelegatedPrefixesScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @public_delegated_prefixes = args[:public_delegated_prefixes] if args.key?(:public_delegated_prefixes)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning which replaces the list of public
+        # delegated prefixes when the list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixesScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A quotas entry.
       class Quota
         include Google::Apis::Core::Hashable
@@ -24044,8 +24882,7 @@ module Google
       class RegionCommitmentsUpdateReservationsRequest
         include Google::Apis::Core::Hashable
       
-        # List of reservations for the capacity move of VMs with accelerators and local
-        # ssds.
+        # List of two reservations to transfer GPUs and local SSD between.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -25340,12 +26177,12 @@ module Google
       # Represents a reservation resource. A reservation ensures that capacity is held
       # in a specific zone even if the reserved VMs are not running. For more
       # information, read  Reserving zonal resources. (== resource_for beta.
-      # reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)
+      # reservations ==) (== resource_for v1.reservations ==)
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # [OutputOnly] Full or partial url for parent commitment for reservations which
-        # are tied to a commitment.
+        # [OutputOnly] Full or partial URL to a parent commitment. This field displays
+        # for reservations that are tied to a commitment.
         # Corresponds to the JSON property `commitment`
         # @return [String]
         attr_accessor :commitment
@@ -25412,8 +26249,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Zone in which the reservation resides, must be provided if reservation is
-        # created with commitment creation.
+        # Zone in which the reservation resides. A zone must be provided if the
+        # reservation is created within a commitment.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -26525,7 +27362,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
+        # Cloud Storage bucket storage location of the auto snapshot (regional or multi-
+        # regional).
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -27390,8 +28228,12 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
-        # Name of this BGP peer. The name must be 1-63 characters long and comply with
-        # RFC1035.
+        # Name of this BGP peer. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -27433,26 +28275,20 @@ module Google
       class RouterBgpPeerBfd
         include Google::Apis::Core::Hashable
       
-        # The minimum interval, in milliseconds, between BFD packets received from the
-        # peer router. The actual value is negotiated between the two routers and is
-        # equal to the greater of this value and the transmit interval of the other
-        # router. If BFD echo mode is enabled on this router and the peer router, this
-        # value is used to negotiate the interval between BFD echo packets transmitted
-        # by the peer router. Otherwise, it will be used to determine the interval
-        # between BFD control packets. If set, this value must be between 100 and 30000.
-        # The default is 300.
+        # The minimum interval, in milliseconds, between BFD control packets received
+        # from the peer router. The actual value is negotiated between the two routers
+        # and is equal to the greater of this value and the transmit interval of the
+        # other router. If set, this value must be between 100 and 30000. The default is
+        # 300.
         # Corresponds to the JSON property `minReceiveInterval`
         # @return [Fixnum]
         attr_accessor :min_receive_interval
       
-        # The minimum interval, in milliseconds, between BFD packets transmitted to the
-        # peer router. The actual value is negotiated between the two routers and is
-        # equal to the greater of this value and the corresponding receive interval of
-        # the other router. If BFD echo mode is enabled on this router and the peer
-        # router, this value is used to negotiate the interval between BFD echo packets
-        # transmitted by this router. Otherwise, it will be used to determine the
-        # interval between BFD control packets. If set, this value must be between 100
-        # and 30000. The default is 300.
+        # The minimum interval, in milliseconds, between BFD control packets transmitted
+        # to the peer router. The actual value is negotiated between the two routers and
+        # is equal to the greater of this value and the corresponding receive interval
+        # of the other router. If set, this value must be between 100 and 30000. The
+        # default is 300.
         # Corresponds to the JSON property `minTransmitInterval`
         # @return [Fixnum]
         attr_accessor :min_transmit_interval
@@ -27556,8 +28392,12 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
-        # Name of this interface entry. The name must be 1-63 characters long and comply
-        # with RFC1035.
+        # Name of this interface entry. The name must be 1-63 characters long, and
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -29733,7 +30573,8 @@ module Google
         # @return [String]
         attr_accessor :storage_bytes_status
       
-        # GCS bucket storage location of the snapshot (regional or multi-regional).
+        # Cloud Storage bucket storage location of the snapshot (regional or multi-
+        # regional).
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -31482,6 +32323,12 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
+        # Can only be specified if VPC flow logs for this subnetwork is enabled. Export
+        # filter used to define which VPC flow logs should be logged.
+        # Corresponds to the JSON property `filterExpr`
+        # @return [String]
+        attr_accessor :filter_expr
+      
         # Can only be specified if VPC flow logging for this subnetwork is enabled. The
         # value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs
         # within the subnetwork where 1.0 means all collected logs are reported and 0.0
@@ -31498,6 +32345,12 @@ module Google
         # @return [String]
         attr_accessor :metadata
       
+        # Can only be specified if VPC flow logs for this subnetwork is enabled and "
+        # metadata" was set to CUSTOM_METADATA.
+        # Corresponds to the JSON property `metadataFields`
+        # @return [Array<String>]
+        attr_accessor :metadata_fields
+      
         def initialize(**args)
            update!(**args)
         end
@@ -31506,8 +32359,10 @@ module Google
         def update!(**args)
           @aggregation_interval = args[:aggregation_interval] if args.key?(:aggregation_interval)
           @enable = args[:enable] if args.key?(:enable)
+          @filter_expr = args[:filter_expr] if args.key?(:filter_expr)
           @flow_sampling = args[:flow_sampling] if args.key?(:flow_sampling)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @metadata_fields = args[:metadata_fields] if args.key?(:metadata_fields)
         end
       end
       

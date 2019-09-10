@@ -22,43 +22,55 @@ module Google
   module Apis
     module AdexperiencereportV1
       
-      # Summary of the ad experience rating of a site for a specific platform.
+      # A site's Ad Experience Report summary on a single platform.
       class PlatformSummary
         include Google::Apis::Core::Hashable
       
-        # The status of the site reviewed for the Better Ads Standards.
+        # The site's Ad Experience Report status on this platform.
         # Corresponds to the JSON property `betterAdsStatus`
         # @return [String]
         attr_accessor :better_ads_status
       
-        # The date on which ad filtering begins.
+        # The time at which
+        # [enforcement](https://support.google.com/webtools/answer/7308033) against
+        # the site began or will begin on this platform.
+        # Not set when the
+        # filter_status
+        # is OFF.
         # Corresponds to the JSON property `enforcementTime`
         # @return [String]
         attr_accessor :enforcement_time
       
-        # The ad filtering status of the site.
+        # The site's [enforcement
+        # status](https://support.google.com/webtools/answer/7308033) on this
+        # platform.
         # Corresponds to the JSON property `filterStatus`
         # @return [String]
         attr_accessor :filter_status
       
-        # The last time that the site changed status.
+        # The time at which the site's status last changed on this platform.
         # Corresponds to the JSON property `lastChangeTime`
         # @return [String]
         attr_accessor :last_change_time
       
-        # The assigned regions for the site and platform.
+        # The site's regions on this platform.
         # No longer populated, because there is no longer any semantic difference
         # between sites in different regions.
         # Corresponds to the JSON property `region`
         # @return [Array<String>]
         attr_accessor :region
       
-        # A link that leads to a full ad experience report.
+        # A link to the full Ad Experience Report for the site on this platform..
+        # Not set in
+        # ViolatingSitesResponse.
+        # Note that you must complete the [Search Console verification
+        # process](https://support.google.com/webmasters/answer/9008080) for the site
+        # before you can access the full report.
         # Corresponds to the JSON property `reportUrl`
         # @return [String]
         attr_accessor :report_url
       
-        # Whether the site is currently under review.
+        # Whether the site is currently under review on this platform.
         # Corresponds to the JSON property `underReview`
         # @return [Boolean]
         attr_accessor :under_review
@@ -84,17 +96,17 @@ module Google
       class SiteSummaryResponse
         include Google::Apis::Core::Hashable
       
-        # Summary of the ad experience rating of a site for a specific platform.
+        # A site's Ad Experience Report summary on a single platform.
         # Corresponds to the JSON property `desktopSummary`
         # @return [Google::Apis::AdexperiencereportV1::PlatformSummary]
         attr_accessor :desktop_summary
       
-        # Summary of the ad experience rating of a site for a specific platform.
+        # A site's Ad Experience Report summary on a single platform.
         # Corresponds to the JSON property `mobileSummary`
         # @return [Google::Apis::AdexperiencereportV1::PlatformSummary]
         attr_accessor :mobile_summary
       
-        # The name of the site reviewed.
+        # The name of the reviewed site, e.g. `google.com`.
         # Corresponds to the JSON property `reviewedSite`
         # @return [String]
         attr_accessor :reviewed_site
@@ -115,7 +127,7 @@ module Google
       class ViolatingSitesResponse
         include Google::Apis::Core::Hashable
       
-        # A list of summaries of violating sites.
+        # The list of violating sites.
         # Corresponds to the JSON property `violatingSites`
         # @return [Array<Google::Apis::AdexperiencereportV1::SiteSummaryResponse>]
         attr_accessor :violating_sites

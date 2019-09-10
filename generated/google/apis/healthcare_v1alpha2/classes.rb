@@ -311,7 +311,7 @@ module Google
         end
       end
       
-      # Mask a string by replacing its characters with a fixed character.
+      # Masks a string by replacing its characters with a fixed character.
       class CharacterMaskConfig
         include Google::Apis::Core::Hashable
       
@@ -370,16 +370,16 @@ module Google
         end
       end
       
-      # Pseudonymization method that generates surrogates via cryptographic hashing.
-      # Uses SHA-256.
-      # Outputs a base64-encoded representation of the hashed output
-      # (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+      # Pseudonymization method that generates surrogates using cryptographic
+      # hashing. Uses SHA-256.
+      # Outputs a base64-encoded representation of the hashed output.
+      # For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
       class CryptoHashConfig
         include Google::Apis::Core::Hashable
       
         # An AES 128/192/256 bit key. Causes the hash to be computed based on this
-        # key. A default key is generated for each Deidentify operation and is used
-        # wherever crypto_key is not specified.
+        # key. A default key is generated for each Deidentify operation and is
+        # used when crypto_key is not specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -427,14 +427,15 @@ module Google
         end
       end
       
-      # Shift a date forward or backward in time by a random amount which is
+      # Shifts a date forward or backward in time by a random amount that is
       # consistent for a given patient and crypto key combination.
       class DateShiftConfig
         include Google::Apis::Core::Hashable
       
         # An AES 128/192/256 bit key. Causes the shift to be computed based on this
         # key and the patient ID. A default key is generated for each
-        # Deidentify operation and is used wherever crypto_key is not specified.
+        # de-identification operation and is used when crypto_key is not
+        # specified.
         # Corresponds to the JSON property `cryptoKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -457,23 +458,22 @@ module Google
       class DeidentifyConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies the parameters needed for de-identification of DICOM stores.
+        # Specifies the parameters needed for the de-identification of DICOM stores.
         # Corresponds to the JSON property `dicom`
         # @return [Google::Apis::HealthcareV1alpha2::DicomConfig]
         attr_accessor :dicom
       
-        # Specifies how de-identification of a FHIR store should be handled.
+        # Specifies how to handle the de-identification of a FHIR store.
         # Corresponds to the JSON property `fhir`
         # @return [Google::Apis::HealthcareV1alpha2::FhirConfig]
         attr_accessor :fhir
       
-        # Specifies how de-identification of image pixel should be handled.
+        # Specifies how to handle the de-identification of image pixels.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::HealthcareV1alpha2::ImageConfig]
         attr_accessor :image
       
-        # Configures de-identification of text wherever it is found in the
-        # source_dataset.
+        # Configures the de-identification of text in `source_dataset`.
         # Corresponds to the JSON property `text`
         # @return [Google::Apis::HealthcareV1alpha2::TextConfig]
         attr_accessor :text
@@ -605,21 +605,21 @@ module Google
         end
       end
       
-      # Specifies the parameters needed for de-identification of DICOM stores.
+      # Specifies the parameters needed for the de-identification of DICOM stores.
       class DicomConfig
         include Google::Apis::Core::Hashable
       
-        # Tag filtering profile that determines which tags to keep/remove.
+        # Tag filtering profile that determines the tags to keep or remove.
         # Corresponds to the JSON property `filterProfile`
         # @return [String]
         attr_accessor :filter_profile
       
-        # List of tags to be filtered.
+        # List of tags to filter.
         # Corresponds to the JSON property `keepList`
         # @return [Google::Apis::HealthcareV1alpha2::TagFilterList]
         attr_accessor :keep_list
       
-        # List of tags to be filtered.
+        # List of tags to filter.
         # Corresponds to the JSON property `removeList`
         # @return [Google::Apis::HealthcareV1alpha2::TagFilterList]
         attr_accessor :remove_list
@@ -831,12 +831,12 @@ module Google
         end
       end
       
-      # Specifies how de-identification of a FHIR store should be handled.
+      # Specifies how to handle the de-identification of a FHIR store.
       class FhirConfig
         include Google::Apis::Core::Hashable
       
         # Specifies FHIR paths to match and how to transform them. Any field that
-        # is not matched by a FieldMetadata will be passed through to the output
+        # is not matched by a FieldMetadata is passed through to the output
         # dataset unmodified. All extensions are removed in the output.
         # Corresponds to the JSON property `fieldMetadataList`
         # @return [Array<Google::Apis::HealthcareV1alpha2::FieldMetadata>]
@@ -979,7 +979,7 @@ module Google
         end
       end
       
-      # Specifies FHIR paths to match, and how to handle de-identification of
+      # Specifies FHIR paths to match and how to handle the de-identification of
       # matching fields.
       class FieldMetadata
         include Google::Apis::Core::Hashable
@@ -989,12 +989,12 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # List of paths to FHIR fields to be redacted. Each path is a
+        # List of paths to FHIR fields to redact. Each path is a
         # period-separated list where each component is either a field name or
-        # FHIR type name, for example: Patient, HumanName.
+        # FHIR type name. For example: Patient, HumanName.
         # For "choice" types (those defined in the FHIR spec with the form:
-        # field[x]) we use two separate components. e.g. "deceasedAge.unit" is
-        # matched by "Deceased.Age.unit".
+        # field[x]), use two separate components. For example,
+        # "deceasedAge.unit" is matched by "Deceased.Age.unit".
         # Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
         # Decimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,
         # String, Uri, Uuid, Xhtml.
@@ -1219,10 +1219,55 @@ module Google
         end
       end
       
-      # Final response of exporting resources.
+      # Response when errors occur while exporting resources.
+      # This structure is included in the
+      # error details to describe the
+      # detailed outcome. It is only included when the operation finishes with
+      # errors.
+      class GoogleCloudHealthcareV1alpha2FhirRestExportResourcesErrorDetails
+        include Google::Apis::Core::Hashable
+      
+        # The number of resources that had errors.
+        # Corresponds to the JSON property `errorCount`
+        # @return [Fixnum]
+        attr_accessor :error_count
+      
+        # The name of the FHIR store where resources have been exported, in the
+        # format
+        # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``.
+        # Corresponds to the JSON property `fhirStore`
+        # @return [String]
+        attr_accessor :fhir_store
+      
+        # The total number of resources included in the export operation. This is
+        # the sum of the success and error counts.
+        # Corresponds to the JSON property `resourceCount`
+        # @return [Fixnum]
+        attr_accessor :resource_count
+      
+        # The number of resources that were exported.
+        # Corresponds to the JSON property `successCount`
+        # @return [Fixnum]
+        attr_accessor :success_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @error_count = args[:error_count] if args.key?(:error_count)
+          @fhir_store = args[:fhir_store] if args.key?(:fhir_store)
+          @resource_count = args[:resource_count] if args.key?(:resource_count)
+          @success_count = args[:success_count] if args.key?(:success_count)
+        end
+      end
+      
+      # Response when all resources export successfully.
       # This structure will be included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes.
+      # outcome. It will only be included when the operation finishes successfully.
       class GoogleCloudHealthcareV1alpha2FhirRestExportResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1532,11 +1577,11 @@ module Google
         end
       end
       
-      # Specifies how de-identification of image pixel should be handled.
+      # Specifies how to handle the de-identification of image pixels.
       class ImageConfig
         include Google::Apis::Core::Hashable
       
-        # Determines how to redact text from image.
+        # Determines how to redact text from images.
         # Corresponds to the JSON property `textRedactionMode`
         # @return [String]
         attr_accessor :text_redaction_mode
@@ -1631,20 +1676,20 @@ module Google
       class InfoTypeTransformation
         include Google::Apis::Core::Hashable
       
-        # Mask a string by replacing its characters with a fixed character.
+        # Masks a string by replacing its characters with a fixed character.
         # Corresponds to the JSON property `characterMaskConfig`
         # @return [Google::Apis::HealthcareV1alpha2::CharacterMaskConfig]
         attr_accessor :character_mask_config
       
-        # Pseudonymization method that generates surrogates via cryptographic hashing.
-        # Uses SHA-256.
-        # Outputs a base64-encoded representation of the hashed output
-        # (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+        # Pseudonymization method that generates surrogates using cryptographic
+        # hashing. Uses SHA-256.
+        # Outputs a base64-encoded representation of the hashed output.
+        # For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
         # Corresponds to the JSON property `cryptoHashConfig`
         # @return [Google::Apis::HealthcareV1alpha2::CryptoHashConfig]
         attr_accessor :crypto_hash_config
       
-        # Shift a date forward or backward in time by a random amount which is
+        # Shifts a date forward or backward in time by a random amount that is
         # consistent for a given patient and crypto key combination.
         # Corresponds to the JSON property `dateShiftConfig`
         # @return [Google::Apis::HealthcareV1alpha2::DateShiftConfig]
@@ -1656,15 +1701,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :info_types
       
-        # Define how to redact sensitive values. Default behaviour is erase,
-        # e.g. "My name is Jake." becomes "My name is ."
+        # Defines how to redact sensitive values. Default behavior is erase.
+        # For example, "My name is Jake." becomes "My name is ."
         # Corresponds to the JSON property `redactConfig`
         # @return [Google::Apis::HealthcareV1alpha2::RedactConfig]
         attr_accessor :redact_config
       
         # When using the INSPECT_AND_TRANSFORM action, each match is replaced with
-        # the name of the info_type. For example, "My name is Jake" becomes "My name is
-        # [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+        # the name of the `info_type`. For example, "My name is Jake" becomes "My name
+        # is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
         # Corresponds to the JSON property `replaceWithInfoTypeConfig`
         # @return [Google::Apis::HealthcareV1alpha2::ReplaceWithInfoTypeConfig]
         attr_accessor :replace_with_info_type_config
@@ -2423,8 +2468,8 @@ module Google
         end
       end
       
-      # Define how to redact sensitive values. Default behaviour is erase,
-      # e.g. "My name is Jake." becomes "My name is ."
+      # Defines how to redact sensitive values. Default behavior is erase.
+      # For example, "My name is Jake." becomes "My name is ."
       class RedactConfig
         include Google::Apis::Core::Hashable
       
@@ -2438,8 +2483,8 @@ module Google
       end
       
       # When using the INSPECT_AND_TRANSFORM action, each match is replaced with
-      # the name of the info_type. For example, "My name is Jake" becomes "My name is
-      # [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+      # the name of the `info_type`. For example, "My name is Jake" becomes "My name
+      # is [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
       class ReplaceWithInfoTypeConfig
         include Google::Apis::Core::Hashable
       
@@ -2507,8 +2552,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The FHIR resource type to search, such as Patient or Observation. For a
-        # complete list, see the [FHIR Resource
-        # Index](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html).
+        # complete list, see the FHIR Resource Index
+        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        # [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -2778,14 +2824,14 @@ module Google
         end
       end
       
-      # List of tags to be filtered.
+      # List of tags to filter.
       class TagFilterList
         include Google::Apis::Core::Hashable
       
-        # Tags to be filtered. Tags must be DICOM Data Elements, File Meta
+        # Tags to filter. Tags must be DICOM Data Elements, File Meta
         # Elements, or Directory Structuring Elements, as defined at:
         # http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
-        # They may be provided by "Keyword" or "Tag". For example "PatientID",
+        # They may be provided by "Keyword" or "Tag". For example, "PatientID",
         # "00100010".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]

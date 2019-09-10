@@ -169,6 +169,18 @@ module Google
       class ImportContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class BakImportOptions
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class EncryptionOptions
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class CsvImportOptions
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -423,6 +435,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :disk_encryption_configuration, as: 'diskEncryptionConfiguration', class: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration::Representation
+      
+          property :disk_encryption_status, as: 'diskEncryptionStatus', class: Google::Apis::SqladminV1beta4::DiskEncryptionStatus, decorator: Google::Apis::SqladminV1beta4::DiskEncryptionStatus::Representation
+      
           property :end_time, as: 'endTime', type: DateTime
       
           property :enqueued_time, as: 'enqueuedTime', type: DateTime
@@ -675,6 +691,8 @@ module Google
       class ImportContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bak_import_options, as: 'bakImportOptions', class: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::Representation
+      
           property :csv_import_options, as: 'csvImportOptions', class: Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions::Representation
       
           property :database, as: 'database'
@@ -682,6 +700,23 @@ module Google
           property :import_user, as: 'importUser'
           property :kind, as: 'kind'
           property :uri, as: 'uri'
+        end
+        
+        class BakImportOptions
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :encryption_options, as: 'encryptionOptions', class: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions, decorator: Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions::Representation
+        
+          end
+          
+          class EncryptionOptions
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :cert_path, as: 'certPath'
+              property :pvk_password, as: 'pvkPassword'
+              property :pvk_path, as: 'pvkPath'
+            end
+          end
         end
         
         class CsvImportOptions

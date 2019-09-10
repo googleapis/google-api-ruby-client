@@ -742,6 +742,7 @@ module Google
           property :keystore_password_uri, as: 'keystorePasswordUri'
           property :keystore_uri, as: 'keystoreUri'
           property :kms_key_uri, as: 'kmsKeyUri'
+          property :realm, as: 'realm'
           property :root_principal_password_uri, as: 'rootPrincipalPasswordUri'
           property :tgt_lifetime_hours, as: 'tgtLifetimeHours'
           property :truststore_password_uri, as: 'truststorePasswordUri'

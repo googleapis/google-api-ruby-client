@@ -2507,6 +2507,98 @@ module Google
         end
       end
       
+      # Request message for Document.ExportDocument.
+      class GoogleCloudDialogflowV2beta1ExportDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Google Cloud Storage location for the output.
+        # Corresponds to the JSON property `gcsDestination`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsDestination]
+        attr_accessor :gcs_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
+        end
+      end
+      
+      # Google Cloud Storage location for the output.
+      class GoogleCloudDialogflowV2beta1GcsDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Cloud Storage URIs for the output. A URI is of the
+        # form:
+        # gs://bucket/object-prefix-or-name
+        # Whether a prefix or name is used depends on the use case. The requesting
+        # user must have "write-permission" to the bucket.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Google Cloud Storage location for single input.
+      class GoogleCloudDialogflowV2beta1GcsSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. The Google Cloud Storage URIs for the inputs. A URI is of the
+        # form:
+        # gs://bucket/object-prefix-or-name
+        # Whether a prefix or name is used depends on the use case.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Request for generating knowledge service document for specified knowledge
+      # type with provided training dataset.
+      class GoogleCloudDialogflowV2beta1GenerateDocumentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The knowledge type of the smart messaging document. Currently this field
+        # should only be SMART_REPLY, in the future we will also add knowledge_type
+        # SMART_COMPOSE.
+        # Corresponds to the JSON property `knowledgeType`
+        # @return [String]
+        attr_accessor :knowledge_type
+      
+        # InputDataset used to create smart messaging candidate document.
+        # Corresponds to the JSON property `trainingDatasets`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDatasets]
+        attr_accessor :training_datasets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @knowledge_type = args[:knowledge_type] if args.key?(:knowledge_type)
+          @training_datasets = args[:training_datasets] if args.key?(:training_datasets)
+        end
+      end
+      
       # The request message for Agents.ImportAgent.
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         include Google::Apis::Core::Hashable
@@ -2667,6 +2759,26 @@ module Google
         # ID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`
         # Corresponds to the JSON property `dataset`
         # @return [String]
+        attr_accessor :dataset
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+        end
+      end
+      
+      # InputDataset used to create smart messaging candidate document.
+      class GoogleCloudDialogflowV2beta1InputDatasets
+        include Google::Apis::Core::Hashable
+      
+        # Required. ConversationDataset resource name. Format:
+        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`
+        # Corresponds to the JSON property `dataset`
+        # @return [Array<String>]
         attr_accessor :dataset
       
         def initialize(**args)
@@ -4824,12 +4936,18 @@ module Google
       class GoogleCloudDialogflowV2beta1ReloadDocumentRequest
         include Google::Apis::Core::Hashable
       
+        # Google Cloud Storage location for single input.
+        # Corresponds to the JSON property `gcsSource`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource]
+        attr_accessor :gcs_source
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @gcs_source = args[:gcs_source] if args.key?(:gcs_source)
         end
       end
       

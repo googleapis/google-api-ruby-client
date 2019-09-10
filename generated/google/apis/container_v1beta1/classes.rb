@@ -631,6 +631,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
+        # ReleaseChannel indicates which release channel a cluster is
+        # subscribed to. Release channels are arranged in order of risk and
+        # frequency of updates.
+        # When a cluster is subscribed to a release channel, Google maintains
+        # both the master version and the node version. Node auto-upgrade
+        # defaults to true and cannot be disabled. Updates to version related
+        # fields (e.g. current_master_version) return an error.
+        # Corresponds to the JSON property `releaseChannel`
+        # @return [Google::Apis::ContainerV1beta1::ReleaseChannel]
+        attr_accessor :release_channel
+      
         # The resource labels for the cluster to use to annotate any related
         # Google Compute Engine resources.
         # Corresponds to the JSON property `resourceLabels`
@@ -760,6 +771,7 @@ module Google
           @pod_security_policy_config = args[:pod_security_policy_config] if args.key?(:pod_security_policy_config)
           @private_cluster = args[:private_cluster] if args.key?(:private_cluster)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @release_channel = args[:release_channel] if args.key?(:release_channel)
           @resource_labels = args[:resource_labels] if args.key?(:resource_labels)
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -1236,6 +1248,32 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # FeatureConfig is the configuration for a specific feature including the
+      # definition of the feature as well as the tier in which it resides.
+      class FeatureConfig
+        include Google::Apis::Core::Hashable
+      
+        # The feature that is being configured with this value.
+        # Corresponds to the JSON property `feature`
+        # @return [String]
+        attr_accessor :feature
+      
+        # The tier in which the configured feature resides.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feature = args[:feature] if args.key?(:feature)
+          @tier = args[:tier] if args.key?(:tier)
         end
       end
       
@@ -2737,6 +2775,31 @@ module Google
         end
       end
       
+      # PremiumConfig is the configuration for all premium features and tiers.
+      class PremiumConfig
+        include Google::Apis::Core::Hashable
+      
+        # The features that GKE provides.
+        # Corresponds to the JSON property `features`
+        # @return [Array<Google::Apis::ContainerV1beta1::FeatureConfig>]
+        attr_accessor :features
+      
+        # The tiers that are part of the premium offering.
+        # Corresponds to the JSON property `tiers`
+        # @return [Array<Google::Apis::ContainerV1beta1::TierConfig>]
+        attr_accessor :tiers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @features = args[:features] if args.key?(:features)
+          @tiers = args[:tiers] if args.key?(:tiers)
+        end
+      end
+      
       # Configuration options for private clusters.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
@@ -2791,6 +2854,56 @@ module Google
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # ReleaseChannel indicates which release channel a cluster is
+      # subscribed to. Release channels are arranged in order of risk and
+      # frequency of updates.
+      # When a cluster is subscribed to a release channel, Google maintains
+      # both the master version and the node version. Node auto-upgrade
+      # defaults to true and cannot be disabled. Updates to version related
+      # fields (e.g. current_master_version) return an error.
+      class ReleaseChannel
+        include Google::Apis::Core::Hashable
+      
+        # channel specifies which release channel the cluster is subscribed to.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+        end
+      end
+      
+      # ReleaseChannelConfig exposes configuration for a release channel.
+      class ReleaseChannelConfig
+        include Google::Apis::Core::Hashable
+      
+        # The release channel this configuration applies to.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
+        # The default version for newly created clusters on the channel.
+        # Corresponds to the JSON property `defaultVersion`
+        # @return [String]
+        attr_accessor :default_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @channel = args[:channel] if args.key?(:channel)
+          @default_version = args[:default_version] if args.key?(:default_version)
         end
       end
       
@@ -2936,6 +3049,11 @@ module Google
       class ServerConfig
         include Google::Apis::Core::Hashable
       
+        # List of release channel configurations.
+        # Corresponds to the JSON property `channels`
+        # @return [Array<Google::Apis::ContainerV1beta1::ReleaseChannelConfig>]
+        attr_accessor :channels
+      
         # Version of Kubernetes the service deploys by default.
         # Corresponds to the JSON property `defaultClusterVersion`
         # @return [String]
@@ -2945,6 +3063,11 @@ module Google
         # Corresponds to the JSON property `defaultImageType`
         # @return [String]
         attr_accessor :default_image_type
+      
+        # PremiumConfig is the configuration for all premium features and tiers.
+        # Corresponds to the JSON property `premiumConfig`
+        # @return [Google::Apis::ContainerV1beta1::PremiumConfig]
+        attr_accessor :premium_config
       
         # List of valid image types.
         # Corresponds to the JSON property `validImageTypes`
@@ -2967,8 +3090,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @channels = args[:channels] if args.key?(:channels)
           @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
           @default_image_type = args[:default_image_type] if args.key?(:default_image_type)
+          @premium_config = args[:premium_config] if args.key?(:premium_config)
           @valid_image_types = args[:valid_image_types] if args.key?(:valid_image_types)
           @valid_master_versions = args[:valid_master_versions] if args.key?(:valid_master_versions)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
@@ -3766,6 +3891,34 @@ module Google
         def update!(**args)
           @code = args[:code] if args.key?(:code)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # TierConfig is the configuration for a tier offering.  For example the GKE
+      # standard or advanced offerings which contain different levels of
+      # functionality and possibly cost.
+      class TierConfig
+        include Google::Apis::Core::Hashable
+      
+        # The tier from which the tier being configured inherits.  The configured
+        # tier will inherit all the features from its parent tier.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # The tier that is being configured with this value.
+        # Corresponds to the JSON property `tier`
+        # @return [String]
+        attr_accessor :tier
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parent = args[:parent] if args.key?(:parent)
+          @tier = args[:tier] if args.key?(:tier)
         end
       end
       

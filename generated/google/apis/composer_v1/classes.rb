@@ -50,8 +50,7 @@ module Google
         # @return [Google::Apis::ComposerV1::EnvironmentConfig]
         attr_accessor :config
       
-        # Output only.
-        # The time at which this environment was created.
+        # Output only. The time at which this environment was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -78,14 +77,13 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only.
-        # The time at which this environment was last modified.
+        # Output only. The time at which this environment was last modified.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
       
-        # Output only.
-        # The UUID (Universally Unique IDentifier) associated with this environment.
+        # Output only. The UUID (Universally Unique IDentifier) associated with this
+        # environment.
         # This value is generated when the environment is created.
         # Corresponds to the JSON property `uuid`
         # @return [String]
@@ -111,16 +109,16 @@ module Google
       class EnvironmentConfig
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The URI of the Apache Airflow Web UI hosted within this environment (see
+        # Output only. The URI of the Apache Airflow Web UI hosted within this
+        # environment (see
         # [Airflow web
         # interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         # Corresponds to the JSON property `airflowUri`
         # @return [String]
         attr_accessor :airflow_uri
       
-        # Output only.
-        # The Cloud Storage prefix of the DAGs for this environment. Although Cloud
+        # Output only. The Cloud Storage prefix of the DAGs for this environment.
+        # Although Cloud
         # Storage objects reside in a flat namespace, a hierarchical file tree
         # can be simulated using "/"-delimited object name prefixes. DAG objects for
         # this environment reside in a simulated directory with the given prefix.
@@ -128,8 +126,7 @@ module Google
         # @return [String]
         attr_accessor :dag_gcs_prefix
       
-        # Output only.
-        # The Kubernetes Engine cluster used to run this environment.
+        # Output only. The Kubernetes Engine cluster used to run this environment.
         # Corresponds to the JSON property `gkeCluster`
         # @return [String]
         attr_accessor :gke_cluster
@@ -317,6 +314,8 @@ module Google
         # both fields. If exactly one of this field and `nodeConfig.location` is
         # specified, the location information from the specified field will be
         # propagated to the unspecified field.
+        # The `machineTypeId` must not be a [shared-core machine
+        # type](/compute/docs/machine-types#sharedcore).
         # If this field is unspecified, the `machineTypeId` defaults
         # to "n1-standard-1".
         # Corresponds to the JSON property `machineType`
@@ -456,40 +455,34 @@ module Google
       class OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The time the operation was submitted to the server.
+        # Output only. The time the operation was submitted to the server.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Output only.
-        # The time when the operation terminated, regardless of its success.
+        # Output only. The time when the operation terminated, regardless of its success.
         # This field is unset if the operation is still ongoing.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Output only.
-        # The type of operation being performed.
+        # Output only. The type of operation being performed.
         # Corresponds to the JSON property `operationType`
         # @return [String]
         attr_accessor :operation_type
       
-        # Output only.
-        # The resource being operated on, as a [relative resource name](
+        # Output only. The resource being operated on, as a [relative resource name](
         # /apis/design/resource_names#relative_resource_name).
         # Corresponds to the JSON property `resource`
         # @return [String]
         attr_accessor :resource
       
-        # Output only.
-        # The UUID of the resource being operated on.
+        # Output only. The UUID of the resource being operated on.
         # Corresponds to the JSON property `resourceUuid`
         # @return [String]
         attr_accessor :resource_uuid
       
-        # Output only.
-        # The current operation state.
+        # Output only. The current operation state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

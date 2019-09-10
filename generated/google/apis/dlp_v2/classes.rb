@@ -2879,6 +2879,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
+        # The geographic location to process content inspection. Reserved for future
+        # extensions.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2888,6 +2894,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
+          @location = args[:location] if args.key?(:location)
         end
       end
       
@@ -3837,6 +3844,34 @@ module Google
         def update!(**args)
           @jobs = args[:jobs] if args.key?(:jobs)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Request for the list of infoTypes.
+      class GooglePrivacyDlpV2ListInfoTypesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional filter to only return infoTypes supported by certain parts of the
+        # API. Defaults to supported_by=INSPECT.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # Optional BCP-47 language code for localized infoType friendly
+        # names. If omitted, or if localized strings are not available,
+        # en-US strings will be returned.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @language_code = args[:language_code] if args.key?(:language_code)
         end
       end
       
@@ -4837,6 +4872,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
+        # The geographic location to process content reidentification.  Reserved for
+        # future extensions.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         # The configuration that controls how the data will change.
         # Corresponds to the JSON property `reidentifyConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig]
@@ -4861,6 +4902,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
+          @location = args[:location] if args.key?(:location)
           @reidentify_config = args[:reidentify_config] if args.key?(:reidentify_config)
           @reidentify_template_name = args[:reidentify_template_name] if args.key?(:reidentify_template_name)
         end

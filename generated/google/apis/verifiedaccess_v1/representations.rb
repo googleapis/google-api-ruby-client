@@ -20,66 +20,78 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module AppstateV1
+    module VerifiedaccessV1
       
-      class GetResponse
+      class Challenge
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListResponse
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpdateRequest
+      class SignedData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class WriteResult
+      class VerifyChallengeResponseRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetResponse
+      class VerifyChallengeResponseResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Challenge
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_state_version, as: 'currentStateVersion'
-          property :data, as: 'data'
-          property :kind, as: 'kind'
-          property :state_key, as: 'stateKey'
+          property :alternative_challenge, as: 'alternativeChallenge', class: Google::Apis::VerifiedaccessV1::SignedData, decorator: Google::Apis::VerifiedaccessV1::SignedData::Representation
+      
+          property :challenge, as: 'challenge', class: Google::Apis::VerifiedaccessV1::SignedData, decorator: Google::Apis::VerifiedaccessV1::SignedData::Representation
+      
         end
       end
       
-      class ListResponse
+      class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::AppstateV1::GetResponse, decorator: Google::Apis::AppstateV1::GetResponse::Representation
-      
-          property :kind, as: 'kind'
-          property :maximum_key_count, as: 'maximumKeyCount'
         end
       end
       
-      class UpdateRequest
+      class SignedData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :data, as: 'data'
-          property :kind, as: 'kind'
+          property :data, :base64 => true, as: 'data'
+          property :signature, :base64 => true, as: 'signature'
         end
       end
       
-      class WriteResult
+      class VerifyChallengeResponseRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_state_version, as: 'currentStateVersion'
-          property :kind, as: 'kind'
-          property :state_key, as: 'stateKey'
+          property :challenge_response, as: 'challengeResponse', class: Google::Apis::VerifiedaccessV1::SignedData, decorator: Google::Apis::VerifiedaccessV1::SignedData::Representation
+      
+          property :expected_identity, as: 'expectedIdentity'
+        end
+      end
+      
+      class VerifyChallengeResponseResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_enrollment_id, as: 'deviceEnrollmentId'
+          property :device_permanent_id, as: 'devicePermanentId'
+          property :signed_public_key_and_challenge, as: 'signedPublicKeyAndChallenge'
+          property :verification_output, as: 'verificationOutput'
         end
       end
     end

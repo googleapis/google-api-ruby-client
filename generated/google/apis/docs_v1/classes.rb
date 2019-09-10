@@ -2353,6 +2353,35 @@ module Google
         end
       end
       
+      # Merges cells in a Table.
+      class MergeTableCellsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A table range represents a reference to a subset of a table.
+        # It's important to note that the cells specified by a table range do not
+        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+        # where all the cells of the last row are merged together. The table looks
+        # like this:
+        # 
+        # [             ]
+        # A table range with table cell location = (table_start_location, row = 0,
+        # column = 0), row span = 3 and column span = 2 specifies the following cells:
+        # x     x
+        # [ x    x    x ]
+        # Corresponds to the JSON property `tableRange`
+        # @return [Google::Apis::DocsV1::TableRange]
+        attr_accessor :table_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_range = args[:table_range] if args.key?(:table_range)
+        end
+      end
+      
       # A collection of Ranges with the same named range
       # ID.
       # Named ranges allow developers to associate parts of a document with an
@@ -3638,6 +3667,45 @@ module Google
         end
       end
       
+      # Replaces an existing image with a new image.
+      # Replacing an image removes some image effects from the existing image in order
+      # to
+      # mirror the behavior of the Docs editor.
+      class ReplaceImageRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the existing image that will be replaced.
+        # Corresponds to the JSON property `imageObjectId`
+        # @return [String]
+        attr_accessor :image_object_id
+      
+        # The replacement method.
+        # Corresponds to the JSON property `imageReplaceMethod`
+        # @return [String]
+        attr_accessor :image_replace_method
+      
+        # The URI of the new image.
+        # The image is fetched once at insertion time and a copy is stored for
+        # display inside the document. Images must be less than 50MB in size, cannot
+        # exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
+        # The provided URI can be at most 2 kB in length. The URI itself is saved
+        # with the image, and exposed via the ImageProperties.source_uri field.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_object_id = args[:image_object_id] if args.key?(:image_object_id)
+          @image_replace_method = args[:image_replace_method] if args.key?(:image_replace_method)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
       # A single update to apply to a document.
       class Request
         include Google::Apis::Core::Hashable
@@ -3725,10 +3793,28 @@ module Google
         # @return [Google::Apis::DocsV1::InsertTextRequest]
         attr_accessor :insert_text
       
+        # Merges cells in a Table.
+        # Corresponds to the JSON property `mergeTableCells`
+        # @return [Google::Apis::DocsV1::MergeTableCellsRequest]
+        attr_accessor :merge_table_cells
+      
         # Replaces all instances of text matching a criteria with replace text.
         # Corresponds to the JSON property `replaceAllText`
         # @return [Google::Apis::DocsV1::ReplaceAllTextRequest]
         attr_accessor :replace_all_text
+      
+        # Replaces an existing image with a new image.
+        # Replacing an image removes some image effects from the existing image in order
+        # to
+        # mirror the behavior of the Docs editor.
+        # Corresponds to the JSON property `replaceImage`
+        # @return [Google::Apis::DocsV1::ReplaceImageRequest]
+        attr_accessor :replace_image
+      
+        # Unmerges cells in a Table.
+        # Corresponds to the JSON property `unmergeTableCells`
+        # @return [Google::Apis::DocsV1::UnmergeTableCellsRequest]
+        attr_accessor :unmerge_table_cells
       
         # Updates the DocumentStyle.
         # Corresponds to the JSON property `updateDocumentStyle`
@@ -3783,7 +3869,10 @@ module Google
           @insert_table_column = args[:insert_table_column] if args.key?(:insert_table_column)
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
           @insert_text = args[:insert_text] if args.key?(:insert_text)
+          @merge_table_cells = args[:merge_table_cells] if args.key?(:merge_table_cells)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
+          @replace_image = args[:replace_image] if args.key?(:replace_image)
+          @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
           @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
@@ -4646,6 +4735,8 @@ module Google
       end
       
       # A border around a table cell.
+      # Table cell borders cannot be transparent. To hide a table cell border, make
+      # its width 0.
       class TableCellBorder
         include Google::Apis::Core::Hashable
       
@@ -4721,21 +4812,29 @@ module Google
         attr_accessor :background_color
       
         # A border around a table cell.
+        # Table cell borders cannot be transparent. To hide a table cell border, make
+        # its width 0.
         # Corresponds to the JSON property `borderBottom`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_bottom
       
         # A border around a table cell.
+        # Table cell borders cannot be transparent. To hide a table cell border, make
+        # its width 0.
         # Corresponds to the JSON property `borderLeft`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_left
       
         # A border around a table cell.
+        # Table cell borders cannot be transparent. To hide a table cell border, make
+        # its width 0.
         # Corresponds to the JSON property `borderRight`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_right
       
         # A border around a table cell.
+        # Table cell borders cannot be transparent. To hide a table cell border, make
+        # its width 0.
         # Corresponds to the JSON property `borderTop`
         # @return [Google::Apis::DocsV1::TableCellBorder]
         attr_accessor :border_top
@@ -5374,6 +5473,35 @@ module Google
           @strikethrough_suggested = args[:strikethrough_suggested] if args.key?(:strikethrough_suggested)
           @underline_suggested = args[:underline_suggested] if args.key?(:underline_suggested)
           @weighted_font_family_suggested = args[:weighted_font_family_suggested] if args.key?(:weighted_font_family_suggested)
+        end
+      end
+      
+      # Unmerges cells in a Table.
+      class UnmergeTableCellsRequest
+        include Google::Apis::Core::Hashable
+      
+        # A table range represents a reference to a subset of a table.
+        # It's important to note that the cells specified by a table range do not
+        # necessarily form a rectangle. For example, let's say we have a 3 x 3 table
+        # where all the cells of the last row are merged together. The table looks
+        # like this:
+        # 
+        # [             ]
+        # A table range with table cell location = (table_start_location, row = 0,
+        # column = 0), row span = 3 and column span = 2 specifies the following cells:
+        # x     x
+        # [ x    x    x ]
+        # Corresponds to the JSON property `tableRange`
+        # @return [Google::Apis::DocsV1::TableRange]
+        attr_accessor :table_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @table_range = args[:table_range] if args.key?(:table_range)
         end
       end
       

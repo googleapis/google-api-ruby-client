@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeleteSnapshotResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class DerivedSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,12 +364,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListSnapshotsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class MapTask
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -575,18 +563,6 @@ module Google
       end
       
       class Sink
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Snapshot
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SnapshotJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1101,12 +1077,6 @@ module Google
         end
       end
       
-      class DeleteSnapshotResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
       class DerivedSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1517,14 +1487,6 @@ module Google
         end
       end
       
-      class ListSnapshotsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :snapshots, as: 'snapshots', class: Google::Apis::DataflowV1b3::Snapshot, decorator: Google::Apis::DataflowV1b3::Snapshot::Representation
-      
-        end
-      end
-      
       class MapTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1780,6 +1742,7 @@ module Google
           property :service_account_email, as: 'serviceAccountEmail'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
+          property :use_private_ips, as: 'usePrivateIps'
           property :zone, as: 'zone'
         end
       end
@@ -1872,26 +1835,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :codec, as: 'codec'
           hash :spec, as: 'spec'
-        end
-      end
-      
-      class Snapshot
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :creation_time, as: 'creationTime'
-          property :id, as: 'id'
-          property :project_id, as: 'projectId'
-          property :source_job_id, as: 'sourceJobId'
-          property :state, as: 'state'
-          property :ttl, as: 'ttl'
-        end
-      end
-      
-      class SnapshotJobRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :location, as: 'location'
-          property :ttl, as: 'ttl'
         end
       end
       
@@ -2118,6 +2061,8 @@ module Google
       class StreamingConfigTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :commit_stream_chunk_size_bytes, :numeric_string => true, as: 'commitStreamChunkSizeBytes'
+          property :get_data_stream_chunk_size_bytes, :numeric_string => true, as: 'getDataStreamChunkSizeBytes'
           property :max_work_item_commit_bytes, :numeric_string => true, as: 'maxWorkItemCommitBytes'
           collection :streaming_computation_configs, as: 'streamingComputationConfigs', class: Google::Apis::DataflowV1b3::StreamingComputationConfig, decorator: Google::Apis::DataflowV1b3::StreamingComputationConfig::Representation
       

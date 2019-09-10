@@ -2569,6 +2569,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2588,13 +2590,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_disk_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_disk_iam_policy(project, zone, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/zones/{zone}/disks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -6297,6 +6300,8 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6316,12 +6321,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_image_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_image_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/global/images/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -8329,6 +8335,8 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8348,12 +8356,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance_template_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance_template_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/global/instanceTemplates/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9009,6 +9018,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9028,13 +9039,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_instance_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_instance_iam_policy(project, zone, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/zones/{zone}/instances/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -11830,6 +11842,8 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11849,12 +11863,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_license_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_license_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/global/licenses/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -13508,7 +13523,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource whose nodes will be deleted.
         # @param [Google::Apis::ComputeBeta::NodeGroupsDeleteNodesRequest] node_groups_delete_nodes_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -13605,6 +13620,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13624,13 +13641,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_node_group_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_node_group_iam_policy(project, zone, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -14153,6 +14171,8 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14172,13 +14192,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_node_template_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_node_template_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -16257,7 +16278,7 @@ module Google
         # @param [String] region
         #   Name of the region for this request.
         # @param [String] commitment
-        #   Name of the commitment of which the reservation's capacities are being updated.
+        #   Name of the commitment for which the reservation is being updated.
         # @param [Google::Apis::ComputeBeta::RegionCommitmentsUpdateReservationsRequest] region_commitments_update_reservations_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -16629,6 +16650,8 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16648,13 +16671,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_region_disk_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_region_disk_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/regions/{region}/disks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -20156,7 +20180,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves all information of the specified reservation.
+        # Retrieves information about the specified reservation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -20203,6 +20227,8 @@ module Google
         #   The name of the zone for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20222,13 +20248,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_reservation_iam_policy(project, zone, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_reservation_iam_policy(project, zone, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/zones/{zone}/reservations/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['zone'] = zone unless zone.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -20287,7 +20314,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A list all the reservations that have been configured for the specified
+        # A list of all the reservations that have been configured for the specified
         # project in specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -20362,7 +20389,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resizes the reservation (applicable to standalone reservations only)
+        # Resizes the reservation (applicable to standalone reservations only). For more
+        # information, read Modifying reservations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -20670,6 +20698,8 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20689,13 +20719,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_resource_policy_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_resource_policy_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/regions/{region}/resourcePolicies/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -21105,6 +21136,10 @@ module Google
         #   of available results is larger than maxResults, Compute Engine returns a
         #   nextPageToken that can be used to get the next page of results in subsequent
         #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] nat_name
+        #   Name of the nat service to filter the Nat Mapping information. If it is
+        #   omitted, all nats for this router will be returned. Name should conform to
+        #   RFC1035.
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
@@ -21136,7 +21171,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_router_nat_mapping_info(project, region, router, filter: nil, max_results: nil, nat_name: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/regions/{region}/routers/{router}/getNatMappingInfo', options)
           command.response_representation = Google::Apis::ComputeBeta::VmEndpointNatMappingsList::Representation
           command.response_class = Google::Apis::ComputeBeta::VmEndpointNatMappingsList
@@ -21145,6 +21180,7 @@ module Google
           command.params['router'] = router unless router.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['natName'] = nat_name unless nat_name.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -22429,6 +22465,8 @@ module Google
         #   Project ID for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22448,12 +22486,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_snapshot_iam_policy(project, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_snapshot_iam_policy(project, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/global/snapshots/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -23562,6 +23601,8 @@ module Google
         #   The name of the region for this request.
         # @param [String] resource
         #   Name or id of the resource for this request.
+        # @param [Fixnum] options_requested_policy_version
+        #   Requested IAM Policy version.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23581,13 +23622,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_subnetwork_iam_policy(project, region, resource, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_subnetwork_iam_policy(project, region, resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/regions/{region}/subnetworks/{resource}/getIamPolicy', options)
           command.response_representation = Google::Apis::ComputeBeta::Policy::Representation
           command.response_class = Google::Apis::ComputeBeta::Policy
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['resource'] = resource unless resource.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -23720,7 +23762,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of usable subnetworks.
+        # Retrieves an aggregated list of all usable subnetworks in the project. The
+        # list contains all of the subnetworks in the project and the subnetworks that
+        # were shared by a Shared VPC host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

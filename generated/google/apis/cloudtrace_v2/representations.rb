@@ -222,6 +222,7 @@ module Google
           property :parent_span_id, as: 'parentSpanId'
           property :same_process_as_parent_span, as: 'sameProcessAsParentSpan'
           property :span_id, as: 'spanId'
+          property :span_kind, as: 'spanKind'
           property :stack_trace, as: 'stackTrace', class: Google::Apis::CloudtraceV2::StackTrace, decorator: Google::Apis::CloudtraceV2::StackTrace::Representation
       
           property :start_time, as: 'startTime'

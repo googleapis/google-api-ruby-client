@@ -1197,6 +1197,7 @@ module Google
       end
       
       # A description of an iOS device tests may be run on.
+      # Next tag: 10
       class IosModel
         include Google::Apis::Core::Hashable
       
@@ -1226,6 +1227,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Screen density in DPI.
+        # Corresponds to the JSON property `screenDensity`
+        # @return [Fixnum]
+        attr_accessor :screen_density
+      
+        # Screen size in the horizontal (X) dimension measured in pixels.
+        # Corresponds to the JSON property `screenX`
+        # @return [Fixnum]
+        attr_accessor :screen_x
+      
+        # Screen size in the vertical (Y) dimension measured in pixels.
+        # Corresponds to the JSON property `screenY`
+        # @return [Fixnum]
+        attr_accessor :screen_y
+      
         # The set of iOS major software versions this device supports.
         # Corresponds to the JSON property `supportedVersionIds`
         # @return [Array<String>]
@@ -1247,6 +1263,9 @@ module Google
           @form_factor = args[:form_factor] if args.key?(:form_factor)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @screen_density = args[:screen_density] if args.key?(:screen_density)
+          @screen_x = args[:screen_x] if args.key?(:screen_x)
+          @screen_y = args[:screen_y] if args.key?(:screen_y)
           @supported_version_ids = args[:supported_version_ids] if args.key?(:supported_version_ids)
           @tags = args[:tags] if args.key?(:tags)
         end

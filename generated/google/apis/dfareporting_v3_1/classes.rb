@@ -1612,11 +1612,6 @@ module Google
         # @return [Google::Apis::DfareportingV3_1::LastModifiedInfo]
         attr_accessor :last_modified_info
       
-        # Lookback configuration settings.
-        # Corresponds to the JSON property `lookbackConfiguration`
-        # @return [Google::Apis::DfareportingV3_1::LookbackConfiguration]
-        attr_accessor :lookback_configuration
-      
         # Name of this campaign. This is a required field and must be less than 256
         # characters long and unique among campaigns of the same advertiser.
         # Corresponds to the JSON property `name`
@@ -1676,7 +1671,6 @@ module Google
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @kind = args[:kind] if args.key?(:kind)
           @last_modified_info = args[:last_modified_info] if args.key?(:last_modified_info)
-          @lookback_configuration = args[:lookback_configuration] if args.key?(:lookback_configuration)
           @name = args[:name] if args.key?(:name)
           @nielsen_ocr_enabled = args[:nielsen_ocr_enabled] if args.key?(:nielsen_ocr_enabled)
           @start_date = args[:start_date] if args.key?(:start_date)
@@ -2368,7 +2362,8 @@ module Google
       class Conversion
         include Google::Apis::Core::Hashable
       
-        # Whether the conversion was directed toward children.
+        # Whether this particular request may come from a user under the age of 13,
+        # under COPPA compliance.
         # Corresponds to the JSON property `childDirectedTreatment`
         # @return [Boolean]
         attr_accessor :child_directed_treatment
@@ -2436,6 +2431,12 @@ module Google
         # @return [String]
         attr_accessor :mobile_device_id
       
+        # Whether the conversion was for a non personalized ad.
+        # Corresponds to the JSON property `nonPersonalizedAd`
+        # @return [Boolean]
+        attr_accessor :non_personalized_ad
+        alias_method :non_personalized_ad?, :non_personalized_ad
+      
         # The ordinal of the conversion. Use this field to control how conversions of
         # the same user and day are de-duplicated. This is a required field.
         # Corresponds to the JSON property `ordinal`
@@ -2451,6 +2452,14 @@ module Google
         # Corresponds to the JSON property `timestampMicros`
         # @return [Fixnum]
         attr_accessor :timestamp_micros
+      
+        # Whether this particular request may come from a user under the age of 16 (may
+        # differ by country), under compliance with the European Union's General Data
+        # Protection Regulation (GDPR).
+        # Corresponds to the JSON property `treatmentForUnderage`
+        # @return [Boolean]
+        attr_accessor :treatment_for_underage
+        alias_method :treatment_for_underage?, :treatment_for_underage
       
         # The value of the conversion.
         # Corresponds to the JSON property `value`
@@ -2473,9 +2482,11 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @limit_ad_tracking = args[:limit_ad_tracking] if args.key?(:limit_ad_tracking)
           @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
+          @non_personalized_ad = args[:non_personalized_ad] if args.key?(:non_personalized_ad)
           @ordinal = args[:ordinal] if args.key?(:ordinal)
           @quantity = args[:quantity] if args.key?(:quantity)
           @timestamp_micros = args[:timestamp_micros] if args.key?(:timestamp_micros)
+          @treatment_for_underage = args[:treatment_for_underage] if args.key?(:treatment_for_underage)
           @value = args[:value] if args.key?(:value)
         end
       end
@@ -2782,6 +2793,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :ad_tag_keys
       
+        # Additional sizes associated with a responsive creative. When inserting or
+        # updating a creative either the size ID field or size width and height fields
+        # can be used. Applicable to DISPLAY creatives when the primary asset type is
+        # HTML_IMAGE.
+        # Corresponds to the JSON property `additionalSizes`
+        # @return [Array<Google::Apis::DfareportingV3_1::Size>]
+        attr_accessor :additional_sizes
+      
         # Advertiser ID of this creative. This is a required field. Applicable to all
         # creative types.
         # Corresponds to the JSON property `advertiserId`
@@ -3052,12 +3071,6 @@ module Google
         # @return [String]
         attr_accessor :override_css
       
-        # The asset ID of the polite load image asset. Applicable to the creative type:
-        # DISPLAY.
-        # Corresponds to the JSON property `politeLoadAssetId`
-        # @return [Fixnum]
-        attr_accessor :polite_load_asset_id
-      
         # Video Offset
         # Corresponds to the JSON property `progressOffset`
         # @return [Google::Apis::DfareportingV3_1::VideoOffset]
@@ -3226,6 +3239,7 @@ module Google
           @active = args[:active] if args.key?(:active)
           @ad_parameters = args[:ad_parameters] if args.key?(:ad_parameters)
           @ad_tag_keys = args[:ad_tag_keys] if args.key?(:ad_tag_keys)
+          @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @allow_script_access = args[:allow_script_access] if args.key?(:allow_script_access)
           @archived = args[:archived] if args.key?(:archived)
@@ -3262,7 +3276,6 @@ module Google
           @media_duration = args[:media_duration] if args.key?(:media_duration)
           @name = args[:name] if args.key?(:name)
           @override_css = args[:override_css] if args.key?(:override_css)
-          @polite_load_asset_id = args[:polite_load_asset_id] if args.key?(:polite_load_asset_id)
           @progress_offset = args[:progress_offset] if args.key?(:progress_offset)
           @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
           @rendering_id = args[:rendering_id] if args.key?(:rendering_id)
@@ -3308,6 +3321,13 @@ module Google
         # @return [Boolean]
         attr_accessor :active
         alias_method :active?, :active
+      
+        # Additional sizes associated with this creative asset. HTML5 asset generated by
+        # compatible software such as GWD will be able to support more sizes this
+        # creative asset can render.
+        # Corresponds to the JSON property `additionalSizes`
+        # @return [Array<Google::Apis::DfareportingV3_1::Size>]
+        attr_accessor :additional_sizes
       
         # Possible alignments for an asset. This is a read-only field. Applicable to the
         # following creative types: RICH_MEDIA_DISPLAY_MULTI_FLOATING_INTERSTITIAL.
@@ -3623,6 +3643,7 @@ module Google
         def update!(**args)
           @action_script3 = args[:action_script3] if args.key?(:action_script3)
           @active = args[:active] if args.key?(:active)
+          @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @alignment = args[:alignment] if args.key?(:alignment)
           @artwork_type = args[:artwork_type] if args.key?(:artwork_type)
           @asset_identifier = args[:asset_identifier] if args.key?(:asset_identifier)
@@ -4431,33 +4452,6 @@ module Google
         end
       end
       
-      # Creative Settings
-      class CreativeSettings
-        include Google::Apis::Core::Hashable
-      
-        # Header text for iFrames for this site. Must be less than or equal to 2000
-        # characters long.
-        # Corresponds to the JSON property `iFrameFooter`
-        # @return [String]
-        attr_accessor :i_frame_footer
-      
-        # Header text for iFrames for this site. Must be less than or equal to 2000
-        # characters long.
-        # Corresponds to the JSON property `iFrameHeader`
-        # @return [String]
-        attr_accessor :i_frame_header
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @i_frame_footer = args[:i_frame_footer] if args.key?(:i_frame_footer)
-          @i_frame_header = args[:i_frame_header] if args.key?(:i_frame_header)
-        end
-      end
-      
       # Creative List Response
       class CreativesListResponse
         include Google::Apis::Core::Hashable
@@ -5055,76 +5049,6 @@ module Google
         attr_accessor :active
         alias_method :active?, :active
       
-        # Directory site contacts.
-        # Corresponds to the JSON property `contactAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_1::DirectorySiteContactAssignment>]
-        attr_accessor :contact_assignments
-      
-        # Country ID of this directory site. This is a read-only field.
-        # Corresponds to the JSON property `countryId`
-        # @return [Fixnum]
-        attr_accessor :country_id
-      
-        # Currency ID of this directory site. This is a read-only field.
-        # Possible values are:
-        # - "1" for USD
-        # - "2" for GBP
-        # - "3" for ESP
-        # - "4" for SEK
-        # - "5" for CAD
-        # - "6" for JPY
-        # - "7" for DEM
-        # - "8" for AUD
-        # - "9" for FRF
-        # - "10" for ITL
-        # - "11" for DKK
-        # - "12" for NOK
-        # - "13" for FIM
-        # - "14" for ZAR
-        # - "15" for IEP
-        # - "16" for NLG
-        # - "17" for EUR
-        # - "18" for KRW
-        # - "19" for TWD
-        # - "20" for SGD
-        # - "21" for CNY
-        # - "22" for HKD
-        # - "23" for NZD
-        # - "24" for MYR
-        # - "25" for BRL
-        # - "26" for PTE
-        # - "27" for MXP
-        # - "28" for CLP
-        # - "29" for TRY
-        # - "30" for ARS
-        # - "31" for PEN
-        # - "32" for ILS
-        # - "33" for CHF
-        # - "34" for VEF
-        # - "35" for COP
-        # - "36" for GTQ
-        # - "37" for PLN
-        # - "39" for INR
-        # - "40" for THB
-        # - "41" for IDR
-        # - "42" for CZK
-        # - "43" for RON
-        # - "44" for HUF
-        # - "45" for RUB
-        # - "46" for AED
-        # - "47" for BGN
-        # - "48" for HRK
-        # - "49" for MXN
-        # - "50" for NGN
-        # Corresponds to the JSON property `currencyId`
-        # @return [Fixnum]
-        attr_accessor :currency_id
-      
-        # Description of this directory site. This is a read-only field.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
         # ID of this directory site. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -5165,11 +5089,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Parent directory site ID.
-        # Corresponds to the JSON property `parentId`
-        # @return [Fixnum]
-        attr_accessor :parent_id
-      
         # Directory Site Settings
         # Corresponds to the JSON property `settings`
         # @return [Google::Apis::DfareportingV3_1::DirectorySiteSettings]
@@ -5187,152 +5106,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @active = args[:active] if args.key?(:active)
-          @contact_assignments = args[:contact_assignments] if args.key?(:contact_assignments)
-          @country_id = args[:country_id] if args.key?(:country_id)
-          @currency_id = args[:currency_id] if args.key?(:currency_id)
-          @description = args[:description] if args.key?(:description)
           @id = args[:id] if args.key?(:id)
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @inpage_tag_formats = args[:inpage_tag_formats] if args.key?(:inpage_tag_formats)
           @interstitial_tag_formats = args[:interstitial_tag_formats] if args.key?(:interstitial_tag_formats)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
-          @parent_id = args[:parent_id] if args.key?(:parent_id)
           @settings = args[:settings] if args.key?(:settings)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Contains properties of a Site Directory contact.
-      class DirectorySiteContact
-        include Google::Apis::Core::Hashable
-      
-        # Address of this directory site contact.
-        # Corresponds to the JSON property `address`
-        # @return [String]
-        attr_accessor :address
-      
-        # Email address of this directory site contact.
-        # Corresponds to the JSON property `email`
-        # @return [String]
-        attr_accessor :email
-      
-        # First name of this directory site contact.
-        # Corresponds to the JSON property `firstName`
-        # @return [String]
-        attr_accessor :first_name
-      
-        # ID of this directory site contact. This is a read-only, auto-generated field.
-        # Corresponds to the JSON property `id`
-        # @return [Fixnum]
-        attr_accessor :id
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#directorySiteContact".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Last name of this directory site contact.
-        # Corresponds to the JSON property `lastName`
-        # @return [String]
-        attr_accessor :last_name
-      
-        # Phone number of this directory site contact.
-        # Corresponds to the JSON property `phone`
-        # @return [String]
-        attr_accessor :phone
-      
-        # Directory site contact role.
-        # Corresponds to the JSON property `role`
-        # @return [String]
-        attr_accessor :role
-      
-        # Title or designation of this directory site contact.
-        # Corresponds to the JSON property `title`
-        # @return [String]
-        attr_accessor :title
-      
-        # Directory site contact type.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @address = args[:address] if args.key?(:address)
-          @email = args[:email] if args.key?(:email)
-          @first_name = args[:first_name] if args.key?(:first_name)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @last_name = args[:last_name] if args.key?(:last_name)
-          @phone = args[:phone] if args.key?(:phone)
-          @role = args[:role] if args.key?(:role)
-          @title = args[:title] if args.key?(:title)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Directory Site Contact Assignment
-      class DirectorySiteContactAssignment
-        include Google::Apis::Core::Hashable
-      
-        # ID of this directory site contact. This is a read-only, auto-generated field.
-        # Corresponds to the JSON property `contactId`
-        # @return [Fixnum]
-        attr_accessor :contact_id
-      
-        # Visibility of this directory site contact assignment. When set to PUBLIC this
-        # contact assignment is visible to all account and agency users; when set to
-        # PRIVATE it is visible only to the site.
-        # Corresponds to the JSON property `visibility`
-        # @return [String]
-        attr_accessor :visibility
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @contact_id = args[:contact_id] if args.key?(:contact_id)
-          @visibility = args[:visibility] if args.key?(:visibility)
-        end
-      end
-      
-      # Directory Site Contact List Response
-      class DirectorySiteContactsListResponse
-        include Google::Apis::Core::Hashable
-      
-        # Directory site contact collection
-        # Corresponds to the JSON property `directorySiteContacts`
-        # @return [Array<Google::Apis::DfareportingV3_1::DirectorySiteContact>]
-        attr_accessor :directory_site_contacts
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#directorySiteContactsListResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Pagination token to be used for the next list operation.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @directory_site_contacts = args[:directory_site_contacts] if args.key?(:directory_site_contacts)
-          @kind = args[:kind] if args.key?(:kind)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -5363,25 +5144,6 @@ module Google
         attr_accessor :interstitial_placement_accepted
         alias_method :interstitial_placement_accepted?, :interstitial_placement_accepted
       
-        # Whether this directory site has disabled Nielsen OCR reach ratings.
-        # Corresponds to the JSON property `nielsenOcrOptOut`
-        # @return [Boolean]
-        attr_accessor :nielsen_ocr_opt_out
-        alias_method :nielsen_ocr_opt_out?, :nielsen_ocr_opt_out
-      
-        # Whether this directory site has disabled generation of Verification ins tags.
-        # Corresponds to the JSON property `verificationTagOptOut`
-        # @return [Boolean]
-        attr_accessor :verification_tag_opt_out
-        alias_method :verification_tag_opt_out?, :verification_tag_opt_out
-      
-        # Whether this directory site has disabled active view for in-stream video
-        # creatives. This is a read-only field.
-        # Corresponds to the JSON property `videoActiveViewOptOut`
-        # @return [Boolean]
-        attr_accessor :video_active_view_opt_out
-        alias_method :video_active_view_opt_out?, :video_active_view_opt_out
-      
         def initialize(**args)
            update!(**args)
         end
@@ -5392,9 +5154,6 @@ module Google
           @dfp_settings = args[:dfp_settings] if args.key?(:dfp_settings)
           @instream_video_placement_accepted = args[:instream_video_placement_accepted] if args.key?(:instream_video_placement_accepted)
           @interstitial_placement_accepted = args[:interstitial_placement_accepted] if args.key?(:interstitial_placement_accepted)
-          @nielsen_ocr_opt_out = args[:nielsen_ocr_opt_out] if args.key?(:nielsen_ocr_opt_out)
-          @verification_tag_opt_out = args[:verification_tag_opt_out] if args.key?(:verification_tag_opt_out)
-          @video_active_view_opt_out = args[:video_active_view_opt_out] if args.key?(:video_active_view_opt_out)
         end
       end
       
@@ -6067,12 +5826,6 @@ module Google
         # @return [String]
         attr_accessor :floodlight_tag_type
       
-        # Whether this activity is archived.
-        # Corresponds to the JSON property `hidden`
-        # @return [Boolean]
-        attr_accessor :hidden
-        alias_method :hidden?, :hidden
-      
         # ID of this floodlight activity. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -6173,7 +5926,6 @@ module Google
           @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
           @floodlight_configuration_id_dimension_value = args[:floodlight_configuration_id_dimension_value] if args.key?(:floodlight_configuration_id_dimension_value)
           @floodlight_tag_type = args[:floodlight_tag_type] if args.key?(:floodlight_tag_type)
-          @hidden = args[:hidden] if args.key?(:hidden)
           @id = args[:id] if args.key?(:id)
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @kind = args[:kind] if args.key?(:kind)
@@ -8229,6 +7981,12 @@ module Google
         attr_accessor :ad_blocking_opt_out
         alias_method :ad_blocking_opt_out?, :ad_blocking_opt_out
       
+        # Additional sizes associated with this placement. When inserting or updating a
+        # placement, only the size ID field is used.
+        # Corresponds to the JSON property `additionalSizes`
+        # @return [Array<Google::Apis::DfareportingV3_1::Size>]
+        attr_accessor :additional_sizes
+      
         # Advertiser ID of this placement. This field can be left blank.
         # Corresponds to the JSON property `advertiserId`
         # @return [Fixnum]
@@ -8476,6 +8234,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @ad_blocking_opt_out = args[:ad_blocking_opt_out] if args.key?(:ad_blocking_opt_out)
+          @additional_sizes = args[:additional_sizes] if args.key?(:additional_sizes)
           @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
           @advertiser_id_dimension_value = args[:advertiser_id_dimension_value] if args.key?(:advertiser_id_dimension_value)
           @archived = args[:archived] if args.key?(:archived)
@@ -9200,12 +8959,6 @@ module Google
         # @return [String]
         attr_accessor :cap_cost_option
       
-        # Whether cap costs are ignored by ad serving.
-        # Corresponds to the JSON property `disregardOverdelivery`
-        # @return [Boolean]
-        attr_accessor :disregard_overdelivery
-        alias_method :disregard_overdelivery?, :disregard_overdelivery
-      
         # Placement end date. This date must be later than, or the same day as, the
         # placement start date, but not later than the campaign end date. If, for
         # example, you set 6/25/2015 as both the start and end dates, the effective
@@ -9260,7 +9013,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cap_cost_option = args[:cap_cost_option] if args.key?(:cap_cost_option)
-          @disregard_overdelivery = args[:disregard_overdelivery] if args.key?(:disregard_overdelivery)
           @end_date = args[:end_date] if args.key?(:end_date)
           @flighted = args[:flighted] if args.key?(:flighted)
           @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)
@@ -10869,21 +10621,11 @@ module Google
         attr_accessor :ad_blocking_opt_out
         alias_method :ad_blocking_opt_out?, :ad_blocking_opt_out
       
-        # Creative Settings
-        # Corresponds to the JSON property `creativeSettings`
-        # @return [Google::Apis::DfareportingV3_1::CreativeSettings]
-        attr_accessor :creative_settings
-      
         # Whether new cookies are disabled for this site.
         # Corresponds to the JSON property `disableNewCookie`
         # @return [Boolean]
         attr_accessor :disable_new_cookie
         alias_method :disable_new_cookie?, :disable_new_cookie
-      
-        # Lookback configuration settings.
-        # Corresponds to the JSON property `lookbackConfiguration`
-        # @return [Google::Apis::DfareportingV3_1::LookbackConfiguration]
-        attr_accessor :lookback_configuration
       
         # Tag Settings
         # Corresponds to the JSON property `tagSetting`
@@ -10920,9 +10662,7 @@ module Google
         def update!(**args)
           @active_view_opt_out = args[:active_view_opt_out] if args.key?(:active_view_opt_out)
           @ad_blocking_opt_out = args[:ad_blocking_opt_out] if args.key?(:ad_blocking_opt_out)
-          @creative_settings = args[:creative_settings] if args.key?(:creative_settings)
           @disable_new_cookie = args[:disable_new_cookie] if args.key?(:disable_new_cookie)
-          @lookback_configuration = args[:lookback_configuration] if args.key?(:lookback_configuration)
           @tag_setting = args[:tag_setting] if args.key?(:tag_setting)
           @video_active_view_opt_out_template = args[:video_active_view_opt_out_template] if args.key?(:video_active_view_opt_out_template)
           @vpaid_adapter_choice_template = args[:vpaid_adapter_choice_template] if args.key?(:vpaid_adapter_choice_template)

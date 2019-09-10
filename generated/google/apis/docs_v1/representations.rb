@@ -376,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MergeTableCellsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NamedRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,12 @@ module Google
       end
       
       class ReplaceAllTextResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceImageRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -761,6 +773,12 @@ module Google
       end
       
       class TextStyleSuggestionState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnmergeTableCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1456,6 +1474,14 @@ module Google
         end
       end
       
+      class MergeTableCellsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table_range, as: 'tableRange', class: Google::Apis::DocsV1::TableRange, decorator: Google::Apis::DocsV1::TableRange::Representation
+      
+        end
+      end
+      
       class NamedRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1772,6 +1798,15 @@ module Google
         end
       end
       
+      class ReplaceImageRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_object_id, as: 'imageObjectId'
+          property :image_replace_method, as: 'imageReplaceMethod'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1803,7 +1838,13 @@ module Google
       
           property :insert_text, as: 'insertText', class: Google::Apis::DocsV1::InsertTextRequest, decorator: Google::Apis::DocsV1::InsertTextRequest::Representation
       
+          property :merge_table_cells, as: 'mergeTableCells', class: Google::Apis::DocsV1::MergeTableCellsRequest, decorator: Google::Apis::DocsV1::MergeTableCellsRequest::Representation
+      
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::DocsV1::ReplaceAllTextRequest, decorator: Google::Apis::DocsV1::ReplaceAllTextRequest::Representation
+      
+          property :replace_image, as: 'replaceImage', class: Google::Apis::DocsV1::ReplaceImageRequest, decorator: Google::Apis::DocsV1::ReplaceImageRequest::Representation
+      
+          property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::DocsV1::UnmergeTableCellsRequest, decorator: Google::Apis::DocsV1::UnmergeTableCellsRequest::Representation
       
           property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
       
@@ -2268,6 +2309,14 @@ module Google
           property :strikethrough_suggested, as: 'strikethroughSuggested'
           property :underline_suggested, as: 'underlineSuggested'
           property :weighted_font_family_suggested, as: 'weightedFontFamilySuggested'
+        end
+      end
+      
+      class UnmergeTableCellsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :table_range, as: 'tableRange', class: Google::Apis::DocsV1::TableRange, decorator: Google::Apis::DocsV1::TableRange::Representation
+      
         end
       end
       

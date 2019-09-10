@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/cloud-search/docs/guides/
     module CloudsearchV1
       VERSION = 'V1'
-      REVISION = '20190802'
+      REVISION = '20190821'
 
       # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH = 'https://www.googleapis.com/auth/cloud_search'

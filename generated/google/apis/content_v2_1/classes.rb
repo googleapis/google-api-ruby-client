@@ -3429,7 +3429,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::OrderCustomer]
         attr_accessor :customer
       
-        # Delivery details for shipments.
+        # Delivery details for shipments of type delivery.
         # Corresponds to the JSON property `deliveryDetails`
         # @return [Google::Apis::ContentV2_1::OrderDeliveryDetails]
         attr_accessor :delivery_details
@@ -4555,7 +4555,7 @@ module Google
         # - "gls"
         # - "dpd"
         # - "bpost"
-        # - "colis priv�"
+        # - "colis prive"
         # - "boxtal"
         # - "geodis"
         # Corresponds to the JSON property `carrier`

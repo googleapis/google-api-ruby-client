@@ -1135,12 +1135,12 @@ module Google
       class AllocationSpecificSkuReservation
         include Google::Apis::Core::Hashable
       
-        # Specifies number of resources that are allocated.
+        # Specifies the number of resources that are allocated.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
       
-        # [OutputOnly] Indicates how many resource are in use.
+        # [OutputOnly] Indicates how many instances are in use.
         # Corresponds to the JSON property `inUseCount`
         # @return [Fixnum]
         attr_accessor :in_use_count
@@ -1305,7 +1305,9 @@ module Google
         # @return [String]
         attr_accessor :disk_name
       
-        # Specifies the size of the disk in base-2 GB.
+        # Specifies the size of the disk in base-2 GB. If not specified, the disk will
+        # be the same size as the image (usually 10GB). If specified, the size must be
+        # equal to or larger than 10GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -1418,14 +1420,14 @@ module Google
       # AuditLogConfig are exempted.
       # Example Policy with multiple AuditConfigs:
       # ` "audit_configs": [ ` "service": "allServices" "audit_log_configs": [ ` "
-      # log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] `, ` "
+      # log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] `, ` "
       # log_type": "DATA_WRITE", `, ` "log_type": "ADMIN_READ", ` ] `, ` "service": "
-      # fooservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ", `,
-      # ` "log_type": "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] ` ] `
-      # ] `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and bar@gmail.
-      # com from DATA_WRITE logging.
+      # sampleservice.googleapis.com" "audit_log_configs": [ ` "log_type": "DATA_READ",
+      # `, ` "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com"
+      # ] ` ] ` ] `
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and aliya@
+      # example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -1460,9 +1462,9 @@ module Google
       
       # Provides the configuration for logging a type of permissions. Example:
       # ` "audit_log_configs": [ ` "log_type": "DATA_READ", "exempted_members": [ "
-      # user:foo@gmail.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
-      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.
-      # com from DATA_READ logging.
+      # user:jose@example.com" ] `, ` "log_type": "DATA_WRITE", ` ] `
+      # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@
+      # example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -1471,6 +1473,13 @@ module Google
         # Corresponds to the JSON property `exemptedMembers`
         # @return [Array<String>]
         attr_accessor :exempted_members
+      
+        # Specifies whether principals can be exempted for the same LogType in lower-
+        # level resource policies. If true, any lower-level exemptions will be ignored.
+        # Corresponds to the JSON property `ignoreChildExemptions`
+        # @return [Boolean]
+        attr_accessor :ignore_child_exemptions
+        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
       
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
@@ -1484,6 +1493,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
+          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
         end
       end
@@ -2168,8 +2178,8 @@ module Google
         # 
         # - If the load balancing mode is CONNECTION, then the load is spread based on
         # how many concurrent connections the backend can handle.
-        # The CONNECTION balancing mode is only available if the protocol for the
-        # backend service is SSL, TCP, or UDP.
+        # You can use the CONNECTION balancing mode if the protocol for the backend
+        # service is SSL, TCP, or UDP.
         # If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy and
         # TCP Proxy load balancers), you must also specify exactly one of the following
         # parameters: maxConnections, maxConnectionsPerInstance, or
@@ -2177,18 +2187,18 @@ module Google
         # If the loadBalancingScheme for the backend service is INTERNAL (internal TCP/
         # UDP load balancers), you cannot specify any additional parameters.
         # 
-        # - If the load balancing mode is RATE, then the load is spread based on the
-        # rate of HTTP requests per second (RPS).
-        # The RATE balancing mode is only available if the protocol for the backend
-        # service is HTTP or HTTPS. You must specify exactly one of the following
-        # parameters: maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+        # - If the load balancing mode is RATE, the load is spread based on the rate of
+        # HTTP requests per second (RPS).
+        # You can use the RATE balancing mode if the protocol for the backend service is
+        # HTTP or HTTPS. You must specify exactly one of the following parameters:
+        # maxRate, maxRatePerInstance, or maxRatePerEndpoint.
         # 
-        # - If the load balancing mode is UTILIZATION, then the load is spread based on
-        # the CPU utilization of instances in an instance group.
-        # The UTILIZATION balancing mode is only available if the loadBalancingScheme of
-        # the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED
-        # and the backend is made up of instance groups. There are no restrictions on
-        # the backend service protocol.
+        # - If the load balancing mode is UTILIZATION, the load is spread based on the
+        # CPU utilization of instances in an instance group.
+        # You can use the UTILIZATION balancing mode if the loadBalancingScheme of the
+        # backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED and
+        # the backends are instance groups. There are no restrictions on the backend
+        # service protocol.
         # Corresponds to the JSON property `balancingMode`
         # @return [String]
         attr_accessor :balancing_mode
@@ -2723,6 +2733,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The URL of the network to which this backend service belongs. This field can
+        # only be spcified when the load balancing scheme is set to INTERNAL.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Settings controlling eviction of unhealthy hosts from the load balancing pool.
         # Corresponds to the JSON property `outlierDetection`
         # @return [Google::Apis::ComputeBeta::OutlierDetection]
@@ -2777,8 +2793,8 @@ module Google
         # Type of session affinity to use. The default is NONE. Session affinity is not
         # applicable if the --protocol is UDP.
         # When the loadBalancingScheme is EXTERNAL, possible values are NONE, CLIENT_IP,
-        # or GENERATED_COOKIE. GENERATED_COOKIE is only available if the protocol is
-        # HTTP or HTTPS.
+        # or GENERATED_COOKIE. You can use GENERATED_COOKIE if the protocol is HTTP or
+        # HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
         # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, possible values are
@@ -2820,6 +2836,7 @@ module Google
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
@@ -3355,6 +3372,255 @@ module Google
         end
       end
       
+      # 
+      class BfdPacket
+        include Google::Apis::Core::Hashable
+      
+        # The Authentication Present bit of the BFD packet. This is specified in section
+        # 4.1 of RFC5880
+        # Corresponds to the JSON property `authenticationPresent`
+        # @return [Boolean]
+        attr_accessor :authentication_present
+        alias_method :authentication_present?, :authentication_present
+      
+        # The Control Plane Independent bit of the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `controlPlaneIndependent`
+        # @return [Boolean]
+        attr_accessor :control_plane_independent
+        alias_method :control_plane_independent?, :control_plane_independent
+      
+        # The demand bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `demand`
+        # @return [Boolean]
+        attr_accessor :demand
+        alias_method :demand?, :demand
+      
+        # The diagnostic code specifies the local system's reason for the last change in
+        # session state. This allows remote systems to determine the reason that the
+        # previous session failed, for example. These diagnostic codes are specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `diagnostic`
+        # @return [String]
+        attr_accessor :diagnostic
+      
+        # The Final bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `final`
+        # @return [Boolean]
+        attr_accessor :final
+        alias_method :final?, :final
+      
+        # The length of the BFD Control packet in bytes. This is specified in section 4.
+        # 1 of RFC5880
+        # Corresponds to the JSON property `length`
+        # @return [Fixnum]
+        attr_accessor :length
+      
+        # The Required Min Echo RX Interval value in the BFD packet. This is specified
+        # in section 4.1 of RFC5880
+        # Corresponds to the JSON property `minEchoRxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_echo_rx_interval_ms
+      
+        # The Required Min RX Interval value in the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `minRxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_rx_interval_ms
+      
+        # The Desired Min TX Interval value in the BFD packet. This is specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `minTxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :min_tx_interval_ms
+      
+        # The detection time multiplier of the BFD packet. This is specified in section
+        # 4.1 of RFC5880
+        # Corresponds to the JSON property `multiplier`
+        # @return [Fixnum]
+        attr_accessor :multiplier
+      
+        # The multipoint bit of the BFD packet. This is specified in section 4.1 of
+        # RFC5880
+        # Corresponds to the JSON property `multipoint`
+        # @return [Boolean]
+        attr_accessor :multipoint
+        alias_method :multipoint?, :multipoint
+      
+        # The My Discriminator value in the BFD packet. This is specified in section 4.1
+        # of RFC5880
+        # Corresponds to the JSON property `myDiscriminator`
+        # @return [Fixnum]
+        attr_accessor :my_discriminator
+      
+        # The Poll bit of the BFD packet. This is specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `poll`
+        # @return [Boolean]
+        attr_accessor :poll
+        alias_method :poll?, :poll
+      
+        # The current BFD session state as seen by the transmitting system. These states
+        # are specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The version number of the BFD protocol, as specified in section 4.1 of RFC5880.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
+        # The Your Discriminator value in the BFD packet. This is specified in section 4.
+        # 1 of RFC5880
+        # Corresponds to the JSON property `yourDiscriminator`
+        # @return [Fixnum]
+        attr_accessor :your_discriminator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @authentication_present = args[:authentication_present] if args.key?(:authentication_present)
+          @control_plane_independent = args[:control_plane_independent] if args.key?(:control_plane_independent)
+          @demand = args[:demand] if args.key?(:demand)
+          @diagnostic = args[:diagnostic] if args.key?(:diagnostic)
+          @final = args[:final] if args.key?(:final)
+          @length = args[:length] if args.key?(:length)
+          @min_echo_rx_interval_ms = args[:min_echo_rx_interval_ms] if args.key?(:min_echo_rx_interval_ms)
+          @min_rx_interval_ms = args[:min_rx_interval_ms] if args.key?(:min_rx_interval_ms)
+          @min_tx_interval_ms = args[:min_tx_interval_ms] if args.key?(:min_tx_interval_ms)
+          @multiplier = args[:multiplier] if args.key?(:multiplier)
+          @multipoint = args[:multipoint] if args.key?(:multipoint)
+          @my_discriminator = args[:my_discriminator] if args.key?(:my_discriminator)
+          @poll = args[:poll] if args.key?(:poll)
+          @state = args[:state] if args.key?(:state)
+          @version = args[:version] if args.key?(:version)
+          @your_discriminator = args[:your_discriminator] if args.key?(:your_discriminator)
+        end
+      end
+      
+      # Next free: 15
+      class BfdStatus
+        include Google::Apis::Core::Hashable
+      
+        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
+        # Cloud Router will initiate the BFD session for this BGP peer. If set to
+        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
+        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        # peer.
+        # Corresponds to the JSON property `bfdSessionInitializationMode`
+        # @return [String]
+        attr_accessor :bfd_session_initialization_mode
+      
+        # Unix timestamp of the most recent config update.
+        # Corresponds to the JSON property `configUpdateTimestampMicros`
+        # @return [Fixnum]
+        attr_accessor :config_update_timestamp_micros
+      
+        # Control packet counts for the current BFD session.
+        # Corresponds to the JSON property `controlPacketCounts`
+        # @return [Google::Apis::ComputeBeta::BfdStatusPacketCounts]
+        attr_accessor :control_packet_counts
+      
+        # Inter-packet time interval statistics for control packets.
+        # Corresponds to the JSON property `controlPacketIntervals`
+        # @return [Array<Google::Apis::ComputeBeta::PacketIntervals>]
+        attr_accessor :control_packet_intervals
+      
+        # The diagnostic code specifies the local system's reason for the last change in
+        # session state. This allows remote systems to determine the reason that the
+        # previous session failed, for example. These diagnostic codes are specified in
+        # section 4.1 of RFC5880
+        # Corresponds to the JSON property `localDiagnostic`
+        # @return [String]
+        attr_accessor :local_diagnostic
+      
+        # The current BFD session state as seen by the transmitting system. These states
+        # are specified in section 4.1 of RFC5880
+        # Corresponds to the JSON property `localState`
+        # @return [String]
+        attr_accessor :local_state
+      
+        # Negotiated transmit interval for control packets.
+        # Corresponds to the JSON property `negotiatedLocalControlTxIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :negotiated_local_control_tx_interval_ms
+      
+        # 
+        # Corresponds to the JSON property `rxPacket`
+        # @return [Google::Apis::ComputeBeta::BfdPacket]
+        attr_accessor :rx_packet
+      
+        # 
+        # Corresponds to the JSON property `txPacket`
+        # @return [Google::Apis::ComputeBeta::BfdPacket]
+        attr_accessor :tx_packet
+      
+        # Session uptime in milliseconds. Value will be 0 if session is not up.
+        # Corresponds to the JSON property `uptimeMs`
+        # @return [Fixnum]
+        attr_accessor :uptime_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bfd_session_initialization_mode = args[:bfd_session_initialization_mode] if args.key?(:bfd_session_initialization_mode)
+          @config_update_timestamp_micros = args[:config_update_timestamp_micros] if args.key?(:config_update_timestamp_micros)
+          @control_packet_counts = args[:control_packet_counts] if args.key?(:control_packet_counts)
+          @control_packet_intervals = args[:control_packet_intervals] if args.key?(:control_packet_intervals)
+          @local_diagnostic = args[:local_diagnostic] if args.key?(:local_diagnostic)
+          @local_state = args[:local_state] if args.key?(:local_state)
+          @negotiated_local_control_tx_interval_ms = args[:negotiated_local_control_tx_interval_ms] if args.key?(:negotiated_local_control_tx_interval_ms)
+          @rx_packet = args[:rx_packet] if args.key?(:rx_packet)
+          @tx_packet = args[:tx_packet] if args.key?(:tx_packet)
+          @uptime_ms = args[:uptime_ms] if args.key?(:uptime_ms)
+        end
+      end
+      
+      # 
+      class BfdStatusPacketCounts
+        include Google::Apis::Core::Hashable
+      
+        # Number of packets received since the beginning of the current BFD session.
+        # Corresponds to the JSON property `numRx`
+        # @return [Fixnum]
+        attr_accessor :num_rx
+      
+        # Number of packets received that were rejected because of errors since the
+        # beginning of the current BFD session.
+        # Corresponds to the JSON property `numRxRejected`
+        # @return [Fixnum]
+        attr_accessor :num_rx_rejected
+      
+        # Number of packets received that were successfully processed since the
+        # beginning of the current BFD session.
+        # Corresponds to the JSON property `numRxSuccessful`
+        # @return [Fixnum]
+        attr_accessor :num_rx_successful
+      
+        # Number of packets transmitted since the beginning of the current BFD session.
+        # Corresponds to the JSON property `numTx`
+        # @return [Fixnum]
+        attr_accessor :num_tx
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_rx = args[:num_rx] if args.key?(:num_rx)
+          @num_rx_rejected = args[:num_rx_rejected] if args.key?(:num_rx_rejected)
+          @num_rx_successful = args[:num_rx_successful] if args.key?(:num_rx_successful)
+          @num_tx = args[:num_tx] if args.key?(:num_tx)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -3373,7 +3639,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone who is
         # authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google account.
-        # For example, `alice@gmail.com` .
+        # For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
@@ -3600,7 +3866,7 @@ module Google
         # @return [String]
         attr_accessor :region
       
-        # List of reservations for this commitment.
+        # List of reservations in this commitment.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeBeta::Reservation>]
         attr_accessor :reservations
@@ -4527,7 +4793,9 @@ module Google
         # @return [String]
         attr_accessor :source_snapshot_id
       
-        # [Output Only] The status of disk creation.
+        # [Output Only] The status of disk creation. CREATING: Disk is provisioning.
+        # RESTORING: Source data is being copied into the disk. FAILED: Disk creation
+        # failed. READY: Disk is ready for use. DELETING: Disk is deleting.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -6509,32 +6777,20 @@ module Google
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
-        # The IP address that this forwarding rule is serving on behalf of.
-        # Addresses are restricted based on the forwarding rule's load balancing scheme (
-        # EXTERNAL or INTERNAL) and scope (global or regional).
-        # When the load balancing scheme is EXTERNAL, for global forwarding rules, the
-        # address must be a global IP, and for regional forwarding rules, the address
-        # must live in the same region as the forwarding rule. If this field is empty,
-        # an ephemeral IPv4 address from the same scope (global or regional) will be
-        # assigned. A regional forwarding rule supports IPv4 only. A global forwarding
-        # rule supports either IPv4 or IPv6.
-        # When the load balancing scheme is INTERNAL_SELF_MANAGED, this must be a URL
-        # reference to an existing Address resource ( internal regional static IP
-        # address), with a purpose of GCE_END_POINT and address_type of INTERNAL.
-        # When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP
-        # address belonging to the network/subnet configured for the forwarding rule. By
-        # default, if this field is empty, an ephemeral internal IP address will be
-        # automatically allocated from the IP range of the subnet or network configured
-        # for this forwarding rule.
-        # An address can be specified either by a literal IP address or a URL reference
-        # to an existing Address resource. The following examples are all valid:
-        # - 100.1.2.3
-        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
-        # addresses/address
-        # - projects/project/regions/region/addresses/address
-        # - regions/region/addresses/address
-        # - global/addresses/address
-        # - address
+        # IP address that this forwarding rule serves. When a client sends traffic to
+        # this IP address, the forwarding rule directs the traffic to the target that
+        # you specify in the forwarding rule.
+        # If you don't specify a reserved IP address, an ephemeral IP address is
+        # assigned. Methods for specifying an IP address:
+        # * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.
+        # googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-
+        # name * Partial URL or by name, as in: * projects/project_id/regions/region/
+        # addresses/address-name * regions/region/addresses/address-name * global/
+        # addresses/address-name * address-name
+        # The loadBalancingScheme and the forwarding rule's target determine the type of
+        # IP address that you can use. For detailed information, refer to [IP address
+        # specifications](/load-balancing/docs/forwarding-rule-concepts#
+        # ip_address_specifications).
         # Corresponds to the JSON property `IPAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -6691,13 +6947,23 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # This field is used along with the target field for TargetHttpProxy,
-        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
-        # TargetInstance.
-        # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
-        # to ports in the specified range will be forwarded to target. Forwarding rules
-        # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
-        # Some types of forwarding target have constraints on the acceptable ports:
+        # This field is deprecated. See the port
+        # field.
+        # Corresponds to the JSON property `portRange`
+        # @return [String]
+        attr_accessor :port_range
+      
+        # List of comma-separated ports. The forwarding rule forwards packets with
+        # matching destination ports. If the forwarding rule's loadBalancingScheme is
+        # EXTERNAL, and the forwarding rule references a target pool, specifying ports
+        # is optional. You can specify an unlimited number of ports, but they must be
+        # contiguous. If you omit ports, GCP forwards traffic on any port of the
+        # forwarding rule's protocol.
+        # If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding
+        # rule references a target HTTP proxy, target HTTPS proxy, target TCP proxy,
+        # target SSL proxy, or target VPN gateway, you must specify ports using the
+        # following constraints:
+        # 
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -6705,16 +6971,16 @@ module Google
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetVpnGateway: 500, 4500
-        # Corresponds to the JSON property `portRange`
-        # @return [String]
-        attr_accessor :port_range
-      
-        # This field is used along with the backend_service field for internal load
-        # balancing.
-        # When the load balancing scheme is INTERNAL, a list of ports can be configured,
-        # for example, ['80'], ['8000','9000'] etc. Only packets addressed to these
-        # ports will be forwarded to the backends configured with this forwarding rule.
-        # You may specify a maximum of up to 5 ports.
+        # If the forwarding rule's loadBalancingScheme is INTERNAL, you must specify
+        # ports in one of the following ways:
+        # * A list of up to five ports, which can be non-contiguous * Keyword ALL, which
+        # causes the forwarding rule to forward traffic on any port of the forwarding
+        # rule's protocol.
+        # The ports field is used along with the target field for TargetHttpProxy,
+        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
+        # TargetInstance.
+        # Applicable only when IPProtocol is TCP, UDP, or SCTP. Forwarding rules with
+        # the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -6733,7 +6999,7 @@ module Google
         attr_accessor :self_link
       
         # An optional prefix to the service name for this Forwarding Rule. If specified,
-        # will be the first label of the fully qualified service name.
+        # the prefix is the first label of the fully qualified service name.
         # The label must be 1-63 characters long, and comply with RFC1035. Specifically,
         # the label must be 1-63 characters long and match the regular expression `[a-z](
         # [-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase
@@ -9477,7 +9743,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # GCS bucket storage location of the image (regional or multi-regional).
+        # Cloud Storage bucket storage location of the image (regional or multi-regional)
+        # .
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -9725,7 +9992,10 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::AcceleratorConfig>]
         attr_accessor :guest_accelerators
       
-        # 
+        # Specifies the hostname of the instance. The specified hostname must be RFC1035
+        # compliant. If hostname is not specified, the default hostname is [
+        # INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [
+        # INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         # Corresponds to the JSON property `hostname`
         # @return [String]
         attr_accessor :hostname
@@ -11058,7 +11328,11 @@ module Google
       class InstanceGroupManagerUpdatePolicy
         include Google::Apis::Core::Hashable
       
-        # 
+        # The  instance redistribution policy for regional managed instance groups.
+        # Valid values are:
+        # - PROACTIVE (default): The group attempts to maintain an even distribution of
+        # VM instances across zones in the region.
+        # - NONE: For non-autoscaled groups, proactive redistribution is disabled.
         # Corresponds to the JSON property `instanceRedistributionType`
         # @return [String]
         attr_accessor :instance_redistribution_type
@@ -12969,6 +13243,8 @@ module Google
         # - BPS_2G: 2 Gbit/s
         # - BPS_5G: 5 Gbit/s
         # - BPS_10G: 10 Gbit/s
+        # - BPS_20G: 20 Gbit/s
+        # - BPS_50G: 50 Gbit/s
         # Corresponds to the JSON property `bandwidth`
         # @return [String]
         attr_accessor :bandwidth
@@ -15632,9 +15908,10 @@ module Google
         attr_accessor :instance
       
         # Optional IPv4 address of network endpoint. The IP address must belong to a VM
-        # in GCE (either the primary IP or as part of an aliased IP range). If the IP
-        # address is not specified, then the primary IP address for the VM instance in
-        # the network that the network endpoint group belongs to will be used.
+        # in Compute Engine (either the primary IP or as part of an aliased IP range).
+        # If the IP address is not specified, then the primary IP address for the VM
+        # instance in the network that the network endpoint group belongs to will be
+        # used.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -17120,7 +17397,7 @@ module Google
       class NodeGroupsDeleteNodesRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # Names of the nodes to delete.
         # Corresponds to the JSON property `nodes`
         # @return [Array<String>]
         attr_accessor :nodes
@@ -18312,7 +18589,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :http_error_status_code
       
-        # [Output Only] The unique identifier for the resource. This identifier is
+        # [Output Only] The unique identifier for the operation. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -18330,7 +18607,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # [Output Only] Name of the resource.
+        # [Output Only] Name of the operation.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -18993,6 +19270,55 @@ module Google
         end
       end
       
+      # Next free: 7
+      class PacketIntervals
+        include Google::Apis::Core::Hashable
+      
+        # Average observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `avgMs`
+        # @return [Fixnum]
+        attr_accessor :avg_ms
+      
+        # From how long ago in the past these intervals were observed.
+        # Corresponds to the JSON property `duration`
+        # @return [String]
+        attr_accessor :duration
+      
+        # Maximum observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `maxMs`
+        # @return [Fixnum]
+        attr_accessor :max_ms
+      
+        # Minimum observed inter-packet interval in milliseconds.
+        # Corresponds to the JSON property `minMs`
+        # @return [Fixnum]
+        attr_accessor :min_ms
+      
+        # Number of inter-packet intervals from which these statistics were derived.
+        # Corresponds to the JSON property `numIntervals`
+        # @return [Fixnum]
+        attr_accessor :num_intervals
+      
+        # The type of packets for which inter-packet intervals were computed.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @avg_ms = args[:avg_ms] if args.key?(:avg_ms)
+          @duration = args[:duration] if args.key?(:duration)
+          @max_ms = args[:max_ms] if args.key?(:max_ms)
+          @min_ms = args[:min_ms] if args.key?(:min_ms)
+          @num_intervals = args[:num_intervals] if args.key?(:num_intervals)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default service
       # will be used.
@@ -19183,7 +19509,7 @@ module Google
         # that etag in the request to `setIamPolicy` to ensure that their change will be
         # applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -19737,8 +20063,7 @@ module Google
       class RegionCommitmentsUpdateReservationsRequest
         include Google::Apis::Core::Hashable
       
-        # List of reservations for the capacity move of VMs with accelerators and local
-        # ssds.
+        # List of two reservations to transfer GPUs and local SSD between.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeBeta::Reservation>]
         attr_accessor :reservations
@@ -20812,12 +21137,12 @@ module Google
       # Represents a reservation resource. A reservation ensures that capacity is held
       # in a specific zone even if the reserved VMs are not running. For more
       # information, read  Reserving zonal resources. (== resource_for beta.
-      # reservations ==) (== resource_for v1.reservations ==) (== NextID: 13 ==)
+      # reservations ==) (== resource_for v1.reservations ==)
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # [OutputOnly] Full or partial url for parent commitment for reservations which
-        # are tied to a commitment.
+        # [OutputOnly] Full or partial URL to a parent commitment. This field displays
+        # for reservations that are tied to a commitment.
         # Corresponds to the JSON property `commitment`
         # @return [String]
         attr_accessor :commitment
@@ -20879,8 +21204,8 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # Zone in which the reservation resides, must be provided if reservation is
-        # created with commitment creation.
+        # Zone in which the reservation resides. A zone must be provided if the
+        # reservation is created within a commitment.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -21933,7 +22258,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # GCS bucket storage location of the auto snapshot (regional or multi-regional).
+        # Cloud Storage bucket storage location of the auto snapshot (regional or multi-
+        # regional).
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -22615,6 +22941,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :asn
       
+        # The interval in seconds between BGP keepalive messages that are sent to the
+        # peer. Hold time is three times the interval at which keepalive messages are
+        # sent, and the hold time is the maximum number of seconds allowed to elapse
+        # between successive keepalive messages that BGP receives from a peer. BGP will
+        # use the smaller of either the local hold time value or the peer?s hold time
+        # value as the hold time for the BGP connection between the two peers. If set,
+        # this value must be between 1 and 120. The default is 20.
+        # Corresponds to the JSON property `keepaliveInterval`
+        # @return [Fixnum]
+        attr_accessor :keepalive_interval
+      
         def initialize(**args)
            update!(**args)
         end
@@ -22625,6 +22962,7 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @asn = args[:asn] if args.key?(:asn)
+          @keepalive_interval = args[:keepalive_interval] if args.key?(:keepalive_interval)
         end
       end
       
@@ -22666,6 +23004,19 @@ module Google
         # @return [Fixnum]
         attr_accessor :advertised_route_priority
       
+        # BFD configuration for the BGP peering.
+        # Corresponds to the JSON property `bfd`
+        # @return [Google::Apis::ComputeBeta::RouterBgpPeerBfd]
+        attr_accessor :bfd
+      
+        # The status of the BGP peer connection. If set to FALSE, any active session
+        # with the peer is terminated and all associated routing information is removed.
+        # If set to TRUE, the peer connection can be established with routing
+        # information. The default is TRUE.
+        # Corresponds to the JSON property `enable`
+        # @return [String]
+        attr_accessor :enable
+      
         # Name of the interface the BGP peer is associated with.
         # Corresponds to the JSON property `interfaceName`
         # @return [String]
@@ -22688,8 +23039,12 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
-        # Name of this BGP peer. The name must be 1-63 characters long and comply with
-        # RFC1035.
+        # Name of this BGP peer. The name must be 1-63 characters long, and comply with
+        # RFC1035. Specifically, the name must be 1-63 characters long and match the
+        # regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        # character must be a lowercase letter, and all following characters must be a
+        # dash, lowercase letter, or digit, except the last character, which cannot be a
+        # dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -22716,12 +23071,65 @@ module Google
           @advertised_groups = args[:advertised_groups] if args.key?(:advertised_groups)
           @advertised_ip_ranges = args[:advertised_ip_ranges] if args.key?(:advertised_ip_ranges)
           @advertised_route_priority = args[:advertised_route_priority] if args.key?(:advertised_route_priority)
+          @bfd = args[:bfd] if args.key?(:bfd)
+          @enable = args[:enable] if args.key?(:enable)
           @interface_name = args[:interface_name] if args.key?(:interface_name)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @management_type = args[:management_type] if args.key?(:management_type)
           @name = args[:name] if args.key?(:name)
           @peer_asn = args[:peer_asn] if args.key?(:peer_asn)
           @peer_ip_address = args[:peer_ip_address] if args.key?(:peer_ip_address)
+        end
+      end
+      
+      # 
+      class RouterBgpPeerBfd
+        include Google::Apis::Core::Hashable
+      
+        # The minimum interval, in milliseconds, between BFD control packets received
+        # from the peer router. The actual value is negotiated between the two routers
+        # and is equal to the greater of this value and the transmit interval of the
+        # other router. If set, this value must be between 100 and 30000. The default is
+        # 300.
+        # Corresponds to the JSON property `minReceiveInterval`
+        # @return [Fixnum]
+        attr_accessor :min_receive_interval
+      
+        # The minimum interval, in milliseconds, between BFD control packets transmitted
+        # to the peer router. The actual value is negotiated between the two routers and
+        # is equal to the greater of this value and the corresponding receive interval
+        # of the other router. If set, this value must be between 100 and 30000. The
+        # default is 300.
+        # Corresponds to the JSON property `minTransmitInterval`
+        # @return [Fixnum]
+        attr_accessor :min_transmit_interval
+      
+        # The number of consecutive BFD packets that must be missed before BFD declares
+        # that a peer is unavailable. If set, the value must be a value between 2 and 16.
+        # The default is 3.
+        # Corresponds to the JSON property `multiplier`
+        # @return [Fixnum]
+        attr_accessor :multiplier
+      
+        # The BFD session initialization mode for this BGP peer. If set to ACTIVE, the
+        # Cloud Router will initiate the BFD session for this BGP peer. If set to
+        # PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD
+        # session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP
+        # peer. The default is PASSIVE.
+        # Corresponds to the JSON property `sessionInitializationMode`
+        # @return [String]
+        attr_accessor :session_initialization_mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @min_receive_interval = args[:min_receive_interval] if args.key?(:min_receive_interval)
+          @min_transmit_interval = args[:min_transmit_interval] if args.key?(:min_transmit_interval)
+          @multiplier = args[:multiplier] if args.key?(:multiplier)
+          @session_initialization_mode = args[:session_initialization_mode] if args.key?(:session_initialization_mode)
         end
       end
       
@@ -22761,8 +23169,12 @@ module Google
         # @return [String]
         attr_accessor :management_type
       
-        # Name of this interface entry. The name must be 1-63 characters long and comply
-        # with RFC1035.
+        # Name of this interface entry. The name must be 1-63 characters long, and
+        # comply with RFC1035. Specifically, the name must be 1-63 characters long and
+        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
+        # first character must be a lowercase letter, and all following characters must
+        # be a dash, lowercase letter, or digit, except the last character, which cannot
+        # be a dash.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -22906,6 +23318,13 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
+        # A list of URLs of the IP resources to be drained. These IPs must be valid
+        # static external IPs that have been assigned to the NAT. These IPs should be
+        # used for updating/patching a NAT only.
+        # Corresponds to the JSON property `drainNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ips
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -22990,6 +23409,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
@@ -23119,6 +23539,11 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Route>]
         attr_accessor :advertised_routes
       
+        # Next free: 15
+        # Corresponds to the JSON property `bfdStatus`
+        # @return [Google::Apis::ComputeBeta::BfdStatus]
+        attr_accessor :bfd_status
+      
         # IP address of the local BGP interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -23172,6 +23597,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @advertised_routes = args[:advertised_routes] if args.key?(:advertised_routes)
+          @bfd_status = args[:bfd_status] if args.key?(:bfd_status)
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @linked_vpn_tunnel = args[:linked_vpn_tunnel] if args.key?(:linked_vpn_tunnel)
           @name = args[:name] if args.key?(:name)
@@ -23192,6 +23618,18 @@ module Google
         # Corresponds to the JSON property `autoAllocatedNatIps`
         # @return [Array<String>]
         attr_accessor :auto_allocated_nat_ips
+      
+        # A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.
+        # 1", ?179.12.26.133?].
+        # Corresponds to the JSON property `drainAutoAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_auto_allocated_nat_ips
+      
+        # A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.
+        # 1", ?179.12.26.133?].
+        # Corresponds to the JSON property `drainUserAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_user_allocated_nat_ips
       
         # The number of extra IPs to allocate. This will be greater than 0 only if user-
         # specified IPs are NOT enough to allow all configured VMs to use NAT. This
@@ -23228,6 +23666,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_allocated_nat_ips = args[:auto_allocated_nat_ips] if args.key?(:auto_allocated_nat_ips)
+          @drain_auto_allocated_nat_ips = args[:drain_auto_allocated_nat_ips] if args.key?(:drain_auto_allocated_nat_ips)
+          @drain_user_allocated_nat_ips = args[:drain_user_allocated_nat_ips] if args.key?(:drain_user_allocated_nat_ips)
           @min_extra_nat_ips_needed = args[:min_extra_nat_ips_needed] if args.key?(:min_extra_nat_ips_needed)
           @name = args[:name] if args.key?(:name)
           @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
@@ -24456,7 +24896,8 @@ module Google
         # @return [String]
         attr_accessor :storage_bytes_status
       
-        # GCS bucket storage location of the snapshot (regional or multi-regional).
+        # Cloud Storage bucket storage location of the snapshot (regional or multi-
+        # regional).
         # Corresponds to the JSON property `storageLocations`
         # @return [Array<String>]
         attr_accessor :storage_locations
@@ -29981,12 +30422,25 @@ module Google
       class VmEndpointNatMappingsInterfaceNatMappings
         include Google::Apis::Core::Hashable
       
+        # List of all drain IP:port-range mappings assigned to this interface. These
+        # ranges are inclusive, that is, both the first and the last ports can be used
+        # for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `drainNatIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ip_port_ranges
+      
         # A list of all IP:port-range mappings assigned to this interface. These ranges
         # are inclusive, that is, both the first and the last ports can be used for NAT.
         # Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
         # Corresponds to the JSON property `natIpPortRanges`
         # @return [Array<String>]
         attr_accessor :nat_ip_port_ranges
+      
+        # Total number of drain ports across all NAT IPs allocated to this interface. It
+        # equals to the aggregated port number in the field drain_nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalDrainNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_drain_nat_ports
       
         # Total number of ports across all NAT IPs allocated to this interface. It
         # equals to the aggregated port number in the field nat_ip_port_ranges.
@@ -30011,7 +30465,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drain_nat_ip_port_ranges = args[:drain_nat_ip_port_ranges] if args.key?(:drain_nat_ip_port_ranges)
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
           @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
           @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)

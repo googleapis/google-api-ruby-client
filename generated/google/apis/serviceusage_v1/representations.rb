@@ -382,6 +382,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1079,6 +1085,14 @@ module Google
           hash :dimensions, as: 'dimensions'
           property :name, as: 'name'
           property :override_value, :numeric_string => true, as: 'overrideValue'
+        end
+      end
+      
+      class ServiceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :unique_id, as: 'uniqueId'
         end
       end
       

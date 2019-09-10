@@ -2631,7 +2631,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2980,12 +2985,13 @@ module Google
         # @return [Google::Apis::RunV1alpha1::Container]
         attr_accessor :container
       
+        # (Optional)
         # ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
-        # requests per container of the Revision. Values are:
-        # - `0` thread-safe, the system should manage the max concurrency. This is
-        # the default value.
-        # - `1` not-thread-safe. Single concurrency
-        # - `2-N` thread-safe, max concurrency of N
+        # requests per container instance of the Revision.
+        # Cloud Run fully managed: supported, defaults to 80
+        # Cloud Run on GKE: supported, defaults to 0, which means concurrency
+        # to the application is not limited, and the system decides the
+        # target concurrency for the autoscaler.
         # Corresponds to the JSON property `containerConcurrency`
         # @return [Fixnum]
         attr_accessor :container_concurrency
@@ -4321,6 +4327,19 @@ module Google
       class TriggerFilter
         include Google::Apis::Core::Hashable
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # Attributes filters events by exact match on event context attributes.
+        # Each key in the map is compared with the equivalent key in the event
+        # context. An event passes the filter if all values are equal to the
+        # specified values.
+        # Nested context attributes are not supported as keys.
+        # Only string values are supported.
+        # +optional
+        # Corresponds to the JSON property `attributes`
+        # @return [Hash<String,String>]
+        attr_accessor :attributes
+      
         # TriggerFilterSourceAndType filters events based on exact matches on the cloud
         # event's type and source attributes. Only exact matches will pass the filter.
         # Corresponds to the JSON property `sourceAndType`
@@ -4333,6 +4352,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
           @source_and_type = args[:source_and_type] if args.key?(:source_and_type)
         end
       end

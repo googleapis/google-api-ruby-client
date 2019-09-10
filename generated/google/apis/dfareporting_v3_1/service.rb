@@ -1190,6 +1190,8 @@ module Google
         # @param [Boolean] archived
         #   Select only archived landing pages. Don't set this field to select both
         #   archived and non-archived landing pages.
+        # @param [Array<Fixnum>, Fixnum] campaign_ids
+        #   Select only landing pages that are associated with these campaigns.
         # @param [Array<Fixnum>, Fixnum] ids
         #   Select only landing pages with these IDs.
         # @param [Fixnum] max_results
@@ -1229,13 +1231,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_advertiser_landing_pages(profile_id, advertiser_ids: nil, archived: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_advertiser_landing_pages(profile_id, advertiser_ids: nil, archived: nil, campaign_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, subaccount_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'userprofiles/{profileId}/advertiserLandingPages', options)
           command.response_representation = Google::Apis::DfareportingV3_1::AdvertiserLandingPagesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV3_1::AdvertiserLandingPagesListResponse
           command.params['profileId'] = profile_id unless profile_id.nil?
           command.query['advertiserIds'] = advertiser_ids unless advertiser_ids.nil?
           command.query['archived'] = archived unless archived.nil?
+          command.query['campaignIds'] = campaign_ids unless campaign_ids.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3527,105 +3530,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one directory site contact by ID.
-        # @param [Fixnum] profile_id
-        #   User profile ID associated with this request.
-        # @param [Fixnum] id
-        #   Directory site contact ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV3_1::DirectorySiteContact] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DfareportingV3_1::DirectorySiteContact]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_directory_site_contact(profile_id, id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts/{id}', options)
-          command.response_representation = Google::Apis::DfareportingV3_1::DirectorySiteContact::Representation
-          command.response_class = Google::Apis::DfareportingV3_1::DirectorySiteContact
-          command.params['profileId'] = profile_id unless profile_id.nil?
-          command.params['id'] = id unless id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Retrieves a list of directory site contacts, possibly filtered. This method
-        # supports paging.
-        # @param [Fixnum] profile_id
-        #   User profile ID associated with this request.
-        # @param [Array<Fixnum>, Fixnum] directory_site_ids
-        #   Select only directory site contacts with these directory site IDs. This is a
-        #   required field.
-        # @param [Array<Fixnum>, Fixnum] ids
-        #   Select only directory site contacts with these IDs.
-        # @param [Fixnum] max_results
-        #   Maximum number of results to return.
-        # @param [String] page_token
-        #   Value of the nextPageToken from the previous result page.
-        # @param [String] search_string
-        #   Allows searching for objects by name, ID or email. Wildcards (*) are allowed.
-        #   For example, "directory site contact*2015" will return objects with names like
-        #   "directory site contact June 2015", "directory site contact April 2015", or
-        #   simply "directory site contact 2015". Most of the searches also add wildcards
-        #   implicitly at the start and the end of the search string. For example, a
-        #   search string of "directory site contact" will match objects with name "my
-        #   directory site contact", "directory site contact 2015", or simply "directory
-        #   site contact".
-        # @param [String] sort_field
-        #   Field by which to sort the list.
-        # @param [String] sort_order
-        #   Order of sorted results.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DfareportingV3_1::DirectorySiteContactsListResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DfareportingV3_1::DirectorySiteContactsListResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_directory_site_contacts(profile_id, directory_site_ids: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'userprofiles/{profileId}/directorySiteContacts', options)
-          command.response_representation = Google::Apis::DfareportingV3_1::DirectorySiteContactsListResponse::Representation
-          command.response_class = Google::Apis::DfareportingV3_1::DirectorySiteContactsListResponse
-          command.params['profileId'] = profile_id unless profile_id.nil?
-          command.query['directorySiteIds'] = directory_site_ids unless directory_site_ids.nil?
-          command.query['ids'] = ids unless ids.nil?
-          command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['searchString'] = search_string unless search_string.nil?
-          command.query['sortField'] = sort_field unless sort_field.nil?
-          command.query['sortOrder'] = sort_order unless sort_order.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets one directory site by ID.
         # @param [Fixnum] profile_id
         #   User profile ID associated with this request.
@@ -3714,8 +3618,6 @@ module Google
         # @param [Boolean] active
         #   Select only active directory sites. Leave blank to retrieve both active and
         #   inactive directory sites.
-        # @param [Fixnum] country_id
-        #   Select only directory sites with this country ID.
         # @param [String] dfp_network_code
         #   Select only directory sites with this Ad Manager network code.
         # @param [Array<Fixnum>, Fixnum] ids
@@ -3724,8 +3626,6 @@ module Google
         #   Maximum number of results to return.
         # @param [String] page_token
         #   Value of the nextPageToken from the previous result page.
-        # @param [Fixnum] parent_id
-        #   Select only directory sites with this parent ID.
         # @param [String] search_string
         #   Allows searching for objects by name, ID or URL. Wildcards (*) are allowed.
         #   For example, "directory site*2015" will return objects with names like "
@@ -3757,7 +3657,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_directory_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, active: nil, country_id: nil, dfp_network_code: nil, ids: nil, max_results: nil, page_token: nil, parent_id: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_directory_sites(profile_id, accepts_in_stream_video_placements: nil, accepts_interstitial_placements: nil, accepts_publisher_paid_placements: nil, active: nil, dfp_network_code: nil, ids: nil, max_results: nil, page_token: nil, search_string: nil, sort_field: nil, sort_order: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'userprofiles/{profileId}/directorySites', options)
           command.response_representation = Google::Apis::DfareportingV3_1::DirectorySitesListResponse::Representation
           command.response_class = Google::Apis::DfareportingV3_1::DirectorySitesListResponse
@@ -3766,12 +3666,10 @@ module Google
           command.query['acceptsInterstitialPlacements'] = accepts_interstitial_placements unless accepts_interstitial_placements.nil?
           command.query['acceptsPublisherPaidPlacements'] = accepts_publisher_paid_placements unless accepts_publisher_paid_placements.nil?
           command.query['active'] = active unless active.nil?
-          command.query['countryId'] = country_id unless country_id.nil?
           command.query['dfpNetworkCode'] = dfp_network_code unless dfp_network_code.nil?
           command.query['ids'] = ids unless ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['parentId'] = parent_id unless parent_id.nil?
           command.query['searchString'] = search_string unless search_string.nil?
           command.query['sortField'] = sort_field unless sort_field.nil?
           command.query['sortOrder'] = sort_order unless sort_order.nil?

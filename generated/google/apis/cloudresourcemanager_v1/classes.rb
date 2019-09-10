@@ -607,9 +607,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The policy format version to be returned.
-        # Acceptable values are 0, 1, and 3.
-        # If the value is 0, or the field is omitted, policy format version 1 will be
-        # returned.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Requests for policies with any conditional bindings must specify version 3.
+        # Policies without any conditional bindings may specify any valid value or
+        # leave the field unset.
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1219,7 +1221,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Timestamp when the Organization was created. Assigned by the server.
-        # @OutputOnly
         # Corresponds to the JSON property `creationTime`
         # @return [String]
         attr_accessor :creation_time
@@ -1228,18 +1229,16 @@ module Google
         # GCP Console UI. This string is set by the server and cannot be
         # changed. The string will be set to the primary domain (for example,
         # "google.com") of the G Suite customer that owns the organization.
-        # @OutputOnly
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # The organization's current lifecycle state. Assigned by the server.
-        # @OutputOnly
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
       
-        # Output Only. The resource name of the organization. This is the
+        # Output only. The resource name of the organization. This is the
         # organization's relative path in the API. Its format is
         # "organizations/[organization_id]". For example, "organizations/1234".
         # Corresponds to the JSON property `name`
@@ -1355,7 +1354,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

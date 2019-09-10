@@ -1893,6 +1893,7 @@ module Google
       # 100 to COMPLETE
       # A Step can be updated until its state is set to COMPLETE at which points it
       # becomes immutable.
+      # Next tag: 23
       class Step
         include Google::Apis::Core::Hashable
       

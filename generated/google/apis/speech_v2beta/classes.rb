@@ -83,7 +83,7 @@ module Google
       end
       
       # The only message returned to the client by the `LongRunningRecognize` method.
-      # It contains the result as zero or more sequential `SpeechRecognitionResult`
+      # It contains the result as zero or more sequential SpeechRecognitionResult
       # messages. It is included in the `result.response` field of the `Operation`
       # returned by the `GetOperation` call of the `google::longrunning::Operations`
       # service.
@@ -224,7 +224,7 @@ module Google
         # Output only. For multi-channel audio, this is the channel number corresponding
         # to the
         # recognized result for the audio from that channel.
-        # For audio_channel_count = N, its output values can range from '1' to 'N'.
+        # For `audio_channel_count` = N, its output values can range from `1` to `N`.
         # Corresponds to the JSON property `channelTag`
         # @return [Fixnum]
         attr_accessor :channel_tag
@@ -315,7 +315,7 @@ module Google
       
         # Output only. A distinct integer value is assigned for every speaker within
         # the audio. This field specifies which one of those speakers was detected to
-        # have spoken this word. Value ranges from '1' to
+        # have spoken this word. Value ranges from `1` to
         # `diarization_speaker_count`. speaker_tag is set if
         # `enable_speaker_diarization` = `true` and only in the top alternative.
         # Corresponds to the JSON property `speakerTag`

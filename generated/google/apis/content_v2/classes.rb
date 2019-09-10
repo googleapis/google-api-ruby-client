@@ -4053,7 +4053,7 @@ module Google
         # @return [Google::Apis::ContentV2::OrderCustomer]
         attr_accessor :customer
       
-        # Delivery details for shipments.
+        # Delivery details for shipments of type delivery.
         # Corresponds to the JSON property `deliveryDetails`
         # @return [Google::Apis::ContentV2::OrderDeliveryDetails]
         attr_accessor :delivery_details
@@ -4311,6 +4311,12 @@ module Google
         # @return [String]
         attr_accessor :full_name
       
+        # Email address for receiving merchant issued value-added tax or invoice
+        # documentation of this order.
+        # Corresponds to the JSON property `invoiceReceivingEmail`
+        # @return [String]
+        attr_accessor :invoice_receiving_email
+      
         # Customer's marketing preferences. Contains the marketing opt-in information
         # that is current at the time that the merchant call. User preference selections
         # can change from one order to the next so preferences must be checked with
@@ -4328,6 +4334,7 @@ module Google
           @email = args[:email] if args.key?(:email)
           @explicit_marketing_preference = args[:explicit_marketing_preference] if args.key?(:explicit_marketing_preference)
           @full_name = args[:full_name] if args.key?(:full_name)
+          @invoice_receiving_email = args[:invoice_receiving_email] if args.key?(:invoice_receiving_email)
           @marketing_rights_info = args[:marketing_rights_info] if args.key?(:marketing_rights_info)
         end
       end
@@ -5187,7 +5194,7 @@ module Google
         # - "gls"
         # - "dpd"
         # - "bpost"
-        # - "colis priv�"
+        # - "colis prive"
         # - "boxtal"
         # - "geodis"
         # Corresponds to the JSON property `carrier`

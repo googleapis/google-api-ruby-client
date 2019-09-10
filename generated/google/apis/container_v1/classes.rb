@@ -604,6 +604,12 @@ module Google
         # @return [String]
         attr_accessor :desired_image_type
       
+        # IntraNodeVisibilityConfig contains the desired config of the intra-node
+        # visibility on this cluster.
+        # Corresponds to the JSON property `desiredIntraNodeVisibilityConfig`
+        # @return [Google::Apis::ContainerV1::IntraNodeVisibilityConfig]
+        attr_accessor :desired_intra_node_visibility_config
+      
         # The desired list of Google Compute Engine
         # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
@@ -694,6 +700,7 @@ module Google
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
+          @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
@@ -1225,6 +1232,27 @@ module Google
         end
       end
       
+      # IntraNodeVisibilityConfig contains the desired config of the intra-node
+      # visibility on this cluster.
+      class IntraNodeVisibilityConfig
+        include Google::Apis::Core::Hashable
+      
+        # Enables intra node visibility for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # Jwk is a JSON Web Key as specified in RFC 7517
       class Jwk
         include Google::Apis::Core::Hashable
@@ -1587,6 +1615,13 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # Whether Intra-node visibility is enabled for this cluster.
+        # This makes same node pod to pod traffic visible for VPC network.
+        # Corresponds to the JSON property `enableIntraNodeVisibility`
+        # @return [Boolean]
+        attr_accessor :enable_intra_node_visibility
+        alias_method :enable_intra_node_visibility?, :enable_intra_node_visibility
+      
         # Output only. The relative name of the Google Compute Engine
         # network(/compute/docs/networks-and-firewalls#networks) to which
         # the cluster is connected.
@@ -1608,6 +1643,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @network = args[:network] if args.key?(:network)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
         end

@@ -3309,10 +3309,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Duration of this limit in textual notation. Example: "100s", "24h", "1d".
-        # For duration longer than a day, only multiple of days is supported. We
-        # support only "100s" and "1d" for now. Additional support will be added in
-        # the future. "0" indicates indefinite duration.
+        # Duration of this limit in textual notation. Must be "100s" or "1d".
         # Used by group-based quotas only.
         # Corresponds to the JSON property `duration`
         # @return [String]
@@ -3445,6 +3442,35 @@ module Google
           @dimensions = args[:dimensions] if args.key?(:dimensions)
           @name = args[:name] if args.key?(:name)
           @override_value = args[:override_value] if args.key?(:override_value)
+        end
+      end
+      
+      # Service identity for a service. This is the identity that service producer
+      # should use to access consumer resources.
+      class ServiceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the service account that a service producer would use
+        # to access consumer resources.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The unique and stable id of the service account.
+        # https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#
+        # ServiceAccount
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
         end
       end
       

@@ -720,6 +720,9 @@ module Google
           property :form_factor, as: 'formFactor'
           property :id, as: 'id'
           property :name, as: 'name'
+          property :screen_density, as: 'screenDensity'
+          property :screen_x, as: 'screenX'
+          property :screen_y, as: 'screenY'
           collection :supported_version_ids, as: 'supportedVersionIds'
           collection :tags, as: 'tags'
         end

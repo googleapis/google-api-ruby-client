@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppTrackInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Application
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -397,9 +403,19 @@ module Google
         end
       end
       
+      class AppTrackInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :track_alias, as: 'trackAlias'
+          property :track_id, as: 'trackId'
+        end
+      end
+      
       class Application
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_tracks, as: 'appTracks', class: Google::Apis::AndroidmanagementV1::AppTrackInfo, decorator: Google::Apis::AndroidmanagementV1::AppTrackInfo::Representation
+      
           collection :managed_properties, as: 'managedProperties', class: Google::Apis::AndroidmanagementV1::ManagedProperty, decorator: Google::Apis::AndroidmanagementV1::ManagedProperty::Representation
       
           property :name, as: 'name'
@@ -429,6 +445,7 @@ module Google
       class ApplicationPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accessible_track_ids, as: 'accessibleTrackIds'
           property :default_permission_policy, as: 'defaultPermissionPolicy'
           collection :delegated_scopes, as: 'delegatedScopes'
           property :disabled, as: 'disabled'
@@ -917,6 +934,8 @@ module Google
           property :password_requirements, as: 'passwordRequirements', class: Google::Apis::AndroidmanagementV1::PasswordRequirements, decorator: Google::Apis::AndroidmanagementV1::PasswordRequirements::Representation
       
           collection :permission_grants, as: 'permissionGrants', class: Google::Apis::AndroidmanagementV1::PermissionGrant, decorator: Google::Apis::AndroidmanagementV1::PermissionGrant::Representation
+      
+          property :permitted_accessibility_services, as: 'permittedAccessibilityServices', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
       
           property :permitted_input_methods, as: 'permittedInputMethods', class: Google::Apis::AndroidmanagementV1::PackageNameList, decorator: Google::Apis::AndroidmanagementV1::PackageNameList::Representation
       

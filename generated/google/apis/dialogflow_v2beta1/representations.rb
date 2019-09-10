@@ -382,6 +382,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ExportDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1GenerateDocumentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -395,6 +419,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1InputDataset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1InputDatasets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1479,6 +1509,37 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ExportDocumentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsDestination, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsDestination::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GcsSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1GenerateDocumentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :knowledge_type, as: 'knowledgeType'
+          property :training_datasets, as: 'trainingDatasets', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDatasets, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDatasets::Representation
+      
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1507,6 +1568,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1InputDatasets
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dataset, as: 'dataset'
         end
       end
       
@@ -2090,6 +2158,8 @@ module Google
       class GoogleCloudDialogflowV2beta1ReloadDocumentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gcs_source, as: 'gcsSource', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsSource::Representation
+      
         end
       end
       

@@ -59,6 +59,9 @@ module Google
         #   Optional BCP-47 language code for localized infoType friendly
         #   names. If omitted, or if localized strings are not available,
         #   en-US strings will be returned.
+        # @param [String] location
+        #   The geographic location to list info types. Reserved for future
+        #   extensions.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -76,12 +79,49 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_info_types(filter: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_info_types(filter: nil, language_code: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/infoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
           command.query['filter'] = filter unless filter.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of the sensitive information types that the DLP API
+        # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
+        # learn more.
+        # @param [String] location
+        #   The geographic location to list info types. Reserved for future
+        #   extensions.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesRequest] google_privacy_dlp_v2_list_info_types_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def info_location_types(location, google_privacy_dlp_v2_list_info_types_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/locations/{location}/infoTypes', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesRequest::Representation
+          command.request_object = google_privacy_dlp_v2_list_info_types_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
+          command.params['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1705,6 +1745,90 @@ module Google
           command.request_object = google_privacy_dlp_v2_deidentify_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Finds potentially sensitive info in content.
+        # This method has limits on input size, processing time, and output size.
+        # When no InfoTypes or CustomInfoTypes are specified in this request, the
+        # system will automatically choose what detectors to run. By default this may
+        # be all types, but may change over time as detectors are updated.
+        # For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images
+        # and https://cloud.google.com/dlp/docs/inspecting-text,
+        # @param [String] parent
+        #   The parent resource name, for example projects/my-project-id.
+        # @param [String] location
+        #   The geographic location to process content inspection. Reserved for future
+        #   extensions.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def inspect_project_location_content(parent, location, google_privacy_dlp_v2_inspect_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/locations/{location}/content:inspect', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest::Representation
+          command.request_object = google_privacy_dlp_v2_inspect_content_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Re-identifies content that has been de-identified.
+        # See
+        # https://cloud.google.com/dlp/docs/pseudonymization#re-
+        # identification_in_free_text_code_example
+        # to learn more.
+        # @param [String] parent
+        #   The parent resource name.
+        # @param [String] location
+        #   The geographic location to process content reidentification.  Reserved for
+        #   future extensions.
+        # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reidentify_project_location_content(parent, location, google_privacy_dlp_v2_reidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/locations/{location}/content:reidentify', options)
+          command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest::Representation
+          command.request_object = google_privacy_dlp_v2_reidentify_content_request_object
+          command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse::Representation
+          command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse
           command.params['parent'] = parent unless parent.nil?
           command.params['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?

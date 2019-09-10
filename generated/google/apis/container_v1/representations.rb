@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IntraNodeVisibilityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Jwk
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -543,6 +549,8 @@ module Google
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :desired_image_type, as: 'desiredImageType'
+          property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
+      
           collection :desired_locations, as: 'desiredLocations'
           property :desired_logging_service, as: 'desiredLoggingService'
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1::MasterAuthorizedNetworksConfig::Representation
@@ -678,6 +686,13 @@ module Google
         end
       end
       
+      class IntraNodeVisibilityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class Jwk
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -790,6 +805,7 @@ module Google
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_intra_node_visibility, as: 'enableIntraNodeVisibility'
           property :network, as: 'network'
           property :subnetwork, as: 'subnetwork'
         end

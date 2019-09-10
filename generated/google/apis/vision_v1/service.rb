@@ -761,7 +761,7 @@ module Google
         # Possible errors:
         # * Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
         # @param [String] name
-        #   The resource name for the ProductSet to modify.
+        #   Required. The resource name for the ProductSet to modify.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
         # @param [Google::Apis::VisionV1::AddProductToProductSetRequest] add_product_to_product_set_request_object
@@ -799,7 +799,7 @@ module Google
         # * Returns INVALID_ARGUMENT if display_name is missing, or is longer than
         # 4096 characters.
         # @param [String] parent
-        #   The project in which the ProductSet should be created.
+        #   Required. The project in which the ProductSet should be created.
         #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
         # @param [Google::Apis::VisionV1::ProductSet] product_set_object
         # @param [String] product_set_id
@@ -841,7 +841,7 @@ module Google
         # ProductSet are not deleted.
         # The actual image files are not deleted from Google Cloud Storage.
         # @param [String] name
-        #   Resource name of the ProductSet to delete.
+        #   Required. Resource name of the ProductSet to delete.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
         # @param [String] fields
@@ -875,7 +875,7 @@ module Google
         # Possible errors:
         # * Returns NOT_FOUND if the ProductSet does not exist.
         # @param [String] name
-        #   Resource name of the ProductSet to get.
+        #   Required. Resource name of the ProductSet to get.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`
         # @param [String] fields
@@ -915,7 +915,7 @@ module Google
         # For the format of the csv file please see
         # ImportProductSetsGcsSource.csv_file_uri.
         # @param [String] parent
-        #   The project in which the ProductSets should be imported.
+        #   Required. The project in which the ProductSets should be imported.
         #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
         # @param [Google::Apis::VisionV1::ImportProductSetsRequest] import_product_sets_request_object
         # @param [String] fields
@@ -952,7 +952,7 @@ module Google
         # * Returns INVALID_ARGUMENT if page_size is greater than 100, or less
         # than 1.
         # @param [String] parent
-        #   The project from which ProductSets should be listed.
+        #   Required. The project from which ProductSets should be listed.
         #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
         # @param [Fixnum] page_size
         #   The maximum number of items to return. Default 10, maximum 100.
@@ -1036,7 +1036,7 @@ module Google
         
         # Removes a Product from the specified ProductSet.
         # @param [String] name
-        #   The resource name for the ProductSet to modify.
+        #   Required. The resource name for the ProductSet to modify.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
         # @param [Google::Apis::VisionV1::RemoveProductFromProductSetRequest] remove_product_from_product_set_request_object
@@ -1075,7 +1075,7 @@ module Google
         # Possible errors:
         # * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
         # @param [String] name
-        #   The ProductSet resource for which to retrieve Products.
+        #   Required. The ProductSet resource for which to retrieve Products.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
         # @param [Fixnum] page_size
@@ -1118,7 +1118,7 @@ module Google
         # * Returns INVALID_ARGUMENT if description is longer than 4096 characters.
         # * Returns INVALID_ARGUMENT if product_category is missing or invalid.
         # @param [String] parent
-        #   The project in which the Product should be created.
+        #   Required. The project in which the Product should be created.
         #   Format is
         #   `projects/PROJECT_ID/locations/LOC_ID`.
         # @param [Google::Apis::VisionV1::Product] product_object
@@ -1162,7 +1162,7 @@ module Google
         # search queries against ProductSets containing the product may still work
         # until all related caches are refreshed.
         # @param [String] name
-        #   Resource name of product to delete.
+        #   Required. Resource name of product to delete.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
         # @param [String] fields
@@ -1196,7 +1196,7 @@ module Google
         # Possible errors:
         # * Returns NOT_FOUND if the Product does not exist.
         # @param [String] name
-        #   Resource name of the Product to get.
+        #   Required. Resource name of the Product to get.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
         # @param [String] fields
@@ -1230,7 +1230,7 @@ module Google
         # Possible errors:
         # * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
         # @param [String] parent
-        #   The project OR ProductSet from which Products should be listed.
+        #   Required. The project OR ProductSet from which Products should be listed.
         #   Format:
         #   `projects/PROJECT_ID/locations/LOC_ID`
         # @param [Fixnum] page_size
@@ -1340,7 +1340,7 @@ module Google
         # progress and results of the request.
         # `Operation.metadata` contains `BatchOperationMetadata`. (progress)
         # @param [String] parent
-        #   The project and location in which the Products should be deleted.
+        #   Required. The project and location in which the Products should be deleted.
         #   Format is `projects/PROJECT_ID/locations/LOC_ID`.
         # @param [Google::Apis::VisionV1::PurgeProductsRequest] purge_products_request_object
         # @param [String] fields
@@ -1388,7 +1388,7 @@ module Google
         # compatible with the parent product's product_category is detected.
         # * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.
         # @param [String] parent
-        #   Resource name of the product in which to create the reference image.
+        #   Required. Resource name of the product in which to create the reference image.
         #   Format is
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
         # @param [Google::Apis::VisionV1::ReferenceImage] reference_image_object
@@ -1433,7 +1433,7 @@ module Google
         # caches are refreshed.
         # The actual image files are not deleted from Google Cloud Storage.
         # @param [String] name
-        #   The resource name of the reference image to delete.
+        #   Required. The resource name of the reference image to delete.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
         #   IMAGE_ID`
@@ -1468,7 +1468,7 @@ module Google
         # Possible errors:
         # * Returns NOT_FOUND if the specified image does not exist.
         # @param [String] name
-        #   The resource name of the ReferenceImage to get.
+        #   Required. The resource name of the ReferenceImage to get.
         #   Format is:
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/
         #   IMAGE_ID`.
@@ -1505,7 +1505,7 @@ module Google
         # * Returns INVALID_ARGUMENT if the page_size is greater than 100, or less
         # than 1.
         # @param [String] parent
-        #   Resource name of the product containing the reference images.
+        #   Required. Resource name of the product containing the reference images.
         #   Format is
         #   `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
         # @param [Fixnum] page_size

@@ -371,7 +371,7 @@ module Google
             # uniformBucketLevelAccess.enabled may be changed from true to false until the
             # locked time, after which the field is immutable.
             # Corresponds to the JSON property `lockedTime`
-            # @return [DateTime]
+            # @return [String]
             attr_accessor :locked_time
           
             def initialize(**args)
@@ -1794,6 +1794,11 @@ module Google
         # @return [String]
         attr_accessor :resource_id
       
+        # The IAM policy format version.
+        # Corresponds to the JSON property `version`
+        # @return [Fixnum]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1804,6 +1809,7 @@ module Google
           @etag = args[:etag] if args.key?(:etag)
           @kind = args[:kind] if args.key?(:kind)
           @resource_id = args[:resource_id] if args.key?(:resource_id)
+          @version = args[:version] if args.key?(:version)
         end
         
         # 

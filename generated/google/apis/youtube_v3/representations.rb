@@ -1806,6 +1806,7 @@ module Google
           property :nfrc_rating, as: 'nfrcRating'
           property :nfvcb_rating, as: 'nfvcbRating'
           property :nkclv_rating, as: 'nkclvRating'
+          property :nmc_rating, as: 'nmcRating'
           property :oflc_rating, as: 'oflcRating'
           property :pefilm_rating, as: 'pefilmRating'
           property :rcnof_rating, as: 'rcnofRating'

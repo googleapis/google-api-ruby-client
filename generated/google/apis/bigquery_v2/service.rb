@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'bigquery/v2/')
+          super('https://bigquery.googleapis.com/', 'bigquery/v2/')
           @batch_path = 'batch/bigquery/v2'
         end
         

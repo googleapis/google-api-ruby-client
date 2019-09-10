@@ -27,6 +27,16 @@ module Google
       class AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::InputConfig]
@@ -49,6 +59,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -1004,6 +1015,16 @@ module Google
       class GoogleCloudVisionV1p1beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1InputConfig]
@@ -1026,6 +1047,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -2221,6 +2243,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p1beta1ProductSearchResultsResult>]
@@ -2233,7 +2260,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -2798,6 +2865,16 @@ module Google
       class GoogleCloudVisionV1p2beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1InputConfig]
@@ -2820,6 +2897,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -4523,6 +4601,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p2beta1ProductSearchResultsResult>]
@@ -4535,7 +4618,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -5074,6 +5197,16 @@ module Google
       class GoogleCloudVisionV1p3beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1InputConfig]
@@ -5096,6 +5229,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -6357,6 +6491,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p3beta1ProductSearchResultsResult>]
@@ -6369,7 +6508,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -6932,6 +7111,16 @@ module Google
       class GoogleCloudVisionV1p4beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1InputConfig]
@@ -6954,6 +7143,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -8288,6 +8478,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p4beta1ProductSearchResultsResult>]
@@ -8300,7 +8495,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -8937,6 +9172,16 @@ module Google
       class GoogleCloudVisionV1p5beta1AnnotateFileResponse
         include Google::Apis::Core::Hashable
       
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `error`
+        # @return [Google::Apis::VisionV1p2beta1::Status]
+        attr_accessor :error
+      
         # The desired input location and metadata.
         # Corresponds to the JSON property `inputConfig`
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p5beta1InputConfig]
@@ -8959,6 +9204,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @error = args[:error] if args.key?(:error)
           @input_config = args[:input_config] if args.key?(:input_config)
           @responses = args[:responses] if args.key?(:responses)
           @total_pages = args[:total_pages] if args.key?(:total_pages)
@@ -10346,6 +10592,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p5beta1BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::GoogleCloudVisionV1p5beta1ProductSearchResultsResult>]
@@ -10358,7 +10609,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class GoogleCloudVisionV1p5beta1ProductSearchResultsObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       
@@ -11057,6 +11348,11 @@ module Google
         # @return [Google::Apis::VisionV1p2beta1::BoundingPoly]
         attr_accessor :bounding_poly
       
+        # List of generic predictions for the object in the bounding box.
+        # Corresponds to the JSON property `objectAnnotations`
+        # @return [Array<Google::Apis::VisionV1p2beta1::ObjectAnnotation>]
+        attr_accessor :object_annotations
+      
         # List of results, one for each product match.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::VisionV1p2beta1::Result>]
@@ -11069,6 +11365,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bounding_poly = args[:bounding_poly] if args.key?(:bounding_poly)
+          @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @results = args[:results] if args.key?(:results)
         end
       end
@@ -11363,6 +11660,45 @@ module Google
         def update!(**args)
           @x = args[:x] if args.key?(:x)
           @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # Prediction for what the object in the bounding box is.
+      class ObjectAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The BCP-47 language code, such as "en-US" or "sr-Latn". For more
+        # information, see
+        # http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Object ID that should align with EntityAnnotation mid.
+        # Corresponds to the JSON property `mid`
+        # @return [String]
+        attr_accessor :mid
+      
+        # Object name, expressed in its `language_code` language.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Score of the result. Range [0, 1].
+        # Corresponds to the JSON property `score`
+        # @return [Float]
+        attr_accessor :score
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @mid = args[:mid] if args.key?(:mid)
+          @name = args[:name] if args.key?(:name)
+          @score = args[:score] if args.key?(:score)
         end
       end
       

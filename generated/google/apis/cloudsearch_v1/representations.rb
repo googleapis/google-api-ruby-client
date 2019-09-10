@@ -1696,6 +1696,7 @@ module Google
           property :is_repeatable, as: 'isRepeatable'
           property :is_returnable, as: 'isReturnable'
           property :is_sortable, as: 'isSortable'
+          property :is_suggestable, as: 'isSuggestable'
           property :is_wildcard_searchable, as: 'isWildcardSearchable'
           property :name, as: 'name'
           property :object_property_options, as: 'objectPropertyOptions', class: Google::Apis::CloudsearchV1::ObjectPropertyOptions, decorator: Google::Apis::CloudsearchV1::ObjectPropertyOptions::Representation

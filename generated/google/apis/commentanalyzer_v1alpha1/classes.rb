@@ -23,6 +23,7 @@ module Google
     module CommentanalyzerV1alpha1
       
       # The comment analysis request message.
+      # LINT.IfChange
       class AnalyzeCommentRequest
         include Google::Apis::Core::Hashable
       

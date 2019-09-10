@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FeatureConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetJsonWebKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,7 +358,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PremiumConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PrivateClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseChannel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReleaseChannelConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,6 +503,12 @@ module Google
       end
       
       class StatusCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TierConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -696,6 +726,8 @@ module Google
           property :private_cluster, as: 'privateCluster'
           property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterConfig::Representation
       
+          property :release_channel, as: 'releaseChannel', class: Google::Apis::ContainerV1beta1::ReleaseChannel, decorator: Google::Apis::ContainerV1beta1::ReleaseChannel::Representation
+      
           hash :resource_labels, as: 'resourceLabels'
           property :resource_usage_export_config, as: 'resourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
@@ -827,6 +859,14 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class FeatureConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feature, as: 'feature'
+          property :tier, as: 'tier'
         end
       end
       
@@ -1197,6 +1237,16 @@ module Google
         end
       end
       
+      class PremiumConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :features, as: 'features', class: Google::Apis::ContainerV1beta1::FeatureConfig, decorator: Google::Apis::ContainerV1beta1::FeatureConfig::Representation
+      
+          collection :tiers, as: 'tiers', class: Google::Apis::ContainerV1beta1::TierConfig, decorator: Google::Apis::ContainerV1beta1::TierConfig::Representation
+      
+        end
+      end
+      
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1206,6 +1256,21 @@ module Google
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class ReleaseChannel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+        end
+      end
+      
+      class ReleaseChannelConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :channel, as: 'channel'
+          property :default_version, as: 'defaultVersion'
         end
       end
       
@@ -1250,8 +1315,12 @@ module Google
       class ServerConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :channels, as: 'channels', class: Google::Apis::ContainerV1beta1::ReleaseChannelConfig, decorator: Google::Apis::ContainerV1beta1::ReleaseChannelConfig::Representation
+      
           property :default_cluster_version, as: 'defaultClusterVersion'
           property :default_image_type, as: 'defaultImageType'
+          property :premium_config, as: 'premiumConfig', class: Google::Apis::ContainerV1beta1::PremiumConfig, decorator: Google::Apis::ContainerV1beta1::PremiumConfig::Representation
+      
           collection :valid_image_types, as: 'validImageTypes'
           collection :valid_master_versions, as: 'validMasterVersions'
           collection :valid_node_versions, as: 'validNodeVersions'
@@ -1432,6 +1501,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class TierConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :parent, as: 'parent'
+          property :tier, as: 'tier'
         end
       end
       

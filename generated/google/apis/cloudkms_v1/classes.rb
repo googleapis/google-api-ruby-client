@@ -86,12 +86,6 @@ module Google
       class AsymmetricSignResponse
         include Google::Apis::Core::Hashable
       
-        # The resource name of the CryptoKeyVersion used for signing. Check
-        # this field to verify that the intended resource was used for signing.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The created signature.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -104,7 +98,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @name = args[:name] if args.key?(:name)
           @signature = args[:signature] if args.key?(:signature)
         end
       end
@@ -1245,12 +1238,6 @@ module Google
         # @return [String]
         attr_accessor :algorithm
       
-        # The name of the CryptoKeyVersion public key.
-        # Provided here for verification.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         # The public key, encoded in PEM format. For more information, see the
         # [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
         # [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
@@ -1267,7 +1254,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @algorithm = args[:algorithm] if args.key?(:algorithm)
-          @name = args[:name] if args.key?(:name)
           @pem = args[:pem] if args.key?(:pem)
         end
       end

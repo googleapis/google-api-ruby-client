@@ -352,6 +352,13 @@ module Google
         # @return [String]
         attr_accessor :span_id
       
+        # Distinguishes between spans generated in a particular context. For example,
+        # two spans with the same name may be distinguished using `CLIENT` (caller)
+        # and `SERVER` (callee) to identify an RPC call.
+        # Corresponds to the JSON property `spanKind`
+        # @return [String]
+        attr_accessor :span_kind
+      
         # A call stack appearing in a trace.
         # Corresponds to the JSON property `stackTrace`
         # @return [Google::Apis::CloudtraceV2::StackTrace]
@@ -396,6 +403,7 @@ module Google
           @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
           @same_process_as_parent_span = args[:same_process_as_parent_span] if args.key?(:same_process_as_parent_span)
           @span_id = args[:span_id] if args.key?(:span_id)
+          @span_kind = args[:span_kind] if args.key?(:span_kind)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)

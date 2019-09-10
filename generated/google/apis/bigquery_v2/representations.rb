@@ -1160,8 +1160,11 @@ module Google
           collection :destination_uris, as: 'destinationUris'
           property :field_delimiter, as: 'fieldDelimiter'
           property :print_header, as: 'printHeader'
+          property :source_model, as: 'sourceModel', class: Google::Apis::BigqueryV2::ModelReference, decorator: Google::Apis::BigqueryV2::ModelReference::Representation
+      
           property :source_table, as: 'sourceTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
+          property :use_avro_logical_types, as: 'useAvroLogicalTypes'
         end
       end
       
@@ -1447,6 +1450,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :description, as: 'description'
+          property :encryption_configuration, as: 'encryptionConfiguration', class: Google::Apis::BigqueryV2::EncryptionConfiguration, decorator: Google::Apis::BigqueryV2::EncryptionConfiguration::Representation
+      
           property :etag, as: 'etag'
           property :expiration_time, :numeric_string => true, as: 'expirationTime'
           collection :feature_columns, as: 'featureColumns', class: Google::Apis::BigqueryV2::StandardSqlField, decorator: Google::Apis::BigqueryV2::StandardSqlField::Representation

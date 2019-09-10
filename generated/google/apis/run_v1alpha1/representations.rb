@@ -1620,6 +1620,7 @@ module Google
       class TriggerFilter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attributes, as: 'attributes'
           property :source_and_type, as: 'sourceAndType', class: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType, decorator: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType::Representation
       
         end

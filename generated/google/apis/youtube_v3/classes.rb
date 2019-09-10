@@ -2276,7 +2276,7 @@ module Google
       end
       
       # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-      # NEXT_ID: 71
+      # NEXT_ID: 72
       class ContentRating
         include Google::Apis::Core::Hashable
       
@@ -2598,6 +2598,11 @@ module Google
         # @return [String]
         attr_accessor :nkclv_rating
       
+        # 
+        # Corresponds to the JSON property `nmcRating`
+        # @return [String]
+        attr_accessor :nmc_rating
+      
         # The video's Office of Film and Literature Classification (OFLC - New Zealand)
         # rating.
         # Corresponds to the JSON property `oflcRating`
@@ -2726,6 +2731,7 @@ module Google
           @nfrc_rating = args[:nfrc_rating] if args.key?(:nfrc_rating)
           @nfvcb_rating = args[:nfvcb_rating] if args.key?(:nfvcb_rating)
           @nkclv_rating = args[:nkclv_rating] if args.key?(:nkclv_rating)
+          @nmc_rating = args[:nmc_rating] if args.key?(:nmc_rating)
           @oflc_rating = args[:oflc_rating] if args.key?(:oflc_rating)
           @pefilm_rating = args[:pefilm_rating] if args.key?(:pefilm_rating)
           @rcnof_rating = args[:rcnof_rating] if args.key?(:rcnof_rating)
@@ -7768,7 +7774,7 @@ module Google
         attr_accessor :caption
       
         # Ratings schemes. The country-specific ratings are mostly for movies and shows.
-        # NEXT_ID: 71
+        # NEXT_ID: 72
         # Corresponds to the JSON property `contentRating`
         # @return [Google::Apis::YoutubeV3::ContentRating]
         attr_accessor :content_rating

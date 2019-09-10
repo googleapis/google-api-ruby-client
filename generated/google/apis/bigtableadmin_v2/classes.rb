@@ -98,7 +98,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -110,7 +110,7 @@ module Google
       # ]
       # `,
       # `
-      # "service": "fooservice.googleapis.com"
+      # "service": "sampleservice.googleapis.com"
       # "audit_log_configs": [
       # `
       # "log_type": "DATA_READ",
@@ -118,16 +118,16 @@ module Google
       # `
       # "log_type": "DATA_WRITE",
       # "exempted_members": [
-      # "user:bar@gmail.com"
+      # "user:aliya@example.com"
       # ]
       # `
       # ]
       # `
       # ]
       # `
-      # For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
-      # logging. It also exempts foo@gmail.com from DATA_READ logging, and
-      # bar@gmail.com from DATA_WRITE logging.
+      # For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+      # logging. It also exempts jose@example.com from DATA_READ logging, and
+      # aliya@example.com from DATA_WRITE logging.
       class AuditConfig
         include Google::Apis::Core::Hashable
       
@@ -161,7 +161,7 @@ module Google
       # `
       # "log_type": "DATA_READ",
       # "exempted_members": [
-      # "user:foo@gmail.com"
+      # "user:jose@example.com"
       # ]
       # `,
       # `
@@ -170,7 +170,7 @@ module Google
       # ]
       # `
       # This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-      # foo@gmail.com from DATA_READ logging.
+      # jose@example.com from DATA_READ logging.
       class AuditLogConfig
         include Google::Apis::Core::Hashable
       
@@ -216,7 +216,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -346,8 +346,7 @@ module Google
       class ClusterState
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # The state of replication for the table in this cluster.
+        # Output only. The state of replication for the table in this cluster.
         # Corresponds to the JSON property `replicationState`
         # @return [String]
         attr_accessor :replication_state
@@ -759,12 +758,40 @@ module Google
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Encapsulates settings provided to GetIamPolicy.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::BigtableadminV2::GetPolicyOptions]
+        attr_accessor :options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
+      # Encapsulates settings provided to GetIamPolicy.
+      class GetPolicyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The policy format version to be returned.
+        # Acceptable values are 0, 1, and 3.
+        # If the value is 0, or the field is omitted, policy format version 1 will be
+        # returned.
+        # Corresponds to the JSON property `requestedPolicyVersion`
+        # @return [Fixnum]
+        attr_accessor :requested_policy_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
         end
       end
       
@@ -1310,7 +1337,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1493,8 +1520,7 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # Output only.
-        # Map from cluster ID to per-cluster table state.
+        # Output only. Map from cluster ID to per-cluster table state.
         # If it could not be determined whether or not the table has data in a
         # particular cluster (for example, if its zone is unavailable), then
         # there will be an entry for the cluster with UNKNOWN `replication_status`.
@@ -1519,8 +1545,7 @@ module Google
         # @return [String]
         attr_accessor :granularity
       
-        # Output only.
-        # The unique name of the table. Values are of the form
+        # Output only. The unique name of the table. Values are of the form
         # `projects/<project>/instances/<instance>/tables/_a-zA-Z0-9*`.
         # Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
         # Corresponds to the JSON property `name`

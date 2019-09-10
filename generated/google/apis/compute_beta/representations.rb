@@ -430,6 +430,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BfdPacket
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BfdStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BfdStatusPacketCounts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2482,6 +2500,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PacketIntervals
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PathMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3047,6 +3071,12 @@ module Google
       end
       
       class RouterBgpPeer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterBgpPeerBfd
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4724,6 +4754,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -5000,6 +5031,7 @@ module Google
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::BackendServiceLogConfig, decorator: Google::Apis::ComputeBeta::BackendServiceLogConfig::Representation
       
           property :name, as: 'name'
+          property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeBeta::OutlierDetection, decorator: Google::Apis::ComputeBeta::OutlierDetection::Representation
       
           property :port, as: 'port'
@@ -5155,6 +5187,58 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BfdPacket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication_present, as: 'authenticationPresent'
+          property :control_plane_independent, as: 'controlPlaneIndependent'
+          property :demand, as: 'demand'
+          property :diagnostic, as: 'diagnostic'
+          property :final, as: 'final'
+          property :length, as: 'length'
+          property :min_echo_rx_interval_ms, as: 'minEchoRxIntervalMs'
+          property :min_rx_interval_ms, as: 'minRxIntervalMs'
+          property :min_tx_interval_ms, as: 'minTxIntervalMs'
+          property :multiplier, as: 'multiplier'
+          property :multipoint, as: 'multipoint'
+          property :my_discriminator, as: 'myDiscriminator'
+          property :poll, as: 'poll'
+          property :state, as: 'state'
+          property :version, as: 'version'
+          property :your_discriminator, as: 'yourDiscriminator'
+        end
+      end
+      
+      class BfdStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bfd_session_initialization_mode, as: 'bfdSessionInitializationMode'
+          property :config_update_timestamp_micros, :numeric_string => true, as: 'configUpdateTimestampMicros'
+          property :control_packet_counts, as: 'controlPacketCounts', class: Google::Apis::ComputeBeta::BfdStatusPacketCounts, decorator: Google::Apis::ComputeBeta::BfdStatusPacketCounts::Representation
+      
+          collection :control_packet_intervals, as: 'controlPacketIntervals', class: Google::Apis::ComputeBeta::PacketIntervals, decorator: Google::Apis::ComputeBeta::PacketIntervals::Representation
+      
+          property :local_diagnostic, as: 'localDiagnostic'
+          property :local_state, as: 'localState'
+          property :negotiated_local_control_tx_interval_ms, as: 'negotiatedLocalControlTxIntervalMs'
+          property :rx_packet, as: 'rxPacket', class: Google::Apis::ComputeBeta::BfdPacket, decorator: Google::Apis::ComputeBeta::BfdPacket::Representation
+      
+          property :tx_packet, as: 'txPacket', class: Google::Apis::ComputeBeta::BfdPacket, decorator: Google::Apis::ComputeBeta::BfdPacket::Representation
+      
+          property :uptime_ms, :numeric_string => true, as: 'uptimeMs'
+        end
+      end
+      
+      class BfdStatusPacketCounts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_rx, as: 'numRx'
+          property :num_rx_rejected, as: 'numRxRejected'
+          property :num_rx_successful, as: 'numRxSuccessful'
+          property :num_tx, as: 'numTx'
         end
       end
       
@@ -8987,6 +9071,18 @@ module Google
         end
       end
       
+      class PacketIntervals
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :avg_ms, :numeric_string => true, as: 'avgMs'
+          property :duration, as: 'duration'
+          property :max_ms, :numeric_string => true, as: 'maxMs'
+          property :min_ms, :numeric_string => true, as: 'minMs'
+          property :num_intervals, :numeric_string => true, as: 'numIntervals'
+          property :type, as: 'type'
+        end
+      end
+      
       class PathMatcher
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9956,6 +10052,7 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeBeta::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeBeta::RouterAdvertisedIpRange::Representation
       
           property :asn, as: 'asn'
+          property :keepalive_interval, as: 'keepaliveInterval'
         end
       end
       
@@ -9967,12 +10064,25 @@ module Google
           collection :advertised_ip_ranges, as: 'advertisedIpRanges', class: Google::Apis::ComputeBeta::RouterAdvertisedIpRange, decorator: Google::Apis::ComputeBeta::RouterAdvertisedIpRange::Representation
       
           property :advertised_route_priority, as: 'advertisedRoutePriority'
+          property :bfd, as: 'bfd', class: Google::Apis::ComputeBeta::RouterBgpPeerBfd, decorator: Google::Apis::ComputeBeta::RouterBgpPeerBfd::Representation
+      
+          property :enable, as: 'enable'
           property :interface_name, as: 'interfaceName'
           property :ip_address, as: 'ipAddress'
           property :management_type, as: 'managementType'
           property :name, as: 'name'
           property :peer_asn, as: 'peerAsn'
           property :peer_ip_address, as: 'peerIpAddress'
+        end
+      end
+      
+      class RouterBgpPeerBfd
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :min_receive_interval, as: 'minReceiveInterval'
+          property :min_transmit_interval, as: 'minTransmitInterval'
+          property :multiplier, as: 'multiplier'
+          property :session_initialization_mode, as: 'sessionInitializationMode'
         end
       end
       
@@ -10022,6 +10132,7 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ips, as: 'drainNatIps'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::RouterNatLogConfig, decorator: Google::Apis::ComputeBeta::RouterNatLogConfig::Representation
       
@@ -10075,6 +10186,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :advertised_routes, as: 'advertisedRoutes', class: Google::Apis::ComputeBeta::Route, decorator: Google::Apis::ComputeBeta::Route::Representation
       
+          property :bfd_status, as: 'bfdStatus', class: Google::Apis::ComputeBeta::BfdStatus, decorator: Google::Apis::ComputeBeta::BfdStatus::Representation
+      
           property :ip_address, as: 'ipAddress'
           property :linked_vpn_tunnel, as: 'linkedVpnTunnel'
           property :name, as: 'name'
@@ -10091,6 +10204,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          collection :drain_auto_allocated_nat_ips, as: 'drainAutoAllocatedNatIps'
+          collection :drain_user_allocated_nat_ips, as: 'drainUserAllocatedNatIps'
           property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
           property :name, as: 'name'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
@@ -11850,7 +11965,9 @@ module Google
       class VmEndpointNatMappingsInterfaceNatMappings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'

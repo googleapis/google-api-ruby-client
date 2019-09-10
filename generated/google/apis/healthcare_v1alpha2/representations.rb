@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudHealthcareV1alpha2FhirRestExportResourcesErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudHealthcareV1alpha2FhirRestExportResourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -865,6 +871,16 @@ module Google
           property :dataset_uri, as: 'datasetUri'
           property :schema_config, as: 'schemaConfig', class: Google::Apis::HealthcareV1alpha2::SchemaConfig, decorator: Google::Apis::HealthcareV1alpha2::SchemaConfig::Representation
       
+        end
+      end
+      
+      class GoogleCloudHealthcareV1alpha2FhirRestExportResourcesErrorDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error_count, :numeric_string => true, as: 'errorCount'
+          property :fhir_store, as: 'fhirStore'
+          property :resource_count, :numeric_string => true, as: 'resourceCount'
+          property :success_count, :numeric_string => true, as: 'successCount'
         end
       end
       

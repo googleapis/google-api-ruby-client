@@ -1414,7 +1414,9 @@ module Google
           attr_accessor :can_download
           alias_method :can_download?, :can_download
         
-          # Whether the current user can edit this file.
+          # Whether the current user can edit this file. Other factors may limit the type
+          # of changes a user can make to a file. For example, see
+          # canChangeCopyRequiresWriterPermission or canModifyContent.
           # Corresponds to the JSON property `canEdit`
           # @return [Boolean]
           attr_accessor :can_edit
@@ -1426,6 +1428,12 @@ module Google
           # @return [Boolean]
           attr_accessor :can_list_children
           alias_method :can_list_children?, :can_list_children
+        
+          # Whether the current user can modify the content of this file.
+          # Corresponds to the JSON property `canModifyContent`
+          # @return [Boolean]
+          attr_accessor :can_modify_content
+          alias_method :can_modify_content?, :can_modify_content
         
           # Whether the current user can move children of this folder outside of the
           # shared drive. This is false when the item is not a folder. Only populated for
@@ -1571,6 +1579,7 @@ module Google
             @can_download = args[:can_download] if args.key?(:can_download)
             @can_edit = args[:can_edit] if args.key?(:can_edit)
             @can_list_children = args[:can_list_children] if args.key?(:can_list_children)
+            @can_modify_content = args[:can_modify_content] if args.key?(:can_modify_content)
             @can_move_children_out_of_drive = args[:can_move_children_out_of_drive] if args.key?(:can_move_children_out_of_drive)
             @can_move_children_out_of_team_drive = args[:can_move_children_out_of_team_drive] if args.key?(:can_move_children_out_of_team_drive)
             @can_move_children_within_drive = args[:can_move_children_within_drive] if args.key?(:can_move_children_within_drive)

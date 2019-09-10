@@ -414,6 +414,10 @@ module Google
         # Returns an IAM policy for the specified bucket.
         # @param [String] bucket
         #   Name of a bucket.
+        # @param [Fixnum] options_requested_policy_version
+        #   The IAM policy format version to be returned. If the
+        #   optionsRequestedPolicyVersion is for an older version that doesn't support
+        #   part of the requested IAM policy, the request fails.
         # @param [String] provisional_user_project
         #   The project to be billed for this request if the target bucket is requester-
         #   pays bucket.
@@ -438,11 +442,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_bucket_iam_policy(bucket, provisional_user_project: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_bucket_iam_policy(bucket, options_requested_policy_version: nil, provisional_user_project: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}/iam', options)
           command.response_representation = Google::Apis::StorageV1::Policy::Representation
           command.response_class = Google::Apis::StorageV1::Policy
           command.params['bucket'] = bucket unless bucket.nil?
+          command.query['optionsRequestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['provisionalUserProject'] = provisional_user_project unless provisional_user_project.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['fields'] = fields unless fields.nil?

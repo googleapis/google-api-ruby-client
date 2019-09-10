@@ -2803,6 +2803,290 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the specified externalVpnGateway.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] external_vpn_gateway
+        #   Name of the externalVpnGateways to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_external_vpn_gateway(project, external_vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['externalVpnGateway'] = external_vpn_gateway unless external_vpn_gateway.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified externalVpnGateway. Get a list of available
+        # externalVpnGateways by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] external_vpn_gateway
+        #   Name of the externalVpnGateway to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::ExternalVpnGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::ExternalVpnGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_external_vpn_gateway(project, external_vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/externalVpnGateways/{externalVpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeV1::ExternalVpnGateway::Representation
+          command.response_class = Google::Apis::ComputeV1::ExternalVpnGateway
+          command.params['project'] = project unless project.nil?
+          command.params['externalVpnGateway'] = external_vpn_gateway unless external_vpn_gateway.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a ExternalVpnGateway in the specified project using the data included
+        # in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::ExternalVpnGateway] external_vpn_gateway_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_external_vpn_gateway(project, external_vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways', options)
+          command.request_representation = Google::Apis::ComputeV1::ExternalVpnGateway::Representation
+          command.request_object = external_vpn_gateway_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of ExternalVpnGateway available to the specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::ExternalVpnGatewayList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::ExternalVpnGatewayList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_external_vpn_gateways(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/externalVpnGateways', options)
+          command.response_representation = Google::Apis::ComputeV1::ExternalVpnGatewayList::Representation
+          command.response_class = Google::Apis::ComputeV1::ExternalVpnGatewayList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on an ExternalVpnGateway. To learn more about labels, read the
+        # Labeling Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::GlobalSetLabelsRequest] global_set_labels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_external_vpn_gateway_labels(project, resource, global_set_labels_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalSetLabelsRequest::Representation
+          command.request_object = global_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_external_vpn_gateway_iam_permissions(project, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/externalVpnGateways/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified firewall.
         # @param [String] project
         #   Project ID for this request.
@@ -8986,6 +9270,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the Display config for a VM instance. You can only use this method on
+        # a stopped VM instance. This method supports PATCH semantics and uses the JSON
+        # merge patch format and processing rules.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance scoping this request.
+        # @param [Google::Apis::ComputeV1::DisplayDevice] display_device_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_instance_display_device(project, zone, instance, display_device_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/instances/{instance}/updateDisplayDevice', options)
+          command.request_representation = Google::Apis::ComputeV1::DisplayDevice::Representation
+          command.request_object = display_device_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates an instance's network interface. This method follows PATCH semantics.
         # @param [String] project
         #   Project ID for this request.
@@ -11370,6 +11710,59 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates the specified network peering with the data included in the request
+        # Only the following fields can be modified: NetworkPeering.export_custom_routes,
+        # and NetworkPeering.import_custom_routes
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network resource which the updated peering is belonging to.
+        # @param [Google::Apis::ComputeV1::NetworksUpdatePeeringRequest] networks_update_peering_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_network_peering(project, network, networks_update_peering_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{project}/global/networks/{network}/updatePeering', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworksUpdatePeeringRequest::Representation
+          command.request_object = networks_update_peering_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds specified number of nodes to the node group.
         # @param [String] project
         #   Project ID for this request.
@@ -11553,7 +11946,7 @@ module Google
         # @param [String] zone
         #   The name of the zone for this request.
         # @param [String] node_group
-        #   Name of the NodeGroup resource to delete.
+        #   Name of the NodeGroup resource whose nodes will be deleted.
         # @param [Google::Apis::ComputeV1::NodeGroupsDeleteNodesRequest] node_groups_delete_nodes_request_object
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
@@ -16215,7 +16608,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves all information of the specified reservation.
+        # Retrieves information about the specified reservation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -16346,7 +16739,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # A list all the reservations that have been configured for the specified
+        # A list of all the reservations that have been configured for the specified
         # project in specified zone.
         # @param [String] project
         #   Project ID for this request.
@@ -16421,7 +16814,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resizes the reservation (applicable to standalone reservations only)
+        # Resizes the reservation (applicable to standalone reservations only). For more
+        # information, read Modifying reservations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -19388,7 +19782,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of usable subnetworks.
+        # Retrieves an aggregated list of all usable subnetworks in the project. The
+        # list contains all of the subnetworks in the project and the subnetworks that
+        # were shared by a Shared VPC host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -22627,6 +23023,430 @@ module Google
           command.response_class = Google::Apis::ComputeV1::ValidateUrlMapsResponse
           command.params['project'] = project unless project.nil?
           command.params['urlMap'] = url_map unless url_map.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an aggregated list of VPN gateways.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::VpnGatewayAggregatedList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::VpnGatewayAggregatedList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def aggregated_vpn_gateway_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/aggregated/vpnGateways', options)
+          command.response_representation = Google::Apis::ComputeV1::VpnGatewayAggregatedList::Representation
+          command.response_class = Google::Apis::ComputeV1::VpnGatewayAggregatedList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified VPN gateway.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] vpn_gateway
+        #   Name of the VPN gateway to delete.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_vpn_gateway(project, region, vpn_gateway, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['vpnGateway'] = vpn_gateway unless vpn_gateway.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified VPN gateway. Gets a list of available VPN gateways by
+        # making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] vpn_gateway
+        #   Name of the VPN gateway to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::VpnGateway] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::VpnGateway]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_vpn_gateway(project, region, vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}', options)
+          command.response_representation = Google::Apis::ComputeV1::VpnGateway::Representation
+          command.response_class = Google::Apis::ComputeV1::VpnGateway
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['vpnGateway'] = vpn_gateway unless vpn_gateway.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the status for the specified VPN gateway.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] vpn_gateway
+        #   Name of the VPN gateway to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::VpnGatewaysGetStatusResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::VpnGatewaysGetStatusResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_vpn_gateway_status(project, region, vpn_gateway, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways/{vpnGateway}/getStatus', options)
+          command.response_representation = Google::Apis::ComputeV1::VpnGatewaysGetStatusResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::VpnGatewaysGetStatusResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['vpnGateway'] = vpn_gateway unless vpn_gateway.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a VPN gateway in the specified project and region using the data
+        # included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [Google::Apis::ComputeV1::VpnGateway] vpn_gateway_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_vpn_gateway(project, region, vpn_gateway_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways', options)
+          command.request_representation = Google::Apis::ComputeV1::VpnGateway::Representation
+          command.request_object = vpn_gateway_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of VPN gateways available to the specified project and region.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::VpnGatewayList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::VpnGatewayList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_vpn_gateways(project, region, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/vpnGateways', options)
+          command.response_representation = Google::Apis::ComputeV1::VpnGatewayList::Representation
+          command.response_class = Google::Apis::ComputeV1::VpnGatewayList
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the labels on a VpnGateway. To learn more about labels, read the Labeling
+        # Resources documentation.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::RegionSetLabelsRequest] region_set_labels_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_vpn_gateway_labels(project, region, resource, region_set_labels_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/setLabels', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionSetLabelsRequest::Representation
+          command.request_object = region_set_labels_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns permissions that a caller has on the specified resource.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region for this request.
+        # @param [String] resource
+        #   Name or id of the resource for this request.
+        # @param [Google::Apis::ComputeV1::TestPermissionsRequest] test_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::TestPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::TestPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_vpn_gateway_iam_permissions(project, region, resource, test_permissions_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/vpnGateways/{resource}/testIamPermissions', options)
+          command.request_representation = Google::Apis::ComputeV1::TestPermissionsRequest::Representation
+          command.request_object = test_permissions_request_object
+          command.response_representation = Google::Apis::ComputeV1::TestPermissionsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::TestPermissionsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

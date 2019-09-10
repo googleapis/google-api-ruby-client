@@ -26,32 +26,43 @@ module Google
       class SiteSummaryResponse
         include Google::Apis::Core::Hashable
       
-        # The status of the site reviewed for the abusive experiences.
+        # The site's Abusive Experience Report status.
         # Corresponds to the JSON property `abusiveStatus`
         # @return [String]
         attr_accessor :abusive_status
       
-        # The date on which enforcement begins.
+        # The time at which
+        # [enforcement](https://support.google.com/webtools/answer/7538608) against
+        # the site began or will begin.
+        # Not set when the
+        # filter_status
+        # is OFF.
         # Corresponds to the JSON property `enforcementTime`
         # @return [String]
         attr_accessor :enforcement_time
       
-        # The abusive experience enforcement status of the site.
+        # The site's [enforcement
+        # status](https://support.google.com/webtools/answer/7538608).
         # Corresponds to the JSON property `filterStatus`
         # @return [String]
         attr_accessor :filter_status
       
-        # The last time that the site changed status.
+        # The time at which the site's status last changed.
         # Corresponds to the JSON property `lastChangeTime`
         # @return [String]
         attr_accessor :last_change_time
       
-        # A link that leads to a full abusive experience report.
+        # A link to the full Abusive Experience Report for the site.
+        # Not set in
+        # ViolatingSitesResponse.
+        # Note that you must complete the [Search Console verification
+        # process](https://support.google.com/webmasters/answer/9008080) for the site
+        # before you can access the full report.
         # Corresponds to the JSON property `reportUrl`
         # @return [String]
         attr_accessor :report_url
       
-        # The name of the site reviewed.
+        # The name of the reviewed site, e.g. `google.com`.
         # Corresponds to the JSON property `reviewedSite`
         # @return [String]
         attr_accessor :reviewed_site
@@ -82,7 +93,7 @@ module Google
       class ViolatingSitesResponse
         include Google::Apis::Core::Hashable
       
-        # A list of summaries of violating sites.
+        # The list of violating sites.
         # Corresponds to the JSON property `violatingSites`
         # @return [Array<Google::Apis::AbusiveexperiencereportV1::SiteSummaryResponse>]
         attr_accessor :violating_sites

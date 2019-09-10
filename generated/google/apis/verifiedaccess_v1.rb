@@ -12,23 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appstate_v1/service.rb'
-require 'google/apis/appstate_v1/classes.rb'
-require 'google/apis/appstate_v1/representations.rb'
+require 'google/apis/verifiedaccess_v1/service.rb'
+require 'google/apis/verifiedaccess_v1/classes.rb'
+require 'google/apis/verifiedaccess_v1/representations.rb'
 
 module Google
   module Apis
-    # Google App State API
+    # Verified Access API
     #
-    # The Google App State API.
+    # API for Verified Access chrome extension to provide credential verification
+    # for chrome devices connecting to an enterprise network
     #
-    # @see https://developers.google.com/games/services/web/api/states
-    module AppstateV1
+    # @see https://www.google.com/work/chrome/
+    module VerifiedaccessV1
       VERSION = 'V1'
-      REVISION = '20180816'
+      REVISION = '20190718'
 
-      # View and manage your data for this application
-      AUTH_APPSTATE = 'https://www.googleapis.com/auth/appstate'
+      # Verify your enterprise credentials
+      AUTH_VERIFIEDACCESS = 'https://www.googleapis.com/auth/verifiedaccess'
     end
   end
 end

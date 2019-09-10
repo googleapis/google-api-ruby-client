@@ -1743,7 +1743,8 @@ module Google
         #   Name of the user in the instance.
         # @param [Google::Apis::SqladminV1beta4::User] user_object
         # @param [String] host
-        #   Host of the user in the instance.
+        #   Host of the user in the instance. For a MySQL instance, it's required; For a
+        #   PostgreSQL instance, it's optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

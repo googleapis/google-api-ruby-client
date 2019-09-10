@@ -169,6 +169,8 @@ module Google
         # If errors occur,
         # details field type is
         # DeidentifyErrorDetails.
+        # Errors are also logged to Stackdriver
+        # (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
         # @param [String] source_dataset
         #   Source dataset resource name. (e.g.,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id``).
@@ -1664,7 +1666,9 @@ module Google
         # be used to track the status of the export by calling
         # GetOperation.
         # Immediate fatal errors appear in the
-        # error field.
+        # error field, errors are also logged
+        # to Stackdriver (see [Viewing
+        # logs](/healthcare/docs/how-tos/stackdriver-logging)).
         # Otherwise, when the operation finishes, a detailed response of type
         # ExportResourcesResponse is returned in the
         # response field.
@@ -1839,10 +1843,11 @@ module Google
         # be used to track the status of the import by calling
         # GetOperation.
         # Immediate fatal errors appear in the
-        # error field.
-        # Otherwise, when the operation finishes, a detailed response of type
-        # ImportResourcesResponse is returned in the
-        # response field.
+        # error field, errors are also logged
+        # to Stackdriver (see [Viewing
+        # logs](/healthcare/docs/how-tos/stackdriver-logging)). Otherwise, when the
+        # operation finishes, a detailed response of type ImportResourcesResponse
+        # is returned in the response field.
         # The metadata field type for this
         # operation is OperationMetadata.
         # @param [String] name

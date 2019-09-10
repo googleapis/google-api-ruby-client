@@ -1274,7 +1274,11 @@ module Google
         # The following constraints apply when using `setIamPolicy()`:
         # + Project does not support `allUsers` and `allAuthenticatedUsers` as
         # `members` in a `Binding` of a `Policy`.
-        # + The owner role can be granted only to `user` and `serviceAccount`.
+        # + The owner role can be granted to a `user`, `serviceAccount`, or a group
+        # that is part of an organization. For example,
+        # group@myownpersonaldomain.com could be added as an owner to a project in
+        # the myownpersonaldomain.com organization, but not the examplepetstore.com
+        # organization.
         # + Service accounts can be made owners of a project directly
         # without any restrictions. However, to be added as an owner, a user must be
         # invited via Cloud Platform console and must accept the invitation.

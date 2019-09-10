@@ -1360,6 +1360,12 @@ module Google
         # @return [String]
         attr_accessor :kms_key_uri
       
+        # Optional. The name of the on-cluster Kerberos realm. If not specified, the
+        # uppercased domain of hostnames will be the realm.
+        # Corresponds to the JSON property `realm`
+        # @return [String]
+        attr_accessor :realm
+      
         # Required. The Cloud Storage URI of a KMS encrypted file containing the root
         # principal password.
         # Corresponds to the JSON property `rootPrincipalPasswordUri`
@@ -1401,6 +1407,7 @@ module Google
           @keystore_password_uri = args[:keystore_password_uri] if args.key?(:keystore_password_uri)
           @keystore_uri = args[:keystore_uri] if args.key?(:keystore_uri)
           @kms_key_uri = args[:kms_key_uri] if args.key?(:kms_key_uri)
+          @realm = args[:realm] if args.key?(:realm)
           @root_principal_password_uri = args[:root_principal_password_uri] if args.key?(:root_principal_password_uri)
           @tgt_lifetime_hours = args[:tgt_lifetime_hours] if args.key?(:tgt_lifetime_hours)
           @truststore_password_uri = args[:truststore_password_uri] if args.key?(:truststore_password_uri)

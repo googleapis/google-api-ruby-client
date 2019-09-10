@@ -2873,7 +2873,7 @@ module Google
         # @return [String]
         attr_accessor :image_replace_method
       
-        # The URL of the new image.
+        # The image URL.
         # The image is fetched once at insertion time and a copy is stored for
         # display inside the presentation. Images must be less than 50MB in size,
         # cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF

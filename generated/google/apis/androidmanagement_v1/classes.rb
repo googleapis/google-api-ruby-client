@@ -71,9 +71,41 @@ module Google
         end
       end
       
+      # Id to name association of a app track.
+      class AppTrackInfo
+        include Google::Apis::Core::Hashable
+      
+        # The track name associated with the trackId, set in the Play Console. The name
+        # is modifiable from Play Console.
+        # Corresponds to the JSON property `trackAlias`
+        # @return [String]
+        attr_accessor :track_alias
+      
+        # The unmodifiable unique track identifier, taken from the releaseTrackId in the
+        # URL of the Play Console page that displays the app’s track information.
+        # Corresponds to the JSON property `trackId`
+        # @return [String]
+        attr_accessor :track_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @track_alias = args[:track_alias] if args.key?(:track_alias)
+          @track_id = args[:track_id] if args.key?(:track_id)
+        end
+      end
+      
       # Information about an app.
       class Application
         include Google::Apis::Core::Hashable
+      
+        # Application tracks visible to the enterprise.
+        # Corresponds to the JSON property `appTracks`
+        # @return [Array<Google::Apis::AndroidmanagementV1::AppTrackInfo>]
+        attr_accessor :app_tracks
       
         # The set of managed properties available to be pre-configured for the app.
         # Corresponds to the JSON property `managedProperties`
@@ -102,6 +134,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @app_tracks = args[:app_tracks] if args.key?(:app_tracks)
           @managed_properties = args[:managed_properties] if args.key?(:managed_properties)
           @name = args[:name] if args.key?(:name)
           @permissions = args[:permissions] if args.key?(:permissions)
@@ -169,6 +202,15 @@ module Google
       # Policy for an individual app.
       class ApplicationPolicy
         include Google::Apis::Core::Hashable
+      
+        # List of the app’s track IDs that a device belonging to the enterprise can
+        # access. If the list contains multiple track IDs, devices receive the latest
+        # version among all accessible tracks. If the list contains no track IDs,
+        # devices only have access to the app’s production track. More details about
+        # each track are available in AppTrackInfo.
+        # Corresponds to the JSON property `accessibleTrackIds`
+        # @return [Array<String>]
+        attr_accessor :accessible_track_ids
       
         # The default policy for all permissions requested by the app. If specified,
         # this overrides the policy-level default_permission_policy which applies to all
@@ -249,6 +291,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accessible_track_ids = args[:accessible_track_ids] if args.key?(:accessible_track_ids)
           @default_permission_policy = args[:default_permission_policy] if args.key?(:default_permission_policy)
           @delegated_scopes = args[:delegated_scopes] if args.key?(:delegated_scopes)
           @disabled = args[:disabled] if args.key?(:disabled)
@@ -701,7 +744,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :previous_device_names
       
-        # . Device's security posture value that reflects how secure the device is.
+        # The security posture of the device, as determined by the current device state
+        # and the policies applied.
         # Corresponds to the JSON property `securityPosture`
         # @return [Google::Apis::AndroidmanagementV1::SecurityPosture]
         attr_accessor :security_posture
@@ -719,7 +763,9 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Map of selected system properties name and value related to the device.
+        # Map of selected system properties name and value related to the device. This
+        # information is only available if systemPropertiesEnabled is true in the device'
+        # s policy.
         # Corresponds to the JSON property `systemProperties`
         # @return [Hash<String,String>]
         attr_accessor :system_properties
@@ -2298,6 +2344,11 @@ module Google
         attr_accessor :permission_grants
       
         # A list of package names.
+        # Corresponds to the JSON property `permittedAccessibilityServices`
+        # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
+        attr_accessor :permitted_accessibility_services
+      
+        # A list of package names.
         # Corresponds to the JSON property `permittedInputMethods`
         # @return [Google::Apis::AndroidmanagementV1::PackageNameList]
         attr_accessor :permitted_input_methods
@@ -2528,6 +2579,7 @@ module Google
           @password_policies = args[:password_policies] if args.key?(:password_policies)
           @password_requirements = args[:password_requirements] if args.key?(:password_requirements)
           @permission_grants = args[:permission_grants] if args.key?(:permission_grants)
+          @permitted_accessibility_services = args[:permitted_accessibility_services] if args.key?(:permitted_accessibility_services)
           @permitted_input_methods = args[:permitted_input_methods] if args.key?(:permitted_input_methods)
           @persistent_preferred_activities = args[:persistent_preferred_activities] if args.key?(:persistent_preferred_activities)
           @play_store_mode = args[:play_store_mode] if args.key?(:play_store_mode)
@@ -2596,17 +2648,18 @@ module Google
         end
       end
       
-      # Detail that provides further information if the device is not in the most
-      # secure state.
+      # Additional details regarding the security posture of the device.
       class PostureDetail
         include Google::Apis::Core::Hashable
       
-        # Corresponding pieces of advice to mitigate the security risk.
+        # Corresponding admin-facing advice to mitigate this security risk and improve
+        # the security posture of the device.
         # Corresponds to the JSON property `advice`
         # @return [Array<Google::Apis::AndroidmanagementV1::UserFacingMessage>]
         attr_accessor :advice
       
-        # The risk that makes the device not in the most secure state.
+        # A specific security risk that negatively affects the security posture of the
+        # device.
         # Corresponds to the JSON property `securityRisk`
         # @return [String]
         attr_accessor :security_risk
@@ -2692,7 +2745,8 @@ module Google
         end
       end
       
-      # . Device's security posture value that reflects how secure the device is.
+      # The security posture of the device, as determined by the current device state
+      # and the policies applied.
       class SecurityPosture
         include Google::Apis::Core::Hashable
       
@@ -2701,8 +2755,7 @@ module Google
         # @return [String]
         attr_accessor :device_posture
       
-        # Details that provide further information if the device is not in the most
-        # secure state.
+        # Additional details regarding the security posture of the device.
         # Corresponds to the JSON property `postureDetails`
         # @return [Array<Google::Apis::AndroidmanagementV1::PostureDetail>]
         attr_accessor :posture_details

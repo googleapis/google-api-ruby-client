@@ -2846,6 +2846,7 @@ module Google
           property :email, as: 'email'
           property :explicit_marketing_preference, as: 'explicitMarketingPreference'
           property :full_name, as: 'fullName'
+          property :invoice_receiving_email, as: 'invoiceReceivingEmail'
           property :marketing_rights_info, as: 'marketingRightsInfo', class: Google::Apis::ContentV2::OrderCustomerMarketingRightsInfo, decorator: Google::Apis::ContentV2::OrderCustomerMarketingRightsInfo::Representation
       
         end

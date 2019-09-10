@@ -2894,6 +2894,12 @@ module Google
         attr_accessor :is_sortable
         alias_method :is_sortable?, :is_sortable
       
+        # Indicates that the property can be used for generating query suggestions.
+        # Corresponds to the JSON property `isSuggestable`
+        # @return [Boolean]
+        attr_accessor :is_suggestable
+        alias_method :is_suggestable?, :is_suggestable
+      
         # Indicates that users can perform wildcard search for this
         # property. Only supported for Text properties. IsReturnable must be true to
         # set this option. In a given datasource maximum of 5 properties can be
@@ -2951,6 +2957,7 @@ module Google
           @is_repeatable = args[:is_repeatable] if args.key?(:is_repeatable)
           @is_returnable = args[:is_returnable] if args.key?(:is_returnable)
           @is_sortable = args[:is_sortable] if args.key?(:is_sortable)
+          @is_suggestable = args[:is_suggestable] if args.key?(:is_suggestable)
           @is_wildcard_searchable = args[:is_wildcard_searchable] if args.key?(:is_wildcard_searchable)
           @name = args[:name] if args.key?(:name)
           @object_property_options = args[:object_property_options] if args.key?(:object_property_options)
@@ -3101,8 +3108,10 @@ module Google
         # @return [String]
         attr_accessor :interpretation_type
       
-        # The interpretation of the query used in search. For example, query "email
-        # from john" will be interpreted as "from:john source:mail"
+        # The interpretation of the query used in search. For example, queries with
+        # natural language intent like "email from john" will be interpreted as
+        # "from:john source:mail". This field will not be filled when the reason is
+        # NO_RESULTS_FOUND_FOR_USER_QUERY.
         # Corresponds to the JSON property `interpretedQuery`
         # @return [String]
         attr_accessor :interpreted_query

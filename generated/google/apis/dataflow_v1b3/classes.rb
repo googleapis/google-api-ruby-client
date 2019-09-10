@@ -836,19 +836,6 @@ module Google
         end
       end
       
-      # Response from deleting a snapshot.
-      class DeleteSnapshotResponse
-        include Google::Apis::Core::Hashable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-        end
-      end
-      
       # Specification of one of the bundles produced as a result of splitting
       # a Source (e.g. when executing a SourceSplitRequest, or when
       # splitting an active task using WorkItemStatus.dynamic_source_split),
@@ -2404,25 +2391,6 @@ module Google
         end
       end
       
-      # List of snapshots.
-      class ListSnapshotsResponse
-        include Google::Apis::Core::Hashable
-      
-        # Returned snapshots.
-        # Corresponds to the JSON property `snapshots`
-        # @return [Array<Google::Apis::DataflowV1b3::Snapshot>]
-        attr_accessor :snapshots
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @snapshots = args[:snapshots] if args.key?(:snapshots)
-        end
-      end
-      
       # MapTask consists of an ordered set of instructions, each of which
       # describes one particular low-level operation for the worker to
       # perform in order to accomplish the MapTask's WorkItem.
@@ -3392,6 +3360,14 @@ module Google
         # @return [String]
         attr_accessor :temp_location
       
+        # Optional. Specifies whether worker pools should be started with private IP
+        # addresses.
+        # False by default.
+        # Corresponds to the JSON property `usePrivateIps`
+        # @return [Boolean]
+        attr_accessor :use_private_ips
+        alias_method :use_private_ips?, :use_private_ips
+      
         # The Compute Engine [availability
         # zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
         # for launching worker instances to run your pipeline.
@@ -3416,6 +3392,7 @@ module Google
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
+          @use_private_ips = args[:use_private_ips] if args.key?(:use_private_ips)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -3708,80 +3685,6 @@ module Google
         def update!(**args)
           @codec = args[:codec] if args.key?(:codec)
           @spec = args[:spec] if args.key?(:spec)
-        end
-      end
-      
-      # Represents a snapshot of a job.
-      class Snapshot
-        include Google::Apis::Core::Hashable
-      
-        # The time this snapshot was created.
-        # Corresponds to the JSON property `creationTime`
-        # @return [String]
-        attr_accessor :creation_time
-      
-        # The unique ID of this snapshot.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The project this snapshot belongs to.
-        # Corresponds to the JSON property `projectId`
-        # @return [String]
-        attr_accessor :project_id
-      
-        # The job this snapshot was created from.
-        # Corresponds to the JSON property `sourceJobId`
-        # @return [String]
-        attr_accessor :source_job_id
-      
-        # State of the snapshot.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        # The time after which this snapshot will be automatically deleted.
-        # Corresponds to the JSON property `ttl`
-        # @return [String]
-        attr_accessor :ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @creation_time = args[:creation_time] if args.key?(:creation_time)
-          @id = args[:id] if args.key?(:id)
-          @project_id = args[:project_id] if args.key?(:project_id)
-          @source_job_id = args[:source_job_id] if args.key?(:source_job_id)
-          @state = args[:state] if args.key?(:state)
-          @ttl = args[:ttl] if args.key?(:ttl)
-        end
-      end
-      
-      # Request to create a snapshot of a job.
-      class SnapshotJobRequest
-        include Google::Apis::Core::Hashable
-      
-        # The location that contains this job.
-        # Corresponds to the JSON property `location`
-        # @return [String]
-        attr_accessor :location
-      
-        # TTL for the snapshot.
-        # Corresponds to the JSON property `ttl`
-        # @return [String]
-        attr_accessor :ttl
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @location = args[:location] if args.key?(:location)
-          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       
@@ -4567,6 +4470,16 @@ module Google
       class StreamingConfigTask
         include Google::Apis::Core::Hashable
       
+        # Chunk size for commit streams from the harness to windmill.
+        # Corresponds to the JSON property `commitStreamChunkSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :commit_stream_chunk_size_bytes
+      
+        # Chunk size for get data streams from the harness to windmill.
+        # Corresponds to the JSON property `getDataStreamChunkSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :get_data_stream_chunk_size_bytes
+      
         # Maximum size for work item commit supported windmill storage layer.
         # Corresponds to the JSON property `maxWorkItemCommitBytes`
         # @return [Fixnum]
@@ -4602,6 +4515,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @commit_stream_chunk_size_bytes = args[:commit_stream_chunk_size_bytes] if args.key?(:commit_stream_chunk_size_bytes)
+          @get_data_stream_chunk_size_bytes = args[:get_data_stream_chunk_size_bytes] if args.key?(:get_data_stream_chunk_size_bytes)
           @max_work_item_commit_bytes = args[:max_work_item_commit_bytes] if args.key?(:max_work_item_commit_bytes)
           @streaming_computation_configs = args[:streaming_computation_configs] if args.key?(:streaming_computation_configs)
           @user_step_to_state_family_name_map = args[:user_step_to_state_family_name_map] if args.key?(:user_step_to_state_family_name_map)

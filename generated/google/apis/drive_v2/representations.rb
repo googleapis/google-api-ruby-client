@@ -869,6 +869,7 @@ module Google
             property :can_download, as: 'canDownload'
             property :can_edit, as: 'canEdit'
             property :can_list_children, as: 'canListChildren'
+            property :can_modify_content, as: 'canModifyContent'
             property :can_move_children_out_of_drive, as: 'canMoveChildrenOutOfDrive'
             property :can_move_children_out_of_team_drive, as: 'canMoveChildrenOutOfTeamDrive'
             property :can_move_children_within_drive, as: 'canMoveChildrenWithinDrive'

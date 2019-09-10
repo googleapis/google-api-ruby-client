@@ -1870,9 +1870,9 @@ module Google
       class GoogleSheetsOptions
         include Google::Apis::Core::Hashable
       
-        # [Beta] [Optional] Range of a sheet to query from. Only used when non-empty.
-        # Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example:
-        # sheet1!A1:B20
+        # [Optional] Range of a sheet to query from. Only used when non-empty. Typical
+        # format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!
+        # A1:B20
         # Corresponds to the JSON property `range`
         # @return [String]
         attr_accessor :range
@@ -2197,10 +2197,24 @@ module Google
         attr_accessor :print_header
         alias_method :print_header?, :print_header
       
-        # [Required] A reference to the table being exported.
+        # A reference to the model being exported.
+        # Corresponds to the JSON property `sourceModel`
+        # @return [Google::Apis::BigqueryV2::ModelReference]
+        attr_accessor :source_model
+      
+        # A reference to the table being exported.
         # Corresponds to the JSON property `sourceTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :source_table
+      
+        # [Optional] If destinationFormat is set to "AVRO", this flag indicates whether
+        # to enable extracting applicable column types (such as TIMESTAMP) to their
+        # corresponding AVRO logical types (timestamp-micros), instead of only using
+        # their raw types (avro-long).
+        # Corresponds to the JSON property `useAvroLogicalTypes`
+        # @return [Boolean]
+        attr_accessor :use_avro_logical_types
+        alias_method :use_avro_logical_types?, :use_avro_logical_types
       
         def initialize(**args)
            update!(**args)
@@ -2214,7 +2228,9 @@ module Google
           @destination_uris = args[:destination_uris] if args.key?(:destination_uris)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
           @print_header = args[:print_header] if args.key?(:print_header)
+          @source_model = args[:source_model] if args.key?(:source_model)
           @source_table = args[:source_table] if args.key?(:source_table)
+          @use_avro_logical_types = args[:use_avro_logical_types] if args.key?(:use_avro_logical_types)
         end
       end
       
@@ -3456,6 +3472,13 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Custom encryption configuration (e.g., Cloud KMS keys). This shows the
+        # encryption configuration of the model data while stored in BigQuery
+        # storage.
+        # Corresponds to the JSON property `encryptionConfiguration`
+        # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
+        attr_accessor :encryption_configuration
+      
         # Output only. A hash of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -3508,7 +3531,7 @@ module Google
         # @return [String]
         attr_accessor :location
       
-        # Id path of a model.
+        # Required. Unique identifier for this model.
         # Corresponds to the JSON property `modelReference`
         # @return [Google::Apis::BigqueryV2::ModelReference]
         attr_accessor :model_reference
@@ -3532,6 +3555,7 @@ module Google
         def update!(**args)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @description = args[:description] if args.key?(:description)
+          @encryption_configuration = args[:encryption_configuration] if args.key?(:encryption_configuration)
           @etag = args[:etag] if args.key?(:etag)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
           @feature_columns = args[:feature_columns] if args.key?(:feature_columns)
@@ -3609,7 +3633,7 @@ module Google
         end
       end
       
-      # Id path of a model.
+      # 
       class ModelReference
         include Google::Apis::Core::Hashable
       
@@ -3618,9 +3642,8 @@ module Google
         # @return [String]
         attr_accessor :dataset_id
       
-        # [Required] The ID of the model. The ID must contain only
-        # letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
-        # length is 1,024 characters.
+        # [Required] The ID of the model. The ID must contain only letters (a-z, A-Z),
+        # numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         # Corresponds to the JSON property `modelId`
         # @return [String]
         attr_accessor :model_id

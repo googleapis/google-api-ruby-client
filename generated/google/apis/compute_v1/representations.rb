@@ -676,6 +676,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisplayDevice
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DistributionPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -690,6 +696,36 @@ module Google
       
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExternalVpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1894,6 +1930,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksUpdatePeeringRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3088,6 +3130,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SubnetworkLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubnetworkSecondaryRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3628,6 +3676,102 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpnGateway
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusHighAvailabilityRequirementState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusTunnel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayStatusVpnConnection
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewaysGetStatusResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpnGatewaysScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpnTunnel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4084,6 +4228,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -4958,6 +5103,13 @@ module Google
         end
       end
       
+      class DisplayDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_display, as: 'enableDisplay'
+        end
+      end
+      
       class DistributionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4980,6 +5132,64 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExternalVpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          collection :interfaces, as: 'interfaces', class: Google::Apis::ComputeV1::ExternalVpnGatewayInterface, decorator: Google::Apis::ComputeV1::ExternalVpnGatewayInterface::Representation
+      
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :redundancy_type, as: 'redundancyType'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ExternalVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class ExternalVpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ExternalVpnGateway, decorator: Google::Apis::ComputeV1::ExternalVpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ExternalVpnGatewayList::Warning, decorator: Google::Apis::ComputeV1::ExternalVpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ExternalVpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeV1::ExternalVpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -5587,6 +5797,8 @@ module Google
           property :deletion_protection, as: 'deletionProtection'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeV1::AttachedDisk, decorator: Google::Apis::ComputeV1::AttachedDisk::Representation
+      
+          property :display_device, as: 'displayDevice', class: Google::Apis::ComputeV1::DisplayDevice, decorator: Google::Apis::ComputeV1::DisplayDevice::Representation
       
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
@@ -7208,6 +7420,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_create_routes, as: 'autoCreateRoutes'
           property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
+          property :export_custom_routes, as: 'exportCustomRoutes'
+          property :import_custom_routes, as: 'importCustomRoutes'
           property :name, as: 'name'
           property :network, as: 'network'
           property :state, as: 'state'
@@ -7237,6 +7451,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+        end
+      end
+      
+      class NetworksUpdatePeeringRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_peering, as: 'networkPeering', class: Google::Apis::ComputeV1::NetworkPeering, decorator: Google::Apis::ComputeV1::NetworkPeering::Representation
+      
         end
       end
       
@@ -9297,6 +9519,8 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::SubnetworkLogConfig, decorator: Google::Apis::ComputeV1::SubnetworkLogConfig::Representation
+      
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
@@ -9368,6 +9592,16 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SubnetworkLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregation_interval, as: 'aggregationInterval'
+          property :enable, as: 'enable'
+          property :flow_sampling, as: 'flowSampling'
+          property :metadata, as: 'metadata'
         end
       end
       
@@ -10281,6 +10515,169 @@ module Google
         end
       end
       
+      class VpnGateway
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+          collection :vpn_interfaces, as: 'vpnInterfaces', class: Google::Apis::ComputeV1::VpnGatewayVpnGatewayInterface, decorator: Google::Apis::ComputeV1::VpnGatewayVpnGatewayInterface::Representation
+      
+        end
+      end
+      
+      class VpnGatewayAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::VpnGatewaysScopedList, decorator: Google::Apis::ComputeV1::VpnGatewaysScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning, decorator: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnGatewayAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::VpnGateway, decorator: Google::Apis::ComputeV1::VpnGateway::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnGatewayList::Warning, decorator: Google::Apis::ComputeV1::VpnGatewayList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnGatewayList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnGatewayList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class VpnGatewayStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_connections, as: 'vpnConnections', class: Google::Apis::ComputeV1::VpnGatewayStatusVpnConnection, decorator: Google::Apis::ComputeV1::VpnGatewayStatusVpnConnection::Representation
+      
+        end
+      end
+      
+      class VpnGatewayStatusHighAvailabilityRequirementState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          property :unsatisfied_reason, as: 'unsatisfiedReason'
+        end
+      end
+      
+      class VpnGatewayStatusTunnel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :local_gateway_interface, as: 'localGatewayInterface'
+          property :peer_gateway_interface, as: 'peerGatewayInterface'
+          property :tunnel_url, as: 'tunnelUrl'
+        end
+      end
+      
+      class VpnGatewayStatusVpnConnection
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :peer_external_gateway, as: 'peerExternalGateway'
+          property :peer_gcp_gateway, as: 'peerGcpGateway'
+          property :state, as: 'state', class: Google::Apis::ComputeV1::VpnGatewayStatusHighAvailabilityRequirementState, decorator: Google::Apis::ComputeV1::VpnGatewayStatusHighAvailabilityRequirementState::Representation
+      
+          collection :tunnels, as: 'tunnels', class: Google::Apis::ComputeV1::VpnGatewayStatusTunnel, decorator: Google::Apis::ComputeV1::VpnGatewayStatusTunnel::Representation
+      
+        end
+      end
+      
+      class VpnGatewayVpnGatewayInterface
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :ip_address, as: 'ipAddress'
+        end
+      end
+      
+      class VpnGatewaysGetStatusResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :result, as: 'result', class: Google::Apis::ComputeV1::VpnGatewayStatus, decorator: Google::Apis::ComputeV1::VpnGatewayStatus::Representation
+      
+        end
+      end
+      
+      class VpnGatewaysScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :vpn_gateways, as: 'vpnGateways', class: Google::Apis::ComputeV1::VpnGateway, decorator: Google::Apis::ComputeV1::VpnGateway::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::VpnGatewaysScopedList::Warning, decorator: Google::Apis::ComputeV1::VpnGatewaysScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::VpnGatewaysScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::VpnGatewaysScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class VpnTunnel
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10292,6 +10689,9 @@ module Google
           property :kind, as: 'kind'
           collection :local_traffic_selector, as: 'localTrafficSelector'
           property :name, as: 'name'
+          property :peer_external_gateway, as: 'peerExternalGateway'
+          property :peer_external_gateway_interface, as: 'peerExternalGatewayInterface'
+          property :peer_gcp_gateway, as: 'peerGcpGateway'
           property :peer_ip, as: 'peerIp'
           property :region, as: 'region'
           collection :remote_traffic_selector, as: 'remoteTrafficSelector'
@@ -10301,6 +10701,8 @@ module Google
           property :shared_secret_hash, as: 'sharedSecretHash'
           property :status, as: 'status'
           property :target_vpn_gateway, as: 'targetVpnGateway'
+          property :vpn_gateway, as: 'vpnGateway'
+          property :vpn_gateway_interface, as: 'vpnGatewayInterface'
         end
       end
       

@@ -275,6 +275,46 @@ module Google
         end
       end
       
+      # A BigQuery destination.
+      class BigQueryDestination
+        include Google::Apis::Core::Hashable
+      
+        # Required. The BigQuery dataset in format
+        # "projects/projectId/datasets/datasetId", to which the snapshot result
+        # should be exported. If this dataset does not exist, the export call returns
+        # an error.
+        # Corresponds to the JSON property `dataset`
+        # @return [String]
+        attr_accessor :dataset
+      
+        # If the destination table already exists and this flag is `TRUE`, the
+        # table will be overwritten by the contents of assets snapshot. If the flag
+        # is not set and the destination table already exists, the export call
+        # returns an error.
+        # Corresponds to the JSON property `force`
+        # @return [Boolean]
+        attr_accessor :force
+        alias_method :force?, :force
+      
+        # Required. The BigQuery table to which the snapshot result should be
+        # written. If this table does not exist, a new table with the given name
+        # will be created.
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset = args[:dataset] if args.key?(:dataset)
+          @force = args[:force] if args.key?(:force)
+          @table = args[:table] if args.key?(:table)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1284,6 +1324,11 @@ module Google
       class OutputConfig
         include Google::Apis::Core::Hashable
       
+        # A BigQuery destination.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::CloudassetV1::BigQueryDestination]
+        attr_accessor :bigquery_destination
+      
         # A Cloud Storage location.
         # Corresponds to the JSON property `gcsDestination`
         # @return [Google::Apis::CloudassetV1::GcsDestination]
@@ -1295,6 +1340,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
           @gcs_destination = args[:gcs_destination] if args.key?(:gcs_destination)
         end
       end
@@ -1364,7 +1410,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

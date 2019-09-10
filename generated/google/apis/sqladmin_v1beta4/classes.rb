@@ -148,6 +148,16 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Disk encryption configuration.
+        # Corresponds to the JSON property `diskEncryptionConfiguration`
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionConfiguration]
+        attr_accessor :disk_encryption_configuration
+      
+        # Disk encryption status.
+        # Corresponds to the JSON property `diskEncryptionStatus`
+        # @return [Google::Apis::SqladminV1beta4::DiskEncryptionStatus]
+        attr_accessor :disk_encryption_status
+      
         # The time the backup operation completed in UTC timezone in RFC 3339 format,
         # for example 2012-11-15T16:19:00.094Z.
         # Corresponds to the JSON property `endTime`
@@ -220,6 +230,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @disk_encryption_configuration = args[:disk_encryption_configuration] if args.key?(:disk_encryption_configuration)
+          @disk_encryption_status = args[:disk_encryption_status] if args.key?(:disk_encryption_status)
           @end_time = args[:end_time] if args.key?(:end_time)
           @enqueued_time = args[:enqueued_time] if args.key?(:enqueued_time)
           @error = args[:error] if args.key?(:error)
@@ -1133,6 +1145,11 @@ module Google
       class ImportContext
         include Google::Apis::Core::Hashable
       
+        # Import parameters specific to SQL Server .BAK files
+        # Corresponds to the JSON property `bakImportOptions`
+        # @return [Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions]
+        attr_accessor :bak_import_options
+      
         # Options for importing data as CSV.
         # Corresponds to the JSON property `csvImportOptions`
         # @return [Google::Apis::SqladminV1beta4::ImportContext::CsvImportOptions]
@@ -1176,12 +1193,67 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bak_import_options = args[:bak_import_options] if args.key?(:bak_import_options)
           @csv_import_options = args[:csv_import_options] if args.key?(:csv_import_options)
           @database = args[:database] if args.key?(:database)
           @file_type = args[:file_type] if args.key?(:file_type)
           @import_user = args[:import_user] if args.key?(:import_user)
           @kind = args[:kind] if args.key?(:kind)
           @uri = args[:uri] if args.key?(:uri)
+        end
+        
+        # Import parameters specific to SQL Server .BAK files
+        class BakImportOptions
+          include Google::Apis::Core::Hashable
+        
+          # 
+          # Corresponds to the JSON property `encryptionOptions`
+          # @return [Google::Apis::SqladminV1beta4::ImportContext::BakImportOptions::EncryptionOptions]
+          attr_accessor :encryption_options
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @encryption_options = args[:encryption_options] if args.key?(:encryption_options)
+          end
+          
+          # 
+          class EncryptionOptions
+            include Google::Apis::Core::Hashable
+          
+            # Path to the Certificate (.cer) in Cloud Storage, in the form gs://bucketName/
+            # fileName. The instance must have write permissions to the bucket and read
+            # access to the file.
+            # Corresponds to the JSON property `certPath`
+            # @return [String]
+            attr_accessor :cert_path
+          
+            # Password that encrypts the private key
+            # Corresponds to the JSON property `pvkPassword`
+            # @return [String]
+            attr_accessor :pvk_password
+          
+            # Path to the Certificate Private Key (.pvk) in Cloud Storage, in the form gs://
+            # bucketName/fileName. The instance must have write permissions to the bucket
+            # and read access to the file.
+            # Corresponds to the JSON property `pvkPath`
+            # @return [String]
+            attr_accessor :pvk_path
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @cert_path = args[:cert_path] if args.key?(:cert_path)
+              @pvk_password = args[:pvk_password] if args.key?(:pvk_password)
+              @pvk_path = args[:pvk_path] if args.key?(:pvk_path)
+            end
+          end
         end
         
         # Options for importing data as CSV.

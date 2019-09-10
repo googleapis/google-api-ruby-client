@@ -191,6 +191,7 @@ module Google
       
           collection :input_configs, as: 'inputConfigs', class: Google::Apis::TranslateV3beta1::InputConfig, decorator: Google::Apis::TranslateV3beta1::InputConfig::Representation
       
+          hash :labels, as: 'labels'
           hash :models, as: 'models'
           property :output_config, as: 'outputConfig', class: Google::Apis::TranslateV3beta1::OutputConfig, decorator: Google::Apis::TranslateV3beta1::OutputConfig::Representation
       
@@ -209,6 +210,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :content, as: 'content'
+          hash :labels, as: 'labels'
           property :mime_type, as: 'mimeType'
           property :model, as: 'model'
         end
@@ -397,6 +399,7 @@ module Google
           collection :contents, as: 'contents'
           property :glossary_config, as: 'glossaryConfig', class: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig, decorator: Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig::Representation
       
+          hash :labels, as: 'labels'
           property :mime_type, as: 'mimeType'
           property :model, as: 'model'
           property :source_language_code, as: 'sourceLanguageCode'

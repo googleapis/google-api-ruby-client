@@ -365,8 +365,7 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :enabled, as: 'enabled'
-              property :locked_time, as: 'lockedTime', type: DateTime
-          
+              property :locked_time, as: 'lockedTime'
             end
           end
         end
@@ -730,6 +729,7 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :kind, as: 'kind'
           property :resource_id, as: 'resourceId'
+          property :version, as: 'version'
         end
         
         class Binding

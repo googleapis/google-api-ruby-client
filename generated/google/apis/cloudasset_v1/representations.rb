@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BigQueryDestination
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -226,6 +232,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :assets, as: 'assets', class: Google::Apis::CloudassetV1::TemporalAsset, decorator: Google::Apis::CloudassetV1::TemporalAsset::Representation
       
+        end
+      end
+      
+      class BigQueryDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset, as: 'dataset'
+          property :force, as: 'force'
+          property :table, as: 'table'
         end
       end
       
@@ -414,6 +429,8 @@ module Google
       class OutputConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::CloudassetV1::BigQueryDestination, decorator: Google::Apis::CloudassetV1::BigQueryDestination::Representation
+      
           property :gcs_destination, as: 'gcsDestination', class: Google::Apis::CloudassetV1::GcsDestination, decorator: Google::Apis::CloudassetV1::GcsDestination::Representation
       
         end

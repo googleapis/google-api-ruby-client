@@ -40,6 +40,16 @@ module Google
         # @return [Array<Google::Apis::TranslateV3beta1::InputConfig>]
         attr_accessor :input_configs
       
+        # Optional. The labels with user-defined metadata for the request.
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. The models to use for translation. Map's key is target language
         # code. Map's value is model name. Value can be a built-in general model,
         # or an AutoML Translation model.
@@ -78,6 +88,7 @@ module Google
         def update!(**args)
           @glossaries = args[:glossaries] if args.key?(:glossaries)
           @input_configs = args[:input_configs] if args.key?(:input_configs)
+          @labels = args[:labels] if args.key?(:labels)
           @models = args[:models] if args.key?(:models)
           @output_config = args[:output_config] if args.key?(:output_config)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)
@@ -107,6 +118,16 @@ module Google
         # @return [String]
         attr_accessor :content
       
+        # Optional. The labels with user-defined metadata for the request.
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. The format of the source text, for example, "text/html",
         # "text/plain". If left blank, the MIME type defaults to "text/html".
         # Corresponds to the JSON property `mimeType`
@@ -132,6 +153,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @content = args[:content] if args.key?(:content)
+          @labels = args[:labels] if args.key?(:labels)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @model = args[:model] if args.key?(:model)
         end
@@ -749,6 +771,16 @@ module Google
         # @return [Google::Apis::TranslateV3beta1::TranslateTextGlossaryConfig]
         attr_accessor :glossary_config
       
+        # Optional. The labels with user-defined metadata for the request.
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Optional. The format of the source text, for example, "text/html",
         # "text/plain". If left blank, the MIME type defaults to "text/html".
         # Corresponds to the JSON property `mimeType`
@@ -793,6 +825,7 @@ module Google
         def update!(**args)
           @contents = args[:contents] if args.key?(:contents)
           @glossary_config = args[:glossary_config] if args.key?(:glossary_config)
+          @labels = args[:labels] if args.key?(:labels)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @model = args[:model] if args.key?(:model)
           @source_language_code = args[:source_language_code] if args.key?(:source_language_code)

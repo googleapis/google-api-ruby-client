@@ -632,7 +632,7 @@ module Google
         # - "eventHangout": unset.
         # - "eventNamedHangout": the name of the Hangout.
         # - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".
-        # Optional.
+        # - "addOn": defined by 3P conference provider.  Optional.
         # Corresponds to the JSON property `conferenceId`
         # @return [String]
         attr_accessor :conference_id

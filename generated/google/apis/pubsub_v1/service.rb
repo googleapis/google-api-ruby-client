@@ -186,9 +186,11 @@ module Google
         #   See the operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The policy format version to be returned.
-        #   Acceptable values are 0, 1, and 3.
-        #   If the value is 0, or the field is omitted, policy format version 1 will be
-        #   returned.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected.
+        #   Requests for policies with any conditional bindings must specify version 3.
+        #   Policies without any conditional bindings may specify any valid value or
+        #   leave the field unset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -535,9 +537,11 @@ module Google
         #   See the operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The policy format version to be returned.
-        #   Acceptable values are 0, 1, and 3.
-        #   If the value is 0, or the field is omitted, policy format version 1 will be
-        #   returned.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected.
+        #   Requests for policies with any conditional bindings must specify version 3.
+        #   Policies without any conditional bindings may specify any valid value or
+        #   leave the field unset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -984,9 +988,11 @@ module Google
         #   See the operation documentation for the appropriate value for this field.
         # @param [Fixnum] options_requested_policy_version
         #   Optional. The policy format version to be returned.
-        #   Acceptable values are 0, 1, and 3.
-        #   If the value is 0, or the field is omitted, policy format version 1 will be
-        #   returned.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected.
+        #   Requests for policies with any conditional bindings must specify version 3.
+        #   Policies without any conditional bindings may specify any valid value or
+        #   leave the field unset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

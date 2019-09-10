@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/google-apps/calendar/firstapp
     module CalendarV3
       VERSION = 'V3'
-      REVISION = '20190609'
+      REVISION = '20190903'
 
       # See, edit, share, and permanently delete all the calendars you can access using Google Calendar
       AUTH_CALENDAR = 'https://www.googleapis.com/auth/calendar'
