@@ -711,6 +711,7 @@
 "/dns:v1/ChangesListResponse": list_changes_response
 "/dns:v1/ManagedZonesListResponse": list_managed_zones_response
 "/dns:v1/ResourceRecordSetsListResponse": list_resource_record_sets_response
+"/domainsrdap:v1/domainsrdap.ip.get": ip_get
 "/doubleclickbidmanager:v1/DownloadLineItemsRequest": download_line_items_request
 "/doubleclickbidmanager:v1/DownloadLineItemsResponse": download_line_items_response
 "/doubleclickbidmanager:v1/ListQueriesResponse": list_queries_response
