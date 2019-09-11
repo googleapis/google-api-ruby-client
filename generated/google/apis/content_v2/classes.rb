@@ -4101,6 +4101,11 @@ module Google
         # @return [String]
         attr_accessor :payment_status
       
+        # Pickup details for shipments of type pickup.
+        # Corresponds to the JSON property `pickupDetails`
+        # @return [Google::Apis::ContentV2::OrderPickupDetails]
+        attr_accessor :pickup_details
+      
         # The date when the order was placed, in ISO 8601 format.
         # Corresponds to the JSON property `placedDate`
         # @return [String]
@@ -4165,6 +4170,7 @@ module Google
           @net_amount = args[:net_amount] if args.key?(:net_amount)
           @payment_method = args[:payment_method] if args.key?(:payment_method)
           @payment_status = args[:payment_status] if args.key?(:payment_status)
+          @pickup_details = args[:pickup_details] if args.key?(:pickup_details)
           @placed_date = args[:placed_date] if args.key?(:placed_date)
           @promotions = args[:promotions] if args.key?(:promotions)
           @refunds = args[:refunds] if args.key?(:refunds)
@@ -4562,6 +4568,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity_pending
       
+        # Number of items ready for pickup.
+        # Corresponds to the JSON property `quantityReadyForPickup`
+        # @return [Fixnum]
+        attr_accessor :quantity_ready_for_pickup
+      
         # Number of items returned.
         # Corresponds to the JSON property `quantityReturned`
         # @return [Fixnum]
@@ -4608,6 +4619,7 @@ module Google
           @quantity_delivered = args[:quantity_delivered] if args.key?(:quantity_delivered)
           @quantity_ordered = args[:quantity_ordered] if args.key?(:quantity_ordered)
           @quantity_pending = args[:quantity_pending] if args.key?(:quantity_pending)
+          @quantity_ready_for_pickup = args[:quantity_ready_for_pickup] if args.key?(:quantity_ready_for_pickup)
           @quantity_returned = args[:quantity_returned] if args.key?(:quantity_returned)
           @quantity_shipped = args[:quantity_shipped] if args.key?(:quantity_shipped)
           @return_info = args[:return_info] if args.key?(:return_info)
@@ -4829,6 +4841,12 @@ module Google
         # @return [String]
         attr_accessor :ship_by_date
       
+        # Type of shipment. Indicates whether deliveryDetails or pickupDetails is
+        # applicable for this shipment.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4838,6 +4856,7 @@ module Google
           @deliver_by_date = args[:deliver_by_date] if args.key?(:deliver_by_date)
           @method_prop = args[:method_prop] if args.key?(:method_prop)
           @ship_by_date = args[:ship_by_date] if args.key?(:ship_by_date)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -4960,6 +4979,64 @@ module Google
           @last_four_digits = args[:last_four_digits] if args.key?(:last_four_digits)
           @phone_number = args[:phone_number] if args.key?(:phone_number)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class OrderPickupDetails
+        include Google::Apis::Core::Hashable
+      
+        # Address of the pickup location where the shipment should be sent. Note that
+        # recipientName in the address is the name of the business at the pickup
+        # location.
+        # Corresponds to the JSON property `address`
+        # @return [Google::Apis::ContentV2::OrderAddress]
+        attr_accessor :address
+      
+        # Collectors authorized to pick up shipment from the pickup location.
+        # Corresponds to the JSON property `collectors`
+        # @return [Array<Google::Apis::ContentV2::OrderPickupDetailsCollector>]
+        attr_accessor :collectors
+      
+        # ID of the pickup location.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @address = args[:address] if args.key?(:address)
+          @collectors = args[:collectors] if args.key?(:collectors)
+          @location_id = args[:location_id] if args.key?(:location_id)
+        end
+      end
+      
+      # 
+      class OrderPickupDetailsCollector
+        include Google::Apis::Core::Hashable
+      
+        # Name of the person picking up the shipment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Phone number of the person picking up the shipment.
+        # Corresponds to the JSON property `phoneNumber`
+        # @return [String]
+        attr_accessor :phone_number
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @phone_number = args[:phone_number] if args.key?(:phone_number)
         end
       end
       
@@ -10616,6 +10693,12 @@ module Google
         # @return [String]
         attr_accessor :predefined_delivery_address
       
+        # Identifier of one of the predefined pickup details. Required for orders
+        # containing line items with shipping type pickup.
+        # Corresponds to the JSON property `predefinedPickupDetails`
+        # @return [String]
+        attr_accessor :predefined_pickup_details
+      
         # Deprecated. Ignored if provided.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
@@ -10652,6 +10735,7 @@ module Google
           @notification_mode = args[:notification_mode] if args.key?(:notification_mode)
           @payment_method = args[:payment_method] if args.key?(:payment_method)
           @predefined_delivery_address = args[:predefined_delivery_address] if args.key?(:predefined_delivery_address)
+          @predefined_pickup_details = args[:predefined_pickup_details] if args.key?(:predefined_pickup_details)
           @promotions = args[:promotions] if args.key?(:promotions)
           @shipping_cost = args[:shipping_cost] if args.key?(:shipping_cost)
           @shipping_cost_tax = args[:shipping_cost_tax] if args.key?(:shipping_cost_tax)

@@ -3371,7 +3371,9 @@ module Google
         # "Australia/Sydney". These IDs are defined by
         # [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
         # project, and currently available in the file
-        # [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml)
+        # [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
+        # This field is used to correctly interpret date and time queries.
+        # If this field is not specified, the default time zone (UTC) is used.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
         attr_accessor :time_zone

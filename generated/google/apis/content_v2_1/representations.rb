@@ -676,6 +676,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderPickupDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderPickupDetailsCollector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderPromotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2495,6 +2507,8 @@ module Google
           property :net_tax_amount, as: 'netTaxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :payment_status, as: 'paymentStatus'
+          property :pickup_details, as: 'pickupDetails', class: Google::Apis::ContentV2_1::OrderPickupDetails, decorator: Google::Apis::ContentV2_1::OrderPickupDetails::Representation
+      
           property :placed_date, as: 'placedDate'
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2_1::OrderPromotion, decorator: Google::Apis::ContentV2_1::OrderPromotion::Representation
       
@@ -2592,6 +2606,7 @@ module Google
           property :quantity_delivered, as: 'quantityDelivered'
           property :quantity_ordered, as: 'quantityOrdered'
           property :quantity_pending, as: 'quantityPending'
+          property :quantity_ready_for_pickup, as: 'quantityReadyForPickup'
           property :quantity_returned, as: 'quantityReturned'
           property :quantity_shipped, as: 'quantityShipped'
           property :quantity_undeliverable, as: 'quantityUndeliverable'
@@ -2674,6 +2689,7 @@ module Google
           property :method_prop, as: 'method', class: Google::Apis::ContentV2_1::OrderLineItemShippingDetailsMethod, decorator: Google::Apis::ContentV2_1::OrderLineItemShippingDetailsMethod::Representation
       
           property :ship_by_date, as: 'shipByDate'
+          property :type, as: 'type'
         end
       end
       
@@ -2692,6 +2708,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
+        end
+      end
+      
+      class OrderPickupDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::ContentV2_1::OrderAddress, decorator: Google::Apis::ContentV2_1::OrderAddress::Representation
+      
+          collection :collectors, as: 'collectors', class: Google::Apis::ContentV2_1::OrderPickupDetailsCollector, decorator: Google::Apis::ContentV2_1::OrderPickupDetailsCollector::Representation
+      
+          property :location_id, as: 'locationId'
+        end
+      end
+      
+      class OrderPickupDetailsCollector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -4135,6 +4170,7 @@ module Google
           property :predefined_billing_address, as: 'predefinedBillingAddress'
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
           property :predefined_email, as: 'predefinedEmail'
+          property :predefined_pickup_details, as: 'predefinedPickupDetails'
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2_1::OrderPromotion, decorator: Google::Apis::ContentV2_1::OrderPromotion::Representation
       
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation

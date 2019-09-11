@@ -748,6 +748,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderPickupDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderPickupDetailsCollector
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderRefund
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2798,6 +2810,8 @@ module Google
           property :payment_method, as: 'paymentMethod', class: Google::Apis::ContentV2::OrderPaymentMethod, decorator: Google::Apis::ContentV2::OrderPaymentMethod::Representation
       
           property :payment_status, as: 'paymentStatus'
+          property :pickup_details, as: 'pickupDetails', class: Google::Apis::ContentV2::OrderPickupDetails, decorator: Google::Apis::ContentV2::OrderPickupDetails::Representation
+      
           property :placed_date, as: 'placedDate'
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2::OrderLegacyPromotion, decorator: Google::Apis::ContentV2::OrderLegacyPromotion::Representation
       
@@ -2913,6 +2927,7 @@ module Google
           property :quantity_delivered, as: 'quantityDelivered'
           property :quantity_ordered, as: 'quantityOrdered'
           property :quantity_pending, as: 'quantityPending'
+          property :quantity_ready_for_pickup, as: 'quantityReadyForPickup'
           property :quantity_returned, as: 'quantityReturned'
           property :quantity_shipped, as: 'quantityShipped'
           property :return_info, as: 'returnInfo', class: Google::Apis::ContentV2::OrderLineItemReturnInfo, decorator: Google::Apis::ContentV2::OrderLineItemReturnInfo::Representation
@@ -2984,6 +2999,7 @@ module Google
           property :method_prop, as: 'method', class: Google::Apis::ContentV2::OrderLineItemShippingDetailsMethod, decorator: Google::Apis::ContentV2::OrderLineItemShippingDetailsMethod::Representation
       
           property :ship_by_date, as: 'shipByDate'
+          property :type, as: 'type'
         end
       end
       
@@ -3015,6 +3031,25 @@ module Google
           property :last_four_digits, as: 'lastFourDigits'
           property :phone_number, as: 'phoneNumber'
           property :type, as: 'type'
+        end
+      end
+      
+      class OrderPickupDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :address, as: 'address', class: Google::Apis::ContentV2::OrderAddress, decorator: Google::Apis::ContentV2::OrderAddress::Representation
+      
+          collection :collectors, as: 'collectors', class: Google::Apis::ContentV2::OrderPickupDetailsCollector, decorator: Google::Apis::ContentV2::OrderPickupDetailsCollector::Representation
+      
+          property :location_id, as: 'locationId'
+        end
+      end
+      
+      class OrderPickupDetailsCollector
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :phone_number, as: 'phoneNumber'
         end
       end
       
@@ -4585,6 +4620,7 @@ module Google
           property :payment_method, as: 'paymentMethod', class: Google::Apis::ContentV2::TestOrderPaymentMethod, decorator: Google::Apis::ContentV2::TestOrderPaymentMethod::Representation
       
           property :predefined_delivery_address, as: 'predefinedDeliveryAddress'
+          property :predefined_pickup_details, as: 'predefinedPickupDetails'
           collection :promotions, as: 'promotions', class: Google::Apis::ContentV2::OrderLegacyPromotion, decorator: Google::Apis::ContentV2::OrderLegacyPromotion::Representation
       
           property :shipping_cost, as: 'shippingCost', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
