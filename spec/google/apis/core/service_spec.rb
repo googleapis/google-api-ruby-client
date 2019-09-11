@@ -39,7 +39,7 @@ RSpec.describe Google::Apis::Core::BaseService do
 
   it 'should include os version in user agent' do
     agent = service.send(:user_agent)
-    expect(agent).to match /#{Google::Apis::OS_VERSION}/
+    expect(agent).to match Regexp.new(Regexp.escape(Google::Apis::OS_VERSION))
   end
 
   it 'should inherit authorization' do
@@ -267,6 +267,7 @@ EOF
     end
 
     it 'should send nested multipart' do
+      Google::Apis::RequestOptions.default.authorization = 'a token'
       service.batch_upload do |service|
         command = service.send(:make_upload_command, :post, 'zoo/animals', {})
         command.upload_source = StringIO.new('test')
@@ -276,16 +277,16 @@ EOF
       expected_body = <<EOF.gsub(/\n/, "\r\n")
 --outer
 Content-Type: application/http
-Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d+0>
-Content-Length: 380
+Content-Id: <b1981e17-f622-49af-b2eb-203308b1b17d\\+0>
+Content-Length: \\d+
 Content-Transfer-Encoding: binary
 
-POST /upload/zoo/animals? HTTP/1.1
-X-Goog-Api-Client: #{x_goog_api_client_value}
+POST /upload/zoo/animals\\? HTTP/1\\.1
+X-Goog-Api-Client: #{Regexp.escape(x_goog_api_client_value)}
 Content-Type: multipart/related; boundary=inner
 X-Goog-Upload-Protocol: multipart
 Authorization: Bearer a token
-Host: www.googleapis.com
+Host: www\\.googleapis\\.com
 
 --inner
 Content-Type: application/json
@@ -303,7 +304,7 @@ test
 --outer--
 
 EOF
-      expect(a_request(:put, 'https://www.googleapis.com/upload/').with(body: expected_body)).to have_been_made
+      expect(a_request(:put, 'https://www.googleapis.com/upload/').with(body: Regexp.new(expected_body))).to have_been_made
     end
 
     it 'should disallow downloads in batch' do
