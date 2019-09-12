@@ -1800,11 +1800,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :google_groups
       
-        # A list of all Google+ Communities, as URLs, that define testers for this track.
-        # Corresponds to the JSON property `googlePlusCommunities`
-        # @return [Array<String>]
-        attr_accessor :google_plus_communities
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1812,7 +1807,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @google_groups = args[:google_groups] if args.key?(:google_groups)
-          @google_plus_communities = args[:google_plus_communities] if args.key?(:google_plus_communities)
         end
       end
       

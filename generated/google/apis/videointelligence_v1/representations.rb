@@ -1076,9 +1076,13 @@ module Google
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
+          collection :segment_presence_label_annotations, as: 'segmentPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
+      
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1VideoSegment::Representation
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
+      
+          collection :shot_presence_label_annotations, as: 'shotPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
           collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1SpeechTranscription::Representation
       
@@ -1324,9 +1328,13 @@ module Google
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
       
+          collection :segment_presence_label_annotations, as: 'segmentPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
+      
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
+      
+          collection :shot_presence_label_annotations, as: 'shotPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
       
           collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2SpeechTranscription, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2SpeechTranscription::Representation
       
@@ -1552,9 +1560,13 @@ module Google
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
       
+          collection :segment_presence_label_annotations, as: 'segmentPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
+      
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
+      
+          collection :shot_presence_label_annotations, as: 'shotPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
       
           collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechTranscription::Representation
       
@@ -1780,9 +1792,13 @@ module Google
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
       
+          collection :segment_presence_label_annotations, as: 'segmentPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
+      
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
+      
+          collection :shot_presence_label_annotations, as: 'shotPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
       
           collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1SpeechTranscription::Representation
       
@@ -2080,9 +2096,13 @@ module Google
       
           collection :segment_label_annotations, as: 'segmentLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
       
+          collection :segment_presence_label_annotations, as: 'segmentPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
+      
           collection :shot_annotations, as: 'shotAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1VideoSegment::Representation
       
           collection :shot_label_annotations, as: 'shotLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
+      
+          collection :shot_presence_label_annotations, as: 'shotPresenceLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
       
           collection :speech_transcriptions, as: 'speechTranscriptions', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1SpeechTranscription, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1SpeechTranscription::Representation
       

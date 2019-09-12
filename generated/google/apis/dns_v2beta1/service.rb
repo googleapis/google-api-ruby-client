@@ -632,6 +632,252 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a new Policy
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [Google::Apis::DnsV2beta1::Policy] policy_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV2beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV2beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_policy(project, policy_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/policies', options)
+          command.request_representation = Google::Apis::DnsV2beta1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::DnsV2beta1::Policy::Representation
+          command.response_class = Google::Apis::DnsV2beta1::Policy
+          command.params['project'] = project unless project.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete a previously created Policy. Will fail if the policy is still being
+        # referenced by a network.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] policy
+        #   User given friendly name of the policy addressed by this request.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [void]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_policy(project, policy, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{project}/policies/{policy}', options)
+          command.params['project'] = project unless project.nil?
+          command.params['policy'] = policy unless policy.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetch the representation of an existing Policy.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] policy
+        #   User given friendly name of the policy addressed by this request.
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV2beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV2beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_policy(project, policy, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/policies/{policy}', options)
+          command.response_representation = Google::Apis::DnsV2beta1::Policy::Representation
+          command.response_class = Google::Apis::DnsV2beta1::Policy
+          command.params['project'] = project unless project.nil?
+          command.params['policy'] = policy unless policy.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Enumerate all Policies associated with a project.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [Fixnum] max_results
+        #   Optional. Maximum number of results to be returned. If unspecified, the server
+        #   will decide how many results to return.
+        # @param [String] page_token
+        #   Optional. A tag returned by a previous list request that was truncated. Use
+        #   this parameter to continue a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV2beta1::PoliciesListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV2beta1::PoliciesListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_policies(project, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/policies', options)
+          command.response_representation = Google::Apis::DnsV2beta1::PoliciesListResponse::Representation
+          command.response_class = Google::Apis::DnsV2beta1::PoliciesListResponse
+          command.params['project'] = project unless project.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Apply a partial update to an existing Policy.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] policy
+        #   User given friendly name of the policy addressed by this request.
+        # @param [Google::Apis::DnsV2beta1::Policy] policy_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV2beta1::PoliciesPatchResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV2beta1::PoliciesPatchResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_policy(project, policy, policy_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{project}/policies/{policy}', options)
+          command.request_representation = Google::Apis::DnsV2beta1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::DnsV2beta1::PoliciesPatchResponse::Representation
+          command.response_class = Google::Apis::DnsV2beta1::PoliciesPatchResponse
+          command.params['project'] = project unless project.nil?
+          command.params['policy'] = policy unless policy.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update an existing Policy.
+        # @param [String] project
+        #   Identifies the project addressed by this request.
+        # @param [String] policy
+        #   User given friendly name of the policy addressed by this request.
+        # @param [Google::Apis::DnsV2beta1::Policy] policy_object
+        # @param [String] client_operation_id
+        #   For mutating operation requests only. An optional identifier specified by the
+        #   client. Must be unique for operation resources in the Operations collection.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DnsV2beta1::PoliciesUpdateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DnsV2beta1::PoliciesUpdateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_policy(project, policy, policy_object = nil, client_operation_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:put, '{project}/policies/{policy}', options)
+          command.request_representation = Google::Apis::DnsV2beta1::Policy::Representation
+          command.request_object = policy_object
+          command.response_representation = Google::Apis::DnsV2beta1::PoliciesUpdateResponse::Representation
+          command.response_class = Google::Apis::DnsV2beta1::PoliciesUpdateResponse
+          command.params['project'] = project unless project.nil?
+          command.params['policy'] = policy unless policy.nil?
+          command.query['clientOperationId'] = client_operation_id unless client_operation_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Fetch the representation of an existing Project.
         # @param [String] project
         #   Identifies the project addressed by this request.

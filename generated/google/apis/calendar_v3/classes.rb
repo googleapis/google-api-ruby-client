@@ -1216,8 +1216,8 @@ module Google
         # @return [Google::Apis::CalendarV3::EventDateTime]
         attr_accessor :original_start_time
       
-        # Whether this is a private event copy where changes are not shared with other
-        # copies on other calendars. Optional. Immutable. The default is False.
+        # If set to True, Event propagation is disabled. Note that it is not the same
+        # thing as Private event properties. Optional. Immutable. The default is False.
         # Corresponds to the JSON property `privateCopy`
         # @return [Boolean]
         attr_accessor :private_copy

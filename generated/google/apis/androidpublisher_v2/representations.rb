@@ -814,7 +814,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :google_groups, as: 'googleGroups'
-          collection :google_plus_communities, as: 'googlePlusCommunities'
         end
       end
       

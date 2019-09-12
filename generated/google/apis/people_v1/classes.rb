@@ -196,14 +196,14 @@ module Google
       class Birthday
         include Google::Apis::Core::Hashable
       
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
@@ -472,14 +472,14 @@ module Google
         end
       end
       
-      # Represents a whole calendar date, for example a date of birth. The time
-      # of day and time zone are either specified elsewhere or are not
-      # significant. The date is relative to the
-      # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-      # Proleptic_Gregorian_calendar).
-      # The day may be 0 to represent a year and month where the day is not
-      # significant. The year may be 0 to represent a month and day independent
-      # of year; for example, anniversary date.
+      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+      # and time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. This can represent:
+      # * A full date, with non-zero year, month and day values
+      # * A month and day value, with a zero year, e.g. an anniversary
+      # * A year on its own, with zero month and day values
+      # * A year and month value, with a zero day, e.g. a credit card expiration date
+      # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
       class Date
         include Google::Apis::Core::Hashable
       
@@ -628,14 +628,14 @@ module Google
       class Event
         include Google::Apis::Core::Hashable
       
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `date`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
@@ -1228,14 +1228,14 @@ module Google
         # @return [String]
         attr_accessor :domain
       
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `endDate`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :end_date
@@ -1271,14 +1271,14 @@ module Google
         # @return [String]
         attr_accessor :phonetic_name
       
-        # Represents a whole calendar date, for example a date of birth. The time
-        # of day and time zone are either specified elsewhere or are not
-        # significant. The date is relative to the
-        # [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/
-        # Proleptic_Gregorian_calendar).
-        # The day may be 0 to represent a year and month where the day is not
-        # significant. The year may be 0 to represent a month and day independent
-        # of year; for example, anniversary date.
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # * A full date, with non-zero year, month and day values
+        # * A month and day value, with a zero year, e.g. an anniversary
+        # * A year on its own, with zero month and day values
+        # * A year and month value, with a zero day, e.g. a credit card expiration date
+        # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
         # Corresponds to the JSON property `startDate`
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :start_date

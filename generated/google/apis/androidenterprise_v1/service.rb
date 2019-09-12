@@ -1848,8 +1848,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all the managed configurations settings for the specified app. Only the
-        # ID and the name is set.
+        # Lists all the managed configurations settings for the specified app.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
         # @param [String] product_id

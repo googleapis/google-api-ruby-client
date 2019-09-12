@@ -457,8 +457,8 @@ module Google
       class ManagedZoneDnsSecConfig
         include Google::Apis::Core::Hashable
       
-        # Specifies parameters that will be used for generating initial DnsKeys for this
-        # ManagedZone. Can only be changed while state is OFF.
+        # Specifies parameters for generating initial DnsKeys for this ManagedZone. Can
+        # only be changed while the state is OFF.
         # Corresponds to the JSON property `defaultKeySpecs`
         # @return [Array<Google::Apis::DnsV1beta2::DnsKeySpec>]
         attr_accessor :default_key_specs
@@ -469,8 +469,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Specifies the mechanism used to provide authenticated denial-of-existence
-        # responses. Can only be changed while state is OFF.
+        # Specifies the mechanism for authenticated denial-of-existence responses. Can
+        # only be changed while the state is OFF.
         # Corresponds to the JSON property `nonExistence`
         # @return [String]
         attr_accessor :non_existence
@@ -621,10 +621,10 @@ module Google
       class ManagedZonePeeringConfigTargetNetwork
         include Google::Apis::Core::Hashable
       
-        # If this zone has been deactivated (possibly because the producer network it
-        # targeted was deleted), the time at which it was deactivated. If the peering
-        # connection is still active, this will be the empty string. This is in RFC3339
-        # text format. Output only.
+        # The time at which the zone was deactivated, in RFC 3339 date-time format. An
+        # empty string indicates that the peering connection is active. The producer
+        # network can deactivate a zone. The zone is automatically deactivated if the
+        # producer network that the zone targeted is deleted. Output only.
         # Corresponds to the JSON property `deactivateTime`
         # @return [String]
         attr_accessor :deactivate_time
