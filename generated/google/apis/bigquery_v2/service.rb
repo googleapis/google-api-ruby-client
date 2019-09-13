@@ -583,11 +583,11 @@ module Google
         
         # Deletes the model specified by modelId from the dataset.
         # @param [String] project_id
-        #   Project ID of the model to delete.
+        #   Required. Project ID of the model to delete.
         # @param [String] dataset_id
-        #   Dataset ID of the model to delete.
+        #   Required. Dataset ID of the model to delete.
         # @param [String] model_id
-        #   Model ID of the model to delete.
+        #   Required. Model ID of the model to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -620,11 +620,11 @@ module Google
         
         # Gets the specified model resource by model ID.
         # @param [String] project_id
-        #   Project ID of the requested model.
+        #   Required. Project ID of the requested model.
         # @param [String] dataset_id
-        #   Dataset ID of the requested model.
+        #   Required. Dataset ID of the requested model.
         # @param [String] model_id
-        #   Model ID of the requested model.
+        #   Required. Model ID of the requested model.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -660,9 +660,9 @@ module Google
         # Lists all models in the specified dataset. Requires the READER dataset
         # role.
         # @param [String] project_id
-        #   Project ID of the models to list.
+        #   Required. Project ID of the models to list.
         # @param [String] dataset_id
-        #   Dataset ID of the models to list.
+        #   Required. Dataset ID of the models to list.
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page.
         #   Leverage the page tokens to iterate through the entire collection.
@@ -704,11 +704,11 @@ module Google
         
         # Patch specific fields in the specified model.
         # @param [String] project_id
-        #   Project ID of the model to patch.
+        #   Required. Project ID of the model to patch.
         # @param [String] dataset_id
-        #   Dataset ID of the model to patch.
+        #   Required. Dataset ID of the model to patch.
         # @param [String] model_id
-        #   Model ID of the model to patch.
+        #   Required. Model ID of the model to patch.
         # @param [Google::Apis::BigqueryV2::Model] model_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -816,11 +816,11 @@ module Google
         
         # Deletes the routine specified by routineId from the dataset.
         # @param [String] project_id
-        #   Project ID of the routine to delete
+        #   Required. Project ID of the routine to delete
         # @param [String] dataset_id
-        #   Dataset ID of the routine to delete
+        #   Required. Dataset ID of the routine to delete
         # @param [String] routine_id
-        #   Routine ID of the routine to delete
+        #   Required. Routine ID of the routine to delete
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -853,11 +853,11 @@ module Google
         
         # Gets the specified routine resource by routine ID.
         # @param [String] project_id
-        #   Project ID of the requested routine
+        #   Required. Project ID of the requested routine
         # @param [String] dataset_id
-        #   Dataset ID of the requested routine
+        #   Required. Dataset ID of the requested routine
         # @param [String] routine_id
-        #   Routine ID of the requested routine
+        #   Required. Routine ID of the requested routine
         # @param [String] field_mask
         #   If set, only the Routine fields in the field mask are returned in the
         #   response. If unset, all Routine fields are returned.
@@ -896,9 +896,9 @@ module Google
         
         # Creates a new routine in the dataset.
         # @param [String] project_id
-        #   Project ID of the new routine
+        #   Required. Project ID of the new routine
         # @param [String] dataset_id
-        #   Dataset ID of the new routine
+        #   Required. Dataset ID of the new routine
         # @param [Google::Apis::BigqueryV2::Routine] routine_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -936,9 +936,9 @@ module Google
         # Lists all routines in the specified dataset. Requires the READER dataset
         # role.
         # @param [String] project_id
-        #   Project ID of the routines to list
+        #   Required. Project ID of the routines to list
         # @param [String] dataset_id
-        #   Dataset ID of the routines to list
+        #   Required. Dataset ID of the routines to list
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page.
         #   Leverage the page tokens to iterate through the entire collection.
@@ -981,11 +981,11 @@ module Google
         # Updates information in an existing routine. The update method replaces the
         # entire Routine resource.
         # @param [String] project_id
-        #   Project ID of the routine to update
+        #   Required. Project ID of the routine to update
         # @param [String] dataset_id
-        #   Dataset ID of the routine to update
+        #   Required. Dataset ID of the routine to update
         # @param [String] routine_id
-        #   Routine ID of the routine to update
+        #   Required. Routine ID of the routine to update
         # @param [Google::Apis::BigqueryV2::Routine] routine_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

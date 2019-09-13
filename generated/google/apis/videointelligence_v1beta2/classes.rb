@@ -683,6 +683,12 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
+        # Presence label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation>]
+        attr_accessor :segment_presence_label_annotations
+      
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment>]
@@ -693,6 +699,12 @@ module Google
         # Corresponds to the JSON property `shotLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :shot_label_annotations
+      
+        # Presence label annotations on shot level. There is exactly one element for
+        # each unique label.
+        # Corresponds to the JSON property `shotPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation>]
+        attr_accessor :shot_presence_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
@@ -719,8 +731,10 @@ module Google
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @shot_presence_label_annotations = args[:shot_presence_label_annotations] if args.key?(:shot_presence_label_annotations)
           @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end
@@ -1818,6 +1832,12 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
+        # Presence label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
+        attr_accessor :segment_presence_label_annotations
+      
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment>]
@@ -1828,6 +1848,12 @@ module Google
         # Corresponds to the JSON property `shotLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :shot_label_annotations
+      
+        # Presence label annotations on shot level. There is exactly one element for
+        # each unique label.
+        # Corresponds to the JSON property `shotPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
+        attr_accessor :shot_presence_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
@@ -1854,8 +1880,10 @@ module Google
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @shot_presence_label_annotations = args[:shot_presence_label_annotations] if args.key?(:shot_presence_label_annotations)
           @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end
@@ -2665,6 +2693,12 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
+        # Presence label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
+        attr_accessor :segment_presence_label_annotations
+      
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment>]
@@ -2675,6 +2709,12 @@ module Google
         # Corresponds to the JSON property `shotLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :shot_label_annotations
+      
+        # Presence label annotations on shot level. There is exactly one element for
+        # each unique label.
+        # Corresponds to the JSON property `shotPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
+        attr_accessor :shot_presence_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
@@ -2701,8 +2741,10 @@ module Google
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @shot_presence_label_annotations = args[:shot_presence_label_annotations] if args.key?(:shot_presence_label_annotations)
           @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end
@@ -3455,6 +3497,12 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
+        # Presence label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
+        attr_accessor :segment_presence_label_annotations
+      
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment>]
@@ -3465,6 +3513,12 @@ module Google
         # Corresponds to the JSON property `shotLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :shot_label_annotations
+      
+        # Presence label annotations on shot level. There is exactly one element for
+        # each unique label.
+        # Corresponds to the JSON property `shotPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
+        attr_accessor :shot_presence_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
@@ -3491,8 +3545,10 @@ module Google
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @shot_presence_label_annotations = args[:shot_presence_label_annotations] if args.key?(:shot_presence_label_annotations)
           @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end
@@ -4472,6 +4528,12 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
+        # Presence label annotations on video level or user specified segment level.
+        # There is exactly one element for each unique label.
+        # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
+        attr_accessor :segment_presence_label_annotations
+      
         # Shot annotations. Each shot is represented as a video segment.
         # Corresponds to the JSON property `shotAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment>]
@@ -4482,6 +4544,12 @@ module Google
         # Corresponds to the JSON property `shotLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :shot_label_annotations
+      
+        # Presence label annotations on shot level. There is exactly one element for
+        # each unique label.
+        # Corresponds to the JSON property `shotPresenceLabelAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
+        attr_accessor :shot_presence_label_annotations
       
         # Speech transcription.
         # Corresponds to the JSON property `speechTranscriptions`
@@ -4509,8 +4577,10 @@ module Google
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
+          @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
           @shot_annotations = args[:shot_annotations] if args.key?(:shot_annotations)
           @shot_label_annotations = args[:shot_label_annotations] if args.key?(:shot_label_annotations)
+          @shot_presence_label_annotations = args[:shot_presence_label_annotations] if args.key?(:shot_presence_label_annotations)
           @speech_transcriptions = args[:speech_transcriptions] if args.key?(:speech_transcriptions)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
         end

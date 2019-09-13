@@ -1264,6 +1264,32 @@ module Google
         end
       end
       
+      # Response message for getting service identity.
+      class GetServiceIdentityResponse
+        include Google::Apis::Core::Hashable
+      
+        # Service identity for a service. This is the identity that service producer
+        # should use to access consumer resources.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ServiceusageV1::ServiceIdentity]
+        attr_accessor :identity
+      
+        # Service identity state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # `Service` is the root object of Google service configuration schema. It
       # describes basic information about a service, such as the name and the
       # title, and delegates other aspects to sub-sections. Each sub-section is

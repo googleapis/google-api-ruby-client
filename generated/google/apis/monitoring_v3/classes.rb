@@ -201,18 +201,18 @@ module Google
         end
       end
       
-      # A type of authentication to perform against the specified resource or URL that
-      # uses username and password. Currently, only Basic authentication is supported
-      # in Uptime Monitoring.
+      # The authentication parameters to provide to the specified resource or URL that
+      # requires a username and password. Currently, only Basic HTTP authentication (
+      # https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
       class BasicAuthentication
         include Google::Apis::Core::Hashable
       
-        # The password to authenticate.
+        # The password to use when authenticating with the HTTP server.
         # Corresponds to the JSON property `password`
         # @return [String]
         attr_accessor :password
       
-        # The username to authenticate.
+        # The username to use when authenticating with the HTTP server.
         # Corresponds to the JSON property `username`
         # @return [String]
         attr_accessor :username
@@ -517,9 +517,8 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # The matcher representing content match options which the check will run with.
-        # If the field is not specified (in previous versions), the option is set to be
-        # CONTAINS_STRING which performs content substring matching.
+        # The type of content matcher that will be applied to the server output,
+        # compared to the content string when the check is run.
         # Corresponds to the JSON property `matcher`
         # @return [String]
         attr_accessor :matcher
@@ -1096,18 +1095,18 @@ module Google
         end
       end
       
-      # Information involved in an HTTP/HTTPS uptime check request.
+      # Information involved in an HTTP/HTTPS Uptime check request.
       class HttpCheck
         include Google::Apis::Core::Hashable
       
-        # A type of authentication to perform against the specified resource or URL that
-        # uses username and password. Currently, only Basic authentication is supported
-        # in Uptime Monitoring.
+        # The authentication parameters to provide to the specified resource or URL that
+        # requires a username and password. Currently, only Basic HTTP authentication (
+        # https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
         # Corresponds to the JSON property `authInfo`
         # @return [Google::Apis::MonitoringV3::BasicAuthentication]
         attr_accessor :auth_info
       
-        # The list of headers to send as part of the uptime check request. If two
+        # The list of headers to send as part of the Uptime check request. If two
         # headers have the same key and different values, they should be entered as a
         # single header, with the value being a comma-separated list of all the desired
         # values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page
@@ -1122,23 +1121,24 @@ module Google
         # should be specified for any headers related to authentication that you do not
         # wish to be seen when retrieving the configuration. The server will be
         # responsible for encrypting the headers. On Get/List calls, if mask_headers is
-        # set to True then the headers will be obscured with ******.
+        # set to true then the headers will be obscured with ******.
         # Corresponds to the JSON property `maskHeaders`
         # @return [Boolean]
         attr_accessor :mask_headers
         alias_method :mask_headers?, :mask_headers
       
-        # The path to the page to run the check against. Will be combined with the host (
-        # specified within the MonitoredResource) and port to construct the full URL.
-        # Optional (defaults to "/"). If the provided path does not begin with "/", it
-        # will be prepended automatically.
+        # Optional (defaults to "/"). The path to the page against which to run the
+        # check. Will be combined with the host (specified within the monitored_resource)
+        # and port to construct the full URL. If the provided path does not begin with "
+        # /", a "/" will be prepended automatically.
         # Corresponds to the JSON property `path`
         # @return [String]
         attr_accessor :path
       
-        # The port to the page to run the check against. Will be combined with host (
-        # specified within the MonitoredResource) and path to construct the full URL.
-        # Optional (defaults to 80 without SSL, or 443 with SSL).
+        # Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true).
+        # The TCP port on the HTTP server against which to run the check. Will be
+        # combined with host (specified within the monitored_resource) and path to
+        # construct the full URL.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -1149,8 +1149,9 @@ module Google
         attr_accessor :use_ssl
         alias_method :use_ssl?, :use_ssl
       
-        # Boolean specifying whether to validate SSL certificates. Only applies to
-        # uptime_url checks. If use_ssl is false, setting this to true has no effect.
+        # Boolean specifying whether to include SSL certificate validation as a part of
+        # the Uptime check. Only applies to checks where monitored_resource is set to
+        # uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
         # Corresponds to the JSON property `validateSsl`
         # @return [Boolean]
         attr_accessor :validate_ssl
@@ -1172,7 +1173,7 @@ module Google
         end
       end
       
-      # An internal checker allows uptime checks to run on private/internal GCP
+      # An internal checker allows Uptime checks to run on private/internal GCP
       # resources.
       class InternalChecker
         include Google::Apis::Core::Hashable
@@ -1184,15 +1185,15 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The GCP zone the uptime check should egress from. Only respected for internal
-        # uptime checks, where internal_network is specified.
+        # The GCP zone the Uptime check should egress from. Only respected for internal
+        # Uptime checks, where internal_network is specified.
         # Corresponds to the JSON property `gcpZone`
         # @return [String]
         attr_accessor :gcp_zone
       
         # A unique resource name for this InternalChecker. The format is:projects/[
-        # PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].PROJECT_ID is the
-        # stackdriver workspace project for the uptime check config associated with the
+        # PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].[PROJECT_ID] is the
+        # Stackdriver Workspace project for the Uptime check config associated with the
         # internal checker.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1204,8 +1205,8 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # The GCP project_id where the internal checker lives. Not necessary the same as
-        # the workspace project.
+        # The GCP project ID where the internal checker lives. Not necessary the same as
+        # the Workspace project.
         # Corresponds to the JSON property `peerProjectId`
         # @return [String]
         attr_accessor :peer_project_id
@@ -1542,13 +1543,13 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The total number of uptime check configurations for the project, irrespective
+        # The total number of Uptime check configurations for the project, irrespective
         # of any pagination.
         # Corresponds to the JSON property `totalSize`
         # @return [Fixnum]
         attr_accessor :total_size
       
-        # The returned uptime check configurations.
+        # The returned Uptime check configurations.
         # Corresponds to the JSON property `uptimeCheckConfigs`
         # @return [Array<Google::Apis::MonitoringV3::UptimeCheckConfig>]
         attr_accessor :uptime_check_configs
@@ -2378,8 +2379,8 @@ module Google
       class ResourceGroup
         include Google::Apis::Core::Hashable
       
-        # The group of resources being monitored. Should be only the group_id, not
-        # projects/<project_id>/groups/<group_id>.
+        # The group of resources being monitored. Should be only the [GROUP_ID], and not
+        # the full-path projects/[PROJECT_ID]/groups/[GROUP_ID].
         # Corresponds to the JSON property `groupId`
         # @return [String]
         attr_accessor :group_id
@@ -2499,12 +2500,13 @@ module Google
         end
       end
       
-      # Information required for a TCP uptime check request.
+      # Information required for a TCP Uptime check request.
       class TcpCheck
         include Google::Apis::Core::Hashable
       
-        # The port to the page to run the check against. Will be combined with host (
-        # specified within the MonitoredResource) to construct the full URL. Required.
+        # The TCP port on the server against which to run the check. Will be combined
+        # with host (specified within the monitored_resource) to construct the full URL.
+        # Required.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -2781,30 +2783,30 @@ module Google
       class UptimeCheckConfig
         include Google::Apis::Core::Hashable
       
-        # The expected content on the page the check is run against. Currently, only the
-        # first entry in the list is supported, and other entries will be ignored. The
-        # server will look for an exact match of the string in the page response's
-        # content. This field is optional and should only be specified if a content
-        # match is required.
+        # The content that is expected to appear in the data returned by the target
+        # server against which the check is run. Currently, only the first entry in the
+        # content_matchers list is supported, and additional entries will be ignored.
+        # This field is optional and should only be specified if a content match is
+        # required as part of the/ Uptime check.
         # Corresponds to the JSON property `contentMatchers`
         # @return [Array<Google::Apis::MonitoringV3::ContentMatcher>]
         attr_accessor :content_matchers
       
-        # A human-friendly name for the uptime check configuration. The display name
+        # A human-friendly name for the Uptime check configuration. The display name
         # should be unique within a Stackdriver Workspace in order to make it easier to
         # identify; however, uniqueness is not enforced. Required.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Information involved in an HTTP/HTTPS uptime check request.
+        # Information involved in an HTTP/HTTPS Uptime check request.
         # Corresponds to the JSON property `httpCheck`
         # @return [Google::Apis::MonitoringV3::HttpCheck]
         attr_accessor :http_check
       
         # The internal checkers that this check will egress from. If is_internal is true
         # and this list is empty, the check will egress from all the InternalCheckers
-        # configured for the project that owns this CheckConfig.
+        # configured for the project that owns this UptimeCheckConfig.
         # Corresponds to the JSON property `internalCheckers`
         # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
         attr_accessor :internal_checkers
@@ -2825,15 +2827,15 @@ module Google
         # @return [Google::Apis::MonitoringV3::MonitoredResource]
         attr_accessor :monitored_resource
       
-        # A unique resource name for this UptimeCheckConfig. The format is:projects/[
-        # PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted
-        # when creating the uptime check configuration; on create, the resource name is
-        # assigned by the server and included in the response.
+        # A unique resource name for this Uptime check configuration. The format is:
+        # projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should
+        # be omitted when creating the Uptime check configuration; on create, the
+        # resource name is assigned by the server and included in the response.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # How often, in seconds, the uptime check is performed. Currently, the only
+        # How often, in seconds, the Uptime check is performed. Currently, the only
         # supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and
         # 900s (15 minutes). Optional, defaults to 60s.
         # Corresponds to the JSON property `period`
@@ -2848,14 +2850,13 @@ module Google
       
         # The list of regions from which the check will be run. Some regions contain one
         # location, and others contain more than one. If this field is specified, enough
-        # regions to include a minimum of 3 locations must be provided, or an error
-        # message is returned. Not specifying this field will result in uptime checks
-        # running from all regions.
+        # regions must be provided to include a minimum of 3 locations. Not specifying
+        # this field will result in Uptime checks running from all available regions.
         # Corresponds to the JSON property `selectedRegions`
         # @return [Array<String>]
         attr_accessor :selected_regions
       
-        # Information required for a TCP uptime check request.
+        # Information required for a TCP Uptime check request.
         # Corresponds to the JSON property `tcpCheck`
         # @return [Google::Apis::MonitoringV3::TcpCheck]
         attr_accessor :tcp_check
@@ -2891,11 +2892,11 @@ module Google
       class UptimeCheckIp
         include Google::Apis::Core::Hashable
       
-        # The IP address from which the uptime check originates. This is a full IP
-        # address (not an IP address range). Most IP addresses, as of this publication,
-        # are in IPv4 format; however, one should not rely on the IP addresses being in
-        # IPv4 format indefinitely and should support interpreting this field in either
-        # IPv4 or IPv6 format.
+        # The IP address from which the Uptime check originates. This is a fully
+        # specified IP address (not an IP address range). Most IP addresses, as of this
+        # publication, are in IPv4 format; however, one should not rely on the IP
+        # addresses being in IPv4 format indefinitely, and should support interpreting
+        # this field in either IPv4 or IPv6 format.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address

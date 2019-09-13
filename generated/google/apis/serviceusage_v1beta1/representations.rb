@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetServiceIdentityResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleApiService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -741,6 +747,15 @@ module Google
       
           property :packed, as: 'packed'
           property :type_url, as: 'typeUrl'
+        end
+      end
+      
+      class GetServiceIdentityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity', class: Google::Apis::ServiceusageV1beta1::ServiceIdentity, decorator: Google::Apis::ServiceusageV1beta1::ServiceIdentity::Representation
+      
+          property :state, as: 'state'
         end
       end
       

@@ -1317,9 +1317,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new uptime check configuration.
+        # Creates a new Uptime check configuration.
         # @param [String] parent
-        #   The project in which to create the uptime check. The format  is projects/[
+        #   The project in which to create the Uptime check. The format  is projects/[
         #   PROJECT_ID].
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] fields
@@ -1351,11 +1351,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an uptime check configuration. Note that this method will fail if the
-        # uptime check configuration is referenced by an alert policy or other dependent
+        # Deletes an Uptime check configuration. Note that this method will fail if the
+        # Uptime check configuration is referenced by an alert policy or other dependent
         # configs that would be rendered invalid by the deletion.
         # @param [String] name
-        #   The uptime check configuration to delete. The format  is projects/[PROJECT_ID]/
+        #   The Uptime check configuration to delete. The format  is projects/[PROJECT_ID]/
         #   uptimeCheckConfigs/[UPTIME_CHECK_ID].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1384,9 +1384,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a single uptime check configuration.
+        # Gets a single Uptime check configuration.
         # @param [String] name
-        #   The uptime check configuration to retrieve. The format  is projects/[
+        #   The Uptime check configuration to retrieve. The format  is projects/[
         #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1415,10 +1415,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the existing valid uptime check configurations for the project, leaving
-        # out any invalid configurations.
+        # Lists the existing valid Uptime check configurations for the project (leaving
+        # out any invalid configurations).
         # @param [String] parent
-        #   The project whose uptime check configurations are listed. The format  is
+        #   The project whose Uptime check configurations are listed. The format  is
         #   projects/[PROJECT_ID].
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
@@ -1458,18 +1458,18 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an uptime check configuration. You can either replace the entire
+        # Updates an Uptime check configuration. You can either replace the entire
         # configuration with a new one or replace only certain fields in the current
-        # configuration by specifying the fields to be updated via "updateMask". Returns
+        # configuration by specifying the fields to be updated via updateMask. Returns
         # the updated configuration.
         # @param [String] name
-        #   A unique resource name for this UptimeCheckConfig. The format is:projects/[
-        #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should be omitted
-        #   when creating the uptime check configuration; on create, the resource name is
-        #   assigned by the server and included in the response.
+        #   A unique resource name for this Uptime check configuration. The format is:
+        #   projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should
+        #   be omitted when creating the Uptime check configuration; on create, the
+        #   resource name is assigned by the server and included in the response.
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] update_mask
-        #   Optional. If present, only the listed fields in the current uptime check
+        #   Optional. If present, only the listed fields in the current Uptime check
         #   configuration are updated with values from the new configuration. If this
         #   field is empty, then the current configuration is completely replaced with the
         #   new configuration.
@@ -1503,7 +1503,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the list of IPs that checkers run from
+        # Returns the list of IP addresses that checkers run from
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If

@@ -3467,7 +3467,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :creation_time
       
-        # [Optional] A user-friendly description of this model.
+        # Optional. A user-friendly description of this model.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3484,8 +3484,8 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # [Optional] The time when this model expires, in milliseconds since the
-        # epoch. If not present, the model will persist indefinitely. Expired models
+        # Optional. The time when this model expires, in milliseconds since the epoch.
+        # If not present, the model will persist indefinitely. Expired models
         # will be deleted and their storage reclaimed.  The defaultTableExpirationMs
         # property of the encapsulating dataset can be used to set a default
         # expirationTime on newly created models.
@@ -3498,7 +3498,7 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
         attr_accessor :feature_columns
       
-        # [Optional] A descriptive name for this model.
+        # Optional. A descriptive name for this model.
         # Corresponds to the JSON property `friendlyName`
         # @return [String]
         attr_accessor :friendly_name
@@ -3509,8 +3509,8 @@ module Google
         # @return [Array<Google::Apis::BigqueryV2::StandardSqlField>]
         attr_accessor :label_columns
       
-        # [Optional] The labels associated with this model. You can use these to
-        # organize and group your models. Label keys and values can be no longer
+        # The labels associated with this model. You can use these to organize
+        # and group your models. Label keys and values can be no longer
         # than 63 characters, can only contain lowercase letters, numeric
         # characters, underscores and dashes. International characters are allowed.
         # Label values are optional. Label keys must start with a letter and each
@@ -3519,8 +3519,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Output only. The time when this model was last modified, in millisecs
-        # since the epoch.
+        # Output only. The time when this model was last modified, in millisecs since
+        # the epoch.
         # Corresponds to the JSON property `lastModifiedTime`
         # @return [Fixnum]
         attr_accessor :last_modified_time
@@ -4314,6 +4314,11 @@ module Google
         # @return [String]
         attr_accessor :definition_body
       
+        # Optional. [Experimental] The description of the routine if defined.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Output only. A hash of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
@@ -4355,7 +4360,7 @@ module Google
         # @return [Google::Apis::BigqueryV2::RoutineReference]
         attr_accessor :routine_reference
       
-        # Required.
+        # Required. The type of routine.
         # Corresponds to the JSON property `routineType`
         # @return [String]
         attr_accessor :routine_type
@@ -4369,6 +4374,7 @@ module Google
           @arguments = args[:arguments] if args.key?(:arguments)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @definition_body = args[:definition_body] if args.key?(:definition_body)
+          @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
           @imported_libraries = args[:imported_libraries] if args.key?(:imported_libraries)
           @language = args[:language] if args.key?(:language)

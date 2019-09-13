@@ -1670,6 +1670,7 @@ module Google
       
           property :creation_time, :numeric_string => true, as: 'creationTime'
           property :definition_body, as: 'definitionBody'
+          property :description, as: 'description'
           property :etag, as: 'etag'
           collection :imported_libraries, as: 'importedLibraries'
           property :language, as: 'language'
