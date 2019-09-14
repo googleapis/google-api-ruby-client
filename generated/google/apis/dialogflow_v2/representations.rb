@@ -766,6 +766,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -948,6 +954,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_expansion_mode, as: 'autoExpansionMode'
           property :display_name, as: 'displayName'
+          property :enable_fuzzy_extraction, as: 'enableFuzzyExtraction'
           collection :entities, as: 'entities', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity::Representation
       
           property :kind, as: 'kind'
@@ -1558,6 +1565,8 @@ module Google
       
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -1567,6 +1576,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_expansion_mode, as: 'autoExpansionMode'
           property :display_name, as: 'displayName'
+          property :enable_fuzzy_extraction, as: 'enableFuzzyExtraction'
           collection :entities, as: 'entities', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1EntityTypeEntity, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1EntityTypeEntity::Representation
       
           property :kind, as: 'kind'
@@ -2086,6 +2096,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment::Representation
       
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_type, as: 'modelType'
         end
       end
       

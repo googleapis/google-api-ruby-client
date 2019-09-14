@@ -1378,6 +1378,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersCreateInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersDeleteInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1954,6 +1960,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceInstanceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceLastAttempt
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2518,6 +2530,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2687,6 +2705,12 @@ module Google
       end
       
       class RegionInstanceGroupManagersApplyUpdatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersCreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7071,6 +7095,14 @@ module Google
         end
       end
       
+      class InstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
+        end
+      end
+      
       class InstanceGroupManagersDeleteInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8094,11 +8126,21 @@ module Google
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
+          collection :instance_health, as: 'instanceHealth', class: Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth, decorator: Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth::Representation
+      
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt::Representation
       
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
+        end
+      end
+      
+      class ManagedInstanceInstanceHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_health_state, as: 'detailedHealthState'
+          property :health_check, as: 'healthCheck'
         end
       end
       
@@ -9114,6 +9156,14 @@ module Google
         end
       end
       
+      class PerInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9407,6 +9457,14 @@ module Google
           collection :instances, as: 'instances'
           property :minimal_action, as: 'minimalAction'
           property :most_disruptive_allowed_action, as: 'mostDisruptiveAllowedAction'
+        end
+      end
+      
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
         end
       end
       

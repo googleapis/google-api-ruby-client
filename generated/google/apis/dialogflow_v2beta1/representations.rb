@@ -382,25 +382,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1ExportDocumentRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1GcsDestination
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1GcsSource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1GenerateDocumentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -419,12 +401,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1InputDataset
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1InputDatasets
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -802,6 +778,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1SpeechContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -904,6 +886,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_expansion_mode, as: 'autoExpansionMode'
           property :display_name, as: 'displayName'
+          property :enable_fuzzy_extraction, as: 'enableFuzzyExtraction'
           collection :entities, as: 'entities', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EntityTypeEntity, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EntityTypeEntity::Representation
       
           property :kind, as: 'kind'
@@ -1411,6 +1394,8 @@ module Google
       
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -1462,6 +1447,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_expansion_mode, as: 'autoExpansionMode'
           property :display_name, as: 'displayName'
+          property :enable_fuzzy_extraction, as: 'enableFuzzyExtraction'
           collection :entities, as: 'entities', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityTypeEntity, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EntityTypeEntity::Representation
       
           property :kind, as: 'kind'
@@ -1509,34 +1495,10 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2beta1ExportDocumentRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gcs_destination, as: 'gcsDestination', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsDestination, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1GcsDestination::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1GcsDestination
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :uri, as: 'uri'
-        end
-      end
-      
       class GoogleCloudDialogflowV2beta1GcsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1GenerateDocumentRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :knowledge_type, as: 'knowledgeType'
-          property :training_datasets, as: 'trainingDatasets', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDatasets, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1InputDatasets::Representation
-      
         end
       end
       
@@ -1568,13 +1530,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dataset, as: 'dataset'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1InputDatasets
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :dataset, as: 'dataset'
         end
       end
       
@@ -2210,6 +2165,13 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :model_type, as: 'modelType'
         end
       end
       

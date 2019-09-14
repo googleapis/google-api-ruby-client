@@ -7323,6 +7323,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           collection :health_checks, as: 'healthChecks'
+          property :health_status_aggregation_policy, as: 'healthStatusAggregationPolicy'
           property :health_status_aggregation_strategy, as: 'healthStatusAggregationStrategy'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'

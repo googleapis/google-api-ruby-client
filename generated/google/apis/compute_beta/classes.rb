@@ -1247,8 +1247,9 @@ module Google
         attr_accessor :mode
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # When creating a new instance, one of initializeParams.sourceImage or disks.
-        # source is required except for local SSD.
+        # When creating a new instance, one of initializeParams.sourceImage or
+        # initializeParams.sourceSnapshot or disks.source is required except for local
+        # SSD.
         # If desired, you can also attach existing non-root persistent disks using this
         # property. This field is only applicable for persistent disks.
         # Note that for InstanceTemplate, specify the disk name, not the URL for the
@@ -1351,7 +1352,8 @@ module Google
         attr_accessor :resource_policies
       
         # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or disks.source is required except for local SSD.
+        # initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.
+        # source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-9 to use the
         # latest Debian 9 image:
@@ -1376,8 +1378,8 @@ module Google
         attr_accessor :source_image_encryption_key
       
         # The source snapshot to create this disk. When creating a new instance, one of
-        # initializeParams.sourceSnapshot or disks.source is required except for local
-        # SSD.
+        # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
+        # source is required except for local SSD.
         # To create a disk with a snapshot that you created, specify the snapshot name
         # in the following format:
         # global/snapshots/my-backup
@@ -11488,6 +11490,25 @@ module Google
         end
       end
       
+      # InstanceGroupManagers.createInstances
+      class InstanceGroupManagersCreateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of specifications of per-instance configs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
       # 
       class InstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
@@ -15488,6 +15509,11 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # [Output Only] Health state of the instance per health-check.
+        # Corresponds to the JSON property `instanceHealth`
+        # @return [Array<Google::Apis::ComputeBeta::ManagedInstanceInstanceHealth>]
+        attr_accessor :instance_health
+      
         # [Output Only] The status of the instance. This field is empty when the
         # instance does not exist.
         # Corresponds to the JSON property `instanceStatus`
@@ -15514,9 +15540,36 @@ module Google
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_health = args[:instance_health] if args.key?(:instance_health)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class ManagedInstanceInstanceHealth
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The current detailed instance health state.
+        # Corresponds to the JSON property `detailedHealthState`
+        # @return [String]
+        attr_accessor :detailed_health_state
+      
+        # [Output Only] The URL for the health check that verifies whether the instance
+        # is healthy.
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_health_state = args[:detailed_health_state] if args.key?(:detailed_health_state)
+          @health_check = args[:health_check] if args.key?(:health_check)
         end
       end
       
@@ -19470,6 +19523,40 @@ module Google
         end
       end
       
+      # 
+      class PerInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of this per-instance config. This field may be used in optimistic
+        # locking. It will be ignored when inserting a per-instance config. An up-to-
+        # date fingerprint must be provided in order to update an existing per-instance
+        # config or the field needs to be unset.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The name of the per-instance config and the corresponding instance. Serves as
+        # a merge key during UpdatePerInstanceConfigs operation, i.e. if per-instance
+        # config with the same name exists then it will be updated, otherwise a new one
+        # will be created for the VM instance with the same name. An attempt to create a
+        # per-instance config for a VM instance that either doesn't exist or is not part
+        # of the group will result in a failure.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Defines an Identity and Access Management (IAM) policy. It is used to specify
       # access control policies for Cloud Platform resources.
       # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
@@ -20553,6 +20640,25 @@ module Google
           @instances = args[:instances] if args.key?(:instances)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
           @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
+        end
+      end
+      
+      # RegionInstanceGroupManagers.createInstances
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of specifications of per-instance configs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeBeta::PerInstanceConfig>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
         end
       end
       
@@ -28827,7 +28933,7 @@ module Google
       
       # Represents a Target TCP Proxy resource.
       # A target TCP proxy is a component of a TCP Proxy load balancer. Global
-      # forwarding rules reference ta target TCP proxy, and the target proxy then
+      # forwarding rules reference target TCP proxy, and the target proxy then
       # references an external backend service. For more information, read TCP Proxy
       # Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (==
       # resource_for v1.targetTcpProxies ==)

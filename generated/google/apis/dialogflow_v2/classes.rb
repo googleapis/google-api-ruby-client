@@ -557,6 +557,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. Enables fuzzy entity extraction during classification.
+        # Corresponds to the JSON property `enableFuzzyExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_fuzzy_extraction
+        alias_method :enable_fuzzy_extraction?, :enable_fuzzy_extraction
+      
         # Optional. The collection of entity entries associated with the entity type.
         # Corresponds to the JSON property `entities`
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
@@ -583,6 +589,7 @@ module Google
         def update!(**args)
           @auto_expansion_mode = args[:auto_expansion_mode] if args.key?(:auto_expansion_mode)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_fuzzy_extraction = args[:enable_fuzzy_extraction] if args.key?(:enable_fuzzy_extraction)
           @entities = args[:entities] if args.key?(:entities)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -2878,6 +2885,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Metadata for smart reply models.
+        # Corresponds to the JSON property `smartReplyModelMetadata`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata]
+        attr_accessor :smart_reply_model_metadata
+      
         # Output only. State of the model. A model can only serve prediction requests
         # after it gets deployed.
         # Corresponds to the JSON property `state`
@@ -2895,6 +2907,7 @@ module Google
           @datasets = args[:datasets] if args.key?(:datasets)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -2915,6 +2928,12 @@ module Google
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
+      
+        # Optional. Enables fuzzy entity extraction during classification.
+        # Corresponds to the JSON property `enableFuzzyExtraction`
+        # @return [Boolean]
+        attr_accessor :enable_fuzzy_extraction
+        alias_method :enable_fuzzy_extraction?, :enable_fuzzy_extraction
       
         # Optional. The collection of entity entries associated with the entity type.
         # Corresponds to the JSON property `entities`
@@ -2942,6 +2961,7 @@ module Google
         def update!(**args)
           @auto_expansion_mode = args[:auto_expansion_mode] if args.key?(:auto_expansion_mode)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_fuzzy_extraction = args[:enable_fuzzy_extraction] if args.key?(:enable_fuzzy_extraction)
           @entities = args[:entities] if args.key?(:entities)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -4913,6 +4933,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
+        end
+      end
+      
+      # Metadata for smart reply models.
+      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of the article suggestion model. The available values are:
+        # *  `smart-reply-dual-encoder-model-1` - (default) Smart Reply Dual Encoder
+        # model.
+        # Corresponds to the JSON property `modelType`
+        # @return [String]
+        attr_accessor :model_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @model_type = args[:model_type] if args.key?(:model_type)
         end
       end
       

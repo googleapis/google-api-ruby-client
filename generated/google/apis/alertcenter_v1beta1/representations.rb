@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppMakerSqlSetupNotification
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attachment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Settings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -295,6 +307,14 @@ module Google
           property :severity, as: 'severity'
           property :status, as: 'status'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class AppMakerSqlSetupNotification
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :request_info, as: 'requestInfo', class: Google::Apis::AlertcenterV1beta1::RequestInfo, decorator: Google::Apis::AlertcenterV1beta1::RequestInfo::Representation
+      
         end
       end
       
@@ -509,6 +529,15 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
+        end
+      end
+      
+      class RequestInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :app_developer_email, as: 'appDeveloperEmail'
+          property :app_key, as: 'appKey'
+          property :number_of_requests, :numeric_string => true, as: 'numberOfRequests'
         end
       end
       

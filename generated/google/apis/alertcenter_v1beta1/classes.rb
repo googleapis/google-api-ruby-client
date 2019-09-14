@@ -379,6 +379,25 @@ module Google
         end
       end
       
+      # Alerts from App Maker to notify admins to set up default SQL instance.
+      class AppMakerSqlSetupNotification
+        include Google::Apis::Core::Hashable
+      
+        # List of applications with requests for default SQL set up.
+        # Corresponds to the JSON property `requestInfo`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::RequestInfo>]
+        attr_accessor :request_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_info = args[:request_info] if args.key?(:request_info)
+        end
+      end
+      
       # Attachment with application-specific information about an alert.
       class Attachment
         include Google::Apis::Core::Hashable
@@ -1067,6 +1086,39 @@ module Google
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @malicious_entity = args[:malicious_entity] if args.key?(:malicious_entity)
           @messages = args[:messages] if args.key?(:messages)
+        end
+      end
+      
+      # Requests for one application that needs default SQL setup.
+      class RequestInfo
+        include Google::Apis::Core::Hashable
+      
+        # List of app developers who triggered notifications for above
+        # application.
+        # Corresponds to the JSON property `appDeveloperEmail`
+        # @return [Array<String>]
+        attr_accessor :app_developer_email
+      
+        # Required. The application that requires the SQL setup.
+        # Corresponds to the JSON property `appKey`
+        # @return [String]
+        attr_accessor :app_key
+      
+        # Required. Number of requests sent for this application to set up default
+        # SQL instance.
+        # Corresponds to the JSON property `numberOfRequests`
+        # @return [Fixnum]
+        attr_accessor :number_of_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_developer_email = args[:app_developer_email] if args.key?(:app_developer_email)
+          @app_key = args[:app_key] if args.key?(:app_key)
+          @number_of_requests = args[:number_of_requests] if args.key?(:number_of_requests)
         end
       end
       

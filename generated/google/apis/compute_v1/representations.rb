@@ -928,6 +928,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HealthChecksAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthChecksScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HealthStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2506,6 +2542,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionTargetHttpsProxiesSetSslCertificatesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionUrlMapsValidateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Reservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3022,7 +3070,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslCertificateAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCertificateList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslCertificatesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -3184,13 +3268,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetHttpProxiesScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpProxy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetHttpProxyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpProxyList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetHttpsProxiesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
         class Warning
@@ -3222,6 +3348,24 @@ module Google
       
       class TargetHttpsProxy
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetHttpsProxyAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3594,6 +3738,42 @@ module Google
       
       class UrlMapValidationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlMapsAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UrlMapsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5522,6 +5702,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :ssl_health_check, as: 'sslHealthCheck', class: Google::Apis::ComputeV1::SslHealthCheck, decorator: Google::Apis::ComputeV1::SslHealthCheck::Representation
       
@@ -5569,6 +5750,66 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :health_check, as: 'healthCheck'
+        end
+      end
+      
+      class HealthChecksAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::HealthChecksScopedList, decorator: Google::Apis::ComputeV1::HealthChecksScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning, decorator: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthChecksAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class HealthChecksScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :health_checks, as: 'healthChecks', class: Google::Apis::ComputeV1::HealthCheck, decorator: Google::Apis::ComputeV1::HealthCheck::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::HealthChecksScopedList::Warning, decorator: Google::Apis::ComputeV1::HealthChecksScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::HealthChecksScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::HealthChecksScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -8453,6 +8694,21 @@ module Google
         end
       end
       
+      class RegionTargetHttpsProxiesSetSslCertificatesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssl_certificates, as: 'sslCertificates'
+        end
+      end
+      
+      class RegionUrlMapsValidateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource, as: 'resource', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
+      
+        end
+      end
+      
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9389,7 +9645,40 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class SslCertificateAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::SslCertificatesScopedList, decorator: Google::Apis::ComputeV1::SslCertificatesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning, decorator: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::SslCertificateAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -9411,6 +9700,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::SslCertificateList::Warning::Datum, decorator: Google::Apis::ComputeV1::SslCertificateList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class SslCertificatesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ssl_certificates, as: 'sslCertificates', class: Google::Apis::ComputeV1::SslCertificate, decorator: Google::Apis::ComputeV1::SslCertificate::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::SslCertificatesScopedList::Warning, decorator: Google::Apis::ComputeV1::SslCertificatesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::SslCertificatesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::SslCertificatesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -9524,10 +9841,13 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
+          property :purpose, as: 'purpose'
           property :region, as: 'region'
+          property :role, as: 'role'
           collection :secondary_ip_ranges, as: 'secondaryIpRanges', class: Google::Apis::ComputeV1::SubnetworkSecondaryRange, decorator: Google::Apis::ComputeV1::SubnetworkSecondaryRange::Representation
       
           property :self_link, as: 'selfLink'
+          property :state, as: 'state'
         end
       end
       
@@ -9675,6 +9995,34 @@ module Google
         end
       end
       
+      class TargetHttpProxiesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_http_proxies, as: 'targetHttpProxies', class: Google::Apis::ComputeV1::TargetHttpProxy, decorator: Google::Apis::ComputeV1::TargetHttpProxy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class TargetHttpProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9683,8 +10031,21 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :url_map, as: 'urlMap'
+        end
+      end
+      
+      class TargetHttpProxyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpProxiesScopedList, decorator: Google::Apis::ComputeV1::TargetHttpProxiesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
         end
       end
       
@@ -9706,6 +10067,34 @@ module Google
           class Representation < Google::Apis::Core::JsonRepresentation
             property :code, as: 'code'
             collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetHttpProxyList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetHttpProxyList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class TargetHttpsProxiesScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :target_https_proxies, as: 'targetHttpsProxies', class: Google::Apis::ComputeV1::TargetHttpsProxy, decorator: Google::Apis::ComputeV1::TargetHttpsProxy::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Warning, decorator: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Warning::Datum::Representation
         
             property :message, as: 'message'
           end
@@ -9743,10 +10132,43 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :quic_override, as: 'quicOverride'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :ssl_certificates, as: 'sslCertificates'
           property :ssl_policy, as: 'sslPolicy'
           property :url_map, as: 'urlMap'
+        end
+      end
+      
+      class TargetHttpsProxyAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList, decorator: Google::Apis::ComputeV1::TargetHttpsProxiesScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning, decorator: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -10323,6 +10745,7 @@ module Google
           property :name, as: 'name'
           collection :path_matchers, as: 'pathMatchers', class: Google::Apis::ComputeV1::PathMatcher, decorator: Google::Apis::ComputeV1::PathMatcher::Representation
       
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           collection :tests, as: 'tests', class: Google::Apis::ComputeV1::UrlMapTest, decorator: Google::Apis::ComputeV1::UrlMapTest::Representation
       
@@ -10386,6 +10809,66 @@ module Google
           collection :test_failures, as: 'testFailures', class: Google::Apis::ComputeV1::TestFailure, decorator: Google::Apis::ComputeV1::TestFailure::Representation
       
           property :test_passed, as: 'testPassed'
+        end
+      end
+      
+      class UrlMapsAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::UrlMapsScopedList, decorator: Google::Apis::ComputeV1::UrlMapsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning, decorator: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::UrlMapsAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class UrlMapsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :url_maps, as: 'urlMaps', class: Google::Apis::ComputeV1::UrlMap, decorator: Google::Apis::ComputeV1::UrlMap::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::UrlMapsScopedList::Warning, decorator: Google::Apis::ComputeV1::UrlMapsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::UrlMapsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::UrlMapsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

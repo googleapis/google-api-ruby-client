@@ -1293,8 +1293,9 @@ module Google
         attr_accessor :shielded_instance_initial_state
       
         # Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        # When creating a new instance, one of initializeParams.sourceImage or disks.
-        # source is required except for local SSD.
+        # When creating a new instance, one of initializeParams.sourceImage or
+        # initializeParams.sourceSnapshot or disks.source is required except for local
+        # SSD.
         # If desired, you can also attach existing non-root persistent disks using this
         # property. This field is only applicable for persistent disks.
         # Note that for InstanceTemplate, specify the disk name, not the URL for the
@@ -1406,7 +1407,8 @@ module Google
         attr_accessor :resource_policies
       
         # The source image to create this disk. When creating a new instance, one of
-        # initializeParams.sourceImage or disks.source is required except for local SSD.
+        # initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.
+        # source is required except for local SSD.
         # To create a disk with one of the public operating system images, specify the
         # image by its family name. For example, specify family/debian-9 to use the
         # latest Debian 9 image:
@@ -1431,8 +1433,8 @@ module Google
         attr_accessor :source_image_encryption_key
       
         # The source snapshot to create this disk. When creating a new instance, one of
-        # initializeParams.sourceSnapshot or disks.source is required except for local
-        # SSD.
+        # initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.
+        # source is required except for local SSD.
         # To create a disk with a snapshot that you created, specify the snapshot name
         # in the following format:
         # global/snapshots/my-backup
@@ -8837,6 +8839,17 @@ module Google
         # @return [Array<String>]
         attr_accessor :health_checks
       
+        # Optional. Policy for how the results from multiple health checks for the same
+        # endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.
+        # - NO_AGGREGATION. An EndpointHealth message is returned for each backend in
+        # the health check service.
+        # - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the
+        # HealthState of the entire health check service. If all backend's are healthy,
+        # the HealthState of the health check service is HEALTHY. .
+        # Corresponds to the JSON property `healthStatusAggregationPolicy`
+        # @return [String]
+        attr_accessor :health_status_aggregation_policy
+      
         # Policy for how the results from multiple health checks for the same endpoint
         # are aggregated.
         # - NO_AGGREGATION. An EndpointHealth message is returned for each backend in
@@ -8913,6 +8926,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
+          @health_status_aggregation_policy = args[:health_status_aggregation_policy] if args.key?(:health_status_aggregation_policy)
           @health_status_aggregation_strategy = args[:health_status_aggregation_strategy] if args.key?(:health_status_aggregation_strategy)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -34874,7 +34888,7 @@ module Google
       
       # Represents a Target TCP Proxy resource.
       # A target TCP proxy is a component of a TCP Proxy load balancer. Global
-      # forwarding rules reference ta target TCP proxy, and the target proxy then
+      # forwarding rules reference target TCP proxy, and the target proxy then
       # references an external backend service. For more information, read TCP Proxy
       # Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (==
       # resource_for v1.targetTcpProxies ==)
