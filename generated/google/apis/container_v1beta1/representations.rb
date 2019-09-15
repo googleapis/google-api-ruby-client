@@ -370,6 +370,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecurringTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReleaseChannel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +521,12 @@ module Google
       end
       
       class TierSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeWindow
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1037,6 +1049,7 @@ module Google
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_version, as: 'resourceVersion'
           property :window, as: 'window', class: Google::Apis::ContainerV1beta1::MaintenanceWindow, decorator: Google::Apis::ContainerV1beta1::MaintenanceWindow::Representation
       
         end
@@ -1046,6 +1059,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :daily_maintenance_window, as: 'dailyMaintenanceWindow', class: Google::Apis::ContainerV1beta1::DailyMaintenanceWindow, decorator: Google::Apis::ContainerV1beta1::DailyMaintenanceWindow::Representation
+      
+          hash :maintenance_exclusions, as: 'maintenanceExclusions', class: Google::Apis::ContainerV1beta1::TimeWindow, decorator: Google::Apis::ContainerV1beta1::TimeWindow::Representation
+      
+          property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1beta1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1beta1::RecurringTimeWindow::Representation
       
         end
       end
@@ -1254,8 +1271,18 @@ module Google
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :peering_name, as: 'peeringName'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class RecurringTimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recurrence, as: 'recurrence'
+          property :window, as: 'window', class: Google::Apis::ContainerV1beta1::TimeWindow, decorator: Google::Apis::ContainerV1beta1::TimeWindow::Representation
+      
         end
       end
       
@@ -1516,6 +1543,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :tier, as: 'tier'
+        end
+      end
+      
+      class TimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

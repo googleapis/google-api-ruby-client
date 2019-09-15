@@ -22,6 +22,12 @@ module Google
   module Apis
     module LoggingV2
       
+      class BigQueryOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -206,6 +212,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BigQueryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_partitioned_tables, as: 'usePartitionedTables'
+        end
       end
       
       class BucketOptions
@@ -437,6 +450,8 @@ module Google
       class LogSink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_options, as: 'bigqueryOptions', class: Google::Apis::LoggingV2::BigQueryOptions, decorator: Google::Apis::LoggingV2::BigQueryOptions::Representation
+      
           property :create_time, as: 'createTime'
           property :destination, as: 'destination'
           property :filter, as: 'filter'

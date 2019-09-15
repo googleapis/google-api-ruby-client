@@ -293,7 +293,11 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. To be deprecated in Logging Data Model V2.
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -303,10 +307,6 @@ module Google
         #   preceding call to this method. pageToken must be the value of nextPageToken
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
-        # @param [Array<String>, String] resource_names
-        #   Required for Logging Data Model V2. The resource name that owns the logs:  "
-        #   projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/
-        #   BILLING_ACCOUNT_ID"  "folders/FOLDER_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -324,14 +324,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_billing_account_logs(parent, page_size: nil, page_token: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_billing_account_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1140,7 +1139,11 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. To be deprecated in Logging Data Model V2.
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1150,10 +1153,6 @@ module Google
         #   preceding call to this method. pageToken must be the value of nextPageToken
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
-        # @param [Array<String>, String] resource_names
-        #   Required for Logging Data Model V2. The resource name that owns the logs:  "
-        #   projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/
-        #   BILLING_ACCOUNT_ID"  "folders/FOLDER_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1171,14 +1170,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_folder_logs(parent, page_size: nil, page_token: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_folder_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1519,7 +1517,11 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. To be deprecated in Logging Data Model V2.
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1529,10 +1531,6 @@ module Google
         #   preceding call to this method. pageToken must be the value of nextPageToken
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
-        # @param [Array<String>, String] resource_names
-        #   Required for Logging Data Model V2. The resource name that owns the logs:  "
-        #   projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/
-        #   BILLING_ACCOUNT_ID"  "folders/FOLDER_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1550,14 +1548,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_logs(parent, page_size: nil, page_token: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1844,7 +1841,11 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. To be deprecated in Logging Data Model V2.
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1854,10 +1855,6 @@ module Google
         #   preceding call to this method. pageToken must be the value of nextPageToken
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
-        # @param [Array<String>, String] resource_names
-        #   Required for Logging Data Model V2. The resource name that owns the logs:  "
-        #   projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/
-        #   BILLING_ACCOUNT_ID"  "folders/FOLDER_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1875,14 +1872,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_logs(parent, page_size: nil, page_token: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2424,7 +2420,11 @@ module Google
         # Lists the logs in projects, organizations, folders, or billing accounts. Only
         # logs that have entries are listed.
         # @param [String] parent
-        #   Required. To be deprecated in Logging Data Model V2.
+        #   Required. The resource name that owns the logs:
+        #   "projects/[PROJECT_ID]"
+        #   "organizations/[ORGANIZATION_ID]"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]"
+        #   "folders/[FOLDER_ID]"
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -2434,10 +2434,6 @@ module Google
         #   preceding call to this method. pageToken must be the value of nextPageToken
         #   from the previous response. The values of other method parameters should be
         #   identical to those in the previous call.
-        # @param [Array<String>, String] resource_names
-        #   Required for Logging Data Model V2. The resource name that owns the logs:  "
-        #   projects/PROJECT_ID"  "organizations/ORGANIZATION_ID"  "billingAccounts/
-        #   BILLING_ACCOUNT_ID"  "folders/FOLDER_ID"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2455,14 +2451,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_logs(parent, page_size: nil, page_token: nil, resource_names: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_project_logs(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/{+parent}/logs', options)
           command.response_representation = Google::Apis::LoggingV2::ListLogsResponse::Representation
           command.response_class = Google::Apis::LoggingV2::ListLogsResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['resourceNames'] = resource_names unless resource_names.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

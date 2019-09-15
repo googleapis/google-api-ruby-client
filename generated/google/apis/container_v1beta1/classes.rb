@@ -32,7 +32,7 @@ module Google
         attr_accessor :accelerator_count
       
         # The accelerator type resource name. List of supported accelerators
-        # [here](/compute/docs/gpus/#Introduction)
+        # [here](/compute/docs/gpus)
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1926,6 +1926,15 @@ module Google
       class MaintenancePolicy
         include Google::Apis::Core::Hashable
       
+        # A hash identifying the version of this policy, so that updates to fields of
+        # the policy won't accidentally undo intermediate changes (and so that users
+        # of the API unaware of some fields won't accidentally remove other fields).
+        # Make a <code>get()</code> request to the cluster to get the current
+        # resource version and include it with requests to set the policy.
+        # Corresponds to the JSON property `resourceVersion`
+        # @return [String]
+        attr_accessor :resource_version
+      
         # MaintenanceWindow defines the maintenance window to be used for the cluster.
         # Corresponds to the JSON property `window`
         # @return [Google::Apis::ContainerV1beta1::MaintenanceWindow]
@@ -1937,6 +1946,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @resource_version = args[:resource_version] if args.key?(:resource_version)
           @window = args[:window] if args.key?(:window)
         end
       end
@@ -1950,6 +1960,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DailyMaintenanceWindow]
         attr_accessor :daily_maintenance_window
       
+        # Exceptions to maintenance window. Non-emergency maintenance should not
+        # occur in these windows.
+        # Corresponds to the JSON property `maintenanceExclusions`
+        # @return [Hash<String,Google::Apis::ContainerV1beta1::TimeWindow>]
+        attr_accessor :maintenance_exclusions
+      
+        # Represents an arbitrary window of time that recurs.
+        # Corresponds to the JSON property `recurringWindow`
+        # @return [Google::Apis::ContainerV1beta1::RecurringTimeWindow]
+        attr_accessor :recurring_window
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1957,6 +1978,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
+          @maintenance_exclusions = args[:maintenance_exclusions] if args.key?(:maintenance_exclusions)
+          @recurring_window = args[:recurring_window] if args.key?(:recurring_window)
         end
       end
       
@@ -2235,9 +2258,9 @@ module Google
         attr_accessor :labels
       
         # The number of local SSD disks to be attached to the node.
-        # The limit for this value is dependant upon the maximum number of
+        # The limit for this value is dependent upon the maximum number of
         # disks available on a machine per zone. See:
-        # https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits
+        # https://cloud.google.com/compute/docs/disks/local-ssd
         # for more information.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
@@ -2832,6 +2855,11 @@ module Google
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
       
+        # Output only. The peering name in the customer VPC used by this cluster.
+        # Corresponds to the JSON property `peeringName`
+        # @return [String]
+        attr_accessor :peering_name
+      
         # Output only. The internal IP address of this cluster's master endpoint.
         # Corresponds to the JSON property `privateEndpoint`
         # @return [String]
@@ -2852,8 +2880,59 @@ module Google
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @peering_name = args[:peering_name] if args.key?(:peering_name)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # Represents an arbitrary window of time that recurs.
+      class RecurringTimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how
+        # this window reccurs. They go on for the span of time between the start and
+        # end time.
+        # For example, to have something repeat every weekday, you'd use:
+        # <code>FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR</code>
+        # To repeat some window daily (equivalent to the DailyMaintenanceWindow):
+        # <code>FREQ=DAILY</code>
+        # For the first weekend of every month:
+        # <code>FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU</code>
+        # This specifies how frequently the window starts. Eg, if you wanted to have
+        # a 9-5 UTC-4 window every weekday, you'd use something like:
+        # <code>
+        # start time = 2019-01-01T09:00:00-0400
+        # end time = 2019-01-01T17:00:00-0400
+        # recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+        # </code>
+        # Windows can span multiple days. Eg, to make the window encompass every
+        # weekend from midnight Saturday till the last minute of Sunday UTC:
+        # <code>
+        # start time = 2019-01-05T00:00:00Z
+        # end time = 2019-01-07T23:59:00Z
+        # recurrence = FREQ=WEEKLY;BYDAY=SA
+        # </code>
+        # Note the start and end time's specific dates are largely arbitrary except
+        # to specify duration of the window and when it first starts.
+        # The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.
+        # Corresponds to the JSON property `recurrence`
+        # @return [String]
+        attr_accessor :recurrence
+      
+        # Represents an arbitrary window of time.
+        # Corresponds to the JSON property `window`
+        # @return [Google::Apis::ContainerV1beta1::TimeWindow]
+        attr_accessor :window
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recurrence = args[:recurrence] if args.key?(:recurrence)
+          @window = args[:window] if args.key?(:window)
         end
       end
       
@@ -3938,6 +4017,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tier = args[:tier] if args.key?(:tier)
+        end
+      end
+      
+      # Represents an arbitrary window of time.
+      class TimeWindow
+        include Google::Apis::Core::Hashable
+      
+        # The time that the window ends. The end time should take place after the
+        # start time.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The time that the window first starts.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       

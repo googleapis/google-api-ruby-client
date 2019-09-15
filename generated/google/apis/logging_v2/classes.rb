@@ -22,6 +22,30 @@ module Google
   module Apis
     module LoggingV2
       
+      # Options that change functionality of a sink exporting data to BigQuery.
+      class BigQueryOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Whether to use BigQuery's partition tables. By default, Logging
+        # creates dated tables based on the log entries' timestamps, e.g.
+        # syslog_20170523. With partitioned tables the date suffix is no longer present
+        # and special query syntax has to be used instead. In both cases, tables are
+        # sharded based on UTC timezone.
+        # Corresponds to the JSON property `usePartitionedTables`
+        # @return [Boolean]
+        attr_accessor :use_partitioned_tables
+        alias_method :use_partitioned_tables?, :use_partitioned_tables
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_partitioned_tables = args[:use_partitioned_tables] if args.key?(:use_partitioned_tables)
+        end
+      end
+      
       # BucketOptions describes the bucket boundaries used to create a histogram for
       # the distribution. The buckets can be in a linear sequence, an exponential
       # sequence, or each bucket can be specified explicitly. BucketOptions does not
@@ -1085,6 +1109,11 @@ module Google
       class LogSink
         include Google::Apis::Core::Hashable
       
+        # Options that change functionality of a sink exporting data to BigQuery.
+        # Corresponds to the JSON property `bigqueryOptions`
+        # @return [Google::Apis::LoggingV2::BigQueryOptions]
+        attr_accessor :bigquery_options
+      
         # Output only. The creation timestamp of the sink.This field may not be present
         # for older sinks.
         # Corresponds to the JSON property `createTime`
@@ -1165,6 +1194,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @bigquery_options = args[:bigquery_options] if args.key?(:bigquery_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
           @filter = args[:filter] if args.key?(:filter)
