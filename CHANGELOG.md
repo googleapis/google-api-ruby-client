@@ -1,3 +1,45 @@
+# 0.31.0
+* Breaking changes:
+  * Deleted `healthcare_v1alpha2`
+* Backwards compatible changes:
+  * Updated `alertcenter_v1beta1`
+  * Updated `androidenterprise_v1`
+  * Updated `androidpublisher_v2`
+  * Updated `androidpublisher_v3`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryconnection_v1beta1`
+  * Updated `bigtableadmin_v2`
+  * Updated `calendar_v3`
+  * Updated `cloudtasks_v2`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dns_v1`
+  * Updated `dns_v1beta2`
+  * Updated `dns_v2beta1`
+  * Updated `iam_v1`
+  * Updated `iap_v1`
+  * Updated `iap_v1beta1`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `logging_v2`
+  * Updated `monitoring_v3`
+  * Updated `people_v1`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `storagetransfer_v1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `videointelligence_v1p2beta1`
+  * Updated `videointelligence_v1p3beta1`
+
 # 0.30.10
 * Backwards compatible changes:
   * Added `bigqueryconnection_v1beta1`
