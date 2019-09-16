@@ -32,7 +32,7 @@ module Google
         attr_accessor :accelerator_count
       
         # The accelerator type resource name. List of supported accelerators
-        # [here](/compute/docs/gpus/#Introduction)
+        # [here](/compute/docs/gpus)
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -1741,9 +1741,9 @@ module Google
         attr_accessor :labels
       
         # The number of local SSD disks to be attached to the node.
-        # The limit for this value is dependant upon the maximum number of
+        # The limit for this value is dependent upon the maximum number of
         # disks available on a machine per zone. See:
-        # https://cloud.google.com/compute/docs/disks/local-ssd#local_ssd_limits
+        # https://cloud.google.com/compute/docs/disks/local-ssd
         # for more information.
         # Corresponds to the JSON property `localSsdCount`
         # @return [Fixnum]
