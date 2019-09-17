@@ -1156,6 +1156,8 @@ module Google
           hash :version, as: 'version'
           collection :worker_pools, as: 'workerPools', class: Google::Apis::DataflowV1b3::WorkerPool, decorator: Google::Apis::DataflowV1b3::WorkerPool::Representation
       
+          property :worker_region, as: 'workerRegion'
+          property :worker_zone, as: 'workerZone'
         end
       end
       
@@ -1734,6 +1736,7 @@ module Google
           collection :additional_experiments, as: 'additionalExperiments'
           hash :additional_user_labels, as: 'additionalUserLabels'
           property :bypass_temp_dir_validation, as: 'bypassTempDirValidation'
+          property :ip_configuration, as: 'ipConfiguration'
           property :kms_key_name, as: 'kmsKeyName'
           property :machine_type, as: 'machineType'
           property :max_workers, as: 'maxWorkers'
@@ -1742,7 +1745,8 @@ module Google
           property :service_account_email, as: 'serviceAccountEmail'
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
-          property :use_private_ips, as: 'usePrivateIps'
+          property :worker_region, as: 'workerRegion'
+          property :worker_zone, as: 'workerZone'
           property :zone, as: 'zone'
         end
       end

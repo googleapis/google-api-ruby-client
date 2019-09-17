@@ -1186,6 +1186,24 @@ module Google
         # @return [Array<Google::Apis::DataflowV1b3::WorkerPool>]
         attr_accessor :worker_pools
       
+        # The Compute Engine region
+        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        # which worker processing should occur, e.g. "us-west1". Mutually exclusive
+        # with worker_zone. If neither worker_region nor worker_zone is specified,
+        # default to the control plane's region.
+        # Corresponds to the JSON property `workerRegion`
+        # @return [String]
+        attr_accessor :worker_region
+      
+        # The Compute Engine zone
+        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        # which worker processing should occur, e.g. "us-west1-a". Mutually exclusive
+        # with worker_region. If neither worker_region nor worker_zone is specified,
+        # a zone in the control plane's region is chosen based on available capacity.
+        # Corresponds to the JSON property `workerZone`
+        # @return [String]
+        attr_accessor :worker_zone
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1204,6 +1222,8 @@ module Google
           @user_agent = args[:user_agent] if args.key?(:user_agent)
           @version = args[:version] if args.key?(:version)
           @worker_pools = args[:worker_pools] if args.key?(:worker_pools)
+          @worker_region = args[:worker_region] if args.key?(:worker_region)
+          @worker_zone = args[:worker_zone] if args.key?(:worker_zone)
         end
       end
       
@@ -3313,6 +3333,11 @@ module Google
         attr_accessor :bypass_temp_dir_validation
         alias_method :bypass_temp_dir_validation?, :bypass_temp_dir_validation
       
+        # Configuration for VM IPs.
+        # Corresponds to the JSON property `ipConfiguration`
+        # @return [String]
+        attr_accessor :ip_configuration
+      
         # Optional. Name for the Cloud KMS key for the job.
         # Key format is:
         # projects/<project>/locations/<location>/keyRings/<keyring>/cryptoKeys/<key>
@@ -3360,17 +3385,29 @@ module Google
         # @return [String]
         attr_accessor :temp_location
       
-        # Optional. Specifies whether worker pools should be started with private IP
-        # addresses.
-        # False by default.
-        # Corresponds to the JSON property `usePrivateIps`
-        # @return [Boolean]
-        attr_accessor :use_private_ips
-        alias_method :use_private_ips?, :use_private_ips
+        # The Compute Engine region
+        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        # which worker processing should occur, e.g. "us-west1". Mutually exclusive
+        # with worker_zone. If neither worker_region nor worker_zone is specified,
+        # default to the control plane's region.
+        # Corresponds to the JSON property `workerRegion`
+        # @return [String]
+        attr_accessor :worker_region
+      
+        # The Compute Engine zone
+        # (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        # which worker processing should occur, e.g. "us-west1-a". Mutually exclusive
+        # with worker_region. If neither worker_region nor worker_zone is specified,
+        # a zone in the control plane's region is chosen based on available capacity.
+        # If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        # Corresponds to the JSON property `workerZone`
+        # @return [String]
+        attr_accessor :worker_zone
       
         # The Compute Engine [availability
         # zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
         # for launching worker instances to run your pipeline.
+        # In the future, worker_zone will take precedence.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3384,6 +3421,7 @@ module Google
           @additional_experiments = args[:additional_experiments] if args.key?(:additional_experiments)
           @additional_user_labels = args[:additional_user_labels] if args.key?(:additional_user_labels)
           @bypass_temp_dir_validation = args[:bypass_temp_dir_validation] if args.key?(:bypass_temp_dir_validation)
+          @ip_configuration = args[:ip_configuration] if args.key?(:ip_configuration)
           @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @max_workers = args[:max_workers] if args.key?(:max_workers)
@@ -3392,7 +3430,8 @@ module Google
           @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @temp_location = args[:temp_location] if args.key?(:temp_location)
-          @use_private_ips = args[:use_private_ips] if args.key?(:use_private_ips)
+          @worker_region = args[:worker_region] if args.key?(:worker_region)
+          @worker_zone = args[:worker_zone] if args.key?(:worker_zone)
           @zone = args[:zone] if args.key?(:zone)
         end
       end

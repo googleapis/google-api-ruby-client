@@ -1209,7 +1209,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
