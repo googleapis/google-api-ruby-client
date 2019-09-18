@@ -602,7 +602,7 @@ module Google
         # "create_time = 1560208038000"
         # * iam_policy.policy_blob: `=`, `:`
         # * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
-        # * security_marks: `=`, `:`
+        # * security_marks.marks: `=`, `:`
         # * security_center_properties.resource_name: `=`, `:`
         # * security_center_properties.resource_type: `=`, `:`
         # * security_center_properties.resource_parent: `=`, `:`
@@ -762,7 +762,7 @@ module Google
         # Examples:
         # "event_time = \"2019-06-10T16:07:18-07:00\""
         # "event_time = 1560208038000"
-        # * security_marks: `=`, `:`
+        # * security_marks.marks: `=`, `:`
         # * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
         # For example, `source_properties.size = 100` is a valid filter string.
         # Corresponds to the JSON property `filter`
