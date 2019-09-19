@@ -610,6 +610,7 @@ module Google
           property :analysis_status_error, as: 'analysisStatusError', class: Google::Apis::ContaineranalysisV1alpha1::Status, decorator: Google::Apis::ContaineranalysisV1alpha1::Status::Representation
       
           property :continuous_analysis, as: 'continuousAnalysis'
+          property :cpe, as: 'cpe'
           property :operation, as: 'operation', class: Google::Apis::ContaineranalysisV1alpha1::Operation, decorator: Google::Apis::ContaineranalysisV1alpha1::Operation::Representation
       
         end

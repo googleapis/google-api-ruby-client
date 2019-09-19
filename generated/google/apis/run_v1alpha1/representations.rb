@@ -1045,6 +1045,7 @@ module Google
       
           hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1alpha1::RegionDetails, decorator: Google::Apis::RunV1alpha1::RegionDetails::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       

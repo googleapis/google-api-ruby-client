@@ -294,6 +294,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # The rollout management policy this maintenance schedule is associated
+        # with. When doing reschedule update request, the reschedule should be
+        # against this given policy.
+        # Corresponds to the JSON property `rolloutManagementPolicy`
+        # @return [String]
+        attr_accessor :rollout_management_policy
+      
         # The scheduled start time for the maintenance.
         # Corresponds to the JSON property `startTime`
         # @return [String]
@@ -307,6 +314,7 @@ module Google
         def update!(**args)
           @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @rollout_management_policy = args[:rollout_management_policy] if args.key?(:rollout_management_policy)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end

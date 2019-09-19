@@ -275,6 +275,8 @@ module Google
         #   field.  The elements of the repeated paths field may only include these
         #   fields:
         #   "description"
+        #   "file_shares"
+        #   "labels"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

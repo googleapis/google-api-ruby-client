@@ -2274,12 +2274,12 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
         include Google::Apis::Core::Hashable
       
-        # The number of the guest accelerator cards exposed to this VM.
+        # The number of guest accelerator cards exposed to each VM.
         # Corresponds to the JSON property `acceleratorCount`
         # @return [Fixnum]
         attr_accessor :accelerator_count
       
-        # The type of accelerator to attach to this VM, e.g. "nvidia-tesla-k80" for
+        # The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for
         # nVidia Tesla K80.
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
@@ -2686,6 +2686,15 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
+        # Determines the type of network access granted to workers. Possible values:
+        # - "public": Workers can connect to the public internet.
+        # - "private": Workers can only connect to Google APIs and services.
+        # - "restricted-private": Workers can only connect to Google APIs that are
+        # reachable through `restricted.googleapis.com` (`199.36.153.4/30`).
+        # Corresponds to the JSON property `networkAccess`
+        # @return [String]
+        attr_accessor :network_access
+      
         # Determines whether the worker is reserved (equivalent to a Compute Engine
         # on-demand VM and therefore won't be preempted).
         # See [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more
@@ -2707,6 +2716,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
+          @network_access = args[:network_access] if args.key?(:network_access)
           @reserved = args[:reserved] if args.key?(:reserved)
         end
       end

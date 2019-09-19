@@ -1134,6 +1134,7 @@ module Google
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
+          property :network_access, as: 'networkAccess'
           property :reserved, as: 'reserved'
         end
       end

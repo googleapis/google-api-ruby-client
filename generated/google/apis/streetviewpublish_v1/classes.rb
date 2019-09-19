@@ -620,7 +620,7 @@ module Google
         # @return [Google::Apis::StreetviewpublishV1::Photo]
         attr_accessor :photo
       
-        # Mask that identifies fields on the photo metadata to update.
+        # Required. Mask that identifies fields on the photo metadata to update.
         # If not present, the old Photo
         # metadata is entirely replaced with the
         # new Photo metadata in this request.

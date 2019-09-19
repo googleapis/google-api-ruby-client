@@ -745,6 +745,11 @@ module Google
         # @return [String]
         attr_accessor :continuous_analysis
       
+        # The CPE of the resource being scanned.
+        # Corresponds to the JSON property `cpe`
+        # @return [String]
+        attr_accessor :cpe
+      
         # This resource represents a long-running operation that is the result of a
         # network API call.
         # Corresponds to the JSON property `operation`
@@ -760,6 +765,7 @@ module Google
           @analysis_status = args[:analysis_status] if args.key?(:analysis_status)
           @analysis_status_error = args[:analysis_status_error] if args.key?(:analysis_status_error)
           @continuous_analysis = args[:continuous_analysis] if args.key?(:continuous_analysis)
+          @cpe = args[:cpe] if args.key?(:cpe)
           @operation = args[:operation] if args.key?(:operation)
         end
       end
@@ -989,9 +995,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The policy format version to be returned.
-        # Acceptable values are 0, 1, and 3.
-        # If the value is 0, or the field is omitted, policy format version 1 will be
-        # returned.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Requests for policies with any conditional bindings must specify version 3.
+        # Policies without any conditional bindings may specify any valid value or
+        # leave the field unset.
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1989,7 +1997,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

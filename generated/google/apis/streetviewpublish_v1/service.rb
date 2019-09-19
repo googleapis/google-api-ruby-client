@@ -146,7 +146,8 @@ module Google
         #   If language_code is unspecified, the user's language preference for Google
         #   services is used.
         # @param [String] view
-        #   Specifies if a download URL for the photo bytes should be returned in the
+        #   Required. Specifies if a download URL for the photo bytes should be returned
+        #   in the
         #   Photo response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -241,7 +242,7 @@ module Google
         #   Required. A unique identifier for a photo.
         # @param [Google::Apis::StreetviewpublishV1::Photo] photo_object
         # @param [String] update_mask
-        #   Mask that identifies fields on the photo metadata to update.
+        #   Required. Mask that identifies fields on the photo metadata to update.
         #   If not present, the old Photo
         #   metadata is entirely replaced with the
         #   new Photo metadata in this request.
@@ -363,7 +364,8 @@ module Google
         #   GET requests, the URL query parameter should be
         #   `photoIds=<id1>&photoIds=<id2>&...`.
         # @param [String] view
-        #   Specifies if a download URL for the photo bytes should be returned in the
+        #   Required. Specifies if a download URL for the photo bytes should be returned
+        #   in the
         #   Photo response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -457,7 +459,8 @@ module Google
         # <aside class="note"><b>Note:</b> Recently created photos that are still
         # being indexed are not returned in the response.</aside>
         # @param [String] filter
-        #   The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+        #   Required. The filter expression. For example: `placeId=
+        #   ChIJj61dQgK6j4AR4GeTYWZsKWw`.
         #   The only filter supported at the moment is `placeId`.
         # @param [String] language_code
         #   The BCP-47 language code, such as "en-US" or "sr-Latn". For more
@@ -478,7 +481,8 @@ module Google
         #   ListPhotos
         #   request, if any.
         # @param [String] view
-        #   Specifies if a download URL for the photos bytes should be returned in the
+        #   Required. Specifies if a download URL for the photos bytes should be returned
+        #   in the
         #   Photos response.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

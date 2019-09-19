@@ -191,6 +191,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_reschedule, as: 'canReschedule'
           property :end_time, as: 'endTime'
+          property :rollout_management_policy, as: 'rolloutManagementPolicy'
           property :start_time, as: 'startTime'
         end
       end

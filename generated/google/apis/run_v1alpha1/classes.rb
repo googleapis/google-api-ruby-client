@@ -1791,6 +1791,11 @@ module Google
         # @return [Hash<String,Google::Apis::RunV1alpha1::RegionDetails>]
         attr_accessor :region_details
       
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1802,6 +1807,7 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @metadata = args[:metadata] if args.key?(:metadata)
           @region_details = args[:region_details] if args.key?(:region_details)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
