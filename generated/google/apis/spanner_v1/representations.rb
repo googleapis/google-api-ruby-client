@@ -22,6 +22,18 @@ module Google
   module Apis
     module SpannerV1
       
+      class BatchCreateSessionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BatchCreateSessionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BeginTransactionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +149,12 @@ module Google
       end
       
       class GetIamPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetPolicyOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -418,6 +436,23 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchCreateSessionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :session_count, as: 'sessionCount'
+          property :session_template, as: 'sessionTemplate', class: Google::Apis::SpannerV1::Session, decorator: Google::Apis::SpannerV1::Session::Representation
+      
+        end
+      end
+      
+      class BatchCreateSessionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :session, as: 'session', class: Google::Apis::SpannerV1::Session, decorator: Google::Apis::SpannerV1::Session::Representation
+      
+        end
+      end
+      
       class BeginTransactionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -595,6 +630,15 @@ module Google
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :options, as: 'options', class: Google::Apis::SpannerV1::GetPolicyOptions, decorator: Google::Apis::SpannerV1::GetPolicyOptions::Representation
+      
+        end
+      end
+      
+      class GetPolicyOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :requested_policy_version, as: 'requestedPolicyVersion'
         end
       end
       

@@ -119,7 +119,7 @@ module Google
       class LongRunningRecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Sequential list of transcription results corresponding to
+        # Sequential list of transcription results corresponding to
         # sequential portions of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionResult>]
@@ -241,7 +241,7 @@ module Google
       class RecognitionConfig
         include Google::Apis::Core::Hashable
       
-        # *Optional* The number of channels in the input audio data.
+        # The number of channels in the input audio data.
         # ONLY set this for MULTI-CHANNEL recognition.
         # Valid values for LINEAR16 and FLAC are `1`-`8`.
         # Valid values for OGG_OPUS are '1'-'254'.
@@ -254,7 +254,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :audio_channel_count
       
-        # *Optional* If 'true', adds punctuation to recognition result hypotheses.
+        # Config to enable speaker diarization.
+        # Corresponds to the JSON property `diarizationConfig`
+        # @return [Google::Apis::SpeechV1::SpeakerDiarizationConfig]
+        attr_accessor :diarization_config
+      
+        # If 'true', adds punctuation to recognition result hypotheses.
         # This feature is only available in select languages. Setting this for
         # requests in other languages has no effect at all.
         # The default 'false' value does not add punctuation to result hypotheses.
@@ -277,7 +282,7 @@ module Google
         attr_accessor :enable_separate_recognition_per_channel
         alias_method :enable_separate_recognition_per_channel?, :enable_separate_recognition_per_channel
       
-        # *Optional* If `true`, the top result includes a list of words and
+        # If `true`, the top result includes a list of words and
         # the start and end time offsets (timestamps) for those words. If
         # `false`, no word-level time offset information is returned. The default is
         # `false`.
@@ -293,7 +298,7 @@ module Google
         # @return [String]
         attr_accessor :encoding
       
-        # *Required* The language of the supplied audio as a
+        # Required. The language of the supplied audio as a
         # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
         # Example: "en-US".
         # See [Language
@@ -303,7 +308,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # *Optional* Maximum number of recognition hypotheses to be returned.
+        # Maximum number of recognition hypotheses to be returned.
         # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
         # within each `SpeechRecognitionResult`.
         # The server may return fewer than `max_alternatives`.
@@ -318,7 +323,7 @@ module Google
         # @return [Google::Apis::SpeechV1::RecognitionMetadata]
         attr_accessor :metadata
       
-        # *Optional* Which model to select for the given request. Select the model
+        # Which model to select for the given request. Select the model
         # best suited to your domain to get best results. If a model is not
         # explicitly specified, then we auto-select a model based on the parameters
         # in the RecognitionConfig.
@@ -354,7 +359,7 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # *Optional* If set to `true`, the server will attempt to filter out
+        # If set to `true`, the server will attempt to filter out
         # profanities, replacing all but the initial character in each filtered word
         # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
         # won't be filtered out.
@@ -374,7 +379,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
-        # *Optional* array of SpeechContext.
+        # Array of SpeechContext.
         # A means to provide context to assist the speech recognition. For more
         # information, see
         # [speech
@@ -383,7 +388,7 @@ module Google
         # @return [Array<Google::Apis::SpeechV1::SpeechContext>]
         attr_accessor :speech_contexts
       
-        # *Optional* Set to true to use an enhanced model for speech recognition.
+        # Set to true to use an enhanced model for speech recognition.
         # If `use_enhanced` is set to true and the `model` field is not set, then
         # an appropriate enhanced model is chosen if an enhanced model exists for
         # the audio.
@@ -402,6 +407,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audio_channel_count = args[:audio_channel_count] if args.key?(:audio_channel_count)
+          @diarization_config = args[:diarization_config] if args.key?(:diarization_config)
           @enable_automatic_punctuation = args[:enable_automatic_punctuation] if args.key?(:enable_automatic_punctuation)
           @enable_separate_recognition_per_channel = args[:enable_separate_recognition_per_channel] if args.key?(:enable_separate_recognition_per_channel)
           @enable_word_time_offsets = args[:enable_word_time_offsets] if args.key?(:enable_word_time_offsets)
@@ -529,7 +535,7 @@ module Google
       class RecognizeResponse
         include Google::Apis::Core::Hashable
       
-        # Output only. Sequential list of transcription results corresponding to
+        # Sequential list of transcription results corresponding to
         # sequential portions of audio.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::SpeechV1::SpeechRecognitionResult>]
@@ -545,12 +551,50 @@ module Google
         end
       end
       
+      # Config to enable speaker diarization.
+      class SpeakerDiarizationConfig
+        include Google::Apis::Core::Hashable
+      
+        # If 'true', enables speaker detection for each recognized word in
+        # the top alternative of the recognition result using a speaker_tag provided
+        # in the WordInfo.
+        # Corresponds to the JSON property `enableSpeakerDiarization`
+        # @return [Boolean]
+        attr_accessor :enable_speaker_diarization
+        alias_method :enable_speaker_diarization?, :enable_speaker_diarization
+      
+        # Maximum number of speakers in the conversation. This range gives you more
+        # flexibility by allowing the system to automatically determine the correct
+        # number of speakers. If not set, the default value is 6.
+        # Corresponds to the JSON property `maxSpeakerCount`
+        # @return [Fixnum]
+        attr_accessor :max_speaker_count
+      
+        # Minimum number of speakers in the conversation. This range gives you more
+        # flexibility by allowing the system to automatically determine the correct
+        # number of speakers. If not set, the default value is 2.
+        # Corresponds to the JSON property `minSpeakerCount`
+        # @return [Fixnum]
+        attr_accessor :min_speaker_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_speaker_diarization = args[:enable_speaker_diarization] if args.key?(:enable_speaker_diarization)
+          @max_speaker_count = args[:max_speaker_count] if args.key?(:max_speaker_count)
+          @min_speaker_count = args[:min_speaker_count] if args.key?(:min_speaker_count)
+        end
+      end
+      
       # Provides "hints" to the speech recognizer to favor specific words and phrases
       # in the results.
       class SpeechContext
         include Google::Apis::Core::Hashable
       
-        # *Optional* A list of strings containing words and phrases "hints" so that
+        # A list of strings containing words and phrases "hints" so that
         # the speech recognition is more likely to recognize them. This can be used
         # to improve the accuracy for specific words and phrases, for example, if
         # specific commands are typically spoken by the user. This can also be used
@@ -579,7 +623,7 @@ module Google
       class SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
       
-        # Output only. The confidence estimate between 0.0 and 1.0. A higher number
+        # The confidence estimate between 0.0 and 1.0. A higher number
         # indicates an estimated greater likelihood that the recognized words are
         # correct. This field is set only for the top alternative of a non-streaming
         # result or, of a streaming result where `is_final=true`.
@@ -590,12 +634,12 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # Output only. Transcript text representing the words that the user spoke.
+        # Transcript text representing the words that the user spoke.
         # Corresponds to the JSON property `transcript`
         # @return [String]
         attr_accessor :transcript
       
-        # Output only. A list of word-specific information for each recognized word.
+        # A list of word-specific information for each recognized word.
         # Note: When `enable_speaker_diarization` is true, you will see all the words
         # from the beginning of the audio.
         # Corresponds to the JSON property `words`
@@ -618,7 +662,7 @@ module Google
       class SpeechRecognitionResult
         include Google::Apis::Core::Hashable
       
-        # Output only. May contain one or more recognition hypotheses (up to the
+        # May contain one or more recognition hypotheses (up to the
         # maximum specified in `max_alternatives`).
         # These alternatives are ordered in terms of accuracy, with the top (first)
         # alternative being the most probable, as ranked by the recognizer.
@@ -687,7 +731,7 @@ module Google
       class WordInfo
         include Google::Apis::Core::Hashable
       
-        # Output only. Time offset relative to the beginning of the audio,
+        # Time offset relative to the beginning of the audio,
         # and corresponding to the end of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
         # in the top hypothesis.
@@ -697,7 +741,16 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. Time offset relative to the beginning of the audio,
+        # A distinct integer value is assigned for every speaker within
+        # the audio. This field specifies which one of those speakers was detected to
+        # have spoken this word. Value ranges from '1' to diarization_speaker_count.
+        # speaker_tag is set if enable_speaker_diarization = 'true' and only in the
+        # top alternative.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
+        # Time offset relative to the beginning of the audio,
         # and corresponding to the start of the spoken word.
         # This field is only set if `enable_word_time_offsets=true` and only
         # in the top hypothesis.
@@ -707,7 +760,7 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Output only. The word corresponding to this set of information.
+        # The word corresponding to this set of information.
         # Corresponds to the JSON property `word`
         # @return [String]
         attr_accessor :word
@@ -719,6 +772,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
           @start_time = args[:start_time] if args.key?(:start_time)
           @word = args[:word] if args.key?(:word)
         end

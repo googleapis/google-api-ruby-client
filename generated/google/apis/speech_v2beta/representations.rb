@@ -141,9 +141,9 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
-          property :end_time, as: 'endTime'
+          property :end_offset, as: 'endOffset'
           property :speaker_tag, as: 'speakerTag'
-          property :start_time, as: 'startTime'
+          property :start_offset, as: 'startOffset'
           property :word, as: 'word'
         end
       end

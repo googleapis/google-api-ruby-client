@@ -309,9 +309,9 @@ module Google
         # in the top hypothesis.
         # This is an experimental feature and the accuracy of the time offset can
         # vary.
-        # Corresponds to the JSON property `endTime`
+        # Corresponds to the JSON property `endOffset`
         # @return [String]
-        attr_accessor :end_time
+        attr_accessor :end_offset
       
         # Output only. A distinct integer value is assigned for every speaker within
         # the audio. This field specifies which one of those speakers was detected to
@@ -328,9 +328,9 @@ module Google
         # in the top hypothesis.
         # This is an experimental feature and the accuracy of the time offset can
         # vary.
-        # Corresponds to the JSON property `startTime`
+        # Corresponds to the JSON property `startOffset`
         # @return [String]
-        attr_accessor :start_time
+        attr_accessor :start_offset
       
         # Output only. The word corresponding to this set of information.
         # Corresponds to the JSON property `word`
@@ -344,9 +344,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @confidence = args[:confidence] if args.key?(:confidence)
-          @end_time = args[:end_time] if args.key?(:end_time)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
           @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
-          @start_time = args[:start_time] if args.key?(:start_time)
+          @start_offset = args[:start_offset] if args.key?(:start_offset)
           @word = args[:word] if args.key?(:word)
         end
       end

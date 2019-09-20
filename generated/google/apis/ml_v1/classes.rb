@@ -1216,26 +1216,42 @@ module Google
         end
       end
       
-      # Configurations for logging request-response pairs. Currently only BigQuery
-      # logging is supported. The request and response will be converted to raw
-      # string and stored within the specified BigQuery table. The schema is:
-      # model: STRING
-      # version: STRING
-      # time: Timestamp
-      # raw_data: STRING
-      # raw_prediction: STRING
-      # ground_truth: STRING
+      # Configuration for logging request-response pairs to a BigQuery table.
+      # Online prediction requests to a model version and the responses to these
+      # requests are converted to raw strings and saved to the specified BigQuery
+      # table. Logging is constrained by [BigQuery quotas and
+      # limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits,
+      # AI Platform Prediction does not log request-response pairs, but it continues
+      # to serve predictions.
+      # If you are using [continuous
+      # evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to
+      # specify this configuration manually. Setting up continuous evaluation
+      # automatically enables logging of request-response pairs.
       class GoogleCloudMlV1RequestLoggingConfig
         include Google::Apis::Core::Hashable
       
-        # Fully qualified BigQuery table name in the format of
-        # "[project_id].[dataset_name].[table_name]".
+        # Required. Fully qualified BigQuery table name in the following format:
+        # "<var>project_id</var>.<var>dataset_name</var>.<var>table_name</var>"
+        # The specifcied table must already exist, and the "Cloud ML Service Agent"
+        # for your project must have permission to write to it. The table must have
+        # the following [schema](/bigquery/docs/schemas):
+        # <table>
+        # <tr><th>Field name</th><th style="display: table-cell">Type</th>
+        # <th style="display: table-cell">Mode</th></tr>
+        # <tr><td>model</td><td>STRING</td><td>REQUIRED</td></tr>
+        # <tr><td>model_version</td><td>STRING</td><td>REQUIRED</td></tr>
+        # <tr><td>time</td><td>TIMESTAMP</td><td>REQUIRED</td></tr>
+        # <tr><td>raw_data</td><td>STRING</td><td>REQUIRED</td></tr>
+        # <tr><td>raw_prediction</td><td>STRING</td><td>NULLABLE</td></tr>
+        # <tr><td>groundtruth</td><td>STRING</td><td>NULLABLE</td></tr>
+        # </table>
         # Corresponds to the JSON property `bigqueryTableName`
         # @return [String]
         attr_accessor :bigquery_table_name
       
-        # Percentage of the request being logged. The sampling window is the lifetime
-        # of the Version. Defaults to 0.
+        # Percentage of requests to be logged, expressed as a fraction from 0 to 1.
+        # For example, if you want to log 10% of requests, enter `0.1`. The sampling
+        # window is the lifetime of the model version. Defaults to 0.
         # Corresponds to the JSON property `samplingPercentage`
         # @return [Float]
         attr_accessor :sampling_percentage
@@ -1789,15 +1805,17 @@ module Google
         # @return [String]
         attr_accessor :python_version
       
-        # Configurations for logging request-response pairs. Currently only BigQuery
-        # logging is supported. The request and response will be converted to raw
-        # string and stored within the specified BigQuery table. The schema is:
-        # model: STRING
-        # version: STRING
-        # time: Timestamp
-        # raw_data: STRING
-        # raw_prediction: STRING
-        # ground_truth: STRING
+        # Configuration for logging request-response pairs to a BigQuery table.
+        # Online prediction requests to a model version and the responses to these
+        # requests are converted to raw strings and saved to the specified BigQuery
+        # table. Logging is constrained by [BigQuery quotas and
+        # limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits,
+        # AI Platform Prediction does not log request-response pairs, but it continues
+        # to serve predictions.
+        # If you are using [continuous
+        # evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to
+        # specify this configuration manually. Setting up continuous evaluation
+        # automatically enables logging of request-response pairs.
         # Corresponds to the JSON property `requestLoggingConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig]
         attr_accessor :request_logging_config
@@ -2079,7 +2097,12 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

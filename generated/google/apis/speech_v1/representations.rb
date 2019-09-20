@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpeakerDiarizationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SpeechContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -172,6 +178,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_channel_count, as: 'audioChannelCount'
+          property :diarization_config, as: 'diarizationConfig', class: Google::Apis::SpeechV1::SpeakerDiarizationConfig, decorator: Google::Apis::SpeechV1::SpeakerDiarizationConfig::Representation
+      
           property :enable_automatic_punctuation, as: 'enableAutomaticPunctuation'
           property :enable_separate_recognition_per_channel, as: 'enableSeparateRecognitionPerChannel'
           property :enable_word_time_offsets, as: 'enableWordTimeOffsets'
@@ -222,6 +230,15 @@ module Google
         end
       end
       
+      class SpeakerDiarizationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_speaker_diarization, as: 'enableSpeakerDiarization'
+          property :max_speaker_count, as: 'maxSpeakerCount'
+          property :min_speaker_count, as: 'minSpeakerCount'
+        end
+      end
+      
       class SpeechContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -261,6 +278,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
+          property :speaker_tag, as: 'speakerTag'
           property :start_time, as: 'startTime'
           property :word, as: 'word'
         end

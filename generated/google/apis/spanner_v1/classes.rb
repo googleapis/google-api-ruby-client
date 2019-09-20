@@ -22,6 +22,54 @@ module Google
   module Apis
     module SpannerV1
       
+      # The request for BatchCreateSessions.
+      class BatchCreateSessionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The number of sessions to be created in this batch call.
+        # The API may return fewer than the requested number of sessions. If a
+        # specific number of sessions are desired, the client can make additional
+        # calls to BatchCreateSessions (adjusting
+        # session_count as necessary).
+        # Corresponds to the JSON property `sessionCount`
+        # @return [Fixnum]
+        attr_accessor :session_count
+      
+        # A session in the Cloud Spanner API.
+        # Corresponds to the JSON property `sessionTemplate`
+        # @return [Google::Apis::SpannerV1::Session]
+        attr_accessor :session_template
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session_count = args[:session_count] if args.key?(:session_count)
+          @session_template = args[:session_template] if args.key?(:session_template)
+        end
+      end
+      
+      # The response for BatchCreateSessions.
+      class BatchCreateSessionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The freshly created sessions.
+        # Corresponds to the JSON property `session`
+        # @return [Array<Google::Apis::SpannerV1::Session>]
+        attr_accessor :session
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @session = args[:session] if args.key?(:session)
+        end
+      end
+      
       # The request for BeginTransaction.
       class BeginTransactionRequest
         include Google::Apis::Core::Hashable
@@ -274,7 +322,7 @@ module Google
         # * `allAuthenticatedUsers`: A special identifier that represents anyone
         # who is authenticated with a Google account or a service account.
         # * `user:`emailid``: An email address that represents a specific Google
-        # account. For example, `alice@gmail.com` .
+        # account. For example, `alice@example.com` .
         # * `serviceAccount:`emailid``: An email address that represents a service
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
@@ -1126,12 +1174,40 @@ module Google
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
+        # Encapsulates settings provided to GetIamPolicy.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::SpannerV1::GetPolicyOptions]
+        attr_accessor :options
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @options = args[:options] if args.key?(:options)
+        end
+      end
+      
+      # Encapsulates settings provided to GetIamPolicy.
+      class GetPolicyOptions
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The policy format version to be returned.
+        # Acceptable values are 0, 1, and 3.
+        # If the value is 0, or the field is omitted, policy format version 1 will be
+        # returned.
+        # Corresponds to the JSON property `requestedPolicyVersion`
+        # @return [Fixnum]
+        attr_accessor :requested_policy_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
         end
       end
       
@@ -2101,7 +2177,7 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten blindly.
+        # policy is overwritten.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

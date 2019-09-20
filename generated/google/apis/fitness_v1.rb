@@ -25,60 +25,60 @@ module Google
     # @see https://developers.google.com/fit/rest/
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20190627'
+      REVISION = '20190910'
 
-      # View your activity information in Google Fit
+      # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
 
-      # View and store your activity information in Google Fit
+      # See and add to your Google Fit physical activity data
       AUTH_FITNESS_ACTIVITY_WRITE = 'https://www.googleapis.com/auth/fitness.activity.write'
 
-      # View blood glucose data in Google Fit
+      # See info about your blood glucose in Google Fit
       AUTH_FITNESS_BLOOD_GLUCOSE_READ = 'https://www.googleapis.com/auth/fitness.blood_glucose.read'
 
-      # View and store blood glucose data in Google Fit
+      # See and add info about your blood glucose to Google Fit
       AUTH_FITNESS_BLOOD_GLUCOSE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_glucose.write'
 
-      # View blood pressure data in Google Fit
+      # See info about your blood pressure in Google Fit
       AUTH_FITNESS_BLOOD_PRESSURE_READ = 'https://www.googleapis.com/auth/fitness.blood_pressure.read'
 
-      # View and store blood pressure data in Google Fit
+      # See and add info about your blood pressure in Google Fit
       AUTH_FITNESS_BLOOD_PRESSURE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_pressure.write'
 
-      # View body sensor information in Google Fit
+      # See info about your body measurements and heart rate in Google Fit
       AUTH_FITNESS_BODY_READ = 'https://www.googleapis.com/auth/fitness.body.read'
 
-      # View and store body sensor data in Google Fit
+      # See and add info about your body measurements and heart rate to Google Fit
       AUTH_FITNESS_BODY_WRITE = 'https://www.googleapis.com/auth/fitness.body.write'
 
-      # View body temperature data in Google Fit
+      # See info about your body temperature in Google Fit
       AUTH_FITNESS_BODY_TEMPERATURE_READ = 'https://www.googleapis.com/auth/fitness.body_temperature.read'
 
-      # View and store body temperature data in Google Fit
+      # See and add to info about your body temperature in Google Fit
       AUTH_FITNESS_BODY_TEMPERATURE_WRITE = 'https://www.googleapis.com/auth/fitness.body_temperature.write'
 
-      # View your stored location data in Google Fit
+      # See your Google Fit speed and distance data
       AUTH_FITNESS_LOCATION_READ = 'https://www.googleapis.com/auth/fitness.location.read'
 
-      # View and store your location data in Google Fit
+      # See and add to your Google Fit location data
       AUTH_FITNESS_LOCATION_WRITE = 'https://www.googleapis.com/auth/fitness.location.write'
 
-      # View nutrition information in Google Fit
+      # See info about your nutrition in Google Fit
       AUTH_FITNESS_NUTRITION_READ = 'https://www.googleapis.com/auth/fitness.nutrition.read'
 
-      # View and store nutrition information in Google Fit
+      # See and add to info about your nutrition in Google Fit
       AUTH_FITNESS_NUTRITION_WRITE = 'https://www.googleapis.com/auth/fitness.nutrition.write'
 
-      # View oxygen saturation data in Google Fit
+      # See info about your oxygen saturation in Google Fit
       AUTH_FITNESS_OXYGEN_SATURATION_READ = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.read'
 
-      # View and store oxygen saturation data in Google Fit
+      # See and add info about your oxygen saturation in Google Fit
       AUTH_FITNESS_OXYGEN_SATURATION_WRITE = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.write'
 
-      # View reproductive health data in Google Fit
+      # See info about your reproductive health in Google Fit
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_READ = 'https://www.googleapis.com/auth/fitness.reproductive_health.read'
 
-      # View and store reproductive health data in Google Fit
+      # See and add info about your reproductive health in Google Fit
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_WRITE = 'https://www.googleapis.com/auth/fitness.reproductive_health.write'
     end
   end
