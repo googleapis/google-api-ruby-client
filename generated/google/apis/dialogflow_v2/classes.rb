@@ -693,8 +693,7 @@ module Google
       class GoogleCloudDialogflowV2ExportAgentRequest
         include Google::Apis::Core::Hashable
       
-        # Optional. The
-        # [Google Cloud Storage](https://cloud.google.com/storage/docs/)
+        # Required. The [Google Cloud Storage](https://cloud.google.com/storage/docs/)
         # URI to export the agent to.
         # The format of this URI must be `gs://<bucket-name>/<object-name>`.
         # If left unspecified, the serialized agent is returned inline.
@@ -719,15 +718,13 @@ module Google
         # The exported agent.
         # Example for how to export an agent to a zip file via a command line:
         # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:
         # export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth application-default
-        # print-access-token) \
-        # -H 'Accept: application/json' \
-        # -H 'Content-Type: application/json' \
+        # -H 'Authorization: Bearer' \
+        # $(gcloud auth application-default print-access-token) \
+        # -H 'Accept: application/json'
         # --compressed \
-        # --data-binary '``' \
         # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
         # | base64 --decode > &lt;agent zip file&gt;</pre>
         # Corresponds to the JSON property `agentContent`
@@ -759,14 +756,13 @@ module Google
         # The agent to import.
         # Example for how to import an agent via the command line:
         # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
-        # import\
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:
+        # import'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth application-default
-        # print-access-token) \
+        # -H 'Authorization: Bearer'\
+        # $(gcloud auth application-default print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
-        # --compressed \
         # --data-binary "`
         # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
         # `"</pre>
@@ -1282,7 +1278,7 @@ module Google
         end
       end
       
-      # Optional. Contains information about a button.
+      # Contains information about a button.
       class GoogleCloudDialogflowV2IntentMessageCardButton
         include Google::Apis::Core::Hashable
       
@@ -2265,14 +2261,13 @@ module Google
         # The agent to restore.
         # Example for how to restore an agent via the command line:
         # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_name&gt;/agent:
-        # restore\
+        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:
+        # restore'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth application-default
-        # print-access-token) \
+        # -H 'Authorization: Bearer' \
+        # $(gcloud auth application-default print-access-token) \
         # -H 'Accept: application/json' \
         # -H 'Content-Type: application/json' \
-        # --compressed \
         # --data-binary "`
         # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
         # `"</pre>
@@ -2753,26 +2748,6 @@ module Google
         end
       end
       
-      # Metadata for article suggestion models.
-      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Type of the article suggestion model. The available values are:
-        # *   `article-suggestion-gbt-1` - (default) Article Suggestion Gbt model.
-        # Corresponds to the JSON property `modelType`
-        # @return [String]
-        attr_accessor :model_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @model_type = args[:model_type] if args.key?(:model_type)
-        end
-      end
-      
       # The response message for EntityTypes.BatchUpdateEntityTypes.
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -2852,63 +2827,6 @@ module Google
           @lifespan_count = args[:lifespan_count] if args.key?(:lifespan_count)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
-        end
-      end
-      
-      # Represents a conversation model.
-      class GoogleCloudDialogflowV2beta1ConversationModel
-        include Google::Apis::Core::Hashable
-      
-        # Metadata for article suggestion models.
-        # Corresponds to the JSON property `articleSuggestionModelMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata]
-        attr_accessor :article_suggestion_model_metadata
-      
-        # Output only. Creation time of this model.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # Required. Datasets used to create model.
-        # Corresponds to the JSON property `datasets`
-        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1InputDataset>]
-        attr_accessor :datasets
-      
-        # Required. The display name of the model. At most 64 bytes long.
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. ConversationModel resource name. Format:
-        # `projects/<Project ID>/conversationModels/<Conversation Model ID>`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Metadata for smart reply models.
-        # Corresponds to the JSON property `smartReplyModelMetadata`
-        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata]
-        attr_accessor :smart_reply_model_metadata
-      
-        # Output only. State of the model. A model can only serve prediction requests
-        # after it gets deployed.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @article_suggestion_model_metadata = args[:article_suggestion_model_metadata] if args.key?(:article_suggestion_model_metadata)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @datasets = args[:datasets] if args.key?(:datasets)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @name = args[:name] if args.key?(:name)
-          @smart_reply_model_metadata = args[:smart_reply_model_metadata] if args.key?(:smart_reply_model_metadata)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -3049,15 +2967,13 @@ module Google
         # The exported agent.
         # Example for how to export an agent to a zip file via a command line:
         # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_name&gt;/
-        # agent:export'\
+        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:
+        # export'\
         # -X POST \
-        # -H 'Authorization: Bearer '$(gcloud auth application-default
-        # print-access-token) \
-        # -H 'Accept: application/json' \
-        # -H 'Content-Type: application/json' \
+        # -H 'Authorization: Bearer' \
+        # $(gcloud auth application-default print-access-token) \
+        # -H 'Accept: application/json'
         # --compressed \
-        # --data-binary '``' \
         # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
         # | base64 --decode > &lt;agent zip file&gt;</pre>
         # Corresponds to the JSON property `agentContent`
@@ -3079,29 +2995,6 @@ module Google
         def update!(**args)
           @agent_content = args[:agent_content] if args.key?(:agent_content)
           @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
-        end
-      end
-      
-      # InputDataset used to create model or do evaluation.
-      class GoogleCloudDialogflowV2beta1InputDataset
-        include Google::Apis::Core::Hashable
-      
-        # Required. ConversationDataset resource name. Format:
-        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset ID>`
-        # or
-        # `projects/<Project ID>/conversationDatasets/<Conversation Dataset
-        # ID>/annotatedConversationDatasets/<Annotated Conversation Dataset ID>`
-        # Corresponds to the JSON property `dataset`
-        # @return [String]
-        attr_accessor :dataset
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @dataset = args[:dataset] if args.key?(:dataset)
         end
       end
       
@@ -3324,6 +3217,12 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCard]
         attr_accessor :basic_card
       
+        # Browse Carousel Card for Actions on Google.
+        # https://developers.google.com/actions/assistant/responses#browsing_carousel
+        # Corresponds to the JSON property `browseCarouselCard`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard]
+        attr_accessor :browse_carousel_card
+      
         # The card response message.
         # Corresponds to the JSON property `card`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageCard]
@@ -3349,6 +3248,11 @@ module Google
         # Corresponds to the JSON property `listSelect`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageListSelect]
         attr_accessor :list_select
+      
+        # The media content card for Actions on Google.
+        # Corresponds to the JSON property `mediaContent`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContent]
+        attr_accessor :media_content
       
         # Returns a response containing a custom, platform-specific payload.
         # See the Intent.Message.Platform type for a description of the
@@ -3409,6 +3313,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSuggestions]
         attr_accessor :suggestions
       
+        # Table card for Actions on Google.
+        # Corresponds to the JSON property `tableCard`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCard]
+        attr_accessor :table_card
+      
         # Plays audio from a file in Telephony Gateway.
         # Corresponds to the JSON property `telephonyPlayAudio`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio]
@@ -3440,11 +3349,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic_card = args[:basic_card] if args.key?(:basic_card)
+          @browse_carousel_card = args[:browse_carousel_card] if args.key?(:browse_carousel_card)
           @card = args[:card] if args.key?(:card)
           @carousel_select = args[:carousel_select] if args.key?(:carousel_select)
           @image = args[:image] if args.key?(:image)
           @link_out_suggestion = args[:link_out_suggestion] if args.key?(:link_out_suggestion)
           @list_select = args[:list_select] if args.key?(:list_select)
+          @media_content = args[:media_content] if args.key?(:media_content)
           @payload = args[:payload] if args.key?(:payload)
           @platform = args[:platform] if args.key?(:platform)
           @quick_replies = args[:quick_replies] if args.key?(:quick_replies)
@@ -3453,6 +3364,7 @@ module Google
           @rbm_text = args[:rbm_text] if args.key?(:rbm_text)
           @simple_responses = args[:simple_responses] if args.key?(:simple_responses)
           @suggestions = args[:suggestions] if args.key?(:suggestions)
+          @table_card = args[:table_card] if args.key?(:table_card)
           @telephony_play_audio = args[:telephony_play_audio] if args.key?(:telephony_play_audio)
           @telephony_synthesize_speech = args[:telephony_synthesize_speech] if args.key?(:telephony_synthesize_speech)
           @telephony_transfer_call = args[:telephony_transfer_call] if args.key?(:telephony_transfer_call)
@@ -3544,6 +3456,105 @@ module Google
         # Update properties of this object
         def update!(**args)
           @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # Browse Carousel Card for Actions on Google.
+      # https://developers.google.com/actions/assistant/responses#browsing_carousel
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Settings for displaying the image. Applies to every image in
+        # items.
+        # Corresponds to the JSON property `imageDisplayOptions`
+        # @return [String]
+        attr_accessor :image_display_options
+      
+        # Required. List of items in the Browse Carousel Card. Minimum of two
+        # items, maximum of ten.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>]
+        attr_accessor :items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image_display_options = args[:image_display_options] if args.key?(:image_display_options)
+          @items = args[:items] if args.key?(:items)
+        end
+      end
+      
+      # Browsing carousel tile
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Description of the carousel item. Maximum of four lines of
+        # text.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. Text that appears at the bottom of the Browse Carousel
+        # Card. Maximum of one line of text.
+        # Corresponds to the JSON property `footer`
+        # @return [String]
+        attr_accessor :footer
+      
+        # The image response message.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage]
+        attr_accessor :image
+      
+        # Actions on Google action to open a given url.
+        # Corresponds to the JSON property `openUriAction`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction]
+        attr_accessor :open_uri_action
+      
+        # Required. Title of the carousel item. Maximum of two lines of text.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @footer = args[:footer] if args.key?(:footer)
+          @image = args[:image] if args.key?(:image)
+          @open_uri_action = args[:open_uri_action] if args.key?(:open_uri_action)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Actions on Google action to open a given url.
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+        include Google::Apis::Core::Hashable
+      
+        # Required. URL
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        # Optional. Specifies the type of viewer that is used when opening
+        # the URL. Defaults to opening via web browser.
+        # Corresponds to the JSON property `urlTypeHint`
+        # @return [String]
+        attr_accessor :url_type_hint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @url = args[:url] if args.key?(:url)
+          @url_type_hint = args[:url_type_hint] if args.key?(:url_type_hint)
         end
       end
       
@@ -3667,6 +3678,31 @@ module Google
         end
       end
       
+      # Column properties for TableCard.
+      class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
+        include Google::Apis::Core::Hashable
+      
+        # Required. Column heading.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # Optional. Defines text alignment for all cells in this column.
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+        end
+      end
+      
       # The image response message.
       class GoogleCloudDialogflowV2beta1IntentMessageImage
         include Google::Apis::Core::Hashable
@@ -3780,6 +3816,74 @@ module Google
           @image = args[:image] if args.key?(:image)
           @info = args[:info] if args.key?(:info)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # The media content card for Actions on Google.
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContent
+        include Google::Apis::Core::Hashable
+      
+        # Required. List of media objects.
+        # Corresponds to the JSON property `mediaObjects`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>]
+        attr_accessor :media_objects
+      
+        # Optional. What type of media is the content (ie "audio").
+        # Corresponds to the JSON property `mediaType`
+        # @return [String]
+        attr_accessor :media_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @media_objects = args[:media_objects] if args.key?(:media_objects)
+          @media_type = args[:media_type] if args.key?(:media_type)
+        end
+      end
+      
+      # Response media object for media content card.
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
+        include Google::Apis::Core::Hashable
+      
+        # Required. Url where the media is stored.
+        # Corresponds to the JSON property `contentUrl`
+        # @return [String]
+        attr_accessor :content_url
+      
+        # Optional. Description of media card.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The image response message.
+        # Corresponds to the JSON property `icon`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage]
+        attr_accessor :icon
+      
+        # The image response message.
+        # Corresponds to the JSON property `largeImage`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage]
+        attr_accessor :large_image
+      
+        # Required. Name of media card.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content_url = args[:content_url] if args.key?(:content_url)
+          @description = args[:description] if args.key?(:description)
+          @icon = args[:icon] if args.key?(:icon)
+          @large_image = args[:large_image] if args.key?(:large_image)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -4298,6 +4402,100 @@ module Google
         # Update properties of this object
         def update!(**args)
           @suggestions = args[:suggestions] if args.key?(:suggestions)
+        end
+      end
+      
+      # Table card for Actions on Google.
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCard
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of buttons for the card.
+        # Corresponds to the JSON property `buttons`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>]
+        attr_accessor :buttons
+      
+        # Optional. Display properties for the columns in this table.
+        # Corresponds to the JSON property `columnProperties`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>]
+        attr_accessor :column_properties
+      
+        # The image response message.
+        # Corresponds to the JSON property `image`
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage]
+        attr_accessor :image
+      
+        # Optional. Rows in this table of data.
+        # Corresponds to the JSON property `rows`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>]
+        attr_accessor :rows
+      
+        # Optional. Subtitle to the title.
+        # Corresponds to the JSON property `subtitle`
+        # @return [String]
+        attr_accessor :subtitle
+      
+        # Required. Title of the card.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buttons = args[:buttons] if args.key?(:buttons)
+          @column_properties = args[:column_properties] if args.key?(:column_properties)
+          @image = args[:image] if args.key?(:image)
+          @rows = args[:rows] if args.key?(:rows)
+          @subtitle = args[:subtitle] if args.key?(:subtitle)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Cell of TableCardRow.
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
+        include Google::Apis::Core::Hashable
+      
+        # Required. Text in this cell.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # Row of TableCard.
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow
+        include Google::Apis::Core::Hashable
+      
+        # Optional. List of cells that make up this row.
+        # Corresponds to the JSON property `cells`
+        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>]
+        attr_accessor :cells
+      
+        # Optional. Whether to add a visual divider after this row.
+        # Corresponds to the JSON property `dividerAfter`
+        # @return [Boolean]
+        attr_accessor :divider_after
+        alias_method :divider_after?, :divider_after
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cells = args[:cells] if args.key?(:cells)
+          @divider_after = args[:divider_after] if args.key?(:divider_after)
         end
       end
       
@@ -4933,27 +5131,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @query_text_sentiment = args[:query_text_sentiment] if args.key?(:query_text_sentiment)
-        end
-      end
-      
-      # Metadata for smart reply models.
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Optional. Type of the article suggestion model. The available values are:
-        # *  `smart-reply-dual-encoder-model-1` - (default) Smart Reply Dual Encoder
-        # model.
-        # Corresponds to the JSON property `modelType`
-        # @return [String]
-        attr_accessor :model_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @model_type = args[:model_type] if args.key?(:model_type)
         end
       end
       

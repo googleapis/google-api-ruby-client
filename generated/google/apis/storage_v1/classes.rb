@@ -371,7 +371,7 @@ module Google
             # uniformBucketLevelAccess.enabled may be changed from true to false until the
             # locked time, after which the field is immutable.
             # Corresponds to the JSON property `lockedTime`
-            # @return [String]
+            # @return [DateTime]
             attr_accessor :locked_time
           
             def initialize(**args)

@@ -271,7 +271,7 @@ module Google
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous list request.
+        #   The next_page_token value returned from a previous list request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

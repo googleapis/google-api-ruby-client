@@ -430,12 +430,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,12 +443,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1Context
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1ConversationModel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -479,12 +467,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ExportAgentResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1InputDataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -526,6 +508,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageCard
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageImage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -569,6 +575,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -676,6 +694,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -761,12 +797,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1SentimentAnalysisResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1523,13 +1553,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :model_type, as: 'modelType'
-        end
-      end
-      
       class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1552,22 +1575,6 @@ module Google
           property :lifespan_count, as: 'lifespanCount'
           property :name, as: 'name'
           hash :parameters, as: 'parameters'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1ConversationModel
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :article_suggestion_model_metadata, as: 'articleSuggestionModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1ArticleSuggestionModelMetadata::Representation
-      
-          property :create_time, as: 'createTime'
-          collection :datasets, as: 'datasets', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1InputDataset, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1InputDataset::Representation
-      
-          property :display_name, as: 'displayName'
-          property :name, as: 'name'
-          property :smart_reply_model_metadata, as: 'smartReplyModelMetadata', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1SmartReplyModelMetadata::Representation
-      
-          property :state, as: 'state'
         end
       end
       
@@ -1606,13 +1613,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_content, :base64 => true, as: 'agentContent'
           property :agent_uri, as: 'agentUri'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1InputDataset
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :dataset, as: 'dataset'
         end
       end
       
@@ -1660,6 +1660,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basic_card, as: 'basicCard', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCard, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCard::Representation
       
+          property :browse_carousel_card, as: 'browseCarouselCard', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard::Representation
+      
           property :card, as: 'card', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageCard, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageCard::Representation
       
           property :carousel_select, as: 'carouselSelect', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect::Representation
@@ -1669,6 +1671,8 @@ module Google
           property :link_out_suggestion, as: 'linkOutSuggestion', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion::Representation
       
           property :list_select, as: 'listSelect', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageListSelect, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageListSelect::Representation
+      
+          property :media_content, as: 'mediaContent', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContent, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContent::Representation
       
           hash :payload, as: 'payload'
           property :platform, as: 'platform'
@@ -1683,6 +1687,8 @@ module Google
           property :simple_responses, as: 'simpleResponses', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses::Representation
       
           property :suggestions, as: 'suggestions', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSuggestions, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSuggestions::Representation
+      
+          property :table_card, as: 'tableCard', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCard, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCard::Representation
       
           property :telephony_play_audio, as: 'telephonyPlayAudio', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio::Representation
       
@@ -1721,6 +1727,36 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :uri, as: 'uri'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image_display_options, as: 'imageDisplayOptions'
+          collection :items, as: 'items', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :footer, as: 'footer'
+          property :image, as: 'image', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage::Representation
+      
+          property :open_uri_action, as: 'openUriAction', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :url, as: 'url'
+          property :url_type_hint, as: 'urlTypeHint'
         end
       end
       
@@ -1763,6 +1799,14 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header'
+          property :horizontal_alignment, as: 'horizontalAlignment'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1797,6 +1841,28 @@ module Google
           property :info, as: 'info', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo::Representation
       
           property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :media_objects, as: 'mediaObjects', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject::Representation
+      
+          property :media_type, as: 'mediaType'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content_url, as: 'contentUrl'
+          property :description, as: 'description'
+          property :icon, as: 'icon', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage::Representation
+      
+          property :large_image, as: 'largeImage', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage::Representation
+      
+          property :name, as: 'name'
         end
       end
       
@@ -1949,6 +2015,38 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buttons, as: 'buttons', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton::Representation
+      
+          collection :column_properties, as: 'columnProperties', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageColumnProperties, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageColumnProperties::Representation
+      
+          property :image, as: 'image', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageImage::Representation
+      
+          collection :rows, as: 'rows', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardRow, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardRow::Representation
+      
+          property :subtitle, as: 'subtitle'
+          property :title, as: 'title'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :text, as: 'text'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :cells, as: 'cells', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardCell, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageTableCardCell::Representation
+      
+          property :divider_after, as: 'dividerAfter'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2096,13 +2194,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :query_text_sentiment, as: 'queryTextSentiment', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Sentiment::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1SmartReplyModelMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :model_type, as: 'modelType'
         end
       end
       

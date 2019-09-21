@@ -365,7 +365,8 @@ module Google
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
               property :enabled, as: 'enabled'
-              property :locked_time, as: 'lockedTime'
+              property :locked_time, as: 'lockedTime', type: DateTime
+          
             end
           end
         end
