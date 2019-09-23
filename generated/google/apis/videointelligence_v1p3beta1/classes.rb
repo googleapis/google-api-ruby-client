@@ -684,7 +684,11 @@ module Google
         attr_accessor :segment_label_annotations
       
         # Presence label annotations on video level or user specified segment level.
-        # There is exactly one element for each unique label.
+        # There is exactly one element for each unique label. Compared to the
+        # existing topical `segment_label_annotations`, this field presents more
+        # fine-grained, segment-level labels detected in video content and is made
+        # available only when the client sets `LabelDetectionConfig.model` to
+        # "builtin/latest" in the request.
         # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :segment_presence_label_annotations
@@ -701,7 +705,10 @@ module Google
         attr_accessor :shot_label_annotations
       
         # Presence label annotations on shot level. There is exactly one element for
-        # each unique label.
+        # each unique label. Compared to the existing topical
+        # `shot_label_annotations`, this field presents more fine-grained, shot-level
+        # labels detected in video content and is made available only when the client
+        # sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
         # Corresponds to the JSON property `shotPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :shot_presence_label_annotations
@@ -1488,7 +1495,11 @@ module Google
         attr_accessor :segment_label_annotations
       
         # Presence label annotations on video level or user specified segment level.
-        # There is exactly one element for each unique label.
+        # There is exactly one element for each unique label. Compared to the
+        # existing topical `segment_label_annotations`, this field presents more
+        # fine-grained, segment-level labels detected in video content and is made
+        # available only when the client sets `LabelDetectionConfig.model` to
+        # "builtin/latest" in the request.
         # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :segment_presence_label_annotations
@@ -1505,7 +1516,10 @@ module Google
         attr_accessor :shot_label_annotations
       
         # Presence label annotations on shot level. There is exactly one element for
-        # each unique label.
+        # each unique label. Compared to the existing topical
+        # `shot_label_annotations`, this field presents more fine-grained, shot-level
+        # labels detected in video content and is made available only when the client
+        # sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
         # Corresponds to the JSON property `shotPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :shot_presence_label_annotations
@@ -2292,7 +2306,11 @@ module Google
         attr_accessor :segment_label_annotations
       
         # Presence label annotations on video level or user specified segment level.
-        # There is exactly one element for each unique label.
+        # There is exactly one element for each unique label. Compared to the
+        # existing topical `segment_label_annotations`, this field presents more
+        # fine-grained, segment-level labels detected in video content and is made
+        # available only when the client sets `LabelDetectionConfig.model` to
+        # "builtin/latest" in the request.
         # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :segment_presence_label_annotations
@@ -2309,7 +2327,10 @@ module Google
         attr_accessor :shot_label_annotations
       
         # Presence label annotations on shot level. There is exactly one element for
-        # each unique label.
+        # each unique label. Compared to the existing topical
+        # `shot_label_annotations`, this field presents more fine-grained, shot-level
+        # labels detected in video content and is made available only when the client
+        # sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
         # Corresponds to the JSON property `shotPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :shot_presence_label_annotations
@@ -3096,7 +3117,11 @@ module Google
         attr_accessor :segment_label_annotations
       
         # Presence label annotations on video level or user specified segment level.
-        # There is exactly one element for each unique label.
+        # There is exactly one element for each unique label. Compared to the
+        # existing topical `segment_label_annotations`, this field presents more
+        # fine-grained, segment-level labels detected in video content and is made
+        # available only when the client sets `LabelDetectionConfig.model` to
+        # "builtin/latest" in the request.
         # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :segment_presence_label_annotations
@@ -3113,7 +3138,10 @@ module Google
         attr_accessor :shot_label_annotations
       
         # Presence label annotations on shot level. There is exactly one element for
-        # each unique label.
+        # each unique label. Compared to the existing topical
+        # `shot_label_annotations`, this field presents more fine-grained, shot-level
+        # labels detected in video content and is made available only when the client
+        # sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
         # Corresponds to the JSON property `shotPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :shot_presence_label_annotations
@@ -4472,7 +4500,11 @@ module Google
         attr_accessor :segment_label_annotations
       
         # Presence label annotations on video level or user specified segment level.
-        # There is exactly one element for each unique label.
+        # There is exactly one element for each unique label. Compared to the
+        # existing topical `segment_label_annotations`, this field presents more
+        # fine-grained, segment-level labels detected in video content and is made
+        # available only when the client sets `LabelDetectionConfig.model` to
+        # "builtin/latest" in the request.
         # Corresponds to the JSON property `segmentPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :segment_presence_label_annotations
@@ -4489,7 +4521,10 @@ module Google
         attr_accessor :shot_label_annotations
       
         # Presence label annotations on shot level. There is exactly one element for
-        # each unique label.
+        # each unique label. Compared to the existing topical
+        # `shot_label_annotations`, this field presents more fine-grained, shot-level
+        # labels detected in video content and is made available only when the client
+        # sets `LabelDetectionConfig.model` to "builtin/latest" in the request.
         # Corresponds to the JSON property `shotPresenceLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :shot_presence_label_annotations
