@@ -169,7 +169,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # ID of the parent span, if any. Optional.
+        # Optional. ID of the parent span, if any.
         # Corresponds to the JSON property `parentSpanId`
         # @return [Fixnum]
         attr_accessor :parent_span_id

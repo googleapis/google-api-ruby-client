@@ -12,27 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/servicenetworking_v1/service.rb'
-require 'google/apis/servicenetworking_v1/classes.rb'
-require 'google/apis/servicenetworking_v1/representations.rb'
+require 'google/apis/policytroubleshooter_v1beta/service.rb'
+require 'google/apis/policytroubleshooter_v1beta/classes.rb'
+require 'google/apis/policytroubleshooter_v1beta/representations.rb'
 
 module Google
   module Apis
-    # Service Networking API
+    # Policy Troubleshooter API
     #
-    # Provides automatic management of network configurations necessary for certain
-    # services.
+    # 
     #
-    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
-    module ServicenetworkingV1
-      VERSION = 'V1'
-      REVISION = '20190922'
+    # @see https://cloud.google.com/iam/
+    module PolicytroubleshooterV1beta
+      VERSION = 'V1beta'
+      REVISION = '20190913'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end

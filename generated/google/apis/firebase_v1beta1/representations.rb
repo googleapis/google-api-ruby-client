@@ -503,6 +503,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app, as: 'app'
+          property :measurement_id, as: 'measurementId'
           property :stream_id, :numeric_string => true, as: 'streamId'
         end
       end
@@ -534,6 +535,7 @@ module Google
           property :auth_domain, as: 'authDomain'
           property :database_url, as: 'databaseURL'
           property :location_id, as: 'locationId'
+          property :measurement_id, as: 'measurementId'
           property :messaging_sender_id, as: 'messagingSenderId'
           property :project_id, as: 'projectId'
           property :storage_bucket, as: 'storageBucket'

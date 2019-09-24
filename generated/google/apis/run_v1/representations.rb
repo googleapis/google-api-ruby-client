@@ -541,6 +541,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
+          property :name, as: 'name'
           property :optional, as: 'optional'
         end
       end
@@ -551,6 +552,7 @@ module Google
           property :key, as: 'key'
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
+          property :name, as: 'name'
           property :optional, as: 'optional'
         end
       end
@@ -1136,6 +1138,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
+          property :name, as: 'name'
           property :optional, as: 'optional'
         end
       end
@@ -1146,6 +1149,7 @@ module Google
           property :key, as: 'key'
           property :local_object_reference, as: 'localObjectReference', class: Google::Apis::RunV1::LocalObjectReference, decorator: Google::Apis::RunV1::LocalObjectReference::Representation
       
+          property :name, as: 'name'
           property :optional, as: 'optional'
         end
       end

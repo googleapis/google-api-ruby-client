@@ -1842,6 +1842,15 @@ module Google
         # @return [String]
         attr_accessor :metric_kind
       
+        # Read-only. If present, then a time
+        # series, which is identified partially by
+        # a metric type and a MonitoredResourceDescriptor, that is associated
+        # with this metric type can only be associated with one of the monitored
+        # resource types listed here.
+        # Corresponds to the JSON property `monitoredResourceTypes`
+        # @return [Array<String>]
+        attr_accessor :monitored_resource_types
+      
         # The resource name of the metric descriptor.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1932,6 +1941,7 @@ module Google
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @metadata = args[:metadata] if args.key?(:metadata)
           @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @monitored_resource_types = args[:monitored_resource_types] if args.key?(:monitored_resource_types)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
           @unit = args[:unit] if args.key?(:unit)
@@ -1950,8 +1960,7 @@ module Google
         # @return [String]
         attr_accessor :ingest_delay
       
-        # Deprecated. Please use the MetricDescriptor.launch_stage instead.
-        # The launch stage of the metric definition.
+        # Deprecated. Must use the MetricDescriptor.launch_stage instead.
         # Corresponds to the JSON property `launchStage`
         # @return [String]
         attr_accessor :launch_stage

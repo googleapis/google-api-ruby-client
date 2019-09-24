@@ -909,6 +909,7 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ServiceconsumermanagementV1::MetricDescriptorMetadata, decorator: Google::Apis::ServiceconsumermanagementV1::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'
+          collection :monitored_resource_types, as: 'monitoredResourceTypes'
           property :name, as: 'name'
           property :type, as: 'type'
           property :unit, as: 'unit'

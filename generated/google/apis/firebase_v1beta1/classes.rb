@@ -1135,6 +1135,12 @@ module Google
         # @return [String]
         attr_accessor :app
       
+        # Analytics-provided measurement ID, for use in the gtag.js library.
+        # Will only be present for Firebase Web Apps.
+        # Corresponds to the JSON property `measurementId`
+        # @return [String]
+        attr_accessor :measurement_id
+      
         # The unique Google-assigned identifier of the Google Analytics data stream
         # associated with the Firebase App.
         # <br>
@@ -1152,6 +1158,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app = args[:app] if args.key?(:app)
+          @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
           @stream_id = args[:stream_id] if args.key?(:stream_id)
         end
       end
@@ -1279,6 +1286,12 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Analytics-provided measurement ID, for use in the gtag.js library.
+        # Will only be present for Firebase Web Apps.
+        # Corresponds to the JSON property `measurementId`
+        # @return [String]
+        attr_accessor :measurement_id
+      
         # The sender ID for use with Firebase Cloud Messaging.
         # Corresponds to the JSON property `messagingSenderId`
         # @return [String]
@@ -1306,6 +1319,7 @@ module Google
           @auth_domain = args[:auth_domain] if args.key?(:auth_domain)
           @database_url = args[:database_url] if args.key?(:database_url)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @measurement_id = args[:measurement_id] if args.key?(:measurement_id)
           @messaging_sender_id = args[:messaging_sender_id] if args.key?(:messaging_sender_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @storage_bucket = args[:storage_bucket] if args.key?(:storage_bucket)

@@ -492,7 +492,7 @@ module Google
         #   format
         #   'projects/`projectId`/scanConfigs/`scanConfigId`/scanRuns/`scanRunId`'.
         # @param [String] filter
-        #   The filter expression. The expression must be in the format: <field>
+        #   Required. The filter expression. The expression must be in the format: <field>
         #   <operator> <value>.
         #   Supported field: 'finding_type'.
         #   Supported operator: '='.

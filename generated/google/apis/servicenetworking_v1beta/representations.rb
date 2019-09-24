@@ -723,6 +723,7 @@ module Google
           property :metadata, as: 'metadata', class: Google::Apis::ServicenetworkingV1beta::MetricDescriptorMetadata, decorator: Google::Apis::ServicenetworkingV1beta::MetricDescriptorMetadata::Representation
       
           property :metric_kind, as: 'metricKind'
+          collection :monitored_resource_types, as: 'monitoredResourceTypes'
           property :name, as: 'name'
           property :type, as: 'type'
           property :unit, as: 'unit'

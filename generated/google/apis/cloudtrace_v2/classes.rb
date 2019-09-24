@@ -116,7 +116,7 @@ module Google
       class BatchWriteSpansRequest
         include Google::Apis::Core::Hashable
       
-        # A list of new spans. The span names must not match existing
+        # Required. A list of new spans. The span names must not match existing
         # spans, or the results are undefined.
         # Corresponds to the JSON property `spans`
         # @return [Array<Google::Apis::CloudtraceV2::Span>]
@@ -298,7 +298,7 @@ module Google
         # @return [Google::Apis::CloudtraceV2::Attributes]
         attr_accessor :attributes
       
-        # An optional number of child spans that were generated while this span
+        # Optional. The number of child spans that were generated while this span
         # was active. If set, allows implementation to detect missing child spans.
         # Corresponds to the JSON property `childSpanCount`
         # @return [Fixnum]
@@ -338,7 +338,7 @@ module Google
         # @return [String]
         attr_accessor :parent_span_id
       
-        # (Optional) Set this parameter to indicate whether this span is in
+        # Optional. Set this parameter to indicate whether this span is in
         # the same process as its parent. If you do not set this parameter,
         # Stackdriver Trace is unable to take advantage of this helpful
         # information.

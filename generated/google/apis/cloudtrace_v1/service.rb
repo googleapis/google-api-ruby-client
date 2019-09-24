@@ -57,7 +57,7 @@ module Google
         # and any new fields provided are merged with the existing trace data. If the
         # ID does not match, a new trace is created.
         # @param [String] project_id
-        #   ID of the Cloud project where the trace data is stored.
+        #   Required. ID of the Cloud project where the trace data is stored.
         # @param [Google::Apis::CloudtraceV1::Traces] traces_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -90,9 +90,9 @@ module Google
         
         # Gets a single trace by its ID.
         # @param [String] project_id
-        #   ID of the Cloud project where the trace data is stored.
+        #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] trace_id
-        #   ID of the trace to return.
+        #   Required. ID of the trace to return.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,12 +123,12 @@ module Google
         
         # Returns of a list of traces that match the specified filter conditions.
         # @param [String] project_id
-        #   ID of the Cloud project where the trace data is stored.
+        #   Required. ID of the Cloud project where the trace data is stored.
         # @param [String] end_time
         #   End of the time interval (inclusive) during which the trace data was
         #   collected from the application.
         # @param [String] filter
-        #   An optional filter against labels for the request.
+        #   Optional. A filter against labels for the request.
         #   By default, searches use prefix matching. To specify exact match, prepend
         #   a plus symbol (`+`) to the search term.
         #   Multiple terms are ANDed. Syntax:
@@ -157,7 +157,7 @@ module Google
         #   *   `method:VALUE`: Equivalent to `/http/method:VALUE`.
         #   *   `url:VALUE`: Equivalent to `/http/url:VALUE`.
         # @param [String] order_by
-        #   Field used to sort the returned traces. Optional.
+        #   Optional. Field used to sort the returned traces.
         #   Can be one of the following:
         #   *   `trace_id`
         #   *   `name` (`name` field of root span in the trace)
@@ -168,17 +168,17 @@ module Google
         #   (for example, `name desc`).
         #   Only one sort field is permitted.
         # @param [Fixnum] page_size
-        #   Maximum number of traces to return. If not specified or <= 0, the
+        #   Optional. Maximum number of traces to return. If not specified or <= 0, the
         #   implementation selects a reasonable value.  The implementation may
-        #   return fewer traces than the requested page size. Optional.
+        #   return fewer traces than the requested page size.
         # @param [String] page_token
         #   Token identifying the page of results to return. If provided, use the
-        #   value of the `next_page_token` field from a previous request. Optional.
+        #   value of the `next_page_token` field from a previous request.
         # @param [String] start_time
         #   Start of the time interval (inclusive) during which the trace data was
         #   collected from the application.
         # @param [String] view
-        #   Type of data returned for traces in the list. Optional. Default is
+        #   Optional. Type of data returned for traces in the list. Default is
         #   `MINIMAL`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

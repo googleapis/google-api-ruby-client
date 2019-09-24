@@ -367,6 +367,13 @@ module Google
         # @return [Google::Apis::RunV1::LocalObjectReference]
         attr_accessor :local_object_reference
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The ConfigMap to select from.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # (Optional)
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
@@ -383,6 +390,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @name = args[:name] if args.key?(:name)
           @optional = args[:optional] if args.key?(:optional)
         end
       end
@@ -408,6 +416,13 @@ module Google
         # @return [Google::Apis::RunV1::LocalObjectReference]
         attr_accessor :local_object_reference
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The ConfigMap to select from.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # (Optional)
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
@@ -425,6 +440,7 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @name = args[:name] if args.key?(:name)
           @optional = args[:optional] if args.key?(:optional)
         end
       end
@@ -3030,6 +3046,13 @@ module Google
         # @return [Google::Apis::RunV1::LocalObjectReference]
         attr_accessor :local_object_reference
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The Secret to select from.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # (Optional)
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
@@ -3046,6 +3069,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @name = args[:name] if args.key?(:name)
           @optional = args[:optional] if args.key?(:optional)
         end
       end
@@ -3071,6 +3095,13 @@ module Google
         # @return [Google::Apis::RunV1::LocalObjectReference]
         attr_accessor :local_object_reference
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The name of the secret in the pod's namespace to select from.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # (Optional)
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
@@ -3088,6 +3119,7 @@ module Google
         def update!(**args)
           @key = args[:key] if args.key?(:key)
           @local_object_reference = args[:local_object_reference] if args.key?(:local_object_reference)
+          @name = args[:name] if args.key?(:name)
           @optional = args[:optional] if args.key?(:optional)
         end
       end
