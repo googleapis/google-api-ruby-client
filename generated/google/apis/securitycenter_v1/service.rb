@@ -50,7 +50,8 @@ module Google
         
         # Gets the settings for an organization.
         # @param [String] name
-        #   Name of the organization to get organization settings for. Its format is
+        #   Required. Name of the organization to get organization settings for. Its
+        #   format is
         #   "organizations/[organization_id]/organizationSettings".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -122,7 +123,7 @@ module Google
         # Filters an organization's assets and  groups them by their specified
         # properties.
         # @param [String] parent
-        #   Name of the organization to groupBy. Its format is
+        #   Required. Name of the organization to groupBy. Its format is
         #   "organizations/[organization_id]".
         # @param [Google::Apis::SecuritycenterV1::GroupAssetsRequest] group_assets_request_object
         # @param [String] fields
@@ -156,7 +157,7 @@ module Google
         
         # Lists an organization's assets.
         # @param [String] parent
-        #   Name of the organization assets should belong to. Its format is
+        #   Required. Name of the organization assets should belong to. Its format is
         #   "organizations/[organization_id]".
         # @param [String] compare_duration
         #   When compare_duration is set, the ListAssetsResult's "state_change"
@@ -295,7 +296,7 @@ module Google
         # it is called too frequently the caller will receive a TOO_MANY_REQUESTS
         # error.
         # @param [String] parent
-        #   Name of the organization to run asset discovery for. Its format is
+        #   Required. Name of the organization to run asset discovery for. Its format is
         #   "organizations/[organization_id]".
         # @param [Google::Apis::SecuritycenterV1::RunAssetDiscoveryRequest] run_asset_discovery_request_object
         # @param [String] fields
@@ -528,7 +529,7 @@ module Google
         
         # Creates a source.
         # @param [String] parent
-        #   Resource name of the new source's parent. Its format should be
+        #   Required. Resource name of the new source's parent. Its format should be
         #   "organizations/[organization_id]".
         # @param [Google::Apis::SecuritycenterV1::Source] source_object
         # @param [String] fields
@@ -562,7 +563,7 @@ module Google
         
         # Gets a source.
         # @param [String] name
-        #   Relative resource name of the source. Its format is
+        #   Required. Relative resource name of the source. Its format is
         #   "organizations/[organization_id]/source/[source_id]".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -627,7 +628,7 @@ module Google
         
         # Lists all sources belonging to an organization.
         # @param [String] parent
-        #   Resource name of the parent of sources to list. Its format should be
+        #   Required. Resource name of the parent of sources to list. Its format should be
         #   "organizations/[organization_id]".
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. Default is
@@ -776,11 +777,11 @@ module Google
         # Creates a finding. The corresponding source must exist for finding creation
         # to succeed.
         # @param [String] parent
-        #   Resource name of the new finding's parent. Its format should be
+        #   Required. Resource name of the new finding's parent. Its format should be
         #   "organizations/[organization_id]/sources/[source_id]".
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] finding_id
-        #   Unique identifier provided by the client within the parent scope.
+        #   Required. Unique identifier provided by the client within the parent scope.
         #   It must be alphanumeric and less than or equal to 32 characters and
         #   greater than 0 characters in length.
         # @param [String] fields
@@ -818,7 +819,7 @@ module Google
         # To group across all sources provide a `-` as the source id.
         # Example: /v1/organizations/123/sources/-/findings
         # @param [String] parent
-        #   Name of the source to groupBy. Its format is
+        #   Required. Name of the source to groupBy. Its format is
         #   "organizations/[organization_id]/sources/[source_id]". To groupBy across
         #   all sources provide a source_id of `-`. For example:
         #   organizations/123/sources/-
@@ -856,7 +857,7 @@ module Google
         # To list across all sources provide a `-` as the source id.
         # Example: /v1/organizations/123/sources/-/findings
         # @param [String] parent
-        #   Name of the source the findings belong to. Its format is
+        #   Required. Name of the source the findings belong to. Its format is
         #   "organizations/[organization_id]/sources/[source_id]". To list across all
         #   sources provide a source_id of `-`. For example:
         #   organizations/123/sources/-
@@ -1029,7 +1030,7 @@ module Google
         
         # Updates the state of a finding.
         # @param [String] name
-        #   The relative resource name of the finding. See:
+        #   Required. The relative resource name of the finding. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
         #   "organizations/123/sources/456/finding/789".

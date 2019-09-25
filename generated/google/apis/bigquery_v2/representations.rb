@@ -502,6 +502,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ScriptStackFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScriptStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StandardSqlDataType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1321,6 +1333,8 @@ module Google
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage::Representation
       
           property :reservation_id, as: 'reservation_id'
+          property :script_statistics, as: 'scriptStatistics', class: Google::Apis::BigqueryV2::ScriptStatistics, decorator: Google::Apis::BigqueryV2::ScriptStatistics::Representation
+      
           property :start_time, :numeric_string => true, as: 'startTime'
           property :total_bytes_processed, :numeric_string => true, as: 'totalBytesProcessed'
           property :total_slot_ms, :numeric_string => true, as: 'totalSlotMs'
@@ -1697,6 +1711,27 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :actual_label, as: 'actualLabel'
           collection :entries, as: 'entries', class: Google::Apis::BigqueryV2::Entry, decorator: Google::Apis::BigqueryV2::Entry::Representation
+      
+        end
+      end
+      
+      class ScriptStackFrame
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_column, as: 'endColumn'
+          property :end_line, as: 'endLine'
+          property :procedure_id, as: 'procedureId'
+          property :start_column, as: 'startColumn'
+          property :start_line, as: 'startLine'
+          property :text, as: 'text'
+        end
+      end
+      
+      class ScriptStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_kind, as: 'evaluationKind'
+          collection :stack_frames, as: 'stackFrames', class: Google::Apis::BigqueryV2::ScriptStackFrame, decorator: Google::Apis::BigqueryV2::ScriptStackFrame::Representation
       
         end
       end

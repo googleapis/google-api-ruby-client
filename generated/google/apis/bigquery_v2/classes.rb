@@ -2969,6 +2969,11 @@ module Google
         # @return [String]
         attr_accessor :reservation_id
       
+        # [Output-only] Statistics for a child job of a script.
+        # Corresponds to the JSON property `scriptStatistics`
+        # @return [Google::Apis::BigqueryV2::ScriptStatistics]
+        attr_accessor :script_statistics
+      
         # [Output-only] Start time of this job, in milliseconds since the epoch. This
         # field will be present when the job transitions from the PENDING state to
         # either RUNNING or DONE.
@@ -3004,6 +3009,7 @@ module Google
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
+          @script_statistics = args[:script_statistics] if args.key?(:script_statistics)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
           @total_slot_ms = args[:total_slot_ms] if args.key?(:total_slot_ms)
@@ -4439,6 +4445,82 @@ module Google
         def update!(**args)
           @actual_label = args[:actual_label] if args.key?(:actual_label)
           @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # 
+      class ScriptStackFrame
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] One-based end column.
+        # Corresponds to the JSON property `endColumn`
+        # @return [Fixnum]
+        attr_accessor :end_column
+      
+        # [Output-only] One-based end line.
+        # Corresponds to the JSON property `endLine`
+        # @return [Fixnum]
+        attr_accessor :end_line
+      
+        # [Output-only] Name of the active procedure, empty if in a top-level script.
+        # Corresponds to the JSON property `procedureId`
+        # @return [String]
+        attr_accessor :procedure_id
+      
+        # [Output-only] One-based start column.
+        # Corresponds to the JSON property `startColumn`
+        # @return [Fixnum]
+        attr_accessor :start_column
+      
+        # [Output-only] One-based start line.
+        # Corresponds to the JSON property `startLine`
+        # @return [Fixnum]
+        attr_accessor :start_line
+      
+        # [Output-only] Text of the current statement/expression.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_column = args[:end_column] if args.key?(:end_column)
+          @end_line = args[:end_line] if args.key?(:end_line)
+          @procedure_id = args[:procedure_id] if args.key?(:procedure_id)
+          @start_column = args[:start_column] if args.key?(:start_column)
+          @start_line = args[:start_line] if args.key?(:start_line)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class ScriptStatistics
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] Whether this child job was a statement or expression.
+        # Corresponds to the JSON property `evaluationKind`
+        # @return [String]
+        attr_accessor :evaluation_kind
+      
+        # Stack trace showing the line/column/procedure name of each frame on the stack
+        # at the point where the current evaluation happened. The leaf frame is first,
+        # the primary script is last. Never empty.
+        # Corresponds to the JSON property `stackFrames`
+        # @return [Array<Google::Apis::BigqueryV2::ScriptStackFrame>]
+        attr_accessor :stack_frames
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_kind = args[:evaluation_kind] if args.key?(:evaluation_kind)
+          @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
         end
       end
       

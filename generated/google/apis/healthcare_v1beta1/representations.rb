@@ -536,7 +536,6 @@ module Google
       class DeidentifySummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :failure_resource_count, :numeric_string => true, as: 'failureResourceCount'
           property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
           property :success_store_count, :numeric_string => true, as: 'successStoreCount'
         end
@@ -622,6 +621,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_referential_integrity, as: 'disableReferentialIntegrity'
           property :disable_resource_versioning, as: 'disableResourceVersioning'
+          property :enable_history_import, as: 'enableHistoryImport'
           property :enable_update_create, as: 'enableUpdateCreate'
           hash :labels, as: 'labels'
           property :name, as: 'name'

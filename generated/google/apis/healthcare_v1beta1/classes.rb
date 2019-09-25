@@ -266,7 +266,7 @@ module Google
       
         # The default timezone used by this dataset. Must be a either a valid IANA
         # time zone name such as "America/New_York" or empty, which defaults to UTC.
-        # This is used for parsing times in resources, such as HL7 messages, where no
+        # This is used for parsing times in resources (e.g., HL7 messages) where no
         # explicit timezone is specified.
         # Corresponds to the JSON property `timeZone`
         # @return [String]
@@ -318,12 +318,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DicomConfig]
         attr_accessor :dicom
       
-        # Specifies how to handle de-identification of a FHIR store.
+        # Specifies how de-identification of a FHIR store should be handled.
         # Corresponds to the JSON property `fhir`
         # @return [Google::Apis::HealthcareV1beta1::FhirConfig]
         attr_accessor :fhir
       
-        # Specifies how to handle de-identification of image pixels.
+        # Specifies how de-identification of image pixel should be handled.
         # Corresponds to the JSON property `image`
         # @return [Google::Apis::HealthcareV1beta1::ImageConfig]
         attr_accessor :image
@@ -359,7 +359,8 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
         attr_accessor :config
       
-        # The name of the dataset resource to create and write the redacted data to.
+        # The name of the dataset resource to create and write the redacted data to
+        # (e.g.,
         # * The destination dataset must not exist.
         # * The destination dataset must be in the same project as the source
         # dataset. De-identifying data across multiple projects is not supported.
@@ -382,12 +383,12 @@ module Google
       class DeidentifyErrorDetails
         include Google::Apis::Core::Hashable
       
-        # Number of resources that failed to process.
+        # Number of resources failed to process.
         # Corresponds to the JSON property `failureResourceCount`
         # @return [Fixnum]
         attr_accessor :failure_resource_count
       
-        # Number of stores that failed to process.
+        # Number of stores failed to process.
         # Corresponds to the JSON property `failureStoreCount`
         # @return [Fixnum]
         attr_accessor :failure_store_count
@@ -419,14 +420,6 @@ module Google
       class DeidentifySummary
         include Google::Apis::Core::Hashable
       
-        # Number of resources that failed to process.
-        # The failures might be caused by:
-        # * Invalid user input data
-        # * Transient errors that could be skipped
-        # Corresponds to the JSON property `failureResourceCount`
-        # @return [Fixnum]
-        attr_accessor :failure_resource_count
-      
         # Number of resources successfully processed.
         # Corresponds to the JSON property `successResourceCount`
         # @return [Fixnum]
@@ -443,7 +436,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @failure_resource_count = args[:failure_resource_count] if args.key?(:failure_resource_count)
           @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
           @success_store_count = args[:success_store_count] if args.key?(:success_store_count)
         end
@@ -519,7 +511,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specifies where to send notifications upon changes to a data store.
+        # Specifies where notifications should be sent upon changes to a data store.
         # Corresponds to the JSON property `notificationConfig`
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
@@ -588,20 +580,20 @@ module Google
       end
       
       # Exports data from the specified DICOM store.
-      # If a given resource, such as a DICOM object with the same SOPInstance UID,
+      # If a given resource (e.g., a DICOM object with the same SOPInstance UID)
       # already exists in the output, it is overwritten with the version
       # in the source dataset.
-      # Exported DICOM data persists when the DICOM store from which it was
+      # Exported DICOM data will persist when the DICOM store from which it was
       # exported is deleted.
       class ExportDicomDataRequest
         include Google::Apis::Core::Hashable
       
-        # The BigQuery table where the server writes the output.
+        # The BigQuery table where the output should be written.
         # Corresponds to the JSON property `bigqueryDestination`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomBigQueryDestination]
         attr_accessor :bigquery_destination
       
-        # The Cloud Storage location where the server writes the output and the export
+        # The Cloud Storage location where the output should be written, and the export
         # configuration.
         # Corresponds to the JSON property `gcsDestination`
         # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsDestination]
@@ -690,12 +682,12 @@ module Google
         end
       end
       
-      # Specifies how to handle de-identification of a FHIR store.
+      # Specifies how de-identification of a FHIR store should be handled.
       class FhirConfig
         include Google::Apis::Core::Hashable
       
         # Specifies FHIR paths to match and how to transform them. Any field that
-        # is not matched by a FieldMetadata is passed through to the output
+        # is not matched by a FieldMetadata will be passed through to the output
         # dataset unmodified. All extensions are removed in the output.
         # Corresponds to the JSON property `fieldMetadataList`
         # @return [Array<Google::Apis::HealthcareV1beta1::FieldMetadata>]
@@ -717,12 +709,12 @@ module Google
       
         # Whether to disable referential integrity in this FHIR store. This field is
         # immutable after FHIR store creation.
-        # The default value is false, meaning that the API enforces referential
-        # integrity and fails the requests that result in inconsistent state in
+        # The default value is false, meaning that the API will enforce referential
+        # integrity and fail the requests that will result in inconsistent state in
         # the FHIR store.
-        # When this field is set to true, the API skips referential integrity
-        # checks. Consequently, operations that rely on references, such as
-        # GetPatientEverything, do not return all the results if broken references
+        # When this field is set to true, the API will skip referential integrity
+        # check. Consequently, operations that rely on references, such as
+        # GetPatientEverything, will not return all the results if broken references
         # exist.
         # Corresponds to the JSON property `disableReferentialIntegrity`
         # @return [Boolean]
@@ -731,25 +723,35 @@ module Google
       
         # Whether to disable resource versioning for this FHIR store. This field can
         # not be changed after the creation of FHIR store.
-        # If set to false, which is the default behavior, all write operations
+        # If set to false, which is the default behavior, all write operations will
         # cause historical versions to be recorded automatically. The historical
         # versions can be fetched through the history APIs, but cannot be updated.
-        # If set to true, no historical versions are kept. The server sends
-        # errors for attempts to read the historical versions.
+        # If set to true, no historical versions will be kept. The server will send
+        # back errors for attempts to read the historical versions.
         # Corresponds to the JSON property `disableResourceVersioning`
         # @return [Boolean]
         attr_accessor :disable_resource_versioning
         alias_method :disable_resource_versioning?, :disable_resource_versioning
+      
+        # Whether to allow the bulk import API to accept history bundles and directly
+        # insert historical resource versions into the FHIR store. Importing resource
+        # histories creates resource interactions that appear to have occurred in the
+        # past, which clients may not want to allow. If set to false, history bundles
+        # within an import will fail with an error.
+        # Corresponds to the JSON property `enableHistoryImport`
+        # @return [Boolean]
+        attr_accessor :enable_history_import
+        alias_method :enable_history_import?, :enable_history_import
       
         # Whether this FHIR store has the [updateCreate
         # capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#
         # CapabilityStatement.rest.resource.updateCreate).
         # This determines if the client can use an Update operation to create a new
         # resource with a client-specified ID. If false, all IDs are server-assigned
-        # through the Create operation and attempts to update a non-existent resource
-        # return errors. Please treat the audit logs with appropriate levels of
+        # through the Create operation and attempts to Update a non-existent resource
+        # will return errors. Please treat the audit logs with appropriate levels of
         # care if client-specified resource IDs contain sensitive data such as
-        # patient identifiers, those IDs are part of the FHIR resource path
+        # patient identifiers, those IDs will be part of the FHIR resource path
         # recorded in Cloud audit logs and Cloud Pub/Sub notifications.
         # Corresponds to the JSON property `enableUpdateCreate`
         # @return [Boolean]
@@ -775,7 +777,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specifies where to send notifications upon changes to a data store.
+        # Specifies where notifications should be sent upon changes to a data store.
         # Corresponds to the JSON property `notificationConfig`
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
@@ -788,6 +790,7 @@ module Google
         def update!(**args)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
+          @enable_history_import = args[:enable_history_import] if args.key?(:enable_history_import)
           @enable_update_create = args[:enable_update_create] if args.key?(:enable_update_create)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
@@ -809,8 +812,8 @@ module Google
         # period-separated list where each component is either a field name or
         # FHIR type name, for example: Patient, HumanName.
         # For "choice" types (those defined in the FHIR spec with the form:
-        # field[x]) we use two separate components. For example,
-        # "deceasedAge.unit" is matched by "Deceased.Age.unit".
+        # field[x]) we use two separate components. e.g. "deceasedAge.unit" is
+        # matched by "Deceased.Age.unit".
         # Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
         # Decimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,
         # String, Uri, Uuid, Xhtml.
@@ -829,12 +832,12 @@ module Google
         end
       end
       
-      # The BigQuery table where the server writes the output.
+      # The BigQuery table where the output should be written.
       class GoogleCloudHealthcareV1beta1DicomBigQueryDestination
         include Google::Apis::Core::Hashable
       
         # If the destination table already exists and this flag is `TRUE`, the table
-        # is overwritten by the contents of the DICOM store. If the flag is not
+        # will be overwritten by the contents of the DICOM store. If the flag is not
         # set and the destination table already exists, the export call returns an
         # error.
         # Corresponds to the JSON property `force`
@@ -859,31 +862,31 @@ module Google
         end
       end
       
-      # The Cloud Storage location where the server writes the output and the export
+      # The Cloud Storage location where the output should be written, and the export
       # configuration.
       class GoogleCloudHealthcareV1beta1DicomGcsDestination
         include Google::Apis::Core::Hashable
       
         # MIME types supported by DICOM spec.
-        # Each file is written in the following format:
+        # Each file will be written in the following format:
         # `.../`study_id`/`series_id`/`instance_id`[/`frame_number`].`extension``
-        # The frame_number component exists only for multi-frame instances.
+        # The frame_number component will exist only for multi-frame instances.
         # Refer to the DICOM conformance statement for permissible MIME types:
         # https://cloud.google.com/healthcare/docs/dicom#wado-rs
-        # The following extensions are used for output files:
+        # The following extensions will be used for output files:
         # application/dicom -> .dcm
         # image/jpeg -> .jpg
         # image/png -> .png
-        # If unspecified, the instances are exported in their original
+        # If unspecified, the instances will be exported in their original
         # DICOM format.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
         # The Cloud Storage destination to export to.
-        # URI for a Cloud Storage directory where the server writes the result files,
-        # in the format `gs://`bucket-id`/`path/to/destination/dir``). If there is no
-        # trailing slash, the service appends one when composing the object path.
+        # URI for a Cloud Storage directory where result files should be written (in
+        # the format `gs://`bucket-id`/`path/to/destination/dir``). If there is no
+        # trailing slash, the service will append one when composing the object path.
         # The user is responsible for creating the Cloud Storage bucket referenced in
         # `uri_prefix`.
         # Corresponds to the JSON property `uriPrefix`
@@ -1202,7 +1205,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Specifies where to send notifications upon changes to a data store.
+        # Specifies where notifications should be sent upon changes to a data store.
         # Corresponds to the JSON property `notificationConfig`
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
@@ -1287,7 +1290,7 @@ module Google
         end
       end
       
-      # Specifies how to handle de-identification of image pixels.
+      # Specifies how de-identification of image pixel should be handled.
       class ImageConfig
         include Google::Apis::Core::Hashable
       
@@ -1311,8 +1314,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Deprecated. Use only for debugging purposes.
-        # Contains sample errors encountered in imports of individual resources.
-        # For example, a Cloud Storage object.
+        # Contains sample errors encountered in imports of individual resources
+        # (for example, a Cloud Storage object).
         # Corresponds to the JSON property `sampleErrors`
         # @return [Array<Google::Apis::HealthcareV1beta1::ErrorDetail>]
         attr_accessor :sample_errors
@@ -1329,8 +1332,8 @@ module Google
       
       # Imports data into the specified DICOM store.
       # Returns an error if any of the files to import are not DICOM files. This
-      # API accepts duplicate DICOM instances by ignoring the newly-pushed instance.
-      # It does not overwrite.
+      # API will accept duplicate DICOM instances, by simply ignoring the newly
+      # pushed instance (it will not overwrite).
       class ImportDicomDataRequest
         include Google::Apis::Core::Hashable
       
@@ -1405,8 +1408,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :info_types
       
-        # Define how to redact sensitive values. Default behaviour is erase.
-        # For example, "My name is Jake." becomes "My name is ."
+        # Define how to redact sensitive values. Default behaviour is erase,
+        # e.g. "My name is Jake." becomes "My name is ."
         # Corresponds to the JSON property `redactConfig`
         # @return [Google::Apis::HealthcareV1beta1::RedactConfig]
         attr_accessor :redact_config
@@ -1796,13 +1799,13 @@ module Google
         end
       end
       
-      # Specifies where to send notifications upon changes to a data store.
+      # Specifies where notifications should be sent upon changes to a data store.
       class NotificationConfig
         include Google::Apis::Core::Hashable
       
         # The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
         # notifications of changes are published on. Supplied by the client.
-        # PubsubMessage.Data contains the resource name.
+        # PubsubMessage.Data will contain the resource name.
         # PubsubMessage.MessageId is the ID of this message. It is guaranteed to be
         # unique within the topic.
         # PubsubMessage.PublishTime is the time at which the message was published.
@@ -1811,7 +1814,7 @@ module Google
         # names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
         # to a project. cloud-healthcare@system.gserviceaccount.com must have
         # publisher permissions on the given Cloud Pub/Sub topic. Not having adequate
-        # permissions causes the calls that send notifications to fail.
+        # permissions will cause the calls that send notifications to fail.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -1958,8 +1961,8 @@ module Google
         attr_accessor :allow_null_header
         alias_method :allow_null_header?, :allow_null_header
       
-        # Byte(s) to use as the segment terminator. If this is unset, '\r' is
-        # used as segment terminator.
+        # Byte(s) to be used as the segment terminator. If this is unset, '\r' will
+        # be used as segment terminator.
         # Corresponds to the JSON property `segmentTerminator`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1980,7 +1983,7 @@ module Google
       class PatientId
         include Google::Apis::Core::Hashable
       
-        # ID type. For example, MRN or NHS.
+        # ID type, e.g. MRN or NHS.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2066,12 +2069,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Specifies the format of the policy.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset.
+        # Deprecated.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2120,8 +2118,8 @@ module Google
         end
       end
       
-      # Define how to redact sensitive values. Default behaviour is erase.
-      # For example, "My name is Jake." becomes "My name is ."
+      # Define how to redact sensitive values. Default behaviour is erase,
+      # e.g. "My name is Jake." becomes "My name is ."
       class RedactConfig
         include Google::Apis::Core::Hashable
       
@@ -2211,23 +2209,22 @@ module Google
         # identify different instances of a repeated field.
         # Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)?
         # Examples of (key, value) pairs:
-        # * (0.1, "hemoglobin") denotes that the first component of Field 0 has the
-        # value "hemoglobin".
-        # * (1.1.2, "CBC") denotes that the second sub-component of the first
-        # component of Field 1 has the value "CBC".
-        # * (1[0].1, "HbA1c") denotes that the first component of the
-        # first Instance of Field 1, which is repeated, has the value "HbA1c".
+        # - (0.1, "foo"): Component 1 of Field 0 has the value "foo".
+        # - (1.1.2, "bar"): Sub-component 2 of Component 1 of field 1 has the value
+        # "bar".
+        # - (1[2].1, "baz"): Component 1 of Instance 2 of Field 1, which is repeated,
+        # has the value "baz".
         # Corresponds to the JSON property `fields`
         # @return [Hash<String,String>]
         attr_accessor :fields
       
-        # A string that indicates the type of segment. For example, EVN or PID.
+        # A string that indicates the type of segment, e.g., EVN, PID.
         # Corresponds to the JSON property `segmentId`
         # @return [String]
         attr_accessor :segment_id
       
-        # Set ID for segments that can be in a set. This can be empty if it's
-        # missing or isn't applicable.
+        # Set ID for segments that can be in a set. This can be empty if it is
+        # missing or it is not applicable.
         # Corresponds to the JSON property `setId`
         # @return [String]
         attr_accessor :set_id
