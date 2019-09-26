@@ -49,7 +49,8 @@ module Google
         
         # Given one or more beacon observations, returns any beacon information
         # and attachments accessible to your application. Authorize by using the
-        # [API key](https://developers.google.com/beacons/proximity/get-started#
+        # [API
+        # key](https://developers.google.com/beacons/proximity/get-started#
         # request_a_browser_api_key)
         # for the application.
         # @param [Google::Apis::ProximitybeaconV1beta1::GetInfoForObservedBeaconsRequest] get_info_for_observed_beacons_request_object
@@ -85,10 +86,10 @@ module Google
         # and attachment data when queried via `beaconinfo.getforobserved`.
         # Calling this method on an already active beacon will do nothing (but
         # will return a successful response code).
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Beacon that should be activated. A beacon name has the format
         #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
@@ -134,10 +135,10 @@ module Google
         # information nor attachment data for the beacon when queried via
         # `beaconinfo.getforobserved`. Calling this method on an already inactive
         # beacon will do nothing (but will return a successful response code).
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Beacon that should be deactivated. A beacon name has the format
         #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
@@ -183,10 +184,10 @@ module Google
         # longer be returned from `beaconinfo.getforobserved`. This operation is
         # permanent -- you will not be able to re-register a beacon with this ID
         # again.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Beacon that should be decommissioned. A beacon name has the format
         #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
@@ -231,10 +232,10 @@ module Google
         # Deletes the specified beacon including all diagnostics data for the beacon
         # as well as any attachments on the beacon (including those belonging to
         # other projects). This operation cannot be undone.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Beacon that should be deleted. A beacon name has the format
         #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
@@ -276,10 +277,10 @@ module Google
         end
         
         # Returns detailed information about the specified beacon.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+        # the Google Developers Console project.
         # Requests may supply an Eddystone-EID beacon name in the form:
         # `beacons/4!beaconId` where the `beaconId` is the base16 ephemeral ID
         # broadcast by the beacon. The returned `Beacon` object will contain the
@@ -329,10 +330,10 @@ module Google
         # Searches the beacon registry for beacons that match the given search
         # criteria. Only those beacons that the client has permission to list
         # will be returned.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+        # the Google Developers Console project.
         # @param [Fixnum] page_size
         #   The maximum number of records to return for this request, up to a
         #   server-defined upper limit.
@@ -405,7 +406,8 @@ module Google
         #   As with any HTTP query string parameter, the whole filter expression must
         #   be URL-encoded.
         #   Example REST request:
-        #   `GET /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
+        #   `GET
+        #   /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -438,10 +440,10 @@ module Google
         
         # Registers a previously unregistered beacon given its `advertisedId`.
         # These IDs are unique within the system. An ID can be registered only once.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [Google::Apis::ProximitybeaconV1beta1::Beacon] beacon_object
         # @param [String] project_id
         #   The project id of the project the beacon will be registered to. If
@@ -484,10 +486,10 @@ module Google
         # Changes to the beacon status via this method will be  silently ignored.
         # To update beacon status, use the separate methods on this API for
         # activation, deactivation, and decommissioning.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Resource name of this beacon. A beacon name has the format
         #   "beacons/N!beaconId" where the beaconId is the base16 ID broadcast by
@@ -537,10 +539,10 @@ module Google
         # should be deleted. If you do not specify `namespacedType`,  all your
         # attachments on the given beacon will be deleted. You also may explicitly
         # specify `*/*` to delete all.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   The beacon whose attachments should be deleted. A beacon name has the
         #   format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
@@ -601,10 +603,10 @@ module Google
         # endpoint, while the type can be a string of any characters except for the
         # forward slash (`/`) up to 100 characters in length.
         # Attachment data can be up to 1024 bytes long.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] beacon_name
         #   Beacon on which the attachment should be created. A beacon name has the
         #   format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
@@ -654,10 +656,10 @@ module Google
         # fetch the attachment data via this API. You specify this with the delete
         # request to control which attachment is removed. This operation cannot be
         # undone.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **Is owner** or **Can edit** permissions in the
-        # Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **Is owner** or **Can edit** permissions in the Google
+        # Developers Console project.
         # @param [String] attachment_name
         #   The attachment name (`attachmentName`) of
         #   the attachment to remove. For example:
@@ -703,10 +705,10 @@ module Google
         # `namespacedType` query parameter to the request. You must either use
         # `*/*`, to return all attachments, or the namespace must be one of
         # the ones returned from the  `namespaces` endpoint.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+        # the Google Developers Console project.
         # @param [String] beacon_name
         #   Beacon whose attachments should be fetched. A beacon name has the
         #   format "beacons/N!beaconId" where the beaconId is the base16 ID broadcast
@@ -758,10 +760,10 @@ module Google
         # List the diagnostics for a single beacon. You can also list diagnostics for
         # all the beacons owned by your Google Developers Console project by using
         # the beacon name `beacons/-`.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+        # the Google Developers Console project.
         # @param [String] beacon_name
         #   Beacon that the diagnostics are for.
         # @param [String] alert_filter
@@ -811,10 +813,10 @@ module Google
         # Lists all attachment namespaces owned by your Google Developers Console
         # project. Attachment data associated with a beacon must include a
         # namespaced type, and the namespace must be owned by your project.
-        # Authenticate using an [OAuth access token](https://developers.google.com/
-        # identity/protocols/OAuth2)
-        # from a signed-in user with **viewer**, **Is owner** or **Can edit**
-        # permissions in the Google Developers Console project.
+        # Authenticate using an [OAuth access
+        # token](https://developers.google.com/identity/protocols/OAuth2) from a
+        # signed-in user with **viewer**, **Is owner** or **Can edit** permissions in
+        # the Google Developers Console project.
         # @param [String] project_id
         #   The project id to list namespaces under.
         #   Optional.

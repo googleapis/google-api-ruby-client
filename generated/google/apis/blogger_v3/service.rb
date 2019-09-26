@@ -53,8 +53,8 @@ module Google
         
         # Gets one blog and user info pair by blogId and userId.
         # @param [String] user_id
-        #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
-        #   quote marks) or the user's profile identifier.
+        #   ID of the user whose blogs are to be fetched. Either the word 'self' or the
+        #   user's profile identifier.
         # @param [String] blog_id
         #   The ID of the blog to get.
         # @param [Fixnum] max_posts
@@ -170,8 +170,8 @@ module Google
         
         # Retrieves a list of blogs, possibly filtered.
         # @param [String] user_id
-        #   ID of the user whose blogs are to be fetched. Either the word 'self' (sans
-        #   quote marks) or the user's profile identifier.
+        #   ID of the user whose blogs are to be fetched. Either the word 'self' or the
+        #   user's profile identifier.
         # @param [Boolean] fetch_user_info
         #   Whether the response is a list of blogs with per-user information instead of
         #   just blogs.
@@ -890,7 +890,7 @@ module Google
         # to the user.
         # @param [String] user_id
         #   ID of the user for the per-user information to be fetched. Either the word '
-        #   self' (sans quote marks) or the user's profile identifier.
+        #   self' or the user's profile identifier.
         # @param [String] blog_id
         #   The ID of the blog.
         # @param [String] post_id
@@ -935,7 +935,7 @@ module Google
         # specific to the user.
         # @param [String] user_id
         #   ID of the user for the per-user information to be fetched. Either the word '
-        #   self' (sans quote marks) or the user's profile identifier.
+        #   self' or the user's profile identifier.
         # @param [String] blog_id
         #   ID of the blog to fetch posts from.
         # @param [DateTime] end_date

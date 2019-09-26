@@ -1445,8 +1445,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies whether principals can be exempted for the same LogType in lower-
-        # level resource policies. If true, any lower-level exemptions will be ignored.
+        # 
         # Corresponds to the JSON property `ignoreChildExemptions`
         # @return [Boolean]
         attr_accessor :ignore_child_exemptions
@@ -2515,10 +2514,20 @@ module Google
         # @return [Google::Apis::ComputeV1::BackendServiceCdnPolicy]
         attr_accessor :cdn_policy
       
+        # Settings controlling the volume of connections to a backend service.
+        # Corresponds to the JSON property `circuitBreakers`
+        # @return [Google::Apis::ComputeV1::CircuitBreakers]
+        attr_accessor :circuit_breakers
+      
         # Message containing connection draining configuration.
         # Corresponds to the JSON property `connectionDraining`
         # @return [Google::Apis::ComputeV1::ConnectionDraining]
         attr_accessor :connection_draining
+      
+        # This message defines settings for a consistent hash style load balancer.
+        # Corresponds to the JSON property `consistentHash`
+        # @return [Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettings]
+        attr_accessor :consistent_hash
       
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
@@ -2590,6 +2599,33 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # The load balancing algorithm used within the scope of the locality. The
+        # possible values are:
+        # - ROUND_ROBIN: This is a simple policy in which each healthy backend is
+        # selected in round robin order. This is the default.
+        # - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and
+        # picks the host which has fewer active requests.
+        # - RING_HASH: The ring/modulo hash load balancer implements consistent hashing
+        # to backends. The algorithm has the property that the addition/removal of a
+        # host from a set of N hosts only affects 1/N of the requests.
+        # - RANDOM: The load balancer selects a random healthy host.
+        # - ORIGINAL_DESTINATION: Backend host is selected based on the client
+        # connection metadata, i.e., connections are opened to the same address as the
+        # destination address of the incoming connection before the connection was
+        # redirected to the load balancer.
+        # - MAGLEV: used as a drop in replacement for the ring hash load balancer.
+        # Maglev is not as stable as ring hash but has faster table lookup build times
+        # and host selection times. For more information about Maglev, refer to https://
+        # ai.google/research/pubs/pub44824
+        # This field is applicable to either:
+        # - A regional backend service with the service_protocol set to HTTP, HTTPS, or
+        # HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
+        # - A global backend service with the load_balancing_scheme set to
+        # INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `localityLbPolicy`
+        # @return [String]
+        attr_accessor :locality_lb_policy
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -2599,6 +2635,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        # Corresponds to the JSON property `outlierDetection`
+        # @return [Google::Apis::ComputeV1::OutlierDetection]
+        attr_accessor :outlier_detection
       
         # Deprecated in favor of portName. The TCP port to connect on the backend. The
         # default value is 80.
@@ -2675,7 +2716,9 @@ module Google
           @affinity_cookie_ttl_sec = args[:affinity_cookie_ttl_sec] if args.key?(:affinity_cookie_ttl_sec)
           @backends = args[:backends] if args.key?(:backends)
           @cdn_policy = args[:cdn_policy] if args.key?(:cdn_policy)
+          @circuit_breakers = args[:circuit_breakers] if args.key?(:circuit_breakers)
           @connection_draining = args[:connection_draining] if args.key?(:connection_draining)
+          @consistent_hash = args[:consistent_hash] if args.key?(:consistent_hash)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @custom_request_headers = args[:custom_request_headers] if args.key?(:custom_request_headers)
           @description = args[:description] if args.key?(:description)
@@ -2686,7 +2729,9 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
           @name = args[:name] if args.key?(:name)
+          @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
           @protocol = args[:protocol] if args.key?(:protocol)
@@ -3275,6 +3320,55 @@ module Google
         end
       end
       
+      # Settings controlling the volume of connections to a backend service.
+      class CircuitBreakers
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of connections to the backend cluster. If not specified,
+        # the default is 1024.
+        # Corresponds to the JSON property `maxConnections`
+        # @return [Fixnum]
+        attr_accessor :max_connections
+      
+        # The maximum number of pending requests allowed to the backend cluster. If not
+        # specified, the default is 1024.
+        # Corresponds to the JSON property `maxPendingRequests`
+        # @return [Fixnum]
+        attr_accessor :max_pending_requests
+      
+        # The maximum number of parallel requests that allowed to the backend cluster.
+        # If not specified, the default is 1024.
+        # Corresponds to the JSON property `maxRequests`
+        # @return [Fixnum]
+        attr_accessor :max_requests
+      
+        # Maximum requests for a single backend connection. This parameter is respected
+        # by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no
+        # limit. Setting this parameter to 1 will effectively disable keep alive.
+        # Corresponds to the JSON property `maxRequestsPerConnection`
+        # @return [Fixnum]
+        attr_accessor :max_requests_per_connection
+      
+        # The maximum number of parallel retries allowed to the backend cluster. If not
+        # specified, the default is 3.
+        # Corresponds to the JSON property `maxRetries`
+        # @return [Fixnum]
+        attr_accessor :max_retries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_connections = args[:max_connections] if args.key?(:max_connections)
+          @max_pending_requests = args[:max_pending_requests] if args.key?(:max_pending_requests)
+          @max_requests = args[:max_requests] if args.key?(:max_requests)
+          @max_requests_per_connection = args[:max_requests_per_connection] if args.key?(:max_requests_per_connection)
+          @max_retries = args[:max_retries] if args.key?(:max_retries)
+        end
+      end
+      
       # Represents a regional Commitment resource.
       # Creating a commitment resource means that you are purchasing a committed use
       # contract with an explicit start and end time. You can create commitments based
@@ -3778,6 +3872,150 @@ module Google
         # Update properties of this object
         def update!(**args)
           @draining_timeout_sec = args[:draining_timeout_sec] if args.key?(:draining_timeout_sec)
+        end
+      end
+      
+      # This message defines settings for a consistent hash style load balancer.
+      class ConsistentHashLoadBalancerSettings
+        include Google::Apis::Core::Hashable
+      
+        # The information about the HTTP Cookie on which the hash function is based for
+        # load balancing policies that use a consistent hash.
+        # Corresponds to the JSON property `httpCookie`
+        # @return [Google::Apis::ComputeV1::ConsistentHashLoadBalancerSettingsHttpCookie]
+        attr_accessor :http_cookie
+      
+        # The hash based on the value of the specified header field. This field is
+        # applicable if the sessionAffinity is set to HEADER_FIELD.
+        # Corresponds to the JSON property `httpHeaderName`
+        # @return [String]
+        attr_accessor :http_header_name
+      
+        # The minimum number of virtual nodes to use for the hash ring. Defaults to 1024.
+        # Larger ring sizes result in more granular load distributions. If the number
+        # of hosts in the load balancing pool is larger than the ring size, each host
+        # will be assigned a single virtual node.
+        # Corresponds to the JSON property `minimumRingSize`
+        # @return [Fixnum]
+        attr_accessor :minimum_ring_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_cookie = args[:http_cookie] if args.key?(:http_cookie)
+          @http_header_name = args[:http_header_name] if args.key?(:http_header_name)
+          @minimum_ring_size = args[:minimum_ring_size] if args.key?(:minimum_ring_size)
+        end
+      end
+      
+      # The information about the HTTP Cookie on which the hash function is based for
+      # load balancing policies that use a consistent hash.
+      class ConsistentHashLoadBalancerSettingsHttpCookie
+        include Google::Apis::Core::Hashable
+      
+        # Name of the cookie.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Path to set for the cookie.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `ttl`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @path = args[:path] if args.key?(:path)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # The specification for allowing client side cross-origin requests. Please see
+      # W3C Recommendation for Cross Origin Resource Sharing
+      class CorsPolicy
+        include Google::Apis::Core::Hashable
+      
+        # In response to a preflight request, setting this to true indicates that the
+        # actual request can include user credentials. This translates to the Access-
+        # Control-Allow-Credentials header.
+        # Default is false.
+        # Corresponds to the JSON property `allowCredentials`
+        # @return [Boolean]
+        attr_accessor :allow_credentials
+        alias_method :allow_credentials?, :allow_credentials
+      
+        # Specifies the content for the Access-Control-Allow-Headers header.
+        # Corresponds to the JSON property `allowHeaders`
+        # @return [Array<String>]
+        attr_accessor :allow_headers
+      
+        # Specifies the content for the Access-Control-Allow-Methods header.
+        # Corresponds to the JSON property `allowMethods`
+        # @return [Array<String>]
+        attr_accessor :allow_methods
+      
+        # Specifies the regualar expression patterns that match allowed origins. For
+        # regular expression grammar please see en.cppreference.com/w/cpp/regex/
+        # ecmascript
+        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # Corresponds to the JSON property `allowOriginRegexes`
+        # @return [Array<String>]
+        attr_accessor :allow_origin_regexes
+      
+        # Specifies the list of origins that will be allowed to do CORS requests.
+        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # Corresponds to the JSON property `allowOrigins`
+        # @return [Array<String>]
+        attr_accessor :allow_origins
+      
+        # If true, specifies the CORS policy is disabled. The default value of false,
+        # which indicates that the CORS policy is in effect.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # Specifies the content for the Access-Control-Expose-Headers header.
+        # Corresponds to the JSON property `exposeHeaders`
+        # @return [Array<String>]
+        attr_accessor :expose_headers
+      
+        # Specifies how long the results of a preflight request can be cached. This
+        # translates to the content for the Access-Control-Max-Age header.
+        # Corresponds to the JSON property `maxAge`
+        # @return [Fixnum]
+        attr_accessor :max_age
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_credentials = args[:allow_credentials] if args.key?(:allow_credentials)
+          @allow_headers = args[:allow_headers] if args.key?(:allow_headers)
+          @allow_methods = args[:allow_methods] if args.key?(:allow_methods)
+          @allow_origin_regexes = args[:allow_origin_regexes] if args.key?(:allow_origin_regexes)
+          @allow_origins = args[:allow_origins] if args.key?(:allow_origins)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @expose_headers = args[:expose_headers] if args.key?(:expose_headers)
+          @max_age = args[:max_age] if args.key?(:max_age)
         end
       end
       
@@ -5108,6 +5346,38 @@ module Google
         end
       end
       
+      # A Duration represents a fixed-length span of time represented as a count of
+      # seconds and fractions of seconds at nanosecond resolution. It is independent
+      # of any calendar and concepts like "day" or "month". Range is approximately 10,
+      # 000 years.
+      class Duration
+        include Google::Apis::Core::Hashable
+      
+        # Span of time that's a fraction of a second at nanosecond resolution. Durations
+        # less than one second are represented with a 0 `seconds` field and a positive `
+        # nanos` field. Must be from 0 to 999,999,999 inclusive.
+        # Corresponds to the JSON property `nanos`
+        # @return [Fixnum]
+        attr_accessor :nanos
+      
+        # Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+        # inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24
+        # hr/day * 365.25 days/year * 10000 years
+        # Corresponds to the JSON property `seconds`
+        # @return [Fixnum]
+        attr_accessor :seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @nanos = args[:nanos] if args.key?(:nanos)
+          @seconds = args[:seconds] if args.key?(:seconds)
+        end
+      end
+      
       # Represents an expression text. Example:
       # title: "User account presence" description: "Determines whether the request
       # has a user account" expression: "size(request.user) > 0"
@@ -5951,6 +6221,23 @@ module Google
         # @return [String]
         attr_accessor :load_balancing_scheme
       
+        # Opaque filter criteria used by Loadbalancer to restrict routing configuration
+        # to a limited set xDS compliant clients. In their xDS requests to Loadbalancer,
+        # xDS clients present node metadata. If a match takes place, the relevant
+        # routing configuration is made available to those proxies.
+        # For each metadataFilter in this list, if its filterMatchCriteria is set to
+        # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+        # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+        # all of its filterLabels must match with corresponding labels in the provided
+        # metadata.
+        # metadataFilters specified here can be overridden by those specified in the
+        # UrlMap that this ForwardingRule references.
+        # metadataFilters only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `metadataFilters`
+        # @return [Array<Google::Apis::ComputeV1::MetadataFilter>]
+        attr_accessor :metadata_filters
+      
         # Name of the resource; provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -6085,6 +6372,7 @@ module Google
           @ip_version = args[:ip_version] if args.key?(:ip_version)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
+          @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @network_tier = args[:network_tier] if args.key?(:network_tier)
@@ -7483,6 +7771,258 @@ module Google
         end
       end
       
+      # Specification for how requests are aborted as part of fault injection.
+      class HttpFaultAbort
+        include Google::Apis::Core::Hashable
+      
+        # The HTTP status code used to abort the request.
+        # The value must be between 200 and 599 inclusive.
+        # Corresponds to the JSON property `httpStatus`
+        # @return [Fixnum]
+        attr_accessor :http_status
+      
+        # The percentage of traffic (connections/operations/requests) which will be
+        # aborted as part of fault injection.
+        # The value must be between 0.0 and 100.0 inclusive.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_status = args[:http_status] if args.key?(:http_status)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # Specifies the delay introduced by Loadbalancer before forwarding the request
+      # to the backend service as part of fault injection.
+      class HttpFaultDelay
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `fixedDelay`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :fixed_delay
+      
+        # The percentage of traffic (connections/operations/requests) on which delay
+        # will be introduced as part of fault injection.
+        # The value must be between 0.0 and 100.0 inclusive.
+        # Corresponds to the JSON property `percentage`
+        # @return [Float]
+        attr_accessor :percentage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fixed_delay = args[:fixed_delay] if args.key?(:fixed_delay)
+          @percentage = args[:percentage] if args.key?(:percentage)
+        end
+      end
+      
+      # The specification for fault injection introduced into traffic to test the
+      # resiliency of clients to backend service failure. As part of fault injection,
+      # when clients send requests to a backend service, delays can be introduced by
+      # Loadbalancer on a percentage of requests before sending those request to the
+      # backend service. Similarly requests from clients can be aborted by the
+      # Loadbalancer for a percentage of requests.
+      class HttpFaultInjection
+        include Google::Apis::Core::Hashable
+      
+        # Specification for how requests are aborted as part of fault injection.
+        # Corresponds to the JSON property `abort`
+        # @return [Google::Apis::ComputeV1::HttpFaultAbort]
+        attr_accessor :abort
+      
+        # Specifies the delay introduced by Loadbalancer before forwarding the request
+        # to the backend service as part of fault injection.
+        # Corresponds to the JSON property `delay`
+        # @return [Google::Apis::ComputeV1::HttpFaultDelay]
+        attr_accessor :delay
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abort = args[:abort] if args.key?(:abort)
+          @delay = args[:delay] if args.key?(:delay)
+        end
+      end
+      
+      # The request and response header transformations that take effect before the
+      # request is passed along to the selected backendService.
+      class HttpHeaderAction
+        include Google::Apis::Core::Hashable
+      
+        # Headers to add to a matching request prior to forwarding the request to the
+        # backendService.
+        # Corresponds to the JSON property `requestHeadersToAdd`
+        # @return [Array<Google::Apis::ComputeV1::HttpHeaderOption>]
+        attr_accessor :request_headers_to_add
+      
+        # A list of header names for headers that need to be removed from the request
+        # prior to forwarding the request to the backendService.
+        # Corresponds to the JSON property `requestHeadersToRemove`
+        # @return [Array<String>]
+        attr_accessor :request_headers_to_remove
+      
+        # Headers to add the response prior to sending the response back to the client.
+        # Corresponds to the JSON property `responseHeadersToAdd`
+        # @return [Array<Google::Apis::ComputeV1::HttpHeaderOption>]
+        attr_accessor :response_headers_to_add
+      
+        # A list of header names for headers that need to be removed from the response
+        # prior to sending the response back to the client.
+        # Corresponds to the JSON property `responseHeadersToRemove`
+        # @return [Array<String>]
+        attr_accessor :response_headers_to_remove
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @request_headers_to_add = args[:request_headers_to_add] if args.key?(:request_headers_to_add)
+          @request_headers_to_remove = args[:request_headers_to_remove] if args.key?(:request_headers_to_remove)
+          @response_headers_to_add = args[:response_headers_to_add] if args.key?(:response_headers_to_add)
+          @response_headers_to_remove = args[:response_headers_to_remove] if args.key?(:response_headers_to_remove)
+        end
+      end
+      
+      # matchRule criteria for request header matches.
+      class HttpHeaderMatch
+        include Google::Apis::Core::Hashable
+      
+        # The value should exactly match contents of exactMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # The name of the HTTP header to match.
+        # For matching against the HTTP request's authority, use a headerMatch with the
+        # header name ":authority".
+        # For matching a request's method, use the headerName ":method".
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        # If set to false, the headerMatch is considered a match if the match criteria
+        # above are met. If set to true, the headerMatch is considered a match if the
+        # match criteria above are NOT met.
+        # The default setting is false.
+        # Corresponds to the JSON property `invertMatch`
+        # @return [Boolean]
+        attr_accessor :invert_match
+        alias_method :invert_match?, :invert_match
+      
+        # The value of the header must start with the contents of prefixMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # A header with the contents of headerName must exist. The match takes place
+        # whether or not the request's header has a value or not.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # HttpRouteRuleMatch criteria for field values that must stay within the
+        # specified integer range.
+        # Corresponds to the JSON property `rangeMatch`
+        # @return [Google::Apis::ComputeV1::Int64RangeMatch]
+        attr_accessor :range_match
+      
+        # The value of the header must match the regualar expression specified in
+        # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
+        # cpp/regex/ecmascript
+        # For matching against a port specified in the HTTP request, use a headerMatch
+        # with headerName set to PORT and a regular expression that satisfies the
+        # RFC2616 Host header's port specifier.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        # The value of the header must end with the contents of suffixMatch.
+        # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
+        # rangeMatch must be set.
+        # Corresponds to the JSON property `suffixMatch`
+        # @return [String]
+        attr_accessor :suffix_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @header_name = args[:header_name] if args.key?(:header_name)
+          @invert_match = args[:invert_match] if args.key?(:invert_match)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @range_match = args[:range_match] if args.key?(:range_match)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+          @suffix_match = args[:suffix_match] if args.key?(:suffix_match)
+        end
+      end
+      
+      # Specification determining how headers are added to requests or responses.
+      class HttpHeaderOption
+        include Google::Apis::Core::Hashable
+      
+        # The name of the header.
+        # Corresponds to the JSON property `headerName`
+        # @return [String]
+        attr_accessor :header_name
+      
+        # The value of the header to add.
+        # Corresponds to the JSON property `headerValue`
+        # @return [String]
+        attr_accessor :header_value
+      
+        # If false, headerValue is appended to any values that already exist for the
+        # header. If true, headerValue is set for the header, discarding any values that
+        # were set for that header.
+        # The default value is false.
+        # Corresponds to the JSON property `replace`
+        # @return [Boolean]
+        attr_accessor :replace
+        alias_method :replace?, :replace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_name = args[:header_name] if args.key?(:header_name)
+          @header_value = args[:header_value] if args.key?(:header_value)
+          @replace = args[:replace] if args.key?(:replace)
+        end
+      end
+      
       # Represents a legacy HTTP Health Check resource.
       # Legacy health checks are required by network load balancers. For more
       # information, read Health Check Concepts.
@@ -7705,6 +8245,400 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # HttpRouteRuleMatch criteria for a request's query parameter.
+      class HttpQueryParameterMatch
+        include Google::Apis::Core::Hashable
+      
+        # The queryParameterMatch matches if the value of the parameter exactly matches
+        # the contents of exactMatch.
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `exactMatch`
+        # @return [String]
+        attr_accessor :exact_match
+      
+        # The name of the query parameter to match. The query parameter must exist in
+        # the request, in the absence of which the request match fails.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies that the queryParameterMatch matches if the request contains the
+        # query parameter, irrespective of whether the parameter has a value or not.
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `presentMatch`
+        # @return [Boolean]
+        attr_accessor :present_match
+        alias_method :present_match?, :present_match
+      
+        # The queryParameterMatch matches if the value of the parameter matches the
+        # regular expression specified by regexMatch. For the regular expression grammar,
+        # please see en.cppreference.com/w/cpp/regex/ecmascript
+        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exact_match = args[:exact_match] if args.key?(:exact_match)
+          @name = args[:name] if args.key?(:name)
+          @present_match = args[:present_match] if args.key?(:present_match)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
+        end
+      end
+      
+      # Specifies settings for an HTTP redirect.
+      class HttpRedirectAction
+        include Google::Apis::Core::Hashable
+      
+        # The host that will be used in the redirect response instead of the one that
+        # was supplied in the request.
+        # The value must be between 1 and 255 characters.
+        # Corresponds to the JSON property `hostRedirect`
+        # @return [String]
+        attr_accessor :host_redirect
+      
+        # If set to true, the URL scheme in the redirected request is set to https. If
+        # set to false, the URL scheme of the redirected request will remain the same as
+        # that of the request.
+        # This must only be set for UrlMaps used in TargetHttpProxys. Setting this true
+        # for TargetHttpsProxy is not permitted.
+        # The default is set to false.
+        # Corresponds to the JSON property `httpsRedirect`
+        # @return [Boolean]
+        attr_accessor :https_redirect
+        alias_method :https_redirect?, :https_redirect
+      
+        # The path that will be used in the redirect response instead of the one that
+        # was supplied in the request.
+        # Only one of pathRedirect or prefixRedirect must be specified.
+        # The value must be between 1 and 1024 characters.
+        # Corresponds to the JSON property `pathRedirect`
+        # @return [String]
+        attr_accessor :path_redirect
+      
+        # The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+        # retaining the remaining portion of the URL before redirecting the request.
+        # Corresponds to the JSON property `prefixRedirect`
+        # @return [String]
+        attr_accessor :prefix_redirect
+      
+        # The HTTP Status code to use for this RedirectAction.
+        # Supported values are:
+        # - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+        # 
+        # - FOUND, which corresponds to 302.
+        # - SEE_OTHER which corresponds to 303.
+        # - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request
+        # method will be retained.
+        # - PERMANENT_REDIRECT, which corresponds to 308. In this case, the request
+        # method will be retained.
+        # Corresponds to the JSON property `redirectResponseCode`
+        # @return [String]
+        attr_accessor :redirect_response_code
+      
+        # If set to true, any accompanying query portion of the original URL is removed
+        # prior to redirecting the request. If set to false, the query portion of the
+        # original URL is retained.
+        # The default is set to false.
+        # Corresponds to the JSON property `stripQuery`
+        # @return [Boolean]
+        attr_accessor :strip_query
+        alias_method :strip_query?, :strip_query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_redirect = args[:host_redirect] if args.key?(:host_redirect)
+          @https_redirect = args[:https_redirect] if args.key?(:https_redirect)
+          @path_redirect = args[:path_redirect] if args.key?(:path_redirect)
+          @prefix_redirect = args[:prefix_redirect] if args.key?(:prefix_redirect)
+          @redirect_response_code = args[:redirect_response_code] if args.key?(:redirect_response_code)
+          @strip_query = args[:strip_query] if args.key?(:strip_query)
+        end
+      end
+      
+      # The retry policy associates with HttpRouteRule
+      class HttpRetryPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the allowed number retries. This number must be > 0.
+        # Corresponds to the JSON property `numRetries`
+        # @return [Fixnum]
+        attr_accessor :num_retries
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `perTryTimeout`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :per_try_timeout
+      
+        # Specfies one or more conditions when this retry rule applies. Valid values are:
+        # 
+        # - 5xx: Loadbalancer will attempt a retry if the backend service responds with
+        # any 5xx response code, or if the backend service does not respond at all,
+        # example: disconnects, reset, read timeout, connection failure, and refused
+        # streams.
+        # - gateway-error: Similar to 5xx, but only applies to response codes 502, 503
+        # or 504.
+        # -
+        # - connect-failure: Loadbalancer will retry on failures connecting to backend
+        # services, for example due to connection timeouts.
+        # - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+        # Currently the only retriable error supported is 409.
+        # - refused-stream:Loadbalancer will retry if the backend service resets the
+        # stream with a REFUSED_STREAM error code. This reset type indicates that it is
+        # safe to retry.
+        # - cancelledLoadbalancer will retry if the gRPC status code in the response
+        # header is set to cancelled
+        # - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the
+        # response header is set to deadline-exceeded
+        # - resource-exhausted: Loadbalancer will retry if the gRPC status code in the
+        # response header is set to resource-exhausted
+        # - unavailable: Loadbalancer will retry if the gRPC status code in the response
+        # header is set to unavailable
+        # Corresponds to the JSON property `retryConditions`
+        # @return [Array<String>]
+        attr_accessor :retry_conditions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_retries = args[:num_retries] if args.key?(:num_retries)
+          @per_try_timeout = args[:per_try_timeout] if args.key?(:per_try_timeout)
+          @retry_conditions = args[:retry_conditions] if args.key?(:retry_conditions)
+        end
+      end
+      
+      # 
+      class HttpRouteAction
+        include Google::Apis::Core::Hashable
+      
+        # The specification for allowing client side cross-origin requests. Please see
+        # W3C Recommendation for Cross Origin Resource Sharing
+        # Corresponds to the JSON property `corsPolicy`
+        # @return [Google::Apis::ComputeV1::CorsPolicy]
+        attr_accessor :cors_policy
+      
+        # The specification for fault injection introduced into traffic to test the
+        # resiliency of clients to backend service failure. As part of fault injection,
+        # when clients send requests to a backend service, delays can be introduced by
+        # Loadbalancer on a percentage of requests before sending those request to the
+        # backend service. Similarly requests from clients can be aborted by the
+        # Loadbalancer for a percentage of requests.
+        # Corresponds to the JSON property `faultInjectionPolicy`
+        # @return [Google::Apis::ComputeV1::HttpFaultInjection]
+        attr_accessor :fault_injection_policy
+      
+        # A policy that specifies how requests intended for the route's backends are
+        # shadowed to a separate mirrored backend service. Loadbalancer does not wait
+        # for responses from the shadow service. Prior to sending traffic to the shadow
+        # service, the host / authority header is suffixed with -shadow.
+        # Corresponds to the JSON property `requestMirrorPolicy`
+        # @return [Google::Apis::ComputeV1::RequestMirrorPolicy]
+        attr_accessor :request_mirror_policy
+      
+        # The retry policy associates with HttpRouteRule
+        # Corresponds to the JSON property `retryPolicy`
+        # @return [Google::Apis::ComputeV1::HttpRetryPolicy]
+        attr_accessor :retry_policy
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `timeout`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :timeout
+      
+        # The spec for modifying the path before sending the request to the matched
+        # backend service.
+        # Corresponds to the JSON property `urlRewrite`
+        # @return [Google::Apis::ComputeV1::UrlRewrite]
+        attr_accessor :url_rewrite
+      
+        # A list of weighted backend services to send traffic to when a route match
+        # occurs. The weights determine the fraction of traffic that flows to their
+        # corresponding backend service. If all traffic needs to go to a single backend
+        # service, there must be one  weightedBackendService with weight set to a non 0
+        # number.
+        # Once a backendService is identified and before forwarding the request to the
+        # backend service, advanced routing actions like Url rewrites and header
+        # transformations are applied depending on additional settings specified in this
+        # HttpRouteAction.
+        # Corresponds to the JSON property `weightedBackendServices`
+        # @return [Array<Google::Apis::ComputeV1::WeightedBackendService>]
+        attr_accessor :weighted_backend_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cors_policy = args[:cors_policy] if args.key?(:cors_policy)
+          @fault_injection_policy = args[:fault_injection_policy] if args.key?(:fault_injection_policy)
+          @request_mirror_policy = args[:request_mirror_policy] if args.key?(:request_mirror_policy)
+          @retry_policy = args[:retry_policy] if args.key?(:retry_policy)
+          @timeout = args[:timeout] if args.key?(:timeout)
+          @url_rewrite = args[:url_rewrite] if args.key?(:url_rewrite)
+          @weighted_backend_services = args[:weighted_backend_services] if args.key?(:weighted_backend_services)
+        end
+      end
+      
+      # An HttpRouteRule specifies how to match an HTTP request and the corresponding
+      # routing action that load balancing proxies will perform.
+      class HttpRouteRule
+        include Google::Apis::Core::Hashable
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeV1::HttpHeaderAction]
+        attr_accessor :header_action
+      
+        # 
+        # Corresponds to the JSON property `matchRules`
+        # @return [Array<Google::Apis::ComputeV1::HttpRouteRuleMatch>]
+        attr_accessor :match_rules
+      
+        # In response to a matching matchRule, the load balancer performs advanced
+        # routing actions like URL rewrites, header transformations, etc. prior to
+        # forwarding the request to the selected backend. If  routeAction specifies any
+        # weightedBackendServices, service must not be set. Conversely if service is set,
+        # routeAction cannot contain any  weightedBackendServices.
+        # Only one of routeAction or urlRedirect must be set.
+        # Corresponds to the JSON property `routeAction`
+        # @return [Google::Apis::ComputeV1::HttpRouteAction]
+        attr_accessor :route_action
+      
+        # The full or partial URL of the backend service resource to which traffic is
+        # directed if this rule is matched. If routeAction is additionally specified,
+        # advanced routing actions like URL Rewrites, etc. take effect prior to sending
+        # the request to the backend. However, if service is specified, routeAction
+        # cannot contain any weightedBackendService s. Conversely, if routeAction
+        # specifies any  weightedBackendServices, service must not be specified.
+        # Only one of urlRedirect, service or routeAction.weightedBackendService must be
+        # set.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `urlRedirect`
+        # @return [Google::Apis::ComputeV1::HttpRedirectAction]
+        attr_accessor :url_redirect
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_action = args[:header_action] if args.key?(:header_action)
+          @match_rules = args[:match_rules] if args.key?(:match_rules)
+          @route_action = args[:route_action] if args.key?(:route_action)
+          @service = args[:service] if args.key?(:service)
+          @url_redirect = args[:url_redirect] if args.key?(:url_redirect)
+        end
+      end
+      
+      # HttpRouteRuleMatch specifies a set of criteria for matching requests to an
+      # HttpRouteRule. All specified criteria must be satisfied for a match to occur.
+      class HttpRouteRuleMatch
+        include Google::Apis::Core::Hashable
+      
+        # For satifying the matchRule condition, the path of the request must exactly
+        # match the value specified in fullPathMatch after removing any query parameters
+        # and anchor that may be part of the original URL.
+        # FullPathMatch must be between 1 and 1024 characters.
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `fullPathMatch`
+        # @return [String]
+        attr_accessor :full_path_match
+      
+        # Specifies a list of header match criteria, all of which must match
+        # corresponding headers in the request.
+        # Corresponds to the JSON property `headerMatches`
+        # @return [Array<Google::Apis::ComputeV1::HttpHeaderMatch>]
+        attr_accessor :header_matches
+      
+        # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
+        # The default value is false.
+        # caseSensitive must not be used with regexMatch.
+        # Corresponds to the JSON property `ignoreCase`
+        # @return [Boolean]
+        attr_accessor :ignore_case
+        alias_method :ignore_case?, :ignore_case
+      
+        # Opaque filter criteria used by Loadbalancer to restrict routing configuration
+        # to a limited set xDS compliant clients. In their xDS requests to Loadbalancer,
+        # xDS clients present node metadata. If a match takes place, the relevant
+        # routing configuration is made available to those proxies.
+        # For each metadataFilter in this list, if its filterMatchCriteria is set to
+        # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+        # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+        # all of its filterLabels must match with corresponding labels in the provided
+        # metadata.
+        # metadataFilters specified here can be overrides those specified in
+        # ForwardingRule that refers to this UrlMap.
+        # metadataFilters only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        # Corresponds to the JSON property `metadataFilters`
+        # @return [Array<Google::Apis::ComputeV1::MetadataFilter>]
+        attr_accessor :metadata_filters
+      
+        # For satifying the matchRule condition, the request's path must begin with the
+        # specified prefixMatch. prefixMatch must begin with a /.
+        # The value must be between 1 and 1024 characters.
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `prefixMatch`
+        # @return [String]
+        attr_accessor :prefix_match
+      
+        # Specifies a list of query parameter match criteria, all of which must match
+        # corresponding query parameters in the request.
+        # Corresponds to the JSON property `queryParameterMatches`
+        # @return [Array<Google::Apis::ComputeV1::HttpQueryParameterMatch>]
+        attr_accessor :query_parameter_matches
+      
+        # For satifying the matchRule condition, the path of the request must satisfy
+        # the regular expression specified in regexMatch after removing any query
+        # parameters and anchor supplied with the original URL. For regular expression
+        # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
+        # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Corresponds to the JSON property `regexMatch`
+        # @return [String]
+        attr_accessor :regex_match
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_path_match = args[:full_path_match] if args.key?(:full_path_match)
+          @header_matches = args[:header_matches] if args.key?(:header_matches)
+          @ignore_case = args[:ignore_case] if args.key?(:ignore_case)
+          @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
+          @prefix_match = args[:prefix_match] if args.key?(:prefix_match)
+          @query_parameter_matches = args[:query_parameter_matches] if args.key?(:query_parameter_matches)
+          @regex_match = args[:regex_match] if args.key?(:regex_match)
         end
       end
       
@@ -11048,6 +11982,32 @@ module Google
         end
       end
       
+      # HttpRouteRuleMatch criteria for field values that must stay within the
+      # specified integer range.
+      class Int64RangeMatch
+        include Google::Apis::Core::Hashable
+      
+        # The end of the range (exclusive) in signed long integer format.
+        # Corresponds to the JSON property `rangeEnd`
+        # @return [Fixnum]
+        attr_accessor :range_end
+      
+        # The start of the range (inclusive) in signed long integer format.
+        # Corresponds to the JSON property `rangeStart`
+        # @return [Fixnum]
+        attr_accessor :range_start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range_end = args[:range_end] if args.key?(:range_end)
+          @range_start = args[:range_start] if args.key?(:range_start)
+        end
+      end
+      
       # Represents an Interconnect resource.
       # An Interconnect resource is a dedicated connection between the GCP network and
       # your on-premises network. For more information, read the  Dedicated
@@ -13725,6 +14685,82 @@ module Google
             @key = args[:key] if args.key?(:key)
             @value = args[:value] if args.key?(:value)
           end
+        end
+      end
+      
+      # Opaque filter criteria used by loadbalancers to restrict routing configuration
+      # to a limited set of loadbalancing proxies. Proxies and sidecars involved in
+      # loadbalancing would typically present metadata to the loadbalancers which need
+      # to match criteria specified here. If a match takes place, the relevant routing
+      # configuration is made available to those proxies.
+      # For each metadataFilter in this list, if its filterMatchCriteria is set to
+      # MATCH_ANY, at least one of the filterLabels must match the corresponding label
+      # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
+      # all of its filterLabels must match with corresponding labels in the provided
+      # metadata.
+      # An example for using metadataFilters would be: if loadbalancing involves
+      # Envoys, they will only receive routing configuration when values in
+      # metadataFilters match values supplied in <a href="https://www.envoyproxy.io/
+      # docs/envoy/latest/api-v2/api/v2/core/base.proto#envoy-api-msg-core-node" Node
+      # metadata of their XDS requests to loadbalancers.
+      class MetadataFilter
+        include Google::Apis::Core::Hashable
+      
+        # The list of label value pairs that must match labels in the provided metadata
+        # based on filterMatchCriteria
+        # This list must not be empty and can have at the most 64 entries.
+        # Corresponds to the JSON property `filterLabels`
+        # @return [Array<Google::Apis::ComputeV1::MetadataFilterLabelMatch>]
+        attr_accessor :filter_labels
+      
+        # Specifies how individual filterLabel matches within the list of filterLabels
+        # contribute towards the overall metadataFilter match.
+        # Supported values are:
+        # - MATCH_ANY: At least one of the filterLabels must have a matching label in
+        # the provided metadata.
+        # - MATCH_ALL: All filterLabels must have matching labels in the provided
+        # metadata.
+        # Corresponds to the JSON property `filterMatchCriteria`
+        # @return [String]
+        attr_accessor :filter_match_criteria
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter_labels = args[:filter_labels] if args.key?(:filter_labels)
+          @filter_match_criteria = args[:filter_match_criteria] if args.key?(:filter_match_criteria)
+        end
+      end
+      
+      # MetadataFilter label name value pairs that are expected to match corresponding
+      # labels presented as metadata to the loadbalancer.
+      class MetadataFilterLabelMatch
+        include Google::Apis::Core::Hashable
+      
+        # Name of metadata label.
+        # The name can have a maximum length of 1024 characters and must be at least 1
+        # character long.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The value of the label must match the specified value.
+        # value can have a maximum length of 1024 characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -17079,11 +18115,130 @@ module Google
         end
       end
       
+      # Settings controlling eviction of unhealthy hosts from the load balancing pool.
+      class OutlierDetection
+        include Google::Apis::Core::Hashable
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `baseEjectionTime`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :base_ejection_time
+      
+        # Number of errors before a host is ejected from the connection pool. When the
+        # backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+        # Defaults to 5.
+        # Corresponds to the JSON property `consecutiveErrors`
+        # @return [Fixnum]
+        attr_accessor :consecutive_errors
+      
+        # The number of consecutive gateway failures (502, 503, 504 status or connection
+        # errors that are mapped to one of those status codes) before a consecutive
+        # gateway failure ejection occurs. Defaults to 5.
+        # Corresponds to the JSON property `consecutiveGatewayFailure`
+        # @return [Fixnum]
+        attr_accessor :consecutive_gateway_failure
+      
+        # The percentage chance that a host will be actually ejected when an outlier
+        # status is detected through consecutive 5xx. This setting can be used to
+        # disable ejection or to ramp it up slowly. Defaults to 100.
+        # Corresponds to the JSON property `enforcingConsecutiveErrors`
+        # @return [Fixnum]
+        attr_accessor :enforcing_consecutive_errors
+      
+        # The percentage chance that a host will be actually ejected when an outlier
+        # status is detected through consecutive gateway failures. This setting can be
+        # used to disable ejection or to ramp it up slowly. Defaults to 0.
+        # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
+        # @return [Fixnum]
+        attr_accessor :enforcing_consecutive_gateway_failure
+      
+        # The percentage chance that a host will be actually ejected when an outlier
+        # status is detected through success rate statistics. This setting can be used
+        # to disable ejection or to ramp it up slowly. Defaults to 100.
+        # Corresponds to the JSON property `enforcingSuccessRate`
+        # @return [Fixnum]
+        attr_accessor :enforcing_success_rate
+      
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `interval`
+        # @return [Google::Apis::ComputeV1::Duration]
+        attr_accessor :interval
+      
+        # Maximum percentage of hosts in the load balancing pool for the backend service
+        # that can be ejected. Defaults to 10%.
+        # Corresponds to the JSON property `maxEjectionPercent`
+        # @return [Fixnum]
+        attr_accessor :max_ejection_percent
+      
+        # The number of hosts in a cluster that must have enough request volume to
+        # detect success rate outliers. If the number of hosts is less than this setting,
+        # outlier detection via success rate statistics is not performed for any host
+        # in the cluster. Defaults to 5.
+        # Corresponds to the JSON property `successRateMinimumHosts`
+        # @return [Fixnum]
+        attr_accessor :success_rate_minimum_hosts
+      
+        # The minimum number of total requests that must be collected in one interval (
+        # as defined by the interval duration above) to include this host in success
+        # rate based outlier detection. If the volume is lower than this setting,
+        # outlier detection via success rate statistics is not performed for that host.
+        # Defaults to 100.
+        # Corresponds to the JSON property `successRateRequestVolume`
+        # @return [Fixnum]
+        attr_accessor :success_rate_request_volume
+      
+        # This factor is used to determine the ejection threshold for success rate
+        # outlier ejection. The ejection threshold is the difference between the mean
+        # success rate, and the product of this factor and the standard deviation of the
+        # mean success rate: mean - (stdev * success_rate_stdev_factor). This factor is
+        # divided by a thousand to get a double. That is, if the desired factor is 1.9,
+        # the runtime value should be 1900. Defaults to 1900.
+        # Corresponds to the JSON property `successRateStdevFactor`
+        # @return [Fixnum]
+        attr_accessor :success_rate_stdev_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @base_ejection_time = args[:base_ejection_time] if args.key?(:base_ejection_time)
+          @consecutive_errors = args[:consecutive_errors] if args.key?(:consecutive_errors)
+          @consecutive_gateway_failure = args[:consecutive_gateway_failure] if args.key?(:consecutive_gateway_failure)
+          @enforcing_consecutive_errors = args[:enforcing_consecutive_errors] if args.key?(:enforcing_consecutive_errors)
+          @enforcing_consecutive_gateway_failure = args[:enforcing_consecutive_gateway_failure] if args.key?(:enforcing_consecutive_gateway_failure)
+          @enforcing_success_rate = args[:enforcing_success_rate] if args.key?(:enforcing_success_rate)
+          @interval = args[:interval] if args.key?(:interval)
+          @max_ejection_percent = args[:max_ejection_percent] if args.key?(:max_ejection_percent)
+          @success_rate_minimum_hosts = args[:success_rate_minimum_hosts] if args.key?(:success_rate_minimum_hosts)
+          @success_rate_request_volume = args[:success_rate_request_volume] if args.key?(:success_rate_request_volume)
+          @success_rate_stdev_factor = args[:success_rate_stdev_factor] if args.key?(:success_rate_stdev_factor)
+        end
+      end
+      
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default service
       # will be used.
       class PathMatcher
         include Google::Apis::Core::Hashable
+      
+        # defaultRouteAction takes effect when none of the  pathRules or routeRules
+        # match. The load balancer performs advanced routing actions like URL rewrites,
+        # header transformations, etc. prior to forwarding the request to the selected
+        # backend. If defaultRouteAction specifies any weightedBackendServices,
+        # defaultService must not be set. Conversely if defaultService is set,
+        # defaultRouteAction cannot contain any  weightedBackendServices.
+        # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # Corresponds to the JSON property `defaultRouteAction`
+        # @return [Google::Apis::ComputeV1::HttpRouteAction]
+        attr_accessor :default_route_action
       
         # The full or partial URL to the BackendService resource. This will be used if
         # none of the pathRules or routeRules defined by this PathMatcher are matched.
@@ -17107,11 +18262,22 @@ module Google
         # @return [String]
         attr_accessor :default_service
       
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `defaultUrlRedirect`
+        # @return [Google::Apis::ComputeV1::HttpRedirectAction]
+        attr_accessor :default_url_redirect
+      
         # An optional description of this resource. Provide this property when you
         # create the resource.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeV1::HttpHeaderAction]
+        attr_accessor :header_action
       
         # The name to which this PathMatcher is referred by the HostRule.
         # Corresponds to the JSON property `name`
@@ -17124,10 +18290,20 @@ module Google
         # first basis.
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
-        # Only one of pathRules or routeRules must be set.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeV1::PathRule>]
         attr_accessor :path_rules
+      
+        # The list of ordered HTTP route rules. Use this list instead of pathRules when
+        # advanced route matching and routing actions are desired. The order of
+        # specifying routeRules matters: the first rule that matches will cause its
+        # specified routing action to take effect.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
+        # routeRules are not supported in UrlMaps intended for External Load balancers.
+        # Corresponds to the JSON property `routeRules`
+        # @return [Array<Google::Apis::ComputeV1::HttpRouteRule>]
+        attr_accessor :route_rules
       
         def initialize(**args)
            update!(**args)
@@ -17135,10 +18311,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
+          @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
           @description = args[:description] if args.key?(:description)
+          @header_action = args[:header_action] if args.key?(:header_action)
           @name = args[:name] if args.key?(:name)
           @path_rules = args[:path_rules] if args.key?(:path_rules)
+          @route_rules = args[:route_rules] if args.key?(:route_rules)
         end
       end
       
@@ -17155,6 +18335,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :paths
       
+        # In response to a matching path, the load balancer performs advanced routing
+        # actions like URL rewrites, header transformations, etc. prior to forwarding
+        # the request to the selected backend. If routeAction specifies any
+        # weightedBackendServices, service must not be set. Conversely if service is set,
+        # routeAction cannot contain any  weightedBackendServices.
+        # Only one of routeAction or urlRedirect must be set.
+        # Corresponds to the JSON property `routeAction`
+        # @return [Google::Apis::ComputeV1::HttpRouteAction]
+        attr_accessor :route_action
+      
         # The full or partial URL of the backend service resource to which traffic is
         # directed if this rule is matched. If routeAction is additionally specified,
         # advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -17167,6 +18357,11 @@ module Google
         # @return [String]
         attr_accessor :service
       
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `urlRedirect`
+        # @return [Google::Apis::ComputeV1::HttpRedirectAction]
+        attr_accessor :url_redirect
+      
         def initialize(**args)
            update!(**args)
         end
@@ -17174,7 +18369,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @paths = args[:paths] if args.key?(:paths)
+          @route_action = args[:route_action] if args.key?(:route_action)
           @service = args[:service] if args.key?(:service)
+          @url_redirect = args[:url_redirect] if args.key?(:url_redirect)
         end
       end
       
@@ -17240,7 +18437,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::Rule>]
         attr_accessor :rules
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -18703,6 +19905,28 @@ module Google
         # Update properties of this object
         def update!(**args)
           @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # A policy that specifies how requests intended for the route's backends are
+      # shadowed to a separate mirrored backend service. Loadbalancer does not wait
+      # for responses from the shadow service. Prior to sending traffic to the shadow
+      # service, the host / authority header is suffixed with -shadow.
+      class RequestMirrorPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The full or partial URL to the BackendService resource being mirrored to.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
         end
       end
       
@@ -26618,6 +27842,17 @@ module Google
         # @return [String]
         attr_accessor :creation_timestamp
       
+        # defaultRouteAction takes effect when none of the  hostRules match. The load
+        # balancer performs advanced routing actions like URL rewrites, header
+        # transformations, etc. prior to forwarding the request to the selected backend.
+        # If defaultRouteAction specifies any weightedBackendServices, defaultService
+        # must not be set. Conversely if defaultService is set, defaultRouteAction
+        # cannot contain any  weightedBackendServices.
+        # Only one of defaultRouteAction or defaultUrlRedirect must be set.
+        # Corresponds to the JSON property `defaultRouteAction`
+        # @return [Google::Apis::ComputeV1::HttpRouteAction]
+        attr_accessor :default_route_action
+      
         # The full or partial URL of the defaultService resource to which traffic is
         # directed if none of the hostRules match. If defaultRouteAction is additionally
         # specified, advanced routing actions like URL Rewrites, etc. take effect prior
@@ -26630,6 +27865,11 @@ module Google
         # Corresponds to the JSON property `defaultService`
         # @return [String]
         attr_accessor :default_service
+      
+        # Specifies settings for an HTTP redirect.
+        # Corresponds to the JSON property `defaultUrlRedirect`
+        # @return [Google::Apis::ComputeV1::HttpRedirectAction]
+        attr_accessor :default_url_redirect
       
         # An optional description of this resource. Provide this property when you
         # create the resource.
@@ -26647,6 +27887,12 @@ module Google
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :fingerprint
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeV1::HttpHeaderAction]
+        attr_accessor :header_action
       
         # The list of HostRules to use against the URL.
         # Corresponds to the JSON property `hostRules`
@@ -26705,9 +27951,12 @@ module Google
         # Update properties of this object
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @default_route_action = args[:default_route_action] if args.key?(:default_route_action)
           @default_service = args[:default_service] if args.key?(:default_service)
+          @default_url_redirect = args[:default_url_redirect] if args.key?(:default_url_redirect)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @header_action = args[:header_action] if args.key?(:header_action)
           @host_rules = args[:host_rules] if args.key?(:host_rules)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
@@ -27182,6 +28431,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # The spec for modifying the path before sending the request to the matched
+      # backend service.
+      class UrlRewrite
+        include Google::Apis::Core::Hashable
+      
+        # Prior to forwarding the request to the selected service, the request's host
+        # header is replaced with contents of hostRewrite.
+        # The value must be between 1 and 255 characters.
+        # Corresponds to the JSON property `hostRewrite`
+        # @return [String]
+        attr_accessor :host_rewrite
+      
+        # Prior to forwarding the request to the selected backend service, the matching
+        # portion of the request's path is replaced by pathPrefixRewrite.
+        # The value must be between 1 and 1024 characters.
+        # Corresponds to the JSON property `pathPrefixRewrite`
+        # @return [String]
+        attr_accessor :path_prefix_rewrite
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host_rewrite = args[:host_rewrite] if args.key?(:host_rewrite)
+          @path_prefix_rewrite = args[:path_prefix_rewrite] if args.key?(:path_prefix_rewrite)
         end
       end
       
@@ -28682,6 +29961,50 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # In contrast to a single BackendService in  HttpRouteAction to which all
+      # matching traffic is directed to, WeightedBackendService allows traffic to be
+      # split across multiple BackendServices. The volume of traffic for each
+      # BackendService is proportional to the weight specified in each
+      # WeightedBackendService
+      class WeightedBackendService
+        include Google::Apis::Core::Hashable
+      
+        # The full or partial URL to the default BackendService resource. Before
+        # forwarding the request to backendService, the loadbalancer applies any
+        # relevant headerActions specified as part of this backendServiceWeight.
+        # Corresponds to the JSON property `backendService`
+        # @return [String]
+        attr_accessor :backend_service
+      
+        # The request and response header transformations that take effect before the
+        # request is passed along to the selected backendService.
+        # Corresponds to the JSON property `headerAction`
+        # @return [Google::Apis::ComputeV1::HttpHeaderAction]
+        attr_accessor :header_action
+      
+        # Specifies the fraction of traffic sent to backendService, computed as weight /
+        # (sum of all weightedBackendService weights in routeAction) .
+        # The selection of a backend service is determined only for new traffic. Once a
+        # user's request has been directed to a backendService, subsequent requests will
+        # be sent to the same backendService as determined by the BackendService's
+        # session affinity policy.
+        # The value must be between 0 and 1000
+        # Corresponds to the JSON property `weight`
+        # @return [Fixnum]
+        attr_accessor :weight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backend_service = args[:backend_service] if args.key?(:backend_service)
+          @header_action = args[:header_action] if args.key?(:header_action)
+          @weight = args[:weight] if args.key?(:weight)
         end
       end
       

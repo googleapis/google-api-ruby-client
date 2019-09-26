@@ -22,7 +22,7 @@ module Google
   module Apis
     module BigqueryreservationV1
       
-      class CreateSlotPoolMetadata
+      class CreateCapacityCommitmentMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,10 +58,10 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CreateSlotPoolMetadata
+      class CreateCapacityCommitmentMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :slot_pool, as: 'slotPool'
+          property :capacity_commitment, as: 'capacityCommitment'
         end
       end
       

@@ -226,6 +226,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IosTestLoop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class IosTestSetup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -738,6 +744,16 @@ module Google
         end
       end
       
+      class IosTestLoop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_bundle_id, as: 'appBundleId'
+          property :app_ipa, as: 'appIpa', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
+      
+          collection :scenarios, as: 'scenarios'
+        end
+      end
+      
       class IosTestSetup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -970,6 +986,8 @@ module Google
       
           property :disable_performance_metrics, as: 'disablePerformanceMetrics'
           property :disable_video_recording, as: 'disableVideoRecording'
+          property :ios_test_loop, as: 'iosTestLoop', class: Google::Apis::TestingV1::IosTestLoop, decorator: Google::Apis::TestingV1::IosTestLoop::Representation
+      
           property :ios_test_setup, as: 'iosTestSetup', class: Google::Apis::TestingV1::IosTestSetup, decorator: Google::Apis::TestingV1::IosTestSetup::Representation
       
           property :ios_xc_test, as: 'iosXcTest', class: Google::Apis::TestingV1::IosXcTest, decorator: Google::Apis::TestingV1::IosXcTest::Representation

@@ -1532,8 +1532,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies whether principals can be exempted for the same LogType in lower-
-        # level resource policies. If true, any lower-level exemptions will be ignored.
+        # 
         # Corresponds to the JSON property `ignoreChildExemptions`
         # @return [Boolean]
         attr_accessor :ignore_child_exemptions
@@ -11120,6 +11119,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # Specifies whether this instance will be shut down on key revocation.
+        # Corresponds to the JSON property `postKeyRevocationActionType`
+        # @return [String]
+        attr_accessor :post_key_revocation_action_type
+      
         # Total amount of preserved state for SUSPENDED instances. Read-only in the api.
         # Corresponds to the JSON property `preservedStateSizeGb`
         # @return [Fixnum]
@@ -11248,6 +11252,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @preserved_state_size_gb = args[:preserved_state_size_gb] if args.key?(:preserved_state_size_gb)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -13862,6 +13867,11 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # Specifies whether this instance will be shut down on key revocation.
+        # Corresponds to the JSON property `postKeyRevocationActionType`
+        # @return [String]
+        attr_accessor :post_key_revocation_action_type
+      
         # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
@@ -13910,6 +13920,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @service_accounts = args[:service_accounts] if args.key?(:service_accounts)
@@ -21334,6 +21345,14 @@ module Google
         # @return [String]
         attr_accessor :payload_name
       
+        # A Duration represents a fixed-length span of time represented as a count of
+        # seconds and fractions of seconds at nanosecond resolution. It is independent
+        # of any calendar and concepts like "day" or "month". Range is approximately 10,
+        # 000 years.
+        # Corresponds to the JSON property `resendInterval`
+        # @return [Google::Apis::ComputeAlpha::Duration]
+        attr_accessor :resend_interval
+      
         # How much time (in seconds) is spent attempting notification retries until a
         # successful response is received. Default is 30s. Limit is 20m (1200s). Must be
         # a positive number.
@@ -21350,6 +21369,7 @@ module Google
           @authority = args[:authority] if args.key?(:authority)
           @endpoint = args[:endpoint] if args.key?(:endpoint)
           @payload_name = args[:payload_name] if args.key?(:payload_name)
+          @resend_interval = args[:resend_interval] if args.key?(:resend_interval)
           @retry_duration_sec = args[:retry_duration_sec] if args.key?(:retry_duration_sec)
         end
       end
@@ -23066,7 +23086,7 @@ module Google
         # first basis.
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
-        # Only one of pathRules or routeRules must be set.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeAlpha::PathRule>]
         attr_accessor :path_rules
@@ -23075,7 +23095,8 @@ module Google
         # advanced route matching and routing actions are desired. The order of
         # specifying routeRules matters: the first rule that matches will cause its
         # specified routing action to take effect.
-        # Only one of pathRules or routeRules must be set.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
+        # routeRules are not supported in UrlMaps intended for External Load balancers.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRule>]
         attr_accessor :route_rules
@@ -23366,7 +23387,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::Rule>]
         attr_accessor :rules
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -24073,11 +24099,6 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
-        # The list of Google announcements that exist for this delegated prefix.
-        # Corresponds to the JSON property `googleAnnouncements`
-        # @return [Array<Google::Apis::ComputeAlpha::PublicDelegatedPrefixGoogleAnnouncement>]
-        attr_accessor :google_announcements
-      
         # [Output Only] The unique identifier for the resource type. The server
         # generates this identifier.
         # Corresponds to the JSON property `id`
@@ -24150,7 +24171,6 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
-          @google_announcements = args[:google_announcements] if args.key?(:google_announcements)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
@@ -24280,37 +24300,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # A Google announcement advertises the prefix internally within Google's network
-      # backbone from the specified scope.
-      class PublicDelegatedPrefixGoogleAnnouncement
-        include Google::Apis::Core::Hashable
-      
-        # The name of a Google announcement. The name must be 1-63 characters long, and
-        # comply with  RFC1035. Specifically, the name must be 1-63 characters long and
-        # match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the
-        # first // character must be a lowercase letter, and all following characters
-        # must be a dash, lowercase letter, or digit, except the last character, which
-        # cannot be a dash.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The status of this Google announcement.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -29321,6 +29310,12 @@ module Google
         attr_accessor :latency_tolerant
         alias_method :latency_tolerant?, :latency_tolerant
       
+        # An opaque location hint used to place the instance close to other resources.
+        # This field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
         # Corresponds to the JSON property `minNodeCpus`
@@ -29357,6 +29352,7 @@ module Google
         def update!(**args)
           @automatic_restart = args[:automatic_restart] if args.key?(:automatic_restart)
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)

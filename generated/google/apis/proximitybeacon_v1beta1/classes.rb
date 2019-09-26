@@ -540,19 +540,22 @@ module Google
       # Information a client needs to provision and register beacons that
       # broadcast Eddystone-EID format beacon IDs, using Elliptic curve
       # Diffie-Hellman key exchange. See
-      # [the Eddystone specification](https://github.com/google/eddystone/tree/master/
-      # eddystone-eid) at GitHub.
+      # [the Eddystone
+      # specification](https://github.com/google/eddystone/tree/master/eddystone-eid)
+      # at GitHub.
       class EphemeralIdRegistrationParams
         include Google::Apis::Core::Hashable
       
         # Indicates the maximum rotation period supported by the service.
-        # See EddystoneEidRegistration.rotation_period_exponent
+        # See
+        # EddystoneEidRegistration.rotation_period_exponent
         # Corresponds to the JSON property `maxRotationPeriodExponent`
         # @return [Fixnum]
         attr_accessor :max_rotation_period_exponent
       
         # Indicates the minimum rotation period supported by the service.
-        # See EddystoneEidRegistration.rotation_period_exponent
+        # See
+        # EddystoneEidRegistration.rotation_period_exponent
         # Corresponds to the JSON property `minRotationPeriodExponent`
         # @return [Fixnum]
         attr_accessor :min_rotation_period_exponent

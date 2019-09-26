@@ -80,7 +80,7 @@ module Google
         
         # Returns a list of Voice supported for synthesis.
         # @param [String] language_code
-        #   Optional (but recommended)
+        #   Optional. Recommended.
         #   [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
         #   specified, the ListVoices call will only return voices that can be used to
         #   synthesize this language_code. E.g. when specifying "en-NZ", you will get

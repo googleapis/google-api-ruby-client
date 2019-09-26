@@ -23,15 +23,15 @@ module Google
     module BigqueryreservationV1
       
       # The metadata for operation returned from
-      # ReservationService.CreateSlotPool.
-      class CreateSlotPoolMetadata
+      # ReservationService.CreateCapacityCommitment.
+      class CreateCapacityCommitmentMetadata
         include Google::Apis::Core::Hashable
       
-        # Resource name of the slot pool that is being created. E.g.,
-        # projects/myproject/locations/us-central1/reservations/foo/slotPools/123
-        # Corresponds to the JSON property `slotPool`
+        # Resource name of the capacity commitment that is being created. E.g.,
+        # projects/myproject/locations/US/capacityCommitments/123
+        # Corresponds to the JSON property `capacityCommitment`
         # @return [String]
-        attr_accessor :slot_pool
+        attr_accessor :capacity_commitment
       
         def initialize(**args)
            update!(**args)
@@ -39,7 +39,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @slot_pool = args[:slot_pool] if args.key?(:slot_pool)
+          @capacity_commitment = args[:capacity_commitment] if args.key?(:capacity_commitment)
         end
       end
       

@@ -1296,6 +1296,40 @@ module Google
         end
       end
       
+      # A test of an iOS application that implements one or more game loop scenarios.
+      # This test type accepts an archived application (.ipa file) and a list of
+      # integer scenarios that will be executed on the app sequentially.
+      class IosTestLoop
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The bundle id for the application under test.
+        # Corresponds to the JSON property `appBundleId`
+        # @return [String]
+        attr_accessor :app_bundle_id
+      
+        # A reference to a file, used for user inputs.
+        # Corresponds to the JSON property `appIpa`
+        # @return [Google::Apis::TestingV1::FileReference]
+        attr_accessor :app_ipa
+      
+        # The list of scenarios that should be run during the test. Defaults to the
+        # single scenario 0 if unspecified.
+        # Corresponds to the JSON property `scenarios`
+        # @return [Array<Fixnum>]
+        attr_accessor :scenarios
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_bundle_id = args[:app_bundle_id] if args.key?(:app_bundle_id)
+          @app_ipa = args[:app_ipa] if args.key?(:app_ipa)
+          @scenarios = args[:scenarios] if args.key?(:scenarios)
+        end
+      end
+      
       # A description of how to set up an iOS device prior to running the test.
       class IosTestSetup
         include Google::Apis::Core::Hashable
@@ -2107,6 +2141,13 @@ module Google
         attr_accessor :disable_video_recording
         alias_method :disable_video_recording?, :disable_video_recording
       
+        # A test of an iOS application that implements one or more game loop scenarios.
+        # This test type accepts an archived application (.ipa file) and a list of
+        # integer scenarios that will be executed on the app sequentially.
+        # Corresponds to the JSON property `iosTestLoop`
+        # @return [Google::Apis::TestingV1::IosTestLoop]
+        attr_accessor :ios_test_loop
+      
         # A description of how to set up an iOS device prior to running the test.
         # Corresponds to the JSON property `iosTestSetup`
         # @return [Google::Apis::TestingV1::IosTestSetup]
@@ -2145,6 +2186,7 @@ module Google
           @android_test_loop = args[:android_test_loop] if args.key?(:android_test_loop)
           @disable_performance_metrics = args[:disable_performance_metrics] if args.key?(:disable_performance_metrics)
           @disable_video_recording = args[:disable_video_recording] if args.key?(:disable_video_recording)
+          @ios_test_loop = args[:ios_test_loop] if args.key?(:ios_test_loop)
           @ios_test_setup = args[:ios_test_setup] if args.key?(:ios_test_setup)
           @ios_xc_test = args[:ios_xc_test] if args.key?(:ios_xc_test)
           @test_setup = args[:test_setup] if args.key?(:test_setup)

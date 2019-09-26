@@ -48,7 +48,7 @@ module Google
         # @return [Float]
         attr_accessor :pitch
       
-        # The synthesis sample rate (in hertz) for this audio. Optional. When this is
+        # Optional. The synthesis sample rate (in hertz) for this audio. When this is
         # specified in SynthesizeSpeechRequest, if this is different from the voice's
         # natural sample rate, then the synthesizer will honor this request by
         # converting to the desired sample rate (which might result in worse audio
@@ -245,9 +245,10 @@ module Google
       class VoiceSelectionParams
         include Google::Apis::Core::Hashable
       
-        # The language (and optionally also the region) of the voice expressed as a
+        # Required. The language (and potentially also the region) of the voice
+        # expressed as a
         # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.
-        # "en-US". Required. This should not include a script tag (e.g. use
+        # "en-US". This should not include a script tag (e.g. use
         # "cmn-cn" rather than "cmn-Hant-cn"), because the script will be inferred
         # from the input provided in the SynthesisInput.  The TTS service
         # will use this parameter to help choose an appropriate voice.  Note that
@@ -260,13 +261,13 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # The name of the voice. Optional; if not set, the service will choose a
+        # The name of the voice. If not set, the service will choose a
         # voice based on the other parameters such as language_code and gender.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The preferred gender of the voice. Optional; if not set, the service will
+        # The preferred gender of the voice. If not set, the service will
         # choose a voice based on the other parameters such as language_code and
         # name. Note that this is only a preference, not requirement; if a
         # voice of the appropriate gender is not available, the synthesizer should

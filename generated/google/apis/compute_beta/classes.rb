@@ -1476,8 +1476,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # Specifies whether principals can be exempted for the same LogType in lower-
-        # level resource policies. If true, any lower-level exemptions will be ignored.
+        # 
         # Corresponds to the JSON property `ignoreChildExemptions`
         # @return [Boolean]
         attr_accessor :ignore_child_exemptions
@@ -19439,7 +19438,7 @@ module Google
         # first basis.
         # For example: a pathRule with a path /a/b/c/* will match before /a/b/*
         # irrespective of the order in which those paths appear in this list.
-        # Only one of pathRules or routeRules must be set.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
         # Corresponds to the JSON property `pathRules`
         # @return [Array<Google::Apis::ComputeBeta::PathRule>]
         attr_accessor :path_rules
@@ -19448,7 +19447,8 @@ module Google
         # advanced route matching and routing actions are desired. The order of
         # specifying routeRules matters: the first rule that matches will cause its
         # specified routing action to take effect.
-        # Only one of pathRules or routeRules must be set.
+        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
+        # routeRules are not supported in UrlMaps intended for External Load balancers.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeBeta::HttpRouteRule>]
         attr_accessor :route_rules
@@ -19619,7 +19619,12 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::Rule>]
         attr_accessor :rules
       
-        # Deprecated.
+        # Specifies the format of the policy.
+        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # rejected.
+        # Policies with any conditional bindings must specify version 3. Policies
+        # without any conditional bindings may specify any valid value or leave the
+        # field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

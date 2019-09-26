@@ -3184,12 +3184,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PublicDelegatedPrefixGoogleAnnouncement
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PublicDelegatedPrefixList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -7849,6 +7843,7 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
@@ -8567,6 +8562,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
+          property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
@@ -10472,6 +10468,8 @@ module Google
           property :authority, as: 'authority'
           property :endpoint, as: 'endpoint'
           property :payload_name, as: 'payloadName'
+          property :resend_interval, as: 'resendInterval', class: Google::Apis::ComputeAlpha::Duration, decorator: Google::Apis::ComputeAlpha::Duration::Representation
+      
           property :retry_duration_sec, as: 'retryDurationSec'
         end
       end
@@ -11174,8 +11172,6 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :fingerprint, :base64 => true, as: 'fingerprint'
-          collection :google_announcements, as: 'googleAnnouncements', class: Google::Apis::ComputeAlpha::PublicDelegatedPrefixGoogleAnnouncement, decorator: Google::Apis::ComputeAlpha::PublicDelegatedPrefixGoogleAnnouncement::Representation
-      
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
           property :kind, as: 'kind'
@@ -11219,14 +11215,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class PublicDelegatedPrefixGoogleAnnouncement
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :status, as: 'status'
         end
       end
       
@@ -12547,6 +12535,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
           property :latency_tolerant, as: 'latencyTolerant'
+          property :location_hint, as: 'locationHint'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       

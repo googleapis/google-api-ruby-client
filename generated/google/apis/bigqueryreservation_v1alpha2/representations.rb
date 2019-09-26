@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListLocationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListReservationGrantsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -58,19 +52,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class LocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -100,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CreateSlotPoolMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -116,15 +92,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ListLocationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :locations, as: 'locations', class: Google::Apis::BigqueryreservationV1alpha2::Location, decorator: Google::Apis::BigqueryreservationV1alpha2::Location::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -155,33 +122,10 @@ module Google
         end
       end
       
-      class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :location_id, as: 'locationId'
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-        end
-      end
-      
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :legacy_location_id, as: 'legacyLocationId'
-        end
-      end
-      
-      class Operation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :done, as: 'done'
-          property :error, as: 'error', class: Google::Apis::BigqueryreservationV1alpha2::Status, decorator: Google::Apis::BigqueryreservationV1alpha2::Status::Representation
-      
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-          hash :response, as: 'response'
         end
       end
       
@@ -221,15 +165,6 @@ module Google
           property :plan, as: 'plan'
           property :slot_count, :numeric_string => true, as: 'slotCount'
           property :state, as: 'state'
-        end
-      end
-      
-      class Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
         end
       end
     end
