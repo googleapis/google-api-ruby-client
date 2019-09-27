@@ -202,7 +202,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # The desired state of the Auto Domain Mapping.
@@ -530,7 +530,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # ConfigurationSpec holds the desired state of the Configuration (from the
@@ -889,7 +889,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # The desired state of the Domain Mapping.
@@ -1246,45 +1246,6 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for
-      # different programming environments, including REST APIs and RPC APIs. It is
-      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-      # three pieces of data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the
-      # [API Design Guide](https://cloud.google.com/apis/design/errors).
-      class GoogleRpcStatus
-        include Google::Apis::Core::Hashable
-      
-        # The status code, which should be an enum value of google.rpc.Code.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # A list of messages that carry the error details.  There is a common set of
-        # message types for APIs to use.
-        # Corresponds to the JSON property `details`
-        # @return [Array<Hash<String,Object>>]
-        attr_accessor :details
-      
-        # A developer-facing error message, which should be in English. Any
-        # user-facing error message should be localized and sent in the
-        # google.rpc.Status.details field, or localized by the client.
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
-        end
-      end
-      
       # Cloud Run fully managed: not supported
       # Cloud Run for Anthos: supported
       # HTTPGetAction describes an action based on HTTP Get requests.
@@ -1442,10 +1403,241 @@ module Google
         end
       end
       
+      # Cloud Run fully managed: not supported
+      # Cloud Run for Anthos: supported
+      # Maps a string key to a path within a volume.
+      class KeyToPath
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The key to project.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # Mode bits to use on this file, must be a value between 0 and 0777. If not
+        # specified, the volume defaultMode will be used. This might be in conflict
+        # with other options that affect the file mode, like fsGroup, and the result
+        # can be other mode bits set.
+        # Corresponds to the JSON property `mode`
+        # @return [Fixnum]
+        attr_accessor :mode
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # The relative path of the file to map the key to.
+        # May not be an absolute path.
+        # May not contain the path element '..'.
+        # May not start with the string '..'.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @mode = args[:mode] if args.key?(:mode)
+          @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # A list of Authorized Domains.
+      class ListAuthorizedDomainsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The authorized domains belonging to the user.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<Google::Apis::RunV1::AuthorizedDomain>]
+        attr_accessor :domains
+      
+        # Continuation token for fetching the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domains = args[:domains] if args.key?(:domains)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # ListAutoDomainMappingsResponse is a list of AutoDomainMapping resources.
+      class ListAutoDomainMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "serving.knative.dev/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of AutoDomainMappings.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::AutoDomainMapping>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "AutoDomainMappingList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListConfigurationsResponse is a list of Configuration resources.
+      class ListConfigurationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "serving.knative.dev/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Configurations.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Configuration>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "ConfigurationList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListDomainMappingsResponse is a list of DomainMapping resources.
+      class ListDomainMappingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "domains.cloudrun.com/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of DomainMappings.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::DomainMapping>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "DomainMappingList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # The response message for Locations.ListLocations.
+      class ListLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of locations that matches the specified filter in the request.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<Google::Apis::RunV1::Location>]
+        attr_accessor :locations
+      
+        # The standard List next-page token.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @locations = args[:locations] if args.key?(:locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # ListMeta describes metadata that synthetic resources must have, including
       # lists and various status objects. A resource may have only one of
       # `ObjectMeta, ListMeta`.
-      class K8sIoApimachineryPkgApisMetaV1ListMeta
+      class ListMeta
         include Google::Apis::Core::Hashable
       
         # continue may be set if the user set a limit on the number of items
@@ -1493,9 +1685,218 @@ module Google
         end
       end
       
+      # ListRevisionsResponse is a list of Revision resources.
+      class ListRevisionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "serving.knative.dev/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Revisions.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Revision>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "RevisionList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListRoutesResponse is a list of Route resources.
+      class ListRoutesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "serving.knative.dev/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Routes.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Route>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case always "RouteList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # A list of Service resources.
+      class ListServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "serving.knative.dev/v1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Services.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1::Service>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "ServiceList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run for Anthos: supported
+      # LocalObjectReference contains enough information to let you locate the
+      # referenced object inside the same namespace.
+      class LocalObjectReference
+        include Google::Apis::Core::Hashable
+      
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # Name of the referent.
+        # More info:
+        # https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A resource that represents Google Cloud Platform location.
+      class Location
+        include Google::Apis::Core::Hashable
+      
+        # The friendly name for this location, typically a nearby city name.
+        # For example, "Tokyo".
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Cross-service attributes for the location. For example
+        # `"cloud.googleapis.com/region": "us-east1"`
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # The canonical id for this location. For example: `"us-east1"`.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
+        # Service-specific metadata. For example the available capacity at the given
+        # location.
+        # Corresponds to the JSON property `metadata`
+        # @return [Hash<String,Object>]
+        attr_accessor :metadata
+      
+        # Resource name for the location, which may vary between implementations.
+        # For example: `"projects/example-project/locations/us-east1"`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @labels = args[:labels] if args.key?(:labels)
+          @location_id = args[:location_id] if args.key?(:location_id)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
       # persisted resources must have, which includes all objects users must create.
-      class K8sIoApimachineryPkgApisMetaV1ObjectMeta
+      class ObjectMeta
         include Google::Apis::Core::Hashable
       
         # (Optional)
@@ -1645,7 +2046,7 @@ module Google
         # List of objects that own this object. If ALL objects in the list have
         # been deleted, this object will be garbage collected.
         # Corresponds to the JSON property `ownerReferences`
-        # @return [Array<Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1OwnerReference>]
+        # @return [Array<Google::Apis::RunV1::OwnerReference>]
         attr_accessor :owner_references
       
         # (Optional)
@@ -1712,7 +2113,7 @@ module Google
       # OwnerReference contains enough information to let you identify an owning
       # object. Currently, an owning object must be in the same namespace, so there
       # is no namespace field.
-      class K8sIoApimachineryPkgApisMetaV1OwnerReference
+      class OwnerReference
         include Google::Apis::Core::Hashable
       
         # API version of the referent.
@@ -1773,689 +2174,36 @@ module Google
         end
       end
       
-      # Status is a return value for calls that don't return other objects
-      class K8sIoApimachineryPkgApisMetaV1Status
-        include Google::Apis::Core::Hashable
-      
-        # Suggested HTTP return code for this status, 0 if not set.
-        # +optional
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # StatusDetails is a set of additional properties that MAY be set by the
-        # server to provide additional information about a response. The Reason
-        # field of a Status object defines what attributes will be set. Clients
-        # must ignore fields that do not match the defined type of each attribute,
-        # and should assume that any attribute may be empty, invalid, or under
-        # defined.
-        # Corresponds to the JSON property `details`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusDetails]
-        attr_accessor :details
-      
-        # A human-readable description of the status of this operation.
-        # +optional
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # A machine-readable description of why this operation is in the
-        # "Failure" status. If this value is empty there
-        # is no information available. A Reason clarifies an HTTP status
-        # code but does not override it.
-        # +optional
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        # Status of the operation.
-        # One of: "Success" or "Failure".
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-
-        # status
-        # +optional
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @details = args[:details] if args.key?(:details)
-          @message = args[:message] if args.key?(:message)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @reason = args[:reason] if args.key?(:reason)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # StatusCause provides more information about an api.Status failure, including
-      # cases when multiple errors are encountered.
-      class K8sIoApimachineryPkgApisMetaV1StatusCause
-        include Google::Apis::Core::Hashable
-      
-        # The field of the resource that has caused this error, as named by its JSON
-        # serialization. May include dot and postfix notation for nested attributes.
-        # Arrays are zero-indexed.  Fields may appear more than once in an array of
-        # causes due to fields having multiple errors.
-        # Optional.
-        # Examples:
-        # "name" - the field "name" on the current resource
-        # "items[0].name" - the field "name" on the first array entry in "items"
-        # +optional
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # A human-readable description of the cause of the error.  This field may be
-        # presented as-is to a reader.
-        # +optional
-        # Corresponds to the JSON property `message`
-        # @return [String]
-        attr_accessor :message
-      
-        # A machine-readable description of the cause of the error. If this value is
-        # empty there is no information available.
-        # +optional
-        # Corresponds to the JSON property `reason`
-        # @return [String]
-        attr_accessor :reason
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @field = args[:field] if args.key?(:field)
-          @message = args[:message] if args.key?(:message)
-          @reason = args[:reason] if args.key?(:reason)
-        end
-      end
-      
-      # StatusDetails is a set of additional properties that MAY be set by the
-      # server to provide additional information about a response. The Reason
-      # field of a Status object defines what attributes will be set. Clients
-      # must ignore fields that do not match the defined type of each attribute,
-      # and should assume that any attribute may be empty, invalid, or under
-      # defined.
-      class K8sIoApimachineryPkgApisMetaV1StatusDetails
-        include Google::Apis::Core::Hashable
-      
-        # The Causes array includes more details associated with the StatusReason
-        # failure. Not all StatusReasons may provide detailed causes.
-        # +optional
-        # Corresponds to the JSON property `causes`
-        # @return [Array<Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusCause>]
-        attr_accessor :causes
-      
-        # The group attribute of the resource associated with the status
-        # StatusReason. +optional
-        # Corresponds to the JSON property `group`
-        # @return [String]
-        attr_accessor :group
-      
-        # The kind attribute of the resource associated with the status StatusReason.
-        # On some operations may differ from the requested resource Kind.
-        # More info:
-        # https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
-        # +optional
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The name attribute of the resource associated with the status StatusReason
-        # (when there is a single name which can be described).
-        # +optional
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # If specified, the time in seconds before the operation should be retried.
-        # Some errors may indicate the client must take an alternate action - for
-        # those errors this field may indicate how long to wait before taking the
-        # alternate action. +optional
-        # Corresponds to the JSON property `retryAfterSeconds`
-        # @return [Fixnum]
-        attr_accessor :retry_after_seconds
-      
-        # UID of the resource.
-        # (when there is a single resource which can be described).
-        # More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-        # +optional
-        # Corresponds to the JSON property `uid`
-        # @return [String]
-        attr_accessor :uid
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @causes = args[:causes] if args.key?(:causes)
-          @group = args[:group] if args.key?(:group)
-          @kind = args[:kind] if args.key?(:kind)
-          @name = args[:name] if args.key?(:name)
-          @retry_after_seconds = args[:retry_after_seconds] if args.key?(:retry_after_seconds)
-          @uid = args[:uid] if args.key?(:uid)
-        end
-      end
-      
-      # Cloud Run fully managed: not supported
-      # Cloud Run for Anthos: supported
-      # Maps a string key to a path within a volume.
-      class KeyToPath
-        include Google::Apis::Core::Hashable
-      
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # The key to project.
-        # Corresponds to the JSON property `key`
-        # @return [String]
-        attr_accessor :key
-      
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # Mode bits to use on this file, must be a value between 0 and 0777. If not
-        # specified, the volume defaultMode will be used. This might be in conflict
-        # with other options that affect the file mode, like fsGroup, and the result
-        # can be other mode bits set.
-        # Corresponds to the JSON property `mode`
-        # @return [Fixnum]
-        attr_accessor :mode
-      
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # The relative path of the file to map the key to.
-        # May not be an absolute path.
-        # May not contain the path element '..'.
-        # May not start with the string '..'.
-        # Corresponds to the JSON property `path`
-        # @return [String]
-        attr_accessor :path
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @key = args[:key] if args.key?(:key)
-          @mode = args[:mode] if args.key?(:mode)
-          @path = args[:path] if args.key?(:path)
-        end
-      end
-      
-      # A list of Authorized Domains.
-      class ListAuthorizedDomainsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The authorized domains belonging to the user.
-        # Corresponds to the JSON property `domains`
-        # @return [Array<Google::Apis::RunV1::AuthorizedDomain>]
-        attr_accessor :domains
-      
-        # Continuation token for fetching the next page of results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @domains = args[:domains] if args.key?(:domains)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # ListAutoDomainMappingsResponse is a list of AutoDomainMapping resources.
-      class ListAutoDomainMappingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of AutoDomainMappings.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::AutoDomainMapping>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "AutoDomainMappingList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # ListConfigurationsResponse is a list of Configuration resources.
-      class ListConfigurationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of Configurations.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::Configuration>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "ConfigurationList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # ListDomainMappingsResponse is a list of DomainMapping resources.
-      class ListDomainMappingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "domains.cloudrun.com/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of DomainMappings.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::DomainMapping>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "DomainMappingList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # The response message for Locations.ListLocations.
-      class ListLocationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of locations that matches the specified filter in the request.
-        # Corresponds to the JSON property `locations`
-        # @return [Array<Google::Apis::RunV1::Location>]
-        attr_accessor :locations
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @locations = args[:locations] if args.key?(:locations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # ListRevisionsResponse is a list of Revision resources.
-      class ListRevisionsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of Revisions.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::Revision>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "RevisionList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # ListRoutesResponse is a list of Route resources.
-      class ListRoutesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of Routes.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::Route>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case always "RouteList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # A list of Service resources.
-      class ListServicesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of Services.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::Service>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "ServiceList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta]
-        attr_accessor :metadata
-      
-        # Details for the regions used during a global call including any failures.
-        # This is not populated when targeting a specific region.
-        # Corresponds to the JSON property `regionDetails`
-        # @return [Hash<String,Google::Apis::RunV1::RegionDetails>]
-        attr_accessor :region_details
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @region_details = args[:region_details] if args.key?(:region_details)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
-      # Cloud Run fully managed: not supported
-      # Cloud Run for Anthos: supported
-      # LocalObjectReference contains enough information to let you locate the
-      # referenced object inside the same namespace.
-      class LocalObjectReference
-        include Google::Apis::Core::Hashable
-      
-        # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # Name of the referent.
-        # More info:
-        # https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # A resource that represents Google Cloud Platform location.
-      class Location
-        include Google::Apis::Core::Hashable
-      
-        # The friendly name for this location, typically a nearby city name.
-        # For example, "Tokyo".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The canonical id for this location. For example: `"us-east1"`.
-        # Corresponds to the JSON property `locationId`
-        # @return [String]
-        attr_accessor :location_id
-      
-        # Service-specific metadata. For example the available capacity at the given
-        # location.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @location_id = args[:location_id] if args.key?(:location_id)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
       # Defines an Identity and Access Management (IAM) policy. It is used to
       # specify access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-      # `members` to a `role`, where the members can be user accounts, Google groups,
-      # Google domains, and service accounts. A `role` is a named list of permissions
-      # defined by IAM.
+      # A `Policy` is a collection of `bindings`. A `binding` binds one or more
+      # `members` to a single `role`. Members can be user accounts, service accounts,
+      # Google groups, and domains (such as G Suite). A `role` is a named list of
+      # permissions (defined by IAM or configured by users). A `binding` can
+      # optionally specify a `condition`, which is a logic expression that further
+      # constrains the role binding based on attributes about the request and/or
+      # target resource.
       # **JSON Example**
       # `
       # "bindings": [
       # `
-      # "role": "roles/owner",
+      # "role": "role/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
       # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
       # ]
       # `,
       # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
+      # "role": "roles/resourcemanager.organizationViewer",
+      # "members": ["user:eve@example.com"],
+      # "condition": `
+      # "title": "expirable access",
+      # "description": "Does not grant access after Sep 2020",
+      # "expression": "request.time <
+      # timestamp('2020-10-01T00:00:00.000Z')",
+      # `
       # `
       # ]
       # `
@@ -2465,11 +2213,15 @@ module Google
       # - user:mike@example.com
       # - group:admins@example.com
       # - domain:google.com
-      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-      # role: roles/owner
+      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin
       # - members:
-      # - user:sean@example.com
-      # role: roles/viewer
+      # - user:eve@example.com
+      # role: roles/resourcemanager.organizationViewer
+      # condition:
+      # title: expirable access
+      # description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
       # For a description of IAM and its features, see the
       # [IAM developer's guide](https://cloud.google.com/iam/docs).
       class Policy
@@ -2480,7 +2232,8 @@ module Google
         # @return [Array<Google::Apis::RunV1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`.
+        # Associates a list of `members` to a `role`. Optionally may specify a
+        # `condition` that determines when binding is in effect.
         # `bindings` with no members will result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::RunV1::Binding>]
@@ -2494,7 +2247,9 @@ module Google
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten.
+        # policy is overwritten. Due to blind-set semantics of an etag-less policy,
+        # 'setIamPolicy' will not fail even if either of incoming or stored policy
+        # does not meet the version requirements.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2503,9 +2258,13 @@ module Google
         # Specifies the format of the policy.
         # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
         # rejected.
-        # Policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset.
+        # Operations affecting conditional bindings must specify version 3. This can
+        # be either setting a conditional policy, modifying a conditional binding,
+        # or removing a conditional binding from the stored conditional policy.
+        # Operations on non-conditional policies may specify any valid value or
+        # leave the field unset.
+        # If no etag is provided in the call to `setIamPolicy`, any version
+        # compliance checks on the incoming and/or stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2603,30 +2362,6 @@ module Google
         end
       end
       
-      # Information for a regional call used for a global API.
-      class RegionDetails
-        include Google::Apis::Core::Hashable
-      
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::RunV1::GoogleRpcStatus]
-        attr_accessor :error
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @error = args[:error] if args.key?(:error)
-        end
-      end
-      
       # A DNS resource record.
       class ResourceRecord
         include Google::Apis::Core::Hashable
@@ -2720,7 +2455,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # RevisionSpec holds the desired state of the Revision (from the client).
@@ -2877,7 +2612,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # RevisionSpec holds the desired state of the Revision (from the client).
@@ -2921,7 +2656,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # RouteSpec holds the desired state of the Route (from the client).
@@ -3242,7 +2977,7 @@ module Google
         # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
         # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta]
+        # @return [Google::Apis::RunV1::ObjectMeta]
         attr_accessor :metadata
       
         # ServiceSpec holds the desired state of the Route (from the client), which
@@ -3384,25 +3119,34 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to
         # specify access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of
-        # `members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more
+        # `members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions (defined by IAM or configured by users). A `binding` can
+        # optionally specify a `condition`, which is a logic expression that further
+        # constrains the role binding based on attributes about the request and/or
+        # target resource.
         # **JSON Example**
         # `
         # "bindings": [
         # `
-        # "role": "roles/owner",
+        # "role": "role/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
         # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
         # ]
         # `,
         # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
+        # "role": "roles/resourcemanager.organizationViewer",
+        # "members": ["user:eve@example.com"],
+        # "condition": `
+        # "title": "expirable access",
+        # "description": "Does not grant access after Sep 2020",
+        # "expression": "request.time <
+        # timestamp('2020-10-01T00:00:00.000Z')",
+        # `
         # `
         # ]
         # `
@@ -3412,11 +3156,15 @@ module Google
         # - user:mike@example.com
         # - group:admins@example.com
         # - domain:google.com
-        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner
+        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin
         # - members:
-        # - user:sean@example.com
-        # role: roles/viewer
+        # - user:eve@example.com
+        # role: roles/resourcemanager.organizationViewer
+        # condition:
+        # title: expirable access
+        # description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the
         # [IAM developer's guide](https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -3440,6 +3188,186 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Status is a return value for calls that don't return other objects
+      class Status
+        include Google::Apis::Core::Hashable
+      
+        # Suggested HTTP return code for this status, 0 if not set.
+        # +optional
+        # Corresponds to the JSON property `code`
+        # @return [Fixnum]
+        attr_accessor :code
+      
+        # StatusDetails is a set of additional properties that MAY be set by the
+        # server to provide additional information about a response. The Reason
+        # field of a Status object defines what attributes will be set. Clients
+        # must ignore fields that do not match the defined type of each attribute,
+        # and should assume that any attribute may be empty, invalid, or under
+        # defined.
+        # Corresponds to the JSON property `details`
+        # @return [Google::Apis::RunV1::StatusDetails]
+        attr_accessor :details
+      
+        # A human-readable description of the status of this operation.
+        # +optional
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ListMeta]
+        attr_accessor :metadata
+      
+        # A machine-readable description of why this operation is in the
+        # "Failure" status. If this value is empty there
+        # is no information available. A Reason clarifies an HTTP status
+        # code but does not override it.
+        # +optional
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Status of the operation.
+        # One of: "Success" or "Failure".
+        # More info:
+        # https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-
+        # status
+        # +optional
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @details = args[:details] if args.key?(:details)
+          @message = args[:message] if args.key?(:message)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @reason = args[:reason] if args.key?(:reason)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # StatusCause provides more information about an api.Status failure, including
+      # cases when multiple errors are encountered.
+      class StatusCause
+        include Google::Apis::Core::Hashable
+      
+        # The field of the resource that has caused this error, as named by its JSON
+        # serialization. May include dot and postfix notation for nested attributes.
+        # Arrays are zero-indexed.  Fields may appear more than once in an array of
+        # causes due to fields having multiple errors.
+        # Optional.
+        # Examples:
+        # "name" - the field "name" on the current resource
+        # "items[0].name" - the field "name" on the first array entry in "items"
+        # +optional
+        # Corresponds to the JSON property `field`
+        # @return [String]
+        attr_accessor :field
+      
+        # A human-readable description of the cause of the error.  This field may be
+        # presented as-is to a reader.
+        # +optional
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # A machine-readable description of the cause of the error. If this value is
+        # empty there is no information available.
+        # +optional
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @field = args[:field] if args.key?(:field)
+          @message = args[:message] if args.key?(:message)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # StatusDetails is a set of additional properties that MAY be set by the
+      # server to provide additional information about a response. The Reason
+      # field of a Status object defines what attributes will be set. Clients
+      # must ignore fields that do not match the defined type of each attribute,
+      # and should assume that any attribute may be empty, invalid, or under
+      # defined.
+      class StatusDetails
+        include Google::Apis::Core::Hashable
+      
+        # The Causes array includes more details associated with the StatusReason
+        # failure. Not all StatusReasons may provide detailed causes.
+        # +optional
+        # Corresponds to the JSON property `causes`
+        # @return [Array<Google::Apis::RunV1::StatusCause>]
+        attr_accessor :causes
+      
+        # The group attribute of the resource associated with the status
+        # StatusReason. +optional
+        # Corresponds to the JSON property `group`
+        # @return [String]
+        attr_accessor :group
+      
+        # The kind attribute of the resource associated with the status StatusReason.
+        # On some operations may differ from the requested resource Kind.
+        # More info:
+        # https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds
+        # +optional
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The name attribute of the resource associated with the status StatusReason
+        # (when there is a single name which can be described).
+        # +optional
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If specified, the time in seconds before the operation should be retried.
+        # Some errors may indicate the client must take an alternate action - for
+        # those errors this field may indicate how long to wait before taking the
+        # alternate action. +optional
+        # Corresponds to the JSON property `retryAfterSeconds`
+        # @return [Fixnum]
+        attr_accessor :retry_after_seconds
+      
+        # UID of the resource.
+        # (when there is a single resource which can be described).
+        # More info: http://kubernetes.io/docs/user-guide/identifiers#uids
+        # +optional
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @causes = args[:causes] if args.key?(:causes)
+          @group = args[:group] if args.key?(:group)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @retry_after_seconds = args[:retry_after_seconds] if args.key?(:retry_after_seconds)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       

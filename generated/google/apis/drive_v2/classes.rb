@@ -1844,8 +1844,8 @@ module Google
         # @return [String]
         attr_accessor :full_file_extension
       
-        # Whether any users are granted file access directly on this file. This field is
-        # only populated for items in shared drives.
+        # Whether there are permissions directly on this file. This field is only
+        # populated for items in shared drives.
         # Corresponds to the JSON property `hasAugmentedPermissions`
         # @return [Boolean]
         attr_accessor :has_augmented_permissions

@@ -140,18 +140,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_autodomainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/domains.cloudrun.com/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -347,18 +347,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_configuration(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -551,18 +551,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_domainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/domains.cloudrun.com/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -721,18 +721,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_revision(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -885,18 +885,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_route(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -1089,18 +1089,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_namespace_service(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/serving.knative.dev/v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -1397,18 +1397,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_autodomainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -1604,18 +1604,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_configuration(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -1808,18 +1808,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_domainmapping(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -1978,18 +1978,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_revision(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -2142,18 +2142,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_route(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?
@@ -2346,18 +2346,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status] parsed result object
+        # @yieldparam result [Google::Apis::RunV1::Status] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status]
+        # @return [Google::Apis::RunV1::Status]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_location_service(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status::Representation
-          command.response_class = Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1Status
+          command.response_representation = Google::Apis::RunV1::Status::Representation
+          command.response_class = Google::Apis::RunV1::Status
           command.params['name'] = name unless name.nil?
           command.query['apiVersion'] = api_version unless api_version.nil?
           command.query['kind'] = kind unless kind.nil?

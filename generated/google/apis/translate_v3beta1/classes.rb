@@ -45,7 +45,7 @@ module Google
         # (Unicode codepoints), can only contain lowercase letters, numeric
         # characters, underscores and dashes. International characters are allowed.
         # Label values are optional. Label keys must start with a letter.
-        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # See https://cloud.google.com/translate/docs/labels for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -123,7 +123,7 @@ module Google
         # (Unicode codepoints), can only contain lowercase letters, numeric
         # characters, underscores and dashes. International characters are allowed.
         # Label values are optional. Label keys must start with a letter.
-        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # See https://cloud.google.com/translate/docs/labels for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -776,7 +776,7 @@ module Google
         # (Unicode codepoints), can only contain lowercase letters, numeric
         # characters, underscores and dashes. International characters are allowed.
         # Label values are optional. Label keys must start with a letter.
-        # See https://goo.gl/xmQnxf for more information on and examples of labels.
+        # See https://cloud.google.com/translate/docs/labels for more information.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

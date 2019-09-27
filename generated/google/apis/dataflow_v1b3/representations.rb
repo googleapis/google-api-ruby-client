@@ -1156,6 +1156,8 @@ module Google
           hash :version, as: 'version'
           collection :worker_pools, as: 'workerPools', class: Google::Apis::DataflowV1b3::WorkerPool, decorator: Google::Apis::DataflowV1b3::WorkerPool::Representation
       
+          property :worker_region, as: 'workerRegion'
+          property :worker_zone, as: 'workerZone'
         end
       end
       
@@ -1743,6 +1745,8 @@ module Google
           property :subnetwork, as: 'subnetwork'
           property :temp_location, as: 'tempLocation'
           property :use_private_ips, as: 'usePrivateIps'
+          property :worker_region, as: 'workerRegion'
+          property :worker_zone, as: 'workerZone'
           property :zone, as: 'zone'
         end
       end

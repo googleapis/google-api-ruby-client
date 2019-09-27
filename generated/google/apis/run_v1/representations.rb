@@ -172,12 +172,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleRpcStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class HttpGetAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,42 +191,6 @@ module Google
       end
       
       class IntOrString
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1ListMeta
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1ObjectMeta
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1OwnerReference
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1Status
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1StatusCause
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1StatusDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -274,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListMeta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -304,6 +268,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ObjectMeta
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OwnerReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,12 +287,6 @@ module Google
       end
       
       class Probe
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class RegionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -424,6 +394,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatusCause
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatusDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -497,7 +485,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::AutoDomainMappingSpec, decorator: Google::Apis::RunV1::AutoDomainMappingSpec::Representation
       
@@ -573,7 +561,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::ConfigurationSpec, decorator: Google::Apis::RunV1::ConfigurationSpec::Representation
       
@@ -645,7 +633,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::DomainMappingSpec, decorator: Google::Apis::RunV1::DomainMappingSpec::Representation
       
@@ -735,15 +723,6 @@ module Google
         end
       end
       
-      class GoogleRpcStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          collection :details, as: 'details'
-          property :message, as: 'message'
-        end
-      end
-      
       class HttpGetAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -784,85 +763,6 @@ module Google
         end
       end
       
-      class K8sIoApimachineryPkgApisMetaV1ListMeta
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :continue, as: 'continue'
-          property :resource_version, as: 'resourceVersion'
-          property :self_link, as: 'selfLink'
-        end
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1ObjectMeta
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :annotations, as: 'annotations'
-          property :cluster_name, as: 'clusterName'
-          property :creation_timestamp, as: 'creationTimestamp'
-          property :deletion_grace_period_seconds, as: 'deletionGracePeriodSeconds'
-          property :deletion_timestamp, as: 'deletionTimestamp'
-          collection :finalizers, as: 'finalizers'
-          property :generate_name, as: 'generateName'
-          property :generation, as: 'generation'
-          hash :labels, as: 'labels'
-          property :name, as: 'name'
-          property :namespace, as: 'namespace'
-          collection :owner_references, as: 'ownerReferences', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1OwnerReference, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1OwnerReference::Representation
-      
-          property :resource_version, as: 'resourceVersion'
-          property :self_link, as: 'selfLink'
-          property :uid, as: 'uid'
-        end
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1OwnerReference
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :block_owner_deletion, as: 'blockOwnerDeletion'
-          property :controller, as: 'controller'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-          property :uid, as: 'uid'
-        end
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1Status
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :details, as: 'details', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusDetails, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusDetails::Representation
-      
-          property :message, as: 'message'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          property :reason, as: 'reason'
-          property :status, as: 'status'
-        end
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1StatusCause
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :field, as: 'field'
-          property :message, as: 'message'
-          property :reason, as: 'reason'
-        end
-      end
-      
-      class K8sIoApimachineryPkgApisMetaV1StatusDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :causes, as: 'causes', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusCause, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1StatusCause::Representation
-      
-          property :group, as: 'group'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-          property :retry_after_seconds, as: 'retryAfterSeconds'
-          property :uid, as: 'uid'
-        end
-      end
-      
       class KeyToPath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -888,9 +788,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::AutoDomainMapping, decorator: Google::Apis::RunV1::AutoDomainMapping::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -903,9 +801,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::Configuration, decorator: Google::Apis::RunV1::Configuration::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -918,9 +814,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::DomainMapping, decorator: Google::Apis::RunV1::DomainMapping::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -935,6 +829,15 @@ module Google
         end
       end
       
+      class ListMeta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :continue, as: 'continue'
+          property :resource_version, as: 'resourceVersion'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
       class ListRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -942,9 +845,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::Revision, decorator: Google::Apis::RunV1::Revision::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -957,9 +858,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::Route, decorator: Google::Apis::RunV1::Route::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -972,9 +871,7 @@ module Google
           collection :items, as: 'items', class: Google::Apis::RunV1::Service, decorator: Google::Apis::RunV1::Service::Representation
       
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ListMeta::Representation
-      
-          hash :region_details, as: 'regionDetails', class: Google::Apis::RunV1::RegionDetails, decorator: Google::Apis::RunV1::RegionDetails::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
       
           collection :unreachable, as: 'unreachable'
         end
@@ -995,6 +892,40 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class ObjectMeta
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :annotations, as: 'annotations'
+          property :cluster_name, as: 'clusterName'
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :deletion_grace_period_seconds, as: 'deletionGracePeriodSeconds'
+          property :deletion_timestamp, as: 'deletionTimestamp'
+          collection :finalizers, as: 'finalizers'
+          property :generate_name, as: 'generateName'
+          property :generation, as: 'generation'
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :namespace, as: 'namespace'
+          collection :owner_references, as: 'ownerReferences', class: Google::Apis::RunV1::OwnerReference, decorator: Google::Apis::RunV1::OwnerReference::Representation
+      
+          property :resource_version, as: 'resourceVersion'
+          property :self_link, as: 'selfLink'
+          property :uid, as: 'uid'
+        end
+      end
+      
+      class OwnerReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :block_owner_deletion, as: 'blockOwnerDeletion'
+          property :controller, as: 'controller'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :uid, as: 'uid'
         end
       end
       
@@ -1023,14 +954,6 @@ module Google
         end
       end
       
-      class RegionDetails
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :error, as: 'error', class: Google::Apis::RunV1::GoogleRpcStatus, decorator: Google::Apis::RunV1::GoogleRpcStatus::Representation
-      
-        end
-      end
-      
       class ResourceRecord
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1053,7 +976,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::RevisionSpec, decorator: Google::Apis::RunV1::RevisionSpec::Representation
       
@@ -1090,7 +1013,7 @@ module Google
       class RevisionTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::RevisionSpec, decorator: Google::Apis::RunV1::RevisionSpec::Representation
       
@@ -1102,7 +1025,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::RouteSpec, decorator: Google::Apis::RunV1::RouteSpec::Representation
       
@@ -1177,7 +1100,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta, decorator: Google::Apis::RunV1::K8sIoApimachineryPkgApisMetaV1ObjectMeta::Representation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
       
           property :spec, as: 'spec', class: Google::Apis::RunV1::ServiceSpec, decorator: Google::Apis::RunV1::ServiceSpec::Representation
       
@@ -1218,6 +1141,42 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::RunV1::Policy, decorator: Google::Apis::RunV1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :details, as: 'details', class: Google::Apis::RunV1::StatusDetails, decorator: Google::Apis::RunV1::StatusDetails::Representation
+      
+          property :message, as: 'message'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
+      
+          property :reason, as: 'reason'
+          property :status, as: 'status'
+        end
+      end
+      
+      class StatusCause
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :field, as: 'field'
+          property :message, as: 'message'
+          property :reason, as: 'reason'
+        end
+      end
+      
+      class StatusDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :causes, as: 'causes', class: Google::Apis::RunV1::StatusCause, decorator: Google::Apis::RunV1::StatusCause::Representation
+      
+          property :group, as: 'group'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          property :retry_after_seconds, as: 'retryAfterSeconds'
+          property :uid, as: 'uid'
         end
       end
       

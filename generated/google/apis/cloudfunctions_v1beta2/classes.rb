@@ -26,7 +26,7 @@ module Google
       class CallFunctionRequest
         include Google::Apis::Core::Hashable
       
-        # Input to be passed to the function.
+        # Required. Input to be passed to the function.
         # Corresponds to the JSON property `data`
         # @return [String]
         attr_accessor :data

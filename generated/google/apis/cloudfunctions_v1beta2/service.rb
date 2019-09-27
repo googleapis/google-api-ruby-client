@@ -173,7 +173,7 @@ module Google
         # the actual limits refer to [API Calls](
         # https://cloud.google.com/functions/quotas#rate_limits).
         # @param [String] name
-        #   The name of the function to be called.
+        #   Required. The name of the function to be called.
         # @param [Google::Apis::CloudfunctionsV1beta2::CallFunctionRequest] call_function_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -208,7 +208,8 @@ module Google
         # the specified project, the long running operation will return
         # `ALREADY_EXISTS` error.
         # @param [String] location
-        #   The project and location in which the function should be created, specified
+        #   Required. The project and location in which the function should be created,
+        #   specified
         #   in the format `projects/*/locations/*`
         # @param [Google::Apis::CloudfunctionsV1beta2::CloudFunction] cloud_function_object
         # @param [String] fields
@@ -244,7 +245,7 @@ module Google
         # given function is used by some trigger, the trigger will be updated to
         # remove this function.
         # @param [String] name
-        #   The name of the function which should be deleted.
+        #   Required. The name of the function which should be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -364,7 +365,7 @@ module Google
         
         # Returns a function with the given name from the requested project.
         # @param [String] name
-        #   The name of the function which details should be obtained.
+        #   Required. The name of the function which details should be obtained.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -394,7 +395,7 @@ module Google
         
         # Returns a list of functions that belong to the requested project.
         # @param [String] location
-        #   The project and location from which the function should be listed,
+        #   Required. The project and location from which the function should be listed,
         #   specified in the format `projects/*/locations/*`
         #   If you want to list functions in all locations, use "-" in place of a
         #   location.
@@ -436,7 +437,7 @@ module Google
         
         # Updates existing function.
         # @param [String] name
-        #   The name of the function to be updated.
+        #   Required. The name of the function to be updated.
         # @param [Google::Apis::CloudfunctionsV1beta2::CloudFunction] cloud_function_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
