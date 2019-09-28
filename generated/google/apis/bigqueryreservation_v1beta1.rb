@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudidentity_v1beta1/service.rb'
-require 'google/apis/cloudidentity_v1beta1/classes.rb'
-require 'google/apis/cloudidentity_v1beta1/representations.rb'
+require 'google/apis/bigqueryreservation_v1beta1/service.rb'
+require 'google/apis/bigqueryreservation_v1beta1/classes.rb'
+require 'google/apis/bigqueryreservation_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Identity API
+    # BigQuery Reservation API
     #
-    # API for provisioning and managing identity resources.
+    # A service to modify your BigQuery flat-rate reservations.
     #
-    # @see https://cloud.google.com/identity/
-    module CloudidentityV1beta1
+    # @see https://cloud.google.com/bigquery/
+    module BigqueryreservationV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190924'
+      REVISION = '20190920'
 
-      # See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group
-      AUTH_CLOUD_IDENTITY_GROUPS = 'https://www.googleapis.com/auth/cloud-identity.groups'
-
-      # See any Cloud Identity Groups that you can access, including group members and their emails
-      AUTH_CLOUD_IDENTITY_GROUPS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.groups.readonly'
+      # View and manage your data in Google BigQuery
+      AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

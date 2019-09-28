@@ -201,22 +201,27 @@ module Google
         # <br>
         # <br>Using this call, you can either:
         # <ul>
-        # <li>Provision a new Google Analytics property and associate the new
-        # property with your `FirebaseProject`.</li>
-        # <li>Associate an existing Google Analytics property with your
-        # `FirebaseProject`.</li>
+        # <li>Specify an `analyticsAccountId` to provision a new Google Analytics
+        # property within the specified account and associate the new property with
+        # your `FirebaseProject`.</li>
+        # <li>Specify an existing `analyticsPropertyId` to associate the property
+        # with your `FirebaseProject`.</li>
         # </ul>
         # <br>
         # Note that when you call `AddGoogleAnalytics`:
-        # <ul>
-        # <li>Any Firebase Apps already in your `FirebaseProject` are
-        # automatically provisioned as new <em>data streams</em> in the Google
-        # Analytics property.</li>
-        # <li>Any <em>data streams</em> already in the Google Analytics property are
-        # automatically associated with their corresponding Firebase Apps (only
-        # applies when an app's `packageName` or `bundleId` match those for an
-        # existing data stream).</li>
-        # </ul>
+        # <ol>
+        # <li>The first check determines if any existing data streams in the
+        # Google Analytics property correspond to any existing Firebase Apps in your
+        # `FirebaseProject` (based on the `packageName` or `bundleId` associated with
+        # the data stream). Then, as applicable, the data streams and apps are
+        # linked. Note that this auto-linking only applies to Android Apps and iOS
+        # Apps.</li>
+        # <li>If no corresponding data streams are found for your Firebase Apps,
+        # new data streams are provisioned in the Google Analytics property
+        # for each of your Firebase Apps. Note that a new data stream is always
+        # provisioned for a Web App even if it was previously associated with a
+        # data stream in your Analytics property.</li>
+        # </ol>
         # Learn more about the hierarchy and structure of Google Analytics
         # accounts in the
         # [Analytics
@@ -487,7 +492,10 @@ module Google
         # <br>These resources may be re-associated later to the `FirebaseProject` by
         # calling
         # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and
-        # specifying the same `analyticsPropertyId`.
+        # specifying the same `analyticsPropertyId`. For Android Apps and iOS Apps,
+        # this call re-links data streams with their corresponding apps. However,
+        # for Web Apps, this call provisions a <em>new</em> data stream for each Web
+        # App.
         # <br>
         # <br>To call `RemoveAnalytics`, a member must be an Owner for
         # the `FirebaseProject`.

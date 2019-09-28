@@ -12,26 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudidentity_v1beta1/service.rb'
-require 'google/apis/cloudidentity_v1beta1/classes.rb'
-require 'google/apis/cloudidentity_v1beta1/representations.rb'
+require 'google/apis/run_v1beta1/service.rb'
+require 'google/apis/run_v1beta1/classes.rb'
+require 'google/apis/run_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Identity API
+    # Cloud Run API
     #
-    # API for provisioning and managing identity resources.
+    # Deploy and manage user provided container images that scale automatically
+    # based on HTTP traffic.
     #
-    # @see https://cloud.google.com/identity/
-    module CloudidentityV1beta1
+    # @see https://cloud.google.com/run/
+    module RunV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190924'
-
-      # See, change, create, and delete any of the Cloud Identity Groups that you can access, including the members of each group
-      AUTH_CLOUD_IDENTITY_GROUPS = 'https://www.googleapis.com/auth/cloud-identity.groups'
-
-      # See any Cloud Identity Groups that you can access, including group members and their emails
-      AUTH_CLOUD_IDENTITY_GROUPS_READONLY = 'https://www.googleapis.com/auth/cloud-identity.groups.readonly'
+      REVISION = '20190920'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

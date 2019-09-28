@@ -159,8 +159,13 @@ module Google
         # @return [Google::Apis::FirebaseV1beta1::AnalyticsProperty]
         attr_accessor :analytics_property
       
-        # A map of `AppId` to `StreamId` for each Firebase App in the specified
-        # `FirebaseProject`. Each `AppId` and `StreamId` appears only once.
+        # For Android Apps and iOS Apps: A map of `app` to `streamId` for each
+        # Firebase App in the specified `FirebaseProject`. Each `app` and
+        # `streamId` appears only once.<br>
+        # <br>
+        # For Web Apps: A map of `app` to `streamId` and `measurementId` for each
+        # Firebase App in the specified `FirebaseProject`. Each `app`, `streamId`,
+        # and `measurementId` appears only once.
         # Corresponds to the JSON property `streamMappings`
         # @return [Array<Google::Apis::FirebaseV1beta1::StreamMapping>]
         attr_accessor :stream_mappings
@@ -1128,15 +1133,23 @@ module Google
       
         # The fully qualified resource name of the Firebase App associated with the
         # Google Analytics data stream, in the format:
-        # <br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>
-        # or
         # <br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>
+        # or
+        # <code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>
+        # or
+        # <code>projects/<var>projectId</var>/webApps/<var>appId</var></code>
         # Corresponds to the JSON property `app`
         # @return [String]
         attr_accessor :app
       
-        # Analytics-provided measurement ID, for use in the gtag.js library.
-        # Will only be present for Firebase Web Apps.
+        # Applicable for Firebase Web Apps only.<br>
+        # <br>The unique Google-assigned identifier of the Google Analytics web
+        # stream associated with the Firebase Web App. Firebase SDKs use this ID to
+        # interact with Google Analytics APIs.
+        # <br>
+        # <br>Learn more about this ID and Google Analytics web streams in the
+        # [Analytics
+        # documentation](https://support.google.com/analytics/topic/9303475).
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id
@@ -1286,8 +1299,18 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
-        # Analytics-provided measurement ID, for use in the gtag.js library.
-        # Will only be present for Firebase Web Apps.
+        # The unique Google-assigned identifier of the Google Analytics web stream
+        # associated with the Firebase Web App. Firebase SDKs use this ID to interact
+        # with Google Analytics APIs.
+        # <br>
+        # <br>This field is only present if the App is linked to a web stream in a
+        # Google Analytics App + Web property. Learn more about this ID and Google
+        # Analytics web streams in the [Analytics
+        # documentation](https://support.google.com/analytics/topic/9303475).
+        # <br>
+        # <br>To generate a `measurementId` and link the Web App with a Google
+        # Analytics web stream, call
+        # [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).
         # Corresponds to the JSON property `measurementId`
         # @return [String]
         attr_accessor :measurement_id
