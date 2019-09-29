@@ -117,6 +117,11 @@ module Google
         # @return [String]
         attr_accessor :home_directory
       
+        # Output only. The canonical resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The operating system type where this account applies.
         # Corresponds to the JSON property `operatingSystemType`
         # @return [String]
@@ -159,6 +164,7 @@ module Google
           @gecos = args[:gecos] if args.key?(:gecos)
           @gid = args[:gid] if args.key?(:gid)
           @home_directory = args[:home_directory] if args.key?(:home_directory)
+          @name = args[:name] if args.key?(:name)
           @operating_system_type = args[:operating_system_type] if args.key?(:operating_system_type)
           @primary = args[:primary] if args.key?(:primary)
           @shell = args[:shell] if args.key?(:shell)
@@ -189,6 +195,11 @@ module Google
         # @return [String]
         attr_accessor :key
       
+        # Output only. The canonical resource name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -198,6 +209,7 @@ module Google
           @expiration_time_usec = args[:expiration_time_usec] if args.key?(:expiration_time_usec)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @key = args[:key] if args.key?(:key)
+          @name = args[:name] if args.key?(:name)
         end
       end
     end

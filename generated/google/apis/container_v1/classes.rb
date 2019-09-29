@@ -139,6 +139,27 @@ module Google
         end
       end
       
+      # Configuration for Binary Authorization.
+      class BinaryAuthorization
+        include Google::Apis::Core::Hashable
+      
+        # Enable Binary Authorization for this cluster. If enabled, all container
+        # images will be validated by Binary Authorization.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # CancelOperationRequest cancels a single operation.
       class CancelOperationRequest
         include Google::Apis::Core::Hashable
@@ -237,6 +258,11 @@ module Google
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :addons_config
       
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `binaryAuthorization`
+        # @return [Google::Apis::ContainerV1::BinaryAuthorization]
+        attr_accessor :binary_authorization
+      
         # The IP address range of the container pods in this cluster, in
         # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
         # notation (e.g. `10.96.0.0/14`). Leave blank to have
@@ -276,6 +302,11 @@ module Google
         # Corresponds to the JSON property `currentNodeVersion`
         # @return [String]
         attr_accessor :current_node_version
+      
+        # Configuration of etcd encryption.
+        # Corresponds to the JSON property `databaseEncryption`
+        # @return [Google::Apis::ContainerV1::DatabaseEncryption]
+        attr_accessor :database_encryption
       
         # Constraints applied to pods.
         # Corresponds to the JSON property `defaultMaxPodsConstraint`
@@ -541,12 +572,14 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
           @current_node_count = args[:current_node_count] if args.key?(:current_node_count)
           @current_node_version = args[:current_node_version] if args.key?(:current_node_version)
+          @database_encryption = args[:database_encryption] if args.key?(:database_encryption)
           @default_max_pods_constraint = args[:default_max_pods_constraint] if args.key?(:default_max_pods_constraint)
           @description = args[:description] if args.key?(:description)
           @enable_kubernetes_alpha = args[:enable_kubernetes_alpha] if args.key?(:enable_kubernetes_alpha)
@@ -597,6 +630,16 @@ module Google
         # Corresponds to the JSON property `desiredAddonsConfig`
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :desired_addons_config
+      
+        # Configuration for Binary Authorization.
+        # Corresponds to the JSON property `desiredBinaryAuthorization`
+        # @return [Google::Apis::ContainerV1::BinaryAuthorization]
+        attr_accessor :desired_binary_authorization
+      
+        # Configuration of etcd encryption.
+        # Corresponds to the JSON property `desiredDatabaseEncryption`
+        # @return [Google::Apis::ContainerV1::DatabaseEncryption]
+        attr_accessor :desired_database_encryption
       
         # The desired image type for the node pool.
         # NOTE: Set the "desired_node_pool" field as well.
@@ -699,6 +742,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
+          @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
+          @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
@@ -905,6 +950,32 @@ module Google
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configuration of etcd encryption.
+      class DatabaseEncryption
+        include Google::Apis::Core::Hashable
+      
+        # Name of CloudKMS key to use for the encryption of secrets in etcd.
+        # Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
+        # Corresponds to the JSON property `keyName`
+        # @return [String]
+        attr_accessor :key_name
+      
+        # Denotes the state of etcd encryption.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_name = args[:key_name] if args.key?(:key_name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -1831,6 +1902,11 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # A set of Shielded Instance options.
+        # Corresponds to the JSON property `shieldedInstanceConfig`
+        # @return [Google::Apis::ContainerV1::ShieldedInstanceConfig]
+        attr_accessor :shielded_instance_config
+      
         # The list of instance tags applied to all nodes. Tags are used to identify
         # valid sources or targets for network firewalls and are specified by
         # the client during cluster or node pool creation. Each tag within the list
@@ -1864,6 +1940,7 @@ module Google
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
         end
@@ -3023,6 +3100,40 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # A set of Shielded Instance options.
+      class ShieldedInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Defines whether the instance has integrity monitoring enabled.
+        # Enables monitoring and attestation of the boot integrity of the instance.
+        # The attestation is performed against the integrity policy baseline. This
+        # baseline is initially derived from the implicitly trusted boot image when
+        # the instance is created.
+        # Corresponds to the JSON property `enableIntegrityMonitoring`
+        # @return [Boolean]
+        attr_accessor :enable_integrity_monitoring
+        alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
+      
+        # Defines whether the instance has Secure Boot enabled.
+        # Secure Boot helps ensure that the system only runs authentic software by
+        # verifying the digital signature of all boot components, and halting the
+        # boot process if signature verification fails.
+        # Corresponds to the JSON property `enableSecureBoot`
+        # @return [Boolean]
+        attr_accessor :enable_secure_boot
+        alias_method :enable_secure_boot?, :enable_secure_boot
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
+          @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
         end
       end
       

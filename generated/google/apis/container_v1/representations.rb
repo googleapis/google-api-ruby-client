@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BinaryAuthorization
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CancelOperationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -101,6 +107,12 @@ module Google
       end
       
       class DailyMaintenanceWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DatabaseEncryption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -376,6 +388,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartIpRotationRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -455,6 +473,13 @@ module Google
         end
       end
       
+      class BinaryAuthorization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+        end
+      end
+      
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -485,6 +510,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
+          property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
+      
           property :cluster_ipv4_cidr, as: 'clusterIpv4Cidr'
           collection :conditions, as: 'conditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
@@ -492,6 +519,8 @@ module Google
           property :current_master_version, as: 'currentMasterVersion'
           property :current_node_count, as: 'currentNodeCount'
           property :current_node_version, as: 'currentNodeVersion'
+          property :database_encryption, as: 'databaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
+      
           property :default_max_pods_constraint, as: 'defaultMaxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
       
           property :description, as: 'description'
@@ -547,6 +576,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
+      
+          property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
           property :desired_image_type, as: 'desiredImageType'
           property :desired_intra_node_visibility_config, as: 'desiredIntraNodeVisibilityConfig', class: Google::Apis::ContainerV1::IntraNodeVisibilityConfig, decorator: Google::Apis::ContainerV1::IntraNodeVisibilityConfig::Representation
@@ -611,6 +644,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class DatabaseEncryption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_name, as: 'keyName'
+          property :state, as: 'state'
         end
       end
       
@@ -842,6 +883,8 @@ module Google
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
           property :service_account, as: 'serviceAccount'
+          property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1::ShieldedInstanceConfig::Representation
+      
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
       
@@ -1105,6 +1148,14 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ShieldedInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
+          property :enable_secure_boot, as: 'enableSecureBoot'
         end
       end
       

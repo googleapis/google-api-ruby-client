@@ -84,6 +84,7 @@ module Google
           property :gecos, as: 'gecos'
           property :gid, :numeric_string => true, as: 'gid'
           property :home_directory, as: 'homeDirectory'
+          property :name, as: 'name'
           property :operating_system_type, as: 'operatingSystemType'
           property :primary, as: 'primary'
           property :shell, as: 'shell'
@@ -99,6 +100,7 @@ module Google
           property :expiration_time_usec, :numeric_string => true, as: 'expirationTimeUsec'
           property :fingerprint, as: 'fingerprint'
           property :key, as: 'key'
+          property :name, as: 'name'
         end
       end
     end
