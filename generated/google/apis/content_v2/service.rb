@@ -364,51 +364,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a Merchant Center account. This method supports patch semantics.
-        # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
-        # @param [Fixnum] account_id
-        #   The ID of the account.
-        # @param [Google::Apis::ContentV2::Account] account_object
-        # @param [Boolean] dry_run
-        #   Flag to simulate a request like in a live environment. If set to true, dry-run
-        #   mode checks the validity of the request and returns errors (if any).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::Account] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2::Account]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account(merchant_id, account_id, account_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/accounts/{accountId}', options)
-          command.request_representation = Google::Apis::ContentV2::Account::Representation
-          command.request_object = account_object
-          command.response_representation = Google::Apis::ContentV2::Account::Representation
-          command.response_class = Google::Apis::ContentV2::Account
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
@@ -682,51 +637,6 @@ module Google
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the tax settings of the account. This method supports patch semantics.
-        # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
-        # @param [Fixnum] account_id
-        #   The ID of the account for which to get/update account tax settings.
-        # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
-        # @param [Boolean] dry_run
-        #   Flag to simulate a request like in a live environment. If set to true, dry-run
-        #   mode checks the validity of the request and returns errors (if any).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::AccountTax] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2::AccountTax]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_account_tax(merchant_id, account_id, account_tax_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/accounttax/{accountId}', options)
-          command.request_representation = Google::Apis::ContentV2::AccountTax::Representation
-          command.request_object = account_tax_object
-          command.response_representation = Google::Apis::ContentV2::AccountTax::Representation
-          command.response_class = Google::Apis::ContentV2::AccountTax
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1008,51 +918,6 @@ module Google
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates a datafeed configuration of your Merchant Center account. This method
-        # supports patch semantics.
-        # @param [Fixnum] merchant_id
-        #   The ID of the account that manages the datafeed. This account cannot be a
-        #   multi-client account.
-        # @param [Fixnum] datafeed_id
-        #   The ID of the datafeed.
-        # @param [Google::Apis::ContentV2::Datafeed] datafeed_object
-        # @param [Boolean] dry_run
-        #   Flag to simulate a request like in a live environment. If set to true, dry-run
-        #   mode checks the validity of the request and returns errors (if any).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::Datafeed] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2::Datafeed]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_datafeed(merchant_id, datafeed_id, datafeed_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/datafeeds/{datafeedId}', options)
-          command.request_representation = Google::Apis::ContentV2::Datafeed::Representation
-          command.request_object = datafeed_object
-          command.response_representation = Google::Apis::ContentV2::Datafeed::Representation
-          command.response_class = Google::Apis::ContentV2::Datafeed
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['datafeedId'] = datafeed_id unless datafeed_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1490,51 +1355,6 @@ module Google
           command = make_simple_command(:get, 'liasettings/posdataproviders', options)
           command.response_representation = Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse::Representation
           command.response_class = Google::Apis::ContentV2::LiasettingsListPosDataProvidersResponse
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the LIA settings of the account. This method supports patch semantics.
-        # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
-        # @param [Fixnum] account_id
-        #   The ID of the account for which to get or update LIA settings.
-        # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
-        # @param [Boolean] dry_run
-        #   Flag to simulate a request like in a live environment. If set to true, dry-run
-        #   mode checks the validity of the request and returns errors (if any).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::LiaSettings] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2::LiaSettings]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_liasetting(merchant_id, account_id, lia_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/liasettings/{accountId}', options)
-          command.request_representation = Google::Apis::ContentV2::LiaSettings::Representation
-          command.request_object = lia_settings_object
-          command.response_representation = Google::Apis::ContentV2::LiaSettings::Representation
-          command.response_class = Google::Apis::ContentV2::LiaSettings
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3897,52 +3717,6 @@ module Google
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the shipping settings of the account. This method supports patch
-        # semantics.
-        # @param [Fixnum] merchant_id
-        #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
-        # @param [Fixnum] account_id
-        #   The ID of the account for which to get/update shipping settings.
-        # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object
-        # @param [Boolean] dry_run
-        #   Flag to simulate a request like in a live environment. If set to true, dry-run
-        #   mode checks the validity of the request and returns errors (if any).
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ContentV2::ShippingSettings] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ContentV2::ShippingSettings]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_shippingsetting(merchant_id, account_id, shipping_settings_object = nil, dry_run: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{merchantId}/shippingsettings/{accountId}', options)
-          command.request_representation = Google::Apis::ContentV2::ShippingSettings::Representation
-          command.request_object = shipping_settings_object
-          command.response_representation = Google::Apis::ContentV2::ShippingSettings::Representation
-          command.response_class = Google::Apis::ContentV2::ShippingSettings
-          command.params['merchantId'] = merchant_id unless merchant_id.nil?
-          command.params['accountId'] = account_id unless account_id.nil?
-          command.query['dryRun'] = dry_run unless dry_run.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

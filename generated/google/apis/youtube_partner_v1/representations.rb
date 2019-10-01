@@ -382,18 +382,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Publisher
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PublisherList
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Rating
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1330,29 +1318,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :link, as: 'link', class: Google::Apis::YoutubePartnerV1::CampaignTargetLink, decorator: Google::Apis::YoutubePartnerV1::CampaignTargetLink::Representation
-      
-        end
-      end
-      
-      class Publisher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cae_number, as: 'caeNumber'
-          property :id, as: 'id'
-          property :ipi_number, as: 'ipiNumber'
-          property :kind, as: 'kind'
-          property :name, as: 'name'
-        end
-      end
-      
-      class PublisherList
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::YoutubePartnerV1::Publisher, decorator: Google::Apis::YoutubePartnerV1::Publisher::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          property :page_info, as: 'pageInfo', class: Google::Apis::YoutubePartnerV1::PageInfo, decorator: Google::Apis::YoutubePartnerV1::PageInfo::Representation
       
         end
       end

@@ -234,18 +234,7 @@ module Google
       class GoogleCloudDialogflowV2ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # The exported agent.
-        # Example for how to export an agent to a zip file via a command line:
-        # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:
-        # export'\
-        # -X POST \
-        # -H 'Authorization: Bearer' \
-        # $(gcloud auth application-default print-access-token) \
-        # -H 'Accept: application/json'
-        # --compressed \
-        # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
-        # | base64 --decode > &lt;agent zip file&gt;</pre>
+        # Zip compressed raw byte content for agent.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1442,6 +1431,47 @@ module Google
         end
       end
       
+      # Represents a session entity type.
+      # Extends or replaces a developer entity type at the user session level (we
+      # refer to the entity types defined at the agent level as "developer entity
+      # types").
+      # Note: session entity types apply to all queries, regardless of the language.
+      class GoogleCloudDialogflowV2SessionEntityType
+        include Google::Apis::Core::Hashable
+      
+        # Required. The collection of entities associated with this session entity
+        # type.
+        # Corresponds to the JSON property `entities`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EntityTypeEntity>]
+        attr_accessor :entities
+      
+        # Required. Indicates whether the additional data should override or
+        # supplement the developer entity type definition.
+        # Corresponds to the JSON property `entityOverrideMode`
+        # @return [String]
+        attr_accessor :entity_override_mode
+      
+        # Required. The unique identifier of this session entity type. Format:
+        # `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
+        # Display Name>`.
+        # `<Entity Type Display Name>` must be the display name of an existing entity
+        # type in the same agent that will be overridden or supplemented.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entities = args[:entities] if args.key?(:entities)
+          @entity_override_mode = args[:entity_override_mode] if args.key?(:entity_override_mode)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # The request message for a webhook call.
       class GoogleCloudDialogflowV2WebhookRequest
         include Google::Apis::Core::Hashable
@@ -1542,6 +1572,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Optional. Additional session entity types to replace or extend developer
+        # entity types with. The entity synonyms apply to all languages and persist
+        # for the session of this query. Setting the session entity types inside
+        # webhook overwrites the session entity types that have been set through
+        # `DetectIntentRequest.query_params.session_entity_types`.
+        # Corresponds to the JSON property `sessionEntityTypes`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SessionEntityType>]
+        attr_accessor :session_entity_types
+      
         # Optional. This value is passed directly to `QueryResult.webhook_source`.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -1558,6 +1597,7 @@ module Google
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @payload = args[:payload] if args.key?(:payload)
+          @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
         end
       end
@@ -2412,18 +2452,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ExportAgentResponse
         include Google::Apis::Core::Hashable
       
-        # The exported agent.
-        # Example for how to export an agent to a zip file via a command line:
-        # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:
-        # export'\
-        # -X POST \
-        # -H 'Authorization: Bearer' \
-        # $(gcloud auth application-default print-access-token) \
-        # -H 'Accept: application/json'
-        # --compressed \
-        # | grep agentContent | sed -e 's/.*"agentContent": "\([^"]*\)".*/\1/' \
-        # | base64 --decode > &lt;agent zip file&gt;</pre>
+        # Zip compressed raw byte content for agent.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2472,19 +2501,7 @@ module Google
       class GoogleCloudDialogflowV2beta1ImportAgentRequest
         include Google::Apis::Core::Hashable
       
-        # The agent to import.
-        # Example for how to import an agent via the command line:
-        # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:
-        # import'\
-        # -X POST \
-        # -H 'Authorization: Bearer'\
-        # $(gcloud auth application-default print-access-token) \
-        # -H 'Accept: application/json' \
-        # -H 'Content-Type: application/json' \
-        # --data-binary "`
-        # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
-        # `"</pre>
+        # Zip compressed raw byte content for agent.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5085,19 +5102,7 @@ module Google
       class GoogleCloudDialogflowV2beta1RestoreAgentRequest
         include Google::Apis::Core::Hashable
       
-        # The agent to restore.
-        # Example for how to restore an agent via the command line:
-        # <pre>curl \
-        # 'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:
-        # restore'\
-        # -X POST \
-        # -H 'Authorization: Bearer' \
-        # $(gcloud auth application-default print-access-token) \
-        # -H 'Accept: application/json' \
-        # -H 'Content-Type: application/json' \
-        # --data-binary "`
-        # 'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'
-        # `"</pre>
+        # Zip compressed raw byte content for agent.
         # Corresponds to the JSON property `agentContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5609,6 +5614,15 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :payload
       
+        # Optional. Additional session entity types to replace or extend developer
+        # entity types with. The entity synonyms apply to all languages and persist
+        # for the session of this query. Setting the session entity types inside
+        # webhook overwrites the session entity types that have been set through
+        # `DetectIntentRequest.query_params.session_entity_types`.
+        # Corresponds to the JSON property `sessionEntityTypes`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType>]
+        attr_accessor :session_entity_types
+      
         # Optional. This value is passed directly to `QueryResult.webhook_source`.
         # Corresponds to the JSON property `source`
         # @return [String]
@@ -5626,6 +5640,7 @@ module Google
           @fulfillment_text = args[:fulfillment_text] if args.key?(:fulfillment_text)
           @output_contexts = args[:output_contexts] if args.key?(:output_contexts)
           @payload = args[:payload] if args.key?(:payload)
+          @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
         end
       end

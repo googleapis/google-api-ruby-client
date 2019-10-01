@@ -232,6 +232,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SessionEntityType
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2WebhookRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1271,6 +1277,16 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2SessionEntityType
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entities, as: 'entities', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EntityTypeEntity, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EntityTypeEntity::Representation
+      
+          property :entity_override_mode, as: 'entityOverrideMode'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudDialogflowV2WebhookRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1294,6 +1310,8 @@ module Google
           collection :output_contexts, as: 'outputContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Context, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Context::Representation
       
           hash :payload, as: 'payload'
+          collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SessionEntityType::Representation
+      
           property :source, as: 'source'
         end
       end
@@ -2363,6 +2381,8 @@ module Google
           collection :output_contexts, as: 'outputContexts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context::Representation
       
           hash :payload, as: 'payload'
+          collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
+      
           property :source, as: 'source'
         end
       end

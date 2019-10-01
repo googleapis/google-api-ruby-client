@@ -408,14 +408,14 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::LifecycleConfig]
         attr_accessor :lifecycle_config
       
-        # Optional. The config settings for Compute Engine resources in an instance
-        # group, such as a master or worker group.
+        # The config settings for Compute Engine resources in an instance group, such as
+        # a master or worker group.
         # Corresponds to the JSON property `masterConfig`
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :master_config
       
-        # Optional. The config settings for Compute Engine resources in an instance
-        # group, such as a master or worker group.
+        # The config settings for Compute Engine resources in an instance group, such as
+        # a master or worker group.
         # Corresponds to the JSON property `secondaryWorkerConfig`
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :secondary_worker_config
@@ -430,8 +430,8 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::SoftwareConfig]
         attr_accessor :software_config
       
-        # Optional. The config settings for Compute Engine resources in an instance
-        # group, such as a master or worker group.
+        # The config settings for Compute Engine resources in an instance group, such as
+        # a master or worker group.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::DataprocV1beta2::InstanceGroupConfig]
         attr_accessor :worker_config
@@ -728,11 +728,11 @@ module Google
         # @return [String]
         attr_accessor :boot_disk_type
       
-        # Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not
-        # attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.
-        # apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are
-        # attached, this runtime bulk data is spread across them, and the boot disk
-        # contains only basic config and installed binaries.
+        # Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached,
+        # the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.
+        # org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached,
+        # this runtime bulk data is spread across them, and the boot disk contains only
+        # basic config and installed binaries.
         # Corresponds to the JSON property `numLocalSsds`
         # @return [Fixnum]
         attr_accessor :num_local_ssds
@@ -1201,8 +1201,8 @@ module Google
         end
       end
       
-      # Optional. The config settings for Compute Engine resources in an instance
-      # group, such as a master or worker group.
+      # The config settings for Compute Engine resources in an instance group, such as
+      # a master or worker group.
       class InstanceGroupConfig
         include Google::Apis::Core::Hashable
       
@@ -1253,8 +1253,8 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::ManagedGroupConfig]
         attr_accessor :managed_group_config
       
-        # Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud
-        # Dataproc&rarr;Minimum CPU Platform.
+        # Specifies the minimum cpu platform for the Instance Group. See Cloud Dataproc&
+        # rarr;Minimum CPU Platform.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -1409,7 +1409,10 @@ module Google
         attr_accessor :scheduling
       
         # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
-        # applications on YARN.
+        # applications on YARN. The specification of the main method to call to drive
+        # the job. Specify either the jar file that contains the main class or the main
+        # class name. To pass both a main jar and a main class in that jar, add the jar
+        # to CommonJob.jar_file_uris, and then specify the main class name in main_class.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1beta2::SparkJob]
         attr_accessor :spark_job
@@ -2115,7 +2118,10 @@ module Google
         attr_accessor :scheduling
       
         # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
-        # applications on YARN.
+        # applications on YARN. The specification of the main method to call to drive
+        # the job. Specify either the jar file that contains the main class or the main
+        # class name. To pass both a main jar and a main class in that jar, add the jar
+        # to CommonJob.jar_file_uris, and then specify the main class name in main_class.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1beta2::SparkJob]
         attr_accessor :spark_job
@@ -2245,24 +2251,33 @@ module Google
       end
       
       # Defines an Identity and Access Management (IAM) policy. It is used to specify
-      # access control policies for Cloud Platform resources.A Policy consists of a
-      # list of bindings. A binding binds a list of members to a role, where the
-      # members can be user accounts, Google groups, Google domains, and service
-      # accounts. A role is a named list of permissions defined by IAM.JSON Example
+      # access control policies for Cloud Platform resources.A Policy is a collection
+      # of bindings. A binding binds one or more members to a single role. Members can
+      # be user accounts, service accounts, Google groups, and domains (such as G
+      # Suite). A role is a named list of permissions (defined by IAM or configured by
+      # users). A binding can optionally specify a condition, which is a logic
+      # expression that further constrains the role binding based on attributes about
+      # the request and/or target resource.JSON Example
       # `
       # "bindings": [
       # `
-      # "role": "roles/owner",
+      # "role": "role/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
       # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
       # ]
       # `,
       # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
+      # "role": "roles/resourcemanager.organizationViewer",
+      # "members": ["user:eve@example.com"],
+      # "condition": `
+      # "title": "expirable access",
+      # "description": "Does not grant access after Sep 2020",
+      # "expression": "request.time <
+      # timestamp('2020-10-01T00:00:00.000Z')",
+      # `
       # `
       # ]
       # `
@@ -2272,18 +2287,23 @@ module Google
       # - user:mike@example.com
       # - group:admins@example.com
       # - domain:google.com
-      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-      # role: roles/owner
+      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin
       # - members:
-      # - user:sean@example.com
-      # role: roles/viewer
+      # - user:eve@example.com
+      # role: roles/resourcemanager.organizationViewer
+      # condition:
+      # title: expirable access
+      # description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
       # For a description of IAM and its features, see the IAM developer's guide (
       # https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of members to a role. bindings with no members will result
-        # in an error.
+        # Associates a list of members to a role. Optionally may specify a condition
+        # that determines when binding is in effect. bindings with no members will
+        # result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DataprocV1beta2::Binding>]
         attr_accessor :bindings
@@ -2295,16 +2315,22 @@ module Google
         # in the response to getIamPolicy, and systems are expected to put that etag in
         # the request to setIamPolicy to ensure that their change will be applied to the
         # same version of the policy.If no etag is provided in the call to setIamPolicy,
-        # then the existing policy is overwritten.
+        # then the existing policy is overwritten. Due to blind-set semantics of an etag-
+        # less policy, 'setIamPolicy' will not fail even if either of incoming or stored
+        # policy does not meet the version requirements.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
         # Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
-        # specifying an invalid value will be rejected.Policies with any conditional
-        # bindings must specify version 3. Policies without any conditional bindings may
-        # specify any valid value or leave the field unset.
+        # specifying an invalid value will be rejected.Operations affecting conditional
+        # bindings must specify version 3. This can be either setting a conditional
+        # policy, modifying a conditional binding, or removing a conditional binding
+        # from the stored conditional policy. Operations on non-conditional policies may
+        # specify any valid value or leave the field unset.If no etag is provided in the
+        # call to setIamPolicy, any version compliance checks on the incoming and/or
+        # stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2561,24 +2587,33 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.A Policy consists of a
-        # list of bindings. A binding binds a list of members to a role, where the
-        # members can be user accounts, Google groups, Google domains, and service
-        # accounts. A role is a named list of permissions defined by IAM.JSON Example
+        # access control policies for Cloud Platform resources.A Policy is a collection
+        # of bindings. A binding binds one or more members to a single role. Members can
+        # be user accounts, service accounts, Google groups, and domains (such as G
+        # Suite). A role is a named list of permissions (defined by IAM or configured by
+        # users). A binding can optionally specify a condition, which is a logic
+        # expression that further constrains the role binding based on attributes about
+        # the request and/or target resource.JSON Example
         # `
         # "bindings": [
         # `
-        # "role": "roles/owner",
+        # "role": "role/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
         # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
         # ]
         # `,
         # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
+        # "role": "roles/resourcemanager.organizationViewer",
+        # "members": ["user:eve@example.com"],
+        # "condition": `
+        # "title": "expirable access",
+        # "description": "Does not grant access after Sep 2020",
+        # "expression": "request.time <
+        # timestamp('2020-10-01T00:00:00.000Z')",
+        # `
         # `
         # ]
         # `
@@ -2588,11 +2623,15 @@ module Google
         # - user:mike@example.com
         # - group:admins@example.com
         # - domain:google.com
-        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner
+        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin
         # - members:
-        # - user:sean@example.com
-        # role: roles/viewer
+        # - user:eve@example.com
+        # role: roles/resourcemanager.organizationViewer
+        # condition:
+        # title: expirable access
+        # description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the IAM developer's guide (
         # https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -2655,7 +2694,10 @@ module Google
       end
       
       # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
-      # applications on YARN.
+      # applications on YARN. The specification of the main method to call to drive
+      # the job. Specify either the jar file that contains the main class or the main
+      # class name. To pass both a main jar and a main class in that jar, add the jar
+      # to CommonJob.jar_file_uris, and then specify the main class name in main_class.
       class SparkJob
         include Google::Apis::Core::Hashable
       
@@ -3314,23 +3356,23 @@ module Google
       class YarnApplication
         include Google::Apis::Core::Hashable
       
-        # Required. The application name.
+        # Output only. The application name.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. The numerical progress of the application, from 1 to 100.
+        # Output only. The numerical progress of the application, from 1 to 100.
         # Corresponds to the JSON property `progress`
         # @return [Float]
         attr_accessor :progress
       
-        # Required. The application state.
+        # Output only. The application state.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
-        # Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or
-        # TimelineServer that provides application-specific information. The URL uses
+        # Optional. Output only. The HTTP URL of the ApplicationMaster, HistoryServer,
+        # or TimelineServer that provides application-specific information. The URL uses
         # the internal hostname, and requires a proxy server for resolution and,
         # possibly, access.
         # Corresponds to the JSON property `trackingUrl`

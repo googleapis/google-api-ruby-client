@@ -157,7 +157,7 @@ module Google
         
         # Returns metadata for a given KeyRing.
         # @param [String] name
-        #   The name of the KeyRing to get.
+        #   Required. The name of the KeyRing to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -241,12 +241,12 @@ module Google
         #   [Sorting and filtering list
         #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
-        #   Optional limit on the number of KeyRings to include in the
+        #   Optional. Optional limit on the number of KeyRings to include in the
         #   response.  Further KeyRings can subsequently be obtained by
         #   including the ListKeyRingsResponse.next_page_token in a subsequent
         #   request.  If unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional pagination token, returned earlier via
+        #   Optional. Optional pagination token, returned earlier via
         #   ListKeyRingsResponse.next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -477,7 +477,7 @@ module Google
         # Returns metadata for a given CryptoKey, as well as its
         # primary CryptoKeyVersion.
         # @param [String] name
-        #   The name of the CryptoKey to get.
+        #   Required. The name of the CryptoKey to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -561,12 +561,12 @@ module Google
         #   [Sorting and filtering list
         #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
-        #   Optional limit on the number of CryptoKeys to include in the
+        #   Optional. Optional limit on the number of CryptoKeys to include in the
         #   response.  Further CryptoKeys can subsequently be obtained by
         #   including the ListCryptoKeysResponse.next_page_token in a subsequent
         #   request.  If unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional pagination token, returned earlier via
+        #   Optional. Optional pagination token, returned earlier via
         #   ListCryptoKeysResponse.next_page_token.
         # @param [String] version_view
         #   The fields of the primary version to include in the response.
@@ -608,7 +608,7 @@ module Google
         #   `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         # @param [Google::Apis::CloudkmsV1::CryptoKey] crypto_key_object
         # @param [String] update_mask
-        #   Required list of fields to be updated in this request.
+        #   Required. List of fields to be updated in this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -716,7 +716,7 @@ module Google
         # Update the version of a CryptoKey that will be used in Encrypt.
         # Returns an error if called on an asymmetric key.
         # @param [String] name
-        #   The resource name of the CryptoKey to update.
+        #   Required. The resource name of the CryptoKey to update.
         # @param [Google::Apis::CloudkmsV1::UpdateCryptoKeyPrimaryVersionRequest] update_crypto_key_primary_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -866,7 +866,7 @@ module Google
         # Before the destroy_time is reached,
         # RestoreCryptoKeyVersion may be called to reverse the process.
         # @param [String] name
-        #   The resource name of the CryptoKeyVersion to destroy.
+        #   Required. The resource name of the CryptoKeyVersion to destroy.
         # @param [Google::Apis::CloudkmsV1::DestroyCryptoKeyVersionRequest] destroy_crypto_key_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -899,7 +899,7 @@ module Google
         
         # Returns metadata for a given CryptoKeyVersion.
         # @param [String] name
-        #   The name of the CryptoKeyVersion to get.
+        #   Required. The name of the CryptoKeyVersion to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -932,7 +932,7 @@ module Google
         # ASYMMETRIC_SIGN or
         # ASYMMETRIC_DECRYPT.
         # @param [String] name
-        #   The name of the CryptoKeyVersion public key to
+        #   Required. The name of the CryptoKeyVersion public key to
         #   get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1013,13 +1013,13 @@ module Google
         #   [Sorting and filtering list
         #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
-        #   Optional limit on the number of CryptoKeyVersions to
+        #   Optional. Optional limit on the number of CryptoKeyVersions to
         #   include in the response. Further CryptoKeyVersions can
         #   subsequently be obtained by including the
         #   ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
         #   If unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional pagination token, returned earlier via
+        #   Optional. Optional pagination token, returned earlier via
         #   ListCryptoKeyVersionsResponse.next_page_token.
         # @param [String] view
         #   The fields to include in the response.
@@ -1066,7 +1066,7 @@ module Google
         #   `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         # @param [Google::Apis::CloudkmsV1::CryptoKeyVersion] crypto_key_version_object
         # @param [String] update_mask
-        #   Required list of fields to be updated in this request.
+        #   Required. List of fields to be updated in this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1104,7 +1104,7 @@ module Google
         # will be set to DISABLED,
         # and destroy_time will be cleared.
         # @param [String] name
-        #   The resource name of the CryptoKeyVersion to restore.
+        #   Required. The resource name of the CryptoKeyVersion to restore.
         # @param [Google::Apis::CloudkmsV1::RestoreCryptoKeyVersionRequest] restore_crypto_key_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1176,7 +1176,7 @@ module Google
         
         # Returns metadata for a given ImportJob.
         # @param [String] name
-        #   The name of the ImportJob to get.
+        #   Required. The name of the ImportJob to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1260,12 +1260,12 @@ module Google
         #   [Sorting and filtering list
         #   results](https://cloud.google.com/kms/docs/sorting-and-filtering).
         # @param [Fixnum] page_size
-        #   Optional limit on the number of ImportJobs to include in the
+        #   Optional. Optional limit on the number of ImportJobs to include in the
         #   response. Further ImportJobs can subsequently be obtained by
         #   including the ListImportJobsResponse.next_page_token in a subsequent
         #   request. If unspecified, the server will pick an appropriate default.
         # @param [String] page_token
-        #   Optional pagination token, returned earlier via
+        #   Optional. Optional pagination token, returned earlier via
         #   ListImportJobsResponse.next_page_token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

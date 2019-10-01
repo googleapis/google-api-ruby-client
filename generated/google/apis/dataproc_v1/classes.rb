@@ -640,7 +640,7 @@ module Google
       class ClusterStatus
         include Google::Apis::Core::Hashable
       
-        # Output only. Optional details of cluster's state.
+        # Optional. Output only. Details of cluster's state.
         # Corresponds to the JSON property `detail`
         # @return [String]
         attr_accessor :detail
@@ -1116,11 +1116,11 @@ module Google
       class InstanceGroupAutoscalingPolicyConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. Maximum number of instances for this group. Required for primary
+        # Required. Maximum number of instances for this group. Required for primary
         # workers. Note that by default, clusters will not use secondary workers.
         # Required for secondary workers if the minimum secondary instances is set.
-        # Primary workers - Bounds: [min_instances, ). Required. Secondary workers -
-        # Bounds: [min_instances, ). Default: 0.
+        # Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [
+        # min_instances, ). Default: 0.
         # Corresponds to the JSON property `maxInstances`
         # @return [Fixnum]
         attr_accessor :max_instances
@@ -1485,7 +1485,7 @@ module Google
       class JobStatus
         include Google::Apis::Core::Hashable
       
-        # Output only. Optional job state details, such as an error description if the
+        # Optional. Output only. Job state details, such as an error description if the
         # state is <code>ERROR</code>.
         # Corresponds to the JSON property `details`
         # @return [String]
@@ -2173,24 +2173,33 @@ module Google
       end
       
       # Defines an Identity and Access Management (IAM) policy. It is used to specify
-      # access control policies for Cloud Platform resources.A Policy consists of a
-      # list of bindings. A binding binds a list of members to a role, where the
-      # members can be user accounts, Google groups, Google domains, and service
-      # accounts. A role is a named list of permissions defined by IAM.JSON Example
+      # access control policies for Cloud Platform resources.A Policy is a collection
+      # of bindings. A binding binds one or more members to a single role. Members can
+      # be user accounts, service accounts, Google groups, and domains (such as G
+      # Suite). A role is a named list of permissions (defined by IAM or configured by
+      # users). A binding can optionally specify a condition, which is a logic
+      # expression that further constrains the role binding based on attributes about
+      # the request and/or target resource.JSON Example
       # `
       # "bindings": [
       # `
-      # "role": "roles/owner",
+      # "role": "role/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
       # "domain:google.com",
-      # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+      # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
       # ]
       # `,
       # `
-      # "role": "roles/viewer",
-      # "members": ["user:sean@example.com"]
+      # "role": "roles/resourcemanager.organizationViewer",
+      # "members": ["user:eve@example.com"],
+      # "condition": `
+      # "title": "expirable access",
+      # "description": "Does not grant access after Sep 2020",
+      # "expression": "request.time <
+      # timestamp('2020-10-01T00:00:00.000Z')",
+      # `
       # `
       # ]
       # `
@@ -2200,18 +2209,23 @@ module Google
       # - user:mike@example.com
       # - group:admins@example.com
       # - domain:google.com
-      # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-      # role: roles/owner
+      # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin
       # - members:
-      # - user:sean@example.com
-      # role: roles/viewer
+      # - user:eve@example.com
+      # role: roles/resourcemanager.organizationViewer
+      # condition:
+      # title: expirable access
+      # description: Does not grant access after Sep 2020
+      # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
       # For a description of IAM and its features, see the IAM developer's guide (
       # https://cloud.google.com/iam/docs).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of members to a role. bindings with no members will result
-        # in an error.
+        # Associates a list of members to a role. Optionally may specify a condition
+        # that determines when binding is in effect. bindings with no members will
+        # result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DataprocV1::Binding>]
         attr_accessor :bindings
@@ -2223,16 +2237,22 @@ module Google
         # in the response to getIamPolicy, and systems are expected to put that etag in
         # the request to setIamPolicy to ensure that their change will be applied to the
         # same version of the policy.If no etag is provided in the call to setIamPolicy,
-        # then the existing policy is overwritten.
+        # then the existing policy is overwritten. Due to blind-set semantics of an etag-
+        # less policy, 'setIamPolicy' will not fail even if either of incoming or stored
+        # policy does not meet the version requirements.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
         # Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
-        # specifying an invalid value will be rejected.Policies with any conditional
-        # bindings must specify version 3. Policies without any conditional bindings may
-        # specify any valid value or leave the field unset.
+        # specifying an invalid value will be rejected.Operations affecting conditional
+        # bindings must specify version 3. This can be either setting a conditional
+        # policy, modifying a conditional binding, or removing a conditional binding
+        # from the stored conditional policy. Operations on non-conditional policies may
+        # specify any valid value or leave the field unset.If no etag is provided in the
+        # call to setIamPolicy, any version compliance checks on the incoming and/or
+        # stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2397,24 +2417,33 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.A Policy consists of a
-        # list of bindings. A binding binds a list of members to a role, where the
-        # members can be user accounts, Google groups, Google domains, and service
-        # accounts. A role is a named list of permissions defined by IAM.JSON Example
+        # access control policies for Cloud Platform resources.A Policy is a collection
+        # of bindings. A binding binds one or more members to a single role. Members can
+        # be user accounts, service accounts, Google groups, and domains (such as G
+        # Suite). A role is a named list of permissions (defined by IAM or configured by
+        # users). A binding can optionally specify a condition, which is a logic
+        # expression that further constrains the role binding based on attributes about
+        # the request and/or target resource.JSON Example
         # `
         # "bindings": [
         # `
-        # "role": "roles/owner",
+        # "role": "role/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
         # "domain:google.com",
-        # "serviceAccount:my-other-app@appspot.gserviceaccount.com"
+        # "serviceAccount:my-project-id@appspot.gserviceaccount.com"
         # ]
         # `,
         # `
-        # "role": "roles/viewer",
-        # "members": ["user:sean@example.com"]
+        # "role": "roles/resourcemanager.organizationViewer",
+        # "members": ["user:eve@example.com"],
+        # "condition": `
+        # "title": "expirable access",
+        # "description": "Does not grant access after Sep 2020",
+        # "expression": "request.time <
+        # timestamp('2020-10-01T00:00:00.000Z')",
+        # `
         # `
         # ]
         # `
@@ -2424,11 +2453,15 @@ module Google
         # - user:mike@example.com
         # - group:admins@example.com
         # - domain:google.com
-        # - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner
+        # - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin
         # - members:
-        # - user:sean@example.com
-        # role: roles/viewer
+        # - user:eve@example.com
+        # role: roles/resourcemanager.organizationViewer
+        # condition:
+        # title: expirable access
+        # description: Does not grant access after Sep 2020
+        # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the IAM developer's guide (
         # https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -2457,7 +2490,7 @@ module Google
         # @return [String]
         attr_accessor :image_version
       
-        # The set of optional components to activate on the cluster.
+        # Optional. The set of components to activate on the cluster.
         # Corresponds to the JSON property `optionalComponents`
         # @return [Array<String>]
         attr_accessor :optional_components
@@ -2977,9 +3010,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Required. The template id.The id must contain only letters (a-z, A-Z), numbers
-        # (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore
-        # or hyphen. Must consist of between 3 and 50 characters.
+        # 
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3011,7 +3042,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Optional. Template parameters whose values are substituted into the template.
+        # Optional. emplate parameters whose values are substituted into the template.
         # Values for parameters must be provided when the template is instantiated.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::DataprocV1::TemplateParameter>]

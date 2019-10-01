@@ -1387,7 +1387,9 @@ module Google
         #   Update labels</td>  </tr>  <tr>  <td><strong><em>config.worker_config.
         #   num_instances</em></strong></td>  <td>Resize primary worker group</td>  </tr>
         #   <tr>  <td><strong><em>config.secondary_worker_config.num_instances</em></
-        #   strong></td>  <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>
+        #   strong></td>  <td>Resize secondary worker group</td>  </tr>  <tr>  <td>config.
+        #   autoscaling_config.policy_uri</td><td>Use, stop using, or  change autoscaling
+        #   policies</td>  </tr>  </tbody>  </table>
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

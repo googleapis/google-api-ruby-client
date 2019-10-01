@@ -1182,7 +1182,7 @@ module Google
         
         # Gets cluster diagnostic information. The returned Operation.metadata will be
         # ClusterOperationMetadata. After the operation completes, Operation.response
-        # contains DiagnoseClusterResults.
+        # contains Empty.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.

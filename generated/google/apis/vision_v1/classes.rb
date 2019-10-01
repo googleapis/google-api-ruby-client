@@ -7005,11 +7005,6 @@ module Google
         # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1ImageProperties]
         attr_accessor :image_properties_annotation
       
-        # Stores image quality scores, could be aesthetic quality or technical quality.
-        # Corresponds to the JSON property `imageQualityAnnotation`
-        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1ImageQuality]
-        attr_accessor :image_quality_annotation
-      
         # If present, label detection has completed successfully.
         # Corresponds to the JSON property `labelAnnotations`
         # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1EntityAnnotation>]
@@ -7035,11 +7030,6 @@ module Google
         # Corresponds to the JSON property `productSearchResults`
         # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1ProductSearchResults]
         attr_accessor :product_search_results
-      
-        # Stores enhanced image bytes.
-        # Corresponds to the JSON property `qualityOptimizationResult`
-        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1QualityOptimizationResult]
-        attr_accessor :quality_optimization_result
       
         # Set of features pertaining to the image, computed by computer vision
         # methods over safe-search verticals (for example, adult, spoof, medical,
@@ -7070,13 +7060,11 @@ module Google
           @face_annotations = args[:face_annotations] if args.key?(:face_annotations)
           @full_text_annotation = args[:full_text_annotation] if args.key?(:full_text_annotation)
           @image_properties_annotation = args[:image_properties_annotation] if args.key?(:image_properties_annotation)
-          @image_quality_annotation = args[:image_quality_annotation] if args.key?(:image_quality_annotation)
           @label_annotations = args[:label_annotations] if args.key?(:label_annotations)
           @landmark_annotations = args[:landmark_annotations] if args.key?(:landmark_annotations)
           @localized_object_annotations = args[:localized_object_annotations] if args.key?(:localized_object_annotations)
           @logo_annotations = args[:logo_annotations] if args.key?(:logo_annotations)
           @product_search_results = args[:product_search_results] if args.key?(:product_search_results)
-          @quality_optimization_result = args[:quality_optimization_result] if args.key?(:quality_optimization_result)
           @safe_search_annotation = args[:safe_search_annotation] if args.key?(:safe_search_annotation)
           @text_annotations = args[:text_annotations] if args.key?(:text_annotations)
           @web_detection = args[:web_detection] if args.key?(:web_detection)
@@ -7788,28 +7776,6 @@ module Google
         end
       end
       
-      # Stores image quality scores, could be aesthetic quality or technical quality.
-      class GoogleCloudVisionV1p4beta1ImageQuality
-        include Google::Apis::Core::Hashable
-      
-        # A score representing the aesthetic/technical quality of the image. The
-        # score is in range [0, 1]. Higher value corresponds to more professional
-        # looking photos. 0 means the image looks very bad, 1 means the image with
-        # very high quality.
-        # Corresponds to the JSON property `qualityScore`
-        # @return [Float]
-        attr_accessor :quality_score
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @quality_score = args[:quality_score] if args.key?(:quality_score)
-        end
-      end
-      
       # Response message for the `ImportProductSets` method.
       # This message is returned by the
       # google.longrunning.Operations.GetOperation method in the returned
@@ -8412,38 +8378,6 @@ module Google
         end
       end
       
-      # Stores enhanced image bytes.
-      class GoogleCloudVisionV1p4beta1QualityOptimizationResult
-        include Google::Apis::Core::Hashable
-      
-        # Optimized image bytes.
-        # Corresponds to the JSON property `image`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :image
-      
-        # Mime type of the output image.
-        # Corresponds to the JSON property `mimeType`
-        # @return [String]
-        attr_accessor :mime_type
-      
-        # Required optimization type.
-        # Corresponds to the JSON property `qualityOptimizationType`
-        # @return [String]
-        attr_accessor :quality_optimization_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @image = args[:image] if args.key?(:image)
-          @mime_type = args[:mime_type] if args.key?(:mime_type)
-          @quality_optimization_type = args[:quality_optimization_type] if args.key?(:quality_optimization_type)
-        end
-      end
-      
       # A `ReferenceImage` represents a product image and its associated metadata,
       # such as bounding boxes.
       class GoogleCloudVisionV1p4beta1ReferenceImage
@@ -8501,28 +8435,10 @@ module Google
         # @return [String]
         attr_accessor :adult
       
-        # Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `adultConfidence`
-        # @return [Float]
-        attr_accessor :adult_confidence
-      
         # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
-      
-        # Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `medicalConfidence`
-        # @return [Float]
-        attr_accessor :medical_confidence
-      
-        # Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very
-        # confident.
-        # Corresponds to the JSON property `nsfwConfidence`
-        # @return [Float]
-        attr_accessor :nsfw_confidence
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
@@ -8532,12 +8448,6 @@ module Google
         # @return [String]
         attr_accessor :racy
       
-        # Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very
-        # confident.
-        # Corresponds to the JSON property `racyConfidence`
-        # @return [Float]
-        attr_accessor :racy_confidence
-      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -8545,22 +8455,10 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `spoofConfidence`
-        # @return [Float]
-        attr_accessor :spoof_confidence
-      
         # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
-      
-        # Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `violenceConfidence`
-        # @return [Float]
-        attr_accessor :violence_confidence
       
         def initialize(**args)
            update!(**args)
@@ -8569,16 +8467,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
-          @adult_confidence = args[:adult_confidence] if args.key?(:adult_confidence)
           @medical = args[:medical] if args.key?(:medical)
-          @medical_confidence = args[:medical_confidence] if args.key?(:medical_confidence)
-          @nsfw_confidence = args[:nsfw_confidence] if args.key?(:nsfw_confidence)
           @racy = args[:racy] if args.key?(:racy)
-          @racy_confidence = args[:racy_confidence] if args.key?(:racy_confidence)
           @spoof = args[:spoof] if args.key?(:spoof)
-          @spoof_confidence = args[:spoof_confidence] if args.key?(:spoof_confidence)
           @violence = args[:violence] if args.key?(:violence)
-          @violence_confidence = args[:violence_confidence] if args.key?(:violence_confidence)
         end
       end
       
@@ -10373,28 +10265,10 @@ module Google
         # @return [String]
         attr_accessor :adult
       
-        # Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `adultConfidence`
-        # @return [Float]
-        attr_accessor :adult_confidence
-      
         # Likelihood that this is a medical image.
         # Corresponds to the JSON property `medical`
         # @return [String]
         attr_accessor :medical
-      
-        # Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `medicalConfidence`
-        # @return [Float]
-        attr_accessor :medical_confidence
-      
-        # Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very
-        # confident.
-        # Corresponds to the JSON property `nsfwConfidence`
-        # @return [Float]
-        attr_accessor :nsfw_confidence
       
         # Likelihood that the request image contains racy content. Racy content may
         # include (but is not limited to) skimpy or sheer clothing, strategically
@@ -10404,12 +10278,6 @@ module Google
         # @return [String]
         attr_accessor :racy
       
-        # Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very
-        # confident.
-        # Corresponds to the JSON property `racyConfidence`
-        # @return [Float]
-        attr_accessor :racy_confidence
-      
         # Spoof likelihood. The likelihood that an modification
         # was made to the image's canonical version to make it appear
         # funny or offensive.
@@ -10417,22 +10285,10 @@ module Google
         # @return [String]
         attr_accessor :spoof
       
-        # Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `spoofConfidence`
-        # @return [Float]
-        attr_accessor :spoof_confidence
-      
         # Likelihood that this image contains violent content.
         # Corresponds to the JSON property `violence`
         # @return [String]
         attr_accessor :violence
-      
-        # Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means
-        # very confident.
-        # Corresponds to the JSON property `violenceConfidence`
-        # @return [Float]
-        attr_accessor :violence_confidence
       
         def initialize(**args)
            update!(**args)
@@ -10441,16 +10297,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @adult = args[:adult] if args.key?(:adult)
-          @adult_confidence = args[:adult_confidence] if args.key?(:adult_confidence)
           @medical = args[:medical] if args.key?(:medical)
-          @medical_confidence = args[:medical_confidence] if args.key?(:medical_confidence)
-          @nsfw_confidence = args[:nsfw_confidence] if args.key?(:nsfw_confidence)
           @racy = args[:racy] if args.key?(:racy)
-          @racy_confidence = args[:racy_confidence] if args.key?(:racy_confidence)
           @spoof = args[:spoof] if args.key?(:spoof)
-          @spoof_confidence = args[:spoof_confidence] if args.key?(:spoof_confidence)
           @violence = args[:violence] if args.key?(:violence)
-          @violence_confidence = args[:violence_confidence] if args.key?(:violence_confidence)
         end
       end
       

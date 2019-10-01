@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/youtube/partner/
     module YoutubePartnerV1
       VERSION = 'V1'
-      REVISION = '20190922'
+      REVISION = '20190927'
 
       # View and manage your assets and associated content on YouTube
       AUTH_YOUTUBEPARTNER = 'https://www.googleapis.com/auth/youtubepartner'

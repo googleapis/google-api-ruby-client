@@ -34,6 +34,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArimaCoefficients
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArimaFittingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArimaModelInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArimaOrder
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArimaResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryModelTraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -682,6 +712,54 @@ module Google
         end
       end
       
+      class ArimaCoefficients
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_regressive_coefficients, as: 'autoRegressiveCoefficients'
+          property :intercept_coefficient, as: 'interceptCoefficient'
+          collection :moving_average_coefficients, as: 'movingAverageCoefficients'
+        end
+      end
+      
+      class ArimaFittingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aic, as: 'aic'
+          property :log_likelihood, as: 'logLikelihood'
+          property :variance, as: 'variance'
+        end
+      end
+      
+      class ArimaModelInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :arima_coefficients, as: 'arimaCoefficients', class: Google::Apis::BigqueryV2::ArimaCoefficients, decorator: Google::Apis::BigqueryV2::ArimaCoefficients::Representation
+      
+          property :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
+      
+          property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
+      
+        end
+      end
+      
+      class ArimaOrder
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :d, :numeric_string => true, as: 'd'
+          property :p, :numeric_string => true, as: 'p'
+          property :q, :numeric_string => true, as: 'q'
+        end
+      end
+      
+      class ArimaResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :arima_model_info, as: 'arimaModelInfo', class: Google::Apis::BigqueryV2::ArimaModelInfo, decorator: Google::Apis::BigqueryV2::ArimaModelInfo::Representation
+      
+          collection :seasonal_periods, as: 'seasonalPeriods'
+        end
+      end
+      
       class BigQueryModelTraining
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1107,6 +1185,8 @@ module Google
       class IterationResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :arima_result, as: 'arimaResult', class: Google::Apis::BigqueryV2::ArimaResult, decorator: Google::Apis::BigqueryV2::ArimaResult::Representation
+      
           collection :cluster_infos, as: 'clusterInfos', class: Google::Apis::BigqueryV2::ClusterInfo, decorator: Google::Apis::BigqueryV2::ClusterInfo::Representation
       
           property :duration_ms, :numeric_string => true, as: 'durationMs'

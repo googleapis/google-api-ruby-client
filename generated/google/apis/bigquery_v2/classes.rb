@@ -139,6 +139,158 @@ module Google
         end
       end
       
+      # Arima coefficients.
+      class ArimaCoefficients
+        include Google::Apis::Core::Hashable
+      
+        # Auto-regressive coefficients, an array of double.
+        # Corresponds to the JSON property `autoRegressiveCoefficients`
+        # @return [Array<Float>]
+        attr_accessor :auto_regressive_coefficients
+      
+        # Intercept coefficient, just a double not an array.
+        # Corresponds to the JSON property `interceptCoefficient`
+        # @return [Float]
+        attr_accessor :intercept_coefficient
+      
+        # Moving-average coefficients, an array of double.
+        # Corresponds to the JSON property `movingAverageCoefficients`
+        # @return [Array<Float>]
+        attr_accessor :moving_average_coefficients
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @auto_regressive_coefficients = args[:auto_regressive_coefficients] if args.key?(:auto_regressive_coefficients)
+          @intercept_coefficient = args[:intercept_coefficient] if args.key?(:intercept_coefficient)
+          @moving_average_coefficients = args[:moving_average_coefficients] if args.key?(:moving_average_coefficients)
+        end
+      end
+      
+      # ARIMA model fitting metrics.
+      class ArimaFittingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # AIC
+        # Corresponds to the JSON property `aic`
+        # @return [Float]
+        attr_accessor :aic
+      
+        # log-likelihood
+        # Corresponds to the JSON property `logLikelihood`
+        # @return [Float]
+        attr_accessor :log_likelihood
+      
+        # variance.
+        # Corresponds to the JSON property `variance`
+        # @return [Float]
+        attr_accessor :variance
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aic = args[:aic] if args.key?(:aic)
+          @log_likelihood = args[:log_likelihood] if args.key?(:log_likelihood)
+          @variance = args[:variance] if args.key?(:variance)
+        end
+      end
+      
+      # Arima model information.
+      class ArimaModelInfo
+        include Google::Apis::Core::Hashable
+      
+        # Arima coefficients.
+        # Corresponds to the JSON property `arimaCoefficients`
+        # @return [Google::Apis::BigqueryV2::ArimaCoefficients]
+        attr_accessor :arima_coefficients
+      
+        # ARIMA model fitting metrics.
+        # Corresponds to the JSON property `arimaFittingMetrics`
+        # @return [Google::Apis::BigqueryV2::ArimaFittingMetrics]
+        attr_accessor :arima_fitting_metrics
+      
+        # Arima order, can be used for both non-seasonal and seasonal parts.
+        # Corresponds to the JSON property `nonSeasonalOrder`
+        # @return [Google::Apis::BigqueryV2::ArimaOrder]
+        attr_accessor :non_seasonal_order
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arima_coefficients = args[:arima_coefficients] if args.key?(:arima_coefficients)
+          @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
+          @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
+        end
+      end
+      
+      # Arima order, can be used for both non-seasonal and seasonal parts.
+      class ArimaOrder
+        include Google::Apis::Core::Hashable
+      
+        # Order of the differencing part.
+        # Corresponds to the JSON property `d`
+        # @return [Fixnum]
+        attr_accessor :d
+      
+        # Order of the autoregressive part.
+        # Corresponds to the JSON property `p`
+        # @return [Fixnum]
+        attr_accessor :p
+      
+        # Order of the moving-average part.
+        # Corresponds to the JSON property `q`
+        # @return [Fixnum]
+        attr_accessor :q
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @d = args[:d] if args.key?(:d)
+          @p = args[:p] if args.key?(:p)
+          @q = args[:q] if args.key?(:q)
+        end
+      end
+      
+      # (Auto-)arima fitting result. Wrap everything in ArimaResult for easier
+      # refactoring if we want to use model-specific iteration results.
+      class ArimaResult
+        include Google::Apis::Core::Hashable
+      
+        # This message is repeated because there are multiple arima models
+        # fitted in auto-arima. For non-auto-arima model, its size is one.
+        # Corresponds to the JSON property `arimaModelInfo`
+        # @return [Array<Google::Apis::BigqueryV2::ArimaModelInfo>]
+        attr_accessor :arima_model_info
+      
+        # Seasonal periods. Repeated because multiple periods are supported for
+        # one time series.
+        # Corresponds to the JSON property `seasonalPeriods`
+        # @return [Array<String>]
+        attr_accessor :seasonal_periods
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @arima_model_info = args[:arima_model_info] if args.key?(:arima_model_info)
+          @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
+        end
+      end
+      
       # 
       class BigQueryModelTraining
         include Google::Apis::Core::Hashable
@@ -1945,6 +2097,12 @@ module Google
       class IterationResult
         include Google::Apis::Core::Hashable
       
+        # (Auto-)arima fitting result. Wrap everything in ArimaResult for easier
+        # refactoring if we want to use model-specific iteration results.
+        # Corresponds to the JSON property `arimaResult`
+        # @return [Google::Apis::BigqueryV2::ArimaResult]
+        attr_accessor :arima_result
+      
         # Information about top clusters for clustering models.
         # Corresponds to the JSON property `clusterInfos`
         # @return [Array<Google::Apis::BigqueryV2::ClusterInfo>]
@@ -1981,6 +2139,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @arima_result = args[:arima_result] if args.key?(:arima_result)
           @cluster_infos = args[:cluster_infos] if args.key?(:cluster_infos)
           @duration_ms = args[:duration_ms] if args.key?(:duration_ms)
           @eval_loss = args[:eval_loss] if args.key?(:eval_loss)
