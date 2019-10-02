@@ -562,7 +562,7 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionConfig]
         attr_accessor :config
       
-        # The name of the model to use for recognition.
+        # Use `model` field in RecognitionConfig instead.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

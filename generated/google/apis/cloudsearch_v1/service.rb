@@ -359,7 +359,9 @@ module Google
         end
         
         # Deletes Item resource for the
-        # specified resource name.
+        # specified resource name. This API requires an admin or service account
+        # to execute. The service account used is the one whitelisted in the
+        # corresponding data source.
         # @param [String] name
         #   Required. Name of the item to delete.
         #   Format: datasources/`source_id`/items/`item_id`
@@ -414,6 +416,8 @@ module Google
         
         # Deletes all items in a queue. This method is useful for deleting stale
         # items.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Data Source to delete items in a queue.
         #   Format: datasources/`source_id`
@@ -448,6 +452,8 @@ module Google
         end
         
         # Gets Item resource by item name.
+        # This API requires an admin or service account to execute.  The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the item to get info.
         #   Format: datasources/`source_id`/items/`item_id`
@@ -491,6 +497,8 @@ module Google
         # does not exist.
         # This method does not support partial updates.  Fields with no provided
         # values are cleared out in the Cloud Search index.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Item. Format:
         #   datasources/`source_id`/items/`item_id`
@@ -527,6 +535,8 @@ module Google
         end
         
         # Lists all or a subset of Item resources.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Data Source to list Items.  Format:
         #   datasources/`source_id`
@@ -534,9 +544,21 @@ module Google
         #   When set to true, the indexing system only populates the following fields:
         #   name,
         #   version,
+        #   queue.
         #   metadata.hash,
+        #   metadata.title,
+        #   metadata.sourceRepositoryURL,
+        #   metadata.objectType,
+        #   metadata.createTime,
+        #   metadata.updateTime,
+        #   metadata.contentLanguage,
+        #   metadata.mimeType,
         #   structured_data.hash,
-        #   content.hash.
+        #   content.hash,
+        #   itemType,
+        #   itemStatus.code,
+        #   itemStatus.processingError.code,
+        #   itemStatus.repositoryError.type,
         #   <br />If this value is false, then all the fields are populated in Item.
         # @param [String] connector_name
         #   Name of connector making this call.
@@ -606,6 +628,8 @@ module Google
         # the type REQUEUE.
         # Items automatically become available (unreserved) after 4 hours even if no
         # update or push method is called.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Data Source to poll items.
         #   Format: datasources/`source_id`
@@ -640,6 +664,8 @@ module Google
         end
         
         # Pushes an item onto a queue for later polling and updating.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the item to
         #   push into the indexing queue.<br />
@@ -679,6 +705,8 @@ module Google
         # Unreserves all items from a queue, making them all eligible to be
         # polled.  This method is useful for resetting the indexing queue
         # after a connector has been restarted.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Data Source to unreserve all items.
         #   Format: datasources/`source_id`
@@ -716,6 +744,8 @@ module Google
         # than 100 KB, it's easier to embed the content
         # inline within
         # an index request.
+        # This API requires an admin or service account to execute. The service
+        # account used is the one whitelisted in the corresponding data source.
         # @param [String] name
         #   Name of the Item to start a resumable upload.
         #   Format: datasources/`source_id`/items/`item_id`.
@@ -1391,6 +1421,141 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Get the query statistics for customer
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetCustomerQueryStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetCustomerQueryStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_query(from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/query', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetCustomerQueryStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetCustomerQueryStatsResponse
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the # of search sessions for the customer
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetCustomerSessionStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetCustomerSessionStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_session(from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/session', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetCustomerSessionStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetCustomerSessionStatsResponse
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the users statistics for customer
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetCustomerUserStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetCustomerUserStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_user(from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/user', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetCustomerUserStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetCustomerUserStatsResponse
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets indexed item statistics for a single data source.
         # @param [String] name
         #   The resource id of the data source to retrieve statistics for,
@@ -1428,6 +1593,153 @@ module Google
           command = make_simple_command(:get, 'v1/stats/index/{+name}', options)
           command.response_representation = Google::Apis::CloudsearchV1::GetDataSourceIndexStatsResponse::Representation
           command.response_class = Google::Apis::CloudsearchV1::GetDataSourceIndexStatsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the query statistics for search application
+        # @param [String] name
+        #   The resource id of the search application query stats, in the following
+        #   format: searchapplications/`application_id`
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetSearchApplicationQueryStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetSearchApplicationQueryStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_query_searchapplication(name, from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/query/{+name}', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetSearchApplicationQueryStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetSearchApplicationQueryStatsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the # of search sessions for the search application
+        # @param [String] name
+        #   The resource id of the search application session stats, in the following
+        #   format: searchapplications/`application_id`
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetSearchApplicationSessionStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetSearchApplicationSessionStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_session_searchapplication(name, from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/session/{+name}', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetSearchApplicationSessionStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetSearchApplicationSessionStatsResponse
+          command.params['name'] = name unless name.nil?
+          command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
+          command.query['fromDate.month'] = from_date_month unless from_date_month.nil?
+          command.query['fromDate.year'] = from_date_year unless from_date_year.nil?
+          command.query['toDate.day'] = to_date_day unless to_date_day.nil?
+          command.query['toDate.month'] = to_date_month unless to_date_month.nil?
+          command.query['toDate.year'] = to_date_year unless to_date_year.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the users statistics for search application
+        # @param [String] name
+        #   The resource id of the search application session stats, in the following
+        #   format: searchapplications/`application_id`
+        # @param [Fixnum] from_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] from_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] from_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [Fixnum] to_date_day
+        #   Day of month. Must be from 1 to 31 and valid for the year and month.
+        # @param [Fixnum] to_date_month
+        #   Month of date. Must be from 1 to 12.
+        # @param [Fixnum] to_date_year
+        #   Year of date. Must be from 1 to 9999.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudsearchV1::GetSearchApplicationUserStatsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudsearchV1::GetSearchApplicationUserStatsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_stat_user_searchapplication(name, from_date_day: nil, from_date_month: nil, from_date_year: nil, to_date_day: nil, to_date_month: nil, to_date_year: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/stats/user/{+name}', options)
+          command.response_representation = Google::Apis::CloudsearchV1::GetSearchApplicationUserStatsResponse::Representation
+          command.response_class = Google::Apis::CloudsearchV1::GetSearchApplicationUserStatsResponse
           command.params['name'] = name unless name.nil?
           command.query['fromDate.day'] = from_date_day unless from_date_day.nil?
           command.query['fromDate.month'] = from_date_month unless from_date_month.nil?

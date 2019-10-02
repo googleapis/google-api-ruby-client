@@ -1210,12 +1210,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudVisionV1p4beta1ImageQuality
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudVisionV1p4beta1ImportProductSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1313,12 +1307,6 @@ module Google
       end
       
       class GoogleCloudVisionV1p4beta1Property
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudVisionV1p4beta1QualityOptimizationResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3580,8 +3568,6 @@ module Google
       
           property :image_properties_annotation, as: 'imagePropertiesAnnotation', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ImageProperties, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ImageProperties::Representation
       
-          property :image_quality_annotation, as: 'imageQualityAnnotation', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ImageQuality, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ImageQuality::Representation
-      
           collection :label_annotations, as: 'labelAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation::Representation
       
           collection :landmark_annotations, as: 'landmarkAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation::Representation
@@ -3591,8 +3577,6 @@ module Google
           collection :logo_annotations, as: 'logoAnnotations', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1EntityAnnotation::Representation
       
           property :product_search_results, as: 'productSearchResults', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResults, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1ProductSearchResults::Representation
-      
-          property :quality_optimization_result, as: 'qualityOptimizationResult', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1QualityOptimizationResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1QualityOptimizationResult::Representation
       
           property :safe_search_annotation, as: 'safeSearchAnnotation', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1SafeSearchAnnotation, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1SafeSearchAnnotation::Representation
       
@@ -3785,13 +3769,6 @@ module Google
         end
       end
       
-      class GoogleCloudVisionV1p4beta1ImageQuality
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :quality_score, as: 'qualityScore'
-        end
-      end
-      
       class GoogleCloudVisionV1p4beta1ImportProductSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3965,15 +3942,6 @@ module Google
         end
       end
       
-      class GoogleCloudVisionV1p4beta1QualityOptimizationResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :image, :base64 => true, as: 'image'
-          property :mime_type, as: 'mimeType'
-          property :quality_optimization_type, as: 'qualityOptimizationType'
-        end
-      end
-      
       class GoogleCloudVisionV1p4beta1ReferenceImage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3988,16 +3956,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
-          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
-          property :medical_confidence, as: 'medicalConfidence'
-          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
-          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
-          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
-          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       
@@ -4357,16 +4319,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adult, as: 'adult'
-          property :adult_confidence, as: 'adultConfidence'
           property :medical, as: 'medical'
-          property :medical_confidence, as: 'medicalConfidence'
-          property :nsfw_confidence, as: 'nsfwConfidence'
           property :racy, as: 'racy'
-          property :racy_confidence, as: 'racyConfidence'
           property :spoof, as: 'spoof'
-          property :spoof_confidence, as: 'spoofConfidence'
           property :violence, as: 'violence'
-          property :violence_confidence, as: 'violenceConfidence'
         end
       end
       

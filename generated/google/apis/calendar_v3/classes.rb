@@ -829,6 +829,7 @@ module Google
         # - "eventNamedHangout" for classic Hangouts for G Suite users (http://hangouts.
         # google.com)
         # - "hangoutsMeet" for Hangouts Meet (http://meet.google.com)
+        # - "addOn" for 3P conference providers
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

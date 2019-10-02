@@ -45,7 +45,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
@@ -523,7 +523,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",

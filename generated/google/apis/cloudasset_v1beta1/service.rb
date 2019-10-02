@@ -139,7 +139,7 @@ module Google
         #   The request becomes a no-op if the asset name list is empty, and the max
         #   size of the asset name list is 100 in one request.
         # @param [String] content_type
-        #   Required. The content type.
+        #   Optional. The content type.
         # @param [String] read_time_window_end_time
         #   End time of the time window (inclusive).
         #   Current timestamp if not specified.
@@ -268,7 +268,7 @@ module Google
         #   The request becomes a no-op if the asset name list is empty, and the max
         #   size of the asset name list is 100 in one request.
         # @param [String] content_type
-        #   Required. The content type.
+        #   Optional. The content type.
         # @param [String] read_time_window_end_time
         #   End time of the time window (inclusive).
         #   Current timestamp if not specified.

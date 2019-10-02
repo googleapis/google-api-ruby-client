@@ -52,6 +52,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomerQueryStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerSessionStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomerUserStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,7 +268,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetCustomerQueryStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetCustomerSessionStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetCustomerUserStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetDataSourceIndexStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetSearchApplicationQueryStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetSearchApplicationSessionStatsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GetSearchApplicationUserStatsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -556,6 +610,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryCountByStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryInterpretation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -671,6 +731,24 @@ module Google
       end
       
       class SearchApplication
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchApplicationQueryStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchApplicationSessionStats
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SearchApplicationUserStats
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -918,6 +996,36 @@ module Google
       
           collection :item_count_by_status, as: 'itemCountByStatus', class: Google::Apis::CloudsearchV1::ItemCountByStatus, decorator: Google::Apis::CloudsearchV1::ItemCountByStatus::Representation
       
+        end
+      end
+      
+      class CustomerQueryStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          collection :query_count_by_status, as: 'queryCountByStatus', class: Google::Apis::CloudsearchV1::QueryCountByStatus, decorator: Google::Apis::CloudsearchV1::QueryCountByStatus::Representation
+      
+        end
+      end
+      
+      class CustomerSessionStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          property :search_sessions_count, :numeric_string => true, as: 'searchSessionsCount'
+        end
+      end
+      
+      class CustomerUserStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          property :one_day_active_users_count, :numeric_string => true, as: 'oneDayActiveUsersCount'
+          property :seven_days_active_users_count, :numeric_string => true, as: 'sevenDaysActiveUsersCount'
+          property :thirty_days_active_users_count, :numeric_string => true, as: 'thirtyDaysActiveUsersCount'
         end
       end
       
@@ -1204,10 +1312,58 @@ module Google
         end
       end
       
+      class GetCustomerQueryStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerQueryStats, decorator: Google::Apis::CloudsearchV1::CustomerQueryStats::Representation
+      
+        end
+      end
+      
+      class GetCustomerSessionStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerSessionStats, decorator: Google::Apis::CloudsearchV1::CustomerSessionStats::Representation
+      
+        end
+      end
+      
+      class GetCustomerUserStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::CustomerUserStats, decorator: Google::Apis::CloudsearchV1::CustomerUserStats::Representation
+      
+        end
+      end
+      
       class GetDataSourceIndexStatsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::DataSourceIndexStats, decorator: Google::Apis::CloudsearchV1::DataSourceIndexStats::Representation
+      
+        end
+      end
+      
+      class GetSearchApplicationQueryStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::SearchApplicationQueryStats, decorator: Google::Apis::CloudsearchV1::SearchApplicationQueryStats::Representation
+      
+        end
+      end
+      
+      class GetSearchApplicationSessionStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::SearchApplicationSessionStats, decorator: Google::Apis::CloudsearchV1::SearchApplicationSessionStats::Representation
+      
+        end
+      end
+      
+      class GetSearchApplicationUserStatsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :stats, as: 'stats', class: Google::Apis::CloudsearchV1::SearchApplicationUserStats, decorator: Google::Apis::CloudsearchV1::SearchApplicationUserStats::Representation
       
         end
       end
@@ -1740,11 +1896,20 @@ module Google
         end
       end
       
+      class QueryCountByStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :count, :numeric_string => true, as: 'count'
+          property :status_code, as: 'statusCode'
+        end
+      end
+      
       class QueryInterpretation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :interpretation_type, as: 'interpretationType'
           property :interpreted_query, as: 'interpretedQuery'
+          property :reason, as: 'reason'
         end
       end
       
@@ -1752,6 +1917,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disable_nl_interpretation, as: 'disableNlInterpretation'
+          property :enable_verbatim_mode, as: 'enableVerbatimMode'
         end
       end
       
@@ -1939,6 +2105,36 @@ module Google
       
           collection :source_config, as: 'sourceConfig', class: Google::Apis::CloudsearchV1::SourceConfig, decorator: Google::Apis::CloudsearchV1::SourceConfig::Representation
       
+        end
+      end
+      
+      class SearchApplicationQueryStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          collection :query_count_by_status, as: 'queryCountByStatus', class: Google::Apis::CloudsearchV1::QueryCountByStatus, decorator: Google::Apis::CloudsearchV1::QueryCountByStatus::Representation
+      
+        end
+      end
+      
+      class SearchApplicationSessionStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          property :search_sessions_count, :numeric_string => true, as: 'searchSessionsCount'
+        end
+      end
+      
+      class SearchApplicationUserStats
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date', class: Google::Apis::CloudsearchV1::Date, decorator: Google::Apis::CloudsearchV1::Date::Representation
+      
+          property :one_day_active_users_count, :numeric_string => true, as: 'oneDayActiveUsersCount'
+          property :seven_days_active_users_count, :numeric_string => true, as: 'sevenDaysActiveUsersCount'
+          property :thirty_days_active_users_count, :numeric_string => true, as: 'thirtyDaysActiveUsersCount'
         end
       end
       

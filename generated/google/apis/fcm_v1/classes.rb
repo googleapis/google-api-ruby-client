@@ -379,14 +379,18 @@ module Google
         attr_accessor :fcm_options
       
         # HTTP request headers defined in Apple Push Notification Service. Refer to
-        # [APNs request headers](https://goo.gl/C6Yhia) for
-        # supported headers, e.g. "apns-priority": "10".
+        # [APNs request
+        # headers](https://developer.apple.com/documentation/usernotifications/
+        # setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+        # for supported headers, e.g. "apns-priority": "10".
         # Corresponds to the JSON property `headers`
         # @return [Hash<String,String>]
         attr_accessor :headers
       
         # APNs payload as a JSON object, including both `aps` dictionary and custom
-        # payload. See [Payload Key Reference](https://goo.gl/32Pl5W).
+        # payload. See [Payload Key
+        # Reference](https://developer.apple.com/documentation/usernotifications/
+        # setting_up_a_remote_notification_server/generating_a_remote_notification).
         # If present, it overrides google.firebase.fcm.v1.Notification.title
         # and google.firebase.fcm.v1.Notification.body.
         # Corresponds to the JSON property `payload`
@@ -758,7 +762,8 @@ module Google
         # @return [String]
         attr_accessor :condition
       
-        # Input only. Arbitrary key/value payload.
+        # Input only. Arbitrary key/value payload. The key should not be a reserved
+        # word ("from", "message_type", or any word starting with "google" or "gcm").
         # Corresponds to the JSON property `data`
         # @return [Hash<String,String>]
         attr_accessor :data

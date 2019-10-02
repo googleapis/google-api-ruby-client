@@ -147,6 +147,105 @@ module Google
         end
       end
       
+      # 
+      class CustomerQueryStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # 
+        # Corresponds to the JSON property `queryCountByStatus`
+        # @return [Array<Google::Apis::CloudsearchV1::QueryCountByStatus>]
+        attr_accessor :query_count_by_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @query_count_by_status = args[:query_count_by_status] if args.key?(:query_count_by_status)
+        end
+      end
+      
+      # 
+      class CustomerSessionStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # The count of search sessions on the day
+        # Corresponds to the JSON property `searchSessionsCount`
+        # @return [Fixnum]
+        attr_accessor :search_sessions_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @search_sessions_count = args[:search_sessions_count] if args.key?(:search_sessions_count)
+        end
+      end
+      
+      # 
+      class CustomerUserStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # The count of unique active users in the past one day
+        # Corresponds to the JSON property `oneDayActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :one_day_active_users_count
+      
+        # The count of unique active users in the past seven days
+        # Corresponds to the JSON property `sevenDaysActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :seven_days_active_users_count
+      
+        # The count of unique active users in the past thirty days
+        # Corresponds to the JSON property `thirtyDaysActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :thirty_days_active_users_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @one_day_active_users_count = args[:one_day_active_users_count] if args.key?(:one_day_active_users_count)
+          @seven_days_active_users_count = args[:seven_days_active_users_count] if args.key?(:seven_days_active_users_count)
+          @thirty_days_active_users_count = args[:thirty_days_active_users_count] if args.key?(:thirty_days_active_users_count)
+        end
+      end
+      
       # Datasource is a logical namespace for items to be indexed.
       # All items must belong to a datasource.  This is the prerequisite before
       # items can be indexed into Cloud Search.
@@ -1171,12 +1270,126 @@ module Google
       end
       
       # 
+      class GetCustomerQueryStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::CustomerQueryStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
+      class GetCustomerSessionStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::CustomerSessionStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
+      class GetCustomerUserStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::CustomerUserStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
       class GetDataSourceIndexStatsResponse
         include Google::Apis::Core::Hashable
       
         # Summary of indexed item counts, one for each day in the requested range.
         # Corresponds to the JSON property `stats`
         # @return [Array<Google::Apis::CloudsearchV1::DataSourceIndexStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
+      class GetSearchApplicationQueryStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::SearchApplicationQueryStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
+      class GetSearchApplicationSessionStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::SearchApplicationSessionStats>]
+        attr_accessor :stats
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stats = args[:stats] if args.key?(:stats)
+        end
+      end
+      
+      # 
+      class GetSearchApplicationUserStatsResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `stats`
+        # @return [Array<Google::Apis::CloudsearchV1::SearchApplicationUserStats>]
         attr_accessor :stats
       
         def initialize(**args)
@@ -3100,6 +3313,31 @@ module Google
       end
       
       # 
+      class QueryCountByStatus
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # This represents the http status code.
+        # Corresponds to the JSON property `statusCode`
+        # @return [Fixnum]
+        attr_accessor :status_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @status_code = args[:status_code] if args.key?(:status_code)
+        end
+      end
+      
+      # 
       class QueryInterpretation
         include Google::Apis::Core::Hashable
       
@@ -3116,6 +3354,12 @@ module Google
         # @return [String]
         attr_accessor :interpreted_query
       
+        # The reason for interpretation of the query. This field will not be
+        # UNSPECIFIED if the interpretation type is not NONE.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3124,6 +3368,7 @@ module Google
         def update!(**args)
           @interpretation_type = args[:interpretation_type] if args.key?(:interpretation_type)
           @interpreted_query = args[:interpreted_query] if args.key?(:interpreted_query)
+          @reason = args[:reason] if args.key?(:reason)
         end
       end
       
@@ -3139,6 +3384,15 @@ module Google
         attr_accessor :disable_nl_interpretation
         alias_method :disable_nl_interpretation?, :disable_nl_interpretation
       
+        # Enable this flag to turn off all internal optimizations like natural
+        # language (NL) interpretation of queries, supplemental result retrieval,
+        # and usage of synonyms including custom ones.
+        # Nl interpretation will be disabled if either one of the two flags is true.
+        # Corresponds to the JSON property `enableVerbatimMode`
+        # @return [Boolean]
+        attr_accessor :enable_verbatim_mode
+        alias_method :enable_verbatim_mode?, :enable_verbatim_mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3146,6 +3400,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disable_nl_interpretation = args[:disable_nl_interpretation] if args.key?(:disable_nl_interpretation)
+          @enable_verbatim_mode = args[:enable_verbatim_mode] if args.key?(:enable_verbatim_mode)
         end
       end
       
@@ -3766,6 +4021,105 @@ module Google
           @operation_ids = args[:operation_ids] if args.key?(:operation_ids)
           @scoring_config = args[:scoring_config] if args.key?(:scoring_config)
           @source_config = args[:source_config] if args.key?(:source_config)
+        end
+      end
+      
+      # 
+      class SearchApplicationQueryStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # 
+        # Corresponds to the JSON property `queryCountByStatus`
+        # @return [Array<Google::Apis::CloudsearchV1::QueryCountByStatus>]
+        attr_accessor :query_count_by_status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @query_count_by_status = args[:query_count_by_status] if args.key?(:query_count_by_status)
+        end
+      end
+      
+      # 
+      class SearchApplicationSessionStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # The count of search sessions on the day
+        # Corresponds to the JSON property `searchSessionsCount`
+        # @return [Fixnum]
+        attr_accessor :search_sessions_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @search_sessions_count = args[:search_sessions_count] if args.key?(:search_sessions_count)
+        end
+      end
+      
+      # 
+      class SearchApplicationUserStats
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole calendar date, for example a date of birth. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/
+        # wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date
+        # between the year 1 and 9999.
+        # Corresponds to the JSON property `date`
+        # @return [Google::Apis::CloudsearchV1::Date]
+        attr_accessor :date
+      
+        # The count of unique active users in the past one day
+        # Corresponds to the JSON property `oneDayActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :one_day_active_users_count
+      
+        # The count of unique active users in the past seven days
+        # Corresponds to the JSON property `sevenDaysActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :seven_days_active_users_count
+      
+        # The count of unique active users in the past thirty days
+        # Corresponds to the JSON property `thirtyDaysActiveUsersCount`
+        # @return [Fixnum]
+        attr_accessor :thirty_days_active_users_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @one_day_active_users_count = args[:one_day_active_users_count] if args.key?(:one_day_active_users_count)
+          @seven_days_active_users_count = args[:seven_days_active_users_count] if args.key?(:seven_days_active_users_count)
+          @thirty_days_active_users_count = args[:thirty_days_active_users_count] if args.key?(:thirty_days_active_users_count)
         end
       end
       
