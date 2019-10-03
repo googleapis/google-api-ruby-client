@@ -1153,6 +1153,7 @@ module Google
       class WebToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :enabled_features, as: 'enabledFeatures'
           property :name, as: 'name'
           property :parent_frame_url, as: 'parentFrameUrl'
           collection :permissions, as: 'permissions'

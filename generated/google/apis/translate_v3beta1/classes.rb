@@ -55,10 +55,10 @@ module Google
         # or an AutoML Translation model.
         # The value format depends on model type:
         # - AutoML Translation models:
-        # `projects/`project-id`/locations/`location-id`/models/`model-id``
+        # `projects/`project-number-or-id`/locations/`location-id`/models/`model-id``
         # - General (built-in) models:
-        # `projects/`project-id`/locations/`location-id`/models/general/nmt`,
-        # `projects/`project-id`/locations/`location-id`/models/general/base`
+        # `projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
+        # `projects/`project-number-or-id`/locations/`location-id`/models/general/base`
         # If the map is empty or a specific model is
         # not requested for a language pair, then default google model (nmt) is used.
         # Corresponds to the JSON property `models`
@@ -136,11 +136,11 @@ module Google
       
         # Optional. The language detection model to be used.
         # Format:
-        # `projects/`project-id`/locations/`location-id`/models/language-detection/`
-        # model-id``
+        # `projects/`project-number-or-id`/locations/`location-id`/models/language-
+        # detection/`model-id``
         # Only one language detection model is currently supported:
-        # `projects/`project-id`/locations/`location-id`/models/language-detection/
-        # default`.
+        # `projects/`project-number-or-id`/locations/`location-id`/models/language-
+        # detection/default`.
         # If not specified, the default model is used.
         # Corresponds to the JSON property `model`
         # @return [String]
@@ -294,7 +294,8 @@ module Google
         attr_accessor :language_pair
       
         # Required. The resource name of the glossary. Glossary names have the form
-        # `projects/`project-id`/locations/`location-id`/glossaries/`glossary-id``.
+        # `projects/`project-number-or-id`/locations/`location-id`/glossaries/`glossary-
+        # id``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -790,13 +791,13 @@ module Google
         # Optional. The `model` type requested for this translation.
         # The format depends on model type:
         # - AutoML Translation models:
-        # `projects/`project-id`/locations/`location-id`/models/`model-id``
+        # `projects/`project-number-or-id`/locations/`location-id`/models/`model-id``
         # - General (built-in) models:
-        # `projects/`project-id`/locations/`location-id`/models/general/nmt`,
-        # `projects/`project-id`/locations/`location-id`/models/general/base`
+        # `projects/`project-number-or-id`/locations/`location-id`/models/general/nmt`,
+        # `projects/`project-number-or-id`/locations/`location-id`/models/general/base`
         # For global (non-regionalized) requests, use `location-id` `global`.
         # For example,
-        # `projects/`project-id`/locations/global/models/general/nmt`.
+        # `projects/`project-number-or-id`/locations/global/models/general/nmt`.
         # If missing, the system decides which google base model to use.
         # Corresponds to the JSON property `model`
         # @return [String]
@@ -883,7 +884,12 @@ module Google
         attr_accessor :glossary_config
       
         # Only present when `model` is present in the request.
-        # This is same as `model` provided in the request.
+        # `model` here is normalized to have project number.
+        # For example:
+        # If the `model` requested in TranslationTextRequest is
+        # `projects/`project-id`/locations/`location-id`/models/general/nmt` then
+        # `model` here would be normalized to
+        # `projects/`project-number`/locations/`location-id`/models/general/nmt`.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model

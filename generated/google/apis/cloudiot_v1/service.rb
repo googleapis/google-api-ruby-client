@@ -50,7 +50,7 @@ module Google
         
         # Associates the device with the gateway.
         # @param [String] parent
-        #   The name of the registry. For example,
+        #   Required. The name of the registry. For example,
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::BindDeviceToGatewayRequest] bind_device_to_gateway_request_object
         # @param [String] fields
@@ -84,7 +84,8 @@ module Google
         
         # Creates a device registry that contains devices.
         # @param [String] parent
-        #   The project and cloud region where this device registry must be created.
+        #   Required. The project and cloud region where this device registry must be
+        #   created.
         #   For example, `projects/example-project/locations/us-central1`.
         # @param [Google::Apis::CloudiotV1::DeviceRegistry] device_registry_object
         # @param [String] fields
@@ -118,7 +119,7 @@ module Google
         
         # Deletes a device registry configuration.
         # @param [String] name
-        #   The name of the device registry. For example,
+        #   Required. The name of the device registry. For example,
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -149,7 +150,7 @@ module Google
         
         # Gets a device registry configuration.
         # @param [String] name
-        #   The name of the device registry. For example,
+        #   Required. The name of the device registry. For example,
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -216,7 +217,7 @@ module Google
         
         # Lists device registries.
         # @param [String] parent
-        #   The project and cloud region path. For example,
+        #   Required. The project and cloud region path. For example,
         #   `projects/example-project/locations/us-central1`.
         # @param [Fixnum] page_size
         #   The maximum number of registries to return in the response. If this value
@@ -262,7 +263,7 @@ module Google
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::DeviceRegistry] device_registry_object
         # @param [String] update_mask
-        #   Only updates the `device_registry` fields indicated by this mask.
+        #   Required. Only updates the `device_registry` fields indicated by this mask.
         #   The field mask must not be empty, and it must not contain fields that
         #   are immutable or only set by the server.
         #   Mutable top-level fields: `event_notification_config`, `http_config`,
@@ -370,7 +371,7 @@ module Google
         
         # Deletes the association between the device and the gateway.
         # @param [String] parent
-        #   The name of the registry. For example,
+        #   Required. The name of the registry. For example,
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::UnbindDeviceFromGatewayRequest] unbind_device_from_gateway_request_object
         # @param [String] fields
@@ -404,7 +405,7 @@ module Google
         
         # Creates a device in a device registry.
         # @param [String] parent
-        #   The name of the device registry where this device should be created.
+        #   Required. The name of the device registry where this device should be created.
         #   For example,
         #   `projects/example-project/locations/us-central1/registries/my-registry`.
         # @param [Google::Apis::CloudiotV1::Device] device_object
@@ -439,7 +440,7 @@ module Google
         
         # Deletes a device.
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [String] fields
@@ -471,7 +472,7 @@ module Google
         
         # Gets details about a device.
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [String] field_mask
@@ -507,7 +508,7 @@ module Google
         
         # List devices in a device registry.
         # @param [String] parent
-        #   The device registry path. Required. For example,
+        #   Required. The device registry path. Required. For example,
         #   `projects/my-project/locations/us-central1/registries/my-registry`.
         # @param [Array<String>, String] device_ids
         #   A list of device string IDs. For example, `['device0', 'device12']`.
@@ -581,7 +582,7 @@ module Google
         # the Cloud IoT Core servers. Returns the modified configuration version and
         # its metadata.
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [Google::Apis::CloudiotV1::ModifyCloudToDeviceConfigRequest] modify_cloud_to_device_config_request_object
@@ -623,7 +624,7 @@ module Google
         #   in the device numeric ID.
         # @param [Google::Apis::CloudiotV1::Device] device_object
         # @param [String] update_mask
-        #   Only updates the `device` fields indicated by this mask.
+        #   Required. Only updates the `device` fields indicated by this mask.
         #   The field mask must not be empty, and it must not contain fields that
         #   are immutable or only set by the server.
         #   Mutable top-level fields: `credentials`, `blocked`, and `metadata`
@@ -671,7 +672,7 @@ module Google
         # return OK. If the subscription is QoS 1, at least once delivery will be
         # guaranteed; for QoS 0, no acknowledgment will be expected from the device.
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [Google::Apis::CloudiotV1::SendCommandToDeviceRequest] send_command_to_device_request_object
@@ -707,7 +708,7 @@ module Google
         # Lists the last few versions of the device configuration in descending
         # order (i.e.: newest first).
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [Fixnum] num_versions
@@ -745,7 +746,7 @@ module Google
         # Lists the last few versions of the device state in descending order (i.e.:
         # newest first).
         # @param [String] name
-        #   The name of the device. For example,
+        #   Required. The name of the device. For example,
         #   `projects/p0/locations/us-central1/registries/registry0/devices/device0` or
         #   `projects/p0/locations/us-central1/registries/registry0/devices/`num_id``.
         # @param [Fixnum] num_states
@@ -889,7 +890,7 @@ module Google
         
         # List devices in a device registry.
         # @param [String] parent
-        #   The device registry path. Required. For example,
+        #   Required. The device registry path. Required. For example,
         #   `projects/my-project/locations/us-central1/registries/my-registry`.
         # @param [Array<String>, String] device_ids
         #   A list of device string IDs. For example, `['device0', 'device12']`.

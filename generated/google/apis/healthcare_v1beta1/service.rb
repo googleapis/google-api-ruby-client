@@ -2540,6 +2540,8 @@ module Google
         # GCP error might be returned instead.
         # @param [String] name
         #   The name of the resource to retrieve.
+        # @param [String] _page_token
+        #   Same as `page`. Please use either `page` or `_page_token`.
         # @param [String] at
         #   Only include resource versions that were current at some point during the
         #   time period specified in the date time value. The date parameter format is
@@ -2553,9 +2555,10 @@ module Google
         #   The maximum number of search results on a page. Defaults to 1000.
         # @param [String] page
         #   Used to retrieve the first, previous, next, or last page of resource
-        #   versions when using pagination. Value should be set to the value of the
-        #   `link.url` field returned in the response to the previous request, where
-        #   `link.relation` is "first", "previous", "next" or "last".
+        #   versions when using pagination. Value should be set to the value of
+        #   `page` set in next or previous page links' URLs. Next and previous
+        #   page are returned in the response bundle's links field, where
+        #   `link.relation` is "previous" or "next".
         #   Omit `page` if no previous request has been made.
         # @param [String] since
         #   Only include resource versions that were created at or after the given
@@ -2580,11 +2583,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def history_project_location_dataset_fhir_store_fhir(name, at: nil, count: nil, page: nil, since: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def history_project_location_dataset_fhir_store_fhir(name, _page_token: nil, at: nil, count: nil, page: nil, since: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/_history', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
+          command.query['_page_token'] = _page_token unless _page_token.nil?
           command.query['at'] = at unless at.nil?
           command.query['count'] = count unless count.nil?
           command.query['page'] = page unless page.nil?

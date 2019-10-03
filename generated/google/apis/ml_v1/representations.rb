@@ -604,6 +604,8 @@ module Google
       class GoogleCloudMlV1Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
+      
           property :auto_scaling, as: 'autoScaling', class: Google::Apis::MlV1::GoogleCloudMlV1AutoScaling, decorator: Google::Apis::MlV1::GoogleCloudMlV1AutoScaling::Representation
       
           property :create_time, as: 'createTime'

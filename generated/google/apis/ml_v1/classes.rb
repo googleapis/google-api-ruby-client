@@ -109,6 +109,7 @@ module Google
       end
       
       # Represents a hardware accelerator request config.
+      # Note that the AcceleratorConfig could be used in both Jobs and Versions.
       class GoogleCloudMlV1AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -1175,6 +1176,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a hardware accelerator request config.
+        # Note that the AcceleratorConfig could be used in both Jobs and Versions.
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
         attr_accessor :accelerator_config
@@ -1624,6 +1626,12 @@ module Google
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
+        # Represents a hardware accelerator request config.
+        # Note that the AcceleratorConfig could be used in both Jobs and Versions.
+        # Corresponds to the JSON property `acceleratorConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
+        attr_accessor :accelerator_config
+      
         # Options for automatically scaling a model.
         # Corresponds to the JSON property `autoScaling`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AutoScaling]
@@ -1845,6 +1853,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
           @auto_scaling = args[:auto_scaling] if args.key?(:auto_scaling)
           @create_time = args[:create_time] if args.key?(:create_time)
           @deployment_uri = args[:deployment_uri] if args.key?(:deployment_uri)
@@ -2045,7 +2054,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
@@ -2157,7 +2166,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
