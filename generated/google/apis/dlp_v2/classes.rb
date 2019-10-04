@@ -3846,34 +3846,6 @@ module Google
         end
       end
       
-      # Request for the list of infoTypes.
-      class GooglePrivacyDlpV2ListInfoTypesRequest
-        include Google::Apis::Core::Hashable
-      
-        # Optional filter to only return infoTypes supported by certain parts of the
-        # API. Defaults to supported_by=INSPECT.
-        # Corresponds to the JSON property `filter`
-        # @return [String]
-        attr_accessor :filter
-      
-        # Optional BCP-47 language code for localized infoType friendly
-        # names. If omitted, or if localized strings are not available,
-        # en-US strings will be returned.
-        # Corresponds to the JSON property `languageCode`
-        # @return [String]
-        attr_accessor :language_code
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @filter = args[:filter] if args.key?(:filter)
-          @language_code = args[:language_code] if args.key?(:language_code)
-        end
-      end
-      
       # Response to the ListInfoTypes request.
       class GooglePrivacyDlpV2ListInfoTypesResponse
         include Google::Apis::Core::Hashable

@@ -933,6 +933,13 @@ module Google
         attr_accessor :enable_inbound_forwarding
         alias_method :enable_inbound_forwarding?, :enable_inbound_forwarding
       
+        # Controls whether logging is enabled for the networks bound to this policy.
+        # Defaults to no logging if not set.
+        # Corresponds to the JSON property `enableLogging`
+        # @return [Boolean]
+        attr_accessor :enable_logging
+        alias_method :enable_logging?, :enable_logging
+      
         # Unique identifier for the resource; defined by the server (output only).
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -962,6 +969,7 @@ module Google
           @alternative_name_server_config = args[:alternative_name_server_config] if args.key?(:alternative_name_server_config)
           @description = args[:description] if args.key?(:description)
           @enable_inbound_forwarding = args[:enable_inbound_forwarding] if args.key?(:enable_inbound_forwarding)
+          @enable_logging = args[:enable_logging] if args.key?(:enable_logging)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)

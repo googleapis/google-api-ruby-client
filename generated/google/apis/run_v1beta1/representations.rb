@@ -82,18 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Initializer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Initializers
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Json
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -253,21 +241,6 @@ module Google
         end
       end
       
-      class Initializer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-        end
-      end
-      
-      class Initializers
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :pending, as: 'pending', class: Google::Apis::RunV1beta1::Initializer, decorator: Google::Apis::RunV1beta1::Initializer::Representation
-      
-        end
-      end
-      
       class Json
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -392,8 +365,6 @@ module Google
           collection :finalizers, as: 'finalizers'
           property :generate_name, as: 'generateName'
           property :generation, as: 'generation'
-          property :initializers, as: 'initializers', class: Google::Apis::RunV1beta1::Initializers, decorator: Google::Apis::RunV1beta1::Initializers::Representation
-      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :namespace, as: 'namespace'

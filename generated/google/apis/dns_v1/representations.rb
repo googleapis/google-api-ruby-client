@@ -437,6 +437,7 @@ module Google
       
           property :description, as: 'description'
           property :enable_inbound_forwarding, as: 'enableInboundForwarding'
+          property :enable_logging, as: 'enableLogging'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'

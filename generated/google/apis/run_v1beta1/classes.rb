@@ -100,8 +100,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # ObjectMeta is metadata that all persisted resources must have, which includes
-        # all objects users must create.
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
+        # persisted resources must have, which includes all objects users must create.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::RunV1beta1::ObjectMeta]
         attr_accessor :metadata
@@ -441,49 +441,6 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @url = args[:url] if args.key?(:url)
-        end
-      end
-      
-      # Initializer is information about an initializer that has not yet completed.
-      class Initializer
-        include Google::Apis::Core::Hashable
-      
-        # name of the process that is responsible for initializing this object.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Initializers tracks the progress of initialization.
-      class Initializers
-        include Google::Apis::Core::Hashable
-      
-        # Pending is a list of initializers that must execute in order before this
-        # object is visible. When the last pending initializer is removed, and no
-        # failing result is set, the initializers struct will be set to nil and the
-        # object is considered as initialized and visible to all clients.
-        # +patchMergeKey=name
-        # +patchStrategy=merge
-        # Corresponds to the JSON property `pending`
-        # @return [Array<Google::Apis::RunV1beta1::Initializer>]
-        attr_accessor :pending
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @pending = args[:pending] if args.key?(:pending)
         end
       end
       
@@ -930,28 +887,32 @@ module Google
         end
       end
       
-      # ObjectMeta is metadata that all persisted resources must have, which includes
-      # all objects users must create.
+      # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
+      # persisted resources must have, which includes all objects users must create.
       class ObjectMeta
         include Google::Apis::Core::Hashable
       
+        # (Optional)
         # Annotations is an unstructured key value map stored with a resource that
         # may be set by external tools to store and retrieve arbitrary metadata. They
         # are not queryable and should be preserved when modifying objects. More
-        # info: http://kubernetes.io/docs/user-guide/annotations +optional
+        # info: http://kubernetes.io/docs/user-guide/annotations
         # Corresponds to the JSON property `annotations`
         # @return [Hash<String,String>]
         attr_accessor :annotations
       
-        # Not currently supported by Cloud Run.
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # The name of the cluster which the object belongs to.
         # This is used to distinguish resources with same name and namespace in
         # different clusters. This field is not set anywhere right now and apiserver
-        # is going to ignore it if set in create or update request. +optional
+        # is going to ignore it if set in create or update request.
         # Corresponds to the JSON property `clusterName`
         # @return [String]
         attr_accessor :cluster_name
       
+        # (Optional)
         # CreationTimestamp is a timestamp representing the server time when this
         # object was created. It is not guaranteed to be set in happens-before order
         # across separate operations. Clients may not set this value. It is
@@ -961,19 +922,23 @@ module Google
         # Null for lists.
         # More info:
         # https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-        # +optional
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
         attr_accessor :creation_timestamp
       
-        # Not currently supported by Cloud Run.
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # Number of seconds allowed for this object to gracefully terminate before
         # it will be removed from the system. Only set when deletionTimestamp is also
-        # set. May only be shortened. Read-only. +optional
+        # set. May only be shortened. Read-only.
         # Corresponds to the JSON property `deletionGracePeriodSeconds`
         # @return [Fixnum]
         attr_accessor :deletion_grace_period_seconds
       
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # DeletionTimestamp is RFC 3339 date and time at which this resource will be
         # deleted. This field is set by the server when a graceful deletion is
         # requested by the user, and is not directly settable by a client. The
@@ -995,23 +960,25 @@ module Google
         # Read-only.
         # More info:
         # https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-        # +optional
         # Corresponds to the JSON property `deletionTimestamp`
         # @return [String]
         attr_accessor :deletion_timestamp
       
-        # Not currently supported by Cloud Run.
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # Must be empty before the object is deleted from the registry. Each entry
         # is an identifier for the responsible component that will remove the entry
         # from the list. If the deletionTimestamp of the object is non-nil, entries
         # in this list can only be removed.
-        # +optional
         # +patchStrategy=merge
         # Corresponds to the JSON property `finalizers`
         # @return [Array<String>]
         attr_accessor :finalizers
       
-        # Not currently supported by Cloud Run.
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # GenerateName is an optional prefix, used by the server, to generate a
         # unique name ONLY IF the Name field has not been provided. If this field is
         # used, the name returned to the client will be different than the name
@@ -1027,29 +994,23 @@ module Google
         # Applied only if Name is not specified.
         # More info:
         # https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency
-        # +optional
         # string generateName = 2;
         # Corresponds to the JSON property `generateName`
         # @return [String]
         attr_accessor :generate_name
       
+        # (Optional)
         # A sequence number representing a specific generation of the desired state.
         # Populated by the system. Read-only.
-        # +optional
         # Corresponds to the JSON property `generation`
         # @return [Fixnum]
         attr_accessor :generation
       
-        # Initializers tracks the progress of initialization.
-        # Corresponds to the JSON property `initializers`
-        # @return [Google::Apis::RunV1beta1::Initializers]
-        attr_accessor :initializers
-      
+        # (Optional)
         # Map of string keys and values that can be used to organize and categorize
         # (scope and select) objects. May match selectors of replication controllers
         # and routes.
         # More info: http://kubernetes.io/docs/user-guide/labels
-        # +optional
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1072,13 +1033,16 @@ module Google
         # @return [String]
         attr_accessor :namespace
       
+        # (Optional)
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
         # List of objects that own this object. If ALL objects in the list have
         # been deleted, this object will be garbage collected.
-        # +optional
         # Corresponds to the JSON property `ownerReferences`
         # @return [Array<Google::Apis::RunV1beta1::OwnerReference>]
         attr_accessor :owner_references
       
+        # (Optional)
         # An opaque value that represents the internal version of this object that
         # can be used by clients to determine when objects have changed. May be used
         # for optimistic concurrency, change detection, and the watch operation on a
@@ -1091,27 +1055,26 @@ module Google
         # More info:
         # https://git.k8s.io/community/contributors/devel/api-conventions.md#concurrency-
         # control-and-consistency
-        # +optional
         # Corresponds to the JSON property `resourceVersion`
         # @return [String]
         attr_accessor :resource_version
       
+        # (Optional)
         # SelfLink is a URL representing this object.
         # Populated by the system.
         # Read-only.
-        # +optional
         # string selfLink = 4;
         # Corresponds to the JSON property `selfLink`
         # @return [String]
         attr_accessor :self_link
       
+        # (Optional)
         # UID is the unique in time and space value for this object. It is typically
         # generated by the server on successful creation of a resource and is not
         # allowed to change on PUT operations.
         # Populated by the system.
         # Read-only.
         # More info: http://kubernetes.io/docs/user-guide/identifiers#uids
-        # +optional
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -1130,7 +1093,6 @@ module Google
           @finalizers = args[:finalizers] if args.key?(:finalizers)
           @generate_name = args[:generate_name] if args.key?(:generate_name)
           @generation = args[:generation] if args.key?(:generation)
-          @initializers = args[:initializers] if args.key?(:initializers)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @namespace = args[:namespace] if args.key?(:namespace)

@@ -638,7 +638,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # (Optional)
-        # Cloud Run fully managed: not supported
+        # Cloud Run fully managed: supported
         # Cloud Run for Anthos: supported
         # Arguments to the entrypoint.
         # The docker image's CMD is used if this is not provided.
@@ -2187,7 +2187,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
@@ -2400,7 +2400,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # (Optional)
-        # Cloud Run fully managed: Only memory is supported
+        # Cloud Run fully managed: Only memory and CPU are supported. Note: The only
+        # supported value for CPU is '1'.
         # Cloud Run for Anthos: supported
         # Limits describes the maximum amount of compute resources allowed.
         # The values of the map is string form of the 'quantity' k8s type:
@@ -2411,7 +2412,8 @@ module Google
         attr_accessor :limits
       
         # (Optional)
-        # Cloud Run fully managed: not supported
+        # Cloud Run fully managed: Only memory and CPU are supported. Note: The only
+        # supported value for CPU is '1'.
         # Cloud Run for Anthos: supported
         # Requests describes the minimum amount of compute resources required.
         # If Requests is omitted for a container, it defaults to Limits if that is
@@ -3130,7 +3132,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",

@@ -2515,7 +2515,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
@@ -3948,7 +3948,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
@@ -4303,8 +4303,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :attributes
       
-        # TriggerFilterSourceAndType filters events based on exact matches on the cloud
-        # event's type and source attributes. Only exact matches will pass the filter.
+        # TriggerFilterSourceAndType is DEPRECATED. Filters are now contained in the
+        # map of attributes in TriggerFilter proto.
         # Corresponds to the JSON property `sourceAndType`
         # @return [Google::Apis::RunV1alpha1::TriggerFilterSourceAndType]
         attr_accessor :source_and_type
@@ -4320,8 +4320,8 @@ module Google
         end
       end
       
-      # TriggerFilterSourceAndType filters events based on exact matches on the cloud
-      # event's type and source attributes. Only exact matches will pass the filter.
+      # TriggerFilterSourceAndType is DEPRECATED. Filters are now contained in the
+      # map of attributes in TriggerFilter proto.
       class TriggerFilterSourceAndType
         include Google::Apis::Core::Hashable
       

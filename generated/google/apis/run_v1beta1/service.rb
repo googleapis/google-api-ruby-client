@@ -104,6 +104,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Rpc to get information about a CustomResourceDefinition.
+        # @param [String] name
+        #   The name of the CustomResourceDefinition being retrieved. If needed,
+        #   replace `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1beta1::CustomResourceDefinition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1beta1::CustomResourceDefinition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_namespace_customresourcedefinition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/apiextensions.k8s.io/v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1beta1::CustomResourceDefinition::Representation
+          command.response_class = Google::Apis::RunV1beta1::CustomResourceDefinition
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to get information about a CustomResourceDefinition.
+        # @param [String] name
+        #   The name of the CustomResourceDefinition being retrieved. If needed,
+        #   replace `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1beta1::CustomResourceDefinition] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1beta1::CustomResourceDefinition]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_customresourcedefinition(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1beta1::CustomResourceDefinition::Representation
+          command.response_class = Google::Apis::RunV1beta1::CustomResourceDefinition
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Rpc to list custom resource definitions.
         # @param [String] parent
         #   The project ID or project number from which the storages should

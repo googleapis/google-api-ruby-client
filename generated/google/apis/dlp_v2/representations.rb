@@ -646,12 +646,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GooglePrivacyDlpV2ListInfoTypesRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GooglePrivacyDlpV2ListInfoTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2160,14 +2154,6 @@ module Google
           collection :jobs, as: 'jobs', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class GooglePrivacyDlpV2ListInfoTypesRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :filter, as: 'filter'
-          property :language_code, as: 'languageCode'
         end
       end
       
