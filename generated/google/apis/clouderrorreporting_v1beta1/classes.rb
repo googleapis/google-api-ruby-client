@@ -406,14 +406,14 @@ module Google
         # @return [Google::Apis::ClouderrorreportingV1beta1::ErrorContext]
         attr_accessor :context
       
-        # [Optional] Time when the event occurred.
+        # Optional. Time when the event occurred.
         # If not provided, the time when the event was received by the
         # Error Reporting system will be used.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
       
-        # [Required] The error message.
+        # Required. The error message.
         # If no `context.reportLocation` is provided, the message must contain a
         # header (typically consisting of the exception type name and an error
         # message) and an exception stack trace in one of the supported programming

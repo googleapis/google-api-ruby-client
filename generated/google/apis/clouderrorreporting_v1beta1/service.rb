@@ -50,7 +50,7 @@ module Google
         
         # Deletes all error events of a given project.
         # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   Required. The resource name of the Google Cloud Platform project. Written
         #   as `projects/` plus the
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
@@ -84,27 +84,27 @@ module Google
         
         # Lists the specified events.
         # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   Required. The resource name of the Google Cloud Platform project. Written
         #   as `projects/` plus the
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
         #   Example: `projects/my-project-123`.
         # @param [String] group_id
-        #   [Required] The group for which events shall be returned.
+        #   Required. The group for which events shall be returned.
         # @param [Fixnum] page_size
-        #   [Optional] The maximum number of results to return per response.
+        #   Optional. The maximum number of results to return per response.
         # @param [String] page_token
-        #   [Optional] A `next_page_token` provided by a previous response.
+        #   Optional. A `next_page_token` provided by a previous response.
         # @param [String] service_filter_resource_type
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.resource_type).
         # @param [String] service_filter_service
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.service).
         # @param [String] service_filter_version
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.version).
         # @param [String] time_range_period
@@ -152,7 +152,7 @@ module Google
         # https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/
         # events:report?key=123ABC456`
         # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   Required. The resource name of the Google Cloud Platform project. Written
         #   as `projects/` plus the
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840). Example:
@@ -189,45 +189,45 @@ module Google
         
         # Lists the specified groups.
         # @param [String] project_name
-        #   [Required] The resource name of the Google Cloud Platform project. Written
+        #   Required. The resource name of the Google Cloud Platform project. Written
         #   as <code>projects/</code> plus the
         #   <a href="https://support.google.com/cloud/answer/6158840">Google Cloud
         #   Platform project ID</a>.
         #   Example: <code>projects/my-project-123</code>.
         # @param [String] alignment
-        #   [Optional] The alignment of the timed counts to be returned.
+        #   Optional. The alignment of the timed counts to be returned.
         #   Default is `ALIGNMENT_EQUAL_AT_END`.
         # @param [String] alignment_time
-        #   [Optional] Time where the timed counts shall be aligned if rounded
+        #   Optional. Time where the timed counts shall be aligned if rounded
         #   alignment is chosen. Default is 00:00 UTC.
         # @param [Array<String>, String] group_id
-        #   [Optional] List all <code>ErrorGroupStats</code> with these IDs.
+        #   Optional. List all <code>ErrorGroupStats</code> with these IDs.
         # @param [String] order
-        #   [Optional] The sort order in which the results are returned.
+        #   Optional. The sort order in which the results are returned.
         #   Default is `COUNT_DESC`.
         # @param [Fixnum] page_size
-        #   [Optional] The maximum number of results to return per response.
+        #   Optional. The maximum number of results to return per response.
         #   Default is 20.
         # @param [String] page_token
-        #   [Optional] A `next_page_token` provided by a previous response. To view
+        #   Optional. A `next_page_token` provided by a previous response. To view
         #   additional results, pass this token along with the identical query
         #   parameters as the first request.
         # @param [String] service_filter_resource_type
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.resource_type).
         # @param [String] service_filter_service
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.service).
         # @param [String] service_filter_version
-        #   [Optional] The exact value to match against
+        #   Optional. The exact value to match against
         #   [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/
         #   ServiceContext#FIELDS.version).
         # @param [String] time_range_period
         #   Restricts the query to the specified time range.
         # @param [String] timed_count_duration
-        #   [Optional] The preferred duration for a single returned `TimedCount`.
+        #   Optional. The preferred duration for a single returned `TimedCount`.
         #   If not set, no timed counts are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -269,7 +269,7 @@ module Google
         
         # Get the specified group.
         # @param [String] group_name
-        #   [Required] The group resource name. Written as
+        #   Required. The group resource name. Written as
         #   <code>projects/<var>projectID</var>/groups/<var>group_name</var></code>.
         #   Call
         #   <a href="/error-reporting/reference/rest/v1beta1/projects.groupStats/list">

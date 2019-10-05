@@ -3416,6 +3416,8 @@ module Google
         # be populated and can only be modified on files with content stored in Drive
         # which are not Google Docs. Revisions can also be pinned when they are created
         # through the drive.files.insert/update/copy by using the pinned query parameter.
+        # Pinned revisions are stored indefinitely using additional storage quota, up
+        # to a maximum of 200 revisions.
         # Corresponds to the JSON property `pinned`
         # @return [Boolean]
         attr_accessor :pinned

@@ -792,7 +792,9 @@ module Google
         #   Permissions are still inherited from parent folders.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
-        #   applicable to files with binary content in Google Drive.
+        #   applicable to files with binary content in Google Drive. Only 200 revisions
+        #   for the file can be kept forever. If the limit is reached, try deleting pinned
+        #   revisions.
         # @param [String] ocr_language
         #   A language hint for OCR processing during image import (ISO 639-1 code).
         # @param [Boolean] supports_all_drives
@@ -847,7 +849,9 @@ module Google
         #   Permissions are still inherited from parent folders.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
-        #   applicable to files with binary content in Google Drive.
+        #   applicable to files with binary content in Google Drive. Only 200 revisions
+        #   for the file can be kept forever. If the limit is reached, try deleting pinned
+        #   revisions.
         # @param [String] ocr_language
         #   A language hint for OCR processing during image import (ISO 639-1 code).
         # @param [Boolean] supports_all_drives
@@ -1199,7 +1203,9 @@ module Google
         #   A comma-separated list of parent IDs to add.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
-        #   applicable to files with binary content in Google Drive.
+        #   applicable to files with binary content in Google Drive. Only 200 revisions
+        #   for the file can be kept forever. If the limit is reached, try deleting pinned
+        #   revisions.
         # @param [String] ocr_language
         #   A language hint for OCR processing during image import (ISO 639-1 code).
         # @param [String] remove_parents
