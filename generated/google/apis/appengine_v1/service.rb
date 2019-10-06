@@ -1427,7 +1427,12 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Stops a running instance.
+        # Stops a running instance.The instance will be automatically recreated based on
+        # the scaling settings of the version. If you want to stop all instances without
+        # re-creation (e.g. to avoid getting billed) use the apps.services.versions.
+        # patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/
+        # apps.services.versions/patch) method and change the serving status of the
+        # version to STOPPED.
         # @param [String] apps_id
         #   Part of `name`. Name of the resource requested. Example: apps/myapp/services/
         #   default/versions/v1/instances/instance-1.
