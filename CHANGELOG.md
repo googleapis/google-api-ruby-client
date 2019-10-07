@@ -1,3 +1,37 @@
+# 0.32.1
+* Backwards compatible changes:
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `binaryauthorization_v1`
+  * Updated `binaryauthorization_v1beta1`
+  * Updated `clouderrorreporting_v1beta1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudtasks_v2`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `dlp_v2`
+  * Updated `dns_v1`
+  * Updated `dns_v2beta1`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `logging_v2`
+  * Updated `monitoring_v3`
+  * Updated `pubsub_v1`
+  * Updated `pubsub_v1beta2`
+  * Updated `run_v1`
+  * Updated `run_v1alpha1`
+  * Updated `run_v1beta1`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `servicebroker_v1`
+  * Updated `servicebroker_v1alpha1`
+  * Updated `servicebroker_v1beta1`
+  * Updated `servicecontrol_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `vault_v1`
+
 # 0.32.0
 * Breaking changes:
   * Deleted `dfareporting_v3_1`
