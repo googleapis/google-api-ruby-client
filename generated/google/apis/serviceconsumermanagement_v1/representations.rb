@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1Beta1GenerateServiceIdentityResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1Beta1ImportProducerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -479,6 +485,12 @@ module Google
       end
       
       class V1Beta1RefreshConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1Beta1ServiceIdentity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1284,6 +1296,14 @@ module Google
         end
       end
       
+      class V1Beta1GenerateServiceIdentityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity', class: Google::Apis::ServiceconsumermanagementV1::V1Beta1ServiceIdentity, decorator: Google::Apis::ServiceconsumermanagementV1::V1Beta1ServiceIdentity::Representation
+      
+        end
+      end
+      
       class V1Beta1ImportProducerOverridesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1306,6 +1326,16 @@ module Google
       class V1Beta1RefreshConsumerResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1Beta1ServiceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :name, as: 'name'
+          property :tag, as: 'tag'
+          property :unique_id, as: 'uniqueId'
         end
       end
       

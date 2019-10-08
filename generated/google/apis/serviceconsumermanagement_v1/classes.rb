@@ -3809,6 +3809,27 @@ module Google
         end
       end
       
+      # Response message for the `GenerateServiceIdentity` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1Beta1GenerateServiceIdentityResponse
+        include Google::Apis::Core::Hashable
+      
+        # A service identity in the Identity and Access Management API.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ServiceconsumermanagementV1::V1Beta1ServiceIdentity]
+        attr_accessor :identity
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+        end
+      end
+      
       # Response message for ImportProducerOverrides
       class V1Beta1ImportProducerOverridesResponse
         include Google::Apis::Core::Hashable
@@ -3909,6 +3930,48 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A service identity in the Identity and Access Management API.
+      class V1Beta1ServiceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the service identity.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # P4 service identity resource name.
+        # An example name would be:
+        # `services/serviceconsumermanagement.googleapis.com/projects/123/
+        # serviceIdentities/default`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The P4 service identity configuration tag. This must be defined in
+        # activation_grants. If not specified when creating the account, the tag is
+        # set to "default".
+        # Corresponds to the JSON property `tag`
+        # @return [String]
+        attr_accessor :tag
+      
+        # The unique and stable id of the service identity.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @tag = args[:tag] if args.key?(:tag)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
         end
       end
       

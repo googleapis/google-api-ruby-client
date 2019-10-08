@@ -23,10 +23,10 @@ module Google
     # Fetches reports for the administrators of G Suite customers about the usage,
     # collaboration, security, and risk for their users.
     #
-    # @see https://developers.google.com/admin-sdk/reports/
+    # @see /admin-sdk/reports/
     module AdminReportsV1
       VERSION = 'ReportsV1'
-      REVISION = '20190521'
+      REVISION = '20191003'
 
       # View audit reports for your G Suite domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'

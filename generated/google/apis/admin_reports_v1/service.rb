@@ -31,7 +31,7 @@ module Google
       #    Admin = Google::Apis::AdminReportsV1 # Alias the module
       #    service = Admin::ReportsService.new
       #
-      # @see https://developers.google.com/admin-sdk/reports/
+      # @see /admin-sdk/reports/
       class ReportsService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -52,34 +52,108 @@ module Google
           @batch_path = 'batch/admin/reports_v1'
         end
         
-        # Retrieves a list of activities for a specific customer and application.
+        # Retrieves a list of activities for a specific customer's account and
+        # application such as the Admin console application or the Google Drive
+        # application. For more information, see the guides for administrator and Google
+        # Drive activity reports. For more information about the activity report's
+        # parameters, see the activity parameters reference guides.
         # @param [String] user_key
-        #   Represents the profile id or the user email for which the data should be
-        #   filtered. When 'all' is specified as the userKey, it returns usageReports for
-        #   all users.
+        #   Represents the profile ID or the user email for which the data should be
+        #   filtered.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [String] actor_ip_address
-        #   IP Address of host where the event was performed. Supports both IPv4 and IPv6
-        #   addresses.
+        #   The Internet Protocol (IP) Address of host where the event was performed. This
+        #   is an additional way to filter a report's summary using the IP address of the
+        #   user whose activity is being reported. This IP address may or may not reflect
+        #   the user's physical location. For example, the IP address can be the user's
+        #   proxy server's address or a virtual private network (VPN) address. This
+        #   parameter supports both IPv4 and IPv6 address versions.
         # @param [String] customer_id
-        #   Represents the customer for which the data is to be fetched.
+        #   The unique ID of the customer to retrieve data for.
         # @param [String] end_time
-        #   Return events which occurred at or before this time.
+        #   Sets the end of the range of time shown in the report. The date is in the RFC
+        #   3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the
+        #   approximate time of the API request. An API report has three basic time
+        #   concepts:
+        #   - Date of the API's request for a report: When the API created and retrieved
+        #   the report.
+        #   - Report's start time: The beginning of the timespan shown in the report. The
+        #   startTime must be before the endTime (if specified) and the current time when
+        #   the request is made, or the API returns an error.
+        #   - Report's end time: The end of the timespan shown in the report. For example,
+        #   the timespan of events summarized in a report can start in April and end in
+        #   May. The report itself can be requested in August.  If the endTime is not
+        #   specified, the report returns all activities from the startTime until the
+        #   current time or the most recent 180 days if the startTime is more than 180
+        #   days in the past.
         # @param [String] event_name
-        #   Name of the event being queried.
+        #   The name of the event being queried by the API. Each eventName is related to a
+        #   specific G Suite service or feature which the API organizes into types of
+        #   events. An example is the Google Calendar events in the Admin console
+        #   application's reports. The Calendar Settings type structure has all of the
+        #   Calendar eventName activities reported by the API. When an administrator
+        #   changes a Calendar setting, the API reports this activity in the Calendar
+        #   Settings type and eventName parameters. For more information about eventName
+        #   query strings and parameters, see the list of event names for various
+        #   applications above in applicationName.
         # @param [String] filters
-        #   Event parameters in the form [parameter1 name][operator][parameter1 value],[
-        #   parameter2 name][operator][parameter2 value],...
+        #   The filters query string is a comma-separated list. The list is composed of
+        #   event parameters that are manipulated by relational operators. Event
+        #   parameters are in the form [parameter1 name][relational operator][parameter1
+        #   value],[parameter2 name][relational operator][parameter2 value],...
+        #   These event parameters are associated with a specific eventName. An empty
+        #   report is returned if the filtered request's parameter does not belong to the
+        #   eventName. For more information about eventName parameters, see the list of
+        #   event names for various applications above in applicationName.
+        #   In the following Admin Activity example, the <> operator is URL-encoded in the
+        #   request's query string (%3C%3E):
+        #   GET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%
+        #   3EREAD_ONLY_ACCESS
+        #   In the following Drive example, the list can be a view or edit event's doc_id
+        #   parameter with a value that is manipulated by an 'equal to' (==) or 'not equal
+        #   to' (<>) relational operator. In the first example, the report returns each
+        #   edited document's doc_id. In the second example, the report returns each
+        #   viewed document's doc_id that equals the value 12345 and does not return any
+        #   viewed document's which have a doc_id value of 98765. The <> operator is URL-
+        #   encoded in the request's query string (%3C%3E):
+        #   GET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==
+        #   12345,doc_id%3C%3E98765
+        #   The relational operators include:
+        #   - == - 'equal to'.
+        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+        #   - < - 'less than'. It is URL-encoded (%3C).
+        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+        #   - > - 'greater than'. It is URL-encoded (%3E).
+        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
+        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   parameter is supplied more than once in the API request, the API only accepts
+        #   the last value of that request parameter.
+        #   In addition, if an invalid request parameter is supplied in the API request,
+        #   the API ignores that request parameter and returns the response corresponding
+        #   to the remaining valid request parameters. If no parameters are requested, all
+        #   parameters are returned.
         # @param [Fixnum] max_results
-        #   Number of activity records to be shown in each page.
+        #   Determines how many activity records are shown on each response page. For
+        #   example, if the request sets maxResults=1 and the report has two activities,
+        #   the report has two pages. The response's nextPageToken property has the token
+        #   to the second page. The maxResults query string is optional in the request.
+        #   The default value is 1000.
         # @param [String] org_unit_id
-        #   the organizational unit's(OU) ID to filter activities from users belonging to
-        #   a specific OU or one of its sub-OU(s)
+        #   ID of the organizational unit to report on. Activity records will be shown
+        #   only for users who belong to the specified organizational unit. Data before
+        #   Dec 17, 2018 doesn't appear in the filtered results.
         # @param [String] page_token
-        #   Token to specify next page.
+        #   The token to specify next page. A report with multiple pages has a
+        #   nextPageToken property in the response. In your follow-on request getting the
+        #   next page of the report, enter the nextPageToken value in the pageToken query
+        #   string.
         # @param [String] start_time
-        #   Return events which occurred at or after this time.
+        #   Sets the beginning of the range of time shown in the report. The date is in
+        #   the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns
+        #   all activities from startTime until endTime. The startTime must be before the
+        #   endTime (if specified) and the current time when the request is made, or the
+        #   API returns an error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -120,35 +194,106 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Push changes to activities
+        # Start receiving notifications for account activities. For more information,
+        # see Receiving Push Notifications.
         # @param [String] user_key
-        #   Represents the profile id or the user email for which the data should be
-        #   filtered. When 'all' is specified as the userKey, it returns usageReports for
-        #   all users.
+        #   Represents the profile ID or the user email for which the data should be
+        #   filtered.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
         # @param [String] actor_ip_address
-        #   IP Address of host where the event was performed. Supports both IPv4 and IPv6
-        #   addresses.
+        #   The Internet Protocol (IP) Address of host where the event was performed. This
+        #   is an additional way to filter a report's summary using the IP address of the
+        #   user whose activity is being reported. This IP address may or may not reflect
+        #   the user's physical location. For example, the IP address can be the user's
+        #   proxy server's address or a virtual private network (VPN) address. This
+        #   parameter supports both IPv4 and IPv6 address versions.
         # @param [String] customer_id
-        #   Represents the customer for which the data is to be fetched.
+        #   The unique ID of the customer to retrieve data for.
         # @param [String] end_time
-        #   Return events which occurred at or before this time.
+        #   Sets the end of the range of time shown in the report. The date is in the RFC
+        #   3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the
+        #   approximate time of the API request. An API report has three basic time
+        #   concepts:
+        #   - Date of the API's request for a report: When the API created and retrieved
+        #   the report.
+        #   - Report's start time: The beginning of the timespan shown in the report. The
+        #   startTime must be before the endTime (if specified) and the current time when
+        #   the request is made, or the API returns an error.
+        #   - Report's end time: The end of the timespan shown in the report. For example,
+        #   the timespan of events summarized in a report can start in April and end in
+        #   May. The report itself can be requested in August.  If the endTime is not
+        #   specified, the report returns all activities from the startTime until the
+        #   current time or the most recent 180 days if the startTime is more than 180
+        #   days in the past.
         # @param [String] event_name
-        #   Name of the event being queried.
+        #   The name of the event being queried by the API. Each eventName is related to a
+        #   specific G Suite service or feature which the API organizes into types of
+        #   events. An example is the Google Calendar events in the Admin console
+        #   application's reports. The Calendar Settings type structure has all of the
+        #   Calendar eventName activities reported by the API. When an administrator
+        #   changes a Calendar setting, the API reports this activity in the Calendar
+        #   Settings type and eventName parameters. For more information about eventName
+        #   query strings and parameters, see the list of event names for various
+        #   applications above in applicationName.
         # @param [String] filters
-        #   Event parameters in the form [parameter1 name][operator][parameter1 value],[
-        #   parameter2 name][operator][parameter2 value],...
+        #   The filters query string is a comma-separated list. The list is composed of
+        #   event parameters that are manipulated by relational operators. Event
+        #   parameters are in the form [parameter1 name][relational operator][parameter1
+        #   value],[parameter2 name][relational operator][parameter2 value],...
+        #   These event parameters are associated with a specific eventName. An empty
+        #   report is returned if the filtered request's parameter does not belong to the
+        #   eventName. For more information about eventName parameters, see the list of
+        #   event names for various applications above in applicationName.
+        #   In the following Admin Activity example, the <> operator is URL-encoded in the
+        #   request's query string (%3C%3E):
+        #   GET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%
+        #   3EREAD_ONLY_ACCESS
+        #   In the following Drive example, the list can be a view or edit event's doc_id
+        #   parameter with a value that is manipulated by an 'equal to' (==) or 'not equal
+        #   to' (<>) relational operator. In the first example, the report returns each
+        #   edited document's doc_id. In the second example, the report returns each
+        #   viewed document's doc_id that equals the value 12345 and does not return any
+        #   viewed document's which have a doc_id value of 98765. The <> operator is URL-
+        #   encoded in the request's query string (%3C%3E):
+        #   GET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==
+        #   12345,doc_id%3C%3E98765
+        #   The relational operators include:
+        #   - == - 'equal to'.
+        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+        #   - < - 'less than'. It is URL-encoded (%3C).
+        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+        #   - > - 'greater than'. It is URL-encoded (%3E).
+        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
+        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   parameter is supplied more than once in the API request, the API only accepts
+        #   the last value of that request parameter.
+        #   In addition, if an invalid request parameter is supplied in the API request,
+        #   the API ignores that request parameter and returns the response corresponding
+        #   to the remaining valid request parameters. If no parameters are requested, all
+        #   parameters are returned.
         # @param [Fixnum] max_results
-        #   Number of activity records to be shown in each page.
+        #   Determines how many activity records are shown on each response page. For
+        #   example, if the request sets maxResults=1 and the report has two activities,
+        #   the report has two pages. The response's nextPageToken property has the token
+        #   to the second page. The maxResults query string is optional in the request.
+        #   The default value is 1000.
         # @param [String] org_unit_id
-        #   the organizational unit's(OU) ID to filter activities from users belonging to
-        #   a specific OU or one of its sub-OU(s)
+        #   ID of the organizational unit to report on. Activity records will be shown
+        #   only for users who belong to the specified organizational unit. Data before
+        #   Dec 17, 2018 doesn't appear in the filtered results.
         # @param [String] page_token
-        #   Token to specify next page.
+        #   The token to specify next page. A report with multiple pages has a
+        #   nextPageToken property in the response. In your follow-on request getting the
+        #   next page of the report, enter the nextPageToken value in the pageToken query
+        #   string.
         # @param [String] start_time
-        #   Return events which occurred at or after this time.
+        #   Sets the beginning of the range of time shown in the report. The date is in
+        #   the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns
+        #   all activities from startTime until endTime. The startTime must be before the
+        #   endTime (if specified) and the current time when the request is made, or the
+        #   API returns an error.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -222,17 +367,35 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report which is a collection of properties / statistics for a
-        # specific customer.
+        # Retrieves a report which is a collection of properties and statistics for a
+        # specific customer's account. For more information, see the Customers Usage
+        # Report guide. For more information about the customer report's parameters, see
+        # the Customers Usage parameters reference guides.
         # @param [String] date
-        #   Represents the date in yyyy-mm-dd format for which the data is to be fetched.
+        #   Represents the date the usage occurred. The timestamp is in the ISO 8601
+        #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.
         # @param [String] customer_id
-        #   Represents the customer for which the data is to be fetched.
+        #   The unique ID of the customer to retrieve data for.
         # @param [String] page_token
-        #   Token to specify next page.
+        #   Token to specify next page. A report with multiple pages has a nextPageToken
+        #   property in the response. For your follow-on requests getting all of the
+        #   report's pages, enter the nextPageToken value in the pageToken query string.
         # @param [String] parameters
-        #   Represents the application name, parameter name pairs to fetch in csv as
-        #   app_name1:param_name1, app_name2:param_name2.
+        #   The parameters query string is a comma-separated list of event parameters that
+        #   refine a report's results. The parameter is associated with a specific
+        #   application. The application values for the Customers usage report include
+        #   accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail,
+        #   gplus, device_management, meet, and sites.
+        #   A parameters query string is in the CSV form of app_name1:param_name1,
+        #   app_name2:param_name2.
+        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   parameter is supplied more than once in the API request, the API only accepts
+        #   the last value of that request parameter.
+        #   In addition, if an invalid request parameter is supplied in the API request,
+        #   the API ignores that request parameter and returns the response corresponding
+        #   to the remaining valid request parameters.
+        #   An example of an invalid request parameter is one that does not belong to the
+        #   application. If no parameters are requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -266,25 +429,64 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report which is a collection of properties / statistics for a set
-        # of objects.
+        # Retrieves a report which is a collection of properties and statistics for
+        # entities used by users within the account. For more information, see the
+        # Entities Usage Report guide. For more information about the entities report's
+        # parameters, see the Entities Usage parameters reference guides.
         # @param [String] entity_type
-        #   Type of object. Should be one of - gplus_communities.
+        #   Represents the type of entity for the report.
         # @param [String] entity_key
-        #   Represents the key of object for which the data should be filtered.
+        #   Represents the key of the object to filter the data with.
         # @param [String] date
-        #   Represents the date in yyyy-mm-dd format for which the data is to be fetched.
+        #   Represents the date the usage occurred. The timestamp is in the ISO 8601
+        #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.
         # @param [String] customer_id
-        #   Represents the customer for which the data is to be fetched.
+        #   The unique ID of the customer to retrieve data for.
         # @param [String] filters
-        #   Represents the set of filters including parameter operator value.
+        #   The filters query string is a comma-separated list of an application's event
+        #   parameters where the parameter's value is manipulated by a relational operator.
+        #   The filters query string includes the name of the application whose usage is
+        #   returned in the report. The application values for the Entities usage report
+        #   include accounts, docs, and gmail.
+        #   Filters are in the form [application name]:[parameter name][relational
+        #   operator][parameter value],....
+        #   In this example, the <> 'not equal to' operator is URL-encoded in the request'
+        #   s query string (%3C%3E):
+        #   GET https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/
+        #   dates/2017-12-01 ?parameters=gplus:community_name,gplus:num_total_members &
+        #   filters=gplus:num_total_members>0
+        #   The relational operators include:
+        #   - == - 'equal to'.
+        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+        #   - < - 'less than'. It is URL-encoded (%3C).
+        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+        #   - > - 'greater than'. It is URL-encoded (%3E).
+        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).  Filters can only
+        #   be applied to numeric parameters.
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Maximum allowed is 1000
+        #   Determines how many activity records are shown on each response page. For
+        #   example, if the request sets maxResults=1 and the report has two activities,
+        #   the report has two pages. The response's nextPageToken property has the token
+        #   to the second page.
         # @param [String] page_token
-        #   Token to specify next page.
+        #   Token to specify next page. A report with multiple pages has a nextPageToken
+        #   property in the response. In your follow-on request getting the next page of
+        #   the report, enter the nextPageToken value in the pageToken query string.
         # @param [String] parameters
-        #   Represents the application name, parameter name pairs to fetch in csv as
-        #   app_name1:param_name1, app_name2:param_name2.
+        #   The parameters query string is a comma-separated list of event parameters that
+        #   refine a report's results. The parameter is associated with a specific
+        #   application. The application values for the Entities usage report are only
+        #   gplus.
+        #   A parameter query string is in the CSV form of [app_name1:param_name1], [
+        #   app_name2:param_name2]....
+        #   Note: The API doesn't accept multiple values of a parameter. If a particular
+        #   parameter is supplied more than once in the API request, the API only accepts
+        #   the last value of that request parameter.
+        #   In addition, if an invalid request parameter is supplied in the API request,
+        #   the API ignores that request parameter and returns the response corresponding
+        #   to the remaining valid request parameters.
+        #   An example of an invalid request parameter is one that does not belong to the
+        #   application. If no parameters are requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -322,27 +524,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report which is a collection of properties / statistics for a set
-        # of users.
+        # Retrieves a report which is a collection of properties and statistics for a
+        # set of users with the account. For more information, see the User Usage Report
+        # guide. For more information about the user report's parameters, see the Users
+        # Usage parameters reference guides.
         # @param [String] user_key
-        #   Represents the profile id or the user email for which the data should be
+        #   Represents the profile ID or the user email for which the data should be
         #   filtered.
         # @param [String] date
-        #   Represents the date in yyyy-mm-dd format for which the data is to be fetched.
+        #   Represents the date the usage occurred. The timestamp is in the ISO 8601
+        #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.
         # @param [String] customer_id
-        #   Represents the customer for which the data is to be fetched.
+        #   The unique ID of the customer to retrieve data for.
         # @param [String] filters
-        #   Represents the set of filters including parameter operator value.
+        #   The filters query string is a comma-separated list of an application's event
+        #   parameters where the parameter's value is manipulated by a relational operator.
+        #   The filters query string includes the name of the application whose usage is
+        #   returned in the report. The application values for the Users Usage Report
+        #   include accounts, docs, and gmail.
+        #   Filters are in the form [application name]:[parameter name][relational
+        #   operator][parameter value],....
+        #   In this example, the <> 'not equal to' operator is URL-encoded in the request'
+        #   s query string (%3C%3E):
+        #   GET https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-
+        #   03 ?parameters=accounts:last_login_time &filters=accounts:last_login_time>2010-
+        #   10-28T10:26:35.000Z
+        #   The relational operators include:
+        #   - == - 'equal to'.
+        #   - <> - 'not equal to'. It is URL-encoded (%3C%3E).
+        #   - < - 'less than'. It is URL-encoded (%3C).
+        #   - <= - 'less than or equal to'. It is URL-encoded (%3C=).
+        #   - > - 'greater than'. It is URL-encoded (%3E).
+        #   - >= - 'greater than or equal to'. It is URL-encoded (%3E=).
         # @param [Fixnum] max_results
-        #   Maximum number of results to return. Maximum allowed is 1000
+        #   Determines how many activity records are shown on each response page. For
+        #   example, if the request sets maxResults=1 and the report has two activities,
+        #   the report has two pages. The response's nextPageToken property has the token
+        #   to the second page.
+        #   The maxResults query string is optional.
         # @param [String] org_unit_id
-        #   the organizational unit's ID to filter usage parameters from users belonging
-        #   to a specific OU or one of its sub-OU(s).
+        #   ID of the organizational unit to report on. User activity will be shown only
+        #   for users who belong to the specified organizational unit. Data before Dec 17,
+        #   2018 doesn't appear in the filtered results.
         # @param [String] page_token
-        #   Token to specify next page.
+        #   Token to specify next page. A report with multiple pages has a nextPageToken
+        #   property in the response. In your follow-on request getting the next page of
+        #   the report, enter the nextPageToken value in the pageToken query string.
         # @param [String] parameters
-        #   Represents the application name, parameter name pairs to fetch in csv as
-        #   app_name1:param_name1, app_name2:param_name2.
+        #   The parameters query string is a comma-separated list of event parameters that
+        #   refine a report's results. The parameter is associated with a specific
+        #   application. The application values for the Customers usage report include
+        #   accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail,
+        #   gplus, device_management, meet, and sites.
+        #   A parameters query string is in the CSV form of app_name1:param_name1,
+        #   app_name2:param_name2.
+        #   Note: The API doesn't accept multiple values of a parameter.
+        #   If a particular parameter is supplied more than once in the API request, the
+        #   API only accepts the last value of that request parameter. In addition, if an
+        #   invalid request parameter is supplied in the API request, the API ignores that
+        #   request parameter and returns the response corresponding to the remaining
+        #   valid request parameters.
+        #   An example of an invalid request parameter is one that does not belong to the
+        #   application. If no parameters are requested, all parameters are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

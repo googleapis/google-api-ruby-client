@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -190,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -204,6 +216,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -254,8 +267,18 @@ module Google
       class CounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_fields, as: 'customFields', class: Google::Apis::DatafusionV1beta1::CustomField, decorator: Google::Apis::DatafusionV1beta1::CustomField::Representation
+      
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class CustomField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -285,6 +308,9 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_endpoint, as: 'apiEndpoint'
+          collection :available_version, as: 'availableVersion', class: Google::Apis::DatafusionV1beta1::Version, decorator: Google::Apis::DatafusionV1beta1::Version::Representation
+      
           property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
@@ -462,6 +488,13 @@ module Google
       class UpgradeInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Version
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :version_number, as: 'versionNumber'
         end
       end
     end

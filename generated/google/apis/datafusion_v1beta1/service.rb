@@ -230,6 +230,13 @@ module Google
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.
         #   See the operation documentation for the appropriate value for this field.
+        # @param [Fixnum] options_requested_policy_version
+        #   Optional. The policy format version to be returned.
+        #   Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        #   rejected.
+        #   Requests for policies with any conditional bindings must specify version 3.
+        #   Policies without any conditional bindings may specify any valid value or
+        #   leave the field unset.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -247,11 +254,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_instance_iam_policy(resource, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_instance_iam_policy(resource, options_requested_policy_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+resource}:getIamPolicy', options)
           command.response_representation = Google::Apis::DatafusionV1beta1::Policy::Representation
           command.response_class = Google::Apis::DatafusionV1beta1::Policy
           command.params['resource'] = resource unless resource.nil?
+          command.query['options.requestedPolicyVersion'] = options_requested_policy_version unless options_requested_policy_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -382,6 +390,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
