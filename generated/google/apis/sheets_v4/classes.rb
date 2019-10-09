@@ -1047,6 +1047,261 @@ module Google
         end
       end
       
+      # Formatting options for baseline value.
+      class BaselineValueFormat
+        include Google::Apis::Core::Hashable
+      
+        # The comparison type of key value with baseline value.
+        # Corresponds to the JSON property `comparisonType`
+        # @return [String]
+        attr_accessor :comparison_type
+      
+        # Description which is appended after the baseline value.
+        # This field is optional.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `negativeColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :negative_color
+      
+        # Position settings for text.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::SheetsV4::TextPosition]
+        attr_accessor :position
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `positiveColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :positive_color
+      
+        # The format of a run of text in a cell.
+        # Absent values indicate that the field isn't specified.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :text_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
+          @description = args[:description] if args.key?(:description)
+          @negative_color = args[:negative_color] if args.key?(:negative_color)
+          @position = args[:position] if args.key?(:position)
+          @positive_color = args[:positive_color] if args.key?(:positive_color)
+          @text_format = args[:text_format] if args.key?(:text_format)
+        end
+      end
+      
       # An axis of the chart.
       # A chart may not have more than one axis per
       # axis position.
@@ -2744,6 +2999,33 @@ module Google
         end
       end
       
+      # Custom number formatting options for chart attributes.
+      class ChartCustomNumberFormatOptions
+        include Google::Apis::Core::Hashable
+      
+        # Custom prefix to be prepended to the chart attribute.
+        # This field is optional.
+        # Corresponds to the JSON property `prefix`
+        # @return [String]
+        attr_accessor :prefix
+      
+        # Custom suffix to be appended to the chart attribute.
+        # This field is optional.
+        # Corresponds to the JSON property `suffix`
+        # @return [String]
+        attr_accessor :suffix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @prefix = args[:prefix] if args.key?(:prefix)
+          @suffix = args[:suffix] if args.key?(:suffix)
+        end
+      end
+      
       # The data included in a domain or series.
       class ChartData
         include Google::Apis::Core::Hashable
@@ -2979,6 +3261,16 @@ module Google
         # @return [Google::Apis::SheetsV4::PieChartSpec]
         attr_accessor :pie_chart
       
+        # A scorecard chart. Scorecard charts are used to highlight key performance
+        # indicators, known as KPIs, on the spreadsheet. A scorecard chart can
+        # represent things like total sales, average cost, or a top selling item. You
+        # can specify a single data value, or aggregate over a range of data.
+        # Percentage or absolute difference from a baseline value can be highlighted,
+        # like changes over time.
+        # Corresponds to the JSON property `scorecardChart`
+        # @return [Google::Apis::SheetsV4::ScorecardChartSpec]
+        attr_accessor :scorecard_chart
+      
         # The subtitle of the chart.
         # Corresponds to the JSON property `subtitle`
         # @return [String]
@@ -3038,6 +3330,7 @@ module Google
           @maximized = args[:maximized] if args.key?(:maximized)
           @org_chart = args[:org_chart] if args.key?(:org_chart)
           @pie_chart = args[:pie_chart] if args.key?(:pie_chart)
+          @scorecard_chart = args[:scorecard_chart] if args.key?(:scorecard_chart)
           @subtitle = args[:subtitle] if args.key?(:subtitle)
           @subtitle_text_format = args[:subtitle_text_format] if args.key?(:subtitle_text_format)
           @subtitle_text_position = args[:subtitle_text_position] if args.key?(:subtitle_text_position)
@@ -5701,6 +5994,32 @@ module Google
         end
       end
       
+      # Formatting options for key value.
+      class KeyValueFormat
+        include Google::Apis::Core::Hashable
+      
+        # Position settings for text.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::SheetsV4::TextPosition]
+        attr_accessor :position
+      
+        # The format of a run of text in a cell.
+        # Absent values indicate that the field isn't specified.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :text_format
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @position = args[:position] if args.key?(:position)
+          @text_format = args[:text_format] if args.key?(:text_format)
+        end
+      end
+      
       # Properties that describe the style of a line.
       class LineStyle
         include Google::Apis::Core::Hashable
@@ -7654,6 +7973,76 @@ module Google
         # Update properties of this object
         def update!(**args)
           @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # A scorecard chart. Scorecard charts are used to highlight key performance
+      # indicators, known as KPIs, on the spreadsheet. A scorecard chart can
+      # represent things like total sales, average cost, or a top selling item. You
+      # can specify a single data value, or aggregate over a range of data.
+      # Percentage or absolute difference from a baseline value can be highlighted,
+      # like changes over time.
+      class ScorecardChartSpec
+        include Google::Apis::Core::Hashable
+      
+        # The aggregation type for key and baseline chart data in scorecard chart.
+        # This field is optional.
+        # Corresponds to the JSON property `aggregateType`
+        # @return [String]
+        attr_accessor :aggregate_type
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `baselineValueData`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :baseline_value_data
+      
+        # Formatting options for baseline value.
+        # Corresponds to the JSON property `baselineValueFormat`
+        # @return [Google::Apis::SheetsV4::BaselineValueFormat]
+        attr_accessor :baseline_value_format
+      
+        # Custom number formatting options for chart attributes.
+        # Corresponds to the JSON property `customFormatOptions`
+        # @return [Google::Apis::SheetsV4::ChartCustomNumberFormatOptions]
+        attr_accessor :custom_format_options
+      
+        # The data included in a domain or series.
+        # Corresponds to the JSON property `keyValueData`
+        # @return [Google::Apis::SheetsV4::ChartData]
+        attr_accessor :key_value_data
+      
+        # Formatting options for key value.
+        # Corresponds to the JSON property `keyValueFormat`
+        # @return [Google::Apis::SheetsV4::KeyValueFormat]
+        attr_accessor :key_value_format
+      
+        # The number format source used in the scorecard chart.
+        # This field is optional.
+        # Corresponds to the JSON property `numberFormatSource`
+        # @return [String]
+        attr_accessor :number_format_source
+      
+        # Value to scale scorecard key and baseline value. For example, a factor of
+        # 10 can be used to divide all values in the chart by 10.
+        # This field is optional.
+        # Corresponds to the JSON property `scaleFactor`
+        # @return [Float]
+        attr_accessor :scale_factor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @aggregate_type = args[:aggregate_type] if args.key?(:aggregate_type)
+          @baseline_value_data = args[:baseline_value_data] if args.key?(:baseline_value_data)
+          @baseline_value_format = args[:baseline_value_format] if args.key?(:baseline_value_format)
+          @custom_format_options = args[:custom_format_options] if args.key?(:custom_format_options)
+          @key_value_data = args[:key_value_data] if args.key?(:key_value_data)
+          @key_value_format = args[:key_value_format] if args.key?(:key_value_format)
+          @number_format_source = args[:number_format_source] if args.key?(:number_format_source)
+          @scale_factor = args[:scale_factor] if args.key?(:scale_factor)
         end
       end
       

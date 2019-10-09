@@ -88,8 +88,7 @@ module Google
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
-        #   The update mask applies to the settings. For the `FieldMask` definition,
-        #   see
+        #   For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
         #   If this field is left unset, only the notification_emails field will be
@@ -319,8 +318,7 @@ module Google
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
-        #   The update mask applies to the settings. For the `FieldMask` definition,
-        #   see
+        #   For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
         #   If this field is left unset, only the notification_emails field will be
@@ -550,8 +548,7 @@ module Google
         #   <ol>
         # @param [Google::Apis::AccessapprovalV1beta1::AccessApprovalSettings] access_approval_settings_object
         # @param [String] update_mask
-        #   The update mask applies to the settings. For the `FieldMask` definition,
-        #   see
+        #   For the `FieldMask` definition, see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
         #   If this field is left unset, only the notification_emails field will be

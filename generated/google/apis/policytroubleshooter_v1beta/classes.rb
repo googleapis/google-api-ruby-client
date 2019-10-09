@@ -109,7 +109,7 @@ module Google
         # @return [String]
         attr_accessor :role_permission
       
-        # 
+        # The relevance of this permission with respect to the BindingExplanation.
         # Corresponds to the JSON property `rolePermissionRelevance`
         # @return [String]
         attr_accessor :role_permission_relevance
@@ -130,16 +130,17 @@ module Google
         end
       end
       
-      # 
+      # Encapsulated membership and the relevance of that membership with respect
+      # to BindingExplanation.
       class GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership
         include Google::Apis::Core::Hashable
       
-        # 
+        # Membership status.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
       
-        # 
+        # Relevance of this membership with respect to BindingExplanation.
         # Corresponds to the JSON property `relevance`
         # @return [String]
         attr_accessor :relevance

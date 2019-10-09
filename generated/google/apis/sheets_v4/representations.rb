@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BaselineValueFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicChartAxis
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class ChartAxisViewWindowOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ChartCustomNumberFormatOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -730,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class KeyValueFormat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LineStyle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -887,6 +905,12 @@ module Google
       end
       
       class RowData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ScorecardChartSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1364,6 +1388,22 @@ module Google
         end
       end
       
+      class BaselineValueFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :comparison_type, as: 'comparisonType'
+          property :description, as: 'description'
+          property :negative_color, as: 'negativeColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :position, as: 'position', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
+          property :positive_color, as: 'positiveColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+        end
+      end
+      
       class BasicChartAxis
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1728,6 +1768,14 @@ module Google
         end
       end
       
+      class ChartCustomNumberFormatOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :prefix, as: 'prefix'
+          property :suffix, as: 'suffix'
+        end
+      end
+      
       class ChartData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1764,6 +1812,8 @@ module Google
           property :org_chart, as: 'orgChart', class: Google::Apis::SheetsV4::OrgChartSpec, decorator: Google::Apis::SheetsV4::OrgChartSpec::Representation
       
           property :pie_chart, as: 'pieChart', class: Google::Apis::SheetsV4::PieChartSpec, decorator: Google::Apis::SheetsV4::PieChartSpec::Representation
+      
+          property :scorecard_chart, as: 'scorecardChart', class: Google::Apis::SheetsV4::ScorecardChartSpec, decorator: Google::Apis::SheetsV4::ScorecardChartSpec::Representation
       
           property :subtitle, as: 'subtitle'
           property :subtitle_text_format, as: 'subtitleTextFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
@@ -2383,6 +2433,16 @@ module Google
         end
       end
       
+      class KeyValueFormat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :position, as: 'position', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
+      
+          property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+        end
+      end
+      
       class LineStyle
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2818,6 +2878,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :values, as: 'values', class: Google::Apis::SheetsV4::CellData, decorator: Google::Apis::SheetsV4::CellData::Representation
       
+        end
+      end
+      
+      class ScorecardChartSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :aggregate_type, as: 'aggregateType'
+          property :baseline_value_data, as: 'baselineValueData', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :baseline_value_format, as: 'baselineValueFormat', class: Google::Apis::SheetsV4::BaselineValueFormat, decorator: Google::Apis::SheetsV4::BaselineValueFormat::Representation
+      
+          property :custom_format_options, as: 'customFormatOptions', class: Google::Apis::SheetsV4::ChartCustomNumberFormatOptions, decorator: Google::Apis::SheetsV4::ChartCustomNumberFormatOptions::Representation
+      
+          property :key_value_data, as: 'keyValueData', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
+      
+          property :key_value_format, as: 'keyValueFormat', class: Google::Apis::SheetsV4::KeyValueFormat, decorator: Google::Apis::SheetsV4::KeyValueFormat::Representation
+      
+          property :number_format_source, as: 'numberFormatSource'
+          property :scale_factor, as: 'scaleFactor'
         end
       end
       

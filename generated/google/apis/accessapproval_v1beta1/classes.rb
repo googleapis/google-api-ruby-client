@@ -33,7 +33,9 @@ module Google
         # individual services. If name refers to a folder or project, enrollment can
         # only be done on an all or nothing basis.
         # If a cloud_product is repeated in this list, the first entry will be
-        # honored and all following entries will be discarded.
+        # honored and all following entries will be discarded. A maximum of 10
+        # enrolled services will be enforced, to be expanded as the set of supported
+        # services is expanded.
         # Corresponds to the JSON property `enrolledServices`
         # @return [Array<Google::Apis::AccessapprovalV1beta1::EnrolledService>]
         attr_accessor :enrolled_services
@@ -50,7 +52,8 @@ module Google
       
         # A list of email addresses to which notifications relating to approval
         # requests should be sent. Notifications relating to a resource will be sent
-        # to all emails in the settings of ancestor resources of that resource.
+        # to all emails in the settings of ancestor resources of that resource. A
+        # maximum of 50 email addresses are allowed.
         # Corresponds to the JSON property `notificationEmails`
         # @return [Array<String>]
         attr_accessor :notification_emails

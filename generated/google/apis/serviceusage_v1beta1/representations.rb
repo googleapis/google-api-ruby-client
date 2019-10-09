@@ -238,6 +238,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleApiServiceusageV1beta1GetServiceIdentityResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleApiServiceusageV1beta1ServiceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Http
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -849,6 +861,23 @@ module Google
           property :title, as: 'title'
           property :usage, as: 'usage', class: Google::Apis::ServiceusageV1beta1::Usage, decorator: Google::Apis::ServiceusageV1beta1::Usage::Representation
       
+        end
+      end
+      
+      class GoogleApiServiceusageV1beta1GetServiceIdentityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :identity, as: 'identity', class: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1beta1ServiceIdentity, decorator: Google::Apis::ServiceusageV1beta1::GoogleApiServiceusageV1beta1ServiceIdentity::Representation
+      
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleApiServiceusageV1beta1ServiceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :unique_id, as: 'uniqueId'
         end
       end
       

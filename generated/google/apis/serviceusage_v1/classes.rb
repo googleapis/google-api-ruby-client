@@ -1959,6 +1959,61 @@ module Google
         end
       end
       
+      # Response message for getting service identity.
+      class GoogleApiServiceusageV1beta1GetServiceIdentityResponse
+        include Google::Apis::Core::Hashable
+      
+        # Service identity for a service. This is the identity that service producer
+        # should use to access consumer resources.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ServiceusageV1::GoogleApiServiceusageV1beta1ServiceIdentity]
+        attr_accessor :identity
+      
+        # Service identity state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity = args[:identity] if args.key?(:identity)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Service identity for a service. This is the identity that service producer
+      # should use to access consumer resources.
+      class GoogleApiServiceusageV1beta1ServiceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the service account that a service producer would use
+        # to access consumer resources.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # The unique and stable id of the service account.
+        # https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts#
+        # ServiceAccount
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+        end
+      end
+      
       # Defines the HTTP configuration for an API service. It contains a list of
       # HttpRule, each specifying the mapping of an RPC method
       # to one or more HTTP REST API methods.
