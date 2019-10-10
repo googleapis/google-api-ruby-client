@@ -18,14 +18,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = %w[lib generated]
 
-  spec.required_ruby_version = '~> 2.0'
+  spec.required_ruby_version = '~> 2.4'
 
   spec.add_runtime_dependency 'representable', '~> 3.0'
   spec.add_runtime_dependency 'retriable', '>= 2.0', '< 4.0'
   spec.add_runtime_dependency 'addressable', '~> 2.5', '>= 2.5.1'
   spec.add_runtime_dependency 'mini_mime', '~> 1.0'
-  spec.add_runtime_dependency 'signet', '~> 0.10'
-  spec.add_runtime_dependency 'googleauth', '>= 0.5', '< 0.10.0'
+  spec.add_runtime_dependency 'signet', '~> 0.12'
+  spec.add_runtime_dependency 'googleauth', '~> 0.10.0'
   spec.add_runtime_dependency 'httpclient', '>= 2.8.1', '< 3.0'
   spec.add_development_dependency 'thor', '~> 0.19'
   spec.add_development_dependency 'activesupport', '>= 4.2', '< 5.1'
