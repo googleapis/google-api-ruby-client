@@ -740,7 +740,7 @@ module Google
         # (Read-only) MAC address used by the Chromebook’s internal ethernet port, and
         # for onboard network (ethernet) interface. The format is twelve (12)
         # hexadecimal digits without any delimiter (uppercase letters). This is only
-        # relevant for Dell devices.
+        # relevant for some devices.
         # Corresponds to the JSON property `ethernetMacAddress0`
         # @return [String]
         attr_accessor :ethernet_mac_address0
@@ -776,8 +776,9 @@ module Google
         # @return [String]
         attr_accessor :manufacture_date
       
-        # Mobile Equipment identifier for the 3G mobile card in the Chromebook (Read-
-        # only)
+        # Contains either the Mobile Equipment identifier (MEID) or the International
+        # Mobile Equipment Identity (IMEI) for the 3G mobile card in the Chromebook (
+        # Read-only)
         # Corresponds to the JSON property `meid`
         # @return [String]
         attr_accessor :meid

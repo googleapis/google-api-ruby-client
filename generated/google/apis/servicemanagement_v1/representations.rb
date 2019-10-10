@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableServiceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -197,6 +203,12 @@ module Google
       end
       
       class EnableServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnableServiceResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -785,6 +797,12 @@ module Google
         end
       end
       
+      class DisableServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Documentation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -812,6 +830,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :consumer_id, as: 'consumerId'
+        end
+      end
+      
+      class EnableServiceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

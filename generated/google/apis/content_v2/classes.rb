@@ -23,8 +23,8 @@ module Google
     module ContentV2
       
       # Account data. After the creation of a new account it may take a few minutes
-      # before it is fully operational. The methods delete, insert, patch, and update
-      # require the admin role.
+      # before it is fully operational. The methods delete, insert, and update require
+      # the admin role.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -919,8 +919,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, patch, and update
-        # require the admin role.
+        # before it is fully operational. The methods delete, insert, and update require
+        # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -1044,8 +1044,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, patch, and update
-        # require the admin role.
+        # before it is fully operational. The methods delete, insert, and update require
+        # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2::Account]
         attr_accessor :account
@@ -2101,6 +2101,11 @@ module Google
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
         # unless provided in excludedDestinations.
+        # List of supported destinations (if available to the account):
+        # - DisplayAds
+        # - Shopping
+        # - ShoppingActions
+        # - SurfacesAcrossGoogle
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -4033,7 +4038,8 @@ module Google
         end
       end
       
-      # Order. All methods require the order manager role.
+      # Order. Production access (all methods) requires the order manager role.
+      # Sandbox access does not.
       class Order
         include Google::Apis::Core::Hashable
       
@@ -5265,6 +5271,7 @@ module Google
         # - "mpx"
         # - "uds"
         # - "efw"
+        # - "jd logistics"
         # Acceptable values for FR are:
         # - "colissimo"
         # - "chronopost"
@@ -5274,6 +5281,8 @@ module Google
         # - "colis prive"
         # - "boxtal"
         # - "geodis"
+        # - "tnt"
+        # - "la poste"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -5549,216 +5558,6 @@ module Google
         def update!(**args)
           @description = args[:description] if args.key?(:description)
           @reason = args[:reason] if args.key?(:reason)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyAuthApprovedRequest
-        include Google::Apis::Core::Hashable
-      
-        # Authorized amount for pre-tax charge on user's credit card.
-        # Corresponds to the JSON property `authAmountPretax`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :auth_amount_pretax
-      
-        # Authorized amount for tax charge on user's credit card.
-        # Corresponds to the JSON property `authAmountTax`
-        # @return [Google::Apis::ContentV2::Price]
-        attr_accessor :auth_amount_tax
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auth_amount_pretax = args[:auth_amount_pretax] if args.key?(:auth_amount_pretax)
-          @auth_amount_tax = args[:auth_amount_tax] if args.key?(:auth_amount_tax)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyAuthApprovedResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status of the execution.
-        # Corresponds to the JSON property `executionStatus`
-        # @return [String]
-        attr_accessor :execution_status
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderpaymentsNotifyAuthApprovedResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_status = args[:execution_status] if args.key?(:execution_status)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyAuthDeclinedRequest
-        include Google::Apis::Core::Hashable
-      
-        # Reason why payment authorization was declined.
-        # Corresponds to the JSON property `declineReason`
-        # @return [String]
-        attr_accessor :decline_reason
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @decline_reason = args[:decline_reason] if args.key?(:decline_reason)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyAuthDeclinedResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status of the execution.
-        # Corresponds to the JSON property `executionStatus`
-        # @return [String]
-        attr_accessor :execution_status
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderpaymentsNotifyAuthDeclinedResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_status = args[:execution_status] if args.key?(:execution_status)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyChargeRequest
-        include Google::Apis::Core::Hashable
-      
-        # Whether charge was successful.
-        # Corresponds to the JSON property `chargeState`
-        # @return [String]
-        attr_accessor :charge_state
-      
-        # Deprecated. Please use invoiceIds instead.
-        # Corresponds to the JSON property `invoiceId`
-        # @return [String]
-        attr_accessor :invoice_id
-      
-        # Invoice IDs from the orderinvoices service that correspond to the charge.
-        # Corresponds to the JSON property `invoiceIds`
-        # @return [Array<String>]
-        attr_accessor :invoice_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @charge_state = args[:charge_state] if args.key?(:charge_state)
-          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
-          @invoice_ids = args[:invoice_ids] if args.key?(:invoice_ids)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyChargeResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status of the execution.
-        # Corresponds to the JSON property `executionStatus`
-        # @return [String]
-        attr_accessor :execution_status
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderpaymentsNotifyChargeResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_status = args[:execution_status] if args.key?(:execution_status)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyRefundRequest
-        include Google::Apis::Core::Hashable
-      
-        # Deprecated. Please use invoiceIds instead.
-        # Corresponds to the JSON property `invoiceId`
-        # @return [String]
-        attr_accessor :invoice_id
-      
-        # Invoice IDs from the orderinvoices service that correspond to the refund.
-        # Corresponds to the JSON property `invoiceIds`
-        # @return [Array<String>]
-        attr_accessor :invoice_ids
-      
-        # Whether refund was successful.
-        # Corresponds to the JSON property `refundState`
-        # @return [String]
-        attr_accessor :refund_state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @invoice_id = args[:invoice_id] if args.key?(:invoice_id)
-          @invoice_ids = args[:invoice_ids] if args.key?(:invoice_ids)
-          @refund_state = args[:refund_state] if args.key?(:refund_state)
-        end
-      end
-      
-      # 
-      class OrderpaymentsNotifyRefundResponse
-        include Google::Apis::Core::Hashable
-      
-        # The status of the execution.
-        # Corresponds to the JSON property `executionStatus`
-        # @return [String]
-        attr_accessor :execution_status
-      
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # orderpaymentsNotifyRefundResponse".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @execution_status = args[:execution_status] if args.key?(:execution_status)
-          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -6987,7 +6786,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Order. All methods require the order manager role.
+        # Order. Production access (all methods) requires the order manager role.
+        # Sandbox access does not.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2::Order]
         attr_accessor :order
@@ -7016,7 +6816,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Order. All methods require the order manager role.
+        # Order. Production access (all methods) requires the order manager role.
+        # Sandbox access does not.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2::Order]
         attr_accessor :order
@@ -9007,7 +8808,9 @@ module Google
         # @return [String]
         attr_accessor :size_type
       
-        # Size of the item.
+        # Size of the item. Only one value is allowed. For variants with different sizes,
+        # insert a separate product for each size with the same itemGroupId value (see
+        # size definition).
         # Corresponds to the JSON property `sizes`
         # @return [Array<String>]
         attr_accessor :sizes

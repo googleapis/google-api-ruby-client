@@ -1772,13 +1772,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
         attr_accessor :google_sheets_options
       
-        # [Optional, Trusted Tester] If hive partitioning is enabled, which mode to use.
-        # Two modes are supported: - AUTO: automatically infer partition key name(s) and
-        # type(s). - STRINGS: automatic infer partition key name(s). All types are
-        # strings. Not all storage formats support hive partitioning -- requesting hive
-        # partitioning on an unsupported format will lead to an error. Note: this
-        # setting is in the process of being deprecated in favor of
-        # hivePartitioningOptions.
+        # [Optional, Trusted Tester] Deprecated, do not use. Please set
+        # hivePartitioningOptions instead.
         # Corresponds to the JSON property `hivePartitioningMode`
         # @return [String]
         attr_accessor :hive_partitioning_mode
@@ -2472,11 +2467,8 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
-        # [Optional, Trusted Tester] If hive partitioning is enabled, which mode to use.
-        # Two modes are supported: - AUTO: automatically infer partition key name(s) and
-        # type(s). - STRINGS: automatic infer partition key name(s). All types are
-        # strings. Not all storage formats support hive partitioning -- requesting hive
-        # partitioning on an unsupported format will lead to an error.
+        # [Optional, Trusted Tester] Deprecated, do not use. Please set
+        # hivePartitioningOptions instead.
         # Corresponds to the JSON property `hivePartitioningMode`
         # @return [String]
         attr_accessor :hive_partitioning_mode
@@ -3299,12 +3291,12 @@ module Google
         # DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-
         # sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.
         # com/bigquery/docs/reference/standard-sql/data-manipulation-language. "
-        # ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "
-        # CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE]
-        # MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "
-        # CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "
-        # CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "
-        # CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" :
+        # ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT":
+        # ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "
+        # CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE"
+        # : CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS
+        # SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... .
+        # "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" :
         # DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE":
         # DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         # Corresponds to the JSON property `statementType`

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/directory/
     module AdminDirectoryV1
       VERSION = 'DirectoryV1'
-      REVISION = '20190806'
+      REVISION = '20191003'
 
       # View and manage customer related information
       AUTH_ADMIN_DIRECTORY_CUSTOMER = 'https://www.googleapis.com/auth/admin.directory.customer'
@@ -108,6 +108,9 @@ module Google
 
       # View user schemas on your domain
       AUTH_ADMIN_DIRECTORY_USERSCHEMA_READONLY = 'https://www.googleapis.com/auth/admin.directory.userschema.readonly'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

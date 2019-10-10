@@ -175,7 +175,8 @@ module Google
         # After 30 days, the service will be permanently deleted.
         # Operation<response: google.protobuf.Empty>
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -209,7 +210,7 @@ module Google
         # unexpected billing charges or security leaks.
         # Operation<response: DisableServiceResponse>
         # @param [String] service_name
-        #   Name of the service to disable. Specifying an unknown service name
+        #   Required. Name of the service to disable. Specifying an unknown service name
         #   will cause the request to fail.
         # @param [Google::Apis::ServicemanagementV1::DisableServiceRequest] disable_service_request_object
         # @param [String] fields
@@ -247,7 +248,8 @@ module Google
         # more information.
         # Operation<response: EnableServiceResponse>
         # @param [String] service_name
-        #   Name of the service to enable. Specifying an unknown service name will
+        #   Required. Name of the service to enable. Specifying an unknown service name
+        #   will
         #   cause the request to fail.
         # @param [Google::Apis::ServicemanagementV1::EnableServiceRequest] enable_service_request_object
         # @param [String] fields
@@ -321,7 +323,8 @@ module Google
         # Gets a managed service. Authentication is required unless the service is
         # public.
         # @param [String] service_name
-        #   The name of the service.  See the `ServiceManager` overview for naming
+        #   Required. The name of the service.  See the `ServiceManager` overview for
+        #   naming
         #   requirements.  For example: `example.googleapis.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -352,10 +355,11 @@ module Google
         
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] config_id
-        #   The id of the service configuration resource.
+        #   Required. The id of the service configuration resource.
         #   This field must be specified for the server to return all fields, including
         #   `SourceInfo`.
         # @param [String] view
@@ -478,6 +482,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -556,7 +561,8 @@ module Google
         # last 30 days.
         # Operation<response: UndeleteServiceResponse>
         # @param [String] service_name
-        #   The name of the service. See the [overview](/service-management/overview)
+        #   Required. The name of the service. See the [overview](/service-management/
+        #   overview)
         #   for naming requirements. For example: `example.googleapis.com`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -593,7 +599,8 @@ module Google
         # existing rollouts are kept for each service. The rest will be deleted
         # eventually.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::Service] service_object
         # @param [String] fields
@@ -627,10 +634,11 @@ module Google
         
         # Gets a service configuration (version) for a managed service.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] config_id
-        #   The id of the service configuration resource.
+        #   Required. The id of the service configuration resource.
         #   This field must be specified for the server to return all fields, including
         #   `SourceInfo`.
         # @param [String] view
@@ -668,7 +676,8 @@ module Google
         # Lists the history of the service configuration for a managed service,
         # from the newest to the oldest.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Fixnum] page_size
         #   The max number of items to include in the response list. Page size is 50
@@ -716,7 +725,8 @@ module Google
         # deleted eventually.
         # Operation<response: SubmitConfigSourceResponse>
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::SubmitConfigSourceRequest] submit_config_source_request_object
         # @param [String] fields
@@ -786,6 +796,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -870,7 +881,8 @@ module Google
         # service. The rest will be deleted eventually.
         # Operation<response: Rollout>
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::Rollout] rollout_object
         # @param [String] base_rollout_id
@@ -912,10 +924,11 @@ module Google
         
         # Gets a service configuration rollout.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] rollout_id
-        #   The id of the rollout resource.
+        #   Required. The id of the rollout resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -947,10 +960,11 @@ module Google
         # Lists the history of the service configuration rollouts for a managed
         # service, from the newest to the oldest.
         # @param [String] service_name
-        #   The name of the service.  See the [overview](/service-management/overview)
+        #   Required. The name of the service.  See the [overview](/service-management/
+        #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [String] filter
-        #   Use `filter` to return subset of rollouts.
+        #   Required. Use `filter` to return subset of rollouts.
         #   The following filters are supported:
         #   -- To limit the results to only those in
         #   [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS',

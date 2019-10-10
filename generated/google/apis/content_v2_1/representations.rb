@@ -2737,11 +2737,13 @@ module Google
       
           collection :applied_items, as: 'appliedItems', class: Google::Apis::ContentV2_1::OrderPromotionItem, decorator: Google::Apis::ContentV2_1::OrderPromotionItem::Representation
       
+          property :end_time, as: 'endTime'
           property :funder, as: 'funder'
           property :merchant_promotion_id, as: 'merchantPromotionId'
           property :price_value, as: 'priceValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :short_title, as: 'shortTitle'
+          property :start_time, as: 'startTime'
           property :subtype, as: 'subtype'
           property :tax_value, as: 'taxValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
@@ -2754,6 +2756,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :line_item_id, as: 'lineItemId'
+          property :offer_id, as: 'offerId'
           property :product_id, as: 'productId'
           property :quantity, as: 'quantity'
         end

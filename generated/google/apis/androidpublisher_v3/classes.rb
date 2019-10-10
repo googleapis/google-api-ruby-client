@@ -1198,6 +1198,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_time_millis
       
+        # The purchase token generated to identify this purchase.
+        # Corresponds to the JSON property `purchaseToken`
+        # @return [String]
+        attr_accessor :purchase_token
+      
         # The type of purchase of the inapp product. This field is only set if this
         # purchase was not made using the standard in-app billing flow. Possible values
         # are:
@@ -1221,6 +1226,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
+          @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
         end
       end

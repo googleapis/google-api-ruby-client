@@ -1480,11 +1480,26 @@ module Google
         # @return [String]
         attr_accessor :docker_prep
       
+        # The timestamp when docker prepartion begins.
+        # Corresponds to the JSON property `dockerPrepStartTime`
+        # @return [String]
+        attr_accessor :docker_prep_start_time
+      
         # The time spent downloading the input files and constructing the working
         # directory.
         # Corresponds to the JSON property `download`
         # @return [String]
         attr_accessor :download
+      
+        # The timestamp when downloading the input files begins.
+        # Corresponds to the JSON property `downloadStartTime`
+        # @return [String]
+        attr_accessor :download_start_time
+      
+        # The timestamp when execution begins.
+        # Corresponds to the JSON property `execStartTime`
+        # @return [String]
+        attr_accessor :exec_start_time
       
         # The time spent executing the command (i.e., doing useful work).
         # Corresponds to the JSON property `execution`
@@ -1511,6 +1526,11 @@ module Google
         # @return [String]
         attr_accessor :upload
       
+        # The timestamp when uploading the output files begins.
+        # Corresponds to the JSON property `uploadStartTime`
+        # @return [String]
+        attr_accessor :upload_start_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1518,12 +1538,16 @@ module Google
         # Update properties of this object
         def update!(**args)
           @docker_prep = args[:docker_prep] if args.key?(:docker_prep)
+          @docker_prep_start_time = args[:docker_prep_start_time] if args.key?(:docker_prep_start_time)
           @download = args[:download] if args.key?(:download)
+          @download_start_time = args[:download_start_time] if args.key?(:download_start_time)
+          @exec_start_time = args[:exec_start_time] if args.key?(:exec_start_time)
           @execution = args[:execution] if args.key?(:execution)
           @iso_prep_done = args[:iso_prep_done] if args.key?(:iso_prep_done)
           @overall = args[:overall] if args.key?(:overall)
           @stdout = args[:stdout] if args.key?(:stdout)
           @upload = args[:upload] if args.key?(:upload)
+          @upload_start_time = args[:upload_start_time] if args.key?(:upload_start_time)
         end
       end
       

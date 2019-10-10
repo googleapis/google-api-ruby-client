@@ -832,54 +832,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class OrderpaymentsNotifyAuthApprovedRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyChargeRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyChargeResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyRefundRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class OrderpaymentsNotifyRefundResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class OrderreportsListDisbursementsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3186,73 +3138,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
           property :reason, as: 'reason'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auth_amount_pretax, as: 'authAmountPretax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
-      
-          property :auth_amount_tax, as: 'authAmountTax', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
-      
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthApprovedResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :decline_reason, as: 'declineReason'
-        end
-      end
-      
-      class OrderpaymentsNotifyAuthDeclinedResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyChargeRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :charge_state, as: 'chargeState'
-          property :invoice_id, as: 'invoiceId'
-          collection :invoice_ids, as: 'invoiceIds'
-        end
-      end
-      
-      class OrderpaymentsNotifyChargeResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class OrderpaymentsNotifyRefundRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :invoice_id, as: 'invoiceId'
-          collection :invoice_ids, as: 'invoiceIds'
-          property :refund_state, as: 'refundState'
-        end
-      end
-      
-      class OrderpaymentsNotifyRefundResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :execution_status, as: 'executionStatus'
-          property :kind, as: 'kind'
         end
       end
       

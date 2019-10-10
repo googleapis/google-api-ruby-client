@@ -1062,7 +1062,7 @@ module Google
       class DisableServiceRequest
         include Google::Apis::Core::Hashable
       
-        # The identity of consumer resource which service disablement will be
+        # Required. The identity of consumer resource which service disablement will be
         # applied to.
         # The Google Service Management implementation accepts the following
         # forms:
@@ -1080,6 +1080,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
+        end
+      end
+      
+      # Operation payload for DisableService method.
+      class DisableServiceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1239,7 +1252,7 @@ module Google
       class EnableServiceRequest
         include Google::Apis::Core::Hashable
       
-        # The identity of consumer resource which service enablement will be
+        # Required. The identity of consumer resource which service enablement will be
         # applied to.
         # The Google Service Management implementation accepts the following
         # forms:
@@ -1257,6 +1270,19 @@ module Google
         # Update properties of this object
         def update!(**args)
           @consumer_id = args[:consumer_id] if args.key?(:consumer_id)
+        end
+      end
+      
+      # Operation payload for EnableService method.
+      class EnableServiceResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1557,7 +1583,7 @@ module Google
       class GenerateConfigReportRequest
         include Google::Apis::Core::Hashable
       
-        # Service configuration for which we want to generate the report.
+        # Required. Service configuration for which we want to generate the report.
         # For this version of API, the supported types are
         # google.api.servicemanagement.v1.ConfigRef,
         # google.api.servicemanagement.v1.ConfigSource,
@@ -1566,7 +1592,7 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :new_config
       
-        # Service configuration against which the comparison will be done.
+        # Optional. Service configuration against which the comparison will be done.
         # For this version of API, the supported types are
         # google.api.servicemanagement.v1.ConfigRef,
         # google.api.servicemanagement.v1.ConfigSource,
@@ -3358,7 +3384,7 @@ module Google
         # @return [Google::Apis::ServicemanagementV1::DeleteServiceStrategy]
         attr_accessor :delete_service_strategy
       
-        # Optional unique identifier of this Rollout. Only lower case letters, digits
+        # Optional. Unique identifier of this Rollout. Only lower case letters, digits
         # and '-' are allowed.
         # If not specified by client, the server will generate one. The generated id
         # will have the form of <date><revision number>, where "date" is the create
@@ -3383,7 +3409,7 @@ module Google
       
         # Strategy that specifies how clients of Google Service Controller want to
         # send traffic to use different config versions. This is generally
-        # used by API proxy to split traffic based on your configured precentage for
+        # used by API proxy to split traffic based on your configured percentage for
         # each config version.
         # One example of how to gradually rollout a new service configuration using
         # this
@@ -4276,7 +4302,7 @@ module Google
       
       # Strategy that specifies how clients of Google Service Controller want to
       # send traffic to use different config versions. This is generally
-      # used by API proxy to split traffic based on your configured precentage for
+      # used by API proxy to split traffic based on your configured percentage for
       # each config version.
       # One example of how to gradually rollout a new service configuration using
       # this

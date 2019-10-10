@@ -259,6 +259,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.

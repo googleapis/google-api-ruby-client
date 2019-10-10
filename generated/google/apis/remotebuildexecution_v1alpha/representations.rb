@@ -583,12 +583,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :docker_prep, as: 'dockerPrep'
+          property :docker_prep_start_time, as: 'dockerPrepStartTime'
           property :download, as: 'download'
+          property :download_start_time, as: 'downloadStartTime'
+          property :exec_start_time, as: 'execStartTime'
           property :execution, as: 'execution'
           property :iso_prep_done, as: 'isoPrepDone'
           property :overall, as: 'overall'
           property :stdout, as: 'stdout'
           property :upload, as: 'upload'
+          property :upload_start_time, as: 'uploadStartTime'
         end
       end
       

@@ -1240,7 +1240,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The label key.
+        # The key for this label. The key must meet the following criteria:
+        # Does not exceed 100 characters.
+        # Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]*
+        # The first character must be an upper- or lower-case letter.
+        # The remaining characters must be letters, digits, or underscores.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -2817,6 +2821,15 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::InternalChecker>]
         attr_accessor :internal_checkers
       
+        # If this is true, then checks are made only from the 'internal_checkers'. If it
+        # is false, then checks are made only from the 'selected_regions'. It is an
+        # error to provide 'selected_regions' when is_internal is true, or to provide '
+        # internal_checkers' when is_internal is false.
+        # Corresponds to the JSON property `isInternal`
+        # @return [Boolean]
+        attr_accessor :is_internal
+        alias_method :is_internal?, :is_internal
+      
         # An object representing a resource that can be used for monitoring, logging,
         # billing, or other purposes. Examples include virtual machine instances,
         # databases, and storage devices such as disks. The type field identifies a
@@ -2883,6 +2896,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @http_check = args[:http_check] if args.key?(:http_check)
           @internal_checkers = args[:internal_checkers] if args.key?(:internal_checkers)
+          @is_internal = args[:is_internal] if args.key?(:is_internal)
           @monitored_resource = args[:monitored_resource] if args.key?(:monitored_resource)
           @name = args[:name] if args.key?(:name)
           @period = args[:period] if args.key?(:period)

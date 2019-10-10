@@ -23,8 +23,8 @@ module Google
     module ContentV2_1
       
       # Account data. After the creation of a new account it may take a few minutes
-      # before it is fully operational. The methods delete, insert, patch, and update
-      # require the admin role.
+      # before it is fully operational. The methods delete, insert, and update require
+      # the admin role.
       class Account
         include Google::Apis::Core::Hashable
       
@@ -785,8 +785,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, patch, and update
-        # require the admin role.
+        # before it is fully operational. The methods delete, insert, and update require
+        # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2_1::Account]
         attr_accessor :account
@@ -910,8 +910,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Account data. After the creation of a new account it may take a few minutes
-        # before it is fully operational. The methods delete, insert, patch, and update
-        # require the admin role.
+        # before it is fully operational. The methods delete, insert, and update require
+        # the admin role.
         # Corresponds to the JSON property `account`
         # @return [Google::Apis::ContentV2_1::Account]
         attr_accessor :account
@@ -1909,6 +1909,11 @@ module Google
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
         # unless provided in excludedDestinations.
+        # List of supported destinations (if available to the account):
+        # - DisplayAds
+        # - Shopping
+        # - ShoppingActions
+        # - SurfacesAcrossGoogle
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -3409,7 +3414,8 @@ module Google
         end
       end
       
-      # Order. All methods require the order manager role.
+      # Order. Production access (all methods) requires the order manager role.
+      # Sandbox access does not.
       class Order
         include Google::Apis::Core::Hashable
       
@@ -4311,12 +4317,20 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applicable_items
       
-        # Items which this promotion have been applied to.
+        # Items which this promotion have been applied to. Do not provide for orders.
+        # createtestorder.
         # Corresponds to the JSON property `appliedItems`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applied_items
       
-        # The party funding the promotion.
+        # Promotion end time in ISO 8601 format. Date, time, and offset required, e.g., "
+        # 2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The party funding the promotion. Only merchant is supported for orders.
+        # createtestorder.
         # Corresponds to the JSON property `funder`
         # @return [String]
         attr_accessor :funder
@@ -4332,17 +4346,26 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :price_value
       
-        # A short title of the promotion to be shown on the checkout page.
+        # A short title of the promotion to be shown on the checkout page. Do not
+        # provide for orders.createtestorder.
         # Corresponds to the JSON property `shortTitle`
         # @return [String]
         attr_accessor :short_title
       
-        # The category of the promotion.
+        # Promotion start time in ISO 8601 format. Date, time, and offset required, e.g.,
+        # "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z".
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The category of the promotion. Only moneyOff is supported for orders.
+        # createtestorder.
         # Corresponds to the JSON property `subtype`
         # @return [String]
         attr_accessor :subtype
       
-        # Estimated discount applied to tax (if allowed by law).
+        # Estimated discount applied to tax (if allowed by law). Do not provide for
+        # orders.createtestorder.
         # Corresponds to the JSON property `taxValue`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_value
@@ -4352,7 +4375,8 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # The scope of the promotion.
+        # The scope of the promotion. Only product is supported for orders.
+        # createtestorder.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4365,10 +4389,12 @@ module Google
         def update!(**args)
           @applicable_items = args[:applicable_items] if args.key?(:applicable_items)
           @applied_items = args[:applied_items] if args.key?(:applied_items)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @funder = args[:funder] if args.key?(:funder)
           @merchant_promotion_id = args[:merchant_promotion_id] if args.key?(:merchant_promotion_id)
           @price_value = args[:price_value] if args.key?(:price_value)
           @short_title = args[:short_title] if args.key?(:short_title)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @subtype = args[:subtype] if args.key?(:subtype)
           @tax_value = args[:tax_value] if args.key?(:tax_value)
           @title = args[:title] if args.key?(:title)
@@ -4380,17 +4406,23 @@ module Google
       class OrderPromotionItem
         include Google::Apis::Core::Hashable
       
-        # 
+        # The line item ID of a product. Do not provide for orders.createtestorder.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id
       
-        # 
+        # Offer ID of a product. Only for orders.createtestorder.
+        # Corresponds to the JSON property `offerId`
+        # @return [String]
+        attr_accessor :offer_id
+      
+        # orders.createtestorder.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The quantity of the associated product.
+        # The quantity of the associated product. Do not provide for orders.
+        # createtestorder.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -4402,6 +4434,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @line_item_id = args[:line_item_id] if args.key?(:line_item_id)
+          @offer_id = args[:offer_id] if args.key?(:offer_id)
           @product_id = args[:product_id] if args.key?(:product_id)
           @quantity = args[:quantity] if args.key?(:quantity)
         end
@@ -4626,6 +4659,7 @@ module Google
         # - "mpx"
         # - "uds"
         # - "efw"
+        # - "jd logistics"
         # Acceptable values for FR are:
         # - "colissimo"
         # - "chronopost"
@@ -4635,6 +4669,8 @@ module Google
         # - "colis prive"
         # - "boxtal"
         # - "geodis"
+        # - "tnt"
+        # - "la poste"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -5429,7 +5465,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Order. All methods require the order manager role.
+        # Order. Production access (all methods) requires the order manager role.
+        # Sandbox access does not.
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2_1::Order]
         attr_accessor :order
@@ -7234,7 +7271,9 @@ module Google
         # @return [String]
         attr_accessor :size_type
       
-        # Size of the item.
+        # Size of the item. Only one value is allowed. For variants with different sizes,
+        # insert a separate product for each size with the same itemGroupId value (see
+        # size definition).
         # Corresponds to the JSON property `sizes`
         # @return [Array<String>]
         attr_accessor :sizes
