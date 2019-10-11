@@ -90,15 +90,19 @@ module Google
         # is the parent resource, without the operations collection id.
         # @param [String] filter
         #   Required. A filter for matching the requested operations.<br><br> The
-        #   supported formats of <b>filter</b> are:<br> To query for specific function: <
+        #   supported formats of <b>filter</b> are:<br> To query for a specific function: <
         #   code>project:*,location:*,function:*</code><br> To query for all of the latest
         #   operations for a project: <code>project:*,latest:true</code>
         # @param [String] name
         #   Must not be set.
         # @param [Fixnum] page_size
-        #   The standard list page size.
+        #   The maximum number of records that should be returned.<br> Requested page size
+        #   cannot exceed 100. If not set, the default page size is 100.<br><br>
+        #   Pagination is only supported when querying for a specific function.
         # @param [String] page_token
-        #   The standard list page token.
+        #   Token identifying which result to start with, which is returned by a previous
+        #   list call.<br><br> Pagination is only supported when querying for a specific
+        #   function.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
