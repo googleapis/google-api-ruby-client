@@ -1,3 +1,43 @@
+# 0.33.0
+* Breaking changes:
+  * Deleted `urlshortener_v1`
+* Backwards compatible changes:
+  * Updated `accessapproval_v1beta1`
+  * Updated `admin_directory_v1`
+  * Updated `admin_reports_v1`
+  * Updated `androidpublisher_v3`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryconnection_v1beta1`
+  * Updated `cloudbilling_v1`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudfunctions_v1beta2`
+  * Updated `cloudkms_v1`
+  * Updated `content_v2`
+  * Updated `content_v2_1`
+  * Updated `dataflow_v1b3`
+  * Updated `datafusion_v1beta1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `iap_v1`
+  * Updated `iap_v1beta1`
+  * Updated `logging_v2`
+  * Updated `monitoring_v3`
+  * Updated `policytroubleshooter_v1beta`
+  * Updated `pubsub_v1`
+  * Updated `pubsub_v1beta2`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `sheets_v4`
+
 # 0.32.1
 * Backwards compatible changes:
   * Updated `appengine_v1`
