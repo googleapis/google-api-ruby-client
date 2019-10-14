@@ -253,7 +253,8 @@ module Google
         
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
+        # deleted. Entries received after the delete operation with a timestamp before
+        # the operation will be deleted.
         # @param [String] log_name
         #   Required. The resource name of the log to delete:
         #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
@@ -1099,7 +1100,8 @@ module Google
         
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
+        # deleted. Entries received after the delete operation with a timestamp before
+        # the operation will be deleted.
         # @param [String] log_name
         #   Required. The resource name of the log to delete:
         #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
@@ -1477,7 +1479,8 @@ module Google
         
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
+        # deleted. Entries received after the delete operation with a timestamp before
+        # the operation will be deleted.
         # @param [String] log_name
         #   Required. The resource name of the log to delete:
         #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
@@ -1801,7 +1804,8 @@ module Google
         
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
+        # deleted. Entries received after the delete operation with a timestamp before
+        # the operation will be deleted.
         # @param [String] log_name
         #   Required. The resource name of the log to delete:
         #   "projects/[PROJECT_ID]/logs/[LOG_ID]"
@@ -2380,7 +2384,8 @@ module Google
         
         # Deletes all the log entries in a log. The log reappears if it receives new
         # entries. Log entries written shortly before the delete operation might not be
-        # deleted.
+        # deleted. Entries received after the delete operation with a timestamp before
+        # the operation will be deleted.
         # @param [String] log_name
         #   Required. The resource name of the log to delete:
         #   "projects/[PROJECT_ID]/logs/[LOG_ID]"

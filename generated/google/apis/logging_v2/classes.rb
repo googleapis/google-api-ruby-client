@@ -1131,6 +1131,11 @@ module Google
         # @return [String]
         attr_accessor :destination
       
+        # Do not use. This field is ignored.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
         # Optional. An advanced logs filter. The only exported log entries are those
         # that are in the resource owning the sink and that match the filter. For
         # example:
@@ -1170,6 +1175,11 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
+        # Do not use. This field is ignored.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         # Output only. The last update timestamp of the sink.This field may not be
         # present for older sinks.
         # Corresponds to the JSON property `updateTime`
@@ -1197,10 +1207,12 @@ module Google
           @bigquery_options = args[:bigquery_options] if args.key?(:bigquery_options)
           @create_time = args[:create_time] if args.key?(:create_time)
           @destination = args[:destination] if args.key?(:destination)
+          @end_time = args[:end_time] if args.key?(:end_time)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
           @name = args[:name] if args.key?(:name)
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
+          @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
