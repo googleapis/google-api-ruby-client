@@ -1792,6 +1792,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogConfigCounterOptionsCustomField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -6220,10 +6226,12 @@ module Google
       class HttpRouteRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :header_action, as: 'headerAction', class: Google::Apis::ComputeV1::HttpHeaderAction, decorator: Google::Apis::ComputeV1::HttpHeaderAction::Representation
       
           collection :match_rules, as: 'matchRules', class: Google::Apis::ComputeV1::HttpRouteRuleMatch, decorator: Google::Apis::ComputeV1::HttpRouteRuleMatch::Representation
       
+          property :priority, as: 'priority'
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeV1::HttpRouteAction, decorator: Google::Apis::ComputeV1::HttpRouteAction::Representation
       
           property :service, as: 'service'
@@ -7558,8 +7566,18 @@ module Google
       class LogConfigCounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_fields, as: 'customFields', class: Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField, decorator: Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField::Representation
+      
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigCounterOptionsCustomField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -9463,6 +9481,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :next_hop_gateway, as: 'nextHopGateway'
+          property :next_hop_ilb, as: 'nextHopIlb'
           property :next_hop_instance, as: 'nextHopInstance'
           property :next_hop_ip, as: 'nextHopIp'
           property :next_hop_network, as: 'nextHopNetwork'
@@ -9662,6 +9681,7 @@ module Google
       class RouterNat
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ips, as: 'drainNatIps'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::RouterNatLogConfig, decorator: Google::Apis::ComputeV1::RouterNatLogConfig::Representation
       
@@ -9731,6 +9751,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :auto_allocated_nat_ips, as: 'autoAllocatedNatIps'
+          collection :drain_auto_allocated_nat_ips, as: 'drainAutoAllocatedNatIps'
+          collection :drain_user_allocated_nat_ips, as: 'drainUserAllocatedNatIps'
           property :min_extra_nat_ips_needed, as: 'minExtraNatIpsNeeded'
           property :name, as: 'name'
           property :num_vm_endpoints_with_nat_mappings, as: 'numVmEndpointsWithNatMappings'
@@ -11388,7 +11410,9 @@ module Google
       class VmEndpointNatMappingsInterfaceNatMappings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :drain_nat_ip_port_ranges, as: 'drainNatIpPortRanges'
           collection :nat_ip_port_ranges, as: 'natIpPortRanges'
+          property :num_total_drain_nat_ports, as: 'numTotalDrainNatPorts'
           property :num_total_nat_ports, as: 'numTotalNatPorts'
           property :source_alias_ip_range, as: 'sourceAliasIpRange'
           property :source_virtual_ip, as: 'sourceVirtualIp'

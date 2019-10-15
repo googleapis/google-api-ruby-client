@@ -2485,16 +2485,10 @@ module Google
       end
       
       # Represents a Backend Service resource.
-      # Backend services must have an associated health check. Backend services also
-      # store information about session affinity. For more information, read Backend
-      # Services.
-      # A backendServices resource represents a global backend service. Global backend
-      # services are used for HTTP(S), SSL Proxy, TCP Proxy load balancing and Traffic
-      # Director.
-      # A regionBackendServices resource represents a regional backend service.
-      # Regional backend services are used for internal TCP/UDP load balancing. For
-      # more information, read Internal TCP/UDP Load balancing. (== resource_for v1.
-      # backendService ==) (== resource_for beta.backendService ==)
+      # A backend service contains configuration values for Google Cloud Platform load
+      # balancing services.
+      # For more information, read Backend Services.
+      # (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -2592,9 +2586,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Indicates whether the backend service will be used with internal or external
-        # load balancing. A backend service created for one type of load balancing
-        # cannot be used with the other. Possible values are INTERNAL and EXTERNAL.
+        # Specifies the load balancer type. Choose EXTERNAL for load balancers that
+        # receive traffic from external clients. Choose INTERNAL for Internal TCP/UDP
+        # Load Balancing. Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.
+        # Choose INTERNAL_SELF_MANAGED for Traffic Director. A backend service created
+        # for one type of load balancing cannot be used with another. For more
+        # information, refer to Choosing a load balancer.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -2661,9 +2658,10 @@ module Google
         attr_accessor :port_name
       
         # The protocol this BackendService uses to communicate with backends.
-        # Possible values are HTTP, HTTPS, TCP, SSL, or UDP, depending on the chosen
-        # load balancer or Traffic Director configuration. Refer to the documentation
-        # for the load balancer or for Traffic director for more information.
+        # Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, or UDP, depending on the
+        # chosen load balancer or Traffic Director configuration. Refer to the
+        # documentation for the load balancer or for Traffic Director for more
+        # information.
         # Corresponds to the JSON property `protocol`
         # @return [String]
         attr_accessor :protocol
@@ -6109,27 +6107,12 @@ module Google
       end
       
       # Represents a Forwarding Rule resource.
-      # A forwardingRules resource represents a regional forwarding rule.
-      # Regional external forwarding rules can reference any of the following
-      # resources:
-      # 
-      # - A target instance
-      # - A Cloud VPN Classic gateway (targetVpnGateway),
-      # - A target pool for a Network Load Balancer
-      # - A global target HTTP(S) proxy for an HTTP(S) load balancer using Standard
-      # Tier
-      # - A target SSL proxy for a SSL Proxy load balancer using Standard Tier
-      # - A target TCP proxy for a TCP Proxy load balancer using Standard Tier.
-      # Regional internal forwarding rules can reference the backend service of an
-      # internal TCP/UDP load balancer.
-      # For regional internal forwarding rules, the following applies:
-      # - If the loadBalancingScheme for the load balancer is INTERNAL, then the
-      # forwarding rule references a regional internal backend service.
-      # - If the loadBalancingScheme for the load balancer is INTERNAL_MANAGED, then
-      # the forwarding rule must reference a regional target HTTP(S) proxy.
-      # For more information, read Using Forwarding rules.
-      # A globalForwardingRules resource represents a global forwarding rule.
-      # Global forwarding rules are only used by load balancers that use Premium Tier.
+      # A forwarding rule and its corresponding IP address represent the frontend
+      # configuration of a Google Cloud Platform load balancer. Forwarding rules can
+      # also reference target instances and Cloud VPN Classic gateways (
+      # targetVpnGateway).
+      # For more information, read Forwarding rule concepts and Using protocol
+      # forwarding.
       # (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules =
       # =) (== resource_for beta.globalForwardingRules ==) (== resource_for v1.
       # globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (==
@@ -6157,8 +6140,14 @@ module Google
       
         # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
         # AH, SCTP or ICMP.
-        # When the load balancing scheme is INTERNAL, only TCP and UDP are valid. When
-        # the load balancing scheme is INTERNAL_SELF_MANAGED, only TCPis valid.
+        # For Internal TCP/UDP Load Balancing, the load balancing scheme is INTERNAL,
+        # and one of TCP or UDP are valid. For Traffic Director, the load balancing
+        # scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For Internal HTTP(S)
+        # Load Balancing, the load balancing scheme is INTERNAL_MANAGED, and only TCP is
+        # valid. For HTTP(S), SSL Proxy, and TCP Proxy Load Balancing, the load
+        # balancing scheme is EXTERNAL and only TCP is valid. For Network TCP/UDP Load
+        # Balancing, the load balancing scheme is EXTERNAL, and one of TCP or UDP is
+        # valid.
         # Corresponds to the JSON property `IPProtocol`
         # @return [String]
         attr_accessor :ip_protocol
@@ -6211,12 +6200,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # This signifies what the ForwardingRule will be used for and can only take the
-        # following values: INTERNAL, INTERNAL_SELF_MANAGED, EXTERNAL. The value of
-        # INTERNAL means that this will be used for Internal Network Load Balancing (TCP,
-        # UDP). The value of INTERNAL_SELF_MANAGED means that this will be used for
-        # Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used
-        # for External Load Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+        # Specifies the forwarding rule type. EXTERNAL is used for: - Classic Cloud VPN
+        # gateways - Protocol forwarding to VMs from an external IP address - The
+        # following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP.
+        # INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address
+        # - Internal TCP/UDP load balancers
+        # INTERNAL_MANAGED is used for: - Internal HTTP(S) load balancers
+        # INTERNAL_SELF_MANAGED is used for: - Traffic Director
+        # For more information about forwarding rules, refer to Forwarding rule concepts.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
         attr_accessor :load_balancing_scheme
@@ -6788,19 +6779,28 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
         # access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
-        # members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+        # members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions (defined by IAM or configured by users). A `binding` can
+        # optionally specify a `condition`, which is a logic expression that further
+        # constrains the role binding based on attributes about the request and/or
+        # target resource.
         # **JSON Example**
-        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
-        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
-        # sean@example.com"] ` ] `
+        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
+        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ] `
         # **YAML Example**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the [IAM developer's guide](
         # https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -8506,6 +8506,12 @@ module Google
       class HttpRouteRule
         include Google::Apis::Core::Hashable
       
+        # The short description conveying the intent of this routeRule.
+        # The description can have a maximum length of 1024 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The request and response header transformations that take effect before the
         # request is passed along to the selected backendService.
         # Corresponds to the JSON property `headerAction`
@@ -8516,6 +8522,22 @@ module Google
         # Corresponds to the JSON property `matchRules`
         # @return [Array<Google::Apis::ComputeV1::HttpRouteRuleMatch>]
         attr_accessor :match_rules
+      
+        # For routeRules within a given pathMatcher, priority determines the order in
+        # which load balancer will interpret routeRules. RouteRules are evaluated in
+        # order of priority, from the lowest to highest number. The priority of a rule
+        # decreases as its number increases (1, 2, 3, N+1). The first rule that matches
+        # the request is applied.
+        # You cannot configure two or more routeRules with the same priority. Priority
+        # for each rule must be set to a number between 0 and 2147483647 inclusive.
+        # Priority numbers can have gaps, which enable you to add or remove rules in the
+        # future without affecting the rest of the rules. For example, 1, 2, 3, 4, 5, 9,
+        # 12, 16 is a valid series of priority numbers to which you could add rules
+        # numbered from 6 to 8, 10 to 11, and 13 to 15 in the future without any impact
+        # on existing rules.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
       
         # In response to a matching matchRule, the load balancer performs advanced
         # routing actions like URL rewrites, header transformations, etc. prior to
@@ -8550,8 +8572,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @description = args[:description] if args.key?(:description)
           @header_action = args[:header_action] if args.key?(:header_action)
           @match_rules = args[:match_rules] if args.key?(:match_rules)
+          @priority = args[:priority] if args.key?(:priority)
           @route_action = args[:route_action] if args.key?(:route_action)
           @service = args[:service] if args.key?(:service)
           @url_redirect = args[:url_redirect] if args.key?(:url_redirect)
@@ -13948,6 +13972,11 @@ module Google
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
+        # Custom fields.
+        # Corresponds to the JSON property `customFields`
+        # @return [Array<Google::Apis::ComputeV1::LogConfigCounterOptionsCustomField>]
+        attr_accessor :custom_fields
+      
         # The field value to attribute.
         # Corresponds to the JSON property `field`
         # @return [String]
@@ -13964,8 +13993,37 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @custom_fields = args[:custom_fields] if args.key?(:custom_fields)
           @field = args[:field] if args.key?(:field)
           @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # Custom fields. These can be used to create a counter with arbitrary field/
+      # value pairs. See: go/rpcsp-custom-fields.
+      class LogConfigCounterOptionsCustomField
+        include Google::Apis::Core::Hashable
+      
+        # Name is the field name.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Value is the field value. It is important that in contrast to the
+        # CounterOptions.field, the value here is a constant that is not derived from
+        # the IAMContext.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -18377,19 +18435,28 @@ module Google
       
       # Defines an Identity and Access Management (IAM) policy. It is used to specify
       # access control policies for Cloud Platform resources.
-      # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
-      # members` to a `role`, where the members can be user accounts, Google groups,
-      # Google domains, and service accounts. A `role` is a named list of permissions
-      # defined by IAM.
+      # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+      # members` to a single `role`. Members can be user accounts, service accounts,
+      # Google groups, and domains (such as G Suite). A `role` is a named list of
+      # permissions (defined by IAM or configured by users). A `binding` can
+      # optionally specify a `condition`, which is a logic expression that further
+      # constrains the role binding based on attributes about the request and/or
+      # target resource.
       # **JSON Example**
-      # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
-      # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-      # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
-      # sean@example.com"] ` ] `
+      # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+      # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+      # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+      # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
+      # "condition": ` "title": "expirable access", "description": "Does not grant
+      # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+      # 00:00.000Z')", ` ` ] `
       # **YAML Example**
       # bindings: - members: - user:mike@example.com - group:admins@example.com -
-      # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-      # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+      # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+      # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+      # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+      # access description: Does not grant access after Sep 2020 expression: request.
+      # time < timestamp('2020-10-01T00:00:00.000Z')
       # For a description of IAM and its features, see the [IAM developer's guide](
       # https://cloud.google.com/iam/docs).
       class Policy
@@ -18400,8 +18467,9 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. `bindings` with no members will
-        # result in an error.
+        # Associates a list of `members` to a `role`. Optionally may specify a `
+        # condition` that determines when binding is in effect. `bindings` with no
+        # members will result in an error.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ComputeV1::Binding>]
         attr_accessor :bindings
@@ -18414,7 +18482,9 @@ module Google
         # that etag in the request to `setIamPolicy` to ensure that their change will be
         # applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten.
+        # policy is overwritten. Due to blind-set semantics of an etag-less policy, '
+        # setIamPolicy' will not fail even if either of incoming or stored policy does
+        # not meet the version requirements.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -18440,9 +18510,13 @@ module Google
         # Specifies the format of the policy.
         # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
         # rejected.
-        # Policies with any conditional bindings must specify version 3. Policies
-        # without any conditional bindings may specify any valid value or leave the
-        # field unset.
+        # Operations affecting conditional bindings must specify version 3. This can be
+        # either setting a conditional policy, modifying a conditional binding, or
+        # removing a conditional binding from the stored conditional policy. Operations
+        # on non-conditional policies may specify any valid value or leave the field
+        # unset.
+        # If no etag is provided in the call to `setIamPolicy`, any version compliance
+        # checks on the incoming and/or stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -19832,19 +19906,28 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
         # access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
-        # members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+        # members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions (defined by IAM or configured by users). A `binding` can
+        # optionally specify a `condition`, which is a logic expression that further
+        # constrains the role binding based on attributes about the request and/or
+        # target resource.
         # **JSON Example**
-        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
-        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
-        # sean@example.com"] ` ] `
+        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
+        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ] `
         # **YAML Example**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the [IAM developer's guide](
         # https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`
@@ -21182,6 +21265,16 @@ module Google
         # @return [String]
         attr_accessor :next_hop_gateway
       
+        # The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should
+        # handle matching packets. You can only specify the forwarding rule as a partial
+        # or full URL. For example, the following are all valid URLs:
+        # - https://www.googleapis.com/compute/v1/projects/project/regions/region/
+        # forwardingRules/forwardingRule
+        # - regions/region/forwardingRules/forwardingRule
+        # Corresponds to the JSON property `nextHopIlb`
+        # @return [String]
+        attr_accessor :next_hop_ilb
+      
         # The URL to an instance that should handle matching packets. You can specify
         # this as a full or partial URL. For example:
         # https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
@@ -21250,6 +21343,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @next_hop_gateway = args[:next_hop_gateway] if args.key?(:next_hop_gateway)
+          @next_hop_ilb = args[:next_hop_ilb] if args.key?(:next_hop_ilb)
           @next_hop_instance = args[:next_hop_instance] if args.key?(:next_hop_instance)
           @next_hop_ip = args[:next_hop_ip] if args.key?(:next_hop_ip)
           @next_hop_network = args[:next_hop_network] if args.key?(:next_hop_network)
@@ -22016,6 +22110,13 @@ module Google
       class RouterNat
         include Google::Apis::Core::Hashable
       
+        # A list of URLs of the IP resources to be drained. These IPs must be valid
+        # static external IPs that have been assigned to the NAT. These IPs should be
+        # used for updating/patching a NAT only.
+        # Corresponds to the JSON property `drainNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ips
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -22100,6 +22201,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
@@ -22303,6 +22405,18 @@ module Google
         # @return [Array<String>]
         attr_accessor :auto_allocated_nat_ips
       
+        # A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.
+        # 1", ?179.12.26.133?].
+        # Corresponds to the JSON property `drainAutoAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_auto_allocated_nat_ips
+      
+        # A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.
+        # 1", ?179.12.26.133?].
+        # Corresponds to the JSON property `drainUserAllocatedNatIps`
+        # @return [Array<String>]
+        attr_accessor :drain_user_allocated_nat_ips
+      
         # The number of extra IPs to allocate. This will be greater than 0 only if user-
         # specified IPs are NOT enough to allow all configured VMs to use NAT. This
         # value is meaningful only when auto-allocation of NAT IPs is *not* used.
@@ -22338,6 +22452,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auto_allocated_nat_ips = args[:auto_allocated_nat_ips] if args.key?(:auto_allocated_nat_ips)
+          @drain_auto_allocated_nat_ips = args[:drain_auto_allocated_nat_ips] if args.key?(:drain_auto_allocated_nat_ips)
+          @drain_user_allocated_nat_ips = args[:drain_user_allocated_nat_ips] if args.key?(:drain_user_allocated_nat_ips)
           @min_extra_nat_ips_needed = args[:min_extra_nat_ips_needed] if args.key?(:min_extra_nat_ips_needed)
           @name = args[:name] if args.key?(:name)
           @num_vm_endpoints_with_nat_mappings = args[:num_vm_endpoints_with_nat_mappings] if args.key?(:num_vm_endpoints_with_nat_mappings)
@@ -25528,12 +25644,14 @@ module Google
         attr_accessor :name
       
         # Specifies the QUIC override policy for this TargetHttpsProxy resource. This
-        # determines whether the load balancer will attempt to negotiate QUIC with
-        # clients or not. Can specify one of NONE, ENABLE, or DISABLE. Specify ENABLE to
-        # always enable QUIC, Enables QUIC when set to ENABLE, and disables QUIC when
-        # set to DISABLE. If NONE is specified, uses the QUIC policy with no user
-        # overrides, which is equivalent to DISABLE. Not specifying this field is
-        # equivalent to specifying NONE.
+        # setting determines whether the load balancer attempts to negotiate QUIC with
+        # clients. You can specify NONE, ENABLE, or DISABLE.
+        # - When quic-override is set to NONE, Google manages whether QUIC is used.
+        # - When quic-override is set to ENABLE, the load balancer uses QUIC when
+        # possible.
+        # - When quic-override is set to DISABLE, the load balancer doesn't use QUIC.
+        # - If the quic-override flag is not specified, NONE is implied.
+        # -
         # Corresponds to the JSON property `quicOverride`
         # @return [String]
         attr_accessor :quic_override
@@ -25557,8 +25675,8 @@ module Google
         attr_accessor :ssl_certificates
       
         # URL of SslPolicy resource that will be associated with the TargetHttpsProxy
-        # resource. If not set, the TargetHttpsProxy resource will not have any SSL
-        # policy configured.
+        # resource. If not set, the TargetHttpsProxy resource has no SSL policy
+        # configured.
         # Corresponds to the JSON property `sslPolicy`
         # @return [String]
         attr_accessor :ssl_policy
@@ -28710,12 +28828,25 @@ module Google
       class VmEndpointNatMappingsInterfaceNatMappings
         include Google::Apis::Core::Hashable
       
+        # List of all drain IP:port-range mappings assigned to this interface. These
+        # ranges are inclusive, that is, both the first and the last ports can be used
+        # for NAT. Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
+        # Corresponds to the JSON property `drainNatIpPortRanges`
+        # @return [Array<String>]
+        attr_accessor :drain_nat_ip_port_ranges
+      
         # A list of all IP:port-range mappings assigned to this interface. These ranges
         # are inclusive, that is, both the first and the last ports can be used for NAT.
         # Example: ["2.2.2.2:12345-12355", "1.1.1.1:2234-2234"].
         # Corresponds to the JSON property `natIpPortRanges`
         # @return [Array<String>]
         attr_accessor :nat_ip_port_ranges
+      
+        # Total number of drain ports across all NAT IPs allocated to this interface. It
+        # equals to the aggregated port number in the field drain_nat_ip_port_ranges.
+        # Corresponds to the JSON property `numTotalDrainNatPorts`
+        # @return [Fixnum]
+        attr_accessor :num_total_drain_nat_ports
       
         # Total number of ports across all NAT IPs allocated to this interface. It
         # equals to the aggregated port number in the field nat_ip_port_ranges.
@@ -28740,7 +28871,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @drain_nat_ip_port_ranges = args[:drain_nat_ip_port_ranges] if args.key?(:drain_nat_ip_port_ranges)
           @nat_ip_port_ranges = args[:nat_ip_port_ranges] if args.key?(:nat_ip_port_ranges)
+          @num_total_drain_nat_ports = args[:num_total_drain_nat_ports] if args.key?(:num_total_drain_nat_ports)
           @num_total_nat_ports = args[:num_total_nat_ports] if args.key?(:num_total_nat_ports)
           @source_alias_ip_range = args[:source_alias_ip_range] if args.key?(:source_alias_ip_range)
           @source_virtual_ip = args[:source_virtual_ip] if args.key?(:source_virtual_ip)
@@ -29586,6 +29719,17 @@ module Google
         # - NEGOTIATION_FAILURE: Handshake failed.
         # - DEPROVISIONING: Resources are being deallocated for the VPN tunnel.
         # - FAILED: Tunnel creation has failed and the tunnel is not ready to be used.
+        # - NO_INCOMING_PACKETS: No incoming packets from peer.
+        # - REJECTED: Tunnel configuration was rejected, can be result of being
+        # blacklisted.
+        # - ALLOCATING_RESOURCES: Cloud VPN is in the process of allocating all required
+        # resources.
+        # - STOPPED: Tunnel is stopped due to its Forwarding Rules being deleted for
+        # Classic VPN tunnels or the project is in frozen state.
+        # - PEER_IDENTITY_MISMATCH: Peer identity does not match peer IP, probably
+        # behind NAT.
+        # - TS_NARROWING_NOT_ALLOWED: Traffic selector narrowing not allowed for an HA-
+        # VPN tunnel.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -30396,19 +30540,28 @@ module Google
       
         # Defines an Identity and Access Management (IAM) policy. It is used to specify
         # access control policies for Cloud Platform resources.
-        # A `Policy` consists of a list of `bindings`. A `binding` binds a list of `
-        # members` to a `role`, where the members can be user accounts, Google groups,
-        # Google domains, and service accounts. A `role` is a named list of permissions
-        # defined by IAM.
+        # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
+        # members` to a single `role`. Members can be user accounts, service accounts,
+        # Google groups, and domains (such as G Suite). A `role` is a named list of
+        # permissions (defined by IAM or configured by users). A `binding` can
+        # optionally specify a `condition`, which is a logic expression that further
+        # constrains the role binding based on attributes about the request and/or
+        # target resource.
         # **JSON Example**
-        # ` "bindings": [ ` "role": "roles/owner", "members": [ "user:mike@example.com",
-        # "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-app@
-        # appspot.gserviceaccount.com" ] `, ` "role": "roles/viewer", "members": ["user:
-        # sean@example.com"] ` ] `
+        # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
+        # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
+        # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
+        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
+        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
+        # 00:00.000Z')", ` ` ] `
         # **YAML Example**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
-        # domain:google.com - serviceAccount:my-other-app@appspot.gserviceaccount.com
-        # role: roles/owner - members: - user:sean@example.com role: roles/viewer
+        # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+        # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
+        # com role: roles/resourcemanager.organizationViewer condition: title: expirable
+        # access description: Does not grant access after Sep 2020 expression: request.
+        # time < timestamp('2020-10-01T00:00:00.000Z')
         # For a description of IAM and its features, see the [IAM developer's guide](
         # https://cloud.google.com/iam/docs).
         # Corresponds to the JSON property `policy`

@@ -47,6 +47,41 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Deletes the settings associated with a project, folder, or organization.
+        # This will have the effect of disabling Access Approval for the project,
+        # folder, or organization, but only if all ancestors also have Access
+        # Approval disabled. If Access Approval is enabled at a higher level of the
+        # hierarchy, then Access Approval will still be enabled at this level as
+        # the settings are inherited.
+        # @param [String] name
+        #   Name of the AccessApprovalSettings to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccessapprovalV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccessapprovalV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_folder_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AccessapprovalV1beta1::Empty::Representation
+          command.response_class = Google::Apis::AccessapprovalV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the settings associated with a project, folder, or organization.
         # @param [String] name
         #   Name of the AccessApprovalSettings to retrieve.
@@ -277,6 +312,41 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Deletes the settings associated with a project, folder, or organization.
+        # This will have the effect of disabling Access Approval for the project,
+        # folder, or organization, but only if all ancestors also have Access
+        # Approval disabled. If Access Approval is enabled at a higher level of the
+        # hierarchy, then Access Approval will still be enabled at this level as
+        # the settings are inherited.
+        # @param [String] name
+        #   Name of the AccessApprovalSettings to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccessapprovalV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccessapprovalV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_organization_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AccessapprovalV1beta1::Empty::Representation
+          command.response_class = Google::Apis::AccessapprovalV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the settings associated with a project, folder, or organization.
         # @param [String] name
         #   Name of the AccessApprovalSettings to retrieve.
@@ -502,6 +572,41 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the settings associated with a project, folder, or organization.
+        # This will have the effect of disabling Access Approval for the project,
+        # folder, or organization, but only if all ancestors also have Access
+        # Approval disabled. If Access Approval is enabled at a higher level of the
+        # hierarchy, then Access Approval will still be enabled at this level as
+        # the settings are inherited.
+        # @param [String] name
+        #   Name of the AccessApprovalSettings to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccessapprovalV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccessapprovalV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_access_approval_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::AccessapprovalV1beta1::Empty::Representation
+          command.response_class = Google::Apis::AccessapprovalV1beta1::Empty
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

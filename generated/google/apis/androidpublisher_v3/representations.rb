@@ -716,6 +716,7 @@ module Google
           property :developer_payload, as: 'developerPayload'
           property :kind, as: 'kind'
           property :order_id, as: 'orderId'
+          property :product_id, as: 'productId'
           property :purchase_state, as: 'purchaseState'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_token, as: 'purchaseToken'

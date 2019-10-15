@@ -120,8 +120,9 @@ module Google
         
         # Delete an auto domain mapping.
         # @param [String] name
-        #   The name of the auto domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being deleted.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -163,8 +164,9 @@ module Google
         
         # Get information about an auto domain mapping.
         # @param [String] name
-        #   The name of the auto domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -256,8 +258,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the auto domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::AutoDomainMapping] auto_domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -290,8 +293,9 @@ module Google
         
         # Create a configuration.
         # @param [String] parent
-        #   The project ID or project number in which this configuration should be
-        #   created.
+        #   The namespace in which the configuration should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Configuration] configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -327,8 +331,9 @@ module Google
         # calling this, any route referencing the configuration (or revision
         # from the configuration) must be deleted.
         # @param [String] name
-        #   The name of the configuration being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -370,8 +375,9 @@ module Google
         
         # Get information about a configuration.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -401,8 +407,9 @@ module Google
         
         # List configurations.
         # @param [String] parent
-        #   The project ID or project number from which the configurations should be
-        #   listed.
+        #   The namespace from which the configurations should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -463,8 +470,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Configuration] configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -497,8 +505,9 @@ module Google
         
         # Create a new domain mapping.
         # @param [String] parent
-        #   The project ID or project number in which this domain mapping should be
-        #   created.
+        #   The namespace in which the domain mapping should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -531,8 +540,9 @@ module Google
         
         # Delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -574,8 +584,9 @@ module Google
         
         # Get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -605,8 +616,9 @@ module Google
         
         # List domain mappings.
         # @param [String] parent
-        #   The project ID or project number from which the domain mappings should be
-        #   listed.
+        #   The namespace from which the domain mappings should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -667,8 +679,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -701,8 +714,9 @@ module Google
         
         # Delete a revision.
         # @param [String] name
-        #   The name of the revision being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -744,8 +758,9 @@ module Google
         
         # Get information about a revision.
         # @param [String] name
-        #   The name of the revision being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -775,7 +790,9 @@ module Google
         
         # List revisions.
         # @param [String] parent
-        #   The project ID or project number from which the revisions should be listed.
+        #   The namespace from which the revisions should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -831,7 +848,9 @@ module Google
         
         # Create a route.
         # @param [String] parent
-        #   The project ID or project number in which this route should be created.
+        #   The namespace in which the route should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Route] route_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -865,8 +884,9 @@ module Google
         # Delete a route.
         # This will cause the route to stop serving traffic.
         # @param [String] name
-        #   The name of the route being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -908,8 +928,9 @@ module Google
         
         # Get information about a route.
         # @param [String] name
-        #   The name of the route being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -939,7 +960,9 @@ module Google
         
         # List routes.
         # @param [String] parent
-        #   The project ID or project number from which the routes should be listed.
+        #   The namespace from which the routes should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -1000,8 +1023,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the route being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Route] route_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1034,7 +1058,9 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   The project ID or project number in which this service should be created.
+        #   The namespace in which the service should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1069,8 +1095,9 @@ module Google
         # This will cause the Service to stop serving traffic and will delete the
         # child entities like Routes, Configurations and Revisions.
         # @param [String] name
-        #   The name of the service being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -1112,8 +1139,9 @@ module Google
         
         # Get information about a service.
         # @param [String] name
-        #   The name of the service being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1143,7 +1171,9 @@ module Google
         
         # List services.
         # @param [String] parent
-        #   The project ID or project number from which the services should be listed.
+        #   The namespace from which the services should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -1204,8 +1234,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1377,8 +1408,9 @@ module Google
         
         # Delete an auto domain mapping.
         # @param [String] name
-        #   The name of the auto domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being deleted.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -1420,8 +1452,9 @@ module Google
         
         # Get information about an auto domain mapping.
         # @param [String] name
-        #   The name of the auto domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1513,8 +1546,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the auto domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the auto domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::AutoDomainMapping] auto_domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1547,8 +1581,9 @@ module Google
         
         # Create a configuration.
         # @param [String] parent
-        #   The project ID or project number in which this configuration should be
-        #   created.
+        #   The namespace in which the configuration should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Configuration] configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1584,8 +1619,9 @@ module Google
         # calling this, any route referencing the configuration (or revision
         # from the configuration) must be deleted.
         # @param [String] name
-        #   The name of the configuration being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -1627,8 +1663,9 @@ module Google
         
         # Get information about a configuration.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1658,8 +1695,9 @@ module Google
         
         # List configurations.
         # @param [String] parent
-        #   The project ID or project number from which the configurations should be
-        #   listed.
+        #   The namespace from which the configurations should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -1720,8 +1758,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the configuration being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the configuration being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Configuration] configuration_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1754,8 +1793,9 @@ module Google
         
         # Create a new domain mapping.
         # @param [String] parent
-        #   The project ID or project number in which this domain mapping should be
-        #   created.
+        #   The namespace in which the domain mapping should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1788,8 +1828,9 @@ module Google
         
         # Delete a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -1831,8 +1872,9 @@ module Google
         
         # Get information about a domain mapping.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1862,8 +1904,9 @@ module Google
         
         # List domain mappings.
         # @param [String] parent
-        #   The project ID or project number from which the domain mappings should be
-        #   listed.
+        #   The namespace from which the domain mappings should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -1924,8 +1967,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the domain mapping being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the domain mapping being retrieved.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::DomainMapping] domain_mapping_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1958,8 +2002,9 @@ module Google
         
         # Delete a revision.
         # @param [String] name
-        #   The name of the revision being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -2001,8 +2046,9 @@ module Google
         
         # Get information about a revision.
         # @param [String] name
-        #   The name of the revision being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the revision to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2032,7 +2078,9 @@ module Google
         
         # List revisions.
         # @param [String] parent
-        #   The project ID or project number from which the revisions should be listed.
+        #   The namespace from which the revisions should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -2088,7 +2136,9 @@ module Google
         
         # Create a route.
         # @param [String] parent
-        #   The project ID or project number in which this route should be created.
+        #   The namespace in which the route should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Route] route_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2122,8 +2172,9 @@ module Google
         # Delete a route.
         # This will cause the route to stop serving traffic.
         # @param [String] name
-        #   The name of the route being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -2165,8 +2216,9 @@ module Google
         
         # Get information about a route.
         # @param [String] name
-        #   The name of the route being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2196,7 +2248,9 @@ module Google
         
         # List routes.
         # @param [String] parent
-        #   The project ID or project number from which the routes should be listed.
+        #   The namespace from which the routes should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -2257,8 +2311,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the route being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the route being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Route] route_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2291,7 +2346,9 @@ module Google
         
         # Create a service.
         # @param [String] parent
-        #   The project ID or project number in which this service should be created.
+        #   The namespace in which the service should be created.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2326,8 +2383,9 @@ module Google
         # This will cause the Service to stop serving traffic and will delete the
         # child entities like Routes, Configurations and Revisions.
         # @param [String] name
-        #   The name of the service being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service to delete.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
         # @param [String] kind
@@ -2369,8 +2427,9 @@ module Google
         
         # Get information about a service.
         # @param [String] name
-        #   The name of the service being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service to retrieve.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2440,7 +2499,9 @@ module Google
         
         # List services.
         # @param [String] parent
-        #   The project ID or project number from which the services should be listed.
+        #   The namespace from which the services should be listed.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [String] continue
         #   Optional encoded string to continue paging.
         # @param [String] field_selector
@@ -2501,8 +2562,9 @@ module Google
         # May provide metadata.resourceVersion to enforce update from last read for
         # optimistic concurrency control.
         # @param [String] name
-        #   The name of the service being replaced. If needed, replace
-        #   `namespace_id` with the project ID.
+        #   The name of the service being replaced.
+        #   For Cloud Run (fully managed), replace `namespace_id` with the project ID
+        #   or number.
         # @param [Google::Apis::RunV1::Service] service_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

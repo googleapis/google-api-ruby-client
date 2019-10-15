@@ -592,6 +592,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionDraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2122,6 +2128,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LicenseResourceCommitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LicenseResourceRequirements
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2165,6 +2177,12 @@ module Google
       end
       
       class LogConfigCounterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCounterOptionsCustomField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2370,6 +2388,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupAppEngine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupCloudFunction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupCloudRun
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -6248,11 +6284,14 @@ module Google
       class Commitment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :end_timestamp, as: 'endTimestamp'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          collection :license_resources, as: 'licenseResources', class: Google::Apis::ComputeAlpha::LicenseResourceCommitment, decorator: Google::Apis::ComputeAlpha::LicenseResourceCommitment::Representation
+      
           property :name, as: 'name'
           property :plan, as: 'plan'
           property :region, as: 'region'
@@ -6369,6 +6408,13 @@ module Google
           property :svc, as: 'svc'
           property :sys, as: 'sys'
           collection :values, as: 'values'
+        end
+      end
+      
+      class ConfidentialInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
         end
       end
       
@@ -7634,10 +7680,12 @@ module Google
       class HttpRouteRule
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
           property :header_action, as: 'headerAction', class: Google::Apis::ComputeAlpha::HttpHeaderAction, decorator: Google::Apis::ComputeAlpha::HttpHeaderAction::Representation
       
           collection :match_rules, as: 'matchRules', class: Google::Apis::ComputeAlpha::HttpRouteRuleMatch, decorator: Google::Apis::ComputeAlpha::HttpRouteRuleMatch::Representation
       
+          property :priority, as: 'priority'
           property :route_action, as: 'routeAction', class: Google::Apis::ComputeAlpha::HttpRouteAction, decorator: Google::Apis::ComputeAlpha::HttpRouteAction::Representation
       
           property :service, as: 'service'
@@ -7818,6 +7866,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig::Representation
+      
           property :cpu_platform, as: 'cpuPlatform'
           property :creation_timestamp, as: 'creationTimestamp'
           property :deletion_protection, as: 'deletionProtection'
@@ -8217,7 +8267,6 @@ module Google
       class InstanceGroupManagersDeletePerInstanceConfigsReq
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instances, as: 'instances'
           collection :names, as: 'names'
         end
       end
@@ -8548,6 +8597,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeAlpha::ConfidentialInstanceConfig::Representation
+      
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::AttachedDisk, decorator: Google::Apis::ComputeAlpha::AttachedDisk::Representation
       
@@ -9282,6 +9333,15 @@ module Google
         end
       end
       
+      class LicenseResourceCommitment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, :numeric_string => true, as: 'amount'
+          property :cores_per_license, as: 'coresPerLicense'
+          property :license, as: 'license'
+        end
+      end
+      
       class LicenseResourceRequirements
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9354,8 +9414,18 @@ module Google
       class LogConfigCounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_fields, as: 'customFields', class: Google::Apis::ComputeAlpha::LogConfigCounterOptionsCustomField, decorator: Google::Apis::ComputeAlpha::LogConfigCounterOptionsCustomField::Representation
+      
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigCounterOptionsCustomField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -9698,6 +9768,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :annotations, as: 'annotations'
+          property :app_engine, as: 'appEngine', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupAppEngine::Representation
+      
+          property :cloud_function, as: 'cloudFunction', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudFunction, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudFunction::Representation
+      
+          property :cloud_run, as: 'cloudRun', class: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudRun, decorator: Google::Apis::ComputeAlpha::NetworkEndpointGroupCloudRun::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :default_port, as: 'defaultPort'
           property :description, as: 'description'
@@ -9708,6 +9784,7 @@ module Google
           property :name, as: 'name'
           property :network, as: 'network'
           property :network_endpoint_type, as: 'networkEndpointType'
+          property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :size, as: 'size'
@@ -9746,6 +9823,32 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NetworkEndpointGroupAppEngine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :url_mask, as: 'urlMask'
+          property :version, as: 'version'
+        end
+      end
+      
+      class NetworkEndpointGroupCloudFunction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :function, as: 'function'
+          property :url_mask, as: 'urlMask'
+        end
+      end
+      
+      class NetworkEndpointGroupCloudRun
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :tag, as: 'tag'
+          property :url_mask, as: 'urlMask'
         end
       end
       
@@ -10117,6 +10220,7 @@ module Google
           property :node_type, as: 'nodeType'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeAlpha::ServerBinding, decorator: Google::Apis::ComputeAlpha::ServerBinding::Representation
       
+          property :server_id, as: 'serverId'
           property :status, as: 'status'
         end
       end
@@ -11469,7 +11573,6 @@ module Google
       class RegionInstanceGroupManagerDeleteInstanceConfigReq
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instances, as: 'instances'
           collection :names, as: 'names'
         end
       end
@@ -11990,6 +12093,8 @@ module Google
       class ResourcePolicyGroupPlacementPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain_count, as: 'availabilityDomainCount'
+          property :distribution, as: 'distribution'
           property :locality, as: 'locality'
           property :style, as: 'style'
           property :vm_count, as: 'vmCount'

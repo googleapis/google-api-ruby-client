@@ -1184,6 +1184,11 @@ module Google
         # @return [String]
         attr_accessor :order_id
       
+        # The inapp product SKU.
+        # Corresponds to the JSON property `productId`
+        # @return [String]
+        attr_accessor :product_id
+      
         # The purchase state of the order. Possible values are:
         # - Purchased
         # - Canceled
@@ -1224,6 +1229,7 @@ module Google
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @kind = args[:kind] if args.key?(:kind)
           @order_id = args[:order_id] if args.key?(:order_id)
+          @product_id = args[:product_id] if args.key?(:product_id)
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)

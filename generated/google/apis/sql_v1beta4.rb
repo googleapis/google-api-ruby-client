@@ -12,23 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/androidpublisher_v3/service.rb'
-require 'google/apis/androidpublisher_v3/classes.rb'
-require 'google/apis/androidpublisher_v3/representations.rb'
+require 'google/apis/sql_v1beta4/service.rb'
+require 'google/apis/sql_v1beta4/classes.rb'
+require 'google/apis/sql_v1beta4/representations.rb'
 
 module Google
   module Apis
-    # Google Play Developer API
+    # Cloud SQL Admin API
     #
-    # Accesses Android application developers' Google Play accounts.
+    # API for Cloud SQL database instance management
     #
-    # @see https://developers.google.com/android-publisher
-    module AndroidpublisherV3
-      VERSION = 'V3'
-      REVISION = '20191013'
+    # @see https://developers.google.com/cloud-sql/
+    module SqlV1beta4
+      VERSION = 'V1beta4'
+      REVISION = '20191005'
 
-      # View and manage your Google Play Developer account
-      AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # Manage your Google SQL Service instances
+      AUTH_SQLSERVICE_ADMIN = 'https://www.googleapis.com/auth/sqlservice.admin'
     end
   end
 end

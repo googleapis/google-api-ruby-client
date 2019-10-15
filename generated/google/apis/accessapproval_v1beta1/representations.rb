@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EnrolledService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -159,6 +165,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :dismiss_time, as: 'dismissTime'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
