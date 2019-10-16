@@ -532,6 +532,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplaceNamedRangeContentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Request
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1807,6 +1813,15 @@ module Google
         end
       end
       
+      class ReplaceNamedRangeContentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :named_range_id, as: 'namedRangeId'
+          property :named_range_name, as: 'namedRangeName'
+          property :text, as: 'text'
+        end
+      end
+      
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1843,6 +1858,8 @@ module Google
           property :replace_all_text, as: 'replaceAllText', class: Google::Apis::DocsV1::ReplaceAllTextRequest, decorator: Google::Apis::DocsV1::ReplaceAllTextRequest::Representation
       
           property :replace_image, as: 'replaceImage', class: Google::Apis::DocsV1::ReplaceImageRequest, decorator: Google::Apis::DocsV1::ReplaceImageRequest::Representation
+      
+          property :replace_named_range_content, as: 'replaceNamedRangeContent', class: Google::Apis::DocsV1::ReplaceNamedRangeContentRequest, decorator: Google::Apis::DocsV1::ReplaceNamedRangeContentRequest::Representation
       
           property :unmerge_table_cells, as: 'unmergeTableCells', class: Google::Apis::DocsV1::UnmergeTableCellsRequest, decorator: Google::Apis::DocsV1::UnmergeTableCellsRequest::Representation
       

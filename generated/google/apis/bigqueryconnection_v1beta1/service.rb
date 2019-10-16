@@ -187,7 +187,7 @@ module Google
         #   Parent resource name.
         #   Must be in the form: `projects/`project_id`/locations/`location_id``
         # @param [Fixnum] max_results
-        #   Maximum number of results to return.
+        #   Maximum number of results per page.
         # @param [String] page_token
         #   Page token.
         # @param [String] fields

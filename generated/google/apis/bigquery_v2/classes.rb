@@ -5383,6 +5383,11 @@ module Google
           # @return [Hash<String,String>]
           attr_accessor :labels
         
+          # The range partitioning specification for this table, if configured.
+          # Corresponds to the JSON property `rangePartitioning`
+          # @return [Google::Apis::BigqueryV2::RangePartitioning]
+          attr_accessor :range_partitioning
+        
           # A reference uniquely identifying the table.
           # Corresponds to the JSON property `tableReference`
           # @return [Google::Apis::BigqueryV2::TableReference]
@@ -5416,6 +5421,7 @@ module Google
             @id = args[:id] if args.key?(:id)
             @kind = args[:kind] if args.key?(:kind)
             @labels = args[:labels] if args.key?(:labels)
+            @range_partitioning = args[:range_partitioning] if args.key?(:range_partitioning)
             @table_reference = args[:table_reference] if args.key?(:table_reference)
             @time_partitioning = args[:time_partitioning] if args.key?(:time_partitioning)
             @type = args[:type] if args.key?(:type)

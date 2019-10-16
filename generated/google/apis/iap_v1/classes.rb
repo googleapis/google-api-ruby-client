@@ -22,6 +22,60 @@ module Google
   module Apis
     module IapV1
       
+      # Access related settings for IAP protected apps.
+      class AccessSettings
+        include Google::Apis::Core::Hashable
+      
+        # Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
+        # call to bypass authentication and authorization.
+        # Corresponds to the JSON property `corsSettings`
+        # @return [Google::Apis::IapV1::CorsSettings]
+        attr_accessor :cors_settings
+      
+        # Allows customers to configure tenant_id for GCIP instance per-app.
+        # Corresponds to the JSON property `gcipSettings`
+        # @return [Google::Apis::IapV1::GcipSettings]
+        attr_accessor :gcip_settings
+      
+        # Configuration for OAuth login&consent flow behavior.
+        # Corresponds to the JSON property `oauthSettings`
+        # @return [Google::Apis::IapV1::OAuthSettings]
+        attr_accessor :oauth_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cors_settings = args[:cors_settings] if args.key?(:cors_settings)
+          @gcip_settings = args[:gcip_settings] if args.key?(:gcip_settings)
+          @oauth_settings = args[:oauth_settings] if args.key?(:oauth_settings)
+        end
+      end
+      
+      # Wrapper over application specific settings for IAP.
+      class ApplicationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Configuration for RCTokens generated for CSM workloads protected by IAP.
+        # RCTokens are IAP generated JWTs that can be verified at the application. The
+        # RCToken is primarily used for ISTIO deployments, and can be scoped to a
+        # single mesh by configuring the audience field accordingly
+        # Corresponds to the JSON property `csmSettings`
+        # @return [Google::Apis::IapV1::CsmSettings]
+        attr_accessor :csm_settings
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csm_settings = args[:csm_settings] if args.key?(:csm_settings)
+        end
+      end
+      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -67,6 +121,51 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # Allows customers to configure HTTP request paths that'll allow HTTP OPTIONS
+      # call to bypass authentication and authorization.
+      class CorsSettings
+        include Google::Apis::Core::Hashable
+      
+        # Configuration to allow HTTP OPTIONS calls to skip authorization. If
+        # undefined, IAP will not apply any special logic to OPTIONS requests.
+        # Corresponds to the JSON property `allowHttpOptions`
+        # @return [Boolean]
+        attr_accessor :allow_http_options
+        alias_method :allow_http_options?, :allow_http_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allow_http_options = args[:allow_http_options] if args.key?(:allow_http_options)
+        end
+      end
+      
+      # Configuration for RCTokens generated for CSM workloads protected by IAP.
+      # RCTokens are IAP generated JWTs that can be verified at the application. The
+      # RCToken is primarily used for ISTIO deployments, and can be scoped to a
+      # single mesh by configuring the audience field accordingly
+      class CsmSettings
+        include Google::Apis::Core::Hashable
+      
+        # Audience claim set in the generated RCToken. This value is not validated by
+        # IAP.
+        # Corresponds to the JSON property `rctokenAud`
+        # @return [String]
+        attr_accessor :rctoken_aud
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rctoken_aud = args[:rctoken_aud] if args.key?(:rctoken_aud)
         end
       end
       
@@ -117,6 +216,38 @@ module Google
         end
       end
       
+      # Allows customers to configure tenant_id for GCIP instance per-app.
+      class GcipSettings
+        include Google::Apis::Core::Hashable
+      
+        # Login page URI associated with the GCIP tenants.
+        # Typically, all resources within the same project share the same login page,
+        # though it could be overridden at the sub resource level.
+        # Corresponds to the JSON property `loginPageUri`
+        # @return [String]
+        attr_accessor :login_page_uri
+      
+        # GCIP tenant ids that are linked to the IAP resource.
+        # tenant_ids could be a string beginning with a number character to indicate
+        # authenticating with GCIP tenant flow, or in the format of _<ProjectNumber>
+        # to indicate authenticating with GCIP agent flow.
+        # If agent flow is used, tenant_ids should only contain one single element,
+        # while for tenant flow, tenant_ids can contain multiple elements.
+        # Corresponds to the JSON property `tenantIds`
+        # @return [Array<String>]
+        attr_accessor :tenant_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @login_page_uri = args[:login_page_uri] if args.key?(:login_page_uri)
+          @tenant_ids = args[:tenant_ids] if args.key?(:tenant_ids)
+        end
+      end
+      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -157,6 +288,60 @@ module Google
         # Update properties of this object
         def update!(**args)
           @requested_policy_version = args[:requested_policy_version] if args.key?(:requested_policy_version)
+        end
+      end
+      
+      # The IAP configurable settings.
+      class IapSettings
+        include Google::Apis::Core::Hashable
+      
+        # Access related settings for IAP protected apps.
+        # Corresponds to the JSON property `accessSettings`
+        # @return [Google::Apis::IapV1::AccessSettings]
+        attr_accessor :access_settings
+      
+        # Wrapper over application specific settings for IAP.
+        # Corresponds to the JSON property `applicationSettings`
+        # @return [Google::Apis::IapV1::ApplicationSettings]
+        attr_accessor :application_settings
+      
+        # Required. The resource name of the IAP protected resource.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_settings = args[:access_settings] if args.key?(:access_settings)
+          @application_settings = args[:application_settings] if args.key?(:application_settings)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Configuration for OAuth login&consent flow behavior.
+      class OAuthSettings
+        include Google::Apis::Core::Hashable
+      
+        # Domain hint to send as hd=? parameter in OAuth request flow. Enables
+        # redirect to primary IDP by skipping Google's login screen.
+        # https://developers.google.com/identity/protocols/OpenIDConnect#hd-param
+        # Note: IAP does not verify that the id token's hd claim matches this value
+        # since access behavior is managed by IAM policies.
+        # Corresponds to the JSON property `loginHint`
+        # @return [String]
+        attr_accessor :login_hint
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @login_hint = args[:login_hint] if args.key?(:login_hint)
         end
       end
       

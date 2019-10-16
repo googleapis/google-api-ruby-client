@@ -647,7 +647,6 @@ module Google
         # string will be unchanged. The $(VAR_NAME) syntax can be escaped with a
         # double $$, ie: $$(VAR_NAME). Escaped references will never be expanded,
         # regardless of whether the variable exists or not.
-        # Cannot be updated.
         # More info:
         # https://kubernetes.io/docs/tasks/inject-data-application/define-command-
         # argument-container/#running-a-command-in-a-shell
@@ -664,7 +663,6 @@ module Google
         # Cloud Run fully managed: supported
         # Cloud Run for Anthos: supported
         # List of environment variables to set in the container.
-        # Cannot be updated.
         # Corresponds to the JSON property `env`
         # @return [Array<Google::Apis::RunV1::EnvVar>]
         attr_accessor :env
@@ -697,7 +695,6 @@ module Google
         # Image pull policy.
         # One of Always, Never, IfNotPresent.
         # Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.
-        # Cannot be updated.
         # More info:
         # https://kubernetes.io/docs/concepts/containers/images#updating-images
         # Corresponds to the JSON property `imagePullPolicy`
@@ -727,7 +724,6 @@ module Google
         # DOES NOT prevent that port from being exposed. Any port which is
         # listening on the default "0.0.0.0" address inside a container will be
         # accessible from the network.
-        # Cannot be updated.
         # Corresponds to the JSON property `ports`
         # @return [Array<Google::Apis::RunV1::ContainerPort>]
         attr_accessor :ports
@@ -764,7 +760,6 @@ module Google
         # message. Will be truncated by the node if greater than 4096 bytes. The
         # total message length across all containers will be limited to 12kb.
         # Defaults to /dev/termination-log.
-        # Cannot be updated.
         # Corresponds to the JSON property `terminationMessagePath`
         # @return [String]
         attr_accessor :termination_message_path
@@ -786,7 +781,6 @@ module Google
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
         # Pod volumes to mount into the container's filesystem.
-        # Cannot be updated.
         # Corresponds to the JSON property `volumeMounts`
         # @return [Array<Google::Apis::RunV1::VolumeMount>]
         attr_accessor :volume_mounts
@@ -797,7 +791,6 @@ module Google
         # Container's working directory.
         # If not specified, the container runtime's default will be used, which
         # might be configured in the container image.
-        # Cannot be updated.
         # Corresponds to the JSON property `workingDir`
         # @return [String]
         attr_accessor :working_dir

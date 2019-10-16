@@ -183,7 +183,8 @@ module Google
         
         # Updates a Group.
         # @param [String] name
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Output only. [Resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of the
         #   Group in the format: `groups/`group_id``, where group_id is the unique id
         #   assigned to the Group.
         #   Must be left blank while creating a Group

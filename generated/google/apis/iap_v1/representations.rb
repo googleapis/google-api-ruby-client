@@ -22,13 +22,43 @@ module Google
   module Apis
     module IapV1
       
+      class AccessSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApplicationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CorsSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CsmSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GcipSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -41,6 +71,18 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IapSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuthSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -70,6 +112,26 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cors_settings, as: 'corsSettings', class: Google::Apis::IapV1::CorsSettings, decorator: Google::Apis::IapV1::CorsSettings::Representation
+      
+          property :gcip_settings, as: 'gcipSettings', class: Google::Apis::IapV1::GcipSettings, decorator: Google::Apis::IapV1::GcipSettings::Representation
+      
+          property :oauth_settings, as: 'oauthSettings', class: Google::Apis::IapV1::OAuthSettings, decorator: Google::Apis::IapV1::OAuthSettings::Representation
+      
+        end
+      end
+      
+      class ApplicationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csm_settings, as: 'csmSettings', class: Google::Apis::IapV1::CsmSettings, decorator: Google::Apis::IapV1::CsmSettings::Representation
+      
+        end
+      end
+      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -80,6 +142,20 @@ module Google
         end
       end
       
+      class CorsSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allow_http_options, as: 'allowHttpOptions'
+        end
+      end
+      
+      class CsmSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rctoken_aud, as: 'rctokenAud'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -87,6 +163,14 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class GcipSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :login_page_uri, as: 'loginPageUri'
+          collection :tenant_ids, as: 'tenantIds'
         end
       end
       
@@ -102,6 +186,24 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class IapSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_settings, as: 'accessSettings', class: Google::Apis::IapV1::AccessSettings, decorator: Google::Apis::IapV1::AccessSettings::Representation
+      
+          property :application_settings, as: 'applicationSettings', class: Google::Apis::IapV1::ApplicationSettings, decorator: Google::Apis::IapV1::ApplicationSettings::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class OAuthSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :login_hint, as: 'loginHint'
         end
       end
       

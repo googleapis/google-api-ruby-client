@@ -3706,6 +3706,53 @@ module Google
         end
       end
       
+      # Replaces the contents of the specified
+      # NamedRange or
+      # NamedRanges with the given replacement
+      # content.
+      # Note that an individual NamedRange may
+      # consist of multiple discontinuous
+      # ranges. In this case, only the
+      # content in the first range will be replaced. The other ranges and their
+      # content will be deleted.
+      # In cases where replacing or deleting any ranges would result in an invalid
+      # document structure, a 400 bad request error is returned.
+      class ReplaceNamedRangeContentRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the named range whose content will be replaced.
+        # If there is no named range with the given ID a 400 bad request error is
+        # returned.
+        # Corresponds to the JSON property `namedRangeId`
+        # @return [String]
+        attr_accessor :named_range_id
+      
+        # The name of the NamedRanges whose
+        # content will be replaced.
+        # If there are multiple named ranges with the given name, then
+        # the content of each one will be replaced. If there are no named ranges
+        # with the given name, then the request will be a no-op.
+        # Corresponds to the JSON property `namedRangeName`
+        # @return [String]
+        attr_accessor :named_range_name
+      
+        # Replaces the content of the specified named range(s) with the given text.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @named_range_id = args[:named_range_id] if args.key?(:named_range_id)
+          @named_range_name = args[:named_range_name] if args.key?(:named_range_name)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # A single update to apply to a document.
       class Request
         include Google::Apis::Core::Hashable
@@ -3811,6 +3858,21 @@ module Google
         # @return [Google::Apis::DocsV1::ReplaceImageRequest]
         attr_accessor :replace_image
       
+        # Replaces the contents of the specified
+        # NamedRange or
+        # NamedRanges with the given replacement
+        # content.
+        # Note that an individual NamedRange may
+        # consist of multiple discontinuous
+        # ranges. In this case, only the
+        # content in the first range will be replaced. The other ranges and their
+        # content will be deleted.
+        # In cases where replacing or deleting any ranges would result in an invalid
+        # document structure, a 400 bad request error is returned.
+        # Corresponds to the JSON property `replaceNamedRangeContent`
+        # @return [Google::Apis::DocsV1::ReplaceNamedRangeContentRequest]
+        attr_accessor :replace_named_range_content
+      
         # Unmerges cells in a Table.
         # Corresponds to the JSON property `unmergeTableCells`
         # @return [Google::Apis::DocsV1::UnmergeTableCellsRequest]
@@ -3872,6 +3934,7 @@ module Google
           @merge_table_cells = args[:merge_table_cells] if args.key?(:merge_table_cells)
           @replace_all_text = args[:replace_all_text] if args.key?(:replace_all_text)
           @replace_image = args[:replace_image] if args.key?(:replace_image)
+          @replace_named_range_content = args[:replace_named_range_content] if args.key?(:replace_named_range_content)
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)

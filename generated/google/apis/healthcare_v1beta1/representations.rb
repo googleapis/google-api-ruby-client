@@ -82,7 +82,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeidentifyDicomStoreRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeidentifyErrorDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeidentifyFhirStoreRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -95,6 +107,12 @@ module Google
       end
       
       class DicomConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DicomFilterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FhirFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FhirStore
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +173,18 @@ module Google
       end
       
       class FieldMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Resources
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SchemaConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -523,6 +565,17 @@ module Google
         end
       end
       
+      class DeidentifyDicomStoreRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::HealthcareV1beta1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1beta1::DeidentifyConfig::Representation
+      
+          property :destination_store, as: 'destinationStore'
+          property :filter_config, as: 'filterConfig', class: Google::Apis::HealthcareV1beta1::DicomFilterConfig, decorator: Google::Apis::HealthcareV1beta1::DicomFilterConfig::Representation
+      
+        end
+      end
+      
       class DeidentifyErrorDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -530,6 +583,17 @@ module Google
           property :failure_store_count, :numeric_string => true, as: 'failureStoreCount'
           property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
           property :success_store_count, :numeric_string => true, as: 'successStoreCount'
+        end
+      end
+      
+      class DeidentifyFhirStoreRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :config, as: 'config', class: Google::Apis::HealthcareV1beta1::DeidentifyConfig, decorator: Google::Apis::HealthcareV1beta1::DeidentifyConfig::Representation
+      
+          property :destination_store, as: 'destinationStore'
+          property :resource_filter, as: 'resourceFilter', class: Google::Apis::HealthcareV1beta1::FhirFilter, decorator: Google::Apis::HealthcareV1beta1::FhirFilter::Representation
+      
         end
       end
       
@@ -551,6 +615,13 @@ module Google
           property :remove_list, as: 'removeList', class: Google::Apis::HealthcareV1beta1::TagFilterList, decorator: Google::Apis::HealthcareV1beta1::TagFilterList::Representation
       
           property :skip_id_redaction, as: 'skipIdRedaction'
+        end
+      end
+      
+      class DicomFilterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_paths_gcs_uri, as: 'resourcePathsGcsUri'
         end
       end
       
@@ -617,6 +688,14 @@ module Google
         end
       end
       
+      class FhirFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resources, as: 'resources', class: Google::Apis::HealthcareV1beta1::Resources, decorator: Google::Apis::HealthcareV1beta1::Resources::Representation
+      
+        end
+      end
+      
       class FhirStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +714,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           collection :paths, as: 'paths'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :failure_resource_count, :numeric_string => true, as: 'failureResourceCount'
+          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
+        end
+      end
+      
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :success_resource_count, :numeric_string => true, as: 'successResourceCount'
         end
       end
       
@@ -982,6 +1076,13 @@ module Google
       class ReplaceWithInfoTypeConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Resources
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resources, as: 'resources'
         end
       end
       

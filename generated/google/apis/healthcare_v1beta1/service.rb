@@ -167,6 +167,7 @@ module Google
         # response field type is
         # DeidentifySummary.
         # If errors occur,
+        # error
         # details field type is
         # DeidentifyErrorDetails.
         # Errors are also logged to Stackdriver Logging. For more information,
@@ -493,6 +494,51 @@ module Google
           command.response_class = Google::Apis::HealthcareV1beta1::DicomStore
           command.params['parent'] = parent unless parent.nil?
           command.query['dicomStoreId'] = dicom_store_id unless dicom_store_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new DICOM store containing de-identified data from the source
+        # store. The metadata field type
+        # is OperationMetadata.
+        # If the request is successful, the
+        # response field type is
+        # DeidentifyDicomStoreSummary. If errors occur,
+        # error
+        # details field type is
+        # DeidentifyErrorDetails.
+        # Errors are also logged to Stackdriver
+        # (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
+        # @param [String] source_store
+        #   Source DICOM store resource name. For example,
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   dicomStores/`dicom_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::DeidentifyDicomStoreRequest] deidentify_dicom_store_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deidentify_dicom_store(source_store, deidentify_dicom_store_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+sourceStore}:deidentify', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::DeidentifyDicomStoreRequest::Representation
+          command.request_object = deidentify_dicom_store_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['sourceStore'] = source_store unless source_store.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1638,6 +1684,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new FHIR store containing de-identified data from the source
+        # store. The metadata field type
+        # is OperationMetadata.
+        # If the request is successful, the
+        # response field type is
+        # DeidentifyFhirStoreSummary. If errors occur,
+        # error
+        # details field type is
+        # DeidentifyErrorDetails.
+        # Errors are also logged to Stackdriver
+        # (see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).
+        # @param [String] source_store
+        #   Source FHIR store resource name. For example,
+        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        #   fhirStores/`fhir_store_id``.
+        # @param [Google::Apis::HealthcareV1beta1::DeidentifyFhirStoreRequest] deidentify_fhir_store_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::HealthcareV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::HealthcareV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def deidentify_fhir_store(source_store, deidentify_fhir_store_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+sourceStore}:deidentify', options)
+          command.request_representation = Google::Apis::HealthcareV1beta1::DeidentifyFhirStoreRequest::Representation
+          command.request_object = deidentify_fhir_store_request_object
+          command.response_representation = Google::Apis::HealthcareV1beta1::Operation::Representation
+          command.response_class = Google::Apis::HealthcareV1beta1::Operation
+          command.params['sourceStore'] = source_store unless source_store.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified FHIR store and removes all resources within it.
         # @param [String] name
         #   The resource name of the FHIR store to delete.
@@ -2047,9 +2138,15 @@ module Google
         # [Observation-lastn](http://hl7.org/implement/standards/fhir/STU3/observation-
         # operations.html#lastn).
         # Search terms are provided as query parameters following the same pattern as
-        # the search method. This operation accepts an additional
-        # query parameter `max`, which specifies N, the maximum number of
-        # Observations to return from each group, with a default of 1.
+        # the search method. The following search parameters must
+        # be provided
+        # - `subject` or `patient` to specify a subject for the Observation.
+        # - `code`, `category` or any of the composite parameters that include
+        # `code`.
+        # Any other valid Observation search parameters can also be provided. This
+        # operation accepts an additional query parameter `max`, which specifies N,
+        # the maximum number of Observations to return from each group, with a
+        # default of 1.
         # On success, the response body will contain a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.

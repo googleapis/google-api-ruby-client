@@ -63,7 +63,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::EntityKey>]
         attr_accessor :additional_group_keys
       
-        # The time when the Group was created.
+        # Output only. The time when the Group was created.
         # Output only
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -89,7 +89,7 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::EntityKey]
         attr_accessor :group_key
       
-        # Labels for Group resource.
+        # Required. Labels for Group resource.
         # Required.
         # For creating Groups under a namespace, set label key to
         # 'labels/system/groups/external' and label value as empty.
@@ -97,7 +97,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the
         # Group in the format: `groups/`group_id``, where group_id is the unique id
         # assigned to the Group.
         # Must be left blank while creating a Group
@@ -105,14 +106,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The entity under which this Group resides in Cloud Identity resource
+        # Required. Immutable. The entity under which this Group resides in Cloud
+        # Identity resource
         # hierarchy. Must be set when creating a Group, read-only afterwards.
         # Currently allowed types: 'identitysources'.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # The time when the Group was last updated.
+        # Output only. The time when the Group was last updated.
         # Output only
         # Corresponds to the JSON property `updateTime`
         # @return [String]

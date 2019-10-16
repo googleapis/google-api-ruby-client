@@ -378,6 +378,49 @@ module Google
         end
       end
       
+      # Creates a new DICOM store with sensitive information de-identified.
+      class DeidentifyDicomStoreRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configures de-id options specific to different types of content.
+        # Each submessage customizes the handling of an
+        # https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are
+        # applied in a nested manner at runtime.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
+        attr_accessor :config
+      
+        # The name of the DICOM store to create and write the redacted data to.
+        # For example,
+        # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # dicomStores/`dicom_store_id``.
+        # * The destination dataset must exist.
+        # * The source dataset and destination dataset must both reside in the same
+        # project. De-identifying data across multiple projects is not supported.
+        # * The destination DICOM store must not exist.
+        # * The caller must have the necessary permissions to create the destination
+        # DICOM store.
+        # Corresponds to the JSON property `destinationStore`
+        # @return [String]
+        attr_accessor :destination_store
+      
+        # Specifies the filter configuration for DICOM resources.
+        # Corresponds to the JSON property `filterConfig`
+        # @return [Google::Apis::HealthcareV1beta1::DicomFilterConfig]
+        attr_accessor :filter_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @destination_store = args[:destination_store] if args.key?(:destination_store)
+          @filter_config = args[:filter_config] if args.key?(:filter_config)
+        end
+      end
+      
       # Contains the status of the Deidentify operation.
       class DeidentifyErrorDetails
         include Google::Apis::Core::Hashable
@@ -412,6 +455,49 @@ module Google
           @failure_store_count = args[:failure_store_count] if args.key?(:failure_store_count)
           @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
           @success_store_count = args[:success_store_count] if args.key?(:success_store_count)
+        end
+      end
+      
+      # Creates a new FHIR store with sensitive information de-identified.
+      class DeidentifyFhirStoreRequest
+        include Google::Apis::Core::Hashable
+      
+        # Configures de-id options specific to different types of content.
+        # Each submessage customizes the handling of an
+        # https://tools.ietf.org/html/rfc6838 media type or subtype. Configs are
+        # applied in a nested manner at runtime.
+        # Corresponds to the JSON property `config`
+        # @return [Google::Apis::HealthcareV1beta1::DeidentifyConfig]
+        attr_accessor :config
+      
+        # The name of the FHIR store to create and write the redacted data to.
+        # For example,
+        # `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
+        # fhirStores/`fhir_store_id``.
+        # * The destination dataset must exist.
+        # * The source dataset and destination dataset must both reside in the same
+        # project. De-identifying data across multiple projects is not supported.
+        # * The destination FHIR store must not exist.
+        # * The caller must have the necessary permissions to create the destination
+        # FHIR store.
+        # Corresponds to the JSON property `destinationStore`
+        # @return [String]
+        attr_accessor :destination_store
+      
+        # Filter configuration.
+        # Corresponds to the JSON property `resourceFilter`
+        # @return [Google::Apis::HealthcareV1beta1::FhirFilter]
+        attr_accessor :resource_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @config = args[:config] if args.key?(:config)
+          @destination_store = args[:destination_store] if args.key?(:destination_store)
+          @resource_filter = args[:resource_filter] if args.key?(:resource_filter)
         end
       end
       
@@ -492,6 +578,33 @@ module Google
           @keep_list = args[:keep_list] if args.key?(:keep_list)
           @remove_list = args[:remove_list] if args.key?(:remove_list)
           @skip_id_redaction = args[:skip_id_redaction] if args.key?(:skip_id_redaction)
+        end
+      end
+      
+      # Specifies the filter configuration for DICOM resources.
+      class DicomFilterConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud Storage location of the filter configuration file.
+        # The `gcs_uri` must be in the format `gs://bucket/path/to/object`.
+        # The filter configuration file must contain a list of resource paths
+        # separated by newline characters (\n or \r\n). Each resource path
+        # must be in the format
+        # "/studies/`studyUID`[/series/`seriesUID`[/instances/`instanceUID`]]"
+        # The Cloud Healthcare API service account must have the
+        # `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
+        # location.
+        # Corresponds to the JSON property `resourcePathsGcsUri`
+        # @return [String]
+        attr_accessor :resource_paths_gcs_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_paths_gcs_uri = args[:resource_paths_gcs_uri] if args.key?(:resource_paths_gcs_uri)
         end
       end
       
@@ -711,6 +824,25 @@ module Google
         end
       end
       
+      # Filter configuration.
+      class FhirFilter
+        include Google::Apis::Core::Hashable
+      
+        # A list of FHIR resources.
+        # Corresponds to the JSON property `resources`
+        # @return [Google::Apis::HealthcareV1beta1::Resources]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # Represents a FHIR store.
       class FhirStore
         include Google::Apis::Core::Hashable
@@ -826,6 +958,50 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @paths = args[:paths] if args.key?(:paths)
+        end
+      end
+      
+      # Contains a summary of the DeidentifyDicomStore operation.
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyDicomStoreSummary
+        include Google::Apis::Core::Hashable
+      
+        # Number of objects that processing failed for.
+        # Corresponds to the JSON property `failureResourceCount`
+        # @return [Fixnum]
+        attr_accessor :failure_resource_count
+      
+        # Number of objects successfully processed.
+        # Corresponds to the JSON property `successResourceCount`
+        # @return [Fixnum]
+        attr_accessor :success_resource_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @failure_resource_count = args[:failure_resource_count] if args.key?(:failure_resource_count)
+          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
+        end
+      end
+      
+      # Contains a summary of the DeidentifyFhirStore operation.
+      class GoogleCloudHealthcareV1beta1DeidentifyDeidentifyFhirStoreSummary
+        include Google::Apis::Core::Hashable
+      
+        # Number of resources successfully processed.
+        # Corresponds to the JSON property `successResourceCount`
+        # @return [Fixnum]
+        attr_accessor :success_resource_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @success_resource_count = args[:success_resource_count] if args.key?(:success_resource_count)
         end
       end
       
@@ -973,9 +1149,9 @@ module Google
       
       # Response when errors occur while exporting resources.
       # This structure is included in the
-      # error details to describe the
-      # detailed outcome. It is only included when the operation finishes with
-      # errors.
+      # error
+      # details to describe the detailed outcome. It is
+      # only included when the operation finishes with errors.
       class GoogleCloudHealthcareV1beta1FhirRestExportResourcesErrorDetails
         include Google::Apis::Core::Hashable
       
@@ -1105,9 +1281,9 @@ module Google
       
       # Error response of importing resources.
       # This structure will be included in the
-      # error details to describe the
-      # detailed error. It will only be included when the operation finishes with
-      # some failure.
+      # error
+      # details to describe the detailed error. It will
+      # only be included when the operation finishes with some failure.
       class GoogleCloudHealthcareV1beta1FhirRestImportResourcesErrorDetails
         include Google::Apis::Core::Hashable
       
@@ -2014,7 +2190,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
@@ -2169,6 +2345,25 @@ module Google
         end
       end
       
+      # A list of FHIR resources.
+      class Resources
+        include Google::Apis::Core::Hashable
+      
+        # List of resources IDs. For example, "Patient/1234".
+        # Corresponds to the JSON property `resources`
+        # @return [Array<String>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
       # Configuration for the FHIR BigQuery schema. Determines how the server
       # generates the schema.
       class SchemaConfig
@@ -2281,7 +2476,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",
