@@ -97,7 +97,7 @@ module Google
         # until the controller removes them from the active list to avoid
         # setting those breakpoints again.
         # @param [String] debuggee_id
-        #   Identifies the debuggee.
+        #   Required. Identifies the debuggee.
         # @param [Boolean] success_on_timeout
         #   If set to `true` (recommended), returns `google.rpc.Code.OK` status and
         #   sets the `wait_expired` response field to `true` when the server-selected
@@ -146,7 +146,7 @@ module Google
         # semantics. These may only make changes such as canonicalizing a value
         # or snapping the location to the correct line of code.
         # @param [String] debuggee_id
-        #   Identifies the debuggee being debugged.
+        #   Required. Identifies the debuggee being debugged.
         # @param [String] id
         #   Breakpoint identifier, unique in the scope of the debuggee.
         # @param [Google::Apis::ClouddebuggerV2::UpdateActiveBreakpointRequest] update_active_breakpoint_request_object
@@ -182,13 +182,13 @@ module Google
         
         # Lists all the debuggees that the user has access to.
         # @param [String] client_version
-        #   The client version making the call.
+        #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
         # @param [Boolean] include_inactive
         #   When set to `true`, the result includes all debuggees. Otherwise, the
         #   result includes only debuggees that are active.
         # @param [String] project
-        #   Project number of a Google Cloud project whose debuggees to list.
+        #   Required. Project number of a Google Cloud project whose debuggees to list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -220,11 +220,11 @@ module Google
         
         # Deletes the breakpoint from the debuggee.
         # @param [String] debuggee_id
-        #   ID of the debuggee whose breakpoint to delete.
+        #   Required. ID of the debuggee whose breakpoint to delete.
         # @param [String] breakpoint_id
-        #   ID of the breakpoint to delete.
+        #   Required. ID of the breakpoint to delete.
         # @param [String] client_version
-        #   The client version making the call.
+        #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -257,11 +257,11 @@ module Google
         
         # Gets breakpoint information.
         # @param [String] debuggee_id
-        #   ID of the debuggee whose breakpoint to get.
+        #   Required. ID of the debuggee whose breakpoint to get.
         # @param [String] breakpoint_id
-        #   ID of the breakpoint to get.
+        #   Required. ID of the breakpoint to get.
         # @param [String] client_version
-        #   The client version making the call.
+        #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -294,11 +294,11 @@ module Google
         
         # Lists all breakpoints for the debuggee.
         # @param [String] debuggee_id
-        #   ID of the debuggee whose breakpoints to list.
+        #   Required. ID of the debuggee whose breakpoints to list.
         # @param [String] action_value
         #   Only breakpoints with the specified action will pass the filter.
         # @param [String] client_version
-        #   The client version making the call.
+        #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
         # @param [Boolean] include_all_users
         #   When set to `true`, the response includes the list of breakpoints set by
@@ -350,10 +350,10 @@ module Google
         
         # Sets the breakpoint to the debuggee.
         # @param [String] debuggee_id
-        #   ID of the debuggee where the breakpoint is to be set.
+        #   Required. ID of the debuggee where the breakpoint is to be set.
         # @param [Google::Apis::ClouddebuggerV2::Breakpoint] breakpoint_object
         # @param [String] client_version
-        #   The client version making the call.
+        #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

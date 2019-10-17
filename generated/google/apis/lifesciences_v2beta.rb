@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/binaryauthorization_v1beta1/service.rb'
-require 'google/apis/binaryauthorization_v1beta1/classes.rb'
-require 'google/apis/binaryauthorization_v1beta1/representations.rb'
+require 'google/apis/lifesciences_v2beta/service.rb'
+require 'google/apis/lifesciences_v2beta/classes.rb'
+require 'google/apis/lifesciences_v2beta/representations.rb'
 
 module Google
   module Apis
-    # Binary Authorization API
+    # Cloud Life Sciences API
     #
-    # The management interface for Binary Authorization, a system providing policy
-    # control for images deployed to Kubernetes Engine clusters.
+    # Cloud Life Sciences is a suite of services and tools for managing, processing,
+    # and transforming life sciences data.
     #
-    # @see https://cloud.google.com/binary-authorization/
-    module BinaryauthorizationV1beta1
-      VERSION = 'V1beta1'
-      REVISION = '20191011'
+    # @see https://cloud.google.com/life-sciences
+    module LifesciencesV2beta
+      VERSION = 'V2beta'
+      REVISION = '20191007'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

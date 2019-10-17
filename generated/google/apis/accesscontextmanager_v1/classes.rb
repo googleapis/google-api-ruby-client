@@ -513,7 +513,7 @@ module Google
       
         # Only allows requests from devices with a verified Chrome OS.
         # Verifications includes requirements that the device is enterprise-managed,
-        # conformant to Dasher domain policies, and the caller has permission to call
+        # conformant to domain policies, and the caller has permission to call
         # the API targeted by the request.
         # Corresponds to the JSON property `requireVerifiedChromeOs`
         # @return [Boolean]

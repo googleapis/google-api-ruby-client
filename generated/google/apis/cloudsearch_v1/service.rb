@@ -948,10 +948,13 @@ module Google
         #   For more information, see
         #   http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         #   For translations.
+        #   Set this field using the language set in browser or for the page. In the
+        #   event that the user's language preference is known, set this field to the
+        #   known user language.
         #   When specified, the documents in search results are biased towards the
         #   specified language.
-        #   Suggest API does not use this parameter. It autocompletes only based on
-        #   characters in the query.
+        #   The suggest API does not use this parameter. Instead, suggest autocompletes
+        #   only based on characters in the query.
         # @param [String] request_options_search_application_id
         #   Id of the application created using SearchApplicationsService.
         # @param [String] request_options_time_zone
