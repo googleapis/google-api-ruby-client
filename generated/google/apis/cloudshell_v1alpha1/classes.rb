@@ -128,6 +128,13 @@ module Google
         # @return [Array<Google::Apis::CloudshellV1alpha1::PublicKey>]
         attr_accessor :public_keys
       
+        # Indicates the size of the backing VM running the environment.  If set to
+        # something other than DEFAULT, it will be reverted to the default VM size
+        # after vm_size_expire_time.
+        # Corresponds to the JSON property `size`
+        # @return [String]
+        attr_accessor :size
+      
         # Output only. Host to which clients can connect to initiate SSH sessions
         # with the environment.
         # Corresponds to the JSON property `sshHost`
@@ -151,6 +158,12 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # Output only. The time when the Environment will expire back to the default
+        # VM size.
+        # Corresponds to the JSON property `vmSizeExpireTime`
+        # @return [String]
+        attr_accessor :vm_size_expire_time
+      
         # Output only. Host to which clients can connect to initiate HTTPS or WSS
         # connections with the environment.
         # Corresponds to the JSON property `webHost`
@@ -167,10 +180,12 @@ module Google
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @public_keys = args[:public_keys] if args.key?(:public_keys)
+          @size = args[:size] if args.key?(:size)
           @ssh_host = args[:ssh_host] if args.key?(:ssh_host)
           @ssh_port = args[:ssh_port] if args.key?(:ssh_port)
           @ssh_username = args[:ssh_username] if args.key?(:ssh_username)
           @state = args[:state] if args.key?(:state)
+          @vm_size_expire_time = args[:vm_size_expire_time] if args.key?(:vm_size_expire_time)
           @web_host = args[:web_host] if args.key?(:web_host)
         end
       end

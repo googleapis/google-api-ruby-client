@@ -212,7 +212,7 @@ module Google
       class Membership
         include Google::Apis::Core::Hashable
       
-        # Creation timestamp of the Membership.
+        # Output only. Creation timestamp of the Membership.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -224,7 +224,8 @@ module Google
         # @return [Google::Apis::CloudidentityV1beta1::EntityKey]
         attr_accessor :member_key
       
-        # [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of the
         # Membership in the format: `groups/`group_id`/memberships/`member_id``,
         # where group_id is the unique id assigned to the Group to which Membership
         # belongs to, and member_id is the unique id assigned to the member
@@ -239,7 +240,7 @@ module Google
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipRole>]
         attr_accessor :roles
       
-        # Last updated timestamp of the Membership.
+        # Output only. Last updated timestamp of the Membership.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time

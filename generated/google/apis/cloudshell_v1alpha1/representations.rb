@@ -113,10 +113,12 @@ module Google
           property :name, as: 'name'
           collection :public_keys, as: 'publicKeys', class: Google::Apis::CloudshellV1alpha1::PublicKey, decorator: Google::Apis::CloudshellV1alpha1::PublicKey::Representation
       
+          property :size, as: 'size'
           property :ssh_host, as: 'sshHost'
           property :ssh_port, as: 'sshPort'
           property :ssh_username, as: 'sshUsername'
           property :state, as: 'state'
+          property :vm_size_expire_time, as: 'vmSizeExpireTime'
           property :web_host, as: 'webHost'
         end
       end

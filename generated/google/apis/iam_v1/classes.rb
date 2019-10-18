@@ -663,7 +663,7 @@ module Google
         attr_accessor :severity
       
         # The validation unit name, for instance
-        # “lintValidationUnits/ConditionComplexityCheck”.
+        # "lintValidationUnits/ConditionComplexityCheck".
         # Corresponds to the JSON property `validationUnitName`
         # @return [String]
         attr_accessor :validation_unit_name
