@@ -1,3 +1,38 @@
+# 0.33.1
+* Backwards compatible changes:
+  * Added `monitoring_v1`
+  * Added `sql_v1beta4`
+  * Updated `accessapproval_v1beta1`
+  * Updated `accesscontextmanager_v1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `adexchangebuyer2_v2beta1`
+  * Updated `androidpublisher_v3`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryconnection_v1beta1`
+  * Updated `binaryauthorization_v1`
+  * Updated `binaryauthorization_v1beta1`
+  * Updated `cloudasset_v1`
+  * Updated `clouddebugger_v2`
+  * Updated `cloudidentity_v1`
+  * Updated `cloudidentity_v1beta1`
+  * Updated `cloudsearch_v1`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `docs_v1`
+  * Updated `doubleclickbidmanager_v1`
+  * Updated `healthcare_v1beta1`
+  * Updated `iam_v1`
+  * Updated `iap_v1`
+  * Updated `policytroubleshooter_v1beta`
+  * Updated `run_v1`
+  * Updated `testing_v1`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+
 # 0.33.0
 * Breaking changes:
   * Deleted `urlshortener_v1`
