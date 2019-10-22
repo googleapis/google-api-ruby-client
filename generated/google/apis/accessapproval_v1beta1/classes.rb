@@ -26,6 +26,16 @@ module Google
       class AccessApprovalSettings
         include Google::Apis::Core::Hashable
       
+        # Output only. This field is read only (not settable via
+        # UpdateAccessAccessApprovalSettings method). If the field is true, that
+        # indicates that at least one service is enrolled for Access Approval in one
+        # or more ancestors of the Project or Folder (this field will always be
+        # unset for the organization since organizations do not have ancestors).
+        # Corresponds to the JSON property `enrolledAncestor`
+        # @return [Boolean]
+        attr_accessor :enrolled_ancestor
+        alias_method :enrolled_ancestor?, :enrolled_ancestor
+      
         # A list of Google Cloud Services for which the given resource has Access
         # Approval enrolled. Access requests for the resource given by name against
         # any of these services contained here will be required to have explicit
@@ -64,6 +74,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @enrolled_ancestor = args[:enrolled_ancestor] if args.key?(:enrolled_ancestor)
           @enrolled_services = args[:enrolled_services] if args.key?(:enrolled_services)
           @name = args[:name] if args.key?(:name)
           @notification_emails = args[:notification_emails] if args.key?(:notification_emails)

@@ -364,6 +364,88 @@ module Google
         end
       end
       
+      # Creates a Footer. The new footer will be
+      # applied to the DocumentStyle.
+      # If a footer of the specified type already exists then a 400 bad request error
+      # will be returned.
+      class CreateFooterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The type of footer to create.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The result of creating a footer.
+      class CreateFooterResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the created footer.
+        # Corresponds to the JSON property `footerId`
+        # @return [String]
+        attr_accessor :footer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footer_id = args[:footer_id] if args.key?(:footer_id)
+        end
+      end
+      
+      # Creates a Header. The new header will be
+      # applied to the DocumentStyle.
+      # If a header of the specified type already exists then a 400 bad request error
+      # will be returned.
+      class CreateHeaderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The type of header to create.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The result of creating a header.
+      class CreateHeaderResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the created header.
+        # Corresponds to the JSON property `headerId`
+        # @return [String]
+        attr_accessor :header_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_id = args[:header_id] if args.key?(:header_id)
+        end
+      end
+      
       # Creates a NamedRange referencing the given
       # range.
       class CreateNamedRangeRequest
@@ -3757,6 +3839,22 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
+        # Creates a Footer. The new footer will be
+        # applied to the DocumentStyle.
+        # If a footer of the specified type already exists then a 400 bad request error
+        # will be returned.
+        # Corresponds to the JSON property `createFooter`
+        # @return [Google::Apis::DocsV1::CreateFooterRequest]
+        attr_accessor :create_footer
+      
+        # Creates a Header. The new header will be
+        # applied to the DocumentStyle.
+        # If a header of the specified type already exists then a 400 bad request error
+        # will be returned.
+        # Corresponds to the JSON property `createHeader`
+        # @return [Google::Apis::DocsV1::CreateHeaderRequest]
+        attr_accessor :create_header
+      
         # Creates a NamedRange referencing the given
         # range.
         # Corresponds to the JSON property `createNamedRange`
@@ -3917,6 +4015,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_footer = args[:create_footer] if args.key?(:create_footer)
+          @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
           @delete_content_range = args[:delete_content_range] if args.key?(:delete_content_range)
@@ -3949,6 +4049,16 @@ module Google
       class Response
         include Google::Apis::Core::Hashable
       
+        # The result of creating a footer.
+        # Corresponds to the JSON property `createFooter`
+        # @return [Google::Apis::DocsV1::CreateFooterResponse]
+        attr_accessor :create_footer
+      
+        # The result of creating a header.
+        # Corresponds to the JSON property `createHeader`
+        # @return [Google::Apis::DocsV1::CreateHeaderResponse]
+        attr_accessor :create_header
+      
         # The result of creating a named range.
         # Corresponds to the JSON property `createNamedRange`
         # @return [Google::Apis::DocsV1::CreateNamedRangeResponse]
@@ -3975,6 +4085,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_footer = args[:create_footer] if args.key?(:create_footer)
+          @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_inline_sheets_chart = args[:insert_inline_sheets_chart] if args.key?(:insert_inline_sheets_chart)

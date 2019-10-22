@@ -390,6 +390,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -924,6 +925,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -2059,6 +2061,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -2638,7 +2641,12 @@ module Google
         # @param [String] name
         #   The name of the resource to retrieve.
         # @param [String] _page_token
-        #   Same as `page`. Please use either `page` or `_page_token`.
+        #   Used to retrieve the first, previous, next, or last page of resource
+        #   versions when using pagination. Value should be set to the value of
+        #   `_page_token` set in next or previous page links' URLs. Next and previous
+        #   page are returned in the response bundle's links field, where
+        #   `link.relation` is "previous" or "next".
+        #   Omit `_page_token` if no previous request has been made.
         # @param [String] at
         #   Only include resource versions that were current at some point during the
         #   time period specified in the date time value. The date parameter format is
@@ -2651,12 +2659,7 @@ module Google
         # @param [Fixnum] count
         #   The maximum number of search results on a page. Defaults to 1000.
         # @param [String] page
-        #   Used to retrieve the first, previous, next, or last page of resource
-        #   versions when using pagination. Value should be set to the value of
-        #   `page` set in next or previous page links' URLs. Next and previous
-        #   page are returned in the response bundle's links field, where
-        #   `link.relation` is "previous" or "next".
-        #   Omit `page` if no previous request has been made.
+        #   DEPRECATED! Use `_page_token`.
         # @param [String] since
         #   Only include resource versions that were created at or after the given
         #   instant in time. The instant in time uses the format
@@ -3165,6 +3168,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
+        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.

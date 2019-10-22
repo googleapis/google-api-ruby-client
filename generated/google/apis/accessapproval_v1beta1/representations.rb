@@ -97,6 +97,7 @@ module Google
       class AccessApprovalSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enrolled_ancestor, as: 'enrolledAncestor'
           collection :enrolled_services, as: 'enrolledServices', class: Google::Apis::AccessapprovalV1beta1::EnrolledService, decorator: Google::Apis::AccessapprovalV1beta1::EnrolledService::Representation
       
           property :name, as: 'name'

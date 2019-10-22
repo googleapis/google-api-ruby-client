@@ -47,7 +47,7 @@ module Google
       class GoogleCloudVideointelligenceV1AnnotateVideoRequest
         include Google::Apis::Core::Hashable
       
-        # Requested video annotation features.
+        # Required. Requested video annotation features.
         # Corresponds to the JSON property `features`
         # @return [Array<String>]
         attr_accessor :features
@@ -74,14 +74,14 @@ module Google
         # @return [String]
         attr_accessor :input_uri
       
-        # Optional cloud region where annotation should take place. Supported cloud
+        # Optional. Cloud region where annotation should take place. Supported cloud
         # regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region
         # is specified, a region will be determined based on video file location.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
-        # Optional location where the output (in JSON format) should be stored.
+        # Optional. Location where the output (in JSON format) should be stored.
         # Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)
         # URIs are supported, which must be specified in the following format:
         # `gs://bucket-id/object-id` (other URI formats return
@@ -609,7 +609,7 @@ module Google
       class GoogleCloudVideointelligenceV1SpeechContext
         include Google::Apis::Core::Hashable
       
-        # *Optional* A list of strings containing words and phrases "hints" so that
+        # Optional. A list of strings containing words and phrases "hints" so that
         # the speech recognition is more likely to recognize them. This can be used
         # to improve the accuracy for specific words and phrases, for example, if
         # specific commands are typically spoken by the user. This can also be used
@@ -679,10 +679,10 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of
+        # the language in this result. This language code was detected to have the
+        # most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -702,21 +702,21 @@ module Google
       class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig
         include Google::Apis::Core::Hashable
       
-        # *Optional* For file formats, such as MXF or MKV, supporting multiple audio
+        # Optional. For file formats, such as MXF or MKV, supporting multiple audio
         # tracks, specify up to two tracks. Default: track 0.
         # Corresponds to the JSON property `audioTracks`
         # @return [Array<Fixnum>]
         attr_accessor :audio_tracks
       
-        # *Optional*
-        # If set, specifies the estimated number of speakers in the conversation.
+        # Optional. If set, specifies the estimated number of speakers in the
+        # conversation.
         # If not set, defaults to '2'.
         # Ignored unless enable_speaker_diarization is set to true.
         # Corresponds to the JSON property `diarizationSpeakerCount`
         # @return [Fixnum]
         attr_accessor :diarization_speaker_count
       
-        # *Optional* If 'true', adds punctuation to recognition result hypotheses.
+        # Optional. If 'true', adds punctuation to recognition result hypotheses.
         # This feature is only available in select languages. Setting this for
         # requests in other languages has no effect at all. The default 'false' value
         # does not add punctuation to result hypotheses. NOTE: "This is currently
@@ -727,7 +727,7 @@ module Google
         attr_accessor :enable_automatic_punctuation
         alias_method :enable_automatic_punctuation?, :enable_automatic_punctuation
       
-        # *Optional* If 'true', enables speaker detection for each recognized word in
+        # Optional. If 'true', enables speaker detection for each recognized word in
         # the top alternative of the recognition result using a speaker_tag provided
         # in the WordInfo.
         # Note: When this is true, we send all the words from the beginning of the
@@ -739,7 +739,7 @@ module Google
         attr_accessor :enable_speaker_diarization
         alias_method :enable_speaker_diarization?, :enable_speaker_diarization
       
-        # *Optional* If `true`, the top result includes a list of words and the
+        # Optional. If `true`, the top result includes a list of words and the
         # confidence for those words. If `false`, no word-level confidence
         # information is returned. The default is `false`.
         # Corresponds to the JSON property `enableWordConfidence`
@@ -747,7 +747,7 @@ module Google
         attr_accessor :enable_word_confidence
         alias_method :enable_word_confidence?, :enable_word_confidence
       
-        # *Optional* If set to `true`, the server will attempt to filter out
+        # Optional. If set to `true`, the server will attempt to filter out
         # profanities, replacing all but the initial character in each filtered word
         # with asterisks, e.g. "f***". If set to `false` or omitted, profanities
         # won't be filtered out.
@@ -756,7 +756,7 @@ module Google
         attr_accessor :filter_profanity
         alias_method :filter_profanity?, :filter_profanity
       
-        # *Required* The language of the supplied audio as a
+        # Required. *Required* The language of the supplied audio as a
         # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
         # Example: "en-US".
         # See [Language Support](https://cloud.google.com/speech/docs/languages)
@@ -765,7 +765,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # *Optional* Maximum number of recognition hypotheses to be returned.
+        # Optional. Maximum number of recognition hypotheses to be returned.
         # Specifically, the maximum number of `SpeechRecognitionAlternative` messages
         # within each `SpeechTranscription`. The server may return fewer than
         # `max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will
@@ -774,7 +774,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_alternatives
       
-        # *Optional* A means to provide context to assist the speech recognition.
+        # Optional. A means to provide context to assist the speech recognition.
         # Corresponds to the JSON property `speechContexts`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1SpeechContext>]
         attr_accessor :speech_contexts
@@ -1676,10 +1676,10 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of
+        # the language in this result. This language code was detected to have the
+        # most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -2487,10 +2487,10 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of
+        # the language in this result. This language code was detected to have the
+        # most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -3298,10 +3298,10 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of
+        # the language in this result. This language code was detected to have the
+        # most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -4175,10 +4175,10 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>]
         attr_accessor :alternatives
       
-        # Output only. The
-        # [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the
-        # language in this result. This language code was detected to have the most
-        # likelihood of being spoken in the audio.
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag of
+        # the language in this result. This language code was detected to have the
+        # most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code

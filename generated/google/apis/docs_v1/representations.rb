@@ -82,6 +82,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateFooterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateFooterResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateHeaderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateHeaderResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateNamedRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -932,6 +956,34 @@ module Google
       
           property :text_style, as: 'textStyle', class: Google::Apis::DocsV1::TextStyle, decorator: Google::Apis::DocsV1::TextStyle::Representation
       
+        end
+      end
+      
+      class CreateFooterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class CreateFooterResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footer_id, as: 'footerId'
+        end
+      end
+      
+      class CreateHeaderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
+        end
+      end
+      
+      class CreateHeaderResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_id, as: 'headerId'
         end
       end
       
@@ -1825,6 +1877,10 @@ module Google
       class Request
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
+      
+          property :create_header, as: 'createHeader', class: Google::Apis::DocsV1::CreateHeaderRequest, decorator: Google::Apis::DocsV1::CreateHeaderRequest::Representation
+      
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeRequest, decorator: Google::Apis::DocsV1::CreateNamedRangeRequest::Representation
       
           property :create_paragraph_bullets, as: 'createParagraphBullets', class: Google::Apis::DocsV1::CreateParagraphBulletsRequest, decorator: Google::Apis::DocsV1::CreateParagraphBulletsRequest::Representation
@@ -1881,6 +1937,10 @@ module Google
       class Response
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
+      
+          property :create_header, as: 'createHeader', class: Google::Apis::DocsV1::CreateHeaderResponse, decorator: Google::Apis::DocsV1::CreateHeaderResponse::Representation
+      
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeResponse, decorator: Google::Apis::DocsV1::CreateNamedRangeResponse::Representation
       
           property :insert_inline_image, as: 'insertInlineImage', class: Google::Apis::DocsV1::InsertInlineImageResponse, decorator: Google::Apis::DocsV1::InsertInlineImageResponse::Representation
