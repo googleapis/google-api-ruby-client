@@ -153,35 +153,6 @@ module Google
         end
       end
       
-      # Alpha. Specifies which services are granted access via this Bridge Service
-      # Perimeter.
-      class BridgeServiceRestriction
-        include Google::Apis::Core::Hashable
-      
-        # The list of APIs usable through the Bridge Perimeter. Must be empty
-        # unless 'enable_restriction' is True.
-        # Corresponds to the JSON property `allowedServices`
-        # @return [Array<String>]
-        attr_accessor :allowed_services
-      
-        # Whether to restrict the set of APIs callable through the Bridge Service
-        # Perimeter.
-        # Corresponds to the JSON property `enableRestriction`
-        # @return [Boolean]
-        attr_accessor :enable_restriction
-        alias_method :enable_restriction?, :enable_restriction
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
-          @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
-        end
-      end
-      
       # A condition necessary for an `AccessLevel` to be granted. The Condition is an
       # AND over its fields. So a Condition is true if: 1) the request IP is from one
       # of the listed subnetworks AND 2) the originating device complies with the
@@ -322,35 +293,6 @@ module Google
           @require_admin_approval = args[:require_admin_approval] if args.key?(:require_admin_approval)
           @require_corp_owned = args[:require_corp_owned] if args.key?(:require_corp_owned)
           @require_screenlock = args[:require_screenlock] if args.key?(:require_screenlock)
-        end
-      end
-      
-      # Alpha. Specifies how Access Levels are to be used for accessing the Service
-      # Perimeter.
-      class IngressServiceRestriction
-        include Google::Apis::Core::Hashable
-      
-        # The list of APIs usable with a valid Access Level. Must be empty unless
-        # 'enable_restriction' is True.
-        # Corresponds to the JSON property `allowedServices`
-        # @return [Array<String>]
-        attr_accessor :allowed_services
-      
-        # Whether to restrict the set of APIs callable outside the Service
-        # Perimeter via Access Levels.
-        # Corresponds to the JSON property `enableRestriction`
-        # @return [Boolean]
-        attr_accessor :enable_restriction
-        alias_method :enable_restriction?, :enable_restriction
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
-          @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
         end
       end
       
@@ -622,18 +564,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # Alpha. Specifies which services are granted access via this Bridge Service
-        # Perimeter.
-        # Corresponds to the JSON property `bridgeServiceRestriction`
-        # @return [Google::Apis::AccesscontextmanagerV1beta::BridgeServiceRestriction]
-        attr_accessor :bridge_service_restriction
-      
-        # Alpha. Specifies how Access Levels are to be used for accessing the Service
-        # Perimeter.
-        # Corresponds to the JSON property `ingressServiceRestriction`
-        # @return [Google::Apis::AccesscontextmanagerV1beta::IngressServiceRestriction]
-        attr_accessor :ingress_service_restriction
-      
         # A list of GCP resources that are inside of the service perimeter.
         # Currently only projects are allowed. Format: `projects/`project_number``
         # Corresponds to the JSON property `resources`
@@ -669,8 +599,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_levels = args[:access_levels] if args.key?(:access_levels)
-          @bridge_service_restriction = args[:bridge_service_restriction] if args.key?(:bridge_service_restriction)
-          @ingress_service_restriction = args[:ingress_service_restriction] if args.key?(:ingress_service_restriction)
           @resources = args[:resources] if args.key?(:resources)
           @restricted_services = args[:restricted_services] if args.key?(:restricted_services)
           @unrestricted_services = args[:unrestricted_services] if args.key?(:unrestricted_services)

@@ -185,6 +185,11 @@ module Google
         # @return [String]
         attr_accessor :orchestrator_option
       
+        # Options for enabling sharding.
+        # Corresponds to the JSON property `shardingOption`
+        # @return [Google::Apis::TestingV1::ShardingOption]
+        attr_accessor :sharding_option
+      
         # A reference to a file, used for user inputs.
         # Corresponds to the JSON property `testApk`
         # @return [Google::Apis::TestingV1::FileReference]
@@ -222,6 +227,7 @@ module Google
           @app_bundle = args[:app_bundle] if args.key?(:app_bundle)
           @app_package_id = args[:app_package_id] if args.key?(:app_package_id)
           @orchestrator_option = args[:orchestrator_option] if args.key?(:orchestrator_option)
+          @sharding_option = args[:sharding_option] if args.key?(:sharding_option)
           @test_apk = args[:test_apk] if args.key?(:test_apk)
           @test_package_id = args[:test_package_id] if args.key?(:test_package_id)
           @test_runner_class = args[:test_runner_class] if args.key?(:test_runner_class)
@@ -1497,6 +1503,29 @@ module Google
         end
       end
       
+      # Shards test cases into the specified groups of packages, classes, and/or
+      # methods.
+      # With manual sharding enabled, specifying test targets via
+      # environment_variables or in InstrumentationTest is invalid.
+      class ManualSharding
+        include Google::Apis::Core::Hashable
+      
+        # Required. Group of packages, classes, and/or test methods to be run for
+        # each shard. The number of shard_test_targets must be > 1, and <= 50.
+        # Corresponds to the JSON property `testTargetsForShard`
+        # @return [Array<Google::Apis::TestingV1::TestTargetsForShard>]
+        attr_accessor :test_targets_for_shard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_targets_for_shard = args[:test_targets_for_shard] if args.key?(:test_targets_for_shard)
+        end
+      end
+      
       # 
       class NetworkConfiguration
         include Google::Apis::Core::Hashable
@@ -1780,6 +1809,68 @@ module Google
         end
       end
       
+      # Output only. Details about the shard.
+      class Shard
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The total number of shards.
+        # Corresponds to the JSON property `numShards`
+        # @return [Fixnum]
+        attr_accessor :num_shards
+      
+        # Output only. The index of the shard among all the shards.
+        # Corresponds to the JSON property `shardIndex`
+        # @return [Fixnum]
+        attr_accessor :shard_index
+      
+        # Test targets for a shard.
+        # Corresponds to the JSON property `testTargetsForShard`
+        # @return [Google::Apis::TestingV1::TestTargetsForShard]
+        attr_accessor :test_targets_for_shard
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_shards = args[:num_shards] if args.key?(:num_shards)
+          @shard_index = args[:shard_index] if args.key?(:shard_index)
+          @test_targets_for_shard = args[:test_targets_for_shard] if args.key?(:test_targets_for_shard)
+        end
+      end
+      
+      # Options for enabling sharding.
+      class ShardingOption
+        include Google::Apis::Core::Hashable
+      
+        # Shards test cases into the specified groups of packages, classes, and/or
+        # methods.
+        # With manual sharding enabled, specifying test targets via
+        # environment_variables or in InstrumentationTest is invalid.
+        # Corresponds to the JSON property `manualSharding`
+        # @return [Google::Apis::TestingV1::ManualSharding]
+        attr_accessor :manual_sharding
+      
+        # Uniformly shards test cases given a total number of shards.
+        # For Instrumentation test, it will be translated to “-e numShard” “-e
+        # shardIndex” AndroidJUnitRunner arguments. With uniform sharding enabled,
+        # specifying these sharding arguments via environment_variables is invalid.
+        # Corresponds to the JSON property `uniformSharding`
+        # @return [Google::Apis::TestingV1::UniformSharding]
+        attr_accessor :uniform_sharding
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @manual_sharding = args[:manual_sharding] if args.key?(:manual_sharding)
+          @uniform_sharding = args[:uniform_sharding] if args.key?(:uniform_sharding)
+        end
+      end
+      
       # A starting intent specified by an action, uri, and categories.
       class StartActivityIntent
         include Google::Apis::Core::Hashable
@@ -1902,6 +1993,11 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # Output only. Details about the shard.
+        # Corresponds to the JSON property `shard`
+        # @return [Google::Apis::TestingV1::Shard]
+        attr_accessor :shard
+      
         # Output only. Indicates the current progress of the test execution
         # (e.g., FINISHED).
         # Corresponds to the JSON property `state`
@@ -1939,6 +2035,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @matrix_id = args[:matrix_id] if args.key?(:matrix_id)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @shard = args[:shard] if args.key?(:shard)
           @state = args[:state] if args.key?(:state)
           @test_details = args[:test_details] if args.key?(:test_details)
           @test_specification = args[:test_specification] if args.key?(:test_specification)
@@ -2194,6 +2291,28 @@ module Google
         end
       end
       
+      # Test targets for a shard.
+      class TestTargetsForShard
+        include Google::Apis::Core::Hashable
+      
+        # Group of packages, classes, and/or test methods to be run for each shard.
+        # The targets need to be specified in AndroidJUnitRunner argument format. For
+        # example, “package com.my.packages” “class com.my.package.MyClass”.
+        # The number of shard_test_targets must be greater than 0.
+        # Corresponds to the JSON property `testTargets`
+        # @return [Array<String>]
+        attr_accessor :test_targets
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @test_targets = args[:test_targets] if args.key?(:test_targets)
+        end
+      end
+      
       # Represents a tool results execution resource.
       # This has the results of a TestMatrix.
       class ToolResultsExecution
@@ -2329,6 +2448,28 @@ module Google
           @delay = args[:delay] if args.key?(:delay)
           @packet_duplication_ratio = args[:packet_duplication_ratio] if args.key?(:packet_duplication_ratio)
           @packet_loss_ratio = args[:packet_loss_ratio] if args.key?(:packet_loss_ratio)
+        end
+      end
+      
+      # Uniformly shards test cases given a total number of shards.
+      # For Instrumentation test, it will be translated to “-e numShard” “-e
+      # shardIndex” AndroidJUnitRunner arguments. With uniform sharding enabled,
+      # specifying these sharding arguments via environment_variables is invalid.
+      class UniformSharding
+        include Google::Apis::Core::Hashable
+      
+        # Required. Total number of shards. The number must be > 1, and <= 50.
+        # Corresponds to the JSON property `numShards`
+        # @return [Fixnum]
+        attr_accessor :num_shards
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_shards = args[:num_shards] if args.key?(:num_shards)
         end
       end
       

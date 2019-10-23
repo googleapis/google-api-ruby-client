@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManualSharding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfiguration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Shard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShardingOption
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class StartActivityIntent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -358,6 +376,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TestTargetsForShard
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ToolResultsExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -377,6 +401,12 @@ module Google
       end
       
       class TrafficRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UniformSharding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -435,6 +465,8 @@ module Google
       
           property :app_package_id, as: 'appPackageId'
           property :orchestrator_option, as: 'orchestratorOption'
+          property :sharding_option, as: 'shardingOption', class: Google::Apis::TestingV1::ShardingOption, decorator: Google::Apis::TestingV1::ShardingOption::Representation
+      
           property :test_apk, as: 'testApk', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
           property :test_package_id, as: 'testPackageId'
@@ -800,6 +832,14 @@ module Google
         end
       end
       
+      class ManualSharding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_targets_for_shard, as: 'testTargetsForShard', class: Google::Apis::TestingV1::TestTargetsForShard, decorator: Google::Apis::TestingV1::TestTargetsForShard::Representation
+      
+        end
+      end
+      
       class NetworkConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -886,6 +926,26 @@ module Google
         end
       end
       
+      class Shard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_shards, as: 'numShards'
+          property :shard_index, as: 'shardIndex'
+          property :test_targets_for_shard, as: 'testTargetsForShard', class: Google::Apis::TestingV1::TestTargetsForShard, decorator: Google::Apis::TestingV1::TestTargetsForShard::Representation
+      
+        end
+      end
+      
+      class ShardingOption
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :manual_sharding, as: 'manualSharding', class: Google::Apis::TestingV1::ManualSharding, decorator: Google::Apis::TestingV1::ManualSharding::Representation
+      
+          property :uniform_sharding, as: 'uniformSharding', class: Google::Apis::TestingV1::UniformSharding, decorator: Google::Apis::TestingV1::UniformSharding::Representation
+      
+        end
+      end
+      
       class StartActivityIntent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -925,6 +985,8 @@ module Google
           property :id, as: 'id'
           property :matrix_id, as: 'matrixId'
           property :project_id, as: 'projectId'
+          property :shard, as: 'shard', class: Google::Apis::TestingV1::Shard, decorator: Google::Apis::TestingV1::Shard::Representation
+      
           property :state, as: 'state'
           property :test_details, as: 'testDetails', class: Google::Apis::TestingV1::TestDetails, decorator: Google::Apis::TestingV1::TestDetails::Representation
       
@@ -998,6 +1060,13 @@ module Google
         end
       end
       
+      class TestTargetsForShard
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :test_targets, as: 'testTargets'
+        end
+      end
+      
       class ToolResultsExecution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1033,6 +1102,13 @@ module Google
           property :delay, as: 'delay'
           property :packet_duplication_ratio, as: 'packetDuplicationRatio'
           property :packet_loss_ratio, as: 'packetLossRatio'
+        end
+      end
+      
+      class UniformSharding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_shards, as: 'numShards'
         end
       end
       

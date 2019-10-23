@@ -40,12 +40,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BridgeServiceRestriction
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,12 +47,6 @@ module Google
       end
       
       class DevicePolicy
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class IngressServiceRestriction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -151,14 +139,6 @@ module Google
         end
       end
       
-      class BridgeServiceRestriction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_services, as: 'allowedServices'
-          property :enable_restriction, as: 'enableRestriction'
-        end
-      end
-      
       class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -182,14 +162,6 @@ module Google
           property :require_admin_approval, as: 'requireAdminApproval'
           property :require_corp_owned, as: 'requireCorpOwned'
           property :require_screenlock, as: 'requireScreenlock'
-        end
-      end
-      
-      class IngressServiceRestriction
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :allowed_services, as: 'allowedServices'
-          property :enable_restriction, as: 'enableRestriction'
         end
       end
       
@@ -259,10 +231,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :access_levels, as: 'accessLevels'
-          property :bridge_service_restriction, as: 'bridgeServiceRestriction', class: Google::Apis::AccesscontextmanagerV1beta::BridgeServiceRestriction, decorator: Google::Apis::AccesscontextmanagerV1beta::BridgeServiceRestriction::Representation
-      
-          property :ingress_service_restriction, as: 'ingressServiceRestriction', class: Google::Apis::AccesscontextmanagerV1beta::IngressServiceRestriction, decorator: Google::Apis::AccesscontextmanagerV1beta::IngressServiceRestriction::Representation
-      
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
           collection :unrestricted_services, as: 'unrestrictedServices'
