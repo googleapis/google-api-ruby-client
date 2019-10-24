@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/ml_v1/service.rb'
-require 'google/apis/ml_v1/classes.rb'
-require 'google/apis/ml_v1/representations.rb'
+require 'google/apis/speech_v2beta1/service.rb'
+require 'google/apis/speech_v2beta1/classes.rb'
+require 'google/apis/speech_v2beta1/representations.rb'
 
 module Google
   module Apis
-    # AI Platform Training & Prediction API
+    # Cloud Speech-to-Text API
     #
-    # An API to enable creating and using machine learning models.
+    # Converts audio to text by applying powerful neural network models.
     #
-    # @see https://cloud.google.com/ml/
-    module MlV1
-      VERSION = 'V1'
-      REVISION = '20191021'
+    # @see https://cloud.google.com/speech-to-text/docs/quickstart-protocol
+    module SpeechV2beta1
+      VERSION = 'V2beta1'
+      REVISION = '20191017'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

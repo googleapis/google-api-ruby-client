@@ -53,7 +53,7 @@ module Google
         #   Must be in the format `projects/`project_id`/locations/`location_id``
         # @param [Google::Apis::BigqueryconnectionV1beta1::Connection] connection_object
         # @param [String] connection_id
-        #   Optional connection id that should be assigned to the created connection.
+        #   Optional. Connection id that should be assigned to the created connection.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

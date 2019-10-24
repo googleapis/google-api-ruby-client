@@ -579,6 +579,7 @@ module Google
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'
           property :scale_tier, as: 'scaleTier'
+          property :use_chief_in_tf_config, as: 'useChiefInTfConfig'
           property :worker_config, as: 'workerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
           property :worker_count, :numeric_string => true, as: 'workerCount'

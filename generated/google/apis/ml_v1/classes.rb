@@ -1497,6 +1497,14 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
+        # Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom
+        # Container is used and evaluator is not specified.
+        # Defaults to false.
+        # Corresponds to the JSON property `useChiefInTfConfig`
+        # @return [Boolean]
+        attr_accessor :use_chief_in_tf_config
+        alias_method :use_chief_in_tf_config?, :use_chief_in_tf_config
+      
         # Represents the configuration for a replica in a cluster.
         # Corresponds to the JSON property `workerConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
@@ -1548,6 +1556,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
+          @use_chief_in_tf_config = args[:use_chief_in_tf_config] if args.key?(:use_chief_in_tf_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
           @worker_count = args[:worker_count] if args.key?(:worker_count)
           @worker_type = args[:worker_type] if args.key?(:worker_type)
