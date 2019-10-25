@@ -1,4 +1,4 @@
-# Google API Client [![RubyDoc](https://img.shields.io/badge/RubyDoc-Google%3A%3AApis-red.svg)](https://www.rubydoc.info/github/googleapis/google-api-ruby-client/Google/Apis) [![Gem Version](https://badge.fury.io/rb/google-api-client.svg)](https://badge.fury.io/rb/google-api-client)
+# Google API Client [![RubyDoc](https://img.shields.io/badge/RubyDoc-Google%3A%3AApis-red.svg)](https://googleapis.dev/ruby/google-api-client/latest/Google/Apis.html) [![Gem Version](https://badge.fury.io/rb/google-api-client.svg)](https://badge.fury.io/rb/google-api-client)
 
 These client libraries are officially supported by Google.  However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.
 
