@@ -334,6 +334,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlScheduledMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlServerDatabaseDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -495,6 +507,8 @@ module Google
           property :name, as: 'name'
           property :project, as: 'project'
           property :self_link, as: 'selfLink'
+          property :sqlserver_database_details, as: 'sqlserverDatabaseDetails', class: Google::Apis::SqlV1beta4::SqlServerDatabaseDetails, decorator: Google::Apis::SqlV1beta4::SqlServerDatabaseDetails::Representation
+      
         end
       end
       
@@ -537,6 +551,8 @@ module Google
       
           collection :replica_names, as: 'replicaNames'
           property :root_password, as: 'rootPassword'
+          property :scheduled_maintenance, as: 'scheduledMaintenance', class: Google::Apis::SqlV1beta4::SqlScheduledMaintenance, decorator: Google::Apis::SqlV1beta4::SqlScheduledMaintenance::Representation
+      
           property :self_link, as: 'selfLink'
           property :server_ca_cert, as: 'serverCaCert', class: Google::Apis::SqlV1beta4::SslCert, decorator: Google::Apis::SqlV1beta4::SslCert::Representation
       
@@ -981,6 +997,22 @@ module Google
           property :storage_auto_resize_limit, :numeric_string => true, as: 'storageAutoResizeLimit'
           property :tier, as: 'tier'
           hash :user_labels, as: 'userLabels'
+        end
+      end
+      
+      class SqlScheduledMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_defer, as: 'canDefer'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class SqlServerDatabaseDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compatibility_level, as: 'compatibilityLevel'
+          property :recovery_model, as: 'recoveryModel'
         end
       end
       

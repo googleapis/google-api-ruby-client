@@ -66,7 +66,7 @@ module Google
       class LoginProfile
         include Google::Apis::Core::Hashable
       
-        # A unique user ID.
+        # Required. A unique user ID.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

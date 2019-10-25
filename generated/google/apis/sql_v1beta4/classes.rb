@@ -399,6 +399,11 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Represents a Sql Server database on the Cloud SQL instance.
+        # Corresponds to the JSON property `sqlserverDatabaseDetails`
+        # @return [Google::Apis::SqlV1beta4::SqlServerDatabaseDetails]
+        attr_accessor :sqlserver_database_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -413,6 +418,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @project = args[:project] if args.key?(:project)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @sqlserver_database_details = args[:sqlserver_database_details] if args.key?(:sqlserver_database_details)
         end
       end
       
@@ -595,6 +601,11 @@ module Google
         # @return [String]
         attr_accessor :root_password
       
+        # Any scheduled maintenancce for this instance.
+        # Corresponds to the JSON property `scheduledMaintenance`
+        # @return [Google::Apis::SqlV1beta4::SqlScheduledMaintenance]
+        attr_accessor :scheduled_maintenance
+      
         # The URI of this resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -661,6 +672,7 @@ module Google
           @replica_configuration = args[:replica_configuration] if args.key?(:replica_configuration)
           @replica_names = args[:replica_names] if args.key?(:replica_names)
           @root_password = args[:root_password] if args.key?(:root_password)
+          @scheduled_maintenance = args[:scheduled_maintenance] if args.key?(:scheduled_maintenance)
           @self_link = args[:self_link] if args.key?(:self_link)
           @server_ca_cert = args[:server_ca_cert] if args.key?(:server_ca_cert)
           @service_account_email_address = args[:service_account_email_address] if args.key?(:service_account_email_address)
@@ -2290,6 +2302,57 @@ module Google
           @storage_auto_resize_limit = args[:storage_auto_resize_limit] if args.key?(:storage_auto_resize_limit)
           @tier = args[:tier] if args.key?(:tier)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
+        end
+      end
+      
+      # Any scheduled maintenancce for this instance.
+      class SqlScheduledMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # If the scheduled maintenance can be deferred.
+        # Corresponds to the JSON property `canDefer`
+        # @return [Boolean]
+        attr_accessor :can_defer
+        alias_method :can_defer?, :can_defer
+      
+        # The start time of any upcoming scheduled maintenance for this instance.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @can_defer = args[:can_defer] if args.key?(:can_defer)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Represents a Sql Server database on the Cloud SQL instance.
+      class SqlServerDatabaseDetails
+        include Google::Apis::Core::Hashable
+      
+        # The version of SQL Server with which the database is to be made compatible
+        # Corresponds to the JSON property `compatibilityLevel`
+        # @return [Fixnum]
+        attr_accessor :compatibility_level
+      
+        # The recovery model of a SQL Server database
+        # Corresponds to the JSON property `recoveryModel`
+        # @return [String]
+        attr_accessor :recovery_model
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @compatibility_level = args[:compatibility_level] if args.key?(:compatibility_level)
+          @recovery_model = args[:recovery_model] if args.key?(:recovery_model)
         end
       end
       

@@ -51,7 +51,7 @@ module Google
         # Retrieves the profile information used for logging in to a virtual machine
         # on Google Compute Engine.
         # @param [String] name
-        #   The unique ID for the user in format `users/`user``.
+        #   Required. The unique ID for the user in format `users/`user``.
         # @param [String] project_id
         #   The project ID of the Google Cloud Platform project.
         # @param [String] system_id
@@ -89,7 +89,7 @@ module Google
         # account information is set when no username and UID exist as part of the
         # login profile.
         # @param [String] parent
-        #   The unique ID for the user in format `users/`user``.
+        #   Required. The unique ID for the user in format `users/`user``.
         # @param [Google::Apis::OsloginV1::SshPublicKey] ssh_public_key_object
         # @param [String] project_id
         #   The project ID of the Google Cloud Platform project.
@@ -125,7 +125,8 @@ module Google
         
         # Deletes a POSIX account.
         # @param [String] name
-        #   A reference to the POSIX account to update. POSIX accounts are identified
+        #   Required. A reference to the POSIX account to update. POSIX accounts are
+        #   identified
         #   by the project ID they are associated with. A reference to the POSIX
         #   account is in format `users/`user`/projects/`project``.
         # @param [String] fields
@@ -157,7 +158,8 @@ module Google
         
         # Deletes an SSH public key.
         # @param [String] name
-        #   The fingerprint of the public key to update. Public keys are identified by
+        #   Required. The fingerprint of the public key to update. Public keys are
+        #   identified by
         #   their SHA-256 fingerprint. The fingerprint of the public key is in format
         #   `users/`user`/sshPublicKeys/`fingerprint``.
         # @param [String] fields
@@ -222,7 +224,8 @@ module Google
         # Updates an SSH public key and returns the profile information. This method
         # supports patch semantics.
         # @param [String] name
-        #   The fingerprint of the public key to update. Public keys are identified by
+        #   Required. The fingerprint of the public key to update. Public keys are
+        #   identified by
         #   their SHA-256 fingerprint. The fingerprint of the public key is in format
         #   `users/`user`/sshPublicKeys/`fingerprint``.
         # @param [Google::Apis::OsloginV1::SshPublicKey] ssh_public_key_object

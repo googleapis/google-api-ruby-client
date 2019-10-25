@@ -235,7 +235,7 @@ module Google
         attr_accessor :name
       
         # Roles for a member within the Group.
-        # Currently supported MembershipRoles: `"MEMBER"`.
+        # Currently supported MembershipRoles: `"MEMBER", "OWNER", "MANAGER"`.
         # Corresponds to the JSON property `roles`
         # @return [Array<Google::Apis::CloudidentityV1beta1::MembershipRole>]
         attr_accessor :roles
@@ -264,7 +264,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # MembershipRole in string format.
-        # Currently supported MembershipRoles: `"MEMBER"`.
+        # Currently supported MembershipRoles: `"MEMBER", "OWNER", "MANAGER"`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

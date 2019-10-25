@@ -92,6 +92,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :docker_image, as: 'dockerImage'
+          collection :https_ports, as: 'httpsPorts'
           property :id, as: 'id'
           property :name, as: 'name'
           collection :public_keys, as: 'publicKeys', class: Google::Apis::CloudshellV1::PublicKey, decorator: Google::Apis::CloudshellV1::PublicKey::Representation
