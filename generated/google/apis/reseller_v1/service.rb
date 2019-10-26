@@ -485,7 +485,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Cancel or transfer a subscription to direct.
+        # Cancel, suspend, or transfer a subscription to direct.
         # @param [String] customer_id
         #   Either the customer's primary domain name or the customer's unique identifier.
         #   If using the domain name, we do not recommend using a customerId as a key for

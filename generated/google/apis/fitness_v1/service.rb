@@ -466,7 +466,7 @@ module Google
         
         # Aggregates data of a certain type or stream into buckets divided by a given
         # type of boundary. Multiple data sets of multiple types and from multiple
-        # sources can be aggreated into exactly one bucket type per request.
+        # sources can be aggregated into exactly one bucket type per request.
         # @param [String] user_id
         #   Aggregate data for the person identified. Use me to indicate the authenticated
         #   user. Only me is supported at this time.

@@ -26,7 +26,7 @@ module Google
     # @see /admin-sdk/reports/
     module AdminReportsV1
       VERSION = 'ReportsV1'
-      REVISION = '20191003'
+      REVISION = '20191014'
 
       # View audit reports for your G Suite domain
       AUTH_ADMIN_REPORTS_AUDIT_READONLY = 'https://www.googleapis.com/auth/admin.reports.audit.readonly'

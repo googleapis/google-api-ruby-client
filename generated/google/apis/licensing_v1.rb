@@ -18,14 +18,14 @@ require 'google/apis/licensing_v1/representations.rb'
 
 module Google
   module Apis
-    # Enterprise License Manager API
+    # Licensing API
     #
-    # Views and manages licenses for your domain.
+    # Licensing API to view and manage licenses for your domain
     #
-    # @see https://developers.google.com/google-apps/licensing/
+    # @see https://developers.google.com/admin-sdk/licensing/
     module LicensingV1
       VERSION = 'V1'
-      REVISION = '20170213'
+      REVISION = '20190916'
 
       # View and manage G Suite licenses for your domain
       AUTH_APPS_LICENSING = 'https://www.googleapis.com/auth/apps.licensing'

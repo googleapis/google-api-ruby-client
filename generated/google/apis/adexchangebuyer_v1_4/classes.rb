@@ -720,12 +720,25 @@ module Google
         class AdTechnologyProviders
           include Google::Apis::Core::Hashable
         
-          # 
+          # The detected ad technology provider IDs for this creative. See https://storage.
+          # googleapis.com/adx-rtb-dictionaries/providers.csv for mapping of provider ID
+          # to provided name, a privacy policy URL, and a list of domains which can be
+          # attributed to the provider. If this creative contains provider IDs that are
+          # outside of those listed in the `BidRequest.adslot.consented_providers_settings.
+          # consented_providers` field on the  Authorized Buyers Real-Time Bidding
+          # protocol or the `BidRequest.user.ext.consented_providers_settings.
+          # consented_providers` field on the OpenRTB protocol, a bid submitted for a
+          # European Economic Area (EEA) user with this creative is not compliant with the
+          # GDPR policies as mentioned in the "Third-party Ad Technology Vendors" section
+          # of Authorized Buyers Program Guidelines.
           # Corresponds to the JSON property `detectedProviderIds`
           # @return [Array<Fixnum>]
           attr_accessor :detected_provider_ids
         
-          # 
+          # Whether the creative contains an unidentified ad technology provider. If true,
+          # a bid submitted for a European Economic Area (EEA) user with this creative is
+          # not compliant with the GDPR policies as mentioned in the "Third-party Ad
+          # Technology Vendors" section of Authorized Buyers Program Guidelines.
           # Corresponds to the JSON property `hasUnidentifiedProvider`
           # @return [Boolean]
           attr_accessor :has_unidentified_provider
@@ -1326,7 +1339,7 @@ module Google
       class DealTerms
         include Google::Apis::Core::Hashable
       
-        # Visibilty of the URL in bid requests.
+        # Visibility of the URL in bid requests.
         # Corresponds to the JSON property `brandingType`
         # @return [String]
         attr_accessor :branding_type

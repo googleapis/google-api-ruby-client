@@ -127,7 +127,8 @@ module Google
         # @return [Array<Google::Apis::DriveV2::About::QuotaBytesByService>]
         attr_accessor :quota_bytes_by_service
       
-        # The total number of quota bytes.
+        # The total number of quota bytes. This is only relevant when quotaType is
+        # LIMITED.
         # Corresponds to the JSON property `quotaBytesTotal`
         # @return [Fixnum]
         attr_accessor :quota_bytes_total

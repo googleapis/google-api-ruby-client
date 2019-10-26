@@ -266,6 +266,84 @@ module Google
         end
       end
       
+      # CloudEventOverrides defines arguments for a Source that control the output
+      # format of the CloudEvents produced by the Source.
+      class CloudEventOverrides
+        include Google::Apis::Core::Hashable
+      
+        # Extensions specify what attribute are added or overridden on the outbound
+        # event. Each `Extensions` key-value pair are set on the event as an
+        # attribute extension independently.
+        # +optional
+        # Corresponds to the JSON property `extensions`
+        # @return [Hash<String,String>]
+        attr_accessor :extensions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # Condition defines a generic condition for a Resource
+      class Condition
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Last time the condition transitioned from one status to another.
+        # Corresponds to the JSON property `lastTransitionTime`
+        # @return [String]
+        attr_accessor :last_transition_time
+      
+        # Optional. Human readable message indicating details about the current status.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        # Optional. One-word CamelCase reason for the condition's last transition.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Optional. How to interpret failures of this condition, one of Error, Warning,
+        # Info
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
+        # Status of the condition, one of True, False, Unknown.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        # type is used to communicate the status of the reconciliation process.
+        # See also:
+        # https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-
+        # conditions-and-reporting
+        # Types common to all resources include:
+        # * "Ready": True when the Resource is ready.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @last_transition_time = args[:last_transition_time] if args.key?(:last_transition_time)
+          @message = args[:message] if args.key?(:message)
+          @reason = args[:reason] if args.key?(:reason)
+          @severity = args[:severity] if args.key?(:severity)
+          @status = args[:status] if args.key?(:status)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # ConfigMapEnvSource selects a ConfigMap to populate the environment
       # variables with.
       # The contents of the target ConfigMap's Data field will represent the
@@ -882,6 +960,35 @@ module Google
           @host_port = args[:host_port] if args.key?(:host_port)
           @name = args[:name] if args.key?(:name)
           @protocol = args[:protocol] if args.key?(:protocol)
+        end
+      end
+      
+      # 
+      class Destination
+        include Google::Apis::Core::Hashable
+      
+        # ObjectReference contains enough information to let you inspect or modify the
+        # referred object.
+        # Corresponds to the JSON property `ref`
+        # @return [Google::Apis::RunV1alpha1::ObjectReference]
+        attr_accessor :ref
+      
+        # URI is for direct URI Designations or used with the resulting URL from
+        # Addressable ObjectReference. If used with an ObjectReference, will be
+        # appended to the path of the resulting URL from the Addressable.
+        # + optional
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ref = args[:ref] if args.key?(:ref)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -1897,6 +2004,51 @@ module Google
         end
       end
       
+      # ListPubSubsResponse is a list of PubSub resources.
+      class ListPubSubsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of PubSubs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::PubSub>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "PubSubList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListRevisionsResponse is a list of Revision resources.
       class ListRevisionsResponse
         include Google::Apis::Core::Hashable
@@ -2671,6 +2823,173 @@ module Google
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
           @success_threshold = args[:success_threshold] if args.key?(:success_threshold)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
+        end
+      end
+      
+      # 
+      class PubSub
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "PubSub".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # The desired state of the PubSub.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::PubSubSpec]
+        attr_accessor :spec
+      
+        # PubSubStatus represents the current state of a PubSub.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::PubSubStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The desired state of the PubSub.
+      class PubSubSpec
+        include Google::Apis::Core::Hashable
+      
+        # AckDeadline is the default maximum time after a subscriber receives a
+        # message before the subscriber should acknowledge the message. Defaults
+        # to 30 seconds ('30s').
+        # +optional
+        # Corresponds to the JSON property `ackDeadline`
+        # @return [String]
+        attr_accessor :ack_deadline
+      
+        # CloudEventOverrides defines arguments for a Source that control the output
+        # format of the CloudEvents produced by the Source.
+        # Corresponds to the JSON property `ceOverrides`
+        # @return [Google::Apis::RunV1alpha1::CloudEventOverrides]
+        attr_accessor :ce_overrides
+      
+        # Project is the ID of the Google Cloud Project that the PubSub Topic exists
+        # in. If omitted, defaults to same as the cluster. +optional
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `pubsubSecret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :pubsub_secret
+      
+        # RetainAckedMessages defines whether to retain acknowledged messages. If
+        # true, acknowledged messages will not be expunged until they fall out of
+        # the RetentionDuration window.
+        # Corresponds to the JSON property `retainAckedMessages`
+        # @return [Boolean]
+        attr_accessor :retain_acked_messages
+        alias_method :retain_acked_messages?, :retain_acked_messages
+      
+        # RetentionDuration defines how long to retain messages in backlog, from
+        # the time of publish. If RetainAckedMessages is true, this duration
+        # affects the retention of acknowledged messages, otherwise only
+        # unacknowledged messages are retained. Cannot be longer than 7 days or
+        # shorter than 10 minutes. Defaults to 7 days ('7d').
+        # +optional
+        # Corresponds to the JSON property `retentionDuration`
+        # @return [String]
+        attr_accessor :retention_duration
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :secret
+      
+        # Sink is a reference to an object that will resolve to a domain name or a
+        # URI directly to use as the sink.
+        # Corresponds to the JSON property `sink`
+        # @return [Google::Apis::RunV1alpha1::Destination]
+        attr_accessor :sink
+      
+        # Topic is the ID of the PubSub Topic to Subscribe to. It must
+        # be in the form of the unique identifier within the project, not the
+        # entire name. E.g. it must be 'laconia', not
+        # 'projects/my-proj/topics/laconia'.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ack_deadline = args[:ack_deadline] if args.key?(:ack_deadline)
+          @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
+          @project = args[:project] if args.key?(:project)
+          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
+          @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
+          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
+          @secret = args[:secret] if args.key?(:secret)
+          @sink = args[:sink] if args.key?(:sink)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # PubSubStatus represents the current state of a PubSub.
+      class PubSubStatus
+        include Google::Apis::Core::Hashable
+      
+        # Array of observed PubSubConditions, indicating the current state
+        # of the PubSub.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::Condition>]
+        attr_accessor :conditions
+      
+        # ObservedGeneration is the 'Generation' of the PubSub that
+        # was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # SinkURI is the current active sink URI that has been configured for the
+        # Source.
+        # +optional
+        # Corresponds to the JSON property `sinkUri`
+        # @return [String]
+        attr_accessor :sink_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @sink_uri = args[:sink_uri] if args.key?(:sink_uri)
         end
       end
       

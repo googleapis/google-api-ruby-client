@@ -48,7 +48,7 @@ module Google
       
         # The list of all possible transfer parameters for this application. These
         # parameters can be used to select the data of the user in this application to
-        # be transfered.
+        # be transferred.
         # Corresponds to the JSON property `transferParams`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationTransferParam>]
         attr_accessor :transfer_params
@@ -77,7 +77,7 @@ module Google
         attr_accessor :application_id
       
         # The transfer parameters for the application. These parameters are used to
-        # select the data which will get transfered in context of this application.
+        # select the data which will get transferred in context of this application.
         # Corresponds to the JSON property `applicationTransferParams`
         # @return [Array<Google::Apis::AdminDatatransferV1::ApplicationTransferParam>]
         attr_accessor :application_transfer_params
@@ -108,7 +108,7 @@ module Google
         # @return [String]
         attr_accessor :key
       
-        # The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'
+        # The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'
         # Corresponds to the JSON property `value`
         # @return [Array<String>]
         attr_accessor :value
@@ -189,12 +189,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # ID of the user to whom the data is being transfered.
+        # ID of the user to whom the data is being transferred.
         # Corresponds to the JSON property `newOwnerUserId`
         # @return [String]
         attr_accessor :new_owner_user_id
       
-        # ID of the user whose data is being transfered.
+        # ID of the user whose data is being transferred.
         # Corresponds to the JSON property `oldOwnerUserId`
         # @return [String]
         attr_accessor :old_owner_user_id

@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudEventOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Condition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConfigMapEnvSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -107,6 +119,12 @@ module Google
       end
       
       class ContainerPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Destination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -280,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListPubSubsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListRevisionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -341,6 +365,24 @@ module Google
       end
       
       class Probe
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSub
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSubSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubSubStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -643,6 +685,25 @@ module Google
         end
       end
       
+      class CloudEventOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :extensions, as: 'extensions'
+        end
+      end
+      
+      class Condition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :last_transition_time, as: 'lastTransitionTime'
+          property :message, as: 'message'
+          property :reason, as: 'reason'
+          property :severity, as: 'severity'
+          property :status, as: 'status'
+          property :type, as: 'type'
+        end
+      end
+      
       class ConfigMapEnvSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -768,6 +829,15 @@ module Google
           property :host_port, as: 'hostPort'
           property :name, as: 'name'
           property :protocol, as: 'protocol'
+        end
+      end
+      
+      class Destination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ref, as: 'ref', class: Google::Apis::RunV1alpha1::ObjectReference, decorator: Google::Apis::RunV1alpha1::ObjectReference::Representation
+      
+          property :uri, as: 'uri'
         end
       end
       
@@ -1057,6 +1127,19 @@ module Google
         end
       end
       
+      class ListPubSubsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::PubSub, decorator: Google::Apis::RunV1alpha1::PubSub::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
       class ListRevisionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1198,6 +1281,49 @@ module Google
           property :period_seconds, as: 'periodSeconds'
           property :success_threshold, as: 'successThreshold'
           property :timeout_seconds, as: 'timeoutSeconds'
+        end
+      end
+      
+      class PubSub
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::PubSubSpec, decorator: Google::Apis::RunV1alpha1::PubSubSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::PubSubStatus, decorator: Google::Apis::RunV1alpha1::PubSubStatus::Representation
+      
+        end
+      end
+      
+      class PubSubSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline, as: 'ackDeadline'
+          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
+      
+          property :project, as: 'project'
+          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :retain_acked_messages, as: 'retainAckedMessages'
+          property :retention_duration, as: 'retentionDuration'
+          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
+      
+          property :topic, as: 'topic'
+        end
+      end
+      
+      class PubSubStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :sink_uri, as: 'sinkUri'
         end
       end
       

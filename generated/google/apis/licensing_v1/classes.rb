@@ -22,7 +22,7 @@ module Google
   module Apis
     module LicensingV1
       
-      # Template for LiscenseAssignment Resource
+      # Representation of a license assignment.
       class LicenseAssignment
         include Google::Apis::Core::Hashable
       
@@ -36,7 +36,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Id of the product.
+        # A product's unique identifier. For more information about products in this
+        # version of the API, see Product and SKU IDs.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -51,7 +52,8 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Id of the sku of the product.
+        # A product SKU's unique identifier. For more information about available SKUs
+        # in this version of the API, see Products and SKUs.
         # Corresponds to the JSON property `skuId`
         # @return [String]
         attr_accessor :sku_id
@@ -61,7 +63,11 @@ module Google
         # @return [String]
         attr_accessor :sku_name
       
-        # Email id of the user.
+        # The user's current primary email address. If the user's email address changes,
+        # use the new email address in your API requests. Since a userId is subject to
+        # change, do not use a userId value as a key for persistent data. This key could
+        # break if the current user's email address changes. If the userId is suspended,
+        # the license status changes.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -83,7 +89,7 @@ module Google
         end
       end
       
-      # Template for LicenseAssignment Insert request
+      # Representation of a license assignment.
       class LicenseAssignmentInsert
         include Google::Apis::Core::Hashable
       
@@ -121,8 +127,10 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # The continuation token, used to page through large result sets. Provide this
-        # value in a subsequent request to return the next page of results.
+        # The token that you must submit in a subsequent request to retrieve additional
+        # license results matching your query parameters. The maxResults query string is
+        # related to the nextPageToken since maxResults determines how many entries are
+        # returned on each next page.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

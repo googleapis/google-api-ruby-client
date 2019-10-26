@@ -20,9 +20,9 @@ require 'google/apis/errors'
 module Google
   module Apis
     module LicensingV1
-      # Enterprise License Manager API
+      # Licensing API
       #
-      # Views and manages licenses for your domain.
+      # Licensing API to view and manage licenses for your domain
       #
       # @example
       #    require 'google/apis/licensing_v1'
@@ -30,7 +30,7 @@ module Google
       #    Licensing = Google::Apis::LicensingV1 # Alias the module
       #    service = Licensing::LicensingService.new
       #
-      # @see https://developers.google.com/google-apps/licensing/
+      # @see https://developers.google.com/admin-sdk/licensing/
       class LicensingService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -51,13 +51,20 @@ module Google
           @batch_path = 'batch/licensing/v1'
         end
         
-        # Revoke License.
+        # Revoke a license.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
-        #   email id or unique Id of the user
+        #   The user's current primary email address. If the user's email address changes,
+        #   use the new email address in your API requests.
+        #   Since a userId is subject to change, do not use a userId value as a key for
+        #   persistent data. This key could break if the current user's email address
+        #   changes.
+        #   If the userId is suspended, the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -88,13 +95,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get license assignment of a particular product and sku for a user
+        # Get a specific user's license by product SKU.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
-        #   email id or unique Id of the user
+        #   The user's current primary email address. If the user's email address changes,
+        #   use the new email address in your API requests.
+        #   Since a userId is subject to change, do not use a userId value as a key for
+        #   persistent data. This key could break if the current user's email address
+        #   changes.
+        #   If the userId is suspended, the license status changes.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -127,11 +141,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Assign License.
+        # Assign a license.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [Google::Apis::LicensingV1::LicenseAssignmentInsert] license_assignment_insert_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -166,17 +182,23 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List license assignments for given product of the customer.
+        # List all users assigned licenses for a specific product SKU.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   CustomerId represents the customer for whom licenseassignments are queried
+        #   Customer's customerId. A previous version of this API accepted the primary
+        #   domain name as a value for this field.
+        #   If the customer is suspended, the server returns an error.
         # @param [Fixnum] max_results
-        #   Maximum number of campaigns to return at one time. Must be positive. Optional.
-        #   Default value is 100.
+        #   The maxResults query string determines how many entries are returned on each
+        #   page of a large response. This is an optional parameter. The value must be a
+        #   positive number.
         # @param [String] page_token
-        #   Token to fetch the next page.Optional. By default server will return first
-        #   page
+        #   Token to fetch the next page of data. The maxResults query string is related
+        #   to the pageToken since maxResults determines how many entries are returned on
+        #   each page. This is an optional query string. If not specified, the server
+        #   returns the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -210,19 +232,26 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List license assignments for given product and sku of the customer.
+        # List all users assigned licenses for a specific product SKU.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [String] customer_id
-        #   CustomerId represents the customer for whom licenseassignments are queried
+        #   Customer's customerId. A previous version of this API accepted the primary
+        #   domain name as a value for this field.
+        #   If the customer is suspended, the server returns an error.
         # @param [Fixnum] max_results
-        #   Maximum number of campaigns to return at one time. Must be positive. Optional.
-        #   Default value is 100.
+        #   The maxResults query string determines how many entries are returned on each
+        #   page of a large response. This is an optional parameter. The value must be a
+        #   positive number.
         # @param [String] page_token
-        #   Token to fetch the next page.Optional. By default server will return first
-        #   page
+        #   Token to fetch the next page of data. The maxResults query string is related
+        #   to the pageToken since maxResults determines how many entries are returned on
+        #   each page. This is an optional query string. If not specified, the server
+        #   returns the first page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -257,13 +286,21 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Assign License. This method supports patch semantics.
+        # Reassign a user's product SKU with a different SKU in the same product. This
+        # method supports patch semantics.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku for which license would be revoked
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
-        #   email id or unique Id of the user
+        #   The user's current primary email address. If the user's email address changes,
+        #   use the new email address in your API requests.
+        #   Since a userId is subject to change, do not use a userId value as a key for
+        #   persistent data. This key could break if the current user's email address
+        #   changes.
+        #   If the userId is suspended, the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -299,13 +336,20 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Assign License.
+        # Reassign a user's product SKU with a different SKU in the same product.
         # @param [String] product_id
-        #   Name for product
+        #   A product's unique identifier. For more information about products in this
+        #   version of the API, see Products and SKUs.
         # @param [String] sku_id
-        #   Name for sku for which license would be revoked
+        #   A product SKU's unique identifier. For more information about available SKUs
+        #   in this version of the API, see Products and SKUs.
         # @param [String] user_id
-        #   email id or unique Id of the user
+        #   The user's current primary email address. If the user's email address changes,
+        #   use the new email address in your API requests.
+        #   Since a userId is subject to change, do not use a userId value as a key for
+        #   persistent data. This key could break if the current user's email address
+        #   changes.
+        #   If the userId is suspended, the license status changes.
         # @param [Google::Apis::LicensingV1::LicenseAssignment] license_assignment_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -59,7 +59,8 @@ module Google
         # parameters, see the activity parameters reference guides.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered.
+        #   filtered. Can be all for all information, or userKey for a user's unique G
+        #   Suite profile ID or their primary email address.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [String] actor_ip_address
@@ -198,7 +199,8 @@ module Google
         # see Receiving Push Notifications.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered.
+        #   filtered. Can be all for all information, or userKey for a user's unique G
+        #   Suite profile ID or their primary email address.
         # @param [String] application_name
         #   Application name for which the events are to be retrieved.
         # @param [Google::Apis::AdminReportsV1::Channel] channel_object
@@ -530,7 +532,8 @@ module Google
         # Usage parameters reference guides.
         # @param [String] user_key
         #   Represents the profile ID or the user email for which the data should be
-        #   filtered.
+        #   filtered. Can be all for all information, or userKey for a user's unique G
+        #   Suite profile ID or their primary email address.
         # @param [String] date
         #   Represents the date the usage occurred. The timestamp is in the ISO 8601
         #   format, yyyy-mm-dd. We recommend you use your account's time zone for this.

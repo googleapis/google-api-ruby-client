@@ -91,6 +91,34 @@ module Google
         end
       end
       
+      # Configuration for returning group information from authenticators.
+      class AuthenticatorGroupsConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether this cluster should return group membership lookups
+        # during authentication using a group of security groups.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # The name of the security group-of-groups to be used. Only relevant
+        # if enabled = true.
+        # Corresponds to the JSON property `securityGroup`
+        # @return [String]
+        attr_accessor :security_group
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @security_group = args[:security_group] if args.key?(:security_group)
+        end
+      end
+      
       # AutoUpgradeOptions defines the set of options for the user to control how
       # the Auto Upgrades will proceed.
       class AutoUpgradeOptions
@@ -117,6 +145,34 @@ module Google
         def update!(**args)
           @auto_upgrade_start_time = args[:auto_upgrade_start_time] if args.key?(:auto_upgrade_start_time)
           @description = args[:description] if args.key?(:description)
+        end
+      end
+      
+      # AutoprovisioningNodePoolDefaults contains defaults for a node pool created
+      # by NAP.
+      class AutoprovisioningNodePoolDefaults
+        include Google::Apis::Core::Hashable
+      
+        # Scopes that are used by NAP when creating node pools. If oauth_scopes are
+        # specified, service_account should be empty.
+        # Corresponds to the JSON property `oauthScopes`
+        # @return [Array<String>]
+        attr_accessor :oauth_scopes
+      
+        # The Google Cloud Platform Service Account to be used by the node VMs. If
+        # service_account is specified, scopes should be empty.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
+          @service_account = args[:service_account] if args.key?(:service_account)
         end
       end
       
@@ -257,6 +313,19 @@ module Google
         # Corresponds to the JSON property `addonsConfig`
         # @return [Google::Apis::ContainerV1::AddonsConfig]
         attr_accessor :addons_config
+      
+        # Configuration for returning group information from authenticators.
+        # Corresponds to the JSON property `authenticatorGroupsConfig`
+        # @return [Google::Apis::ContainerV1::AuthenticatorGroupsConfig]
+        attr_accessor :authenticator_groups_config
+      
+        # ClusterAutoscaling contains global, per-cluster information
+        # required by Cluster Autoscaler to automatically adjust
+        # the size of the cluster and create/delete
+        # node pools based on the current needs.
+        # Corresponds to the JSON property `autoscaling`
+        # @return [Google::Apis::ContainerV1::ClusterAutoscaling]
+        attr_accessor :autoscaling
       
         # Configuration for Binary Authorization.
         # Corresponds to the JSON property `binaryAuthorization`
@@ -417,7 +486,7 @@ module Google
         # The logging service the cluster should use to write logs.
         # Currently available options:
         # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * `logging.googleapis.com` - the Google Cloud Logging service.
         # * `none` - no logs will be exported from the cluster.
         # * if left as an empty string,`logging.googleapis.com` will be used.
@@ -557,6 +626,13 @@ module Google
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
       
+        # VerticalPodAutoscaling contains global, per-cluster information
+        # required by Vertical Pod Autoscaler to automatically adjust
+        # the resources of pods controlled by it.
+        # Corresponds to the JSON property `verticalPodAutoscaling`
+        # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
+        attr_accessor :vertical_pod_autoscaling
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -572,6 +648,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @addons_config = args[:addons_config] if args.key?(:addons_config)
+          @authenticator_groups_config = args[:authenticator_groups_config] if args.key?(:authenticator_groups_config)
+          @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
           @conditions = args[:conditions] if args.key?(:conditions)
@@ -615,7 +693,52 @@ module Google
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
+          @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # ClusterAutoscaling contains global, per-cluster information
+      # required by Cluster Autoscaler to automatically adjust
+      # the size of the cluster and create/delete
+      # node pools based on the current needs.
+      class ClusterAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
+        # in which the NodePool's nodes can be created by NAP.
+        # Corresponds to the JSON property `autoprovisioningLocations`
+        # @return [Array<String>]
+        attr_accessor :autoprovisioning_locations
+      
+        # AutoprovisioningNodePoolDefaults contains defaults for a node pool created
+        # by NAP.
+        # Corresponds to the JSON property `autoprovisioningNodePoolDefaults`
+        # @return [Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults]
+        attr_accessor :autoprovisioning_node_pool_defaults
+      
+        # Enables automatic node pool creation and deletion.
+        # Corresponds to the JSON property `enableNodeAutoprovisioning`
+        # @return [Boolean]
+        attr_accessor :enable_node_autoprovisioning
+        alias_method :enable_node_autoprovisioning?, :enable_node_autoprovisioning
+      
+        # Contains global constraints regarding minimum and maximum
+        # amount of resources in the cluster.
+        # Corresponds to the JSON property `resourceLimits`
+        # @return [Array<Google::Apis::ContainerV1::ResourceLimit>]
+        attr_accessor :resource_limits
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
+          @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
+          @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
+          @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
         end
       end
       
@@ -635,6 +758,14 @@ module Google
         # Corresponds to the JSON property `desiredBinaryAuthorization`
         # @return [Google::Apis::ContainerV1::BinaryAuthorization]
         attr_accessor :desired_binary_authorization
+      
+        # ClusterAutoscaling contains global, per-cluster information
+        # required by Cluster Autoscaler to automatically adjust
+        # the size of the cluster and create/delete
+        # node pools based on the current needs.
+        # Corresponds to the JSON property `desiredClusterAutoscaling`
+        # @return [Google::Apis::ContainerV1::ClusterAutoscaling]
+        attr_accessor :desired_cluster_autoscaling
       
         # Configuration of etcd encryption.
         # Corresponds to the JSON property `desiredDatabaseEncryption`
@@ -666,7 +797,7 @@ module Google
         # The logging service the cluster should use to write logs.
         # Currently available options:
         # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * "logging.googleapis.com" - the Google Cloud Logging service
         # * "none" - no logs will be exported from the cluster
         # Corresponds to the JSON property `desiredLoggingService`
@@ -696,7 +827,7 @@ module Google
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
         # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `desiredMonitoringService`
@@ -735,6 +866,13 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # VerticalPodAutoscaling contains global, per-cluster information
+        # required by Vertical Pod Autoscaler to automatically adjust
+        # the resources of pods controlled by it.
+        # Corresponds to the JSON property `desiredVerticalPodAutoscaling`
+        # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
+        attr_accessor :desired_vertical_pod_autoscaling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -743,6 +881,7 @@ module Google
         def update!(**args)
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
+          @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
@@ -755,6 +894,7 @@ module Google
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
         end
       end
       
@@ -2095,6 +2235,12 @@ module Google
       class NodePoolAutoscaling
         include Google::Apis::Core::Hashable
       
+        # Can this node pool be deleted automatically.
+        # Corresponds to the JSON property `autoprovisioned`
+        # @return [Boolean]
+        attr_accessor :autoprovisioned
+        alias_method :autoprovisioned?, :autoprovisioned
+      
         # Is autoscaling enabled for this node pool.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
@@ -2119,6 +2265,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoprovisioned = args[:autoprovisioned] if args.key?(:autoprovisioned)
           @enabled = args[:enabled] if args.key?(:enabled)
           @max_node_count = args[:max_node_count] if args.key?(:max_node_count)
           @min_node_count = args[:min_node_count] if args.key?(:min_node_count)
@@ -2306,6 +2453,38 @@ module Google
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # Contains information about amount of some resource in the cluster.
+      # For memory, value should be in GB.
+      class ResourceLimit
+        include Google::Apis::Core::Hashable
+      
+        # Maximum amount of the resource in the cluster.
+        # Corresponds to the JSON property `maximum`
+        # @return [Fixnum]
+        attr_accessor :maximum
+      
+        # Minimum amount of the resource in the cluster.
+        # Corresponds to the JSON property `minimum`
+        # @return [Fixnum]
+        attr_accessor :minimum
+      
+        # Resource name "cpu", "memory" or gpu-specific string.
+        # Corresponds to the JSON property `resourceType`
+        # @return [String]
+        attr_accessor :resource_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @maximum = args[:maximum] if args.key?(:maximum)
+          @minimum = args[:minimum] if args.key?(:minimum)
+          @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end
       
@@ -2832,7 +3011,7 @@ module Google
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
         # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `monitoringService`
@@ -3474,6 +3653,28 @@ module Google
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
           @range_name = args[:range_name] if args.key?(:range_name)
           @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # VerticalPodAutoscaling contains global, per-cluster information
+      # required by Vertical Pod Autoscaler to automatically adjust
+      # the resources of pods controlled by it.
+      class VerticalPodAutoscaling
+        include Google::Apis::Core::Hashable
+      
+        # Enables vertical pod autoscaling.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
     end

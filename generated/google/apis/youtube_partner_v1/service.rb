@@ -1322,9 +1322,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing claim by either changing its policy or its status. You can
+        # Patches an existing claim by either changing its policy or its status. You can
         # update a claim's status from active to inactive to effectively release the
-        # claim. This method supports patch semantics.
+        # claim.
         # @param [String] claim_id
         #   The claimId parameter specifies the claim ID of the claim being updated.
         # @param [Google::Apis::YoutubePartnerV1::Claim] claim_object

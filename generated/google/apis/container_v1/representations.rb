@@ -34,7 +34,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AuthenticatorGroupsConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AutoUpgradeOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AutoprovisioningNodePoolDefaults
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -71,6 +83,12 @@ module Google
       end
       
       class Cluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterAutoscaling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -298,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourceLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceUsageExportConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -436,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VerticalPodAutoscaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -458,11 +488,27 @@ module Google
         end
       end
       
+      class AuthenticatorGroupsConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :security_group, as: 'securityGroup'
+        end
+      end
+      
       class AutoUpgradeOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auto_upgrade_start_time, as: 'autoUpgradeStartTime'
           property :description, as: 'description'
+        end
+      end
+      
+      class AutoprovisioningNodePoolDefaults
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :oauth_scopes, as: 'oauthScopes'
+          property :service_account, as: 'serviceAccount'
         end
       end
       
@@ -509,6 +555,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :addons_config, as: 'addonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
+      
+          property :authenticator_groups_config, as: 'authenticatorGroupsConfig', class: Google::Apis::ContainerV1::AuthenticatorGroupsConfig, decorator: Google::Apis::ContainerV1::AuthenticatorGroupsConfig::Representation
+      
+          property :autoscaling, as: 'autoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
           property :binary_authorization, as: 'binaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
       
@@ -568,7 +618,21 @@ module Google
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
+          property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
+      
           property :zone, as: 'zone'
+        end
+      end
+      
+      class ClusterAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :autoprovisioning_locations, as: 'autoprovisioningLocations'
+          property :autoprovisioning_node_pool_defaults, as: 'autoprovisioningNodePoolDefaults', class: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults, decorator: Google::Apis::ContainerV1::AutoprovisioningNodePoolDefaults::Representation
+      
+          property :enable_node_autoprovisioning, as: 'enableNodeAutoprovisioning'
+          collection :resource_limits, as: 'resourceLimits', class: Google::Apis::ContainerV1::ResourceLimit, decorator: Google::Apis::ContainerV1::ResourceLimit::Representation
+      
         end
       end
       
@@ -578,6 +642,8 @@ module Google
           property :desired_addons_config, as: 'desiredAddonsConfig', class: Google::Apis::ContainerV1::AddonsConfig, decorator: Google::Apis::ContainerV1::AddonsConfig::Representation
       
           property :desired_binary_authorization, as: 'desiredBinaryAuthorization', class: Google::Apis::ContainerV1::BinaryAuthorization, decorator: Google::Apis::ContainerV1::BinaryAuthorization::Representation
+      
+          property :desired_cluster_autoscaling, as: 'desiredClusterAutoscaling', class: Google::Apis::ContainerV1::ClusterAutoscaling, decorator: Google::Apis::ContainerV1::ClusterAutoscaling::Representation
       
           property :desired_database_encryption, as: 'desiredDatabaseEncryption', class: Google::Apis::ContainerV1::DatabaseEncryption, decorator: Google::Apis::ContainerV1::DatabaseEncryption::Representation
       
@@ -595,6 +661,8 @@ module Google
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
+      
+          property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
         end
       end
@@ -928,6 +996,7 @@ module Google
       class NodePoolAutoscaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoprovisioned, as: 'autoprovisioned'
           property :enabled, as: 'enabled'
           property :max_node_count, as: 'maxNodeCount'
           property :min_node_count, as: 'minNodeCount'
@@ -972,6 +1041,15 @@ module Google
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class ResourceLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :maximum, :numeric_string => true, as: 'maximum'
+          property :minimum, :numeric_string => true, as: 'minimum'
+          property :resource_type, as: 'resourceType'
         end
       end
       
@@ -1232,6 +1310,13 @@ module Google
           property :ip_cidr_range, as: 'ipCidrRange'
           property :range_name, as: 'rangeName'
           property :status, as: 'status'
+        end
+      end
+      
+      class VerticalPodAutoscaling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
     end
