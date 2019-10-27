@@ -268,7 +268,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The Folder’s parent's resource name.
+        # Required. The Folder’s parent's resource name.
         # Updates to the folder's parent must be performed via
         # MoveFolder.
         # Corresponds to the JSON property `parent`
@@ -402,7 +402,6 @@ module Google
       
         # A pagination token returned from a previous call to `ListFolders`
         # that indicates from where listing should continue.
-        # This field is optional.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -422,7 +421,7 @@ module Google
       class MoveFolderRequest
         include Google::Apis::Core::Hashable
       
-        # The resource name of the Folder or Organization to reparent
+        # Required. The resource name of the Folder or Organization to reparent
         # the folder under.
         # Must be of the form `folders/`folder_id`` or `organizations/`org_id``.
         # Corresponds to the JSON property `destinationParent`
@@ -652,15 +651,13 @@ module Google
       class SearchFoldersRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of folders to return in the response.
-        # This field is optional.
+        # Optional. The maximum number of folders to return in the response.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # A pagination token returned from a previous call to `SearchFolders`
+        # Optional. A pagination token returned from a previous call to `SearchFolders`
         # that indicates from where search should continue.
-        # This field is optional.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token
@@ -712,7 +709,6 @@ module Google
       
         # A pagination token returned from a previous call to `SearchFolders`
         # that indicates from where searching should continue.
-        # This field is optional.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token

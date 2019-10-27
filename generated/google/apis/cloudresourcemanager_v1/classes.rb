@@ -869,9 +869,9 @@ module Google
       # if the value contains a ":". Values prefixed with "is:" are treated the
       # same as values with no prefix.
       # Ancestry subtrees must be in one of the following formats:
-      # - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
-      # - “folders/<folder-id>”, e.g. “folders/1234”
-      # - “organizations/<organization-id>”, e.g. “organizations/1234”
+      # - "projects/<project-id>", e.g. "projects/tokyo-rain-123"
+      # - "folders/<folder-id>", e.g. "folders/1234"
+      # - "organizations/<organization-id>", e.g. "organizations/1234"
       # The `supports_under` field of the associated `Constraint`  defines whether
       # ancestry prefixes can be used. You can set `allowed_values` and
       # `denied_values` in the same `Policy` if `all_values` is
@@ -922,16 +922,16 @@ module Google
         # `projects/bar` parented by `organizations/foo`:
         # Example 1 (no inherited values):
         # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
+        # `allowed_values: "E1" allowed_values:"E2"`
         # `projects/bar` has `inherit_from_parent` `false` and values:
         # `allowed_values: "E3" allowed_values: "E4"`
         # The accepted values at `organizations/foo` are `E1`, `E2`.
         # The accepted values at `projects/bar` are `E3`, and `E4`.
         # Example 2 (inherited values):
         # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
+        # `allowed_values: "E1" allowed_values:"E2"`
         # `projects/bar` has a `Policy` with values:
-        # `value: “E3” value: ”E4” inherit_from_parent: true`
+        # `value: "E3" value: "E4" inherit_from_parent: true`
         # The accepted values at `organizations/foo` are `E1`, `E2`.
         # The accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.
         # Example 3 (inheriting both allowed and denied values):
@@ -943,7 +943,7 @@ module Google
         # The value accepted at `projects/bar` is `E2`.
         # Example 4 (RestoreDefault):
         # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values:”E2”`
+        # `allowed_values: "E1" allowed_values:"E2"`
         # `projects/bar` has a `Policy` with values:
         # `RestoreDefault: ```
         # The accepted values at `organizations/foo` are `E1`, `E2`.
@@ -958,14 +958,14 @@ module Google
         # `DENY`, none).
         # Example 6 (ListConstraint allowing all):
         # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values: ”E2”`
+        # `allowed_values: "E1" allowed_values: "E2"`
         # `projects/bar` has a `Policy` with:
         # `all: ALLOW`
         # The accepted values at `organizations/foo` are `E1`, E2`.
         # Any value is accepted at `projects/bar`.
         # Example 7 (ListConstraint allowing none):
         # `organizations/foo` has a `Policy` with values:
-        # `allowed_values: “E1” allowed_values: ”E2”`
+        # `allowed_values: "E1" allowed_values: "E2"`
         # `projects/bar` has a `Policy` with:
         # `all: DENY`
         # The accepted values at `organizations/foo` are `E1`, E2`.
@@ -1158,9 +1158,9 @@ module Google
         # if the value contains a ":". Values prefixed with "is:" are treated the
         # same as values with no prefix.
         # Ancestry subtrees must be in one of the following formats:
-        # - “projects/<project-id>”, e.g. “projects/tokyo-rain-123”
-        # - “folders/<folder-id>”, e.g. “folders/1234”
-        # - “organizations/<organization-id>”, e.g. “organizations/1234”
+        # - "projects/<project-id>", e.g. "projects/tokyo-rain-123"
+        # - "folders/<folder-id>", e.g. "folders/1234"
+        # - "organizations/<organization-id>", e.g. "organizations/1234"
         # The `supports_under` field of the associated `Constraint`  defines whether
         # ancestry prefixes can be used. You can set `allowed_values` and
         # `denied_values` in the same `Policy` if `all_values` is

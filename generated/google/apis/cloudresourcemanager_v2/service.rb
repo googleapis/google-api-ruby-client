@@ -73,7 +73,7 @@ module Google
         # identified parent.
         # @param [Google::Apis::CloudresourcemanagerV2::Folder] folder_object
         # @param [String] parent
-        #   The resource name of the new Folder's parent.
+        #   Required. The resource name of the new Folder's parent.
         #   Must be of the form `folders/`folder_id`` or `organizations/`org_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -114,7 +114,7 @@ module Google
         # The caller must have `resourcemanager.folders.delete` permission on the
         # identified folder.
         # @param [String] name
-        #   the resource name of the Folder to be deleted.
+        #   Required. the resource name of the Folder to be deleted.
         #   Must be of the form `folders/`folder_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -149,7 +149,7 @@ module Google
         # The caller must have `resourcemanager.folders.get` permission on the
         # identified folder.
         # @param [String] name
-        #   The resource name of the Folder to retrieve.
+        #   Required. The resource name of the Folder to retrieve.
         #   Must be of the form `folders/`folder_id``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -224,22 +224,20 @@ module Google
         # The caller must have `resourcemanager.folders.list` permission on the
         # identified parent.
         # @param [Fixnum] page_size
-        #   The maximum number of Folders to return in the response.
-        #   This field is optional.
+        #   Optional. The maximum number of Folders to return in the response.
         # @param [String] page_token
-        #   A pagination token returned from a previous call to `ListFolders`
+        #   Optional. A pagination token returned from a previous call to `ListFolders`
         #   that indicates where this listing should continue from.
-        #   This field is optional.
         # @param [String] parent
-        #   The resource name of the Organization or Folder whose Folders are
+        #   Required. The resource name of the Organization or Folder whose Folders are
         #   being listed.
         #   Must be of the form `folders/`folder_id`` or `organizations/`org_id``.
         #   Access to this method is controlled by checking the
         #   `resourcemanager.folders.list` permission on the `parent`.
         # @param [Boolean] show_deleted
-        #   Controls whether Folders in the
+        #   Optional. Controls whether Folders in the
         #   DELETE_REQUESTED
-        #   state should be returned. Defaults to false. This field is optional.
+        #   state should be returned. Defaults to false.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,7 +286,7 @@ module Google
         # The caller must have `resourcemanager.folders.move` permission on the
         # folder's current and proposed new parent.
         # @param [String] name
-        #   The resource name of the Folder to move.
+        #   Required. The resource name of the Folder to move.
         #   Must be of the form folders/`folder_id`
         # @param [Google::Apis::CloudresourcemanagerV2::MoveFolderRequest] move_folder_request_object
         # @param [String] fields
@@ -338,7 +336,7 @@ module Google
         #   Its format is `folders/`folder_id``, for example: "folders/1234".
         # @param [Google::Apis::CloudresourcemanagerV2::Folder] folder_object
         # @param [String] update_mask
-        #   Fields to be updated.
+        #   Required. Fields to be updated.
         #   Only the `display_name` can be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -490,7 +488,7 @@ module Google
         # The caller must have `resourcemanager.folders.undelete` permission on the
         # identified folder.
         # @param [String] name
-        #   The resource name of the Folder to undelete.
+        #   Required. The resource name of the Folder to undelete.
         #   Must be of the form `folders/`folder_id``.
         # @param [Google::Apis::CloudresourcemanagerV2::UndeleteFolderRequest] undelete_folder_request_object
         # @param [String] fields
