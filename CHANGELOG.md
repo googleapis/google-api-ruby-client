@@ -1,3 +1,45 @@
+# 0.33.2
+* Backwards compatible changes:
+  * Added `speech_v2beta1`
+  * Updated `accessapproval_v1beta1`
+  * Updated `accesscontextmanager_v1beta`
+  * Updated `adexchangebuyer_v1_3`
+  * Updated `adexchangebuyer_v1_4`
+  * Updated `admin_datatransfer_v1`
+  * Updated `admin_reports_v1`
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryconnection_v1beta1`
+  * Updated `bigtableadmin_v2`
+  * Updated `civicinfo_v2`
+  * Updated `cloudidentity_v1beta1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v2`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `docs_v1`
+  * Updated `drive_v2`
+  * Updated `fitness_v1`
+  * Updated `licensing_v1`
+  * Updated `ml_v1`
+  * Updated `oslogin_v1`
+  * Updated `oslogin_v1beta`
+  * Updated `reseller_v1`
+  * Updated `run_v1alpha1`
+  * Updated `sql_v1beta4`
+  * Updated `storage_v1`
+  * Updated `testing_v1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `videointelligence_v1p2beta1`
+  * Updated `videointelligence_v1p3beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.33.1
 * Backwards compatible changes:
   * Added `monitoring_v1`
