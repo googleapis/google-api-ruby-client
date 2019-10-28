@@ -887,7 +887,7 @@ module Google
         # The logging service the cluster should use to write metrics.
         # Currently available options:
         # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * "logging.googleapis.com" - the Google Cloud Logging service
         # * "none" - no logs will be exported from the cluster
         # Corresponds to the JSON property `desiredLoggingService`
@@ -918,7 +918,7 @@ module Google
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
         # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        # service with Kubernetes-native resource model in Stackdriver
+        # service with Kubernetes-native resource model
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
         # Corresponds to the JSON property `desiredMonitoringService`
@@ -2523,6 +2523,28 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # These upgrade settings control the level of parallelism and the level of
+        # disruption caused by an upgrade.
+        # maxUnavailable controls the number of nodes that can be simultaneously
+        # unavailable.
+        # maxSurge controls the number of additional nodes that can be added to the
+        # node pool temporarily for the time of the upgrade to increase the number of
+        # available nodes.
+        # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+        # nodes are being upgraded at the same time).
+        # Note: upgrades inevitably introduce some disruption since workloads need to
+        # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+        # this holds true. (Disruption stays within the limits of
+        # PodDisruptionBudget, if it is configured.)
+        # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+        # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+        # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+        # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+        # there are always at least 4 nodes available.
+        # Corresponds to the JSON property `upgradeSettings`
+        # @return [Google::Apis::ContainerV1beta1::UpgradeSettings]
+        attr_accessor :upgrade_settings
+      
         # The version of the Kubernetes of this node.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -2547,6 +2569,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -4212,6 +4235,28 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # These upgrade settings control the level of parallelism and the level of
+        # disruption caused by an upgrade.
+        # maxUnavailable controls the number of nodes that can be simultaneously
+        # unavailable.
+        # maxSurge controls the number of additional nodes that can be added to the
+        # node pool temporarily for the time of the upgrade to increase the number of
+        # available nodes.
+        # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+        # nodes are being upgraded at the same time).
+        # Note: upgrades inevitably introduce some disruption since workloads need to
+        # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+        # this holds true. (Disruption stays within the limits of
+        # PodDisruptionBudget, if it is configured.)
+        # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+        # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+        # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+        # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+        # there are always at least 4 nodes available.
+        # Corresponds to the JSON property `upgradeSettings`
+        # @return [Google::Apis::ContainerV1beta1::UpgradeSettings]
+        attr_accessor :upgrade_settings
+      
         # WorkloadMetadataConfig defines the metadata configuration to expose to
         # workloads on the node pool.
         # Corresponds to the JSON property `workloadMetadataConfig`
@@ -4239,8 +4284,54 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # These upgrade settings control the level of parallelism and the level of
+      # disruption caused by an upgrade.
+      # maxUnavailable controls the number of nodes that can be simultaneously
+      # unavailable.
+      # maxSurge controls the number of additional nodes that can be added to the
+      # node pool temporarily for the time of the upgrade to increase the number of
+      # available nodes.
+      # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+      # nodes are being upgraded at the same time).
+      # Note: upgrades inevitably introduce some disruption since workloads need to
+      # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+      # this holds true. (Disruption stays within the limits of
+      # PodDisruptionBudget, if it is configured.)
+      # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+      # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+      # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+      # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+      # there are always at least 4 nodes available.
+      class UpgradeSettings
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of nodes that can be created beyond the current size
+        # of the node pool during the upgrade process.
+        # Corresponds to the JSON property `maxSurge`
+        # @return [Fixnum]
+        attr_accessor :max_surge
+      
+        # The maximum number of nodes that can be simultaneously unavailable during
+        # the upgrade process. A node is considered available if its status is
+        # Ready.
+        # Corresponds to the JSON property `maxUnavailable`
+        # @return [Fixnum]
+        attr_accessor :max_unavailable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_surge = args[:max_surge] if args.key?(:max_surge)
+          @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
         end
       end
       

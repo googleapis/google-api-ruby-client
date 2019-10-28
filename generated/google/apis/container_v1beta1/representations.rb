@@ -550,6 +550,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsableSubnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1189,6 +1195,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -1587,9 +1595,19 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
+      
           property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1beta1::WorkloadMetadataConfig::Representation
       
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_surge, as: 'maxSurge'
+          property :max_unavailable, as: 'maxUnavailable'
         end
       end
       
