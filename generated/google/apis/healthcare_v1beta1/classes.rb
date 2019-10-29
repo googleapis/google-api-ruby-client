@@ -2373,7 +2373,8 @@ module Google
         # schema. For example, `concept` in the CodeSystem resource is a recursive
         # structure; when the depth is 2, the CodeSystem table will have a column
         # called `concept.concept` but not `concept.concept.concept`. If not
-        # specified or set to 0, the server will use the default value 2.
+        # specified or set to 0, the server will use the default value 2. The
+        # maximum depth allowed is 5.
         # Corresponds to the JSON property `recursiveStructureDepth`
         # @return [Fixnum]
         attr_accessor :recursive_structure_depth

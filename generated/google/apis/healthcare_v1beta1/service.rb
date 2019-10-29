@@ -815,13 +815,13 @@ module Google
         # SearchForInstances returns a list of matching instances. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request (for example,
-        #   `instances` or `series/`series_uid`/instances` or
-        #   `studies/`study_uid`/instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request. For example,
+        #   `instances`, `series/`series_uid`/instances`, or
+        #   `studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -853,12 +853,12 @@ module Google
         # SearchForSeries returns a list of matching series. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForSeries DICOMweb request(for example, `series` or
-        #   `studies/`study_uid`/series`).
+        #   The path of the SearchForSeries DICOMweb request. For example, `series` or
+        #   `studies/`study_uid`/series`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -890,11 +890,11 @@ module Google
         # SearchForStudies returns a list of matching studies. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForStudies DICOMweb request (for example, `studies`).
+        #   The path of the SearchForStudies DICOMweb request. For example, `studies`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -963,12 +963,12 @@ module Google
         # identifiers (SUID). See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the StoreInstances DICOMweb request (for example,
-        #   `studies/[`study_uid`]`). Note that the `study_uid` is optional.
+        #   The path of the StoreInstances DICOMweb request. For example,
+        #   `studies/[`study_uid`]`. Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1042,11 +1042,8 @@ module Google
         # DeleteStudy deletes all instances within the given study. Delete requests
         # are equivalent to the GET requests specified in the WADO-RS standard.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
-        #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
         # @param [String] dicom_web_path
-        #   The path of the DeleteStudy request (for example, `studies/`study_uid``).
+        #   The path of the DeleteStudy request. For example, `studies/`study_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1079,12 +1076,12 @@ module Google
         # presented as metadata with the bulk data removed. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveStudyMetadata DICOMweb request (for example,
-        #   `studies/`study_uid`/metadata`).
+        #   The path of the RetrieveStudyMetadata DICOMweb request. For example,
+        #   `studies/`study_uid`/metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1116,12 +1113,12 @@ module Google
         # RetrieveStudy returns all instances within the given study. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveStudy DICOMweb request (for example,
-        #   `studies/`study_uid``).
+        #   The path of the RetrieveStudy DICOMweb request. For example,
+        #   `studies/`study_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1153,13 +1150,13 @@ module Google
         # SearchForInstances returns a list of matching instances. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request (for example,
-        #   `instances` or `series/`series_uid`/instances` or
-        #   `studies/`study_uid`/instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request. For example,
+        #   `instances`, `series/`series_uid`/instances`, or
+        #   `studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1191,12 +1188,12 @@ module Google
         # SearchForSeries returns a list of matching series. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForSeries DICOMweb request(for example, `series` or
-        #   `studies/`study_uid`/series`).
+        #   The path of the SearchForSeries DICOMweb request. For example, `series` or
+        #   `studies/`study_uid`/series`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1229,12 +1226,12 @@ module Google
         # identifiers (SUID). See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the StoreInstances DICOMweb request (for example,
-        #   `studies/[`study_uid`]`). Note that the `study_uid` is optional.
+        #   The path of the StoreInstances DICOMweb request. For example,
+        #   `studies/[`study_uid`]`. Note that the `study_uid` is optional.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1270,12 +1267,12 @@ module Google
         # Delete requests are equivalent to the GET requests specified in the WADO-RS
         # standard.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the DeleteSeries request (for example,
-        #   `studies/`study_uid`/series/`series_uid``).
+        #   The path of the DeleteSeries request. For example,
+        #   `studies/`study_uid`/series/`series_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1308,12 +1305,12 @@ module Google
         # series, presented as metadata with the bulk data removed. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveSeriesMetadata DICOMweb request (for example,
-        #   `studies/`study_uid`/series/`series_uid`/metadata`).
+        #   The path of the RetrieveSeriesMetadata DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1345,12 +1342,12 @@ module Google
         # RetrieveSeries returns all instances within the given study and series. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveSeries DICOMweb request (for example,
-        #   `studies/`study_uid`/series/`series_uid``).
+        #   The path of the RetrieveSeries DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1382,13 +1379,13 @@ module Google
         # SearchForInstances returns a list of matching instances. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the SearchForInstancesRequest DICOMweb request (for example,
-        #   `instances` or `series/`series_uid`/instances` or
-        #   `studies/`study_uid`/instances`).
+        #   The path of the SearchForInstancesRequest DICOMweb request. For example,
+        #   `instances`, `series/`series_uid`/instances`, or
+        #   `studies/`study_uid`/instances`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1421,12 +1418,12 @@ module Google
         # and SOP Instance UID. Delete requests are equivalent to the GET requests
         # specified in the WADO-RS standard.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the DeleteInstance request (for example,
-        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid``).
+        #   The path of the DeleteInstance request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1459,12 +1456,12 @@ module Google
         # and SOP Instance UID. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveInstance DICOMweb request (for example,
-        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid``).
+        #   The path of the RetrieveInstance DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1498,12 +1495,12 @@ module Google
         # removed. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveInstanceMetadata DICOMweb request (for example,
-        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/metadata`).
+        #   The path of the RetrieveInstanceMetadata DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/metadata`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1536,12 +1533,12 @@ module Google
         # series, and SOP Instance UID in an acceptable Rendered Media Type. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveRenderedInstance DICOMweb request (for example,
-        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/rendered`).
+        #   The path of the RetrieveRenderedInstance DICOMweb request. For example,
+        #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/rendered`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1574,13 +1571,13 @@ module Google
         # SOP Instance UID and frame numbers. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveFrames DICOMweb request (for example,
+        #   The path of the RetrieveFrames DICOMweb request. For example,
         #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
-        #   frame_list``).
+        #   frame_list``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1614,13 +1611,13 @@ module Google
         # Type. See
         # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
         # @param [String] parent
-        #   The name of the DICOM store that is being accessed (for example,
+        #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
-        #   dicomStores/`dicom_store_id``).
+        #   dicomStores/`dicom_store_id``.
         # @param [String] dicom_web_path
-        #   The path of the RetrieveRenderedFrames DICOMweb request (for example,
+        #   The path of the RetrieveRenderedFrames DICOMweb request. For example,
         #   `studies/`study_uid`/series/`series_uid`/instances/`instance_uid`/frames/`
-        #   frame_list`/rendered`).
+        #   frame_list`/rendered`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2142,7 +2139,7 @@ module Google
         # operations.html#lastn).
         # Search terms are provided as query parameters following the same pattern as
         # the search method. The following search parameters must
-        # be provided
+        # be provided:
         # - `subject` or `patient` to specify a subject for the Observation.
         # - `code`, `category` or any of the composite parameters that include
         # `code`.
@@ -2150,6 +2147,10 @@ module Google
         # operation accepts an additional query parameter `max`, which specifies N,
         # the maximum number of Observations to return from each group, with a
         # default of 1.
+        # Searches with over 1000 results are rejected. Results are counted before
+        # grouping and limiting the results with `max`. To stay within the limit,
+        # constrain these searches using Observation search parameters such as
+        # `_lastUpdated` or `date`.
         # On success, the response body will contain a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.
@@ -2186,11 +2187,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves all the resources directly referenced by a patient, as well as
-        # all of the resources in the patient compartment.
-        # Implements the FHIR extended operation
-        # [Patient-everything](http://hl7.org/implement/standards/fhir/STU3/patient-
-        # operations.html#everything).
         # On success, the response body will contain a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.
@@ -2806,9 +2802,10 @@ module Google
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
         # The server's capability statement, retrieved through
-        # capabilities, indicates what search parameters
-        # are supported on each FHIR resource. A list of all search parameters
-        # defined by the specification can be found in the [FHIR Search Parameter
+        # capabilities, indicates the search parameters
+        # that are supported on each FHIR resource. For the list of search
+        # parameters for STU3, see the
+        # [STU3 FHIR Search Parameter
         # Registry](http://hl7.org/implement/standards/fhir/STU3/searchparameter-
         # registry.html).
         # Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,
@@ -3399,10 +3396,6 @@ module Google
         #   `send_time < "2017-01-02T00:00:00-05:00"`.
         #   *  `send_facility`, the care center that the message came from, from the
         #   MSH-4 segment. For example, `send_facility = "ABC"`.
-        #   *  `HL7RegExp(expr)`, which does regular expression matching of `expr`
-        #   against the message payload using RE2 syntax
-        #   (https://github.com/google/re2/wiki/Syntax). For example,
-        #   `HL7RegExp("^.*\|.*\|EMERG")`.
         #   *  `PatientId(value, type)`, which matches if the message lists a patient
         #   having an ID of the given value and type in the PID-2, PID-3, or PID-4
         #   segments. For example, `PatientId("123456", "MRN")`.

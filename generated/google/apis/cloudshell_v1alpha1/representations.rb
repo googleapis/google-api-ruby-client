@@ -109,7 +109,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :docker_image, as: 'dockerImage'
-          collection :https_ports, as: 'httpsPorts'
           property :id, as: 'id'
           property :name, as: 'name'
           collection :public_keys, as: 'publicKeys', class: Google::Apis::CloudshellV1alpha1::PublicKey, decorator: Google::Apis::CloudshellV1alpha1::PublicKey::Representation
@@ -121,6 +120,7 @@ module Google
           property :state, as: 'state'
           property :vm_size_expire_time, as: 'vmSizeExpireTime'
           property :web_host, as: 'webHost'
+          collection :web_ports, as: 'webPorts'
         end
       end
       

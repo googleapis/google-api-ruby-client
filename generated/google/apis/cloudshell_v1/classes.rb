@@ -67,11 +67,6 @@ module Google
         # @return [String]
         attr_accessor :docker_image
       
-        # Output only. List of ports users can connect to on the environment.
-        # Corresponds to the JSON property `httpsPorts`
-        # @return [Array<Fixnum>]
-        attr_accessor :https_ports
-      
         # Output only. The environment's identifier, which is always "default".
         # Corresponds to the JSON property `id`
         # @return [String]
@@ -137,6 +132,12 @@ module Google
         # @return [String]
         attr_accessor :web_host
       
+        # Output only. Ports to which clients can connect to initiate HTTPS or WSS
+        # connections with the environment.
+        # Corresponds to the JSON property `webPorts`
+        # @return [Array<Fixnum>]
+        attr_accessor :web_ports
+      
         def initialize(**args)
            update!(**args)
         end
@@ -144,7 +145,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @docker_image = args[:docker_image] if args.key?(:docker_image)
-          @https_ports = args[:https_ports] if args.key?(:https_ports)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
           @public_keys = args[:public_keys] if args.key?(:public_keys)
@@ -155,6 +155,7 @@ module Google
           @state = args[:state] if args.key?(:state)
           @vm_size_expire_time = args[:vm_size_expire_time] if args.key?(:vm_size_expire_time)
           @web_host = args[:web_host] if args.key?(:web_host)
+          @web_ports = args[:web_ports] if args.key?(:web_ports)
         end
       end
       
