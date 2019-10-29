@@ -10,6 +10,9 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Client for accessing Google APIs'
   spec.homepage      = 'https://github.com/google/google-api-ruby-client'
   spec.license       = 'Apache-2.0'
+  spec.metadata      = {
+    "documentation_uri" => "https://googleapis.dev/ruby/google-api-client/v#{Google::Apis::VERSION}"
+  }
 
   spec.files         = `git ls-files -z`
                        .split("\x0")
