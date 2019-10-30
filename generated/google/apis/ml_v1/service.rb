@@ -999,11 +999,15 @@ module Google
         #   For example, to change the description of a version to "foo", the
         #   `update_mask` parameter would be specified as `description`, and the
         #   `PATCH` request body would specify the new value, as follows:
+        #   ```
         #   `
         #   "description": "foo"
         #   `
-        #   Currently the only supported update mask fields are `description` and
-        #   `autoScaling.minNodes`.
+        #   ```
+        #   Currently the only supported update mask fields are `description`,
+        #   `autoScaling.minNodes`, and `manualScaling.nodes`. However, you can only
+        #   update `manualScaling.nodes` if the version uses a [Compute Engine (N1)
+        #   machine type](/ml-engine/docs/machine-types-online-prediction).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

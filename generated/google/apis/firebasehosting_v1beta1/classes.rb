@@ -457,6 +457,35 @@ module Google
         end
       end
       
+      # Version preview configuration. If active and unexpired,
+      # this version will be accessible via a custom URL even
+      # if it is not the currently released version.
+      class PreviewConfig
+        include Google::Apis::Core::Hashable
+      
+        # If true, preview URLs are enabled for this version.
+        # Corresponds to the JSON property `active`
+        # @return [Boolean]
+        attr_accessor :active
+        alias_method :active?, :active
+      
+        # Indicates the expiration time for previewing this
+        # version; preview URL requests received after this time will 404.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @active = args[:active] if args.key?(:active)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+        end
+      end
+      
       # A [`redirect`](/docs/hosting/full-config#redirects) represents the
       # configuration for returning an HTTP redirect response given a matching
       # request URL path.
@@ -772,6 +801,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Version preview configuration. If active and unexpired,
+        # this version will be accessible via a custom URL even
+        # if it is not the currently released version.
+        # Corresponds to the JSON property `preview`
+        # @return [Google::Apis::FirebasehostingV1beta1::PreviewConfig]
+        attr_accessor :preview
+      
         # The deploy status of a version.
         # <br>
         # <br>For a successful deploy, call the
@@ -812,6 +848,7 @@ module Google
           @finalize_user = args[:finalize_user] if args.key?(:finalize_user)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @preview = args[:preview] if args.key?(:preview)
           @status = args[:status] if args.key?(:status)
           @version_bytes = args[:version_bytes] if args.key?(:version_bytes)
         end

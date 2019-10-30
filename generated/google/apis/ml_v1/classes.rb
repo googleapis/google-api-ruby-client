@@ -109,7 +109,10 @@ module Google
       end
       
       # Represents a hardware accelerator request config.
-      # Note that the AcceleratorConfig could be used in both Jobs and Versions.
+      # Note that the AcceleratorConfig can be used in both Jobs and Versions.
+      # Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and
+      # [accelerators for online
+      # prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
       class GoogleCloudMlV1AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -151,9 +154,18 @@ module Google
         # increased load as well as scale back as traffic drops, always maintaining
         # at least `min_nodes`. You will be charged for the time in which additional
         # nodes are used.
-        # If not specified, `min_nodes` defaults to 0, in which case, when traffic
-        # to a model stops (and after a cool-down period), nodes will be shut down
-        # and no charges will be incurred until traffic to the model resumes.
+        # If `min_nodes` is not specified and AutoScaling is used with a [legacy
+        # (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction),
+        # `min_nodes` defaults to 0, in which case, when traffic to a model stops
+        # (and after a cool-down period), nodes will be shut down and no charges will
+        # be incurred until traffic to the model resumes.
+        # If `min_nodes` is not specified and AutoScaling is used with a [Compute
+        # Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction),
+        # `min_nodes` defaults to 1. `min_nodes` must be at least 1 for use with a
+        # Compute Engine machine type.
+        # Note that you cannot use AutoScaling if your version uses
+        # [GPUs](#Version.FIELDS.accelerator_config). Instead, you must use
+        # ManualScaling.
         # You can set `min_nodes` when creating the model version, and you can also
         # update `min_nodes` for an existing version:
         # <pre>
@@ -165,7 +177,7 @@ module Google
         # `
         # </pre>
         # HTTP request:
-        # <pre>
+        # <pre style="max-width: 626px;">
         # PATCH
         # https://ml.googleapis.com/v1/`name=projects/*/models/*/versions/*`?update_mask=
         # autoScaling.minNodes
@@ -1176,7 +1188,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a hardware accelerator request config.
-        # Note that the AcceleratorConfig could be used in both Jobs and Versions.
+        # Note that the AcceleratorConfig can be used in both Jobs and Versions.
+        # Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and
+        # [accelerators for online
+        # prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
         attr_accessor :accelerator_config
@@ -1636,7 +1651,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a hardware accelerator request config.
-        # Note that the AcceleratorConfig could be used in both Jobs and Versions.
+        # Note that the AcceleratorConfig can be used in both Jobs and Versions.
+        # Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and
+        # [accelerators for online
+        # prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         # Corresponds to the JSON property `acceleratorConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
         attr_accessor :accelerator_config
@@ -1697,6 +1715,10 @@ module Google
         # of the model to 1.4 or greater.
         # Do **not** specify a framework if you're deploying a [custom
         # prediction routine](/ml-engine/docs/tensorflow/custom-prediction-routines).
+        # If you specify a [Compute Engine (N1) machine
+        # type](/ml-engine/docs/machine-types-online-prediction) in the
+        # `machineType` field, you must specify `TENSORFLOW`
+        # for the framework.
         # Corresponds to the JSON property `framework`
         # @return [String]
         attr_accessor :framework
@@ -1726,19 +1748,29 @@ module Google
         attr_accessor :last_use_time
       
         # Optional. The type of machine on which to serve the model. Currently only
-        # applies to online prediction service.
-        # <dl>
-        # <dt>mls1-c1-m2</dt>
-        # <dd>
-        # The <b>default</b> machine type, with 1 core and 2 GB RAM. The deprecated
-        # name for this machine type is "mls1-highmem-1".
-        # </dd>
-        # <dt>mls1-c4-m2</dt>
-        # <dd>
-        # In <b>Beta</b>. This machine type has 4 cores and 2 GB RAM. The
-        # deprecated name for this machine type is "mls1-highcpu-4".
-        # </dd>
-        # </dl>
+        # applies to online prediction service. If this field is not specified, it
+        # defaults to `mls1-c1-m2`.
+        # Online prediction supports the following machine types:
+        # * `mls1-c1-m2`
+        # * `mls1-c4-m2`
+        # * `n1-standard-2`
+        # * `n1-standard-4`
+        # * `n1-standard-8`
+        # * `n1-standard-16`
+        # * `n1-standard-32`
+        # * `n1-highmem-2`
+        # * `n1-highmem-4`
+        # * `n1-highmem-8`
+        # * `n1-highmem-16`
+        # * `n1-highmem-32`
+        # * `n1-highcpu-2`
+        # * `n1-highcpu-4`
+        # * `n1-highcpu-8`
+        # * `n1-highcpu-16`
+        # * `n1-highcpu-32`
+        # `mls1-c1-m2` is generally available. All other machine types are available
+        # in beta. Learn more about the [differences between machine
+        # types](/ml-engine/docs/machine-types-online-prediction).
         # Corresponds to the JSON property `machineType`
         # @return [String]
         attr_accessor :machine_type
@@ -1778,9 +1810,11 @@ module Google
         # Specify this field if and only if you are deploying a [custom prediction
         # routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines).
         # If you specify this field, you must set
-        # [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
+        # [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and
+        # you must set `machineType` to a [legacy (MLS1)
+        # machine type](/ml-engine/docs/machine-types-online-prediction).
         # The following code sample provides the Predictor interface:
-        # ```py
+        # <pre style="max-width: 626px;">
         # class Predictor(object):
         # """Interface for constructing custom predictors."""
         # def predict(self, instances, **kwargs):
@@ -1808,7 +1842,7 @@ module Google
         # An instance implementing this Predictor class.
         # """
         # raise NotImplementedError()
-        # ```
+        # </pre>
         # Learn more about [the Predictor interface and custom prediction
         # routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
         # Corresponds to the JSON property `predictionClass`

@@ -611,17 +611,18 @@ module Google
       class GooglePrivacyDlpV2CharacterMaskConfig
         include Google::Apis::Core::Hashable
       
-        # When masking a string, items in this list will be skipped when replacing.
-        # For example, if your string is 555-555-5555 and you ask us to skip `-` and
-        # mask 5 chars with * we would produce ***-*55-5555.
+        # When masking a string, items in this list will be skipped when replacing
+        # characters. For example, if the input string is `555-555-5555` and you
+        # instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP
+        # returns `***-**5-5555`.
         # Corresponds to the JSON property `charactersToIgnore`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2CharsToIgnore>]
         attr_accessor :characters_to_ignore
       
-        # Character to mask the sensitive values&mdash;for example, "*" for an
-        # alphabetic string such as name, or "0" for a numeric string such as ZIP
-        # code or credit card number. String must have length 1. If not supplied, we
-        # will default to "*" for strings, 0 for digits.
+        # Character to use to mask the sensitive values&mdash;for example, `*` for an
+        # alphabetic string such as a name, or `0` for a numeric string such as ZIP
+        # code or credit card number. This string must have a length of 1. If not
+        # supplied, this value defaults to `*` for strings, and `0` for digits.
         # Corresponds to the JSON property `maskingCharacter`
         # @return [String]
         attr_accessor :masking_character
@@ -633,10 +634,10 @@ module Google
         attr_accessor :number_to_mask
       
         # Mask characters in reverse order. For example, if `masking_character` is
-        # '0', number_to_mask is 14, and `reverse_order` is false, then
-        # 1234-5678-9012-3456 -> 00000000000000-3456
-        # If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`
-        # is true, then 12345 -> 12***
+        # `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the
+        # input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
+        # If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order`
+        # is `true`, then the string `12345` is masked as `12***`.
         # Corresponds to the JSON property `reverseOrder`
         # @return [Boolean]
         attr_accessor :reverse_order
@@ -4743,6 +4744,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
+        # The geographic location to process the request. Reserved for future
+        # extensions.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4753,6 +4760,7 @@ module Google
           @image_redaction_configs = args[:image_redaction_configs] if args.key?(:image_redaction_configs)
           @include_findings = args[:include_findings] if args.key?(:include_findings)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
+          @location = args[:location] if args.key?(:location)
         end
       end
       

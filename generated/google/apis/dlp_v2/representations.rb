@@ -2435,6 +2435,7 @@ module Google
           property :include_findings, as: 'includeFindings'
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
+          property :location, as: 'location'
         end
       end
       
