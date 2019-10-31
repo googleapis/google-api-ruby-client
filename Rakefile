@@ -79,20 +79,15 @@ namespace :kokoro do
   end
 
   task :release do
-    version = "0.1.0"
-    Bundler.with_clean_env do
-      version = `bundle exec gem list`
-                .split("\n").select { |line| line.include? "google-api-client" }
-                .first.split("(").last.split(")").first || "0.1.0"
-    end
-    Rake::Task["kokoro:load_env_vars"].invoke
-    Rake::Task["release_gem"].invoke "v#{version}"
+    # Until code generation process is updated and release-please is set up, just publish docs
+    Rake::Task["kokoro:publish_docs"].invoke
   end
 
+  desc "Publish docs for the latest git tag"
   task :publish_docs do
     require_relative "rakelib/devsite/devsite_builder.rb"
 
-    DevsiteBuilder.new(__dir__).publish
+    DevsiteBuilder.new.publish ENV["DOCS_BUILD_TAG"]
   end
 end
 

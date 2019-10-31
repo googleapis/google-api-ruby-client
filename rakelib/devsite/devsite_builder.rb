@@ -1,27 +1,29 @@
 require "pathname"
+require "tmpdir"
 
 require_relative "repo_metadata.rb"
 
 class DevsiteBuilder
-  def initialize master_dir = "."
-    @master_dir = Pathname.new master_dir
+  def initialize build_tag = nil
+    @build_tag = build_tag || latest_tag
     @output_dir = "doc"
-    @metadata = RepoMetadata.from_source "#{master_dir}/.repo-metadata.json"
   end
 
-  def build
-    FileUtils.remove_dir @output_dir if Dir.exist? @output_dir
+  def build tag
+    checkout_tag tag
+    doc_path = tmp_dir + @output_dir
+    FileUtils.remove_dir doc_path if Dir.exist? doc_path
     markup = "--markup markdown --markup-provider redcarpet"
 
-    Dir.chdir @master_dir do
+    Dir.chdir tmp_dir do
       cmds = ["-o #{@output_dir}", markup]
       cmd "yard --verbose #{cmds.join ' '}"
     end
-    @metadata.build @master_dir + @output_dir
+    metadata.build doc_path
   end
 
   def upload
-    Dir.chdir @output_dir do
+    Dir.chdir tmp_dir + @output_dir do
       opts = [
         "--credentials=#{ENV['KOKORO_KEYSTORE_DIR']}/73713_docuploader_service_account",
         "--staging-bucket=#{ENV.fetch 'STAGING_BUCKET', 'docs-staging'}",
@@ -31,8 +33,8 @@ class DevsiteBuilder
     end
   end
 
-  def publish
-    build
+  def publish tag = nil
+    build(tag || @build_tag)
     upload
   end
 
@@ -41,5 +43,67 @@ class DevsiteBuilder
     output = `#{line}`
     puts output
     output
+  end
+
+  def metadata
+    return @metadata if @metadata
+
+    metadata_json = "#{tmp_dir}/.repo-metadata.json"
+    @metadata = RepoMetadata.from_source metadata_json if File.file? metadata_json
+    @metadata ||= RepoMetadata.from_source "name"              => "google-api-client",
+                                           "distribution-name" => "google-api-client",
+                                           "language"          => "ruby"
+    @metadata["version"] = version @build_tag
+    @metadata
+  end
+
+  def checkout_tag git_tag
+    Dir.chdir tmp_dir do
+      `git checkout tags/#{git_tag} -b v#{version git_tag}`
+    end
+  end
+
+  def version git_tag
+    m = git_tag.match(/(\d+\.\d+\.\d+)/)
+    return m if m.nil?
+    m[0]
+  end
+
+  def versions
+    Dir.chdir tmp_dir do
+      tags.map { |t| version t }.reject(&:nil?).sort_by { |v| Gem::Version.new v }.reverse
+    end
+  end
+
+  def tags
+    Dir.chdir tmp_dir do
+      `git tag`.split "\n"
+    end
+  end
+
+  def latest_version
+    @latest_version ||= versions.first
+  end
+
+  def latest_tag
+    @latest_tag ||= tags.select { |t| t.include? latest_version }.min_by(&:size)
+  end
+
+  def tmp_dir
+    return @tmp_dir if @tmp_dir
+
+    tmp = Dir.tmpdir
+    dir_name = "google-api-ruby-client"
+    @tmp_dir = Pathname.new(tmp) + dir_name
+    FileUtils.remove_dir @tmp_dir if Dir.exist? @tmp_dir
+
+    Dir.chdir tmp do
+      `git clone https://github.com/googleapis/google-api-ruby-client.git`
+    end
+    Dir.chdir @tmp_dir do
+      `git fetch`
+    end
+
+    @tmp_dir
   end
 end
