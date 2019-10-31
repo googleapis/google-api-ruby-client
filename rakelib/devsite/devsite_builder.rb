@@ -38,6 +38,19 @@ class DevsiteBuilder
     upload
   end
 
+  def publish_if_missing tag = nil
+    tag ||= @build_tag
+    publish tag if missing? tag
+  end
+
+  def missing? tag
+    url = "https://googleapis.dev/ruby/google-api-client/v#{version tag}"
+    response = HTTParty.get url
+    response.code != 200
+  rescue StandardError
+    true
+  end
+
   def cmd line
     puts line
     output = `#{line}`

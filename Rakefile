@@ -80,7 +80,7 @@ namespace :kokoro do
 
   task :release do
     # Until code generation process is updated and release-please is set up, just publish docs
-    Rake::Task["kokoro:publish_docs"].invoke
+    DevsiteBuilder.new.publish_if_missing ENV["DOCS_BUILD_TAG"]
   end
 
   desc "Publish docs for the latest git tag"
