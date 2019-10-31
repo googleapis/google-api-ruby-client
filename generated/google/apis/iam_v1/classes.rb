@@ -809,6 +809,7 @@ module Google
         attr_accessor :custom_roles_support_level
       
         # A brief description of what this Permission is used for.
+        # This permission can ONLY be used in predefined roles.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -818,7 +819,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # This permission can ONLY be used in predefined roles.
+        # 
         # Corresponds to the JSON property `onlyInPredefinedRoles`
         # @return [Boolean]
         attr_accessor :only_in_predefined_roles
@@ -1366,6 +1367,11 @@ module Google
         # @return [String]
         attr_accessor :key_origin
       
+        # The key type.
+        # Corresponds to the JSON property `keyType`
+        # @return [String]
+        attr_accessor :key_type
+      
         # The resource name of the service account key in the following format
         # `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
         # Corresponds to the JSON property `name`
@@ -1420,6 +1426,7 @@ module Google
         def update!(**args)
           @key_algorithm = args[:key_algorithm] if args.key?(:key_algorithm)
           @key_origin = args[:key_origin] if args.key?(:key_origin)
+          @key_type = args[:key_type] if args.key?(:key_type)
           @name = args[:name] if args.key?(:name)
           @private_key_data = args[:private_key_data] if args.key?(:private_key_data)
           @private_key_type = args[:private_key_type] if args.key?(:private_key_type)

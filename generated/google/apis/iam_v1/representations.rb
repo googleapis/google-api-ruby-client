@@ -604,6 +604,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key_algorithm, as: 'keyAlgorithm'
           property :key_origin, as: 'keyOrigin'
+          property :key_type, as: 'keyType'
           property :name, as: 'name'
           property :private_key_data, :base64 => true, as: 'privateKeyData'
           property :private_key_type, as: 'privateKeyType'
