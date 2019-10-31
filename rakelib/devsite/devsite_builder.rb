@@ -40,11 +40,15 @@ class DevsiteBuilder
 
   def publish_if_missing tag = nil
     tag ||= @build_tag
+    puts tag
+    puts missing? tag
     publish tag if missing? tag
   end
 
   def missing? tag
-    url = "https://googleapis.dev/ruby/google-api-client/v#{version tag}"
+    require "httparty"
+
+    url = "https://googleapis.dev/ruby/google-api-client/v#{version tag}/index.html"
     response = HTTParty.get url
     response.code != 200
   rescue StandardError

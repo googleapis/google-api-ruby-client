@@ -80,6 +80,8 @@ namespace :kokoro do
 
   task :release do
     # Until code generation process is updated and release-please is set up, just publish docs
+    require_relative "rakelib/devsite/devsite_builder.rb"
+
     DevsiteBuilder.new.publish_if_missing ENV["DOCS_BUILD_TAG"]
   end
 
