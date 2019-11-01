@@ -4319,8 +4319,7 @@ module Google
         end
       end
       
-      # For tracking related features, such as LOGO_RECOGNITION, FACE_DETECTION,
-      # CELEBRITY_RECOGNITION, PERSON_DETECTION.
+      # For tracking related features.
       # An object at time_offset with attributes, and located with
       # normalized_bounding_box.
       class GoogleCloudVideointelligenceV1p3beta1TimestampedObject

@@ -183,7 +183,7 @@ module Google
         end
         
         # Prevents the supplied keys' IDs from being auto-allocated by Cloud
-        # Datastore.
+        # Datastore. Used for imports only; other workloads are not supported.
         # @param [String] project_id
         #   The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1beta3::ReserveIdsRequest] reserve_ids_request_object

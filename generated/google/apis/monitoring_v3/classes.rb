@@ -1640,8 +1640,8 @@ module Google
         # multiple streams on each resource to a single stream for each resource or when
         # aggregating streams across all members of a group of resrouces). Multiple
         # aggregations are applied in the order specified.This field is similar to the
-        # one in the MetricService.ListTimeSeries request. It is advisable to use the
-        # ListTimeSeries method when debugging this field.
+        # one in the ListTimeSeries request. It is advisable to use the ListTimeSeries
+        # method when debugging this field.
         # Corresponds to the JSON property `aggregations`
         # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
         attr_accessor :aggregations
@@ -1656,10 +1656,10 @@ module Google
       
         # A filter that identifies which time series should be compared with the
         # threshold.The filter is similar to the one that is specified in the
-        # MetricService.ListTimeSeries request (that call is useful to verify the time
-        # series that will be retrieved / processed) and must specify the metric type
-        # and optionally may contain restrictions on resource type, resource labels, and
-        # metric labels. This field may not exceed 2048 Unicode characters in length.
+        # ListTimeSeries request (that call is useful to verify the time series that
+        # will be retrieved / processed) and must specify the metric type and optionally
+        # may contain restrictions on resource type, resource labels, and metric labels.
+        # This field may not exceed 2048 Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1874,8 +1874,8 @@ module Google
         # multiple streams on each resource to a single stream for each resource or when
         # aggregating streams across all members of a group of resrouces). Multiple
         # aggregations are applied in the order specified.This field is similar to the
-        # one in the MetricService.ListTimeSeries request. It is advisable to use the
-        # ListTimeSeries method when debugging this field.
+        # one in the ListTimeSeries request. It is advisable to use the ListTimeSeries
+        # method when debugging this field.
         # Corresponds to the JSON property `aggregations`
         # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
         attr_accessor :aggregations
@@ -1925,10 +1925,10 @@ module Google
       
         # A filter that identifies which time series should be compared with the
         # threshold.The filter is similar to the one that is specified in the
-        # MetricService.ListTimeSeries request (that call is useful to verify the time
-        # series that will be retrieved / processed) and must specify the metric type
-        # and optionally may contain restrictions on resource type, resource labels, and
-        # metric labels. This field may not exceed 2048 Unicode characters in length.
+        # ListTimeSeries request (that call is useful to verify the time series that
+        # will be retrieved / processed) and must specify the metric type and optionally
+        # may contain restrictions on resource type, resource labels, and metric labels.
+        # This field may not exceed 2048 Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

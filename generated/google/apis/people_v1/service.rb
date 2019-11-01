@@ -50,9 +50,11 @@ module Google
         # Get a list of contact groups owned by the authenticated user by specifying
         # a list of contact group resource names.
         # @param [Fixnum] max_members
-        #   Specifies the maximum number of members to return for each group.
+        #   Optional. Specifies the maximum number of members to return for each group.
+        #   Defaults
+        #   to 0 if not set, which will return zero members.
         # @param [Array<String>, String] resource_names
-        #   The resource names of the contact groups to get.
+        #   Required. The resource names of the contact groups to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -114,9 +116,9 @@ module Google
         # Delete an existing contact group owned by the authenticated user by
         # specifying a contact group resource name.
         # @param [String] resource_name
-        #   The resource name of the contact group to delete.
+        #   Required. The resource name of the contact group to delete.
         # @param [Boolean] delete_contacts
-        #   Set to true to also delete the contacts in the specified group.
+        #   Optional. Set to true to also delete the contacts in the specified group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -148,9 +150,11 @@ module Google
         # Get a specific contact group owned by the authenticated user by specifying
         # a contact group resource name.
         # @param [String] resource_name
-        #   The resource name of the contact group to get.
+        #   Required. The resource name of the contact group to get.
         # @param [Fixnum] max_members
-        #   Specifies the maximum number of members to return.
+        #   Optional. Specifies the maximum number of members to return. Defaults to 0 if
+        #   not
+        #   set, which will return zero members.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -182,7 +186,9 @@ module Google
         # List all contact groups owned by the authenticated user. Members of the
         # contact groups are not populated.
         # @param [Fixnum] page_size
-        #   The maximum number of resources to return.
+        #   Optional. The maximum number of resources to return. Valid values are between
+        #   1 and
+        #   1000, inclusive. Defaults to 30 if not set or set to 0.
         # @param [String] page_token
         #   The next_page_token value returned from a previous call to
         #   [ListContactGroups](/people/api/rest/v1/contactgroups/list).
@@ -260,7 +266,7 @@ module Google
         # `contactGroups/myContacts` and `contactGroups/starred`. Other system
         # contact groups are deprecated and can only have contacts removed.
         # @param [String] resource_name
-        #   The resource name of the contact group to modify.
+        #   Required. The resource name of the contact group to modify.
         # @param [Google::Apis::PeopleV1::ModifyContactGroupMembersRequest] modify_contact_group_members_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -293,8 +299,6 @@ module Google
         
         # Create a new contact and return the person resource for that contact.
         # @param [Google::Apis::PeopleV1::Person] person_object
-        # @param [String] parent
-        #   The resource name of the owning person resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -312,13 +316,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_person_contact(person_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_person_contact(person_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/people:createContact', options)
           command.request_representation = Google::Apis::PeopleV1::Person::Representation
           command.request_object = person_object
           command.response_representation = Google::Apis::PeopleV1::Person::Representation
           command.response_class = Google::Apis::PeopleV1::Person
-          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -326,7 +329,7 @@ module Google
         
         # Delete a contact person. Any non-contact data will not be deleted.
         # @param [String] resource_name
-        #   The resource name of the contact to delete.
+        #   Required. The resource name of the contact to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -356,12 +359,12 @@ module Google
         
         # Delete a contact's photo.
         # @param [String] resource_name
-        #   The resource name of the contact whose photo will be deleted.
+        #   Required. The resource name of the contact whose photo will be deleted.
         # @param [String] person_fields
-        #   **Optional.** Not specifying any fields will skip the post mutate read.
-        #   A field mask to restrict which fields on the person are
-        #   returned. Multiple fields can be specified by separating them with commas.
-        #   Valid values are:
+        #   Optional. A field mask to restrict which fields on the person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Defaults to empty
+        #   if not set, which will skip the post mutate get. Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -424,7 +427,7 @@ module Google
         # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] resource_name
-        #   The resource name of the person to provide information about.
+        #   Required. The resource name of the person to provide information about.
         #   - To get information about the authenticated user, specify `people/me`.
         #   - To get information about a google account, specify
         #   `people/`<var>account_id</var>.
@@ -432,9 +435,9 @@ module Google
         #   identifies the contact as returned by
         #   [`people.connections.list`](/people/api/rest/v1/people.connections/list).
         # @param [String] person_fields
-        #   **Required.** A field mask to restrict which fields on the person are
-        #   returned. Multiple fields can be specified by separating them with commas.
-        #   Valid values are:
+        #   Required. A field mask to restrict which fields on the person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -465,9 +468,10 @@ module Google
         #   * urls
         #   * userDefined
         # @param [String] request_mask_include_field
-        #   **Required.** Comma-separated list of person fields to be included in the
-        #   response. Each path should start with `person.`: for example,
-        #   `person.names` or `person.photos`.
+        #   Required. Comma-separated list of person fields to be included in the response.
+        #   Each
+        #   path should start with `person.`: for example, `person.names` or
+        #   `person.photos`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -503,9 +507,9 @@ module Google
         # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] person_fields
-        #   **Required.** A field mask to restrict which fields on each person are
-        #   returned. Multiple fields can be specified by separating them with commas.
-        #   Valid values are:
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -536,11 +540,12 @@ module Google
         #   * urls
         #   * userDefined
         # @param [String] request_mask_include_field
-        #   **Required.** Comma-separated list of person fields to be included in the
-        #   response. Each path should start with `person.`: for example,
-        #   `person.names` or `person.photos`.
+        #   Required. Comma-separated list of person fields to be included in the response.
+        #   Each
+        #   path should start with `person.`: for example, `person.names` or
+        #   `person.photos`.
         # @param [Array<String>, String] resource_names
-        #   The resource names of the people to provide information about.
+        #   Required. The resource names of the people to provide information about.
         #   - To get information about the authenticated user, specify `people/me`.
         #   - To get information about a google account, specify
         #   `people/`<var>account_id</var>.
@@ -595,8 +600,9 @@ module Google
         #   `people/`<var>person_id</var>.
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] update_person_fields
-        #   **Required.** A field mask to restrict which fields on the person are
-        #   updated. Multiple fields can be specified by separating them with commas.
+        #   Required. A field mask to restrict which fields on the person are updated.
+        #   Multiple
+        #   fields can be specified by separating them with commas.
         #   All updated fields will be replaced. Valid values are:
         #   * addresses
         #   * biographies
@@ -650,7 +656,7 @@ module Google
         
         # Update a contact's photo.
         # @param [String] resource_name
-        #   Person resource name
+        #   Required. Person resource name
         # @param [Google::Apis::PeopleV1::UpdateContactPhotoRequest] update_contact_photo_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -686,16 +692,18 @@ module Google
         # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] resource_name
-        #   The resource name to return connections for. Only `people/me` is valid.
+        #   Required. The resource name to return connections for. Only `people/me` is
+        #   valid.
         # @param [Fixnum] page_size
-        #   The number of connections to include in the response. Valid values are
-        #   between 1 and 2000, inclusive. Defaults to 100.
+        #   Optional. The number of connections to include in the response. Valid values
+        #   are
+        #   between 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.
         # @param [String] page_token
         #   The token of the page to be returned.
         # @param [String] person_fields
-        #   **Required.** A field mask to restrict which fields on each person are
-        #   returned. Multiple fields can be specified by separating them with commas.
-        #   Valid values are:
+        #   Required. A field mask to restrict which fields on each person are returned.
+        #   Multiple
+        #   fields can be specified by separating them with commas. Valid values are:
         #   * addresses
         #   * ageRanges
         #   * biographies
@@ -726,9 +734,10 @@ module Google
         #   * urls
         #   * userDefined
         # @param [String] request_mask_include_field
-        #   **Required.** Comma-separated list of person fields to be included in the
-        #   response. Each path should start with `person.`: for example,
-        #   `person.names` or `person.photos`.
+        #   Required. Comma-separated list of person fields to be included in the response.
+        #   Each
+        #   path should start with `person.`: for example, `person.names` or
+        #   `person.photos`.
         # @param [Boolean] request_sync_token
         #   Whether the response should include a sync token, which can be used to get
         #   all changes since the last request. For subsequent sync requests use the

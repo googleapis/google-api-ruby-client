@@ -260,7 +260,7 @@ module Google
         end
         
         # Prevents the supplied keys' IDs from being auto-allocated by Cloud
-        # Datastore.
+        # Datastore. Used for imports only; other workloads are not supported.
         # @param [String] project_id
         #   The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::ReserveIdsRequest] reserve_ids_request_object
@@ -354,6 +354,90 @@ module Google
           command.response_representation = Google::Apis::DatastoreV1::RunQueryResponse::Representation
           command.response_class = Google::Apis::DatastoreV1::RunQueryResponse
           command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates the specified index.
+        # A newly created index's initial state is `CREATING`. On completion of the
+        # returned google.longrunning.Operation, the state will be `READY`.
+        # If the index already exists, the call will return an `ALREADY_EXISTS`
+        # status.
+        # During index creation, the process could result in an error, in which
+        # case the index will move to the `ERROR` state. The process can be recovered
+        # by fixing the data that caused the error, removing the index with
+        # delete, then
+        # re-creating the index with create.
+        # Indexes with a single property cannot be created.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index] google_datastore_admin_v1_index_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_index(project_id, google_datastore_admin_v1_index_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/indexes', options)
+          command.request_representation = Google::Apis::DatastoreV1::GoogleDatastoreAdminV1Index::Representation
+          command.request_object = google_datastore_admin_v1_index_object
+          command.response_representation = Google::Apis::DatastoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleLongrunningOperation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing index.
+        # An index can only be deleted if it is in a `READY` or `ERROR` state. On
+        # successful execution of the request, the index will be in a `DELETING`
+        # state. And on completion of the
+        # returned google.longrunning.Operation, the index will be removed.
+        # During index deletion, the process could result in an error, in which
+        # case the index will move to the `ERROR` state. The process can be recovered
+        # by fixing the data that caused the error, followed by calling
+        # delete again.
+        # @param [String] project_id
+        #   Project ID against which to make the request.
+        # @param [String] index_id
+        #   The resource ID of the index to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatastoreV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatastoreV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_index(project_id, index_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/projects/{projectId}/indexes/{indexId}', options)
+          command.response_representation = Google::Apis::DatastoreV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::DatastoreV1::GoogleLongrunningOperation
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['indexId'] = index_id unless index_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

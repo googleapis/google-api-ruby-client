@@ -1750,6 +1750,17 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # The language code of query. For example, "en-US". This field helps to
+        # better interpret the query.
+        # If a value isn't specified, the query language code is automatically
+        # detected, which may not be accurate.
+        # Language code should be in BCP-47 format, such as "en-US" or "sr-Latn".
+        # For more information, see
+        # [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
+        # Corresponds to the JSON property `queryLanguageCode`
+        # @return [String]
+        attr_accessor :query_language_code
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1769,6 +1780,7 @@ module Google
           @location_filters = args[:location_filters] if args.key?(:location_filters)
           @publish_time_range = args[:publish_time_range] if args.key?(:publish_time_range)
           @query = args[:query] if args.key?(:query)
+          @query_language_code = args[:query_language_code] if args.key?(:query_language_code)
         end
       end
       
@@ -2056,6 +2068,34 @@ module Google
         end
       end
       
+      # Message representing input to a Mendel server for debug forcing.
+      # See go/mendel-debug-forcing for more details.
+      # Next ID: 2
+      class MendelDebugInput
+        include Google::Apis::Core::Hashable
+      
+        # When a request spans multiple servers, a MendelDebugInput may travel with
+        # the request and take effect in all the servers. This field is a map of
+        # namespaces to NamespacedMendelDebugInput protos. In a single server, up to
+        # two NamespacedMendelDebugInput protos are applied:
+        # 1. NamespacedMendelDebugInput with the global namespace (key == "").
+        # 2. NamespacedMendelDebugInput with the server's namespace.
+        # When both NamespacedMendelDebugInput protos are present, they are merged.
+        # See go/mendel-debug-forcing for more details.
+        # Corresponds to the JSON property `namespacedDebugInput`
+        # @return [Hash<String,Google::Apis::JobsV3p1beta1::NamespacedDebugInput>]
+        attr_accessor :namespaced_debug_input
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaced_debug_input = args[:namespaced_debug_input] if args.key?(:namespaced_debug_input)
+        end
+      end
+      
       # Represents an amount of money with its currency type.
       class Money
         include Google::Apis::Core::Hashable
@@ -2090,6 +2130,145 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # Next ID: 15
+      class NamespacedDebugInput
+        include Google::Apis::Core::Hashable
+      
+        # Set of experiment names to be absolutely forced.
+        # These experiments will be forced without evaluating the conditions.
+        # Corresponds to the JSON property `absolutelyForcedExpNames`
+        # @return [Array<String>]
+        attr_accessor :absolutely_forced_exp_names
+      
+        # Set of experiment tags to be absolutely forced.
+        # The experiments with these tags will be forced without evaluating the
+        # conditions.
+        # Corresponds to the JSON property `absolutelyForcedExpTags`
+        # @return [Array<String>]
+        attr_accessor :absolutely_forced_exp_tags
+      
+        # Set of experiment ids to be absolutely forced.
+        # These ids will be forced without evaluating the conditions.
+        # Corresponds to the JSON property `absolutelyForcedExps`
+        # @return [Array<Fixnum>]
+        attr_accessor :absolutely_forced_exps
+      
+        # Set of experiment names to be conditionally forced.
+        # These experiments will be forced only if their conditions and their
+        # parent domain's conditions are true.
+        # Corresponds to the JSON property `conditionallyForcedExpNames`
+        # @return [Array<String>]
+        attr_accessor :conditionally_forced_exp_names
+      
+        # Set of experiment tags to be conditionally forced.
+        # The experiments with these tags will be forced only if their conditions
+        # and their parent domain's conditions are true.
+        # Corresponds to the JSON property `conditionallyForcedExpTags`
+        # @return [Array<String>]
+        attr_accessor :conditionally_forced_exp_tags
+      
+        # Set of experiment ids to be conditionally forced.
+        # These ids will be forced only if their conditions and their parent
+        # domain's conditions are true.
+        # Corresponds to the JSON property `conditionallyForcedExps`
+        # @return [Array<Fixnum>]
+        attr_accessor :conditionally_forced_exps
+      
+        # If true, disable automatic enrollment selection (at all diversion
+        # points). Automatic enrollment selection means experiment selection
+        # process based on the experiment's automatic enrollment condition. This
+        # does not disable selection of forced experiments.
+        # Corresponds to the JSON property `disableAutomaticEnrollmentSelection`
+        # @return [Boolean]
+        attr_accessor :disable_automatic_enrollment_selection
+        alias_method :disable_automatic_enrollment_selection?, :disable_automatic_enrollment_selection
+      
+        # Set of experiment names to be disabled.
+        # If an experiment is disabled, it is never selected nor forced.
+        # If an aggregate experiment is disabled, its partitions are disabled
+        # together. If an experiment with an enrollment is disabled, the enrollment
+        # is disabled together. If a name corresponds to a domain, the domain
+        # itself and all descendant experiments and domains are disabled together.
+        # Corresponds to the JSON property `disableExpNames`
+        # @return [Array<String>]
+        attr_accessor :disable_exp_names
+      
+        # Set of experiment tags to be disabled. All experiments that are tagged
+        # with one or more of these tags are disabled.
+        # If an experiment is disabled, it is never selected nor forced.
+        # If an aggregate experiment is disabled, its partitions are disabled
+        # together. If an experiment with an enrollment is disabled, the enrollment
+        # is disabled together.
+        # Corresponds to the JSON property `disableExpTags`
+        # @return [Array<String>]
+        attr_accessor :disable_exp_tags
+      
+        # Set of experiment ids to be disabled.
+        # If an experiment is disabled, it is never selected nor forced.
+        # If an aggregate experiment is disabled, its partitions are disabled
+        # together. If an experiment with an enrollment is disabled, the enrollment
+        # is disabled together. If an ID corresponds to a domain, the domain itself
+        # and all descendant experiments and domains are disabled together.
+        # Corresponds to the JSON property `disableExps`
+        # @return [Array<Fixnum>]
+        attr_accessor :disable_exps
+      
+        # If true, disable manual enrollment selection (at all diversion points).
+        # Manual enrollment selection means experiment selection process based on
+        # the request's manual enrollment states (a.k.a. opt-in experiments).
+        # This does not disable selection of forced experiments.
+        # Corresponds to the JSON property `disableManualEnrollmentSelection`
+        # @return [Boolean]
+        attr_accessor :disable_manual_enrollment_selection
+        alias_method :disable_manual_enrollment_selection?, :disable_manual_enrollment_selection
+      
+        # If true, disable organic experiment selection (at all diversion points).
+        # Organic selection means experiment selection process based on traffic
+        # allocation and diversion condition evaluation.
+        # This does not disable selection of forced experiments.
+        # This is useful in cases when it is not known whether experiment selection
+        # behavior is responsible for a error or breakage. Disabling organic
+        # selection may help to isolate the cause of a given problem.
+        # Corresponds to the JSON property `disableOrganicSelection`
+        # @return [Boolean]
+        attr_accessor :disable_organic_selection
+        alias_method :disable_organic_selection?, :disable_organic_selection
+      
+        # Flags to force in a particular experiment state.
+        # Map from flag name to flag value.
+        # Corresponds to the JSON property `forcedFlags`
+        # @return [Hash<String,String>]
+        attr_accessor :forced_flags
+      
+        # Rollouts to force in a particular experiment state.
+        # Map from rollout name to rollout value.
+        # Corresponds to the JSON property `forcedRollouts`
+        # @return [Hash<String,Boolean>]
+        attr_accessor :forced_rollouts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @absolutely_forced_exp_names = args[:absolutely_forced_exp_names] if args.key?(:absolutely_forced_exp_names)
+          @absolutely_forced_exp_tags = args[:absolutely_forced_exp_tags] if args.key?(:absolutely_forced_exp_tags)
+          @absolutely_forced_exps = args[:absolutely_forced_exps] if args.key?(:absolutely_forced_exps)
+          @conditionally_forced_exp_names = args[:conditionally_forced_exp_names] if args.key?(:conditionally_forced_exp_names)
+          @conditionally_forced_exp_tags = args[:conditionally_forced_exp_tags] if args.key?(:conditionally_forced_exp_tags)
+          @conditionally_forced_exps = args[:conditionally_forced_exps] if args.key?(:conditionally_forced_exps)
+          @disable_automatic_enrollment_selection = args[:disable_automatic_enrollment_selection] if args.key?(:disable_automatic_enrollment_selection)
+          @disable_exp_names = args[:disable_exp_names] if args.key?(:disable_exp_names)
+          @disable_exp_tags = args[:disable_exp_tags] if args.key?(:disable_exp_tags)
+          @disable_exps = args[:disable_exps] if args.key?(:disable_exps)
+          @disable_manual_enrollment_selection = args[:disable_manual_enrollment_selection] if args.key?(:disable_manual_enrollment_selection)
+          @disable_organic_selection = args[:disable_organic_selection] if args.key?(:disable_organic_selection)
+          @forced_flags = args[:forced_flags] if args.key?(:forced_flags)
+          @forced_rollouts = args[:forced_rollouts] if args.key?(:forced_rollouts)
         end
       end
       

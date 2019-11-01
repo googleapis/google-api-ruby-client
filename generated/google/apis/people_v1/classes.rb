@@ -48,7 +48,7 @@ module Google
         # @return [String]
         attr_accessor :extended_address
       
-        # The read-only type of the address translated and formatted in the viewer's
+        # Output only. The type of the address translated and formatted in the viewer's
         # account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -265,25 +265,27 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The read-only name translated and formatted in the viewer's account locale
+        # Output only. The name translated and formatted in the viewer's account locale
         # or the `Accept-Language` HTTP header locale for system groups names.
         # Group names set by the owner are the same as name.
         # Corresponds to the JSON property `formattedName`
         # @return [String]
         attr_accessor :formatted_name
       
-        # The read-only contact group type.
+        # Output only. The contact group type.
         # Corresponds to the JSON property `groupType`
         # @return [String]
         attr_accessor :group_type
       
-        # The total number of contacts in the group irrespective of max members in
+        # Output only. The total number of contacts in the group irrespective of max
+        # members in
         # specified in the request.
         # Corresponds to the JSON property `memberCount`
         # @return [Fixnum]
         attr_accessor :member_count
       
-        # The list of contact person resource names that are members of the contact
+        # Output only. The list of contact person resource names that are members of the
+        # contact
         # group. The field is not populated for LIST requests and can only be updated
         # through the
         # [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
@@ -291,7 +293,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :member_resource_names
       
-        # The read-only metadata about a contact group.
+        # The metadata about a contact group.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::PeopleV1::ContactGroupMetadata]
         attr_accessor :metadata
@@ -329,7 +331,7 @@ module Google
       class ContactGroupMembership
         include Google::Apis::Core::Hashable
       
-        # The read-only contact group ID for the contact group membership.
+        # Output only. The contact group ID for the contact group membership.
         # Corresponds to the JSON property `contactGroupId`
         # @return [String]
         attr_accessor :contact_group_id
@@ -355,11 +357,12 @@ module Google
         end
       end
       
-      # The read-only metadata about a contact group.
+      # The metadata about a contact group.
       class ContactGroupMetadata
         include Google::Apis::Core::Hashable
       
-        # True if the contact group resource has been deleted. Populated only for
+        # Output only. True if the contact group resource has been deleted. Populated
+        # only for
         # [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
         # that include a sync token.
         # Corresponds to the JSON property `deleted`
@@ -367,7 +370,7 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # The time the group was last updated.
+        # Output only. The time the group was last updated.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -419,7 +422,7 @@ module Google
         end
       end
       
-      # A person's read-only cover photo. A large image shown on the person's
+      # A person's cover photo. A large image shown on the person's
       # profile page that represents who they are or what they care about.
       class CoverPhoto
         include Google::Apis::Core::Hashable
@@ -537,7 +540,7 @@ module Google
         end
       end
       
-      # A read-only G Suite Domain membership.
+      # A G Suite Domain membership.
       class DomainMembership
         include Google::Apis::Core::Hashable
       
@@ -566,7 +569,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The read-only type of the email address translated and formatted in the
+        # Output only. The type of the email address translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -640,7 +643,7 @@ module Google
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :date
       
-        # The read-only type of the event translated and formatted in the
+        # Output only. The type of the event translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -688,7 +691,8 @@ module Google
         # @return [Google::Apis::PeopleV1::Source]
         attr_accessor :source
       
-        # True if the field is verified; false if the field is unverified. A
+        # Output only. True if the field is verified; false if the field is unverified.
+        # A
         # verified field is typically a name, email address, phone number, or
         # website that has been confirmed to be owned by the person.
         # Corresponds to the JSON property `verified`
@@ -712,7 +716,7 @@ module Google
       class Gender
         include Google::Apis::Core::Hashable
       
-        # The read-only value of the gender translated and formatted in the viewer's
+        # Output only. The value of the gender translated and formatted in the viewer's
         # account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
@@ -768,13 +772,13 @@ module Google
       class ImClient
         include Google::Apis::Core::Hashable
       
-        # The read-only protocol of the IM client formatted in the viewer's account
+        # Output only. The protocol of the IM client formatted in the viewer's account
         # locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedProtocol`
         # @return [String]
         attr_accessor :formatted_protocol
       
-        # The read-only type of the IM client translated and formatted in the
+        # Output only. The type of the IM client translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -972,7 +976,7 @@ module Google
         # @return [Google::Apis::PeopleV1::ContactGroupMembership]
         attr_accessor :contact_group_membership
       
-        # A read-only G Suite Domain membership.
+        # A G Suite Domain membership.
         # Corresponds to the JSON property `domainMembership`
         # @return [Google::Apis::PeopleV1::DomainMembership]
         attr_accessor :domain_membership
@@ -1000,14 +1004,14 @@ module Google
       class ModifyContactGroupMembersRequest
         include Google::Apis::Core::Hashable
       
-        # The resource names of the contact people to add in the form of in the form
+        # The resource names of the contact people to add in the form of
         # `people/`<var>person_id</var>.
         # Corresponds to the JSON property `resourceNamesToAdd`
         # @return [Array<String>]
         attr_accessor :resource_names_to_add
       
-        # The resource names of the contact people to remove in the form of in the
-        # form of `people/`<var>person_id</var>.
+        # The resource names of the contact people to remove in the form of
+        # `people/`<var>person_id</var>.
         # Corresponds to the JSON property `resourceNamesToRemove`
         # @return [Array<String>]
         attr_accessor :resource_names_to_remove
@@ -1053,13 +1057,13 @@ module Google
       class Name
         include Google::Apis::Core::Hashable
       
-        # The read-only display name formatted according to the locale specified by
+        # Output only. The display name formatted according to the locale specified by
         # the viewer's account or the `Accept-Language` HTTP header.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # The read-only display name with the last name first formatted according to
+        # Output only. The display name with the last name first formatted according to
         # the locale specified by the viewer's account or the
         # `Accept-Language` HTTP header.
         # Corresponds to the JSON property `displayNameLastFirst`
@@ -1240,7 +1244,7 @@ module Google
         # @return [Google::Apis::PeopleV1::Date]
         attr_accessor :end_date
       
-        # The read-only type of the organization translated and formatted in the
+        # Output only. The type of the organization translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -1338,13 +1342,13 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Address>]
         attr_accessor :addresses
       
-        # **DEPRECATED** (Please use `person.ageRanges` instead)**
-        # The person's read-only age range.
+        # Output only. **DEPRECATED** (Please use `person.ageRanges` instead)**
+        # The person's age range.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
         attr_accessor :age_range
       
-        # The person's read-only age ranges.
+        # Output only. The person's age ranges.
         # Corresponds to the JSON property `ageRanges`
         # @return [Array<Google::Apis::PeopleV1::AgeRangeType>]
         attr_accessor :age_ranges
@@ -1364,7 +1368,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::BraggingRights>]
         attr_accessor :bragging_rights
       
-        # The person's read-only cover photos.
+        # Output only. The person's cover photos.
         # Corresponds to the JSON property `coverPhotos`
         # @return [Array<Google::Apis::PeopleV1::CoverPhoto>]
         attr_accessor :cover_photos
@@ -1410,7 +1414,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Membership>]
         attr_accessor :memberships
       
-        # The read-only metadata about a person.
+        # The metadata about a person.
         # Corresponds to the JSON property `metadata`
         # @return [Google::Apis::PeopleV1::PersonMetadata]
         attr_accessor :metadata
@@ -1440,7 +1444,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::PhoneNumber>]
         attr_accessor :phone_numbers
       
-        # The person's read-only photos.
+        # Output only. The person's photos.
         # Corresponds to the JSON property `photos`
         # @return [Array<Google::Apis::PeopleV1::Photo>]
         attr_accessor :photos
@@ -1450,12 +1454,12 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Relation>]
         attr_accessor :relations
       
-        # The person's read-only relationship interests.
+        # Output only. The person's relationship interests.
         # Corresponds to the JSON property `relationshipInterests`
         # @return [Array<Google::Apis::PeopleV1::RelationshipInterest>]
         attr_accessor :relationship_interests
       
-        # The person's read-only relationship statuses.
+        # Output only. The person's relationship statuses.
         # Corresponds to the JSON property `relationshipStatuses`
         # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
         attr_accessor :relationship_statuses
@@ -1482,7 +1486,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Skill>]
         attr_accessor :skills
       
-        # The person's read-only taglines.
+        # Output only. The person's taglines.
         # Corresponds to the JSON property `taglines`
         # @return [Array<Google::Apis::PeopleV1::Tagline>]
         attr_accessor :taglines
@@ -1538,11 +1542,11 @@ module Google
         end
       end
       
-      # The read-only metadata about a person.
+      # The metadata about a person.
       class PersonMetadata
         include Google::Apis::Core::Hashable
       
-        # True if the person resource has been deleted. Populated only for
+        # Output only. True if the person resource has been deleted. Populated only for
         # [`connections.list`](/people/api/rest/v1/people.connections/list) requests
         # that include a sync token.
         # Corresponds to the JSON property `deleted`
@@ -1550,19 +1554,19 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # Resource names of people linked to this resource.
+        # Output only. Resource names of people linked to this resource.
         # Corresponds to the JSON property `linkedPeopleResourceNames`
         # @return [Array<String>]
         attr_accessor :linked_people_resource_names
       
-        # **DEPRECATED** (Please use
+        # Output only. **DEPRECATED** (Please use
         # `person.metadata.sources.profileMetadata.objectType` instead)
         # The type of the person object.
         # Corresponds to the JSON property `objectType`
         # @return [String]
         attr_accessor :object_type
       
-        # Any former resource names this person has had. Populated only for
+        # Output only. Any former resource names this person has had. Populated only for
         # [`connections.list`](/people/api/rest/v1/people.connections/list) requests
         # that include a sync token.
         # The resource name may change when adding or removing fields that link a
@@ -1647,14 +1651,14 @@ module Google
       class PhoneNumber
         include Google::Apis::Core::Hashable
       
-        # The read-only canonicalized [ITU-T
+        # Output only. The canonicalized [ITU-T
         # E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
         # form of the phone number.
         # Corresponds to the JSON property `canonicalForm`
         # @return [String]
         attr_accessor :canonical_form
       
-        # The read-only type of the phone number translated and formatted in the
+        # Output only. The type of the phone number translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -1702,7 +1706,7 @@ module Google
         end
       end
       
-      # A person's read-only photo. A picture shown next to the person's name to
+      # A person's photo. A picture shown next to the person's name to
       # help others recognize the person.
       class Photo
         include Google::Apis::Core::Hashable
@@ -1739,16 +1743,16 @@ module Google
         end
       end
       
-      # The read-only metadata about a profile.
+      # The metadata about a profile.
       class ProfileMetadata
         include Google::Apis::Core::Hashable
       
-        # The profile object type.
+        # Output only. The profile object type.
         # Corresponds to the JSON property `objectType`
         # @return [String]
         attr_accessor :object_type
       
-        # The user types.
+        # Output only. The user types.
         # Corresponds to the JSON property `userTypes`
         # @return [Array<String>]
         attr_accessor :user_types
@@ -1768,8 +1772,8 @@ module Google
       class Relation
         include Google::Apis::Core::Hashable
       
-        # The type of the relation translated and formatted in the viewer's account
-        # locale or the locale specified in the Accept-Language HTTP header.
+        # Output only. The type of the relation translated and formatted in the viewer's
+        # account locale or the locale specified in the Accept-Language HTTP header.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
         attr_accessor :formatted_type
@@ -1817,13 +1821,13 @@ module Google
         end
       end
       
-      # A person's read-only relationship interest .
+      # A person's relationship interest .
       class RelationshipInterest
         include Google::Apis::Core::Hashable
       
-        # The value of the relationship interest translated and formatted in the
-        # viewer's account locale or the locale specified in the Accept-Language
-        # HTTP header.
+        # Output only. The value of the relationship interest translated and formatted
+        # in the viewer's account locale or the locale specified in the
+        # Accept-Language HTTP header.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
@@ -1855,11 +1859,11 @@ module Google
         end
       end
       
-      # A person's read-only relationship status.
+      # A person's relationship status.
       class RelationshipStatus
         include Google::Apis::Core::Hashable
       
-        # The read-only value of the relationship status translated and formatted in
+        # Output only. The value of the relationship status translated and formatted in
         # the viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
@@ -1935,7 +1939,7 @@ module Google
       class SipAddress
         include Google::Apis::Core::Hashable
       
-        # The read-only type of the SIP address translated and formatted in the
+        # Output only. The type of the SIP address translated and formatted in the
         # viewer's account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]
@@ -2017,7 +2021,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The read-only metadata about a profile.
+        # The metadata about a profile.
         # Corresponds to the JSON property `profileMetadata`
         # @return [Google::Apis::PeopleV1::ProfileMetadata]
         attr_accessor :profile_metadata
@@ -2027,7 +2031,7 @@ module Google
         # @return [String]
         attr_accessor :type
       
-        # **Only populated in `person.metadata.sources`.**
+        # Output only. **Only populated in `person.metadata.sources`.**
         # Last update timestamp of this source.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
@@ -2086,7 +2090,7 @@ module Google
         end
       end
       
-      # A read-only brief one-line description of the person.
+      # A brief one-line description of the person.
       class Tagline
         include Google::Apis::Core::Hashable
       
@@ -2136,10 +2140,10 @@ module Google
       class UpdateContactPhotoRequest
         include Google::Apis::Core::Hashable
       
-        # **Optional.** Not specifying any fields will skip the post mutate read.
-        # A field mask to restrict which fields on the person are
-        # returned. Multiple fields can be specified by separating them with commas.
-        # Valid values are:
+        # Optional. A field mask to restrict which fields on the person are returned.
+        # Multiple
+        # fields can be specified by separating them with commas. Defaults to empty
+        # if not set, which will skip the post mutate get. Valid values are:
         # * addresses
         # * ageRanges
         # * biographies
@@ -2173,7 +2177,7 @@ module Google
         # @return [String]
         attr_accessor :person_fields
       
-        # Raw photo bytes
+        # Required. Raw photo bytes
         # Corresponds to the JSON property `photoBytes`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2217,7 +2221,7 @@ module Google
       class Url
         include Google::Apis::Core::Hashable
       
-        # The read-only type of the URL translated and formatted in the viewer's
+        # Output only. The type of the URL translated and formatted in the viewer's
         # account locale or the `Accept-Language` HTTP header locale.
         # Corresponds to the JSON property `formattedType`
         # @return [String]

@@ -1265,8 +1265,8 @@ module Google
         #   Optional. The beginning of the time interval. The default value for the start
         #   time is the end time. The start time must not be later than the end time.
         # @param [String] order_by
-        #   Unsupported: must be left blank. The points in each time series are returned
-        #   in reverse time order.
+        #   Unsupported: must be left blank. The points in each time series are currently
+        #   returned in reverse time order (most recent to oldest).
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return. If
         #   page_size is empty or more than 100,000 results, the effective page_size is
