@@ -524,7 +524,8 @@ module Google
         attr_accessor :monitoring_service
       
         # The name of this cluster. The name must be unique within this project
-        # and zone, and can be up to 40 characters with the following restrictions:
+        # and location (e.g. zone or region), and can be up to 40 characters with
+        # the following restrictions:
         # * Lowercase letters, numbers, and hyphens only.
         # * Must start with a letter.
         # * Must end with a number or a letter.

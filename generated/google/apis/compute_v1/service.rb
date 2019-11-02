@@ -21720,6 +21720,14 @@ module Google
         # @param [String] subnetwork
         #   Name of the Subnetwork resource to patch.
         # @param [Google::Apis::ComputeV1::Subnetwork] subnetwork_object
+        # @param [Fixnum] drain_timeout_seconds
+        #   The drain timeout specifies the upper bound in seconds on the amount of time
+        #   allowed to drain connections from the current ACTIVE subnetwork to the current
+        #   BACKUP subnetwork. The drain timeout is only applicable when the following
+        #   conditions are true: - the subnetwork being patched has purpose =
+        #   INTERNAL_HTTPS_LOAD_BALANCER - the subnetwork being patched has role = BACKUP -
+        #   the patch request is setting the role to ACTIVE. Note that after this patch
+        #   operation the roles of the ACTIVE and BACKUP subnetworks will be swapped.
         # @param [String] request_id
         #   An optional request ID to identify requests. Specify a unique request ID so
         #   that if you must retry your request, the server will know to ignore the
@@ -21750,7 +21758,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_subnetwork(project, region, subnetwork, subnetwork_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_subnetwork(project, region, subnetwork, subnetwork_object = nil, drain_timeout_seconds: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, '{project}/regions/{region}/subnetworks/{subnetwork}', options)
           command.request_representation = Google::Apis::ComputeV1::Subnetwork::Representation
           command.request_object = subnetwork_object
@@ -21759,6 +21767,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.params['subnetwork'] = subnetwork unless subnetwork.nil?
+          command.query['drainTimeoutSeconds'] = drain_timeout_seconds unless drain_timeout_seconds.nil?
           command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

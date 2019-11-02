@@ -795,7 +795,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing comment. This method supports patch semantics.
+        # Updates an existing comment.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -2960,7 +2960,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an existing reply. This method supports patch semantics.
+        # Updates an existing reply.
         # @param [String] file_id
         #   The ID of the file.
         # @param [String] comment_id
@@ -3156,7 +3156,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a revision. This method supports patch semantics.
+        # Updates a revision.
         # @param [String] file_id
         #   The ID for the file.
         # @param [String] revision_id

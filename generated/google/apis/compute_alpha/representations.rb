@@ -8184,6 +8184,7 @@ module Google
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaler, as: 'autoscaler'
           property :is_stable, as: 'isStable'
           property :stateful, as: 'stateful', class: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeAlpha::InstanceGroupManagerStatusStateful::Representation
       

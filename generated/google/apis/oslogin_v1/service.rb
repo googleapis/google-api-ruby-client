@@ -191,7 +191,8 @@ module Google
         
         # Retrieves an SSH public key.
         # @param [String] name
-        #   The fingerprint of the public key to retrieve. Public keys are identified
+        #   Required. The fingerprint of the public key to retrieve. Public keys are
+        #   identified
         #   by their SHA-256 fingerprint. The fingerprint of the public key is in
         #   format `users/`user`/sshPublicKeys/`fingerprint``.
         # @param [String] fields

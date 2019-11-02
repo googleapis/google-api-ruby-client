@@ -2753,7 +2753,8 @@ module Google
         # @return [String]
         attr_accessor :network
       
-        # Settings controlling eviction of unhealthy hosts from the load balancing pool.
+        # Settings controlling the eviction of unhealthy hosts from the load balancing
+        # pool for the backend service.
         # Corresponds to the JSON property `outlierDetection`
         # @return [Google::Apis::ComputeBeta::OutlierDetection]
         attr_accessor :outlier_detection
@@ -3777,33 +3778,34 @@ module Google
         # @return [Google::Apis::ComputeBeta::Duration]
         attr_accessor :connect_timeout
       
-        # The maximum number of connections to the backend cluster. If not specified,
-        # the default is 1024.
+        # The maximum number of connections to the backend service. If not specified,
+        # there is no limit.
         # Corresponds to the JSON property `maxConnections`
         # @return [Fixnum]
         attr_accessor :max_connections
       
-        # The maximum number of pending requests allowed to the backend cluster. If not
-        # specified, the default is 1024.
+        # The maximum number of pending requests allowed to the backend service. If not
+        # specified, there is no limit.
         # Corresponds to the JSON property `maxPendingRequests`
         # @return [Fixnum]
         attr_accessor :max_pending_requests
       
-        # The maximum number of parallel requests that allowed to the backend cluster.
-        # If not specified, the default is 1024.
+        # The maximum number of parallel requests that allowed to the backend service.
+        # If not specified, there is no limit.
         # Corresponds to the JSON property `maxRequests`
         # @return [Fixnum]
         attr_accessor :max_requests
       
-        # Maximum requests for a single backend connection. This parameter is respected
-        # by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no
-        # limit. Setting this parameter to 1 will effectively disable keep alive.
+        # Maximum requests for a single connection to the backend service. This
+        # parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not
+        # specified, there is no limit. Setting this parameter to 1 will effectively
+        # disable keep alive.
         # Corresponds to the JSON property `maxRequestsPerConnection`
         # @return [Fixnum]
         attr_accessor :max_requests_per_connection
       
         # The maximum number of parallel retries allowed to the backend cluster. If not
-        # specified, the default is 3.
+        # specified, the default is 1.
         # Corresponds to the JSON property `maxRetries`
         # @return [Fixnum]
         attr_accessor :max_retries
@@ -5630,7 +5632,8 @@ module Google
       class DisksAddResourcePoliciesRequest
         include Google::Apis::Core::Hashable
       
-        # Resource policies to be added to this disk.
+        # Resource policies to be added to this disk. Currently you can only specify one
+        # policy here.
         # Corresponds to the JSON property `resourcePolicies`
         # @return [Array<String>]
         attr_accessor :resource_policies
@@ -9092,7 +9095,8 @@ module Google
       class HttpRetryPolicy
         include Google::Apis::Core::Hashable
       
-        # Specifies the allowed number retries. This number must be > 0.
+        # Specifies the allowed number retries. This number must be > 0. If not
+        # specified, defaults to 1.
         # Corresponds to the JSON property `numRetries`
         # @return [Fixnum]
         attr_accessor :num_retries
@@ -14989,10 +14993,10 @@ module Google
         # a representation of IAMContext.principal even if a token or authority selector
         # is present; or - "" (empty string), resulting in a counter with no fields.
         # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
-        # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
-        # of IAMContext.principal]`
-        # At this time we do not support multiple field names (though this may be
-        # supported in the future).
+        # increment counter /iam/policy/debug_access_count `iam_principal=[value of
+        # IAMContext.principal]`
+        # TODO(b/141846426): Consider supporting "authority" and "iam_principal" fields
+        # in the same counter.
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::ComputeBeta::LogConfigCounterOptions]
         attr_accessor :counter
@@ -15051,10 +15055,10 @@ module Google
       # a representation of IAMContext.principal even if a token or authority selector
       # is present; or - "" (empty string), resulting in a counter with no fields.
       # Examples: counter ` metric: "/debug_access_count" field: "iam_principal" ` ==>
-      # increment counter /iam/policy/backend_debug_access_count `iam_principal=[value
-      # of IAMContext.principal]`
-      # At this time we do not support multiple field names (though this may be
-      # supported in the future).
+      # increment counter /iam/policy/debug_access_count `iam_principal=[value of
+      # IAMContext.principal]`
+      # TODO(b/141846426): Consider supporting "authority" and "iam_principal" fields
+      # in the same counter.
       class LogConfigCounterOptions
         include Google::Apis::Core::Hashable
       
@@ -19306,7 +19310,8 @@ module Google
         end
       end
       
-      # Settings controlling eviction of unhealthy hosts from the load balancing pool.
+      # Settings controlling the eviction of unhealthy hosts from the load balancing
+      # pool for the backend service.
       class OutlierDetection
         include Google::Apis::Core::Hashable
       
@@ -19327,21 +19332,21 @@ module Google
       
         # The number of consecutive gateway failures (502, 503, 504 status or connection
         # errors that are mapped to one of those status codes) before a consecutive
-        # gateway failure ejection occurs. Defaults to 5.
+        # gateway failure ejection occurs. Defaults to 3.
         # Corresponds to the JSON property `consecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :consecutive_gateway_failure
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive 5xx. This setting can be used to
-        # disable ejection or to ramp it up slowly. Defaults to 100.
+        # disable ejection or to ramp it up slowly. Defaults to 0.
         # Corresponds to the JSON property `enforcingConsecutiveErrors`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_errors
       
         # The percentage chance that a host will be actually ejected when an outlier
         # status is detected through consecutive gateway failures. This setting can be
-        # used to disable ejection or to ramp it up slowly. Defaults to 0.
+        # used to disable ejection or to ramp it up slowly. Defaults to 100.
         # Corresponds to the JSON property `enforcingConsecutiveGatewayFailure`
         # @return [Fixnum]
         attr_accessor :enforcing_consecutive_gateway_failure
@@ -19362,7 +19367,7 @@ module Google
         attr_accessor :interval
       
         # Maximum percentage of hosts in the load balancing pool for the backend service
-        # that can be ejected. Defaults to 10%.
+        # that can be ejected. Defaults to 50%.
         # Corresponds to the JSON property `maxEjectionPercent`
         # @return [Fixnum]
         attr_accessor :max_ejection_percent

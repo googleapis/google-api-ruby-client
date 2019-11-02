@@ -406,36 +406,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Quest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QuestContribution
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QuestCriterion
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListQuestResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class QuestMilestone
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class CheckRevisionResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1141,6 +1111,7 @@ module Google
       
           property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
+          property :player_stattus, as: 'playerStattus'
           property :profile_settings, as: 'profileSettings', class: Google::Apis::GamesV1::ProfileSettings, decorator: Google::Apis::GamesV1::ProfileSettings::Representation
       
           property :title, as: 'title'
@@ -1336,74 +1307,6 @@ module Google
             property :apns_device_token, :base64 => true, as: 'apns_device_token'
             property :apns_environment, as: 'apns_environment'
           end
-        end
-      end
-      
-      class Quest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :accepted_timestamp_millis, :numeric_string => true, as: 'acceptedTimestampMillis'
-          property :application_id, as: 'applicationId'
-          property :banner_url, as: 'bannerUrl'
-          property :description, as: 'description'
-          property :end_timestamp_millis, :numeric_string => true, as: 'endTimestampMillis'
-          property :icon_url, as: 'iconUrl'
-          property :id, as: 'id'
-          property :is_default_banner_url, as: 'isDefaultBannerUrl'
-          property :is_default_icon_url, as: 'isDefaultIconUrl'
-          property :kind, as: 'kind'
-          property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
-          collection :milestones, as: 'milestones', class: Google::Apis::GamesV1::QuestMilestone, decorator: Google::Apis::GamesV1::QuestMilestone::Representation
-      
-          property :name, as: 'name'
-          property :notify_timestamp_millis, :numeric_string => true, as: 'notifyTimestampMillis'
-          property :start_timestamp_millis, :numeric_string => true, as: 'startTimestampMillis'
-          property :state, as: 'state'
-        end
-      end
-      
-      class QuestContribution
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :formatted_value, as: 'formattedValue'
-          property :kind, as: 'kind'
-          property :value, :numeric_string => true, as: 'value'
-        end
-      end
-      
-      class QuestCriterion
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :completion_contribution, as: 'completionContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
-      
-          property :current_contribution, as: 'currentContribution', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
-      
-          property :event_id, as: 'eventId'
-          property :initial_player_progress, as: 'initialPlayerProgress', class: Google::Apis::GamesV1::QuestContribution, decorator: Google::Apis::GamesV1::QuestContribution::Representation
-      
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class ListQuestResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::GamesV1::Quest, decorator: Google::Apis::GamesV1::Quest::Representation
-      
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class QuestMilestone
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :completion_reward_data, :base64 => true, as: 'completionRewardData'
-          collection :criteria, as: 'criteria', class: Google::Apis::GamesV1::QuestCriterion, decorator: Google::Apis::GamesV1::QuestCriterion::Representation
-      
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :state, as: 'state'
         end
       end
       

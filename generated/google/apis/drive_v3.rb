@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/drive/
     module DriveV3
       VERSION = 'V3'
-      REVISION = '20190926'
+      REVISION = '20191017'
 
       # See, edit, create, and delete all of your Google Drive files
       AUTH_DRIVE = 'https://www.googleapis.com/auth/drive'

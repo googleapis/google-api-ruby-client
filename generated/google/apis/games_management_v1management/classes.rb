@@ -364,6 +364,11 @@ module Google
         # @return [String]
         attr_accessor :player_id
       
+        # 
+        # Corresponds to the JSON property `playerStattus`
+        # @return [String]
+        attr_accessor :player_stattus
+      
         # This is a JSON template for profile settings
         # Corresponds to the JSON property `profileSettings`
         # @return [Google::Apis::GamesManagementV1management::ProfileSettings]
@@ -390,6 +395,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
+          @player_stattus = args[:player_stattus] if args.key?(:player_stattus)
           @profile_settings = args[:profile_settings] if args.key?(:profile_settings)
           @title = args[:title] if args.key?(:title)
         end
@@ -507,32 +513,6 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @profile_visible = args[:profile_visible] if args.key?(:profile_visible)
-        end
-      end
-      
-      # This is a JSON template for multiple quests reset all request.
-      class QuestsResetMultipleForAllRequest
-        include Google::Apis::Core::Hashable
-      
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#questsResetMultipleForAllRequest.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The IDs of quests to reset.
-        # Corresponds to the JSON property `quest_ids`
-        # @return [Array<String>]
-        attr_accessor :quest_ids
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @kind = args[:kind] if args.key?(:kind)
-          @quest_ids = args[:quest_ids] if args.key?(:quest_ids)
         end
       end
       
