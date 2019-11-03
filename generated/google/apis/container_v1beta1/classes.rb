@@ -165,6 +165,12 @@ module Google
       class AutoprovisioningNodePoolDefaults
         include Google::Apis::Core::Hashable
       
+        # NodeManagement defines the set of node management services turned on for the
+        # node pool.
+        # Corresponds to the JSON property `management`
+        # @return [Google::Apis::ContainerV1beta1::NodeManagement]
+        attr_accessor :management
+      
         # Scopes that are used by NAP when creating node pools. If oauth_scopes are
         # specified, service_account should be empty.
         # Corresponds to the JSON property `oauthScopes`
@@ -177,14 +183,38 @@ module Google
         # @return [String]
         attr_accessor :service_account
       
+        # These upgrade settings control the level of parallelism and the level of
+        # disruption caused by an upgrade.
+        # maxUnavailable controls the number of nodes that can be simultaneously
+        # unavailable.
+        # maxSurge controls the number of additional nodes that can be added to the
+        # node pool temporarily for the time of the upgrade to increase the number of
+        # available nodes.
+        # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+        # nodes are being upgraded at the same time).
+        # Note: upgrades inevitably introduce some disruption since workloads need to
+        # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+        # this holds true. (Disruption stays within the limits of
+        # PodDisruptionBudget, if it is configured.)
+        # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+        # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+        # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+        # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+        # there are always at least 4 nodes available.
+        # Corresponds to the JSON property `upgradeSettings`
+        # @return [Google::Apis::ContainerV1beta1::UpgradeSettings]
+        attr_accessor :upgrade_settings
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @management = args[:management] if args.key?(:management)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @service_account = args[:service_account] if args.key?(:service_account)
+          @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
         end
       end
       
@@ -563,7 +593,8 @@ module Google
         attr_accessor :monitoring_service
       
         # The name of this cluster. The name must be unique within this project
-        # and zone, and can be up to 40 characters with the following restrictions:
+        # and location (e.g. zone or region), and can be up to 40 characters with
+        # the following restrictions:
         # * Lowercase letters, numbers, and hyphens only.
         # * Must start with a letter.
         # * Must end with a number or a letter.

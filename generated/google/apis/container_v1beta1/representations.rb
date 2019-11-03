@@ -631,8 +631,12 @@ module Google
       class AutoprovisioningNodePoolDefaults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
+      
           collection :oauth_scopes, as: 'oauthScopes'
           property :service_account, as: 'serviceAccount'
+          property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
+      
         end
       end
       

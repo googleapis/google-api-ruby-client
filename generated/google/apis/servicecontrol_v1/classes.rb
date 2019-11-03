@@ -1453,16 +1453,6 @@ module Google
         # @return [Google::Apis::ServicecontrolV1::QuotaProperties]
         attr_accessor :quota_properties
       
-        # DO NOT USE. This field is deprecated, use "resources" field instead.
-        # The resource name of the parent of a resource in the resource hierarchy.
-        # This can be in one of the following formats:
-        # - “projects/<project-id or project-number>”
-        # - “folders/<folder-id>”
-        # - “organizations/<organization-id>”
-        # Corresponds to the JSON property `resourceContainer`
-        # @return [String]
-        attr_accessor :resource_container
-      
         # The resources that are involved in the operation.
         # The maximum supported number of entries in this field is 100.
         # Corresponds to the JSON property `resources`
@@ -1496,7 +1486,6 @@ module Google
           @operation_id = args[:operation_id] if args.key?(:operation_id)
           @operation_name = args[:operation_name] if args.key?(:operation_name)
           @quota_properties = args[:quota_properties] if args.key?(:quota_properties)
-          @resource_container = args[:resource_container] if args.key?(:resource_container)
           @resources = args[:resources] if args.key?(:resources)
           @start_time = args[:start_time] if args.key?(:start_time)
           @user_labels = args[:user_labels] if args.key?(:user_labels)

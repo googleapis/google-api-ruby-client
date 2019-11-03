@@ -597,7 +597,6 @@ module Google
           property :operation_name, as: 'operationName'
           property :quota_properties, as: 'quotaProperties', class: Google::Apis::ServicecontrolV1::QuotaProperties, decorator: Google::Apis::ServicecontrolV1::QuotaProperties::Representation
       
-          property :resource_container, as: 'resourceContainer'
           collection :resources, as: 'resources', class: Google::Apis::ServicecontrolV1::ResourceInfo, decorator: Google::Apis::ServicecontrolV1::ResourceInfo::Representation
       
           property :start_time, as: 'startTime'
