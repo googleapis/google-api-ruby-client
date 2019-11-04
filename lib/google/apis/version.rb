@@ -15,7 +15,7 @@
 module Google
   module Apis
     # Client library version
-    VERSION = '0.33.2'.freeze
+    VERSION = '0.34.0'.freeze
 
     # Current operating system
     # @private

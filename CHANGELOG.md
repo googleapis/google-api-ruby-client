@@ -1,3 +1,45 @@
+# 0.34.0
+* Breaking changes:
+  * Deleted `dfareporting_v3_2`
+* Backwards compatible changes:
+  * Updated `cloudidentity_v1beta1`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `datastore_v1`
+  * Updated `datastore_v1beta3`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dlp_v2`
+  * Updated `drive_v2`
+  * Updated `drive_v3`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `firestore_v1`
+  * Updated `firestore_v1beta1`
+  * Updated `games_management_v1management`
+  * Updated `games_v1`
+  * Updated `healthcare_v1beta1`
+  * Updated `iam_v1`
+  * Updated `jobs_v2`
+  * Updated `jobs_v3`
+  * Updated `jobs_v3p1beta1`
+  * Updated `lifesciences_v2beta`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `oslogin_v1`
+  * Updated `people_v1`
+  * Updated `servicecontrol_v1`
+  * Updated `videointelligence_v1`
+  * Updated `videointelligence_v1beta2`
+  * Updated `videointelligence_v1p1beta1`
+  * Updated `videointelligence_v1p2beta1`
+  * Updated `videointelligence_v1p3beta1`
+  * Updated `youtube_partner_v1`
+
 # 0.33.2
 * Backwards compatible changes:
   * Added `speech_v2beta1`
