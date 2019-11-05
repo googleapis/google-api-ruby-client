@@ -5,3 +5,8 @@ Metrics/LineLength:
 
 Style/FormatString:
   EnforcedStyle: sprintf
+
+AllCops:
+  Exclude:
+    - "Rakefile"
+    - "rakelib/**/*"
