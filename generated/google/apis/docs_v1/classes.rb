@@ -365,7 +365,8 @@ module Google
       end
       
       # Creates a Footer. The new footer will be
-      # applied to the DocumentStyle.
+      # applied to SectionStyle or the
+      # DocumentStyle.
       # If a footer of the specified type already exists then a 400 bad request error
       # will be returned.
       class CreateFooterRequest
@@ -406,7 +407,8 @@ module Google
       end
       
       # Creates a Header. The new header will be
-      # applied to the DocumentStyle.
+      # applied to SectionStyle or the
+      # DocumentStyle.
       # If a header of the specified type already exists then a 400 bad request error
       # will be returned.
       class CreateHeaderRequest
@@ -3840,7 +3842,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Creates a Footer. The new footer will be
-        # applied to the DocumentStyle.
+        # applied to SectionStyle or the
+        # DocumentStyle.
         # If a footer of the specified type already exists then a 400 bad request error
         # will be returned.
         # Corresponds to the JSON property `createFooter`
@@ -3848,7 +3851,8 @@ module Google
         attr_accessor :create_footer
       
         # Creates a Header. The new header will be
-        # applied to the DocumentStyle.
+        # applied to SectionStyle or the
+        # DocumentStyle.
         # If a header of the specified type already exists then a 400 bad request error
         # will be returned.
         # Corresponds to the JSON property `createHeader`

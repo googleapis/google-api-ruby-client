@@ -112,6 +112,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AddSlicerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddSlicerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AppendCellsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -952,6 +964,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Slicer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SlicerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SortRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1138,6 +1162,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateSlicerSpecRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateSpreadsheetPropertiesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1309,6 +1339,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
+      
+        end
+      end
+      
+      class AddSlicerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :slicer, as: 'slicer', class: Google::Apis::SheetsV4::Slicer, decorator: Google::Apis::SheetsV4::Slicer::Representation
+      
+        end
+      end
+      
+      class AddSlicerResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :slicer, as: 'slicer', class: Google::Apis::SheetsV4::Slicer, decorator: Google::Apis::SheetsV4::Slicer::Representation
       
         end
       end
@@ -2253,6 +2299,10 @@ module Google
           property :condition, as: 'condition', class: Google::Apis::SheetsV4::BooleanCondition, decorator: Google::Apis::SheetsV4::BooleanCondition::Representation
       
           collection :hidden_values, as: 'hiddenValues'
+          property :visible_background_color, as: 'visibleBackgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :visible_foreground_color, as: 'visibleForegroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
         end
       end
       
@@ -2726,6 +2776,8 @@ module Google
       
           property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetRequest, decorator: Google::Apis::SheetsV4::AddSheetRequest::Representation
       
+          property :add_slicer, as: 'addSlicer', class: Google::Apis::SheetsV4::AddSlicerRequest, decorator: Google::Apis::SheetsV4::AddSlicerRequest::Representation
+      
           property :append_cells, as: 'appendCells', class: Google::Apis::SheetsV4::AppendCellsRequest, decorator: Google::Apis::SheetsV4::AppendCellsRequest::Representation
       
           property :append_dimension, as: 'appendDimension', class: Google::Apis::SheetsV4::AppendDimensionRequest, decorator: Google::Apis::SheetsV4::AppendDimensionRequest::Representation
@@ -2824,6 +2876,8 @@ module Google
       
           property :update_sheet_properties, as: 'updateSheetProperties', class: Google::Apis::SheetsV4::UpdateSheetPropertiesRequest, decorator: Google::Apis::SheetsV4::UpdateSheetPropertiesRequest::Representation
       
+          property :update_slicer_spec, as: 'updateSlicerSpec', class: Google::Apis::SheetsV4::UpdateSlicerSpecRequest, decorator: Google::Apis::SheetsV4::UpdateSlicerSpecRequest::Representation
+      
           property :update_spreadsheet_properties, as: 'updateSpreadsheetProperties', class: Google::Apis::SheetsV4::UpdateSpreadsheetPropertiesRequest, decorator: Google::Apis::SheetsV4::UpdateSpreadsheetPropertiesRequest::Representation
       
         end
@@ -2845,6 +2899,8 @@ module Google
           property :add_protected_range, as: 'addProtectedRange', class: Google::Apis::SheetsV4::AddProtectedRangeResponse, decorator: Google::Apis::SheetsV4::AddProtectedRangeResponse::Representation
       
           property :add_sheet, as: 'addSheet', class: Google::Apis::SheetsV4::AddSheetResponse, decorator: Google::Apis::SheetsV4::AddSheetResponse::Representation
+      
+          property :add_slicer, as: 'addSlicer', class: Google::Apis::SheetsV4::AddSlicerResponse, decorator: Google::Apis::SheetsV4::AddSlicerResponse::Representation
       
           property :create_developer_metadata, as: 'createDeveloperMetadata', class: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse, decorator: Google::Apis::SheetsV4::CreateDeveloperMetadataResponse::Representation
       
@@ -2961,6 +3017,8 @@ module Google
       
           collection :row_groups, as: 'rowGroups', class: Google::Apis::SheetsV4::DimensionGroup, decorator: Google::Apis::SheetsV4::DimensionGroup::Representation
       
+          collection :slicers, as: 'slicers', class: Google::Apis::SheetsV4::Slicer, decorator: Google::Apis::SheetsV4::Slicer::Representation
+      
         end
       end
       
@@ -2980,6 +3038,35 @@ module Google
         end
       end
       
+      class Slicer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :position, as: 'position', class: Google::Apis::SheetsV4::EmbeddedObjectPosition, decorator: Google::Apis::SheetsV4::EmbeddedObjectPosition::Representation
+      
+          property :slicer_id, as: 'slicerId'
+          property :spec, as: 'spec', class: Google::Apis::SheetsV4::SlicerSpec, decorator: Google::Apis::SheetsV4::SlicerSpec::Representation
+      
+        end
+      end
+      
+      class SlicerSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :apply_to_pivot_tables, as: 'applyToPivotTables'
+          property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :column_index, as: 'columnIndex'
+          property :data_range, as: 'dataRange', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
+      
+          property :filter_criteria, as: 'filterCriteria', class: Google::Apis::SheetsV4::FilterCriteria, decorator: Google::Apis::SheetsV4::FilterCriteria::Representation
+      
+          property :horizontal_alignment, as: 'horizontalAlignment'
+          property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
+      
+          property :title, as: 'title'
+        end
+      end
+      
       class SortRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2993,7 +3080,11 @@ module Google
       class SortSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
           property :dimension_index, as: 'dimensionIndex'
+          property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
           property :sort_order, as: 'sortOrder'
         end
       end
@@ -3311,6 +3402,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fields, as: 'fields'
           property :properties, as: 'properties', class: Google::Apis::SheetsV4::SheetProperties, decorator: Google::Apis::SheetsV4::SheetProperties::Representation
+      
+        end
+      end
+      
+      class UpdateSlicerSpecRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :slicer_id, as: 'slicerId'
+          property :spec, as: 'spec', class: Google::Apis::SheetsV4::SlicerSpec, decorator: Google::Apis::SheetsV4::SlicerSpec::Representation
       
         end
       end

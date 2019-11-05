@@ -45,7 +45,7 @@ module Google
         # The relative resource name of this asset. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/assets/456".
+        # "organizations/`organization_id`/assets/`asset_id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -348,10 +348,11 @@ module Google
       end
       
       # Cloud Security Command Center (Cloud SCC) finding.
-      # A finding is a record of assessment data (security, risk, health or privacy)
-      # ingested into Cloud SCC for presentation, notification, analysis,
-      # policy testing, and enforcement. For example, an XSS vulnerability in an
-      # App Engine application is a finding.
+      # A finding is a record of assessment data like security, risk, health, or
+      # privacy, that is ingested into Cloud SCC for presentation, notification,
+      # analysis, policy testing, and enforcement. For example, a
+      # cross-site scripting (XSS) vulnerability in an App Engine application is a
+      # finding.
       class Finding
         include Google::Apis::Core::Hashable
       
@@ -384,7 +385,7 @@ module Google
         # The relative resource name of this finding. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/sources/456/findings/789"
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -393,7 +394,7 @@ module Google
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # This field is immutable after creation time.
         # For example:
-        # "organizations/123/sources/456"
+        # "organizations/`organization_id`/sources/`source_id`"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1019,10 +1020,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Cloud Security Command Center (Cloud SCC) finding.
-        # A finding is a record of assessment data (security, risk, health or privacy)
-        # ingested into Cloud SCC for presentation, notification, analysis,
-        # policy testing, and enforcement. For example, an XSS vulnerability in an
-        # App Engine application is a finding.
+        # A finding is a record of assessment data like security, risk, health, or
+        # privacy, that is ingested into Cloud SCC for presentation, notification,
+        # analysis, policy testing, and enforcement. For example, a
+        # cross-site scripting (XSS) vulnerability in an App Engine application is a
+        # finding.
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1::Finding]
         attr_accessor :finding
@@ -1180,7 +1182,7 @@ module Google
         # The relative resource name of the settings. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/organizationSettings".
+        # "organizations/`organization_id`/organizationSettings".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1390,8 +1392,9 @@ module Google
         # The relative resource name of the SecurityMarks. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Examples:
-        # "organizations/123/assets/456/securityMarks"
-        # "organizations/123/sources/456/findings/789/securityMarks".
+        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1512,17 +1515,18 @@ module Google
       
       # Cloud Security Command Center's (Cloud SCC) finding source. A finding source
       # is an entity or a mechanism that can produce a finding. A source is like a
-      # container of findings that come from the same scanner, logger, monitor, etc.
+      # container of findings that come from the same scanner, logger, monitor, and
+      # other tools.
       class Source
         include Google::Apis::Core::Hashable
       
         # The description of the source (max of 1024 characters).
         # Example:
-        # "Cloud Security Scanner is a web security scanner for common
+        # "Web Security Scanner is a web security scanner for common
         # vulnerabilities in App Engine applications. It can automatically
         # scan and detect four common vulnerabilities, including cross-site-scripting
         # (XSS), Flash injection, mixed content (HTTP in HTTPS), and
-        # outdated/insecure libraries."
+        # outdated or insecure libraries."
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1539,7 +1543,7 @@ module Google
         # The relative resource name of this source. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/sources/456"
+        # "organizations/`organization_id`/sources/`source_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

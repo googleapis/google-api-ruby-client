@@ -38,7 +38,7 @@ module Google
         # The relative resource name of this asset. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/assets/456".
+        # "organizations/`organization_id`/assets/`asset_id`".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -389,7 +389,7 @@ module Google
         # The relative resource name of this finding. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/sources/456/findings/789"
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -399,7 +399,7 @@ module Google
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # This field is immutable after creation time.
         # For example:
-        # "organizations/123/sources/456"
+        # "organizations/`organization_id`/sources/`source_id`"
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1056,7 +1056,7 @@ module Google
         # The relative resource name of the settings. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/organizationSettings".
+        # "organizations/`organization_id`/organizationSettings".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1266,8 +1266,9 @@ module Google
         # The relative resource name of the SecurityMarks. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Examples:
-        # "organizations/123/assets/456/securityMarks"
-        # "organizations/123/sources/456/findings/789/securityMarks".
+        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1415,7 +1416,7 @@ module Google
         # The relative resource name of this source. See:
         # https://cloud.google.com/apis/design/resource_names#relative_resource_name
         # Example:
-        # "organizations/123/sources/456"
+        # "organizations/`organization_id`/sources/`source_id`"
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

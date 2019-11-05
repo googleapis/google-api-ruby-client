@@ -67,7 +67,8 @@ module Google
         # @return [String]
         attr_accessor :docker_image
       
-        # Output only. The environment's identifier, which is always "default".
+        # Output only. The environment's identifier, unique among the user's
+        # environments.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id

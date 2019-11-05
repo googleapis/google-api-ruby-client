@@ -85,7 +85,7 @@ module Google
         #   The relative resource name of the settings. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
-        #   "organizations/123/organizationSettings".
+        #   "organizations/`organization_id`/organizationSettings".
         # @param [Google::Apis::SecuritycenterV1::OrganizationSettings] organization_settings_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the settings resource.
@@ -333,8 +333,9 @@ module Google
         #   The relative resource name of the SecurityMarks. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Examples:
-        #   "organizations/123/assets/456/securityMarks"
-        #   "organizations/123/sources/456/findings/789/securityMarks".
+        #   "organizations/`organization_id`/assets/`asset_id`/securityMarks"
+        #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        #   securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect.
@@ -671,7 +672,7 @@ module Google
         #   The relative resource name of this source. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
-        #   "organizations/123/sources/456"
+        #   "organizations/`organization_id`/sources/`source_id`"
         # @param [Google::Apis::SecuritycenterV1::Source] source_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the source resource.
@@ -817,12 +818,12 @@ module Google
         # Filters an organization or source's findings and  groups them by their
         # specified properties.
         # To group across all sources provide a `-` as the source id.
-        # Example: /v1/organizations/123/sources/-/findings
+        # Example: /v1/organizations/`organization_id`/sources/-/findings
         # @param [String] parent
         #   Required. Name of the source to groupBy. Its format is
         #   "organizations/[organization_id]/sources/[source_id]". To groupBy across
         #   all sources provide a source_id of `-`. For example:
-        #   organizations/123/sources/-
+        #   organizations/`organization_id`/sources/-
         # @param [Google::Apis::SecuritycenterV1::GroupFindingsRequest] group_findings_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -855,12 +856,12 @@ module Google
         
         # Lists an organization or source's findings.
         # To list across all sources provide a `-` as the source id.
-        # Example: /v1/organizations/123/sources/-/findings
+        # Example: /v1/organizations/`organization_id`/sources/-/findings
         # @param [String] parent
         #   Required. Name of the source the findings belong to. Its format is
         #   "organizations/[organization_id]/sources/[source_id]". To list across all
         #   sources provide a source_id of `-`. For example:
-        #   organizations/123/sources/-
+        #   organizations/`organization_id`/sources/-
         # @param [String] compare_duration
         #   When compare_duration is set, the ListFindingsResult's "state_change"
         #   attribute is updated to indicate whether the finding had its state changed,
@@ -989,7 +990,7 @@ module Google
         #   The relative resource name of this finding. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
-        #   "organizations/123/sources/456/findings/789"
+        #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
         # @param [Google::Apis::SecuritycenterV1::Finding] finding_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the finding resource. This field should
@@ -1033,7 +1034,7 @@ module Google
         #   Required. The relative resource name of the finding. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
-        #   "organizations/123/sources/456/finding/789".
+        #   "organizations/`organization_id`/sources/`source_id`/finding/`finding_id`".
         # @param [Google::Apis::SecuritycenterV1::SetFindingStateRequest] set_finding_state_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1069,8 +1070,9 @@ module Google
         #   The relative resource name of the SecurityMarks. See:
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Examples:
-        #   "organizations/123/assets/456/securityMarks"
-        #   "organizations/123/sources/456/findings/789/securityMarks".
+        #   "organizations/`organization_id`/assets/`asset_id`/securityMarks"
+        #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        #   securityMarks".
         # @param [Google::Apis::SecuritycenterV1::SecurityMarks] security_marks_object
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect.

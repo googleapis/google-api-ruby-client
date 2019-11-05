@@ -337,6 +337,44 @@ module Google
         end
       end
       
+      # Adds a slicer to a sheet in the spreadsheet.
+      class AddSlicerRequest
+        include Google::Apis::Core::Hashable
+      
+        # A slicer in a sheet.
+        # Corresponds to the JSON property `slicer`
+        # @return [Google::Apis::SheetsV4::Slicer]
+        attr_accessor :slicer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @slicer = args[:slicer] if args.key?(:slicer)
+        end
+      end
+      
+      # The result of adding a slicer to a spreadsheet.
+      class AddSlicerResponse
+        include Google::Apis::Core::Hashable
+      
+        # A slicer in a sheet.
+        # Corresponds to the JSON property `slicer`
+        # @return [Google::Apis::SheetsV4::Slicer]
+        attr_accessor :slicer
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @slicer = args[:slicer] if args.key?(:slicer)
+        end
+      end
+      
       # Adds new cells after the last row with data in a sheet,
       # inserting new rows into the sheet if necessary.
       class AppendCellsRequest
@@ -4985,6 +5023,220 @@ module Google
         # @return [Array<String>]
         attr_accessor :hidden_values
       
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `visibleBackgroundColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :visible_background_color
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `visibleForegroundColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :visible_foreground_color
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4993,6 +5245,8 @@ module Google
         def update!(**args)
           @condition = args[:condition] if args.key?(:condition)
           @hidden_values = args[:hidden_values] if args.key?(:hidden_values)
+          @visible_background_color = args[:visible_background_color] if args.key?(:visible_background_color)
+          @visible_foreground_color = args[:visible_foreground_color] if args.key?(:visible_foreground_color)
         end
       end
       
@@ -7461,6 +7715,11 @@ module Google
         # @return [Google::Apis::SheetsV4::AddSheetRequest]
         attr_accessor :add_sheet
       
+        # Adds a slicer to a sheet in the spreadsheet.
+        # Corresponds to the JSON property `addSlicer`
+        # @return [Google::Apis::SheetsV4::AddSlicerRequest]
+        attr_accessor :add_slicer
+      
         # Adds new cells after the last row with data in a sheet,
         # inserting new rows into the sheet if necessary.
         # Corresponds to the JSON property `appendCells`
@@ -7758,6 +8017,13 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateSheetPropertiesRequest]
         attr_accessor :update_sheet_properties
       
+        # Updates a slicer’s specifications.
+        # (This does not move or resize a slicer. To move or resize a slicer use
+        # UpdateEmbeddedObjectPositionRequest.
+        # Corresponds to the JSON property `updateSlicerSpec`
+        # @return [Google::Apis::SheetsV4::UpdateSlicerSpecRequest]
+        attr_accessor :update_slicer_spec
+      
         # Updates properties of a spreadsheet.
         # Corresponds to the JSON property `updateSpreadsheetProperties`
         # @return [Google::Apis::SheetsV4::UpdateSpreadsheetPropertiesRequest]
@@ -7777,6 +8043,7 @@ module Google
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
+          @add_slicer = args[:add_slicer] if args.key?(:add_slicer)
           @append_cells = args[:append_cells] if args.key?(:append_cells)
           @append_dimension = args[:append_dimension] if args.key?(:append_dimension)
           @auto_fill = args[:auto_fill] if args.key?(:auto_fill)
@@ -7826,6 +8093,7 @@ module Google
           @update_named_range = args[:update_named_range] if args.key?(:update_named_range)
           @update_protected_range = args[:update_protected_range] if args.key?(:update_protected_range)
           @update_sheet_properties = args[:update_sheet_properties] if args.key?(:update_sheet_properties)
+          @update_slicer_spec = args[:update_slicer_spec] if args.key?(:update_slicer_spec)
           @update_spreadsheet_properties = args[:update_spreadsheet_properties] if args.key?(:update_spreadsheet_properties)
         end
       end
@@ -7868,6 +8136,11 @@ module Google
         # Corresponds to the JSON property `addSheet`
         # @return [Google::Apis::SheetsV4::AddSheetResponse]
         attr_accessor :add_sheet
+      
+        # The result of adding a slicer to a spreadsheet.
+        # Corresponds to the JSON property `addSlicer`
+        # @return [Google::Apis::SheetsV4::AddSlicerResponse]
+        attr_accessor :add_slicer
       
         # The response from creating developer metadata.
         # Corresponds to the JSON property `createDeveloperMetadata`
@@ -7942,6 +8215,7 @@ module Google
           @add_named_range = args[:add_named_range] if args.key?(:add_named_range)
           @add_protected_range = args[:add_protected_range] if args.key?(:add_protected_range)
           @add_sheet = args[:add_sheet] if args.key?(:add_sheet)
+          @add_slicer = args[:add_slicer] if args.key?(:add_slicer)
           @create_developer_metadata = args[:create_developer_metadata] if args.key?(:create_developer_metadata)
           @delete_conditional_format_rule = args[:delete_conditional_format_rule] if args.key?(:delete_conditional_format_rule)
           @delete_developer_metadata = args[:delete_developer_metadata] if args.key?(:delete_developer_metadata)
@@ -8226,6 +8500,11 @@ module Google
         # @return [Array<Google::Apis::SheetsV4::DimensionGroup>]
         attr_accessor :row_groups
       
+        # The slicers on this sheet.
+        # Corresponds to the JSON property `slicers`
+        # @return [Array<Google::Apis::SheetsV4::Slicer>]
+        attr_accessor :slicers
+      
         def initialize(**args)
            update!(**args)
         end
@@ -8244,6 +8523,7 @@ module Google
           @properties = args[:properties] if args.key?(:properties)
           @protected_ranges = args[:protected_ranges] if args.key?(:protected_ranges)
           @row_groups = args[:row_groups] if args.key?(:row_groups)
+          @slicers = args[:slicers] if args.key?(:slicers)
         end
       end
       
@@ -8423,6 +8703,225 @@ module Google
         end
       end
       
+      # A slicer in a sheet.
+      class Slicer
+        include Google::Apis::Core::Hashable
+      
+        # The position of an embedded object such as a chart.
+        # Corresponds to the JSON property `position`
+        # @return [Google::Apis::SheetsV4::EmbeddedObjectPosition]
+        attr_accessor :position
+      
+        # The ID of the slicer.
+        # Corresponds to the JSON property `slicerId`
+        # @return [Fixnum]
+        attr_accessor :slicer_id
+      
+        # The specifications of a slicer.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::SheetsV4::SlicerSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @position = args[:position] if args.key?(:position)
+          @slicer_id = args[:slicer_id] if args.key?(:slicer_id)
+          @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # The specifications of a slicer.
+      class SlicerSpec
+        include Google::Apis::Core::Hashable
+      
+        # True if the filter should apply to pivot tables.
+        # If not set, default to `True`.
+        # Corresponds to the JSON property `applyToPivotTables`
+        # @return [Boolean]
+        attr_accessor :apply_to_pivot_tables
+        alias_method :apply_to_pivot_tables?, :apply_to_pivot_tables
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :background_color
+      
+        # The column index in the data table on which the filter is applied to.
+        # Corresponds to the JSON property `columnIndex`
+        # @return [Fixnum]
+        attr_accessor :column_index
+      
+        # A range on a sheet.
+        # All indexes are zero-based.
+        # Indexes are half open, e.g the start index is inclusive
+        # and the end index is exclusive -- [start_index, end_index).
+        # Missing indexes indicate the range is unbounded on that side.
+        # For example, if `"Sheet1"` is sheet ID 0, then:
+        # `Sheet1!A1:A1 == sheet_id: 0,
+        # start_row_index: 0, end_row_index: 1,
+        # start_column_index: 0, end_column_index: 1`
+        # `Sheet1!A3:B4 == sheet_id: 0,
+        # start_row_index: 2, end_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A:B == sheet_id: 0,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1!A5:B == sheet_id: 0,
+        # start_row_index: 4,
+        # start_column_index: 0, end_column_index: 2`
+        # `Sheet1 == sheet_id:0`
+        # The start index must always be less than or equal to the end index.
+        # If the start index equals the end index, then the range is empty.
+        # Empty ranges are typically not meaningful and are usually rendered in the
+        # UI as `#REF!`.
+        # Corresponds to the JSON property `dataRange`
+        # @return [Google::Apis::SheetsV4::GridRange]
+        attr_accessor :data_range
+      
+        # Criteria for showing/hiding rows in a filter or filter view.
+        # Corresponds to the JSON property `filterCriteria`
+        # @return [Google::Apis::SheetsV4::FilterCriteria]
+        attr_accessor :filter_criteria
+      
+        # The horizontal alignment of title in the slicer.
+        # If unspecified, defaults to `LEFT`
+        # Corresponds to the JSON property `horizontalAlignment`
+        # @return [String]
+        attr_accessor :horizontal_alignment
+      
+        # The format of a run of text in a cell.
+        # Absent values indicate that the field isn't specified.
+        # Corresponds to the JSON property `textFormat`
+        # @return [Google::Apis::SheetsV4::TextFormat]
+        attr_accessor :text_format
+      
+        # The title of the slicer.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @apply_to_pivot_tables = args[:apply_to_pivot_tables] if args.key?(:apply_to_pivot_tables)
+          @background_color = args[:background_color] if args.key?(:background_color)
+          @column_index = args[:column_index] if args.key?(:column_index)
+          @data_range = args[:data_range] if args.key?(:data_range)
+          @filter_criteria = args[:filter_criteria] if args.key?(:filter_criteria)
+          @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
+          @text_format = args[:text_format] if args.key?(:text_format)
+          @title = args[:title] if args.key?(:title)
+        end
+      end
+      
       # Sorts data in rows based on a sort order per column.
       class SortRangeRequest
         include Google::Apis::Core::Hashable
@@ -8474,10 +8973,224 @@ module Google
       class SortSpec
         include Google::Apis::Core::Hashable
       
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `backgroundColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :background_color
+      
         # The dimension the sort should be applied to.
         # Corresponds to the JSON property `dimensionIndex`
         # @return [Fixnum]
         attr_accessor :dimension_index
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `foregroundColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :foreground_color
       
         # The order data should be sorted.
         # Corresponds to the JSON property `sortOrder`
@@ -8490,7 +9203,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @background_color = args[:background_color] if args.key?(:background_color)
           @dimension_index = args[:dimension_index] if args.key?(:dimension_index)
+          @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
           @sort_order = args[:sort_order] if args.key?(:sort_order)
         end
       end
@@ -10281,6 +10996,41 @@ module Google
         def update!(**args)
           @fields = args[:fields] if args.key?(:fields)
           @properties = args[:properties] if args.key?(:properties)
+        end
+      end
+      
+      # Updates a slicer’s specifications.
+      # (This does not move or resize a slicer. To move or resize a slicer use
+      # UpdateEmbeddedObjectPositionRequest.
+      class UpdateSlicerSpecRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.  At least one field must be specified.
+        # The root `SlicerSpec` is implied and should not be specified. A single "*"`
+        # can be used as short-hand for listing every field.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # The id of the slicer to update.
+        # Corresponds to the JSON property `slicerId`
+        # @return [Fixnum]
+        attr_accessor :slicer_id
+      
+        # The specifications of a slicer.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::SheetsV4::SlicerSpec]
+        attr_accessor :spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @slicer_id = args[:slicer_id] if args.key?(:slicer_id)
+          @spec = args[:spec] if args.key?(:spec)
         end
       end
       
