@@ -138,6 +138,10 @@ module Google
           @state = :start
           @upload_url = nil
           @offset = 0
+          # Prevent the command from populating the body with form encoding, by
+          # asserting that it already has a body. Form encoding is never used
+          # by upload requests.
+          self.body = '' unless self.body
           super
         end
 
