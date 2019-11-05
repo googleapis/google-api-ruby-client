@@ -71,7 +71,7 @@ namespace :kokoro do
   end
 
   task :post do
-    require_relative "rakelib/link_checker.rb"
+    require_relative "rakelib/devsite/link_checker.rb"
 
     link_checker = LinkChecker.new
     link_checker.run
