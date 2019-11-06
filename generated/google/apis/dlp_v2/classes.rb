@@ -70,6 +70,14 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc]
         attr_accessor :publish_summary_to_cscc
       
+        # Enable Stackdriver metric dlp.googleapis.com/finding_count. This
+        # will publish a metric to stack driver on each infotype requested and
+        # how many findings were found for it. CustomDetectors will be bucketed
+        # as 'Custom' under the Stackdriver label 'info_type'.
+        # Corresponds to the JSON property `publishToStackdriver`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver]
+        attr_accessor :publish_to_stackdriver
+      
         # If set, the detailed findings will be persisted to the specified
         # OutputStorageConfig. Only a single instance of this action can be
         # specified.
@@ -88,6 +96,7 @@ module Google
           @pub_sub = args[:pub_sub] if args.key?(:pub_sub)
           @publish_findings_to_cloud_data_catalog = args[:publish_findings_to_cloud_data_catalog] if args.key?(:publish_findings_to_cloud_data_catalog)
           @publish_summary_to_cscc = args[:publish_summary_to_cscc] if args.key?(:publish_summary_to_cscc)
+          @publish_to_stackdriver = args[:publish_to_stackdriver] if args.key?(:publish_to_stackdriver)
           @save_findings = args[:save_findings] if args.key?(:save_findings)
         end
       end
@@ -4424,6 +4433,22 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # Enable Stackdriver metric dlp.googleapis.com/finding_count. This
+      # will publish a metric to stack driver on each infotype requested and
+      # how many findings were found for it. CustomDetectors will be bucketed
+      # as 'Custom' under the Stackdriver label 'info_type'.
+      class GooglePrivacyDlpV2PublishToStackdriver
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

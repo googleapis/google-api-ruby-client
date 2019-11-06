@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2PublishToStackdriver
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2QuasiId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1082,6 +1088,8 @@ module Google
           property :publish_findings_to_cloud_data_catalog, as: 'publishFindingsToCloudDataCatalog', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog::Representation
       
           property :publish_summary_to_cscc, as: 'publishSummaryToCscc', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishSummaryToCscc::Representation
+      
+          property :publish_to_stackdriver, as: 'publishToStackdriver', class: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2PublishToStackdriver::Representation
       
           property :save_findings, as: 'saveFindings', class: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2SaveFindings::Representation
       
@@ -2320,6 +2328,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+        end
+      end
+      
+      class GooglePrivacyDlpV2PublishToStackdriver
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

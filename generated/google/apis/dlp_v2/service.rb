@@ -138,7 +138,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
@@ -174,7 +174,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of the organization and deidentify template to be deleted,
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
@@ -208,7 +209,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of the organization and deidentify template to be read, for
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
@@ -242,7 +244,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -295,7 +297,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of organization and deidentify template to be updated, for
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
@@ -332,7 +335,7 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
@@ -367,7 +370,8 @@ module Google
         # Deletes an InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of the organization and inspectTemplate to be deleted, for
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
@@ -400,7 +404,8 @@ module Google
         # Gets an InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of the organization and inspectTemplate to be read, for
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
@@ -433,7 +438,7 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -485,7 +490,7 @@ module Google
         # Updates the InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of organization and inspectTemplate to be updated, for
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
@@ -522,7 +527,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
@@ -558,7 +563,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of the organization and storedInfoType to be deleted, for
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [String] fields
@@ -592,7 +598,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of the organization and storedInfoType to be read, for
+        #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [String] fields
@@ -626,7 +632,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -681,7 +687,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of organization and storedInfoType to be updated, for
+        #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
@@ -798,7 +804,7 @@ module Google
         # identification_in_free_text_code_example
         # to learn more.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -834,7 +840,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
@@ -870,7 +876,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of the organization and deidentify template to be deleted,
+        #   Required. Resource name of the organization and deidentify template to be
+        #   deleted,
         #   for example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
@@ -904,7 +911,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of the organization and deidentify template to be read, for
+        #   Required. Resource name of the organization and deidentify template to be read,
+        #   for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [String] fields
@@ -938,7 +946,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -991,7 +999,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
         # more.
         # @param [String] name
-        #   Resource name of organization and deidentify template to be updated, for
+        #   Required. Resource name of organization and deidentify template to be updated,
+        #   for
         #   example `organizations/433245324/deidentifyTemplates/432452342` or
         #   projects/project-id/deidentifyTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest] google_privacy_dlp_v2_update_deidentify_template_request_object
@@ -1030,7 +1039,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
-        #   The name of the DlpJob resource to be cancelled.
+        #   Required. The name of the DlpJob resource to be cancelled.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CancelDlpJobRequest] google_privacy_dlp_v2_cancel_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1068,7 +1077,7 @@ module Google
         # system will automatically choose what detectors to run. By default this may
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Required. The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1105,7 +1114,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
-        #   The name of the DlpJob resource to be deleted.
+        #   Required. The name of the DlpJob resource to be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1137,7 +1146,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] name
-        #   The name of the DlpJob resource.
+        #   Required. The name of the DlpJob resource.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1169,7 +1178,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/inspecting-storage and
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Required. The parent resource name, for example projects/my-project-id.
         # @param [String] filter
         #   Optional. Allows filtering.
         #   Supported syntax:
@@ -1286,7 +1295,7 @@ module Google
         # for inspecting content, images, and storage.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
@@ -1321,7 +1330,8 @@ module Google
         # Deletes an InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of the organization and inspectTemplate to be deleted, for
+        #   Required. Resource name of the organization and inspectTemplate to be deleted,
+        #   for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
@@ -1354,7 +1364,8 @@ module Google
         # Gets an InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of the organization and inspectTemplate to be read, for
+        #   Required. Resource name of the organization and inspectTemplate to be read,
+        #   for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [String] fields
@@ -1387,7 +1398,7 @@ module Google
         # Lists InspectTemplates.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -1439,7 +1450,7 @@ module Google
         # Updates the InspectTemplate.
         # See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         # @param [String] name
-        #   Resource name of organization and inspectTemplate to be updated, for
+        #   Required. Resource name of organization and inspectTemplate to be updated, for
         #   example `organizations/433245324/inspectTemplates/432452342` or
         #   projects/project-id/inspectTemplates/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateInspectTemplateRequest] google_privacy_dlp_v2_update_inspect_template_request_object
@@ -1475,7 +1486,7 @@ module Google
         # Activate a job trigger. Causes the immediate execute of a trigger
         # instead of waiting on the trigger event to occur.
         # @param [String] name
-        #   Resource name of the trigger to activate, for example
+        #   Required. Resource name of the trigger to activate, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ActivateJobTriggerRequest] google_privacy_dlp_v2_activate_job_trigger_request_object
         # @param [String] fields
@@ -1511,7 +1522,7 @@ module Google
         # sensitive information on a set schedule.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id.
+        #   Required. The parent resource name, for example projects/my-project-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1545,7 +1556,7 @@ module Google
         # Deletes a job trigger.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
-        #   Resource name of the project and the triggeredJob, for example
+        #   Required. Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1577,7 +1588,7 @@ module Google
         # Gets a job trigger.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
-        #   Resource name of the project and the triggeredJob, for example
+        #   Required. Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1609,7 +1620,7 @@ module Google
         # Lists job triggers.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
-        #   The parent resource name, for example `projects/my-project-id`.
+        #   Required. The parent resource name, for example `projects/my-project-id`.
         # @param [String] filter
         #   Optional. Allows filtering.
         #   Supported syntax:
@@ -1683,7 +1694,7 @@ module Google
         # Updates a job trigger.
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] name
-        #   Resource name of the project and the triggeredJob, for example
+        #   Required. Resource name of the project and the triggeredJob, for example
         #   `projects/dlp-test-project/jobTriggers/53234423`.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateJobTriggerRequest] google_privacy_dlp_v2_update_job_trigger_request_object
         # @param [String] fields
@@ -1807,7 +1818,7 @@ module Google
         # identification_in_free_text_code_example
         # to learn more.
         # @param [String] parent
-        #   The parent resource name.
+        #   Required. The parent resource name.
         # @param [String] location
         #   The geographic location to process content reidentification.  Reserved for
         #   future extensions.
@@ -1889,7 +1900,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
@@ -1925,7 +1936,8 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of the organization and storedInfoType to be deleted, for
+        #   Required. Resource name of the organization and storedInfoType to be deleted,
+        #   for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [String] fields
@@ -1959,7 +1971,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of the organization and storedInfoType to be read, for
+        #   Required. Resource name of the organization and storedInfoType to be read, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [String] fields
@@ -1993,7 +2005,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] parent
-        #   The parent resource name, for example projects/my-project-id or
+        #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] order_by
         #   Optional comma separated list of fields to order by,
@@ -2048,7 +2060,7 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
         # learn more.
         # @param [String] name
-        #   Resource name of organization and storedInfoType to be updated, for
+        #   Required. Resource name of organization and storedInfoType to be updated, for
         #   example `organizations/433245324/storedInfoTypes/432452342` or
         #   projects/project-id/storedInfoTypes/432452342.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2UpdateStoredInfoTypeRequest] google_privacy_dlp_v2_update_stored_info_type_request_object
