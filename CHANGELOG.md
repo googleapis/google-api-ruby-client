@@ -1,3 +1,21 @@
+# 0.34.1
+* Backwards compatible changes:
+  * Updated `bigquery_v2`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `dlp_v2`
+  * Updated `docs_v1`
+  * Updated `genomics_v2alpha1`
+  * Updated `recommender_v1beta1`
+  * Updated `redis_v1`
+  * Updated `redis_v1beta1`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `sheets_v4`
+  * Updated `vision_v1`
+  * Updated `vision_v1p1beta1`
+  * Updated `vision_v1p2beta1`
+
 # 0.34.0
 * Breaking changes:
   * Deleted `dfareporting_v3_2`
