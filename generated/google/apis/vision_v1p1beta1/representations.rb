@@ -1144,6 +1144,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVisionV1p4beta1Celebrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVisionV1p4beta1ColorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1181,6 +1187,12 @@ module Google
       end
       
       class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVisionV1p4beta1FaceRecognitionResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3652,6 +3664,15 @@ module Google
         end
       end
       
+      class GoogleCloudVisionV1p4beta1Celebrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
       class GoogleCloudVisionV1p4beta1ColorInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3722,6 +3743,8 @@ module Google
           collection :landmarks, as: 'landmarks', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceAnnotationLandmark, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceAnnotationLandmark::Representation
       
           property :pan_angle, as: 'panAngle'
+          collection :recognition_result, as: 'recognitionResult', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceRecognitionResult, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1FaceRecognitionResult::Representation
+      
           property :roll_angle, as: 'rollAngle'
           property :sorrow_likelihood, as: 'sorrowLikelihood'
           property :surprise_likelihood, as: 'surpriseLikelihood'
@@ -3736,6 +3759,15 @@ module Google
           property :position, as: 'position', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Position, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Position::Representation
       
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudVisionV1p4beta1FaceRecognitionResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :celebrity, as: 'celebrity', class: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Celebrity, decorator: Google::Apis::VisionV1p1beta1::GoogleCloudVisionV1p4beta1Celebrity::Representation
+      
+          property :confidence, as: 'confidence'
         end
       end
       

@@ -166,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DataSplitResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Dataset
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -938,6 +944,16 @@ module Google
           property :field_delimiter, as: 'fieldDelimiter'
           property :quote, as: 'quote'
           property :skip_leading_rows, :numeric_string => true, as: 'skipLeadingRows'
+        end
+      end
+      
+      class DataSplitResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :evaluation_table, as: 'evaluationTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
+          property :training_table, as: 'trainingTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
+      
         end
       end
       
@@ -2083,6 +2099,8 @@ module Google
       class TrainingRun
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_split_result, as: 'dataSplitResult', class: Google::Apis::BigqueryV2::DataSplitResult, decorator: Google::Apis::BigqueryV2::DataSplitResult::Representation
+      
           property :evaluation_metrics, as: 'evaluationMetrics', class: Google::Apis::BigqueryV2::EvaluationMetrics, decorator: Google::Apis::BigqueryV2::EvaluationMetrics::Representation
       
           collection :results, as: 'results', class: Google::Apis::BigqueryV2::IterationResult, decorator: Google::Apis::BigqueryV2::IterationResult::Representation

@@ -1038,6 +1038,32 @@ module Google
         end
       end
       
+      # Data split result. This contains references to the training and evaluation
+      # data tables that were used to train the model.
+      class DataSplitResult
+        include Google::Apis::Core::Hashable
+      
+        # Table reference of the evaluation data after split.
+        # Corresponds to the JSON property `evaluationTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :evaluation_table
+      
+        # Table reference of the training data after split.
+        # Corresponds to the JSON property `trainingTable`
+        # @return [Google::Apis::BigqueryV2::TableReference]
+        attr_accessor :training_table
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @evaluation_table = args[:evaluation_table] if args.key?(:evaluation_table)
+          @training_table = args[:training_table] if args.key?(:training_table)
+        end
+      end
+      
       # 
       class Dataset
         include Google::Apis::Core::Hashable
@@ -5740,6 +5766,12 @@ module Google
       class TrainingRun
         include Google::Apis::Core::Hashable
       
+        # Data split result. This contains references to the training and evaluation
+        # data tables that were used to train the model.
+        # Corresponds to the JSON property `dataSplitResult`
+        # @return [Google::Apis::BigqueryV2::DataSplitResult]
+        attr_accessor :data_split_result
+      
         # Evaluation metrics of a model. These are either computed on all training
         # data or just the eval data based on whether eval data was used during
         # training. These are not present for imported models.
@@ -5769,6 +5801,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @data_split_result = args[:data_split_result] if args.key?(:data_split_result)
           @evaluation_metrics = args[:evaluation_metrics] if args.key?(:evaluation_metrics)
           @results = args[:results] if args.key?(:results)
           @start_time = args[:start_time] if args.key?(:start_time)

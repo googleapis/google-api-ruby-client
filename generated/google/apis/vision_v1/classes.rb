@@ -7251,6 +7251,38 @@ module Google
         end
       end
       
+      # A Celebrity is a group of Faces with an identity.
+      class GoogleCloudVisionV1p4beta1Celebrity
+        include Google::Apis::Core::Hashable
+      
+        # The Celebrity's description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The Celebrity's display name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the preloaded Celebrity. Has the format
+        # `builtin/`mid``.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Color information consists of RGB channels, score, and the fraction of
       # the image that the color occupies in the image.
       class GoogleCloudVisionV1p4beta1ColorInfo
@@ -7595,6 +7627,14 @@ module Google
         # @return [Float]
         attr_accessor :pan_angle
       
+        # Additional recognition information. Only computed if
+        # image_context.face_recognition_params is provided, **and** a match is found
+        # to a Celebrity in the input CelebritySet. This field is
+        # sorted in order of decreasing confidence values.
+        # Corresponds to the JSON property `recognitionResult`
+        # @return [Array<Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1FaceRecognitionResult>]
+        attr_accessor :recognition_result
+      
         # Roll angle, which indicates the amount of clockwise/anti-clockwise rotation
         # of the face relative to the image vertical about the axis perpendicular to
         # the face. Range [-180,180].
@@ -7639,6 +7679,7 @@ module Google
           @landmarking_confidence = args[:landmarking_confidence] if args.key?(:landmarking_confidence)
           @landmarks = args[:landmarks] if args.key?(:landmarks)
           @pan_angle = args[:pan_angle] if args.key?(:pan_angle)
+          @recognition_result = args[:recognition_result] if args.key?(:recognition_result)
           @roll_angle = args[:roll_angle] if args.key?(:roll_angle)
           @sorrow_likelihood = args[:sorrow_likelihood] if args.key?(:sorrow_likelihood)
           @surprise_likelihood = args[:surprise_likelihood] if args.key?(:surprise_likelihood)
@@ -7671,6 +7712,31 @@ module Google
         def update!(**args)
           @position = args[:position] if args.key?(:position)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Information about a face's identity.
+      class GoogleCloudVisionV1p4beta1FaceRecognitionResult
+        include Google::Apis::Core::Hashable
+      
+        # A Celebrity is a group of Faces with an identity.
+        # Corresponds to the JSON property `celebrity`
+        # @return [Google::Apis::VisionV1::GoogleCloudVisionV1p4beta1Celebrity]
+        attr_accessor :celebrity
+      
+        # Recognition confidence. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @celebrity = args[:celebrity] if args.key?(:celebrity)
+          @confidence = args[:confidence] if args.key?(:confidence)
         end
       end
       
