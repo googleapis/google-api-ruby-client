@@ -70,7 +70,7 @@ class DevsiteBuilder
     @metadata ||= RepoMetadata.from_source "name"              => "google-api-client",
                                            "distribution-name" => "google-api-client",
                                            "language"          => "ruby"
-    @metadata["version"] = version @build_tag
+    @metadata["version"] = "v#{version @build_tag}"
     @metadata
   end
 
