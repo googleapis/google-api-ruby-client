@@ -22,27 +22,6 @@ module Google
   module Apis
     module BigqueryreservationV1
       
-      # The metadata for operation returned from
-      # ReservationService.CreateCapacityCommitment.
-      class CreateCapacityCommitmentMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Resource name of the capacity commitment that is being created. E.g.,
-        # projects/myproject/locations/US/capacityCommitments/123
-        # Corresponds to the JSON property `capacityCommitment`
-        # @return [String]
-        attr_accessor :capacity_commitment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @capacity_commitment = args[:capacity_commitment] if args.key?(:capacity_commitment)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:

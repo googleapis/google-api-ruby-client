@@ -100,6 +100,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateTimeSeriesSummary
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Distribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -119,6 +125,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Error
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -552,6 +564,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :payload_errors, as: 'payloadErrors', class: Google::Apis::MonitoringV3::CollectdPayloadError, decorator: Google::Apis::MonitoringV3::CollectdPayloadError::Representation
       
+          property :summary, as: 'summary', class: Google::Apis::MonitoringV3::CreateTimeSeriesSummary, decorator: Google::Apis::MonitoringV3::CreateTimeSeriesSummary::Representation
+      
         end
       end
       
@@ -560,6 +574,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :time_series, as: 'timeSeries', class: Google::Apis::MonitoringV3::TimeSeries, decorator: Google::Apis::MonitoringV3::TimeSeries::Representation
       
+        end
+      end
+      
+      class CreateTimeSeriesSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::MonitoringV3::Error, decorator: Google::Apis::MonitoringV3::Error::Representation
+      
+          property :success_point_count, as: 'successPointCount'
+          property :total_point_count, as: 'totalPointCount'
         end
       end
       
@@ -597,6 +621,15 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Error
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :point_count, as: 'pointCount'
+          property :status, as: 'status', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
         end
       end
       

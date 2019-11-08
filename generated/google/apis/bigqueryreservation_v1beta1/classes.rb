@@ -60,7 +60,8 @@ module Google
       # (in the form of slots) with some minimum committed period of usage. Capacity
       # commitment is immutable and cannot be deleted until the end of the commitment
       # period. After the end of the commitment period, slots are still available but
-      # can be freely removed any time.
+      # can be freely removed any time. Annual commitments will automatically be
+      # downgraded to monthly after the commitment ends.
       # A capacity commitment resource exists as a child resource of the admin
       # project.
       class CapacityCommitment
@@ -73,6 +74,16 @@ module Google
         # Corresponds to the JSON property `commitmentEndTime`
         # @return [String]
         attr_accessor :commitment_end_time
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `failureStatus`
+        # @return [Google::Apis::BigqueryreservationV1beta1::Status]
+        attr_accessor :failure_status
       
         # Output only. The resource name of the capacity commitment, e.g.,
         # projects/myproject/locations/US/capacityCommitments/123
@@ -102,31 +113,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @commitment_end_time = args[:commitment_end_time] if args.key?(:commitment_end_time)
+          @failure_status = args[:failure_status] if args.key?(:failure_status)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
           @slot_count = args[:slot_count] if args.key?(:slot_count)
           @state = args[:state] if args.key?(:state)
-        end
-      end
-      
-      # The metadata for operation returned from
-      # ReservationService.CreateCapacityCommitment.
-      class CreateCapacityCommitmentMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Resource name of the capacity commitment that is being created. E.g.,
-        # projects/myproject/locations/US/capacityCommitments/123
-        # Corresponds to the JSON property `capacityCommitment`
-        # @return [String]
-        attr_accessor :capacity_commitment
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @capacity_commitment = args[:capacity_commitment] if args.key?(:capacity_commitment)
         end
       end
       
@@ -321,55 +312,20 @@ module Google
         end
       end
       
-      # This resource represents a long-running operation that is the result of a
-      # network API call.
-      class Operation
+      # The request for
+      # ReservationService.MoveAssignment.
+      # Note: "bigquery.reservationAssignments.create" permission is required on the
+      # destination_id. Note: "bigquery.reservationAssignments.create" and
+      # "bigquery.reservationAssignments.delete" permission is required on the
+      # related assignee.
+      class MoveAssignmentRequest
         include Google::Apis::Core::Hashable
       
-        # If the value is `false`, it means the operation is still in progress.
-        # If `true`, the operation is completed, and either `error` or `response` is
-        # available.
-        # Corresponds to the JSON property `done`
-        # @return [Boolean]
-        attr_accessor :done
-        alias_method :done?, :done
-      
-        # The `Status` type defines a logical error model that is suitable for
-        # different programming environments, including REST APIs and RPC APIs. It is
-        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
-        # three pieces of data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the
-        # [API Design Guide](https://cloud.google.com/apis/design/errors).
-        # Corresponds to the JSON property `error`
-        # @return [Google::Apis::BigqueryreservationV1beta1::Status]
-        attr_accessor :error
-      
-        # Service-specific metadata associated with the operation.  It typically
-        # contains progress information and common metadata such as create time.
-        # Some services might not provide such metadata.  Any method that returns a
-        # long-running operation should document the metadata type, if any.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # The server-assigned name, which is only unique within the same service that
-        # originally returns it. If you use the default HTTP mapping, the
-        # `name` should be a resource name ending with `operations/`unique_id``.
-        # Corresponds to the JSON property `name`
+        # The new reservation ID, e.g.:
+        # projects/myotherproject/locations/US/reservations/team2-prod
+        # Corresponds to the JSON property `destinationId`
         # @return [String]
-        attr_accessor :name
-      
-        # The normal response of the operation in case of success.  If the original
-        # method returns no data on success, such as `Delete`, the response is
-        # `google.protobuf.Empty`.  If the original method is standard
-        # `Get`/`Create`/`Update`, the response should be the resource.  For other
-        # methods, the response should have the type `XxxResponse`, where `Xxx`
-        # is the original method name.  For example, if the original method name
-        # is `TakeSnapshot()`, the inferred response type is
-        # `TakeSnapshotResponse`.
-        # Corresponds to the JSON property `response`
-        # @return [Hash<String,Object>]
-        attr_accessor :response
+        attr_accessor :destination_id
       
         def initialize(**args)
            update!(**args)
@@ -377,11 +333,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @done = args[:done] if args.key?(:done)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-          @response = args[:response] if args.key?(:response)
+          @destination_id = args[:destination_id] if args.key?(:destination_id)
         end
       end
       
@@ -389,10 +341,9 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # If true, any query using this reservation might be able to use the idle
-        # slots from other reservations within the same admin project. If false, a
-        # query using this reservation will execute with the maximum slot capacity as
-        # specified above. If not specified, default value is true.
+        # If false, any query using this reservation will use idle slots from other
+        # reservations within the same admin project. If true, a query using this
+        # reservation will execute with the maximum slot capacity as specified above.
         # Corresponds to the JSON property `ignoreIdleSlots`
         # @return [Boolean]
         attr_accessor :ignore_idle_slots

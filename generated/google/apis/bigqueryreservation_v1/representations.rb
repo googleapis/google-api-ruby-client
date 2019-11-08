@@ -22,12 +22,6 @@ module Google
   module Apis
     module BigqueryreservationV1
       
-      class CreateCapacityCommitmentMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -56,13 +50,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CreateCapacityCommitmentMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :capacity_commitment, as: 'capacityCommitment'
-        end
       end
       
       class Empty

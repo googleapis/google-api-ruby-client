@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/bigquery/
     module BigqueryreservationV1alpha2
       VERSION = 'V1alpha2'
-      REVISION = '20190920'
+      REVISION = '20191029'
 
       # View and manage your data in Google BigQuery
       AUTH_BIGQUERY = 'https://www.googleapis.com/auth/bigquery'

@@ -1331,92 +1331,10 @@ module Google
         attr_accessor :master_config
       
         # Optional. Specifies the type of virtual machine to use for your training
-        # job's master worker.
+        # job's master worker. You must specify this field when `scaleTier` is set to
+        # `CUSTOM`.
+        # You can use certain Compute Engine machine types directly in this field.
         # The following types are supported:
-        # <dl>
-        # <dt>standard</dt>
-        # <dd>
-        # A basic machine configuration suitable for training simple models with
-        # small to moderate datasets.
-        # </dd>
-        # <dt>large_model</dt>
-        # <dd>
-        # A machine with a lot of memory, specially suited for parameter servers
-        # when your model is large (having many hidden layers or layers with very
-        # large numbers of nodes).
-        # </dd>
-        # <dt>complex_model_s</dt>
-        # <dd>
-        # A machine suitable for the master and workers of the cluster when your
-        # model requires more computation than the standard machine can handle
-        # satisfactorily.
-        # </dd>
-        # <dt>complex_model_m</dt>
-        # <dd>
-        # A machine with roughly twice the number of cores and roughly double the
-        # memory of <i>complex_model_s</i>.
-        # </dd>
-        # <dt>complex_model_l</dt>
-        # <dd>
-        # A machine with roughly twice the number of cores and roughly double the
-        # memory of <i>complex_model_m</i>.
-        # </dd>
-        # <dt>standard_gpu</dt>
-        # <dd>
-        # A machine equivalent to <i>standard</i> that
-        # also includes a single NVIDIA Tesla K80 GPU. See more about
-        # <a href="/ml-engine/docs/tensorflow/using-gpus">using GPUs to
-        # train your model</a>.
-        # </dd>
-        # <dt>complex_model_m_gpu</dt>
-        # <dd>
-        # A machine equivalent to <i>complex_model_m</i> that also includes
-        # four NVIDIA Tesla K80 GPUs.
-        # </dd>
-        # <dt>complex_model_l_gpu</dt>
-        # <dd>
-        # A machine equivalent to <i>complex_model_l</i> that also includes
-        # eight NVIDIA Tesla K80 GPUs.
-        # </dd>
-        # <dt>standard_p100</dt>
-        # <dd>
-        # A machine equivalent to <i>standard</i> that
-        # also includes a single NVIDIA Tesla P100 GPU.
-        # </dd>
-        # <dt>complex_model_m_p100</dt>
-        # <dd>
-        # A machine equivalent to <i>complex_model_m</i> that also includes
-        # four NVIDIA Tesla P100 GPUs.
-        # </dd>
-        # <dt>standard_v100</dt>
-        # <dd>
-        # A machine equivalent to <i>standard</i> that
-        # also includes a single NVIDIA Tesla V100 GPU.
-        # </dd>
-        # <dt>large_model_v100</dt>
-        # <dd>
-        # A machine equivalent to <i>large_model</i> that
-        # also includes a single NVIDIA Tesla V100 GPU.
-        # </dd>
-        # <dt>complex_model_m_v100</dt>
-        # <dd>
-        # A machine equivalent to <i>complex_model_m</i> that
-        # also includes four NVIDIA Tesla V100 GPUs.
-        # </dd>
-        # <dt>complex_model_l_v100</dt>
-        # <dd>
-        # A machine equivalent to <i>complex_model_l</i> that
-        # also includes eight NVIDIA Tesla V100 GPUs.
-        # </dd>
-        # <dt>cloud_tpu</dt>
-        # <dd>
-        # A TPU VM including one Cloud TPU. See more about
-        # <a href="/ml-engine/docs/tensorflow/using-tpus">using TPUs to train
-        # your model</a>.
-        # </dd>
-        # </dl>
-        # You may also use certain Compute Engine machine types directly in this
-        # field. The following types are supported:
         # - `n1-standard-4`
         # - `n1-standard-8`
         # - `n1-standard-16`
@@ -1434,9 +1352,29 @@ module Google
         # - `n1-highcpu-32`
         # - `n1-highcpu-64`
         # - `n1-highcpu-96`
-        # See more about [using Compute Engine machine
-        # types](/ml-engine/docs/tensorflow/machine-types#compute-engine-machine-types).
-        # You must set this value when `scaleTier` is set to `CUSTOM`.
+        # Learn more about [using Compute Engine machine
+        # types](/ml-engine/docs/machine-types#compute-engine-machine-types).
+        # Alternatively, you can use the following legacy machine types:
+        # - `standard`
+        # - `large_model`
+        # - `complex_model_s`
+        # - `complex_model_m`
+        # - `complex_model_l`
+        # - `standard_gpu`
+        # - `complex_model_m_gpu`
+        # - `complex_model_l_gpu`
+        # - `standard_p100`
+        # - `complex_model_m_p100`
+        # - `standard_v100`
+        # - `large_model_v100`
+        # - `complex_model_m_v100`
+        # - `complex_model_l_v100`
+        # Learn more about [using legacy machine
+        # types](/ml-engine/docs/machine-types#legacy-machine-types).
+        # Finally, if you want to use a TPU for training, specify `cloud_tpu` in this
+        # field. Learn more about the [special configuration options for training
+        # with
+        # TPUs](/ml-engine/docs/tensorflow/using-tpus#configuring_a_custom_tpu_machine).
         # Corresponds to the JSON property `masterType`
         # @return [String]
         attr_accessor :master_type
@@ -1468,8 +1406,8 @@ module Google
         # The supported values are the same as those described in the entry for
         # `master_type`.
         # This value must be consistent with the category of machine type that
-        # `masterType` uses. In other words, both must be AI Platform machine
-        # types or both must be Compute Engine machine types.
+        # `masterType` uses. In other words, both must be Compute Engine machine
+        # types or both must be legacy machine types.
         # This value must be present when `scaleTier` is set to `CUSTOM` and
         # `parameter_server_count` is greater than zero.
         # Corresponds to the JSON property `parameterServerType`
@@ -1539,8 +1477,8 @@ module Google
         # The supported values are the same as those described in the entry for
         # `masterType`.
         # This value must be consistent with the category of machine type that
-        # `masterType` uses. In other words, both must be AI Platform machine
-        # types or both must be Compute Engine machine types.
+        # `masterType` uses. In other words, both must be Compute Engine machine
+        # types or both must be legacy machine types.
         # If you use `cloud_tpu` for this value, see special instructions for
         # [configuring a custom TPU
         # machine](/ml-engine/docs/tensorflow/using-tpus#

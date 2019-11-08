@@ -507,12 +507,15 @@ module Google
         end
       end
       
-      # Used to perform string matching. It allows substring and regular expressions,
-      # together with their negations.
+      # Optional. Used to perform content matching. This allows matching based on
+      # substrings and regular expressions, together with their negations. Only the
+      # first 4&nbsp;MB of an HTTP or HTTPS check's response (and the first 1&nbsp;MB
+      # of a TCP check's response) are examined for purposes of content matching.
       class ContentMatcher
         include Google::Apis::Core::Hashable
       
-        # String or regex content to match (max 1024 bytes)
+        # String or regex content to match. Maximum 1024 bytes. An empty content string
+        # indicates no content matching is to be performed.
         # Corresponds to the JSON property `content`
         # @return [String]
         attr_accessor :content
@@ -583,12 +586,18 @@ module Google
       class CreateCollectdTimeSeriesResponse
         include Google::Apis::Core::Hashable
       
-        # Records the error status for points that were not written due to an error.
-        # Failed requests for which nothing is written will return an error response
-        # instead.
+        # Records the error status for points that were not written due to an error in
+        # the request.Failed requests for which nothing is written will return an error
+        # response instead. Requests where data points were rejected by the backend will
+        # set summary instead.
         # Corresponds to the JSON property `payloadErrors`
         # @return [Array<Google::Apis::MonitoringV3::CollectdPayloadError>]
         attr_accessor :payload_errors
+      
+        # Summary of the result of a failed request to write data to a time series.
+        # Corresponds to the JSON property `summary`
+        # @return [Google::Apis::MonitoringV3::CreateTimeSeriesSummary]
+        attr_accessor :summary
       
         def initialize(**args)
            update!(**args)
@@ -597,6 +606,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @payload_errors = args[:payload_errors] if args.key?(:payload_errors)
+          @summary = args[:summary] if args.key?(:summary)
         end
       end
       
@@ -621,6 +631,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @time_series = args[:time_series] if args.key?(:time_series)
+        end
+      end
+      
+      # Summary of the result of a failed request to write data to a time series.
+      class CreateTimeSeriesSummary
+        include Google::Apis::Core::Hashable
+      
+        # The number of points that failed to be written. Order is not guaranteed.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::MonitoringV3::Error>]
+        attr_accessor :errors
+      
+        # The number of points that were successfully written.
+        # Corresponds to the JSON property `successPointCount`
+        # @return [Fixnum]
+        attr_accessor :success_point_count
+      
+        # The number of points in the request.
+        # Corresponds to the JSON property `totalPointCount`
+        # @return [Fixnum]
+        attr_accessor :total_point_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @success_point_count = args[:success_point_count] if args.key?(:success_point_count)
+          @total_point_count = args[:total_point_count] if args.key?(:total_point_count)
         end
       end
       
@@ -789,6 +830,36 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Detailed information about an error category.
+      class Error
+        include Google::Apis::Core::Hashable
+      
+        # The number of points that couldn't be written because of status.
+        # Corresponds to the JSON property `pointCount`
+        # @return [Fixnum]
+        attr_accessor :point_count
+      
+        # The Status type defines a logical error model that is suitable for different
+        # programming environments, including REST APIs and RPC APIs. It is used by gRPC
+        # (https://github.com/grpc). Each Status message contains three pieces of data:
+        # error code, error message, and error details.You can find out more about this
+        # error model and how to work with it in the API Design Guide (https://cloud.
+        # google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::MonitoringV3::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @point_count = args[:point_count] if args.key?(:point_count)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
