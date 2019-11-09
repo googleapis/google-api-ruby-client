@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZoneReverseLookupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZonesListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -303,6 +309,8 @@ module Google
       
           property :private_visibility_config, as: 'privateVisibilityConfig', class: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig, decorator: Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig::Representation
       
+          property :reverse_lookup_config, as: 'reverseLookupConfig', class: Google::Apis::DnsV1beta2::ManagedZoneReverseLookupConfig, decorator: Google::Apis::DnsV1beta2::ManagedZoneReverseLookupConfig::Representation
+      
           property :visibility, as: 'visibility'
         end
       end
@@ -330,6 +338,7 @@ module Google
       class ManagedZoneForwardingConfigNameServerTarget
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
           property :kind, as: 'kind'
         end
@@ -379,6 +388,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :network_url, as: 'networkUrl'
+        end
+      end
+      
+      class ManagedZoneReverseLookupConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
         end
       end
       
@@ -490,6 +506,7 @@ module Google
       class PolicyAlternativeNameServerConfigTargetNameServer
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_path, as: 'forwardingPath'
           property :ipv4_address, as: 'ipv4Address'
           property :kind, as: 'kind'
         end

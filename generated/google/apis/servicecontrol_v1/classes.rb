@@ -355,6 +355,12 @@ module Google
         # @return [String]
         attr_accessor :principal_email
       
+        # String representation of identity of requesting party.
+        # Populated for both first and third party identities.
+        # Corresponds to the JSON property `principalSubject`
+        # @return [String]
+        attr_accessor :principal_subject
+      
         # Identity delegation history of an authenticated service account that makes
         # the request. It contains information on the real authorities that try to
         # access GCP resources by delegating on a service account. When multiple
@@ -389,6 +395,7 @@ module Google
         def update!(**args)
           @authority_selector = args[:authority_selector] if args.key?(:authority_selector)
           @principal_email = args[:principal_email] if args.key?(:principal_email)
+          @principal_subject = args[:principal_subject] if args.key?(:principal_subject)
           @service_account_delegation_info = args[:service_account_delegation_info] if args.key?(:service_account_delegation_info)
           @service_account_key_name = args[:service_account_key_name] if args.key?(:service_account_key_name)
           @third_party_principal = args[:third_party_principal] if args.key?(:third_party_principal)

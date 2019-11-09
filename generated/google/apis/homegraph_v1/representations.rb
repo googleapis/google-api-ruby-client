@@ -167,6 +167,7 @@ module Google
           property :id, as: 'id'
           property :name, as: 'name', class: Google::Apis::HomegraphV1::DeviceNames, decorator: Google::Apis::HomegraphV1::DeviceNames::Representation
       
+          property :notification_supported_by_agent, as: 'notificationSupportedByAgent'
           collection :other_device_ids, as: 'otherDeviceIds', class: Google::Apis::HomegraphV1::AgentOtherDeviceId, decorator: Google::Apis::HomegraphV1::AgentOtherDeviceId::Representation
       
           property :room_hint, as: 'roomHint'

@@ -56,6 +56,13 @@ module Google
         # @return [String]
         attr_accessor :id
       
+        # A numeric value that has a meaning specific to the audit, e.g. the number of
+        # nodes in the DOM or the timestamp of a specific load event. More information
+        # can be found in the audit details, if present.
+        # Corresponds to the JSON property `numericValue`
+        # @return [Float]
+        attr_accessor :numeric_value
+      
         # 
         # Corresponds to the JSON property `score`
         # @return [Object]
@@ -88,6 +95,7 @@ module Google
           @error_message = args[:error_message] if args.key?(:error_message)
           @explanation = args[:explanation] if args.key?(:explanation)
           @id = args[:id] if args.key?(:id)
+          @numeric_value = args[:numeric_value] if args.key?(:numeric_value)
           @score = args[:score] if args.key?(:score)
           @score_display_mode = args[:score_display_mode] if args.key?(:score_display_mode)
           @title = args[:title] if args.key?(:title)

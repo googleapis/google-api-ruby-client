@@ -1377,9 +1377,12 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :banner_image_url, as: 'bannerImageUrl'
+            property :eligible_for_subscription, as: 'eligibleForSubscription'
             property :image_url, as: 'imageUrl'
+            property :is_complete, as: 'isComplete'
             property :series_id, as: 'seriesId'
             property :series_type, as: 'seriesType'
+            property :subscription_id, as: 'subscriptionId'
             property :title, as: 'title'
           end
         end

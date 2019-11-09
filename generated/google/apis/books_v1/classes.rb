@@ -2527,9 +2527,21 @@ module Google
           attr_accessor :banner_image_url
         
           # 
+          # Corresponds to the JSON property `eligibleForSubscription`
+          # @return [Boolean]
+          attr_accessor :eligible_for_subscription
+          alias_method :eligible_for_subscription?, :eligible_for_subscription
+        
+          # 
           # Corresponds to the JSON property `imageUrl`
           # @return [String]
           attr_accessor :image_url
+        
+          # 
+          # Corresponds to the JSON property `isComplete`
+          # @return [Boolean]
+          attr_accessor :is_complete
+          alias_method :is_complete?, :is_complete
         
           # 
           # Corresponds to the JSON property `seriesId`
@@ -2540,6 +2552,11 @@ module Google
           # Corresponds to the JSON property `seriesType`
           # @return [String]
           attr_accessor :series_type
+        
+          # 
+          # Corresponds to the JSON property `subscriptionId`
+          # @return [String]
+          attr_accessor :subscription_id
         
           # 
           # Corresponds to the JSON property `title`
@@ -2553,9 +2570,12 @@ module Google
           # Update properties of this object
           def update!(**args)
             @banner_image_url = args[:banner_image_url] if args.key?(:banner_image_url)
+            @eligible_for_subscription = args[:eligible_for_subscription] if args.key?(:eligible_for_subscription)
             @image_url = args[:image_url] if args.key?(:image_url)
+            @is_complete = args[:is_complete] if args.key?(:is_complete)
             @series_id = args[:series_id] if args.key?(:series_id)
             @series_type = args[:series_type] if args.key?(:series_type)
+            @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
             @title = args[:title] if args.key?(:title)
           end
         end

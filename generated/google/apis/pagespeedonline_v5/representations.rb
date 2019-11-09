@@ -139,6 +139,7 @@ module Google
           property :error_message, as: 'errorMessage'
           property :explanation, as: 'explanation'
           property :id, as: 'id'
+          property :numeric_value, as: 'numericValue'
           property :score, as: 'score'
           property :score_display_mode, as: 'scoreDisplayMode'
           property :title, as: 'title'

@@ -424,6 +424,14 @@ module Google
         # @return [Google::Apis::DnsV1beta2::ManagedZonePrivateVisibilityConfig]
         attr_accessor :private_visibility_config
       
+        # The presence of this field indicates that this is a managed reverse lookup
+        # zone and Cloud DNS will resolve reverse lookup queries using automatically
+        # configured records for VPC resources. This only applies to networks listed
+        # under private_visibility_config.
+        # Corresponds to the JSON property `reverseLookupConfig`
+        # @return [Google::Apis::DnsV1beta2::ManagedZoneReverseLookupConfig]
+        attr_accessor :reverse_lookup_config
+      
         # The zone's visibility: public zones are exposed to the Internet, while private
         # zones are visible only to Virtual Private Cloud resources.
         # Corresponds to the JSON property `visibility`
@@ -449,6 +457,7 @@ module Google
           @name_servers = args[:name_servers] if args.key?(:name_servers)
           @peering_config = args[:peering_config] if args.key?(:peering_config)
           @private_visibility_config = args[:private_visibility_config] if args.key?(:private_visibility_config)
+          @reverse_lookup_config = args[:reverse_lookup_config] if args.key?(:reverse_lookup_config)
           @visibility = args[:visibility] if args.key?(:visibility)
         end
       end
@@ -524,6 +533,14 @@ module Google
       class ManagedZoneForwardingConfigNameServerTarget
         include Google::Apis::Core::Hashable
       
+        # Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud
+        # DNS will make forwarding decision based on address ranges, i.e. RFC1918
+        # addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to
+        # PRIVATE, Cloud DNS will always send queries through VPC for this target
+        # Corresponds to the JSON property `forwardingPath`
+        # @return [String]
+        attr_accessor :forwarding_path
+      
         # IPv4 address of a target name server.
         # Corresponds to the JSON property `ipv4Address`
         # @return [String]
@@ -541,6 +558,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
           @kind = args[:kind] if args.key?(:kind)
         end
@@ -705,6 +723,26 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @network_url = args[:network_url] if args.key?(:network_url)
+        end
+      end
+      
+      # 
+      class ManagedZoneReverseLookupConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZoneReverseLookupConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1079,6 +1117,14 @@ module Google
       class PolicyAlternativeNameServerConfigTargetNameServer
         include Google::Apis::Core::Hashable
       
+        # Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud
+        # DNS will make forwarding decision based on address ranges, i.e. RFC1918
+        # addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to
+        # PRIVATE, Cloud DNS will always send queries through VPC for this target
+        # Corresponds to the JSON property `forwardingPath`
+        # @return [String]
+        attr_accessor :forwarding_path
+      
         # IPv4 address to forward to.
         # Corresponds to the JSON property `ipv4Address`
         # @return [String]
@@ -1096,6 +1142,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @forwarding_path = args[:forwarding_path] if args.key?(:forwarding_path)
           @ipv4_address = args[:ipv4_address] if args.key?(:ipv4_address)
           @kind = args[:kind] if args.key?(:kind)
         end

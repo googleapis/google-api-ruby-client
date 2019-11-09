@@ -196,7 +196,7 @@ module Google
         # cluster ID, e.g., just `mycluster` rather than
         # `projects/myproject/instances/myinstance/clusters/mycluster`.
         # Fields marked `OutputOnly` must be left blank.
-        # Currently, at most two clusters can be specified.
+        # Currently, at most four clusters can be specified.
         # Corresponds to the JSON property `clusters`
         # @return [Hash<String,Google::Apis::BigtableadminV1::Cluster>]
         attr_accessor :clusters

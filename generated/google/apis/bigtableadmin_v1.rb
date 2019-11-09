@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/bigtable/
     module BigtableadminV1
       VERSION = 'V1'
-      REVISION = '20190506'
+      REVISION = '20191022'
     end
   end
 end

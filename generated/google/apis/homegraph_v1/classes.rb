@@ -96,6 +96,19 @@ module Google
         # @return [Google::Apis::HomegraphV1::DeviceNames]
         attr_accessor :name
       
+        # Indicates whether the device is capable of sending notifications. This
+        # field will be set by the agent (partner) on an incoming SYNC. If a device
+        # is not capable of generating notifications, the partner should set this
+        # flag to false. If a partner is not capable of calling
+        # ReportStateAndNotification to send notifications to Google, the partner
+        # should set this flag to false. If there is a user setting in the partner
+        # app to enable notifications and it is turned off, the partner should set
+        # this flag to false.
+        # Corresponds to the JSON property `notificationSupportedByAgent`
+        # @return [Boolean]
+        attr_accessor :notification_supported_by_agent
+        alias_method :notification_supported_by_agent?, :notification_supported_by_agent
+      
         # IDs of other devices associated with this device. This is used to
         # represent a device group (e.g. bonded zone) or "facets" synced
         # through different flows (e.g. Google Nest Hub Max with a Nest Camera).
@@ -145,6 +158,7 @@ module Google
           @device_info = args[:device_info] if args.key?(:device_info)
           @id = args[:id] if args.key?(:id)
           @name = args[:name] if args.key?(:name)
+          @notification_supported_by_agent = args[:notification_supported_by_agent] if args.key?(:notification_supported_by_agent)
           @other_device_ids = args[:other_device_ids] if args.key?(:other_device_ids)
           @room_hint = args[:room_hint] if args.key?(:room_hint)
           @structure_hint = args[:structure_hint] if args.key?(:structure_hint)

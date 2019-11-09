@@ -827,9 +827,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # (Optional)
-        # Cloud Run fully managed: not supported
+        # Cloud Run fully managed: supported
         # Cloud Run for Anthos: supported
-        # Number of port to expose on the pod's IP address.
+        # Port number the container listens on.
         # This must be a valid port number, 0 < x < 65536.
         # Corresponds to the JSON property `containerPort`
         # @return [Fixnum]

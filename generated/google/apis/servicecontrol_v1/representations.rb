@@ -351,6 +351,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :authority_selector, as: 'authoritySelector'
           property :principal_email, as: 'principalEmail'
+          property :principal_subject, as: 'principalSubject'
           collection :service_account_delegation_info, as: 'serviceAccountDelegationInfo', class: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo, decorator: Google::Apis::ServicecontrolV1::ServiceAccountDelegationInfo::Representation
       
           property :service_account_key_name, as: 'serviceAccountKeyName'
