@@ -131,6 +131,9 @@ module Google
             .find_all { |k, v| k.downcase == 'x-goog-api-client' }
             .map { |(a, b)| b }
             .join(' ')
+            .split
+            .find_all { |s| s !~ %r{^gl-ruby/|^gdcl/} }
+            .join(' ')
           xgac = "gl-ruby/#{RUBY_VERSION} gdcl/#{Google::Apis::VERSION}"
           xgac = old_xgac.empty? ? xgac : "#{old_xgac} #{xgac}"
           header.delete_if { |k, v| k.downcase == 'x-goog-api-client' }
