@@ -57,6 +57,14 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       expect(command.header['X-Goog-Api-Client']).to eql "foo/1.2.3 bar/4.5.6 #{x_goog_api_client_value}"
       expect(command.header['x-goog-api-client']).to be nil
     end
+
+    it 'should override existing gl-ruby/ and gdcl/ clauses' do
+      command.header['x-goog-api-client'] = "gl-ruby/0.0 foo/1.2.3"
+      command.header['X-Goog-Api-Client'] = "bar/4.5.6 gdcl/0.0"
+      command.prepare!
+      expect(command.header['X-Goog-Api-Client']).to eql "foo/1.2.3 bar/4.5.6 #{x_goog_api_client_value}"
+      expect(command.header['x-goog-api-client']).to be nil
+    end
   end
 
   context('with a request body') do
