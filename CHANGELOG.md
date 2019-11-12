@@ -137,6 +137,7 @@
 
 # 0.33.0
 * Breaking changes:
+  * Dropped support for Ruby versions &lt; 2.4.
   * Deleted `urlshortener_v1`
 * Backwards compatible changes:
   * Updated `accessapproval_v1beta1`
