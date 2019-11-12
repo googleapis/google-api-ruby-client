@@ -257,6 +257,23 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For
+        # example,`alice@example.com?uid=123456789012345678901`. If the user is
+        # recovered, this value reverts to `user:`emailid`` and the recovered user
+        # retains the role in the binding.
+        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
+        # unique identifier) representing a service account that has been recently
+        # deleted. For example,
+        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to
+        # `serviceAccount:`emailid`` and the undeleted service account retains the
+        # role in the binding.
+        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently
+        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+        # the group is recovered, this value reverts to `group:`emailid`` and the
+        # recovered group retains the role in the binding.
         # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
@@ -1029,6 +1046,12 @@ module Google
         # @return [Google::Apis::SecuritycenterV1::Finding]
         attr_accessor :finding
       
+        # Information related to the Google Cloud Platform (GCP) resource that is
+        # associated with this finding.
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::SecuritycenterV1::Resource]
+        attr_accessor :resource
+      
         # State change of the finding between the points in time.
         # Corresponds to the JSON property `stateChange`
         # @return [String]
@@ -1041,6 +1064,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @finding = args[:finding] if args.key?(:finding)
+          @resource = args[:resource] if args.key?(:resource)
           @state_change = args[:state_change] if args.key?(:state_change)
         end
       end
@@ -1304,6 +1328,51 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Information related to the Google Cloud Platform (GCP) resource that is
+      # associated with this finding.
+      class Resource
+        include Google::Apis::Core::Hashable
+      
+        # The full resource name of the resource. See:
+        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The human readable name of resource's parent.
+        # Corresponds to the JSON property `parentDisplayName`
+        # @return [String]
+        attr_accessor :parent_display_name
+      
+        # The full resource name of resource's parent.
+        # Corresponds to the JSON property `parentName`
+        # @return [String]
+        attr_accessor :parent_name
+      
+        # The human readable name of project that the resource belongs to.
+        # Corresponds to the JSON property `projectDisplayName`
+        # @return [String]
+        attr_accessor :project_display_name
+      
+        # The full resource name of project that the resource belongs to.
+        # Corresponds to the JSON property `projectName`
+        # @return [String]
+        attr_accessor :project_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @parent_display_name = args[:parent_display_name] if args.key?(:parent_display_name)
+          @parent_name = args[:parent_name] if args.key?(:parent_name)
+          @project_display_name = args[:project_display_name] if args.key?(:project_display_name)
+          @project_name = args[:project_name] if args.key?(:project_name)
         end
       end
       

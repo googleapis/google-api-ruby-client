@@ -616,6 +616,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1Celebrity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -689,6 +707,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1824,6 +1848,33 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1Celebrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :celebrity_tracks, as: 'celebrityTracks', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :celebrities, as: 'celebrities', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity::Representation
+      
+          property :face_track, as: 'faceTrack', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1950,6 +2001,15 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :celebrity, as: 'celebrity', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Celebrity, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Celebrity::Representation
+      
+          property :confidence, as: 'confidence'
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2063,6 +2123,8 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :celebrity_recognition_annotations, as: 'celebrityRecognitionAnnotations', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation::Representation
+      
           property :error, as: 'error', class: Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleRpcStatus::Representation
       
           property :explicit_annotation, as: 'explicitAnnotation', class: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation, decorator: Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation::Representation

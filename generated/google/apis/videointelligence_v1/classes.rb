@@ -3710,6 +3710,87 @@ module Google
         end
       end
       
+      # Celebrity definition.
+      class GoogleCloudVideointelligenceV1p3beta1Celebrity
+        include Google::Apis::Core::Hashable
+      
+        # Textual description of additional information about the celebrity, if
+        # applicable.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The celebrity name.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The resource name of the celebrity. Have the format
+        # `video-intelligence/kg-mid` indicates a celebrity from preloaded gallery.
+        # kg-mid is the id in Google knowledge graph, which is unique for the
+        # celebrity.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Celebrity recognition annotation per video.
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The tracks detected from the input video, including recognized celebrities
+        # and other detected faces in the video.
+        # Corresponds to the JSON property `celebrityTracks`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>]
+        attr_accessor :celebrity_tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @celebrity_tracks = args[:celebrity_tracks] if args.key?(:celebrity_tracks)
+        end
+      end
+      
+      # The annotation result of a celebrity face track. RecognizedCelebrity field
+      # could be empty if the face track does not have any matched celebrities.
+      class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack
+        include Google::Apis::Core::Hashable
+      
+        # Top N match of the celebrities for the face in this track.
+        # Corresponds to the JSON property `celebrities`
+        # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity>]
+        attr_accessor :celebrities
+      
+        # A track of an object instance.
+        # Corresponds to the JSON property `faceTrack`
+        # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track]
+        attr_accessor :face_track
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @celebrities = args[:celebrities] if args.key?(:celebrities)
+          @face_track = args[:face_track] if args.key?(:face_track)
+        end
+      end
+      
       # A generic detected attribute represented by name in string format.
       class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute
         include Google::Apis::Core::Hashable
@@ -4125,6 +4206,31 @@ module Google
         end
       end
       
+      # The recognized celebrity with confidence score.
+      class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
+        include Google::Apis::Core::Hashable
+      
+        # Celebrity definition.
+        # Corresponds to the JSON property `celebrity`
+        # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Celebrity]
+        attr_accessor :celebrity
+      
+        # Recognition confidence. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @celebrity = args[:celebrity] if args.key?(:celebrity)
+          @confidence = args[:confidence] if args.key?(:confidence)
+        end
+      end
+      
       # Alternative hypotheses (a.k.a. n-best list).
       class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative
         include Google::Apis::Core::Hashable
@@ -4505,6 +4611,11 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
         include Google::Apis::Core::Hashable
       
+        # Celebrity recognition annotation per video.
+        # Corresponds to the JSON property `celebrityRecognitionAnnotations`
+        # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation]
+        attr_accessor :celebrity_recognition_annotations
+      
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
         # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4603,6 +4714,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @celebrity_recognition_annotations = args[:celebrity_recognition_annotations] if args.key?(:celebrity_recognition_annotations)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)

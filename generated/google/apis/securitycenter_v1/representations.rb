@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Resource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RunAssetDiscoveryRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -450,6 +456,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::Finding, decorator: Google::Apis::SecuritycenterV1::Finding::Representation
       
+          property :resource, as: 'resource', class: Google::Apis::SecuritycenterV1::Resource, decorator: Google::Apis::SecuritycenterV1::Resource::Representation
+      
           property :state_change, as: 'stateChange'
         end
       end
@@ -503,6 +511,17 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :parent_display_name, as: 'parentDisplayName'
+          property :parent_name, as: 'parentName'
+          property :project_display_name, as: 'projectDisplayName'
+          property :project_name, as: 'projectName'
         end
       end
       

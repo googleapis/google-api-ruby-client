@@ -944,8 +944,8 @@ module Google
         # field[x]) we use two separate components. For example,
         # "deceasedAge.unit" is matched by "Deceased.Age.unit".
         # Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
-        # Decimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,
-        # String, Uri, Uuid, Xhtml.
+        # Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid,
+        # Xhtml.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
