@@ -3,10 +3,23 @@
 --verbose
 --markup-provider=redcarpet
 --markup=markdown
+--main OVERVIEW.md
+
 lib/**/*.rb
-generated/**/*.rb
 -
-README.md
+OVERVIEW.md
 MIGRATING.md
-CONTRIBUTING.md
 LICENSE
+docs/getting-started.md
+docs/installation.md
+docs/auth.md
+docs/api-keys.md
+docs/oauth.md
+docs/oauth-web.md
+docs/oauth-installed.md
+docs/oauth-server.md
+docs/client-secrets.md
+docs/logging.md
+docs/media-upload.md
+docs/pagination.md
+docs/performance.md
