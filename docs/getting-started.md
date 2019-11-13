@@ -1,39 +1,42 @@
-# Google API Client [![Documentation](https://img.shields.io/badge/docs-Google%3A%3AApis-red.svg)](https://googleapis.dev/ruby/google-api-client/latest/Google/Apis.html) [![Gem Version](https://badge.fury.io/rb/google-api-client.svg)](https://badge.fury.io/rb/google-api-client)
+# Getting Started
 
-These client libraries are officially supported by Google.  However, the libraries are considered complete and are in maintenance mode. This means that we will address critical bugs and security issues but will not add any new features.
+This document provides all the basic information you need to start using the library. It covers important library concepts, shows examples for various use cases, and gives links to more information.
 
-## Google Cloud Platform
+## Setup
 
-For Google Cloud Platform APIs such as Datastore, Cloud Storage or Pub/Sub, we recommend using [GoogleCloudPlatform/google-cloud-ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby) which is under active development.
+There are a few setup steps you need to complete before you can use this library:
 
-## Migrating from 0.8.x
+1.  If you don't already have a Google account, [sign up](https://www.google.com/accounts).
+2.  If you have never created a Google APIs Console project, read the [Managing Projects page](http://developers.google.com/console/help/managing-projects) and create a project in the [Google API Console](https://console.developers.google.com/).
 
-See [MIGRATING](MIGRATING.md) for additional details on how to migrate to the latest version.
+## Authentication and authorization
 
-## Documentation
+It is important to understand the basics of how API authentication and authorization are handled. All API calls must use either simple or authorized access (defined below). Many API methods require authorized access, but some can use either. Some API methods that can use either behave differently, depending on whether you use simple or authorized access. See the API's method documentation to determine the appropriate access type.
 
-Learn how to use the Google API Client Library for Ruby with these guides:
+### 1. Simple API access (API keys)
 
-### Usage Guides
+These API calls do not access any private user data. Your application must authenticate itself as an application belonging to your Google Cloud project. This is needed to measure project usage for accounting purposes.
 
-- [Getting Started](docs/getting-started.md)
-- [Installation](docs/installation.md)
-- [Auth](docs/auth.md)
-  - [API Keys](docs/api-keys.md)
-  - [OAuth 2.0](docs/oauth.md)
-  - [OAuth 2.0 for Web Server Applications](docs/oauth-web.md)
-  - [OAuth 2.0 for Installed Applications](docs/oauth-installed.md)
-  - [OAuth 2.0 for Server to Server Applications](docs/oauth-server.md)
-  - [Client Secrets](docs/client-secrets.md)
-- How to...
-  - [Use Logging](docs/logging.md)
-  - [Upload Media](docs/media-upload.md)
-  - [Use Pagination](docs/pagination.md)
-  - [Improve Performance](docs/performance.md)
+**API key**: To authenticate your application, use an [API key](https://cloud.google.com/docs/authentication/api-keys) for your Google Cloud Console project. Every simple access call your application makes must include this key.
+    
+> **Warning**: Keep your API key private. If someone obtains your key, they could use it to consume your quota or incur charges against your Google Cloud project.
+    
+### 2. Authorized API access (OAuth 2.0)
 
-### Reference Documentation
+These API calls access private user data. Before you can call them, the user that has access to the private data must grant your application access. Therefore, your application must be authenticated, the user must grant access for your application, and the user must be authenticated in order to grant that access. All of this is accomplished with [OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2) and libraries written for it.
 
-- Reference documentation for [google-api-client](https://googleapis.dev/ruby/google-api-client/latest/index.html).
+*   **Scope**: Each API defines one or more scopes that declare a set of operations permitted. For example, an API might have read-only and read-write scopes. When your application requests access to user data, the request must include one or more scopes. The user needs to approve the scope of access your application is requesting.
+*   **Refresh and access tokens**: When a user grants your application access, the OAuth 2.0 authorization server provides your application with refresh and access tokens. These tokens are only valid for the scope requested. Your application uses access tokens to authorize API calls. Access tokens expire, but refresh tokens do not. Your application can use a refresh token to acquire a new access token.
+    
+    > **Warning**: Keep refresh and access tokens private. If someone obtains your tokens, they could use them to access private user data.
+    
+*   **Client ID and client secret**: These strings uniquely identify your application and are used to acquire tokens. They are created for your Google Cloud project on the [API Access pane](https://console.developers.google.com/apis/credentials) of the Google Cloud. There are several types of client IDs, so be sure to get the correct type for your application:
+    
+    *   Web application client IDs
+    *   Installed application client IDs
+    *   [Service Account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) client IDs
+    
+    > **Warning**: Keep your client secret private. If someone obtains your client secret, they could use it to consume your quota, incur charges against your Google Cloud project, and request access to user data.
 
 ## Installation
 
@@ -281,37 +284,6 @@ result = translate.list_translations('Hello world!', 'es', source: 'en')
 puts result.translations.first.translated_text
 ```
 
-### Authorization using environment variables
-
-The [GoogleAuth Library for Ruby](https://github.com/google/google-auth-library-ruby) also supports authorization via
-environment variables if you do not want to check in developer credentials
-or private keys. Simply set the following variables for your application:
-
-```sh
-GOOGLE_ACCOUNT_TYPE="YOUR ACCOUNT TYPE" # ie. 'service'
-GOOGLE_CLIENT_EMAIL="YOUR GOOGLE DEVELOPER EMAIL"
-GOOGLE_PRIVATE_KEY="YOUR GOOGLE DEVELOPER API KEY"
-```
-
-## Logging
-
-The client includes a `Logger` instance that can be used to capture debugging information.
-
-When running in a Rails environment, the client will default to using `::Rails.logger`. If you
-prefer to use a separate logger instance for API calls, you can provide a new logger instance:
-
-```ruby
-Google::Apis.logger = Logger.new(STDERR)
-```
-
-Or, you can set the environment variable `GOOGLE_API_USE_RAILS_LOGGER` to any value other than `'true'`; this will send all logging information to STDOUT.
-
-To set the logging level for the client:
-
-```ruby
-Google::Apis.logger.level = Logger::DEBUG
-```
-
 ## Customizing endpoints
 
 By default, client objects will connect to the default Google endpoints for =
@@ -333,8 +305,6 @@ document = docs_service.get_document("my-document-id")
 See the [samples](https://github.com/google/google-api-ruby-client/tree/master/samples) for examples on how to use the client library for various
 services.
 
-Contributions for additional samples are welcome. See [CONTRIBUTING](CONTRIBUTING.md).
-
 ## Generating APIs
 
 For [Cloud Endpoints](https://cloud.google.com/endpoints/) or other APIs not included in the gem, ruby code can be
@@ -348,14 +318,9 @@ A URL can also be specified:
 
     $ generate-api gen <outdir> --url=<url>
 
-## TODO
-
-*  ETag support (if-not-modified)
-*  Caching
-*  Model validations
-
 ## Supported Ruby Versions
-This library is currently supported on Ruby 1.9+.  
+
+This library is currently supported on Ruby 1.9+.
 However, Ruby 2.4 or later is strongly recommended, as earlier releases have
 reached or are nearing end-of-life. After March 31, 2019, Google will provide
 official support only for Ruby versions that are considered current and
@@ -367,10 +332,6 @@ See https://www.ruby-lang.org/en/downloads/branches/ for further details.
 
 This library is licensed under Apache 2.0. Full license text is
 available in [LICENSE](LICENSE).
-
-## Contributing
-
-See [CONTRIBUTING](.github/CONTRIBUTING.md).
 
 ## Support
 
