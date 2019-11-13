@@ -2348,7 +2348,7 @@ module Google
       # application that handles customer requests might include separate services to
       # handle tasks such as backend data analysis or API requests from mobile devices.
       # Each service has a collection of versions that define a specific set of code
-      # used to implement the functionality of that service.
+      # used to implement the functionality of that service. Next tag: 6
       class Service
         include Google::Apis::Core::Hashable
       

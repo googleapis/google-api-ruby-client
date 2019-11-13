@@ -1365,6 +1365,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :deidentify_template, as: 'deidentifyTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
       
+          property :location_id, as: 'locationId'
           property :template_id, as: 'templateId'
         end
       end
@@ -1375,6 +1376,7 @@ module Google
           property :inspect_job, as: 'inspectJob', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig::Representation
       
           property :job_id, as: 'jobId'
+          property :location_id, as: 'locationId'
           property :risk_job, as: 'riskJob', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RiskAnalysisJobConfig::Representation
       
         end
@@ -1385,6 +1387,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :inspect_template, as: 'inspectTemplate', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
       
+          property :location_id, as: 'locationId'
           property :template_id, as: 'templateId'
         end
       end
@@ -1394,6 +1397,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :job_trigger, as: 'jobTrigger', class: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
       
+          property :location_id, as: 'locationId'
           property :trigger_id, as: 'triggerId'
         end
       end
@@ -1403,6 +1407,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig::Representation
       
+          property :location_id, as: 'locationId'
           property :stored_info_type_id, as: 'storedInfoTypeId'
         end
       end
@@ -1538,7 +1543,7 @@ module Google
           property :inspect_template_name, as: 'inspectTemplateName'
           property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
       
-          property :location, as: 'location'
+          property :location_id, as: 'locationId'
         end
       end
       
@@ -1872,7 +1877,7 @@ module Google
           property :inspect_template_name, as: 'inspectTemplateName'
           property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
       
-          property :location, as: 'location'
+          property :location_id, as: 'locationId'
         end
       end
       
@@ -2449,7 +2454,7 @@ module Google
           property :include_findings, as: 'includeFindings'
           property :inspect_config, as: 'inspectConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig::Representation
       
-          property :location, as: 'location'
+          property :location_id, as: 'locationId'
         end
       end
       
@@ -2479,7 +2484,7 @@ module Google
           property :inspect_template_name, as: 'inspectTemplateName'
           property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
       
-          property :location, as: 'location'
+          property :location_id, as: 'locationId'
           property :reidentify_config, as: 'reidentifyConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig::Representation
       
           property :reidentify_template_name, as: 'reidentifyTemplateName'

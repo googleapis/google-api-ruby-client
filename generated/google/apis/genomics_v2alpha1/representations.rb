@@ -214,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimestampedEvent
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UnexpectedExitStatusEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -284,6 +290,8 @@ module Google
           property :deadline_expired, as: 'deadlineExpired', class: Google::Apis::GenomicsV2alpha1::Empty, decorator: Google::Apis::GenomicsV2alpha1::Empty::Representation
       
           hash :event, as: 'event'
+          collection :events, as: 'events', class: Google::Apis::GenomicsV2alpha1::TimestampedEvent, decorator: Google::Apis::GenomicsV2alpha1::TimestampedEvent::Representation
+      
           property :result, as: 'result', class: Google::Apis::GenomicsV2alpha1::Status, decorator: Google::Apis::GenomicsV2alpha1::Status::Representation
       
           property :worker_status, as: 'workerStatus', class: Google::Apis::GenomicsV2alpha1::WorkerStatus, decorator: Google::Apis::GenomicsV2alpha1::WorkerStatus::Representation
@@ -543,6 +551,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class TimestampedEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :timestamp, as: 'timestamp'
         end
       end
       

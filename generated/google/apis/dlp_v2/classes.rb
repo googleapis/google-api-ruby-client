@@ -1064,6 +1064,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
       
+        # The geographic location to store the deidentification template. Reserved
+        # for future extensions.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
         # The template id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
         # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
@@ -1079,6 +1085,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @deidentify_template = args[:deidentify_template] if args.key?(:deidentify_template)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @template_id = args[:template_id] if args.key?(:template_id)
         end
       end
@@ -1102,6 +1109,12 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
+        # The geographic location to store and process the job. Reserved for
+        # future extensions.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
         # Configuration for a risk analysis job. See
         # https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
         # Corresponds to the JSON property `riskJob`
@@ -1116,6 +1129,7 @@ module Google
         def update!(**args)
           @inspect_job = args[:inspect_job] if args.key?(:inspect_job)
           @job_id = args[:job_id] if args.key?(:job_id)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @risk_job = args[:risk_job] if args.key?(:risk_job)
         end
       end
@@ -1132,6 +1146,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
       
+        # The geographic location to store the inspection template. Reserved for
+        # future extensions.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
+      
         # The template id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
         # expression: `[a-zA-Z\\d-_]+`. The maximum length is 100
@@ -1147,6 +1167,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @inspect_template = args[:inspect_template] if args.key?(:inspect_template)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @template_id = args[:template_id] if args.key?(:template_id)
         end
       end
@@ -1160,6 +1181,12 @@ module Google
         # Corresponds to the JSON property `jobTrigger`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
+      
+        # The geographic location to store the job trigger. Reserved for
+        # future extensions.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
       
         # The trigger id can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
@@ -1176,6 +1203,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @job_trigger = args[:job_trigger] if args.key?(:job_trigger)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @trigger_id = args[:trigger_id] if args.key?(:trigger_id)
         end
       end
@@ -1188,6 +1216,12 @@ module Google
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
+      
+        # The geographic location to store the stored infoType. Reserved for
+        # future extensions.
+        # Corresponds to the JSON property `locationId`
+        # @return [String]
+        attr_accessor :location_id
       
         # The storedInfoType ID can contain uppercase and lowercase letters,
         # numbers, and hyphens; that is, it must match the regular
@@ -1204,6 +1238,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @stored_info_type_id = args[:stored_info_type_id] if args.key?(:stored_info_type_id)
         end
       end
@@ -1353,14 +1388,14 @@ module Google
         # that the FFX mode natively supports. This happens before/after
         # encryption/decryption.
         # Each character listed must appear only once.
-        # Number of characters must be in the range [2, 62].
+        # Number of characters must be in the range [2, 95].
         # This must be encoded as ASCII.
         # The order of characters does not matter.
         # Corresponds to the JSON property `customAlphabet`
         # @return [String]
         attr_accessor :custom_alphabet
       
-        # The native way to select the alphabet. Must be in the range [2, 62].
+        # The native way to select the alphabet. Must be in the range [2, 95].
         # Corresponds to the JSON property `radix`
         # @return [Fixnum]
         attr_accessor :radix
@@ -1697,9 +1732,9 @@ module Google
       
         # The geographic location to process de-identification. Reserved for future
         # extensions.
-        # Corresponds to the JSON property `location`
+        # Corresponds to the JSON property `locationId`
         # @return [String]
-        attr_accessor :location
+        attr_accessor :location_id
       
         def initialize(**args)
            update!(**args)
@@ -1712,7 +1747,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
-          @location = args[:location] if args.key?(:location)
+          @location_id = args[:location_id] if args.key?(:location_id)
         end
       end
       
@@ -2890,9 +2925,9 @@ module Google
       
         # The geographic location to process content inspection. Reserved for future
         # extensions.
-        # Corresponds to the JSON property `location`
+        # Corresponds to the JSON property `locationId`
         # @return [String]
-        attr_accessor :location
+        attr_accessor :location_id
       
         def initialize(**args)
            update!(**args)
@@ -2903,7 +2938,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
-          @location = args[:location] if args.key?(:location)
+          @location_id = args[:location_id] if args.key?(:location_id)
         end
       end
       
@@ -4771,9 +4806,9 @@ module Google
       
         # The geographic location to process the request. Reserved for future
         # extensions.
-        # Corresponds to the JSON property `location`
+        # Corresponds to the JSON property `locationId`
         # @return [String]
-        attr_accessor :location
+        attr_accessor :location_id
       
         def initialize(**args)
            update!(**args)
@@ -4785,7 +4820,7 @@ module Google
           @image_redaction_configs = args[:image_redaction_configs] if args.key?(:image_redaction_configs)
           @include_findings = args[:include_findings] if args.key?(:include_findings)
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
-          @location = args[:location] if args.key?(:location)
+          @location_id = args[:location_id] if args.key?(:location_id)
         end
       end
       
@@ -4878,9 +4913,9 @@ module Google
       
         # The geographic location to process content reidentification.  Reserved for
         # future extensions.
-        # Corresponds to the JSON property `location`
+        # Corresponds to the JSON property `locationId`
         # @return [String]
-        attr_accessor :location
+        attr_accessor :location_id
       
         # The configuration that controls how the data will change.
         # Corresponds to the JSON property `reidentifyConfig`
@@ -4906,7 +4941,7 @@ module Google
           @inspect_config = args[:inspect_config] if args.key?(:inspect_config)
           @inspect_template_name = args[:inspect_template_name] if args.key?(:inspect_template_name)
           @item = args[:item] if args.key?(:item)
-          @location = args[:location] if args.key?(:location)
+          @location_id = args[:location_id] if args.key?(:location_id)
           @reidentify_config = args[:reidentify_config] if args.key?(:reidentify_config)
           @reidentify_template_name = args[:reidentify_template_name] if args.key?(:reidentify_template_name)
         end

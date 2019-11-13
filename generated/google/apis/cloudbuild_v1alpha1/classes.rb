@@ -752,11 +752,16 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
-        # Name of the Cloud Source Repository. If omitted, the name "default" is
-        # assumed.
+        # Required. Name of the Cloud Source Repository.
         # Corresponds to the JSON property `repoName`
         # @return [String]
         attr_accessor :repo_name
+      
+        # Substitutions to use in a triggered build.
+        # Should only be used with RunBuildTrigger
+        # Corresponds to the JSON property `substitutions`
+        # @return [Hash<String,String>]
+        attr_accessor :substitutions
       
         # Regex matching tags to build.
         # The syntax of the regular expressions accepted is the syntax accepted by
@@ -776,6 +781,7 @@ module Google
           @dir = args[:dir] if args.key?(:dir)
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
+          @substitutions = args[:substitutions] if args.key?(:substitutions)
           @tag_name = args[:tag_name] if args.key?(:tag_name)
         end
       end

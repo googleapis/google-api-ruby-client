@@ -170,9 +170,9 @@ module Google
         
         # Cancels a build in progress.
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [String] id
-        #   ID of the build.
+        #   Required. ID of the build.
         # @param [Google::Apis::CloudbuildV1::CancelBuildRequest] cancel_build_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -209,7 +209,7 @@ module Google
         # ID. Pass the build ID to `GetBuild` to determine the build status (such as
         # `SUCCESS` or `FAILURE`).
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [Google::Apis::CloudbuildV1::Build] build_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -244,9 +244,9 @@ module Google
         # The `Build` that is returned includes its status (such as `SUCCESS`,
         # `FAILURE`, or `WORKING`), and timing information.
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [String] id
-        #   ID of the build.
+        #   Required. ID of the build.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -279,7 +279,7 @@ module Google
         # Previously requested builds may still be in-progress, or may have finished
         # successfully or unsuccessfully.
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [String] filter
         #   The raw filter text to constrain the results.
         # @param [Fixnum] page_size
@@ -337,9 +337,9 @@ module Google
         # object, which may or may not be available depending on the bucket's
         # lifecycle management settings.
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [String] id
-        #   Build ID of the original build.
+        #   Required. Build ID of the original build.
         # @param [Google::Apis::CloudbuildV1::RetryBuildRequest] retry_build_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -374,7 +374,7 @@ module Google
         # Creates a new `BuildTrigger`.
         # This API is experimental.
         # @param [String] project_id
-        #   ID of the project for which to configure automatic builds.
+        #   Required. ID of the project for which to configure automatic builds.
         # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -408,9 +408,9 @@ module Google
         # Deletes a `BuildTrigger` by its project ID and trigger ID.
         # This API is experimental.
         # @param [String] project_id
-        #   ID of the project that owns the trigger.
+        #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the `BuildTrigger` to delete.
+        #   Required. ID of the `BuildTrigger` to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -442,9 +442,9 @@ module Google
         # Returns information about a `BuildTrigger`.
         # This API is experimental.
         # @param [String] project_id
-        #   ID of the project that owns the trigger.
+        #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the `BuildTrigger` to get.
+        #   Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -476,7 +476,7 @@ module Google
         # Lists existing `BuildTrigger`s.
         # This API is experimental.
         # @param [String] project_id
-        #   ID of the project for which to list BuildTriggers.
+        #   Required. ID of the project for which to list BuildTriggers.
         # @param [Fixnum] page_size
         #   Number of results to return in the list.
         # @param [String] page_token
@@ -513,9 +513,9 @@ module Google
         # Updates a `BuildTrigger` by its project ID and trigger ID.
         # This API is experimental.
         # @param [String] project_id
-        #   ID of the project that owns the trigger.
+        #   Required. ID of the project that owns the trigger.
         # @param [String] trigger_id
-        #   ID of the `BuildTrigger` to update.
+        #   Required. ID of the `BuildTrigger` to update.
         # @param [Google::Apis::CloudbuildV1::BuildTrigger] build_trigger_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -549,9 +549,9 @@ module Google
         
         # Runs a `BuildTrigger` at a particular source revision.
         # @param [String] project_id
-        #   ID of the project.
+        #   Required. ID of the project.
         # @param [String] trigger_id
-        #   ID of the trigger.
+        #   Required. ID of the trigger.
         # @param [Google::Apis::CloudbuildV1::RepoSource] repo_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

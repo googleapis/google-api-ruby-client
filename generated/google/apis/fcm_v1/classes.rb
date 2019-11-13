@@ -932,6 +932,11 @@ module Google
       class WebpushFcmOptions
         include Google::Apis::Core::Hashable
       
+        # Label associated with the message's analytics data.
+        # Corresponds to the JSON property `analyticsLabel`
+        # @return [String]
+        attr_accessor :analytics_label
+      
         # The link to open when the user clicks on the notification.
         # For all URL values, HTTPS is required.
         # Corresponds to the JSON property `link`
@@ -944,6 +949,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @analytics_label = args[:analytics_label] if args.key?(:analytics_label)
           @link = args[:link] if args.key?(:link)
         end
       end

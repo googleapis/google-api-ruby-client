@@ -462,6 +462,7 @@ module Google
           property :dir, as: 'dir'
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
+          hash :substitutions, as: 'substitutions'
           property :tag_name, as: 'tagName'
         end
       end

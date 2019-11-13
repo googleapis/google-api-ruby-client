@@ -252,6 +252,7 @@ module Google
       class WebpushFcmOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :analytics_label, as: 'analyticsLabel'
           property :link, as: 'link'
         end
       end

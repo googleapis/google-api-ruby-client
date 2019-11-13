@@ -229,6 +229,11 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :event
       
+        # A list of timestamped events.
+        # Corresponds to the JSON property `events`
+        # @return [Array<Google::Apis::GenomicsV2alpha1::TimestampedEvent>]
+        attr_accessor :events
+      
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
         # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -252,6 +257,7 @@ module Google
         def update!(**args)
           @deadline_expired = args[:deadline_expired] if args.key?(:deadline_expired)
           @event = args[:event] if args.key?(:event)
+          @events = args[:events] if args.key?(:events)
           @result = args[:result] if args.key?(:result)
           @worker_status = args[:worker_status] if args.key?(:worker_status)
         end
@@ -1190,6 +1196,32 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # An event that occured in the operation assigned to the
+      # worker and the time of occurance.
+      class TimestampedEvent
+        include Google::Apis::Core::Hashable
+      
+        # The event data.
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,Object>]
+        attr_accessor :data
+      
+        # The time when the event happened.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
         end
       end
       
