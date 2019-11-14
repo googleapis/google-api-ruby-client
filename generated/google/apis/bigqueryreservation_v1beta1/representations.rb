@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BiReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CapacityCommitment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -106,6 +112,15 @@ module Google
           property :assignee, as: 'assignee'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
+        end
+      end
+      
+      class BiReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :size, :numeric_string => true, as: 'size'
+          property :update_time, as: 'updateTime'
         end
       end
       

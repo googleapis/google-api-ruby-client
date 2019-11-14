@@ -77,6 +77,37 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a BI reservation.
+        # @param [String] name
+        #   Name of the requested reservation, for example:
+        #   `projects/`project_id`/locations/`location_id`/bireservation`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryreservationV1beta1::BiReservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryreservationV1beta1::BiReservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_bi_reservation(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::BigqueryreservationV1beta1::BiReservation::Representation
+          command.response_class = Google::Apis::BigqueryreservationV1beta1::BiReservation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists information about the supported locations for this service.
         # @param [String] name
         #   The resource that owns the locations collection, if applicable.
@@ -170,6 +201,83 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['query'] = query unless query.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a BI reservation.
+        # Only fields specified in the field_mask are updated.
+        # Singleton BI reservation always exists with default size 0.
+        # In order to reserve BI capacity it needs to be updated to an amount
+        # greater than 0. In order to release BI capacity reservation size
+        # must be set to 0.
+        # @param [String] name
+        #   The resource name of the singleton BI reservation.
+        #   Reservation names have the form
+        #   `projects/`project_id`/locations/`location_id`/bireservation`.
+        # @param [Google::Apis::BigqueryreservationV1beta1::BiReservation] bi_reservation_object
+        # @param [String] update_mask
+        #   A list of fields to be updated in this request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryreservationV1beta1::BiReservation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryreservationV1beta1::BiReservation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_location_bi_reservation(name, bi_reservation_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::BigqueryreservationV1beta1::BiReservation::Representation
+          command.request_object = bi_reservation_object
+          command.response_representation = Google::Apis::BigqueryreservationV1beta1::BiReservation::Representation
+          command.response_class = Google::Apis::BigqueryreservationV1beta1::BiReservation
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new capacity commitment resource.
+        # @param [String] parent
+        #   Resource name of the parent reservation. E.g.,
+        #   projects/myproject/locations/US
+        # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_capacity_commitment(parent, capacity_commitment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/capacityCommitments', options)
+          command.request_representation = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
+          command.request_object = capacity_commitment_object
+          command.response_representation = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
+          command.response_class = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -282,8 +390,8 @@ module Google
         #   projects/myproject/locations/US
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
-        #   The reservation ID. This field must only contain alphanumeric characters or
-        #   dash.
+        #   The reservation ID. This field must only contain lower case alphanumeric
+        #   characters or dash.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

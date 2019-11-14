@@ -1207,8 +1207,6 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The Compute Engine accelerator configuration for these instances.
-        # Beta Feature: This feature is still under development. It may be changed
-        # before final release.
         # Corresponds to the JSON property `accelerators`
         # @return [Array<Google::Apis::DataprocV1beta2::AcceleratorConfig>]
         attr_accessor :accelerators
@@ -2261,7 +2259,7 @@ module Google
       # `
       # "bindings": [
       # `
-      # "role": "role/resourcemanager.organizationAdmin",
+      # "role": "roles/resourcemanager.organizationAdmin",
       # "members": [
       # "user:mike@example.com",
       # "group:admins@example.com",
@@ -2597,7 +2595,7 @@ module Google
         # `
         # "bindings": [
         # `
-        # "role": "role/resourcemanager.organizationAdmin",
+        # "role": "roles/resourcemanager.organizationAdmin",
         # "members": [
         # "user:mike@example.com",
         # "group:admins@example.com",

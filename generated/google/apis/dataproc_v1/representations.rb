@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SparkRJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SparkSqlJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -737,6 +743,7 @@ module Google
           property :machine_type_uri, as: 'machineTypeUri'
           property :managed_group_config, as: 'managedGroupConfig', class: Google::Apis::DataprocV1::ManagedGroupConfig, decorator: Google::Apis::DataprocV1::ManagedGroupConfig::Representation
       
+          property :min_cpu_platform, as: 'minCpuPlatform'
           property :num_instances, as: 'numInstances'
         end
       end
@@ -772,6 +779,8 @@ module Google
           property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1::JobScheduling, decorator: Google::Apis::DataprocV1::JobScheduling::Representation
       
           property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1::SparkJob, decorator: Google::Apis::DataprocV1::SparkJob::Representation
+      
+          property :spark_r_job, as: 'sparkRJob', class: Google::Apis::DataprocV1::SparkRJob, decorator: Google::Apis::DataprocV1::SparkRJob::Representation
       
           property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1::SparkSqlJob, decorator: Google::Apis::DataprocV1::SparkSqlJob::Representation
       
@@ -1061,6 +1070,19 @@ module Google
       
           property :main_class, as: 'mainClass'
           property :main_jar_file_uri, as: 'mainJarFileUri'
+          hash :properties, as: 'properties'
+        end
+      end
+      
+      class SparkRJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :archive_uris, as: 'archiveUris'
+          collection :args, as: 'args'
+          collection :file_uris, as: 'fileUris'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
+      
+          property :main_r_file_uri, as: 'mainRFileUri'
           hash :properties, as: 'properties'
         end
       end

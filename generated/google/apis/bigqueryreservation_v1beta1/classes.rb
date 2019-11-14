@@ -56,6 +56,39 @@ module Google
         end
       end
       
+      # Represents a BI Reservation.
+      class BiReservation
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the singleton BI reservation.
+        # Reservation names have the form
+        # `projects/`project_id`/locations/`location_id`/bireservation`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Size of a reservation, in bytes.
+        # Corresponds to the JSON property `size`
+        # @return [Fixnum]
+        attr_accessor :size
+      
+        # Output only. The last update timestamp of a reservation.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @size = args[:size] if args.key?(:size)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
       # (in the form of slots) with some minimum committed period of usage. Capacity
       # commitment is immutable and cannot be deleted until the end of the commitment

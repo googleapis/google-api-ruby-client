@@ -12,22 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/servicebroker_v1alpha1/service.rb'
-require 'google/apis/servicebroker_v1alpha1/classes.rb'
-require 'google/apis/servicebroker_v1alpha1/representations.rb'
+require 'google/apis/datacatalog_v1beta1/service.rb'
+require 'google/apis/datacatalog_v1beta1/classes.rb'
+require 'google/apis/datacatalog_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Service Broker API
+    # Google Cloud Data Catalog API
     #
-    # The Google Cloud Platform Service Broker API provides Google hosted
-    # implementation of the Open Service Broker API
-    # (https://www.openservicebrokerapi.org/).
+    # A fully managed and highly scalable data discovery and metadata management
+    # service.
     #
-    # @see https://cloud.google.com/kubernetes-engine/docs/concepts/add-on/service-broker
-    module ServicebrokerV1alpha1
-      VERSION = 'V1alpha1'
-      REVISION = '20191112'
+    # @see https://cloud.google.com/data-catalog/docs/
+    module DatacatalogV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20191104'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

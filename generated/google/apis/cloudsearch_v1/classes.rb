@@ -1402,101 +1402,6 @@ module Google
         end
       end
       
-      # Gmail Action restricts (i.e. read/replied/snoozed).
-      class GmailActionRestrict
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
-      class GmailAttachmentRestrict
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
-      class GmailFolderRestrict
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Gmail Intelligent restricts (i.e. smartlabels, important).
-      class GmailIntelligentRestrict
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Gmail Time restricts (i.e. received today, this week).
-      class GmailTimeRestrict
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
       # Used to provide a search operator for html properties. This is optional.
       # Search operators let users restrict the query to specific fields relevant
       # to the type of item being searched.
@@ -2895,7 +2800,7 @@ module Google
         attr_accessor :debug_options
       
         # Maximum number of items to return.
-        # <br />The maximum and the default value is 1000
+        # <br />The maximum value is 100 and the default value is 20.
         # Corresponds to the JSON property `limit`
         # @return [Fixnum]
         attr_accessor :limit
@@ -3712,31 +3617,6 @@ module Google
         # @return [Google::Apis::CloudsearchV1::DriveTimeSpanRestrict]
         attr_accessor :drive_time_span_restrict
       
-        # Gmail Action restricts (i.e. read/replied/snoozed).
-        # Corresponds to the JSON property `gmailActionRestrict`
-        # @return [Google::Apis::CloudsearchV1::GmailActionRestrict]
-        attr_accessor :gmail_action_restrict
-      
-        # Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).
-        # Corresponds to the JSON property `gmailAttachmentRestrict`
-        # @return [Google::Apis::CloudsearchV1::GmailAttachmentRestrict]
-        attr_accessor :gmail_attachment_restrict
-      
-        # Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).
-        # Corresponds to the JSON property `gmailFolderRestrict`
-        # @return [Google::Apis::CloudsearchV1::GmailFolderRestrict]
-        attr_accessor :gmail_folder_restrict
-      
-        # Gmail Intelligent restricts (i.e. smartlabels, important).
-        # Corresponds to the JSON property `gmailIntelligentRestrict`
-        # @return [Google::Apis::CloudsearchV1::GmailIntelligentRestrict]
-        attr_accessor :gmail_intelligent_restrict
-      
-        # Gmail Time restricts (i.e. received today, this week).
-        # Corresponds to the JSON property `gmailTimeRestrict`
-        # @return [Google::Apis::CloudsearchV1::GmailTimeRestrict]
-        attr_accessor :gmail_time_restrict
-      
         # The search restrict (e.g. "after:2017-09-11 before:2017-09-12").
         # Corresponds to the JSON property `searchOperator`
         # @return [String]
@@ -3752,11 +3632,6 @@ module Google
           @drive_location_restrict = args[:drive_location_restrict] if args.key?(:drive_location_restrict)
           @drive_mime_type_restrict = args[:drive_mime_type_restrict] if args.key?(:drive_mime_type_restrict)
           @drive_time_span_restrict = args[:drive_time_span_restrict] if args.key?(:drive_time_span_restrict)
-          @gmail_action_restrict = args[:gmail_action_restrict] if args.key?(:gmail_action_restrict)
-          @gmail_attachment_restrict = args[:gmail_attachment_restrict] if args.key?(:gmail_attachment_restrict)
-          @gmail_folder_restrict = args[:gmail_folder_restrict] if args.key?(:gmail_folder_restrict)
-          @gmail_intelligent_restrict = args[:gmail_intelligent_restrict] if args.key?(:gmail_intelligent_restrict)
-          @gmail_time_restrict = args[:gmail_time_restrict] if args.key?(:gmail_time_restrict)
           @search_operator = args[:search_operator] if args.key?(:search_operator)
         end
       end
@@ -4743,10 +4618,10 @@ module Google
       class SuggestRequest
         include Google::Apis::Core::Hashable
       
-        # The sources to use for suggestions. If not specified, all data sources
-        # from the current search application are used.
-        # Suggestions are based on Gmail titles. Suggestions from third party sources
-        # are not available.
+        # The sources to use for suggestions. If not specified, the data sources
+        # are taken from the current search application.
+        # NOTE: Suggestions are supported only for third party data sources and
+        # people (i.e. PredefinedSource.PERSON).
         # Corresponds to the JSON property `dataSourceRestrictions`
         # @return [Array<Google::Apis::CloudsearchV1::DataSourceRestriction>]
         attr_accessor :data_source_restrictions

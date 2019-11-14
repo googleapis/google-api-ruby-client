@@ -49,6 +49,7 @@ module Google
         end
         
         # Checks whether an item is accessible by specified principal.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Item name, format:
         #   datasources/`source_id`/items/`item_id`
@@ -88,6 +89,7 @@ module Google
         
         # Fetches the item whose viewUrl exactly matches that of the URL provided
         # in the request.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Source name, format:
         #   datasources/`source_id`
@@ -122,6 +124,7 @@ module Google
         end
         
         # List all unmapped identities for a specific item.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] parent
         #   The name of the item, in the following format:
         #   datasources/`source_id`/items/`ID`
@@ -164,6 +167,7 @@ module Google
         end
         
         # Lists names of items associated with an unmapped identity.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] parent
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id``
@@ -210,6 +214,7 @@ module Google
         end
         
         # Lists unmapped user identities for an identity source.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] parent
         #   The name of the identity source, in the following format:
         #   identitysources/`source_id`
@@ -255,6 +260,7 @@ module Google
         end
         
         # Deletes the schema of a data source.
+        # **Note:** This API requires an admin or service account to execute.
         # @param [String] name
         #   Name of the data source to delete Schema.  Format:
         #   datasources/`source_id`
@@ -290,6 +296,7 @@ module Google
         end
         
         # Gets the schema of a data source.
+        # **Note:** This API requires an admin or service account to execute.
         # @param [String] name
         #   Name of the data source to get Schema.  Format:
         #   datasources/`source_id`
@@ -324,7 +331,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the schema of a data source.
+        # Updates the schema of a data source. This method does not perform
+        # incremental updates to the schema. Instead, this method updates the schema
+        # by overwriting the entire schema.
+        # **Note:** This API requires an admin or service account to execute.
         # @param [String] name
         #   Name of the data source to update Schema.  Format:
         #   datasources/`source_id`
@@ -799,6 +809,7 @@ module Google
         # For additional information, see
         # [Create a content connector using the REST API](https://developers.google.com/
         # cloud-search/docs/guides/content-connector#rest).
+        # **Note:** This API requires a service account to execute.
         # @param [String] resource_name
         #   Name of the media that is being downloaded.  See
         #   ReadRequest.resource_name.
@@ -878,6 +889,7 @@ module Google
         # the most relevant results from a user query.  The results can come from
         # G Suite Apps, such as Gmail or Google Drive, or they can come from data
         # that you have indexed from a third party.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Google::Apis::CloudsearchV1::SearchRequest] search_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -908,6 +920,7 @@ module Google
         end
         
         # Provides suggestions for autocompleting the query.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Google::Apis::CloudsearchV1::SuggestRequest] suggest_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -938,6 +951,7 @@ module Google
         end
         
         # Returns list of sources that user can use for Search and Suggest APIs.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [String] page_token
         #   Number of sources to return in the response.
         # @param [Boolean] request_options_debug_options_enable_debugging
@@ -997,6 +1011,7 @@ module Google
         end
         
         # Creates a datasource.
+        # **Note:** This API requires an admin account to execute.
         # @param [Google::Apis::CloudsearchV1::DataSource] data_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1027,6 +1042,7 @@ module Google
         end
         
         # Deletes a datasource.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the datasource.
         #   Format: datasources/`source_id`.
@@ -1062,6 +1078,7 @@ module Google
         end
         
         # Gets a datasource.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the datasource resource.
         #   Format: datasources/`source_id`.
@@ -1097,6 +1114,7 @@ module Google
         end
         
         # Lists datasources.
+        # **Note:** This API requires an admin account to execute.
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field.
         #   Otherwise, ignore this field.
@@ -1136,6 +1154,7 @@ module Google
         end
         
         # Updates a datasource.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the datasource resource.
         #   Format: datasources/`source_id`.
@@ -1171,6 +1190,7 @@ module Google
         end
         
         # Creates a search application.
+        # **Note:** This API requires an admin account to execute.
         # @param [Google::Apis::CloudsearchV1::SearchApplication] search_application_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1201,6 +1221,7 @@ module Google
         end
         
         # Deletes a search application.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   The name of the search application to be deleted.
         #   <br />Format: applications/`application_id`.
@@ -1236,6 +1257,7 @@ module Google
         end
         
         # Gets the specified search application.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the search application.
         #   <br />Format: applications/`application_id`.
@@ -1271,6 +1293,7 @@ module Google
         end
         
         # Lists all search applications.
+        # **Note:** This API requires an admin account to execute.
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field.
         #   Otherwise, ignore this field.
@@ -1310,6 +1333,7 @@ module Google
         
         # Resets a search application to default settings. This will return an empty
         # response.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   The name of the search application to be reset.
         #   <br />Format: applications/`application_id`.
@@ -1344,6 +1368,7 @@ module Google
         end
         
         # Updates a search application.
+        # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the Search Application.
         #   <br />Format: searchapplications/`application_id`.
@@ -1380,6 +1405,7 @@ module Google
         # Gets indexed item statistics aggreggated across all data sources. This
         # API only returns statistics for previous dates; it doesn't return
         # statistics for the current day.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1424,7 +1450,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the query statistics for customer
+        # Get the query statistics for customer.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1469,7 +1496,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the # of search sessions for the customer
+        # Get the # of search sessions, % of successful sessions with a click query
+        # statistics for customer.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1514,7 +1543,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the users statistics for customer
+        # Get the users statistics for customer.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [Fixnum] from_date_day
         #   Day of month. Must be from 1 to 31 and valid for the year and month.
         # @param [Fixnum] from_date_month
@@ -1560,6 +1590,7 @@ module Google
         end
         
         # Gets indexed item statistics for a single data source.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [String] name
         #   The resource id of the data source to retrieve statistics for,
         #   in the following format: "datasources/`source_id`"
@@ -1608,7 +1639,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the query statistics for search application
+        # Get the query statistics for search application.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [String] name
         #   The resource id of the search application query stats, in the following
         #   format: searchapplications/`application_id`
@@ -1657,7 +1689,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the # of search sessions for the search application
+        # Get the # of search sessions, % of successful sessions with a click query
+        # statistics for search application.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [String] name
         #   The resource id of the search application session stats, in the following
         #   format: searchapplications/`application_id`
@@ -1706,7 +1740,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get the users statistics for search application
+        # Get the users statistics for search application.
+        # **Note:** This API requires a standard end user account to execute.
         # @param [String] name
         #   The resource id of the search application session stats, in the following
         #   format: searchapplications/`application_id`

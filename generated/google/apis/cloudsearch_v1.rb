@@ -26,33 +26,33 @@ module Google
     # @see https://developers.google.com/cloud-search/docs/guides/
     module CloudsearchV1
       VERSION = 'V1'
-      REVISION = '20191009'
+      REVISION = '20191112'
 
       # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH = 'https://www.googleapis.com/auth/cloud_search'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.debug
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_DEBUG = 'https://www.googleapis.com/auth/cloud_search.debug'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.indexing
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_INDEXING = 'https://www.googleapis.com/auth/cloud_search.indexing'
 
       # Search your organization's data in the Cloud Search index
       AUTH_CLOUD_SEARCH_QUERY = 'https://www.googleapis.com/auth/cloud_search.query'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.settings
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_SETTINGS = 'https://www.googleapis.com/auth/cloud_search.settings'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.settings.indexing
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_SETTINGS_INDEXING = 'https://www.googleapis.com/auth/cloud_search.settings.indexing'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.settings.query
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_SETTINGS_QUERY = 'https://www.googleapis.com/auth/cloud_search.settings.query'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.stats
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_STATS = 'https://www.googleapis.com/auth/cloud_search.stats'
 
-      # New Service: https://www.googleapis.com/auth/cloud_search.stats.indexing
+      # Index and serve your organization's data with Cloud Search
       AUTH_CLOUD_SEARCH_STATS_INDEXING = 'https://www.googleapis.com/auth/cloud_search.stats.indexing'
     end
   end
