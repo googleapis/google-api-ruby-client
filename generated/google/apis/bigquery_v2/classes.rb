@@ -3582,9 +3582,10 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # Routines in the requested dataset. Only the following fields are populated:
+        # Routines in the requested dataset. Unless read_mask is set in the request,
+        # only the following fields are populated:
         # etag, project_id, dataset_id, routine_id, routine_type, creation_time,
-        # last_modified_time, language.
+        # last_modified_time, and language.
         # Corresponds to the JSON property `routines`
         # @return [Array<Google::Apis::BigqueryV2::Routine>]
         attr_accessor :routines
@@ -3626,6 +3627,13 @@ module Google
       class MaterializedViewDefinition
         include Google::Apis::Core::Hashable
       
+        # [Optional] [TrustedTester] Enable automatic refresh of the materialized view
+        # when the base table is updated. The default value is "true".
+        # Corresponds to the JSON property `enableRefresh`
+        # @return [Boolean]
+        attr_accessor :enable_refresh
+        alias_method :enable_refresh?, :enable_refresh
+      
         # [Output-only] [TrustedTester] The time when this materialized view was last
         # modified, in milliseconds since the epoch.
         # Corresponds to the JSON property `lastRefreshTime`
@@ -3637,14 +3645,22 @@ module Google
         # @return [String]
         attr_accessor :query
       
+        # [Optional] [TrustedTester] The maximum frequency at which this materialized
+        # view will be refreshed. The default value is "1800000" (30 minutes).
+        # Corresponds to the JSON property `refreshIntervalMs`
+        # @return [Fixnum]
+        attr_accessor :refresh_interval_ms
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @enable_refresh = args[:enable_refresh] if args.key?(:enable_refresh)
           @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
           @query = args[:query] if args.key?(:query)
+          @refresh_interval_ms = args[:refresh_interval_ms] if args.key?(:refresh_interval_ms)
         end
       end
       
@@ -4976,8 +4992,8 @@ module Google
         # @return [Google::Apis::BigqueryV2::RangePartitioning]
         attr_accessor :range_partitioning
       
-        # [Beta] [Optional] If set to true, queries over this table require a partition
-        # filter that can be used for partition elimination to be specified.
+        # [Optional] If set to true, queries over this table require a partition filter
+        # that can be used for partition elimination to be specified.
         # Corresponds to the JSON property `requirePartitionFilter`
         # @return [Boolean]
         attr_accessor :require_partition_filter
@@ -5289,6 +5305,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `policyTags`
+        # @return [Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags]
+        attr_accessor :policy_tags
+      
         # [Required] The field data type. Possible values include STRING, BYTES, INTEGER,
         # INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same
         # as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates
@@ -5308,6 +5329,7 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @mode = args[:mode] if args.key?(:mode)
           @name = args[:name] if args.key?(:name)
+          @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
           @type = args[:type] if args.key?(:type)
         end
         
@@ -5318,6 +5340,26 @@ module Google
         
           # A list of category resource names. For example, "projects/1/taxonomies/2/
           # categories/3". At most 5 categories are allowed.
+          # Corresponds to the JSON property `names`
+          # @return [Array<String>]
+          attr_accessor :names
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @names = args[:names] if args.key?(:names)
+          end
+        end
+        
+        # 
+        class PolicyTags
+          include Google::Apis::Core::Hashable
+        
+          # A list of category resource names. For example, "projects/1/location/eu/
+          # taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
           # Corresponds to the JSON property `names`
           # @return [Array<String>]
           attr_accessor :names

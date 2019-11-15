@@ -201,6 +201,40 @@ module Google
         end
       end
       
+      # App Engine service. Learn more at https://cloud.google.com/appengine.
+      class AppEngine
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the App Engine module underlying this service. Corresponds to the
+        # module_id resource label in the gae_app monitored resource: https://cloud.
+        # google.com/monitoring/api/resources#tag_gae_app
+        # Corresponds to the JSON property `moduleId`
+        # @return [String]
+        attr_accessor :module_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @module_id = args[:module_id] if args.key?(:module_id)
+        end
+      end
+      
+      # Future parameters for the availability SLI.
+      class AvailabilityCriteria
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # The authentication parameters to provide to the specified resource or URL that
       # requires a username and password. Currently, only Basic HTTP authentication (
       # https://tools.ietf.org/html/rfc7617) is supported in Uptime checks.
@@ -225,6 +259,63 @@ module Google
         def update!(**args)
           @password = args[:password] if args.key?(:password)
           @username = args[:username] if args.key?(:username)
+        end
+      end
+      
+      # An SLI measuring performance on a well-known service type. Performance will be
+      # computed on the basis of pre-defined metrics. The type of the service_resource
+      # determines the metrics to use and the service_resource.labels and
+      # metric_labels are used to construct a monitoring filter to filter that metric
+      # down to just the data relevant to this service.
+      class BasicSli
+        include Google::Apis::Core::Hashable
+      
+        # Future parameters for the availability SLI.
+        # Corresponds to the JSON property `availability`
+        # @return [Google::Apis::MonitoringV3::AvailabilityCriteria]
+        attr_accessor :availability
+      
+        # Parameters for a latency threshold SLI.
+        # Corresponds to the JSON property `latency`
+        # @return [Google::Apis::MonitoringV3::LatencyCriteria]
+        attr_accessor :latency
+      
+        # OPTIONAL: The set of locations to which this SLI is relevant. Telemetry from
+        # other locations will not be used to calculate performance for this SLI. If
+        # omitted, this SLI applies to all locations in which the Service has activity.
+        # For service types that don't support breaking down by location, setting this
+        # field will result in an error.
+        # Corresponds to the JSON property `location`
+        # @return [Array<String>]
+        attr_accessor :location
+      
+        # OPTIONAL: The set of RPCs to which this SLI is relevant. Telemetry from other
+        # methods will not be used to calculate performance for this SLI. If omitted,
+        # this SLI applies to all the Service's methods. For service types that don't
+        # support breaking down by method, setting this field will result in an error.
+        # Corresponds to the JSON property `method`
+        # @return [Array<String>]
+        attr_accessor :method_prop
+      
+        # OPTIONAL: The set of API versions to which this SLI is relevant. Telemetry
+        # from other API versions will not be used to calculate performance for this SLI.
+        # If omitted, this SLI applies to all API versions. For service types that don'
+        # t support breaking down by version, setting this field will result in an error.
+        # Corresponds to the JSON property `version`
+        # @return [Array<String>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @availability = args[:availability] if args.key?(:availability)
+          @latency = args[:latency] if args.key?(:latency)
+          @location = args[:location] if args.key?(:location)
+          @method_prop = args[:method_prop] if args.key?(:method_prop)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -283,6 +374,68 @@ module Google
           @explicit_buckets = args[:explicit_buckets] if args.key?(:explicit_buckets)
           @exponential_buckets = args[:exponential_buckets] if args.key?(:exponential_buckets)
           @linear_buckets = args[:linear_buckets] if args.key?(:linear_buckets)
+        end
+      end
+      
+      # Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+      class CloudEndpoints
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Cloud Endpoints service underlying this service. Corresponds
+        # to the service resource label in the api monitored resource: https://cloud.
+        # google.com/monitoring/api/resources#tag_api
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Istio service. Learn more at http://istio.io.
+      class ClusterIstio
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Kubernetes cluster in which this Istio service is defined.
+        # Corresponds to the cluster_name resource label in k8s_cluster resources.
+        # Corresponds to the JSON property `clusterName`
+        # @return [String]
+        attr_accessor :cluster_name
+      
+        # The location of the Kubernetes cluster in which this Istio service is defined.
+        # Corresponds to the location resource label in k8s_cluster resources.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # The name of the Istio service underlying this service. Corresponds to the
+        # destination_service_name metric label in Istio metrics.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # The namespace of the Istio service underlying this service. Corresponds to the
+        # destination_service_namespace metric label in Istio metrics.
+        # Corresponds to the JSON property `serviceNamespace`
+        # @return [String]
+        attr_accessor :service_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_name = args[:cluster_name] if args.key?(:cluster_name)
+          @location = args[:location] if args.key?(:location)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @service_namespace = args[:service_namespace] if args.key?(:service_namespace)
         end
       end
       
@@ -665,6 +818,20 @@ module Google
         end
       end
       
+      # Custom view of service telemetry. Currently a place-holder pending final
+      # design.
+      class Custom
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Distribution contains summary statistics for a population of values. It
       # optionally contains a histogram representing the distribution of those values
       # across a set of buckets.The summary statistics are the count, mean, sum of the
@@ -753,6 +920,39 @@ module Google
           @mean = args[:mean] if args.key?(:mean)
           @range = args[:range] if args.key?(:range)
           @sum_of_squared_deviation = args[:sum_of_squared_deviation] if args.key?(:sum_of_squared_deviation)
+        end
+      end
+      
+      # A DistributionCut defines a TimeSeries and thresholds used for measuring good
+      # service and total service. The TimeSeries must have ValueType =
+      # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
+      # good_service will be the count of values x in the Distribution such that range.
+      # min <= x < range.max.
+      class DistributionCut
+        include Google::Apis::Core::Hashable
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying a TimeSeries aggregating values. Must have ValueType =
+        # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
+        # Corresponds to the JSON property `distributionFilter`
+        # @return [String]
+        attr_accessor :distribution_filter
+      
+        # Range of numerical values, inclusive of min and exclusive of max. If the open
+        # range "< range.max" is desired, set range.min = -infinity. If the open range ">
+        # = range.min" is desired, set range.max = infinity.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
+        attr_accessor :range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distribution_filter = args[:distribution_filter] if args.key?(:distribution_filter)
+          @range = args[:range] if args.key?(:range)
         end
       end
       
@@ -1097,6 +1297,33 @@ module Google
         end
       end
       
+      # Range of numerical values, inclusive of min and exclusive of max. If the open
+      # range "< range.max" is desired, set range.min = -infinity. If the open range ">
+      # = range.min" is desired, set range.max = infinity.
+      class GoogleMonitoringV3Range
+        include Google::Apis::Core::Hashable
+      
+        # Range maximum.
+        # Corresponds to the JSON property `max`
+        # @return [Float]
+        attr_accessor :max
+      
+        # Range minimum.
+        # Corresponds to the JSON property `min`
+        # @return [Float]
+        attr_accessor :min
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max = args[:max] if args.key?(:max)
+          @min = args[:min] if args.key?(:min)
+        end
+      end
+      
       # The description of a dynamic collection of monitored resources. Each group has
       # a filter that is matched against monitored resources and their associated
       # metadata. If a group's filter matches an available monitored resource, then
@@ -1337,6 +1564,26 @@ module Google
         end
       end
       
+      # Parameters for a latency threshold SLI.
+      class LatencyCriteria
+        include Google::Apis::Core::Hashable
+      
+        # Good service is defined to be the count of requests made to this service that
+        # return in no more than threshold.
+        # Corresponds to the JSON property `threshold`
+        # @return [String]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # Specifies a linear sequence of buckets that all have the same width (except
       # overflow and underflow). Each bucket represents a constant absolute
       # uncertainty on the specific value in the bucket.There are num_finite_buckets +
@@ -1568,6 +1815,60 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @notification_channels = args[:notification_channels] if args.key?(:notification_channels)
+        end
+      end
+      
+      # The ListServiceLevelObjectives response.
+      class ListServiceLevelObjectivesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The ServiceLevelObjectives matching the specified filter.
+        # Corresponds to the JSON property `serviceLevelObjectives`
+        # @return [Array<Google::Apis::MonitoringV3::ServiceLevelObjective>]
+        attr_accessor :service_level_objectives
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @service_level_objectives = args[:service_level_objectives] if args.key?(:service_level_objectives)
+        end
+      end
+      
+      # The ListServices response.
+      class ListServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as pageToken in
+        # the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The Services matching the specified filter.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::MonitoringV3::Service>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @services = args[:services] if args.key?(:services)
         end
       end
       
@@ -1933,6 +2234,36 @@ module Google
           @ingest_delay = args[:ingest_delay] if args.key?(:ingest_delay)
           @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @sample_period = args[:sample_period] if args.key?(:sample_period)
+        end
+      end
+      
+      # A MetricRange is used when each window is good when the value x of a single
+      # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+      # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+      class MetricRange
+        include Google::Apis::Core::Hashable
+      
+        # Range of numerical values, inclusive of min and exclusive of max. If the open
+        # range "< range.max" is desired, set range.min = -infinity. If the open range ">
+        # = range.min" is desired, set range.max = infinity.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::MonitoringV3::GoogleMonitoringV3Range]
+        attr_accessor :range
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying the TimeSeries to use for evaluating window quality.
+        # Corresponds to the JSON property `timeSeries`
+        # @return [String]
+        attr_accessor :time_series
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @range = args[:range] if args.key?(:range)
+          @time_series = args[:time_series] if args.key?(:time_series)
         end
       end
       
@@ -2389,6 +2720,43 @@ module Google
         end
       end
       
+      # A PerformanceThreshold is used when each window is good when that window has a
+      # sufficiently high performance.
+      class PerformanceThreshold
+        include Google::Apis::Core::Hashable
+      
+        # An SLI measuring performance on a well-known service type. Performance will be
+        # computed on the basis of pre-defined metrics. The type of the service_resource
+        # determines the metrics to use and the service_resource.labels and
+        # metric_labels are used to construct a monitoring filter to filter that metric
+        # down to just the data relevant to this service.
+        # Corresponds to the JSON property `basicSliPerformance`
+        # @return [Google::Apis::MonitoringV3::BasicSli]
+        attr_accessor :basic_sli_performance
+      
+        # Service Level Indicators for which atomic units of service are counted
+        # directly.
+        # Corresponds to the JSON property `performance`
+        # @return [Google::Apis::MonitoringV3::RequestBasedSli]
+        attr_accessor :performance
+      
+        # If window performance >= threshold, the window is counted as good.
+        # Corresponds to the JSON property `threshold`
+        # @return [Float]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_sli_performance = args[:basic_sli_performance] if args.key?(:basic_sli_performance)
+          @performance = args[:performance] if args.key?(:performance)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # A single data point in a time series.
       class Point
         include Google::Apis::Core::Hashable
@@ -2454,6 +2822,41 @@ module Google
         end
       end
       
+      # Service Level Indicators for which atomic units of service are counted
+      # directly.
+      class RequestBasedSli
+        include Google::Apis::Core::Hashable
+      
+        # A DistributionCut defines a TimeSeries and thresholds used for measuring good
+        # service and total service. The TimeSeries must have ValueType =
+        # DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed
+        # good_service will be the count of values x in the Distribution such that range.
+        # min <= x < range.max.
+        # Corresponds to the JSON property `distributionCut`
+        # @return [Google::Apis::MonitoringV3::DistributionCut]
+        attr_accessor :distribution_cut
+      
+        # A TimeSeriesRatio specifies two TimeSeries to use for computing the
+        # good_service / total_service ratio. The specified TimeSeries must have
+        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+        # DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two
+        # of good, bad, and total, and the relationship good_service +
+        # bad_service = total_service will be assumed.
+        # Corresponds to the JSON property `goodTotalRatio`
+        # @return [Google::Apis::MonitoringV3::TimeSeriesRatio]
+        attr_accessor :good_total_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distribution_cut = args[:distribution_cut] if args.key?(:distribution_cut)
+          @good_total_ratio = args[:good_total_ratio] if args.key?(:good_total_ratio)
+        end
+      end
+      
       # The resource submessage for group checks. It can be used instead of a
       # monitored resource, when multiple resources are being monitored.
       class ResourceGroup
@@ -2491,6 +2894,187 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A Service is a discrete, autonomous, and network-accessible unit, designed to
+      # solve an individual concern (Wikipedia (https://en.wikipedia.org/wiki/Service-
+      # orientation)). In Stackdriver Monitoring, a Service acts as the root resource
+      # under which operational aspects of the service are accessible.
+      class Service
+        include Google::Apis::Core::Hashable
+      
+        # App Engine service. Learn more at https://cloud.google.com/appengine.
+        # Corresponds to the JSON property `appEngine`
+        # @return [Google::Apis::MonitoringV3::AppEngine]
+        attr_accessor :app_engine
+      
+        # Cloud Endpoints service. Learn more at https://cloud.google.com/endpoints.
+        # Corresponds to the JSON property `cloudEndpoints`
+        # @return [Google::Apis::MonitoringV3::CloudEndpoints]
+        attr_accessor :cloud_endpoints
+      
+        # Istio service. Learn more at http://istio.io.
+        # Corresponds to the JSON property `clusterIstio`
+        # @return [Google::Apis::MonitoringV3::ClusterIstio]
+        attr_accessor :cluster_istio
+      
+        # Custom view of service telemetry. Currently a place-holder pending final
+        # design.
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::MonitoringV3::Custom]
+        attr_accessor :custom
+      
+        # Name used for UI elements listing this Service.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name for this Service. Of the form projects/`project_id`/services/`
+        # service_id`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Configuration for how to query telemetry on a Service.
+        # Corresponds to the JSON property `telemetry`
+        # @return [Google::Apis::MonitoringV3::Telemetry]
+        attr_accessor :telemetry
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @app_engine = args[:app_engine] if args.key?(:app_engine)
+          @cloud_endpoints = args[:cloud_endpoints] if args.key?(:cloud_endpoints)
+          @cluster_istio = args[:cluster_istio] if args.key?(:cluster_istio)
+          @custom = args[:custom] if args.key?(:custom)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @telemetry = args[:telemetry] if args.key?(:telemetry)
+        end
+      end
+      
+      # A Service-Level Indicator (SLI) describes the "performance" of a service. For
+      # some services, the SLI is well-defined. In such cases, the SLI can be
+      # described easily by referencing the well-known SLI and providing the needed
+      # parameters. Alternatively, a "custom" SLI can be defined with a query to the
+      # underlying metric store. An SLI is defined to be good_service /
+      # total_service over any queried time interval. The value of performance always
+      # falls into the range 0 <= performance <= 1. A custom SLI describes how to
+      # compute this ratio, whether this is by dividing values from a pair of time
+      # series, cutting a Distribution into good and bad counts, or counting time
+      # windows in which the service complies with a criterion. For separation of
+      # concerns, a single Service-Level Indicator measures performance for only one
+      # aspect of service quality, such as fraction of successful queries or fast-
+      # enough queries.
+      class ServiceLevelIndicator
+        include Google::Apis::Core::Hashable
+      
+        # An SLI measuring performance on a well-known service type. Performance will be
+        # computed on the basis of pre-defined metrics. The type of the service_resource
+        # determines the metrics to use and the service_resource.labels and
+        # metric_labels are used to construct a monitoring filter to filter that metric
+        # down to just the data relevant to this service.
+        # Corresponds to the JSON property `basicSli`
+        # @return [Google::Apis::MonitoringV3::BasicSli]
+        attr_accessor :basic_sli
+      
+        # Service Level Indicators for which atomic units of service are counted
+        # directly.
+        # Corresponds to the JSON property `requestBased`
+        # @return [Google::Apis::MonitoringV3::RequestBasedSli]
+        attr_accessor :request_based
+      
+        # A WindowsBasedSli defines good_service as the count of time windows for which
+        # the provided service was of good quality. Criteria for determining if service
+        # was good are embedded in the window_criterion.
+        # Corresponds to the JSON property `windowsBased`
+        # @return [Google::Apis::MonitoringV3::WindowsBasedSli]
+        attr_accessor :windows_based
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @basic_sli = args[:basic_sli] if args.key?(:basic_sli)
+          @request_based = args[:request_based] if args.key?(:request_based)
+          @windows_based = args[:windows_based] if args.key?(:windows_based)
+        end
+      end
+      
+      # A Service-Level Objective (SLO) describes a level of desired good service. It
+      # consists of a service-level indicator (SLI), a performance goal, and a period
+      # over which the objective is to be evaluated against that goal. The SLO can use
+      # SLIs defined in a number of different manners. Typical SLOs might include "99%
+      # of requests in each rolling week have latency below 200 milliseconds" or "99.5%
+      # of requests in each calendar month return successfully."
+      class ServiceLevelObjective
+        include Google::Apis::Core::Hashable
+      
+        # A calendar period, semantically "since the start of the current <
+        # calendar_period>". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are
+        # supported.
+        # Corresponds to the JSON property `calendarPeriod`
+        # @return [String]
+        attr_accessor :calendar_period
+      
+        # Name used for UI elements listing this SLO.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The fraction of service that must be good in order for this objective to be
+        # met. 0 < goal <= 1.
+        # Corresponds to the JSON property `goal`
+        # @return [Float]
+        attr_accessor :goal
+      
+        # Resource name for this ServiceLevelObjective. Of the form projects/`project_id`
+        # /services/`service_id`/serviceLevelObjectives/`slo_name`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A rolling time period, semantically "in the past <rolling_period>". Must be an
+        # integer multiple of 1 day no larger than 30 days.
+        # Corresponds to the JSON property `rollingPeriod`
+        # @return [String]
+        attr_accessor :rolling_period
+      
+        # A Service-Level Indicator (SLI) describes the "performance" of a service. For
+        # some services, the SLI is well-defined. In such cases, the SLI can be
+        # described easily by referencing the well-known SLI and providing the needed
+        # parameters. Alternatively, a "custom" SLI can be defined with a query to the
+        # underlying metric store. An SLI is defined to be good_service /
+        # total_service over any queried time interval. The value of performance always
+        # falls into the range 0 <= performance <= 1. A custom SLI describes how to
+        # compute this ratio, whether this is by dividing values from a pair of time
+        # series, cutting a Distribution into good and bad counts, or counting time
+        # windows in which the service complies with a criterion. For separation of
+        # concerns, a single Service-Level Indicator measures performance for only one
+        # aspect of service quality, such as fraction of successful queries or fast-
+        # enough queries.
+        # Corresponds to the JSON property `serviceLevelIndicator`
+        # @return [Google::Apis::MonitoringV3::ServiceLevelIndicator]
+        attr_accessor :service_level_indicator
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @calendar_period = args[:calendar_period] if args.key?(:calendar_period)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @goal = args[:goal] if args.key?(:goal)
+          @name = args[:name] if args.key?(:name)
+          @rolling_period = args[:rolling_period] if args.key?(:rolling_period)
+          @service_level_indicator = args[:service_level_indicator] if args.key?(:service_level_indicator)
         end
       end
       
@@ -2598,6 +3182,26 @@ module Google
         # Update properties of this object
         def update!(**args)
           @port = args[:port] if args.key?(:port)
+        end
+      end
+      
+      # Configuration for how to query telemetry on a Service.
+      class Telemetry
+        include Google::Apis::Core::Hashable
+      
+        # The full name of the resource that defines this service. Formatted as
+        # described in https://cloud.google.com/apis/design/resource_names.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
       
@@ -2722,6 +3326,52 @@ module Google
           @points = args[:points] if args.key?(:points)
           @resource = args[:resource] if args.key?(:resource)
           @value_type = args[:value_type] if args.key?(:value_type)
+        end
+      end
+      
+      # A TimeSeriesRatio specifies two TimeSeries to use for computing the
+      # good_service / total_service ratio. The specified TimeSeries must have
+      # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+      # DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two
+      # of good, bad, and total, and the relationship good_service +
+      # bad_service = total_service will be assumed.
+      class TimeSeriesRatio
+        include Google::Apis::Core::Hashable
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying a TimeSeries quantifying bad service, either demanded service that
+        # was not provided or demanded service that was of inadequate quality. Must have
+        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or
+        # MetricKind = CUMULATIVE.
+        # Corresponds to the JSON property `badServiceFilter`
+        # @return [String]
+        attr_accessor :bad_service_filter
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying a TimeSeries quantifying good service provided. Must have ValueType
+        # = DOUBLE or ValueType = INT64 and must have MetricKind =
+        # DELTA or MetricKind = CUMULATIVE.
+        # Corresponds to the JSON property `goodServiceFilter`
+        # @return [String]
+        attr_accessor :good_service_filter
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying a TimeSeries quantifying total demanded service. Must have
+        # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
+        # DELTA or MetricKind = CUMULATIVE.
+        # Corresponds to the JSON property `totalServiceFilter`
+        # @return [String]
+        attr_accessor :total_service_filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bad_service_filter = args[:bad_service_filter] if args.key?(:bad_service_filter)
+          @good_service_filter = args[:good_service_filter] if args.key?(:good_service_filter)
+          @total_service_filter = args[:total_service_filter] if args.key?(:total_service_filter)
         end
       end
       
@@ -3037,6 +3687,59 @@ module Google
         # Update properties of this object
         def update!(**args)
           @code = args[:code] if args.key?(:code)
+        end
+      end
+      
+      # A WindowsBasedSli defines good_service as the count of time windows for which
+      # the provided service was of good quality. Criteria for determining if service
+      # was good are embedded in the window_criterion.
+      class WindowsBasedSli
+        include Google::Apis::Core::Hashable
+      
+        # A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters)
+        # specifying a TimeSeries with ValueType = BOOL. The window is good if any true
+        # values appear in the window.
+        # Corresponds to the JSON property `goodBadMetricFilter`
+        # @return [String]
+        attr_accessor :good_bad_metric_filter
+      
+        # A PerformanceThreshold is used when each window is good when that window has a
+        # sufficiently high performance.
+        # Corresponds to the JSON property `goodTotalRatioThreshold`
+        # @return [Google::Apis::MonitoringV3::PerformanceThreshold]
+        attr_accessor :good_total_ratio_threshold
+      
+        # A MetricRange is used when each window is good when the value x of a single
+        # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+        # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+        # Corresponds to the JSON property `metricMeanInRange`
+        # @return [Google::Apis::MonitoringV3::MetricRange]
+        attr_accessor :metric_mean_in_range
+      
+        # A MetricRange is used when each window is good when the value x of a single
+        # TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must
+        # have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
+        # Corresponds to the JSON property `metricSumInRange`
+        # @return [Google::Apis::MonitoringV3::MetricRange]
+        attr_accessor :metric_sum_in_range
+      
+        # Duration over which window quality is evaluated. Must be an integer fraction
+        # of a day and at least 60s.
+        # Corresponds to the JSON property `windowPeriod`
+        # @return [String]
+        attr_accessor :window_period
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @good_bad_metric_filter = args[:good_bad_metric_filter] if args.key?(:good_bad_metric_filter)
+          @good_total_ratio_threshold = args[:good_total_ratio_threshold] if args.key?(:good_total_ratio_threshold)
+          @metric_mean_in_range = args[:metric_mean_in_range] if args.key?(:metric_mean_in_range)
+          @metric_sum_in_range = args[:metric_sum_in_range] if args.key?(:metric_sum_in_range)
+          @window_period = args[:window_period] if args.key?(:window_period)
         end
       end
     end

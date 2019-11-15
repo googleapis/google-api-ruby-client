@@ -34,13 +34,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AppEngine
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailabilityCriteria
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BasicAuthentication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BasicSli
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BucketOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudEndpoints
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ClusterIstio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,7 +136,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Custom
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Distribution
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DistributionCut
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -172,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleMonitoringV3Range
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Group
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +239,12 @@ module Google
       end
       
       class LabelDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LatencyCriteria
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -244,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListServiceLevelObjectivesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTimeSeriesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -281,6 +347,12 @@ module Google
       end
       
       class MetricDescriptorMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MetricRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerformanceThreshold
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Point
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -346,6 +424,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RequestBasedSli
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +437,24 @@ module Google
       end
       
       class SendNotificationChannelVerificationCodeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLevelIndicator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceLevelObjective
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -382,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Telemetry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeInterval
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -389,6 +497,12 @@ module Google
       end
       
       class TimeSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeSeriesRatio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WindowsBasedSli
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Aggregation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -462,11 +582,37 @@ module Google
         end
       end
       
+      class AppEngine
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :module_id, as: 'moduleId'
+        end
+      end
+      
+      class AvailabilityCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class BasicAuthentication
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :password, as: 'password'
           property :username, as: 'username'
+        end
+      end
+      
+      class BasicSli
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability', class: Google::Apis::MonitoringV3::AvailabilityCriteria, decorator: Google::Apis::MonitoringV3::AvailabilityCriteria::Representation
+      
+          property :latency, as: 'latency', class: Google::Apis::MonitoringV3::LatencyCriteria, decorator: Google::Apis::MonitoringV3::LatencyCriteria::Representation
+      
+          collection :location, as: 'location'
+          collection :method_prop, as: 'method'
+          collection :version, as: 'version'
         end
       end
       
@@ -479,6 +625,23 @@ module Google
       
           property :linear_buckets, as: 'linearBuckets', class: Google::Apis::MonitoringV3::Linear, decorator: Google::Apis::MonitoringV3::Linear::Representation
       
+        end
+      end
+      
+      class CloudEndpoints
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+        end
+      end
+      
+      class ClusterIstio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_name, as: 'clusterName'
+          property :location, as: 'location'
+          property :service_name, as: 'serviceName'
+          property :service_namespace, as: 'serviceNamespace'
         end
       end
       
@@ -587,6 +750,12 @@ module Google
         end
       end
       
+      class Custom
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Distribution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -600,6 +769,15 @@ module Google
           property :range, as: 'range', class: Google::Apis::MonitoringV3::Range, decorator: Google::Apis::MonitoringV3::Range::Representation
       
           property :sum_of_squared_deviation, as: 'sumOfSquaredDeviation'
+        end
+      end
+      
+      class DistributionCut
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distribution_filter, as: 'distributionFilter'
+          property :range, as: 'range', class: Google::Apis::MonitoringV3::GoogleMonitoringV3Range, decorator: Google::Apis::MonitoringV3::GoogleMonitoringV3Range::Representation
+      
         end
       end
       
@@ -690,6 +868,14 @@ module Google
         end
       end
       
+      class GoogleMonitoringV3Range
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max, as: 'max'
+          property :min, as: 'min'
+        end
+      end
+      
       class Group
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -733,6 +919,13 @@ module Google
           property :description, as: 'description'
           property :key, as: 'key'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class LatencyCriteria
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :threshold, as: 'threshold'
         end
       end
       
@@ -805,6 +998,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :notification_channels, as: 'notificationChannels', class: Google::Apis::MonitoringV3::NotificationChannel, decorator: Google::Apis::MonitoringV3::NotificationChannel::Representation
+      
+        end
+      end
+      
+      class ListServiceLevelObjectivesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :service_level_objectives, as: 'serviceLevelObjectives', class: Google::Apis::MonitoringV3::ServiceLevelObjective, decorator: Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+      
+        end
+      end
+      
+      class ListServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :services, as: 'services', class: Google::Apis::MonitoringV3::Service, decorator: Google::Apis::MonitoringV3::Service::Representation
       
         end
       end
@@ -884,6 +1095,15 @@ module Google
           property :ingest_delay, as: 'ingestDelay'
           property :launch_stage, as: 'launchStage'
           property :sample_period, as: 'samplePeriod'
+        end
+      end
+      
+      class MetricRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :range, as: 'range', class: Google::Apis::MonitoringV3::GoogleMonitoringV3Range, decorator: Google::Apis::MonitoringV3::GoogleMonitoringV3Range::Representation
+      
+          property :time_series, as: 'timeSeries'
         end
       end
       
@@ -976,6 +1196,17 @@ module Google
         end
       end
       
+      class PerformanceThreshold
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_sli_performance, as: 'basicSliPerformance', class: Google::Apis::MonitoringV3::BasicSli, decorator: Google::Apis::MonitoringV3::BasicSli::Representation
+      
+          property :performance, as: 'performance', class: Google::Apis::MonitoringV3::RequestBasedSli, decorator: Google::Apis::MonitoringV3::RequestBasedSli::Representation
+      
+          property :threshold, as: 'threshold'
+        end
+      end
+      
       class Point
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -994,6 +1225,16 @@ module Google
         end
       end
       
+      class RequestBasedSli
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distribution_cut, as: 'distributionCut', class: Google::Apis::MonitoringV3::DistributionCut, decorator: Google::Apis::MonitoringV3::DistributionCut::Representation
+      
+          property :good_total_ratio, as: 'goodTotalRatio', class: Google::Apis::MonitoringV3::TimeSeriesRatio, decorator: Google::Apis::MonitoringV3::TimeSeriesRatio::Representation
+      
+        end
+      end
+      
       class ResourceGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1005,6 +1246,49 @@ module Google
       class SendNotificationChannelVerificationCodeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Service
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :app_engine, as: 'appEngine', class: Google::Apis::MonitoringV3::AppEngine, decorator: Google::Apis::MonitoringV3::AppEngine::Representation
+      
+          property :cloud_endpoints, as: 'cloudEndpoints', class: Google::Apis::MonitoringV3::CloudEndpoints, decorator: Google::Apis::MonitoringV3::CloudEndpoints::Representation
+      
+          property :cluster_istio, as: 'clusterIstio', class: Google::Apis::MonitoringV3::ClusterIstio, decorator: Google::Apis::MonitoringV3::ClusterIstio::Representation
+      
+          property :custom, as: 'custom', class: Google::Apis::MonitoringV3::Custom, decorator: Google::Apis::MonitoringV3::Custom::Representation
+      
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :telemetry, as: 'telemetry', class: Google::Apis::MonitoringV3::Telemetry, decorator: Google::Apis::MonitoringV3::Telemetry::Representation
+      
+        end
+      end
+      
+      class ServiceLevelIndicator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :basic_sli, as: 'basicSli', class: Google::Apis::MonitoringV3::BasicSli, decorator: Google::Apis::MonitoringV3::BasicSli::Representation
+      
+          property :request_based, as: 'requestBased', class: Google::Apis::MonitoringV3::RequestBasedSli, decorator: Google::Apis::MonitoringV3::RequestBasedSli::Representation
+      
+          property :windows_based, as: 'windowsBased', class: Google::Apis::MonitoringV3::WindowsBasedSli, decorator: Google::Apis::MonitoringV3::WindowsBasedSli::Representation
+      
+        end
+      end
+      
+      class ServiceLevelObjective
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :calendar_period, as: 'calendarPeriod'
+          property :display_name, as: 'displayName'
+          property :goal, as: 'goal'
+          property :name, as: 'name'
+          property :rolling_period, as: 'rollingPeriod'
+          property :service_level_indicator, as: 'serviceLevelIndicator', class: Google::Apis::MonitoringV3::ServiceLevelIndicator, decorator: Google::Apis::MonitoringV3::ServiceLevelIndicator::Representation
+      
         end
       end
       
@@ -1038,6 +1322,13 @@ module Google
         end
       end
       
+      class Telemetry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
       class TimeInterval
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1059,6 +1350,15 @@ module Google
           property :resource, as: 'resource', class: Google::Apis::MonitoringV3::MonitoredResource, decorator: Google::Apis::MonitoringV3::MonitoredResource::Representation
       
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class TimeSeriesRatio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bad_service_filter, as: 'badServiceFilter'
+          property :good_service_filter, as: 'goodServiceFilter'
+          property :total_service_filter, as: 'totalServiceFilter'
         end
       end
       
@@ -1134,6 +1434,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
+        end
+      end
+      
+      class WindowsBasedSli
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :good_bad_metric_filter, as: 'goodBadMetricFilter'
+          property :good_total_ratio_threshold, as: 'goodTotalRatioThreshold', class: Google::Apis::MonitoringV3::PerformanceThreshold, decorator: Google::Apis::MonitoringV3::PerformanceThreshold::Representation
+      
+          property :metric_mean_in_range, as: 'metricMeanInRange', class: Google::Apis::MonitoringV3::MetricRange, decorator: Google::Apis::MonitoringV3::MetricRange::Representation
+      
+          property :metric_sum_in_range, as: 'metricSumInRange', class: Google::Apis::MonitoringV3::MetricRange, decorator: Google::Apis::MonitoringV3::MetricRange::Representation
+      
+          property :window_period, as: 'windowPeriod'
         end
       end
     end

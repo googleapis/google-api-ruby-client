@@ -858,9 +858,6 @@ module Google
         #   Required. Dataset ID of the requested routine
         # @param [String] routine_id
         #   Required. Routine ID of the requested routine
-        # @param [String] field_mask
-        #   If set, only the Routine fields in the field mask are returned in the
-        #   response. If unset, all Routine fields are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -880,14 +877,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_routine(project_id, dataset_id, routine_id, field_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_routine(project_id, dataset_id, routine_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Routine::Representation
           command.response_class = Google::Apis::BigqueryV2::Routine
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['routineId'] = routine_id unless routine_id.nil?
-          command.query['fieldMask'] = field_mask unless field_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

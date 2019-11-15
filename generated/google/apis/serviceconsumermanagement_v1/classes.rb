@@ -2958,8 +2958,9 @@ module Google
         attr_accessor :http
       
         # A unique ID for a specific instance of this message, typically assigned
-        # by the client for tracking purpose. If empty, the server may choose to
-        # generate one instead. Must be no longer than 60 characters.
+        # by the client for tracking purpose. Must be no longer than 63 characters
+        # and only lower case letters, digits, '.', '_' and '-' are allowed. If
+        # empty, the server may choose to generate one instead.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id

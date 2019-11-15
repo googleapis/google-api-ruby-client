@@ -259,9 +259,9 @@ module Google
         # notation).
         # Operation<response: Range>
         # @param [String] parent
-        #   Required. This is in a form services/`service`.
-        #   `service` the name of the private access management service, for example
-        #   'service-peering.example.com'.
+        #   Required. This is in a form services/`service`. `service` the name of the
+        #   private
+        #   access management service, for example 'service-peering.example.com'.
         # @param [Google::Apis::ServicenetworkingV1::SearchRangeRequest] search_range_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -286,6 +286,45 @@ module Google
           command.request_object = search_range_request_object
           command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
           command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers use this method to validate if the consumer provided
+        # network, project and the requested range is valid. This allows them to use
+        # a fail-fast mechanism for consumer requests, and not have to wait for
+        # AddSubnetwork operation completion to determine if user request is invalid.
+        # @param [String] parent
+        #   Required. This is in a form services/`service` where `service` is the name of
+        #   the
+        #   private access management service. For example
+        #   'service-peering.example.com'.
+        # @param [Google::Apis::ServicenetworkingV1::ValidateConsumerConfigRequest] validate_consumer_config_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::ValidateConsumerConfigResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::ValidateConsumerConfigResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def validate_service_consumer_config(parent, validate_consumer_config_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}:validate', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::ValidateConsumerConfigRequest::Representation
+          command.request_object = validate_consumer_config_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::ValidateConsumerConfigResponse::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::ValidateConsumerConfigResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumerProject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Context
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RangeReservation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +395,18 @@ module Google
       end
       
       class UsageRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateConsumerConfigRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValidateConsumerConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -510,6 +534,13 @@ module Google
           property :peering, as: 'peering'
           collection :reserved_peering_ranges, as: 'reservedPeeringRanges'
           property :service, as: 'service'
+        end
+      end
+      
+      class ConsumerProject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :project_num, :numeric_string => true, as: 'projectNum'
         end
       end
       
@@ -897,6 +928,13 @@ module Google
         end
       end
       
+      class RangeReservation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_prefix_length, as: 'ipPrefixLength'
+        end
+      end
+      
       class SearchRangeRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1050,6 +1088,26 @@ module Google
           property :allow_unregistered_calls, as: 'allowUnregisteredCalls'
           property :selector, as: 'selector'
           property :skip_service_control, as: 'skipServiceControl'
+        end
+      end
+      
+      class ValidateConsumerConfigRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
+          property :consumer_project, as: 'consumerProject', class: Google::Apis::ServicenetworkingV1::ConsumerProject, decorator: Google::Apis::ServicenetworkingV1::ConsumerProject::Representation
+      
+          property :range_reservation, as: 'rangeReservation', class: Google::Apis::ServicenetworkingV1::RangeReservation, decorator: Google::Apis::ServicenetworkingV1::RangeReservation::Representation
+      
+          property :validate_network, as: 'validateNetwork'
+        end
+      end
+      
+      class ValidateConsumerConfigResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_valid, as: 'isValid'
+          property :validation_error, as: 'validationError'
         end
       end
     end

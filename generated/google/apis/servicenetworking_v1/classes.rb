@@ -45,7 +45,7 @@ module Google
         # @return [String]
         attr_accessor :consumer_network
       
-        # An optional description of the subnet.
+        # Optional. Description of the subnet.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -608,6 +608,28 @@ module Google
           @peering = args[:peering] if args.key?(:peering)
           @reserved_peering_ranges = args[:reserved_peering_ranges] if args.key?(:reserved_peering_ranges)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # Represents a consumer project.
+      class ConsumerProject
+        include Google::Apis::Core::Hashable
+      
+        # Required. Project number of the consumer that is launching the service
+        # instance. It
+        # can own the network that is peered with Google or, be a service project in
+        # an XPN where the host project has the network.
+        # Corresponds to the JSON property `projectNum`
+        # @return [Fixnum]
+        attr_accessor :project_num
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @project_num = args[:project_num] if args.key?(:project_num)
         end
       end
       
@@ -2714,25 +2736,46 @@ module Google
         end
       end
       
-      # Request to search for an unused range within allocated ranges.
-      class SearchRangeRequest
+      # Represents a range reservation.
+      class RangeReservation
         include Google::Apis::Core::Hashable
       
-        # Required. The prefix length of the IP range.
-        # Use usual CIDR range notation.
-        # For example, '30' to find unused x.x.x.x/30 CIDR range.
-        # Actual range will be determined using allocated range for the consumer
-        # peered network and returned in the result.
+        # Required. The size of the desired subnet. Use usual CIDR range notation. For
+        # example,
+        # '30' to find unused x.x.x.x/30 CIDR range. The goal is to determine if one
+        # of the allocated ranges has enough free space for a subnet of the requested
+        # size.
         # Corresponds to the JSON property `ipPrefixLength`
         # @return [Fixnum]
         attr_accessor :ip_prefix_length
       
-        # Network name in the consumer project.   This network must have been
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_prefix_length = args[:ip_prefix_length] if args.key?(:ip_prefix_length)
+        end
+      end
+      
+      # Request to search for an unused range within allocated ranges.
+      class SearchRangeRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The prefix length of the IP range. Use usual CIDR range notation.
+        # For
+        # example, '30' to find unused x.x.x.x/30 CIDR range. Actual range will be
+        # determined using allocated range for the consumer peered network and
+        # returned in the result.
+        # Corresponds to the JSON property `ipPrefixLength`
+        # @return [Fixnum]
+        attr_accessor :ip_prefix_length
+      
+        # Network name in the consumer project. This network must have been
         # already peered with a shared VPC network using CreateConnection
-        # method.
-        # Must be in a form 'projects/`project`/global/networks/`network`'.
-        # `project` is a project number, as in '12345'
-        # `network` is network name.
+        # method. Must be in a form 'projects/`project`/global/networks/`network`'.
+        # `project` is a project number, as in '12345' `network` is network name.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -2963,8 +3006,9 @@ module Google
         attr_accessor :http
       
         # A unique ID for a specific instance of this message, typically assigned
-        # by the client for tracking purpose. If empty, the server may choose to
-        # generate one instead. Must be no longer than 60 characters.
+        # by the client for tracking purpose. Must be no longer than 63 characters
+        # and only lower case letters, digits, '.', '_' and '-' are allowed. If
+        # empty, the server may choose to generate one instead.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -3568,6 +3612,79 @@ module Google
           @allow_unregistered_calls = args[:allow_unregistered_calls] if args.key?(:allow_unregistered_calls)
           @selector = args[:selector] if args.key?(:selector)
           @skip_service_control = args[:skip_service_control] if args.key?(:skip_service_control)
+        end
+      end
+      
+      # 
+      class ValidateConsumerConfigRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The network that the consumer is using to connect with services.
+        # Must be in
+        # the form of projects/`project`/global/networks/`network` `project` is a
+        # project number, as in '12345' `network` is network name.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        # Represents a consumer project.
+        # Corresponds to the JSON property `consumerProject`
+        # @return [Google::Apis::ServicenetworkingV1::ConsumerProject]
+        attr_accessor :consumer_project
+      
+        # Represents a range reservation.
+        # Corresponds to the JSON property `rangeReservation`
+        # @return [Google::Apis::ServicenetworkingV1::RangeReservation]
+        attr_accessor :range_reservation
+      
+        # The validations will be performed in the order listed in the
+        # ValidationError enum. The first failure will return. If a validation is not
+        # requested, then the next one will be performed.
+        # SERVICE_NETWORKING_NOT_ENABLED and NETWORK_NOT_PEERED checks are performed
+        # for all requests where validation is requested. NETWORK_NOT_FOUND and
+        # NETWORK_DISCONNECTED checks are done for requests that have
+        # validate_network set to true.
+        # Corresponds to the JSON property `validateNetwork`
+        # @return [Boolean]
+        attr_accessor :validate_network
+        alias_method :validate_network?, :validate_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
+          @consumer_project = args[:consumer_project] if args.key?(:consumer_project)
+          @range_reservation = args[:range_reservation] if args.key?(:range_reservation)
+          @validate_network = args[:validate_network] if args.key?(:validate_network)
+        end
+      end
+      
+      # 
+      class ValidateConsumerConfigResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `isValid`
+        # @return [Boolean]
+        attr_accessor :is_valid
+        alias_method :is_valid?, :is_valid
+      
+        # 
+        # Corresponds to the JSON property `validationError`
+        # @return [String]
+        attr_accessor :validation_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_valid = args[:is_valid] if args.key?(:is_valid)
+          @validation_error = args[:validation_error] if args.key?(:validation_error)
         end
       end
     end

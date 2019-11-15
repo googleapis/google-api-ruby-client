@@ -1503,6 +1503,388 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Create a Service.
+        # @param [String] parent
+        #   Resource name of the parent workspace. Of the form projects/`project_id`.
+        # @param [Google::Apis::MonitoringV3::Service] service_object
+        # @param [String] service_id
+        #   Optional. The Service id to use for this Service. If omitted, an id will be
+        #   generated instead. Must match the pattern a-z0-9-+
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Service] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Service]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service(parent, service_object = nil, service_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/services', options)
+          command.request_representation = Google::Apis::MonitoringV3::Service::Representation
+          command.request_object = service_object
+          command.response_representation = Google::Apis::MonitoringV3::Service::Representation
+          command.response_class = Google::Apis::MonitoringV3::Service
+          command.params['parent'] = parent unless parent.nil?
+          command.query['serviceId'] = service_id unless service_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Soft delete this Service.
+        # @param [String] name
+        #   Resource name of the Service to delete. Of the form projects/`project_id`/
+        #   service/`service_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get the named Service.
+        # @param [String] name
+        #   Resource name of the Service. Of the form projects/`project_id`/services/`
+        #   service_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Service] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Service]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Service::Representation
+          command.response_class = Google::Apis::MonitoringV3::Service
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List Services for this workspace.
+        # @param [String] parent
+        #   Resource name of the parent Workspace. Of the form projects/`project_id`.
+        # @param [String] filter
+        #   A filter specifying what Services to return. The filter currently supports the
+        #   following fields:
+        #   - `identifier_case`
+        #   - `app_engine.module_id`
+        #   - `cloud_endpoints.service`
+        #   - `cluster_istio.location`
+        #   - `cluster_istio.cluster_name`
+        #   - `cluster_istio.service_namespace`
+        #   - `cluster_istio.service_name`
+        #   identifier_case refers to which option in the identifier oneof is populated.
+        #   For example, the filter identifier_case = "CUSTOM" would match all services
+        #   with a value for the custom field. Valid options are "CUSTOM", "APP_ENGINE", "
+        #   CLOUD_ENDPOINTS", and "CLUSTER_ISTIO".
+        # @param [Fixnum] page_size
+        #   A non-negative number that is the maximum number of results to return. When 0,
+        #   use default page size.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_services(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/services', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListServicesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListServicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update this Service.
+        # @param [String] name
+        #   Resource name for this Service. Of the form projects/`project_id`/services/`
+        #   service_id`.
+        # @param [Google::Apis::MonitoringV3::Service] service_object
+        # @param [String] update_mask
+        #   A set of field paths defining which fields to use for the update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Service] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Service]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service(name, service_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::Service::Representation
+          command.request_object = service_object
+          command.response_representation = Google::Apis::MonitoringV3::Service::Representation
+          command.response_class = Google::Apis::MonitoringV3::Service
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Create a ServiceLevelObjective for the given Service.
+        # @param [String] parent
+        #   Resource name of the parent Service. Of the form projects/`project_id`/
+        #   services/`service_id`.
+        # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
+        # @param [String] service_level_objective_id
+        #   Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective.
+        #   If omitted, an id will be generated instead. Must match the pattern a-z0-9-+
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ServiceLevelObjective] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ServiceLevelObjective]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service_service_level_objective(parent, service_level_objective_object = nil, service_level_objective_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+parent}/serviceLevelObjectives', options)
+          command.request_representation = Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+          command.request_object = service_level_objective_object
+          command.response_representation = Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+          command.response_class = Google::Apis::MonitoringV3::ServiceLevelObjective
+          command.params['parent'] = parent unless parent.nil?
+          command.query['serviceLevelObjectiveId'] = service_level_objective_id unless service_level_objective_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Delete the given ServiceLevelObjective.
+        # @param [String] name
+        #   Resource name of the ServiceLevelObjective to delete. Of the form projects/`
+        #   project_id`/services/`service_id`/serviceLevelObjectives/`slo_name`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service_service_level_objective(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV3::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Get a ServiceLevelObjective by name.
+        # @param [String] name
+        #   Resource name of the ServiceLevelObjective to get. Of the form projects/`
+        #   project_id`/services/`service_id`/serviceLevelObjectives/`slo_name`.
+        # @param [String] view
+        #   View of the ServiceLevelObjective to return. If DEFAULT, return the
+        #   ServiceLevelObjective as originally defined. If EXPLICIT and the
+        #   ServiceLevelObjective is defined in terms of a BasicSli, replace the BasicSli
+        #   with a RequestBasedSli spelling out how the SLI is computed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ServiceLevelObjective] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ServiceLevelObjective]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_service_level_objective(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+          command.response_class = Google::Apis::MonitoringV3::ServiceLevelObjective
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # List the ServiceLevelObjectives for the given Service.
+        # @param [String] parent
+        #   Resource name of the parent Service. Of the form projects/`project_id`/
+        #   services/`service_id`.
+        # @param [String] filter
+        #   A filter specifying what ServiceLevelObjectives to return.
+        # @param [Fixnum] page_size
+        #   A non-negative number that is the maximum number of results to return. When 0,
+        #   use default page size.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
+        # @param [String] view
+        #   View of the ServiceLevelObjectives to return. If DEFAULT, return each
+        #   ServiceLevelObjective as originally defined. If EXPLICIT and the
+        #   ServiceLevelObjective is defined in terms of a BasicSli, replace the BasicSli
+        #   with a RequestBasedSli spelling out how the SLI is computed.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ListServiceLevelObjectivesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ListServiceLevelObjectivesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_service_level_objectives(parent, filter: nil, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/{+parent}/serviceLevelObjectives', options)
+          command.response_representation = Google::Apis::MonitoringV3::ListServiceLevelObjectivesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::ListServiceLevelObjectivesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Update the given ServiceLevelObjective.
+        # @param [String] name
+        #   Resource name for this ServiceLevelObjective. Of the form projects/`project_id`
+        #   /services/`service_id`/serviceLevelObjectives/`slo_name`.
+        # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
+        # @param [String] update_mask
+        #   A set of field paths defining which fields to use for the update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::ServiceLevelObjective] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::ServiceLevelObjective]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service_service_level_objective(name, service_level_objective_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+          command.request_object = service_level_objective_object
+          command.response_representation = Google::Apis::MonitoringV3::ServiceLevelObjective::Representation
+          command.response_class = Google::Apis::MonitoringV3::ServiceLevelObjective
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the list of IP addresses that checkers run from
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may

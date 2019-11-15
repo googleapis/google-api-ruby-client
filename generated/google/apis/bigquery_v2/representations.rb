@@ -624,6 +624,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+        
+        class PolicyTags
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1550,8 +1556,10 @@ module Google
       class MaterializedViewDefinition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_refresh, as: 'enableRefresh'
           property :last_refresh_time, :numeric_string => true, as: 'lastRefreshTime'
           property :query, as: 'query'
+          property :refresh_interval_ms, :numeric_string => true, as: 'refreshIntervalMs'
         end
       end
       
@@ -1981,10 +1989,19 @@ module Google
       
           property :mode, as: 'mode'
           property :name, as: 'name'
+          property :policy_tags, as: 'policyTags', class: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags, decorator: Google::Apis::BigqueryV2::TableFieldSchema::PolicyTags::Representation
+      
           property :type, as: 'type'
         end
         
         class Categories
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :names, as: 'names'
+          end
+        end
+        
+        class PolicyTags
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             collection :names, as: 'names'
