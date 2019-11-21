@@ -440,6 +440,26 @@ module Google
         end
       end
       
+      # Response message for
+      # ExportTaxonomies.
+      class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of taxonomies and policy tags in a tree structure.
+        # Corresponds to the JSON property `taxonomies`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy>]
+        attr_accessor :taxonomies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
       # 
       class GoogleCloudDatacatalogV1beta1FieldType
         include Google::Apis::Core::Hashable
@@ -573,6 +593,92 @@ module Google
         end
       end
       
+      # Request message for
+      # ImportTaxonomies.
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
+        include Google::Apis::Core::Hashable
+      
+        # Inline source used for taxonomies import.
+        # Corresponds to the JSON property `inlineSource`
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1InlineSource]
+        attr_accessor :inline_source
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @inline_source = args[:inline_source] if args.key?(:inline_source)
+        end
+      end
+      
+      # Response message for
+      # ImportTaxonomies.
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Taxonomies that were imported.
+        # Corresponds to the JSON property `taxonomies`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy>]
+        attr_accessor :taxonomies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Inline source used for taxonomies import.
+      class GoogleCloudDatacatalogV1beta1InlineSource
+        include Google::Apis::Core::Hashable
+      
+        # Required. Taxonomies to be imported.
+        # Corresponds to the JSON property `taxonomies`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy>]
+        attr_accessor :taxonomies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Response message for
+      # ListPolicyTags.
+      class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token used to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The policy tags that are in the requested taxonomy.
+        # Corresponds to the JSON property `policyTags`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag>]
+        attr_accessor :policy_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
+        end
+      end
+      
       # Response message for
       # ListTags.
       class GoogleCloudDatacatalogV1beta1ListTagsResponse
@@ -597,6 +703,98 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # Response message for
+      # ListTaxonomies.
+      class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token used to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Taxonomies that the project contains.
+        # Corresponds to the JSON property `taxonomies`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy>]
+        attr_accessor :taxonomies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @taxonomies = args[:taxonomies] if args.key?(:taxonomies)
+        end
+      end
+      
+      # Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined
+      # in a hierarchy. For example, consider the following hierachy:
+      # Geolocation
+      # |
+      # ------------------------------------
+      # |                |                 |
+      # LatLong          City              ZipCode
+      # PolicyTag "Geolocation" contains three child policy tags: "LatLong",
+      # "City", and "ZipCode".
+      class GoogleCloudDatacatalogV1beta1PolicyTag
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Resource names of child policy tags of this policy tag.
+        # Corresponds to the JSON property `childPolicyTags`
+        # @return [Array<String>]
+        attr_accessor :child_policy_tags
+      
+        # Description of this policy tag. It must: contain only unicode characters,
+        # tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
+        # long when encoded in UTF-8. If not set, defaults to an empty description.
+        # If not set, defaults to an empty description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. User defined name of this policy tag. It must: be unique within the
+        # parent
+        # taxonomy; contain only unicode letters, numbers, underscores, dashes and
+        # spaces; not start or end with spaces; and be at most 200 bytes long when
+        # encoded in UTF-8.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Resource name of this policy tag, whose format is:
+        # "projects/`project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/
+        # policyTags/`id`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Resource name of this policy tag's parent policy tag (e.g. for the
+        # "LatLong" policy tag in the example above, this field contains the
+        # resource name of the "Geolocation" policy tag). If empty, it means this
+        # policy tag is a top level policy tag (e.g. this field is empty for the
+        # "Geolocation" policy tag in the example above). If not set, defaults to an
+        # empty string.
+        # Corresponds to the JSON property `parentPolicyTag`
+        # @return [String]
+        attr_accessor :parent_policy_tag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_policy_tags = args[:child_policy_tags] if args.key?(:child_policy_tags)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @parent_policy_tag = args[:parent_policy_tag] if args.key?(:parent_policy_tag)
         end
       end
       
@@ -822,6 +1020,73 @@ module Google
           @relative_resource_name = args[:relative_resource_name] if args.key?(:relative_resource_name)
           @search_result_subtype = args[:search_result_subtype] if args.key?(:search_result_subtype)
           @search_result_type = args[:search_result_type] if args.key?(:search_result_type)
+        end
+      end
+      
+      # Message representing one policy tag when exported as a nested proto.
+      class GoogleCloudDatacatalogV1beta1SerializedPolicyTag
+        include Google::Apis::Core::Hashable
+      
+        # Children of the policy tag if any.
+        # Corresponds to the JSON property `childPolicyTags`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag>]
+        attr_accessor :child_policy_tags
+      
+        # Description of the serialized policy tag. The length of the
+        # description is limited to 2000 bytes when encoded in UTF-8. If not set,
+        # defaults to an empty description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name of the policy tag. Max 200 bytes when encoded in UTF-8.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @child_policy_tags = args[:child_policy_tags] if args.key?(:child_policy_tags)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+        end
+      end
+      
+      # Message capturing a taxonomy and its policy tag hierarchy as a nested proto.
+      # Used for taxonomy import/export and mutation.
+      class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
+        include Google::Apis::Core::Hashable
+      
+        # Description of the serialized taxonomy. The length of the
+        # description is limited to 2000 bytes when encoded in UTF-8. If not set,
+        # defaults to an empty description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. Display name of the taxonomy. Max 200 bytes when encoded in UTF-8.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Top level policy tags associated with the taxonomy if any.
+        # Corresponds to the JSON property `policyTags`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag>]
+        attr_accessor :policy_tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @policy_tags = args[:policy_tags] if args.key?(:policy_tags)
         end
       end
       
@@ -1089,6 +1354,56 @@ module Google
         end
       end
       
+      # A taxonomy is a collection of policy tags that classify data along a common
+      # axis. For instance a data *sensitivity* taxonomy could contain policy tags
+      # denoting PII such as age, zipcode, and SSN. A data *origin* taxonomy could
+      # contain policy tags to distinguish user data, employee data, partner data,
+      # public data.
+      class GoogleCloudDatacatalogV1beta1Taxonomy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A list of policy types that are activated for this taxonomy. If not
+        # set,
+        # defaults to an empty list.
+        # Corresponds to the JSON property `activatedPolicyTypes`
+        # @return [Array<String>]
+        attr_accessor :activated_policy_types
+      
+        # Optional. Description of this taxonomy. It must: contain only unicode
+        # characters,
+        # tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
+        # long when encoded in UTF-8. If not set, defaults to an empty description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Required. User defined name of this taxonomy. It must: contain only unicode
+        # letters,
+        # numbers, underscores, dashes and spaces; not start or end with spaces; and
+        # be at most 200 bytes long when encoded in UTF-8.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Resource name of this taxonomy, whose format is:
+        # "projects/`project_number`/locations/`location_id`/taxonomies/`id`".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @activated_policy_types = args[:activated_policy_types] if args.key?(:activated_policy_types)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # Table view specification.
       class GoogleCloudDatacatalogV1beta1ViewSpec
         include Google::Apis::Core::Hashable
@@ -1177,8 +1492,8 @@ module Google
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # 'setIamPolicy' will not fail even if the incoming policy version does not
+        # meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -1189,11 +1504,12 @@ module Google
         # rejected.
         # Operations affecting conditional bindings must specify version 3. This can
         # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
+        # or removing a binding (conditional or unconditional) from the stored
+        # conditional policy.
         # Operations on non-conditional policies may specify any valid value or
         # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # If no etag is provided in the call to `setIamPolicy`, version compliance
+        # checks against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

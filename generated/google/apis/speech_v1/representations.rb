@@ -236,6 +236,7 @@ module Google
           property :enable_speaker_diarization, as: 'enableSpeakerDiarization'
           property :max_speaker_count, as: 'maxSpeakerCount'
           property :min_speaker_count, as: 'minSpeakerCount'
+          property :speaker_tag, as: 'speakerTag'
         end
       end
       

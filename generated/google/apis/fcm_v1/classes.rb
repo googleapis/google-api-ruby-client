@@ -40,6 +40,14 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :data
       
+        # If set to true, messages will be allowed to be delivered to the app while
+        # the device is in direct boot mode. See [Support Direct Boot
+        # mode](https://developer.android.com/training/articles/direct-boot).
+        # Corresponds to the JSON property `directBootOk`
+        # @return [Boolean]
+        attr_accessor :direct_boot_ok
+        alias_method :direct_boot_ok?, :direct_boot_ok
+      
         # Options for features provided by the FCM SDK for Android.
         # Corresponds to the JSON property `fcmOptions`
         # @return [Google::Apis::FcmV1::AndroidFcmOptions]
@@ -86,6 +94,7 @@ module Google
         def update!(**args)
           @collapse_key = args[:collapse_key] if args.key?(:collapse_key)
           @data = args[:data] if args.key?(:data)
+          @direct_boot_ok = args[:direct_boot_ok] if args.key?(:direct_boot_ok)
           @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
           @notification = args[:notification] if args.key?(:notification)
           @priority = args[:priority] if args.key?(:priority)

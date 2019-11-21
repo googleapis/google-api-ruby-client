@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListVersionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PopulateVersionFilesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -263,6 +269,15 @@ module Google
           collection :files, as: 'files', class: Google::Apis::FirebasehostingV1beta1::VersionFile, decorator: Google::Apis::FirebasehostingV1beta1::VersionFile::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListVersionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :versions, as: 'versions', class: Google::Apis::FirebasehostingV1beta1::Version, decorator: Google::Apis::FirebasehostingV1beta1::Version::Representation
+      
         end
       end
       

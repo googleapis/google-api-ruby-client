@@ -46,24 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AutoDomainMapping
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AutoDomainMappingSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class AutoDomainMappingStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,12 +185,6 @@ module Google
       end
       
       class ListAuthorizedDomainsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListAutoDomainMappingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -480,40 +456,6 @@ module Google
         end
       end
       
-      class AutoDomainMapping
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1::AutoDomainMappingSpec, decorator: Google::Apis::RunV1::AutoDomainMappingSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1::AutoDomainMappingStatus, decorator: Google::Apis::RunV1::AutoDomainMappingStatus::Representation
-      
-        end
-      end
-      
-      class AutoDomainMappingSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :certificate_mode, as: 'certificateMode'
-          property :expansion_type, as: 'expansionType'
-          property :force_override, as: 'forceOverride'
-        end
-      end
-      
-      class AutoDomainMappingStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1::GoogleCloudRunV1Condition, decorator: Google::Apis::RunV1::GoogleCloudRunV1Condition::Representation
-      
-          property :observed_generation, as: 'observedGeneration'
-          collection :resource_records, as: 'resourceRecords', class: Google::Apis::RunV1::ResourceRecord, decorator: Google::Apis::RunV1::ResourceRecord::Representation
-      
-        end
-      end
-      
       class Binding
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -778,19 +720,6 @@ module Google
           collection :domains, as: 'domains', class: Google::Apis::RunV1::AuthorizedDomain, decorator: Google::Apis::RunV1::AuthorizedDomain::Representation
       
           property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class ListAutoDomainMappingsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1::AutoDomainMapping, decorator: Google::Apis::RunV1::AutoDomainMapping::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ListMeta, decorator: Google::Apis::RunV1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
         end
       end
       

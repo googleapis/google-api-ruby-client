@@ -611,7 +611,8 @@ module Google
       class Message
         include Google::Apis::Core::Hashable
       
-        # Optional attributes for this message.
+        # Attributes for this message. If this field is empty, the message must
+        # contain non-empty data.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes

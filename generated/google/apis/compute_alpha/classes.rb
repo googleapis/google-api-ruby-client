@@ -1166,7 +1166,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # [OutputOnly] Indicates how many instances are in use.
+        # [Output Only] Indicates how many instances are in use.
         # Corresponds to the JSON property `inUseCount`
         # @return [Fixnum]
         attr_accessor :in_use_count
@@ -1393,6 +1393,12 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Specifies which action to take on instance update with this disk. Default is
+        # to use the existing disk.
+        # Corresponds to the JSON property `onUpdateAction`
+        # @return [String]
+        attr_accessor :on_update_action
+      
         # URLs of the zones where the disk should be replicated to. Only applicable for
         # regional resources.
         # Corresponds to the JSON property `replicaZones`
@@ -1460,6 +1466,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @source_image = args[:source_image] if args.key?(:source_image)
@@ -1719,7 +1726,13 @@ module Google
         # @return [String]
         attr_accessor :self_link_with_id
       
-        # [Output Only] The status of the autoscaler configuration.
+        # [Output Only] The status of the autoscaler configuration. Current set of
+        # possible values: PENDING: Autoscaler backend hasn't read new/updated
+        # configuration DELETING: Configuration is being deleted ACTIVE: Configuration
+        # is acknowledged to be effective. Some warnings might or might not be present
+        # in the status_details field. ERROR: Configuration has errors. Actionable for
+        # users. Details are present in the status_details field. New values might be
+        # added in the future.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2010,7 +2023,38 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # The type of error returned.
+        # The type of error, warning or notice returned. Current set of possible values:
+        # ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are
+        # unhealthy (not in RUNNING state). BACKEND_SERVICE_DOES_NOT_EXIST (ERROR):
+        # There is no backend service attached to the instance group.
+        # CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends size bigger than
+        # maxNumReplicas. CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom
+        # metric samples are not exported often enough to be a credible base for
+        # autoscaling. CUSTOM_METRIC_INVALID (ERROR): The custom metric that was
+        # specified does not exist or does not have the necessary labels. MIN_EQUALS_MAX
+        # (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the
+        # autoscaler cannot add or remove instances from the instance group.
+        # MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive
+        # any data from the custom metric configured for autoscaling.
+        # MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to
+        # scale based on a load balancing signal but the instance group has not received
+        # any requests from the load balancer. MODE_OFF (WARNING): Autoscaling is turned
+        # off. The number of instances in the group won't change automatically. The
+        # autoscaling configuration is preserved. MODE_ONLY_UP (WARNING): Autoscaling is
+        # in the "Autoscale only up" mode. Instances in the group will be only added.
+        # MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled
+        # because it has more than one backend service attached to it.
+        # NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): Exceeded quota for necessary resources,
+        # such as CPU, number of instances and so on. REGION_RESOURCE_STOCKOUT (ERROR):
+        # Showed only for regional autoscalers: there is a resource stockout in the
+        # chosen region. SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled
+        # does not exist. UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR):
+        # Autoscaling does not work with an HTTP/S load balancer that has been
+        # configured for maxRate. ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers:
+        # there is a resource stockout in the chosen zone. For regional autoscalers: in
+        # at least one of the zones you're using there is a resource stockout. New
+        # values might be added in the future. Some of the values might not be available
+        # in all API versions.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -11095,6 +11139,17 @@ module Google
         attr_accessor :erase_windows_vss_signature
         alias_method :erase_windows_vss_signature?, :erase_windows_vss_signature
       
+        # Specifies a fingerprint for this resource, which is essentially a hash of the
+        # instance's contents and used for optimistic locking. The fingerprint is
+        # initially generated by Compute Engine and changes after every request to
+        # modify or update the instance. You must always provide an up-to-date
+        # fingerprint hash in order to update the instance.
+        # To see the latest fingerprint, make get() request to the instance.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # A list of the type and count of accelerator cards attached to the instance.
         # Corresponds to the JSON property `guestAccelerators`
         # @return [Array<Google::Apis::ComputeAlpha::AcceleratorConfig>]
@@ -11310,6 +11365,7 @@ module Google
           @disks = args[:disks] if args.key?(:disks)
           @display_device = args[:display_device] if args.key?(:display_device)
           @erase_windows_vss_signature = args[:erase_windows_vss_signature] if args.key?(:erase_windows_vss_signature)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @hostname = args[:hostname] if args.key?(:hostname)
           @id = args[:id] if args.key?(:id)
@@ -18548,6 +18604,9 @@ module Google
       end
       
       # Represents a collection of network endpoints.
+      # For more information read Setting up network endpoint groups in load balancing.
+      # (== resource_for v1.networkEndpointGroups ==) (== resource_for beta.
+      # networkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -19942,7 +20001,7 @@ module Google
       # instances physically separated from instances in other projects, or to group
       # your instances together on the same host hardware. For more information, read
       # Sole-tenant nodes. (== resource_for beta.nodeGroups ==) (== resource_for v1.
-      # nodeGroups ==) NextID: 15
+      # nodeGroups ==) NextID: 16
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -21652,7 +21711,7 @@ module Google
         # @return [String]
         attr_accessor :endpoint
       
-        # Optional. If specified, this field is used to populate the ?name? field in
+        # Optional. If specified, this field is used to populate the "name" field in
         # gRPC requests.
         # Corresponds to the JSON property `payloadName`
         # @return [String]
@@ -23870,7 +23929,7 @@ module Google
       
         # A map of Istio attribute to expected values. Exact match, prefix match, and
         # suffix match are supported for values. For example, `request.headers[version]:
-        # ?v1?`. The properties are ANDed together.
+        # "v1"`. The properties are ANDed together.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
@@ -26515,7 +26574,7 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # [OutputOnly] Full or partial URL to a parent commitment. This field displays
+        # [Output Only] Full or partial URL to a parent commitment. This field displays
         # for reservations that are tied to a commitment.
         # Corresponds to the JSON property `commitment`
         # @return [String]
@@ -29005,8 +29064,12 @@ module Google
         attr_accessor :enable
         alias_method :enable?, :enable
       
-        # Specifies the desired filtering of logs on this NAT. If unspecified, logs are
-        # exported for all connections handled by this NAT.
+        # Specify the desired filtering of logs on this NAT. If unspecified, logs are
+        # exported for all connections handled by this NAT. This option can take one of
+        # the following values:
+        # - ERRORS_ONLY: Export logs only for connection failures.
+        # - TRANSLATIONS_ONLY: Export logs only for successful connections.
+        # - ALL: Export logs for all connections, successful and unsuccessful.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -29191,13 +29254,13 @@ module Google
         attr_accessor :auto_allocated_nat_ips
       
         # A list of IPs auto-allocated for NAT that are in drain mode. Example: ["1.1.1.
-        # 1", ?179.12.26.133?].
+        # 1", "179.12.26.133"].
         # Corresponds to the JSON property `drainAutoAllocatedNatIps`
         # @return [Array<String>]
         attr_accessor :drain_auto_allocated_nat_ips
       
         # A list of IPs user-allocated for NAT that are in drain mode. Example: ["1.1.1.
-        # 1", ?179.12.26.133?].
+        # 1", "179.12.26.133"].
         # Corresponds to the JSON property `drainUserAllocatedNatIps`
         # @return [Array<String>]
         attr_accessor :drain_user_allocated_nat_ips
@@ -30811,7 +30874,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # [Output Only] Size of the snapshot, specified in GB.
+        # [Output Only] Size of the source disk, specified in GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb

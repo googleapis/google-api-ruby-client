@@ -105,6 +105,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collapse_key, as: 'collapseKey'
           hash :data, as: 'data'
+          property :direct_boot_ok, as: 'directBootOk'
           property :fcm_options, as: 'fcmOptions', class: Google::Apis::FcmV1::AndroidFcmOptions, decorator: Google::Apis::FcmV1::AndroidFcmOptions::Representation
       
           property :notification, as: 'notification', class: Google::Apis::FcmV1::AndroidNotification, decorator: Google::Apis::FcmV1::AndroidNotification::Representation

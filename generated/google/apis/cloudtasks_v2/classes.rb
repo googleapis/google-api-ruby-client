@@ -530,6 +530,114 @@ module Google
         end
       end
       
+      # HTTP request.
+      # The task will be pushed to the worker as an HTTP request. If the worker
+      # or the redirected worker acknowledges the task by returning a successful HTTP
+      # response code ([`200` - `299`]), the task will removed from the queue. If
+      # any other HTTP response code is returned or no response is received, the
+      # task will be retried according to the following:
+      # * User-specified throttling: retry configuration,
+      # rate limits, and the queue's state.
+      # * System throttling: To prevent the worker from overloading, Cloud Tasks may
+      # temporarily reduce the queue's effective rate. User-specified settings
+      # will not be changed.
+      # System throttling happens because:
+      # * Cloud Tasks backs off on all errors. Normally the backoff specified in
+      # rate limits will be used. But if the worker returns
+      # `429` (Too Many Requests), `503` (Service Unavailable), or the rate of
+      # errors is high, Cloud Tasks will use a higher backoff rate. The retry
+      # specified in the `Retry-After` HTTP response header is considered.
+      # * To prevent traffic spikes and to smooth sudden large traffic spikes,
+      # dispatches ramp up slowly when the queue is newly created or idle and
+      # if large numbers of tasks suddenly become available to dispatch (due to
+      # spikes in create task rates, the queue being unpaused, or many tasks
+      # that are scheduled at the same time).
+      class HttpRequest
+        include Google::Apis::Core::Hashable
+      
+        # HTTP request body.
+        # A request body is allowed only if the
+        # HTTP method is POST, PUT, or PATCH. It is an
+        # error to set body on a task with an incompatible HttpMethod.
+        # Corresponds to the JSON property `body`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :body
+      
+        # HTTP request headers.
+        # This map contains the header field names and values.
+        # Headers can be set when the
+        # task is created.
+        # These headers represent a subset of the headers that will accompany the
+        # task's HTTP request. Some HTTP request headers will be ignored or replaced.
+        # A partial list of headers that will be ignored or replaced is:
+        # * Host: This will be computed by Cloud Tasks and derived from
+        # HttpRequest.url.
+        # * Content-Length: This will be computed by Cloud Tasks.
+        # * User-Agent: This will be set to `"Google-Cloud-Tasks"`.
+        # * X-Google-*: Google use only.
+        # * X-AppEngine-*: Google use only.
+        # `Content-Type` won't be set by Cloud Tasks. You can explicitly set
+        # `Content-Type` to a media type when the
+        # task is created.
+        # For example, `Content-Type` can be set to `"application/octet-stream"` or
+        # `"application/json"`.
+        # Headers which can have multiple values (according to RFC2616) can be
+        # specified using comma-separated values.
+        # The size of the headers must be less than 80KB.
+        # Corresponds to the JSON property `headers`
+        # @return [Hash<String,String>]
+        attr_accessor :headers
+      
+        # The HTTP method to use for the request. The default is POST.
+        # Corresponds to the JSON property `httpMethod`
+        # @return [String]
+        attr_accessor :http_method
+      
+        # Contains information needed for generating an
+        # [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+        # This type of authorization should generally only be used when calling Google
+        # APIs hosted on *.googleapis.com.
+        # Corresponds to the JSON property `oauthToken`
+        # @return [Google::Apis::CloudtasksV2::OAuthToken]
+        attr_accessor :oauth_token
+      
+        # Contains information needed for generating an
+        # [OpenID Connect
+        # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+        # This type of authorization can be used for many scenarios, including
+        # calling Cloud Run, or endpoints where you intend to validate the token
+        # yourself.
+        # Corresponds to the JSON property `oidcToken`
+        # @return [Google::Apis::CloudtasksV2::OidcToken]
+        attr_accessor :oidc_token
+      
+        # Required. The full url path that the request will be sent to.
+        # This string must begin with either "http://" or "https://". Some examples
+        # are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will
+        # encode some characters for safety and compatibility. The maximum allowed
+        # URL length is 2083 characters after encoding.
+        # The `Location` header response from a redirect response [`300` - `399`]
+        # may be followed. The redirect is not counted as a separate attempt.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @body = args[:body] if args.key?(:body)
+          @headers = args[:headers] if args.key?(:headers)
+          @http_method = args[:http_method] if args.key?(:http_method)
+          @oauth_token = args[:oauth_token] if args.key?(:oauth_token)
+          @oidc_token = args[:oidc_token] if args.key?(:oidc_token)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -661,6 +769,75 @@ module Google
         end
       end
       
+      # Contains information needed for generating an
+      # [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
+      # This type of authorization should generally only be used when calling Google
+      # APIs hosted on *.googleapis.com.
+      class OAuthToken
+        include Google::Apis::Core::Hashable
+      
+        # OAuth scope to be used for generating OAuth access token.
+        # If not specified, "https://www.googleapis.com/auth/cloud-platform"
+        # will be used.
+        # Corresponds to the JSON property `scope`
+        # @return [String]
+        attr_accessor :scope
+      
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+        # to be used for generating OAuth token.
+        # The service account must be within the same project as the queue. The
+        # caller must have iam.serviceAccounts.actAs permission for the service
+        # account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @scope = args[:scope] if args.key?(:scope)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
+      # Contains information needed for generating an
+      # [OpenID Connect
+      # token](https://developers.google.com/identity/protocols/OpenIDConnect).
+      # This type of authorization can be used for many scenarios, including
+      # calling Cloud Run, or endpoints where you intend to validate the token
+      # yourself.
+      class OidcToken
+        include Google::Apis::Core::Hashable
+      
+        # Audience to be used when generating OIDC token. If not specified, the URI
+        # specified in target will be used.
+        # Corresponds to the JSON property `audience`
+        # @return [String]
+        attr_accessor :audience
+      
+        # [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+        # to be used for generating OIDC token.
+        # The service account must be within the same project as the queue. The
+        # caller must have iam.serviceAccounts.actAs permission for the service
+        # account.
+        # Corresponds to the JSON property `serviceAccountEmail`
+        # @return [String]
+        attr_accessor :service_account_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @audience = args[:audience] if args.key?(:audience)
+          @service_account_email = args[:service_account_email] if args.key?(:service_account_email)
+        end
+      end
+      
       # Request message for PauseQueue.
       class PauseQueueRequest
         include Google::Apis::Core::Hashable
@@ -743,8 +920,8 @@ module Google
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # 'setIamPolicy' will not fail even if the incoming policy version does not
+        # meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -755,11 +932,12 @@ module Google
         # rejected.
         # Operations affecting conditional bindings must specify version 3. This can
         # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
+        # or removing a binding (conditional or unconditional) from the stored
+        # conditional policy.
         # Operations on non-conditional policies may specify any valid value or
         # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # If no etag is provided in the call to `setIamPolicy`, version compliance
+        # checks against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1317,6 +1495,8 @@ module Google
         # worker. For example, if the worker is stuck, it may not react to cancelled
         # requests.
         # The default and maximum values depend on the type of request:
+        # * For HTTP tasks, the default is 10 minutes. The deadline
+        # must be in the interval [15 seconds, 30 minutes].
         # * For App Engine tasks, 0 indicates that the
         # request has the default deadline. The default deadline depends on the
         # [scaling
@@ -1342,6 +1522,32 @@ module Google
         # Corresponds to the JSON property `firstAttempt`
         # @return [Google::Apis::CloudtasksV2::Attempt]
         attr_accessor :first_attempt
+      
+        # HTTP request.
+        # The task will be pushed to the worker as an HTTP request. If the worker
+        # or the redirected worker acknowledges the task by returning a successful HTTP
+        # response code ([`200` - `299`]), the task will removed from the queue. If
+        # any other HTTP response code is returned or no response is received, the
+        # task will be retried according to the following:
+        # * User-specified throttling: retry configuration,
+        # rate limits, and the queue's state.
+        # * System throttling: To prevent the worker from overloading, Cloud Tasks may
+        # temporarily reduce the queue's effective rate. User-specified settings
+        # will not be changed.
+        # System throttling happens because:
+        # * Cloud Tasks backs off on all errors. Normally the backoff specified in
+        # rate limits will be used. But if the worker returns
+        # `429` (Too Many Requests), `503` (Service Unavailable), or the rate of
+        # errors is high, Cloud Tasks will use a higher backoff rate. The retry
+        # specified in the `Retry-After` HTTP response header is considered.
+        # * To prevent traffic spikes and to smooth sudden large traffic spikes,
+        # dispatches ramp up slowly when the queue is newly created or idle and
+        # if large numbers of tasks suddenly become available to dispatch (due to
+        # spikes in create task rates, the queue being unpaused, or many tasks
+        # that are scheduled at the same time).
+        # Corresponds to the JSON property `httpRequest`
+        # @return [Google::Apis::CloudtasksV2::HttpRequest]
+        attr_accessor :http_request
       
         # The status of a task attempt.
         # Corresponds to the JSON property `lastAttempt`
@@ -1398,6 +1604,7 @@ module Google
           @dispatch_count = args[:dispatch_count] if args.key?(:dispatch_count)
           @dispatch_deadline = args[:dispatch_deadline] if args.key?(:dispatch_deadline)
           @first_attempt = args[:first_attempt] if args.key?(:first_attempt)
+          @http_request = args[:http_request] if args.key?(:http_request)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @name = args[:name] if args.key?(:name)
           @response_count = args[:response_count] if args.key?(:response_count)

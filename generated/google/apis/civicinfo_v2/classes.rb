@@ -847,156 +847,6 @@ module Google
         end
       end
       
-      # 
-      class LivegraphBacktraceRecordInfo
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `dataSourcePublishMsec`
-        # @return [Fixnum]
-        attr_accessor :data_source_publish_msec
-      
-        # 
-        # Corresponds to the JSON property `expId`
-        # @return [String]
-        attr_accessor :exp_id
-      
-        # 
-        # Corresponds to the JSON property `expInfo`
-        # @return [Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo]
-        attr_accessor :exp_info
-      
-        # 
-        # Corresponds to the JSON property `isRecon`
-        # @return [Boolean]
-        attr_accessor :is_recon
-        alias_method :is_recon?, :is_recon
-      
-        # 
-        # Corresponds to the JSON property `isWlmThrottled`
-        # @return [Boolean]
-        attr_accessor :is_wlm_throttled
-        alias_method :is_wlm_throttled?, :is_wlm_throttled
-      
-        # 
-        # Corresponds to the JSON property `numberOfTriples`
-        # @return [Fixnum]
-        attr_accessor :number_of_triples
-      
-        # 
-        # Corresponds to the JSON property `priority`
-        # @return [String]
-        attr_accessor :priority
-      
-        # 
-        # Corresponds to the JSON property `process`
-        # @return [String]
-        attr_accessor :process
-      
-        # 
-        # Corresponds to the JSON property `proxyReceiveMsec`
-        # @return [Fixnum]
-        attr_accessor :proxy_receive_msec
-      
-        # 
-        # Corresponds to the JSON property `proxySentMsec`
-        # @return [Fixnum]
-        attr_accessor :proxy_sent_msec
-      
-        # 
-        # Corresponds to the JSON property `recordId`
-        # @return [String]
-        attr_accessor :record_id
-      
-        # 
-        # Corresponds to the JSON property `shouldMonitorLatency`
-        # @return [Boolean]
-        attr_accessor :should_monitor_latency
-        alias_method :should_monitor_latency?, :should_monitor_latency
-      
-        # 
-        # Corresponds to the JSON property `subscriberReceiveMsec`
-        # @return [Fixnum]
-        attr_accessor :subscriber_receive_msec
-      
-        # 
-        # Corresponds to the JSON property `topicBuildFinishMsec`
-        # @return [Fixnum]
-        attr_accessor :topic_build_finish_msec
-      
-        # 
-        # Corresponds to the JSON property `topicBuildStartMsec`
-        # @return [Fixnum]
-        attr_accessor :topic_build_start_msec
-      
-        # 
-        # Corresponds to the JSON property `version`
-        # @return [String]
-        attr_accessor :version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @data_source_publish_msec = args[:data_source_publish_msec] if args.key?(:data_source_publish_msec)
-          @exp_id = args[:exp_id] if args.key?(:exp_id)
-          @exp_info = args[:exp_info] if args.key?(:exp_info)
-          @is_recon = args[:is_recon] if args.key?(:is_recon)
-          @is_wlm_throttled = args[:is_wlm_throttled] if args.key?(:is_wlm_throttled)
-          @number_of_triples = args[:number_of_triples] if args.key?(:number_of_triples)
-          @priority = args[:priority] if args.key?(:priority)
-          @process = args[:process] if args.key?(:process)
-          @proxy_receive_msec = args[:proxy_receive_msec] if args.key?(:proxy_receive_msec)
-          @proxy_sent_msec = args[:proxy_sent_msec] if args.key?(:proxy_sent_msec)
-          @record_id = args[:record_id] if args.key?(:record_id)
-          @should_monitor_latency = args[:should_monitor_latency] if args.key?(:should_monitor_latency)
-          @subscriber_receive_msec = args[:subscriber_receive_msec] if args.key?(:subscriber_receive_msec)
-          @topic_build_finish_msec = args[:topic_build_finish_msec] if args.key?(:topic_build_finish_msec)
-          @topic_build_start_msec = args[:topic_build_start_msec] if args.key?(:topic_build_start_msec)
-          @version = args[:version] if args.key?(:version)
-        end
-      end
-      
-      # 
-      class LivegraphBacktraceRecordInfoExpInfo
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `deletedIns`
-        # @return [Array<String>]
-        attr_accessor :deleted_ins
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @deleted_ins = args[:deleted_ins] if args.key?(:deleted_ins)
-        end
-      end
-      
-      # 
-      class MessageSet
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `recordMessageSetExt`
-        # @return [Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo]
-        attr_accessor :record_message_set_ext
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @record_message_set_ext = args[:record_message_set_ext] if args.key?(:record_message_set_ext)
-        end
-      end
-      
       # Information about an Office held by one or more Officials.
       class Office
         include Google::Apis::Core::Hashable
@@ -1135,11 +985,6 @@ module Google
         # @return [Google::Apis::CivicinfoV2::FieldMetadataProto]
         attr_accessor :metadata
       
-        # 
-        # Corresponds to the JSON property `temporaryData`
-        # @return [Google::Apis::CivicinfoV2::MessageSet]
-        attr_accessor :temporary_data
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1149,7 +994,6 @@ module Google
           @lat_e7 = args[:lat_e7] if args.key?(:lat_e7)
           @lng_e7 = args[:lng_e7] if args.key?(:lng_e7)
           @metadata = args[:metadata] if args.key?(:metadata)
-          @temporary_data = args[:temporary_data] if args.key?(:temporary_data)
         end
       end
       

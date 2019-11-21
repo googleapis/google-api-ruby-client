@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1FieldType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,7 +118,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1InlineSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1ListTagsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1PolicyTag
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -149,6 +191,18 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1beta1SearchCatalogResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1SerializedPolicyTag
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -191,6 +245,12 @@ module Google
       end
       
       class GoogleCloudDatacatalogV1beta1TagTemplateField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1Taxonomy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -331,6 +391,14 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogV1beta1FieldType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -374,12 +442,65 @@ module Google
         end
       end
       
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :inline_source, as: 'inlineSource', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1InlineSource, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1InlineSource::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1InlineSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :policy_tags, as: 'policyTags', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+      
+        end
+      end
+      
       class GoogleCloudDatacatalogV1beta1ListTagsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :tags, as: 'tags', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+      
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1PolicyTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_policy_tags, as: 'childPolicyTags'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :parent_policy_tag, as: 'parentPolicyTag'
         end
       end
       
@@ -435,6 +556,26 @@ module Google
           property :relative_resource_name, as: 'relativeResourceName'
           property :search_result_subtype, as: 'searchResultSubtype'
           property :search_result_type, as: 'searchResultType'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1SerializedPolicyTag
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :child_policy_tags, as: 'childPolicyTags', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag::Representation
+      
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1SerializedTaxonomy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          collection :policy_tags, as: 'policyTags', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedPolicyTag::Representation
+      
         end
       end
       
@@ -503,6 +644,16 @@ module Google
           property :name, as: 'name'
           property :type, as: 'type', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1Taxonomy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :activated_policy_types, as: 'activatedPolicyTypes'
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
         end
       end
       

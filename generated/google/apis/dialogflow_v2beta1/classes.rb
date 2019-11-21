@@ -22,6 +22,51 @@ module Google
   module Apis
     module DialogflowV2beta1
       
+      # Represents a part of a message possibly annotated with an entity. The part
+      # can be an entity or purely a part of the message between two entities or
+      # message start/end.
+      class GoogleCloudDialogflowV2AnnotatedMessagePart
+        include Google::Apis::Core::Hashable
+      
+        # The [Dialogflow system entity
+        # type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+        # of this message part. If this is empty, Dialogflow could not annotate the
+        # phrase part with a system entity.
+        # Corresponds to the JSON property `entityType`
+        # @return [String]
+        attr_accessor :entity_type
+      
+        # The [Dialogflow system entity formatted value
+        # ](https://cloud.google.com/dialogflow/docs/reference/system-entities) of
+        # this message part. For example for a system entity of type
+        # `@sys.unit-currency`, this may contain:
+        # <pre>
+        # `
+        # "amount": 5,
+        # "currency": "USD"
+        # `
+        # </pre>
+        # Corresponds to the JSON property `formattedValue`
+        # @return [Object]
+        attr_accessor :formatted_value
+      
+        # A part of a message possibly annotated with an entity.
+        # Corresponds to the JSON property `text`
+        # @return [String]
+        attr_accessor :text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entity_type = args[:entity_type] if args.key?(:entity_type)
+          @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
+          @text = args[:text] if args.key?(:text)
+        end
+      end
+      
       # The response message for EntityTypes.BatchUpdateEntityTypes.
       class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse
         include Google::Apis::Core::Hashable
@@ -97,6 +142,51 @@ module Google
           @lifespan_count = args[:lifespan_count] if args.key?(:lifespan_count)
           @name = args[:name] if args.key?(:name)
           @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Represents a notification sent to Cloud Pub/Sub subscribers for conversation
+      # lifecycle events.
+      class GoogleCloudDialogflowV2ConversationEvent
+        include Google::Apis::Core::Hashable
+      
+        # The unique identifier of the conversation this notification
+        # refers to.
+        # Format: `projects/<Project ID>/conversations/<Conversation ID>`.
+        # Corresponds to the JSON property `conversation`
+        # @return [String]
+        attr_accessor :conversation
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `errorStatus`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
+        attr_accessor :error_status
+      
+        # Represents a message posted into a conversation.
+        # Corresponds to the JSON property `newMessagePayload`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message]
+        attr_accessor :new_message_payload
+      
+        # The type of the event that this notification refers to.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conversation = args[:conversation] if args.key?(:conversation)
+          @error_status = args[:error_status] if args.key?(:error_status)
+          @new_message_payload = args[:new_message_payload] if args.key?(:new_message_payload)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1505,6 +1595,93 @@ module Google
           @entity_type = args[:entity_type] if args.key?(:entity_type)
           @text = args[:text] if args.key?(:text)
           @user_defined = args[:user_defined] if args.key?(:user_defined)
+        end
+      end
+      
+      # Represents a message posted into a conversation.
+      class GoogleCloudDialogflowV2Message
+        include Google::Apis::Core::Hashable
+      
+        # Required. The message content.
+        # Corresponds to the JSON property `content`
+        # @return [String]
+        attr_accessor :content
+      
+        # Output only. The time when the message was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Optional. The message language.
+        # This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag. Example: "en-US".
+        # Corresponds to the JSON property `languageCode`
+        # @return [String]
+        attr_accessor :language_code
+      
+        # Represents the result of annotation for the message.
+        # Corresponds to the JSON property `messageAnnotation`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2MessageAnnotation]
+        attr_accessor :message_annotation
+      
+        # The unique identifier of the message.
+        # Format: `projects/<Project ID>/conversations/<Conversation
+        # ID>/messages/<Message ID>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The participant that sends this message.
+        # Corresponds to the JSON property `participant`
+        # @return [String]
+        attr_accessor :participant
+      
+        # Output only. The role of the participant.
+        # Corresponds to the JSON property `participantRole`
+        # @return [String]
+        attr_accessor :participant_role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @content = args[:content] if args.key?(:content)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @language_code = args[:language_code] if args.key?(:language_code)
+          @message_annotation = args[:message_annotation] if args.key?(:message_annotation)
+          @name = args[:name] if args.key?(:name)
+          @participant = args[:participant] if args.key?(:participant)
+          @participant_role = args[:participant_role] if args.key?(:participant_role)
+        end
+      end
+      
+      # Represents the result of annotation for the message.
+      class GoogleCloudDialogflowV2MessageAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Indicates whether the text message contains entities.
+        # Corresponds to the JSON property `containEntities`
+        # @return [Boolean]
+        attr_accessor :contain_entities
+        alias_method :contain_entities?, :contain_entities
+      
+        # The collection of annotated message parts ordered by their
+        # position in the message. You can recover the annotated message by
+        # concatenating [AnnotatedMessagePart.text].
+        # Corresponds to the JSON property `parts`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2AnnotatedMessagePart>]
+        attr_accessor :parts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contain_entities = args[:contain_entities] if args.key?(:contain_entities)
+          @parts = args[:parts] if args.key?(:parts)
         end
       end
       
@@ -5244,6 +5421,18 @@ module Google
         # @return [String]
         attr_accessor :time_zone
       
+        # Optional. This field can be used to pass HTTP headers for a webhook
+        # call. These headers will be sent to webhook alone with the headers that
+        # have been configured through Dialogflow web console. The headers defined
+        # within this field will overwrite the headers configured through Dialogflow
+        # console if there is a conflict. Header names are case-insensitive.
+        # Google's specified headers are not allowed. Including: "Host",
+        # "Content-Length", "Connection", "From", "User-Agent", "Accept-Encoding",
+        # "If-Modified-Since", "If-None-Match", "X-Forwarded-For", etc.
+        # Corresponds to the JSON property `webhookHeaders`
+        # @return [Hash<String,String>]
+        attr_accessor :webhook_headers
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5258,6 +5447,7 @@ module Google
           @sentiment_analysis_request_config = args[:sentiment_analysis_request_config] if args.key?(:sentiment_analysis_request_config)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
+          @webhook_headers = args[:webhook_headers] if args.key?(:webhook_headers)
         end
       end
       
@@ -5806,7 +5996,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The name of the voice. If not set, the service will choose a
-        # voice based on the other parameters such as language_code and gender.
+        # voice based on the other parameters such as language_code and
+        # ssml_gender.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

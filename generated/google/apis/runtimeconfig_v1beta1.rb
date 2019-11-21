@@ -28,7 +28,7 @@ module Google
     # @see https://cloud.google.com/deployment-manager/runtime-configurator/
     module RuntimeconfigV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190930'
+      REVISION = '20191112'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

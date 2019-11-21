@@ -136,24 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LivegraphBacktraceRecordInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LivegraphBacktraceRecordInfoExpInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class MessageSet
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Office
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -467,44 +449,6 @@ module Google
         end
       end
       
-      class LivegraphBacktraceRecordInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :data_source_publish_msec, :numeric_string => true, as: 'dataSourcePublishMsec'
-          property :exp_id, as: 'expId'
-          property :exp_info, as: 'expInfo', class: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo, decorator: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfoExpInfo::Representation
-      
-          property :is_recon, as: 'isRecon'
-          property :is_wlm_throttled, as: 'isWlmThrottled'
-          property :number_of_triples, :numeric_string => true, as: 'numberOfTriples'
-          property :priority, as: 'priority'
-          property :process, as: 'process'
-          property :proxy_receive_msec, :numeric_string => true, as: 'proxyReceiveMsec'
-          property :proxy_sent_msec, :numeric_string => true, as: 'proxySentMsec'
-          property :record_id, as: 'recordId'
-          property :should_monitor_latency, as: 'shouldMonitorLatency'
-          property :subscriber_receive_msec, :numeric_string => true, as: 'subscriberReceiveMsec'
-          property :topic_build_finish_msec, :numeric_string => true, as: 'topicBuildFinishMsec'
-          property :topic_build_start_msec, :numeric_string => true, as: 'topicBuildStartMsec'
-          property :version, as: 'version'
-        end
-      end
-      
-      class LivegraphBacktraceRecordInfoExpInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :deleted_ins, as: 'deletedIns'
-        end
-      end
-      
-      class MessageSet
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :record_message_set_ext, as: 'recordMessageSetExt', class: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo, decorator: Google::Apis::CivicinfoV2::LivegraphBacktraceRecordInfo::Representation
-      
-        end
-      end
-      
       class Office
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -540,8 +484,6 @@ module Google
           property :lat_e7, as: 'latE7'
           property :lng_e7, as: 'lngE7'
           property :metadata, as: 'metadata', class: Google::Apis::CivicinfoV2::FieldMetadataProto, decorator: Google::Apis::CivicinfoV2::FieldMetadataProto::Representation
-      
-          property :temporary_data, as: 'temporaryData', class: Google::Apis::CivicinfoV2::MessageSet, decorator: Google::Apis::CivicinfoV2::MessageSet::Representation
       
         end
       end

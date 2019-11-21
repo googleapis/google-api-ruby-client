@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class HttpRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +101,18 @@ module Google
       end
       
       class Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OAuthToken
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OidcToken
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -261,6 +279,20 @@ module Google
         end
       end
       
+      class HttpRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :body, :base64 => true, as: 'body'
+          hash :headers, as: 'headers'
+          property :http_method, as: 'httpMethod'
+          property :oauth_token, as: 'oauthToken', class: Google::Apis::CloudtasksV2::OAuthToken, decorator: Google::Apis::CloudtasksV2::OAuthToken::Representation
+      
+          property :oidc_token, as: 'oidcToken', class: Google::Apis::CloudtasksV2::OidcToken, decorator: Google::Apis::CloudtasksV2::OidcToken::Representation
+      
+          property :url, as: 'url'
+        end
+      end
+      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -296,6 +328,22 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class OAuthToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :scope, as: 'scope'
+          property :service_account_email, as: 'serviceAccountEmail'
+        end
+      end
+      
+      class OidcToken
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :audience, as: 'audience'
+          property :service_account_email, as: 'serviceAccountEmail'
         end
       end
       
@@ -395,6 +443,8 @@ module Google
           property :dispatch_count, as: 'dispatchCount'
           property :dispatch_deadline, as: 'dispatchDeadline'
           property :first_attempt, as: 'firstAttempt', class: Google::Apis::CloudtasksV2::Attempt, decorator: Google::Apis::CloudtasksV2::Attempt::Representation
+      
+          property :http_request, as: 'httpRequest', class: Google::Apis::CloudtasksV2::HttpRequest, decorator: Google::Apis::CloudtasksV2::HttpRequest::Representation
       
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::CloudtasksV2::Attempt, decorator: Google::Apis::CloudtasksV2::Attempt::Representation
       

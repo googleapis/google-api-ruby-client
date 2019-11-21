@@ -106,7 +106,8 @@ module Google
         #   Examples:
         #   * `cloud_pubsub.project_id.topic_id`
         #   * ``pubsub.project_id.`topic.id.with.dots` ``
-        #   * `bigquery.project_id.dataset_id.table_id`
+        #   * `bigquery.table.project_id.dataset_id.table_id`
+        #   * `bigquery.dataset.project_id.dataset_id`
         #   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
         #   `*_id`s shoud satisfy the standard SQL rules for identifiers.
         #   https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
@@ -1330,6 +1331,640 @@ module Google
           command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField::Representation
           command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField
           command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a taxonomy in the specified project.
+        # @param [String] parent
+        #   Required. Resource name of the project that the taxonomy will belong to.
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] google_cloud_datacatalog_v1beta1_taxonomy_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_taxonomy(parent, google_cloud_datacatalog_v1beta1_taxonomy_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/taxonomies', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_taxonomy_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a taxonomy. This operation will also delete all
+        # policy tags in this taxonomy along with their associated policies.
+        # @param [String] name
+        #   Required. Resource name of the taxonomy to be deleted. All policy tags in
+        #   this taxonomy will also be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_taxonomy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Exports all taxonomies and their policy tags in a project.
+        # This method generates SerializedTaxonomy protos with nested policy tags
+        # that can be used as an input for future ImportTaxonomies calls.
+        # @param [String] parent
+        #   Required. Resource name of the project that taxonomies to be exported
+        #   will share.
+        # @param [Boolean] serialized_taxonomies
+        #   Export taxonomies as serialized taxonomies.
+        # @param [Array<String>, String] taxonomies
+        #   Required. Resource names of the taxonomies to be exported.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def export_project_location_taxonomy(parent, serialized_taxonomies: nil, taxonomies: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/taxonomies:export', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['serializedTaxonomies'] = serialized_taxonomies unless serialized_taxonomies.nil?
+          command.query['taxonomies'] = taxonomies unless taxonomies.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a taxonomy.
+        # @param [String] name
+        #   Required. Resource name of the requested taxonomy.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_taxonomy(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM policy for a taxonomy or a policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_taxonomy_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Policy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Imports all taxonomies and their policy tags to a project as new
+        # taxonomies.
+        # This method provides a bulk taxonomy / policy tag creation using nested
+        # proto structure.
+        # @param [String] parent
+        #   Required. Resource name of project that the newly created taxonomies will
+        #   belong to.
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest] google_cloud_datacatalog_v1beta1_import_taxonomies_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def import_project_location_taxonomy(parent, google_cloud_datacatalog_v1beta1_import_taxonomies_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/taxonomies:import', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_import_taxonomies_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all taxonomies in a project in a particular location that the caller
+        # has permission to view.
+        # @param [String] parent
+        #   Required. Resource name of the project to list the taxonomies of.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Must be a value between 1 and 1000.
+        #   If not set, defaults to 50.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous list request, if any. If
+        #   not set, defaults to an empty string.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_taxonomies(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/taxonomies', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a taxonomy.
+        # @param [String] name
+        #   Output only. Resource name of this taxonomy, whose format is:
+        #   "projects/`project_number`/locations/`location_id`/taxonomies/`id`".
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] google_cloud_datacatalog_v1beta1_taxonomy_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. For the `FieldMask` definition,
+        #   see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        #   If not set, defaults to all of the fields that are allowed to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_taxonomy(name, google_cloud_datacatalog_v1beta1_taxonomy_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_taxonomy_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Taxonomy
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the IAM policy for a taxonomy or a policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_taxonomy_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Policy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the permissions that a caller has on the specified taxonomy or
+        # policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_taxonomy_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a policy tag in the specified taxonomy.
+        # @param [String] parent
+        #   Required. Resource name of the taxonomy that the policy tag will belong to.
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] google_cloud_datacatalog_v1beta1_policy_tag_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_taxonomy_policy_tag(parent, google_cloud_datacatalog_v1beta1_policy_tag_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/policyTags', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_policy_tag_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a policy tag. Also deletes all of its descendant policy tags.
+        # @param [String] name
+        #   Required. Resource name of the policy tag to be deleted. All of its descendant
+        #   policy tags will also be deleted.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_taxonomy_policy_tag(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a policy tag.
+        # @param [String] name
+        #   Required. Resource name of the requested policy tag.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_taxonomy_policy_tag(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the IAM policy for a taxonomy or a policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::GetIamPolicyRequest] get_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_policy_tag_iam_policy(resource, get_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:getIamPolicy', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GetIamPolicyRequest::Representation
+          command.request_object = get_iam_policy_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Policy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all policy tags in a taxonomy.
+        # @param [String] parent
+        #   Required. Resource name of the taxonomy to list the policy tags of.
+        # @param [Fixnum] page_size
+        #   The maximum number of items to return. Must be a value between 1 and 1000.
+        #   If not set, defaults to 50.
+        # @param [String] page_token
+        #   The next_page_token value returned from a previous List request, if any. If
+        #   not set, defaults to an empty string.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_taxonomy_policy_tags(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/policyTags', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a policy tag.
+        # @param [String] name
+        #   Output only. Resource name of this policy tag, whose format is:
+        #   "projects/`project_number`/locations/`location_id`/taxonomies/`taxonomy_id`/
+        #   policyTags/`id`".
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] google_cloud_datacatalog_v1beta1_policy_tag_object
+        # @param [String] update_mask
+        #   The update mask applies to the resource. Only display_name, description and
+        #   parent_policy_tag can be updated and thus can be listed in the mask. If
+        #   update_mask is not provided, all allowed fields (i.e. display_name,
+        #   description and parent) will be updated. For more information including the
+        #   `FieldMask` definition, see
+        #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        #   fieldmask
+        #   If not set, defaults to all of the fields that are allowed to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_taxonomy_policy_tag(name, google_cloud_datacatalog_v1beta1_policy_tag_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_policy_tag_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1PolicyTag
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the IAM policy for a taxonomy or a policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy is being specified.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Policy] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Policy]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_policy_tag_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest::Representation
+          command.request_object = set_iam_policy_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Policy::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Policy
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the permissions that a caller has on the specified taxonomy or
+        # policy tag.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::DatacatalogV1beta1::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_policy_tag_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

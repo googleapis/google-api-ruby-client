@@ -5620,6 +5620,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          property :on_update_action, as: 'onUpdateAction'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
@@ -7877,6 +7878,7 @@ module Google
           property :display_device, as: 'displayDevice', class: Google::Apis::ComputeAlpha::DisplayDevice, decorator: Google::Apis::ComputeAlpha::DisplayDevice::Representation
       
           property :erase_windows_vss_signature, as: 'eraseWindowsVssSignature'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
       
           property :hostname, as: 'hostname'

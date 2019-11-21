@@ -627,6 +627,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_speaker_count
       
+        # Output only. Unused.
+        # Corresponds to the JSON property `speakerTag`
+        # @return [Fixnum]
+        attr_accessor :speaker_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -636,6 +641,7 @@ module Google
           @enable_speaker_diarization = args[:enable_speaker_diarization] if args.key?(:enable_speaker_diarization)
           @max_speaker_count = args[:max_speaker_count] if args.key?(:max_speaker_count)
           @min_speaker_count = args[:min_speaker_count] if args.key?(:min_speaker_count)
+          @speaker_tag = args[:speaker_tag] if args.key?(:speaker_tag)
         end
       end
       

@@ -406,6 +406,31 @@ module Google
       end
       
       # 
+      class ListVersionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The pagination token, if more results exist
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of versions, if any exist.
+        # Corresponds to the JSON property `versions`
+        # @return [Array<Google::Apis::FirebasehostingV1beta1::Version>]
+        attr_accessor :versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @versions = args[:versions] if args.key?(:versions)
+        end
+      end
+      
+      # 
       class PopulateVersionFilesRequest
         include Google::Apis::Core::Hashable
       

@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Release
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -231,6 +237,13 @@ module Google
         end
       end
       
+      class Metadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :services, as: 'services'
+        end
+      end
+      
       class Release
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -254,6 +267,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :metadata, as: 'metadata', class: Google::Apis::FirebaserulesV1::Metadata, decorator: Google::Apis::FirebaserulesV1::Metadata::Representation
+      
           property :name, as: 'name'
           property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
       

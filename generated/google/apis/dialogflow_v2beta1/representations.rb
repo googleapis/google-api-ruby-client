@@ -22,6 +22,12 @@ module Google
   module Apis
     module DialogflowV2beta1
       
+      class GoogleCloudDialogflowV2AnnotatedMessagePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2Context
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2ConversationEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +269,18 @@ module Google
       end
       
       class GoogleCloudDialogflowV2IntentTrainingPhrasePart
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2Message
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2MessageAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -958,6 +982,15 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2AnnotatedMessagePart
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity_type, as: 'entityType'
+          property :formatted_value, as: 'formattedValue'
+          property :text, as: 'text'
+        end
+      end
+      
       class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -980,6 +1013,18 @@ module Google
           property :lifespan_count, as: 'lifespanCount'
           property :name, as: 'name'
           hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2ConversationEvent
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :conversation, as: 'conversation'
+          property :error_status, as: 'errorStatus', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
+      
+          property :new_message_payload, as: 'newMessagePayload', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Message::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -1377,6 +1422,29 @@ module Google
           property :entity_type, as: 'entityType'
           property :text, as: 'text'
           property :user_defined, as: 'userDefined'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2Message
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, as: 'content'
+          property :create_time, as: 'createTime'
+          property :language_code, as: 'languageCode'
+          property :message_annotation, as: 'messageAnnotation', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2MessageAnnotation, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2MessageAnnotation::Representation
+      
+          property :name, as: 'name'
+          property :participant, as: 'participant'
+          property :participant_role, as: 'participantRole'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2MessageAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contain_entities, as: 'containEntities'
+          collection :parts, as: 'parts', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2AnnotatedMessagePart, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2AnnotatedMessagePart::Representation
+      
         end
       end
       
@@ -2363,6 +2431,7 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
           property :time_zone, as: 'timeZone'
+          hash :webhook_headers, as: 'webhookHeaders'
         end
       end
       

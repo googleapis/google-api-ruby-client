@@ -885,13 +885,6 @@ module Google
         #   overview)
         #   for naming requirements.  For example: `example.googleapis.com`.
         # @param [Google::Apis::ServicemanagementV1::Rollout] rollout_object
-        # @param [String] base_rollout_id
-        #   Unimplemented. Do not use this feature until this comment is removed.
-        #   The rollout id that rollout to be created based on.
-        #   Rollout should be constructed based on current successful rollout, this
-        #   field indicates the current successful rollout id that new rollout based on
-        #   to construct, if current successful rollout changed when server receives
-        #   the request, request will be rejected for safety.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -909,14 +902,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_service_rollout(service_name, rollout_object = nil, base_rollout_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_service_rollout(service_name, rollout_object = nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1/services/{serviceName}/rollouts', options)
           command.request_representation = Google::Apis::ServicemanagementV1::Rollout::Representation
           command.request_object = rollout_object
           command.response_representation = Google::Apis::ServicemanagementV1::Operation::Representation
           command.response_class = Google::Apis::ServicemanagementV1::Operation
           command.params['serviceName'] = service_name unless service_name.nil?
-          command.query['baseRolloutId'] = base_rollout_id unless base_rollout_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

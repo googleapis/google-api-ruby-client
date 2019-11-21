@@ -78,7 +78,7 @@ module Google
         # Custom JSON data provided by the manufacturer and attached to QUERY and
         # EXECUTE requests in AoG.
         # Corresponds to the JSON property `customData`
-        # @return [String]
+        # @return [Hash<String,Object>]
         attr_accessor :custom_data
       
         # Device information.

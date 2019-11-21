@@ -12,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudscheduler_v1/service.rb'
-require 'google/apis/cloudscheduler_v1/classes.rb'
-require 'google/apis/cloudscheduler_v1/representations.rb'
+require 'google/apis/doubleclickbidmanager_v1_1/service.rb'
+require 'google/apis/doubleclickbidmanager_v1_1/classes.rb'
+require 'google/apis/doubleclickbidmanager_v1_1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Scheduler API
+    # DoubleClick Bid Manager API
     #
-    # Creates and manages jobs run on a regular recurring schedule.
+    # API for viewing and managing your reports in DoubleClick Bid Manager.
     #
-    # @see https://cloud.google.com/scheduler/
-    module CloudschedulerV1
-      VERSION = 'V1'
-      REVISION = '20191111'
+    # @see https://developers.google.com/bid-manager/
+    module DoubleclickbidmanagerV1_1
+      VERSION = 'V1_1'
+      REVISION = '20191107'
 
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      # View and manage your reports in DoubleClick Bid Manager
+      AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'
     end
   end
 end

@@ -185,123 +185,6 @@ module Google
         end
       end
       
-      # Resource to hold the state and status of a user's auto domain mapping.
-      class AutoDomainMapping
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # The kind of resource, in this case "AutoDomainMapping".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
-        # persisted resources must have, which includes all objects users must create.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::ObjectMeta]
-        attr_accessor :metadata
-      
-        # The desired state of the Auto Domain Mapping.
-        # Corresponds to the JSON property `spec`
-        # @return [Google::Apis::RunV1::AutoDomainMappingSpec]
-        attr_accessor :spec
-      
-        # The current state of the Domain Mapping.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::RunV1::AutoDomainMappingStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @spec = args[:spec] if args.key?(:spec)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # The desired state of the Auto Domain Mapping.
-      class AutoDomainMappingSpec
-        include Google::Apis::Core::Hashable
-      
-        # The mode of the certificate.
-        # Corresponds to the JSON property `certificateMode`
-        # @return [String]
-        attr_accessor :certificate_mode
-      
-        # The type of expansion for the auto auto domain mapping.
-        # Corresponds to the JSON property `expansionType`
-        # @return [String]
-        attr_accessor :expansion_type
-      
-        # If set, the mapping will override any mapping set before this spec was set.
-        # It is recommended that the user leaves this empty to receive an error
-        # warning about a potential conflict and only set it once the respective UI
-        # has given such a warning.
-        # Corresponds to the JSON property `forceOverride`
-        # @return [Boolean]
-        attr_accessor :force_override
-        alias_method :force_override?, :force_override
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @certificate_mode = args[:certificate_mode] if args.key?(:certificate_mode)
-          @expansion_type = args[:expansion_type] if args.key?(:expansion_type)
-          @force_override = args[:force_override] if args.key?(:force_override)
-        end
-      end
-      
-      # The current state of the Domain Mapping.
-      class AutoDomainMappingStatus
-        include Google::Apis::Core::Hashable
-      
-        # Array of observed AutoDomainMappingConditions, indicating the current state
-        # of the AutoDomainMapping.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::RunV1::GoogleCloudRunV1Condition>]
-        attr_accessor :conditions
-      
-        # ObservedGeneration is the 'Generation' of the AutoDomainMapping that
-        # was last processed by the controller.
-        # Clients polling for completed reconciliation should poll until
-        # observedGeneration = metadata.generation and the Ready condition's status
-        # is True or False.
-        # Corresponds to the JSON property `observedGeneration`
-        # @return [Fixnum]
-        attr_accessor :observed_generation
-      
-        # The resource records required to configure this domain mapping. These
-        # records must be added to the domain's DNS configuration in order to
-        # serve the application via this domain mapping.
-        # Corresponds to the JSON property `resourceRecords`
-        # @return [Array<Google::Apis::RunV1::ResourceRecord>]
-        attr_accessor :resource_records
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
-          @resource_records = args[:resource_records] if args.key?(:resource_records)
-        end
-      end
-      
       # Associates `members` with a `role`.
       class Binding
         include Google::Apis::Core::Hashable
@@ -1467,51 +1350,6 @@ module Google
         end
       end
       
-      # ListAutoDomainMappingsResponse is a list of AutoDomainMapping resources.
-      class ListAutoDomainMappingsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "serving.knative.dev/v1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of AutoDomainMappings.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1::AutoDomainMapping>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "AutoDomainMappingList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1::ListMeta]
-        attr_accessor :metadata
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # ListConfigurationsResponse is a list of Configuration resources.
       class ListConfigurationsResponse
         include Google::Apis::Core::Hashable
@@ -2241,8 +2079,8 @@ module Google
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # 'setIamPolicy' will not fail even if the incoming policy version does not
+        # meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2253,11 +2091,12 @@ module Google
         # rejected.
         # Operations affecting conditional bindings must specify version 3. This can
         # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
+        # or removing a binding (conditional or unconditional) from the stored
+        # conditional policy.
         # Operations on non-conditional policies may specify any valid value or
         # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # If no etag is provided in the call to `setIamPolicy`, version compliance
+        # checks against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

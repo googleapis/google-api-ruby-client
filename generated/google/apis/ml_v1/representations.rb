@@ -70,6 +70,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ExplainRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1ExplanationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class GoogleCloudMlV1HyperparameterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1IntegratedGradientsAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -173,6 +191,12 @@ module Google
       end
       
       class GoogleCloudMlV1RequestLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1SampledShapleyAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -337,6 +361,24 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1ExplainRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :http_body, as: 'httpBody', class: Google::Apis::MlV1::GoogleApiHttpBody, decorator: Google::Apis::MlV1::GoogleApiHttpBody::Representation
+      
+        end
+      end
+      
+      class GoogleCloudMlV1ExplanationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :integrated_gradients_attribution, as: 'integratedGradientsAttribution', class: Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution, decorator: Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution::Representation
+      
+          property :sampled_shapley_attribution, as: 'sampledShapleyAttribution', class: Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution, decorator: Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution::Representation
+      
+        end
+      end
+      
       class GoogleCloudMlV1GetConfigResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -378,6 +420,13 @@ module Google
           collection :params, as: 'params', class: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1ParameterSpec::Representation
       
           property :resume_previous_job_id, as: 'resumePreviousJobId'
+        end
+      end
+      
+      class GoogleCloudMlV1IntegratedGradientsAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_integral_steps, as: 'numIntegralSteps'
         end
       end
       
@@ -553,6 +602,13 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1SampledShapleyAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_paths, as: 'numPaths'
+        end
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -614,6 +670,8 @@ module Google
           property :description, as: 'description'
           property :error_message, as: 'errorMessage'
           property :etag, :base64 => true, as: 'etag'
+          property :explanation_config, as: 'explanationConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig::Representation
+      
           property :framework, as: 'framework'
           property :is_default, as: 'isDefault'
           hash :labels, as: 'labels'

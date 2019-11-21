@@ -294,6 +294,87 @@ module Google
         end
       end
       
+      # Request for explanations to be issued against a trained model.
+      class GoogleCloudMlV1ExplainRequest
+        include Google::Apis::Core::Hashable
+      
+        # Message that represents an arbitrary HTTP body. It should only be used for
+        # payload formats that can't be represented as JSON, such as raw binary or
+        # an HTML page.
+        # This message can be used both in streaming and non-streaming API methods in
+        # the request as well as the response.
+        # It can be used as a top-level request field, which is convenient if one
+        # wants to extract parameters from either the URL or HTTP template into the
+        # request fields and also want access to the raw HTTP body.
+        # Example:
+        # message GetResourceRequest `
+        # // A unique request id.
+        # string request_id = 1;
+        # // The raw HTTP body is bound to this field.
+        # google.api.HttpBody http_body = 2;
+        # `
+        # service ResourceService `
+        # rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
+        # rpc UpdateResource(google.api.HttpBody) returns
+        # (google.protobuf.Empty);
+        # `
+        # Example with streaming methods:
+        # service CaldavService `
+        # rpc GetCalendar(stream google.api.HttpBody)
+        # returns (stream google.api.HttpBody);
+        # rpc UpdateCalendar(stream google.api.HttpBody)
+        # returns (stream google.api.HttpBody);
+        # `
+        # Use of this type only changes how the request and response bodies are
+        # handled, all other features will continue to work unchanged.
+        # Corresponds to the JSON property `httpBody`
+        # @return [Google::Apis::MlV1::GoogleApiHttpBody]
+        attr_accessor :http_body
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @http_body = args[:http_body] if args.key?(:http_body)
+        end
+      end
+      
+      # Message holding configuration options for explaining model predictions.
+      # Currently, the only supported mechanism to explain a model's prediction is
+      # through attributing its output back to its inputs which is essentially a
+      # credit assignment task. We support multiple attribution methods, some
+      # specific to particular frameworks like Tensorflow and XGBoost.
+      # Next idx: 7.
+      class GoogleCloudMlV1ExplanationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Attributes credit by computing the Aumann-Shapley value taking advantage
+        # of the model's fully differentiable structure. Refer to this paper for
+        # more details: http://proceedings.mlr.press/v70/sundararajan17a.html
+        # Corresponds to the JSON property `integratedGradientsAttribution`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution]
+        attr_accessor :integrated_gradients_attribution
+      
+        # An attribution method that approximates Shapley values for features that
+        # contribute to the label being predicted. A sampling strategy is used to
+        # approximate the value rather than considering all subsets of features.
+        # Corresponds to the JSON property `sampledShapleyAttribution`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution]
+        attr_accessor :sampled_shapley_attribution
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @integrated_gradients_attribution = args[:integrated_gradients_attribution] if args.key?(:integrated_gradients_attribution)
+          @sampled_shapley_attribution = args[:sampled_shapley_attribution] if args.key?(:sampled_shapley_attribution)
+        end
+      end
+      
       # Returns service account information associated with a project.
       class GoogleCloudMlV1GetConfigResponse
         include Google::Apis::Core::Hashable
@@ -487,6 +568,29 @@ module Google
           @max_trials = args[:max_trials] if args.key?(:max_trials)
           @params = args[:params] if args.key?(:params)
           @resume_previous_job_id = args[:resume_previous_job_id] if args.key?(:resume_previous_job_id)
+        end
+      end
+      
+      # Attributes credit by computing the Aumann-Shapley value taking advantage
+      # of the model's fully differentiable structure. Refer to this paper for
+      # more details: http://proceedings.mlr.press/v70/sundararajan17a.html
+      class GoogleCloudMlV1IntegratedGradientsAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Number of steps for approximating the path integral.
+        # A good value to start is 50 and gradually increase until the
+        # sum to diff property is met within the desired error range.
+        # Corresponds to the JSON property `numIntegralSteps`
+        # @return [Fixnum]
+        attr_accessor :num_integral_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_integral_steps = args[:num_integral_steps] if args.key?(:num_integral_steps)
         end
       end
       
@@ -1284,6 +1388,28 @@ module Google
         end
       end
       
+      # An attribution method that approximates Shapley values for features that
+      # contribute to the label being predicted. A sampling strategy is used to
+      # approximate the value rather than considering all subsets of features.
+      class GoogleCloudMlV1SampledShapleyAttribution
+        include Google::Apis::Core::Hashable
+      
+        # The number of feature permutations to consider when approximating the
+        # shapley values.
+        # Corresponds to the JSON property `numPaths`
+        # @return [Fixnum]
+        attr_accessor :num_paths
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_paths = args[:num_paths] if args.key?(:num_paths)
+        end
+      end
+      
       # Request message for the SetDefaultVersion request.
       class GoogleCloudMlV1SetDefaultVersionRequest
         include Google::Apis::Core::Hashable
@@ -1645,6 +1771,16 @@ module Google
         # @return [String]
         attr_accessor :etag
       
+        # Message holding configuration options for explaining model predictions.
+        # Currently, the only supported mechanism to explain a model's prediction is
+        # through attributing its output back to its inputs which is essentially a
+        # credit assignment task. We support multiple attribution methods, some
+        # specific to particular frameworks like Tensorflow and XGBoost.
+        # Next idx: 7.
+        # Corresponds to the JSON property `explanationConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig]
+        attr_accessor :explanation_config
+      
         # Optional. The machine learning framework AI Platform uses to train
         # this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`,
         # `XGBOOST`. If you do not specify a framework, AI Platform
@@ -1841,6 +1977,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @error_message = args[:error_message] if args.key?(:error_message)
           @etag = args[:etag] if args.key?(:etag)
+          @explanation_config = args[:explanation_config] if args.key?(:explanation_config)
           @framework = args[:framework] if args.key?(:framework)
           @is_default = args[:is_default] if args.key?(:is_default)
           @labels = args[:labels] if args.key?(:labels)
@@ -2096,8 +2233,8 @@ module Google
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # 'setIamPolicy' will not fail even if the incoming policy version does not
+        # meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2108,11 +2245,12 @@ module Google
         # rejected.
         # Operations affecting conditional bindings must specify version 3. This can
         # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
+        # or removing a binding (conditional or unconditional) from the stored
+        # conditional policy.
         # Operations on non-conditional policies may specify any valid value or
         # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # If no etag is provided in the call to `setIamPolicy`, version compliance
+        # checks against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

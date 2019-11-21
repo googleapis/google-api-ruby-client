@@ -911,7 +911,7 @@ module Google
       
         # Required. A client-assigned identifier, such as "load-balancer-exclusion".
         # Identifiers are limited to 100 characters and can include only letters, digits,
-        # underscores, hyphens, and periods.
+        # underscores, hyphens, and periods. First character has to be alphanumeric.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1164,7 +1164,8 @@ module Google
         # Required. The client-assigned sink identifier, unique within the project.
         # Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100
         # characters and can include only the following characters: upper and lower-case
-        # alphanumeric characters, underscores, hyphens, and periods.
+        # alphanumeric characters, underscores, hyphens, and periods. First character
+        # has to be alphanumeric.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

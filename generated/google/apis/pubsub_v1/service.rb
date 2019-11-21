@@ -66,13 +66,12 @@ module Google
         # generated name is populated in the returned Snapshot object. Note that for
         # REST API requests, you must specify a name in the request.
         # @param [String] name
-        #   Optional user-provided name for this snapshot.
-        #   If the name is not provided in the request, the server will assign a random
-        #   name for this snapshot on the same project as the subscription.
-        #   Note that for REST API requests, you must specify a name.  See the
-        #   <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
-        #   resource name rules</a>.
-        #   Format is `projects/`project`/snapshots/`snap``.
+        #   User-provided name for this snapshot. If the name is not provided in the
+        #   request, the server will assign a random name for this snapshot on the same
+        #   project as the subscription. Note that for REST API requests, you must
+        #   specify a name.  See the <a
+        #   href="https://cloud.google.com/pubsub/docs/admin#resource_names"> resource
+        #   name rules</a>. Format is `projects/`project`/snapshots/`snap``.
         # @param [Google::Apis::PubsubV1::CreateSnapshotRequest] create_snapshot_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

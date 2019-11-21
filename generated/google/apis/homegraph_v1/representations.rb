@@ -161,7 +161,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
-          property :custom_data, as: 'customData'
+          hash :custom_data, as: 'customData'
           property :device_info, as: 'deviceInfo', class: Google::Apis::HomegraphV1::DeviceInfo, decorator: Google::Apis::HomegraphV1::DeviceInfo::Representation
       
           property :id, as: 'id'
