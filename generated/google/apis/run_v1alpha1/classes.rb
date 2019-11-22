@@ -4666,7 +4666,7 @@ module Google
         end
       end
       
-      # 
+      # Deprecated, importer specification will be available via GcpImporterDao.
       class TriggerImporterSpec
         include Google::Apis::Core::Hashable
       
@@ -4709,9 +4709,8 @@ module Google
         # @return [Google::Apis::RunV1alpha1::TriggerFilter]
         attr_accessor :filter
       
-        # Specification of the importers that will provide events to the trigger.
-        # Note, for Cloud Run, the importers will only be used if a filter is not
-        # specified.
+        # Deprecated, importer specification will be replaced by information stored
+        # in GcpImporterDao.
         # Corresponds to the JSON property `importers`
         # @return [Array<Google::Apis::RunV1alpha1::TriggerImporterSpec>]
         attr_accessor :importers

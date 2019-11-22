@@ -12,26 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/pubsub_v1beta2/service.rb'
-require 'google/apis/pubsub_v1beta2/classes.rb'
-require 'google/apis/pubsub_v1beta2/representations.rb'
+require 'google/apis/billingbudgets_v1beta1/service.rb'
+require 'google/apis/billingbudgets_v1beta1/classes.rb'
+require 'google/apis/billingbudgets_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Pub/Sub API
+    # Cloud Billing Budget API
     #
-    # Provides reliable, many-to-many, asynchronous messaging between applications.
+    # The Cloud Billing Budget API stores Cloud Billing budgets, which define a
+    # budget plan and the rules to execute as spend is tracked against that plan.
     #
-    # @see https://cloud.google.com/pubsub/docs
-    module PubsubV1beta2
-      VERSION = 'V1beta2'
-      REVISION = '20191111'
+    # @see https://cloud.google.com/billing/docs/how-to/budget-api-overview
+    module BillingbudgetsV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20191118'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View and manage Pub/Sub topics and subscriptions
-      AUTH_PUBSUB = 'https://www.googleapis.com/auth/pubsub'
     end
   end
 end

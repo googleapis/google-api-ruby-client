@@ -1923,7 +1923,7 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
-        # The HTTP URL query in the format of `name1=value`&name2=value2`, as it
+        # The HTTP URL query in the format of `name1=value1&name2=value2`, as it
         # appears in the first line of the HTTP request. No decoding is performed.
         # Corresponds to the JSON property `query`
         # @return [String]

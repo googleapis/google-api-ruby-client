@@ -331,6 +331,7 @@ module Google
           collection :functions, as: 'functions', class: Google::Apis::CloudfunctionsV1::CloudFunction, decorator: Google::Apis::CloudfunctionsV1::CloudFunction::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          collection :unreachable, as: 'unreachable'
         end
       end
       

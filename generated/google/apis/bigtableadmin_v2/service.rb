@@ -1145,7 +1145,7 @@ module Google
         #   The value of `next_page_token` returned by a previous call.
         # @param [String] view
         #   The view to be applied to the returned tables' fields.
-        #   Defaults to `NAME_ONLY` if unspecified; no others are currently supported.
+        #   Only NAME_ONLY view (default) and REPLICATION_VIEW are supported.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

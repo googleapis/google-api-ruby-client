@@ -19,19 +19,20 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module CloudbuildV1alpha1
-      # Cloud Build API
+    module BillingbudgetsV1beta1
+      # Cloud Billing Budget API
       #
-      # Creates and manages builds on Google Cloud Platform.
+      # The Cloud Billing Budget API stores Cloud Billing budgets, which define a
+      #  budget plan and the rules to execute as spend is tracked against that plan.
       #
       # @example
-      #    require 'google/apis/cloudbuild_v1alpha1'
+      #    require 'google/apis/billingbudgets_v1beta1'
       #
-      #    Cloudbuild = Google::Apis::CloudbuildV1alpha1 # Alias the module
-      #    service = Cloudbuild::CloudBuildService.new
+      #    Billingbudgets = Google::Apis::BillingbudgetsV1beta1 # Alias the module
+      #    service = Billingbudgets::CloudBillingBudgetService.new
       #
-      # @see https://cloud.google.com/cloud-build/docs/
-      class CloudBuildService < Google::Apis::Core::BaseService
+      # @see https://cloud.google.com/billing/docs/how-to/budget-api-overview
+      class CloudBillingBudgetService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
@@ -43,15 +44,17 @@ module Google
         attr_accessor :quota_user
 
         def initialize
-          super('https://cloudbuild.googleapis.com/', '')
+          super('https://billingbudgets.googleapis.com/', '')
           @batch_path = 'batch'
         end
         
-        # Creates a `WorkerPool` to run the builds, and returns the new worker pool.
-        # This API is experimental.
+        # Creates a new budget. See
+        # <a href="https://cloud.google.com/billing/quotas">Quotas and limits</a>
+        # for more information on the limits of the number of budgets you can create.
         # @param [String] parent
-        #   ID of the parent project.
-        # @param [Google::Apis::CloudbuildV1alpha1::WorkerPool] worker_pool_object
+        #   Required. The name of the billing account to create the budget in. Values
+        #   are of the form `billingAccounts/`billingAccountId``.
+        # @param [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest] google_cloud_billing_budgets_v1beta1_create_budget_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -61,31 +64,30 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1alpha1::WorkerPool] parsed result object
+        # @yieldparam result [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudbuildV1alpha1::WorkerPool]
+        # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_worker_pool(parent, worker_pool_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/workerPools', options)
-          command.request_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
-          command.request_object = worker_pool_object
-          command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
-          command.response_class = Google::Apis::CloudbuildV1alpha1::WorkerPool
+        def create_billing_account_budget(parent, google_cloud_billing_budgets_v1beta1_create_budget_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/budgets', options)
+          command.request_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest::Representation
+          command.request_object = google_cloud_billing_budgets_v1beta1_create_budget_request_object
+          command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget::Representation
+          command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a `WorkerPool` by its project ID and WorkerPool name.
-        # This API is experimental.
+        # Deletes a budget. Returns successfully if already deleted.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
+        #   Required. Name of the budget to delete. Values are of the form
+        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -95,29 +97,28 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1alpha1::Empty] parsed result object
+        # @yieldparam result [Google::Apis::BillingbudgetsV1beta1::GoogleProtobufEmpty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudbuildV1alpha1::Empty]
+        # @return [Google::Apis::BillingbudgetsV1beta1::GoogleProtobufEmpty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::CloudbuildV1alpha1::Empty::Representation
-          command.response_class = Google::Apis::CloudbuildV1alpha1::Empty
+        def delete_billing_account_budget(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleProtobufEmpty
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Returns information about a `WorkerPool`.
-        # This API is experimental.
+        # Returns a budget.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
+        #   Required. Name of budget to get. Values are of the form
+        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -127,28 +128,35 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1alpha1::WorkerPool] parsed result object
+        # @yieldparam result [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudbuildV1alpha1::WorkerPool]
+        # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_worker_pool(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
-          command.response_class = Google::Apis::CloudbuildV1alpha1::WorkerPool
+        def get_billing_account_budget(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget::Representation
+          command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # List project's `WorkerPool`s.
-        # This API is experimental.
+        # Returns a list of budgets for a billing account.
         # @param [String] parent
-        #   ID of the parent project.
+        #   Required. Name of billing account to list budgets under. Values
+        #   are of the form `billingAccounts/`billingAccountId``.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of budgets to return per page.
+        #   The default and maximum value are 100.
+        # @param [String] page_token
+        #   Optional. The value returned by the last `ListBudgetsResponse` which
+        #   indicates that this is a continuation of a prior `ListBudgets` call,
+        #   and that the system should return the next page of data.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -158,32 +166,32 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse] parsed result object
+        # @yieldparam result [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse]
+        # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_worker_pools(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+parent}/workerPools', options)
-          command.response_representation = Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse::Representation
-          command.response_class = Google::Apis::CloudbuildV1alpha1::ListWorkerPoolsResponse
+        def list_billing_account_budgets(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/budgets', options)
+          command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse::Representation
+          command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Update a `WorkerPool`.
-        # This API is experimental.
+        # Updates a budget and returns the updated budget.
         # @param [String] name
-        #   The field will contain name of the resource requested, for example:
-        #   "projects/project-1/workerPools/workerpool-name"
-        # @param [Google::Apis::CloudbuildV1alpha1::WorkerPool] worker_pool_object
-        # @param [String] update_mask
-        #   A mask specifying which fields in `WorkerPool` should be updated.
+        #   Output only. Resource name of the budget.
+        #   The resource name implies the scope of a budget. Values are of the form
+        #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
+        # @param [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest] google_cloud_billing_budgets_v1beta1_update_budget_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -193,22 +201,21 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::CloudbuildV1alpha1::WorkerPool] parsed result object
+        # @yieldparam result [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::CloudbuildV1alpha1::WorkerPool]
+        # @return [Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_project_worker_pool(name, worker_pool_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
-          command.request_object = worker_pool_object
-          command.response_representation = Google::Apis::CloudbuildV1alpha1::WorkerPool::Representation
-          command.response_class = Google::Apis::CloudbuildV1alpha1::WorkerPool
+        def patch_billing_account_budget(name, google_cloud_billing_budgets_v1beta1_update_budget_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest::Representation
+          command.request_object = google_cloud_billing_budgets_v1beta1_update_budget_request_object
+          command.response_representation = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget::Representation
+          command.response_class = Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1Budget
           command.params['name'] = name unless name.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

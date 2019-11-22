@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/container-analysis/api/reference/rest/
     module ContaineranalysisV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20191108'
+      REVISION = '20191118'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
