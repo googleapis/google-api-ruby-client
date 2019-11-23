@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1026,6 +1032,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :worker_pools, as: 'workerPools', class: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool, decorator: Google::Apis::RemotebuildexecutionV2::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool::Representation
       
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :logging_enabled, as: 'loggingEnabled'
+          property :name, as: 'name'
+          property :update_mask, as: 'updateMask'
         end
       end
       

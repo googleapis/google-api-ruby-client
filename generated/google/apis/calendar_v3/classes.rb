@@ -1089,7 +1089,7 @@ module Google
         # @return [Google::Apis::CalendarV3::Event::Creator]
         attr_accessor :creator
       
-        # Description of the event. Optional.
+        # Description of the event. Can contain HTML. Optional.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

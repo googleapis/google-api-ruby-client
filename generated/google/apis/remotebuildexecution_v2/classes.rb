@@ -2630,6 +2630,39 @@ module Google
         end
       end
       
+      # The request used for `UpdateInstance`.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable Stackdriver logging for this instance.
+        # Corresponds to the JSON property `loggingEnabled`
+        # @return [Boolean]
+        attr_accessor :logging_enabled
+        alias_method :logging_enabled?, :logging_enabled
+      
+        # Name of the instance to update.
+        # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The fields to update.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @logging_enabled = args[:logging_enabled] if args.key?(:logging_enabled)
+          @name = args[:name] if args.key?(:name)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
       # The request used for UpdateWorkerPool.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest
         include Google::Apis::Core::Hashable

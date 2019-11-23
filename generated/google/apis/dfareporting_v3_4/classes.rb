@@ -20,7 +20,7 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module DfareportingV3_3
+    module DfareportingV3_4
       
       # Contains properties of a Campaign Manager account.
       class Account
@@ -184,7 +184,7 @@ module Google
       
         # Reporting Configuration
         # Corresponds to the JSON property `reportsConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::ReportsConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::ReportsConfiguration]
         attr_accessor :reports_configuration
       
         # Share Path to Conversion reports with Twitter.
@@ -365,7 +365,7 @@ module Google
       
         # Account permission group collection.
         # Corresponds to the JSON property `accountPermissionGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::AccountPermissionGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AccountPermissionGroup>]
         attr_accessor :account_permission_groups
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -391,7 +391,7 @@ module Google
       
         # Account permission collection.
         # Corresponds to the JSON property `accountPermissions`
-        # @return [Array<Google::Apis::DfareportingV3_3::AccountPermission>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AccountPermission>]
         attr_accessor :account_permissions
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -432,12 +432,12 @@ module Google
       
         # Object Filter.
         # Corresponds to the JSON property `advertiserFilter`
-        # @return [Google::Apis::DfareportingV3_3::ObjectFilter]
+        # @return [Google::Apis::DfareportingV3_4::ObjectFilter]
         attr_accessor :advertiser_filter
       
         # Object Filter.
         # Corresponds to the JSON property `campaignFilter`
-        # @return [Google::Apis::DfareportingV3_3::ObjectFilter]
+        # @return [Google::Apis::DfareportingV3_4::ObjectFilter]
         attr_accessor :campaign_filter
       
         # Comments for this user profile.
@@ -493,7 +493,7 @@ module Google
       
         # Object Filter.
         # Corresponds to the JSON property `siteFilter`
-        # @return [Google::Apis::DfareportingV3_3::ObjectFilter]
+        # @return [Google::Apis::DfareportingV3_4::ObjectFilter]
         attr_accessor :site_filter
       
         # Subaccount ID of the user profile. This is a read-only field that can be left
@@ -515,7 +515,7 @@ module Google
       
         # Object Filter.
         # Corresponds to the JSON property `userRoleFilter`
-        # @return [Google::Apis::DfareportingV3_3::ObjectFilter]
+        # @return [Google::Apis::DfareportingV3_4::ObjectFilter]
         attr_accessor :user_role_filter
       
         # User role ID of the user profile. This is a required field.
@@ -554,7 +554,7 @@ module Google
       
         # Account user profile collection.
         # Corresponds to the JSON property `accountUserProfiles`
-        # @return [Array<Google::Apis::DfareportingV3_3::AccountUserProfile>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AccountUserProfile>]
         attr_accessor :account_user_profiles
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -586,7 +586,7 @@ module Google
       
         # Account collection.
         # Corresponds to the JSON property `accounts`
-        # @return [Array<Google::Apis::DfareportingV3_3::Account>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Account>]
         attr_accessor :accounts
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -619,7 +619,7 @@ module Google
         # List of activity filters. The dimension values need to be all either of type "
         # dfa:activity" or "dfa:activityGroup".
         # Corresponds to the JSON property `filters`
-        # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
         attr_accessor :filters
       
         # The kind of resource this is, in this case dfareporting#activities.
@@ -666,7 +666,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Whether this ad is archived. When true, active must be false.
@@ -688,17 +688,17 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :campaign_id_dimension_value
       
         # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrl]
         attr_accessor :click_through_url
       
         # Click Through URL Suffix settings.
         # Corresponds to the JSON property `clickThroughUrlSuffixProperties`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrlSuffixProperties]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrlSuffixProperties]
         attr_accessor :click_through_url_suffix_properties
       
         # Comments for this ad.
@@ -720,36 +720,36 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :create_info
       
         # Creative group assignments for this ad. Applicable when type is
         # AD_SERVING_CLICK_TRACKER. Only one assignment per creative group number is
         # allowed for a maximum of two assignments.
         # Corresponds to the JSON property `creativeGroupAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeGroupAssignment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeGroupAssignment>]
         attr_accessor :creative_group_assignments
       
         # Creative Rotation.
         # Corresponds to the JSON property `creativeRotation`
-        # @return [Google::Apis::DfareportingV3_3::CreativeRotation]
+        # @return [Google::Apis::DfareportingV3_4::CreativeRotation]
         attr_accessor :creative_rotation
       
         # Day Part Targeting.
         # Corresponds to the JSON property `dayPartTargeting`
-        # @return [Google::Apis::DfareportingV3_3::DayPartTargeting]
+        # @return [Google::Apis::DfareportingV3_4::DayPartTargeting]
         attr_accessor :day_part_targeting
       
         # Properties of inheriting and overriding the default click-through event tag. A
         # campaign may override the event tag defined at the advertiser level, and an ad
         # may also override the campaign's setting further.
         # Corresponds to the JSON property `defaultClickThroughEventTagProperties`
-        # @return [Google::Apis::DfareportingV3_3::DefaultClickThroughEventTagProperties]
+        # @return [Google::Apis::DfareportingV3_4::DefaultClickThroughEventTagProperties]
         attr_accessor :default_click_through_event_tag_properties
       
         # Delivery Schedule.
         # Corresponds to the JSON property `deliverySchedule`
-        # @return [Google::Apis::DfareportingV3_3::DeliverySchedule]
+        # @return [Google::Apis::DfareportingV3_4::DeliverySchedule]
         attr_accessor :delivery_schedule
       
         # Whether this ad is a dynamic click tracker. Applicable when type is
@@ -768,12 +768,12 @@ module Google
       
         # Event tag overrides for this ad.
         # Corresponds to the JSON property `eventTagOverrides`
-        # @return [Array<Google::Apis::DfareportingV3_3::EventTagOverride>]
+        # @return [Array<Google::Apis::DfareportingV3_4::EventTagOverride>]
         attr_accessor :event_tag_overrides
       
         # Geographical Targeting.
         # Corresponds to the JSON property `geoTargeting`
-        # @return [Google::Apis::DfareportingV3_3::GeoTargeting]
+        # @return [Google::Apis::DfareportingV3_4::GeoTargeting]
         attr_accessor :geo_targeting
       
         # ID of this ad. This is a read-only, auto-generated field.
@@ -783,12 +783,12 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Key Value Targeting Expression.
         # Corresponds to the JSON property `keyValueTargetingExpression`
-        # @return [Google::Apis::DfareportingV3_3::KeyValueTargetingExpression]
+        # @return [Google::Apis::DfareportingV3_4::KeyValueTargetingExpression]
         attr_accessor :key_value_targeting_expression
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -799,12 +799,12 @@ module Google
       
         # Language Targeting.
         # Corresponds to the JSON property `languageTargeting`
-        # @return [Google::Apis::DfareportingV3_3::LanguageTargeting]
+        # @return [Google::Apis::DfareportingV3_4::LanguageTargeting]
         attr_accessor :language_targeting
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this ad. This is a required field and must be less than 256 characters
@@ -815,17 +815,17 @@ module Google
       
         # Placement assignments for this ad.
         # Corresponds to the JSON property `placementAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlacementAssignment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlacementAssignment>]
         attr_accessor :placement_assignments
       
         # Remarketing List Targeting Expression.
         # Corresponds to the JSON property `remarketingListExpression`
-        # @return [Google::Apis::DfareportingV3_3::ListTargetingExpression]
+        # @return [Google::Apis::DfareportingV3_4::ListTargetingExpression]
         attr_accessor :remarketing_list_expression
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :size
       
         # Whether this ad is ssl compliant. This is a read-only field that is auto-
@@ -863,7 +863,7 @@ module Google
       
         # Technology Targeting.
         # Corresponds to the JSON property `technologyTargeting`
-        # @return [Google::Apis::DfareportingV3_3::TechnologyTargeting]
+        # @return [Google::Apis::DfareportingV3_4::TechnologyTargeting]
         attr_accessor :technology_targeting
       
         # Type of ad. This is a required field on insertion. Note that default ads (
@@ -1039,7 +1039,7 @@ module Google
       
         # Ad collection.
         # Corresponds to the JSON property `ads`
-        # @return [Array<Google::Apis::DfareportingV3_3::Ad>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Ad>]
         attr_accessor :ads
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1113,7 +1113,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
       
         # ID of this advertiser. This is a read-only, auto-generated field.
@@ -1123,7 +1123,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1236,7 +1236,7 @@ module Google
       
         # Advertiser group collection.
         # Corresponds to the JSON property `advertiserGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::AdvertiserGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AdvertiserGroup>]
         attr_accessor :advertiser_groups
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1274,7 +1274,7 @@ module Google
       
         # Landing page collection
         # Corresponds to the JSON property `landingPages`
-        # @return [Array<Google::Apis::DfareportingV3_3::LandingPage>]
+        # @return [Array<Google::Apis::DfareportingV3_4::LandingPage>]
         attr_accessor :landing_pages
       
         # Pagination token to be used for the next list operation.
@@ -1300,7 +1300,7 @@ module Google
       
         # Advertiser collection.
         # Corresponds to the JSON property `advertisers`
-        # @return [Array<Google::Apis::DfareportingV3_3::Advertiser>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Advertiser>]
         attr_accessor :advertisers
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1323,6 +1323,33 @@ module Google
           @advertisers = args[:advertisers] if args.key?(:advertisers)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Annotate a click event.
+      class AnnotateClickEvent
+        include Google::Apis::Core::Hashable
+      
+        # The Google click ID. Use this field to annotate the click associated with the
+        # gclid.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#annotateClickEvent".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gclid = args[:gclid] if args.key?(:gclid)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -1367,7 +1394,7 @@ module Google
         # Audience segments assigned to this group. The number of segments must be
         # between 2 and 100.
         # Corresponds to the JSON property `audienceSegments`
-        # @return [Array<Google::Apis::DfareportingV3_3::AudienceSegment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AudienceSegment>]
         attr_accessor :audience_segments
       
         # ID of this audience segment group. This is a read-only, auto-generated field.
@@ -1463,7 +1490,7 @@ module Google
       
         # Browser collection.
         # Corresponds to the JSON property `browsers`
-        # @return [Array<Google::Apis::DfareportingV3_3::Browser>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Browser>]
         attr_accessor :browsers
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1494,12 +1521,12 @@ module Google
       
         # Campaign ad blocking settings.
         # Corresponds to the JSON property `adBlockingConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::AdBlockingConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::AdBlockingConfiguration]
         attr_accessor :ad_blocking_configuration
       
         # Additional creative optimization configurations for the campaign.
         # Corresponds to the JSON property `additionalCreativeOptimizationConfigurations`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeOptimizationConfiguration>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeOptimizationConfiguration>]
         attr_accessor :additional_creative_optimization_configurations
       
         # Advertiser group ID of the associated advertiser.
@@ -1514,7 +1541,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Whether this campaign has been archived.
@@ -1526,7 +1553,7 @@ module Google
         # Audience segment groups assigned to this campaign. Cannot have more than 300
         # segment groups.
         # Corresponds to the JSON property `audienceSegmentGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::AudienceSegmentGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AudienceSegmentGroup>]
         attr_accessor :audience_segment_groups
       
         # Billing invoice code included in the Campaign Manager client billing invoices
@@ -1537,7 +1564,7 @@ module Google
       
         # Click Through URL Suffix settings.
         # Corresponds to the JSON property `clickThroughUrlSuffixProperties`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrlSuffixProperties]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrlSuffixProperties]
         attr_accessor :click_through_url_suffix_properties
       
         # Arbitrary comments about this campaign. Must be less than 256 characters long.
@@ -1547,7 +1574,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :create_info
       
         # List of creative group IDs that are assigned to the campaign.
@@ -1557,14 +1584,14 @@ module Google
       
         # Creative optimization settings.
         # Corresponds to the JSON property `creativeOptimizationConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::CreativeOptimizationConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::CreativeOptimizationConfiguration]
         attr_accessor :creative_optimization_configuration
       
         # Properties of inheriting and overriding the default click-through event tag. A
         # campaign may override the event tag defined at the advertiser level, and an ad
         # may also override the campaign's setting further.
         # Corresponds to the JSON property `defaultClickThroughEventTagProperties`
-        # @return [Google::Apis::DfareportingV3_3::DefaultClickThroughEventTagProperties]
+        # @return [Google::Apis::DfareportingV3_4::DefaultClickThroughEventTagProperties]
         attr_accessor :default_click_through_event_tag_properties
       
         # The default landing page ID for this campaign.
@@ -1584,7 +1611,7 @@ module Google
       
         # Overrides that can be used to activate or deactivate advertiser event tags.
         # Corresponds to the JSON property `eventTagOverrides`
-        # @return [Array<Google::Apis::DfareportingV3_3::EventTagOverride>]
+        # @return [Array<Google::Apis::DfareportingV3_4::EventTagOverride>]
         attr_accessor :event_tag_overrides
       
         # External ID for this campaign.
@@ -1599,7 +1626,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1610,7 +1637,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this campaign. This is a required field and must be less than 256
@@ -1712,7 +1739,7 @@ module Google
       
         # Campaign creative association collection
         # Corresponds to the JSON property `campaignCreativeAssociations`
-        # @return [Array<Google::Apis::DfareportingV3_3::CampaignCreativeAssociation>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CampaignCreativeAssociation>]
         attr_accessor :campaign_creative_associations
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1738,13 +1765,63 @@ module Google
         end
       end
       
+      # Campaign Manager IDs related to the custom event.
+      class CampaignManagerIds
+        include Google::Apis::Core::Hashable
+      
+        # Ad ID for Campaign Manager.
+        # Corresponds to the JSON property `adId`
+        # @return [Fixnum]
+        attr_accessor :ad_id
+      
+        # Campaign ID for Campaign Manager.
+        # Corresponds to the JSON property `campaignId`
+        # @return [Fixnum]
+        attr_accessor :campaign_id
+      
+        # Creative ID for Campaign Manager.
+        # Corresponds to the JSON property `creativeId`
+        # @return [Fixnum]
+        attr_accessor :creative_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#campaignManagerIds".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Placement ID for Campaign Manager.
+        # Corresponds to the JSON property `placementId`
+        # @return [Fixnum]
+        attr_accessor :placement_id
+      
+        # Site ID for Campaign Manager.
+        # Corresponds to the JSON property `siteId`
+        # @return [Fixnum]
+        attr_accessor :site_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ad_id = args[:ad_id] if args.key?(:ad_id)
+          @campaign_id = args[:campaign_id] if args.key?(:campaign_id)
+          @creative_id = args[:creative_id] if args.key?(:creative_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @placement_id = args[:placement_id] if args.key?(:placement_id)
+          @site_id = args[:site_id] if args.key?(:site_id)
+        end
+      end
+      
       # Campaign List Response
       class CampaignsListResponse
         include Google::Apis::Core::Hashable
       
         # Campaign collection.
         # Corresponds to the JSON property `campaigns`
-        # @return [Array<Google::Apis::DfareportingV3_3::Campaign>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Campaign>]
         attr_accessor :campaigns
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1877,7 +1954,7 @@ module Google
       
         # Change log collection.
         # Corresponds to the JSON property `changeLogs`
-        # @return [Array<Google::Apis::DfareportingV3_3::ChangeLog>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ChangeLog>]
         attr_accessor :change_logs
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -1909,7 +1986,7 @@ module Google
       
         # City collection.
         # Corresponds to the JSON property `cities`
-        # @return [Array<Google::Apis::DfareportingV3_3::City>]
+        # @return [Array<Google::Apis::DfareportingV3_4::City>]
         attr_accessor :cities
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2003,7 +2080,7 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::CreativeClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::CreativeClickThroughUrl]
         attr_accessor :click_through_url
       
         # Advertiser event name associated with the click tag. This field is used by
@@ -2113,7 +2190,7 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrl]
         attr_accessor :click_through_url
       
         # ID of the creative for this companion click-through override.
@@ -2145,7 +2222,7 @@ module Google
         # Whitelist of companion sizes to be served to this placement. Set this list to
         # null or empty to serve all companion sizes.
         # Corresponds to the JSON property `enabledSizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :enabled_sizes
       
         # Whether to serve only static images as companions.
@@ -2180,13 +2257,13 @@ module Google
         # Represents fields that are compatible to be selected for a report of type "
         # CROSS_DIMENSION_REACH".
         # Corresponds to the JSON property `crossDimensionReachReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV3_3::CrossDimensionReachReportCompatibleFields]
+        # @return [Google::Apis::DfareportingV3_4::CrossDimensionReachReportCompatibleFields]
         attr_accessor :cross_dimension_reach_report_compatible_fields
       
         # Represents fields that are compatible to be selected for a report of type "
         # FlOODLIGHT".
         # Corresponds to the JSON property `floodlightReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV3_3::FloodlightReportCompatibleFields]
+        # @return [Google::Apis::DfareportingV3_4::FloodlightReportCompatibleFields]
         attr_accessor :floodlight_report_compatible_fields
       
         # The kind of resource this is, in this case dfareporting#compatibleFields.
@@ -2197,19 +2274,19 @@ module Google
         # Represents fields that are compatible to be selected for a report of type "
         # PATH_TO_CONVERSION".
         # Corresponds to the JSON property `pathToConversionReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV3_3::PathToConversionReportCompatibleFields]
+        # @return [Google::Apis::DfareportingV3_4::PathToConversionReportCompatibleFields]
         attr_accessor :path_to_conversion_report_compatible_fields
       
         # Represents fields that are compatible to be selected for a report of type "
         # REACH".
         # Corresponds to the JSON property `reachReportCompatibleFields`
-        # @return [Google::Apis::DfareportingV3_3::ReachReportCompatibleFields]
+        # @return [Google::Apis::DfareportingV3_4::ReachReportCompatibleFields]
         attr_accessor :reach_report_compatible_fields
       
         # Represents fields that are compatible to be selected for a report of type "
         # STANDARD".
         # Corresponds to the JSON property `reportCompatibleFields`
-        # @return [Google::Apis::DfareportingV3_3::ReportCompatibleFields]
+        # @return [Google::Apis::DfareportingV3_4::ReportCompatibleFields]
         attr_accessor :report_compatible_fields
       
         def initialize(**args)
@@ -2266,7 +2343,7 @@ module Google
       
         # Collection of connection types such as broadband and mobile.
         # Corresponds to the JSON property `connectionTypes`
-        # @return [Array<Google::Apis::DfareportingV3_3::ConnectionType>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ConnectionType>]
         attr_accessor :connection_types
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2292,7 +2369,7 @@ module Google
       
         # Content category collection.
         # Corresponds to the JSON property `contentCategories`
-        # @return [Array<Google::Apis::DfareportingV3_3::ContentCategory>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ContentCategory>]
         attr_accessor :content_categories
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2372,7 +2449,7 @@ module Google
       
         # Custom floodlight variables.
         # Corresponds to the JSON property `customVariables`
-        # @return [Array<Google::Apis::DfareportingV3_3::CustomFloodlightVariable>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomFloodlightVariable>]
         attr_accessor :custom_variables
       
         # The alphanumeric encrypted user ID. When set, encryptionInfo should also be
@@ -2544,12 +2621,12 @@ module Google
         # A Conversion represents when a user successfully performs a desired action
         # after seeing an ad.
         # Corresponds to the JSON property `conversion`
-        # @return [Google::Apis::DfareportingV3_3::Conversion]
+        # @return [Google::Apis::DfareportingV3_4::Conversion]
         attr_accessor :conversion
       
         # A list of errors related to this conversion.
         # Corresponds to the JSON property `errors`
-        # @return [Array<Google::Apis::DfareportingV3_3::ConversionError>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ConversionError>]
         attr_accessor :errors
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2576,12 +2653,12 @@ module Google
       
         # The set of conversions to insert.
         # Corresponds to the JSON property `conversions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Conversion>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Conversion>]
         attr_accessor :conversions
       
         # A description of how user IDs are encrypted.
         # Corresponds to the JSON property `encryptionInfo`
-        # @return [Google::Apis::DfareportingV3_3::EncryptionInfo]
+        # @return [Google::Apis::DfareportingV3_4::EncryptionInfo]
         attr_accessor :encryption_info
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2621,7 +2698,7 @@ module Google
         # The insert status of each conversion. Statuses are returned in the same order
         # that conversions are inserted.
         # Corresponds to the JSON property `status`
-        # @return [Array<Google::Apis::DfareportingV3_3::ConversionStatus>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ConversionStatus>]
         attr_accessor :status
       
         def initialize(**args)
@@ -2642,12 +2719,12 @@ module Google
       
         # The set of conversions to update.
         # Corresponds to the JSON property `conversions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Conversion>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Conversion>]
         attr_accessor :conversions
       
         # A description of how user IDs are encrypted.
         # Corresponds to the JSON property `encryptionInfo`
-        # @return [Google::Apis::DfareportingV3_3::EncryptionInfo]
+        # @return [Google::Apis::DfareportingV3_4::EncryptionInfo]
         attr_accessor :encryption_info
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2687,7 +2764,7 @@ module Google
         # The update status of each conversion. Statuses are returned in the same order
         # that conversions are updated.
         # Corresponds to the JSON property `status`
-        # @return [Array<Google::Apis::DfareportingV3_3::ConversionStatus>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ConversionStatus>]
         attr_accessor :status
       
         def initialize(**args)
@@ -2708,7 +2785,7 @@ module Google
       
         # Country collection.
         # Corresponds to the JSON property `countries`
-        # @return [Array<Google::Apis::DfareportingV3_3::Country>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Country>]
         attr_accessor :countries
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -2810,7 +2887,7 @@ module Google
         # can be used. Applicable to DISPLAY creatives when the primary asset type is
         # HTML_IMAGE.
         # Corresponds to the JSON property `additionalSizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :additional_sizes
       
         # Advertiser ID of this creative. This is a required field. Applicable to all
@@ -2867,7 +2944,7 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `backupImageClickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::CreativeClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::CreativeClickThroughUrl]
         attr_accessor :backup_image_click_through_url
       
         # List of feature dependencies that will cause a backup image to be served if
@@ -2892,7 +2969,7 @@ module Google
       
         # Target Window.
         # Corresponds to the JSON property `backupImageTargetWindow`
-        # @return [Google::Apis::DfareportingV3_3::TargetWindow]
+        # @return [Google::Apis::DfareportingV3_4::TargetWindow]
         attr_accessor :backup_image_target_window
       
         # Click tags of the creative. For DISPLAY, FLASH_INPAGE, and HTML5_BANNER
@@ -2907,7 +2984,7 @@ module Google
         # types: DISPLAY_IMAGE_GALLERY, FLASH_INPAGE, HTML5_BANNER. Applicable to
         # DISPLAY when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `clickTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::ClickTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ClickTag>]
         attr_accessor :click_tags
       
         # Industry standard ID assigned to creative for reach and frequency. Applicable
@@ -2959,25 +3036,25 @@ module Google
         # to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and
         # all VPAID.
         # Corresponds to the JSON property `counterCustomEvents`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeCustomEvent>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
         attr_accessor :counter_custom_events
       
         # Encapsulates the list of rules for asset selection and a default asset in case
         # none of the rules match. Applicable to INSTREAM_VIDEO creatives.
         # Corresponds to the JSON property `creativeAssetSelection`
-        # @return [Google::Apis::DfareportingV3_3::CreativeAssetSelection]
+        # @return [Google::Apis::DfareportingV3_4::CreativeAssetSelection]
         attr_accessor :creative_asset_selection
       
         # Assets associated with a creative. Applicable to all but the following
         # creative types: INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and
         # REDIRECT
         # Corresponds to the JSON property `creativeAssets`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeAsset>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeAsset>]
         attr_accessor :creative_assets
       
         # Creative field assignments for this creative. Applicable to all creative types.
         # Corresponds to the JSON property `creativeFieldAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeFieldAssignment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeFieldAssignment>]
         attr_accessor :creative_field_assignments
       
         # Custom key-values for a Rich Media creative. Key-values let you customize the
@@ -3006,12 +3083,12 @@ module Google
         # DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and all VPAID. Applicable to DISPLAY
         # when the primary asset type is not HTML_IMAGE.
         # Corresponds to the JSON property `exitCustomEvents`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeCustomEvent>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
         attr_accessor :exit_custom_events
       
         # FsCommand.
         # Corresponds to the JSON property `fsCommand`
-        # @return [Google::Apis::DfareportingV3_3::FsCommand]
+        # @return [Google::Apis::DfareportingV3_4::FsCommand]
         attr_accessor :fs_command
       
         # HTML code for the creative. This is a required field when applicable. This
@@ -3037,7 +3114,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -3048,7 +3125,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Latest Studio trafficked creative ID associated with rich media and VPAID
@@ -3085,7 +3162,7 @@ module Google
       
         # Video Offset
         # Corresponds to the JSON property `progressOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :progress_offset
       
         # URL of hosted image or hosted video or another ad tag. For
@@ -3106,7 +3183,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `renderingIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :rendering_id_dimension_value
       
         # The minimum required Flash plugin version for this creative. For example, 11.2.
@@ -3126,12 +3203,12 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :size
       
         # Video Offset
         # Corresponds to the JSON property `skipOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :skip_offset
       
         # Whether the user can choose to skip the creative. Applicable to the following
@@ -3199,7 +3276,7 @@ module Google
         # following creative types: all INSTREAM_VIDEO, all INSTREAM_AUDIO, and all
         # VPAID.
         # Corresponds to the JSON property `thirdPartyUrls`
-        # @return [Array<Google::Apis::DfareportingV3_3::ThirdPartyTrackingUrl>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ThirdPartyTrackingUrl>]
         attr_accessor :third_party_urls
       
         # List of timer events configured for the creative. For DISPLAY_IMAGE_GALLERY
@@ -3207,7 +3284,7 @@ module Google
         # to the following creative types: DISPLAY_IMAGE_GALLERY, all RICH_MEDIA, and
         # all VPAID. Applicable to DISPLAY when the primary asset is not HTML_IMAGE.
         # Corresponds to the JSON property `timerCustomEvents`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeCustomEvent>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
         attr_accessor :timer_custom_events
       
         # Combined size of all creative assets. This is a read-only field. Applicable to
@@ -3227,7 +3304,7 @@ module Google
         # A Universal Ad ID as per the VAST 4.0 spec. Applicable to the following
         # creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and VPAID.
         # Corresponds to the JSON property `universalAdId`
-        # @return [Google::Apis::DfareportingV3_3::UniversalAdId]
+        # @return [Google::Apis::DfareportingV3_4::UniversalAdId]
         attr_accessor :universal_ad_id
       
         # The version number helps you keep track of multiple versions of your creative
@@ -3338,7 +3415,7 @@ module Google
         # compatible software such as GWD will be able to support more sizes this
         # creative asset can render.
         # Corresponds to the JSON property `additionalSizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :additional_sizes
       
         # Possible alignments for an asset. This is a read-only field. Applicable to the
@@ -3355,7 +3432,7 @@ module Google
       
         # Creative Asset ID.
         # Corresponds to the JSON property `assetIdentifier`
-        # @return [Google::Apis::DfareportingV3_3::CreativeAssetId]
+        # @return [Google::Apis::DfareportingV3_4::CreativeAssetId]
         attr_accessor :asset_identifier
       
         # Audio stream bit rate in kbps. This is a read-only field. Applicable to the
@@ -3372,7 +3449,7 @@ module Google
       
         # Creative Custom Event.
         # Corresponds to the JSON property `backupImageExit`
-        # @return [Google::Apis::DfareportingV3_3::CreativeCustomEvent]
+        # @return [Google::Apis::DfareportingV3_4::CreativeCustomEvent]
         attr_accessor :backup_image_exit
       
         # Detected bit-rate for audio or video asset. This is a read-only field.
@@ -3390,7 +3467,7 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `collapsedSize`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :collapsed_size
       
         # List of companion creatives assigned to an in-stream video creative asset.
@@ -3439,7 +3516,7 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `expandedDimension`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :expanded_dimension
       
         # File size associated with this creative asset. This is a read-only field.
@@ -3493,7 +3570,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Detected duration for audio or video asset. This is a read-only field.
@@ -3512,7 +3589,7 @@ module Google
       
         # Offset Position.
         # Corresponds to the JSON property `offset`
-        # @return [Google::Apis::DfareportingV3_3::OffsetPosition]
+        # @return [Google::Apis::DfareportingV3_4::OffsetPosition]
         attr_accessor :offset
       
         # Orientation of video asset. This is a read-only, auto-generated field.
@@ -3535,7 +3612,7 @@ module Google
       
         # Offset Position.
         # Corresponds to the JSON property `position`
-        # @return [Google::Apis::DfareportingV3_3::OffsetPosition]
+        # @return [Google::Apis::DfareportingV3_4::OffsetPosition]
         attr_accessor :position
       
         # Offset left unit for an asset. This is a read-only field. Applicable to the
@@ -3608,7 +3685,7 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :size
       
         # Whether the asset is SSL-compliant. This is a read-only field. Applicable to
@@ -3768,13 +3845,13 @@ module Google
       
         # Creative Asset ID.
         # Corresponds to the JSON property `assetIdentifier`
-        # @return [Google::Apis::DfareportingV3_3::CreativeAssetId]
+        # @return [Google::Apis::DfareportingV3_4::CreativeAssetId]
         attr_accessor :asset_identifier
       
         # List of detected click tags for assets. This is a read-only auto-generated
         # field.
         # Corresponds to the JSON property `clickTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::ClickTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ClickTag>]
         attr_accessor :click_tags
       
         # List of feature dependencies for the creative asset that are detected by
@@ -3792,7 +3869,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -3864,7 +3941,7 @@ module Google
         # evaluated in the order in which they are stored in this list. This list must
         # contain at least one rule. Applicable to INSTREAM_VIDEO creatives.
         # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::DfareportingV3_3::Rule>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Rule>]
         attr_accessor :rules
       
         def initialize(**args)
@@ -3900,19 +3977,19 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrl]
         attr_accessor :click_through_url
       
         # Companion creative overrides for this creative assignment. Applicable to video
         # ads.
         # Corresponds to the JSON property `companionCreativeOverrides`
-        # @return [Array<Google::Apis::DfareportingV3_3::CompanionClickThroughOverride>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CompanionClickThroughOverride>]
         attr_accessor :companion_creative_overrides
       
         # Creative group assignments for this creative assignment. Only one assignment
         # per creative group number is allowed for a maximum of two assignments.
         # Corresponds to the JSON property `creativeGroupAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeGroupAssignment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeGroupAssignment>]
         attr_accessor :creative_group_assignments
       
         # ID of the creative to be assigned. This is a required field.
@@ -3922,7 +3999,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `creativeIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :creative_id_dimension_value
       
         # Date and time that the assigned creative should stop serving. Must be later
@@ -3945,7 +4022,7 @@ module Google
         # - VPAID_LINEAR
         # - VPAID_NON_LINEAR
         # Corresponds to the JSON property `richMediaExitOverrides`
-        # @return [Array<Google::Apis::DfareportingV3_3::RichMediaExitOverride>]
+        # @return [Array<Google::Apis::DfareportingV3_4::RichMediaExitOverride>]
         attr_accessor :rich_media_exit_overrides
       
         # Sequence number of the creative assignment, applicable when the rotation type
@@ -4063,7 +4140,7 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `exitClickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::CreativeClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::CreativeClickThroughUrl]
         attr_accessor :exit_click_through_url
       
         # ID of this event. This is a required field and should not be modified after
@@ -4074,7 +4151,7 @@ module Google
       
         # Popup Window Properties.
         # Corresponds to the JSON property `popupWindowProperties`
-        # @return [Google::Apis::DfareportingV3_3::PopupWindowProperties]
+        # @return [Google::Apis::DfareportingV3_4::PopupWindowProperties]
         attr_accessor :popup_window_properties
       
         # Target type used by the event.
@@ -4124,7 +4201,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # ID of this creative field. This is a read-only, auto-generated field.
@@ -4230,7 +4307,7 @@ module Google
       
         # Creative field value collection.
         # Corresponds to the JSON property `creativeFieldValues`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeFieldValue>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeFieldValue>]
         attr_accessor :creative_field_values
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4262,7 +4339,7 @@ module Google
       
         # Creative field collection.
         # Corresponds to the JSON property `creativeFields`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeField>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeField>]
         attr_accessor :creative_fields
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4305,7 +4382,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Subgroup of the creative group. Assign your creative groups to a subgroup in
@@ -4387,7 +4464,7 @@ module Google
       
         # Creative group collection.
         # Corresponds to the JSON property `creativeGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeGroup>]
         attr_accessor :creative_groups
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4431,7 +4508,7 @@ module Google
       
         # List of optimization activities associated with this configuration.
         # Corresponds to the JSON property `optimizationActivitys`
-        # @return [Array<Google::Apis::DfareportingV3_3::OptimizationActivity>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OptimizationActivity>]
         attr_accessor :optimization_activitys
       
         # Optimization model for this configuration.
@@ -4458,7 +4535,7 @@ module Google
       
         # Creative assignments in this creative rotation.
         # Corresponds to the JSON property `creativeAssignments`
-        # @return [Array<Google::Apis::DfareportingV3_3::CreativeAssignment>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeAssignment>]
         attr_accessor :creative_assignments
       
         # Creative optimization configuration that is used by this ad. It should refer
@@ -4499,7 +4576,7 @@ module Google
       
         # Creative collection.
         # Corresponds to the JSON property `creatives`
-        # @return [Array<Google::Apis::DfareportingV3_3::Creative>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Creative>]
         attr_accessor :creatives
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4533,13 +4610,13 @@ module Google
         # Dimensions which are compatible to be selected in the "breakdown" section of
         # the report.
         # Corresponds to the JSON property `breakdown`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :breakdown
       
         # Dimensions which are compatible to be selected in the "dimensionFilters"
         # section of the report.
         # Corresponds to the JSON property `dimensionFilters`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimension_filters
       
         # The kind of resource this is, in this case dfareporting#
@@ -4551,13 +4628,13 @@ module Google
         # Metrics which are compatible to be selected in the "metricNames" section of
         # the report.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :metrics
       
         # Metrics which are compatible to be selected in the "overlapMetricNames"
         # section of the report.
         # Corresponds to the JSON property `overlapMetrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :overlap_metrics
       
         def initialize(**args)
@@ -4571,6 +4648,200 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @metrics = args[:metrics] if args.key?(:metrics)
           @overlap_metrics = args[:overlap_metrics] if args.key?(:overlap_metrics)
+        end
+      end
+      
+      # Experimental feature (no support provided) A custom event represents a third
+      # party impression, a third party click, an annotation on a first party
+      # impression, or an annotation on a first party click.
+      class CustomEvent
+        include Google::Apis::Core::Hashable
+      
+        # Annotate a click event.
+        # Corresponds to the JSON property `annotateClickEvent`
+        # @return [Google::Apis::DfareportingV3_4::AnnotateClickEvent]
+        attr_accessor :annotate_click_event
+      
+        # Custom variables associated with the event.
+        # Corresponds to the JSON property `customVariables`
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomVariables>]
+        attr_accessor :custom_variables
+      
+        # The type of event. If INSERT, the fields in insertEvent need to be populated.
+        # If ANNOTATE_CLICK, the fields in annotateClickEvent need to be populated. A
+        # custom event cannot have both insertEvent and annotateClickEvent populated.
+        # Corresponds to the JSON property `eventType`
+        # @return [String]
+        attr_accessor :event_type
+      
+        # Floodlight configuration ID of the advertiser the event is linked to. This is
+        # a required field.
+        # Corresponds to the JSON property `floodlightConfigurationId`
+        # @return [Fixnum]
+        attr_accessor :floodlight_configuration_id
+      
+        # Insert custom event.
+        # Corresponds to the JSON property `insertEvent`
+        # @return [Google::Apis::DfareportingV3_4::InsertEvent]
+        attr_accessor :insert_event
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEvent".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The ordinal of this custom event. This is a required field.
+        # Corresponds to the JSON property `ordinal`
+        # @return [String]
+        attr_accessor :ordinal
+      
+        # The timestamp of this custom event, in Unix epoch micros. This is a required
+        # field.
+        # Corresponds to the JSON property `timestampMicros`
+        # @return [Fixnum]
+        attr_accessor :timestamp_micros
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotate_click_event = args[:annotate_click_event] if args.key?(:annotate_click_event)
+          @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
+          @event_type = args[:event_type] if args.key?(:event_type)
+          @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
+          @insert_event = args[:insert_event] if args.key?(:insert_event)
+          @kind = args[:kind] if args.key?(:kind)
+          @ordinal = args[:ordinal] if args.key?(:ordinal)
+          @timestamp_micros = args[:timestamp_micros] if args.key?(:timestamp_micros)
+        end
+      end
+      
+      # The error code and description for a custom event that failed to insert.
+      class CustomEventError
+        include Google::Apis::Core::Hashable
+      
+        # The error code.
+        # Corresponds to the JSON property `code`
+        # @return [String]
+        attr_accessor :code
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventError".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A description of the error.
+        # Corresponds to the JSON property `message`
+        # @return [String]
+        attr_accessor :message
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @code = args[:code] if args.key?(:code)
+          @kind = args[:kind] if args.key?(:kind)
+          @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The original custom event that was inserted and whether there were any errors.
+      class CustomEventStatus
+        include Google::Apis::Core::Hashable
+      
+        # Experimental feature (no support provided) A custom event represents a third
+        # party impression, a third party click, an annotation on a first party
+        # impression, or an annotation on a first party click.
+        # Corresponds to the JSON property `customEvent`
+        # @return [Google::Apis::DfareportingV3_4::CustomEvent]
+        attr_accessor :custom_event
+      
+        # A list of errors related to this custom event.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomEventError>]
+        attr_accessor :errors
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventStatus".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_event = args[:custom_event] if args.key?(:custom_event)
+          @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Insert Custom Events Request.
+      class CustomEventsBatchInsertRequest
+        include Google::Apis::Core::Hashable
+      
+        # The set of custom events to insert.
+        # Corresponds to the JSON property `customEvents`
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomEvent>]
+        attr_accessor :custom_events
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventsBatchInsertRequest".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_events = args[:custom_events] if args.key?(:custom_events)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # Insert Custom Events Response.
+      class CustomEventsBatchInsertResponse
+        include Google::Apis::Core::Hashable
+      
+        # Indicates that some or all custom events failed to insert.
+        # Corresponds to the JSON property `hasFailures`
+        # @return [Boolean]
+        attr_accessor :has_failures
+        alias_method :has_failures?, :has_failures
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventsBatchInsertResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The insert status of each custom event. Statuses are returned in the same
+        # order that conversions are inserted.
+        # Corresponds to the JSON property `status`
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomEventStatus>]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @has_failures = args[:has_failures] if args.key?(:has_failures)
+          @kind = args[:kind] if args.key?(:kind)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -4615,7 +4886,7 @@ module Google
         # List of custom rich media event IDs. Dimension values must be all of type dfa:
         # richMediaEventTypeIdAndName.
         # Corresponds to the JSON property `filteredEventIds`
-        # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
         attr_accessor :filtered_event_ids
       
         # The kind of resource this is, in this case dfareporting#customRichMediaEvents.
@@ -4634,6 +4905,39 @@ module Google
         end
       end
       
+      # A custom variable.
+      class CustomVariables
+        include Google::Apis::Core::Hashable
+      
+        # The index of the custom variable.
+        # Corresponds to the JSON property `index`
+        # @return [Fixnum]
+        attr_accessor :index
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customVariables".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The value of the custom variable. The length of string must not exceed 50
+        # characters.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @index = args[:index] if args.key?(:index)
+          @kind = args[:kind] if args.key?(:kind)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # Custom Viewability Metric
       class CustomViewabilityMetric
         include Google::Apis::Core::Hashable
@@ -4641,7 +4945,7 @@ module Google
         # The attributes, like playtime and percent onscreen, that define the Custom
         # Viewability Metric.
         # Corresponds to the JSON property `configuration`
-        # @return [Google::Apis::DfareportingV3_3::CustomViewabilityMetricConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::CustomViewabilityMetricConfiguration]
         attr_accessor :configuration
       
         # ID of the custom viewability metric.
@@ -4707,6 +5011,56 @@ module Google
           @time_millis = args[:time_millis] if args.key?(:time_millis)
           @time_percent = args[:time_percent] if args.key?(:time_percent)
           @viewability_percent = args[:viewability_percent] if args.key?(:viewability_percent)
+        end
+      end
+      
+      # DV360 IDs related to the custom event.
+      class Dv3Ids
+        include Google::Apis::Core::Hashable
+      
+        # Campaign ID for DV360.
+        # Corresponds to the JSON property `dvCampaignId`
+        # @return [Fixnum]
+        attr_accessor :dv_campaign_id
+      
+        # Creative ID for DV360.
+        # Corresponds to the JSON property `dvCreativeId`
+        # @return [Fixnum]
+        attr_accessor :dv_creative_id
+      
+        # Insertion Order ID for DV360.
+        # Corresponds to the JSON property `dvInsertionOrderId`
+        # @return [Fixnum]
+        attr_accessor :dv_insertion_order_id
+      
+        # Line Item ID for DV360.
+        # Corresponds to the JSON property `dvLineItemId`
+        # @return [Fixnum]
+        attr_accessor :dv_line_item_id
+      
+        # Site ID for DV360.
+        # Corresponds to the JSON property `dvSiteId`
+        # @return [Fixnum]
+        attr_accessor :dv_site_id
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#dV3Ids".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dv_campaign_id = args[:dv_campaign_id] if args.key?(:dv_campaign_id)
+          @dv_creative_id = args[:dv_creative_id] if args.key?(:dv_creative_id)
+          @dv_insertion_order_id = args[:dv_insertion_order_id] if args.key?(:dv_insertion_order_id)
+          @dv_line_item_id = args[:dv_line_item_id] if args.key?(:dv_line_item_id)
+          @dv_site_id = args[:dv_site_id] if args.key?(:dv_site_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -4818,7 +5172,7 @@ module Google
       
         # Contains information about a mobile app. Used as a landing page deep link.
         # Corresponds to the JSON property `mobileApp`
-        # @return [Google::Apis::DfareportingV3_3::MobileApp]
+        # @return [Google::Apis::DfareportingV3_4::MobileApp]
         attr_accessor :mobile_app
       
         # Ads served to users on these remarketing lists will use this deep link.
@@ -4876,7 +5230,7 @@ module Google
       
         # Frequency Cap.
         # Corresponds to the JSON property `frequencyCap`
-        # @return [Google::Apis::DfareportingV3_3::FrequencyCap]
+        # @return [Google::Apis::DfareportingV3_4::FrequencyCap]
         attr_accessor :frequency_cap
       
         # Whether or not hard cutoff is enabled. If true, the ad will not serve after
@@ -5080,7 +5434,7 @@ module Google
       
         # The dimension values returned in this response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
         attr_accessor :items
       
         # The kind of list this is, in this case dfareporting#dimensionValueList.
@@ -5126,7 +5480,7 @@ module Google
       
         # The list of filters by which to filter values. The filters are ANDed.
         # Corresponds to the JSON property `filters`
-        # @return [Array<Google::Apis::DfareportingV3_3::DimensionFilter>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DimensionFilter>]
         attr_accessor :filters
       
         # The kind of request this is, in this case dfareporting#dimensionValueRequest.
@@ -5173,7 +5527,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Tag types for regular placements.
@@ -5208,7 +5562,7 @@ module Google
       
         # Directory Site Settings
         # Corresponds to the JSON property `settings`
-        # @return [Google::Apis::DfareportingV3_3::DirectorySiteSettings]
+        # @return [Google::Apis::DfareportingV3_4::DirectorySiteSettings]
         attr_accessor :settings
       
         # URL of this directory site.
@@ -5246,7 +5600,7 @@ module Google
       
         # Google Ad Manager Settings
         # Corresponds to the JSON property `dfpSettings`
-        # @return [Google::Apis::DfareportingV3_3::DfpSettings]
+        # @return [Google::Apis::DfareportingV3_4::DfpSettings]
         attr_accessor :dfp_settings
       
         # Whether this site accepts in-stream video ads.
@@ -5280,7 +5634,7 @@ module Google
       
         # Directory site collection.
         # Corresponds to the JSON property `directorySites`
-        # @return [Array<Google::Apis::DfareportingV3_3::DirectorySite>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DirectorySite>]
         attr_accessor :directory_sites
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5357,7 +5711,7 @@ module Google
       
         # Dynamic targeting key collection.
         # Corresponds to the JSON property `dynamicTargetingKeys`
-        # @return [Array<Google::Apis::DfareportingV3_3::DynamicTargetingKey>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DynamicTargetingKey>]
         attr_accessor :dynamic_targeting_keys
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5435,7 +5789,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Campaign ID of this event tag. This field or the advertiserId field is
@@ -5446,7 +5800,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :campaign_id_dimension_value
       
         # Whether this event tag should be automatically enabled for all of the
@@ -5592,7 +5946,7 @@ module Google
       
         # Event tag collection.
         # Corresponds to the JSON property `eventTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::EventTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::EventTag>]
         attr_accessor :event_tags
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5620,7 +5974,7 @@ module Google
       
         # Represents a date range.
         # Corresponds to the JSON property `dateRange`
-        # @return [Google::Apis::DfareportingV3_3::DateRange]
+        # @return [Google::Apis::DfareportingV3_4::DateRange]
         attr_accessor :date_range
       
         # The eTag of this response for caching purposes.
@@ -5665,7 +6019,7 @@ module Google
       
         # The URLs where the completed report file can be downloaded.
         # Corresponds to the JSON property `urls`
-        # @return [Google::Apis::DfareportingV3_3::File::Urls]
+        # @return [Google::Apis::DfareportingV3_4::File::Urls]
         attr_accessor :urls
       
         def initialize(**args)
@@ -5723,7 +6077,7 @@ module Google
       
         # The files returned in this response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DfareportingV3_3::File>]
+        # @return [Array<Google::Apis::DfareportingV3_4::File>]
         attr_accessor :items
       
         # The kind of list this is, in this case dfareporting#fileList.
@@ -5830,7 +6184,7 @@ module Google
       
         # Floodlight activity collection.
         # Corresponds to the JSON property `floodlightActivities`
-        # @return [Array<Google::Apis::DfareportingV3_3::FloodlightActivity>]
+        # @return [Array<Google::Apis::DfareportingV3_4::FloodlightActivity>]
         attr_accessor :floodlight_activities
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5875,7 +6229,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Code type used for cache busting in the generated tag. Applicable only when
@@ -5893,7 +6247,7 @@ module Google
       
         # Dynamic floodlight tags.
         # Corresponds to the JSON property `defaultTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::FloodlightActivityDynamicTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::FloodlightActivityDynamicTag>]
         attr_accessor :default_tags
       
         # URL where this tag will be deployed. If specified, must be less than 256
@@ -5934,7 +6288,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
       
         # The type of Floodlight tag this activity will generate. This is a required
@@ -5943,12 +6297,6 @@ module Google
         # @return [String]
         attr_accessor :floodlight_tag_type
       
-        # Whether this activity is archived.
-        # Corresponds to the JSON property `hidden`
-        # @return [Boolean]
-        attr_accessor :hidden
-        alias_method :hidden?, :hidden
-      
         # ID of this floodlight activity. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -5956,7 +6304,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -5978,7 +6326,7 @@ module Google
       
         # Publisher dynamic floodlight tags.
         # Corresponds to the JSON property `publisherTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::FloodlightActivityPublisherDynamicTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::FloodlightActivityPublisherDynamicTag>]
         attr_accessor :publisher_tags
       
         # Whether this tag should use SSL.
@@ -5999,6 +6347,15 @@ module Google
         # @return [Boolean]
         attr_accessor :ssl_required
         alias_method :ssl_required?, :ssl_required
+      
+        # The status of the activity. This can only be set to ACTIVE or
+        # ARCHIVED_AND_DISABLED. The ARCHIVED status is no longer supported and cannot
+        # be set for Floodlight activities. The DISABLED_POLICY status indicates that a
+        # Floodlight activity is violating Google policy. Contact your account manager
+        # for more information.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
       
         # Subaccount ID of this floodlight activity. This is a read-only field that can
         # be left blank.
@@ -6049,7 +6406,6 @@ module Google
           @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
           @floodlight_configuration_id_dimension_value = args[:floodlight_configuration_id_dimension_value] if args.key?(:floodlight_configuration_id_dimension_value)
           @floodlight_tag_type = args[:floodlight_tag_type] if args.key?(:floodlight_tag_type)
-          @hidden = args[:hidden] if args.key?(:hidden)
           @id = args[:id] if args.key?(:id)
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @kind = args[:kind] if args.key?(:kind)
@@ -6059,6 +6415,7 @@ module Google
           @secure = args[:secure] if args.key?(:secure)
           @ssl_compliant = args[:ssl_compliant] if args.key?(:ssl_compliant)
           @ssl_required = args[:ssl_required] if args.key?(:ssl_required)
+          @status = args[:status] if args.key?(:status)
           @subaccount_id = args[:subaccount_id] if args.key?(:subaccount_id)
           @tag_format = args[:tag_format] if args.key?(:tag_format)
           @tag_string = args[:tag_string] if args.key?(:tag_string)
@@ -6116,7 +6473,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Floodlight configuration ID of this floodlight activity group. This is a
@@ -6127,7 +6484,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightConfigurationIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :floodlight_configuration_id_dimension_value
       
         # ID of this floodlight activity group. This is a read-only, auto-generated
@@ -6138,7 +6495,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6202,7 +6559,7 @@ module Google
       
         # Floodlight activity group collection.
         # Corresponds to the JSON property `floodlightActivityGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::FloodlightActivityGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::FloodlightActivityGroup>]
         attr_accessor :floodlight_activity_groups
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6247,7 +6604,7 @@ module Google
       
         # Dynamic Tag
         # Corresponds to the JSON property `dynamicTag`
-        # @return [Google::Apis::DfareportingV3_3::FloodlightActivityDynamicTag]
+        # @return [Google::Apis::DfareportingV3_4::FloodlightActivityDynamicTag]
         attr_accessor :dynamic_tag
       
         # Site ID of this dynamic tag.
@@ -6257,7 +6614,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :site_id_dimension_value
       
         # Whether this tag is applicable only for view-throughs.
@@ -6298,7 +6655,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Whether advertiser data is shared with Google Analytics.
@@ -6309,7 +6666,7 @@ module Google
       
         # Custom Viewability Metric
         # Corresponds to the JSON property `customViewabilityMetric`
-        # @return [Google::Apis::DfareportingV3_3::CustomViewabilityMetric]
+        # @return [Google::Apis::DfareportingV3_4::CustomViewabilityMetric]
         attr_accessor :custom_viewability_metric
       
         # Whether the exposure-to-conversion report is enabled. This report shows
@@ -6333,7 +6690,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Whether in-app attribution tracking is enabled.
@@ -6350,7 +6707,7 @@ module Google
       
         # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::LookbackConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::LookbackConfiguration]
         attr_accessor :lookback_configuration
       
         # Types of attribution options for natural search conversions.
@@ -6360,7 +6717,7 @@ module Google
       
         # Omniture Integration Settings.
         # Corresponds to the JSON property `omnitureSettings`
-        # @return [Google::Apis::DfareportingV3_3::OmnitureSettings]
+        # @return [Google::Apis::DfareportingV3_4::OmnitureSettings]
         attr_accessor :omniture_settings
       
         # Subaccount ID of this floodlight configuration. This is a read-only field that
@@ -6371,17 +6728,17 @@ module Google
       
         # Dynamic and Image Tag Settings.
         # Corresponds to the JSON property `tagSettings`
-        # @return [Google::Apis::DfareportingV3_3::TagSettings]
+        # @return [Google::Apis::DfareportingV3_4::TagSettings]
         attr_accessor :tag_settings
       
         # List of third-party authentication tokens enabled for this configuration.
         # Corresponds to the JSON property `thirdPartyAuthenticationTokens`
-        # @return [Array<Google::Apis::DfareportingV3_3::ThirdPartyAuthenticationToken>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ThirdPartyAuthenticationToken>]
         attr_accessor :third_party_authentication_tokens
       
         # List of user defined variables enabled for this configuration.
         # Corresponds to the JSON property `userDefinedVariableConfigurations`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserDefinedVariableConfiguration>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserDefinedVariableConfiguration>]
         attr_accessor :user_defined_variable_configurations
       
         def initialize(**args)
@@ -6417,7 +6774,7 @@ module Google
       
         # Floodlight configuration collection.
         # Corresponds to the JSON property `floodlightConfigurations`
-        # @return [Array<Google::Apis::DfareportingV3_3::FloodlightConfiguration>]
+        # @return [Array<Google::Apis::DfareportingV3_4::FloodlightConfiguration>]
         attr_accessor :floodlight_configurations
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6445,13 +6802,13 @@ module Google
         # Dimensions which are compatible to be selected in the "dimensionFilters"
         # section of the report.
         # Corresponds to the JSON property `dimensionFilters`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimension_filters
       
         # Dimensions which are compatible to be selected in the "dimensions" section of
         # the report.
         # Corresponds to the JSON property `dimensions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimensions
       
         # The kind of resource this is, in this case dfareporting#
@@ -6463,7 +6820,7 @@ module Google
         # Metrics which are compatible to be selected in the "metricNames" section of
         # the report.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :metrics
       
         def initialize(**args)
@@ -6560,7 +6917,7 @@ module Google
         # city, do not target or exclude the country of the city, and do not target the
         # metro or region of the city.
         # Corresponds to the JSON property `cities`
-        # @return [Array<Google::Apis::DfareportingV3_3::City>]
+        # @return [Array<Google::Apis::DfareportingV3_4::City>]
         attr_accessor :cities
       
         # Countries to be targeted or excluded from targeting, depending on the setting
@@ -6569,7 +6926,7 @@ module Google
         # If targeting or excluding a country, do not target regions, cities, metros, or
         # postal codes in the same country.
         # Corresponds to the JSON property `countries`
-        # @return [Array<Google::Apis::DfareportingV3_3::Country>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Country>]
         attr_accessor :countries
       
         # Whether or not to exclude the countries in the countries field from targeting.
@@ -6584,7 +6941,7 @@ module Google
         # are populated automatically when the ad is inserted or updated. If targeting a
         # metro, do not target or exclude the country of the metro.
         # Corresponds to the JSON property `metros`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metro>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metro>]
         attr_accessor :metros
       
         # Postal codes to be targeted. For each postal code only id is required. The
@@ -6592,14 +6949,14 @@ module Google
         # If targeting a postal code, do not target or exclude the country of the postal
         # code.
         # Corresponds to the JSON property `postalCodes`
-        # @return [Array<Google::Apis::DfareportingV3_3::PostalCode>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PostalCode>]
         attr_accessor :postal_codes
       
         # Regions to be targeted. For each region only dartId is required. The other
         # fields are populated automatically when the ad is inserted or updated. If
         # targeting a region, do not target or exclude the country of the region.
         # Corresponds to the JSON property `regions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Region>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Region>]
         attr_accessor :regions
       
         def initialize(**args)
@@ -6617,6 +6974,60 @@ module Google
         end
       end
       
+      # Insert custom event.
+      class InsertEvent
+        include Google::Apis::Core::Hashable
+      
+        # Campaign Manager IDs related to the custom event.
+        # Corresponds to the JSON property `cmDimensions`
+        # @return [Google::Apis::DfareportingV3_4::CampaignManagerIds]
+        attr_accessor :cm_dimensions
+      
+        # DV360 IDs related to the custom event.
+        # Corresponds to the JSON property `dv3Dimensions`
+        # @return [Google::Apis::DfareportingV3_4::Dv3Ids]
+        attr_accessor :dv3_dimensions
+      
+        # The type of insert event.
+        # Corresponds to the JSON property `insertEventType`
+        # @return [String]
+        attr_accessor :insert_event_type
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#insertEvent".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The match ID field. A match ID is your own first-party identifier that has
+        # been synced with Google using the match ID feature in Floodlight. This field
+        # is mutually exclusive with mobileDeviceId, and at least one of the two fields
+        # is required.
+        # Corresponds to the JSON property `matchId`
+        # @return [String]
+        attr_accessor :match_id
+      
+        # The mobile device ID. This field is mutually exclusive with matchId, and at
+        # least one of the two fields is required.
+        # Corresponds to the JSON property `mobileDeviceId`
+        # @return [String]
+        attr_accessor :mobile_device_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cm_dimensions = args[:cm_dimensions] if args.key?(:cm_dimensions)
+          @dv3_dimensions = args[:dv3_dimensions] if args.key?(:dv3_dimensions)
+          @insert_event_type = args[:insert_event_type] if args.key?(:insert_event_type)
+          @kind = args[:kind] if args.key?(:kind)
+          @match_id = args[:match_id] if args.key?(:match_id)
+          @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
+        end
+      end
+      
       # Represents a buy from the Planning inventory store.
       class InventoryItem
         include Google::Apis::Core::Hashable
@@ -6631,7 +7042,7 @@ module Google
         # item represents a placement group, there will be more than one ad slot, each
         # representing one child placement in that placement group.
         # Corresponds to the JSON property `adSlots`
-        # @return [Array<Google::Apis::DfareportingV3_3::AdSlot>]
+        # @return [Array<Google::Apis::DfareportingV3_4::AdSlot>]
         attr_accessor :ad_slots
       
         # Advertiser ID of this inventory item.
@@ -6673,7 +7084,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this inventory item. For standalone inventory items, this is the same
@@ -6700,7 +7111,7 @@ module Google
       
         # Pricing Information
         # Corresponds to the JSON property `pricing`
-        # @return [Google::Apis::DfareportingV3_3::Pricing]
+        # @return [Google::Apis::DfareportingV3_4::Pricing]
         attr_accessor :pricing
       
         # Project ID of this inventory item.
@@ -6763,7 +7174,7 @@ module Google
       
         # Inventory item collection
         # Corresponds to the JSON property `inventoryItems`
-        # @return [Array<Google::Apis::DfareportingV3_3::InventoryItem>]
+        # @return [Array<Google::Apis::DfareportingV3_4::InventoryItem>]
         attr_accessor :inventory_items
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -6826,7 +7237,7 @@ module Google
       
         # Links that will direct the user to a mobile app, if installed.
         # Corresponds to the JSON property `deepLinks`
-        # @return [Array<Google::Apis::DfareportingV3_3::DeepLink>]
+        # @return [Array<Google::Apis::DfareportingV3_4::DeepLink>]
         attr_accessor :deep_links
       
         # ID of this landing page. This is a read-only, auto-generated field.
@@ -6916,7 +7327,7 @@ module Google
         # The other fields are populated automatically when the ad is inserted or
         # updated.
         # Corresponds to the JSON property `languages`
-        # @return [Array<Google::Apis::DfareportingV3_3::Language>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Language>]
         attr_accessor :languages
       
         def initialize(**args)
@@ -6941,7 +7352,7 @@ module Google
       
         # Language collection.
         # Corresponds to the JSON property `languages`
-        # @return [Array<Google::Apis::DfareportingV3_3::Language>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Language>]
         attr_accessor :languages
       
         def initialize(**args)
@@ -6982,7 +7393,7 @@ module Google
         # Terms of this list population clause. Each clause is made up of list
         # population terms representing constraints and are joined by ORs.
         # Corresponds to the JSON property `terms`
-        # @return [Array<Google::Apis::DfareportingV3_3::ListPopulationTerm>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ListPopulationTerm>]
         attr_accessor :terms
       
         def initialize(**args)
@@ -7014,7 +7425,7 @@ module Google
         # and the clauses themselves are made up of list population terms which are
         # joined by ORs.
         # Corresponds to the JSON property `listPopulationClauses`
-        # @return [Array<Google::Apis::DfareportingV3_3::ListPopulationClause>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ListPopulationClause>]
         attr_accessor :list_population_clauses
       
         def initialize(**args)
@@ -7250,7 +7661,7 @@ module Google
       
         # Metro collection.
         # Corresponds to the JSON property `metros`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metro>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metro>]
         attr_accessor :metros
       
         def initialize(**args)
@@ -7320,7 +7731,7 @@ module Google
       
         # Mobile apps collection.
         # Corresponds to the JSON property `mobileApps`
-        # @return [Array<Google::Apis::DfareportingV3_3::MobileApp>]
+        # @return [Array<Google::Apis::DfareportingV3_4::MobileApp>]
         attr_accessor :mobile_apps
       
         # Pagination token to be used for the next list operation.
@@ -7396,7 +7807,7 @@ module Google
       
         # Mobile carrier collection.
         # Corresponds to the JSON property `mobileCarriers`
-        # @return [Array<Google::Apis::DfareportingV3_3::MobileCarrier>]
+        # @return [Array<Google::Apis::DfareportingV3_4::MobileCarrier>]
         attr_accessor :mobile_carriers
       
         def initialize(**args)
@@ -7578,7 +7989,7 @@ module Google
       
         # Contains information about an operating system that can be targeted by ads.
         # Corresponds to the JSON property `operatingSystem`
-        # @return [Google::Apis::DfareportingV3_3::OperatingSystem]
+        # @return [Google::Apis::DfareportingV3_4::OperatingSystem]
         attr_accessor :operating_system
       
         def initialize(**args)
@@ -7608,7 +8019,7 @@ module Google
       
         # Operating system version collection.
         # Corresponds to the JSON property `operatingSystemVersions`
-        # @return [Array<Google::Apis::DfareportingV3_3::OperatingSystemVersion>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OperatingSystemVersion>]
         attr_accessor :operating_system_versions
       
         def initialize(**args)
@@ -7634,7 +8045,7 @@ module Google
       
         # Operating system collection.
         # Corresponds to the JSON property `operatingSystems`
-        # @return [Array<Google::Apis::DfareportingV3_3::OperatingSystem>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OperatingSystem>]
         attr_accessor :operating_systems
       
         def initialize(**args)
@@ -7659,7 +8070,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `floodlightActivityIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :floodlight_activity_id_dimension_value
       
         # Weight associated with this optimization. The weight assigned will be
@@ -7717,7 +8128,7 @@ module Google
       
         # Contacts for this order.
         # Corresponds to the JSON property `contacts`
-        # @return [Array<Google::Apis::DfareportingV3_3::OrderContact>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OrderContact>]
         attr_accessor :contacts
       
         # ID of this order. This is a read-only, auto-generated field.
@@ -7733,7 +8144,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this order.
@@ -7895,7 +8306,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `createdInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :created_info
       
         # Effective date of this order document.
@@ -7998,7 +8409,7 @@ module Google
       
         # Order document collection
         # Corresponds to the JSON property `orderDocuments`
-        # @return [Array<Google::Apis::DfareportingV3_3::OrderDocument>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OrderDocument>]
         attr_accessor :order_documents
       
         def initialize(**args)
@@ -8030,7 +8441,7 @@ module Google
       
         # Order collection.
         # Corresponds to the JSON property `orders`
-        # @return [Array<Google::Apis::DfareportingV3_3::Order>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Order>]
         attr_accessor :orders
       
         def initialize(**args)
@@ -8053,13 +8464,13 @@ module Google
         # Conversion dimensions which are compatible to be selected in the "
         # conversionDimensions" section of the report.
         # Corresponds to the JSON property `conversionDimensions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :conversion_dimensions
       
         # Custom floodlight variables which are compatible to be selected in the "
         # customFloodlightVariables" section of the report.
         # Corresponds to the JSON property `customFloodlightVariables`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :custom_floodlight_variables
       
         # The kind of resource this is, in this case dfareporting#
@@ -8071,13 +8482,13 @@ module Google
         # Metrics which are compatible to be selected in the "metricNames" section of
         # the report.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :metrics
       
         # Per-interaction dimensions which are compatible to be selected in the "
         # perInteractionDimensions" section of the report.
         # Corresponds to the JSON property `perInteractionDimensions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :per_interaction_dimensions
       
         def initialize(**args)
@@ -8114,7 +8525,7 @@ module Google
         # Additional sizes associated with this placement. When inserting or updating a
         # placement, only the size ID field is used.
         # Corresponds to the JSON property `additionalSizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :additional_sizes
       
         # Advertiser ID of this placement. This field can be left blank.
@@ -8124,7 +8535,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Whether this placement is archived.
@@ -8140,7 +8551,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :campaign_id_dimension_value
       
         # Comments for this placement.
@@ -8165,7 +8576,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :create_info
       
         # Directory site ID of this placement. On insert, you must set either this field
@@ -8177,7 +8588,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
       
         # External ID for this placement.
@@ -8192,7 +8603,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Key name of this placement. This is a read-only, auto-generated field.
@@ -8208,12 +8619,12 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::LookbackConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::LookbackConfiguration]
         attr_accessor :lookback_configuration
       
         # Name of this placement.This is a required field and must be less than 256
@@ -8242,7 +8653,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `placementGroupIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :placement_group_id_dimension_value
       
         # ID of the placement strategy assigned to this placement.
@@ -8252,7 +8663,7 @@ module Google
       
         # Pricing Schedule
         # Corresponds to the JSON property `pricingSchedule`
-        # @return [Google::Apis::DfareportingV3_3::PricingSchedule]
+        # @return [Google::Apis::DfareportingV3_4::PricingSchedule]
         attr_accessor :pricing_schedule
       
         # Whether this placement is the primary placement of a roadblock (placement
@@ -8267,7 +8678,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `publisherUpdateInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :publisher_update_info
       
         # Site ID associated with this placement. On insert, you must set either this
@@ -8279,12 +8690,12 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :site_id_dimension_value
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `size`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :size
       
         # Whether creatives assigned to this placement must be SSL-compliant.
@@ -8327,7 +8738,7 @@ module Google
       
         # Tag Settings
         # Corresponds to the JSON property `tagSetting`
-        # @return [Google::Apis::DfareportingV3_3::TagSetting]
+        # @return [Google::Apis::DfareportingV3_4::TagSetting]
         attr_accessor :tag_setting
       
         # Whether Verification and ActiveView are disabled for in-stream video creatives
@@ -8344,7 +8755,7 @@ module Google
       
         # Video Settings
         # Corresponds to the JSON property `videoSettings`
-        # @return [Google::Apis::DfareportingV3_3::VideoSettings]
+        # @return [Google::Apis::DfareportingV3_4::VideoSettings]
         attr_accessor :video_settings
       
         # VPAID adapter setting for this placement. Controls which VPAID format the
@@ -8424,7 +8835,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `placementIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :placement_id_dimension_value
       
         # Whether the placement to be assigned requires SSL. This is a read-only field
@@ -8464,7 +8875,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Whether this placement group is archived.
@@ -8480,7 +8891,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `campaignIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :campaign_id_dimension_value
       
         # IDs of placements which are assigned to this placement group. This is a read-
@@ -8501,7 +8912,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `createInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :create_info
       
         # Directory site ID associated with this placement group. On insert, you must
@@ -8514,7 +8925,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
       
         # External ID for this placement.
@@ -8529,7 +8940,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -8540,7 +8951,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this placement group. This is a required field and must be less than
@@ -8566,7 +8977,7 @@ module Google
       
         # Pricing Schedule
         # Corresponds to the JSON property `pricingSchedule`
-        # @return [Google::Apis::DfareportingV3_3::PricingSchedule]
+        # @return [Google::Apis::DfareportingV3_4::PricingSchedule]
         attr_accessor :pricing_schedule
       
         # ID of the primary placement, used to calculate the media cost of a roadblock (
@@ -8578,7 +8989,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `primaryPlacementIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :primary_placement_id_dimension_value
       
         # Site ID associated with this placement group. On insert, you must set either
@@ -8591,7 +9002,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `siteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :site_id_dimension_value
       
         # Subaccount ID of this placement group. This is a read-only field that can be
@@ -8652,7 +9063,7 @@ module Google
       
         # Placement group collection.
         # Corresponds to the JSON property `placementGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlacementGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlacementGroup>]
         attr_accessor :placement_groups
       
         def initialize(**args)
@@ -8684,7 +9095,7 @@ module Google
       
         # Placement strategy collection.
         # Corresponds to the JSON property `placementStrategies`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlacementStrategy>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlacementStrategy>]
         attr_accessor :placement_strategies
       
         def initialize(**args)
@@ -8751,7 +9162,7 @@ module Google
       
         # Tags generated for this placement.
         # Corresponds to the JSON property `tagDatas`
-        # @return [Array<Google::Apis::DfareportingV3_3::TagData>]
+        # @return [Array<Google::Apis::DfareportingV3_4::TagData>]
         attr_accessor :tag_datas
       
         def initialize(**args)
@@ -8777,7 +9188,7 @@ module Google
       
         # Set of generated tags for the specified placements.
         # Corresponds to the JSON property `placementTags`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlacementTag>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlacementTag>]
         attr_accessor :placement_tags
       
         def initialize(**args)
@@ -8808,7 +9219,7 @@ module Google
       
         # Placement collection.
         # Corresponds to the JSON property `placements`
-        # @return [Array<Google::Apis::DfareportingV3_3::Placement>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Placement>]
         attr_accessor :placements
       
         def initialize(**args)
@@ -8867,7 +9278,7 @@ module Google
       
         # Platform type collection.
         # Corresponds to the JSON property `platformTypes`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlatformType>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlatformType>]
         attr_accessor :platform_types
       
         def initialize(**args)
@@ -8887,12 +9298,12 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `dimension`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :dimension
       
         # Offset Position.
         # Corresponds to the JSON property `offset`
-        # @return [Google::Apis::DfareportingV3_3::OffsetPosition]
+        # @return [Google::Apis::DfareportingV3_4::OffsetPosition]
         attr_accessor :offset
       
         # Popup window position either centered or at specific coordinate.
@@ -9009,7 +9420,7 @@ module Google
       
         # Postal code collection.
         # Corresponds to the JSON property `postalCodes`
-        # @return [Array<Google::Apis::DfareportingV3_3::PostalCode>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PostalCode>]
         attr_accessor :postal_codes
       
         def initialize(**args)
@@ -9040,7 +9451,7 @@ module Google
         # Flights of this inventory item. A flight (a.k.a. pricing period) represents
         # the inventory item pricing information for a specific period of time.
         # Corresponds to the JSON property `flights`
-        # @return [Array<Google::Apis::DfareportingV3_3::Flight>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Flight>]
         attr_accessor :flights
       
         # Group type of this inventory item if it represents a placement group. Is null
@@ -9089,12 +9500,6 @@ module Google
         # @return [String]
         attr_accessor :cap_cost_option
       
-        # Whether cap costs are ignored by ad serving.
-        # Corresponds to the JSON property `disregardOverdelivery`
-        # @return [Boolean]
-        attr_accessor :disregard_overdelivery
-        alias_method :disregard_overdelivery?, :disregard_overdelivery
-      
         # Placement end date. This date must be later than, or the same day as, the
         # placement start date, but not later than the campaign end date. If, for
         # example, you set 6/25/2015 as both the start and end dates, the effective
@@ -9120,7 +9525,7 @@ module Google
       
         # Pricing periods for this placement.
         # Corresponds to the JSON property `pricingPeriods`
-        # @return [Array<Google::Apis::DfareportingV3_3::PricingSchedulePricingPeriod>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PricingSchedulePricingPeriod>]
         attr_accessor :pricing_periods
       
         # Placement pricing type. This field is required on insertion.
@@ -9149,7 +9554,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cap_cost_option = args[:cap_cost_option] if args.key?(:cap_cost_option)
-          @disregard_overdelivery = args[:disregard_overdelivery] if args.key?(:disregard_overdelivery)
           @end_date = args[:end_date] if args.key?(:end_date)
           @flighted = args[:flighted] if args.key?(:flighted)
           @floodlight_activity_id = args[:floodlight_activity_id] if args.key?(:floodlight_activity_id)
@@ -9272,7 +9676,7 @@ module Google
       
         # Modification timestamp.
         # Corresponds to the JSON property `lastModifiedInfo`
-        # @return [Google::Apis::DfareportingV3_3::LastModifiedInfo]
+        # @return [Google::Apis::DfareportingV3_4::LastModifiedInfo]
         attr_accessor :last_modified_info
       
         # Name of this project.
@@ -9378,7 +9782,7 @@ module Google
       
         # Project collection.
         # Corresponds to the JSON property `projects`
-        # @return [Array<Google::Apis::DfareportingV3_3::Project>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Project>]
         attr_accessor :projects
       
         def initialize(**args)
@@ -9401,13 +9805,13 @@ module Google
         # Dimensions which are compatible to be selected in the "dimensionFilters"
         # section of the report.
         # Corresponds to the JSON property `dimensionFilters`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimension_filters
       
         # Dimensions which are compatible to be selected in the "dimensions" section of
         # the report.
         # Corresponds to the JSON property `dimensions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimensions
       
         # The kind of resource this is, in this case dfareporting#
@@ -9419,19 +9823,19 @@ module Google
         # Metrics which are compatible to be selected in the "metricNames" section of
         # the report.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :metrics
       
         # Metrics which are compatible to be selected as activity metrics to pivot on in
         # the "activities" section of the report.
         # Corresponds to the JSON property `pivotedActivityMetrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :pivoted_activity_metrics
       
         # Metrics which are compatible to be selected in the "
         # reachByFrequencyMetricNames" section of the report.
         # Corresponds to the JSON property `reachByFrequencyMetrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :reach_by_frequency_metrics
       
         def initialize(**args)
@@ -9542,7 +9946,7 @@ module Google
       
         # Region collection.
         # Corresponds to the JSON property `regions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Region>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Region>]
         attr_accessor :regions
       
         def initialize(**args)
@@ -9585,7 +9989,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Remarketing list description.
@@ -9612,7 +10016,7 @@ module Google
       
         # Remarketing List Population Rule.
         # Corresponds to the JSON property `listPopulationRule`
-        # @return [Google::Apis::DfareportingV3_3::ListPopulationRule]
+        # @return [Google::Apis::DfareportingV3_4::ListPopulationRule]
         attr_accessor :list_population_rule
       
         # Number of users currently in the list. This is a read-only field.
@@ -9717,7 +10121,7 @@ module Google
       
         # Remarketing list collection.
         # Corresponds to the JSON property `remarketingLists`
-        # @return [Array<Google::Apis::DfareportingV3_3::RemarketingList>]
+        # @return [Array<Google::Apis::DfareportingV3_4::RemarketingList>]
         attr_accessor :remarketing_lists
       
         def initialize(**args)
@@ -9743,17 +10147,17 @@ module Google
       
         # The report criteria for a report of type "STANDARD".
         # Corresponds to the JSON property `criteria`
-        # @return [Google::Apis::DfareportingV3_3::Report::Criteria]
+        # @return [Google::Apis::DfareportingV3_4::Report::Criteria]
         attr_accessor :criteria
       
         # The report criteria for a report of type "CROSS_DIMENSION_REACH".
         # Corresponds to the JSON property `crossDimensionReachCriteria`
-        # @return [Google::Apis::DfareportingV3_3::Report::CrossDimensionReachCriteria]
+        # @return [Google::Apis::DfareportingV3_4::Report::CrossDimensionReachCriteria]
         attr_accessor :cross_dimension_reach_criteria
       
         # The report's email delivery settings.
         # Corresponds to the JSON property `delivery`
-        # @return [Google::Apis::DfareportingV3_3::Report::Delivery]
+        # @return [Google::Apis::DfareportingV3_4::Report::Delivery]
         attr_accessor :delivery
       
         # The eTag of this response for caching purposes.
@@ -9768,7 +10172,7 @@ module Google
       
         # The report criteria for a report of type "FLOODLIGHT".
         # Corresponds to the JSON property `floodlightCriteria`
-        # @return [Google::Apis::DfareportingV3_3::Report::FloodlightCriteria]
+        # @return [Google::Apis::DfareportingV3_4::Report::FloodlightCriteria]
         attr_accessor :floodlight_criteria
       
         # The output format of the report. If not specified, default format is "CSV".
@@ -9807,18 +10211,18 @@ module Google
       
         # The report criteria for a report of type "PATH_TO_CONVERSION".
         # Corresponds to the JSON property `pathToConversionCriteria`
-        # @return [Google::Apis::DfareportingV3_3::Report::PathToConversionCriteria]
+        # @return [Google::Apis::DfareportingV3_4::Report::PathToConversionCriteria]
         attr_accessor :path_to_conversion_criteria
       
         # The report criteria for a report of type "REACH".
         # Corresponds to the JSON property `reachCriteria`
-        # @return [Google::Apis::DfareportingV3_3::Report::ReachCriteria]
+        # @return [Google::Apis::DfareportingV3_4::Report::ReachCriteria]
         attr_accessor :reach_criteria
       
         # The report's schedule. Can only be set if the report's 'dateRange' is a
         # relative date range and the relative date range is not "TODAY".
         # Corresponds to the JSON property `schedule`
-        # @return [Google::Apis::DfareportingV3_3::Report::Schedule]
+        # @return [Google::Apis::DfareportingV3_4::Report::Schedule]
         attr_accessor :schedule
       
         # The subaccount ID to which this report belongs if applicable.
@@ -9863,29 +10267,29 @@ module Google
         
           # Represents an activity group.
           # Corresponds to the JSON property `activities`
-          # @return [Google::Apis::DfareportingV3_3::Activities]
+          # @return [Google::Apis::DfareportingV3_4::Activities]
           attr_accessor :activities
         
           # Represents a Custom Rich Media Events group.
           # Corresponds to the JSON property `customRichMediaEvents`
-          # @return [Google::Apis::DfareportingV3_3::CustomRichMediaEvents]
+          # @return [Google::Apis::DfareportingV3_4::CustomRichMediaEvents]
           attr_accessor :custom_rich_media_events
         
           # Represents a date range.
           # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV3_3::DateRange]
+          # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
           # The list of filters on which dimensions are filtered.
           # Filters for different dimensions are ANDed, filters for the same dimension are
           # grouped together and ORed.
           # Corresponds to the JSON property `dimensionFilters`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
         
           # The list of standard dimensions the report should include.
           # Corresponds to the JSON property `dimensions`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :dimensions
         
           # The list of names of metrics the report should include.
@@ -9914,12 +10318,12 @@ module Google
         
           # The list of dimensions the report should include.
           # Corresponds to the JSON property `breakdown`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :breakdown
         
           # Represents a date range.
           # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV3_3::DateRange]
+          # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
           # The dimension option.
@@ -9929,7 +10333,7 @@ module Google
         
           # The list of filters on which dimensions are filtered.
           # Corresponds to the JSON property `dimensionFilters`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
         
           # The list of names of metrics the report should include.
@@ -9986,7 +10390,7 @@ module Google
         
           # The list of recipients to which to email the report.
           # Corresponds to the JSON property `recipients`
-          # @return [Array<Google::Apis::DfareportingV3_3::Recipient>]
+          # @return [Array<Google::Apis::DfareportingV3_4::Recipient>]
           attr_accessor :recipients
         
           def initialize(**args)
@@ -10008,29 +10412,29 @@ module Google
         
           # The list of custom rich media events to include.
           # Corresponds to the JSON property `customRichMediaEvents`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :custom_rich_media_events
         
           # Represents a date range.
           # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV3_3::DateRange]
+          # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
           # The list of filters on which dimensions are filtered.
           # Filters for different dimensions are ANDed, filters for the same dimension are
           # grouped together and ORed.
           # Corresponds to the JSON property `dimensionFilters`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
         
           # The list of dimensions the report should include.
           # Corresponds to the JSON property `dimensions`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :dimensions
         
           # Represents a DimensionValue resource.
           # Corresponds to the JSON property `floodlightConfigId`
-          # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+          # @return [Google::Apis::DfareportingV3_4::DimensionValue]
           attr_accessor :floodlight_config_id
         
           # The list of names of metrics the report should include.
@@ -10040,7 +10444,7 @@ module Google
         
           # The properties of the report.
           # Corresponds to the JSON property `reportProperties`
-          # @return [Google::Apis::DfareportingV3_3::Report::FloodlightCriteria::ReportProperties]
+          # @return [Google::Apis::DfareportingV3_4::Report::FloodlightCriteria::ReportProperties]
           attr_accessor :report_properties
         
           def initialize(**args)
@@ -10103,32 +10507,32 @@ module Google
         
           # The list of 'dfa:activity' values to filter on.
           # Corresponds to the JSON property `activityFilters`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :activity_filters
         
           # The list of conversion dimensions the report should include.
           # Corresponds to the JSON property `conversionDimensions`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :conversion_dimensions
         
           # The list of custom floodlight variables the report should include.
           # Corresponds to the JSON property `customFloodlightVariables`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :custom_floodlight_variables
         
           # The list of custom rich media events to include.
           # Corresponds to the JSON property `customRichMediaEvents`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :custom_rich_media_events
         
           # Represents a date range.
           # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV3_3::DateRange]
+          # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
           # Represents a DimensionValue resource.
           # Corresponds to the JSON property `floodlightConfigId`
-          # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+          # @return [Google::Apis::DfareportingV3_4::DimensionValue]
           attr_accessor :floodlight_config_id
         
           # The list of names of metrics the report should include.
@@ -10138,12 +10542,12 @@ module Google
         
           # The list of per interaction dimensions the report should include.
           # Corresponds to the JSON property `perInteractionDimensions`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :per_interaction_dimensions
         
           # The properties of the report.
           # Corresponds to the JSON property `reportProperties`
-          # @return [Google::Apis::DfareportingV3_3::Report::PathToConversionCriteria::ReportProperties]
+          # @return [Google::Apis::DfareportingV3_4::Report::PathToConversionCriteria::ReportProperties]
           attr_accessor :report_properties
         
           def initialize(**args)
@@ -10256,29 +10660,29 @@ module Google
         
           # Represents an activity group.
           # Corresponds to the JSON property `activities`
-          # @return [Google::Apis::DfareportingV3_3::Activities]
+          # @return [Google::Apis::DfareportingV3_4::Activities]
           attr_accessor :activities
         
           # Represents a Custom Rich Media Events group.
           # Corresponds to the JSON property `customRichMediaEvents`
-          # @return [Google::Apis::DfareportingV3_3::CustomRichMediaEvents]
+          # @return [Google::Apis::DfareportingV3_4::CustomRichMediaEvents]
           attr_accessor :custom_rich_media_events
         
           # Represents a date range.
           # Corresponds to the JSON property `dateRange`
-          # @return [Google::Apis::DfareportingV3_3::DateRange]
+          # @return [Google::Apis::DfareportingV3_4::DateRange]
           attr_accessor :date_range
         
           # The list of filters on which dimensions are filtered.
           # Filters for different dimensions are ANDed, filters for the same dimension are
           # grouped together and ORed.
           # Corresponds to the JSON property `dimensionFilters`
-          # @return [Array<Google::Apis::DfareportingV3_3::DimensionValue>]
+          # @return [Array<Google::Apis::DfareportingV3_4::DimensionValue>]
           attr_accessor :dimension_filters
         
           # The list of dimensions the report should include.
           # Corresponds to the JSON property `dimensions`
-          # @return [Array<Google::Apis::DfareportingV3_3::SortedDimension>]
+          # @return [Array<Google::Apis::DfareportingV3_4::SortedDimension>]
           attr_accessor :dimensions
         
           # Whether to enable all reach dimension combinations in the report. Defaults to
@@ -10391,13 +10795,13 @@ module Google
         # Dimensions which are compatible to be selected in the "dimensionFilters"
         # section of the report.
         # Corresponds to the JSON property `dimensionFilters`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimension_filters
       
         # Dimensions which are compatible to be selected in the "dimensions" section of
         # the report.
         # Corresponds to the JSON property `dimensions`
-        # @return [Array<Google::Apis::DfareportingV3_3::Dimension>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Dimension>]
         attr_accessor :dimensions
       
         # The kind of resource this is, in this case dfareporting#reportCompatibleFields.
@@ -10408,13 +10812,13 @@ module Google
         # Metrics which are compatible to be selected in the "metricNames" section of
         # the report.
         # Corresponds to the JSON property `metrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :metrics
       
         # Metrics which are compatible to be selected as activity metrics to pivot on in
         # the "activities" section of the report.
         # Corresponds to the JSON property `pivotedActivityMetrics`
-        # @return [Array<Google::Apis::DfareportingV3_3::Metric>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Metric>]
         attr_accessor :pivoted_activity_metrics
       
         def initialize(**args)
@@ -10442,7 +10846,7 @@ module Google
       
         # The reports returned in this response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DfareportingV3_3::Report>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Report>]
         attr_accessor :items
       
         # The kind of list this is, in this case dfareporting#reportList.
@@ -10485,7 +10889,7 @@ module Google
       
         # Lookback configuration settings.
         # Corresponds to the JSON property `lookbackConfiguration`
-        # @return [Google::Apis::DfareportingV3_3::LookbackConfiguration]
+        # @return [Google::Apis::DfareportingV3_4::LookbackConfiguration]
         attr_accessor :lookback_configuration
       
         # Report generation time zone ID of this account. This is a required field that
@@ -10545,7 +10949,7 @@ module Google
       
         # Click-through URL
         # Corresponds to the JSON property `clickThroughUrl`
-        # @return [Google::Apis::DfareportingV3_3::ClickThroughUrl]
+        # @return [Google::Apis::DfareportingV3_4::ClickThroughUrl]
         attr_accessor :click_through_url
       
         # Whether to use the clickThroughUrl. If false, the creative-level exit will be
@@ -10630,7 +11034,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `directorySiteIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :directory_site_id_dimension_value
       
         # ID of this site. This is a read-only, auto-generated field.
@@ -10640,7 +11044,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `idDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :id_dimension_value
       
         # Key name of this site. This is a read-only, auto-generated field.
@@ -10664,12 +11068,12 @@ module Google
       
         # Site contacts.
         # Corresponds to the JSON property `siteContacts`
-        # @return [Array<Google::Apis::DfareportingV3_3::SiteContact>]
+        # @return [Array<Google::Apis::DfareportingV3_4::SiteContact>]
         attr_accessor :site_contacts
       
         # Site Settings
         # Corresponds to the JSON property `siteSettings`
-        # @return [Google::Apis::DfareportingV3_3::SiteSettings]
+        # @return [Google::Apis::DfareportingV3_4::SiteSettings]
         attr_accessor :site_settings
       
         # Subaccount ID of this site. This is a read-only field that can be left blank.
@@ -10679,7 +11083,7 @@ module Google
       
         # Video Settings
         # Corresponds to the JSON property `videoSettings`
-        # @return [Google::Apis::DfareportingV3_3::SiteVideoSettings]
+        # @return [Google::Apis::DfareportingV3_4::SiteVideoSettings]
         attr_accessor :video_settings
       
         def initialize(**args)
@@ -10717,7 +11121,7 @@ module Google
         # Whitelist of companion sizes to be served via this site template. Set this
         # list to null or empty to serve all companion sizes.
         # Corresponds to the JSON property `enabledSizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :enabled_sizes
       
         # Whether to serve only static images as companions.
@@ -10832,7 +11236,7 @@ module Google
       
         # Tag Settings
         # Corresponds to the JSON property `tagSetting`
-        # @return [Google::Apis::DfareportingV3_3::TagSetting]
+        # @return [Google::Apis::DfareportingV3_4::TagSetting]
         attr_accessor :tag_setting
       
         # Whether Verification and ActiveView for in-stream video creatives are disabled
@@ -10884,12 +11288,12 @@ module Google
       
         # Video Offset
         # Corresponds to the JSON property `progressOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :progress_offset
       
         # Video Offset
         # Corresponds to the JSON property `skipOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :skip_offset
       
         # Whether the user can skip creatives served to this site. This will act as
@@ -10945,7 +11349,7 @@ module Google
       
         # Companion Settings
         # Corresponds to the JSON property `companionSettings`
-        # @return [Google::Apis::DfareportingV3_3::SiteCompanionSetting]
+        # @return [Google::Apis::DfareportingV3_4::SiteCompanionSetting]
         attr_accessor :companion_settings
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -10962,12 +11366,12 @@ module Google
       
         # Skippable Settings
         # Corresponds to the JSON property `skippableSettings`
-        # @return [Google::Apis::DfareportingV3_3::SiteSkippableSetting]
+        # @return [Google::Apis::DfareportingV3_4::SiteSkippableSetting]
         attr_accessor :skippable_settings
       
         # Transcode Settings
         # Corresponds to the JSON property `transcodeSettings`
-        # @return [Google::Apis::DfareportingV3_3::SiteTranscodeSetting]
+        # @return [Google::Apis::DfareportingV3_4::SiteTranscodeSetting]
         attr_accessor :transcode_settings
       
         def initialize(**args)
@@ -11001,7 +11405,7 @@ module Google
       
         # Site collection.
         # Corresponds to the JSON property `sites`
-        # @return [Array<Google::Apis::DfareportingV3_3::Site>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Site>]
         attr_accessor :sites
       
         def initialize(**args)
@@ -11073,7 +11477,7 @@ module Google
       
         # Size collection.
         # Corresponds to the JSON property `sizes`
-        # @return [Array<Google::Apis::DfareportingV3_3::Size>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Size>]
         attr_accessor :sizes
       
         def initialize(**args)
@@ -11099,12 +11503,12 @@ module Google
       
         # Video Offset
         # Corresponds to the JSON property `progressOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :progress_offset
       
         # Video Offset
         # Corresponds to the JSON property `skipOffset`
-        # @return [Google::Apis::DfareportingV3_3::VideoOffset]
+        # @return [Google::Apis::DfareportingV3_4::VideoOffset]
         attr_accessor :skip_offset
       
         # Whether the user can skip creatives served to this placement.
@@ -11220,7 +11624,7 @@ module Google
       
         # Subaccount collection.
         # Corresponds to the JSON property `subaccounts`
-        # @return [Array<Google::Apis::DfareportingV3_3::Subaccount>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Subaccount>]
         attr_accessor :subaccounts
       
         def initialize(**args)
@@ -11409,7 +11813,7 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Targetable remarketing list description.
@@ -11494,7 +11898,7 @@ module Google
       
         # Targetable remarketing list collection.
         # Corresponds to the JSON property `targetableRemarketingLists`
-        # @return [Array<Google::Apis::DfareportingV3_3::TargetableRemarketingList>]
+        # @return [Array<Google::Apis::DfareportingV3_4::TargetableRemarketingList>]
         attr_accessor :targetable_remarketing_lists
       
         def initialize(**args)
@@ -11528,17 +11932,17 @@ module Google
       
         # Represents a DimensionValue resource.
         # Corresponds to the JSON property `advertiserIdDimensionValue`
-        # @return [Google::Apis::DfareportingV3_3::DimensionValue]
+        # @return [Google::Apis::DfareportingV3_4::DimensionValue]
         attr_accessor :advertiser_id_dimension_value
       
         # Day Part Targeting.
         # Corresponds to the JSON property `dayPartTargeting`
-        # @return [Google::Apis::DfareportingV3_3::DayPartTargeting]
+        # @return [Google::Apis::DfareportingV3_4::DayPartTargeting]
         attr_accessor :day_part_targeting
       
         # Geographical Targeting.
         # Corresponds to the JSON property `geoTargeting`
-        # @return [Google::Apis::DfareportingV3_3::GeoTargeting]
+        # @return [Google::Apis::DfareportingV3_4::GeoTargeting]
         attr_accessor :geo_targeting
       
         # ID of this targeting template. This is a read-only, auto-generated field.
@@ -11548,7 +11952,7 @@ module Google
       
         # Key Value Targeting Expression.
         # Corresponds to the JSON property `keyValueTargetingExpression`
-        # @return [Google::Apis::DfareportingV3_3::KeyValueTargetingExpression]
+        # @return [Google::Apis::DfareportingV3_4::KeyValueTargetingExpression]
         attr_accessor :key_value_targeting_expression
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -11559,12 +11963,12 @@ module Google
       
         # Language Targeting.
         # Corresponds to the JSON property `languageTargeting`
-        # @return [Google::Apis::DfareportingV3_3::LanguageTargeting]
+        # @return [Google::Apis::DfareportingV3_4::LanguageTargeting]
         attr_accessor :language_targeting
       
         # Remarketing List Targeting Expression.
         # Corresponds to the JSON property `listTargetingExpression`
-        # @return [Google::Apis::DfareportingV3_3::ListTargetingExpression]
+        # @return [Google::Apis::DfareportingV3_4::ListTargetingExpression]
         attr_accessor :list_targeting_expression
       
         # Name of this targeting template. This field is required. It must be less than
@@ -11581,7 +11985,7 @@ module Google
       
         # Technology Targeting.
         # Corresponds to the JSON property `technologyTargeting`
-        # @return [Google::Apis::DfareportingV3_3::TechnologyTargeting]
+        # @return [Google::Apis::DfareportingV3_4::TechnologyTargeting]
         attr_accessor :technology_targeting
       
         def initialize(**args)
@@ -11623,7 +12027,7 @@ module Google
       
         # Targeting template collection.
         # Corresponds to the JSON property `targetingTemplates`
-        # @return [Array<Google::Apis::DfareportingV3_3::TargetingTemplate>]
+        # @return [Array<Google::Apis::DfareportingV3_4::TargetingTemplate>]
         attr_accessor :targeting_templates
       
         def initialize(**args)
@@ -11647,14 +12051,14 @@ module Google
         # browserVersionId will be used. The other fields are populated automatically
         # when the ad is inserted or updated.
         # Corresponds to the JSON property `browsers`
-        # @return [Array<Google::Apis::DfareportingV3_3::Browser>]
+        # @return [Array<Google::Apis::DfareportingV3_4::Browser>]
         attr_accessor :browsers
       
         # Connection types that this ad targets. For each connection type only id is
         # required. The other fields are populated automatically when the ad is inserted
         # or updated.
         # Corresponds to the JSON property `connectionTypes`
-        # @return [Array<Google::Apis::DfareportingV3_3::ConnectionType>]
+        # @return [Array<Google::Apis::DfareportingV3_4::ConnectionType>]
         attr_accessor :connection_types
       
         # Mobile carriers that this ad targets. For each mobile carrier only id is
@@ -11662,7 +12066,7 @@ module Google
         # inserted or updated. If targeting a mobile carrier, do not set targeting for
         # any zip codes.
         # Corresponds to the JSON property `mobileCarriers`
-        # @return [Array<Google::Apis::DfareportingV3_3::MobileCarrier>]
+        # @return [Array<Google::Apis::DfareportingV3_4::MobileCarrier>]
         attr_accessor :mobile_carriers
       
         # Operating system versions that this ad targets. To target all versions, use
@@ -11671,7 +12075,7 @@ module Google
         # If targeting an operating system version, do not set targeting for the
         # corresponding operating system in operatingSystems.
         # Corresponds to the JSON property `operatingSystemVersions`
-        # @return [Array<Google::Apis::DfareportingV3_3::OperatingSystemVersion>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OperatingSystemVersion>]
         attr_accessor :operating_system_versions
       
         # Operating systems that this ad targets. To target specific versions, use
@@ -11680,14 +12084,14 @@ module Google
         # updated. If targeting an operating system, do not set targeting for operating
         # system versions for the same operating system.
         # Corresponds to the JSON property `operatingSystems`
-        # @return [Array<Google::Apis::DfareportingV3_3::OperatingSystem>]
+        # @return [Array<Google::Apis::DfareportingV3_4::OperatingSystem>]
         attr_accessor :operating_systems
       
         # Platform types that this ad targets. For example, desktop, mobile, or tablet.
         # For each platform type, only id is required, and the other fields are
         # populated automatically when the ad is inserted or updated.
         # Corresponds to the JSON property `platformTypes`
-        # @return [Array<Google::Apis::DfareportingV3_3::PlatformType>]
+        # @return [Array<Google::Apis::DfareportingV3_4::PlatformType>]
         attr_accessor :platform_types
       
         def initialize(**args)
@@ -11916,7 +12320,7 @@ module Google
       
         # The user profiles returned in this response.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserProfile>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserProfile>]
         attr_accessor :items
       
         # The kind of list this is, in this case dfareporting#userProfileList.
@@ -11981,7 +12385,7 @@ module Google
       
         # List of permissions associated with this user role.
         # Corresponds to the JSON property `permissions`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserRolePermission>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserRolePermission>]
         attr_accessor :permissions
       
         # Subaccount ID of this user role. This is a read-only field that can be left
@@ -12095,7 +12499,7 @@ module Google
       
         # User role permission group collection.
         # Corresponds to the JSON property `userRolePermissionGroups`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserRolePermissionGroup>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserRolePermissionGroup>]
         attr_accessor :user_role_permission_groups
       
         def initialize(**args)
@@ -12121,7 +12525,7 @@ module Google
       
         # User role permission collection.
         # Corresponds to the JSON property `userRolePermissions`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserRolePermission>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserRolePermission>]
         attr_accessor :user_role_permissions
       
         def initialize(**args)
@@ -12152,7 +12556,7 @@ module Google
       
         # User role collection.
         # Corresponds to the JSON property `userRoles`
-        # @return [Array<Google::Apis::DfareportingV3_3::UserRole>]
+        # @return [Array<Google::Apis::DfareportingV3_4::UserRole>]
         attr_accessor :user_roles
       
         def initialize(**args)
@@ -12189,7 +12593,7 @@ module Google
       
         # Represents the dimensions of ads, placements, creatives, or creative assets.
         # Corresponds to the JSON property `resolution`
-        # @return [Google::Apis::DfareportingV3_3::Size]
+        # @return [Google::Apis::DfareportingV3_4::Size]
         attr_accessor :resolution
       
         # The target bit rate of this video format.
@@ -12223,7 +12627,7 @@ module Google
       
         # Video format collection.
         # Corresponds to the JSON property `videoFormats`
-        # @return [Array<Google::Apis::DfareportingV3_3::VideoFormat>]
+        # @return [Array<Google::Apis::DfareportingV3_4::VideoFormat>]
         attr_accessor :video_formats
       
         def initialize(**args)
@@ -12270,7 +12674,7 @@ module Google
       
         # Companion Settings
         # Corresponds to the JSON property `companionSettings`
-        # @return [Google::Apis::DfareportingV3_3::CompanionSetting]
+        # @return [Google::Apis::DfareportingV3_4::CompanionSetting]
         attr_accessor :companion_settings
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -12287,12 +12691,12 @@ module Google
       
         # Skippable Settings
         # Corresponds to the JSON property `skippableSettings`
-        # @return [Google::Apis::DfareportingV3_3::SkippableSetting]
+        # @return [Google::Apis::DfareportingV3_4::SkippableSetting]
         attr_accessor :skippable_settings
       
         # Transcode Settings
         # Corresponds to the JSON property `transcodeSettings`
-        # @return [Google::Apis::DfareportingV3_3::TranscodeSetting]
+        # @return [Google::Apis::DfareportingV3_4::TranscodeSetting]
         attr_accessor :transcode_settings
       
         def initialize(**args)

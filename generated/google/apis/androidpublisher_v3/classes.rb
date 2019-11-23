@@ -294,6 +294,31 @@ module Google
       end
       
       # 
+      class Control
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `modRanges`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ModRange>]
+        attr_accessor :mod_ranges
+      
+        # 
+        # Corresponds to the JSON property `versionCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :version_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
+          @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # 
       class CountryTargeting
         include Google::Apis::Core::Hashable
       
@@ -1064,6 +1089,62 @@ module Google
         def update!(**args)
           @language = args[:language] if args.key?(:language)
           @text = args[:text] if args.key?(:text)
+        end
+      end
+      
+      # 
+      class MendelSampling
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `modRanges`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ModRange>]
+        attr_accessor :mod_ranges
+      
+        # 
+        # Corresponds to the JSON property `modulus`
+        # @return [Fixnum]
+        attr_accessor :modulus
+      
+        # 
+        # Corresponds to the JSON property `salt`
+        # @return [Fixnum]
+        attr_accessor :salt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
+          @modulus = args[:modulus] if args.key?(:modulus)
+          @salt = args[:salt] if args.key?(:salt)
+        end
+      end
+      
+      # 
+      class ModRange
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `end`
+        # @return [Fixnum]
+        attr_accessor :end
+      
+        # 
+        # Corresponds to the JSON property `start`
+        # @return [Fixnum]
+        attr_accessor :start
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end = args[:end] if args.key?(:end)
+          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -1903,6 +1984,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # 
+        # Corresponds to the JSON property `controls`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Control>]
+        attr_accessor :controls
+      
+        # 
         # Corresponds to the JSON property `countryTargeting`
         # @return [Google::Apis::AndroidpublisherV3::CountryTargeting]
         attr_accessor :country_targeting
@@ -1918,6 +2004,11 @@ module Google
         # Corresponds to the JSON property `releaseNotes`
         # @return [Array<Google::Apis::AndroidpublisherV3::LocalizedText>]
         attr_accessor :release_notes
+      
+        # 
+        # Corresponds to the JSON property `sampling`
+        # @return [Google::Apis::AndroidpublisherV3::MendelSampling]
+        attr_accessor :sampling
       
         # The desired status of this release.
         # Corresponds to the JSON property `status`
@@ -1944,9 +2035,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @controls = args[:controls] if args.key?(:controls)
           @country_targeting = args[:country_targeting] if args.key?(:country_targeting)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
+          @sampling = args[:sampling] if args.key?(:sampling)
           @status = args[:status] if args.key?(:status)
           @user_fraction = args[:user_fraction] if args.key?(:user_fraction)
           @version_codes = args[:version_codes] if args.key?(:version_codes)

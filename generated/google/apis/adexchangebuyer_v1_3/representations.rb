@@ -463,6 +463,7 @@ module Google
           property :is_active, as: 'isActive'
           property :kind, as: 'kind'
           collection :languages, as: 'languages'
+          property :maximum_qps, :numeric_string => true, as: 'maximumQps'
           collection :mobile_carriers, as: 'mobileCarriers'
           collection :mobile_devices, as: 'mobileDevices'
           collection :mobile_operating_system_versions, as: 'mobileOperatingSystemVersions'

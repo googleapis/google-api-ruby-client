@@ -1193,6 +1193,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
+        # The maximum QPS allocated to this pretargeting configuration, used for
+        # pretargeting-level QPS limits. By default, this is not set, which indicates
+        # that there is no QPS limit at the configuration level (a global or account-
+        # level limit may still be imposed).
+        # Corresponds to the JSON property `maximumQps`
+        # @return [Fixnum]
+        attr_accessor :maximum_qps
+      
         # Requests containing any of these mobile carrier ids will match. Values are
         # from mobile-carriers.csv in the downloadable files section.
         # Corresponds to the JSON property `mobileCarriers`
@@ -1266,6 +1274,7 @@ module Google
           @is_active = args[:is_active] if args.key?(:is_active)
           @kind = args[:kind] if args.key?(:kind)
           @languages = args[:languages] if args.key?(:languages)
+          @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
           @mobile_carriers = args[:mobile_carriers] if args.key?(:mobile_carriers)
           @mobile_devices = args[:mobile_devices] if args.key?(:mobile_devices)
           @mobile_operating_system_versions = args[:mobile_operating_system_versions] if args.key?(:mobile_operating_system_versions)

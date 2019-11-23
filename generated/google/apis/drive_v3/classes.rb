@@ -1960,7 +1960,13 @@ module Google
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # A displayable name for users, groups or domains.
+        # The "pretty" name of the value of the permission. The following is a list of
+        # examples for each type of permission:
+        # - user - User's full name, as defined for their Google account, such as "Joe
+        # Smith."
+        # - group - Name of the Google Group, such as "The Company Administrators."
+        # - domain - String domain name, such as "thecompany.com."
+        # - anyone - No displayName is present.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -1985,7 +1991,8 @@ module Google
         attr_accessor :expiration_time
       
         # The ID of this permission. This is a unique identifier for the grantee, and is
-        # published in User resources as permissionId.
+        # published in User resources as permissionId. IDs should be treated as opaque
+        # values.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -2029,7 +2036,9 @@ module Google
         # - user
         # - group
         # - domain
-        # - anyone
+        # - anyone  When creating a permission, if type is user or group, you must
+        # provide an emailAddress for the user or group. When type is domain, you must
+        # provide a domain. There isn't extra information required for a anyone type.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type

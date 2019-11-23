@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Control
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CountryTargeting
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,18 @@ module Google
       end
       
       class LocalizedText
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MendelSampling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ModRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -464,6 +482,15 @@ module Google
         end
       end
       
+      class Control
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
+      
+          collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
       class CountryTargeting
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -680,6 +707,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :language, as: 'language'
           property :text, as: 'text'
+        end
+      end
+      
+      class MendelSampling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
+      
+          property :modulus, :numeric_string => true, as: 'modulus'
+          property :salt, as: 'salt'
+        end
+      end
+      
+      class ModRange
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end, :numeric_string => true, as: 'end'
+          property :start, :numeric_string => true, as: 'start'
         end
       end
       
@@ -914,10 +959,14 @@ module Google
       class TrackRelease
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :controls, as: 'controls', class: Google::Apis::AndroidpublisherV3::Control, decorator: Google::Apis::AndroidpublisherV3::Control::Representation
+      
           property :country_targeting, as: 'countryTargeting', class: Google::Apis::AndroidpublisherV3::CountryTargeting, decorator: Google::Apis::AndroidpublisherV3::CountryTargeting::Representation
       
           property :name, as: 'name'
           collection :release_notes, as: 'releaseNotes', class: Google::Apis::AndroidpublisherV3::LocalizedText, decorator: Google::Apis::AndroidpublisherV3::LocalizedText::Representation
+      
+          property :sampling, as: 'sampling', class: Google::Apis::AndroidpublisherV3::MendelSampling, decorator: Google::Apis::AndroidpublisherV3::MendelSampling::Representation
       
           property :status, as: 'status'
           property :user_fraction, as: 'userFraction'

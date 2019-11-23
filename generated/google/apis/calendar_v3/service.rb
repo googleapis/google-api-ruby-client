@@ -1031,11 +1031,9 @@ module Google
         # @param [String] event_id
         #   Event identifier.
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
         #   than the specified number of attendees, only the participant is returned.
@@ -1199,11 +1197,9 @@ module Google
         # @param [String] event_id
         #   Recurring event identifier.
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [Fixnum] max_attendees
         #   The maximum number of attendees to include in the response. If there are more
         #   than the specified number of attendees, only the participant is returned.
@@ -1276,11 +1272,9 @@ module Google
         #   method. If you want to access the primary calendar of the currently logged in
         #   user, use the "primary" keyword.
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [String] i_cal_uid
         #   Specifies event ID in the iCalendar format to be included in the response.
         #   Optional.
@@ -1470,11 +1464,9 @@ module Google
         #   Event identifier.
         # @param [Google::Apis::CalendarV3::Event] event_object
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [Fixnum] conference_data_version
         #   Version number of conference data supported by the API client. Version 0
         #   assumes no conference data support and ignores conference data in the event's
@@ -1591,11 +1583,9 @@ module Google
         #   Event identifier.
         # @param [Google::Apis::CalendarV3::Event] event_object
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [Fixnum] conference_data_version
         #   Version number of conference data supported by the API client. Version 0
         #   assumes no conference data support and ignores conference data in the event's
@@ -1663,11 +1653,9 @@ module Google
         #   user, use the "primary" keyword.
         # @param [Google::Apis::CalendarV3::Channel] channel_object
         # @param [Boolean] always_include_email
-        #   Whether to always include a value in the email field for the organizer,
-        #   creator and attendees, even if no real email is available (i.e. a generated,
-        #   non-working value will be provided). The use of this option is discouraged and
-        #   should only be used by clients which cannot handle the absence of an email
-        #   address value in the mentioned places. Optional. The default is False.
+        #   Deprecated and ignored. A value will always be returned in the email field for
+        #   the organizer, creator and attendees, even if no real email address is
+        #   available (i.e. a generated, non-working value will be provided).
         # @param [String] i_cal_uid
         #   Specifies event ID in the iCalendar format to be included in the response.
         #   Optional.

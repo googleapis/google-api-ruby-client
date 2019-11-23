@@ -2497,6 +2497,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :languages
       
+        # The maximum QPS allocated to this pretargeting configuration, used for
+        # pretargeting-level QPS limits. By default, this is not set, which indicates
+        # that there is no QPS limit at the configuration level (a global or account-
+        # level limit may still be imposed).
+        # Corresponds to the JSON property `maximumQps`
+        # @return [Fixnum]
+        attr_accessor :maximum_qps
+      
         # Requests where the predicted viewability is below the specified decile will
         # not match. E.g. if the buyer sets this value to 5, requests from slots where
         # the predicted viewability is below 50% will not match. If the predicted
@@ -2591,6 +2599,7 @@ module Google
           @is_active = args[:is_active] if args.key?(:is_active)
           @kind = args[:kind] if args.key?(:kind)
           @languages = args[:languages] if args.key?(:languages)
+          @maximum_qps = args[:maximum_qps] if args.key?(:maximum_qps)
           @minimum_viewability_decile = args[:minimum_viewability_decile] if args.key?(:minimum_viewability_decile)
           @mobile_carriers = args[:mobile_carriers] if args.key?(:mobile_carriers)
           @mobile_devices = args[:mobile_devices] if args.key?(:mobile_devices)

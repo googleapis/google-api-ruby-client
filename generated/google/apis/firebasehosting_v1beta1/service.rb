@@ -446,6 +446,11 @@ module Google
         # @param [String] parent
         #   Required. The parent for which to list files, in the format:
         #   <code>sites/<var>site-name</var></code>
+        # @param [String] filter
+        #   The filter string used to return a subset of versions in the response.
+        #   Currently supported fields for filtering are: name, status,
+        #   and create_time. Filter processing will be implemented in accordance
+        #   with go/filtering.
         # @param [Fixnum] page_size
         #   The maximum number of versions to return. The service may return fewer than
         #   this value.
@@ -470,11 +475,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_site_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_site_versions(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+parent}/versions', options)
           command.response_representation = Google::Apis::FirebasehostingV1beta1::ListVersionsResponse::Representation
           command.response_class = Google::Apis::FirebasehostingV1beta1::ListVersionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

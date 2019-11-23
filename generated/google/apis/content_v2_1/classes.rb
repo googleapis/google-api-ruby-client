@@ -3648,7 +3648,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # The reason for the cancellation. Orders that are cancelled with a noInventory
+        # The reason for the cancellation. Orders that are canceled with a noInventory
         # reason will lead to the removal of the product from Shopping Actions until you
         # make an update to that product. This will not affect your Shopping ads.
         # Corresponds to the JSON property `reason`
@@ -4659,7 +4659,15 @@ module Google
         # - "mpx"
         # - "uds"
         # - "efw"
-        # - "jd logistics"
+        # - "yunexpress"
+        # - "china post"
+        # - "china ems"
+        # - "singapore post"
+        # - "pos malaysia"
+        # - "postnl"
+        # - "ptt"
+        # - "eub"
+        # - "chukou1"
         # Acceptable values for FR are:
         # - "colissimo"
         # - "chronopost"
@@ -4671,6 +4679,7 @@ module Google
         # - "geodis"
         # - "tnt"
         # - "la poste"
+        # - "ups"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -4732,8 +4741,8 @@ module Google
       class OrderShipmentLineItemShipment
         include Google::Apis::Core::Hashable
       
-        # The ID of the line item that is shipped. Either lineItemId or productId is
-        # required.
+        # The ID of the line item that is shipped. This value is assigned by Google when
+        # an order is created. Either lineItemId or productId is required.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id

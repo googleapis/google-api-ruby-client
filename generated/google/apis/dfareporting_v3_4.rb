@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/dfareporting_v3_3/service.rb'
-require 'google/apis/dfareporting_v3_3/classes.rb'
-require 'google/apis/dfareporting_v3_3/representations.rb'
+require 'google/apis/dfareporting_v3_4/service.rb'
+require 'google/apis/dfareporting_v3_4/classes.rb'
+require 'google/apis/dfareporting_v3_4/representations.rb'
 
 module Google
   module Apis
@@ -23,8 +23,8 @@ module Google
     # Manages your DoubleClick Campaign Manager ad campaigns and reports.
     #
     # @see https://developers.google.com/doubleclick-advertisers/
-    module DfareportingV3_3
-      VERSION = 'V3_3'
+    module DfareportingV3_4
+      VERSION = 'V3_4'
       REVISION = '20191112'
 
       # Manage DoubleClick Digital Marketing conversions

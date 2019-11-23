@@ -1058,7 +1058,7 @@ module Google
       class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # The DeidentifyTemplates contains instructions on how to deidentify content.
+        # DeidentifyTemplates contains instructions on how to de-identify content.
         # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
@@ -1212,7 +1212,9 @@ module Google
       class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for a StoredInfoType.
+        # Configuration for stored infoT types. All fields and subfield are provided
+        # by the user. For more information, see
+        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -1776,12 +1778,12 @@ module Google
         end
       end
       
-      # The DeidentifyTemplates contains instructions on how to deidentify content.
+      # DeidentifyTemplates contains instructions on how to de-identify content.
       # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
       class GooglePrivacyDlpV2DeidentifyTemplate
         include Google::Apis::Core::Hashable
       
-        # The creation timestamp of a inspectTemplate, output only field.
+        # The creation timestamp of an inspectTemplate, output only field.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1809,7 +1811,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The last update timestamp of a inspectTemplate, output only field.
+        # The last update timestamp of an inspectTemplate, output only field.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3065,7 +3067,7 @@ module Google
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
-        # The creation timestamp of a inspectTemplate, output only field.
+        # The creation timestamp of an inspectTemplate, output only field.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3095,7 +3097,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The last update timestamp of a inspectTemplate, output only field.
+        # The last update timestamp of an inspectTemplate, output only field.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -5285,7 +5287,9 @@ module Google
         end
       end
       
-      # Configuration for a StoredInfoType.
+      # Configuration for stored infoT types. All fields and subfield are provided
+      # by the user. For more information, see
+      # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
       class GooglePrivacyDlpV2StoredInfoTypeConfig
         include Google::Apis::Core::Hashable
       
@@ -5345,7 +5349,9 @@ module Google
       class GooglePrivacyDlpV2StoredInfoTypeVersion
         include Google::Apis::Core::Hashable
       
-        # Configuration for a StoredInfoType.
+        # Configuration for stored infoT types. All fields and subfield are provided
+        # by the user. For more information, see
+        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
@@ -5806,7 +5812,7 @@ module Google
       class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest
         include Google::Apis::Core::Hashable
       
-        # The DeidentifyTemplates contains instructions on how to deidentify content.
+        # DeidentifyTemplates contains instructions on how to de-identify content.
         # See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
         # Corresponds to the JSON property `deidentifyTemplate`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
@@ -5886,7 +5892,9 @@ module Google
       class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for a StoredInfoType.
+        # Configuration for stored infoT types. All fields and subfield are provided
+        # by the user. For more information, see
+        # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
