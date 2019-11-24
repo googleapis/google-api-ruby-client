@@ -453,7 +453,9 @@ module Google
           property :bigquery_options, as: 'bigqueryOptions', class: Google::Apis::LoggingV2::BigQueryOptions, decorator: Google::Apis::LoggingV2::BigQueryOptions::Representation
       
           property :create_time, as: 'createTime'
+          property :description, as: 'description'
           property :destination, as: 'destination'
+          property :disabled, as: 'disabled'
           property :end_time, as: 'endTime'
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'

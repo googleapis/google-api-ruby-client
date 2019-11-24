@@ -1120,6 +1120,12 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Optional. A description of this sink. The maximum length of the description is
+        # 8000 characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # Required. The export destination:
         # "storage.googleapis.com/[GCS_BUCKET]"
         # "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -1130,6 +1136,13 @@ module Google
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
+      
+        # Optional. If set to True, then this sink is disabled and it does not export
+        # any log entries.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
       
         # Do not use. This field is ignored.
         # Corresponds to the JSON property `endTime`
@@ -1207,7 +1220,9 @@ module Google
         def update!(**args)
           @bigquery_options = args[:bigquery_options] if args.key?(:bigquery_options)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
           @destination = args[:destination] if args.key?(:destination)
+          @disabled = args[:disabled] if args.key?(:disabled)
           @end_time = args[:end_time] if args.key?(:end_time)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
