@@ -177,6 +177,16 @@ RSpec.describe Google::Apis::Core::ResumableUploadCommand do
       expect(a_request(:post, 'https://www.googleapis.com/zoo/animals')
         .with(body: 'Hello world')).to have_been_made
     end
+
+    it 'should generate a proper opencensus span' do
+      OpenCensus::Trace.start_request_trace do |span_context|
+        command.execute(client)
+        spans = span_context.build_contained_spans
+        expect(spans.size).to eql 1
+        span = spans.first
+        expect(span.name.value).to eql '/zoo/animals'
+      end
+    end
   end
 
   context 'with retriable error on start' do
