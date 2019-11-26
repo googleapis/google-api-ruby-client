@@ -174,6 +174,8 @@
   * Updated `serviceusage_v1`
   * Updated `serviceusage_v1beta1`
   * Updated `sheets_v4`
+* Other changes:
+  * Dropped support for Ruby versions older than 2.4
 
 # 0.32.1
 * Backwards compatible changes:
