@@ -385,14 +385,16 @@ module Google
           return unless @opencensus_span
           return unless OpenCensus::Trace.span_context
 
-          if @http_res.body.respond_to? :bytesize
-            @opencensus_span.put_message_event \
-              OpenCensus::Trace::SpanBuilder::RECEIVED, 1, @http_res.body.bytesize
-          end
-          status = @http_res.status.to_i
-          if status > 0
-            @opencensus_span.set_status map_http_status status
-            @opencensus_span.put_attribute "http.status_code", status
+          if @http_res
+            if @http_res.body.respond_to? :bytesize
+              @opencensus_span.put_message_event \
+                OpenCensus::Trace::SpanBuilder::RECEIVED, 1, @http_res.body.bytesize
+            end
+            status = @http_res.status.to_i
+            if status > 0
+              @opencensus_span.set_status map_http_status status
+              @opencensus_span.put_attribute "http.status_code", status
+            end
           end
 
           OpenCensus::Trace.end_span @opencensus_span
