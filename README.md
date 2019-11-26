@@ -78,6 +78,29 @@ metadata = drive.insert_file(metadata, upload_source: 'test.txt', content_type: 
 # Download a file
 drive.get_file(metadata.id, download_dest: '/tmp/myfile.txt')
 ```
+
+An example to use the Content API (Google Merchant Center)
+
+```ruby
+require 'google/apis/content_v2'
+require 'googleauth' # https://github.com/googleapis/google-auth-library-ruby
+
+Content = Google::Apis::ContentV2 # Alias the module
+content = Content::ShoppingContentService.new
+
+scope = 'https://www.googleapis.com/auth/content'
+merchant_id = # Merchant ID found on dashboard
+
+content.authorization = Google::Auth::ServiceAccountCredentials.make_creds(
+  json_key_io: File.open('./content-api-key.json'),
+  scope: scope)
+
+content.authorization.fetch_access_token!
+# Service methods: https://googleapis.dev/ruby/google-api-client/latest/Google/Apis/ContentV2/ShoppingContentService.html
+content.list_datafeeds(merchant_id) # Returns Google::Apis::ContentV2::ListDatafeedsResponse
+
+```
+
 ### Naming conventions vs JSON representation
 
 Object properties in the ruby client use the standard ruby convention for naming -- snake_case. This differs from the underlying JSON representation which typically uses camelCase for properties. There are a few notable exceptions to this rule:
