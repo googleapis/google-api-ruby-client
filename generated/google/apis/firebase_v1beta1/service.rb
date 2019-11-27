@@ -886,13 +886,13 @@ module Google
         # Returns a list of valid Google Cloud Platform (GCP) resource locations for
         # the specified Project (including a FirebaseProject).
         # <br>
-        # <br>The default GCP resource location of a project defines the geographical
-        # location where project resources, such as Cloud Firestore, will be
-        # provisioned by default.
+        # <br>One of these locations can be selected as the Project's [_default_ GCP
+        # resource location](https://firebase.google.com/docs/projects/locations),
+        # which is the geographical location where project resources, such as Cloud
+        # Firestore, will be provisioned by default. However, if the default GCP
+        # resource location has already been set for the Project, then this setting
+        # cannot be changed.
         # <br>
-        # <br>The returned list are the available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations). <br>
         # <br>This call checks for any location restrictions for the specified
         # Project and, thus, might return a subset of all possible GCP resource
         # locations. To list all GCP resource locations (regardless of any

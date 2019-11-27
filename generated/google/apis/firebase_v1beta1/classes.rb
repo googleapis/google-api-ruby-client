@@ -795,10 +795,9 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
-        # The ID of the default GCP resource location. It must be one of the
-        # available
-        # [GCP resource
-        # locations](https://firebase.google.com/docs/projects/locations).
+        # The ID of the GCP resource location. It will be one of the available [GCP
+        # resource
+        # locations](https://firebase.google.com/docs/projects/locations#types).
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
