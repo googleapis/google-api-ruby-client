@@ -2198,16 +2198,16 @@ module Google
         #   Name of the `Patient` resource for which the information is required.
         # @param [Fixnum] _count
         #   Maximum number of resources in a page. Defaults to 100.
-        # @param [String] end_
-        #   The response includes records prior to the end date. If no end date is
-        #   provided, all records subsequent to the start date are in scope.
-        # @param [String] page_token
+        # @param [String] _page_token
         #   Used to retrieve the next or previous page of results
         #   when using pagination. Value should be set to the value of page_token set
         #   in next or previous page links' urls. Next and previous page are returned
         #   in the response bundle's links field, where `link.relation` is "previous"
         #   or "next".
         #   Omit `page_token` if no previous request has been made.
+        # @param [String] end_
+        #   The response includes records prior to the end date. If no end date is
+        #   provided, all records subsequent to the start date are in scope.
         # @param [String] start
         #   The response includes records subsequent to the start date. If no start
         #   date is provided, all records prior to the end date are in scope.
@@ -2228,14 +2228,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patient_project_location_dataset_fhir_store_fhir_everything(name, _count: nil, end_: nil, page_token: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patient_project_location_dataset_fhir_store_fhir_everything(name, _count: nil, _page_token: nil, end_: nil, start: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/$everything', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
           command.query['_count'] = _count unless _count.nil?
+          command.query['_page_token'] = _page_token unless _page_token.nil?
           command.query['end'] = end_ unless end_.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['start'] = start unless start.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -2636,14 +2636,7 @@ module Google
         # GCP error might be returned instead.
         # @param [String] name
         #   The name of the resource to retrieve.
-        # @param [String] _page_token
-        #   Used to retrieve the first, previous, next, or last page of resource
-        #   versions when using pagination. Value should be set to the value of
-        #   `_page_token` set in next or previous page links' URLs. Next and previous
-        #   page are returned in the response bundle's links field, where
-        #   `link.relation` is "previous" or "next".
-        #   Omit `_page_token` if no previous request has been made.
-        # @param [String] at
+        # @param [String] _at
         #   Only include resource versions that were current at some point during the
         #   time period specified in the date time value. The date parameter format is
         #   yyyy-mm-ddThh:mm:ss[Z|(+|-)hh:mm]
@@ -2652,11 +2645,16 @@ module Google
         #   *  An entire month: `_at=2019-01`
         #   *  A specific day: `_at=2019-01-20`
         #   *  A specific second: `_at=2018-12-31T23:59:58Z`
-        # @param [Fixnum] count
+        # @param [Fixnum] _count
         #   The maximum number of search results on a page. Defaults to 1000.
-        # @param [String] page
-        #   DEPRECATED! Use `_page_token`.
-        # @param [String] since
+        # @param [String] _page_token
+        #   Used to retrieve the first, previous, next, or last page of resource
+        #   versions when using pagination. Value should be set to the value of
+        #   `_page_token` set in next or previous page links' URLs. Next and previous
+        #   page are returned in the response bundle's links field, where
+        #   `link.relation` is "previous" or "next".
+        #   Omit `_page_token` if no previous request has been made.
+        # @param [String] _since
         #   Only include resource versions that were created at or after the given
         #   instant in time. The instant in time uses the format
         #   YYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00 or
@@ -2679,16 +2677,15 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def history_project_location_dataset_fhir_store_fhir(name, _page_token: nil, at: nil, count: nil, page: nil, since: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def history_project_location_dataset_fhir_store_fhir(name, _at: nil, _count: nil, _page_token: nil, _since: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1beta1/{+name}/_history', options)
           command.response_representation = Google::Apis::HealthcareV1beta1::HttpBody::Representation
           command.response_class = Google::Apis::HealthcareV1beta1::HttpBody
           command.params['name'] = name unless name.nil?
+          command.query['_at'] = _at unless _at.nil?
+          command.query['_count'] = _count unless _count.nil?
           command.query['_page_token'] = _page_token unless _page_token.nil?
-          command.query['at'] = at unless at.nil?
-          command.query['count'] = count unless count.nil?
-          command.query['page'] = page unless page.nil?
-          command.query['since'] = since unless since.nil?
+          command.query['_since'] = _since unless _since.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
