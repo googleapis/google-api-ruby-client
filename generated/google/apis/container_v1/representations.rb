@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudRunConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Cluster
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -316,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RecurringTimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -430,6 +442,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -477,6 +495,8 @@ module Google
       class AddonsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_run_config, as: 'cloudRunConfig', class: Google::Apis::ContainerV1::CloudRunConfig, decorator: Google::Apis::ContainerV1::CloudRunConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1::HttpLoadBalancing::Representation
@@ -548,6 +568,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :issue_client_certificate, as: 'issueClientCertificate'
+        end
+      end
+      
+      class CloudRunConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
         end
       end
       
@@ -869,6 +896,7 @@ module Google
       class MaintenancePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_version, as: 'resourceVersion'
           property :window, as: 'window', class: Google::Apis::ContainerV1::MaintenanceWindow, decorator: Google::Apis::ContainerV1::MaintenanceWindow::Representation
       
         end
@@ -878,6 +906,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :daily_maintenance_window, as: 'dailyMaintenanceWindow', class: Google::Apis::ContainerV1::DailyMaintenanceWindow, decorator: Google::Apis::ContainerV1::DailyMaintenanceWindow::Representation
+      
+          hash :maintenance_exclusions, as: 'maintenanceExclusions', class: Google::Apis::ContainerV1::TimeWindow, decorator: Google::Apis::ContainerV1::TimeWindow::Representation
+      
+          property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1::RecurringTimeWindow::Representation
       
         end
       end
@@ -1041,6 +1073,15 @@ module Google
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class RecurringTimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recurrence, as: 'recurrence'
+          property :window, as: 'window', class: Google::Apis::ContainerV1::TimeWindow, decorator: Google::Apis::ContainerV1::TimeWindow::Representation
+      
         end
       end
       
@@ -1253,6 +1294,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class TimeWindow
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
         end
       end
       

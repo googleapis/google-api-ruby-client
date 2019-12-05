@@ -795,6 +795,11 @@ module Google
       class Location
         include Google::Apis::Core::Hashable
       
+        # Products and services that are available in the GCP resource location.
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
         # The ID of the GCP resource location. It will be one of the available [GCP
         # resource
         # locations](https://firebase.google.com/docs/projects/locations#types).
@@ -802,13 +807,23 @@ module Google
         # @return [String]
         attr_accessor :location_id
       
+        # Indicates whether the GCP resource location is a [regional or
+        # multi-regional
+        # location](https://firebase.google.com/docs/projects/locations#types)
+        # for data replication.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @features = args[:features] if args.key?(:features)
           @location_id = args[:location_id] if args.key?(:location_id)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

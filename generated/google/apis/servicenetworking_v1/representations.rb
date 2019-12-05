@@ -154,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EnableVpcServiceControlsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Endpoint
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -621,6 +627,13 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableVpcServiceControlsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
         end
       end
       

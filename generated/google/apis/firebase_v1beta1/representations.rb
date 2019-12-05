@@ -420,7 +420,9 @@ module Google
       class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :features, as: 'features'
           property :location_id, as: 'locationId'
+          property :type, as: 'type'
         end
       end
       
