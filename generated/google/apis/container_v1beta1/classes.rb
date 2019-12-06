@@ -218,6 +218,32 @@ module Google
         end
       end
       
+      # AvailableVersion is an additional Kubernetes versions offered
+      # to users who subscribed to the release channel.
+      class AvailableVersion
+        include Google::Apis::Core::Hashable
+      
+        # Reason for availability.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # Kubernetes version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Parameters for using BigQuery as the destination of resource usage export.
       class BigQueryDestination
         include Google::Apis::Core::Hashable
@@ -3019,6 +3045,11 @@ module Google
       class ReleaseChannelConfig
         include Google::Apis::Core::Hashable
       
+        # List of available versions for the release channel.
+        # Corresponds to the JSON property `availableVersions`
+        # @return [Array<Google::Apis::ContainerV1beta1::AvailableVersion>]
+        attr_accessor :available_versions
+      
         # The release channel this configuration applies to.
         # Corresponds to the JSON property `channel`
         # @return [String]
@@ -3035,6 +3066,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @available_versions = args[:available_versions] if args.key?(:available_versions)
           @channel = args[:channel] if args.key?(:channel)
           @default_version = args[:default_version] if args.key?(:default_version)
         end

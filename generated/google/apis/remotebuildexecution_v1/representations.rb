@@ -172,6 +172,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildbotResourceUsage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDevtoolsRemotebuildbotResourceUsageStat
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -648,6 +660,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           property :message, as: 'message'
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildbotResourceUsage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_used_percent, as: 'cpuUsedPercent'
+          property :disk_usage, as: 'diskUsage', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildbotResourceUsageStat, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildbotResourceUsageStat::Representation
+      
+          property :memory_usage, as: 'memoryUsage', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildbotResourceUsageStat, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildbotResourceUsageStat::Representation
+      
+        end
+      end
+      
+      class GoogleDevtoolsRemotebuildbotResourceUsageStat
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total, :numeric_string => true, as: 'total'
+          property :used, :numeric_string => true, as: 'used'
         end
       end
       

@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AvailableVersion
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BigQueryDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -637,6 +643,14 @@ module Google
           property :service_account, as: 'serviceAccount'
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
       
+        end
+      end
+      
+      class AvailableVersion
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :version, as: 'version'
         end
       end
       
@@ -1308,6 +1322,8 @@ module Google
       class ReleaseChannelConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :available_versions, as: 'availableVersions', class: Google::Apis::ContainerV1beta1::AvailableVersion, decorator: Google::Apis::ContainerV1beta1::AvailableVersion::Representation
+      
           property :channel, as: 'channel'
           property :default_version, as: 'defaultVersion'
         end

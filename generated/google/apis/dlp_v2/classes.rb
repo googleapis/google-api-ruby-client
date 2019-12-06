@@ -1212,7 +1212,7 @@ module Google
       class GooglePrivacyDlpV2CreateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoT types. All fields and subfield are provided
+        # Configuration for stored infoTypes. All fields and subfield are provided
         # by the user. For more information, see
         # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
@@ -5287,7 +5287,7 @@ module Google
         end
       end
       
-      # Configuration for stored infoT types. All fields and subfield are provided
+      # Configuration for stored infoTypes. All fields and subfield are provided
       # by the user. For more information, see
       # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
       class GooglePrivacyDlpV2StoredInfoTypeConfig
@@ -5349,7 +5349,7 @@ module Google
       class GooglePrivacyDlpV2StoredInfoTypeVersion
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoT types. All fields and subfield are provided
+        # Configuration for stored infoTypes. All fields and subfield are provided
         # by the user. For more information, see
         # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`
@@ -5892,7 +5892,7 @@ module Google
       class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest
         include Google::Apis::Core::Hashable
       
-        # Configuration for stored infoT types. All fields and subfield are provided
+        # Configuration for stored infoTypes. All fields and subfield are provided
         # by the user. For more information, see
         # https://cloud.google.com/dlp/docs/creating-custom-infotypes.
         # Corresponds to the JSON property `config`

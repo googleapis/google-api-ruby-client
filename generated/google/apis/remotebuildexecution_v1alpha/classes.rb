@@ -1597,6 +1597,62 @@ module Google
         end
       end
       
+      # ResourceUsage is the system resource usage of the host machine.
+      class GoogleDevtoolsRemotebuildbotResourceUsage
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `cpuUsedPercent`
+        # @return [Float]
+        attr_accessor :cpu_used_percent
+      
+        # 
+        # Corresponds to the JSON property `diskUsage`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildbotResourceUsageStat]
+        attr_accessor :disk_usage
+      
+        # 
+        # Corresponds to the JSON property `memoryUsage`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildbotResourceUsageStat]
+        attr_accessor :memory_usage
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cpu_used_percent = args[:cpu_used_percent] if args.key?(:cpu_used_percent)
+          @disk_usage = args[:disk_usage] if args.key?(:disk_usage)
+          @memory_usage = args[:memory_usage] if args.key?(:memory_usage)
+        end
+      end
+      
+      # 
+      class GoogleDevtoolsRemotebuildbotResourceUsageStat
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `total`
+        # @return [Fixnum]
+        attr_accessor :total
+      
+        # 
+        # Corresponds to the JSON property `used`
+        # @return [Fixnum]
+        attr_accessor :used
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total = args[:total] if args.key?(:total)
+          @used = args[:used] if args.key?(:used)
+        end
+      end
+      
       # AcceleratorConfig defines the accelerator cards to attach to the VM.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
         include Google::Apis::Core::Hashable
