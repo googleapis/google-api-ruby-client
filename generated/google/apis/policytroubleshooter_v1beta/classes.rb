@@ -22,32 +22,35 @@ module Google
   module Apis
     module PolicytroubleshooterV1beta
       
-      # AccessTuple defines information required for checking an access attempt.
-      # In other words, this is the tuple given to `CheckAccess`.
+      # Information about the member, resource, and permission to check.
       class GoogleCloudPolicytroubleshooterV1betaAccessTuple
         include Google::Apis::Core::Hashable
       
-        # Required. A full resource name according to
-        # https://cloud.google.com/apis/design/resource_names. This is the full
-        # resource name of the resource that access is checked against.
+        # Required. The full resource name that identifies the resource. For example,
+        # `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-
+        # instance`.
+        # For examples of full resource names for Google Cloud services, see
+        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Required. The Cloud IAM permission under which defines the kind of access
-        # being explained. Example: "resourcemanager.projects.get" would explain
-        # if and why the principal has the resourcemanager.projects.get permission
-        # on the resource specified in full_resource_name declared in this structure.
-        # See https://cloud.google.com/iam/docs/testing-permissions
+        # Required. The IAM permission to check for the specified member and resource.
+        # For a complete list of IAM permissions, see
+        # https://cloud.google.com/iam/help/permissions/reference.
+        # For a complete list of predefined IAM roles and the permissions in each
+        # role, see https://cloud.google.com/iam/help/roles/reference.
         # Corresponds to the JSON property `permission`
         # @return [String]
         attr_accessor :permission
       
-        # Required. The principal on behalf of who the access is explained for.
-        # The format is one of the principal's email addresses associated with
-        # its gaia account. It must be an account that can appear as an actor.
-        # For example groups are not supported. Currently, service accounts, users
-        # are supported.
+        # Required. The member, or principal, whose access you want to check, in the
+        # form of
+        # the email address that represents that member. For example,
+        # `alice@example.com` or
+        # `my-service-account@my-project.iam.gserviceaccount.com`.
+        # The member must be a Google Account or a service account. Other types of
+        # members are not supported.
         # Corresponds to the JSON property `principal`
         # @return [String]
         attr_accessor :principal
@@ -64,11 +67,18 @@ module Google
         end
       end
       
-      # Binding Explanation.
+      # Details about how a binding in a policy affects a member's ability to use a
+      # permission.
       class GoogleCloudPolicytroubleshooterV1betaBindingExplanation
         include Google::Apis::Core::Hashable
       
-        # REQUIRED: Access decision for this binding.
+        # Indicates whether _this binding_ provides the specified permission to the
+        # specified member for the specified resource.
+        # This field does _not_ indicate whether the member actually has the
+        # permission for the resource. There might be another binding that overrides
+        # this binding. To determine whether the member actually has the permission,
+        # use the `access` field in the
+        # TroubleshootIamPolicyResponse.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
@@ -81,35 +91,47 @@ module Google
         # @return [Google::Apis::PolicytroubleshooterV1beta::GoogleTypeExpr]
         attr_accessor :condition
       
-        # For each member in the binding, provides information
-        # whether or not the principal from the request is included
-        # in the member by which the CheckResult is keyed.
-        # May indicate that the caller has no access to this information.
-        # example key: 'group:cloud-iam-assist-eng@google.com'
-        # example value '`NOT_GRANTED, HIGH`
+        # Indicates whether each member in the binding includes the member specified
+        # in the request, either directly or indirectly. Each key identifies a member
+        # in the binding, and each value indicates whether the member in the binding
+        # includes the member in the request.
+        # For example, suppose that a binding includes the following members:
+        # * `user:alice@example.com`
+        # * `group:product-eng@example.com`
+        # You want to troubleshoot access for `user:bob@example.com`. This user is a
+        # member of the group `group:product-eng@example.com`.
+        # For the first member in the binding, the key is `user:alice@example.com`,
+        # and the `membership` field in the value is set to
+        # `MEMBERSHIP_NOT_INCLUDED`.
+        # For the second member in the binding, the key is
+        # `group:product-eng@example.com`, and the `membership` field in the value is
+        # set to `MEMBERSHIP_INCLUDED`.
         # Corresponds to the JSON property `memberships`
         # @return [Hash<String,Google::Apis::PolicytroubleshooterV1beta::GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership>]
         attr_accessor :memberships
       
-        # Bubbles up role_permission level relavance to BindingExplanation object.
-        # If role permission is NORMAL, then binding relevance is NORMAL.
-        # If role permission is HIGH, then binding relevance is HIGH.
+        # The relevance of this binding to the overall determination for the entire
+        # policy.
         # Corresponds to the JSON property `relevance`
         # @return [String]
         attr_accessor :relevance
       
-        # The role that this binding grants in the policy.
-        # for example "roles/compute.serviceAgent"
+        # The role that this binding grants. For example,
+        # `roles/compute.serviceAgent`.
+        # For a complete list of predefined IAM roles, as well as the permissions in
+        # each role, see https://cloud.google.com/iam/help/roles/reference.
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # Whether the role of this binding contains the checked permission
+        # Indicates whether the role granted by this binding contains the specified
+        # permission.
         # Corresponds to the JSON property `rolePermission`
         # @return [String]
         attr_accessor :role_permission
       
-        # The relevance of this permission with respect to the BindingExplanation.
+        # The relevance of the permission's existence, or nonexistence, in the role
+        # to the overall determination for the entire policy.
         # Corresponds to the JSON property `rolePermissionRelevance`
         # @return [String]
         attr_accessor :role_permission_relevance
@@ -130,17 +152,17 @@ module Google
         end
       end
       
-      # Encapsulated membership and the relevance of that membership with respect
-      # to BindingExplanation.
+      # Details about whether the binding includes the member.
       class GoogleCloudPolicytroubleshooterV1betaBindingExplanationAnnotatedMembership
         include Google::Apis::Core::Hashable
       
-        # Membership status.
+        # Indicates whether the binding includes the member.
         # Corresponds to the JSON property `membership`
         # @return [String]
         attr_accessor :membership
       
-        # Relevance of this membership with respect to BindingExplanation.
+        # The relevance of the member's status to the overall determination for the
+        # binding.
         # Corresponds to the JSON property `relevance`
         # @return [String]
         attr_accessor :relevance
@@ -156,39 +178,53 @@ module Google
         end
       end
       
-      # An explained IAM policy combines the raw policy in the context
-      # of the resource which it is attached to along with detailed
-      # evaluation on the evaluation parameters provided through the request.
+      # Details about how a specific IAM Policy contributed
+      # to the access check.
       class GoogleCloudPolicytroubleshooterV1betaExplainedPolicy
         include Google::Apis::Core::Hashable
       
-        # Access decision for this section of the resource's effective policy.
+        # Indicates whether _this policy_ provides the specified permission to the
+        # specified member for the specified resource.
+        # This field does _not_ indicate whether the member actually has the
+        # permission for the resource. There might be another policy that overrides
+        # this policy. To determine whether the member actually has the permission,
+        # use the `access` field in the
+        # TroubleshootIamPolicyResponse.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
       
-        # Detailed binding evaluation explanations provide information
-        # about how each binding contributes to the principal's
-        # access or the lack thereof.
+        # Details about how each binding in the policy affects the member's ability,
+        # or inability, to use the permission for the resource.
+        # If the sender of the request does not have access to the policy, this field
+        # is omitted.
         # Corresponds to the JSON property `bindingExplanations`
         # @return [Array<Google::Apis::PolicytroubleshooterV1beta::GoogleCloudPolicytroubleshooterV1betaBindingExplanation>]
         attr_accessor :binding_explanations
       
-        # Resource that this section of the effective policy attaches to.
+        # The full resource name that identifies the resource. For example,
+        # `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-
+        # instance`.
+        # If the sender of the request does not have access to the policy, this field
+        # is omitted.
+        # For examples of full resource names for Google Cloud services, see
+        # https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
         # Corresponds to the JSON property `fullResourceName`
         # @return [String]
         attr_accessor :full_resource_name
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more
         # `members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the
+        # request, the resource, or both.
+        # **JSON example:**
         # `
         # "bindings": [
         # `
@@ -206,13 +242,15 @@ module Google
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time <
-        # timestamp('2020-10-01T00:00:00.000Z')",
+        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # ",
         # `
         # `
-        # ]
+        # ],
+        # "etag": "BwWWja0YfJA=",
+        # "version": 3
         # `
-        # **YAML Example**
+        # **YAML example:**
         # bindings:
         # - members:
         # - user:mike@example.com
@@ -227,13 +265,18 @@ module Google
         # title: expirable access
         # description: Does not grant access after Sep 2020
         # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # - etag: BwWWja0YfJA=
+        # - version: 3
         # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam/docs).
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::PolicytroubleshooterV1beta::GoogleIamV1Policy]
         attr_accessor :policy
       
-        # Relevance of this Policy.
+        # The relevance of this policy to the overall determination in the
+        # TroubleshootIamPolicyResponse.
+        # If the sender of the request does not have access to the policy, this field
+        # is omitted.
         # Corresponds to the JSON property `relevance`
         # @return [String]
         attr_accessor :relevance
@@ -252,12 +295,11 @@ module Google
         end
       end
       
-      # TroubleshootIamPolicyRequest is used in TroubleshootIamPolicy
+      # Request for TroubleshootIamPolicy.
       class GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # AccessTuple defines information required for checking an access attempt.
-        # In other words, this is the tuple given to `CheckAccess`.
+        # Information about the member, resource, and permission to check.
         # Corresponds to the JSON property `accessTuple`
         # @return [Google::Apis::PolicytroubleshooterV1beta::GoogleCloudPolicytroubleshooterV1betaAccessTuple]
         attr_accessor :access_tuple
@@ -272,18 +314,24 @@ module Google
         end
       end
       
-      # TroubleshootIamPolicyResponse is used in TroubleshootIamPolicy.
+      # Response for TroubleshootIamPolicy.
       class GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyResponse
         include Google::Apis::Core::Hashable
       
-        # Reflects whether the probed access was granted, denied
-        # or ultimately could not be decided from the caller's point of view.
+        # Indicates whether the member has the specified permission for the specified
+        # resource, based on evaluating all of the applicable policies.
         # Corresponds to the JSON property `access`
         # @return [String]
         attr_accessor :access
       
-        # List of explained policies.
-        # Each explanation corresponds to one policy along the ancestry path.
+        # List of IAM policies that were evaluated to check the member's permissions,
+        # with annotations to indicate how each policy contributed to the final
+        # result.
+        # The list of policies can include the policy for the resource itself. It can
+        # also include policies that are inherited from higher levels of the resource
+        # hierarchy, including the organization, the folder, and the project.
+        # To learn more about the resource hierarchy, see
+        # https://cloud.google.com/iam/help/resource-hierarchy.
         # Corresponds to the JSON property `explainedPolicies`
         # @return [Array<Google::Apis::PolicytroubleshooterV1beta::GoogleCloudPolicytroubleshooterV1betaExplainedPolicy>]
         attr_accessor :explained_policies
@@ -439,6 +487,23 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For
+        # example, `alice@example.com?uid=123456789012345678901`. If the user is
+        # recovered, this value reverts to `user:`emailid`` and the recovered user
+        # retains the role in the binding.
+        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
+        # unique identifier) representing a service account that has been recently
+        # deleted. For example,
+        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to
+        # `serviceAccount:`emailid`` and the undeleted service account retains the
+        # role in the binding.
+        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently
+        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+        # the group is recovered, this value reverts to `group:`emailid`` and the
+        # recovered group retains the role in the binding.
         # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
@@ -463,16 +528,18 @@ module Google
         end
       end
       
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources.
       # A `Policy` is a collection of `bindings`. A `binding` binds one or more
       # `members` to a single `role`. Members can be user accounts, service accounts,
       # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions (defined by IAM or configured by users). A `binding` can
-      # optionally specify a `condition`, which is a logic expression that further
-      # constrains the role binding based on attributes about the request and/or
-      # target resource.
-      # **JSON Example**
+      # permissions; each `role` can be an IAM predefined role or a user-created
+      # custom role.
+      # Optionally, a `binding` can specify a `condition`, which is a logical
+      # expression that allows access to a resource only if the expression evaluates
+      # to `true`. A condition can add constraints based on attributes of the
+      # request, the resource, or both.
+      # **JSON example:**
       # `
       # "bindings": [
       # `
@@ -490,13 +557,15 @@ module Google
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time <
-      # timestamp('2020-10-01T00:00:00.000Z')",
+      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # ",
       # `
       # `
-      # ]
+      # ],
+      # "etag": "BwWWja0YfJA=",
+      # "version": 3
       # `
-      # **YAML Example**
+      # **YAML example:**
       # bindings:
       # - members:
       # - user:mike@example.com
@@ -511,8 +580,10 @@ module Google
       # title: expirable access
       # description: Does not grant access after Sep 2020
       # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # - etag: BwWWja0YfJA=
+      # - version: 3
       # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam/docs).
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class GoogleIamV1Policy
         include Google::Apis::Core::Hashable
       
@@ -521,9 +592,9 @@ module Google
         # @return [Array<Google::Apis::PolicytroubleshooterV1beta::GoogleIamV1AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally may specify a
-        # `condition` that determines when binding is in effect.
-        # `bindings` with no members will result in an error.
+        # Associates a list of `members` to a `role`. Optionally, may specify a
+        # `condition` that determines how and when the `bindings` are applied. Each
+        # of the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::PolicytroubleshooterV1beta::GoogleIamV1Binding>]
         attr_accessor :bindings
@@ -535,26 +606,31 @@ module Google
         # conditions: An `etag` is returned in the response to `getIamPolicy`, and
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if the incoming policy version does not
-        # meet the requirements for modifying the stored policy.
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
         # Specifies the format of the policy.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Operations affecting conditional bindings must specify version 3. This can
-        # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a binding (conditional or unconditional) from the stored
-        # conditional policy.
-        # Operations on non-conditional policies may specify any valid value or
-        # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, version compliance
-        # checks against the stored policy is skipped.
+        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+        # are rejected.
+        # Any operation that affects conditional role bindings must specify version
+        # `3`. This requirement applies to the following operations:
+        # * Getting a policy that includes a conditional role binding
+        # * Adding a conditional role binding to a policy
+        # * Changing a conditional role binding in a policy
+        # * Removing any role binding, with or without a condition, from a policy
+        # that includes conditions
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
+        # If a policy does not include any conditions, operations on that policy may
+        # specify any valid version or leave the field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version

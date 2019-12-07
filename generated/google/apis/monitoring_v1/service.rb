@@ -51,6 +51,188 @@ module Google
           super('https://monitoring.googleapis.com/', '')
           @batch_path = 'batch'
         end
+        
+        # Creates a new custom dashboard.This method requires the monitoring.dashboards.
+        # create permission on the specified project. For more information, see Google
+        # Cloud IAM (https://cloud.google.com/iam).
+        # @param [String] parent
+        #   The project on which to execute the request. The format is "projects/`
+        #   project_id_or_number`". The `project_id_or_number` must match the dashboard
+        #   resource name.
+        # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Dashboard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Dashboard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_dashboard(parent, dashboard_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dashboards', options)
+          command.request_representation = Google::Apis::MonitoringV1::Dashboard::Representation
+          command.request_object = dashboard_object
+          command.response_representation = Google::Apis::MonitoringV1::Dashboard::Representation
+          command.response_class = Google::Apis::MonitoringV1::Dashboard
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an existing custom dashboard.This method requires the monitoring.
+        # dashboards.delete permission on the specified dashboard. For more information,
+        # see Google Cloud IAM (https://cloud.google.com/iam).
+        # @param [String] name
+        #   The resource name of the Dashboard. The format is "projects/`
+        #   project_id_or_number`/dashboards/`dashboard_id`".
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_dashboard(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV1::Empty::Representation
+          command.response_class = Google::Apis::MonitoringV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Fetches a specific dashboard.This method requires the monitoring.dashboards.
+        # get permission on the specified dashboard. For more information, see Google
+        # Cloud IAM (https://cloud.google.com/iam).
+        # @param [String] name
+        #   The resource name of the Dashboard. The format is one of "dashboards/`
+        #   dashboard_id`" (for system dashboards) or "projects/`project_id_or_number`/
+        #   dashboards/`dashboard_id`" (for custom dashboards).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Dashboard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Dashboard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_dashboard(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MonitoringV1::Dashboard::Representation
+          command.response_class = Google::Apis::MonitoringV1::Dashboard
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing dashboards.This method requires the monitoring.dashboards.
+        # list permission on the specified project. For more information, see Google
+        # Cloud IAM (https://cloud.google.com/iam).
+        # @param [String] parent
+        #   The scope of the dashboards to list. A project scope must be specified in the
+        #   form of "projects/`project_id_or_number`".
+        # @param [Fixnum] page_size
+        #   A positive number that is the maximum number of results to return. If
+        #   unspecified, a default of 1000 is used.
+        # @param [String] page_token
+        #   If this field is not empty then it must contain the nextPageToken value
+        #   returned by a previous call to this method. Using this field causes the method
+        #   to return additional results from the previous method call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::ListDashboardsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::ListDashboardsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_dashboards(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/dashboards', options)
+          command.response_representation = Google::Apis::MonitoringV1::ListDashboardsResponse::Representation
+          command.response_class = Google::Apis::MonitoringV1::ListDashboardsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replaces an existing custom dashboard with a new definition.This method
+        # requires the monitoring.dashboards.update permission on the specified
+        # dashboard. For more information, see Google Cloud IAM (https://cloud.google.
+        # com/iam).
+        # @param [String] name
+        #   The resource name of the dashboard.
+        # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV1::Dashboard] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV1::Dashboard]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_dashboard(name, dashboard_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::MonitoringV1::Dashboard::Representation
+          command.request_object = dashboard_object
+          command.response_representation = Google::Apis::MonitoringV1::Dashboard::Representation
+          command.response_class = Google::Apis::MonitoringV1::Dashboard
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

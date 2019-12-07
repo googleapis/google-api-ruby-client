@@ -47,9 +47,8 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Perform a check on whether a member is granted a permission
-        # on a resource and how that grant/deny is determined accordinga
-        # to the resource's effective IAM policy interpretation.
+        # Checks whether a member has a specific permission for a specific resource,
+        # and explains why the member does or does not have that permission.
         # @param [Google::Apis::PolicytroubleshooterV1beta::GoogleCloudPolicytroubleshooterV1betaTroubleshootIamPolicyRequest] google_cloud_policytroubleshooter_v1beta_troubleshoot_iam_policy_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

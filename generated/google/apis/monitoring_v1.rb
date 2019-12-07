@@ -30,7 +30,19 @@ module Google
     # @see https://cloud.google.com/monitoring/api/
     module MonitoringV1
       VERSION = 'V1'
-      REVISION = '20191005'
+      REVISION = '20191202'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and write monitoring data for all of your Google and third-party Cloud and API projects
+      AUTH_MONITORING = 'https://www.googleapis.com/auth/monitoring'
+
+      # View monitoring data for all of your Google Cloud and third-party projects
+      AUTH_MONITORING_READ = 'https://www.googleapis.com/auth/monitoring.read'
+
+      # Publish metric data to your Google Cloud projects
+      AUTH_MONITORING_WRITE = 'https://www.googleapis.com/auth/monitoring.write'
     end
   end
 end

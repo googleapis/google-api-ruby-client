@@ -254,6 +254,9 @@ module Google
         #   Resource name of the parent reservation. E.g.,
         #   projects/myproject/locations/US
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
+        # @param [Boolean] enforce_single_admin_project_per_org
+        #   If true, fail the request if another project in the organization has a
+        #   capacity commitment.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -271,13 +274,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_capacity_commitment(parent, capacity_commitment_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_project_location_capacity_commitment(parent, capacity_commitment_object = nil, enforce_single_admin_project_per_org: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/capacityCommitments', options)
           command.request_representation = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
           command.request_object = capacity_commitment_object
           command.response_representation = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
           command.response_class = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment
           command.params['parent'] = parent unless parent.nil?
+          command.query['enforceSingleAdminProjectPerOrg'] = enforce_single_admin_project_per_org unless enforce_single_admin_project_per_org.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
