@@ -864,6 +864,11 @@ module Google
         # @return [String]
         attr_accessor :network_uri
       
+        # Reservation Affinity for consuming Zonal reservation.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::DataprocV1::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # Optional. The service account of the instances. Defaults to the default
         # Compute Engine service account. Custom service accounts need permissions
         # equivalent to the following IAM roles:
@@ -926,6 +931,7 @@ module Google
           @internal_ip_only = args[:internal_ip_only] if args.key?(:internal_ip_only)
           @metadata = args[:metadata] if args.key?(:metadata)
           @network_uri = args[:network_uri] if args.key?(:network_uri)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @service_account_scopes = args[:service_account_scopes] if args.key?(:service_account_scopes)
           @subnetwork_uri = args[:subnetwork_uri] if args.key?(:subnetwork_uri)
@@ -2250,8 +2256,8 @@ module Google
         # the request to setIamPolicy to ensure that their change will be applied to the
         # same version of the policy.If no etag is provided in the call to setIamPolicy,
         # then the existing policy is overwritten. Due to blind-set semantics of an etag-
-        # less policy, 'setIamPolicy' will not fail even if either of incoming or stored
-        # policy does not meet the version requirements.
+        # less policy, 'setIamPolicy' will not fail even if the incoming policy version
+        # does not meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2260,11 +2266,11 @@ module Google
         # Specifies the format of the policy.Valid values are 0, 1, and 3. Requests
         # specifying an invalid value will be rejected.Operations affecting conditional
         # bindings must specify version 3. This can be either setting a conditional
-        # policy, modifying a conditional binding, or removing a conditional binding
-        # from the stored conditional policy. Operations on non-conditional policies may
-        # specify any valid value or leave the field unset.If no etag is provided in the
-        # call to setIamPolicy, any version compliance checks on the incoming and/or
-        # stored policy is skipped.
+        # policy, modifying a conditional binding, or removing a binding (conditional or
+        # unconditional) from the stored conditional policy. Operations on non-
+        # conditional policies may specify any valid value or leave the field unset.If
+        # no etag is provided in the call to setIamPolicy, version compliance checks
+        # against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2402,6 +2408,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @regexes = args[:regexes] if args.key?(:regexes)
+        end
+      end
+      
+      # Reservation Affinity for consuming Zonal reservation.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Type of reservation to consume
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Optional. Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Optional. Corresponds to the label values of reservation resource.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       

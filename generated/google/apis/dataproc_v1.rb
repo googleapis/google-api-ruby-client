@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/dataproc/
     module DataprocV1
       VERSION = 'V1'
-      REVISION = '20191031'
+      REVISION = '20191120'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

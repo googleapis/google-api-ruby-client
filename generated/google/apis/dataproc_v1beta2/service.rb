@@ -1119,7 +1119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_region_cluster(project_id, region, cluster_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1170,7 +1170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_cluster(project_id, region, cluster_name, cluster_uuid: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1212,7 +1212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def diagnose_cluster(project_id, region, cluster_name, diagnose_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}:diagnose', options)
           command.request_representation = Google::Apis::DataprocV1beta2::DiagnoseClusterRequest::Representation
           command.request_object = diagnose_cluster_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1251,7 +1251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1340,7 +1340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_clusters(project_id, region, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListClustersResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1450,7 +1450,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1567,7 +1567,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, region, job_id, cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}:cancel', options)
           command.request_representation = Google::Apis::DataprocV1beta2::CancelJobRequest::Representation
           command.request_object = cancel_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1606,7 +1606,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1642,7 +1642,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1733,7 +1733,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_jobs(project_id, region, cluster_name: nil, filter: nil, job_state_matcher: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1780,7 +1780,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_job(project_id, region, job_id, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1854,7 +1854,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_job(project_id, region, submit_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs:submit', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs:submit', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SubmitJobRequest::Representation
           command.request_object = submit_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation

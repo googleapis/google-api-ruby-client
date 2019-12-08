@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -670,6 +676,8 @@ module Google
           property :internal_ip_only, as: 'internalIpOnly'
           hash :metadata, as: 'metadata'
           property :network_uri, as: 'networkUri'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::DataprocV1::ReservationAffinity, decorator: Google::Apis::DataprocV1::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           collection :service_account_scopes, as: 'serviceAccountScopes'
           property :subnetwork_uri, as: 'subnetworkUri'
@@ -1031,6 +1039,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :regexes, as: 'regexes'
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
