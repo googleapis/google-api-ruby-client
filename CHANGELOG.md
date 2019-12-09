@@ -1,3 +1,39 @@
+# 0.36.0
+* Breaking changes:
+  * Deleted `cloudbuild_v1alpha1`
+* Backwards compatible changes:
+  * Updated `bigqueryreservation_v1beta1`
+  * Updated `cloudasset_v1`
+  * Updated `cloudasset_v1beta1`
+  * Updated `cloudprivatecatalogproducer_v1beta1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataproc_v1`
+  * Updated `dataproc_v1beta2`
+  * Updated `dlp_v2`
+  * Updated `firebase_v1beta1`
+  * Updated `healthcare_v1beta1`
+  * Updated `ml_v1`
+  * Updated `monitoring_v1`
+  * Updated `monitoring_v3`
+  * Updated `policytroubleshooter_v1beta`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `runtimeconfig_v1beta1`
+  * Updated `securitycenter_v1`
+  * Updated `securitycenter_v1beta1`
+  * Updated `servicebroker_v1`
+  * Updated `servicebroker_v1alpha1`
+  * Updated `servicebroker_v1beta1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicemanagement_v1`
+  * Updated `servicenetworking_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+  * Updated `streetviewpublish_v1`
+
 # 0.35.0
 * Breaking changes:
   * Deleted `storage_v1beta1`
