@@ -431,7 +431,21 @@ module Google
         # @return [Float]
         attr_accessor :deadline
       
-        # The JWT audience is used when generating a JWT id token for the backend.
+        # When disable_auth is false,  a JWT ID token will be generated with the
+        # value from BackendRule.address as jwt_audience, overrode to the HTTP
+        # "Authorization" request header and sent to the backend.
+        # When disable_auth is true, a JWT ID token won't be generated and the
+        # original "Authorization" HTTP header will be preserved. If the header is
+        # used to carry the original token and is expected by the backend, this
+        # field must be set to true to preserve the header.
+        # Corresponds to the JSON property `disableAuth`
+        # @return [Boolean]
+        attr_accessor :disable_auth
+        alias_method :disable_auth?, :disable_auth
+      
+        # The JWT audience is used when generating a JWT ID token for the backend.
+        # This ID token will be added in the HTTP "authorization" header, and sent
+        # to the backend.
         # Corresponds to the JSON property `jwtAudience`
         # @return [String]
         attr_accessor :jwt_audience
@@ -467,6 +481,7 @@ module Google
         def update!(**args)
           @address = args[:address] if args.key?(:address)
           @deadline = args[:deadline] if args.key?(:deadline)
+          @disable_auth = args[:disable_auth] if args.key?(:disable_auth)
           @jwt_audience = args[:jwt_audience] if args.key?(:jwt_audience)
           @min_deadline = args[:min_deadline] if args.key?(:min_deadline)
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
@@ -832,6 +847,28 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @path = args[:path] if args.key?(:path)
+        end
+      end
+      
+      # Request to disable VPC service controls.
+      class DisableVpcServiceControlsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The network that the consumer is using to connect with services.
+        # Must be in the form of projects/`project`/global/networks/`network`
+        # `project` is a project number, as in '12345'
+        # `network` is network name.
+        # Corresponds to the JSON property `consumerNetwork`
+        # @return [String]
+        attr_accessor :consumer_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_network = args[:consumer_network] if args.key?(:consumer_network)
         end
       end
       

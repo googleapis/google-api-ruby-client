@@ -6789,6 +6789,7 @@ module Google
       class DistributionPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_shape, as: 'targetShape'
           collection :zones, as: 'zones', class: Google::Apis::ComputeAlpha::DistributionPolicyZoneConfiguration, decorator: Google::Apis::ComputeAlpha::DistributionPolicyZoneConfiguration::Representation
       
         end
@@ -9466,7 +9467,6 @@ module Google
       class MachineImageList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
           property :id, as: 'id'
           collection :items, as: 'items', class: Google::Apis::ComputeAlpha::MachineImage, decorator: Google::Apis::ComputeAlpha::MachineImage::Representation
       
@@ -10127,6 +10127,7 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :maintenance_policy, as: 'maintenancePolicy'

@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Environment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EnvironmentDimensionValueEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Execution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -137,6 +149,12 @@ module Google
       end
       
       class IndividualOutcome
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEnvironmentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,6 +214,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MergedResult
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MultiStep
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -250,6 +274,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResultsStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Screen
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -257,6 +287,12 @@ module Google
       end
       
       class ScreenshotCluster
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShardSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -487,6 +523,37 @@ module Google
         end
       end
       
+      class Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :completion_time, as: 'completionTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
+      
+          property :creation_time, as: 'creationTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
+      
+          collection :dimension_value, as: 'dimensionValue', class: Google::Apis::ToolresultsV1beta3::EnvironmentDimensionValueEntry, decorator: Google::Apis::ToolresultsV1beta3::EnvironmentDimensionValueEntry::Representation
+      
+          property :display_name, as: 'displayName'
+          property :environment_id, as: 'environmentId'
+          property :environment_result, as: 'environmentResult', class: Google::Apis::ToolresultsV1beta3::MergedResult, decorator: Google::Apis::ToolresultsV1beta3::MergedResult::Representation
+      
+          property :execution_id, as: 'executionId'
+          property :history_id, as: 'historyId'
+          property :project_id, as: 'projectId'
+          property :results_storage, as: 'resultsStorage', class: Google::Apis::ToolresultsV1beta3::ResultsStorage, decorator: Google::Apis::ToolresultsV1beta3::ResultsStorage::Representation
+      
+          collection :shard_summaries, as: 'shardSummaries', class: Google::Apis::ToolresultsV1beta3::ShardSummary, decorator: Google::Apis::ToolresultsV1beta3::ShardSummary::Representation
+      
+        end
+      end
+      
+      class EnvironmentDimensionValueEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
+        end
+      end
+      
       class Execution
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -591,6 +658,18 @@ module Google
         end
       end
       
+      class ListEnvironmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments', class: Google::Apis::ToolresultsV1beta3::Environment, decorator: Google::Apis::ToolresultsV1beta3::Environment::Representation
+      
+          property :execution_id, as: 'executionId'
+          property :history_id, as: 'historyId'
+          property :next_page_token, as: 'nextPageToken'
+          property :project_id, as: 'projectId'
+        end
+      end
+      
       class ListExecutionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -666,6 +745,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :memory_cap_in_kibibyte, :numeric_string => true, as: 'memoryCapInKibibyte'
           property :memory_total_in_kibibyte, :numeric_string => true, as: 'memoryTotalInKibibyte'
+        end
+      end
+      
+      class MergedResult
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :outcome, as: 'outcome', class: Google::Apis::ToolresultsV1beta3::Outcome, decorator: Google::Apis::ToolresultsV1beta3::Outcome::Representation
+      
+          property :state, as: 'state'
+          collection :test_suite_overviews, as: 'testSuiteOverviews', class: Google::Apis::ToolresultsV1beta3::TestSuiteOverview, decorator: Google::Apis::ToolresultsV1beta3::TestSuiteOverview::Representation
+      
         end
       end
       
@@ -768,6 +858,16 @@ module Google
         end
       end
       
+      class ResultsStorage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :results_storage_path, as: 'resultsStoragePath', class: Google::Apis::ToolresultsV1beta3::FileReference, decorator: Google::Apis::ToolresultsV1beta3::FileReference::Representation
+      
+          property :xunit_xml_file, as: 'xunitXmlFile', class: Google::Apis::ToolresultsV1beta3::FileReference, decorator: Google::Apis::ToolresultsV1beta3::FileReference::Representation
+      
+        end
+      end
+      
       class Screen
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -786,6 +886,14 @@ module Google
           property :key_screen, as: 'keyScreen', class: Google::Apis::ToolresultsV1beta3::Screen, decorator: Google::Apis::ToolresultsV1beta3::Screen::Representation
       
           collection :screens, as: 'screens', class: Google::Apis::ToolresultsV1beta3::Screen, decorator: Google::Apis::ToolresultsV1beta3::Screen::Representation
+      
+        end
+      end
+      
+      class ShardSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :shard_result, as: 'shardResult', class: Google::Apis::ToolresultsV1beta3::MergedResult, decorator: Google::Apis::ToolresultsV1beta3::MergedResult::Representation
       
         end
       end
@@ -943,6 +1051,7 @@ module Google
       
           property :error_count, as: 'errorCount'
           property :failure_count, as: 'failureCount'
+          property :flaky_count, as: 'flakyCount'
           property :name, as: 'name'
           property :skipped_count, as: 'skippedCount'
           property :total_count, as: 'totalCount'

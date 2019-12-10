@@ -309,7 +309,8 @@ module Google
         # @return [Google::Apis::CloudtraceV2::TruncatableString]
         attr_accessor :display_name
       
-        # The end time of the span. On the client side, this is the time kept by
+        # Required. The end time of the span. On the client side, this is the time kept
+        # by
         # the local machine where the span execution ends. On the server side, this
         # is the time when the server application handler stops running.
         # Corresponds to the JSON property `endTime`
@@ -347,7 +348,7 @@ module Google
         attr_accessor :same_process_as_parent_span
         alias_method :same_process_as_parent_span?, :same_process_as_parent_span
       
-        # The [SPAN_ID] portion of the span's resource name.
+        # Required. The [SPAN_ID] portion of the span's resource name.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
@@ -364,7 +365,8 @@ module Google
         # @return [Google::Apis::CloudtraceV2::StackTrace]
         attr_accessor :stack_trace
       
-        # The start time of the span. On the client side, this is the time kept by
+        # Required. The start time of the span. On the client side, this is the time
+        # kept by
         # the local machine where the span execution starts. On the server side, this
         # is the time when the server's application handler starts running.
         # Corresponds to the JSON property `startTime`

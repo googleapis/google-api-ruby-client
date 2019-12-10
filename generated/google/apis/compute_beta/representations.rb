@@ -1900,6 +1900,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MachineImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MachineImageList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3310,6 +3334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SavedAttachedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Scheduling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3478,7 +3508,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SourceDiskEncryptionKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SourceInstanceParams
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SourceInstanceProperties
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5617,6 +5659,7 @@ module Google
           property :description, as: 'description'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :erase_windows_vss_signature, as: 'eraseWindowsVssSignature'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
@@ -6858,6 +6901,7 @@ module Google
       
           property :display_device, as: 'displayDevice', class: Google::Apis::ComputeBeta::DisplayDevice, decorator: Google::Apis::ComputeBeta::DisplayDevice::Representation
       
+          property :erase_windows_vss_signature, as: 'eraseWindowsVssSignature'
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
           property :hostname, as: 'hostname'
@@ -6886,6 +6930,9 @@ module Google
           property :shielded_vm_config, as: 'shieldedVmConfig', class: Google::Apis::ComputeBeta::ShieldedVmConfig, decorator: Google::Apis::ComputeBeta::ShieldedVmConfig::Representation
       
           property :shielded_vm_integrity_policy, as: 'shieldedVmIntegrityPolicy', class: Google::Apis::ComputeBeta::ShieldedVmIntegrityPolicy, decorator: Google::Apis::ComputeBeta::ShieldedVmIntegrityPolicy::Representation
+      
+          property :source_machine_image, as: 'sourceMachineImage'
+          property :source_machine_image_encryption_key, as: 'sourceMachineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :start_restricted, as: 'startRestricted'
           property :status, as: 'status'
@@ -8126,6 +8173,61 @@ module Google
         end
       end
       
+      class MachineImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :guest_flush, as: 'guestFlush'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :machine_image_encryption_key, as: 'machineImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :name, as: 'name'
+          property :self_link, as: 'selfLink'
+          collection :source_disk_encryption_keys, as: 'sourceDiskEncryptionKeys', class: Google::Apis::ComputeBeta::SourceDiskEncryptionKey, decorator: Google::Apis::ComputeBeta::SourceDiskEncryptionKey::Representation
+      
+          property :source_instance, as: 'sourceInstance'
+          property :source_instance_properties, as: 'sourceInstanceProperties', class: Google::Apis::ComputeBeta::SourceInstanceProperties, decorator: Google::Apis::ComputeBeta::SourceInstanceProperties::Representation
+      
+          property :status, as: 'status'
+          collection :storage_locations, as: 'storageLocations'
+          property :total_storage_bytes, :numeric_string => true, as: 'totalStorageBytes'
+        end
+      end
+      
+      class MachineImageList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::MachineImage, decorator: Google::Apis::ComputeBeta::MachineImage::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::MachineImageList::Warning, decorator: Google::Apis::ComputeBeta::MachineImageList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::MachineImageList::Warning::Datum, decorator: Google::Apis::ComputeBeta::MachineImageList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8561,6 +8663,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeBeta::AliasIpRange, decorator: Google::Apis::ComputeBeta::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -10628,6 +10731,29 @@ module Google
         end
       end
       
+      class SavedAttachedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :boot, as: 'boot'
+          property :device_name, as: 'deviceName'
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
+      
+          property :index, as: 'index'
+          property :interface, as: 'interface'
+          property :kind, as: 'kind'
+          collection :licenses, as: 'licenses'
+          property :mode, as: 'mode'
+          property :source, as: 'source'
+          property :storage_bytes, :numeric_string => true, as: 'storageBytes'
+          property :storage_bytes_status, as: 'storageBytesStatus'
+          property :type, as: 'type'
+        end
+      end
+      
       class Scheduling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -10914,10 +11040,45 @@ module Google
         end
       end
       
+      class SourceDiskEncryptionKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
+      
+          property :source_disk, as: 'sourceDisk'
+        end
+      end
+      
       class SourceInstanceParams
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :disk_configs, as: 'diskConfigs', class: Google::Apis::ComputeBeta::DiskInstantiationConfig, decorator: Google::Apis::ComputeBeta::DiskInstantiationConfig::Representation
+      
+        end
+      end
+      
+      class SourceInstanceProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :can_ip_forward, as: 'canIpForward'
+          property :deletion_protection, as: 'deletionProtection'
+          property :description, as: 'description'
+          collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::SavedAttachedDisk, decorator: Google::Apis::ComputeBeta::SavedAttachedDisk::Representation
+      
+          collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
+      
+          hash :labels, as: 'labels'
+          property :machine_type, as: 'machineType'
+          property :metadata, as: 'metadata', class: Google::Apis::ComputeBeta::Metadata, decorator: Google::Apis::ComputeBeta::Metadata::Representation
+      
+          property :min_cpu_platform, as: 'minCpuPlatform'
+          collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
+      
+          property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
+      
+          collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
+      
+          property :tags, as: 'tags', class: Google::Apis::ComputeBeta::Tags, decorator: Google::Apis::ComputeBeta::Tags::Representation
       
         end
       end
@@ -11147,12 +11308,15 @@ module Google
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeBeta::SubnetworkLogConfig, decorator: Google::Apis::ComputeBeta::SubnetworkLogConfig::Representation
       
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
+          collection :private_ipv6_google_access_service_accounts, as: 'privateIpv6GoogleAccessServiceAccounts'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :role, as: 'role'

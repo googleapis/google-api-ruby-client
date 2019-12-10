@@ -1548,12 +1548,13 @@ module Google
         attr_accessor :self_link
       
         # [Output Only] The status of the autoscaler configuration. Current set of
-        # possible values: PENDING: Autoscaler backend hasn't read new/updated
-        # configuration DELETING: Configuration is being deleted ACTIVE: Configuration
-        # is acknowledged to be effective. Some warnings might or might not be present
-        # in the status_details field. ERROR: Configuration has errors. Actionable for
-        # users. Details are present in the status_details field. New values might be
-        # added in the future.
+        # possible values:
+        # - PENDING: Autoscaler backend hasn't read new/updated configuration.
+        # - DELETING: Configuration is being deleted.
+        # - ACTIVE: Configuration is acknowledged to be effective. Some warnings might
+        # be present in the statusDetails field.
+        # - ERROR: Configuration has errors. Actionable for users. Details are present
+        # in the statusDetails field.  New values might be added in the future.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -1842,38 +1843,45 @@ module Google
         # @return [String]
         attr_accessor :message
       
-        # The type of error, warning or notice returned. Current set of possible values:
-        # ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are
-        # unhealthy (not in RUNNING state). BACKEND_SERVICE_DOES_NOT_EXIST (ERROR):
-        # There is no backend service attached to the instance group.
-        # CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends size bigger than
-        # maxNumReplicas. CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom
-        # metric samples are not exported often enough to be a credible base for
-        # autoscaling. CUSTOM_METRIC_INVALID (ERROR): The custom metric that was
-        # specified does not exist or does not have the necessary labels. MIN_EQUALS_MAX
-        # (WARNING): The minNumReplicas is equal to maxNumReplicas. This means the
-        # autoscaler cannot add or remove instances from the instance group.
-        # MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive
+        # The type of error, warning, or notice returned. Current set of possible values:
+        # 
+        # - ALL_INSTANCES_UNHEALTHY (WARNING): All instances in the instance group are
+        # unhealthy (not in RUNNING state).
+        # - BACKEND_SERVICE_DOES_NOT_EXIST (ERROR): There is no backend service attached
+        # to the instance group.
+        # - CAPPED_AT_MAX_NUM_REPLICAS (WARNING): Autoscaler recommends a size greater
+        # than maxNumReplicas.
+        # - CUSTOM_METRIC_DATA_POINTS_TOO_SPARSE (WARNING): The custom metric samples
+        # are not exported often enough to be a credible base for autoscaling.
+        # - CUSTOM_METRIC_INVALID (ERROR): The custom metric that was specified does not
+        # exist or does not have the necessary labels.
+        # - MIN_EQUALS_MAX (WARNING): The minNumReplicas is equal to maxNumReplicas.
+        # This means the autoscaler cannot add or remove instances from the instance
+        # group.
+        # - MISSING_CUSTOM_METRIC_DATA_POINTS (WARNING): The autoscaler did not receive
         # any data from the custom metric configured for autoscaling.
-        # MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured to
-        # scale based on a load balancing signal but the instance group has not received
-        # any requests from the load balancer. MODE_OFF (WARNING): Autoscaling is turned
-        # off. The number of instances in the group won't change automatically. The
-        # autoscaling configuration is preserved. MODE_ONLY_UP (WARNING): Autoscaling is
-        # in the "Autoscale only up" mode. Instances in the group will be only added.
-        # MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be autoscaled
-        # because it has more than one backend service attached to it.
-        # NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): Exceeded quota for necessary resources,
-        # such as CPU, number of instances and so on. REGION_RESOURCE_STOCKOUT (ERROR):
-        # Showed only for regional autoscalers: there is a resource stockout in the
-        # chosen region. SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled
-        # does not exist. UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR):
-        # Autoscaling does not work with an HTTP/S load balancer that has been
-        # configured for maxRate. ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers:
-        # there is a resource stockout in the chosen zone. For regional autoscalers: in
-        # at least one of the zones you're using there is a resource stockout. New
-        # values might be added in the future. Some of the values might not be available
-        # in all API versions.
+        # - MISSING_LOAD_BALANCING_DATA_POINTS (WARNING): The autoscaler is configured
+        # to scale based on a load balancing signal but the instance group has not
+        # received any requests from the load balancer.
+        # - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances in
+        # the group won't change automatically. The autoscaling configuration is
+        # preserved.
+        # - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only up" mode. The
+        # autoscaler can add instances but not remove any.
+        # - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be
+        # autoscaled because it has more than one backend service attached to it.
+        # - NOT_ENOUGH_QUOTA_AVAILABLE (ERROR): There is insufficient quota for the
+        # necessary resources, such as CPU or number of instances.
+        # - REGION_RESOURCE_STOCKOUT (ERROR): Shown only for regional autoscalers: there
+        # is a resource stockout in the chosen region.
+        # - SCALING_TARGET_DOES_NOT_EXIST (ERROR): The target to be scaled does not
+        # exist.
+        # - UNSUPPORTED_MAX_RATE_LOAD_BALANCING_CONFIGURATION (ERROR): Autoscaling does
+        # not work with an HTTP/S load balancer that has been configured for maxRate.
+        # - ZONE_RESOURCE_STOCKOUT (ERROR): For zonal autoscalers: there is a resource
+        # stockout in the chosen zone. For regional autoscalers: in at least one of the
+        # zones you're using there is a resource stockout.  New values might be added in
+        # the future. Some of the values might not be available in all API versions.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -9123,6 +9131,12 @@ module Google
         # @return [String]
         attr_accessor :status
       
+        # Cloud Storage bucket storage location of the image (regional or multi-regional)
+        # .
+        # Corresponds to the JSON property `storageLocations`
+        # @return [Array<String>]
+        attr_accessor :storage_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -9157,6 +9171,7 @@ module Google
           @source_snapshot_id = args[:source_snapshot_id] if args.key?(:source_snapshot_id)
           @source_type = args[:source_type] if args.key?(:source_type)
           @status = args[:status] if args.key?(:status)
+          @storage_locations = args[:storage_locations] if args.key?(:storage_locations)
         end
         
         # The parameters of the raw disk image.
@@ -23429,8 +23444,8 @@ module Google
       class Snapshot
         include Google::Apis::Core::Hashable
       
-        # [Output Only] Set to true if snapshots are automatically by applying resource
-        # policy on the target disk.
+        # [Output Only] Set to true if snapshots are automatically created by applying
+        # resource policy on the target disk.
         # Corresponds to the JSON property `autoCreated`
         # @return [Boolean]
         attr_accessor :auto_created

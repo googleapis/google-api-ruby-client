@@ -49,7 +49,7 @@ module Google
         
         # Creates a new connection.
         # @param [String] parent
-        #   Parent resource name.
+        #   Required. Parent resource name.
         #   Must be in the format `projects/`project_id`/locations/`location_id``
         # @param [Google::Apis::BigqueryconnectionV1beta1::Connection] connection_object
         # @param [String] connection_id
@@ -86,7 +86,7 @@ module Google
         
         # Deletes connection and associated credential.
         # @param [String] name
-        #   Name of the deleted connection, for example:
+        #   Required. Name of the deleted connection, for example:
         #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -117,7 +117,7 @@ module Google
         
         # Returns specified connection.
         # @param [String] name
-        #   Name of the requested connection, for example:
+        #   Required. Name of the requested connection, for example:
         #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -184,10 +184,10 @@ module Google
         
         # Returns a list of connections in the given project.
         # @param [String] parent
-        #   Parent resource name.
+        #   Required. Parent resource name.
         #   Must be in the form: `projects/`project_id`/locations/`location_id``
         # @param [Fixnum] max_results
-        #   Maximum number of results per page.
+        #   Required. Maximum number of results per page.
         # @param [String] page_token
         #   Page token.
         # @param [String] fields
@@ -222,11 +222,11 @@ module Google
         # Updates the specified connection. For security reasons, also resets
         # credential if connection properties are in the update field mask.
         # @param [String] name
-        #   Name of the connection to update, for example:
+        #   Required. Name of the connection to update, for example:
         #   `projects/`project_id`/locations/`location_id`/connections/`connection_id``
         # @param [Google::Apis::BigqueryconnectionV1beta1::Connection] connection_object
         # @param [String] update_mask
-        #   Update mask for the connection fields to be updated.
+        #   Required. Update mask for the connection fields to be updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -334,7 +334,7 @@ module Google
         
         # Sets the credential for the specified connection.
         # @param [String] name
-        #   Name of the connection, for example:
+        #   Required. Name of the connection, for example:
         #   `projects/`project_id`/locations/`location_id`/connections/`connection_id`/
         #   credential`
         # @param [Google::Apis::BigqueryconnectionV1beta1::ConnectionCredential] connection_credential_object

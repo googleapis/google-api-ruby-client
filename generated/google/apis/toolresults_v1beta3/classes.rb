@@ -535,6 +535,229 @@ module Google
         end
       end
       
+      # An Environment represents the set of test runs (Steps) from the parent
+      # Execution that are configured with the same set of dimensions (Model, Version,
+      # Locale, and Orientation). Multiple such runs occur particularly because of
+      # features like sharding (splitting up a test suite to run in parallel across
+      # devices) and reruns (running a test multiple times to check for different
+      # outcomes).
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # A Timestamp represents a point in time independent of any time zone or local
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
+        # backwards to year one.
+        # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+        # second table is needed for interpretation, using a [24-hour linear smear](
+        # https://developers.google.com/time/smear).
+        # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
+        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
+        # # Examples
+        # Example 1: Compute Timestamp from POSIX `time()`.
+        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
+        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
+        # struct timeval tv; gettimeofday(&tv, NULL);
+        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
+        # tv_usec * 1000);
+        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
+        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
+        # dwHighDateTime) << 32) | ft.dwLowDateTime;
+        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
+        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
+        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
+        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
+        # long millis = System.currentTimeMillis();
+        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
+        # setNanos((int) ((millis % 1000) * 1000000)).build();
+        # Example 5: Compute Timestamp from current time in Python.
+        # timestamp = Timestamp() timestamp.GetCurrentTime()
+        # # JSON Mapping
+        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
+        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
+        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
+        # zero-padded to two digits each. The fractional seconds, which can go up to 9
+        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
+        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
+        # serializer should always use UTC (as indicated by "Z") when printing the
+        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
+        # other timezones (as indicated by an offset).
+        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+        # January 15, 2017.
+        # In JavaScript, one can convert a Date object to this format using the standard
+        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
+        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
+        # datetime.datetime` object can be converted to this format using [`strftime`](
+        # https://docs.python.org/2/library/time.html#time.strftime) with the time
+        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
+        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
+        # Corresponds to the JSON property `completionTime`
+        # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
+        attr_accessor :completion_time
+      
+        # A Timestamp represents a point in time independent of any time zone or local
+        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
+        # resolution. The count is relative to an epoch at UTC midnight on January 1,
+        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
+        # backwards to year one.
+        # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
+        # second table is needed for interpretation, using a [24-hour linear smear](
+        # https://developers.google.com/time/smear).
+        # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
+        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
+        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
+        # # Examples
+        # Example 1: Compute Timestamp from POSIX `time()`.
+        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
+        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
+        # struct timeval tv; gettimeofday(&tv, NULL);
+        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
+        # tv_usec * 1000);
+        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
+        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
+        # dwHighDateTime) << 32) | ft.dwLowDateTime;
+        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
+        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
+        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
+        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
+        # long millis = System.currentTimeMillis();
+        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
+        # setNanos((int) ((millis % 1000) * 1000000)).build();
+        # Example 5: Compute Timestamp from current time in Python.
+        # timestamp = Timestamp() timestamp.GetCurrentTime()
+        # # JSON Mapping
+        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
+        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
+        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
+        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
+        # zero-padded to two digits each. The fractional seconds, which can go up to 9
+        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
+        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
+        # serializer should always use UTC (as indicated by "Z") when printing the
+        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
+        # other timezones (as indicated by an offset).
+        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
+        # January 15, 2017.
+        # In JavaScript, one can convert a Date object to this format using the standard
+        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
+        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
+        # datetime.datetime` object can be converted to this format using [`strftime`](
+        # https://docs.python.org/2/library/time.html#time.strftime) with the time
+        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
+        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
+        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
+        # formatter capable of generating timestamps in this format.
+        # Corresponds to the JSON property `creationTime`
+        # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
+        attr_accessor :creation_time
+      
+        # Dimension values describing the environment. Dimension values always consist
+        # of "Model", "Version", "Locale", and "Orientation".
+        # - In response: always set - In create request: always set - In update request:
+        # never set
+        # Corresponds to the JSON property `dimensionValue`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::EnvironmentDimensionValueEntry>]
+        attr_accessor :dimension_value
+      
+        # A short human-readable name to display in the UI. Maximum of 100 characters.
+        # For example: Nexus 5, API 27.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. An Environment id.
+        # Corresponds to the JSON property `environmentId`
+        # @return [String]
+        attr_accessor :environment_id
+      
+        # Merged test result for environment.
+        # If the environment has only one step (no reruns or shards), then the merged
+        # result is the same as the step result. If the environment has multiple shards
+        # and/or reruns, then the results of shards and reruns that belong to the same
+        # environment are merged into one environment result.
+        # Corresponds to the JSON property `environmentResult`
+        # @return [Google::Apis::ToolresultsV1beta3::MergedResult]
+        attr_accessor :environment_result
+      
+        # Output only. An Execution id.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # Output only. A History id.
+        # Corresponds to the JSON property `historyId`
+        # @return [String]
+        attr_accessor :history_id
+      
+        # Output only. A Project id.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The storage for test results.
+        # Corresponds to the JSON property `resultsStorage`
+        # @return [Google::Apis::ToolresultsV1beta3::ResultsStorage]
+        attr_accessor :results_storage
+      
+        # Output only. Summaries of shards.
+        # Only one shard will present unless sharding feature is enabled in
+        # TestExecutionService.
+        # Corresponds to the JSON property `shardSummaries`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::ShardSummary>]
+        attr_accessor :shard_summaries
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @completion_time = args[:completion_time] if args.key?(:completion_time)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @dimension_value = args[:dimension_value] if args.key?(:dimension_value)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @environment_id = args[:environment_id] if args.key?(:environment_id)
+          @environment_result = args[:environment_result] if args.key?(:environment_result)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @results_storage = args[:results_storage] if args.key?(:results_storage)
+          @shard_summaries = args[:shard_summaries] if args.key?(:shard_summaries)
+        end
+      end
+      
+      # 
+      class EnvironmentDimensionValueEntry
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # 
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # An Execution represents a collection of Steps. For instance, it could
       # represent: - a mobile test executed across a range of device configurations -
       # a jenkins job with a build step followed by a test step
@@ -1090,6 +1313,54 @@ module Google
         end
       end
       
+      # Response message for EnvironmentService.ListEnvironments.
+      class ListEnvironmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Environments.
+        # Always set.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::Environment>]
+        attr_accessor :environments
+      
+        # A Execution id
+        # Always set.
+        # Corresponds to the JSON property `executionId`
+        # @return [String]
+        attr_accessor :execution_id
+      
+        # A History id.
+        # Always set.
+        # Corresponds to the JSON property `historyId`
+        # @return [String]
+        attr_accessor :history_id
+      
+        # A continuation token to resume the query at the next item.
+        # Will only be set if there are more Environments to fetch.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A Project id.
+        # Always set.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
+          @execution_id = args[:execution_id] if args.key?(:execution_id)
+          @history_id = args[:history_id] if args.key?(:history_id)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @project_id = args[:project_id] if args.key?(:project_id)
+        end
+      end
+      
       # 
       class ListExecutionsResponse
         include Google::Apis::Core::Hashable
@@ -1322,6 +1593,50 @@ module Google
         end
       end
       
+      # Merged test result for environment.
+      # If the environment has only one step (no reruns or shards), then the merged
+      # result is the same as the step result. If the environment has multiple shards
+      # and/or reruns, then the results of shards and reruns that belong to the same
+      # environment are merged into one environment result.
+      class MergedResult
+        include Google::Apis::Core::Hashable
+      
+        # Interprets a result so that humans and machines can act on it.
+        # Corresponds to the JSON property `outcome`
+        # @return [Google::Apis::ToolresultsV1beta3::Outcome]
+        attr_accessor :outcome
+      
+        # State of the resource
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The combined and rolled-up result of each test suite that was run as part of
+        # this environment.
+        # Combining: When the test cases from a suite are run in different steps (
+        # sharding), the results are added back together in one overview. (e.g., if
+        # shard1 has 2 failures and shard2 has 1 failure than the overview failure_count
+        # = 3).
+        # Rollup: When test cases from the same suite are run multiple times (flaky),
+        # the results are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes,
+        # and both testcase2.run1 and testcase2.run2 fail then the overview flaky_count
+        # = 1 and failure_count = 1).
+        # Corresponds to the JSON property `testSuiteOverviews`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::TestSuiteOverview>]
+        attr_accessor :test_suite_overviews
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @outcome = args[:outcome] if args.key?(:outcome)
+          @state = args[:state] if args.key?(:state)
+          @test_suite_overviews = args[:test_suite_overviews] if args.key?(:test_suite_overviews)
+        end
+      end
+      
       # Details when multiple steps are run with the same configuration as a group.
       class MultiStep
         include Google::Apis::Core::Hashable
@@ -1374,7 +1689,7 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::SkippedDetail]
         attr_accessor :skipped_detail
       
-        # Details for an outcome with a SUCCESS outcome summary.
+        # Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
         # Corresponds to the JSON property `successDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SuccessDetail]
         attr_accessor :success_detail
@@ -1690,6 +2005,31 @@ module Google
         end
       end
       
+      # The storage for test results.
+      class ResultsStorage
+        include Google::Apis::Core::Hashable
+      
+        # A reference to a file.
+        # Corresponds to the JSON property `resultsStoragePath`
+        # @return [Google::Apis::ToolresultsV1beta3::FileReference]
+        attr_accessor :results_storage_path
+      
+        # A reference to a file.
+        # Corresponds to the JSON property `xunitXmlFile`
+        # @return [Google::Apis::ToolresultsV1beta3::FileReference]
+        attr_accessor :xunit_xml_file
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @results_storage_path = args[:results_storage_path] if args.key?(:results_storage_path)
+          @xunit_xml_file = args[:xunit_xml_file] if args.key?(:xunit_xml_file)
+        end
+      end
+      
       # 
       class Screen
         include Google::Apis::Core::Hashable
@@ -1764,6 +2104,29 @@ module Google
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @key_screen = args[:key_screen] if args.key?(:key_screen)
           @screens = args[:screens] if args.key?(:screens)
+        end
+      end
+      
+      # Result summary for a shard in an environment.
+      class ShardSummary
+        include Google::Apis::Core::Hashable
+      
+        # Merged test result for environment.
+        # If the environment has only one step (no reruns or shards), then the merged
+        # result is the same as the step result. If the environment has multiple shards
+        # and/or reruns, then the results of shards and reruns that belong to the same
+        # environment are merged into one environment result.
+        # Corresponds to the JSON property `shardResult`
+        # @return [Google::Apis::ToolresultsV1beta3::MergedResult]
+        attr_accessor :shard_result
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @shard_result = args[:shard_result] if args.key?(:shard_result)
         end
       end
       
@@ -2262,7 +2625,7 @@ module Google
         end
       end
       
-      # Details for an outcome with a SUCCESS outcome summary.
+      # Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
       class SuccessDetail
         include Google::Apis::Core::Hashable
       
@@ -2710,6 +3073,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :failure_count
       
+        # Number of flaky test cases, set by the service by rolling up flaky test
+        # attempts.
+        # Present only for rollup test suite overview at environment level. A step
+        # cannot have flaky test cases.
+        # Corresponds to the JSON property `flakyCount`
+        # @return [Fixnum]
+        attr_accessor :flaky_count
+      
         # The name of the test suite.
         # - In create/response: always set - In update request: never
         # Corresponds to the JSON property `name`
@@ -2743,6 +3114,7 @@ module Google
           @elapsed_time = args[:elapsed_time] if args.key?(:elapsed_time)
           @error_count = args[:error_count] if args.key?(:error_count)
           @failure_count = args[:failure_count] if args.key?(:failure_count)
+          @flaky_count = args[:flaky_count] if args.key?(:flaky_count)
           @name = args[:name] if args.key?(:name)
           @skipped_count = args[:skipped_count] if args.key?(:skipped_count)
           @total_count = args[:total_count] if args.key?(:total_count)

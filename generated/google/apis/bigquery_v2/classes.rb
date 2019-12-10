@@ -3681,7 +3681,8 @@ module Google
       
         # Custom encryption configuration (e.g., Cloud KMS keys). This shows the
         # encryption configuration of the model data while stored in BigQuery
-        # storage.
+        # storage. This field can be used with PatchModel to update encryption key
+        # for an already encrypted model.
         # Corresponds to the JSON property `encryptionConfiguration`
         # @return [Google::Apis::BigqueryV2::EncryptionConfiguration]
         attr_accessor :encryption_configuration

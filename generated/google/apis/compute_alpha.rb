@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/compute/docs/reference/latest/
     module ComputeAlpha
       VERSION = 'Alpha'
-      REVISION = '20191014'
+      REVISION = '20191025'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

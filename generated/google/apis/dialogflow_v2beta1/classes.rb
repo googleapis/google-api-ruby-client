@@ -403,7 +403,7 @@ module Google
         attr_accessor :messages
       
         # Optional. Indicates whether Machine Learning is disabled for the intent.
-        # Note: If `ml_diabled` setting is set to true, then this intent is not
+        # Note: If `ml_disabled` setting is set to true, then this intent is not
         # taken into account during inference in `ML ONLY` match mode. Also,
         # auto-markup in the UI is turned off.
         # Corresponds to the JSON property `mlDisabled`

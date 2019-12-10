@@ -1093,37 +1093,6 @@ module Google
       end
       
       # 
-      class MendelSampling
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `modRanges`
-        # @return [Array<Google::Apis::AndroidpublisherV3::ModRange>]
-        attr_accessor :mod_ranges
-      
-        # 
-        # Corresponds to the JSON property `modulus`
-        # @return [Fixnum]
-        attr_accessor :modulus
-      
-        # 
-        # Corresponds to the JSON property `salt`
-        # @return [Fixnum]
-        attr_accessor :salt
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
-          @modulus = args[:modulus] if args.key?(:modulus)
-          @salt = args[:salt] if args.key?(:salt)
-        end
-      end
-      
-      # 
       class ModRange
         include Google::Apis::Core::Hashable
       
@@ -1488,6 +1457,37 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
+        end
+      end
+      
+      # 
+      class Sampling
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `modRanges`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ModRange>]
+        attr_accessor :mod_ranges
+      
+        # 
+        # Corresponds to the JSON property `modulus`
+        # @return [Fixnum]
+        attr_accessor :modulus
+      
+        # 
+        # Corresponds to the JSON property `salt`
+        # @return [Fixnum]
+        attr_accessor :salt
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
+          @modulus = args[:modulus] if args.key?(:modulus)
+          @salt = args[:salt] if args.key?(:salt)
         end
       end
       
@@ -2007,7 +2007,7 @@ module Google
       
         # 
         # Corresponds to the JSON property `sampling`
-        # @return [Google::Apis::AndroidpublisherV3::MendelSampling]
+        # @return [Google::Apis::AndroidpublisherV3::Sampling]
         attr_accessor :sampling
       
         # The desired status of this release.

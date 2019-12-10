@@ -610,7 +610,8 @@ module Google
       
         # The minimum version of the app. If a lower version of the app is installed,
         # then the app will be auto-updated according to the auto-install constraints,
-        # instead of waiting for the regular auto-update.
+        # instead of waiting for the regular auto-update. You can set a minimum version
+        # code for at most 20 apps per device.
         # Corresponds to the JSON property `minimumVersionCode`
         # @return [Fixnum]
         attr_accessor :minimum_version_code

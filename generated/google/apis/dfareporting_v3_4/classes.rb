@@ -1326,33 +1326,6 @@ module Google
         end
       end
       
-      # Annotate a click event.
-      class AnnotateClickEvent
-        include Google::Apis::Core::Hashable
-      
-        # The Google click ID. Use this field to annotate the click associated with the
-        # gclid.
-        # Corresponds to the JSON property `gclid`
-        # @return [String]
-        attr_accessor :gclid
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#annotateClickEvent".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @gclid = args[:gclid] if args.key?(:gclid)
-          @kind = args[:kind] if args.key?(:kind)
-        end
-      end
-      
       # Audience Segment.
       class AudienceSegment
         include Google::Apis::Core::Hashable
@@ -4659,12 +4632,12 @@ module Google
       
         # Annotate a click event.
         # Corresponds to the JSON property `annotateClickEvent`
-        # @return [Google::Apis::DfareportingV3_4::AnnotateClickEvent]
+        # @return [Google::Apis::DfareportingV3_4::CustomEventClickAnnotation]
         attr_accessor :annotate_click_event
       
         # Custom variables associated with the event.
         # Corresponds to the JSON property `customVariables`
-        # @return [Array<Google::Apis::DfareportingV3_4::CustomVariables>]
+        # @return [Array<Google::Apis::DfareportingV3_4::CustomVariable>]
         attr_accessor :custom_variables
       
         # The type of event. If INSERT, the fields in insertEvent need to be populated.
@@ -4680,9 +4653,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :floodlight_configuration_id
       
-        # Insert custom event.
+        # Custom event to be inserted.
         # Corresponds to the JSON property `insertEvent`
-        # @return [Google::Apis::DfareportingV3_4::InsertEvent]
+        # @return [Google::Apis::DfareportingV3_4::CustomEventInsert]
         attr_accessor :insert_event
       
         # Identifies what kind of resource this is. Value: the fixed string "
@@ -4719,6 +4692,33 @@ module Google
         end
       end
       
+      # Annotate a click event.
+      class CustomEventClickAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The Google click ID. Use this field to annotate the click associated with the
+        # gclid.
+        # Corresponds to the JSON property `gclid`
+        # @return [String]
+        attr_accessor :gclid
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventClickAnnotation".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @gclid = args[:gclid] if args.key?(:gclid)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # The error code and description for a custom event that failed to insert.
       class CustomEventError
         include Google::Apis::Core::Hashable
@@ -4748,6 +4748,60 @@ module Google
           @code = args[:code] if args.key?(:code)
           @kind = args[:kind] if args.key?(:kind)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Custom event to be inserted.
+      class CustomEventInsert
+        include Google::Apis::Core::Hashable
+      
+        # Campaign Manager IDs related to the custom event.
+        # Corresponds to the JSON property `cmDimensions`
+        # @return [Google::Apis::DfareportingV3_4::CampaignManagerIds]
+        attr_accessor :cm_dimensions
+      
+        # DV360 IDs related to the custom event.
+        # Corresponds to the JSON property `dv3Dimensions`
+        # @return [Google::Apis::DfareportingV3_4::Dv3Ids]
+        attr_accessor :dv3_dimensions
+      
+        # The type of event to insert.
+        # Corresponds to the JSON property `insertEventType`
+        # @return [String]
+        attr_accessor :insert_event_type
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventInsert".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The match ID field. A match ID is your own first-party identifier that has
+        # been synced with Google using the match ID feature in Floodlight. This field
+        # is mutually exclusive with mobileDeviceId, and at least one of the two fields
+        # is required.
+        # Corresponds to the JSON property `matchId`
+        # @return [String]
+        attr_accessor :match_id
+      
+        # The mobile device ID. This field is mutually exclusive with matchId, and at
+        # least one of the two fields is required.
+        # Corresponds to the JSON property `mobileDeviceId`
+        # @return [String]
+        attr_accessor :mobile_device_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cm_dimensions = args[:cm_dimensions] if args.key?(:cm_dimensions)
+          @dv3_dimensions = args[:dv3_dimensions] if args.key?(:dv3_dimensions)
+          @insert_event_type = args[:insert_event_type] if args.key?(:insert_event_type)
+          @kind = args[:kind] if args.key?(:kind)
+          @match_id = args[:match_id] if args.key?(:match_id)
+          @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
         end
       end
       
@@ -4905,8 +4959,8 @@ module Google
         end
       end
       
-      # A custom variable.
-      class CustomVariables
+      # Custom variable.
+      class CustomVariable
         include Google::Apis::Core::Hashable
       
         # The index of the custom variable.
@@ -4915,7 +4969,7 @@ module Google
         attr_accessor :index
       
         # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#customVariables".
+        # dfareporting#customVariable".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6971,60 +7025,6 @@ module Google
           @metros = args[:metros] if args.key?(:metros)
           @postal_codes = args[:postal_codes] if args.key?(:postal_codes)
           @regions = args[:regions] if args.key?(:regions)
-        end
-      end
-      
-      # Insert custom event.
-      class InsertEvent
-        include Google::Apis::Core::Hashable
-      
-        # Campaign Manager IDs related to the custom event.
-        # Corresponds to the JSON property `cmDimensions`
-        # @return [Google::Apis::DfareportingV3_4::CampaignManagerIds]
-        attr_accessor :cm_dimensions
-      
-        # DV360 IDs related to the custom event.
-        # Corresponds to the JSON property `dv3Dimensions`
-        # @return [Google::Apis::DfareportingV3_4::Dv3Ids]
-        attr_accessor :dv3_dimensions
-      
-        # The type of insert event.
-        # Corresponds to the JSON property `insertEventType`
-        # @return [String]
-        attr_accessor :insert_event_type
-      
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # dfareporting#insertEvent".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The match ID field. A match ID is your own first-party identifier that has
-        # been synced with Google using the match ID feature in Floodlight. This field
-        # is mutually exclusive with mobileDeviceId, and at least one of the two fields
-        # is required.
-        # Corresponds to the JSON property `matchId`
-        # @return [String]
-        attr_accessor :match_id
-      
-        # The mobile device ID. This field is mutually exclusive with matchId, and at
-        # least one of the two fields is required.
-        # Corresponds to the JSON property `mobileDeviceId`
-        # @return [String]
-        attr_accessor :mobile_device_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cm_dimensions = args[:cm_dimensions] if args.key?(:cm_dimensions)
-          @dv3_dimensions = args[:dv3_dimensions] if args.key?(:dv3_dimensions)
-          @insert_event_type = args[:insert_event_type] if args.key?(:insert_event_type)
-          @kind = args[:kind] if args.key?(:kind)
-          @match_id = args[:match_id] if args.key?(:match_id)
-          @mobile_device_id = args[:mobile_device_id] if args.key?(:mobile_device_id)
         end
       end
       

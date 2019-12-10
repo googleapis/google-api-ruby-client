@@ -136,12 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnnotateClickEvent
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class AudienceSegment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -460,7 +454,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomEventClickAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomEventError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CustomEventInsert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -496,7 +502,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CustomVariables
+      class CustomVariable
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -737,12 +743,6 @@ module Google
       end
       
       class GeoTargeting
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class InsertEvent
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1734,14 +1734,6 @@ module Google
         end
       end
       
-      class AnnotateClickEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :gclid, as: 'gclid'
-          property :kind, as: 'kind'
-        end
-      end
-      
       class AudienceSegment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2507,17 +2499,25 @@ module Google
       class CustomEvent
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotate_click_event, as: 'annotateClickEvent', class: Google::Apis::DfareportingV3_4::AnnotateClickEvent, decorator: Google::Apis::DfareportingV3_4::AnnotateClickEvent::Representation
+          property :annotate_click_event, as: 'annotateClickEvent', class: Google::Apis::DfareportingV3_4::CustomEventClickAnnotation, decorator: Google::Apis::DfareportingV3_4::CustomEventClickAnnotation::Representation
       
-          collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV3_4::CustomVariables, decorator: Google::Apis::DfareportingV3_4::CustomVariables::Representation
+          collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV3_4::CustomVariable, decorator: Google::Apis::DfareportingV3_4::CustomVariable::Representation
       
           property :event_type, as: 'eventType'
           property :floodlight_configuration_id, :numeric_string => true, as: 'floodlightConfigurationId'
-          property :insert_event, as: 'insertEvent', class: Google::Apis::DfareportingV3_4::InsertEvent, decorator: Google::Apis::DfareportingV3_4::InsertEvent::Representation
+          property :insert_event, as: 'insertEvent', class: Google::Apis::DfareportingV3_4::CustomEventInsert, decorator: Google::Apis::DfareportingV3_4::CustomEventInsert::Representation
       
           property :kind, as: 'kind'
           property :ordinal, as: 'ordinal'
           property :timestamp_micros, :numeric_string => true, as: 'timestampMicros'
+        end
+      end
+      
+      class CustomEventClickAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :gclid, as: 'gclid'
+          property :kind, as: 'kind'
         end
       end
       
@@ -2527,6 +2527,20 @@ module Google
           property :code, as: 'code'
           property :kind, as: 'kind'
           property :message, as: 'message'
+        end
+      end
+      
+      class CustomEventInsert
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cm_dimensions, as: 'cmDimensions', class: Google::Apis::DfareportingV3_4::CampaignManagerIds, decorator: Google::Apis::DfareportingV3_4::CampaignManagerIds::Representation
+      
+          property :dv3_dimensions, as: 'dv3Dimensions', class: Google::Apis::DfareportingV3_4::Dv3Ids, decorator: Google::Apis::DfareportingV3_4::Dv3Ids::Representation
+      
+          property :insert_event_type, as: 'insertEventType'
+          property :kind, as: 'kind'
+          property :match_id, as: 'matchId'
+          property :mobile_device_id, as: 'mobileDeviceId'
         end
       end
       
@@ -2578,7 +2592,7 @@ module Google
         end
       end
       
-      class CustomVariables
+      class CustomVariable
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :index, :numeric_string => true, as: 'index'
@@ -3094,20 +3108,6 @@ module Google
       
           collection :regions, as: 'regions', class: Google::Apis::DfareportingV3_4::Region, decorator: Google::Apis::DfareportingV3_4::Region::Representation
       
-        end
-      end
-      
-      class InsertEvent
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cm_dimensions, as: 'cmDimensions', class: Google::Apis::DfareportingV3_4::CampaignManagerIds, decorator: Google::Apis::DfareportingV3_4::CampaignManagerIds::Representation
-      
-          property :dv3_dimensions, as: 'dv3Dimensions', class: Google::Apis::DfareportingV3_4::Dv3Ids, decorator: Google::Apis::DfareportingV3_4::Dv3Ids::Representation
-      
-          property :insert_event_type, as: 'insertEventType'
-          property :kind, as: 'kind'
-          property :match_id, as: 'matchId'
-          property :mobile_device_id, as: 'mobileDeviceId'
         end
       end
       

@@ -408,9 +408,9 @@ module Google
         # @return [Array<Google::Apis::CloudbuildV1::Volume>]
         attr_accessor :volumes
       
-        # Option to specify a `WorkerPool` for the build. User specifies the pool
-        # with the format "[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]".
-        # This is an experimental field.
+        # Option to specify a `WorkerPool` for the build.
+        # Format: projects/`project`/workerPools/`workerPool`
+        # This field is experimental.
         # Corresponds to the JSON property `workerPool`
         # @return [String]
         attr_accessor :worker_pool
@@ -649,7 +649,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :included_files
       
-        # User assigned name of the trigger. Must be unique within the project.
+        # User-assigned name of the trigger. Must be unique within the project.
+        # Trigger names must meet the following requirements:
+        # + They must contain only alphanumeric characters and dashes.
+        # + They can be 1-64 characters long.
+        # + They must begin and end with an alphanumeric character.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1014,7 +1018,7 @@ module Google
         # @return [String]
         attr_accessor :branch
       
-        # Whether to block builds on a "/gcbrun" comment from a repository owner or
+        # Whether to block builds on a "/gcbrun" comment from a repository admin or
         # collaborator.
         # Corresponds to the JSON property `commentControl`
         # @return [String]

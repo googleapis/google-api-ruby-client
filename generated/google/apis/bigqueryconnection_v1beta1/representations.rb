@@ -156,6 +156,8 @@ module Google
       class CloudSqlProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :credential, as: 'credential', class: Google::Apis::BigqueryconnectionV1beta1::CloudSqlCredential, decorator: Google::Apis::BigqueryconnectionV1beta1::CloudSqlCredential::Representation
+      
           property :database, as: 'database'
           property :instance_id, as: 'instanceId'
           property :type, as: 'type'

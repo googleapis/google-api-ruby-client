@@ -1511,7 +1511,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. Group of packages, classes, and/or test methods to be run for
-        # each shard. The number of shard_test_targets must be > 1, and <= 50.
+        # each shard. The number of shard_test_targets must be >= 1 and <= 50.
         # Corresponds to the JSON property `testTargetsForShard`
         # @return [Array<Google::Apis::TestingV1::TestTargetsForShard>]
         attr_accessor :test_targets_for_shard
@@ -2458,7 +2458,7 @@ module Google
       class UniformSharding
         include Google::Apis::Core::Hashable
       
-        # Required. Total number of shards. The number must be > 1, and <= 50.
+        # Required. Total number of shards. The number must be >= 1 and <= 50.
         # Corresponds to the JSON property `numShards`
         # @return [Fixnum]
         attr_accessor :num_shards

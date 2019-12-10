@@ -214,12 +214,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MendelSampling
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ModRange
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +281,12 @@ module Google
       end
       
       class ReviewsReplyResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Sampling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -710,16 +710,6 @@ module Google
         end
       end
       
-      class MendelSampling
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
-      
-          property :modulus, :numeric_string => true, as: 'modulus'
-          property :salt, as: 'salt'
-        end
-      end
-      
       class ModRange
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -829,6 +819,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::AndroidpublisherV3::ReviewReplyResult, decorator: Google::Apis::AndroidpublisherV3::ReviewReplyResult::Representation
       
+        end
+      end
+      
+      class Sampling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
+      
+          property :modulus, :numeric_string => true, as: 'modulus'
+          property :salt, as: 'salt'
         end
       end
       
@@ -966,7 +966,7 @@ module Google
           property :name, as: 'name'
           collection :release_notes, as: 'releaseNotes', class: Google::Apis::AndroidpublisherV3::LocalizedText, decorator: Google::Apis::AndroidpublisherV3::LocalizedText::Representation
       
-          property :sampling, as: 'sampling', class: Google::Apis::AndroidpublisherV3::MendelSampling, decorator: Google::Apis::AndroidpublisherV3::MendelSampling::Representation
+          property :sampling, as: 'sampling', class: Google::Apis::AndroidpublisherV3::Sampling, decorator: Google::Apis::AndroidpublisherV3::Sampling::Representation
       
           property :status, as: 'status'
           property :user_fraction, as: 'userFraction'

@@ -6345,6 +6345,7 @@ module Google
           property :source_snapshot_id, as: 'sourceSnapshotId'
           property :source_type, as: 'sourceType'
           property :status, as: 'status'
+          collection :storage_locations, as: 'storageLocations'
         end
         
         class RawDisk

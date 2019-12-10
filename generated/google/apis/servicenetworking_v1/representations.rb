@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DisableVpcServiceControlsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Documentation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +509,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :address, as: 'address'
           property :deadline, as: 'deadline'
+          property :disable_auth, as: 'disableAuth'
           property :jwt_audience, as: 'jwtAudience'
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
@@ -598,6 +605,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :path, as: 'path'
+        end
+      end
+      
+      class DisableVpcServiceControlsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_network, as: 'consumerNetwork'
         end
       end
       

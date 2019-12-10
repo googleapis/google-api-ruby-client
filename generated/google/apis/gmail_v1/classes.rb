@@ -695,7 +695,9 @@ module Google
       class ListDraftsResponse
         include Google::Apis::Core::Hashable
       
-        # List of drafts.
+        # List of drafts. Note that the Message property in each Draft resource only
+        # contains an id and a threadId. The messages.get method can fetch additional
+        # message details.
         # Corresponds to the JSON property `drafts`
         # @return [Array<Google::Apis::GmailV1::Draft>]
         attr_accessor :drafts
@@ -796,7 +798,9 @@ module Google
       class ListLabelsResponse
         include Google::Apis::Core::Hashable
       
-        # List of labels.
+        # List of labels. Note that each label resource only contains an id, name,
+        # messageListVisibility, labelListVisibility, and type. The labels.get method
+        # can fetch additional label details.
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::GmailV1::Label>]
         attr_accessor :labels
