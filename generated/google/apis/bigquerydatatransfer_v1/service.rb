@@ -56,7 +56,8 @@ module Google
         # create a transfer config.
         # @param [String] name
         #   Required. The data source in the form:
-        #   `projects/`project_id`/dataSources/`data_source_id``
+        #   `projects/`project_id`/dataSources/`data_source_id`` or
+        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``.
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -91,7 +92,8 @@ module Google
         # which can be used for UI rendering.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/dataSources/`data_source_id``
+        #   `projects/`project_id`/dataSources/`data_source_id`` or
+        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -123,7 +125,8 @@ module Google
         # which can be used for UI rendering.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
-        #   Must be in the form: `projects/`project_id``
+        #   Must be in the form: `projects/`project_id`` or
+        #   `projects/`project_id`/locations/`location_id`
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -238,7 +241,8 @@ module Google
         # create a transfer config.
         # @param [String] name
         #   Required. The data source in the form:
-        #   `projects/`project_id`/dataSources/`data_source_id``
+        #   `projects/`project_id`/dataSources/`data_source_id`` or
+        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``.
         # @param [Google::Apis::BigquerydatatransferV1::CheckValidCredsRequest] check_valid_creds_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -273,7 +277,8 @@ module Google
         # which can be used for UI rendering.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/dataSources/`data_source_id``
+        #   `projects/`project_id`/dataSources/`data_source_id`` or
+        #   `projects/`project_id`/locations/`location_id`/dataSources/`data_source_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -305,7 +310,8 @@ module Google
         # which can be used for UI rendering.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources should be returned.
-        #   Must be in the form: `projects/`project_id``
+        #   Must be in the form: `projects/`project_id`` or
+        #   `projects/`project_id`/locations/`location_id`
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -347,9 +353,9 @@ module Google
         # @param [String] parent
         #   Required. The BigQuery project id where the transfer configuration should be
         #   created.
-        #   Must be in the format projects/`project_id`/locations/`location_id`
-        #   If specified location and location of the destination bigquery dataset
-        #   do not match - the request will fail.
+        #   Must be in the format projects/`project_id`/locations/`location_id` or
+        #   projects/`project_id`. If specified location and location of the
+        #   destination bigquery dataset do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -416,7 +422,8 @@ module Google
         # including any associated transfer runs and logs.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -447,7 +454,8 @@ module Google
         # Returns information about a data transfer config.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -478,7 +486,8 @@ module Google
         # Returns information about all data transfers in the project.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources
-        #   should be returned: `projects/`project_id``.
+        #   should be returned: `projects/`project_id`` or
+        #   `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
@@ -602,7 +611,8 @@ module Google
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
         #   Required. Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -639,7 +649,8 @@ module Google
         # a specific run_time.
         # @param [String] parent
         #   Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -673,7 +684,9 @@ module Google
         # Deletes the specified transfer run.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -704,7 +717,9 @@ module Google
         # Returns information about the particular transfer run.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -737,7 +752,8 @@ module Google
         #   Required. Name of transfer configuration for which transfer runs should be
         #   retrieved.
         #   Format of transfer configuration resource name is:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -784,7 +800,9 @@ module Google
         # Returns user facing log messages for the data transfer run.
         # @param [String] parent
         #   Required. Transfer run name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_Id`/runs/`run_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [Array<String>, String] message_types
         #   Message types to return. If not populated - INFO, WARNING and ERROR
         #   messages are returned.
@@ -830,9 +848,9 @@ module Google
         # @param [String] parent
         #   Required. The BigQuery project id where the transfer configuration should be
         #   created.
-        #   Must be in the format projects/`project_id`/locations/`location_id`
-        #   If specified location and location of the destination bigquery dataset
-        #   do not match - the request will fail.
+        #   Must be in the format projects/`project_id`/locations/`location_id` or
+        #   projects/`project_id`. If specified location and location of the
+        #   destination bigquery dataset do not match - the request will fail.
         # @param [Google::Apis::BigquerydatatransferV1::TransferConfig] transfer_config_object
         # @param [String] authorization_code
         #   Optional OAuth2 authorization code to use with this transfer configuration.
@@ -899,7 +917,8 @@ module Google
         # including any associated transfer runs and logs.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -930,7 +949,8 @@ module Google
         # Returns information about a data transfer config.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -961,7 +981,8 @@ module Google
         # Returns information about all data transfers in the project.
         # @param [String] parent
         #   Required. The BigQuery project id for which data sources
-        #   should be returned: `projects/`project_id``.
+        #   should be returned: `projects/`project_id`` or
+        #   `projects/`project_id`/locations/`location_id``
         # @param [Array<String>, String] data_source_ids
         #   When specified, only configurations of requested data sources are returned.
         # @param [Fixnum] page_size
@@ -1085,7 +1106,8 @@ module Google
         # DEPRECATED: use StartManualTransferRuns instead.
         # @param [String] parent
         #   Required. Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::ScheduleTransferRunsRequest] schedule_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1122,7 +1144,8 @@ module Google
         # a specific run_time.
         # @param [String] parent
         #   Transfer configuration name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Google::Apis::BigquerydatatransferV1::StartManualTransferRunsRequest] start_manual_transfer_runs_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1156,7 +1179,9 @@ module Google
         # Deletes the specified transfer run.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1187,7 +1212,9 @@ module Google
         # Returns information about the particular transfer run.
         # @param [String] name
         #   Required. The field will contain name of the resource requested, for example:
-        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id``
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1220,7 +1247,8 @@ module Google
         #   Required. Name of transfer configuration for which transfer runs should be
         #   retrieved.
         #   Format of transfer configuration resource name is:
-        #   `projects/`project_id`/transferConfigs/`config_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id``.
         # @param [Fixnum] page_size
         #   Page size. The default page size is the maximum value of 1000 results.
         # @param [String] page_token
@@ -1267,7 +1295,9 @@ module Google
         # Returns user facing log messages for the data transfer run.
         # @param [String] parent
         #   Required. Transfer run name in the form:
-        #   `projects/`project_id`/transferConfigs/`config_Id`/runs/`run_id``.
+        #   `projects/`project_id`/transferConfigs/`config_id`/runs/`run_id`` or
+        #   `projects/`project_id`/locations/`location_id`/transferConfigs/`config_id`/
+        #   runs/`run_id``
         # @param [Array<String>, String] message_types
         #   Message types to return. If not populated - INFO, WARNING and ERROR
         #   messages are returned.

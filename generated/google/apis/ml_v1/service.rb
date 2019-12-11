@@ -49,7 +49,8 @@ module Google
         
         # Performs explanation on the data in the request.
         # AI Platform implements a custom `explain` verb on top of an HTTP POST
-        # method. <p>For details of the request and response format, see the **guide
+        # method.
+        # For details of the request and response format, see the **guide
         # to the [explain request format](/ml-engine/docs/v1/explain-request)**.
         # @param [String] name
         #   Required. The resource name of a model or a version.
@@ -119,7 +120,8 @@ module Google
         
         # Performs prediction on the data in the request.
         # AI Platform implements a custom `predict` verb on top of an HTTP POST
-        # method. <p>For details of the request and response format, see the **guide
+        # method.
+        # For details of the request and response format, see the **guide
         # to the [predict request format](/ml-engine/docs/v1/predict-request)**.
         # @param [String] name
         #   Required. The resource name of a model or a version.
@@ -549,8 +551,7 @@ module Google
         # Creates a model which will later contain one or more versions.
         # You must add at least one version before you can request predictions from
         # the model. Add versions by calling
-        # [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.
-        # versions/create).
+        # projects.models.versions.create.
         # @param [String] parent
         #   Required. The project name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Model] google_cloud_ml_v1__model_object
@@ -586,8 +587,7 @@ module Google
         # Deletes a model.
         # You can only delete a model if there are no versions in it. You can delete
         # versions by calling
-        # [projects.models.versions.delete](/ml-engine/reference/rest/v1/projects.models.
-        # versions/delete).
+        # projects.models.versions.delete.
         # @param [String] name
         #   Required. The name of the model.
         # @param [String] fields
@@ -869,8 +869,7 @@ module Google
         # model. When you add a version to a model that already has one or more
         # versions, the default version does not automatically change. If you want a
         # new version to be the default, you must call
-        # [projects.models.versions.setDefault](/ml-engine/reference/rest/v1/projects.
-        # models.versions/setDefault).
+        # projects.models.versions.setDefault.
         # @param [String] parent
         #   Required. The name of the model.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
@@ -911,8 +910,7 @@ module Google
         # @param [String] name
         #   Required. The name of the version. You can get the names of all the
         #   versions of a model by calling
-        #   [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-        #   versions/list).
+        #   projects.models.versions.list.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -942,8 +940,7 @@ module Google
         
         # Gets information about a model version.
         # Models can have multiple versions. You can call
-        # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-        # versions/list)
+        # projects.models.versions.list
         # to get the same information that this method returns for all of the
         # versions of a model.
         # @param [String] name
@@ -1025,8 +1022,8 @@ module Google
         end
         
         # Updates the specified Version resource.
-        # Currently the only update-able fields are `description` and
-        # `autoScaling.minNodes`.
+        # Currently the only update-able fields are `description`,
+        # `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
         # @param [String] name
         #   Required. The name of the model.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Version] google_cloud_ml_v1__version_object
@@ -1042,8 +1039,9 @@ module Google
         #   `
         #   ```
         #   Currently the only supported update mask fields are `description`,
-        #   `autoScaling.minNodes`, and `manualScaling.nodes`. However, you can only
-        #   update `manualScaling.nodes` if the version uses a [Compute Engine (N1)
+        #   `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
+        #   However, you can only update `manualScaling.nodes` if the version uses a
+        #   [Compute Engine (N1)
         #   machine type](/ml-engine/docs/machine-types-online-prediction).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1084,8 +1082,7 @@ module Google
         # @param [String] name
         #   Required. The name of the version to make the default for the model. You
         #   can get the names of all the versions of a model by calling
-        #   [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-        #   versions/list).
+        #   projects.models.versions.list.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1SetDefaultVersionRequest] google_cloud_ml_v1__set_default_version_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -1093,7 +1093,7 @@ module Google
         # @return [String]
         attr_accessor :pubsub_topic
       
-        # Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported.
+        # Sign-in details of the enterprise.
         # Corresponds to the JSON property `signinDetails`
         # @return [Array<Google::Apis::AndroidmanagementV1::SigninDetail>]
         attr_accessor :signin_details
@@ -3007,13 +3007,15 @@ module Google
         attr_accessor :device_settings_enabled
         alias_method :device_settings_enabled?, :device_settings_enabled
       
-        # Whether displays reporting is enabled.
+        # Whether displays reporting is enabled. Report data is not available for
+        # personally owned devices with work profiles.
         # Corresponds to the JSON property `displayInfoEnabled`
         # @return [Boolean]
         attr_accessor :display_info_enabled
         alias_method :display_info_enabled?, :display_info_enabled
       
-        # Whether hardware status reporting is enabled.
+        # Whether hardware status reporting is enabled. Report data is not available for
+        # personally owned devices with work profiles.
         # Corresponds to the JSON property `hardwareStatusEnabled`
         # @return [Boolean]
         attr_accessor :hardware_status_enabled
@@ -3031,7 +3033,8 @@ module Google
         attr_accessor :network_info_enabled
         alias_method :network_info_enabled?, :network_info_enabled
       
-        # Whether power management event reporting is enabled.
+        # Whether power management event reporting is enabled. Report data is not
+        # available for personally owned devices with work profiles.
         # Corresponds to the JSON property `powerManagementEventsEnabled`
         # @return [Boolean]
         attr_accessor :power_management_events_enabled

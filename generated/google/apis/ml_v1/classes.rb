@@ -342,11 +342,10 @@ module Google
       end
       
       # Message holding configuration options for explaining model predictions.
-      # Currently, the only supported mechanism to explain a model's prediction is
-      # through attributing its output back to its inputs which is essentially a
-      # credit assignment task. We support multiple attribution methods, some
-      # specific to particular frameworks like Tensorflow and XGBoost.
-      # Next idx: 7.
+      # There are two feature attribution methods supported for TensorFlow models:
+      # integrated gradients and sampled Shapley.
+      # <a href="/ml-engine/docs/ai-explanations/overview">Learn more about feature
+      # attributions</a>.
       class GoogleCloudMlV1ExplanationConfig
         include Google::Apis::Core::Hashable
       
@@ -858,8 +857,7 @@ module Google
         # Each version is a trained model deployed in the cloud, ready to handle
         # prediction requests. A model can have multiple versions. You can get
         # information about all of the versions of a given model by calling
-        # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-        # versions/list).
+        # projects.models.versions.list.
         # Corresponds to the JSON property `defaultVersion`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :default_version
@@ -1003,8 +1001,7 @@ module Google
         # Each version is a trained model deployed in the cloud, ready to handle
         # prediction requests. A model can have multiple versions. You can get
         # information about all of the versions of a given model by calling
-        # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-        # versions/list).
+        # projects.models.versions.list.
         # Corresponds to the JSON property `version`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Version]
         attr_accessor :version
@@ -1709,8 +1706,7 @@ module Google
       # Each version is a trained model deployed in the cloud, ready to handle
       # prediction requests. A model can have multiple versions. You can get
       # information about all of the versions of a given model by calling
-      # [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.
-      # versions/list).
+      # projects.models.versions.list.
       class GoogleCloudMlV1Version
         include Google::Apis::Core::Hashable
       
@@ -1739,8 +1735,7 @@ module Google
         # deployment](/ml-engine/docs/tensorflow/deploying-models) for more
         # information.
         # When passing Version to
-        # [projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.
-        # versions/create)
+        # projects.models.versions.create
         # the model service uses the specified location as the source of the model.
         # Once deployed, the model version is hosted by the prediction service, so
         # this location is useful only as a historical record.
@@ -1772,11 +1767,10 @@ module Google
         attr_accessor :etag
       
         # Message holding configuration options for explaining model predictions.
-        # Currently, the only supported mechanism to explain a model's prediction is
-        # through attributing its output back to its inputs which is essentially a
-        # credit assignment task. We support multiple attribution methods, some
-        # specific to particular frameworks like Tensorflow and XGBoost.
-        # Next idx: 7.
+        # There are two feature attribution methods supported for TensorFlow models:
+        # integrated gradients and sampled Shapley.
+        # <a href="/ml-engine/docs/ai-explanations/overview">Learn more about feature
+        # attributions</a>.
         # Corresponds to the JSON property `explanationConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig]
         attr_accessor :explanation_config
@@ -1800,8 +1794,7 @@ module Google
         # Output only. If true, this version will be used to handle prediction
         # requests that do not specify a version.
         # You can change the default version by calling
-        # [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.
-        # models.versions/setDefault).
+        # projects.methods.versions.setDefault.
         # Corresponds to the JSON property `isDefault`
         # @return [Boolean]
         attr_accessor :is_default
@@ -2137,7 +2130,7 @@ module Google
         # For example, `admins@example.com`.
         # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
         # identifier) representing a user that has been recently deleted. For
-        # example,`alice@example.com?uid=123456789012345678901`. If the user is
+        # example, `alice@example.com?uid=123456789012345678901`. If the user is
         # recovered, this value reverts to `user:`emailid`` and the recovered user
         # retains the role in the binding.
         # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
