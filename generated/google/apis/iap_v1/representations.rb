@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Brand
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CorsSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,6 +53,12 @@ module Google
       end
       
       class CsmSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,6 +94,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IdentityAwareProxyClient
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBrandsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListIdentityAwareProxyClientsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OAuthSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -89,6 +119,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResetIdentityAwareProxyClientSecretRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +178,16 @@ module Google
         end
       end
       
+      class Brand
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :application_title, as: 'applicationTitle'
+          property :name, as: 'name'
+          property :org_internal_only, as: 'orgInternalOnly'
+          property :support_email, as: 'supportEmail'
+        end
+      end
+      
       class CorsSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -153,6 +199,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :rctoken_aud, as: 'rctokenAud'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -200,6 +252,32 @@ module Google
         end
       end
       
+      class IdentityAwareProxyClient
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :secret, as: 'secret'
+        end
+      end
+      
+      class ListBrandsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :brands, as: 'brands', class: Google::Apis::IapV1::Brand, decorator: Google::Apis::IapV1::Brand::Representation
+      
+        end
+      end
+      
+      class ListIdentityAwareProxyClientsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identity_aware_proxy_clients, as: 'identityAwareProxyClients', class: Google::Apis::IapV1::IdentityAwareProxyClient, decorator: Google::Apis::IapV1::IdentityAwareProxyClient::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class OAuthSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -214,6 +292,12 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class ResetIdentityAwareProxyClientSecretRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

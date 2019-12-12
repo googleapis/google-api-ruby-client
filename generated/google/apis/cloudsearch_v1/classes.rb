@@ -3254,7 +3254,7 @@ module Google
         # The interpretation of the query used in search. For example, queries with
         # natural language intent like "email from john" will be interpreted as
         # "from:john source:mail". This field will not be filled when the reason is
-        # NO_RESULTS_FOUND_FOR_USER_QUERY.
+        # NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.
         # Corresponds to the JSON property `interpretedQuery`
         # @return [String]
         attr_accessor :interpreted_query
@@ -4994,7 +4994,8 @@ module Google
         # @return [Google::Apis::CloudsearchV1::Schema]
         attr_accessor :schema
       
-        # If true, the request will be validated without side effects.
+        # If true, the schema will be checked for validity,
+        # but will not be registered with the data source, even if valid.
         # Corresponds to the JSON property `validateOnly`
         # @return [Boolean]
         attr_accessor :validate_only

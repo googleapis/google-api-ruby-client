@@ -1682,6 +1682,18 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations]
         attr_accessor :record_transformations
       
+        # How to handle transformation errors during de-identification. A
+        # transformation error occurs when the requested transformation is incompatible
+        # with the data. For example, trying to de-identify an IP address using a
+        # `DateShift` transformation would result in a transformation error, since date
+        # info cannot be extracted from an IP address.
+        # Information about any incompatible transformations, and how they were
+        # handled, is returned in the response as part of the
+        # `TransformationOverviews`.
+        # Corresponds to the JSON property `transformationErrorHandling`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationErrorHandling]
+        attr_accessor :transformation_error_handling
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1690,6 +1702,7 @@ module Google
         def update!(**args)
           @info_type_transformations = args[:info_type_transformations] if args.key?(:info_type_transformations)
           @record_transformations = args[:record_transformations] if args.key?(:record_transformations)
+          @transformation_error_handling = args[:transformation_error_handling] if args.key?(:transformation_error_handling)
         end
       end
       
@@ -3808,6 +3821,22 @@ module Google
         end
       end
       
+      # Skips the data without modifying it if the requested transformation would
+      # cause an error. For example, if a `DateShift` transformation were applied
+      # an an IP address, this mode would leave the IP address unchanged in the
+      # response.
+      class GooglePrivacyDlpV2LeaveUntransformed
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Message for specifying an adjustment to the likelihood of a finding as
       # part of a detection rule.
       class GooglePrivacyDlpV2LikelihoodAdjustment
@@ -5575,6 +5604,19 @@ module Google
         end
       end
       
+      # Throw an error and fail the request when a transformation error occurs.
+      class GooglePrivacyDlpV2ThrowError
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
       # portion of the value.
       class GooglePrivacyDlpV2TimePartConfig
@@ -5655,6 +5697,41 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
           @timestamp_field = args[:timestamp_field] if args.key?(:timestamp_field)
+        end
+      end
+      
+      # How to handle transformation errors during de-identification. A
+      # transformation error occurs when the requested transformation is incompatible
+      # with the data. For example, trying to de-identify an IP address using a
+      # `DateShift` transformation would result in a transformation error, since date
+      # info cannot be extracted from an IP address.
+      # Information about any incompatible transformations, and how they were
+      # handled, is returned in the response as part of the
+      # `TransformationOverviews`.
+      class GooglePrivacyDlpV2TransformationErrorHandling
+        include Google::Apis::Core::Hashable
+      
+        # Skips the data without modifying it if the requested transformation would
+        # cause an error. For example, if a `DateShift` transformation were applied
+        # an an IP address, this mode would leave the IP address unchanged in the
+        # response.
+        # Corresponds to the JSON property `leaveUntransformed`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LeaveUntransformed]
+        attr_accessor :leave_untransformed
+      
+        # Throw an error and fail the request when a transformation error occurs.
+        # Corresponds to the JSON property `throwError`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ThrowError]
+        attr_accessor :throw_error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @leave_untransformed = args[:leave_untransformed] if args.key?(:leave_untransformed)
+          @throw_error = args[:throw_error] if args.key?(:throw_error)
         end
       end
       

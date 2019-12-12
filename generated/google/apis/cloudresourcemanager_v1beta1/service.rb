@@ -290,7 +290,7 @@ module Google
         # (/billing/reference/rest/v1/projects/updateBillingInfo) method.
         # @param [Google::Apis::CloudresourcemanagerV1beta1::Project] project_object
         # @param [Boolean] use_legacy_stack
-        #   A safety hatch to opt out of the new reliable project creation process.
+        #   A now unused experiment opt-out option.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

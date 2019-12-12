@@ -628,6 +628,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2LeaveUntransformed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -964,6 +970,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2ThrowError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2TimePartConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -977,6 +989,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2TimespanConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TransformationErrorHandling
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1528,6 +1546,8 @@ module Google
           property :info_type_transformations, as: 'infoTypeTransformations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformations::Representation
       
           property :record_transformations, as: 'recordTransformations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordTransformations::Representation
+      
+          property :transformation_error_handling, as: 'transformationErrorHandling', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationErrorHandling, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TransformationErrorHandling::Representation
       
         end
       end
@@ -2144,6 +2164,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2LeaveUntransformed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2LikelihoodAdjustment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2692,6 +2718,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2ThrowError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2TimePartConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2713,6 +2745,16 @@ module Google
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
           property :timestamp_field, as: 'timestampField', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2TransformationErrorHandling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :leave_untransformed, as: 'leaveUntransformed', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LeaveUntransformed, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LeaveUntransformed::Representation
+      
+          property :throw_error, as: 'throwError', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ThrowError, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ThrowError::Representation
       
         end
       end

@@ -100,6 +100,23 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For
+        # example, `alice@example.com?uid=123456789012345678901`. If the user is
+        # recovered, this value reverts to `user:`emailid`` and the recovered user
+        # retains the role in the binding.
+        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
+        # unique identifier) representing a service account that has been recently
+        # deleted. For example,
+        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to
+        # `serviceAccount:`emailid`` and the undeleted service account retains the
+        # role in the binding.
+        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently
+        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+        # the group is recovered, this value reverts to `group:`emailid`` and the
+        # recovered group retains the role in the binding.
         # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
@@ -121,6 +138,48 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @members = args[:members] if args.key?(:members)
           @role = args[:role] if args.key?(:role)
+        end
+      end
+      
+      # OAuth brand data.
+      # NOTE: Only contains a portion of the data that describes a brand.
+      class Brand
+        include Google::Apis::Core::Hashable
+      
+        # Application name displayed on OAuth consent screen.
+        # Corresponds to the JSON property `applicationTitle`
+        # @return [String]
+        attr_accessor :application_title
+      
+        # Output only. Identifier of the brand.
+        # NOTE: GCP project number achieves the same brand identification purpose as
+        # only one brand per project can be created.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Whether the brand is only intended for usage inside the
+        # GSuite organization only.
+        # Corresponds to the JSON property `orgInternalOnly`
+        # @return [Boolean]
+        attr_accessor :org_internal_only
+        alias_method :org_internal_only?, :org_internal_only
+      
+        # Support email displayed on the OAuth consent screen.
+        # Corresponds to the JSON property `supportEmail`
+        # @return [String]
+        attr_accessor :support_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @application_title = args[:application_title] if args.key?(:application_title)
+          @name = args[:name] if args.key?(:name)
+          @org_internal_only = args[:org_internal_only] if args.key?(:org_internal_only)
+          @support_email = args[:support_email] if args.key?(:support_email)
         end
       end
       
@@ -166,6 +225,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @rctoken_aud = args[:rctoken_aud] if args.key?(:rctoken_aud)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -322,6 +400,82 @@ module Google
         end
       end
       
+      # Contains the data that describes an Identity Aware Proxy owned client.
+      class IdentityAwareProxyClient
+        include Google::Apis::Core::Hashable
+      
+        # Human-friendly name given to the OAuth client.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Output only. Unique identifier of the OAuth client.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. Client secret of the OAuth client.
+        # Corresponds to the JSON property `secret`
+        # @return [String]
+        attr_accessor :secret
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @name = args[:name] if args.key?(:name)
+          @secret = args[:secret] if args.key?(:secret)
+        end
+      end
+      
+      # Response message for ListBrands.
+      class ListBrandsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Brands existing in the project.
+        # Corresponds to the JSON property `brands`
+        # @return [Array<Google::Apis::IapV1::Brand>]
+        attr_accessor :brands
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brands = args[:brands] if args.key?(:brands)
+        end
+      end
+      
+      # Response message for ListIdentityAwareProxyClients.
+      class ListIdentityAwareProxyClientsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Clients existing in the brand.
+        # Corresponds to the JSON property `identityAwareProxyClients`
+        # @return [Array<Google::Apis::IapV1::IdentityAwareProxyClient>]
+        attr_accessor :identity_aware_proxy_clients
+      
+        # A token, which can be send as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identity_aware_proxy_clients = args[:identity_aware_proxy_clients] if args.key?(:identity_aware_proxy_clients)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Configuration for OAuth login&consent flow behavior.
       class OAuthSettings
         include Google::Apis::Core::Hashable
@@ -345,16 +499,18 @@ module Google
         end
       end
       
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources.
       # A `Policy` is a collection of `bindings`. A `binding` binds one or more
       # `members` to a single `role`. Members can be user accounts, service accounts,
       # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions (defined by IAM or configured by users). A `binding` can
-      # optionally specify a `condition`, which is a logic expression that further
-      # constrains the role binding based on attributes about the request and/or
-      # target resource.
-      # **JSON Example**
+      # permissions; each `role` can be an IAM predefined role or a user-created
+      # custom role.
+      # Optionally, a `binding` can specify a `condition`, which is a logical
+      # expression that allows access to a resource only if the expression evaluates
+      # to `true`. A condition can add constraints based on attributes of the
+      # request, the resource, or both.
+      # **JSON example:**
       # `
       # "bindings": [
       # `
@@ -372,13 +528,15 @@ module Google
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time <
-      # timestamp('2020-10-01T00:00:00.000Z')",
+      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # ",
       # `
       # `
-      # ]
+      # ],
+      # "etag": "BwWWja0YfJA=",
+      # "version": 3
       # `
-      # **YAML Example**
+      # **YAML example:**
       # bindings:
       # - members:
       # - user:mike@example.com
@@ -393,14 +551,16 @@ module Google
       # title: expirable access
       # description: Does not grant access after Sep 2020
       # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # - etag: BwWWja0YfJA=
+      # - version: 3
       # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam/docs).
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
-        # Associates a list of `members` to a `role`. Optionally may specify a
-        # `condition` that determines when binding is in effect.
-        # `bindings` with no members will result in an error.
+        # Associates a list of `members` to a `role`. Optionally, may specify a
+        # `condition` that determines how and when the `bindings` are applied. Each
+        # of the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::IapV1::Binding>]
         attr_accessor :bindings
@@ -412,25 +572,31 @@ module Google
         # conditions: An `etag` is returned in the response to `getIamPolicy`, and
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
         # Specifies the format of the policy.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Operations affecting conditional bindings must specify version 3. This can
-        # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
-        # Operations on non-conditional policies may specify any valid value or
-        # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+        # are rejected.
+        # Any operation that affects conditional role bindings must specify version
+        # `3`. This requirement applies to the following operations:
+        # * Getting a policy that includes a conditional role binding
+        # * Adding a conditional role binding to a policy
+        # * Changing a conditional role binding in a policy
+        # * Removing any role binding, with or without a condition, from a policy
+        # that includes conditions
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
+        # If a policy does not include any conditions, operations on that policy may
+        # specify any valid version or leave the field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -447,20 +613,35 @@ module Google
         end
       end
       
+      # The request sent to ResetIdentityAwareProxyClientSecret.
+      class ResetIdentityAwareProxyClientSecretRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more
         # `members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the
+        # request, the resource, or both.
+        # **JSON example:**
         # `
         # "bindings": [
         # `
@@ -478,13 +659,15 @@ module Google
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time <
-        # timestamp('2020-10-01T00:00:00.000Z')",
+        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # ",
         # `
         # `
-        # ]
+        # ],
+        # "etag": "BwWWja0YfJA=",
+        # "version": 3
         # `
-        # **YAML Example**
+        # **YAML example:**
         # bindings:
         # - members:
         # - user:mike@example.com
@@ -499,8 +682,10 @@ module Google
         # title: expirable access
         # description: Does not grant access after Sep 2020
         # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # - etag: BwWWja0YfJA=
+        # - version: 3
         # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam/docs).
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::IapV1::Policy]
         attr_accessor :policy

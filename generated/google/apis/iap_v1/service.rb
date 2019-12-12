@@ -47,6 +47,298 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Constructs a new OAuth brand for the project if one does not exists.
+        # The created brand is 'internal only', meaning that OAuth clients created
+        # under it only accept requests from users who belong to the same GSuites
+        # account as the project. The brand is created in un-reviewed status.
+        # NOTE: the 'internal_only' can be manually changed in Pantheon UI.
+        # Requires that brand does not already exists for the project.
+        # @param [String] parent
+        #   Required. GCP Project number/id under which the brand is to be created.
+        #   In the following format: projects/`project_number/id`.
+        # @param [Google::Apis::IapV1::Brand] brand_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::Brand] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::Brand]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_oauth_project_brand(parent, brand_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/oauth/{+parent}/brands', options)
+          command.request_representation = Google::Apis::IapV1::Brand::Representation
+          command.request_object = brand_object
+          command.response_representation = Google::Apis::IapV1::Brand::Representation
+          command.response_class = Google::Apis::IapV1::Brand
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the OAuth brand of the project.
+        # @param [String] name
+        #   Required. Name of the brand to be fetched.
+        #   In the following format: projects/`project_number/id`/brands/`brand`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::Brand] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::Brand]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_oauth_project_brand(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/oauth/{+name}', options)
+          command.response_representation = Google::Apis::IapV1::Brand::Representation
+          command.response_class = Google::Apis::IapV1::Brand
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing brands for the project.
+        # @param [String] parent
+        #   Required. GCP Project number/id.
+        #   In the following format: projects/`project_number/id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::ListBrandsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::ListBrandsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_oauth_project_brands(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/oauth/{+parent}/brands', options)
+          command.response_representation = Google::Apis::IapV1::ListBrandsResponse::Representation
+          command.response_class = Google::Apis::IapV1::ListBrandsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned
+        # by IAP.
+        # Requires that the brand for the project exists and that it is set for
+        # internal only use.
+        # @param [String] parent
+        #   Required. Path to create the client in.
+        #   In the following format:
+        #   projects/`project_number/id`/brands/`brand`.
+        #   The project must belong to a GSuite account.
+        # @param [Google::Apis::IapV1::IdentityAwareProxyClient] identity_aware_proxy_client_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::IdentityAwareProxyClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::IdentityAwareProxyClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_oauth_project_brand_identity_aware_proxy_client(parent, identity_aware_proxy_client_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/oauth/{+parent}/identityAwareProxyClients', options)
+          command.request_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
+          command.request_object = identity_aware_proxy_client_object
+          command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
+          command.response_class = Google::Apis::IapV1::IdentityAwareProxyClient
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret
+        # was compromised.
+        # Requires that the client is owned by IAP.
+        # @param [String] name
+        #   Required. Name of the Identity Aware Proxy client to be deleted.
+        #   In the following format:
+        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
+        #   client_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_oauth_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/oauth/{+name}', options)
+          command.response_representation = Google::Apis::IapV1::Empty::Representation
+          command.response_class = Google::Apis::IapV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves an Identity Aware Proxy (IAP) OAuth client.
+        # Requires that the client is owned by IAP.
+        # @param [String] name
+        #   Required. Name of the Identity Aware Proxy client to be fetched.
+        #   In the following format:
+        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
+        #   client_id`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::IdentityAwareProxyClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::IdentityAwareProxyClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_oauth_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/oauth/{+name}', options)
+          command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
+          command.response_class = Google::Apis::IapV1::IdentityAwareProxyClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the existing clients for the brand.
+        # @param [String] parent
+        #   Required. Full brand path.
+        #   In the following format: projects/`project_number/id`/brands/`brand`.
+        # @param [Fixnum] page_size
+        #   The maximum number of clients to return. The service may return fewer than
+        #   this value.
+        #   If unspecified, at most 100 clients will be returned.
+        #   The maximum value is 1000; values above 1000 will be coerced to 1000.
+        # @param [String] page_token
+        #   A page token, received from a previous `ListIdentityAwareProxyClients`
+        #   call. Provide this to retrieve the subsequent page.
+        #   When paginating, all other parameters provided to
+        #   `ListIdentityAwareProxyClients` must match the call that provided the page
+        #   token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_oauth_project_brand_identity_aware_proxy_clients(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/oauth/{+parent}/identityAwareProxyClients', options)
+          command.response_representation = Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse::Representation
+          command.response_class = Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for
+        # removing obsolete clients, managing the number of clients in a given
+        # project, and cleaning up after tests.
+        # Requires that the client is owned by IAP.
+        # @param [String] name
+        #   Required. Name of the Identity Aware Proxy client to that will have its
+        #   secret reset. In the following format:
+        #   projects/`project_number/id`/brands/`brand`/identityAwareProxyClients/`
+        #   client_id`.
+        # @param [Google::Apis::IapV1::ResetIdentityAwareProxyClientSecretRequest] reset_identity_aware_proxy_client_secret_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::IapV1::IdentityAwareProxyClient] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::IapV1::IdentityAwareProxyClient]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reset_oauth_project_brand_identity_aware_proxy_client_secret(name, reset_identity_aware_proxy_client_secret_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/oauth/{+name}:resetSecret', options)
+          command.request_representation = Google::Apis::IapV1::ResetIdentityAwareProxyClientSecretRequest::Representation
+          command.request_object = reset_identity_aware_proxy_client_secret_request_object
+          command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
+          command.response_class = Google::Apis::IapV1::IdentityAwareProxyClient
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the access control policy for an Identity-Aware Proxy protected
         # resource.
         # More information about managing access via IAP can be found at:

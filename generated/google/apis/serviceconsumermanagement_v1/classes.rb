@@ -3979,6 +3979,40 @@ module Google
         end
       end
       
+      # A default identity in the Identity and Access Management API.
+      class V1DefaultIdentity
+        include Google::Apis::Core::Hashable
+      
+        # The email address of the default identity.
+        # Corresponds to the JSON property `email`
+        # @return [String]
+        attr_accessor :email
+      
+        # Default identity resource name.
+        # An example name would be:
+        # `services/serviceconsumermanagement.googleapis.com/projects/123/
+        # defaultIdentity`
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The unique and stable id of the default identity.
+        # Corresponds to the JSON property `uniqueId`
+        # @return [String]
+        attr_accessor :unique_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @email = args[:email] if args.key?(:email)
+          @name = args[:name] if args.key?(:name)
+          @unique_id = args[:unique_id] if args.key?(:unique_id)
+        end
+      end
+      
       # Response message for the `DisableConsumer` method.
       # This response message is assigned to the `response` field of the returned
       # Operation when that operation is done.
@@ -4006,6 +4040,41 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Response message for the `GenerateDefaultIdentity` method.
+      # This response message is assigned to the `response` field of the returned
+      # Operation when that operation is done.
+      class V1GenerateDefaultIdentityResponse
+        include Google::Apis::Core::Hashable
+      
+        # Status of the role attachment. Under development (go/si-attach-role),
+        # currently always return ATTACH_STATUS_UNSPECIFIED)
+        # Corresponds to the JSON property `attachStatus`
+        # @return [String]
+        attr_accessor :attach_status
+      
+        # A default identity in the Identity and Access Management API.
+        # Corresponds to the JSON property `identity`
+        # @return [Google::Apis::ServiceconsumermanagementV1::V1DefaultIdentity]
+        attr_accessor :identity
+      
+        # Role attached to consumer project. Empty if not attached in this
+        # request. (Under development, currently always return empty.)
+        # Corresponds to the JSON property `role`
+        # @return [String]
+        attr_accessor :role
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attach_status = args[:attach_status] if args.key?(:attach_status)
+          @identity = args[:identity] if args.key?(:identity)
+          @role = args[:role] if args.key?(:role)
         end
       end
       

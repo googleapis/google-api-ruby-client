@@ -50,7 +50,8 @@ module Google
         
         # Creates new notes in batch.
         # @param [String] parent
-        #   The name of the project in the form of `projects/[PROJECT_ID]`, under which
+        #   Required. The name of the project in the form of `projects/[PROJECT_ID]`,
+        #   under which
         #   the notes are to be created.
         # @param [Google::Apis::ContaineranalysisV1beta1::BatchCreateNotesRequest] batch_create_notes_request_object
         # @param [String] fields
@@ -84,11 +85,12 @@ module Google
         
         # Creates a new note.
         # @param [String] parent
-        #   The name of the project in the form of `projects/[PROJECT_ID]`, under which
+        #   Required. The name of the project in the form of `projects/[PROJECT_ID]`,
+        #   under which
         #   the note is to be created.
         # @param [Google::Apis::ContaineranalysisV1beta1::Note] note_object
         # @param [String] note_id
-        #   The ID to use for this note.
+        #   Required. The ID to use for this note.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,7 +123,7 @@ module Google
         
         # Deletes the specified note.
         # @param [String] name
-        #   The name of the note in the form of
+        #   Required. The name of the note in the form of
         #   `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -152,7 +154,7 @@ module Google
         
         # Gets the specified note.
         # @param [String] name
-        #   The name of the note in the form of
+        #   Required. The name of the note in the form of
         #   `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -223,7 +225,7 @@ module Google
         
         # Lists notes for the specified project.
         # @param [String] parent
-        #   The name of the project to list notes for in the form of
+        #   Required. The name of the project to list notes for in the form of
         #   `projects/[PROJECT_ID]`.
         # @param [String] filter
         #   The filter expression.
@@ -264,7 +266,7 @@ module Google
         
         # Updates the specified note.
         # @param [String] name
-        #   The name of the note in the form of
+        #   Required. The name of the note in the form of
         #   `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         # @param [Google::Apis::ContaineranalysisV1beta1::Note] note_object
         # @param [String] update_mask
@@ -382,7 +384,7 @@ module Google
         # this method to get all occurrences across consumer projects referencing the
         # specified note.
         # @param [String] name
-        #   The name of the note to list occurrences for in the form of
+        #   Required. The name of the note to list occurrences for in the form of
         #   `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
         # @param [String] filter
         #   The filter expression.
@@ -422,7 +424,8 @@ module Google
         
         # Creates new occurrences in batch.
         # @param [String] parent
-        #   The name of the project in the form of `projects/[PROJECT_ID]`, under which
+        #   Required. The name of the project in the form of `projects/[PROJECT_ID]`,
+        #   under which
         #   the occurrences are to be created.
         # @param [Google::Apis::ContaineranalysisV1beta1::BatchCreateOccurrencesRequest] batch_create_occurrences_request_object
         # @param [String] fields
@@ -456,7 +459,8 @@ module Google
         
         # Creates a new occurrence.
         # @param [String] parent
-        #   The name of the project in the form of `projects/[PROJECT_ID]`, under which
+        #   Required. The name of the project in the form of `projects/[PROJECT_ID]`,
+        #   under which
         #   the occurrence is to be created.
         # @param [Google::Apis::ContaineranalysisV1beta1::Occurrence] occurrence_object
         # @param [String] fields
@@ -492,7 +496,7 @@ module Google
         # occurrence when the occurrence is no longer applicable for the given
         # resource.
         # @param [String] name
-        #   The name of the occurrence in the form of
+        #   Required. The name of the occurrence in the form of
         #   `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -523,7 +527,7 @@ module Google
         
         # Gets the specified occurrence.
         # @param [String] name
-        #   The name of the occurrence in the form of
+        #   Required. The name of the occurrence in the form of
         #   `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -595,7 +599,7 @@ module Google
         # Gets the note attached to the specified occurrence. Consumer projects can
         # use this method to get a note that belongs to a provider project.
         # @param [String] name
-        #   The name of the occurrence in the form of
+        #   Required. The name of the occurrence in the form of
         #   `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -626,7 +630,8 @@ module Google
         
         # Gets a summary of the number and severity of occurrences.
         # @param [String] parent
-        #   The name of the project to get a vulnerability summary for in the form of
+        #   Required. The name of the project to get a vulnerability summary for in the
+        #   form of
         #   `projects/[PROJECT_ID]`.
         # @param [String] filter
         #   The filter expression.
@@ -660,7 +665,7 @@ module Google
         
         # Lists occurrences for the specified project.
         # @param [String] parent
-        #   The name of the project to list occurrences for in the form of
+        #   Required. The name of the project to list occurrences for in the form of
         #   `projects/[PROJECT_ID]`.
         # @param [String] filter
         #   The filter expression.
@@ -701,7 +706,7 @@ module Google
         
         # Updates the specified occurrence.
         # @param [String] name
-        #   The name of the occurrence in the form of
+        #   Required. The name of the occurrence in the form of
         #   `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
         # @param [Google::Apis::ContaineranalysisV1beta1::Occurrence] occurrence_object
         # @param [String] update_mask
@@ -817,7 +822,7 @@ module Google
         
         # Gets the specified scan configuration.
         # @param [String] name
-        #   The name of the scan configuration in the form of
+        #   Required. The name of the scan configuration in the form of
         #   `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -848,10 +853,11 @@ module Google
         
         # Lists scan configurations for the specified project.
         # @param [String] parent
-        #   The name of the project to list scan configurations for in the form of
+        #   Required. The name of the project to list scan configurations for in the form
+        #   of
         #   `projects/[PROJECT_ID]`.
         # @param [String] filter
-        #   The filter expression.
+        #   Required. The filter expression.
         # @param [Fixnum] page_size
         #   The number of scan configs to return in the list.
         # @param [String] page_token
@@ -888,7 +894,7 @@ module Google
         
         # Updates the specified scan configuration.
         # @param [String] name
-        #   The name of the scan configuration in the form of
+        #   Required. The name of the scan configuration in the form of
         #   `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
         # @param [Google::Apis::ContaineranalysisV1beta1::ScanConfig] scan_config_object
         # @param [String] fields

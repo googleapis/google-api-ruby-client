@@ -496,6 +496,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class V1DefaultIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class V1DisableConsumerResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -503,6 +509,12 @@ module Google
       end
       
       class V1EnableConsumerResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class V1GenerateDefaultIdentityResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1340,6 +1352,15 @@ module Google
         end
       end
       
+      class V1DefaultIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :email, as: 'email'
+          property :name, as: 'name'
+          property :unique_id, as: 'uniqueId'
+        end
+      end
+      
       class V1DisableConsumerResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1349,6 +1370,16 @@ module Google
       class V1EnableConsumerResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class V1GenerateDefaultIdentityResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attach_status, as: 'attachStatus'
+          property :identity, as: 'identity', class: Google::Apis::ServiceconsumermanagementV1::V1DefaultIdentity, decorator: Google::Apis::ServiceconsumermanagementV1::V1DefaultIdentity::Representation
+      
+          property :role, as: 'role'
         end
       end
       
