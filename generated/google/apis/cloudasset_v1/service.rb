@@ -47,6 +47,180 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Creates a feed in a parent project/folder/organization to listen to its
+        # asset updates.
+        # @param [String] parent
+        #   Required. The name of the project/folder/organization where this feed
+        #   should be created in. It can only be an organization number (such as
+        #   "organizations/123"), a folder number (such as "folders/123"), a project ID
+        #   (such as "projects/my-project-id")", or a project number (such as
+        #   "projects/12345").
+        # @param [Google::Apis::CloudassetV1::CreateFeedRequest] create_feed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Feed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Feed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_feed(parent, create_feed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/feeds', options)
+          command.request_representation = Google::Apis::CloudassetV1::CreateFeedRequest::Representation
+          command.request_object = create_feed_request_object
+          command.response_representation = Google::Apis::CloudassetV1::Feed::Representation
+          command.response_class = Google::Apis::CloudassetV1::Feed
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an asset feed.
+        # @param [String] name
+        #   Required. The name of the feed and it must be in the format of:
+        #   projects/project_number/feeds/feed_id
+        #   folders/folder_number/feeds/feed_id
+        #   organizations/organization_number/feeds/feed_id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_feed(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudassetV1::Empty::Representation
+          command.response_class = Google::Apis::CloudassetV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets details about an asset feed.
+        # @param [String] name
+        #   Required. The name of the Feed and it must be in the format of:
+        #   projects/project_number/feeds/feed_id
+        #   folders/folder_number/feeds/feed_id
+        #   organizations/organization_number/feeds/feed_id
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Feed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Feed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_feed(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::CloudassetV1::Feed::Representation
+          command.response_class = Google::Apis::CloudassetV1::Feed
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all asset feeds in a parent project/folder/organization.
+        # @param [String] parent
+        #   Required. The parent project/folder/organization whose feeds are to be
+        #   listed. It can only be using project/folder/organization number (such as
+        #   "folders/12345")", or a project ID (such as "projects/my-project-id").
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::ListFeedsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::ListFeedsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_feeds(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/feeds', options)
+          command.response_representation = Google::Apis::CloudassetV1::ListFeedsResponse::Representation
+          command.response_class = Google::Apis::CloudassetV1::ListFeedsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an asset feed configuration.
+        # @param [String] name
+        #   Required. The format will be
+        #   projects/`project_number`/feeds/`client-assigned_feed_identifier` or
+        #   folders/`folder_number`/feeds/`client-assigned_feed_identifier` or
+        #   organizations/`organization_number`/feeds/`client-assigned_feed_identifier`
+        #   The client-assigned feed identifier must be unique within the parent
+        #   project/folder/organization.
+        # @param [Google::Apis::CloudassetV1::UpdateFeedRequest] update_feed_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudassetV1::Feed] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudassetV1::Feed]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_feed(name, update_feed_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::CloudassetV1::UpdateFeedRequest::Representation
+          command.request_object = update_feed_request_object
+          command.response_representation = Google::Apis::CloudassetV1::Feed::Representation
+          command.response_class = Google::Apis::CloudassetV1::Feed
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets the latest state of a long-running operation.  Clients can use this
         # method to poll the operation result at intervals as recommended by the API
         # service.

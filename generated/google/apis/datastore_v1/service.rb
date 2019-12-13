@@ -51,7 +51,7 @@ module Google
         # Allocates IDs for the given keys, which is useful for referencing an entity
         # before it is inserted.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::AllocateIdsRequest] allocate_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -84,7 +84,7 @@ module Google
         
         # Begins a new transaction.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::BeginTransactionRequest] begin_transaction_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -118,7 +118,7 @@ module Google
         # Commits a transaction, optionally creating, deleting or modifying some
         # entities.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::CommitRequest] commit_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -158,7 +158,7 @@ module Google
         # cancelled before completion it may leave partial data behind in Google
         # Cloud Storage.
         # @param [String] project_id
-        #   Project ID against which to make the request.
+        #   Required. Project ID against which to make the request.
         # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ExportEntitiesRequest] google_datastore_admin_v1_export_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -195,7 +195,7 @@ module Google
         # created. If an ImportEntities operation is cancelled, it is possible
         # that a subset of the data has already been imported to Cloud Datastore.
         # @param [String] project_id
-        #   Project ID against which to make the request.
+        #   Required. Project ID against which to make the request.
         # @param [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1ImportEntitiesRequest] google_datastore_admin_v1_import_entities_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -228,7 +228,7 @@ module Google
         
         # Looks up entities by key.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::LookupRequest] lookup_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -260,9 +260,9 @@ module Google
         end
         
         # Prevents the supplied keys' IDs from being auto-allocated by Cloud
-        # Datastore. Used for imports only; other workloads are not supported.
+        # Datastore.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::ReserveIdsRequest] reserve_ids_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -295,7 +295,7 @@ module Google
         
         # Rolls back a transaction.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::RollbackRequest] rollback_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -328,7 +328,7 @@ module Google
         
         # Queries for entities.
         # @param [String] project_id
-        #   The ID of the project against which to make the request.
+        #   Required. The ID of the project against which to make the request.
         # @param [Google::Apis::DatastoreV1::RunQueryRequest] run_query_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

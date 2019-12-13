@@ -58,6 +58,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateFeedRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportAssetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +77,18 @@ module Google
       end
       
       class Expr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Feed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FeedOutputConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListFeedsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -161,6 +191,12 @@ module Google
       end
       
       class Policy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubDestination
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -185,6 +221,12 @@ module Google
       end
       
       class TimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpdateFeedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -255,6 +297,21 @@ module Google
         end
       end
       
+      class CreateFeedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feed, as: 'feed', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
+      
+          property :feed_id, as: 'feedId'
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ExportAssetsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -273,6 +330,26 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class Feed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :asset_names, as: 'assetNames'
+          collection :asset_types, as: 'assetTypes'
+          property :content_type, as: 'contentType'
+          property :feed_output_config, as: 'feedOutputConfig', class: Google::Apis::CloudassetV1::FeedOutputConfig, decorator: Google::Apis::CloudassetV1::FeedOutputConfig::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
+      class FeedOutputConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :pubsub_destination, as: 'pubsubDestination', class: Google::Apis::CloudassetV1::PubsubDestination, decorator: Google::Apis::CloudassetV1::PubsubDestination::Representation
+      
         end
       end
       
@@ -415,6 +492,14 @@ module Google
         end
       end
       
+      class ListFeedsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :feeds, as: 'feeds', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
+      
+        end
+      end
+      
       class Operation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -446,6 +531,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PubsubDestination
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :topic, as: 'topic'
         end
       end
       
@@ -486,6 +578,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class UpdateFeedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :feed, as: 'feed', class: Google::Apis::CloudassetV1::Feed, decorator: Google::Apis::CloudassetV1::Feed::Representation
+      
+          property :update_mask, as: 'updateMask'
         end
       end
     end

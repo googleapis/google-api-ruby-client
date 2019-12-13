@@ -72,6 +72,39 @@ module Google
         end
       end
       
+      # Describes where in a file an expression is found and what it was
+      # evaluated to over the course of its use.
+      class ExpressionReport
+        include Google::Apis::Core::Hashable
+      
+        # Subexpressions
+        # Corresponds to the JSON property `children`
+        # @return [Array<Google::Apis::FirebaserulesV1::ExpressionReport>]
+        attr_accessor :children
+      
+        # Position in the `Source` content including its line, column number, and an
+        # index of the `File` in the `Source` message. Used for debug purposes.
+        # Corresponds to the JSON property `sourcePosition`
+        # @return [Google::Apis::FirebaserulesV1::SourcePosition]
+        attr_accessor :source_position
+      
+        # Values that this expression evaluated to when encountered.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::FirebaserulesV1::ValueCount>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @children = args[:children] if args.key?(:children)
+          @source_position = args[:source_position] if args.key?(:source_position)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # `File` containing source content.
       class File
         include Google::Apis::Core::Hashable
@@ -525,6 +558,11 @@ module Google
         # @return [String]
         attr_accessor :expectation
       
+        # Specifies what should be included in the response.
+        # Corresponds to the JSON property `expressionReportLevel`
+        # @return [String]
+        attr_accessor :expression_report_level
+      
         # Optional function mocks for service-defined functions. If not set, any
         # service defined function is expected to return an error, which may or may
         # not influence the test outcome.
@@ -571,6 +609,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @expectation = args[:expectation] if args.key?(:expectation)
+          @expression_report_level = args[:expression_report_level] if args.key?(:expression_report_level)
           @function_mocks = args[:function_mocks] if args.key?(:function_mocks)
           @path_encoding = args[:path_encoding] if args.key?(:path_encoding)
           @request = args[:request] if args.key?(:request)
@@ -597,6 +636,15 @@ module Google
         # Corresponds to the JSON property `errorPosition`
         # @return [Google::Apis::FirebaserulesV1::SourcePosition]
         attr_accessor :error_position
+      
+        # The mapping from expression in the ruleset AST to the values they were
+        # evaluated to. Partially-nested to mirror AST structure. Note that this
+        # field is actually tracking expressions and not permission statements in
+        # contrast to the "visited_expressions" field above. Literal expressions
+        # are omitted.
+        # Corresponds to the JSON property `expressionReports`
+        # @return [Array<Google::Apis::FirebaserulesV1::ExpressionReport>]
+        attr_accessor :expression_reports
       
         # The set of function calls made to service-defined methods.
         # Function calls are included in the order in which they are encountered
@@ -633,6 +681,7 @@ module Google
         def update!(**args)
           @debug_messages = args[:debug_messages] if args.key?(:debug_messages)
           @error_position = args[:error_position] if args.key?(:error_position)
+          @expression_reports = args[:expression_reports] if args.key?(:expression_reports)
           @function_calls = args[:function_calls] if args.key?(:function_calls)
           @state = args[:state] if args.key?(:state)
           @visited_expressions = args[:visited_expressions] if args.key?(:visited_expressions)
@@ -740,6 +789,32 @@ module Google
         def update!(**args)
           @release = args[:release] if args.key?(:release)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # Tuple for how many times an Expression was evaluated to a particular
+      # ExpressionValue.
+      class ValueCount
+        include Google::Apis::Core::Hashable
+      
+        # The amount of times that expression returned.
+        # Corresponds to the JSON property `count`
+        # @return [Fixnum]
+        attr_accessor :count
+      
+        # The return value of the expression
+        # Corresponds to the JSON property `value`
+        # @return [Object]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @count = args[:count] if args.key?(:count)
+          @value = args[:value] if args.key?(:value)
         end
       end
       

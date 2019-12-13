@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/fusiontables_v1/service.rb'
-require 'google/apis/fusiontables_v1/classes.rb'
-require 'google/apis/fusiontables_v1/representations.rb'
+require 'google/apis/policytroubleshooter_v1/service.rb'
+require 'google/apis/policytroubleshooter_v1/classes.rb'
+require 'google/apis/policytroubleshooter_v1/representations.rb'
 
 module Google
   module Apis
-    # Fusion Tables API
+    # Policy Troubleshooter API
     #
-    # API for working with Fusion Tables data.
+    # 
     #
-    # @see https://developers.google.com/fusiontables
-    module FusiontablesV1
+    # @see https://cloud.google.com/iam/
+    module PolicytroubleshooterV1
       VERSION = 'V1'
-      REVISION = '20171117'
+      REVISION = '20191206'
 
-      # Manage your Fusion Tables
-      AUTH_FUSIONTABLES = 'https://www.googleapis.com/auth/fusiontables'
-
-      # View your Fusion Tables
-      AUTH_FUSIONTABLES_READONLY = 'https://www.googleapis.com/auth/fusiontables.readonly'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

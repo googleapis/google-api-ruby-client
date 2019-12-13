@@ -20,9 +20,51 @@ require 'google/apis/errors'
 
 module Google
   module Apis
-    module FirebaserulesV1
+    module SecretmanagerV1beta1
       
-      class Arg
+      class AccessSecretVersionResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddSecretVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AuditLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Automatic
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Binding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DestroySecretVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DisableSecretVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -34,368 +76,311 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ExpressionReport
+      class EnableSecretVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class File
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionCall
+      class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FunctionMock
+      class ListSecretVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GetReleaseExecutableResponse
+      class ListSecretsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Issue
+      class Location
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListReleasesResponse
+      class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListRulesetsResponse
+      class Replica
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Metadata
+      class Replication
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Release
+      class Secret
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Result
+      class SecretPayload
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Ruleset
+      class SecretVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Source
+      class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SourcePosition
+      class TestIamPermissionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestCase
+      class TestIamPermissionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestResult
+      class UserManaged
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TestRulesetRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestRulesetResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TestSuite
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class UpdateReleaseRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ValueCount
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class VisitedExpression
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Arg
+      class AccessSecretVersionResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :any_value, as: 'anyValue', class: Google::Apis::FirebaserulesV1::Empty, decorator: Google::Apis::FirebaserulesV1::Empty::Representation
-      
-          property :exact_value, as: 'exactValue'
-        end
-      end
-      
-      class Empty
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class ExpressionReport
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :children, as: 'children', class: Google::Apis::FirebaserulesV1::ExpressionReport, decorator: Google::Apis::FirebaserulesV1::ExpressionReport::Representation
-      
-          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
-      
-          collection :values, as: 'values', class: Google::Apis::FirebaserulesV1::ValueCount, decorator: Google::Apis::FirebaserulesV1::ValueCount::Representation
-      
-        end
-      end
-      
-      class File
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :content, as: 'content'
-          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :name, as: 'name'
+          property :payload, as: 'payload', class: Google::Apis::SecretmanagerV1beta1::SecretPayload, decorator: Google::Apis::SecretmanagerV1beta1::SecretPayload::Representation
+      
         end
       end
       
-      class FunctionCall
+      class AddSecretVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args'
-          property :function, as: 'function'
+          property :payload, as: 'payload', class: Google::Apis::SecretmanagerV1beta1::SecretPayload, decorator: Google::Apis::SecretmanagerV1beta1::SecretPayload::Representation
+      
         end
       end
       
-      class FunctionMock
+      class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :args, as: 'args', class: Google::Apis::FirebaserulesV1::Arg, decorator: Google::Apis::FirebaserulesV1::Arg::Representation
+          collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::SecretmanagerV1beta1::AuditLogConfig, decorator: Google::Apis::SecretmanagerV1beta1::AuditLogConfig::Representation
       
-          property :function, as: 'function'
-          property :result, as: 'result', class: Google::Apis::FirebaserulesV1::Result, decorator: Google::Apis::FirebaserulesV1::Result::Representation
-      
+          property :service, as: 'service'
         end
       end
       
-      class GetReleaseExecutableResponse
+      class AuditLogConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :executable, :base64 => true, as: 'executable'
-          property :executable_version, as: 'executableVersion'
-          property :language, as: 'language'
-          property :ruleset_name, as: 'rulesetName'
-          property :sync_time, as: 'syncTime'
-          property :update_time, as: 'updateTime'
+          collection :exempted_members, as: 'exemptedMembers'
+          property :log_type, as: 'logType'
         end
       end
       
-      class Issue
+      class Automatic
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Binding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :condition, as: 'condition', class: Google::Apis::SecretmanagerV1beta1::Expr, decorator: Google::Apis::SecretmanagerV1beta1::Expr::Representation
+      
+          collection :members, as: 'members'
+          property :role, as: 'role'
+        end
+      end
+      
+      class DestroySecretVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class DisableSecretVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class EnableSecretVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          property :severity, as: 'severity'
-          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
-      
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       
-      class ListReleasesResponse
+      class ListLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :locations, as: 'locations', class: Google::Apis::SecretmanagerV1beta1::Location, decorator: Google::Apis::SecretmanagerV1beta1::Location::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListSecretVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
-          collection :releases, as: 'releases', class: Google::Apis::FirebaserulesV1::Release, decorator: Google::Apis::FirebaserulesV1::Release::Representation
+          property :total_size, as: 'totalSize'
+          collection :versions, as: 'versions', class: Google::Apis::SecretmanagerV1beta1::SecretVersion, decorator: Google::Apis::SecretmanagerV1beta1::SecretVersion::Representation
       
         end
       end
       
-      class ListRulesetsResponse
+      class ListSecretsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
-          collection :rulesets, as: 'rulesets', class: Google::Apis::FirebaserulesV1::Ruleset, decorator: Google::Apis::FirebaserulesV1::Ruleset::Representation
+          collection :secrets, as: 'secrets', class: Google::Apis::SecretmanagerV1beta1::Secret, decorator: Google::Apis::SecretmanagerV1beta1::Secret::Representation
       
+          property :total_size, as: 'totalSize'
         end
       end
       
-      class Metadata
+      class Location
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :services, as: 'services'
+          property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
+          property :location_id, as: 'locationId'
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
         end
       end
       
-      class Release
+      class Policy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :audit_configs, as: 'auditConfigs', class: Google::Apis::SecretmanagerV1beta1::AuditConfig, decorator: Google::Apis::SecretmanagerV1beta1::AuditConfig::Representation
+      
+          collection :bindings, as: 'bindings', class: Google::Apis::SecretmanagerV1beta1::Binding, decorator: Google::Apis::SecretmanagerV1beta1::Binding::Representation
+      
+          property :etag, :base64 => true, as: 'etag'
+          property :version, as: 'version'
+        end
+      end
+      
+      class Replica
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :location, as: 'location'
+        end
+      end
+      
+      class Replication
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :automatic, as: 'automatic', class: Google::Apis::SecretmanagerV1beta1::Automatic, decorator: Google::Apis::SecretmanagerV1beta1::Automatic::Representation
+      
+          property :user_managed, as: 'userManaged', class: Google::Apis::SecretmanagerV1beta1::UserManaged, decorator: Google::Apis::SecretmanagerV1beta1::UserManaged::Representation
+      
+        end
+      end
+      
+      class Secret
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          hash :labels, as: 'labels'
           property :name, as: 'name'
-          property :ruleset_name, as: 'rulesetName'
-          property :update_time, as: 'updateTime'
+          property :replication, as: 'replication', class: Google::Apis::SecretmanagerV1beta1::Replication, decorator: Google::Apis::SecretmanagerV1beta1::Replication::Representation
+      
         end
       end
       
-      class Result
+      class SecretPayload
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :undefined, as: 'undefined', class: Google::Apis::FirebaserulesV1::Empty, decorator: Google::Apis::FirebaserulesV1::Empty::Representation
-      
-          property :value, as: 'value'
+          property :data, :base64 => true, as: 'data'
         end
       end
       
-      class Ruleset
+      class SecretVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
-          property :metadata, as: 'metadata', class: Google::Apis::FirebaserulesV1::Metadata, decorator: Google::Apis::FirebaserulesV1::Metadata::Representation
-      
+          property :destroy_time, as: 'destroyTime'
           property :name, as: 'name'
-          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
-      
-        end
-      end
-      
-      class Source
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :files, as: 'files', class: Google::Apis::FirebaserulesV1::File, decorator: Google::Apis::FirebaserulesV1::File::Representation
-      
-        end
-      end
-      
-      class SourcePosition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :column, as: 'column'
-          property :file_name, as: 'fileName'
-          property :line, as: 'line'
-        end
-      end
-      
-      class TestCase
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :expectation, as: 'expectation'
-          property :expression_report_level, as: 'expressionReportLevel'
-          collection :function_mocks, as: 'functionMocks', class: Google::Apis::FirebaserulesV1::FunctionMock, decorator: Google::Apis::FirebaserulesV1::FunctionMock::Representation
-      
-          property :path_encoding, as: 'pathEncoding'
-          property :request, as: 'request'
-          property :resource, as: 'resource'
-        end
-      end
-      
-      class TestResult
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :debug_messages, as: 'debugMessages'
-          property :error_position, as: 'errorPosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
-      
-          collection :expression_reports, as: 'expressionReports', class: Google::Apis::FirebaserulesV1::ExpressionReport, decorator: Google::Apis::FirebaserulesV1::ExpressionReport::Representation
-      
-          collection :function_calls, as: 'functionCalls', class: Google::Apis::FirebaserulesV1::FunctionCall, decorator: Google::Apis::FirebaserulesV1::FunctionCall::Representation
-      
           property :state, as: 'state'
-          collection :visited_expressions, as: 'visitedExpressions', class: Google::Apis::FirebaserulesV1::VisitedExpression, decorator: Google::Apis::FirebaserulesV1::VisitedExpression::Representation
-      
         end
       end
       
-      class TestRulesetRequest
+      class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source', class: Google::Apis::FirebaserulesV1::Source, decorator: Google::Apis::FirebaserulesV1::Source::Representation
-      
-          property :test_suite, as: 'testSuite', class: Google::Apis::FirebaserulesV1::TestSuite, decorator: Google::Apis::FirebaserulesV1::TestSuite::Representation
-      
-        end
-      end
-      
-      class TestRulesetResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :issues, as: 'issues', class: Google::Apis::FirebaserulesV1::Issue, decorator: Google::Apis::FirebaserulesV1::Issue::Representation
-      
-          collection :test_results, as: 'testResults', class: Google::Apis::FirebaserulesV1::TestResult, decorator: Google::Apis::FirebaserulesV1::TestResult::Representation
-      
-        end
-      end
-      
-      class TestSuite
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :test_cases, as: 'testCases', class: Google::Apis::FirebaserulesV1::TestCase, decorator: Google::Apis::FirebaserulesV1::TestCase::Representation
-      
-        end
-      end
-      
-      class UpdateReleaseRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :release, as: 'release', class: Google::Apis::FirebaserulesV1::Release, decorator: Google::Apis::FirebaserulesV1::Release::Representation
+          property :policy, as: 'policy', class: Google::Apis::SecretmanagerV1beta1::Policy, decorator: Google::Apis::SecretmanagerV1beta1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
         end
       end
       
-      class ValueCount
+      class TestIamPermissionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
-          property :value, as: 'value'
+          collection :permissions, as: 'permissions'
         end
       end
       
-      class VisitedExpression
+      class TestIamPermissionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :source_position, as: 'sourcePosition', class: Google::Apis::FirebaserulesV1::SourcePosition, decorator: Google::Apis::FirebaserulesV1::SourcePosition::Representation
+          collection :permissions, as: 'permissions'
+        end
+      end
       
-          property :value, as: 'value'
+      class UserManaged
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :replicas, as: 'replicas', class: Google::Apis::SecretmanagerV1beta1::Replica, decorator: Google::Apis::SecretmanagerV1beta1::Replica::Representation
+      
         end
       end
     end

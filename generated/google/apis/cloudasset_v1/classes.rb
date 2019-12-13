@@ -409,6 +409,55 @@ module Google
         end
       end
       
+      # Create asset feed request.
+      class CreateFeedRequest
+        include Google::Apis::Core::Hashable
+      
+        # An asset feed used to export asset updates to a destinations.
+        # An asset feed filter controls what updates are exported.
+        # The asset feed must be created within a project, organization, or
+        # folder. Supported destinations are:
+        # Cloud Pub/Sub topics.
+        # Corresponds to the JSON property `feed`
+        # @return [Google::Apis::CloudassetV1::Feed]
+        attr_accessor :feed
+      
+        # Required. This is the client-assigned asset feed identifier and it needs to
+        # be unique under a specific parent project/folder/organization.
+        # Corresponds to the JSON property `feedId`
+        # @return [String]
+        attr_accessor :feed_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feed = args[:feed] if args.key?(:feed)
+          @feed_id = args[:feed_id] if args.key?(:feed_id)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Export asset request.
       class ExportAssetsRequest
         include Google::Apis::Core::Hashable
@@ -499,6 +548,93 @@ module Google
           @expression = args[:expression] if args.key?(:expression)
           @location = args[:location] if args.key?(:location)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # An asset feed used to export asset updates to a destinations.
+      # An asset feed filter controls what updates are exported.
+      # The asset feed must be created within a project, organization, or
+      # folder. Supported destinations are:
+      # Cloud Pub/Sub topics.
+      class Feed
+        include Google::Apis::Core::Hashable
+      
+        # A list of the full names of the assets to receive updates. You must specify
+        # either or both of asset_names and asset_types. Only asset updates matching
+        # specified asset_names and asset_types are exported to the feed. For
+        # example:
+        # `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
+        # instance1`.
+        # See [Resource
+        # Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+        # for more info.
+        # Corresponds to the JSON property `assetNames`
+        # @return [Array<String>]
+        attr_accessor :asset_names
+      
+        # A list of types of the assets to receive updates. You must specify either
+        # or both of asset_names and asset_types. Only asset updates matching
+        # specified asset_names and asset_types are exported to the feed.
+        # For example:
+        # "compute.googleapis.com/Disk" See [Introduction to Cloud Asset
+        # Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-
+        # inventory/overview)
+        # for all supported asset types.
+        # Corresponds to the JSON property `assetTypes`
+        # @return [Array<String>]
+        attr_accessor :asset_types
+      
+        # Asset content type. If not specified, no content but the asset name and
+        # type will be returned.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
+        # Output configuration for asset feed destination.
+        # Corresponds to the JSON property `feedOutputConfig`
+        # @return [Google::Apis::CloudassetV1::FeedOutputConfig]
+        attr_accessor :feed_output_config
+      
+        # Required. The format will be
+        # projects/`project_number`/feeds/`client-assigned_feed_identifier` or
+        # folders/`folder_number`/feeds/`client-assigned_feed_identifier` or
+        # organizations/`organization_number`/feeds/`client-assigned_feed_identifier`
+        # The client-assigned feed identifier must be unique within the parent
+        # project/folder/organization.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_names = args[:asset_names] if args.key?(:asset_names)
+          @asset_types = args[:asset_types] if args.key?(:asset_types)
+          @content_type = args[:content_type] if args.key?(:content_type)
+          @feed_output_config = args[:feed_output_config] if args.key?(:feed_output_config)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # Output configuration for asset feed destination.
+      class FeedOutputConfig
+        include Google::Apis::Core::Hashable
+      
+        # A Cloud Pubsub destination.
+        # Corresponds to the JSON property `pubsubDestination`
+        # @return [Google::Apis::CloudassetV1::PubsubDestination]
+        attr_accessor :pubsub_destination
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @pubsub_destination = args[:pubsub_destination] if args.key?(:pubsub_destination)
         end
       end
       
@@ -1301,6 +1437,25 @@ module Google
         end
       end
       
+      # 
+      class ListFeedsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of feeds.
+        # Corresponds to the JSON property `feeds`
+        # @return [Array<Google::Apis::CloudassetV1::Feed>]
+        attr_accessor :feeds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feeds = args[:feeds] if args.key?(:feeds)
+        end
+      end
+      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation
@@ -1510,6 +1665,26 @@ module Google
         end
       end
       
+      # A Cloud Pubsub destination.
+      class PubsubDestination
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Cloud Pub/Sub topic to publish to.
+        # For example: `projects/PROJECT_ID/topics/TOPIC_ID`.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
       # Representation of a cloud resource.
       class Resource
         include Google::Apis::Core::Hashable
@@ -1674,6 +1849,37 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Update asset feed request.
+      class UpdateFeedRequest
+        include Google::Apis::Core::Hashable
+      
+        # An asset feed used to export asset updates to a destinations.
+        # An asset feed filter controls what updates are exported.
+        # The asset feed must be created within a project, organization, or
+        # folder. Supported destinations are:
+        # Cloud Pub/Sub topics.
+        # Corresponds to the JSON property `feed`
+        # @return [Google::Apis::CloudassetV1::Feed]
+        attr_accessor :feed
+      
+        # Required. Only updates the `feed` fields indicated by this mask.
+        # The field mask must not be empty, and it must not contain fields that
+        # are immutable or only set by the server.
+        # Corresponds to the JSON property `updateMask`
+        # @return [String]
+        attr_accessor :update_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @feed = args[:feed] if args.key?(:feed)
+          @update_mask = args[:update_mask] if args.key?(:update_mask)
         end
       end
     end

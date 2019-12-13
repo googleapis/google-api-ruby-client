@@ -26,7 +26,7 @@ module Google
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
       
-        # A list of keys with incomplete key paths for which to allocate IDs.
+        # Required. A list of keys with incomplete key paths for which to allocate IDs.
         # No key may be reserved/read-only.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1beta3::Key>]
@@ -1051,7 +1051,7 @@ module Google
       class LookupRequest
         include Google::Apis::Core::Hashable
       
-        # Keys of entities to look up.
+        # Required. Keys of entities to look up.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1beta3::Key>]
         attr_accessor :keys
@@ -1602,7 +1602,8 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
-        # A list of keys with complete key paths whose numeric IDs should not be
+        # Required. A list of keys with complete key paths whose numeric IDs should not
+        # be
         # auto-allocated.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1beta3::Key>]
@@ -1636,7 +1637,7 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # The transaction identifier, returned by a call to
+        # Required. The transaction identifier, returned by a call to
         # Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.

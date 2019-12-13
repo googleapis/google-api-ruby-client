@@ -26,7 +26,7 @@ module Google
       class AllocateIdsRequest
         include Google::Apis::Core::Hashable
       
-        # A list of keys with incomplete key paths for which to allocate IDs.
+        # Required. A list of keys with incomplete key paths for which to allocate IDs.
         # No key may be reserved/read-only.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
@@ -519,7 +519,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Location for the export metadata and data files.
+        # Required. Location for the export metadata and data files.
         # The full resource URL of the external storage location. Currently, only
         # Google Cloud Storage is supported. So output_url_prefix should be of the
         # form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
@@ -654,7 +654,8 @@ module Google
         # @return [Google::Apis::DatastoreV1::GoogleDatastoreAdminV1EntityFilter]
         attr_accessor :entity_filter
       
-        # The full resource URL of the external storage location. Currently, only
+        # Required. The full resource URL of the external storage location. Currently,
+        # only
         # Google Cloud Storage is supported. So input_url should be of the form:
         # `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where
         # `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is
@@ -692,38 +693,32 @@ module Google
       class GoogleDatastoreAdminV1Index
         include Google::Apis::Core::Hashable
       
-        # The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
-        # Required.
+        # Required. The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.
         # Corresponds to the JSON property `ancestor`
         # @return [String]
         attr_accessor :ancestor
       
-        # The resource ID of the index.
-        # Output only.
+        # Output only. The resource ID of the index.
         # Corresponds to the JSON property `indexId`
         # @return [String]
         attr_accessor :index_id
       
-        # The entity kind to which this index applies.
-        # Required.
+        # Required. The entity kind to which this index applies.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Project ID.
-        # Output only.
+        # Output only. Project ID.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # An ordered sequence of property names and their index attributes.
-        # Required.
+        # Required. An ordered sequence of property names and their index attributes.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::DatastoreV1::GoogleDatastoreAdminV1IndexedProperty>]
         attr_accessor :properties
       
-        # The state of the index.
-        # Output only.
+        # Output only. The state of the index.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -778,14 +773,12 @@ module Google
       class GoogleDatastoreAdminV1IndexedProperty
         include Google::Apis::Core::Hashable
       
-        # The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
-        # Required.
+        # Required. The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.
         # Corresponds to the JSON property `direction`
         # @return [String]
         attr_accessor :direction
       
-        # The property name to index.
-        # Required.
+        # Required. The property name to index.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1384,7 +1377,7 @@ module Google
       class LookupRequest
         include Google::Apis::Core::Hashable
       
-        # Keys of entities to look up.
+        # Required. Keys of entities to look up.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
         attr_accessor :keys
@@ -1935,7 +1928,8 @@ module Google
         # @return [String]
         attr_accessor :database_id
       
-        # A list of keys with complete key paths whose numeric IDs should not be
+        # Required. A list of keys with complete key paths whose numeric IDs should not
+        # be
         # auto-allocated.
         # Corresponds to the JSON property `keys`
         # @return [Array<Google::Apis::DatastoreV1::Key>]
@@ -1969,7 +1963,7 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # The transaction identifier, returned by a call to
+        # Required. The transaction identifier, returned by a call to
         # Datastore.BeginTransaction.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.

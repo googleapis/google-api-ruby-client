@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExternalProtectionLevelOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImportCryptoKeyVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -319,6 +325,8 @@ module Google
           property :create_time, as: 'createTime'
           property :destroy_event_time, as: 'destroyEventTime'
           property :destroy_time, as: 'destroyTime'
+          property :external_protection_level_options, as: 'externalProtectionLevelOptions', class: Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions, decorator: Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions::Representation
+      
           property :generate_time, as: 'generateTime'
           property :import_failure_reason, as: 'importFailureReason'
           property :import_job, as: 'importJob'
@@ -390,6 +398,13 @@ module Google
           property :expression, as: 'expression'
           property :location, as: 'location'
           property :title, as: 'title'
+        end
+      end
+      
+      class ExternalProtectionLevelOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :external_key_uri, as: 'externalKeyUri'
         end
       end
       

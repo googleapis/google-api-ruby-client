@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/fusiontables_v2/service.rb'
-require 'google/apis/fusiontables_v2/classes.rb'
-require 'google/apis/fusiontables_v2/representations.rb'
+require 'google/apis/secretmanager_v1beta1/service.rb'
+require 'google/apis/secretmanager_v1beta1/classes.rb'
+require 'google/apis/secretmanager_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Fusion Tables API
+    # Secret Manager API
     #
-    # API for working with Fusion Tables data.
+    # Stores, manages, and secures access to application secrets.
     #
-    # @see https://developers.google.com/fusiontables
-    module FusiontablesV2
-      VERSION = 'V2'
-      REVISION = '20171117'
+    # @see https://cloud.google.com/secret-manager/
+    module SecretmanagerV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20191210'
 
-      # Manage your Fusion Tables
-      AUTH_FUSIONTABLES = 'https://www.googleapis.com/auth/fusiontables'
-
-      # View your Fusion Tables
-      AUTH_FUSIONTABLES_READONLY = 'https://www.googleapis.com/auth/fusiontables.readonly'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end
