@@ -1738,6 +1738,8 @@ module Google
       
           collection :importers, as: 'importers', class: Google::Apis::RunV1alpha1::TriggerImporterSpec, decorator: Google::Apis::RunV1alpha1::TriggerImporterSpec::Representation
       
+          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
+      
           property :subscriber, as: 'subscriber', class: Google::Apis::RunV1alpha1::SubscriberSpec, decorator: Google::Apis::RunV1alpha1::SubscriberSpec::Representation
       
         end

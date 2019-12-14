@@ -97,14 +97,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # How to combine the results of multiple conditions to determine if an incident
-        # should be opened.
+        # should be opened. If condition_time_series_query_language is present, this
+        # must be COMBINE_UNSPECIFIED.
         # Corresponds to the JSON property `combiner`
         # @return [String]
         attr_accessor :combiner
       
         # A list of conditions for the policy. The conditions are combined by AND or OR
         # according to the combiner field. If the combined conditions evaluate to true,
-        # then an incident is created. A policy can have from one to six conditions.
+        # then an incident is created. A policy can have from one to six conditions. If |
+        # condition_time_series_uery_language| is present, it must be the only |
+        # condition|.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::MonitoringV3::Condition>]
         attr_accessor :conditions
@@ -2649,12 +2652,6 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The tiers that support this notification channel; the project service tier
-        # must be one of the supported_tiers.
-        # Corresponds to the JSON property `supportedTiers`
-        # @return [Array<String>]
-        attr_accessor :supported_tiers
-      
         # The type of notification channel, such as "email", "sms", etc. Notification
         # channel types are globally unique.
         # Corresponds to the JSON property `type`
@@ -2671,7 +2668,6 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
-          @supported_tiers = args[:supported_tiers] if args.key?(:supported_tiers)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -3017,7 +3013,7 @@ module Google
         attr_accessor :display_name
       
         # The fraction of service that must be good in order for this objective to be
-        # met. 0 < goal <= 1.
+        # met. 0 < goal <= 0.999.
         # Corresponds to the JSON property `goal`
         # @return [Float]
         attr_accessor :goal

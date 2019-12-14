@@ -47,7 +47,8 @@ module Google
         # @return [String]
         attr_accessor :lifetime
       
-        # Code to identify the scopes to be included in the OAuth 2.0 access token.
+        # Required. Code to identify the scopes to be included in the OAuth 2.0 access
+        # token.
         # See https://developers.google.com/identity/protocols/googlescopes for more
         # information.
         # At least one value required.
@@ -97,7 +98,8 @@ module Google
       class GenerateIdTokenRequest
         include Google::Apis::Core::Hashable
       
-        # The audience for the token, such as the API or account that this token
+        # Required. The audience for the token, such as the API or account that this
+        # token
         # grants access to.
         # Corresponds to the JSON property `audience`
         # @return [String]
@@ -171,7 +173,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # The bytes to sign.
+        # Required. The bytes to sign.
         # Corresponds to the JSON property `payload`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -231,7 +233,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # The JWT payload to sign: a JSON object that contains a JWT Claims Set.
+        # Required. The JWT payload to sign: a JSON object that contains a JWT Claims
+        # Set.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload

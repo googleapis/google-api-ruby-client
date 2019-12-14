@@ -1266,6 +1266,7 @@ module Google
         # The labels describing the metric value.
         # See comments on google.api.servicecontrol.v1.Operation.labels for
         # the overriding relationship.
+        # Note that this map must not contain monitored resource labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1792,9 +1793,9 @@ module Google
         # Putting multiple operations into a single request is allowed, but should
         # be used only when multiple operations are natually available at the time
         # of the report.
-        # If multiple operations are in a single request, the total request size
-        # should be no larger than 1MB. See ReportResponse.report_errors for
-        # partial failure behavior.
+        # There is no limit on the number of operations in the same ReportRequest,
+        # however the ReportRequest size should be no larger than 1MB. See
+        # ReportResponse.report_errors for partial failure behavior.
         # Corresponds to the JSON property `operations`
         # @return [Array<Google::Apis::ServicecontrolV1::Operation>]
         attr_accessor :operations

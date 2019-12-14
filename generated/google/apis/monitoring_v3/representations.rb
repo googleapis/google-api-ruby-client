@@ -1183,7 +1183,6 @@ module Google
           collection :labels, as: 'labels', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
       
           property :name, as: 'name'
-          collection :supported_tiers, as: 'supportedTiers'
           property :type, as: 'type'
         end
       end

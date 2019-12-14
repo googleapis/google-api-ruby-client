@@ -1094,7 +1094,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for an instance resource. Returns an empty
+        # Gets the access control policy for a table resource. Returns an empty
         # policy if an table exists but does not have a policy set.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being requested.

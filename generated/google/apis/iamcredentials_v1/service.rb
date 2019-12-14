@@ -49,7 +49,7 @@ module Google
         
         # Generates an OAuth 2.0 access token for a service account.
         # @param [String] name
-        #   The resource name of the service account for which the credentials
+        #   Required. The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
         #   character is required; replacing it with a project ID is invalid.
@@ -85,7 +85,7 @@ module Google
         
         # Generates an OpenID Connect ID token for a service account.
         # @param [String] name
-        #   The resource name of the service account for which the credentials
+        #   Required. The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
         #   character is required; replacing it with a project ID is invalid.
@@ -121,7 +121,7 @@ module Google
         
         # Signs a blob using a service account's system-managed private key.
         # @param [String] name
-        #   The resource name of the service account for which the credentials
+        #   Required. The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
         #   character is required; replacing it with a project ID is invalid.
@@ -157,7 +157,7 @@ module Google
         
         # Signs a JWT using a service account's system-managed private key.
         # @param [String] name
-        #   The resource name of the service account for which the credentials
+        #   Required. The resource name of the service account for which the credentials
         #   are requested, in the following format:
         #   `projects/-/serviceAccounts/`ACCOUNT_EMAIL_OR_UNIQUEID``. The `-` wildcard
         #   character is required; replacing it with a project ID is invalid.

@@ -139,8 +139,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The relative weight of this column. The column weight is used to adjust the
-        # height of rows on the screen (relative to peers). If omitted, a value of 1 is
-        # used.
+        # width of columns on the screen (relative to peers). Greater the weight,
+        # greater the width of the column on the screen. If omitted, a value of 1 is
+        # used while rendering.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -250,10 +251,11 @@ module Google
         # @return [String]
         attr_accessor :legend_template
       
-        # Optional. The lower bound on data point frequency for this data set
+        # Optional. The lower bound on data point frequency for this data set,
         # implemented by specifying the minimum alignment period to use in a time series
-        # query. For example, if the data is published once every 10 minutes it would
-        # not make sense to fetch and align data at one minute intervals.
+        # query For example, if the data is published once every 10 minutes, the
+        # min_alignment_period should be at least 10 minutes. It would not make sense to
+        # fetch and align data at one minute intervals.
         # Corresponds to the JSON property `minAlignmentPeriod`
         # @return [String]
         attr_accessor :min_alignment_period
@@ -441,7 +443,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The number of columns into which the view's width is divided. If omitted or
-        # set to zero, a system default will be used.
+        # set to zero, a system default will be used while rendering.
         # Corresponds to the JSON property `columns`
         # @return [Fixnum]
         attr_accessor :columns
@@ -591,7 +593,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The relative weight of this row. The row weight is used to adjust the height
-        # of rows on the screen (relative to peers). If omitted, a value of 1 is used.
+        # of rows on the screen (relative to peers). Greater the weight, greater the
+        # height of the row on the screen. If omitted, a value of 1 is used while
+        # rendering.
         # Corresponds to the JSON property `weight`
         # @return [Fixnum]
         attr_accessor :weight
@@ -1116,10 +1120,10 @@ module Google
         # @return [Array<Google::Apis::MonitoringV1::Threshold>]
         attr_accessor :thresholds
       
-        # The duration used to display a comparison chart. A comparison chart shows
-        # values from two time periods simultaneously (e.g., week-over-week metrics).
-        # The duration must be positive, and it can only be applied to charts with data
-        # sets of LINE plot type.
+        # The duration used to display a comparison chart. A comparison chart
+        # simultaneously shows values from two similar-length time periods (e.g., week-
+        # over-week metrics). The duration must be positive, and it can only be applied
+        # to charts with data sets of LINE plot type.
         # Corresponds to the JSON property `timeshiftDuration`
         # @return [String]
         attr_accessor :timeshift_duration
