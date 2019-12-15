@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -177,6 +183,7 @@ module Google
       
           hash :rollout_metadata, as: 'rolloutMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata::Representation
       
+          property :slm_instance_template, as: 'slmInstanceTemplate'
           property :slo_metadata, as: 'sloMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata::Representation
       
           hash :software_versions, as: 'softwareVersions'
@@ -234,19 +241,29 @@ module Google
         end
       end
       
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligible, as: 'eligible'
+          property :reason, as: 'reason'
+        end
+      end
+      
       class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :exclusion_duration, as: 'exclusionDuration'
-          property :exclusion_start_time, as: 'exclusionStartTime'
+          property :duration, as: 'duration'
           property :reason, as: 'reason'
           property :sli_name, as: 'sliName'
+          property :start_time, as: 'startTime'
         end
       end
       
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :eligibility, as: 'eligibility', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility::Representation
+      
           collection :exclusions, as: 'exclusions', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion::Representation
       
           collection :nodes, as: 'nodes', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata::Representation

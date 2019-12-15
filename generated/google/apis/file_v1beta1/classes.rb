@@ -224,6 +224,14 @@ module Google
         # @return [Hash<String,Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata>]
         attr_accessor :rollout_metadata
       
+        # Link to the SLM instance template. Only populated when updating SLM
+        # instances via SSA's Actuation service adaptor.
+        # Service producers with custom control plane (e.g. Cloud SQL) doesn't
+        # need to populate this field. Instead they should use software_versions.
+        # Corresponds to the JSON property `slmInstanceTemplate`
+        # @return [String]
+        attr_accessor :slm_instance_template
+      
         # SloMetadata contains resources required for proper SLO classification of the
         # instance.
         # Corresponds to the JSON property `sloMetadata`
@@ -268,6 +276,7 @@ module Google
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
           @rollout_metadata = args[:rollout_metadata] if args.key?(:rollout_metadata)
+          @slm_instance_template = args[:slm_instance_template] if args.key?(:slm_instance_template)
           @slo_metadata = args[:slo_metadata] if args.key?(:slo_metadata)
           @software_versions = args[:software_versions] if args.key?(:software_versions)
           @state = args[:state] if args.key?(:state)
@@ -460,7 +469,37 @@ module Google
         end
       end
       
-      # SloExclusion represents an excusion in SLI calculation applies to all SLOs.
+      # SloEligibility is a tuple containing eligibility value: true if an instance
+      # is eligible for SLO calculation or false if it should be excluded from all
+      # SLO-related calculations along with a user-defined reason.
+      class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+        include Google::Apis::Core::Hashable
+      
+        # Whether an instance is eligible or ineligible.
+        # Corresponds to the JSON property `eligible`
+        # @return [Boolean]
+        attr_accessor :eligible
+        alias_method :eligible?, :eligible
+      
+        # User-defined reason for the current value of instance eligibility. Usually,
+        # this can be directly mapped to the internal state. An empty reason is
+        # allowed.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @eligible = args[:eligible] if args.key?(:eligible)
+          @reason = args[:reason] if args.key?(:reason)
+        end
+      end
+      
+      # SloExclusion represents an exclusion in SLI calculation applies to all SLOs.
       class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
         include Google::Apis::Core::Hashable
       
@@ -471,14 +510,9 @@ module Google
         # as long as such extension is committed at least 10 minutes before the
         # original exclusion expiration - otherwise it is possible that there will
         # be "gaps" in the exclusion application in the exported timeseries.
-        # Corresponds to the JSON property `exclusionDuration`
+        # Corresponds to the JSON property `duration`
         # @return [String]
-        attr_accessor :exclusion_duration
-      
-        # Start time of the exclusion. No alignment (e.g. to a full minute) needed.
-        # Corresponds to the JSON property `exclusionStartTime`
-        # @return [String]
-        attr_accessor :exclusion_start_time
+        attr_accessor :duration
       
         # Human-readable reason for the exclusion.
         # This should be a static string (e.g. "Disruptive update in progress")
@@ -495,16 +529,21 @@ module Google
         # @return [String]
         attr_accessor :sli_name
       
+        # Start time of the exclusion. No alignment (e.g. to a full minute) needed.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @exclusion_duration = args[:exclusion_duration] if args.key?(:exclusion_duration)
-          @exclusion_start_time = args[:exclusion_start_time] if args.key?(:exclusion_start_time)
+          @duration = args[:duration] if args.key?(:duration)
           @reason = args[:reason] if args.key?(:reason)
           @sli_name = args[:sli_name] if args.key?(:sli_name)
+          @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
       
@@ -512,6 +551,13 @@ module Google
       # instance.
       class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
         include Google::Apis::Core::Hashable
+      
+        # SloEligibility is a tuple containing eligibility value: true if an instance
+        # is eligible for SLO calculation or false if it should be excluded from all
+        # SLO-related calculations along with a user-defined reason.
+        # Corresponds to the JSON property `eligibility`
+        # @return [Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility]
+        attr_accessor :eligibility
       
         # List of SLO exclusion windows. When multiple entries in the list match
         # (matching the exclusion time-window against current time point)
@@ -522,8 +568,8 @@ module Google
         # in the historically produced timeseries regardless of the current state).
         # This field can be used to mark the instance as temporary ineligible
         # for the purpose of SLO calculation. For permanent instance SLO exclusion,
-        # a dedicated tier name can be used that does not have targets specified
-        # in the service SLO configuration.
+        # use of custom instance eligibility is recommended. See 'eligibility' field
+        # below.
         # Corresponds to the JSON property `exclusions`
         # @return [Array<Google::Apis::FileV1beta1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
@@ -550,6 +596,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @eligibility = args[:eligibility] if args.key?(:eligibility)
           @exclusions = args[:exclusions] if args.key?(:exclusions)
           @nodes = args[:nodes] if args.key?(:nodes)
           @tier = args[:tier] if args.key?(:tier)
