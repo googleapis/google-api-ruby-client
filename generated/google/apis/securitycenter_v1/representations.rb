@@ -534,10 +534,13 @@ module Google
       class SecurityCenterProperties
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_display_name, as: 'resourceDisplayName'
           property :resource_name, as: 'resourceName'
           collection :resource_owners, as: 'resourceOwners'
           property :resource_parent, as: 'resourceParent'
+          property :resource_parent_display_name, as: 'resourceParentDisplayName'
           property :resource_project, as: 'resourceProject'
+          property :resource_project_display_name, as: 'resourceProjectDisplayName'
           property :resource_type, as: 'resourceType'
         end
       end

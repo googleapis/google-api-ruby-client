@@ -334,6 +334,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InsertSectionBreakRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InsertTableColumnRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -826,6 +832,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateSectionStyleRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UpdateTableCellStyleRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1136,6 +1148,10 @@ module Google
           property :first_page_header_id, as: 'firstPageHeaderId'
           property :margin_bottom, as: 'marginBottom', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
+          property :margin_footer, as: 'marginFooter', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_header, as: 'marginHeader', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
           property :margin_left, as: 'marginLeft', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
           property :margin_right, as: 'marginRight', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
@@ -1145,6 +1161,7 @@ module Google
           property :page_number_start, as: 'pageNumberStart'
           property :page_size, as: 'pageSize', class: Google::Apis::DocsV1::Size, decorator: Google::Apis::DocsV1::Size::Representation
       
+          property :use_custom_header_footer_margins, as: 'useCustomHeaderFooterMargins'
           property :use_even_page_header_footer, as: 'useEvenPageHeaderFooter'
           property :use_first_page_header_footer, as: 'useFirstPageHeaderFooter'
         end
@@ -1427,6 +1444,17 @@ module Google
       
           property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
       
+        end
+      end
+      
+      class InsertSectionBreakRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+          property :section_type, as: 'sectionType'
         end
       end
       
@@ -1901,6 +1929,8 @@ module Google
       
           property :insert_page_break, as: 'insertPageBreak', class: Google::Apis::DocsV1::InsertPageBreakRequest, decorator: Google::Apis::DocsV1::InsertPageBreakRequest::Representation
       
+          property :insert_section_break, as: 'insertSectionBreak', class: Google::Apis::DocsV1::InsertSectionBreakRequest, decorator: Google::Apis::DocsV1::InsertSectionBreakRequest::Representation
+      
           property :insert_table, as: 'insertTable', class: Google::Apis::DocsV1::InsertTableRequest, decorator: Google::Apis::DocsV1::InsertTableRequest::Representation
       
           property :insert_table_column, as: 'insertTableColumn', class: Google::Apis::DocsV1::InsertTableColumnRequest, decorator: Google::Apis::DocsV1::InsertTableColumnRequest::Representation
@@ -1922,6 +1952,8 @@ module Google
           property :update_document_style, as: 'updateDocumentStyle', class: Google::Apis::DocsV1::UpdateDocumentStyleRequest, decorator: Google::Apis::DocsV1::UpdateDocumentStyleRequest::Representation
       
           property :update_paragraph_style, as: 'updateParagraphStyle', class: Google::Apis::DocsV1::UpdateParagraphStyleRequest, decorator: Google::Apis::DocsV1::UpdateParagraphStyleRequest::Representation
+      
+          property :update_section_style, as: 'updateSectionStyle', class: Google::Apis::DocsV1::UpdateSectionStyleRequest, decorator: Google::Apis::DocsV1::UpdateSectionStyleRequest::Representation
       
           property :update_table_cell_style, as: 'updateTableCellStyle', class: Google::Apis::DocsV1::UpdateTableCellStyleRequest, decorator: Google::Apis::DocsV1::UpdateTableCellStyleRequest::Representation
       
@@ -1988,6 +2020,19 @@ module Google
       
           property :column_separator_style, as: 'columnSeparatorStyle'
           property :content_direction, as: 'contentDirection'
+          property :margin_bottom, as: 'marginBottom', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_footer, as: 'marginFooter', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_header, as: 'marginHeader', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_left, as: 'marginLeft', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_right, as: 'marginRight', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :margin_top, as: 'marginTop', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
+      
+          property :section_type, as: 'sectionType'
         end
       end
       
@@ -2413,6 +2458,17 @@ module Google
           property :paragraph_style, as: 'paragraphStyle', class: Google::Apis::DocsV1::ParagraphStyle, decorator: Google::Apis::DocsV1::ParagraphStyle::Representation
       
           property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
+      
+        end
+      end
+      
+      class UpdateSectionStyleRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fields, as: 'fields'
+          property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
+      
+          property :section_style, as: 'sectionStyle', class: Google::Apis::DocsV1::SectionStyle, decorator: Google::Apis::DocsV1::SectionStyle::Representation
       
         end
       end

@@ -976,6 +976,16 @@ module Google
         attr_accessor :margin_bottom
       
         # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginFooter`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_footer
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginHeader`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_header
+      
+        # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `marginLeft`
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :margin_left
@@ -999,6 +1009,22 @@ module Google
         # Corresponds to the JSON property `pageSize`
         # @return [Google::Apis::DocsV1::Size]
         attr_accessor :page_size
+      
+        # Indicates whether DocumentStyle
+        # margin_header,
+        # SectionStyle
+        # margin_header and
+        # DocumentStyle
+        # margin_footer,
+        # SectionStyle
+        # margin_footer are
+        # respected. When false, the default values in the Docs editor for header and
+        # footer margin are used.
+        # This property is read-only.
+        # Corresponds to the JSON property `useCustomHeaderFooterMargins`
+        # @return [Boolean]
+        attr_accessor :use_custom_header_footer_margins
+        alias_method :use_custom_header_footer_margins?, :use_custom_header_footer_margins
       
         # Indicates whether to use the even page header / footer IDs for the even
         # pages.
@@ -1030,11 +1056,14 @@ module Google
           @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
           @first_page_header_id = args[:first_page_header_id] if args.key?(:first_page_header_id)
           @margin_bottom = args[:margin_bottom] if args.key?(:margin_bottom)
+          @margin_footer = args[:margin_footer] if args.key?(:margin_footer)
+          @margin_header = args[:margin_header] if args.key?(:margin_header)
           @margin_left = args[:margin_left] if args.key?(:margin_left)
           @margin_right = args[:margin_right] if args.key?(:margin_right)
           @margin_top = args[:margin_top] if args.key?(:margin_top)
           @page_number_start = args[:page_number_start] if args.key?(:page_number_start)
           @page_size = args[:page_size] if args.key?(:page_size)
+          @use_custom_header_footer_margins = args[:use_custom_header_footer_margins] if args.key?(:use_custom_header_footer_margins)
           @use_even_page_header_footer = args[:use_even_page_header_footer] if args.key?(:use_even_page_header_footer)
           @use_first_page_header_footer = args[:use_first_page_header_footer] if args.key?(:use_first_page_header_footer)
         end
@@ -2100,6 +2129,39 @@ module Google
         def update!(**args)
           @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
           @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # Inserts a section break at the given location.
+      # A newline character will be inserted before the section break.
+      class InsertSectionBreakRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        # The type of section to insert.
+        # Corresponds to the JSON property `sectionType`
+        # @return [String]
+        attr_accessor :section_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+          @section_type = args[:section_type] if args.key?(:section_type)
         end
       end
       
@@ -3917,6 +3979,12 @@ module Google
         # @return [Google::Apis::DocsV1::InsertPageBreakRequest]
         attr_accessor :insert_page_break
       
+        # Inserts a section break at the given location.
+        # A newline character will be inserted before the section break.
+        # Corresponds to the JSON property `insertSectionBreak`
+        # @return [Google::Apis::DocsV1::InsertSectionBreakRequest]
+        attr_accessor :insert_section_break
+      
         # Inserts a table at the specified location.
         # A newline character will be inserted before the inserted table.
         # Corresponds to the JSON property `insertTable`
@@ -3986,6 +4054,11 @@ module Google
         # @return [Google::Apis::DocsV1::UpdateParagraphStyleRequest]
         attr_accessor :update_paragraph_style
       
+        # Updates the SectionStyle.
+        # Corresponds to the JSON property `updateSectionStyle`
+        # @return [Google::Apis::DocsV1::UpdateSectionStyleRequest]
+        attr_accessor :update_section_style
+      
         # Updates the style of a range of table cells.
         # Corresponds to the JSON property `updateTableCellStyle`
         # @return [Google::Apis::DocsV1::UpdateTableCellStyleRequest]
@@ -4027,6 +4100,7 @@ module Google
           @delete_table_row = args[:delete_table_row] if args.key?(:delete_table_row)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)
           @insert_page_break = args[:insert_page_break] if args.key?(:insert_page_break)
+          @insert_section_break = args[:insert_section_break] if args.key?(:insert_section_break)
           @insert_table = args[:insert_table] if args.key?(:insert_table)
           @insert_table_column = args[:insert_table_column] if args.key?(:insert_table_column)
           @insert_table_row = args[:insert_table_row] if args.key?(:insert_table_row)
@@ -4038,6 +4112,7 @@ module Google
           @unmerge_table_cells = args[:unmerge_table_cells] if args.key?(:unmerge_table_cells)
           @update_document_style = args[:update_document_style] if args.key?(:update_document_style)
           @update_paragraph_style = args[:update_paragraph_style] if args.key?(:update_paragraph_style)
+          @update_section_style = args[:update_section_style] if args.key?(:update_section_style)
           @update_table_cell_style = args[:update_table_cell_style] if args.key?(:update_table_cell_style)
           @update_table_column_properties = args[:update_table_column_properties] if args.key?(:update_table_column_properties)
           @update_table_row_style = args[:update_table_row_style] if args.key?(:update_table_row_style)
@@ -4213,6 +4288,41 @@ module Google
         # @return [String]
         attr_accessor :content_direction
       
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginBottom`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_bottom
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginFooter`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_footer
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginHeader`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_header
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginLeft`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_left
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginRight`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_right
+      
+        # A magnitude in a single direction in the specified units.
+        # Corresponds to the JSON property `marginTop`
+        # @return [Google::Apis::DocsV1::Dimension]
+        attr_accessor :margin_top
+      
+        # Output only. The type of section.
+        # Corresponds to the JSON property `sectionType`
+        # @return [String]
+        attr_accessor :section_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4222,6 +4332,13 @@ module Google
           @column_properties = args[:column_properties] if args.key?(:column_properties)
           @column_separator_style = args[:column_separator_style] if args.key?(:column_separator_style)
           @content_direction = args[:content_direction] if args.key?(:content_direction)
+          @margin_bottom = args[:margin_bottom] if args.key?(:margin_bottom)
+          @margin_footer = args[:margin_footer] if args.key?(:margin_footer)
+          @margin_header = args[:margin_header] if args.key?(:margin_header)
+          @margin_left = args[:margin_left] if args.key?(:margin_left)
+          @margin_right = args[:margin_right] if args.key?(:margin_right)
+          @margin_top = args[:margin_top] if args.key?(:margin_top)
+          @section_type = args[:section_type] if args.key?(:section_type)
         end
       end
       
@@ -5756,6 +5873,41 @@ module Google
           @fields = args[:fields] if args.key?(:fields)
           @paragraph_style = args[:paragraph_style] if args.key?(:paragraph_style)
           @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Updates the SectionStyle.
+      class UpdateSectionStyleRequest
+        include Google::Apis::Core::Hashable
+      
+        # The fields that should be updated.
+        # At least one field must be specified. The root `section_style` is
+        # implied and must not be specified. A single `"*"` can be used as
+        # short-hand for listing every field.
+        # For example to update the left margin, set `fields` to `"margin_left"`.
+        # Corresponds to the JSON property `fields`
+        # @return [String]
+        attr_accessor :fields
+      
+        # Specifies a contiguous range of text.
+        # Corresponds to the JSON property `range`
+        # @return [Google::Apis::DocsV1::Range]
+        attr_accessor :range
+      
+        # The styling that applies to a section.
+        # Corresponds to the JSON property `sectionStyle`
+        # @return [Google::Apis::DocsV1::SectionStyle]
+        attr_accessor :section_style
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @range = args[:range] if args.key?(:range)
+          @section_style = args[:section_style] if args.key?(:section_style)
         end
       end
       

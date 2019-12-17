@@ -882,7 +882,8 @@ module Google
       class ExecuteBatchDmlRequest
         include Google::Apis::Core::Hashable
       
-        # A per-transaction sequence number used to identify this request. This field
+        # Required. A per-transaction sequence number used to identify this request.
+        # This field
         # makes each request idempotent such that if the request is received multiple
         # times, at most one will succeed.
         # The sequence number must be monotonically increasing within the
@@ -893,7 +894,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :seqno
       
-        # The list of statements to execute in this batch. Statements are executed
+        # Required. The list of statements to execute in this batch. Statements are
+        # executed
         # serially, such that the effects of statement `i` are visible to statement
         # `i+1`. Each statement must be a DML statement. Execution stops at the
         # first failed statement; the remaining statements are not executed.
@@ -1231,6 +1233,18 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Output only. The endpoint URIs based on the instance config.
+        # For example, instances located in a specific cloud region (or multi region)
+        # such as nam3, would have a nam3 specific endpoint URI.
+        # This URI is to be used implictly by SDK clients, with fallback to default
+        # URI. These endpoints are intended to optimize the network routing between
+        # the client and the instance's serving resources.
+        # If multiple endpoints are present, client may establish connections using
+        # any of the given URIs.
+        # Corresponds to the JSON property `endpointUris`
+        # @return [Array<String>]
+        attr_accessor :endpoint_uris
+      
         # Cloud Labels are a flexible and lightweight mechanism for organizing cloud
         # resources into groups that reflect a customer's organizational needs and
         # deployment strategies. Cloud Labels can be used to filter collections of
@@ -1261,8 +1275,9 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. The number of nodes allocated to this instance. This may be zero
-        # in API responses for instances that are not yet in state `READY`.
+        # The number of nodes allocated to this instance. This
+        # may be zero in API responses for instances that are not yet in state
+        # `READY`.
         # See [the
         # documentation](https://cloud.google.com/spanner/docs/instances#node_count)
         # for more information about nodes.
@@ -1287,6 +1302,7 @@ module Google
         def update!(**args)
           @config = args[:config] if args.key?(:config)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @endpoint_uris = args[:endpoint_uris] if args.key?(:endpoint_uris)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @node_count = args[:node_count] if args.key?(:node_count)
@@ -1921,7 +1937,8 @@ module Google
         # @return [Google::Apis::SpannerV1::PartitionOptions]
         attr_accessor :partition_options
       
-        # The query request to generate partitions for. The request will fail if
+        # Required. The query request to generate partitions for. The request will fail
+        # if
         # the query is not root partitionable. The query plan of a root
         # partitionable query has a single distributed union operator. A distributed
         # union operator conceptually divides one or more tables into multiple
@@ -2194,8 +2211,8 @@ module Google
         # ensure that their change will be applied to the same version of the policy.
         # If no `etag` is provided in the call to `setIamPolicy`, then the existing
         # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # 'setIamPolicy' will not fail even if the incoming policy version does not
+        # meet the requirements for modifying the stored policy.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2206,11 +2223,12 @@ module Google
         # rejected.
         # Operations affecting conditional bindings must specify version 3. This can
         # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
+        # or removing a binding (conditional or unconditional) from the stored
+        # conditional policy.
         # Operations on non-conditional policies may specify any valid value or
         # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # If no etag is provided in the call to `setIamPolicy`, version compliance
+        # checks against the stored policy is skipped.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2339,7 +2357,7 @@ module Google
       class ReadRequest
         include Google::Apis::Core::Hashable
       
-        # The columns of table to be returned for each row matching
+        # Required. The columns of table to be returned for each row matching
         # this request.
         # Corresponds to the JSON property `columns`
         # @return [Array<String>]
@@ -3738,7 +3756,7 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # DDL statements to be applied to the database.
+        # Required. DDL statements to be applied to the database.
         # Corresponds to the JSON property `statements`
         # @return [Array<String>]
         attr_accessor :statements

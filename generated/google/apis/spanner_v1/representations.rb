@@ -647,6 +647,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config'
           property :display_name, as: 'displayName'
+          collection :endpoint_uris, as: 'endpointUris'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :node_count, as: 'nodeCount'

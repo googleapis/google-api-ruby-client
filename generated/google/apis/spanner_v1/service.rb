@@ -221,6 +221,12 @@ module Google
         # @param [String] name
         #   Required. The name of the requested instance. Values are of the form
         #   `projects/<project>/instances/<instance>`.
+        # @param [String] field_mask
+        #   If field_mask is present, specifies the subset of [][google.spanner.admin.
+        #   instance.v1.Instance] fields that
+        #   should be returned.
+        #   If absent, all [][google.spanner.admin.instance.v1.Instance] fields are
+        #   returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -238,11 +244,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_instance(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_instance(name, field_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::SpannerV1::Instance::Representation
           command.response_class = Google::Apis::SpannerV1::Instance
           command.params['name'] = name unless name.nil?
+          command.query['fieldMask'] = field_mask unless field_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

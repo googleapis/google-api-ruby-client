@@ -1422,6 +1422,88 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Reschedules the maintenance on the given instance.
+        # @param [String] project
+        #   ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [Google::Apis::SqlV1beta4::SqlInstancesRescheduleMaintenanceRequestBody] sql_instances_reschedule_maintenance_request_body_object
+        # @param [String] parent
+        #   The parent resource where Cloud SQL reshedule this database instance's
+        #   maintenance. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reschedule_project_instance_maintenance(project, instance, sql_instances_reschedule_maintenance_request_body_object = nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/rescheduleMaintenance', options)
+          command.request_representation = Google::Apis::SqlV1beta4::SqlInstancesRescheduleMaintenanceRequestBody::Representation
+          command.request_object = sql_instances_reschedule_maintenance_request_body_object
+          command.response_representation = Google::Apis::SqlV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqlV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Reschedules the maintenance on the given instance.
+        # @param [String] parent
+        #   The parent resource where Cloud SQL reshedule this database instance's
+        #   maintenance. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [Google::Apis::SqlV1beta4::SqlInstancesRescheduleMaintenanceRequestBody] sql_instances_reschedule_maintenance_request_body_object
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] project
+        #   ID of the project that contains the instance.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def reschedule_project_location_instance_maintenance(parent, sql_instances_reschedule_maintenance_request_body_object = nil, instance: nil, project: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/{+parent}/rescheduleMaintenance', options)
+          command.request_representation = Google::Apis::SqlV1beta4::SqlInstancesRescheduleMaintenanceRequestBody::Representation
+          command.request_object = sql_instances_reschedule_maintenance_request_body_object
+          command.response_representation = Google::Apis::SqlV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqlV1beta4::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instance'] = instance unless instance.nil?
+          command.query['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Generates a short-lived X509 certificate containing the provided public key
         # and signed by a private key specific to the target instance. Users may use
         # the certificate to authenticate as themselves when connecting to the
@@ -1788,8 +1870,7 @@ module Google
         #   Database instance ID. This does not include the project ID.
         # @param [Google::Apis::SqlV1beta4::User] user_object
         # @param [String] host
-        #   Host of the user in the instance. For a MySQL instance, it's required; For
-        #   a PostgreSQL instance, it's optional.
+        #   Optional. Host of the user in the instance.
         # @param [String] name
         #   Name of the user in the instance.
         # @param [String] resource_name

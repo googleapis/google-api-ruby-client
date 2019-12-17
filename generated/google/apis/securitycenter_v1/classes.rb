@@ -1408,6 +1408,11 @@ module Google
       class SecurityCenterProperties
         include Google::Apis::Core::Hashable
       
+        # The user defined display name for this resource.
+        # Corresponds to the JSON property `resourceDisplayName`
+        # @return [String]
+        attr_accessor :resource_display_name
+      
         # The full resource name of the GCP resource this asset
         # represents. This field is immutable after create time. See:
         # https://cloud.google.com/apis/design/resource_names#full_resource_name
@@ -1426,11 +1431,21 @@ module Google
         # @return [String]
         attr_accessor :resource_parent
       
+        # The user defined display name for the parent of this resource.
+        # Corresponds to the JSON property `resourceParentDisplayName`
+        # @return [String]
+        attr_accessor :resource_parent_display_name
+      
         # The full resource name of the project the resource belongs to. See:
         # https://cloud.google.com/apis/design/resource_names#full_resource_name
         # Corresponds to the JSON property `resourceProject`
         # @return [String]
         attr_accessor :resource_project
+      
+        # The user defined display name for the project of this resource.
+        # Corresponds to the JSON property `resourceProjectDisplayName`
+        # @return [String]
+        attr_accessor :resource_project_display_name
       
         # The type of the GCP resource. Examples include: APPLICATION,
         # PROJECT, and ORGANIZATION. This is a case insensitive field defined by
@@ -1446,10 +1461,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @resource_display_name = args[:resource_display_name] if args.key?(:resource_display_name)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
           @resource_owners = args[:resource_owners] if args.key?(:resource_owners)
           @resource_parent = args[:resource_parent] if args.key?(:resource_parent)
+          @resource_parent_display_name = args[:resource_parent_display_name] if args.key?(:resource_parent_display_name)
           @resource_project = args[:resource_project] if args.key?(:resource_project)
+          @resource_project_display_name = args[:resource_project_display_name] if args.key?(:resource_project_display_name)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
         end
       end

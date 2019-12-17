@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/remote-build-execution/docs/
     module RemotebuildexecutionV1
       VERSION = 'V1'
-      REVISION = '20191203'
+      REVISION = '20191211'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

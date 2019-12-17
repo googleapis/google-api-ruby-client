@@ -2092,7 +2092,7 @@ module Google
         # Required. Disk Type to use for the worker.
         # See [Storage
         # options](https://cloud.google.com/compute/docs/disks/#introduction).
-        # Currently only `pd-standard` is supported.
+        # Currently only `pd-standard` and `pd-ssd` are supported.
         # Corresponds to the JSON property `diskType`
         # @return [String]
         attr_accessor :disk_type

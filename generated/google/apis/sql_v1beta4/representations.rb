@@ -316,6 +316,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Reschedule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RestoreBackupContext
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -329,6 +335,12 @@ module Google
       end
       
       class Settings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesRescheduleMaintenanceRequestBody
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -884,6 +896,9 @@ module Google
       class OnPremisesConfiguration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ca_certificate, as: 'caCertificate'
+          property :client_certificate, as: 'clientCertificate'
+          property :client_key, as: 'clientKey'
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
         end
@@ -951,6 +966,14 @@ module Google
         end
       end
       
+      class Reschedule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule_type, as: 'rescheduleType'
+          property :schedule_time, as: 'scheduleTime'
+        end
+      end
+      
       class RestoreBackupContext
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1000,10 +1023,19 @@ module Google
         end
       end
       
+      class SqlInstancesRescheduleMaintenanceRequestBody
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reschedule, as: 'reschedule', class: Google::Apis::SqlV1beta4::Reschedule, decorator: Google::Apis::SqlV1beta4::Reschedule::Representation
+      
+        end
+      end
+      
       class SqlScheduledMaintenance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_defer, as: 'canDefer'
+          property :can_reschedule, as: 'canReschedule'
           property :start_time, as: 'startTime'
         end
       end

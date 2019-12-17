@@ -38,7 +38,7 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # An optional label to identify this entry.
+        # Optional. A label to identify this entry.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -454,7 +454,6 @@ module Google
       end
       
       # A Cloud SQL instance resource.
-      # If you change this, also change SqlDatabaseInstance
       class DatabaseInstance
         include Google::Apis::Core::Hashable
       
@@ -1798,6 +1797,22 @@ module Google
       class OnPremisesConfiguration
         include Google::Apis::Core::Hashable
       
+        # PEM representation of the trusted CA's x509 certificate.
+        # Corresponds to the JSON property `caCertificate`
+        # @return [String]
+        attr_accessor :ca_certificate
+      
+        # PEM representation of the slave's x509 certificate.
+        # Corresponds to the JSON property `clientCertificate`
+        # @return [String]
+        attr_accessor :client_certificate
+      
+        # PEM representation of the slave's private key. The corresponsing public key
+        # is encoded in the client's certificate.
+        # Corresponds to the JSON property `clientKey`
+        # @return [String]
+        attr_accessor :client_key
+      
         # The host and port of the on-premises instance in host:port format
         # Corresponds to the JSON property `hostPort`
         # @return [String]
@@ -1814,6 +1829,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
+          @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
+          @client_key = args[:client_key] if args.key?(:client_key)
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
         end
@@ -1889,7 +1907,8 @@ module Google
         attr_accessor :start_time
       
         # The status of an operation. Valid values are <code>PENDING</code>,
-        # <code>RUNNING</code>, <code>DONE</code>, <code>UNKNOWN</code>.
+        # <code>RUNNING</code>, <code>DONE</code>,
+        # <code>SQL_OPERATION_STATUS_UNSPECIFIED</code>.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2060,6 +2079,32 @@ module Google
           @failover_target = args[:failover_target] if args.key?(:failover_target)
           @kind = args[:kind] if args.key?(:kind)
           @mysql_replica_configuration = args[:mysql_replica_configuration] if args.key?(:mysql_replica_configuration)
+        end
+      end
+      
+      # 
+      class Reschedule
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the reschedule.
+        # Corresponds to the JSON property `rescheduleType`
+        # @return [String]
+        attr_accessor :reschedule_type
+      
+        # Optional. Timestamp when the maintenance shall be rescheduled to if
+        # reschedule_type=SPECIFIC_TIME.
+        # Corresponds to the JSON property `scheduleTime`
+        # @return [String]
+        attr_accessor :schedule_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule_type = args[:reschedule_type] if args.key?(:reschedule_type)
+          @schedule_time = args[:schedule_time] if args.key?(:schedule_time)
         end
       end
       
@@ -2305,15 +2350,40 @@ module Google
         end
       end
       
+      # Reschedule options for maintenance windows.
+      class SqlInstancesRescheduleMaintenanceRequestBody
+        include Google::Apis::Core::Hashable
+      
+        # Required. The type of the reschedule the user wants.
+        # Corresponds to the JSON property `reschedule`
+        # @return [Google::Apis::SqlV1beta4::Reschedule]
+        attr_accessor :reschedule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reschedule = args[:reschedule] if args.key?(:reschedule)
+        end
+      end
+      
       # Any scheduled maintenancce for this instance.
       class SqlScheduledMaintenance
         include Google::Apis::Core::Hashable
       
-        # If the scheduled maintenance can be deferred.
+        # 
         # Corresponds to the JSON property `canDefer`
         # @return [Boolean]
         attr_accessor :can_defer
         alias_method :can_defer?, :can_defer
+      
+        # If the scheduled maintenance can be rescheduled.
+        # Corresponds to the JSON property `canReschedule`
+        # @return [Boolean]
+        attr_accessor :can_reschedule
+        alias_method :can_reschedule?, :can_reschedule
       
         # The start time of any upcoming scheduled maintenance for this instance.
         # Corresponds to the JSON property `startTime`
@@ -2327,6 +2397,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @can_defer = args[:can_defer] if args.key?(:can_defer)
+          @can_reschedule = args[:can_reschedule] if args.key?(:can_reschedule)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
       end
