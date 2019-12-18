@@ -22,6 +22,12 @@ module Google
   module Apis
     module AndroidmanagementV1
       
+      class AdvancedSecurityOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AlwaysOnVpnPackage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +106,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Date
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Device
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +154,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FreezePeriod
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HardwareInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,6 +173,12 @@ module Google
       end
       
       class KeyedAppState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class KioskCustomization
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -388,6 +412,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvancedSecurityOverrides
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :untrusted_apps_policy, as: 'untrustedAppsPolicy'
+        end
+      end
+      
       class AlwaysOnVpnPackage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -528,6 +559,15 @@ module Google
         end
       end
       
+      class Date
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :day, as: 'day'
+          property :month, as: 'month'
+          property :year, as: 'year'
+        end
+      end
+      
       class Device
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -654,6 +694,16 @@ module Google
         end
       end
       
+      class FreezePeriod
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
+      
+          property :start_date, as: 'startDate', class: Google::Apis::AndroidmanagementV1::Date, decorator: Google::Apis::AndroidmanagementV1::Date::Representation
+      
+        end
+      end
+      
       class HardwareInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -696,6 +746,16 @@ module Google
           property :last_update_time, as: 'lastUpdateTime'
           property :message, as: 'message'
           property :severity, as: 'severity'
+        end
+      end
+      
+      class KioskCustomization
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :power_button_actions, as: 'powerButtonActions'
+          property :status_bar, as: 'statusBar'
+          property :system_error_warnings, as: 'systemErrorWarnings'
+          property :system_navigation, as: 'systemNavigation'
         end
       end
       
@@ -855,6 +915,7 @@ module Google
           property :password_minimum_upper_case, as: 'passwordMinimumUpperCase'
           property :password_quality, as: 'passwordQuality'
           property :password_scope, as: 'passwordScope'
+          property :require_password_unlock, as: 'requirePasswordUnlock'
         end
       end
       
@@ -881,6 +942,8 @@ module Google
           collection :account_types_with_management_disabled, as: 'accountTypesWithManagementDisabled'
           property :add_user_disabled, as: 'addUserDisabled'
           property :adjust_volume_disabled, as: 'adjustVolumeDisabled'
+          property :advanced_security_overrides, as: 'advancedSecurityOverrides', class: Google::Apis::AndroidmanagementV1::AdvancedSecurityOverrides, decorator: Google::Apis::AndroidmanagementV1::AdvancedSecurityOverrides::Representation
+      
           property :always_on_vpn_package, as: 'alwaysOnVpnPackage', class: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage, decorator: Google::Apis::AndroidmanagementV1::AlwaysOnVpnPackage::Representation
       
           collection :android_device_policy_tracks, as: 'androidDevicePolicyTracks'
@@ -915,6 +978,8 @@ module Google
           property :keyguard_disabled, as: 'keyguardDisabled'
           collection :keyguard_disabled_features, as: 'keyguardDisabledFeatures'
           property :kiosk_custom_launcher_enabled, as: 'kioskCustomLauncherEnabled'
+          property :kiosk_customization, as: 'kioskCustomization', class: Google::Apis::AndroidmanagementV1::KioskCustomization, decorator: Google::Apis::AndroidmanagementV1::KioskCustomization::Representation
+      
           property :location_mode, as: 'locationMode'
           property :long_support_message, as: 'longSupportMessage', class: Google::Apis::AndroidmanagementV1::UserFacingMessage, decorator: Google::Apis::AndroidmanagementV1::UserFacingMessage::Representation
       
@@ -1100,6 +1165,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_minutes, as: 'endMinutes'
+          collection :freeze_periods, as: 'freezePeriods', class: Google::Apis::AndroidmanagementV1::FreezePeriod, decorator: Google::Apis::AndroidmanagementV1::FreezePeriod::Representation
+      
           property :start_minutes, as: 'startMinutes'
           property :type, as: 'type'
         end

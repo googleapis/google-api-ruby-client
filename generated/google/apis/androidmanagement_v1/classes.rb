@@ -22,6 +22,28 @@ module Google
   module Apis
     module AndroidmanagementV1
       
+      # Security policies set to the most secure values by default. To maintain the
+      # security posture of a device, we don't recommend overriding any of the default
+      # values.
+      class AdvancedSecurityOverrides
+        include Google::Apis::Core::Hashable
+      
+        # The policy for untrusted apps (apps from unknown sources) enforced on the
+        # device. Replaces install_unknown_sources_allowed (deprecated).
+        # Corresponds to the JSON property `untrustedAppsPolicy`
+        # @return [String]
+        attr_accessor :untrusted_apps_policy
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @untrusted_apps_policy = args[:untrusted_apps_policy] if args.key?(:untrusted_apps_policy)
+        end
+      end
+      
       # Configuration for an always-on VPN connection.
       class AlwaysOnVpnPackage
         include Google::Apis::Core::Hashable
@@ -583,6 +605,47 @@ module Google
           @disable_apps = args[:disable_apps] if args.key?(:disable_apps)
           @non_compliance_detail_condition = args[:non_compliance_detail_condition] if args.key?(:non_compliance_detail_condition)
           @package_names_to_disable = args[:package_names_to_disable] if args.key?(:package_names_to_disable)
+        end
+      end
+      
+      # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+      # and time zone are either specified elsewhere or are not significant. The date
+      # is relative to the Proleptic Gregorian Calendar. This can represent:
+      # A full date, with non-zero year, month and day values
+      # A month and day value, with a zero year, e.g. an anniversary
+      # A year on its own, with zero month and day values
+      # A year and month value, with a zero day, e.g. a credit card expiration
+      # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
+      class Date
+        include Google::Apis::Core::Hashable
+      
+        # Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if
+        # specifying a year by itself or a year and month where the day is not
+        # significant.
+        # Corresponds to the JSON property `day`
+        # @return [Fixnum]
+        attr_accessor :day
+      
+        # Month of year. Must be from 1 to 12, or 0 if specifying a year without a month
+        # and day.
+        # Corresponds to the JSON property `month`
+        # @return [Fixnum]
+        attr_accessor :month
+      
+        # Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.
+        # Corresponds to the JSON property `year`
+        # @return [Fixnum]
+        attr_accessor :year
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @day = args[:day] if args.key?(:day)
+          @month = args[:month] if args.key?(:month)
+          @year = args[:year] if args.key?(:year)
         end
       end
       
@@ -1152,6 +1215,53 @@ module Google
         end
       end
       
+      # A system freeze period. When a device’s clock is within the freeze period, all
+      # incoming system updates (including security patches) are blocked and won’t be
+      # installed. When a device is outside the freeze period, normal update behavior
+      # applies. Leap years are ignored in freeze period calculations, in particular: *
+      # If Feb. 29th is set as the start or end date of a freeze period, the freeze
+      # period will start or end on Feb. 28th instead. * When a device’s system clock
+      # reads Feb. 29th, it’s treated as Feb. 28th. * When calculating the number of
+      # days in a freeze period or the time between two freeze periods, Feb. 29th is
+      # ignored and not counted as a day.
+      class FreezePeriod
+        include Google::Apis::Core::Hashable
+      
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # A full date, with non-zero year, month and day values
+        # A month and day value, with a zero year, e.g. an anniversary
+        # A year on its own, with zero month and day values
+        # A year and month value, with a zero day, e.g. a credit card expiration
+        # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
+        # Corresponds to the JSON property `endDate`
+        # @return [Google::Apis::AndroidmanagementV1::Date]
+        attr_accessor :end_date
+      
+        # Represents a whole or partial calendar date, e.g. a birthday. The time of day
+        # and time zone are either specified elsewhere or are not significant. The date
+        # is relative to the Proleptic Gregorian Calendar. This can represent:
+        # A full date, with non-zero year, month and day values
+        # A month and day value, with a zero year, e.g. an anniversary
+        # A year on its own, with zero month and day values
+        # A year and month value, with a zero day, e.g. a credit card expiration
+        # dateRelated types are google.type.TimeOfDay and google.protobuf.Timestamp.
+        # Corresponds to the JSON property `startDate`
+        # @return [Google::Apis::AndroidmanagementV1::Date]
+        attr_accessor :start_date
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @start_date = args[:start_date] if args.key?(:start_date)
+        end
+      end
+      
       # Information about device hardware. The fields related to temperature
       # thresholds are only available if hardwareStatusEnabled is true in the device's
       # policy.
@@ -1364,6 +1474,49 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @message = args[:message] if args.key?(:message)
           @severity = args[:severity] if args.key?(:severity)
+        end
+      end
+      
+      # Settings controlling the behavior of a device in kiosk mode. To enable kiosk
+      # mode, set kioskCustomLauncherEnabled to true or specify an app in the policy
+      # with installType KIOSK.
+      class KioskCustomization
+        include Google::Apis::Core::Hashable
+      
+        # Sets the behavior of a device in kiosk mode when a user presses and holds (
+        # long-presses) the Power button.
+        # Corresponds to the JSON property `powerButtonActions`
+        # @return [String]
+        attr_accessor :power_button_actions
+      
+        # Specifies whether system info and notifications are disabled in kiosk mode.
+        # Corresponds to the JSON property `statusBar`
+        # @return [String]
+        attr_accessor :status_bar
+      
+        # Specifies whether system error dialogs for crashed or unresponsive apps are
+        # blocked in kiosk mode. When blocked, the system will force-stop the app as if
+        # the user chooses the "close app" option on the UI.
+        # Corresponds to the JSON property `systemErrorWarnings`
+        # @return [String]
+        attr_accessor :system_error_warnings
+      
+        # Specifies which navigation features are enabled (e.g. Home, Overview buttons)
+        # in kiosk mode.
+        # Corresponds to the JSON property `systemNavigation`
+        # @return [String]
+        attr_accessor :system_navigation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @power_button_actions = args[:power_button_actions] if args.key?(:power_button_actions)
+          @status_bar = args[:status_bar] if args.key?(:status_bar)
+          @system_error_warnings = args[:system_error_warnings] if args.key?(:system_error_warnings)
+          @system_navigation = args[:system_navigation] if args.key?(:system_navigation)
         end
       end
       
@@ -1945,6 +2098,15 @@ module Google
         # @return [String]
         attr_accessor :password_scope
       
+        # The length of time after a device or work profile is unlocked using a strong
+        # form of authentication (password, PIN, pattern) that it can be unlocked using
+        # any other authentication method (e.g. fingerprint, trust agents, face). After
+        # the specified time period elapses, only strong forms of authentication can be
+        # used to unlock the device or work profile.
+        # Corresponds to the JSON property `requirePasswordUnlock`
+        # @return [String]
+        attr_accessor :require_password_unlock
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1963,6 +2125,7 @@ module Google
           @password_minimum_upper_case = args[:password_minimum_upper_case] if args.key?(:password_minimum_upper_case)
           @password_quality = args[:password_quality] if args.key?(:password_quality)
           @password_scope = args[:password_scope] if args.key?(:password_scope)
+          @require_password_unlock = args[:require_password_unlock] if args.key?(:require_password_unlock)
         end
       end
       
@@ -2055,6 +2218,13 @@ module Google
         # @return [Boolean]
         attr_accessor :adjust_volume_disabled
         alias_method :adjust_volume_disabled?, :adjust_volume_disabled
+      
+        # Security policies set to the most secure values by default. To maintain the
+        # security posture of a device, we don't recommend overriding any of the default
+        # values.
+        # Corresponds to the JSON property `advancedSecurityOverrides`
+        # @return [Google::Apis::AndroidmanagementV1::AdvancedSecurityOverrides]
+        attr_accessor :advanced_security_overrides
       
         # Configuration for an always-on VPN connection.
         # Corresponds to the JSON property `alwaysOnVpnPackage`
@@ -2242,6 +2412,13 @@ module Google
         # @return [Boolean]
         attr_accessor :kiosk_custom_launcher_enabled
         alias_method :kiosk_custom_launcher_enabled?, :kiosk_custom_launcher_enabled
+      
+        # Settings controlling the behavior of a device in kiosk mode. To enable kiosk
+        # mode, set kioskCustomLauncherEnabled to true or specify an app in the policy
+        # with installType KIOSK.
+        # Corresponds to the JSON property `kioskCustomization`
+        # @return [Google::Apis::AndroidmanagementV1::KioskCustomization]
+        attr_accessor :kiosk_customization
       
         # The degree of location detection enabled. The user may change the value unless
         # the user is otherwise blocked from accessing device settings.
@@ -2534,6 +2711,7 @@ module Google
           @account_types_with_management_disabled = args[:account_types_with_management_disabled] if args.key?(:account_types_with_management_disabled)
           @add_user_disabled = args[:add_user_disabled] if args.key?(:add_user_disabled)
           @adjust_volume_disabled = args[:adjust_volume_disabled] if args.key?(:adjust_volume_disabled)
+          @advanced_security_overrides = args[:advanced_security_overrides] if args.key?(:advanced_security_overrides)
           @always_on_vpn_package = args[:always_on_vpn_package] if args.key?(:always_on_vpn_package)
           @android_device_policy_tracks = args[:android_device_policy_tracks] if args.key?(:android_device_policy_tracks)
           @app_auto_update_policy = args[:app_auto_update_policy] if args.key?(:app_auto_update_policy)
@@ -2563,6 +2741,7 @@ module Google
           @keyguard_disabled = args[:keyguard_disabled] if args.key?(:keyguard_disabled)
           @keyguard_disabled_features = args[:keyguard_disabled_features] if args.key?(:keyguard_disabled_features)
           @kiosk_custom_launcher_enabled = args[:kiosk_custom_launcher_enabled] if args.key?(:kiosk_custom_launcher_enabled)
+          @kiosk_customization = args[:kiosk_customization] if args.key?(:kiosk_customization)
           @location_mode = args[:location_mode] if args.key?(:location_mode)
           @long_support_message = args[:long_support_message] if args.key?(:long_support_message)
           @maximum_time_to_lock = args[:maximum_time_to_lock] if args.key?(:maximum_time_to_lock)
@@ -3085,6 +3264,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :end_minutes
       
+        # An annually repeating time period in which over-the-air (OTA) system updates
+        # are postponed to freeze the OS version running on a device. To prevent
+        # freezing the device indefinitely, each freeze period must be separated by at
+        # least 60 days.
+        # Corresponds to the JSON property `freezePeriods`
+        # @return [Array<Google::Apis::AndroidmanagementV1::FreezePeriod>]
+        attr_accessor :freeze_periods
+      
         # If the type is WINDOWED, the start of the maintenance window, measured as the
         # number of minutes after midnight in the device's local time. This value must
         # be between 0 and 1439, inclusive.
@@ -3104,6 +3291,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @end_minutes = args[:end_minutes] if args.key?(:end_minutes)
+          @freeze_periods = args[:freeze_periods] if args.key?(:freeze_periods)
           @start_minutes = args[:start_minutes] if args.key?(:start_minutes)
           @type = args[:type] if args.key?(:type)
         end

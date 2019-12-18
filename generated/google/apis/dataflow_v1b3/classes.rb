@@ -1483,6 +1483,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
         attr_accessor :metadata
       
+        # RuntimeMetadata describing a runtime environment.
+        # Corresponds to the JSON property `runtimeMetadata`
+        # @return [Google::Apis::DataflowV1b3::RuntimeMetadata]
+        attr_accessor :runtime_metadata
+      
         # The `Status` type defines a logical error model that is suitable for
         # different programming environments, including REST APIs and RPC APIs. It is
         # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1493,6 +1498,11 @@ module Google
         # @return [Google::Apis::DataflowV1b3::Status]
         attr_accessor :status
       
+        # Template Type.
+        # Corresponds to the JSON property `templateType`
+        # @return [String]
+        attr_accessor :template_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1500,7 +1510,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @metadata = args[:metadata] if args.key?(:metadata)
+          @runtime_metadata = args[:runtime_metadata] if args.key?(:runtime_metadata)
           @status = args[:status] if args.key?(:status)
+          @template_type = args[:template_type] if args.key?(:template_type)
         end
       end
       
@@ -2895,6 +2907,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Optional. The type of the parameter.
+        # Used for selecting input picker.
+        # Corresponds to the JSON property `paramType`
+        # @return [String]
+        attr_accessor :param_type
+      
         # Optional. Regexes that the parameter must match.
         # Corresponds to the JSON property `regexes`
         # @return [Array<String>]
@@ -2910,6 +2928,7 @@ module Google
           @is_optional = args[:is_optional] if args.key?(:is_optional)
           @label = args[:label] if args.key?(:label)
           @name = args[:name] if args.key?(:name)
+          @param_type = args[:param_type] if args.key?(:param_type)
           @regexes = args[:regexes] if args.key?(:regexes)
         end
       end
@@ -3433,6 +3452,56 @@ module Google
           @worker_region = args[:worker_region] if args.key?(:worker_region)
           @worker_zone = args[:worker_zone] if args.key?(:worker_zone)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # RuntimeMetadata describing a runtime environment.
+      class RuntimeMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The parameters for the template.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::DataflowV1b3::ParameterMetadata>]
+        attr_accessor :parameters
+      
+        # SDK Information.
+        # Corresponds to the JSON property `sdkInfo`
+        # @return [Google::Apis::DataflowV1b3::SdkInfo]
+        attr_accessor :sdk_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @sdk_info = args[:sdk_info] if args.key?(:sdk_info)
+        end
+      end
+      
+      # SDK Information.
+      class SdkInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. The SDK Language.
+        # Corresponds to the JSON property `language`
+        # @return [String]
+        attr_accessor :language
+      
+        # Optional. The SDK version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @language = args[:language] if args.key?(:language)
+          @version = args[:version] if args.key?(:version)
         end
       end
       

@@ -3587,6 +3587,133 @@ module Google
         end
       end
       
+      # A color value.
+      class ColorStyle
+        include Google::Apis::Core::Hashable
+      
+        # Represents a color in the RGBA color space. This representation is designed
+        # for simplicity of conversion to/from color representations in various
+        # languages over compactness; for example, the fields of this representation
+        # can be trivially provided to the constructor of "java.awt.Color" in Java; it
+        # can also be trivially provided to UIColor's "+colorWithRed:green:blue:alpha"
+        # method in iOS; and, with just a little work, it can be easily formatted into
+        # a CSS "rgba()" string in JavaScript, as well.
+        # Note: this proto does not carry information about the absolute color space
+        # that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB,
+        # DCI-P3, BT.2020, etc.). By default, applications SHOULD assume the sRGB color
+        # space.
+        # Example (Java):
+        # import com.google.type.Color;
+        # // ...
+        # public static java.awt.Color fromProto(Color protocolor) `
+        # float alpha = protocolor.hasAlpha()
+        # ? protocolor.getAlpha().getValue()
+        # : 1.0;
+        # return new java.awt.Color(
+        # protocolor.getRed(),
+        # protocolor.getGreen(),
+        # protocolor.getBlue(),
+        # alpha);
+        # `
+        # public static Color toProto(java.awt.Color color) `
+        # float red = (float) color.getRed();
+        # float green = (float) color.getGreen();
+        # float blue = (float) color.getBlue();
+        # float denominator = 255.0;
+        # Color.Builder resultBuilder =
+        # Color
+        # .newBuilder()
+        # .setRed(red / denominator)
+        # .setGreen(green / denominator)
+        # .setBlue(blue / denominator);
+        # int alpha = color.getAlpha();
+        # if (alpha != 255) `
+        # result.setAlpha(
+        # FloatValue
+        # .newBuilder()
+        # .setValue(((float) alpha) / denominator)
+        # .build());
+        # `
+        # return resultBuilder.build();
+        # `
+        # // ...
+        # Example (iOS / Obj-C):
+        # // ...
+        # static UIColor* fromProto(Color* protocolor) `
+        # float red = [protocolor red];
+        # float green = [protocolor green];
+        # float blue = [protocolor blue];
+        # FloatValue* alpha_wrapper = [protocolor alpha];
+        # float alpha = 1.0;
+        # if (alpha_wrapper != nil) `
+        # alpha = [alpha_wrapper value];
+        # `
+        # return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+        # `
+        # static Color* toProto(UIColor* color) `
+        # CGFloat red, green, blue, alpha;
+        # if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) `
+        # return nil;
+        # `
+        # Color* result = [[Color alloc] init];
+        # [result setRed:red];
+        # [result setGreen:green];
+        # [result setBlue:blue];
+        # if (alpha <= 0.9999) `
+        # [result setAlpha:floatWrapperWithValue(alpha)];
+        # `
+        # [result autorelease];
+        # return result;
+        # `
+        # // ...
+        # Example (JavaScript):
+        # // ...
+        # var protoToCssColor = function(rgb_color) `
+        # var redFrac = rgb_color.red || 0.0;
+        # var greenFrac = rgb_color.green || 0.0;
+        # var blueFrac = rgb_color.blue || 0.0;
+        # var red = Math.floor(redFrac * 255);
+        # var green = Math.floor(greenFrac * 255);
+        # var blue = Math.floor(blueFrac * 255);
+        # if (!('alpha' in rgb_color)) `
+        # return rgbToCssColor_(red, green, blue);
+        # `
+        # var alphaFrac = rgb_color.alpha.value || 0.0;
+        # var rgbParams = [red, green, blue].join(',');
+        # return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
+        # `;
+        # var rgbToCssColor_ = function(red, green, blue) `
+        # var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+        # var hexString = rgbNumber.toString(16);
+        # var missingZeros = 6 - hexString.length;
+        # var resultBuilder = ['#'];
+        # for (var i = 0; i < missingZeros; i++) `
+        # resultBuilder.push('0');
+        # `
+        # resultBuilder.push(hexString);
+        # return resultBuilder.join('');
+        # `;
+        # // ...
+        # Corresponds to the JSON property `rgbColor`
+        # @return [Google::Apis::SheetsV4::Color]
+        attr_accessor :rgb_color
+      
+        # Theme color.
+        # Corresponds to the JSON property `themeColor`
+        # @return [String]
+        attr_accessor :theme_color
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rgb_color = args[:rgb_color] if args.key?(:rgb_color)
+          @theme_color = args[:theme_color] if args.key?(:theme_color)
+        end
+      end
+      
       # The value of the condition.
       class ConditionValue
         include Google::Apis::Core::Hashable
@@ -8017,7 +8144,7 @@ module Google
         # @return [Google::Apis::SheetsV4::UpdateSheetPropertiesRequest]
         attr_accessor :update_sheet_properties
       
-        # Updates a slicer’s specifications.
+        # Updates a slicer's specifications.
         # (This does not move or resize a slicer. To move or resize a slicer use
         # UpdateEmbeddedObjectPositionRequest.
         # Corresponds to the JSON property `updateSlicerSpec`
@@ -9345,6 +9472,11 @@ module Google
         # @return [String]
         attr_accessor :locale
       
+        # Represents spreadsheet theme
+        # Corresponds to the JSON property `spreadsheetTheme`
+        # @return [Google::Apis::SheetsV4::SpreadsheetTheme]
+        attr_accessor :spreadsheet_theme
+      
         # The time zone of the spreadsheet, in CLDR format such as
         # `America/New_York`. If the time zone isn't recognized, this may
         # be a custom time zone such as `GMT-07:00`.
@@ -9367,8 +9499,35 @@ module Google
           @default_format = args[:default_format] if args.key?(:default_format)
           @iterative_calculation_settings = args[:iterative_calculation_settings] if args.key?(:iterative_calculation_settings)
           @locale = args[:locale] if args.key?(:locale)
+          @spreadsheet_theme = args[:spreadsheet_theme] if args.key?(:spreadsheet_theme)
           @time_zone = args[:time_zone] if args.key?(:time_zone)
           @title = args[:title] if args.key?(:title)
+        end
+      end
+      
+      # Represents spreadsheet theme
+      class SpreadsheetTheme
+        include Google::Apis::Core::Hashable
+      
+        # / Name of the primary font family.
+        # Corresponds to the JSON property `primaryFontFamily`
+        # @return [String]
+        attr_accessor :primary_font_family
+      
+        # The spreadsheet theme color pairs. For update users need to give all pairs
+        # of theme colors.
+        # Corresponds to the JSON property `themeColors`
+        # @return [Array<Google::Apis::SheetsV4::ThemeColorPair>]
+        attr_accessor :theme_colors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @primary_font_family = args[:primary_font_family] if args.key?(:primary_font_family)
+          @theme_colors = args[:theme_colors] if args.key?(:theme_colors)
         end
       end
       
@@ -9673,6 +9832,32 @@ module Google
           @delimiter = args[:delimiter] if args.key?(:delimiter)
           @delimiter_type = args[:delimiter_type] if args.key?(:delimiter_type)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # A pair mapping a spreadsheet theme color type to the concrete color it
+      # represents.
+      class ThemeColorPair
+        include Google::Apis::Core::Hashable
+      
+        # A color value.
+        # Corresponds to the JSON property `color`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color
+      
+        # The type of the spreadsheet theme color.
+        # Corresponds to the JSON property `colorType`
+        # @return [String]
+        attr_accessor :color_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @color = args[:color] if args.key?(:color)
+          @color_type = args[:color_type] if args.key?(:color_type)
         end
       end
       
@@ -10999,7 +11184,7 @@ module Google
         end
       end
       
-      # Updates a slicer’s specifications.
+      # Updates a slicer's specifications.
       # (This does not move or resize a slicer. To move or resize a slicer use
       # UpdateEmbeddedObjectPositionRequest.
       class UpdateSlicerSpecRequest

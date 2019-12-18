@@ -109,6 +109,8 @@ module Google
       
         # State properties to include with this state. Overwrites any existing
         # `state_metadata`.
+        # Keys must match the regex /^a-z0-9`0,62`$/.
+        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -135,6 +137,8 @@ module Google
       
         # State properties to include with this state. Overwrites any existing
         # `state_metadata`.
+        # Keys must match the regex /^a-z0-9`0,62`$/.
+        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata
@@ -161,6 +165,8 @@ module Google
       
         # State properties to include with this state. Overwrites any existing
         # `state_metadata`.
+        # Keys must match the regex /^a-z0-9`0,62`$/.
+        # Values must match the regex /^[a-zA-Z0-9_./-]`0,255`$/.
         # Corresponds to the JSON property `stateMetadata`
         # @return [Hash<String,String>]
         attr_accessor :state_metadata

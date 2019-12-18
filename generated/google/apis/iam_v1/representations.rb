@@ -410,14 +410,9 @@ module Google
       class LintPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding, as: 'binding', class: Google::Apis::IamV1::Binding, decorator: Google::Apis::IamV1::Binding::Representation
-      
           property :condition, as: 'condition', class: Google::Apis::IamV1::Expr, decorator: Google::Apis::IamV1::Expr::Representation
       
-          hash :context, as: 'context'
           property :full_resource_name, as: 'fullResourceName'
-          property :policy, as: 'policy', class: Google::Apis::IamV1::Policy, decorator: Google::Apis::IamV1::Policy::Representation
-      
         end
       end
       
@@ -432,7 +427,6 @@ module Google
       class LintResult
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :binding_ordinal, as: 'bindingOrdinal'
           property :debug_message, as: 'debugMessage'
           property :field_name, as: 'fieldName'
           property :level, as: 'level'

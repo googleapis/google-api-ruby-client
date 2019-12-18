@@ -442,6 +442,13 @@ module Google
       class Document
         include Google::Apis::Core::Hashable
       
+        # Indicates how detected boilerplate(e.g. advertisements, copyright
+        # declarations, banners) should be handled for this document. If not
+        # specified, boilerplate will be treated the same as content.
+        # Corresponds to the JSON property `boilerplateHandling`
+        # @return [String]
+        attr_accessor :boilerplate_handling
+      
         # The content of the input in string format.
         # Cloud audit logging exempt since it is based on user data.
         # Corresponds to the JSON property `content`
@@ -468,6 +475,12 @@ module Google
         # @return [String]
         attr_accessor :language
       
+        # The web URI where the document comes from. This URI is not used for
+        # fetching the content, but as a hint for analyzing the document.
+        # Corresponds to the JSON property `referenceWebUri`
+        # @return [String]
+        attr_accessor :reference_web_uri
+      
         # Required. If the type is not set or is `TYPE_UNSPECIFIED`,
         # returns an `INVALID_ARGUMENT` error.
         # Corresponds to the JSON property `type`
@@ -480,9 +493,11 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @boilerplate_handling = args[:boilerplate_handling] if args.key?(:boilerplate_handling)
           @content = args[:content] if args.key?(:content)
           @gcs_content_uri = args[:gcs_content_uri] if args.key?(:gcs_content_uri)
           @language = args[:language] if args.key?(:language)
+          @reference_web_uri = args[:reference_web_uri] if args.key?(:reference_web_uri)
           @type = args[:type] if args.key?(:type)
         end
       end

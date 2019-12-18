@@ -44,6 +44,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Output only. State of the assignment.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -53,6 +58,7 @@ module Google
           @assignee = args[:assignee] if args.key?(:assignee)
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

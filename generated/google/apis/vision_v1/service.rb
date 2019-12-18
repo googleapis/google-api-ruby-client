@@ -877,7 +877,7 @@ module Google
         # @param [String] name
         #   Required. Resource name of the ProductSet to get.
         #   Format is:
-        #   `projects/PROJECT_ID/locations/LOG_ID/productSets/PRODUCT_SET_ID`
+        #   `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

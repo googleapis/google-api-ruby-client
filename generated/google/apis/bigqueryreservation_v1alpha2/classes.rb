@@ -306,6 +306,11 @@ module Google
         # @return [String]
         attr_accessor :reservation
       
+        # Output only. State of the ReservationGrant.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         def initialize(**args)
            update!(**args)
         end
@@ -316,6 +321,7 @@ module Google
           @job_type = args[:job_type] if args.key?(:job_type)
           @name = args[:name] if args.key?(:name)
           @reservation = args[:reservation] if args.key?(:reservation)
+          @state = args[:state] if args.key?(:state)
         end
       end
       

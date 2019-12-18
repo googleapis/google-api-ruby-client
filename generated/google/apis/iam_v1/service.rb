@@ -50,21 +50,11 @@ module Google
         end
         
         # Lints a Cloud IAM policy object or its sub fields. Currently supports
-        # google.iam.v1.Policy, google.iam.v1.Binding and
         # google.iam.v1.Binding.condition.
         # Each lint operation consists of multiple lint validation units.
-        # Validation units have the following properties:
-        # - Each unit inspects the input object in regard to a particular
-        # linting aspect and issues a google.iam.admin.v1.LintResult
-        # disclosing the result.
-        # - Domain of discourse of each unit can be either
-        # google.iam.v1.Policy, google.iam.v1.Binding, or
-        # google.iam.v1.Binding.condition depending on the purpose of the
-        # validation.
-        # - A unit may require additional data (like the list of all possible
-        # enumerable values of a particular attribute used in the policy instance)
-        # which shall be provided by the caller. Refer to the comments of
-        # google.iam.admin.v1.LintPolicyRequest.context for more details.
+        # Each unit inspects the input object in regard to a particular linting
+        # aspect and issues a google.iam.admin.v1.LintResult disclosing the
+        # result.
         # The set of applicable validation units is determined by the Cloud IAM
         # server and is not configurable.
         # Regardless of any lint issues or their severities, successful calls to
@@ -867,7 +857,7 @@ module Google
         
         # Deletes a ServiceAccount.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -995,7 +985,7 @@ module Google
         
         # Gets a ServiceAccount.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1218,7 +1208,7 @@ module Google
         # method of the Cloud IAM Service Account Credentials API instead.
         # Signs a blob using a service account's system-managed private key.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1262,7 +1252,7 @@ module Google
         # an expiry time of one hour by default. If you request an expiry time of
         # more than one hour, the request will fail.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1416,7 +1406,7 @@ module Google
         # Creates a ServiceAccountKey
         # and returns it.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1453,7 +1443,7 @@ module Google
         
         # Deletes a ServiceAccountKey.
         # @param [String] name
-        #   The resource name of the service account key in the following format:
+        #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1488,7 +1478,7 @@ module Google
         # Gets the ServiceAccountKey
         # by key id.
         # @param [String] name
-        #   The resource name of the service account key in the following format:
+        #   Required. The resource name of the service account key in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT`/keys/`key``.
         #   Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the
@@ -1526,7 +1516,7 @@ module Google
         
         # Lists ServiceAccountKeys.
         # @param [String] name
-        #   The resource name of the service account in the following format:
+        #   Required. The resource name of the service account in the following format:
         #   `projects/`PROJECT_ID`/serviceAccounts/`ACCOUNT``.
         #   Using `-` as a wildcard for the `PROJECT_ID`, will infer the project from
         #   the account. The `ACCOUNT` value can be the `email` address or the

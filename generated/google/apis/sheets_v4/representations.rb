@@ -400,6 +400,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ColorStyle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConditionValue
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1006,6 +1012,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpreadsheetTheme
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TextFormat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1031,6 +1043,12 @@ module Google
       end
       
       class TextToColumnsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ThemeColorPair
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1906,6 +1924,15 @@ module Google
           property :blue, as: 'blue'
           property :green, as: 'green'
           property :red, as: 'red'
+        end
+      end
+      
+      class ColorStyle
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rgb_color, as: 'rgbColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :theme_color, as: 'themeColor'
         end
       end
       
@@ -3124,8 +3151,19 @@ module Google
           property :iterative_calculation_settings, as: 'iterativeCalculationSettings', class: Google::Apis::SheetsV4::IterativeCalculationSettings, decorator: Google::Apis::SheetsV4::IterativeCalculationSettings::Representation
       
           property :locale, as: 'locale'
+          property :spreadsheet_theme, as: 'spreadsheetTheme', class: Google::Apis::SheetsV4::SpreadsheetTheme, decorator: Google::Apis::SheetsV4::SpreadsheetTheme::Representation
+      
           property :time_zone, as: 'timeZone'
           property :title, as: 'title'
+        end
+      end
+      
+      class SpreadsheetTheme
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :primary_font_family, as: 'primaryFontFamily'
+          collection :theme_colors, as: 'themeColors', class: Google::Apis::SheetsV4::ThemeColorPair, decorator: Google::Apis::SheetsV4::ThemeColorPair::Representation
+      
         end
       end
       
@@ -3174,6 +3212,15 @@ module Google
           property :delimiter_type, as: 'delimiterType'
           property :source, as: 'source', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
       
+        end
+      end
+      
+      class ThemeColorPair
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :color, as: 'color', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
+          property :color_type, as: 'colorType'
         end
       end
       

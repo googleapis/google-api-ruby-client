@@ -169,6 +169,7 @@ module Google
           property :job_type, as: 'jobType'
           property :name, as: 'name'
           property :reservation, as: 'reservation'
+          property :state, as: 'state'
         end
       end
       

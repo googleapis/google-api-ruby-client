@@ -305,9 +305,11 @@ module Google
       class Document
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :boilerplate_handling, as: 'boilerplateHandling'
           property :content, as: 'content'
           property :gcs_content_uri, as: 'gcsContentUri'
           property :language, as: 'language'
+          property :reference_web_uri, as: 'referenceWebUri'
           property :type, as: 'type'
         end
       end

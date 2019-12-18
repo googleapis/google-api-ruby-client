@@ -112,6 +112,7 @@ module Google
           property :assignee, as: 'assignee'
           property :job_type, as: 'jobType'
           property :name, as: 'name'
+          property :state, as: 'state'
         end
       end
       

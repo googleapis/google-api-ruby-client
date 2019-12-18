@@ -508,6 +508,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RuntimeMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SdkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1246,8 +1258,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :metadata, as: 'metadata', class: Google::Apis::DataflowV1b3::TemplateMetadata, decorator: Google::Apis::DataflowV1b3::TemplateMetadata::Representation
       
+          property :runtime_metadata, as: 'runtimeMetadata', class: Google::Apis::DataflowV1b3::RuntimeMetadata, decorator: Google::Apis::DataflowV1b3::RuntimeMetadata::Representation
+      
           property :status, as: 'status', class: Google::Apis::DataflowV1b3::Status, decorator: Google::Apis::DataflowV1b3::Status::Representation
       
+          property :template_type, as: 'templateType'
         end
       end
       
@@ -1615,6 +1630,7 @@ module Google
           property :is_optional, as: 'isOptional'
           property :label, as: 'label'
           property :name, as: 'name'
+          property :param_type, as: 'paramType'
           collection :regexes, as: 'regexes'
         end
       end
@@ -1748,6 +1764,24 @@ module Google
           property :worker_region, as: 'workerRegion'
           property :worker_zone, as: 'workerZone'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class RuntimeMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :parameters, as: 'parameters', class: Google::Apis::DataflowV1b3::ParameterMetadata, decorator: Google::Apis::DataflowV1b3::ParameterMetadata::Representation
+      
+          property :sdk_info, as: 'sdkInfo', class: Google::Apis::DataflowV1b3::SdkInfo, decorator: Google::Apis::DataflowV1b3::SdkInfo::Representation
+      
+        end
+      end
+      
+      class SdkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :language, as: 'language'
+          property :version, as: 'version'
         end
       end
       
