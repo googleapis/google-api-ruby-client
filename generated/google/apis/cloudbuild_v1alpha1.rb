@@ -12,21 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/binaryauthorization_v1/service.rb'
-require 'google/apis/binaryauthorization_v1/classes.rb'
-require 'google/apis/binaryauthorization_v1/representations.rb'
+require 'google/apis/cloudbuild_v1alpha1/service.rb'
+require 'google/apis/cloudbuild_v1alpha1/classes.rb'
+require 'google/apis/cloudbuild_v1alpha1/representations.rb'
 
 module Google
   module Apis
-    # Binary Authorization API
+    # Cloud Build API
     #
-    # The management interface for Binary Authorization, a system providing policy
-    # control for images deployed to Kubernetes Engine clusters.
+    # Creates and manages builds on Google Cloud Platform.
     #
-    # @see https://cloud.google.com/binary-authorization/
-    module BinaryauthorizationV1
-      VERSION = 'V1'
-      REVISION = '20191213'
+    # @see https://cloud.google.com/cloud-build/docs/
+    module CloudbuildV1alpha1
+      VERSION = 'V1alpha1'
+      REVISION = '20191212'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

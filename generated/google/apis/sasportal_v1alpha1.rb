@@ -12,26 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/surveys_v2/service.rb'
-require 'google/apis/surveys_v2/classes.rb'
-require 'google/apis/surveys_v2/representations.rb'
+require 'google/apis/sasportal_v1alpha1/service.rb'
+require 'google/apis/sasportal_v1alpha1/classes.rb'
+require 'google/apis/sasportal_v1alpha1/representations.rb'
 
 module Google
   module Apis
-    # Surveys API
+    # SAS Portal API
     #
-    # Creates and conducts surveys, lists the surveys that an authenticated user
-    # owns, and retrieves survey results and information about specified surveys.
+    # 
     #
-    module SurveysV2
-      VERSION = 'V2'
-      REVISION = '20180508'
-
-      # View and manage your surveys and results
-      AUTH_SURVEYS = 'https://www.googleapis.com/auth/surveys'
-
-      # View your surveys and survey results
-      AUTH_SURVEYS_READONLY = 'https://www.googleapis.com/auth/surveys.readonly'
+    # @see https://developers.google.com/spectrum-access-system/
+    module SasportalV1alpha1
+      VERSION = 'V1alpha1'
+      REVISION = '20191217'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'

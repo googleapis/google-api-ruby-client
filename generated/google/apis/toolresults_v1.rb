@@ -12,24 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/binaryauthorization_v1/service.rb'
-require 'google/apis/binaryauthorization_v1/classes.rb'
-require 'google/apis/binaryauthorization_v1/representations.rb'
+require 'google/apis/toolresults_v1/service.rb'
+require 'google/apis/toolresults_v1/classes.rb'
+require 'google/apis/toolresults_v1/representations.rb'
 
 module Google
   module Apis
-    # Binary Authorization API
+    # Cloud Tool Results API
     #
-    # The management interface for Binary Authorization, a system providing policy
-    # control for images deployed to Kubernetes Engine clusters.
+    # API to publish and access results from developer tools.
     #
-    # @see https://cloud.google.com/binary-authorization/
-    module BinaryauthorizationV1
+    # @see https://firebase.google.com/docs/test-lab/
+    module ToolresultsV1
       VERSION = 'V1'
-      REVISION = '20191213'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      REVISION = '20191218'
     end
   end
 end
