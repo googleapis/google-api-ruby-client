@@ -433,6 +433,8 @@ module Google
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :assigned_user, as: 'assignedUser', class: Google::Apis::DriveactivityV2::User, decorator: Google::Apis::DriveactivityV2::User::Representation
+      
           property :subtype, as: 'subtype'
         end
       end

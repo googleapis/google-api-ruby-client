@@ -192,6 +192,8 @@ module Google
         # @param [String] name
         #   Required. The name of the entry group. For example,
         #   `projects/`project_id`/locations/`location`/entryGroups/`entry_group_id``.
+        # @param [Boolean] force
+        #   Optional. If true, deletes all entries in the entry group.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -209,11 +211,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_entry_group(name, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_entry_group(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1beta1/{+name}', options)
           command.response_representation = Google::Apis::DatacatalogV1beta1::Empty::Representation
           command.response_class = Google::Apis::DatacatalogV1beta1::Empty
           command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1259,15 +1262,17 @@ module Google
         #   fields/`tag_template_field_id`
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField] google_cloud_datacatalog_v1beta1_tag_template_field_object
         # @param [String] update_mask
-        #   The field mask specifies the parts of the template to be updated.
+        #   Optional. The field mask specifies the parts of the template to be updated.
         #   Allowed fields:
         #   * `display_name`
         #   * `type.enum_type`
+        #   * `is_required`
         #   If `update_mask` is not set or empty, all of the allowed fields above will
         #   be updated.
         #   When updating an enum type, the provided values will be merged with the
         #   existing values. Therefore, enum values can only be added, existing enum
-        #   values cannot be deleted nor renamed.
+        #   values cannot be deleted nor renamed. Updating a template field from
+        #   optional to required is NOT allowed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

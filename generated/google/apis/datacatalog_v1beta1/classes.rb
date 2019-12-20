@@ -1345,6 +1345,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Whether this is a required field. Defaults to false.
+        # Corresponds to the JSON property `isRequired`
+        # @return [Boolean]
+        attr_accessor :is_required
+        alias_method :is_required?, :is_required
+      
         # Output only. The resource name of the tag template field in URL format.
         # Example:
         # * projects/`project_id`/locations/`location`/tagTemplates/`tag_template`/
@@ -1367,6 +1373,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @is_required = args[:is_required] if args.key?(:is_required)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end

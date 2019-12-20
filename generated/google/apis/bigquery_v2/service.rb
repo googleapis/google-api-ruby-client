@@ -858,6 +858,9 @@ module Google
         #   Required. Dataset ID of the requested routine
         # @param [String] routine_id
         #   Required. Routine ID of the requested routine
+        # @param [String] read_mask
+        #   If set, only the Routine fields in the field mask are returned in the
+        #   response. If unset, all Routine fields are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -877,13 +880,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_routine(project_id, dataset_id, routine_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def get_routine(project_id, dataset_id, routine_id, read_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', options)
           command.response_representation = Google::Apis::BigqueryV2::Routine::Representation
           command.response_class = Google::Apis::BigqueryV2::Routine
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
           command.params['routineId'] = routine_id unless routine_id.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -935,12 +939,23 @@ module Google
         #   Required. Project ID of the routines to list
         # @param [String] dataset_id
         #   Required. Dataset ID of the routines to list
+        # @param [String] filter
+        #   If set, then only the Routines matching this filter are returned.
+        #   The current supported form is either "routine_type:<RoutineType>" or
+        #   "routineType:<RoutineType>", where <RoutineType> is a RoutineType enum.
+        #   Example: "routineType:SCALAR_FUNCTION".
         # @param [Fixnum] max_results
         #   The maximum number of results to return in a single response page.
         #   Leverage the page tokens to iterate through the entire collection.
         # @param [String] page_token
         #   Page token, returned by a previous call, to request the next page of
         #   results
+        # @param [String] read_mask
+        #   If set, then only the Routine fields in the field mask, as well as
+        #   project_id, dataset_id and routine_id, are returned in the response.
+        #   If unset, then the following Routine fields are returned:
+        #   etag, project_id, dataset_id, routine_id, routine_type, creation_time,
+        #   last_modified_time, and language.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -960,14 +975,16 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_routines(project_id, dataset_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_routines(project_id, dataset_id, filter: nil, max_results: nil, page_token: nil, read_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'projects/{+projectId}/datasets/{+datasetId}/routines', options)
           command.response_representation = Google::Apis::BigqueryV2::ListRoutinesResponse::Representation
           command.response_class = Google::Apis::BigqueryV2::ListRoutinesResponse
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['datasetId'] = dataset_id unless dataset_id.nil?
+          command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

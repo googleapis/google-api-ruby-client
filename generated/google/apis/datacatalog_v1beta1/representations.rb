@@ -641,6 +641,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :is_required, as: 'isRequired'
           property :name, as: 'name'
           property :type, as: 'type', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType::Representation
       

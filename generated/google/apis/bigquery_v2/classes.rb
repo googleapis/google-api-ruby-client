@@ -1654,6 +1654,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :shuffle_output_bytes_spilled
       
+        # Slot-milliseconds used by the stage.
+        # Corresponds to the JSON property `slotMs`
+        # @return [Fixnum]
+        attr_accessor :slot_ms
+      
         # Stage start time represented as milliseconds since epoch.
         # Corresponds to the JSON property `startMs`
         # @return [Fixnum]
@@ -1734,6 +1739,7 @@ module Google
           @records_written = args[:records_written] if args.key?(:records_written)
           @shuffle_output_bytes = args[:shuffle_output_bytes] if args.key?(:shuffle_output_bytes)
           @shuffle_output_bytes_spilled = args[:shuffle_output_bytes_spilled] if args.key?(:shuffle_output_bytes_spilled)
+          @slot_ms = args[:slot_ms] if args.key?(:slot_ms)
           @start_ms = args[:start_ms] if args.key?(:start_ms)
           @status = args[:status] if args.key?(:status)
           @steps = args[:steps] if args.key?(:steps)

@@ -252,6 +252,11 @@ module Google
       class Assignment
         include Google::Apis::Core::Hashable
       
+        # Information about an end user.
+        # Corresponds to the JSON property `assignedUser`
+        # @return [Google::Apis::DriveactivityV2::User]
+        attr_accessor :assigned_user
+      
         # The sub-type of this event.
         # Corresponds to the JSON property `subtype`
         # @return [String]
@@ -263,6 +268,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @assigned_user = args[:assigned_user] if args.key?(:assigned_user)
           @subtype = args[:subtype] if args.key?(:subtype)
         end
       end

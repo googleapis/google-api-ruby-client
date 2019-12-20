@@ -1102,6 +1102,7 @@ module Google
           property :records_written, :numeric_string => true, as: 'recordsWritten'
           property :shuffle_output_bytes, :numeric_string => true, as: 'shuffleOutputBytes'
           property :shuffle_output_bytes_spilled, :numeric_string => true, as: 'shuffleOutputBytesSpilled'
+          property :slot_ms, :numeric_string => true, as: 'slotMs'
           property :start_ms, :numeric_string => true, as: 'startMs'
           property :status, as: 'status'
           collection :steps, as: 'steps', class: Google::Apis::BigqueryV2::ExplainQueryStep, decorator: Google::Apis::BigqueryV2::ExplainQueryStep::Representation
