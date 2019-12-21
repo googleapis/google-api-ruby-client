@@ -23,12 +23,13 @@ module Google
     # Writes log entries and manages your Stackdriver Logging configuration. The
     # table entries below are presented in alphabetical order, not in order of
     # common use. For explanations of the concepts found in the table entries, read
-    # the Stackdriver Logging documentation.
+    # the <a href=https://cloud.google.com/logging/docs>Stackdriver Logging
+    # documentation</a>.
     #
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2
       VERSION = 'V2'
-      REVISION = '20191206'
+      REVISION = '20191214'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

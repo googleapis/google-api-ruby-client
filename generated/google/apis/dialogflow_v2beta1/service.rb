@@ -996,6 +996,11 @@ module Google
         #   characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
         #   If `Environment ID` is not specified, we assume default 'draft'
         #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   The following context names are reserved for internal use by Dialogflow.
+        #   You should not use these contexts or create contexts with these names:
+        #   * `__system_counters__`
+        #   * `*_id_dialog_context`
+        #   * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -2190,6 +2195,11 @@ module Google
         #   characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
         #   If `Environment ID` is not specified, we assume default 'draft'
         #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   The following context names are reserved for internal use by Dialogflow.
+        #   You should not use these contexts or create contexts with these names:
+        #   * `__system_counters__`
+        #   * `*_id_dialog_context`
+        #   * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -3722,6 +3732,11 @@ module Google
         #   characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
         #   If `Environment ID` is not specified, we assume default 'draft'
         #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   The following context names are reserved for internal use by Dialogflow.
+        #   You should not use these contexts or create contexts with these names:
+        #   * `__system_counters__`
+        #   * `*_id_dialog_context`
+        #   * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
@@ -4493,6 +4508,11 @@ module Google
         #   characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
         #   If `Environment ID` is not specified, we assume default 'draft'
         #   environment. If `User ID` is not specified, we assume default '-' user.
+        #   The following context names are reserved for internal use by Dialogflow.
+        #   You should not use these contexts or create contexts with these names:
+        #   * `__system_counters__`
+        #   * `*_id_dialog_context`
+        #   * `*_dialog_params_size`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context] google_cloud_dialogflow_v2beta1_context_object
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/fit/rest/
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20191014'
+      REVISION = '20191129'
 
       # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'
@@ -33,16 +33,16 @@ module Google
       # See and add to your Google Fit physical activity data
       AUTH_FITNESS_ACTIVITY_WRITE = 'https://www.googleapis.com/auth/fitness.activity.write'
 
-      # See info about your blood glucose in Google Fit
+      # See info about your blood glucose in Google Fit. I consent to Google sharing my blood glucose information with this app.
       AUTH_FITNESS_BLOOD_GLUCOSE_READ = 'https://www.googleapis.com/auth/fitness.blood_glucose.read'
 
-      # See and add info about your blood glucose to Google Fit
+      # See and add info about your blood glucose to Google Fit. I consent to Google sharing my blood glucose information with this app.
       AUTH_FITNESS_BLOOD_GLUCOSE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_glucose.write'
 
-      # See info about your blood pressure in Google Fit
+      # See info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app.
       AUTH_FITNESS_BLOOD_PRESSURE_READ = 'https://www.googleapis.com/auth/fitness.blood_pressure.read'
 
-      # See and add info about your blood pressure in Google Fit
+      # See and add info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app.
       AUTH_FITNESS_BLOOD_PRESSURE_WRITE = 'https://www.googleapis.com/auth/fitness.blood_pressure.write'
 
       # See info about your body measurements and heart rate in Google Fit
@@ -51,10 +51,10 @@ module Google
       # See and add info about your body measurements and heart rate to Google Fit
       AUTH_FITNESS_BODY_WRITE = 'https://www.googleapis.com/auth/fitness.body.write'
 
-      # See info about your body temperature in Google Fit
+      # See info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app.
       AUTH_FITNESS_BODY_TEMPERATURE_READ = 'https://www.googleapis.com/auth/fitness.body_temperature.read'
 
-      # See and add to info about your body temperature in Google Fit
+      # See and add to info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app.
       AUTH_FITNESS_BODY_TEMPERATURE_WRITE = 'https://www.googleapis.com/auth/fitness.body_temperature.write'
 
       # See your Google Fit speed and distance data
@@ -69,16 +69,16 @@ module Google
       # See and add to info about your nutrition in Google Fit
       AUTH_FITNESS_NUTRITION_WRITE = 'https://www.googleapis.com/auth/fitness.nutrition.write'
 
-      # See info about your oxygen saturation in Google Fit
+      # See info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app.
       AUTH_FITNESS_OXYGEN_SATURATION_READ = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.read'
 
-      # See and add info about your oxygen saturation in Google Fit
+      # See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app.
       AUTH_FITNESS_OXYGEN_SATURATION_WRITE = 'https://www.googleapis.com/auth/fitness.oxygen_saturation.write'
 
-      # See info about your reproductive health in Google Fit
+      # See info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_READ = 'https://www.googleapis.com/auth/fitness.reproductive_health.read'
 
-      # See and add info about your reproductive health in Google Fit
+      # See and add info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.
       AUTH_FITNESS_REPRODUCTIVE_HEALTH_WRITE = 'https://www.googleapis.com/auth/fitness.reproductive_health.write'
     end
   end

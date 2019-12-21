@@ -95,7 +95,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # The kind of resource, one example is "Storage".
+        # The kind of resource, in this case always "CustomResourceDefinition".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

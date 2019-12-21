@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/run/
     module RunV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190927'
+      REVISION = '20191216'
     end
   end
 end

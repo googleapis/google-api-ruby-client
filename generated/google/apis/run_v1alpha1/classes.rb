@@ -283,6 +283,171 @@ module Google
         end
       end
       
+      # 
+      class CloudAuditLog
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "CloudAuditLog".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # The desired state of the CloudAuditLog.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogSpec]
+        attr_accessor :spec
+      
+        # CloudAuditLogStatus represents the current state of a CloudAuditLog.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The desired state of the CloudAuditLog.
+      class CloudAuditLogSpec
+        include Google::Apis::Core::Hashable
+      
+        # CloudEventOverrides defines arguments for a Source that control the output
+        # format of the CloudEvents produced by the Source.
+        # Corresponds to the JSON property `ceOverrides`
+        # @return [Google::Apis::RunV1alpha1::CloudEventOverrides]
+        attr_accessor :ce_overrides
+      
+        # Required. The method name at the service API. This must match "methodName" in
+        # Cloud
+        # Audit Logs. Regex or Wildcards (*) are not supported.
+        # Example: "google.cloud.bigquery.job.create".
+        # Corresponds to the JSON property `methodName`
+        # @return [String]
+        attr_accessor :method_name
+      
+        # Project is the ID of the Google Cloud Project that the PubSub Topic exists
+        # in. If omitted, defaults to same as the cluster. +optional
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `pubsubSecret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :pubsub_secret
+      
+        # Optional. The resource specification. This must match "methodName"
+        # in Cloud Audit Logs. Regex or Wildcards (*) are not supported.
+        # Example: "projects/my-project/jobs/foo".
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :secret
+      
+        # Email address of the IAM service account associated with the source. The
+        # service account represents the identity of the source, and determines what
+        # permissions the source has. If not provided, the source will use the
+        # project's default service account.
+        # +optional
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
+        # Required. The GCP service name. This must match "serviceName" in Cloud Audit
+        # Logs.
+        # Regex or Wildcards (*) are not supported.
+        # Example: "bigquery.googleapis.com".
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # Sink is a reference to an object that will resolve to a domain name or a
+        # URI directly to use as the sink.
+        # Corresponds to the JSON property `sink`
+        # @return [Google::Apis::RunV1alpha1::Destination]
+        attr_accessor :sink
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
+          @method_name = args[:method_name] if args.key?(:method_name)
+          @project = args[:project] if args.key?(:project)
+          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @secret = args[:secret] if args.key?(:secret)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @sink = args[:sink] if args.key?(:sink)
+        end
+      end
+      
+      # CloudAuditLogStatus represents the current state of a CloudAuditLog.
+      class CloudAuditLogStatus
+        include Google::Apis::Core::Hashable
+      
+        # Array of observed CloudAuditLogConditions, indicating the current state
+        # of the CloudAuditLog.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::Condition>]
+        attr_accessor :conditions
+      
+        # ObservedGeneration is the 'Generation' of the CloudAuditLog that
+        # was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # SinkURI is the current active sink URI that has been configured for the
+        # Source.
+        # +optional
+        # Corresponds to the JSON property `sinkUri`
+        # @return [String]
+        attr_accessor :sink_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @sink_uri = args[:sink_uri] if args.key?(:sink_uri)
+        end
+      end
+      
       # CloudEventOverrides defines arguments for a Source that control the output
       # format of the CloudEvents produced by the Source.
       class CloudEventOverrides
@@ -1810,6 +1975,51 @@ module Google
         end
       end
       
+      # ListCloudAuditLogsResponse is a list of CloudAuditLog resources.
+      class ListCloudAuditLogsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of CloudAuditLogs.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::CloudAuditLog>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "CloudAuditLogList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
       # ListConfigurationsResponse is a list of Configuration resources.
       class ListConfigurationsResponse
         include Google::Apis::Core::Hashable
@@ -2171,6 +2381,51 @@ module Google
         attr_accessor :items
       
         # The kind of this resource, in this case "ServiceList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListStoragesResponse is a list of Storage resources.
+      class ListStoragesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of Storages.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::Storage>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "StorageList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2955,6 +3210,15 @@ module Google
         # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
         attr_accessor :secret
       
+        # Email address of the IAM service account associated with the source. The
+        # service account represents the identity of the source, and determines what
+        # permissions the source has. If not provided, the source will use the
+        # project's Compute Engine default service account.
+        # +optional
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
         # Sink is a reference to an object that will resolve to a domain name or a
         # URI directly to use as the sink.
         # Corresponds to the JSON property `sink`
@@ -2982,6 +3246,7 @@ module Google
           @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
           @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
           @secret = args[:secret] if args.key?(:secret)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @sink = args[:sink] if args.key?(:sink)
           @topic = args[:topic] if args.key?(:topic)
         end
@@ -4360,6 +4625,165 @@ module Google
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+        end
+      end
+      
+      # 
+      class Storage
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "Storage".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # The desired state of the Storage.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::StorageSpec]
+        attr_accessor :spec
+      
+        # StorageStatus represents the current state of a Storage.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::StorageStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The desired state of the Storage.
+      class StorageSpec
+        include Google::Apis::Core::Hashable
+      
+        # Bucket to subscribe to.
+        # Corresponds to the JSON property `bucket`
+        # @return [String]
+        attr_accessor :bucket
+      
+        # CloudEventOverrides defines arguments for a Source that control the output
+        # format of the CloudEvents produced by the Source.
+        # Corresponds to the JSON property `ceOverrides`
+        # @return [Google::Apis::RunV1alpha1::CloudEventOverrides]
+        attr_accessor :ce_overrides
+      
+        # EventTypes to subscribe to. If unspecified, then subscribe to all events.
+        # +optional
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<String>]
+        attr_accessor :event_types
+      
+        # ObjectNamePrefix limits the notifications to objects with this prefix
+        # +optional
+        # Corresponds to the JSON property `objectNamePrefix`
+        # @return [String]
+        attr_accessor :object_name_prefix
+      
+        # PayloadFormat specifies the contents of the message payload.
+        # See https://cloud.google.com/storage/docs/pubsub-notifications#payload.
+        # +optional
+        # Corresponds to the JSON property `payloadFormat`
+        # @return [String]
+        attr_accessor :payload_format
+      
+        # Project is the ID of the Google Cloud Project that the PubSub Topic exists
+        # in. If omitted, defaults to same as the cluster. +optional
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `pubsubSecret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :pubsub_secret
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :secret
+      
+        # ServiceAccountName holds the name of the Kubernetes service account
+        # as which the underlying K8s resources should be run. If unspecified
+        # this will default to the "default" service account for the namespace
+        # in which the GCS exists.
+        # +optional
+        # Corresponds to the JSON property `serviceAccountName`
+        # @return [String]
+        attr_accessor :service_account_name
+      
+        # Sink is a reference to an object that will resolve to a domain name or a
+        # URI directly to use as the sink.
+        # Corresponds to the JSON property `sink`
+        # @return [Google::Apis::RunV1alpha1::Destination]
+        attr_accessor :sink
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bucket = args[:bucket] if args.key?(:bucket)
+          @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
+          @event_types = args[:event_types] if args.key?(:event_types)
+          @object_name_prefix = args[:object_name_prefix] if args.key?(:object_name_prefix)
+          @payload_format = args[:payload_format] if args.key?(:payload_format)
+          @project = args[:project] if args.key?(:project)
+          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
+          @secret = args[:secret] if args.key?(:secret)
+          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
+          @sink = args[:sink] if args.key?(:sink)
+        end
+      end
+      
+      # StorageStatus represents the current state of a Storage.
+      class StorageStatus
+        include Google::Apis::Core::Hashable
+      
+        # Array of observed StorageConditions, indicating the current state
+        # of the Storage.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::Condition>]
+        attr_accessor :conditions
+      
+        # ObservedGeneration is the 'Generation' of the Storage that
+        # was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
         end
       end
       

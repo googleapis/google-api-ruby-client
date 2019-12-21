@@ -435,8 +435,9 @@ module Google
       
         # Read-only after creation. The unique identifier of the parent intent in the
         # chain of followup intents. You can set this field when creating an intent,
-        # for example with CreateIntent or BatchUpdateIntents, in order to
-        # make this intent a followup intent.
+        # for example with CreateIntent or
+        # BatchUpdateIntents, in order to make this
+        # intent a followup intent.
         # It identifies the parent followup intent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
@@ -1749,9 +1750,12 @@ module Google
         attr_accessor :all_required_params_present
         alias_method :all_required_params_present?, :all_required_params_present
       
-        # The free-form diagnostic info. For example, this field could contain
-        # webhook call latency. The string keys of the Struct's fields map can change
-        # without notice.
+        # Free-form diagnostic information for the associated detect intent request.
+        # The fields of this data can change without notice, so you should not write
+        # code that depends on its structure.
+        # The data may contain:
+        # - webhook call latency
+        # - webhook errors
         # Corresponds to the JSON property `diagnosticInfo`
         # @return [Hash<String,Object>]
         attr_accessor :diagnostic_info
@@ -2007,6 +2011,16 @@ module Google
       end
       
       # The response message for a webhook call.
+      # This response is validated by the Dialogflow server. If validation fails,
+      # an error will be returned in the QueryResult.diagnostic_info field.
+      # Setting JSON fields to an empty value with the wrong type is a common error.
+      # To avoid this error:
+      # - Use `""` for empty strings
+      # - Use ```` or `null` for empty objects
+      # - Use `[]` or `null` for empty arrays
+      # For more information, see the
+      # [Protocol Buffers Language
+      # Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
       class GoogleCloudDialogflowV2WebhookResponse
         include Google::Apis::Core::Hashable
       
@@ -2559,6 +2573,11 @@ module Google
         # characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
         # If `Environment ID` is not specified, we assume default 'draft'
         # environment. If `User ID` is not specified, we assume default '-' user.
+        # The following context names are reserved for internal use by Dialogflow.
+        # You should not use these contexts or create contexts with these names:
+        # * `__system_counters__`
+        # * `*_id_dialog_context`
+        # * `*_dialog_params_size`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3236,8 +3255,9 @@ module Google
       
         # Read-only after creation. The unique identifier of the parent intent in the
         # chain of followup intents. You can set this field when creating an intent,
-        # for example with CreateIntent or BatchUpdateIntents, in order to
-        # make this intent a followup intent.
+        # for example with CreateIntent or
+        # BatchUpdateIntents, in order to make this
+        # intent a followup intent.
         # It identifies the parent followup intent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `parentFollowupIntentName`
@@ -5060,7 +5080,7 @@ module Google
       end
       
       # The response for
-      # ConversationDatasets.LabelConversation
+      # ConversationDatasets.LabelConversation.
       class GoogleCloudDialogflowV2beta1LabelConversationResponse
         include Google::Apis::Core::Hashable
       
@@ -5470,9 +5490,12 @@ module Google
         attr_accessor :all_required_params_present
         alias_method :all_required_params_present?, :all_required_params_present
       
-        # The free-form diagnostic info. For example, this field could contain
-        # webhook call latency. The string keys of the Struct's fields map can change
-        # without notice.
+        # Free-form diagnostic information for the associated detect intent request.
+        # The fields of this data can change without notice, so you should not write
+        # code that depends on its structure.
+        # The data may contain:
+        # - webhook call latency
+        # - webhook errors
         # Corresponds to the JSON property `diagnosticInfo`
         # @return [Hash<String,Object>]
         attr_accessor :diagnostic_info
@@ -6072,6 +6095,16 @@ module Google
       end
       
       # The response message for a webhook call.
+      # This response is validated by the Dialogflow server. If validation fails,
+      # an error will be returned in the QueryResult.diagnostic_info field.
+      # Setting JSON fields to an empty value with the wrong type is a common error.
+      # To avoid this error:
+      # - Use `""` for empty strings
+      # - Use ```` or `null` for empty objects
+      # - Use `[]` or `null` for empty arrays
+      # For more information, see the
+      # [Protocol Buffers Language
+      # Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
       class GoogleCloudDialogflowV2beta1WebhookResponse
         include Google::Apis::Core::Hashable
       

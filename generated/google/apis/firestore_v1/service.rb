@@ -57,7 +57,7 @@ module Google
         # cancelled before completion it may leave partial data behind in Google
         # Cloud Storage.
         # @param [String] name
-        #   Database to export. Should be of the form:
+        #   Required. Database to export. Should be of the form:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ExportDocumentsRequest] google_firestore_admin_v1_export_documents_request_object
         # @param [String] fields
@@ -95,7 +95,7 @@ module Google
         # created. If an ImportDocuments operation is cancelled, it is possible
         # that a subset of the data has already been imported to Cloud Firestore.
         # @param [String] name
-        #   Database to import into. Should be of the form:
+        #   Required. Database to import into. Should be of the form:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1ImportDocumentsRequest] google_firestore_admin_v1_import_documents_request_object
         # @param [String] fields
@@ -129,7 +129,7 @@ module Google
         
         # Gets the metadata and configuration for a Field.
         # @param [String] name
-        #   A name of the form
+        #   Required. A name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   /fields/`field_id``
         # @param [String] fields
@@ -165,7 +165,7 @@ module Google
         # FirestoreAdmin.ListFields with the filter set to
         # `indexConfig.usesAncestorConfig:false`.
         # @param [String] parent
-        #   A parent name of the form
+        #   Required. A parent name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   `
         # @param [String] filter
@@ -285,7 +285,7 @@ module Google
         # which may be used to track the status of the creation. The metadata for
         # the operation will be the type IndexOperationMetadata.
         # @param [String] parent
-        #   A parent name of the form
+        #   Required. A parent name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   `
         # @param [Google::Apis::FirestoreV1::GoogleFirestoreAdminV1Index] google_firestore_admin_v1_index_object
@@ -320,7 +320,7 @@ module Google
         
         # Deletes a composite index.
         # @param [String] name
-        #   A name of the form
+        #   Required. A name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   /indexes/`index_id``
         # @param [String] fields
@@ -352,7 +352,7 @@ module Google
         
         # Gets a composite index.
         # @param [String] name
-        #   A name of the form
+        #   Required. A name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   /indexes/`index_id``
         # @param [String] fields
@@ -384,7 +384,7 @@ module Google
         
         # Lists composite indexes.
         # @param [String] parent
-        #   A parent name of the form
+        #   Required. A parent name of the form
         #   `projects/`project_id`/databases/`database_id`/collectionGroups/`collection_id`
         #   `
         # @param [String] filter
@@ -429,7 +429,7 @@ module Google
         # Documents returned by this method are not guaranteed to be returned in the
         # same order that they were requested.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::BatchGetDocumentsRequest] batch_get_documents_request_object
         # @param [String] fields
@@ -463,7 +463,7 @@ module Google
         
         # Starts a new transaction.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::BeginTransactionRequest] begin_transaction_request_object
         # @param [String] fields
@@ -497,7 +497,7 @@ module Google
         
         # Commits a transaction, while optionally updating documents.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::CommitRequest] commit_request_object
         # @param [String] fields
@@ -531,12 +531,13 @@ module Google
         
         # Creates a new document.
         # @param [String] parent
-        #   The parent resource. For example:
+        #   Required. The parent resource. For example:
         #   `projects/`project_id`/databases/`database_id`/documents` or
         #   `projects/`project_id`/databases/`database_id`/documents/chatrooms/`
         #   chatroom_id``
         # @param [String] collection_id
-        #   The collection ID, relative to `parent`, to list. For example: `chatrooms`.
+        #   Required. The collection ID, relative to `parent`, to list. For example: `
+        #   chatrooms`.
         # @param [Google::Apis::FirestoreV1::Document] document_object
         # @param [String] document_id
         #   The client-assigned document ID to use for this document.
@@ -578,7 +579,7 @@ module Google
         
         # Deletes a document.
         # @param [String] name
-        #   The resource name of the Document to delete. In the format:
+        #   Required. The resource name of the Document to delete. In the format:
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         # @param [Boolean] current_document_exists
         #   When set to `true`, the target document must exist.
@@ -617,7 +618,7 @@ module Google
         
         # Gets a single document.
         # @param [String] name
-        #   The resource name of the Document to get. In the format:
+        #   Required. The resource name of the Document to get. In the format:
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field
@@ -659,14 +660,15 @@ module Google
         
         # Lists documents.
         # @param [String] parent
-        #   The parent resource name. In the format:
+        #   Required. The parent resource name. In the format:
         #   `projects/`project_id`/databases/`database_id`/documents` or
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         #   For example:
         #   `projects/my-project/databases/my-database/documents` or
         #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
         # @param [String] collection_id
-        #   The collection ID, relative to `parent`, to list. For example: `chatrooms`
+        #   Required. The collection ID, relative to `parent`, to list. For example: `
+        #   chatrooms`
         #   or `messages`.
         # @param [Array<String>, String] mask_field_paths
         #   The list of field paths in the mask. See Document.fields for a field
@@ -726,7 +728,7 @@ module Google
         
         # Lists all the collection IDs underneath a document.
         # @param [String] parent
-        #   The parent document. In the format:
+        #   Required. The parent document. In the format:
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         #   For example:
         #   `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
@@ -762,7 +764,7 @@ module Google
         
         # Listens to changes.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::ListenRequest] listen_request_object
         # @param [String] fields
@@ -846,7 +848,7 @@ module Google
         
         # Rolls back a transaction.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         # @param [Google::Apis::FirestoreV1::RollbackRequest] rollback_request_object
         # @param [String] fields
@@ -880,7 +882,7 @@ module Google
         
         # Runs a query.
         # @param [String] parent
-        #   The parent resource name. In the format:
+        #   Required. The parent resource name. In the format:
         #   `projects/`project_id`/databases/`database_id`/documents` or
         #   `projects/`project_id`/databases/`database_id`/documents/`document_path``.
         #   For example:
@@ -918,7 +920,7 @@ module Google
         
         # Streams batches of document updates and deletes, in order.
         # @param [String] database
-        #   The database name. In the format:
+        #   Required. The database name. In the format:
         #   `projects/`project_id`/databases/`database_id``.
         #   This is only required in the first message.
         # @param [Google::Apis::FirestoreV1::WriteRequest] write_request_object
