@@ -1552,7 +1552,7 @@ module Google
       class RollbackRequest
         include Google::Apis::Core::Hashable
       
-        # The transaction to roll back.
+        # Required. The transaction to roll back.
         # Corresponds to the JSON property `transaction`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
