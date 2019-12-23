@@ -88,6 +88,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedZonePeeringConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ManagedZonePeeringConfigTargetNetwork
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedZonePrivateVisibilityConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +299,8 @@ module Google
           property :name, as: 'name'
           property :name_server_set, as: 'nameServerSet'
           collection :name_servers, as: 'nameServers'
+          property :peering_config, as: 'peeringConfig', class: Google::Apis::DnsV2beta1::ManagedZonePeeringConfig, decorator: Google::Apis::DnsV2beta1::ManagedZonePeeringConfig::Representation
+      
           property :private_visibility_config, as: 'privateVisibilityConfig', class: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfig, decorator: Google::Apis::DnsV2beta1::ManagedZonePrivateVisibilityConfig::Representation
       
           property :visibility, as: 'visibility'
@@ -330,6 +344,24 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::DnsV2beta1::Operation, decorator: Google::Apis::DnsV2beta1::Operation::Representation
       
+        end
+      end
+      
+      class ManagedZonePeeringConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :target_network, as: 'targetNetwork', class: Google::Apis::DnsV2beta1::ManagedZonePeeringConfigTargetNetwork, decorator: Google::Apis::DnsV2beta1::ManagedZonePeeringConfigTargetNetwork::Representation
+      
+        end
+      end
+      
+      class ManagedZonePeeringConfigTargetNetwork
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :deactivate_time, as: 'deactivateTime'
+          property :kind, as: 'kind'
+          property :network_url, as: 'networkUrl'
         end
       end
       

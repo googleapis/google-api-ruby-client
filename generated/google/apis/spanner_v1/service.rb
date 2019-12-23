@@ -222,11 +222,9 @@ module Google
         #   Required. The name of the requested instance. Values are of the form
         #   `projects/<project>/instances/<instance>`.
         # @param [String] field_mask
-        #   If field_mask is present, specifies the subset of [][google.spanner.admin.
-        #   instance.v1.Instance] fields that
+        #   If field_mask is present, specifies the subset of Instance fields that
         #   should be returned.
-        #   If absent, all [][google.spanner.admin.instance.v1.Instance] fields are
-        #   returned.
+        #   If absent, all Instance fields are returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

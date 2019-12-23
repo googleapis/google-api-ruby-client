@@ -724,6 +724,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExchangedPeeringRoute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ExchangedPeeringRoutesList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1288,6 +1312,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusVersionTarget
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerUpdatePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1301,6 +1331,12 @@ module Google
       end
       
       class InstanceGroupManagersAbandonInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersCreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2428,6 +2464,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PerInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Policy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2579,6 +2621,12 @@ module Google
       end
       
       class RegionInstanceGroupManagersAbandonInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersCreateInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4580,6 +4628,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :recommended_size, as: 'recommendedSize'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
@@ -4702,6 +4751,7 @@ module Google
       
           property :max_num_replicas, as: 'maxNumReplicas'
           property :min_num_replicas, as: 'minNumReplicas'
+          property :mode, as: 'mode'
         end
       end
       
@@ -5512,6 +5562,49 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class ExchangedPeeringRoute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_range, as: 'destRange'
+          property :imported, as: 'imported'
+          property :next_hop_region, as: 'nextHopRegion'
+          property :priority, as: 'priority'
+          property :type, as: 'type'
+        end
+      end
+      
+      class ExchangedPeeringRoutesList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::ExchangedPeeringRoute, decorator: Google::Apis::ComputeV1::ExchangedPeeringRoute::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning, decorator: Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning::Datum, decorator: Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -6677,12 +6770,22 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
+          property :version_target, as: 'versionTarget', class: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget::Representation
+      
+        end
+      end
+      
+      class InstanceGroupManagerStatusVersionTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_reached, as: 'isReached'
         end
       end
       
       class InstanceGroupManagerUpdatePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance_redistribution_type, as: 'instanceRedistributionType'
           property :max_surge, as: 'maxSurge', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
       
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
@@ -6706,6 +6809,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class InstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::PerInstanceConfig, decorator: Google::Apis::ComputeV1::PerInstanceConfig::Representation
+      
         end
       end
       
@@ -8713,6 +8824,14 @@ module Google
         end
       end
       
+      class PerInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :name, as: 'name'
+        end
+      end
+      
       class Policy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8981,6 +9100,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::PerInstanceConfig, decorator: Google::Apis::ComputeV1::PerInstanceConfig::Representation
+      
         end
       end
       

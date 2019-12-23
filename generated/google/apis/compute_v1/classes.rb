@@ -1285,9 +1285,10 @@ module Google
         # @return [String]
         attr_accessor :disk_name
       
-        # Specifies the size of the disk in base-2 GB. If not specified, the disk will
-        # be the same size as the image (usually 10GB). If specified, the size must be
-        # equal to or larger than 10GB.
+        # Specifies the size of the disk in base-2 GB. The size must be at least 10 GB.
+        # If you specify a sourceImage, which is required for boot disks, the default
+        # size is the size of the sourceImage. If you do not specify a sourceImage, the
+        # default disk size is 500 GB.
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
@@ -1536,6 +1537,15 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] Target recommended MIG size (number of instances) computed by
+        # autoscaler. Autoscaler calculates recommended MIG size even when autoscaling
+        # policy mode is different from ON. This field is empty when autoscaler is not
+        # connected to the existing managed instance group or autoscaler did not
+        # generate its prediction.
+        # Corresponds to the JSON property `recommendedSize`
+        # @return [Fixnum]
+        attr_accessor :recommended_size
+      
         # [Output Only] URL of the region where the instance group resides (for
         # autoscalers living in regional scope).
         # Corresponds to the JSON property `region`
@@ -1589,6 +1599,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
+          @recommended_size = args[:recommended_size] if args.key?(:recommended_size)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
@@ -2033,6 +2044,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :min_num_replicas
       
+        # Defines operating mode for this policy.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2045,6 +2061,7 @@ module Google
           @load_balancing_utilization = args[:load_balancing_utilization] if args.key?(:load_balancing_utilization)
           @max_num_replicas = args[:max_num_replicas] if args.key?(:max_num_replicas)
           @min_num_replicas = args[:min_num_replicas] if args.key?(:min_num_replicas)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
       
@@ -2664,6 +2681,8 @@ module Google
         # HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
         # - A global backend service with the load_balancing_scheme set to
         # INTERNAL_SELF_MANAGED.
+        # If sessionAffinity is not NONE, and this field is not set to >MAGLEV or
+        # RING_HASH, session affinity settings will not take effect.
         # Corresponds to the JSON property `localityLbPolicy`
         # @return [String]
         attr_accessor :locality_lb_policy
@@ -2738,8 +2757,9 @@ module Google
         # HTTPS.
         # When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP,
         # CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-        # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, possible values are
-        # NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
+        # When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED,
+        # possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or
+        # HTTP_COOKIE.
         # Corresponds to the JSON property `sessionAffinity`
         # @return [String]
         attr_accessor :session_affinity
@@ -3258,6 +3278,22 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group. For
         # example, `admins@example.com`.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For example,`
+        # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
+        # value reverts to `user:`emailid`` and the recovered user retains the role in
+        # the binding.
+        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
+        # unique identifier) representing a service account that has been recently
+        # deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=
+        # 123456789012345678901`. If the service account is undeleted, this value
+        # reverts to `serviceAccount:`emailid`` and the undeleted service account
+        # retains the role in the binding.
+        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently deleted. For
+        # example, `admins@example.com?uid=123456789012345678901`. If the group is
+        # recovered, this value reverts to `group:`emailid`` and the recovered group
+        # retains the role in the binding.
         # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
@@ -5424,6 +5460,171 @@ module Google
         end
       end
       
+      # 
+      class ExchangedPeeringRoute
+        include Google::Apis::Core::Hashable
+      
+        # The destination range of the route.
+        # Corresponds to the JSON property `destRange`
+        # @return [String]
+        attr_accessor :dest_range
+      
+        # True if the peering route has been imported from a peer. The actual import
+        # happens if the field networkPeering.importCustomRoutes is true for this
+        # network, and networkPeering.exportCustomRoutes is true for the peer network,
+        # and the import does not result in a route conflict.
+        # Corresponds to the JSON property `imported`
+        # @return [Boolean]
+        attr_accessor :imported
+        alias_method :imported?, :imported
+      
+        # The region of peering route next hop, only applies to dynamic routes.
+        # Corresponds to the JSON property `nextHopRegion`
+        # @return [String]
+        attr_accessor :next_hop_region
+      
+        # The priority of the peering route.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # The type of the peering route.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dest_range = args[:dest_range] if args.key?(:dest_range)
+          @imported = args[:imported] if args.key?(:imported)
+          @next_hop_region = args[:next_hop_region] if args.key?(:next_hop_region)
+          @priority = args[:priority] if args.key?(:priority)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class ExchangedPeeringRoutesList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ExchangedPeeringRoute resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::ExchangedPeeringRoute>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#exchangedPeeringRoutesList for
+        # exchanged peering routes lists.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # Represents an expression text. Example:
       # title: "User account presence" description: "Determines whether the request
       # has a user account" expression: "size(request.user) > 0"
@@ -6186,8 +6387,8 @@ module Google
         # @return [String]
         attr_accessor :ip_address
       
-        # The IP protocol to which this rule applies. Valid options are TCP, UDP, ESP,
-        # AH, SCTP or ICMP.
+        # The IP protocol to which this rule applies. For protocol forwarding, valid
+        # options are TCP, UDP, ESP, AH, SCTP or ICMP.
         # For Internal TCP/UDP Load Balancing, the load balancing scheme is INTERNAL,
         # and one of TCP or UDP are valid. For Traffic Director, the load balancing
         # scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For Internal HTTP(S)
@@ -6261,15 +6462,17 @@ module Google
         attr_accessor :load_balancing_scheme
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
-        # to a limited set xDS compliant clients. In their xDS requests to Loadbalancer,
-        # xDS clients present node metadata. If a match takes place, the relevant
-        # routing configuration is made available to those proxies.
+        # to a limited set of xDS compliant clients. In their xDS requests to
+        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # relevant configuration is made available to those proxies. Otherwise, all the
+        # resources (e.g. TargetHttpProxy, UrlMap) referenced by the ForwardingRule will
+        # not be visible to those proxies.
         # For each metadataFilter in this list, if its filterMatchCriteria is set to
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
-        # all of its filterLabels must match with corresponding labels in the provided
+        # all of its filterLabels must match with corresponding labels provided in the
         # metadata.
-        # metadataFilters specified here can be overridden by those specified in the
+        # metadataFilters specified here will be applifed before those specified in the
         # UrlMap that this ForwardingRule references.
         # metadataFilters only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -6305,23 +6508,16 @@ module Google
         # @return [String]
         attr_accessor :network_tier
       
-        # This field is deprecated. See the port
-        # field.
-        # Corresponds to the JSON property `portRange`
-        # @return [String]
-        attr_accessor :port_range
-      
-        # List of comma-separated ports. The forwarding rule forwards packets with
-        # matching destination ports. If the forwarding rule's loadBalancingScheme is
-        # EXTERNAL, and the forwarding rule references a target pool, specifying ports
-        # is optional. You can specify an unlimited number of ports, but they must be
-        # contiguous. If you omit ports, GCP forwards traffic on any port of the
-        # forwarding rule's protocol.
-        # If the forwarding rule's loadBalancingScheme is EXTERNAL, and the forwarding
-        # rule references a target HTTP proxy, target HTTPS proxy, target TCP proxy,
-        # target SSL proxy, or target VPN gateway, you must specify ports using the
-        # following constraints:
-        # 
+        # When the load balancing scheme is EXTERNAL, INTERNAL_SELF_MANAGED and
+        # INTERNAL_MANAGED, you can specify a port_range. Use with a forwarding rule
+        # that points to a target proxy or a target pool. Do not use with a forwarding
+        # rule that points to a backend service. This field is used along with the
+        # target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy,
+        # TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
+        # Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed
+        # to ports in the specified range will be forwarded to target. Forwarding rules
+        # with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
+        # Some types of forwarding target have constraints on the acceptable ports:
         # - TargetHttpProxy: 80, 8080
         # - TargetHttpsProxy: 443
         # - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
@@ -6329,16 +6525,20 @@ module Google
         # - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688,
         # 1883, 5222
         # - TargetVpnGateway: 500, 4500
-        # If the forwarding rule's loadBalancingScheme is INTERNAL, you must specify
+        # Corresponds to the JSON property `portRange`
+        # @return [String]
+        attr_accessor :port_range
+      
+        # This field is used along with the backend_service field for internal load
+        # balancing.
+        # When the load balancing scheme is INTERNAL, a list of ports can be configured,
+        # for example, ['80'], ['8000','9000']. Only packets addressed to these ports
+        # are forwarded to the backends configured with the forwarding rule.
+        # If the forwarding rule's loadBalancingScheme is INTERNAL, you can specify
         # ports in one of the following ways:
         # * A list of up to five ports, which can be non-contiguous * Keyword ALL, which
         # causes the forwarding rule to forward traffic on any port of the forwarding
         # rule's protocol.
-        # The ports field is used along with the target field for TargetHttpProxy,
-        # TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool,
-        # TargetInstance.
-        # Applicable only when IPProtocol is TCP, UDP, or SCTP. Forwarding rules with
-        # the same [IPAddress, IPProtocol] pair must have disjoint port ranges.
         # Corresponds to the JSON property `ports`
         # @return [Array<String>]
         attr_accessor :ports
@@ -6825,32 +7025,34 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
         # members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the request,
+        # the resource, or both.
+        # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
         # "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ] `
-        # **YAML Example**
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+        # **YAML example:**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
         # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
         # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
         # com role: roles/resourcemanager.organizationViewer condition: title: expirable
         # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z')
-        # For a description of IAM and its features, see the [IAM developer's guide](
-        # https://cloud.google.com/iam/docs).
+        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+        # For a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeV1::Policy]
         attr_accessor :policy
@@ -6878,7 +7080,7 @@ module Google
         attr_accessor :kind
       
         # The path to be queried. This can be the default namespace ('/') or a nested
-        # namespace ('//') or a specified key ('//')
+        # namespace ('/\/') or a specified key ('/\/\')
         # Corresponds to the JSON property `queryPath`
         # @return [String]
         attr_accessor :query_path
@@ -7986,7 +8188,7 @@ module Google
         attr_accessor :prefix_match
       
         # A header with the contents of headerName must exist. The match takes place
-        # whether or not the request's header has a value or not.
+        # whether or not the request's header has a value.
         # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
         # rangeMatch must be set.
         # Corresponds to the JSON property `presentMatch`
@@ -8302,7 +8504,7 @@ module Google
       
         # The queryParameterMatch matches if the value of the parameter exactly matches
         # the contents of exactMatch.
-        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Only one of presentMatch, exactMatch or regexMatch must be set.
         # Corresponds to the JSON property `exactMatch`
         # @return [String]
         attr_accessor :exact_match
@@ -8315,7 +8517,7 @@ module Google
       
         # Specifies that the queryParameterMatch matches if the request contains the
         # query parameter, irrespective of whether the parameter has a value or not.
-        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Only one of presentMatch, exactMatch or regexMatch must be set.
         # Corresponds to the JSON property `presentMatch`
         # @return [Boolean]
         attr_accessor :present_match
@@ -8324,7 +8526,7 @@ module Google
         # The queryParameterMatch matches if the value of the parameter matches the
         # regular expression specified by regexMatch. For the regular expression grammar,
         # please see en.cppreference.com/w/cpp/regex/ecmascript
-        # Only one of presentMatch, exactMatch and regexMatch must be set.
+        # Only one of presentMatch, exactMatch or regexMatch must be set.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -8593,7 +8795,8 @@ module Google
         # forwarding the request to the selected backend. If  routeAction specifies any
         # weightedBackendServices, service must not be set. Conversely if service is set,
         # routeAction cannot contain any  weightedBackendServices.
-        # Only one of routeAction or urlRedirect must be set.
+        # Only one of urlRedirect, service or routeAction.weightedBackendService must be
+        # set.
         # Corresponds to the JSON property `routeAction`
         # @return [Google::Apis::ComputeV1::HttpRouteAction]
         attr_accessor :route_action
@@ -8636,10 +8839,10 @@ module Google
       class HttpRouteRuleMatch
         include Google::Apis::Core::Hashable
       
-        # For satifying the matchRule condition, the path of the request must exactly
+        # For satisfying the matchRule condition, the path of the request must exactly
         # match the value specified in fullPathMatch after removing any query parameters
         # and anchor that may be part of the original URL.
-        # FullPathMatch must be between 1 and 1024 characters.
+        # fullPathMatch must be between 1 and 1024 characters.
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
         # Corresponds to the JSON property `fullPathMatch`
         # @return [String]
@@ -8653,30 +8856,30 @@ module Google
       
         # Specifies that prefixMatch and fullPathMatch matches are case sensitive.
         # The default value is false.
-        # caseSensitive must not be used with regexMatch.
+        # ignoreCase must not be used with regexMatch.
         # Corresponds to the JSON property `ignoreCase`
         # @return [Boolean]
         attr_accessor :ignore_case
         alias_method :ignore_case?, :ignore_case
       
         # Opaque filter criteria used by Loadbalancer to restrict routing configuration
-        # to a limited set xDS compliant clients. In their xDS requests to Loadbalancer,
-        # xDS clients present node metadata. If a match takes place, the relevant
-        # routing configuration is made available to those proxies.
+        # to a limited set of xDS compliant clients. In their xDS requests to
+        # Loadbalancer, xDS clients present node metadata. If a match takes place, the
+        # relevant routing configuration is made available to those proxies.
         # For each metadataFilter in this list, if its filterMatchCriteria is set to
         # MATCH_ANY, at least one of the filterLabels must match the corresponding label
         # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
-        # all of its filterLabels must match with corresponding labels in the provided
+        # all of its filterLabels must match with corresponding labels provided in the
         # metadata.
-        # metadataFilters specified here can be overrides those specified in
-        # ForwardingRule that refers to this UrlMap.
+        # metadataFilters specified here will be applied after those specified in
+        # ForwardingRule that refers to the UrlMap this HttpRouteRuleMatch belongs to.
         # metadataFilters only applies to Loadbalancers that have their
         # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `metadataFilters`
         # @return [Array<Google::Apis::ComputeV1::MetadataFilter>]
         attr_accessor :metadata_filters
       
-        # For satifying the matchRule condition, the request's path must begin with the
+        # For satisfying the matchRule condition, the request's path must begin with the
         # specified prefixMatch. prefixMatch must begin with a /.
         # The value must be between 1 and 1024 characters.
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
@@ -8690,7 +8893,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::HttpQueryParameterMatch>]
         attr_accessor :query_parameter_matches
       
-        # For satifying the matchRule condition, the path of the request must satisfy
+        # For satisfying the matchRule condition, the path of the request must satisfy
         # the regular expression specified in regexMatch after removing any query
         # parameters and anchor supplied with the original URL. For regular expression
         # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
@@ -9685,14 +9888,17 @@ module Google
         end
       end
       
-      # Represents an unmanaged Instance Group resource.
-      # Use unmanaged instance groups if you need to apply load balancing to groups of
-      # heterogeneous instances or if you need to manage the instances yourself. For
-      # more information, read  Instance groups.
-      # For zonal unmanaged Instance Group, use instanceGroups resource.
-      # For regional unmanaged Instance Group, use regionInstanceGroups resource. (==
-      # resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (==
-      # resource_for beta.regionInstanceGroups ==) (== resource_for v1.
+      # Represents an Instance Group resource.
+      # Instance Groups can be used to configure a target for load balancing.
+      # Instance groups can either be managed or unmanaged.
+      # To create  managed instance groups, use the instanceGroupManager or
+      # regionInstanceGroupManager resource instead.
+      # Use zonal unmanaged instance groups if you need to apply load balancing to
+      # groups of heterogeneous instances or if you need to manage the instances
+      # yourself. You cannot create regional unmanaged instance groups.
+      # For more information, read Instance groups.
+      # (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==)
+      # (== resource_for beta.regionInstanceGroups ==) (== resource_for v1.
       # regionInstanceGroups ==)
       class InstanceGroup
         include Google::Apis::Core::Hashable
@@ -10584,6 +10790,12 @@ module Google
         attr_accessor :is_stable
         alias_method :is_stable?, :is_stable
       
+        # [Output Only] A status of consistency of Instances' versions with their target
+        # version specified by version field on Instance Group Manager.
+        # Corresponds to the JSON property `versionTarget`
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget]
+        attr_accessor :version_target
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10591,12 +10803,45 @@ module Google
         # Update properties of this object
         def update!(**args)
           @is_stable = args[:is_stable] if args.key?(:is_stable)
+          @version_target = args[:version_target] if args.key?(:version_target)
+        end
+      end
+      
+      # 
+      class InstanceGroupManagerStatusVersionTarget
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] A bit indicating whether version target has been reached in this
+        # managed instance group, i.e. all instances are in their target version.
+        # Instances' target version are specified by version field on Instance Group
+        # Manager.
+        # Corresponds to the JSON property `isReached`
+        # @return [Boolean]
+        attr_accessor :is_reached
+        alias_method :is_reached?, :is_reached
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @is_reached = args[:is_reached] if args.key?(:is_reached)
         end
       end
       
       # 
       class InstanceGroupManagerUpdatePolicy
         include Google::Apis::Core::Hashable
+      
+        # The  instance redistribution policy for regional managed instance groups.
+        # Valid values are:
+        # - PROACTIVE (default): The group attempts to maintain an even distribution of
+        # VM instances across zones in the region.
+        # - NONE: For non-autoscaled groups, proactive redistribution is disabled.
+        # Corresponds to the JSON property `instanceRedistributionType`
+        # @return [String]
+        attr_accessor :instance_redistribution_type
       
         # Encapsulates numeric value that can be either absolute or relative.
         # Corresponds to the JSON property `maxSurge`
@@ -10633,6 +10878,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance_redistribution_type = args[:instance_redistribution_type] if args.key?(:instance_redistribution_type)
           @max_surge = args[:max_surge] if args.key?(:max_surge)
           @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
           @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
@@ -10682,6 +10928,25 @@ module Google
         # partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].
         # Corresponds to the JSON property `instances`
         # @return [Array<String>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # InstanceGroupManagers.createInstances
+      class InstanceGroupManagersCreateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of specifications of per-instance configs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
         attr_accessor :instances
       
         def initialize(**args)
@@ -14805,12 +15070,12 @@ module Google
       # Opaque filter criteria used by loadbalancers to restrict routing configuration
       # to a limited set of loadbalancing proxies. Proxies and sidecars involved in
       # loadbalancing would typically present metadata to the loadbalancers which need
-      # to match criteria specified here. If a match takes place, the relevant routing
+      # to match criteria specified here. If a match takes place, the relevant
       # configuration is made available to those proxies.
       # For each metadataFilter in this list, if its filterMatchCriteria is set to
       # MATCH_ANY, at least one of the filterLabels must match the corresponding label
       # provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then
-      # all of its filterLabels must match with corresponding labels in the provided
+      # all of its filterLabels must match with corresponding labels provided in the
       # metadata.
       # An example for using metadataFilters would be: if loadbalancing involves
       # Envoys, they will only receive routing configuration when values in
@@ -14958,7 +15223,7 @@ module Google
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
-        # z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all
+        # z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all
         # following characters (except for the last character) must be a dash, lowercase
         # letter, or digit. The last character must be a lowercase letter or digit.
         # Corresponds to the JSON property `name`
@@ -15009,7 +15274,7 @@ module Google
         end
       end
       
-      # The network endpoint.
+      # The network endpoint. Next ID: 7
       class NetworkEndpoint
         include Google::Apis::Core::Hashable
       
@@ -15052,7 +15317,7 @@ module Google
       # Represents a collection of network endpoints.
       # For more information read Setting up network endpoint groups in load balancing.
       # (== resource_for v1.networkEndpointGroups ==) (== resource_for beta.
-      # networkEndpointGroups ==)
+      # networkEndpointGroups ==) Next ID: 21
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -15659,7 +15924,7 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::HealthStatusForNetworkEndpoint>]
         attr_accessor :healths
       
-        # The network endpoint.
+        # The network endpoint. Next ID: 7
         # Corresponds to the JSON property `networkEndpoint`
         # @return [Google::Apis::ComputeV1::NetworkEndpoint]
         attr_accessor :network_endpoint
@@ -16082,7 +16347,7 @@ module Google
       # instances physically separated from instances in other projects, or to group
       # your instances together on the same host hardware. For more information, read
       # Sole-tenant nodes. (== resource_for beta.nodeGroups ==) (== resource_for v1.
-      # nodeGroups ==) NextID: 16
+      # nodeGroups ==)
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -16714,7 +16979,7 @@ module Google
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
       # more information, read Creating node groups and instances. (== resource_for
-      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==) (== NextID: 16 ==)
+      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -18413,10 +18678,9 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::PathRule>]
         attr_accessor :path_rules
       
-        # The list of ordered HTTP route rules. Use this list instead of pathRules when
-        # advanced route matching and routing actions are desired. The order of
-        # specifying routeRules matters: the first rule that matches will cause its
-        # specified routing action to take effect.
+        # The list of HTTP route rules. Use this list instead of pathRules when advanced
+        # route matching and routing actions are desired. routeRules are evaluated in
+        # order of priority, from the lowest to highest number.
         # Within a given pathMatcher, only one of pathRules or routeRules must be set.
         # routeRules are not supported in UrlMaps intended for External Load balancers.
         # Corresponds to the JSON property `routeRules`
@@ -18493,32 +18757,68 @@ module Google
         end
       end
       
-      # Defines an Identity and Access Management (IAM) policy. It is used to specify
-      # access control policies for Cloud Platform resources.
+      # 
+      class PerInstanceConfig
+        include Google::Apis::Core::Hashable
+      
+        # Fingerprint of this per-instance config. This field may be used in optimistic
+        # locking. It will be ignored when inserting a per-instance config. An up-to-
+        # date fingerprint must be provided in order to update an existing per-instance
+        # config or the field needs to be unset.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # The name of the per-instance config and the corresponding instance. Serves as
+        # a merge key during UpdatePerInstanceConfigs operation, i.e. if per-instance
+        # config with the same name exists then it will be updated, otherwise a new one
+        # will be created for the VM instance with the same name. An attempt to create a
+        # per-instance config for a VM instance that either doesn't exist or is not part
+        # of the group will result in a failure.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources.
       # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
       # members` to a single `role`. Members can be user accounts, service accounts,
       # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions (defined by IAM or configured by users). A `binding` can
-      # optionally specify a `condition`, which is a logic expression that further
-      # constrains the role binding based on attributes about the request and/or
-      # target resource.
-      # **JSON Example**
+      # permissions; each `role` can be an IAM predefined role or a user-created
+      # custom role.
+      # Optionally, a `binding` can specify a `condition`, which is a logical
+      # expression that allows access to a resource only if the expression evaluates
+      # to `true`. A condition can add constraints based on attributes of the request,
+      # the resource, or both.
+      # **JSON example:**
       # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
       # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
       # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
       # "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-      # 00:00.000Z')", ` ` ] `
-      # **YAML Example**
+      # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+      # **YAML example:**
       # bindings: - members: - user:mike@example.com - group:admins@example.com -
       # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
       # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
       # com role: roles/resourcemanager.organizationViewer condition: title: expirable
       # access description: Does not grant access after Sep 2020 expression: request.
-      # time < timestamp('2020-10-01T00:00:00.000Z')
-      # For a description of IAM and its features, see the [IAM developer's guide](
-      # https://cloud.google.com/iam/docs).
+      # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+      # For a description of IAM and its features, see the [IAM documentation](https://
+      # cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -18527,9 +18827,9 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally may specify a `
-        # condition` that determines when binding is in effect. `bindings` with no
-        # members will result in an error.
+        # Associates a list of `members` to a `role`. Optionally, may specify a `
+        # condition` that determines how and when the `bindings` are applied. Each of
+        # the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::ComputeV1::Binding>]
         attr_accessor :bindings
@@ -18541,10 +18841,10 @@ module Google
         # returned in the response to `getIamPolicy`, and systems are expected to put
         # that etag in the request to `setIamPolicy` to ensure that their change will be
         # applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten. Due to blind-set semantics of an etag-less policy, '
-        # setIamPolicy' will not fail even if either of incoming or stored policy does
-        # not meet the version requirements.
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -18568,15 +18868,20 @@ module Google
         attr_accessor :rules
       
         # Specifies the format of the policy.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are
         # rejected.
-        # Operations affecting conditional bindings must specify version 3. This can be
-        # either setting a conditional policy, modifying a conditional binding, or
-        # removing a conditional binding from the stored conditional policy. Operations
-        # on non-conditional policies may specify any valid value or leave the field
-        # unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version compliance
-        # checks on the incoming and/or stored policy is skipped.
+        # Any operation that affects conditional role bindings must specify version `3`.
+        # This requirement applies to the following operations:
+        # * Getting a policy that includes a conditional role binding * Adding a
+        # conditional role binding to a policy * Changing a conditional role binding in
+        # a policy * Removing any role binding, with or without a condition, from a
+        # policy that includes conditions
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows you
+        # to overwrite a version `3` policy with a version `1` policy, and all of the
+        # conditions in the version `3` policy are lost.
+        # If a policy does not include any conditions, operations on that policy may
+        # specify any valid version or leave the field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -19515,6 +19820,25 @@ module Google
         end
       end
       
+      # RegionInstanceGroupManagers.createInstances
+      class RegionInstanceGroupManagersCreateInstancesRequest
+        include Google::Apis::Core::Hashable
+      
+        # [Required] List of specifications of per-instance configs.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::PerInstanceConfig>]
+        attr_accessor :instances
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
       # 
       class RegionInstanceGroupManagersDeleteInstancesRequest
         include Google::Apis::Core::Hashable
@@ -19964,32 +20288,34 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
         # members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the request,
+        # the resource, or both.
+        # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
         # "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ] `
-        # **YAML Example**
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+        # **YAML example:**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
         # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
         # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
         # com role: roles/resourcemanager.organizationViewer condition: title: expirable
         # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z')
-        # For a description of IAM and its features, see the [IAM developer's guide](
-        # https://cloud.google.com/iam/docs).
+        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+        # For a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeV1::Policy]
         attr_accessor :policy
@@ -23746,7 +24072,9 @@ module Google
       # This SSL certificate resource also contains a private key. You can use SSL
       # keys and certificates to secure connections to a load balancer. For more
       # information, read  Creating and Using SSL Certificates. (== resource_for beta.
-      # sslCertificates ==) (== resource_for v1.sslCertificates ==)
+      # sslCertificates ==) (== resource_for v1.sslCertificates ==) (== resource_for
+      # beta.regionSslCertificates ==) (== resource_for v1.regionSslCertificates ==)
+      # Next ID: 17
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -25294,11 +25622,12 @@ module Google
       end
       
       # Represents a Target HTTP Proxy resource.
-      # A target HTTP proxy is a component of certain types of load balancers. Global
-      # forwarding rules reference a target HTTP proxy, and the target proxy then
-      # references a URL map. For more information, read Using Target Proxies. (==
-      # resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies =
-      # =)
+      # A target HTTP proxy is a component of GCP HTTP load balancers. Forwarding
+      # rules reference a target HTTP proxy, and the target proxy then references a
+      # URL map. For more information, read Using Target Proxies and  Forwarding rule
+      # concepts. (== resource_for beta.targetHttpProxies ==) (== resource_for v1.
+      # targetHttpProxies ==) (== resource_for beta.regionTargetHttpProxies ==) (==
+      # resource_for v1.regionTargetHttpProxies ==)
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -25666,11 +25995,12 @@ module Google
       end
       
       # Represents a Target HTTPS Proxy resource.
-      # A target HTTPS proxy is a component of certain types of load balancers. Global
-      # forwarding rules reference a target HTTPS proxy, and the target proxy then
-      # references a URL map. For more information, read Using Target Proxies. (==
-      # resource_for beta.targetHttpsProxies ==) (== resource_for v1.
-      # targetHttpsProxies ==)
+      # A target HTTPS proxy is a component of GCP HTTPS load balancers. Forwarding
+      # rules reference a target HTTPS proxy, and the target proxy then references a
+      # URL map. For more information, read Using Target Proxies and  Forwarding rule
+      # concepts. (== resource_for beta.targetHttpsProxies ==) (== resource_for v1.
+      # targetHttpsProxies ==) (== resource_for beta.regionTargetHttpsProxies ==) (==
+      # resource_for v1.regionTargetHttpsProxies ==)
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -29063,7 +29393,7 @@ module Google
         end
       end
       
-      # Represents a VPN gateway resource.
+      # Represents a VPN gateway resource. Next ID: 13
       class VpnGateway
         include Google::Apis::Core::Hashable
       
@@ -30602,32 +30932,34 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to specify
-        # access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more `
         # members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the request,
+        # the resource, or both.
+        # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
         # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
         # "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
-        # 00:00.000Z')", ` ` ] `
-        # **YAML Example**
+        # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
+        # **YAML example:**
         # bindings: - members: - user:mike@example.com - group:admins@example.com -
         # domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
         # role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.
         # com role: roles/resourcemanager.organizationViewer condition: title: expirable
         # access description: Does not grant access after Sep 2020 expression: request.
-        # time < timestamp('2020-10-01T00:00:00.000Z')
-        # For a description of IAM and its features, see the [IAM developer's guide](
-        # https://cloud.google.com/iam/docs).
+        # time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= - version: 3
+        # For a description of IAM and its features, see the [IAM documentation](https://
+        # cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::ComputeV1::Policy]
         attr_accessor :policy

@@ -51,8 +51,7 @@ module Google
           @batch_path = 'batch/compute/v1'
         end
         
-        # Retrieves an aggregated list of accelerator types. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of accelerator types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -123,8 +122,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified accelerator type. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified accelerator type.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -163,8 +161,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of accelerator types available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of accelerator types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -238,8 +235,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of addresses. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of addresses.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -310,8 +306,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified address resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified address resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -362,8 +357,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified address resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified address resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -403,7 +397,7 @@ module Google
         end
         
         # Creates an address resource in the specified project by using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -454,8 +448,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of addresses contained within the specified region. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of addresses contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -529,8 +522,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of autoscalers. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of autoscalers.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -601,7 +593,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -653,8 +645,7 @@ module Google
         end
         
         # Returns the specified autoscaler resource. Gets a list of available
-        # autoscalers by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # autoscalers by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -694,7 +685,7 @@ module Google
         end
         
         # Creates an autoscaler in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -745,8 +736,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of autoscalers contained within the specified zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of autoscalers contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -822,7 +812,7 @@ module Google
         
         # Updates an autoscaler in the specified project using the data included in the
         # request. This method supports PATCH semantics and uses the JSON merge patch
-        # format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -877,7 +867,7 @@ module Google
         end
         
         # Updates an autoscaler in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -931,8 +921,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a key for validating requests with signed URLs for this backend bucket. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # Adds a key for validating requests with signed URLs for this backend bucket.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -984,8 +973,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified BackendBucket resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified BackendBucket resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1034,7 +1022,6 @@ module Google
         end
         
         # Deletes a key for validating requests with signed URLs for this backend bucket.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1087,7 +1074,7 @@ module Google
         end
         
         # Returns the specified BackendBucket resource. Gets a list of available backend
-        # buckets by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # buckets by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1124,7 +1111,7 @@ module Google
         end
         
         # Creates a BackendBucket resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::BackendBucket] backend_bucket_object
@@ -1173,7 +1160,7 @@ module Google
         end
         
         # Retrieves the list of BackendBucket resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1246,7 +1233,7 @@ module Google
         
         # Updates the specified BackendBucket resource with the data included in the
         # request. This method supports PATCH semantics and uses the JSON merge patch
-        # format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1298,7 +1285,7 @@ module Google
         end
         
         # Updates the specified BackendBucket resource with the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_bucket
@@ -1349,8 +1336,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a key for validating requests with signed URLs for this backend service. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Adds a key for validating requests with signed URLs for this backend service.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1403,7 +1389,7 @@ module Google
         end
         
         # Retrieves the list of all BackendService resources, regional and global,
-        # available to the specified project. (== suppress_warning http-rest-shadowed ==)
+        # available to the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -1474,8 +1460,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified BackendService resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified BackendService resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1524,7 +1509,7 @@ module Google
         end
         
         # Deletes a key for validating requests with signed URLs for this backend
-        # service. (== suppress_warning http-rest-shadowed ==)
+        # service.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1577,7 +1562,7 @@ module Google
         end
         
         # Returns the specified BackendService resource. Gets a list of available
-        # backend services. (== suppress_warning http-rest-shadowed ==)
+        # backend services.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1613,8 +1598,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the most recent health check results for this BackendService. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Gets the most recent health check results for this BackendService.
         # @param [String] project
         # @param [String] backend_service
         #   Name of the BackendService resource to which the queried instance belongs.
@@ -1655,7 +1639,7 @@ module Google
         # Creates a BackendService resource in the specified project using the data
         # included in the request. There are several restrictions and guidelines to keep
         # in mind when creating a backend service. Read  Restrictions and Guidelines for
-        # more information. (== suppress_warning http-rest-shadowed ==)
+        # more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
@@ -1704,7 +1688,7 @@ module Google
         end
         
         # Retrieves the list of BackendService resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -1779,7 +1763,7 @@ module Google
         # request. There are several restrictions and guidelines to keep in mind when
         # updating a backend service. Read  Restrictions and Guidelines for more
         # information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1830,8 +1814,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the security policy for the specified backend service. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Sets the security policy for the specified backend service.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1886,7 +1869,7 @@ module Google
         # Updates the specified BackendService resource with the data included in the
         # request. There are several restrictions and guidelines to keep in mind when
         # updating a backend service. Read  Restrictions and Guidelines for more
-        # information. (== suppress_warning http-rest-shadowed ==)
+        # information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] backend_service
@@ -1937,8 +1920,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of disk types. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of disk types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2010,7 +1992,7 @@ module Google
         end
         
         # Returns the specified disk type. Gets a list of available disk types by making
-        # a list() request. (== suppress_warning http-rest-shadowed ==)
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2049,8 +2031,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of disk types available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of disk types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2125,8 +2106,7 @@ module Google
         end
         
         # Adds existing resource policies to a disk. You can only add one policy which
-        # will be applied to this disk for scheduling snapshot creation. (==
-        # suppress_warning http-rest-shadowed ==)
+        # will be applied to this disk for scheduling snapshot creation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2180,8 +2160,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of persistent disks. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of persistent disks.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -2252,8 +2231,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of a specified persistent disk. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Creates a snapshot of a specified persistent disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2315,7 +2293,6 @@ module Google
         # Deletes the specified persistent disk. Deleting a disk removes its data
         # permanently and is irreversible. However, deleting a disk does not delete any
         # snapshots previously made from the disk. You must separately delete snapshots.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2367,7 +2344,7 @@ module Google
         end
         
         # Returns a specified persistent disk. Gets a list of available persistent disks
-        # by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2407,7 +2384,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2449,8 +2426,7 @@ module Google
         # Creates a persistent disk in the specified project using the data in the
         # request. You can create a disk with a sourceImage, a sourceSnapshot, or create
         # an empty 500 GB data disk by omitting all properties. You can also create a
-        # disk that is larger than the default size by specifying the sizeGb property. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # disk that is larger than the default size by specifying the sizeGb property.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2504,8 +2480,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of persistent disks contained within the specified zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of persistent disks contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2579,8 +2554,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes resource policies from a disk. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Removes resource policies from a disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2635,7 +2609,7 @@ module Google
         end
         
         # Resizes the specified persistent disk. You can only increase the size of the
-        # disk. (== suppress_warning http-rest-shadowed ==)
+        # disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2690,7 +2664,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2733,7 +2707,7 @@ module Google
         end
         
         # Sets the labels on a disk. To learn more about labels, read the Labeling
-        # Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2787,8 +2761,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -2830,8 +2803,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified externalVpnGateway. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified externalVpnGateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] external_vpn_gateway
@@ -2880,8 +2852,7 @@ module Google
         end
         
         # Returns the specified externalVpnGateway. Get a list of available
-        # externalVpnGateways by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # externalVpnGateways by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] external_vpn_gateway
@@ -2918,7 +2889,7 @@ module Google
         end
         
         # Creates a ExternalVpnGateway in the specified project using the data included
-        # in the request. (== suppress_warning http-rest-shadowed ==)
+        # in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ExternalVpnGateway] external_vpn_gateway_object
@@ -2966,8 +2937,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of ExternalVpnGateway available to the specified project. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of ExternalVpnGateway available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3039,7 +3009,7 @@ module Google
         end
         
         # Sets the labels on an ExternalVpnGateway. To learn more about labels, read the
-        # Labeling Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Labeling Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -3078,8 +3048,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -3118,7 +3087,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified firewall. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified firewall.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -3166,7 +3135,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified firewall. (== suppress_warning http-rest-shadowed ==)
+        # Returns the specified firewall.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -3203,7 +3172,7 @@ module Google
         end
         
         # Creates a firewall rule in the specified project using the data included in
-        # the request. (== suppress_warning http-rest-shadowed ==)
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Firewall] firewall_object
@@ -3251,8 +3220,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of firewall rules available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of firewall rules available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3325,7 +3293,7 @@ module Google
         
         # Updates the specified firewall rule with the data included in the request.
         # This method supports PATCH semantics and uses the JSON merge patch format and
-        # processing rules. (== suppress_warning http-rest-shadowed ==)
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -3378,8 +3346,7 @@ module Google
         
         # Updates the specified firewall rule with the data included in the request.
         # Note that all fields will be updated if using PUT, even fields that are not
-        # specified. To update individual fields, please use PATCH instead. (==
-        # suppress_warning http-rest-shadowed ==)
+        # specified. To update individual fields, please use PATCH instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] firewall
@@ -3430,8 +3397,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of forwarding rules. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of forwarding rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3502,8 +3468,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified ForwardingRule resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -3554,8 +3519,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified ForwardingRule resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified ForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -3595,7 +3559,7 @@ module Google
         end
         
         # Creates a ForwardingRule resource in the specified project and region using
-        # the data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -3647,7 +3611,7 @@ module Google
         end
         
         # Retrieves a list of ForwardingRule resources available to the specified
-        # project and region. (== suppress_warning http-rest-shadowed ==)
+        # project and region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -3722,7 +3686,7 @@ module Google
         end
         
         # Changes target URL for forwarding rule. The new target should be of the same
-        # type as the old target. (== suppress_warning http-rest-shadowed ==)
+        # type as the old target.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -3776,8 +3740,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified address resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified address resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] address
@@ -3826,7 +3789,7 @@ module Google
         end
         
         # Returns the specified address resource. Gets a list of available addresses by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] address
@@ -3863,7 +3826,7 @@ module Google
         end
         
         # Creates an address resource in the specified project by using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Address] address_object
@@ -3911,8 +3874,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of global addresses. (== suppress_warning http-rest-shadowed =
-        # =)
+        # Retrieves a list of global addresses.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -3983,8 +3945,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified GlobalForwardingRule resource. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deletes the specified GlobalForwardingRule resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -4033,8 +3994,7 @@ module Google
         end
         
         # Returns the specified GlobalForwardingRule resource. Gets a list of available
-        # forwarding rules by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # forwarding rules by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -4071,7 +4031,7 @@ module Google
         end
         
         # Creates a GlobalForwardingRule resource in the specified project using the
-        # data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ForwardingRule] forwarding_rule_object
@@ -4120,7 +4080,7 @@ module Google
         end
         
         # Retrieves a list of GlobalForwardingRule resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -4192,8 +4152,7 @@ module Google
         end
         
         # Changes target URL for the GlobalForwardingRule resource. The new target
-        # should be of the same type as the old target. (== suppress_warning http-rest-
-        # shadowed ==)
+        # should be of the same type as the old target.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] forwarding_rule
@@ -4244,8 +4203,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of all operations. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of all operations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -4316,8 +4274,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Operations resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -4352,7 +4309,7 @@ module Google
         end
         
         # Retrieves the specified Operations resource. Gets a list of operations by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -4389,7 +4346,6 @@ module Google
         end
         
         # Retrieves a list of Operation resources contained within the specified project.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -4460,8 +4416,51 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Waits for the specified Operations resource until it is done or timeout, and
+        # retrieves the specified Operations resource. 1. Immediately returns when the
+        # operation is already done. 2. Waits for no more than the default deadline (2
+        # minutes, subject to change) and then returns the current state of the
+        # operation, which may be DONE or still in progress. 3. Is best-effort: a. The
+        # server can wait less than the default deadline or zero seconds, in overload
+        # situations. b. There is no guarantee that the operation is actually done when
+        # returns. 4. User should be prepared to retry if the operation is not DONE.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] operation
+        #   Name of the Operations resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wait_global_operation(project, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/operations/{operation}/wait', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['operation'] = operation unless operation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves the list of all HealthCheck resources, regional and global,
-        # available to the specified project. (== suppress_warning http-rest-shadowed ==)
+        # available to the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -4532,8 +4531,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified HealthCheck resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified HealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -4582,7 +4580,7 @@ module Google
         end
         
         # Returns the specified HealthCheck resource. Gets a list of available health
-        # checks by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -4619,7 +4617,7 @@ module Google
         end
         
         # Creates a HealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::HealthCheck] health_check_object
@@ -4668,7 +4666,6 @@ module Google
         end
         
         # Retrieves the list of HealthCheck resources available to the specified project.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -4741,8 +4738,7 @@ module Google
         
         # Updates a HealthCheck resource in the specified project using the data
         # included in the request. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -4794,7 +4790,7 @@ module Google
         end
         
         # Updates a HealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] health_check
@@ -4845,8 +4841,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified HttpHealthCheck resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified HttpHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -4895,8 +4890,7 @@ module Google
         end
         
         # Returns the specified HttpHealthCheck resource. Gets a list of available HTTP
-        # health checks by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -4933,7 +4927,7 @@ module Google
         end
         
         # Creates a HttpHealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::HttpHealthCheck] http_health_check_object
@@ -4982,7 +4976,7 @@ module Google
         end
         
         # Retrieves the list of HttpHealthCheck resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -5055,8 +5049,7 @@ module Google
         
         # Updates a HttpHealthCheck resource in the specified project using the data
         # included in the request. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -5108,7 +5101,7 @@ module Google
         end
         
         # Updates a HttpHealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] http_health_check
@@ -5159,8 +5152,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified HttpsHealthCheck resource. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deletes the specified HttpsHealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -5209,8 +5201,7 @@ module Google
         end
         
         # Returns the specified HttpsHealthCheck resource. Gets a list of available
-        # HTTPS health checks by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # HTTPS health checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -5247,7 +5238,7 @@ module Google
         end
         
         # Creates a HttpsHealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::HttpsHealthCheck] https_health_check_object
@@ -5296,7 +5287,7 @@ module Google
         end
         
         # Retrieves the list of HttpsHealthCheck resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -5369,8 +5360,7 @@ module Google
         
         # Updates a HttpsHealthCheck resource in the specified project using the data
         # included in the request. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -5422,7 +5412,7 @@ module Google
         end
         
         # Updates a HttpsHealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] https_health_check
@@ -5473,7 +5463,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified image. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified image.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -5522,8 +5512,7 @@ module Google
         end
         
         # Sets the deprecation status of an image.
-        # If an empty request body is given, clears the deprecation status instead. (==
-        # suppress_warning http-rest-shadowed ==)
+        # If an empty request body is given, clears the deprecation status instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -5575,7 +5564,7 @@ module Google
         end
         
         # Returns the specified image. Gets a list of available images by making a list()
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] image
@@ -5612,7 +5601,6 @@ module Google
         end
         
         # Returns the latest image that is part of an image family and is not deprecated.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] family
@@ -5649,7 +5637,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -5686,7 +5674,7 @@ module Google
         end
         
         # Creates an image in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Image] image_object
@@ -5742,7 +5730,7 @@ module Google
         # get any images that belong to other projects, including publicly-available
         # images, like Debian 8. If you want to get a list of publicly-available images,
         # use this method to make a request to the respective image project, such as
-        # debian-cloud or windows-cloud. (== suppress_warning http-rest-shadowed ==)
+        # debian-cloud or windows-cloud.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -5814,7 +5802,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -5854,7 +5842,7 @@ module Google
         end
         
         # Sets the labels on an image. To learn more about labels, read the Labeling
-        # Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -5893,8 +5881,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -5944,8 +5931,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -5999,8 +5985,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of managed instance groups and groups them by zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of managed instance groups and groups them by zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6071,10 +6056,68 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates instances with per-instance configs in this managed instance group.
+        # Instances are created using the current instance template. The create
+        # instances operation is marked DONE if the createInstances request is
+        # successful. The underlying actions take additional time. You must separately
+        # verify the status of the creating or actions with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::InstanceGroupManagersCreateInstancesRequest] instance_group_managers_create_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_instance_group_manager_instances(project, zone, instance_group_manager, instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command.request_representation = Google::Apis::ComputeV1::InstanceGroupManagersCreateInstancesRequest::Representation
+          command.request_object = instance_group_managers_create_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified managed instance group and all of the instances in that
         # group. Note that the instance group must not belong to a backend service. Read
-        # Deleting an instance group for more information. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deleting an instance group for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6135,8 +6178,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6191,8 +6233,7 @@ module Google
         end
         
         # Returns all of the details about the specified managed instance group. Gets a
-        # list of available managed instance groups by making a list() request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # list of available managed instance groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6238,8 +6279,7 @@ module Google
         # You must separately verify the status of the individual instances with the
         # listmanagedinstances method.
         # A managed instance group can have up to 1000 VM instances per group. Please
-        # contact Cloud Support if you need an increase in this limit. (==
-        # suppress_warning http-rest-shadowed ==)
+        # contact Cloud Support if you need an increase in this limit.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6291,7 +6331,7 @@ module Google
         end
         
         # Retrieves a list of managed instance groups that are contained within the
-        # specified project and zone. (== suppress_warning http-rest-shadowed ==)
+        # specified project and zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6369,8 +6409,7 @@ module Google
         # list has a currentAction, which indicates the action that the managed instance
         # group is performing on the instance. For example, if the group is still
         # creating an instance, the currentAction is CREATING. If a previous action
-        # failed, the list displays the errors for that failed action. (==
-        # suppress_warning http-rest-shadowed ==)
+        # failed, the list displays the errors for that failed action.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6452,8 +6491,7 @@ module Google
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
         # listManagedInstances method. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6516,8 +6554,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6586,8 +6623,7 @@ module Google
         # This list is subject to change.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
-        # elapsed before the VM instance is removed or deleted. (== suppress_warning
-        # http-rest-shadowed ==)
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6645,7 +6681,7 @@ module Google
         
         # Specifies the instance template to use when creating new instances in this
         # group. The templates for existing instances in the group do not change unless
-        # you recreate them. (== suppress_warning http-rest-shadowed ==)
+        # you recreate them.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6704,8 +6740,7 @@ module Google
         # instances in the managed instance group. This operation is marked DONE when
         # you make the request even if the instances have not yet been added to their
         # target pools. The change might take some time to apply to all of the instances
-        # in the group depending on the size of the group. (== suppress_warning http-
-        # rest-shadowed ==)
+        # in the group depending on the size of the group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6761,7 +6796,7 @@ module Google
         
         # Adds a list of instances to the specified instance group. All of the instances
         # in the instance group must be in the same network/subnetwork. Read  Adding
-        # instances for more information. (== suppress_warning http-rest-shadowed ==)
+        # instances for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6815,8 +6850,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of instance groups and sorts them by zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of instance groups and sorts them by zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -6889,8 +6923,7 @@ module Google
         
         # Deletes the specified instance group. The instances in the group are not
         # deleted. Note that instance group must not belong to a backend service. Read
-        # Deleting an instance group for more information. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deleting an instance group for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6942,7 +6975,7 @@ module Google
         end
         
         # Returns the specified instance group. Gets a list of available instance groups
-        # by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6982,7 +7015,7 @@ module Google
         end
         
         # Creates an instance group in the specified project using the parameters that
-        # are included in the request. (== suppress_warning http-rest-shadowed ==)
+        # are included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7034,7 +7067,7 @@ module Google
         end
         
         # Retrieves the list of instance groups that are located in the specified
-        # project and zone. (== suppress_warning http-rest-shadowed ==)
+        # project and zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7108,8 +7141,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the instances in the specified instance group. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Lists the instances in the specified instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7194,8 +7226,7 @@ module Google
         # delete those instances.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration before
-        # the VM instance is removed or deleted. (== suppress_warning http-rest-shadowed
-        # ==)
+        # the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7249,8 +7280,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the named ports for the specified instance group. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Sets the named ports for the specified instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7306,8 +7336,7 @@ module Google
         
         # Deletes the specified instance template. Deleting an instance template is
         # permanent and cannot be undone. It is not possible to delete templates that
-        # are already in use by a managed instance group. (== suppress_warning http-rest-
-        # shadowed ==)
+        # are already in use by a managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -7356,8 +7385,7 @@ module Google
         end
         
         # Returns the specified instance template. Gets a list of available instance
-        # templates by making a list() request. (== suppress_warning http-rest-shadowed =
-        # =)
+        # templates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] instance_template
@@ -7394,7 +7422,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -7433,8 +7461,7 @@ module Google
         # Creates an instance template in the specified project using the data that is
         # included in the request. If you are creating a new template to update an
         # existing instance group, your new instance template must use the same network
-        # or, if applicable, the same subnetwork as the original template. (==
-        # suppress_warning http-rest-shadowed ==)
+        # or, if applicable, the same subnetwork as the original template.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::InstanceTemplate] instance_template_object
@@ -7483,7 +7510,7 @@ module Google
         end
         
         # Retrieves a list of instance templates that are contained within the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -7555,7 +7582,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -7594,8 +7621,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -7634,8 +7660,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds an access config to an instance's network interface. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Adds an access config to an instance's network interface.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7693,7 +7718,7 @@ module Google
         end
         
         # Retrieves aggregated list of all of the instances in your project across all
-        # regions and zones. (== suppress_warning http-rest-shadowed ==)
+        # regions and zones.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -7767,7 +7792,7 @@ module Google
         # Attaches an existing Disk resource to an instance. You must first create the
         # disk before you can attach it. It is not possible to create and attach a disk
         # at the same time. For more information, read Adding a persistent disk to your
-        # instance. (== suppress_warning http-rest-shadowed ==)
+        # instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7826,7 +7851,7 @@ module Google
         end
         
         # Deletes the specified Instance resource. For more information, see Stopping or
-        # Deleting an Instance. (== suppress_warning http-rest-shadowed ==)
+        # Deleting an Instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7877,8 +7902,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an access config from an instance's network interface. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Deletes an access config from an instance's network interface.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7935,7 +7959,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Detaches a disk from an instance. (== suppress_warning http-rest-shadowed ==)
+        # Detaches a disk from an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -7991,7 +8015,7 @@ module Google
         end
         
         # Returns the specified Instance resource. Gets a list of available instances by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8030,8 +8054,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified guest attributes entry. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified guest attributes entry.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8077,7 +8100,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8116,8 +8139,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the last 1 MB of serial port output from the specified instance. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns the last 1 MB of serial port output from the specified instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8165,8 +8187,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the Shielded Instance Identity of an instance (== suppress_warning
-        # http-rest-shadowed ==)
+        # Returns the Shielded Instance Identity of an instance
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8206,7 +8227,7 @@ module Google
         end
         
         # Creates an instance resource in the specified project using the data included
-        # in the request. (== suppress_warning http-rest-shadowed ==)
+        # in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8266,8 +8287,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of instances contained within the specified zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of instances contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8342,8 +8362,7 @@ module Google
         end
         
         # Retrieves the list of referrers to instances contained within the specified
-        # zone. For more information, read Viewing Referrers to VM Instances. (==
-        # suppress_warning http-rest-shadowed ==)
+        # zone. For more information, read Viewing Referrers to VM Instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8422,8 +8441,7 @@ module Google
         end
         
         # Performs a reset on the instance. This is a hard reset the VM does not do a
-        # graceful shutdown. For more information, see Resetting an instance. (==
-        # suppress_warning http-rest-shadowed ==)
+        # graceful shutdown. For more information, see Resetting an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8474,8 +8492,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets deletion protection on the instance. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Sets deletion protection on the instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8529,8 +8546,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the auto-delete flag for a disk attached to an instance. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Sets the auto-delete flag for a disk attached to an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8589,7 +8605,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8632,7 +8648,7 @@ module Google
         end
         
         # Sets labels on an instance. To learn more about labels, read the Labeling
-        # Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8687,7 +8703,7 @@ module Google
         end
         
         # Changes the number and/or type of accelerator for a stopped instance to the
-        # values specified in the request. (== suppress_warning http-rest-shadowed ==)
+        # values specified in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8742,7 +8758,7 @@ module Google
         end
         
         # Changes the machine type for a stopped instance to the machine type specified
-        # in the request. (== suppress_warning http-rest-shadowed ==)
+        # in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8796,8 +8812,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets metadata for the specified instance to the data included in the request. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Sets metadata for the specified instance to the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8853,7 +8868,7 @@ module Google
         
         # Changes the minimum CPU platform that this instance should use. This method
         # can only be called on a stopped instance. For more information, read
-        # Specifying a Minimum CPU Platform. (== suppress_warning http-rest-shadowed ==)
+        # Specifying a Minimum CPU Platform.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8907,8 +8922,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets an instance's scheduling options. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Sets an instance's scheduling options.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -8963,8 +8977,7 @@ module Google
         end
         
         # Sets the service account on the instance. For more information, read Changing
-        # the service account and access scopes for an instance. (== suppress_warning
-        # http-rest-shadowed ==)
+        # the service account and access scopes for an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9020,8 +9033,7 @@ module Google
         
         # Sets the Shielded Instance integrity policy for an instance. You can only use
         # this method on a running instance. This method supports PATCH semantics and
-        # uses the JSON merge patch format and processing rules. (== suppress_warning
-        # http-rest-shadowed ==)
+        # uses the JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9076,7 +9088,7 @@ module Google
         end
         
         # Sets network tags for the specified instance to the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9130,8 +9142,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Simulates a maintenance event on the instance. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Simulates a maintenance event on the instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9171,8 +9182,7 @@ module Google
         end
         
         # Starts an instance that was stopped using the instances().stop method. For
-        # more information, see Restart an instance. (== suppress_warning http-rest-
-        # shadowed ==)
+        # more information, see Restart an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9224,8 +9234,7 @@ module Google
         end
         
         # Starts an instance that was stopped using the instances().stop method. For
-        # more information, see Restart an instance. (== suppress_warning http-rest-
-        # shadowed ==)
+        # more information, see Restart an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9283,8 +9292,7 @@ module Google
         # the instance at a later time. Stopped instances do not incur VM usage charges
         # while they are stopped. However, resources that the VM is using, such as
         # persistent disks and static IP addresses, will continue to be charged until
-        # they are deleted. For more information, see Stopping an instance. (==
-        # suppress_warning http-rest-shadowed ==)
+        # they are deleted. For more information, see Stopping an instance.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9335,8 +9343,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9380,8 +9387,7 @@ module Google
         
         # Updates the specified access config from an instance's network interface with
         # the data included in the request. This method supports PATCH semantics and
-        # uses the JSON merge patch format and processing rules. (== suppress_warning
-        # http-rest-shadowed ==)
+        # uses the JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9440,8 +9446,7 @@ module Google
         
         # Updates the Display config for a VM instance. You can only use this method on
         # a stopped VM instance. This method supports PATCH semantics and uses the JSON
-        # merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9495,8 +9500,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates an instance's network interface. This method follows PATCH semantics. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Updates an instance's network interface. This method follows PATCH semantics.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9555,8 +9559,7 @@ module Google
         
         # Updates the Shielded Instance config for an instance. You can only use this
         # method on a stopped instance. This method supports PATCH semantics and uses
-        # the JSON merge patch format and processing rules. (== suppress_warning http-
-        # rest-shadowed ==)
+        # the JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -9610,8 +9613,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of interconnect attachments. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Retrieves an aggregated list of interconnect attachments.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -9682,8 +9684,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified interconnect attachment. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified interconnect attachment.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9734,8 +9735,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified interconnect attachment. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified interconnect attachment.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9775,7 +9775,7 @@ module Google
         end
         
         # Creates an InterconnectAttachment in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9792,6 +9792,8 @@ module Google
         #   accidentally creating duplicate commitments.
         #   The request ID must be a valid UUID with the exception that zero UUID is not
         #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [Boolean] validate_only
+        #   If true, the request will not be committed.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9811,7 +9813,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_interconnect_attachment(project, region, interconnect_attachment_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_interconnect_attachment(project, region, interconnect_attachment_object = nil, request_id: nil, validate_only: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, '{project}/regions/{region}/interconnectAttachments', options)
           command.request_representation = Google::Apis::ComputeV1::InterconnectAttachment::Representation
           command.request_object = interconnect_attachment_object
@@ -9820,6 +9822,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.params['region'] = region unless region.nil?
           command.query['requestId'] = request_id unless request_id.nil?
+          command.query['validateOnly'] = validate_only unless validate_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9827,7 +9830,7 @@ module Google
         end
         
         # Retrieves the list of interconnect attachments contained within the specified
-        # region. (== suppress_warning http-rest-shadowed ==)
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9903,7 +9906,7 @@ module Google
         
         # Updates the specified interconnect attachment with the data included in the
         # request. This method supports PATCH semantics and uses the JSON merge patch
-        # format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -9958,8 +9961,7 @@ module Google
         end
         
         # Returns the details for the specified interconnect location. Gets a list of
-        # available interconnect locations by making a list() request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # available interconnect locations by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect_location
@@ -9996,7 +9998,7 @@ module Google
         end
         
         # Retrieves the list of interconnect locations available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10067,7 +10069,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified interconnect. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified interconnect.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -10116,7 +10118,7 @@ module Google
         end
         
         # Returns the specified interconnect. Get a list of available interconnects by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -10152,8 +10154,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the interconnectDiagnostics for the specified interconnect. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns the interconnectDiagnostics for the specified interconnect.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -10190,7 +10191,7 @@ module Google
         end
         
         # Creates a Interconnect in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Interconnect] interconnect_object
@@ -10238,8 +10239,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of interconnect available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of interconnect available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10312,7 +10312,7 @@ module Google
         
         # Updates the specified interconnect with the data included in the request. This
         # method supports PATCH semantics and uses the JSON merge patch format and
-        # processing rules. (== suppress_warning http-rest-shadowed ==)
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] interconnect
@@ -10364,8 +10364,7 @@ module Google
         end
         
         # Return a specified license code. License codes are mirrored across all
-        # projects that have permissions to read the License Code. (== suppress_warning
-        # http-rest-shadowed ==)
+        # projects that have permissions to read the License Code.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license_code
@@ -10401,8 +10400,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10441,7 +10439,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified license. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified license.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -10489,8 +10487,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified License resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified License resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -10527,7 +10524,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10563,8 +10560,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a License resource in the specified project. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Create a License resource in the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::License] license_object
@@ -10616,8 +10612,7 @@ module Google
         # does not get any licenses that belong to other projects, including licenses
         # attached to publicly-available images, like Debian 9. If you want to get a
         # list of publicly-available licenses, use this method to make a request to the
-        # respective image project, such as debian-cloud or windows-cloud. (==
-        # suppress_warning http-rest-shadowed ==)
+        # respective image project, such as debian-cloud or windows-cloud.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10689,7 +10684,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10728,8 +10723,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10768,8 +10762,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of machine types. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of machine types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -10841,7 +10834,7 @@ module Google
         end
         
         # Returns the specified machine type. Gets a list of available machine types by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10880,8 +10873,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of machine types available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of machine types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -10955,8 +10947,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of network endpoint groups and sorts them by zone. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of network endpoint groups and sorts them by zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -11027,8 +11018,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Attach a list of network endpoints to the specified network endpoint group. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Attach a list of network endpoints to the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11087,7 +11077,7 @@ module Google
         # Deletes the specified network endpoint group. The network endpoints in the NEG
         # and the VM instances they belong to are not terminated when the NEG is deleted.
         # Note that the NEG cannot be deleted if there are backend services referencing
-        # it. (== suppress_warning http-rest-shadowed ==)
+        # it.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11140,8 +11130,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Detach a list of network endpoints from the specified network endpoint group. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Detach a list of network endpoints from the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11198,8 +11187,7 @@ module Google
         end
         
         # Returns the specified network endpoint group. Gets a list of available network
-        # endpoint groups by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # endpoint groups by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11240,7 +11228,7 @@ module Google
         end
         
         # Creates a network endpoint group in the specified project using the parameters
-        # that are included in the request. (== suppress_warning http-rest-shadowed ==)
+        # that are included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11293,7 +11281,7 @@ module Google
         end
         
         # Retrieves the list of network endpoint groups that are located in the
-        # specified project and zone. (== suppress_warning http-rest-shadowed ==)
+        # specified project and zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11368,8 +11356,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the network endpoints in the specified network endpoint group. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Lists the network endpoints in the specified network endpoint group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11451,8 +11438,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -11494,8 +11480,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a peering to the specified network. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Adds a peering to the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11546,7 +11531,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified network. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11595,7 +11580,7 @@ module Google
         end
         
         # Returns the specified network. Gets a list of available networks by making a
-        # list() request. (== suppress_warning http-rest-shadowed ==)
+        # list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11632,7 +11617,7 @@ module Google
         end
         
         # Creates a network in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Network] network_object
@@ -11680,8 +11665,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of networks available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of networks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -11752,9 +11736,92 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the peering routes exchanged over peering connection.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network
+        #   Name of the network for this request.
+        # @param [String] direction
+        #   The direction of the exchanged routes.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named example-instance by specifying name != example-instance.
+        #   You can also filter nested fields. For example, you could specify scheduling.
+        #   automaticRestart = false to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
+        #   Intel Skylake"). By default, each expression is an AND expression. However,
+        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
+        #   automaticRestart = true).
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than maxResults, Compute Engine returns a
+        #   nextPageToken that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using orderBy="creationTimestamp desc". This sorts results based on the
+        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
+        #   a previous list request to get the next page of results.
+        # @param [String] peering_name
+        #   The response will show routes exchanged over the given peering connection.
+        # @param [String] region
+        #   The region of the request. The response will include all subnet routes, static
+        #   routes and dynamic routes in the region.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::ExchangedPeeringRoutesList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::ExchangedPeeringRoutesList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_network_peering_routes(project, network, direction: nil, filter: nil, max_results: nil, order_by: nil, page_token: nil, peering_name: nil, region: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/networks/{network}/listPeeringRoutes', options)
+          command.response_representation = Google::Apis::ComputeV1::ExchangedPeeringRoutesList::Representation
+          command.response_class = Google::Apis::ComputeV1::ExchangedPeeringRoutesList
+          command.params['project'] = project unless project.nil?
+          command.params['network'] = network unless network.nil?
+          command.query['direction'] = direction unless direction.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['peeringName'] = peering_name unless peering_name.nil?
+          command.query['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Patches the specified network with the data included in the request. Only the
-        # following fields can be modified: routingConfig.routingMode. (==
-        # suppress_warning http-rest-shadowed ==)
+        # following fields can be modified: routingConfig.routingMode.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11805,8 +11872,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes a peering from the specified network. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Removes a peering from the specified network.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11857,8 +11923,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Switches the network mode from auto subnet mode to custom subnet mode. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Switches the network mode from auto subnet mode to custom subnet mode.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11908,8 +11973,7 @@ module Google
         
         # Updates the specified network peering with the data included in the request
         # Only the following fields can be modified: NetworkPeering.export_custom_routes,
-        # and NetworkPeering.import_custom_routes (== suppress_warning http-rest-
-        # shadowed ==)
+        # and NetworkPeering.import_custom_routes
         # @param [String] project
         #   Project ID for this request.
         # @param [String] network
@@ -11960,8 +12024,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds specified number of nodes to the node group. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Adds specified number of nodes to the node group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12016,7 +12079,7 @@ module Google
         end
         
         # Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes
-        # for more details about each group. (== suppress_warning http-rest-shadowed ==)
+        # for more details about each group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -12087,8 +12150,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified NodeGroup resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified NodeGroup resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12139,8 +12201,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes specified nodes from the node group. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes specified nodes from the node group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12196,7 +12257,7 @@ module Google
         
         # Returns the specified NodeGroup. Get a list of available NodeGroups by making
         # a list() request. Note: the "nodes" field should not be used. Use nodeGroups.
-        # listNodes instead. (== suppress_warning http-rest-shadowed ==)
+        # listNodes instead.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12236,7 +12297,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12276,7 +12337,7 @@ module Google
         end
         
         # Creates a NodeGroup resource in the specified project using the data included
-        # in the request. (== suppress_warning http-rest-shadowed ==)
+        # in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12331,8 +12392,7 @@ module Google
         end
         
         # Retrieves a list of node groups available to the specified project. Note: use
-        # nodeGroups.listNodes for more details about each group. (== suppress_warning
-        # http-rest-shadowed ==)
+        # nodeGroups.listNodes for more details about each group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12406,7 +12466,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists nodes in the node group. (== suppress_warning http-rest-shadowed ==)
+        # Lists nodes in the node group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12484,7 +12544,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12526,8 +12586,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the node template of the node group. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Updates the node template of the node group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12581,8 +12640,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -12624,8 +12682,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of node templates. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of node templates.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -12696,8 +12753,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified NodeTemplate resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified NodeTemplate resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12749,7 +12805,7 @@ module Google
         end
         
         # Returns the specified node template. Gets a list of available node templates
-        # by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12789,7 +12845,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12829,7 +12885,7 @@ module Google
         end
         
         # Creates a NodeTemplate resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12880,8 +12936,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of node templates available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of node templates available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12956,7 +13011,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -12998,8 +13053,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -13041,8 +13095,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of node types. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of node types.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -13114,7 +13167,7 @@ module Google
         end
         
         # Returns the specified node type. Gets a list of available node types by making
-        # a list() request. (== suppress_warning http-rest-shadowed ==)
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -13153,8 +13206,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of node types available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of node types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -13228,8 +13280,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Disable this project as a shared VPC host project. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Disable this project as a shared VPC host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] request_id
@@ -13275,7 +13326,7 @@ module Google
         end
         
         # Disable a service resource (also known as service project) associated with
-        # this host project. (== suppress_warning http-rest-shadowed ==)
+        # this host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ProjectsDisableXpnResourceRequest] projects_disable_xpn_resource_request_object
@@ -13323,8 +13374,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Enable this project as a shared VPC host project. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Enable this project as a shared VPC host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] request_id
@@ -13370,8 +13420,7 @@ module Google
         end
         
         # Enable service resource (a.k.a service project) for a host project, so that
-        # subnets in the host project can be used by instances in the service project. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # subnets in the host project can be used by instances in the service project.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ProjectsEnableXpnResourceRequest] projects_enable_xpn_resource_request_object
@@ -13419,8 +13468,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified Project resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified Project resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -13454,7 +13502,7 @@ module Google
         end
         
         # Gets the shared VPC host project that this project links to. May be empty if
-        # no link exists. (== suppress_warning http-rest-shadowed ==)
+        # no link exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] fields
@@ -13488,7 +13536,7 @@ module Google
         end
         
         # Gets service resources (a.k.a service project) associated with this host
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -13559,8 +13607,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all shared VPC host projects visible to the user in an organization. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Lists all shared VPC host projects visible to the user in an organization.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ProjectsListXpnHostsRequest] projects_list_xpn_hosts_request_object
@@ -13634,8 +13681,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves a persistent disk from one zone to another. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Moves a persistent disk from one zone to another.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::MoveDiskRequest] move_disk_request_object
@@ -13683,8 +13729,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Moves an instance and its attached persistent disks from one zone to another. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Moves an instance and its attached persistent disks from one zone to another.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::MoveInstanceRequest] move_instance_request_object
@@ -13733,7 +13778,7 @@ module Google
         end
         
         # Sets metadata common to all instances within the specified project using the
-        # data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Metadata] metadata_object
@@ -13783,7 +13828,7 @@ module Google
         
         # Sets the default network tier of the project. The default network tier is used
         # when an address/forwardingRule/instance is created without specifying the
-        # network tier field. (== suppress_warning http-rest-shadowed ==)
+        # network tier field.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::ProjectsSetDefaultNetworkTierRequest] projects_set_default_network_tier_request_object
@@ -13833,8 +13878,7 @@ module Google
         
         # Enables the usage export feature and sets the usage export bucket where
         # reports are stored. If you provide an empty request body using this method,
-        # the usage export feature will be disabled. (== suppress_warning http-rest-
-        # shadowed ==)
+        # the usage export feature will be disabled.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::UsageExportLocation] usage_export_location_object
@@ -13882,7 +13926,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified autoscaler. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -13933,7 +13977,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified autoscaler. (== suppress_warning http-rest-shadowed ==)
+        # Returns the specified autoscaler.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -13973,7 +14017,7 @@ module Google
         end
         
         # Creates an autoscaler in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14024,8 +14068,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of autoscalers contained within the specified region. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of autoscalers contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14101,7 +14144,7 @@ module Google
         
         # Updates an autoscaler in the specified project using the data included in the
         # request. This method supports PATCH semantics and uses the JSON merge patch
-        # format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14156,7 +14199,7 @@ module Google
         end
         
         # Updates an autoscaler in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14210,8 +14253,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified regional BackendService resource. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Deletes the specified regional BackendService resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14262,8 +14304,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified regional BackendService resource. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Returns the specified regional BackendService resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14302,8 +14343,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the most recent health check results for this regional BackendService. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Gets the most recent health check results for this regional BackendService.
         # @param [String] project
         # @param [String] region
         #   Name of the region scoping this request.
@@ -14347,7 +14387,7 @@ module Google
         # Creates a regional BackendService resource in the specified project using the
         # data included in the request. There are several restrictions and guidelines to
         # keep in mind when creating a regional backend service. Read  Restrictions and
-        # Guidelines for more information. (== suppress_warning http-rest-shadowed ==)
+        # Guidelines for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14399,8 +14439,7 @@ module Google
         end
         
         # Retrieves the list of regional BackendService resources available to the
-        # specified project in the given region. (== suppress_warning http-rest-shadowed
-        # ==)
+        # specified project in the given region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14478,7 +14517,7 @@ module Google
         # in the request. There are several restrictions and guidelines to keep in mind
         # when updating a backend service. Read  Restrictions and Guidelines for more
         # information. This method supports PATCH semantics and uses the JSON merge
-        # patch format and processing rules. (== suppress_warning http-rest-shadowed ==)
+        # patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14535,7 +14574,7 @@ module Google
         # Updates the specified regional BackendService resource with the data included
         # in the request. There are several restrictions and guidelines to keep in mind
         # when updating a backend service. Read  Restrictions and Guidelines for more
-        # information. (== suppress_warning http-rest-shadowed ==)
+        # information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14589,8 +14628,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of commitments. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of commitments.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -14662,8 +14700,7 @@ module Google
         end
         
         # Returns the specified commitment resource. Gets a list of available
-        # commitments by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # commitments by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14703,7 +14740,7 @@ module Google
         end
         
         # Creates a commitment in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14754,8 +14791,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of commitments contained within the specified region. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of commitments contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14830,7 +14866,7 @@ module Google
         end
         
         # Returns the specified regional disk type. Gets a list of available disk types
-        # by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14869,8 +14905,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of regional disk types available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of regional disk types available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14945,8 +14980,7 @@ module Google
         end
         
         # Adds existing resource policies to a regional disk. You can only add one
-        # policy which will be applied to this disk for scheduling snapshot creation. (==
-        # suppress_warning http-rest-shadowed ==)
+        # policy which will be applied to this disk for scheduling snapshot creation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15000,8 +15034,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a snapshot of this regional disk. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Creates a snapshot of this regional disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15058,8 +15091,7 @@ module Google
         # Deletes the specified regional persistent disk. Deleting a regional disk
         # removes all the replicas of its data permanently and is irreversible. However,
         # deleting a disk does not delete any snapshots previously made from the disk.
-        # You must separately delete snapshots. (== suppress_warning http-rest-shadowed =
-        # =)
+        # You must separately delete snapshots.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15110,8 +15142,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a specified regional persistent disk. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns a specified regional persistent disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15151,7 +15182,7 @@ module Google
         end
         
         # Creates a persistent regional disk in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15205,8 +15236,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of persistent disks contained within the specified region. (
-        # == suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of persistent disks contained within the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15280,8 +15310,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes resource policies from a regional disk. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Removes resource policies from a regional disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15335,8 +15364,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resizes the specified regional persistent disk. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Resizes the specified regional persistent disk.
         # @param [String] project
         #   The project ID for this request.
         # @param [String] region
@@ -15390,8 +15418,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the labels on the target regional disk. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Sets the labels on the target regional disk.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15445,8 +15472,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15488,8 +15514,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified HealthCheck resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified HealthCheck resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15541,7 +15566,7 @@ module Google
         end
         
         # Returns the specified HealthCheck resource. Gets a list of available health
-        # checks by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # checks by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15581,7 +15606,7 @@ module Google
         end
         
         # Creates a HealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15633,7 +15658,6 @@ module Google
         end
         
         # Retrieves the list of HealthCheck resources available to the specified project.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15709,8 +15733,7 @@ module Google
         
         # Updates a HealthCheck resource in the specified project using the data
         # included in the request. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15765,7 +15788,7 @@ module Google
         end
         
         # Updates a HealthCheck resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15830,8 +15853,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15885,8 +15907,67 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates instances with per-instance configs in this regional managed instance
+        # group. Instances are created using the current instance template. The create
+        # instances operation is marked DONE if the createInstances request is
+        # successful. The underlying actions take additional time. You must separately
+        # verify the status of the creating or actions with the listmanagedinstances
+        # method.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   The name of the region where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It should conform to RFC1035.
+        # @param [Google::Apis::ComputeV1::RegionInstanceGroupManagersCreateInstancesRequest] region_instance_group_managers_create_instances_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_region_instance_group_manager_instances(project, region, instance_group_manager, region_instance_group_managers_create_instances_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/createInstances', options)
+          command.request_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersCreateInstancesRequest::Representation
+          command.request_object = region_instance_group_managers_create_instances_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes the specified managed instance group and all of the instances in that
-        # group. (== suppress_warning http-rest-shadowed ==)
+        # group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15947,8 +16028,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16002,8 +16082,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns all of the details about the specified managed instance group. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns all of the details about the specified managed instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16048,8 +16127,7 @@ module Google
         # group is created even if the instances in the group have not yet been created.
         # You must separately verify the status of the individual instances with the
         # listmanagedinstances method.
-        # A regional managed instance group can contain up to 2000 instances. (==
-        # suppress_warning http-rest-shadowed ==)
+        # A regional managed instance group can contain up to 2000 instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16101,7 +16179,7 @@ module Google
         end
         
         # Retrieves the list of managed instance groups that are contained within the
-        # specified region. (== suppress_warning http-rest-shadowed ==)
+        # specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16177,7 +16255,7 @@ module Google
         
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
-        # has scheduled for its instances. (== suppress_warning http-rest-shadowed ==)
+        # has scheduled for its instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16259,8 +16337,7 @@ module Google
         # the instances in the group are still in the process of being patched. You must
         # separately verify the status of the individual instances with the
         # listmanagedinstances method. This method supports PATCH semantics and uses the
-        # JSON merge patch format and processing rules. (== suppress_warning http-rest-
-        # shadowed ==)
+        # JSON merge patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16323,8 +16400,7 @@ module Google
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
         # elapsed before the VM instance is removed or deleted.
-        # You can specify a maximum of 1000 instances with this method per request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # You can specify a maximum of 1000 instances with this method per request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16386,8 +16462,7 @@ module Google
         # of the creating or deleting actions with the listmanagedinstances method.
         # If the group is part of a backend service that has enabled connection draining,
         # it can take up to 60 seconds after the connection draining duration has
-        # elapsed before the VM instance is removed or deleted. (== suppress_warning
-        # http-rest-shadowed ==)
+        # elapsed before the VM instance is removed or deleted.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16442,8 +16517,7 @@ module Google
         end
         
         # Sets the instance template to use when creating new instances or recreating
-        # instances in this group. Existing instances are not affected. (==
-        # suppress_warning http-rest-shadowed ==)
+        # instances in this group. Existing instances are not affected.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16498,8 +16572,7 @@ module Google
         end
         
         # Modifies the target pools to which all new instances in this group are
-        # assigned. Existing instances in the group are not affected. (==
-        # suppress_warning http-rest-shadowed ==)
+        # assigned. Existing instances in the group are not affected.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16553,8 +16626,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified instance group resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Returns the specified instance group resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16594,7 +16666,7 @@ module Google
         end
         
         # Retrieves the list of instance group resources contained within the specified
-        # region. (== suppress_warning http-rest-shadowed ==)
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16670,8 +16742,7 @@ module Google
         
         # Lists the instances in the specified instance group and displays information
         # about the named ports. Depending on the specified options, this method can
-        # list all instances or only the instances that are running. (==
-        # suppress_warning http-rest-shadowed ==)
+        # list all instances or only the instances that are running.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16751,8 +16822,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the named ports for the specified regional instance group. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Sets the named ports for the specified regional instance group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16806,8 +16876,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified region-specific Operations resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Deletes the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16844,8 +16913,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified region-specific Operations resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the specified region-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16885,7 +16953,6 @@ module Google
         end
         
         # Retrieves a list of Operation resources contained within the specified region.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -16959,8 +17026,54 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified SslCertificate resource in the region. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Waits for the specified region-specific Operations resource until it is done
+        # or timeout, and retrieves the specified Operations resource. 1. Immediately
+        # returns when the operation is already done. 2. Waits for no more than the
+        # default deadline (2 minutes, subject to change) and then returns the current
+        # state of the operation, which may be DONE or still in progress. 3. Is best-
+        # effort: a. The server can wait less than the default deadline or zero seconds,
+        # in overload situations. b. There is no guarantee that the operation is
+        # actually done when returns. 4. User should be prepared to retry if the
+        # operation is not DONE.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region for this request.
+        # @param [String] operation
+        #   Name of the Operations resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wait_region_operation(project, region, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/regions/{region}/operations/{operation}/wait', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['operation'] = operation unless operation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified SslCertificate resource in the region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17012,8 +17125,7 @@ module Google
         end
         
         # Returns the specified SslCertificate resource in the specified region. Get a
-        # list of available SSL certificates by making a list() request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # list of available SSL certificates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17053,7 +17165,7 @@ module Google
         end
         
         # Creates a SslCertificate resource in the specified project and region using
-        # the data included in the request (== suppress_warning http-rest-shadowed ==)
+        # the data included in the request
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17105,7 +17217,7 @@ module Google
         end
         
         # Retrieves the list of SslCertificate resources available to the specified
-        # project in the specified region. (== suppress_warning http-rest-shadowed ==)
+        # project in the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17179,8 +17291,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified TargetHttpProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17232,8 +17343,7 @@ module Google
         end
         
         # Returns the specified TargetHttpProxy resource in the specified region. Gets a
-        # list of available target HTTP proxies by making a list() request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # list of available target HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17273,7 +17383,7 @@ module Google
         end
         
         # Creates a TargetHttpProxy resource in the specified project and region using
-        # the data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17325,7 +17435,7 @@ module Google
         end
         
         # Retrieves the list of TargetHttpProxy resources available to the specified
-        # project in the specified region. (== suppress_warning http-rest-shadowed ==)
+        # project in the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17399,8 +17509,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the URL map for TargetHttpProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17454,8 +17563,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deletes the specified TargetHttpsProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17507,8 +17615,7 @@ module Google
         end
         
         # Returns the specified TargetHttpsProxy resource in the specified region. Gets
-        # a list of available target HTTP proxies by making a list() request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # a list of available target HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17548,7 +17655,7 @@ module Google
         end
         
         # Creates a TargetHttpsProxy resource in the specified project and region using
-        # the data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17600,7 +17707,7 @@ module Google
         end
         
         # Retrieves the list of TargetHttpsProxy resources available to the specified
-        # project in the specified region. (== suppress_warning http-rest-shadowed ==)
+        # project in the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17674,8 +17781,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Replaces SslCertificates for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17729,8 +17835,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the URL map for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17784,8 +17889,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Deletes the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17828,7 +17932,7 @@ module Google
         end
         
         # Returns the specified UrlMap resource. Gets a list of available URL maps by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17868,7 +17972,7 @@ module Google
         end
         
         # Creates a UrlMap resource in the specified project using the data included in
-        # the request. (== suppress_warning http-rest-shadowed ==)
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17911,7 +18015,7 @@ module Google
         end
         
         # Retrieves the list of UrlMap resources available to the specified project in
-        # the specified region. (== suppress_warning http-rest-shadowed ==)
+        # the specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17987,7 +18091,7 @@ module Google
         
         # Patches the specified UrlMap resource with the data included in the request.
         # This method supports PATCH semantics and uses JSON merge patch format and
-        # processing rules. (== suppress_warning http-rest-shadowed ==)
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18032,8 +18136,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified UrlMap resource with the data included in the request. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # Updates the specified UrlMap resource with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18079,8 +18182,7 @@ module Google
         end
         
         # Runs static validation for the UrlMap. In particular, the tests of the
-        # provided UrlMap will be run. Calling this method does NOT create the UrlMap. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # provided UrlMap will be run. Calling this method does NOT create the UrlMap.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18123,7 +18225,7 @@ module Google
         end
         
         # Returns the specified Region resource. Gets a list of available regions by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18159,8 +18261,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of region resources available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of region resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -18231,8 +18332,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of reservations. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of reservations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -18303,7 +18403,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified reservation. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified reservation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18354,8 +18454,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves information about the specified reservation. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Retrieves information about the specified reservation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18395,7 +18494,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18435,7 +18534,7 @@ module Google
         end
         
         # Creates a new reservation. For more information, read Reserving zonal
-        # resources. (== suppress_warning http-rest-shadowed ==)
+        # resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18487,7 +18586,7 @@ module Google
         end
         
         # A list of all the reservations that have been configured for the specified
-        # project in specified zone. (== suppress_warning http-rest-shadowed ==)
+        # project in specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18562,8 +18661,7 @@ module Google
         end
         
         # Resizes the reservation (applicable to standalone reservations only). For more
-        # information, read Modifying reservations. (== suppress_warning http-rest-
-        # shadowed ==)
+        # information, read Modifying reservations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18618,7 +18716,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18660,8 +18758,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -18703,8 +18800,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of resource policies. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of resource policies.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -18775,8 +18871,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified resource policy. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Deletes the specified resource policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18827,8 +18922,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves all information of the specified resource policy. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves all information of the specified resource policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18868,7 +18962,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18907,7 +19001,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new resource policy. (== suppress_warning http-rest-shadowed ==)
+        # Creates a new resource policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -18959,7 +19053,7 @@ module Google
         end
         
         # A list all the resource policies that have been configured for the specified
-        # project in specified region. (== suppress_warning http-rest-shadowed ==)
+        # project in specified region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19034,7 +19128,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19076,8 +19170,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19119,8 +19212,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of routers. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of routers.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -19191,8 +19283,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Router resource. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Deletes the specified Router resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19244,7 +19335,7 @@ module Google
         end
         
         # Returns the specified Router resource. Gets a list of available routers by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19283,8 +19374,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves runtime Nat mapping information of VM endpoints. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves runtime Nat mapping information of VM endpoints.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19362,8 +19452,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves runtime information of the specified router. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Retrieves runtime information of the specified router.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19403,7 +19492,7 @@ module Google
         end
         
         # Creates a Router resource in the specified project and region using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19454,8 +19543,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of Router resources available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of Router resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19531,7 +19619,7 @@ module Google
         
         # Patches the specified Router resource with the data included in the request.
         # This method supports PATCH semantics and uses JSON merge patch format and
-        # processing rules. (== suppress_warning http-rest-shadowed ==)
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19586,8 +19674,7 @@ module Google
         end
         
         # Preview fields auto-generated during router create and update operations.
-        # Calling this method does NOT create or update the router. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Calling this method does NOT create or update the router.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19632,8 +19719,7 @@ module Google
         # Updates the specified Router resource with the data included in the request.
         # This method conforms to PUT semantics, which requests that the state of the
         # target resource be created or replaced with the state defined by the
-        # representation enclosed in the request message payload. (== suppress_warning
-        # http-rest-shadowed ==)
+        # representation enclosed in the request message payload.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -19687,8 +19773,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified Route resource. (== suppress_warning http-rest-shadowed =
-        # =)
+        # Deletes the specified Route resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
@@ -19737,7 +19822,7 @@ module Google
         end
         
         # Returns the specified Route resource. Gets a list of available routes by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] route
@@ -19774,7 +19859,7 @@ module Google
         end
         
         # Creates a Route resource in the specified project using the data included in
-        # the request. (== suppress_warning http-rest-shadowed ==)
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::Route] route_object
@@ -19822,8 +19907,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Route resources available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of Route resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -19894,8 +19978,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Inserts a rule into a security policy. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Inserts a rule into a security policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -19934,7 +20017,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified policy. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -19982,8 +20065,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all of the ordered rules present in a single specified policy. (==
-        # suppress_warning http-rest-shadowed ==)
+        # List all of the ordered rules present in a single specified policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -20019,8 +20101,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a rule at the specified priority. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Gets a rule at the specified priority.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -20060,7 +20141,7 @@ module Google
         end
         
         # Creates a new policy in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::SecurityPolicy] security_policy_object
@@ -20108,8 +20189,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List all the policies that have been configured for the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # List all the policies that have been configured for the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -20180,8 +20260,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the specified policy with the data included in the request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Patches the specified policy with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -20232,8 +20311,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a rule at the specified priority. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Patches a rule at the specified priority.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -20275,8 +20353,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a rule at the specified priority. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes a rule at the specified priority.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] security_policy
@@ -20319,8 +20396,7 @@ module Google
         # snapshot might not necessarily delete all the data on that snapshot. If any
         # data on the snapshot that is marked for deletion is needed for subsequent
         # snapshots, the data will be moved to the next corresponding snapshot.
-        # For more information, see Deleting snapshots. (== suppress_warning http-rest-
-        # shadowed ==)
+        # For more information, see Deleting snapshots.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -20369,7 +20445,7 @@ module Google
         end
         
         # Returns the specified Snapshot resource. Gets a list of available snapshots by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] snapshot
@@ -20406,7 +20482,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -20443,7 +20519,7 @@ module Google
         end
         
         # Retrieves the list of Snapshot resources contained within the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -20515,7 +20591,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -20555,7 +20631,7 @@ module Google
         end
         
         # Sets the labels on a snapshot. To learn more about labels, read the Labeling
-        # Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -20594,8 +20670,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -20635,7 +20710,7 @@ module Google
         end
         
         # Retrieves the list of all SslCertificate resources, regional and global,
-        # available to the specified project. (== suppress_warning http-rest-shadowed ==)
+        # available to the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -20706,8 +20781,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified SslCertificate resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified SslCertificate resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_certificate
@@ -20756,8 +20830,7 @@ module Google
         end
         
         # Returns the specified SslCertificate resource. Gets a list of available SSL
-        # certificates by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # certificates by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_certificate
@@ -20794,7 +20867,7 @@ module Google
         end
         
         # Creates a SslCertificate resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::SslCertificate] ssl_certificate_object
@@ -20843,7 +20916,7 @@ module Google
         end
         
         # Retrieves the list of SslCertificate resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -20915,8 +20988,7 @@ module Google
         end
         
         # Deletes the specified SSL policy. The SSL policy resource can be deleted only
-        # if it is not in use by any TargetHttpsProxy or TargetSslProxy resources. (==
-        # suppress_warning http-rest-shadowed ==)
+        # if it is not in use by any TargetHttpsProxy or TargetSslProxy resources.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_policy
@@ -20965,8 +21037,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all of the ordered rules present in a single specified policy. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Lists all of the ordered rules present in a single specified policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_policy
@@ -21004,8 +21075,7 @@ module Google
         end
         
         # Returns the specified SSL policy resource. Gets a list of available SSL
-        # policies by making a list() request. (== suppress_warning http-rest-shadowed ==
-        # )
+        # policies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::SslPolicy] ssl_policy_object
@@ -21054,7 +21124,6 @@ module Google
         end
         
         # Lists all the SSL policies that have been configured for the specified project.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -21126,7 +21195,7 @@ module Google
         end
         
         # Lists all features that can be specified in the SSL policy when using custom
-        # profile. (== suppress_warning http-rest-shadowed ==)
+        # profile.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -21197,8 +21266,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches the specified SSL policy with the data included in the request. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Patches the specified SSL policy with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] ssl_policy
@@ -21250,8 +21318,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of subnetworks. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of subnetworks.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -21322,7 +21389,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified subnetwork. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified subnetwork.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21373,8 +21440,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Expands the IP CIDR range of the subnetwork to a specified value. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Expands the IP CIDR range of the subnetwork to a specified value.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21429,7 +21495,7 @@ module Google
         end
         
         # Returns the specified subnetwork. Gets a list of available subnetworks list()
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21469,7 +21535,7 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists. (== suppress_warning http-rest-shadowed ==)
+        # or resource exists.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21509,7 +21575,7 @@ module Google
         end
         
         # Creates a subnetwork in the specified project using the data included in the
-        # request. (== suppress_warning http-rest-shadowed ==)
+        # request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21560,8 +21626,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of subnetworks available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of subnetworks available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21637,8 +21702,7 @@ module Google
         
         # Retrieves an aggregated list of all usable subnetworks in the project. The
         # list contains all of the subnetworks in the project and the subnetworks that
-        # were shared by a Shared VPC host project. (== suppress_warning http-rest-
-        # shadowed ==)
+        # were shared by a Shared VPC host project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -21712,7 +21776,7 @@ module Google
         # Patches the specified subnetwork with the data included in the request. Only
         # certain fields can up updated with a patch request as indicated in the field
         # descriptions. You must specify the current fingeprint of the subnetwork
-        # resource being patched. (== suppress_warning http-rest-shadowed ==)
+        # resource being patched.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21776,7 +21840,7 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy. (== suppress_warning http-rest-shadowed ==)
+        # existing policy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21819,8 +21883,7 @@ module Google
         end
         
         # Set whether VMs in this subnet can access Google services without assigning
-        # external IP addresses through Private Google Access. (== suppress_warning http-
-        # rest-shadowed ==)
+        # external IP addresses through Private Google Access.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21874,8 +21937,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -21918,7 +21980,7 @@ module Google
         end
         
         # Retrieves the list of all TargetHttpProxy resources, regional and global,
-        # available to the specified project. (== suppress_warning http-rest-shadowed ==)
+        # available to the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -21989,8 +22051,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetHttpProxy resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified TargetHttpProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -22039,8 +22100,7 @@ module Google
         end
         
         # Returns the specified TargetHttpProxy resource. Gets a list of available
-        # target HTTP proxies by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # target HTTP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -22077,7 +22137,7 @@ module Google
         end
         
         # Creates a TargetHttpProxy resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetHttpProxy] target_http_proxy_object
@@ -22126,7 +22186,7 @@ module Google
         end
         
         # Retrieves the list of TargetHttpProxy resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -22197,8 +22257,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the URL map for TargetHttpProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the URL map for TargetHttpProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_http_proxy
@@ -22250,7 +22309,7 @@ module Google
         end
         
         # Retrieves the list of all TargetHttpsProxy resources, regional and global,
-        # available to the specified project. (== suppress_warning http-rest-shadowed ==)
+        # available to the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -22321,8 +22380,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetHttpsProxy resource. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Deletes the specified TargetHttpsProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22371,8 +22429,7 @@ module Google
         end
         
         # Returns the specified TargetHttpsProxy resource. Gets a list of available
-        # target HTTPS proxies by making a list() request. (== suppress_warning http-
-        # rest-shadowed ==)
+        # target HTTPS proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22409,7 +22466,7 @@ module Google
         end
         
         # Creates a TargetHttpsProxy resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetHttpsProxy] target_https_proxy_object
@@ -22458,7 +22515,7 @@ module Google
         end
         
         # Retrieves the list of TargetHttpsProxy resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -22529,8 +22586,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the QUIC override policy for TargetHttpsProxy. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Sets the QUIC override policy for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22582,8 +22638,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Replaces SslCertificates for TargetHttpsProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Replaces SslCertificates for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22637,7 +22692,7 @@ module Google
         # Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the server-
         # side support for SSL features. This affects connections between clients and
         # the HTTPS proxy load balancer. They do not affect the connection between the
-        # load balancer and the backends. (== suppress_warning http-rest-shadowed ==)
+        # load balancer and the backends.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22689,8 +22744,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the URL map for TargetHttpsProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the URL map for TargetHttpsProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_https_proxy
@@ -22741,8 +22795,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target instances. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of target instances.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -22813,8 +22866,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetInstance resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified TargetInstance resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -22866,8 +22918,7 @@ module Google
         end
         
         # Returns the specified TargetInstance resource. Gets a list of available target
-        # instances by making a list() request. (== suppress_warning http-rest-shadowed =
-        # =)
+        # instances by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -22907,7 +22958,7 @@ module Google
         end
         
         # Creates a TargetInstance resource in the specified project and zone using the
-        # data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -22959,7 +23010,7 @@ module Google
         end
         
         # Retrieves a list of TargetInstance resources available to the specified
-        # project and zone. (== suppress_warning http-rest-shadowed ==)
+        # project and zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -23033,8 +23084,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds health check URLs to a target pool. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Adds health check URLs to a target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23088,7 +23138,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds an instance to a target pool. (== suppress_warning http-rest-shadowed ==)
+        # Adds an instance to a target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23142,8 +23192,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target pools. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of target pools.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -23214,7 +23263,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified target pool. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23266,7 +23315,7 @@ module Google
         end
         
         # Returns the specified target pool. Gets a list of available target pools by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23306,8 +23355,7 @@ module Google
         end
         
         # Gets the most recent health check results for each IP for the instance that is
-        # referenced by the given target pool. (== suppress_warning http-rest-shadowed ==
-        # )
+        # referenced by the given target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23350,7 +23398,7 @@ module Google
         end
         
         # Creates a target pool in the specified project and region using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23402,7 +23450,6 @@ module Google
         end
         
         # Retrieves a list of target pools available to the specified project and region.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23476,8 +23523,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes health check URL from a target pool. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Removes health check URL from a target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23531,8 +23577,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Removes instance URL from a target pool. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Removes instance URL from a target pool.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23586,8 +23631,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes a backup target pool's configurations. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes a backup target pool's configurations.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -23644,8 +23688,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetSslProxy resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified TargetSslProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -23694,8 +23737,7 @@ module Google
         end
         
         # Returns the specified TargetSslProxy resource. Gets a list of available target
-        # SSL proxies by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # SSL proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -23732,7 +23774,7 @@ module Google
         end
         
         # Creates a TargetSslProxy resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetSslProxy] target_ssl_proxy_object
@@ -23781,7 +23823,7 @@ module Google
         end
         
         # Retrieves the list of TargetSslProxy resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -23852,8 +23894,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the BackendService for TargetSslProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the BackendService for TargetSslProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -23904,8 +23945,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the ProxyHeaderType for TargetSslProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the ProxyHeaderType for TargetSslProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -23956,8 +23996,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes SslCertificates for TargetSslProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes SslCertificates for TargetSslProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -24011,7 +24050,7 @@ module Google
         # Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-
         # side support for SSL features. This affects connections between clients and
         # the SSL proxy load balancer. They do not affect the connection between the
-        # load balancer and the backends. (== suppress_warning http-rest-shadowed ==)
+        # load balancer and the backends.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_ssl_proxy
@@ -24063,8 +24102,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified TargetTcpProxy resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified TargetTcpProxy resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
@@ -24113,8 +24151,7 @@ module Google
         end
         
         # Returns the specified TargetTcpProxy resource. Gets a list of available target
-        # TCP proxies by making a list() request. (== suppress_warning http-rest-
-        # shadowed ==)
+        # TCP proxies by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
@@ -24151,7 +24188,7 @@ module Google
         end
         
         # Creates a TargetTcpProxy resource in the specified project using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::TargetTcpProxy] target_tcp_proxy_object
@@ -24200,7 +24237,7 @@ module Google
         end
         
         # Retrieves the list of TargetTcpProxy resources available to the specified
-        # project. (== suppress_warning http-rest-shadowed ==)
+        # project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -24271,8 +24308,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the BackendService for TargetTcpProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the BackendService for TargetTcpProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
@@ -24323,8 +24359,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Changes the ProxyHeaderType for TargetTcpProxy. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Changes the ProxyHeaderType for TargetTcpProxy.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] target_tcp_proxy
@@ -24375,8 +24410,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of target VPN gateways. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Retrieves an aggregated list of target VPN gateways.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -24447,8 +24481,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified target VPN gateway. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified target VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24500,8 +24533,7 @@ module Google
         end
         
         # Returns the specified target VPN gateway. Gets a list of available target VPN
-        # gateways by making a list() request. (== suppress_warning http-rest-shadowed ==
-        # )
+        # gateways by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24541,7 +24573,7 @@ module Google
         end
         
         # Creates a target VPN gateway in the specified project and region using the
-        # data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24593,7 +24625,7 @@ module Google
         end
         
         # Retrieves a list of target VPN gateways available to the specified project and
-        # region. (== suppress_warning http-rest-shadowed ==)
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -24668,7 +24700,7 @@ module Google
         end
         
         # Retrieves the list of all UrlMap resources, regional and global, available to
-        # the specified project. (== suppress_warning http-rest-shadowed ==)
+        # the specified project.
         # @param [String] project
         #   Name of the project scoping this request.
         # @param [String] filter
@@ -24739,8 +24771,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified UrlMap resource. (== suppress_warning http-rest-shadowed
-        # ==)
+        # Deletes the specified UrlMap resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -24789,7 +24820,7 @@ module Google
         end
         
         # Returns the specified UrlMap resource. Gets a list of available URL maps by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -24826,7 +24857,7 @@ module Google
         end
         
         # Creates a UrlMap resource in the specified project using the data included in
-        # the request. (== suppress_warning http-rest-shadowed ==)
+        # the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::UrlMap] url_map_object
@@ -24875,7 +24906,7 @@ module Google
         end
         
         # Initiates a cache invalidation operation, invalidating the specified path,
-        # scoped to the specified UrlMap. (== suppress_warning http-rest-shadowed ==)
+        # scoped to the specified UrlMap.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -24926,8 +24957,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of UrlMap resources available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of UrlMap resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -25000,7 +25030,7 @@ module Google
         
         # Patches the specified UrlMap resource with the data included in the request.
         # This method supports PATCH semantics and uses the JSON merge patch format and
-        # processing rules. (== suppress_warning http-rest-shadowed ==)
+        # processing rules.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -25051,8 +25081,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the specified UrlMap resource with the data included in the request. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # Updates the specified UrlMap resource with the data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -25104,8 +25133,7 @@ module Google
         end
         
         # Runs static validation for the UrlMap. In particular, the tests of the
-        # provided UrlMap will be run. Calling this method does NOT create the UrlMap. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # provided UrlMap will be run. Calling this method does NOT create the UrlMap.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] url_map
@@ -25144,8 +25172,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of VPN gateways. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of VPN gateways.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -25216,7 +25243,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified VPN gateway. (== suppress_warning http-rest-shadowed ==)
+        # Deletes the specified VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25268,7 +25295,7 @@ module Google
         end
         
         # Returns the specified VPN gateway. Gets a list of available VPN gateways by
-        # making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25307,8 +25334,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the status for the specified VPN gateway. (== suppress_warning http-
-        # rest-shadowed ==)
+        # Returns the status for the specified VPN gateway.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25348,7 +25374,7 @@ module Google
         end
         
         # Creates a VPN gateway in the specified project and region using the data
-        # included in the request. (== suppress_warning http-rest-shadowed ==)
+        # included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25400,7 +25426,6 @@ module Google
         end
         
         # Retrieves a list of VPN gateways available to the specified project and region.
-        # (== suppress_warning http-rest-shadowed ==)
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25475,7 +25500,7 @@ module Google
         end
         
         # Sets the labels on a VpnGateway. To learn more about labels, read the Labeling
-        # Resources documentation. (== suppress_warning http-rest-shadowed ==)
+        # Resources documentation.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25529,8 +25554,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Returns permissions that a caller has on the specified resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25572,8 +25596,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves an aggregated list of VPN tunnels. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Retrieves an aggregated list of VPN tunnels.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
@@ -25644,8 +25667,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified VpnTunnel resource. (== suppress_warning http-rest-
-        # shadowed ==)
+        # Deletes the specified VpnTunnel resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25697,7 +25719,7 @@ module Google
         end
         
         # Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels
-        # by making a list() request. (== suppress_warning http-rest-shadowed ==)
+        # by making a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25737,7 +25759,7 @@ module Google
         end
         
         # Creates a VpnTunnel resource in the specified project and region using the
-        # data included in the request. (== suppress_warning http-rest-shadowed ==)
+        # data included in the request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25789,7 +25811,7 @@ module Google
         end
         
         # Retrieves a list of VpnTunnel resources contained in the specified project and
-        # region. (== suppress_warning http-rest-shadowed ==)
+        # region.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -25863,8 +25885,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified zone-specific Operations resource. (== suppress_warning
-        # http-rest-shadowed ==)
+        # Deletes the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -25901,8 +25922,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the specified zone-specific Operations resource. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the specified zone-specific Operations resource.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -25941,8 +25961,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of Operation resources contained within the specified zone. (=
-        # = suppress_warning http-rest-shadowed ==)
+        # Retrieves a list of Operation resources contained within the specified zone.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -26016,8 +26035,55 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Waits for the specified zone-specific Operations resource until it is done or
+        # timeout, and retrieves the specified Operations resource. 1. Immediately
+        # returns when the operation is already done. 2. Waits for no more than the
+        # default deadline (2 minutes, subject to change) and then returns the current
+        # state of the operation, which may be DONE or still in progress. 3. Is best-
+        # effort: a. The server can wait less than the default deadline or zero seconds,
+        # in overload situations. b. There is no guarantee that the operation is
+        # actually done when returns. 4. User should be prepared to retry if the
+        # operation is not DONE.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   Name of the zone for this request.
+        # @param [String] operation
+        #   Name of the Operations resource to return.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def wait_zone_operation(project, zone, operation, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/operations/{operation}/wait', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['operation'] = operation unless operation.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Returns the specified Zone resource. Gets a list of available zones by making
-        # a list() request. (== suppress_warning http-rest-shadowed ==)
+        # a list() request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -26053,8 +26119,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the list of Zone resources available to the specified project. (==
-        # suppress_warning http-rest-shadowed ==)
+        # Retrieves the list of Zone resources available to the specified project.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter

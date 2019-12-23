@@ -257,8 +257,7 @@ module Google
         
         # Resets all player progress on the event with the given ID for the currently
         # authenticated player. This method is only accessible to whitelisted tester
-        # accounts for your application. All quests for this player that use the event
-        # will also be reset.
+        # accounts for your application.
         # @param [String] event_id
         #   The ID of the event.
         # @param [String] fields
@@ -291,7 +290,7 @@ module Google
         
         # Resets all player progress on all events for the currently authenticated
         # player. This method is only accessible to whitelisted tester accounts for your
-        # application. All quests for this player will also be reset.
+        # application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -320,8 +319,7 @@ module Google
         end
         
         # Resets all draft events for all players. This method is only available to user
-        # accounts for your developer console. All quests that use any of these events
-        # will also be reset.
+        # accounts for your developer console.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -351,7 +349,7 @@ module Google
         
         # Resets the event with the given ID for all players. This method is only
         # available to user accounts for your developer console. Only draft events can
-        # be reset. All quests that use the event will also be reset.
+        # be reset.
         # @param [String] event_id
         #   The ID of the event.
         # @param [String] fields
@@ -384,7 +382,7 @@ module Google
         
         # Resets events with the given IDs for all players. This method is only
         # available to user accounts for your developer console. Only draft events may
-        # be reset. All quests that use any of the events will also be reset.
+        # be reset.
         # @param [Google::Apis::GamesManagementV1management::EventsResetMultipleForAllRequest] events_reset_multiple_for_all_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

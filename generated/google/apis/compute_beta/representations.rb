@@ -1348,6 +1348,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagerStatusStateful
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagerStatusVersionTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1390,7 +1396,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersDeletePerInstanceConfigsReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersListErrorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersListManagedInstancesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersListPerInstanceConfigsResp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersPatchPerInstanceConfigsReq
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1439,6 +1481,12 @@ module Google
       end
       
       class InstanceGroupManagersSetTargetPoolsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceGroupManagersUpdatePerInstanceConfigsReq
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1536,6 +1584,24 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagedByIgmError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagedByIgmErrorInstanceActionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagedByIgmErrorManagedInstanceError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2248,6 +2314,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupAutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2674,6 +2746,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreservedState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PreservedStatePreservedDisk
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2806,6 +2890,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionInstanceGroupManagerDeleteInstanceConfigReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegionInstanceGroupManagerList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2820,6 +2910,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagerPatchInstanceConfigReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagerUpdateInstanceConfigReq
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2844,6 +2946,30 @@ module Google
       
       class RegionInstanceGroupManagersDeleteInstancesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersListErrorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersListInstanceConfigsResp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3641,6 +3767,24 @@ module Google
       end
       
       class SslPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedState
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StatefulPolicyPreservedStateDiskDevice
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -7085,6 +7229,8 @@ module Google
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :service_account, as: 'serviceAccount'
+          property :stateful_policy, as: 'statefulPolicy', class: Google::Apis::ComputeBeta::StatefulPolicy, decorator: Google::Apis::ComputeBeta::StatefulPolicy::Representation
+      
           property :status, as: 'status', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatus, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatus::Representation
       
           collection :target_pools, as: 'targetPools'
@@ -7198,8 +7344,17 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_stable, as: 'isStable'
+          property :stateful, as: 'stateful', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusStateful::Representation
+      
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeBeta::InstanceGroupManagerStatusVersionTarget::Representation
       
+        end
+      end
+      
+      class InstanceGroupManagerStatusStateful
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :is_stateful, as: 'isStateful'
         end
       end
       
@@ -7220,6 +7375,7 @@ module Google
       
           property :min_ready_sec, as: 'minReadySec'
           property :minimal_action, as: 'minimalAction'
+          property :replacement_method, as: 'replacementMethod'
           property :type, as: 'type'
         end
       end
@@ -7265,12 +7421,65 @@ module Google
         end
       end
       
+      class InstanceGroupManagersDeletePerInstanceConfigsReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
+      class InstanceGroupManagersListErrorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceManagedByIgmError, decorator: Google::Apis::ComputeBeta::InstanceManagedByIgmError::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class InstanceGroupManagersListManagedInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeBeta::ManagedInstance, decorator: Google::Apis::ComputeBeta::ManagedInstance::Representation
       
           property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class InstanceGroupManagersListPerInstanceConfigsResp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::InstanceGroupManagersListPerInstanceConfigsResp::Warning, decorator: Google::Apis::ComputeBeta::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Datum, decorator: Google::Apis::ComputeBeta::InstanceGroupManagersListPerInstanceConfigsResp::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class InstanceGroupManagersPatchPerInstanceConfigsReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
         end
       end
       
@@ -7337,6 +7546,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :target_pools, as: 'targetPools'
+        end
+      end
+      
+      class InstanceGroupManagersUpdatePerInstanceConfigsReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
         end
       end
       
@@ -7496,6 +7713,35 @@ module Google
         end
       end
       
+      class InstanceManagedByIgmError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeBeta::InstanceManagedByIgmErrorManagedInstanceError, decorator: Google::Apis::ComputeBeta::InstanceManagedByIgmErrorManagedInstanceError::Representation
+      
+          property :instance_action_details, as: 'instanceActionDetails', class: Google::Apis::ComputeBeta::InstanceManagedByIgmErrorInstanceActionDetails, decorator: Google::Apis::ComputeBeta::InstanceManagedByIgmErrorInstanceActionDetails::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class InstanceManagedByIgmErrorInstanceActionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :instance, as: 'instance'
+          property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
+      
+        end
+      end
+      
+      class InstanceManagedByIgmErrorManagedInstanceError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
       class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7524,6 +7770,7 @@ module Google
       
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
+          collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeBeta::ServiceAccount, decorator: Google::Apis::ComputeBeta::ServiceAccount::Representation
@@ -8351,6 +8598,10 @@ module Google
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeBeta::ManagedInstanceLastAttempt::Representation
       
+          property :preserved_state_from_config, as: 'preservedStateFromConfig', class: Google::Apis::ComputeBeta::PreservedState, decorator: Google::Apis::ComputeBeta::PreservedState::Representation
+      
+          property :preserved_state_from_policy, as: 'preservedStateFromPolicy', class: Google::Apis::ComputeBeta::PreservedState, decorator: Google::Apis::ComputeBeta::PreservedState::Representation
+      
           property :version, as: 'version', class: Google::Apis::ComputeBeta::ManagedInstanceVersion, decorator: Google::Apis::ComputeBeta::ManagedInstanceVersion::Representation
       
         end
@@ -8754,10 +9005,14 @@ module Google
       class NodeGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeBeta::NodeGroupAutoscalingPolicy, decorator: Google::Apis::ComputeBeta::NodeGroupAutoscalingPolicy::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :maintenance_policy, as: 'maintenancePolicy'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -8796,6 +9051,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupAutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_nodes, as: 'maxNodes'
+          property :min_nodes, as: 'minNodes'
+          property :mode, as: 'mode'
         end
       end
       
@@ -8839,6 +9103,7 @@ module Google
           property :node_type, as: 'nodeType'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeBeta::ServerBinding, decorator: Google::Apis::ComputeBeta::ServerBinding::Representation
       
+          property :server_id, as: 'serverId'
           property :status, as: 'status'
         end
       end
@@ -9548,6 +9813,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :name, as: 'name'
+          property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeBeta::PreservedState, decorator: Google::Apis::ComputeBeta::PreservedState::Representation
+      
         end
       end
       
@@ -9571,6 +9838,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :expression_sets, as: 'expressionSets', class: Google::Apis::ComputeBeta::WafExpressionSet, decorator: Google::Apis::ComputeBeta::WafExpressionSet::Representation
       
+        end
+      end
+      
+      class PreservedState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :disks, as: 'disks', class: Google::Apis::ComputeBeta::PreservedStatePreservedDisk, decorator: Google::Apis::ComputeBeta::PreservedStatePreservedDisk::Representation
+      
+          hash :metadata, as: 'metadata'
+        end
+      end
+      
+      class PreservedStatePreservedDisk
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
+          property :mode, as: 'mode'
+          property :source, as: 'source'
         end
       end
       
@@ -9799,6 +10084,13 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagerDeleteInstanceConfigReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :names, as: 'names'
+        end
+      end
+      
       class RegionInstanceGroupManagerList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9831,6 +10123,22 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagerPatchInstanceConfigReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
+        end
+      end
+      
+      class RegionInstanceGroupManagerUpdateInstanceConfigReq
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :per_instance_configs, as: 'perInstanceConfigs', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
+        end
+      end
+      
       class RegionInstanceGroupManagersAbandonInstancesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9859,6 +10167,44 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :instances, as: 'instances'
+        end
+      end
+      
+      class RegionInstanceGroupManagersListErrorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::InstanceManagedByIgmError, decorator: Google::Apis::ComputeBeta::InstanceManagedByIgmError::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class RegionInstanceGroupManagersListInstanceConfigsResp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeBeta::PerInstanceConfig, decorator: Google::Apis::ComputeBeta::PerInstanceConfig::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+          property :warning, as: 'warning', class: Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstanceConfigsResp::Warning, decorator: Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Datum, decorator: Google::Apis::ComputeBeta::RegionInstanceGroupManagersListInstanceConfigsResp::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -10740,6 +11086,7 @@ module Google
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           property :index, as: 'index'
@@ -10758,6 +11105,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :automatic_restart, as: 'automaticRestart'
+          property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeBeta::SchedulingNodeAffinity, decorator: Google::Apis::ComputeBeta::SchedulingNodeAffinity::Representation
       
           property :on_host_maintenance, as: 'onHostMaintenance'
@@ -11294,6 +11642,29 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ssl_policy, as: 'sslPolicy'
+        end
+      end
+      
+      class StatefulPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preserved_state, as: 'preservedState', class: Google::Apis::ComputeBeta::StatefulPolicyPreservedState, decorator: Google::Apis::ComputeBeta::StatefulPolicyPreservedState::Representation
+      
+        end
+      end
+      
+      class StatefulPolicyPreservedState
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :disks, as: 'disks', class: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateDiskDevice, decorator: Google::Apis::ComputeBeta::StatefulPolicyPreservedStateDiskDevice::Representation
+      
+        end
+      end
+      
+      class StatefulPolicyPreservedStateDiskDevice
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :auto_delete, as: 'autoDelete'
         end
       end
       

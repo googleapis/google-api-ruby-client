@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/cloud-dns
     module DnsV1
       VERSION = 'V1'
-      REVISION = '20190923'
+      REVISION = '20191205'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

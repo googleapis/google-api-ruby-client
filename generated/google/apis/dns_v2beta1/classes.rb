@@ -412,6 +412,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :name_servers
       
+        # The presence of this field indicates that DNS Peering is enabled for this zone.
+        # The value of this field contains the network to peer with.
+        # Corresponds to the JSON property `peeringConfig`
+        # @return [Google::Apis::DnsV2beta1::ManagedZonePeeringConfig]
+        attr_accessor :peering_config
+      
         # For privately visible zones, the set of Virtual Private Cloud resources that
         # the zone is visible from.
         # Corresponds to the JSON property `privateVisibilityConfig`
@@ -441,6 +447,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @name_server_set = args[:name_server_set] if args.key?(:name_server_set)
           @name_servers = args[:name_servers] if args.key?(:name_servers)
+          @peering_config = args[:peering_config] if args.key?(:peering_config)
           @private_visibility_config = args[:private_visibility_config] if args.key?(:private_visibility_config)
           @visibility = args[:visibility] if args.key?(:visibility)
         end
@@ -581,6 +588,69 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # 
+      class ManagedZonePeeringConfig
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePeeringConfig".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The network with which to peer.
+        # Corresponds to the JSON property `targetNetwork`
+        # @return [Google::Apis::DnsV2beta1::ManagedZonePeeringConfigTargetNetwork]
+        attr_accessor :target_network
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @target_network = args[:target_network] if args.key?(:target_network)
+        end
+      end
+      
+      # 
+      class ManagedZonePeeringConfigTargetNetwork
+        include Google::Apis::Core::Hashable
+      
+        # The time at which the zone was deactivated, in RFC 3339 date-time format. An
+        # empty string indicates that the peering connection is active. The producer
+        # network can deactivate a zone. The zone is automatically deactivated if the
+        # producer network that the zone targeted is deleted. Output only.
+        # Corresponds to the JSON property `deactivateTime`
+        # @return [String]
+        attr_accessor :deactivate_time
+      
+        # Identifies what kind of resource this is. Value: the fixed string "dns#
+        # managedZonePeeringConfigTargetNetwork".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The fully qualified URL of the VPC network to forward queries to. This should
+        # be formatted like https://www.googleapis.com/compute/v1/projects/`project`/
+        # global/networks/`network`
+        # Corresponds to the JSON property `networkUrl`
+        # @return [String]
+        attr_accessor :network_url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @deactivate_time = args[:deactivate_time] if args.key?(:deactivate_time)
+          @kind = args[:kind] if args.key?(:kind)
+          @network_url = args[:network_url] if args.key?(:network_url)
         end
       end
       

@@ -46,8 +46,7 @@ module Google
       class AdministratorWebToken
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#administratorWebToken".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -74,8 +73,7 @@ module Google
       class AdministratorWebTokenSpec
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#administratorWebTokenSpec".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -246,8 +244,7 @@ module Google
       class AppRestrictionsSchema
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#appRestrictionsSchema".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -509,8 +506,7 @@ module Google
         # @return [String]
         attr_accessor :approval_url
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#approvalUrlInfo".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -531,8 +527,7 @@ module Google
       class AuthenticationToken
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#authenticationToken".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -636,8 +631,7 @@ module Google
       class ConfigurationVariables
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#configurationVariables".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -675,8 +669,7 @@ module Google
         # @return [String]
         attr_accessor :android_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#device".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -795,8 +788,7 @@ module Google
         # @return [String]
         attr_accessor :account_state
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#deviceState".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -864,8 +856,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#enterprise".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -904,8 +895,7 @@ module Google
         # @return [String]
         attr_accessor :account_email
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#enterpriseAccount".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -996,8 +986,7 @@ module Google
       class Entitlement
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#entitlement".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1088,8 +1077,7 @@ module Google
         # @return [String]
         attr_accessor :approval
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#groupLicense".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1226,8 +1214,7 @@ module Google
         # @return [String]
         attr_accessor :install_state
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#install".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1446,8 +1433,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ConfigurationVariables]
         attr_accessor :configuration_variables
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#managedConfiguration".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1535,8 +1521,7 @@ module Google
       class ManagedConfigurationsSettings
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#managedConfigurationsSettings".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1847,8 +1832,7 @@ module Google
       class NotificationSet
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#notificationSet".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1924,8 +1908,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#permission".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2078,8 +2061,7 @@ module Google
         # @return [String]
         attr_accessor :icon_url
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#product".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2270,8 +2252,7 @@ module Google
       class ProductPermissions
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#productPermissions".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2350,8 +2331,7 @@ module Google
       class ProductSet
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#productSet".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2563,8 +2543,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ServiceAccountKey]
         attr_accessor :key
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#serviceAccount".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2603,8 +2582,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#serviceAccountKey".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2665,8 +2643,7 @@ module Google
         # @return [String]
         attr_accessor :completion_token
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#signupInfo".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2699,8 +2676,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#storeCluster".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2755,8 +2731,7 @@ module Google
         # @return [String]
         attr_accessor :homepage_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#storeLayout".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2843,8 +2818,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#storePage".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2971,8 +2945,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#user".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3013,8 +2986,7 @@ module Google
       class UserToken
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#userToken".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3075,8 +3047,7 @@ module Google
       class VariableSet
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "
-        # androidenterprise#variableSet".
+        # 
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

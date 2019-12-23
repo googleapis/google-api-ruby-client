@@ -2968,18 +2968,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PacketMirroringCollectorInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PacketMirroringCollectorInfoInstanceInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PacketMirroringFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3029,12 +3017,6 @@ module Google
       end
       
       class PacketMirroringNetworkInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PacketMirroringPacketMatcher
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -6529,6 +6511,7 @@ module Google
           property :source_snapshot_encryption_key, as: 'sourceSnapshotEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :source_snapshot_id, as: 'sourceSnapshotId'
+          property :source_storage_object, as: 'sourceStorageObject'
           property :status, as: 'status'
           property :storage_type, as: 'storageType'
           property :type, as: 'type'
@@ -8620,6 +8603,7 @@ module Google
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
+          collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeAlpha::Scheduling, decorator: Google::Apis::ComputeAlpha::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeAlpha::ServiceAccount, decorator: Google::Apis::ComputeAlpha::ServiceAccount::Representation
@@ -10176,8 +10160,8 @@ module Google
       class NodeGroupAutoscalingPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :max_size, as: 'maxSize'
-          property :min_size, as: 'minSize'
+          property :max_nodes, as: 'maxNodes'
+          property :min_nodes, as: 'minNodes'
           property :mode, as: 'mode'
         end
       end
@@ -10826,8 +10810,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :collector_ilb, as: 'collectorIlb', class: Google::Apis::ComputeAlpha::PacketMirroringForwardingRuleInfo, decorator: Google::Apis::ComputeAlpha::PacketMirroringForwardingRuleInfo::Representation
       
-          property :collectors, as: 'collectors', class: Google::Apis::ComputeAlpha::PacketMirroringCollectorInfo, decorator: Google::Apis::ComputeAlpha::PacketMirroringCollectorInfo::Representation
-      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :enable, as: 'enable'
@@ -10839,8 +10821,6 @@ module Google
       
           property :name, as: 'name'
           property :network, as: 'network', class: Google::Apis::ComputeAlpha::PacketMirroringNetworkInfo, decorator: Google::Apis::ComputeAlpha::PacketMirroringNetworkInfo::Representation
-      
-          collection :packet_matchers, as: 'packetMatchers', class: Google::Apis::ComputeAlpha::PacketMirroringPacketMatcher, decorator: Google::Apis::ComputeAlpha::PacketMirroringPacketMatcher::Representation
       
           property :priority, as: 'priority'
           property :region, as: 'region'
@@ -10878,21 +10858,6 @@ module Google
               property :value, as: 'value'
             end
           end
-        end
-      end
-      
-      class PacketMirroringCollectorInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :instances, as: 'instances', class: Google::Apis::ComputeAlpha::PacketMirroringCollectorInfoInstanceInfo, decorator: Google::Apis::ComputeAlpha::PacketMirroringCollectorInfoInstanceInfo::Representation
-      
-        end
-      end
-      
-      class PacketMirroringCollectorInfoInstanceInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
         end
       end
       
@@ -10976,13 +10941,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :canonical_url, as: 'canonicalUrl'
           property :url, as: 'url'
-        end
-      end
-      
-      class PacketMirroringPacketMatcher
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cidr_range, as: 'cidrRange'
         end
       end
       
@@ -12098,7 +12056,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :availability_domain_count, as: 'availabilityDomainCount'
-          property :distribution, as: 'distribution'
+          property :collocation, as: 'collocation'
           property :locality, as: 'locality'
           property :style, as: 'style'
           property :vm_count, as: 'vmCount'
@@ -12625,6 +12583,7 @@ module Google
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeAlpha::CustomerEncryptionKey, decorator: Google::Apis::ComputeAlpha::CustomerEncryptionKey::Representation
       
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :disk_type, as: 'diskType'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :index, as: 'index'
@@ -12956,6 +12915,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           property :id, :numeric_string => true, as: 'id'
