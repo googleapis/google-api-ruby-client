@@ -863,8 +863,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists instances under a given project in the alphabetical order of the
-        # instance name.
+        # Lists instances under a given project.
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
         # @param [String] filter
@@ -1347,6 +1346,9 @@ module Google
         #   Project ID of the project that contains the instance.
         # @param [String] operation
         #   Instance operation ID.
+        # @param [String] resource_name
+        #   The name of the operation for Cloud SQL to get.
+        #   Format: projects/`project`/locations/`location`/operations/`operation`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1364,12 +1366,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_operation(project, operation, fields: nil, quota_user: nil, options: nil, &block)
+        def get_operation(project, operation, resource_name: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'sql/v1beta4/projects/{project}/operations/{operation}', options)
           command.response_representation = Google::Apis::SqlV1beta4::Operation::Representation
           command.response_class = Google::Apis::SqlV1beta4::Operation
           command.params['project'] = project unless project.nil?
           command.params['operation'] = operation unless operation.nil?
+          command.query['resourceName'] = resource_name unless resource_name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

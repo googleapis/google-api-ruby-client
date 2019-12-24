@@ -706,6 +706,7 @@ module Google
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
       
+          property :version, as: 'version'
         end
       end
       
