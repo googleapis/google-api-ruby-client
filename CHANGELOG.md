@@ -1,3 +1,8 @@
+# 0.36.3
+* Backwards compatible changes:
+  * Updated `healthcare_v1beta1`
+  * Updated `sql_v1beta4`
+
 # 0.36.2
 * Backwards compatible changes:
   * Added `cloudbuild_v1alpha1`
