@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20191030'
+      REVISION = '20191230'
 
       # See, edit, download, and permanently delete your contacts
       AUTH_CONTACTS = 'https://www.googleapis.com/auth/contacts'
@@ -41,6 +41,9 @@ module Google
 
       # View your email addresses
       AUTH_USER_EMAILS_READ = 'https://www.googleapis.com/auth/user.emails.read'
+
+      # See your education, work history and org info
+      AUTH_USER_ORGANIZATION_READ = 'https://www.googleapis.com/auth/user.organization.read'
 
       # View your phone numbers
       AUTH_USER_PHONENUMBERS_READ = 'https://www.googleapis.com/auth/user.phonenumbers.read'
