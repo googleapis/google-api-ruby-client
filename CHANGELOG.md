@@ -1,3 +1,16 @@
+# 0.36.4
+* Backwards compatible changes:
+  * Updated `people_v1`
+  * Updated `remotebuildexecution_v1`
+  * Updated `remotebuildexecution_v1alpha`
+  * Updated `remotebuildexecution_v2`
+  * Updated `searchconsole_v1`
+  * Updated `serviceconsumermanagement_v1`
+  * Updated `servicenetworking_v1`
+  * Updated `servicenetworking_v1beta`
+  * Updated `serviceusage_v1`
+  * Updated `serviceusage_v1beta1`
+
 # 0.36.3
 * Backwards compatible changes:
   * Updated `healthcare_v1beta1`
