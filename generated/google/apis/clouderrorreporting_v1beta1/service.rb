@@ -51,7 +51,7 @@ module Google
         # Deletes all error events of a given project.
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/` plus the
+        #   as `projects/`projectID``, where ``projectID`` is the
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
         #   Example: `projects/my-project-123`.
@@ -85,7 +85,7 @@ module Google
         # Lists the specified events.
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/` plus the
+        #   as `projects/`projectID``, where ``projectID`` is the
         #   [Google Cloud Platform project
         #   ID](https://support.google.com/cloud/answer/6158840).
         #   Example: `projects/my-project-123`.
@@ -149,14 +149,14 @@ module Google
         # for authentication. To use an API key, append it to the URL as the value of
         # a `key` parameter. For example:
         # `POST
-        # https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/
-        # events:report?key=123ABC456`
+        # https://clouderrorreporting.googleapis.com/v1beta1/`projectName`/events:report?
+        # key=123ABC456`
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as `projects/` plus the
+        #   as `projects/`projectId``, where ``projectId`` is the
         #   [Google Cloud Platform project
-        #   ID](https://support.google.com/cloud/answer/6158840). Example:
-        #   `projects/my-project-123`.
+        #   ID](https://support.google.com/cloud/answer/6158840).
+        #   Example: // `projects/my-project-123`.
         # @param [Google::Apis::ClouderrorreportingV1beta1::ReportedErrorEvent] reported_error_event_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -190,10 +190,10 @@ module Google
         # Lists the specified groups.
         # @param [String] project_name
         #   Required. The resource name of the Google Cloud Platform project. Written
-        #   as <code>projects/</code> plus the
-        #   <a href="https://support.google.com/cloud/answer/6158840">Google Cloud
-        #   Platform project ID</a>.
-        #   Example: <code>projects/my-project-123</code>.
+        #   as `projects/`projectID``, where ``projectID`` is the
+        #   [Google Cloud Platform project
+        #   ID](https://support.google.com/cloud/answer/6158840).
+        #   Example: `projects/my-project-123`.
         # @param [String] alignment
         #   Optional. The alignment of the timed counts to be returned.
         #   Default is `ALIGNMENT_EQUAL_AT_END`.

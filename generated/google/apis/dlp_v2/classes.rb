@@ -191,7 +191,7 @@ module Google
       class GooglePrivacyDlpV2AuxiliaryTable
         include Google::Apis::Core::Hashable
       
-        # Quasi-identifier columns. [required]
+        # Required. Quasi-identifier columns.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiIdField>]
         attr_accessor :quasi_ids
@@ -548,7 +548,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram of value frequencies in the column.
       class GooglePrivacyDlpV2CategoricalStatsHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -670,12 +670,13 @@ module Google
       class GooglePrivacyDlpV2CharsToIgnore
         include Google::Apis::Core::Hashable
       
-        # 
+        # Characters to not transform when masking.
         # Corresponds to the JSON property `charactersToSkip`
         # @return [String]
         attr_accessor :characters_to_skip
       
-        # 
+        # Common characters to not transform when masking. Useful to avoid removing
+        # punctuation.
         # Corresponds to the JSON property `commonCharactersToIgnore`
         # @return [String]
         attr_accessor :common_characters_to_ignore
@@ -915,7 +916,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId]
         attr_accessor :field
       
-        # Operator used to compare the field or infoType to the value. [required]
+        # Required. Operator used to compare the field or infoType to the value.
         # Corresponds to the JSON property `operator`
         # @return [String]
         attr_accessor :operator
@@ -946,7 +947,7 @@ module Google
       class GooglePrivacyDlpV2Conditions
         include Google::Apis::Core::Hashable
       
-        # 
+        # A collection of conditions.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Condition>]
         attr_accessor :conditions
@@ -1001,9 +1002,9 @@ module Google
         # Name of the container where the finding is located.
         # The top level name is the source file name or table name. Names of some
         # common storage containers are formatted as follows:
-        # * BigQuery tables:  `<project_id>:<dataset_id>.<table_id>`
-        # * Cloud Storage files: `gs://<bucket>/<path>`
-        # * Datastore namespace: <namespace>
+        # * BigQuery tables:  ``project_id`:`dataset_id`.`table_id``
+        # * Cloud Storage files: `gs://`bucket`/`path``
+        # * Datastore namespace: `namespace`
         # Nested names could be absent if the embedded object has no string
         # identifier (for an example an image contained within a document).
         # Corresponds to the JSON property `containerName`
@@ -1096,7 +1097,7 @@ module Google
       class GooglePrivacyDlpV2CreateDlpJobRequest
         include Google::Apis::Core::Hashable
       
-        # 
+        # Controls what and how to inspect for findings.
         # Corresponds to the JSON property `inspectJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig]
         attr_accessor :inspect_job
@@ -1367,7 +1368,7 @@ module Google
       class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # Common alphabets.
         # Corresponds to the JSON property `commonAlphabet`
         # @return [String]
         attr_accessor :common_alphabet
@@ -1589,17 +1590,16 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2CryptoKey]
         attr_accessor :crypto_key
       
-        # For example, -5 means shift date to at most 5 days back in the past.
-        # [Required]
+        # Required. For example, -5 means shift date to at most 5 days back in the past.
         # Corresponds to the JSON property `lowerBoundDays`
         # @return [Fixnum]
         attr_accessor :lower_bound_days
       
-        # Range of shift in days. Actual shift will be selected at random within this
+        # Required. Range of shift in days. Actual shift will be selected at random
+        # within this
         # range (inclusive ends). Negative means shift to earlier in time. Must not
         # be more than 365250 days (1000 years) each direction.
         # For example, 3 means shift date to at most 3 days into the future.
-        # [Required]
         # Corresponds to the JSON property `upperBoundDays`
         # @return [Fixnum]
         attr_accessor :upper_bound_days
@@ -1634,7 +1634,7 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date
       
-        # 
+        # Day of week
         # Corresponds to the JSON property `dayOfWeek`
         # @return [String]
         attr_accessor :day_of_week
@@ -1646,7 +1646,7 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleTypeTimeOfDay]
         attr_accessor :time
       
-        # 
+        # Time zone of the date time object.
         # Corresponds to the JSON property `timeZone`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TimeZone]
         attr_accessor :time_zone
@@ -1715,7 +1715,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig]
         attr_accessor :deidentify_config
       
-        # Optional template to use. Any configuration directly specified in
+        # Template to use. Any configuration directly specified in
         # deidentify_config will override those set in the template. Singular fields
         # that are set in this request will replace their corresponding fields in the
         # template. Repeated fields are appended. Singular sub-messages and groups
@@ -1731,7 +1731,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Optional template to use. Any configuration directly specified in
+        # Template to use. Any configuration directly specified in
         # inspect_config will override those set in the template. Singular fields
         # that are set in this request will replace their corresponding fields in the
         # template. Repeated fields are appended. Singular sub-messages and groups
@@ -1796,7 +1796,7 @@ module Google
       class GooglePrivacyDlpV2DeidentifyTemplate
         include Google::Apis::Core::Hashable
       
-        # The creation timestamp of an inspectTemplate, output only field.
+        # Output only. The creation timestamp of an inspectTemplate.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1816,7 +1816,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # The template name. Output only.
+        # Output only. The template name.
         # The template will have one of the following formats:
         # `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR
         # `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
@@ -1824,7 +1824,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The last update timestamp of an inspectTemplate, output only field.
+        # Output only. The last update timestamp of an inspectTemplate.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1858,14 +1858,15 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2StatisticalTable>]
         attr_accessor :auxiliary_tables
       
-        # Fields considered to be quasi-identifiers. No two fields can have the
-        # same tag. [required]
+        # Required. Fields considered to be quasi-identifiers. No two fields can have
+        # the
+        # same tag.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiId>]
         attr_accessor :quasi_ids
       
         # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-        # Required if no column is tagged with a region-specific InfoType (like
+        # Set if no column is tagged with a region-specific InfoType (like
         # US_ZIP_5) or a region code.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
@@ -2182,7 +2183,6 @@ module Google
       
       # Details information about an error encountered during job execution or
       # the results of an unsuccessful activation of the JobTrigger.
-      # Output only field.
       class GooglePrivacyDlpV2Error
         include Google::Apis::Core::Hashable
       
@@ -2352,7 +2352,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordCondition]
         attr_accessor :condition
       
-        # Input field(s) to apply the transformation to. [required]
+        # Required. Input field(s) to apply the transformation to.
         # Corresponds to the JSON property `fields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :fields
@@ -2493,7 +2493,7 @@ module Google
         end
       end
       
-      # 
+      # Configuration to control the number of findings returned.
       class GooglePrivacyDlpV2FindingLimits
         include Google::Apis::Core::Hashable
       
@@ -2534,7 +2534,7 @@ module Google
       # but requires more configuration. This message is provided as a convenience to
       # the user for simple bucketing strategies.
       # The transformed value will be a hyphenated string of
-      # <lower_bound>-<upper_bound>, i.e if lower_bound = 10 and upper_bound = 20
+      # `lower_bound`-`upper_bound`, i.e if lower_bound = 10 and upper_bound = 20
       # all values that are within this bucket will be replaced with "10-20".
       # This can be used on data of type: double, long.
       # If the bound Value type differs from the type of data
@@ -2544,10 +2544,10 @@ module Google
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         include Google::Apis::Core::Hashable
       
-        # Size of each bucket (except for minimum and maximum buckets). So if
+        # Required. Size of each bucket (except for minimum and maximum buckets). So if
         # `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
         # following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
-        # 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].
+        # 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
         # Corresponds to the JSON property `bucketSize`
         # @return [Float]
         attr_accessor :bucket_size
@@ -2817,8 +2817,8 @@ module Google
       class GooglePrivacyDlpV2InfoTypeTransformations
         include Google::Apis::Core::Hashable
       
-        # Transformation for each infoType. Cannot specify more than one
-        # for a given infoType. [required]
+        # Required. Transformation for each infoType. Cannot specify more than one
+        # for a given infoType.
         # Corresponds to the JSON property `transformations`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeTransformation>]
         attr_accessor :transformations
@@ -2877,7 +2877,7 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType>]
         attr_accessor :info_types
       
-        # 
+        # Configuration to control the number of findings returned.
         # Corresponds to the JSON property `limits`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2FindingLimits]
         attr_accessor :limits
@@ -2924,7 +2924,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Optional template to use. Any configuration directly specified in
+        # Template to use. Any configuration directly specified in
         # inspect_config will override those set in the template. Singular fields
         # that are set in this request will replace their corresponding fields in the
         # template. Repeated fields are appended. Singular sub-messages and groups
@@ -2980,7 +2980,7 @@ module Google
       class GooglePrivacyDlpV2InspectDataSourceDetails
         include Google::Apis::Core::Hashable
       
-        # The configuration used for this job.
+        # Snapshot of the inspection configuration.
         # Corresponds to the JSON property `requestedOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RequestedOptions]
         attr_accessor :requested_options
@@ -3001,7 +3001,7 @@ module Google
         end
       end
       
-      # 
+      # Controls what and how to inspect for findings.
       class GooglePrivacyDlpV2InspectJobConfig
         include Google::Apis::Core::Hashable
       
@@ -3080,7 +3080,7 @@ module Google
       class GooglePrivacyDlpV2InspectTemplate
         include Google::Apis::Core::Hashable
       
-        # The creation timestamp of an inspectTemplate, output only field.
+        # Output only. The creation timestamp of an inspectTemplate.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3102,15 +3102,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # The template name. Output only.
+        # Output only. The template name.
         # The template will have one of the following formats:
         # `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR
-        # `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        # `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The last update timestamp of an inspectTemplate, output only field.
+        # Output only. The last update timestamp of an inspectTemplate.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3203,7 +3203,7 @@ module Google
       class GooglePrivacyDlpV2JobTrigger
         include Google::Apis::Core::Hashable
       
-        # The creation timestamp of a triggeredJob, output only field.
+        # Output only. The creation timestamp of a triggeredJob.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -3218,20 +3218,21 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # A stream of errors encountered when the trigger was activated. Repeated
+        # Output only. A stream of errors encountered when the trigger was activated.
+        # Repeated
         # errors may result in the JobTrigger automatically being paused.
         # Will return the last 100 errors. Whenever the JobTrigger is modified
-        # this list will be cleared. Output only field.
+        # this list will be cleared.
         # Corresponds to the JSON property `errors`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Error>]
         attr_accessor :errors
       
-        # 
+        # Controls what and how to inspect for findings.
         # Corresponds to the JSON property `inspectJob`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig]
         attr_accessor :inspect_job
       
-        # The timestamp of the last time this trigger executed, output only field.
+        # Output only. The timestamp of the last time this trigger executed.
         # Corresponds to the JSON property `lastRunTime`
         # @return [String]
         attr_accessor :last_run_time
@@ -3243,7 +3244,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A status for this trigger. [required]
+        # Required. A status for this trigger.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3255,7 +3256,7 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Trigger>]
         attr_accessor :triggers
       
-        # The last update timestamp of a triggeredJob, output only field.
+        # Output only. The last update timestamp of a triggeredJob.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -3340,7 +3341,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram of k-anonymity equivalence classes.
       class GooglePrivacyDlpV2KAnonymityHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -3409,7 +3410,6 @@ module Google
       # using publicly available data (like the US Census), or using a custom
       # statistical model (indicated as one or several BigQuery tables), or by
       # extrapolating from the distribution of values in the input dataset.
-      # A column with a semantic tag attached.
       class GooglePrivacyDlpV2KMapEstimationConfig
         include Google::Apis::Core::Hashable
       
@@ -3420,14 +3420,15 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2AuxiliaryTable>]
         attr_accessor :auxiliary_tables
       
-        # Fields considered to be quasi-identifiers. No two columns can have the
-        # same tag. [required]
+        # Required. Fields considered to be quasi-identifiers. No two columns can have
+        # the
+        # same tag.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2TaggedField>]
         attr_accessor :quasi_ids
       
         # ISO 3166-1 alpha-2 region code to use in the statistical modeling.
-        # Required if no column is tagged with a region-specific InfoType (like
+        # Set if no column is tagged with a region-specific InfoType (like
         # US_ZIP_5) or a region code.
         # Corresponds to the JSON property `regionCode`
         # @return [String]
@@ -3614,12 +3615,12 @@ module Google
       class GooglePrivacyDlpV2KmsWrappedCryptoKey
         include Google::Apis::Core::Hashable
       
-        # The resource name of the KMS CryptoKey to use for unwrapping. [required]
+        # Required. The resource name of the KMS CryptoKey to use for unwrapping.
         # Corresponds to the JSON property `cryptoKeyName`
         # @return [String]
         attr_accessor :crypto_key_name
       
-        # The wrapped data crypto key. [required]
+        # Required. The wrapped data crypto key.
         # Corresponds to the JSON property `wrappedKey`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -3701,7 +3702,7 @@ module Google
         end
       end
       
-      # 
+      # Histogram of l-diversity equivalence class sensitive value frequencies.
       class GooglePrivacyDlpV2LDiversityHistogramBucket
         include Google::Apis::Core::Hashable
       
@@ -4292,7 +4293,7 @@ module Google
         # but requires more configuration. This message is provided as a convenience to
         # the user for simple bucketing strategies.
         # The transformed value will be a hyphenated string of
-        # <lower_bound>-<upper_bound>, i.e if lower_bound = 10 and upper_bound = 20
+        # `lower_bound`-`upper_bound`, i.e if lower_bound = 10 and upper_bound = 20
         # all values that are within this bucket will be replaced with "10-20".
         # This can be used on data of type: double, long.
         # If the bound Value type differs from the type of data
@@ -4375,7 +4376,6 @@ module Google
         # using publicly available data (like the US Census), or using a custom
         # statistical model (indicated as one or several BigQuery tables), or by
         # extrapolating from the distribution of values in the input dataset.
-        # A column with a semantic tag attached.
         # Corresponds to the JSON property `kMapEstimationConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2KMapEstimationConfig]
         attr_accessor :k_map_estimation_config
@@ -4568,7 +4568,7 @@ module Google
       class GooglePrivacyDlpV2QuasiIdField
         include Google::Apis::Core::Hashable
       
-        # 
+        # A auxiliary field.
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -4594,7 +4594,9 @@ module Google
       class GooglePrivacyDlpV2QuasiIdentifierField
         include Google::Apis::Core::Hashable
       
-        # 
+        # A column can be tagged with a custom tag. In this case, the user must
+        # indicate an auxiliary table that contains statistical information on
+        # the possible values of this column (below).
         # Corresponds to the JSON property `customTag`
         # @return [String]
         attr_accessor :custom_tag
@@ -4775,7 +4777,7 @@ module Google
         attr_accessor :field_transformations
       
         # Configuration defining which records get suppressed entirely. Records that
-        # match any suppression rule are omitted from the output [optional].
+        # match any suppression rule are omitted from the output.
         # Corresponds to the JSON property `recordSuppressions`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2RecordSuppression>]
         attr_accessor :record_suppressions
@@ -4928,7 +4930,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # Optional template to use. Any configuration directly specified in
+        # Template to use. Any configuration directly specified in
         # `inspect_config` will override those set in the template. Singular fields
         # that are set in this request will replace their corresponding fields in the
         # template. Repeated fields are appended. Singular sub-messages and groups
@@ -4953,7 +4955,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyConfig]
         attr_accessor :reidentify_config
       
-        # Optional template to use. References an instance of `DeidentifyTemplate`.
+        # Template to use. References an instance of `DeidentifyTemplate`.
         # Any configuration directly specified in `reidentify_config` or
         # `inspect_config` will override those set in the template. Singular fields
         # that are set in this request will replace their corresponding fields in the
@@ -5040,11 +5042,11 @@ module Google
         end
       end
       
-      # 
+      # Snapshot of the inspection configuration.
       class GooglePrivacyDlpV2RequestedOptions
         include Google::Apis::Core::Hashable
       
-        # 
+        # Controls what and how to inspect for findings.
         # Corresponds to the JSON property `jobConfig`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectJobConfig]
         attr_accessor :job_config
@@ -5137,11 +5139,11 @@ module Google
         end
       end
       
-      # 
+      # Values of the row.
       class GooglePrivacyDlpV2Row
         include Google::Apis::Core::Hashable
       
-        # 
+        # Individual cells.
         # Corresponds to the JSON property `values`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Value>]
         attr_accessor :values
@@ -5212,7 +5214,7 @@ module Google
       class GooglePrivacyDlpV2StatisticalTable
         include Google::Apis::Core::Hashable
       
-        # Quasi-identifier columns. [required]
+        # Required. Quasi-identifier columns.
         # Corresponds to the JSON property `quasiIds`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2QuasiIdentifierField>]
         attr_accessor :quasi_ids
@@ -5395,10 +5397,10 @@ module Google
         # anomalies detected in the storedInfoType data that render it unusable. Only
         # the five most recent errors will be displayed, with the most recent error
         # appearing first.
-        # <p>For example, some of the data for stored custom dictionaries is put in
+        # For example, some of the data for stored custom dictionaries is put in
         # the user's Google Cloud Storage bucket, and if this data is modified or
         # deleted by the user or another system, the dictionary becomes invalid.
-        # <p>If any errors occur, fix the problem indicated by the error message and
+        # If any errors occur, fix the problem indicated by the error message and
         # use the UpdateStoredInfoType API method to create another version of the
         # storedInfoType to continue using it, reusing the same `config` if it was
         # not the source of the error.
@@ -5464,12 +5466,12 @@ module Google
       class GooglePrivacyDlpV2SummaryResult
         include Google::Apis::Core::Hashable
       
-        # 
+        # Outcome of the transformation.
         # Corresponds to the JSON property `code`
         # @return [String]
         attr_accessor :code
       
-        # 
+        # Number of transformations counted by this result.
         # Corresponds to the JSON property `count`
         # @return [Fixnum]
         attr_accessor :count
@@ -5519,12 +5521,12 @@ module Google
       class GooglePrivacyDlpV2Table
         include Google::Apis::Core::Hashable
       
-        # 
+        # Headers of the table.
         # Corresponds to the JSON property `headers`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :headers
       
-        # 
+        # Rows of the table.
         # Corresponds to the JSON property `rows`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2Row>]
         attr_accessor :rows
@@ -5559,7 +5561,7 @@ module Google
         end
       end
       
-      # 
+      # A column with a semantic tag attached.
       class GooglePrivacyDlpV2TaggedField
         include Google::Apis::Core::Hashable
       
@@ -5622,7 +5624,7 @@ module Google
       class GooglePrivacyDlpV2TimePartConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # The part of the time to keep.
         # Corresponds to the JSON property `partToExtract`
         # @return [String]
         attr_accessor :part_to_extract
@@ -5637,7 +5639,7 @@ module Google
         end
       end
       
-      # 
+      # Time zone of the date time object.
       class GooglePrivacyDlpV2TimeZone
         include Google::Apis::Core::Hashable
       
@@ -5789,7 +5791,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordSuppression]
         attr_accessor :record_suppress
       
-        # 
+        # Collection of all transformations that took place or had an error.
         # Corresponds to the JSON property `results`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2SummaryResult>]
         attr_accessor :results
@@ -5825,7 +5827,7 @@ module Google
       class GooglePrivacyDlpV2TransientCryptoKey
         include Google::Apis::Core::Hashable
       
-        # Name of the key. [required]
+        # Required. Name of the key.
         # This is an arbitrary string used to differentiate different keys.
         # A unique key is generated per name: two separate `TransientCryptoKey`
         # protos share the same generated key if their names are the same.
@@ -5869,7 +5871,7 @@ module Google
       class GooglePrivacyDlpV2UnwrappedCryptoKey
         include Google::Apis::Core::Hashable
       
-        # A 128/192/256 bit key. [required]
+        # Required. A 128/192/256 bit key.
         # Corresponds to the JSON property `key`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -6001,7 +6003,7 @@ module Google
       class GooglePrivacyDlpV2Value
         include Google::Apis::Core::Hashable
       
-        # 
+        # boolean
         # Corresponds to the JSON property `booleanValue`
         # @return [Boolean]
         attr_accessor :boolean_value
@@ -6019,22 +6021,22 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleTypeDate]
         attr_accessor :date_value
       
-        # 
+        # day of week
         # Corresponds to the JSON property `dayOfWeekValue`
         # @return [String]
         attr_accessor :day_of_week_value
       
-        # 
+        # float
         # Corresponds to the JSON property `floatValue`
         # @return [Float]
         attr_accessor :float_value
       
-        # 
+        # integer
         # Corresponds to the JSON property `integerValue`
         # @return [Fixnum]
         attr_accessor :integer_value
       
-        # 
+        # string
         # Corresponds to the JSON property `stringValue`
         # @return [String]
         attr_accessor :string_value
@@ -6046,7 +6048,7 @@ module Google
         # @return [Google::Apis::DlpV2::GoogleTypeTimeOfDay]
         attr_accessor :time_value
       
-        # 
+        # timestamp
         # Corresponds to the JSON property `timestampValue`
         # @return [String]
         attr_accessor :timestamp_value

@@ -91,7 +91,7 @@ module Google
         # must be a [viewer of the billing
         # account](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] name
-        #   The resource name of the billing account to retrieve. For example,
+        #   Required. The resource name of the billing account to retrieve. For example,
         #   `billingAccounts/012345-567890-ABCDEF`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -215,7 +215,7 @@ module Google
         # [administrator](https://cloud.google.com/billing/docs/how-to/billing-access)
         # of the billing account.
         # @param [String] name
-        #   The name of the billing account resource to be updated.
+        #   Required. The name of the billing account resource to be updated.
         # @param [Google::Apis::CloudbillingV1::BillingAccount] billing_account_object
         # @param [String] update_mask
         #   The update mask applied to the resource.
@@ -329,7 +329,8 @@ module Google
         # permission, which is often given to billing account
         # [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
         # @param [String] name
-        #   The resource name of the billing account associated with the projects that
+        #   Required. The resource name of the billing account associated with the
+        #   projects that
         #   you want to list. For example, `billingAccounts/012345-567890-ABCDEF`.
         # @param [Fixnum] page_size
         #   Requested page size. The maximum page size is 100; this is also the
@@ -372,7 +373,7 @@ module Google
         # project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
         # ).
         # @param [String] name
-        #   The resource name of the project for which billing information is
+        #   Required. The resource name of the project for which billing information is
         #   retrieved. For example, `projects/tokyo-rain-123`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -429,7 +430,8 @@ module Google
         # disable billing, you should always call this method with the name of an
         # *open* billing account.
         # @param [String] name
-        #   The resource name of the project associated with the billing information
+        #   Required. The resource name of the project associated with the billing
+        #   information
         #   that you want to update. For example, `projects/tokyo-rain-123`.
         # @param [Google::Apis::CloudbillingV1::ProjectBillingInfo] project_billing_info_object
         # @param [String] fields

@@ -53,10 +53,10 @@ module Google
         # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
         # learn more.
         # @param [String] filter
-        #   Optional filter to only return infoTypes supported by certain parts of the
+        #   filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.
         # @param [String] language_code
-        #   Optional BCP-47 language code for localized infoType friendly
+        #   BCP-47 language code for localized infoType friendly
         #   names. If omitted, or if localized strings are not available,
         #   en-US strings will be returned.
         # @param [String] location_id
@@ -98,10 +98,10 @@ module Google
         #   The geographic location to list info types. Reserved for future
         #   extensions.
         # @param [String] filter
-        #   Optional filter to only return infoTypes supported by certain parts of the
+        #   filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.
         # @param [String] language_code
-        #   Optional BCP-47 language code for localized infoType friendly
+        #   BCP-47 language code for localized infoType friendly
         #   names. If omitted, or if localized strings are not available,
         #   en-US strings will be returned.
         # @param [String] fields
@@ -250,7 +250,7 @@ module Google
         #   The geographic location where deidentifications templates will be retrieved
         #   from. Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -261,10 +261,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -448,7 +448,7 @@ module Google
         #   The geographic location where inspection templates will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -459,10 +459,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -652,7 +652,7 @@ module Google
         #   The geographic location where deidentifications templates will be retrieved
         #   from. Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -663,10 +663,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -854,7 +854,7 @@ module Google
         #   The geographic location where inspection templates will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -865,10 +865,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1056,7 +1056,7 @@ module Google
         #   The geographic location where stored infoTypes will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -1068,10 +1068,10 @@ module Google
         #   - `name`: corresponds to resource name.
         #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1257,7 +1257,7 @@ module Google
         #   The geographic location where stored infoTypes will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -1269,10 +1269,10 @@ module Google
         #   - `name`: corresponds to resource name.
         #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1575,7 +1575,7 @@ module Google
         #   The geographic location where deidentifications templates will be retrieved
         #   from. Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -1586,10 +1586,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1807,12 +1807,12 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id.
         # @param [String] filter
-        #   Optional. Allows filtering.
+        #   Allows filtering.
         #   Supported syntax:
         #   * Filter expressions are made up of one or more restrictions.
         #   * Restrictions can be combined by `AND` or `OR` logical operators. A
         #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of `<field> <operator> <value>`.
+        #   * A restriction has the form of ``field` `operator` `value``.
         #   * Supported fields/values for inspect jobs:
         #   - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
         #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -1834,7 +1834,7 @@ module Google
         #   The geographic location where jobs will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -2035,7 +2035,7 @@ module Google
         #   The geographic location where inspection templates will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -2046,10 +2046,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2257,12 +2257,12 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example `projects/my-project-id`.
         # @param [String] filter
-        #   Optional. Allows filtering.
+        #   Allows filtering.
         #   Supported syntax:
         #   * Filter expressions are made up of one or more restrictions.
         #   * Restrictions can be combined by `AND` or `OR` logical operators. A
         #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of `<field> <operator> <value>`.
+        #   * A restriction has the form of ``field` `operator` `value``.
         #   * Supported fields/values for inspect jobs:
         #   - `status` - HEALTHY|PAUSED|CANCELLED
         #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -2280,7 +2280,7 @@ module Google
         #   The geographic location where job triggers will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of triggeredJob fields to order by,
+        #   Comma separated list of triggeredJob fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -2293,9 +2293,9 @@ module Google
         #   - `display_name`: corresponds to JobTrigger's display name.
         #   - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by a server.
+        #   Size of the page, can be limited by a server.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to ListJobTriggers. `order_by` field must not
         #   change for subsequent calls.
         # @param [String] fields
@@ -2613,7 +2613,7 @@ module Google
         #   The geographic location where deidentifications templates will be retrieved
         #   from. Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -2624,10 +2624,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListDeidentifyTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2852,12 +2852,12 @@ module Google
         #   The geographic location where jobs will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] filter
-        #   Optional. Allows filtering.
+        #   Allows filtering.
         #   Supported syntax:
         #   * Filter expressions are made up of one or more restrictions.
         #   * Restrictions can be combined by `AND` or `OR` logical operators. A
         #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of `<field> <operator> <value>`.
+        #   * A restriction has the form of ``field` `operator` `value``.
         #   * Supported fields/values for inspect jobs:
         #   - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED
         #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -2876,7 +2876,7 @@ module Google
         #   * end_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -3085,7 +3085,7 @@ module Google
         #   The geographic location where inspection templates will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -3096,10 +3096,10 @@ module Google
         #   - `name`: corresponds to template's name.
         #   - `display_name`: corresponds to template's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListInspectTemplates`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3314,12 +3314,12 @@ module Google
         #   The geographic location where job triggers will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] filter
-        #   Optional. Allows filtering.
+        #   Allows filtering.
         #   Supported syntax:
         #   * Filter expressions are made up of one or more restrictions.
         #   * Restrictions can be combined by `AND` or `OR` logical operators. A
         #   sequence of restrictions implicitly uses `AND`.
-        #   * A restriction has the form of `<field> <operator> <value>`.
+        #   * A restriction has the form of ``field` `operator` `value``.
         #   * Supported fields/values for inspect jobs:
         #   - `status` - HEALTHY|PAUSED|CANCELLED
         #   - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY
@@ -3334,7 +3334,7 @@ module Google
         #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
         # @param [String] order_by
-        #   Optional comma separated list of triggeredJob fields to order by,
+        #   Comma separated list of triggeredJob fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -3347,9 +3347,9 @@ module Google
         #   - `display_name`: corresponds to JobTrigger's display name.
         #   - `status`: corresponds to JobTrigger's status.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by a server.
+        #   Size of the page, can be limited by a server.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to ListJobTriggers. `order_by` field must not
         #   change for subsequent calls.
         # @param [String] fields
@@ -3538,7 +3538,7 @@ module Google
         #   The geographic location where stored infoTypes will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -3550,10 +3550,10 @@ module Google
         #   - `name`: corresponds to resource name.
         #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3739,7 +3739,7 @@ module Google
         #   The geographic location where stored infoTypes will be retrieved from.
         #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] order_by
-        #   Optional comma separated list of fields to order by,
+        #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
         #   default sorting order is ascending, redundant space characters are
         #   insignificant.
@@ -3751,10 +3751,10 @@ module Google
         #   - `name`: corresponds to resource name.
         #   - `display_name`: corresponds to info type's display name.
         # @param [Fixnum] page_size
-        #   Optional size of the page, can be limited by server. If zero server returns
+        #   Size of the page, can be limited by server. If zero server returns
         #   a page of max size 100.
         # @param [String] page_token
-        #   Optional page token to continue retrieval. Comes from previous call
+        #   Page token to continue retrieval. Comes from previous call
         #   to `ListStoredInfoTypes`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
