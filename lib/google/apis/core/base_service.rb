@@ -271,7 +271,7 @@ module Google
         #   Current page token & service instance
         # @yieldparam [String] token
         #   Current page token to be used in the query
-        # @yieldparm [service]
+        # @yieldparam [service]
         #   Current service instance
         # @since 0.9.4
         #
