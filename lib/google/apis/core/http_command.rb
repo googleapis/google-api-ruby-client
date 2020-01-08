@@ -198,7 +198,6 @@ module Google
         #
         # @param [Fixnum] status
         #   HTTP status code of response
-        # @param
         # @param [Hash] header
         #   HTTP response headers
         # @param [String] body
@@ -316,7 +315,7 @@ module Google
         end
 
         # Update the request with any specified options.
-        # @param [Hash] header
+        # @param [Hash] req_header
         #  HTTP headers
         # @return [void]
         def apply_request_options(req_header)

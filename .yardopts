@@ -6,6 +6,7 @@
 --main OVERVIEW.md
 
 lib/**/*.rb
+generated/**/*.rb
 -
 OVERVIEW.md
 docs/getting-started.md
