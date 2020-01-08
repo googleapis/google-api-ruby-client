@@ -36,6 +36,11 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1::GoogleAccount]
         attr_accessor :google_account
       
+        # Describes authentication configuration for Identity-Aware-Proxy (IAP).
+        # Corresponds to the JSON property `iapCredential`
+        # @return [Google::Apis::WebsecurityscannerV1::IapCredential]
+        attr_accessor :iap_credential
+      
         def initialize(**args)
            update!(**args)
         end
@@ -44,6 +49,7 @@ module Google
         def update!(**args)
           @custom_account = args[:custom_account] if args.key?(:custom_account)
           @google_account = args[:google_account] if args.key?(:google_account)
+          @iap_credential = args[:iap_credential] if args.key?(:iap_credential)
         end
       end
       
@@ -363,6 +369,47 @@ module Google
         end
       end
       
+      # Describes authentication configuration for Identity-Aware-Proxy (IAP).
+      class IapCredential
+        include Google::Apis::Core::Hashable
+      
+        # Describes authentication configuration when Web-Security-Scanner
+        # service account is added in Identity-Aware-Proxy (IAP) access policies.
+        # Corresponds to the JSON property `iapTestServiceAccountInfo`
+        # @return [Google::Apis::WebsecurityscannerV1::IapTestServiceAccountInfo]
+        attr_accessor :iap_test_service_account_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iap_test_service_account_info = args[:iap_test_service_account_info] if args.key?(:iap_test_service_account_info)
+        end
+      end
+      
+      # Describes authentication configuration when Web-Security-Scanner
+      # service account is added in Identity-Aware-Proxy (IAP) access policies.
+      class IapTestServiceAccountInfo
+        include Google::Apis::Core::Hashable
+      
+        # Required. Describes OAuth2 client id of resources protected by
+        # Identity-Aware-Proxy (IAP).
+        # Corresponds to the JSON property `targetAudienceClientId`
+        # @return [String]
+        attr_accessor :target_audience_client_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @target_audience_client_id = args[:target_audience_client_id] if args.key?(:target_audience_client_id)
+        end
+      end
+      
       # Response for the `ListCrawledUrls` method.
       class ListCrawledUrlsResponse
         include Google::Apis::Core::Hashable
@@ -543,6 +590,13 @@ module Google
         # @return [String]
         attr_accessor :export_to_security_command_center
       
+        # Whether the scan config is managed by Cloud Web Security Scanner, output
+        # only.
+        # Corresponds to the JSON property `managedScan`
+        # @return [Boolean]
+        attr_accessor :managed_scan
+        alias_method :managed_scan?, :managed_scan
+      
         # The maximum QPS during scanning. A valid value ranges from 5 to 20
         # inclusively. If the field is unspecified or its value is set 0, server will
         # default to 15. Other values outside of [5, 20] range will be rejected with
@@ -573,6 +627,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :starting_urls
       
+        # Whether the scan configuration has enabled static IP address scan feature.
+        # If enabled, the scanner will access applications from static IP addresses.
+        # Corresponds to the JSON property `staticIpScan`
+        # @return [Boolean]
+        attr_accessor :static_ip_scan
+        alias_method :static_ip_scan?, :static_ip_scan
+      
         # The user agent used during scanning.
         # Corresponds to the JSON property `userAgent`
         # @return [String]
@@ -588,11 +649,13 @@ module Google
           @blacklist_patterns = args[:blacklist_patterns] if args.key?(:blacklist_patterns)
           @display_name = args[:display_name] if args.key?(:display_name)
           @export_to_security_command_center = args[:export_to_security_command_center] if args.key?(:export_to_security_command_center)
+          @managed_scan = args[:managed_scan] if args.key?(:managed_scan)
           @max_qps = args[:max_qps] if args.key?(:max_qps)
           @name = args[:name] if args.key?(:name)
           @risk_level = args[:risk_level] if args.key?(:risk_level)
           @schedule = args[:schedule] if args.key?(:schedule)
           @starting_urls = args[:starting_urls] if args.key?(:starting_urls)
+          @static_ip_scan = args[:static_ip_scan] if args.key?(:static_ip_scan)
           @user_agent = args[:user_agent] if args.key?(:user_agent)
         end
       end

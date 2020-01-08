@@ -52,6 +52,45 @@ module Google
         end
       end
       
+      # Request for BulkCreateDevice method.
+      class SasPortalBulkCreateDeviceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A csv with each row representing a [device]. Each row must
+        # conform to the regulations described on CreateDeviceRequest's device field.
+        # Corresponds to the JSON property `csv`
+        # @return [String]
+        attr_accessor :csv
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @csv = args[:csv] if args.key?(:csv)
+        end
+      end
+      
+      # Response for BulkCreateDevice method.
+      class SasPortalBulkCreateDeviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Required. The devices that were imported.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::SasportalV1alpha1::SasPortalDevice>]
+        attr_accessor :devices
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @devices = args[:devices] if args.key?(:devices)
+        end
+      end
+      
       # Request for CreateSignedDevice method.
       class SasPortalCreateSignedDeviceRequest
         include Google::Apis::Core::Hashable

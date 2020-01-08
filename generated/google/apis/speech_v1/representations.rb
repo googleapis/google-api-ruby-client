@@ -204,7 +204,6 @@ module Google
           property :industry_naics_code_of_audio, as: 'industryNaicsCodeOfAudio'
           property :interaction_type, as: 'interactionType'
           property :microphone_distance, as: 'microphoneDistance'
-          property :obfuscated_id, :numeric_string => true, as: 'obfuscatedId'
           property :original_media_type, as: 'originalMediaType'
           property :original_mime_type, as: 'originalMimeType'
           property :recording_device_name, as: 'recordingDeviceName'

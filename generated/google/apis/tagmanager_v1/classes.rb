@@ -1012,6 +1012,8 @@ module Google
         # non-string types)</li>
         # <li><code>trigger_reference</code>: The value represents a trigger,
         # represented as the trigger id</li>
+        # <li><code>tag_reference</code>: The value represents a tag, represented as
+        # the tag name</li>
         # </ul>
         # @mutable tagmanager.accounts.containers.variables.create
         # @mutable tagmanager.accounts.containers.variables.update

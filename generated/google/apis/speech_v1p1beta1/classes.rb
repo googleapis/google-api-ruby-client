@@ -562,11 +562,6 @@ module Google
         # @return [Google::Apis::SpeechV1p1beta1::RecognitionConfig]
         attr_accessor :config
       
-        # Use `model` field in RecognitionConfig instead.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
         def initialize(**args)
            update!(**args)
         end
@@ -575,7 +570,6 @@ module Google
         def update!(**args)
           @audio = args[:audio] if args.key?(:audio)
           @config = args[:config] if args.key?(:config)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -746,7 +740,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :channel_tag
       
-        # The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+        # Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
+        # language tag
         # of the language in this result. This language code was detected to have
         # the most likelihood of being spoken in the audio.
         # Corresponds to the JSON property `languageCode`
@@ -829,7 +824,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # A distinct integer value is assigned for every speaker within
+        # Output only. A distinct integer value is assigned for every speaker within
         # the audio. This field specifies which one of those speakers was detected to
         # have spoken this word. Value ranges from '1' to diarization_speaker_count.
         # speaker_tag is set if enable_speaker_diarization = 'true' and only in the

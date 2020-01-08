@@ -356,9 +356,8 @@ module Google
         attr_accessor :redis_configs
       
         # Optional. The version of Redis software.
-        # If not provided, latest supported version will be used. Updating the
-        # version will perform an upgrade/downgrade to the new version. Currently,
-        # the supported values are:
+        # If not provided, latest supported version will be used. Currently, the
+        # supported values are:
         # *   `REDIS_4_0` for Redis 4.0 compatibility (default)
         # *   `REDIS_3_2` for Redis 3.2 compatibility
         # Corresponds to the JSON property `redisVersion`

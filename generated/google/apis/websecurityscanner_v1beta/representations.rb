@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IapCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IapTestServiceAccountInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCrawledUrlsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +203,8 @@ module Google
       
           property :google_account, as: 'googleAccount', class: Google::Apis::WebsecurityscannerV1beta::GoogleAccount, decorator: Google::Apis::WebsecurityscannerV1beta::GoogleAccount::Representation
       
+          property :iap_credential, as: 'iapCredential', class: Google::Apis::WebsecurityscannerV1beta::IapCredential, decorator: Google::Apis::WebsecurityscannerV1beta::IapCredential::Representation
+      
         end
       end
       
@@ -278,6 +292,21 @@ module Google
         end
       end
       
+      class IapCredential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iap_test_service_account_info, as: 'iapTestServiceAccountInfo', class: Google::Apis::WebsecurityscannerV1beta::IapTestServiceAccountInfo, decorator: Google::Apis::WebsecurityscannerV1beta::IapTestServiceAccountInfo::Representation
+      
+        end
+      end
+      
+      class IapTestServiceAccountInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_audience_client_id, as: 'targetAudienceClientId'
+        end
+      end
+      
       class ListCrawledUrlsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -341,12 +370,14 @@ module Google
           property :export_to_security_command_center, as: 'exportToSecurityCommandCenter'
           property :latest_run, as: 'latestRun', class: Google::Apis::WebsecurityscannerV1beta::ScanRun, decorator: Google::Apis::WebsecurityscannerV1beta::ScanRun::Representation
       
+          property :managed_scan, as: 'managedScan'
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'
           property :risk_level, as: 'riskLevel'
           property :schedule, as: 'schedule', class: Google::Apis::WebsecurityscannerV1beta::Schedule, decorator: Google::Apis::WebsecurityscannerV1beta::Schedule::Representation
       
           collection :starting_urls, as: 'startingUrls'
+          property :static_ip_scan, as: 'staticIpScan'
           collection :target_platforms, as: 'targetPlatforms'
           property :user_agent, as: 'userAgent'
         end

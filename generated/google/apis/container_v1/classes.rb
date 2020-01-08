@@ -2030,8 +2030,9 @@ module Google
         # "configure-sh"
         # "containerd-configure-sh"
         # "enable-os-login"
-        # "gci-update-strategy"
         # "gci-ensure-gke-docker"
+        # "gci-metrics-enabled"
+        # "gci-update-strategy"
         # "instance-template"
         # "kube-env"
         # "startup-script"
@@ -2086,6 +2087,13 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
+        # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
+        # the configuration of desired reservation which instances could take
+        # capacity from.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::ContainerV1::ReservationAffinity]
+        attr_accessor :reservation_affinity
+      
         # The Google Cloud Platform Service Account to be used by the node VMs. If
         # no Service Account is specified, the "default" service account is used.
         # Corresponds to the JSON property `serviceAccount`
@@ -2129,6 +2137,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
@@ -2553,6 +2562,39 @@ module Google
         def update!(**args)
           @recurrence = args[:recurrence] if args.key?(:recurrence)
           @window = args[:window] if args.key?(:window)
+        end
+      end
+      
+      # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
+      # the configuration of desired reservation which instances could take
+      # capacity from.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the type of reservation consumption.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Corresponds to the label value(s) of reservation resource(s).
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
         end
       end
       

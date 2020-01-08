@@ -76,6 +76,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IapCredential
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IapTestServiceAccountInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCrawledUrlsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -191,6 +203,8 @@ module Google
       
           property :google_account, as: 'googleAccount', class: Google::Apis::WebsecurityscannerV1::GoogleAccount, decorator: Google::Apis::WebsecurityscannerV1::GoogleAccount::Representation
       
+          property :iap_credential, as: 'iapCredential', class: Google::Apis::WebsecurityscannerV1::IapCredential, decorator: Google::Apis::WebsecurityscannerV1::IapCredential::Representation
+      
         end
       end
       
@@ -278,6 +292,21 @@ module Google
         end
       end
       
+      class IapCredential
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iap_test_service_account_info, as: 'iapTestServiceAccountInfo', class: Google::Apis::WebsecurityscannerV1::IapTestServiceAccountInfo, decorator: Google::Apis::WebsecurityscannerV1::IapTestServiceAccountInfo::Representation
+      
+        end
+      end
+      
+      class IapTestServiceAccountInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :target_audience_client_id, as: 'targetAudienceClientId'
+        end
+      end
+      
       class ListCrawledUrlsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -339,12 +368,14 @@ module Google
           collection :blacklist_patterns, as: 'blacklistPatterns'
           property :display_name, as: 'displayName'
           property :export_to_security_command_center, as: 'exportToSecurityCommandCenter'
+          property :managed_scan, as: 'managedScan'
           property :max_qps, as: 'maxQps'
           property :name, as: 'name'
           property :risk_level, as: 'riskLevel'
           property :schedule, as: 'schedule', class: Google::Apis::WebsecurityscannerV1::Schedule, decorator: Google::Apis::WebsecurityscannerV1::Schedule::Representation
       
           collection :starting_urls, as: 'startingUrls'
+          property :static_ip_scan, as: 'staticIpScan'
           property :user_agent, as: 'userAgent'
         end
       end

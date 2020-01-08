@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SasPortalBulkCreateDeviceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SasPortalBulkCreateDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SasPortalCreateSignedDeviceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -213,6 +225,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class SasPortalBulkCreateDeviceRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :csv, as: 'csv'
+        end
+      end
+      
+      class SasPortalBulkCreateDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice, decorator: Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice::Representation
+      
         end
       end
       

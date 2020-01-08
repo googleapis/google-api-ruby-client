@@ -451,12 +451,6 @@ module Google
         # @return [String]
         attr_accessor :microphone_distance
       
-        # Obfuscated (privacy-protected) ID of the user, to identify number of
-        # unique users using the service.
-        # Corresponds to the JSON property `obfuscatedId`
-        # @return [Fixnum]
-        attr_accessor :obfuscated_id
-      
         # The original media the speech was recorded on.
         # Corresponds to the JSON property `originalMediaType`
         # @return [String]
@@ -492,7 +486,6 @@ module Google
           @industry_naics_code_of_audio = args[:industry_naics_code_of_audio] if args.key?(:industry_naics_code_of_audio)
           @interaction_type = args[:interaction_type] if args.key?(:interaction_type)
           @microphone_distance = args[:microphone_distance] if args.key?(:microphone_distance)
-          @obfuscated_id = args[:obfuscated_id] if args.key?(:obfuscated_id)
           @original_media_type = args[:original_media_type] if args.key?(:original_media_type)
           @original_mime_type = args[:original_mime_type] if args.key?(:original_mime_type)
           @recording_device_name = args[:recording_device_name] if args.key?(:recording_device_name)
@@ -747,7 +740,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # A distinct integer value is assigned for every speaker within
+        # Output only. A distinct integer value is assigned for every speaker within
         # the audio. This field specifies which one of those speakers was detected to
         # have spoken this word. Value ranges from '1' to diarization_speaker_count.
         # speaker_tag is set if enable_speaker_diarization = 'true' and only in the

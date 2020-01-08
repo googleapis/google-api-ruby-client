@@ -417,9 +417,9 @@ module Google
         # @return [String]
         attr_accessor :destroy_time
       
-        # [ExternalProtectionLevelOptions] stores a group of additional fields for
-        # configuring a [CryptoKeyVersion] that are specific to the [EXTERNAL]
-        # protection level.
+        # ExternalProtectionLevelOptions stores a group of additional fields for
+        # configuring a CryptoKeyVersion that are specific to the
+        # EXTERNAL protection level.
         # Corresponds to the JSON property `externalProtectionLevelOptions`
         # @return [Google::Apis::CloudkmsV1::ExternalProtectionLevelOptions]
         attr_accessor :external_protection_level_options
@@ -733,9 +733,9 @@ module Google
         end
       end
       
-      # [ExternalProtectionLevelOptions] stores a group of additional fields for
-      # configuring a [CryptoKeyVersion] that are specific to the [EXTERNAL]
-      # protection level.
+      # ExternalProtectionLevelOptions stores a group of additional fields for
+      # configuring a CryptoKeyVersion that are specific to the
+      # EXTERNAL protection level.
       class ExternalProtectionLevelOptions
         include Google::Apis::Core::Hashable
       

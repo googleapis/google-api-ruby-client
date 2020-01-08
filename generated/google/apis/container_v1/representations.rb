@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReservationAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourceLimit
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -982,6 +988,8 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :preemptible, as: 'preemptible'
+          property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1::ShieldedInstanceConfig::Representation
       
@@ -1082,6 +1090,15 @@ module Google
           property :recurrence, as: 'recurrence'
           property :window, as: 'window', class: Google::Apis::ContainerV1::TimeWindow, decorator: Google::Apis::ContainerV1::TimeWindow::Representation
       
+        end
+      end
+      
+      class ReservationAffinity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consume_reservation_type, as: 'consumeReservationType'
+          property :key, as: 'key'
+          collection :values, as: 'values'
         end
       end
       
