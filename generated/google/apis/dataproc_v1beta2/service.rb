@@ -1091,7 +1091,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1beta2::Cluster] cluster_object
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
@@ -1119,7 +1119,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_region_cluster(project_id, region, cluster_object = nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1138,7 +1138,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] cluster_uuid
@@ -1170,7 +1170,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_cluster(project_id, region, cluster_name, cluster_uuid: nil, request_id: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Operation
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1190,7 +1190,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1beta2::DiagnoseClusterRequest] diagnose_cluster_request_object
@@ -1212,7 +1212,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def diagnose_cluster(project_id, region, cluster_name, diagnose_cluster_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}:diagnose', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', options)
           command.request_representation = Google::Apis::DataprocV1beta2::DiagnoseClusterRequest::Representation
           command.request_object = diagnose_cluster_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1230,7 +1230,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] fields
@@ -1251,7 +1251,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_cluster(project_id, region, cluster_name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Cluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1305,7 +1305,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] filter
         #   Optional. A filter constraining the clusters to list. Filters are case-
         #   sensitive and have the following syntax:field = value AND field = value ...
@@ -1340,7 +1340,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_clusters(project_id, region, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/clusters', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListClustersResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1358,7 +1358,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1beta2::Cluster] cluster_object
@@ -1367,8 +1367,10 @@ module Google
         #   allows removing nodes from the cluster without interrupting jobs in progress.
         #   Timeout specifies how long to wait for jobs in progress to finish before
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
-        #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day.
-        #   Only supported on Dataproc image versions 1.2 and higher.
+        #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day (
+        #   see JSON representation of Duration (https://developers.google.com/protocol-
+        #   buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and
+        #   higher.
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
         #   UpdateClusterRequest requests with the same id, then the second request will
@@ -1450,7 +1452,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_cluster(project_id, region, cluster_name, cluster_object = nil, graceful_decommission_timeout: nil, request_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta2/projects/{+projectId}/regions/{+region}/clusters/{+clusterName}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Cluster::Representation
           command.request_object = cluster_object
           command.response_representation = Google::Apis::DataprocV1beta2::Operation::Representation
@@ -1545,7 +1547,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [Google::Apis::DataprocV1beta2::CancelJobRequest] cancel_job_request_object
@@ -1567,7 +1569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def cancel_job(project_id, region, job_id, cancel_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}:cancel', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', options)
           command.request_representation = Google::Apis::DataprocV1beta2::CancelJobRequest::Representation
           command.request_object = cancel_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1585,7 +1587,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [String] fields
@@ -1606,7 +1608,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def delete_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
+          command = make_simple_command(:delete, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Empty::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Empty
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1621,7 +1623,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [String] fields
@@ -1642,7 +1644,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_region_job(project_id, region, job_id, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.response_class = Google::Apis::DataprocV1beta2::Job
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1695,7 +1697,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Optional. If set, the returned jobs list includes only jobs that were
         #   submitted to the named cluster.
@@ -1733,7 +1735,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_region_jobs(project_id, region, cluster_name: nil, filter: nil, job_state_matcher: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs', options)
+          command = make_simple_command(:get, 'v1beta2/projects/{projectId}/regions/{region}/jobs', options)
           command.response_representation = Google::Apis::DataprocV1beta2::ListJobsResponse::Representation
           command.response_class = Google::Apis::DataprocV1beta2::ListJobsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1752,7 +1754,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [Google::Apis::DataprocV1beta2::Job] job_object
@@ -1780,7 +1782,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_region_job(project_id, region, job_id, job_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs/{+jobId}', options)
+          command = make_simple_command(:patch, 'v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}', options)
           command.request_representation = Google::Apis::DataprocV1beta2::Job::Representation
           command.request_object = job_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation
@@ -1834,7 +1836,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1beta2::SubmitJobRequest] submit_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1854,7 +1856,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def submit_job(project_id, region, submit_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta2/projects/{+projectId}/regions/{+region}/jobs:submit', options)
+          command = make_simple_command(:post, 'v1beta2/projects/{projectId}/regions/{region}/jobs:submit', options)
           command.request_representation = Google::Apis::DataprocV1beta2::SubmitJobRequest::Representation
           command.request_object = submit_job_request_object
           command.response_representation = Google::Apis::DataprocV1beta2::Job::Representation

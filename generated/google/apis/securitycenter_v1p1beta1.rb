@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/datacatalog_v1beta1/service.rb'
-require 'google/apis/datacatalog_v1beta1/classes.rb'
-require 'google/apis/datacatalog_v1beta1/representations.rb'
+require 'google/apis/securitycenter_v1p1beta1/service.rb'
+require 'google/apis/securitycenter_v1p1beta1/classes.rb'
+require 'google/apis/securitycenter_v1p1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Cloud Data Catalog API
+    # Cloud Security Command Center API
     #
-    # A fully managed and highly scalable data discovery and metadata management
-    # service.
+    # Cloud Security Command Center API provides access to temporal views of assets
+    # and findings within an organization.
     #
-    # @see https://cloud.google.com/data-catalog/docs/
-    module DatacatalogV1beta1
-      VERSION = 'V1beta1'
-      REVISION = '20191231'
+    # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
+    module SecuritycenterV1p1beta1
+      VERSION = 'V1p1beta1'
+      REVISION = '20200102'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

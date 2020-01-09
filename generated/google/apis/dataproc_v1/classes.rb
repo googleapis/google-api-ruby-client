@@ -37,8 +37,8 @@ module Google
         # https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
         # acceleratorTypes/nvidia-tesla-k80
         # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-        # nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc Auto
-        # Zone Placement feature, you must use the short name of the accelerator type
+        # nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone
+        # Placement feature, you must use the short name of the accelerator type
         # resource, for example, nvidia-tesla-k80.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
@@ -64,8 +64,7 @@ module Google
         # https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[
         # dataproc_region]/autoscalingPolicies/[policy_id]
         # projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[
-        # policy_id]Note that the policy must be in the same project and Cloud Dataproc
-        # region.
+        # policy_id]Note that the policy must be in the same project and Dataproc region.
         # Corresponds to the JSON property `policyUri`
         # @return [String]
         attr_accessor :policy_uri
@@ -311,8 +310,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc
-        # generates this value when it creates the cluster.
+        # Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates
+        # this value when it creates the cluster.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
@@ -379,12 +378,12 @@ module Google
         # @return [Google::Apis::DataprocV1::AutoscalingConfig]
         attr_accessor :autoscaling_config
       
-        # Optional. A Google Cloud Storage bucket used to stage job dependencies, config
-        # files, and job driver console output. If you do not specify a staging bucket,
-        # Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for
-        # your cluster's staging bucket according to the Google Compute Engine zone
-        # where your cluster is deployed, and then create and manage this project-level,
-        # per-location bucket (see Cloud Dataproc staging bucket).
+        # Optional. A Cloud Storage bucket used to stage job dependencies, config files,
+        # and job driver console output. If you do not specify a staging bucket, Cloud
+        # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
+        # cluster's staging bucket according to the Compute Engine zone where your
+        # cluster is deployed, and then create and manage this project-level, per-
+        # location bucket (see Dataproc staging bucket).
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -666,7 +665,8 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. Time when this state was entered.
+        # Output only. Time when this state was entered (see JSON representation of
+        # Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         # Corresponds to the JSON property `stateStartTime`
         # @return [String]
         attr_accessor :state_start_time
@@ -885,13 +885,9 @@ module Google
         # @return [Google::Apis::DataprocV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Optional. The service account of the instances. Defaults to the default
-        # Compute Engine service account. Custom service accounts need permissions
-        # equivalent to the following IAM roles:
-        # roles/logging.logWriter
-        # roles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/
-        # service-accounts#custom_service_accounts for more information). Example: [
-        # account_id]@[project_id].iam.gserviceaccount.com
+        # Optional. The Dataproc service account (also see VM Data Plane identity) used
+        # by Dataproc cluster VM instances to access Google Cloud Platform services.If
+        # not specified, the Compute Engine default service account is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -928,9 +924,9 @@ module Google
       
         # Optional. The zone where the Compute Engine cluster will be located. On a
         # create request, it is required in the "global" region. If omitted in a non-
-        # global Cloud Dataproc region, the service will pick a zone in the
-        # corresponding Compute Engine region. On a get request, zone will always be
-        # present.A full URL, partial URI, or short name are valid. Examples:
+        # global Dataproc region, the service will pick a zone in the corresponding
+        # Compute Engine region. On a get request, zone will always be present.A full
+        # URL, partial URI, or short name are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
         # projects/[project_id]/zones/[zone]
         # us-central1-f
@@ -997,8 +993,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.
-      # apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
+      # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
+      # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
       # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
       # docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
       class HadoopJob
@@ -1051,7 +1047,7 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Hadoop.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes
         # in user code.
         # Corresponds to the JSON property `properties`
@@ -1075,8 +1071,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
-      # queries on YARN.
+      # A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
+      # YARN.
       class HiveJob
         include Google::Apis::Core::Hashable
       
@@ -1095,7 +1091,7 @@ module Google
         attr_accessor :jar_file_uris
       
         # Optional. A mapping of property names and values, used to configure Hive.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
         # hive/conf/hive-site.xml, and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -1205,7 +1201,7 @@ module Google
         # @return [String]
         attr_accessor :image_uri
       
-        # Output only. The list of instance names. Cloud Dataproc derives the names from
+        # Output only. The list of instance names. Dataproc derives the names from
         # cluster_name, num_instances, and the instance group.
         # Corresponds to the JSON property `instanceNames`
         # @return [Array<String>]
@@ -1222,9 +1218,9 @@ module Google
         # https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/
         # machineTypes/n1-standard-2
         # projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-        # n1-standard-2Auto Zone Exception: If you are using the Cloud Dataproc Auto
-        # Zone Placement feature, you must use the short name of the machine type
-        # resource, for example, n1-standard-2.
+        # n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
+        # Placement feature, you must use the short name of the machine type resource,
+        # for example, n1-standard-2.
         # Corresponds to the JSON property `machineTypeUri`
         # @return [String]
         attr_accessor :machine_type_uri
@@ -1234,7 +1230,7 @@ module Google
         # @return [Google::Apis::DataprocV1::ManagedGroupConfig]
         attr_accessor :managed_group_config
       
-        # Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud
+        # Optional. Specifies the minimum cpu platform for the Instance Group. See
         # Dataproc&rarr;Minimum CPU Platform.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1304,7 +1300,7 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job resource.
+      # A Dataproc job resource.
       class Job
         include Google::Apis::Core::Hashable
       
@@ -1321,16 +1317,16 @@ module Google
         # @return [String]
         attr_accessor :driver_output_resource_uri
       
-        # A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.
-        # apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
+        # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
+        # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
         # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
         # docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
         # Corresponds to the JSON property `hadoopJob`
         # @return [Google::Apis::DataprocV1::HadoopJob]
         attr_accessor :hadoop_job
       
-        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
-        # queries on YARN.
+        # A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
+        # YARN.
         # Corresponds to the JSON property `hiveJob`
         # @return [Google::Apis::DataprocV1::HiveJob]
         attr_accessor :hive_job
@@ -1351,19 +1347,19 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
-        # on YARN.
+        # A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
+        # YARN.
         # Corresponds to the JSON property `pigJob`
         # @return [Google::Apis::DataprocV1::PigJob]
         attr_accessor :pig_job
       
-        # Cloud Dataproc job config.
+        # Dataproc job config.
         # Corresponds to the JSON property `placement`
         # @return [Google::Apis::DataprocV1::JobPlacement]
         attr_accessor :placement
       
-        # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
-        # 0.9.0/python-programming-guide.html) applications on YARN.
+        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
+        # python-programming-guide.html) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
         # @return [Google::Apis::DataprocV1::PySparkJob]
         attr_accessor :pyspark_job
@@ -1378,25 +1374,25 @@ module Google
         # @return [Google::Apis::DataprocV1::JobScheduling]
         attr_accessor :scheduling
       
-        # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # A Dataproc job for running Apache Spark (http://spark.apache.org/)
         # applications on YARN.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1::SparkJob]
         attr_accessor :spark_job
       
-        # A Cloud Dataproc job for running Apache SparkR (https://spark.apache.org/docs/
-        # latest/sparkr.html) applications on YARN.
+        # A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/
+        # sparkr.html) applications on YARN.
         # Corresponds to the JSON property `sparkRJob`
         # @return [Google::Apis::DataprocV1::SparkRJob]
         attr_accessor :spark_r_job
       
-        # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
-        # ) queries.
+        # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # queries.
         # Corresponds to the JSON property `sparkSqlJob`
         # @return [Google::Apis::DataprocV1::SparkSqlJob]
         attr_accessor :spark_sql_job
       
-        # Cloud Dataproc job status.
+        # Dataproc job status.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::DataprocV1::JobStatus]
         attr_accessor :status
@@ -1439,7 +1435,7 @@ module Google
         end
       end
       
-      # Cloud Dataproc job config.
+      # Dataproc job config.
       class JobPlacement
         include Google::Apis::Core::Hashable
       
@@ -1448,8 +1444,8 @@ module Google
         # @return [String]
         attr_accessor :cluster_name
       
-        # Output only. A cluster UUID generated by the Cloud Dataproc service when the
-        # job is submitted.
+        # Output only. A cluster UUID generated by the Dataproc service when the job is
+        # submitted.
         # Corresponds to the JSON property `clusterUuid`
         # @return [String]
         attr_accessor :cluster_uuid
@@ -1515,7 +1511,7 @@ module Google
         end
       end
       
-      # Cloud Dataproc job status.
+      # Dataproc job status.
       class JobStatus
         include Google::Apis::Core::Hashable
       
@@ -1679,28 +1675,32 @@ module Google
       class LifecycleConfig
         include Google::Apis::Core::Hashable
       
-        # Optional. The time when cluster will be auto-deleted.
+        # Optional. The time when cluster will be auto-deleted (see JSON representation
+        # of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))
+        # .
         # Corresponds to the JSON property `autoDeleteTime`
         # @return [String]
         attr_accessor :auto_delete_time
       
         # Optional. The lifetime duration of cluster. The cluster will be auto-deleted
-        # at the end of this period. Valid range: 10m, 14d.Example: "1d", to delete the
-        # cluster 1 day after its creation..
+        # at the end of this period. Minimum value is 10 minutes; maximum value is 14
+        # days (see JSON representation of Duration (https://developers.google.com/
+        # protocol-buffers/docs/proto3#json)).
         # Corresponds to the JSON property `autoDeleteTtl`
         # @return [String]
         attr_accessor :auto_delete_ttl
       
-        # Optional. The duration to keep the cluster alive while idling. Passing this
-        # threshold will cause the cluster to be deleted. Valid range: 10m, 14d.Example:
-        # "10m", the minimum value, to delete the cluster when it has had no jobs
-        # running for 10 minutes.
+        # Optional. The duration to keep the cluster alive while idling (when no jobs
+        # are running). Passing this threshold will cause the cluster to be deleted.
+        # Minimum value is 10 minutes; maximum value is 14 days (see JSON representation
+        # of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json).
         # Corresponds to the JSON property `idleDeleteTtl`
         # @return [String]
         attr_accessor :idle_delete_ttl
       
         # Output only. The time when cluster became idle (most recent job finished) and
-        # became eligible for deletion due to idleness.
+        # became eligible for deletion due to idleness (see JSON representation of
+        # Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         # Corresponds to the JSON property `idleStartTime`
         # @return [String]
         attr_accessor :idle_start_time
@@ -1945,10 +1945,12 @@ module Google
         # @return [String]
         attr_accessor :executable_file
       
-        # Optional. Amount of time executable has to complete. Default is 10 minutes.
-        # Cluster creation fails with an explanatory error message (the name of the
-        # executable that caused the error and the exceeded timeout period) if the
-        # executable is not completed at end of the timeout period.
+        # Optional. Amount of time executable has to complete. Default is 10 minutes (
+        # see JSON representation of Duration (https://developers.google.com/protocol-
+        # buffers/docs/proto3#json)).Cluster creation fails with an explanatory error
+        # message (the name of the executable that caused the error and the exceeded
+        # timeout period) if the executable is not completed at end of the timeout
+        # period.
         # Corresponds to the JSON property `executionTimeout`
         # @return [String]
         attr_accessor :execution_timeout
@@ -2030,16 +2032,16 @@ module Google
       class OrderedJob
         include Google::Apis::Core::Hashable
       
-        # A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.
-        # apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
+        # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
+        # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
         # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
         # docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
         # Corresponds to the JSON property `hadoopJob`
         # @return [Google::Apis::DataprocV1::HadoopJob]
         attr_accessor :hadoop_job
       
-        # A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/)
-        # queries on YARN.
+        # A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on
+        # YARN.
         # Corresponds to the JSON property `hiveJob`
         # @return [Google::Apis::DataprocV1::HiveJob]
         attr_accessor :hive_job
@@ -2053,8 +2055,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
-        # on YARN.
+        # A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
+        # YARN.
         # Corresponds to the JSON property `pigJob`
         # @return [Google::Apis::DataprocV1::PigJob]
         attr_accessor :pig_job
@@ -2065,8 +2067,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :prerequisite_step_ids
       
-        # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
-        # 0.9.0/python-programming-guide.html) applications on YARN.
+        # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
+        # python-programming-guide.html) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
         # @return [Google::Apis::DataprocV1::PySparkJob]
         attr_accessor :pyspark_job
@@ -2076,14 +2078,14 @@ module Google
         # @return [Google::Apis::DataprocV1::JobScheduling]
         attr_accessor :scheduling
       
-        # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+        # A Dataproc job for running Apache Spark (http://spark.apache.org/)
         # applications on YARN.
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1::SparkJob]
         attr_accessor :spark_job
       
-        # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
-        # ) queries.
+        # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+        # queries.
         # Corresponds to the JSON property `sparkSqlJob`
         # @return [Google::Apis::DataprocV1::SparkSqlJob]
         attr_accessor :spark_sql_job
@@ -2142,8 +2144,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries
-      # on YARN.
+      # A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on
+      # YARN.
       class PigJob
         include Google::Apis::Core::Hashable
       
@@ -2167,7 +2169,7 @@ module Google
         attr_accessor :logging_config
       
         # Optional. A mapping of property names to values, used to configure Pig.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/
         # pig/conf/pig.properties, and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -2313,8 +2315,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/
-      # 0.9.0/python-programming-guide.html) applications on YARN.
+      # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
+      # python-programming-guide.html) applications on YARN.
       class PySparkJob
         include Google::Apis::Core::Hashable
       
@@ -2355,7 +2357,7 @@ module Google
         attr_accessor :main_python_file_uri
       
         # Optional. A mapping of property names to values, used to configure PySpark.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -2562,9 +2564,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The version of software inside the cluster. It must be one of the
-        # supported Cloud Dataproc Versions, such as "1.2" (including a subminor version,
-        # such as "1.2.29"), or the "preview" version. If unspecified, it defaults to
-        # the latest Debian version.
+        # supported Dataproc Versions, such as "1.2" (including a subminor version, such
+        # as "1.2.29"), or the "preview" version. If unspecified, it defaults to the
+        # latest Debian version.
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
@@ -2602,7 +2604,7 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/)
+      # A Dataproc job for running Apache Spark (http://spark.apache.org/)
       # applications on YARN.
       class SparkJob
         include Google::Apis::Core::Hashable
@@ -2650,7 +2652,7 @@ module Google
         attr_accessor :main_jar_file_uri
       
         # Optional. A mapping of property names to values, used to configure Spark.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -2674,8 +2676,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache SparkR (https://spark.apache.org/docs/
-      # latest/sparkr.html) applications on YARN.
+      # A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/
+      # sparkr.html) applications on YARN.
       class SparkRJob
         include Google::Apis::Core::Hashable
       
@@ -2711,7 +2713,7 @@ module Google
         attr_accessor :main_r_file_uri
       
         # Optional. A mapping of property names to values, used to configure SparkR.
-        # Properties that conflict with values set by the Cloud Dataproc API may be
+        # Properties that conflict with values set by the Dataproc API may be
         # overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf
         # and classes in user code.
         # Corresponds to the JSON property `properties`
@@ -2733,8 +2735,8 @@ module Google
         end
       end
       
-      # A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/
-      # ) queries.
+      # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
+      # queries.
       class SparkSqlJob
         include Google::Apis::Core::Hashable
       
@@ -2749,8 +2751,8 @@ module Google
         attr_accessor :logging_config
       
         # Optional. A mapping of property names to values, used to configure Spark SQL's
-        # SparkConf. Properties that conflict with values set by the Cloud Dataproc API
-        # may be overwritten.
+        # SparkConf. Properties that conflict with values set by the Dataproc API may be
+        # overwritten.
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties
@@ -2829,7 +2831,7 @@ module Google
       class SubmitJobRequest
         include Google::Apis::Core::Hashable
       
-        # A Cloud Dataproc job resource.
+        # A Dataproc job resource.
         # Corresponds to the JSON property `job`
         # @return [Google::Apis::DataprocV1::Job]
         attr_accessor :job
@@ -3010,7 +3012,7 @@ module Google
         end
       end
       
-      # A Cloud Dataproc workflow template resource.
+      # A Dataproc workflow template resource.
       class WorkflowMetadata
         include Google::Apis::Core::Hashable
       
@@ -3139,7 +3141,7 @@ module Google
         end
       end
       
-      # A Cloud Dataproc workflow template resource.
+      # A Dataproc workflow template resource.
       class WorkflowTemplate
         include Google::Apis::Core::Hashable
       

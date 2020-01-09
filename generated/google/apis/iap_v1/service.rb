@@ -47,12 +47,13 @@ module Google
           @batch_path = 'batch'
         end
         
-        # Constructs a new OAuth brand for the project if one does not exists.
-        # The created brand is 'internal only', meaning that OAuth clients created
-        # under it only accept requests from users who belong to the same GSuites
-        # account as the project. The brand is created in un-reviewed status.
-        # NOTE: the 'internal_only' can be manually changed in Pantheon UI.
-        # Requires that brand does not already exists for the project.
+        # Constructs a new OAuth brand for the project if one does not exist.
+        # The created brand is "internal only", meaning that OAuth clients created
+        # under it only accept requests from users who belong to the same G Suite
+        # organization as the project. The brand is created in an un-reviewed status.
+        # NOTE: The "internal only" status can be manually changed in the Google
+        # Cloud console. Requires that a brand does not already exist for the
+        # project, and that the specified support email is owned by the caller.
         # @param [String] parent
         #   Required. GCP Project number/id under which the brand is to be created.
         #   In the following format: projects/`project_number/id`.
@@ -148,10 +149,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an Identity Aware Proxy (IAP) OAuth client, the client is owned
-        # by IAP.
-        # Requires that the brand for the project exists and that it is set for
-        # internal only use.
+        # Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned
+        # by IAP. Requires that the brand for the project exists and that it is
+        # set for internal-only use.
         # @param [String] parent
         #   Required. Path to create the client in.
         #   In the following format:
@@ -187,9 +187,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes an Identity Aware Proxy (IAP) OAuth client. Useful if the secret
-        # was compromised.
-        # Requires that the client is owned by IAP.
+        # Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing
+        # obsolete clients, managing the number of clients in a given project, and
+        # cleaning up after tests. Requires that the client is owned by IAP.
         # @param [String] name
         #   Required. Name of the Identity Aware Proxy client to be deleted.
         #   In the following format:
@@ -300,10 +300,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful for
-        # removing obsolete clients, managing the number of clients in a given
-        # project, and cleaning up after tests.
-        # Requires that the client is owned by IAP.
+        # Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the
+        # secret was compromised. Requires that the client is owned by IAP.
         # @param [String] name
         #   Required. Name of the Identity Aware Proxy client to that will have its
         #   secret reset. In the following format:

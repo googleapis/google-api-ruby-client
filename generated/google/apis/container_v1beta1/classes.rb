@@ -58,6 +58,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::CloudRunConfig]
         attr_accessor :cloud_run_config
       
+        # Configuration for NodeLocal DNSCache
+        # Corresponds to the JSON property `dnsCacheConfig`
+        # @return [Google::Apis::ContainerV1beta1::DnsCacheConfig]
+        attr_accessor :dns_cache_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller
         # has based on the resource usage of the existing pods.
@@ -75,6 +80,11 @@ module Google
         # Corresponds to the JSON property `istioConfig`
         # @return [Google::Apis::ContainerV1beta1::IstioConfig]
         attr_accessor :istio_config
+      
+        # Configuration options for the KALM addon.
+        # Corresponds to the JSON property `kalmConfig`
+        # @return [Google::Apis::ContainerV1beta1::KalmConfig]
+        attr_accessor :kalm_config
       
         # Configuration for the Kubernetes Dashboard.
         # Corresponds to the JSON property `kubernetesDashboard`
@@ -95,9 +105,11 @@ module Google
         # Update properties of this object
         def update!(**args)
           @cloud_run_config = args[:cloud_run_config] if args.key?(:cloud_run_config)
+          @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @istio_config = args[:istio_config] if args.key?(:istio_config)
+          @kalm_config = args[:kalm_config] if args.key?(:kalm_config)
           @kubernetes_dashboard = args[:kubernetes_dashboard] if args.key?(:kubernetes_dashboard)
           @network_policy_config = args[:network_policy_config] if args.key?(:network_policy_config)
         end
@@ -294,20 +306,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The server-assigned `name` of the operation.
+        # Required. Deprecated. The server-assigned `name` of the operation.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `operationId`
         # @return [String]
         attr_accessor :operation_id
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the operation resides.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `zone`
@@ -427,6 +439,11 @@ module Google
         # Corresponds to the JSON property `clusterIpv4Cidr`
         # @return [String]
         attr_accessor :cluster_ipv4_cidr
+      
+        # Telemetry integration for the cluster.
+        # Corresponds to the JSON property `clusterTelemetry`
+        # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
+        attr_accessor :cluster_telemetry
       
         # Which conditions caused the current cluster state.
         # Corresponds to the JSON property `conditions`
@@ -792,6 +809,7 @@ module Google
           @autoscaling = args[:autoscaling] if args.key?(:autoscaling)
           @binary_authorization = args[:binary_authorization] if args.key?(:binary_authorization)
           @cluster_ipv4_cidr = args[:cluster_ipv4_cidr] if args.key?(:cluster_ipv4_cidr)
+          @cluster_telemetry = args[:cluster_telemetry] if args.key?(:cluster_telemetry)
           @conditions = args[:conditions] if args.key?(:conditions)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_master_version = args[:current_master_version] if args.key?(:current_master_version)
@@ -864,6 +882,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AutoprovisioningNodePoolDefaults]
         attr_accessor :autoprovisioning_node_pool_defaults
       
+        # Defines autoscaling behaviour.
+        # Corresponds to the JSON property `autoscalingProfile`
+        # @return [String]
+        attr_accessor :autoscaling_profile
+      
         # Enables automatic node pool creation and deletion.
         # Corresponds to the JSON property `enableNodeAutoprovisioning`
         # @return [Boolean]
@@ -884,8 +907,28 @@ module Google
         def update!(**args)
           @autoprovisioning_locations = args[:autoprovisioning_locations] if args.key?(:autoprovisioning_locations)
           @autoprovisioning_node_pool_defaults = args[:autoprovisioning_node_pool_defaults] if args.key?(:autoprovisioning_node_pool_defaults)
+          @autoscaling_profile = args[:autoscaling_profile] if args.key?(:autoscaling_profile)
           @enable_node_autoprovisioning = args[:enable_node_autoprovisioning] if args.key?(:enable_node_autoprovisioning)
           @resource_limits = args[:resource_limits] if args.key?(:resource_limits)
+        end
+      end
+      
+      # Telemetry integration for the cluster.
+      class ClusterTelemetry
+        include Google::Apis::Core::Hashable
+      
+        # Type of the integration.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -913,6 +956,11 @@ module Google
         # Corresponds to the JSON property `desiredClusterAutoscaling`
         # @return [Google::Apis::ContainerV1beta1::ClusterAutoscaling]
         attr_accessor :desired_cluster_autoscaling
+      
+        # Telemetry integration for the cluster.
+        # Corresponds to the JSON property `desiredClusterTelemetry`
+        # @return [Google::Apis::ContainerV1beta1::ClusterTelemetry]
+        attr_accessor :desired_cluster_telemetry
       
         # Configuration of etcd encryption.
         # Corresponds to the JSON property `desiredDatabaseEncryption`
@@ -1019,6 +1067,17 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::PrivateClusterConfig]
         attr_accessor :desired_private_cluster_config
       
+        # ReleaseChannel indicates which release channel a cluster is
+        # subscribed to. Release channels are arranged in order of risk and
+        # frequency of updates.
+        # When a cluster is subscribed to a release channel, Google maintains
+        # both the master version and the node version. Node auto-upgrade
+        # defaults to true and cannot be disabled. Updates to version related
+        # fields (e.g. current_master_version) return an error.
+        # Corresponds to the JSON property `desiredReleaseChannel`
+        # @return [Google::Apis::ContainerV1beta1::ReleaseChannel]
+        attr_accessor :desired_release_channel
+      
         # Configuration for exporting cluster resource usages.
         # Corresponds to the JSON property `desiredResourceUsageExportConfig`
         # @return [Google::Apis::ContainerV1beta1::ResourceUsageExportConfig]
@@ -1051,6 +1110,7 @@ module Google
           @desired_addons_config = args[:desired_addons_config] if args.key?(:desired_addons_config)
           @desired_binary_authorization = args[:desired_binary_authorization] if args.key?(:desired_binary_authorization)
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
+          @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
@@ -1064,6 +1124,7 @@ module Google
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_pod_security_policy_config = args[:desired_pod_security_policy_config] if args.key?(:desired_pod_security_policy_config)
           @desired_private_cluster_config = args[:desired_private_cluster_config] if args.key?(:desired_private_cluster_config)
+          @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
@@ -1075,7 +1136,7 @@ module Google
       class CompleteIpRotationRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster.
+        # Required. Deprecated. The name of the cluster.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -1087,14 +1148,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://developers.google.com/console/help/new/#projectnumber).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -1152,14 +1213,14 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the parent field.
@@ -1184,7 +1245,7 @@ module Google
       class CreateNodePoolRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster.
+        # Required. Deprecated. The name of the cluster.
         # This field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -1207,14 +1268,14 @@ module Google
         # @return [String]
         attr_accessor :parent
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://developers.google.com/console/help/new/#projectnumber).
         # This field has been deprecated and replaced by the parent field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the parent field.
@@ -1286,6 +1347,26 @@ module Google
         def update!(**args)
           @key_name = args[:key_name] if args.key?(:key_name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration for NodeLocal DNSCache
+      class DnsCacheConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether NodeLocal DNSCache is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -1767,6 +1848,26 @@ module Google
           @use = args[:use] if args.key?(:use)
           @x = args[:x] if args.key?(:x)
           @y = args[:y] if args.key?(:y)
+        end
+      end
+      
+      # Configuration options for the KALM addon.
+      class KalmConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether KALM is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -2344,6 +2445,7 @@ module Google
         # "containerd-configure-sh"
         # "enable-oslogin"
         # "gci-ensure-gke-docker"
+        # "gci-metrics-enabled"
         # "gci-update-strategy"
         # "instance-template"
         # "kube-env"
@@ -2372,6 +2474,7 @@ module Google
         # information, read [how to specify min CPU
         # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
         # platform)
+        # To unset the min cpu platform field pass "automatic" as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -2398,6 +2501,13 @@ module Google
         # @return [Boolean]
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
+      
+        # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
+        # the configuration of desired reservation which instances could take
+        # capacity from.
+        # Corresponds to the JSON property `reservationAffinity`
+        # @return [Google::Apis::ContainerV1beta1::ReservationAffinity]
+        attr_accessor :reservation_affinity
       
         # SandboxConfig contains configurations of the sandbox to use for the node.
         # Corresponds to the JSON property `sandboxConfig`
@@ -2453,6 +2563,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
+          @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
@@ -3072,6 +3183,39 @@ module Google
         end
       end
       
+      # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
+      # the configuration of desired reservation which instances could take
+      # capacity from.
+      class ReservationAffinity
+        include Google::Apis::Core::Hashable
+      
+        # Corresponds to the type of reservation consumption.
+        # Corresponds to the JSON property `consumeReservationType`
+        # @return [String]
+        attr_accessor :consume_reservation_type
+      
+        # Corresponds to the label key of reservation resource.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # Corresponds to the label value(s) of reservation resource(s).
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consume_reservation_type = args[:consume_reservation_type] if args.key?(:consume_reservation_type)
+          @key = args[:key] if args.key?(:key)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
       # Contains information about amount of some resource in the cluster.
       # For memory, value should be in GB.
       class ResourceLimit
@@ -3143,7 +3287,7 @@ module Google
       class RollbackNodePoolUpgradeRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to rollback.
+        # Required. Deprecated. The name of the cluster to rollback.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3156,20 +3300,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The name of the node pool to rollback.
+        # Required. Deprecated. The name of the node pool to rollback.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3275,7 +3419,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::AddonsConfig]
         attr_accessor :addons_config
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3287,14 +3431,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3322,13 +3466,13 @@ module Google
       class SetLabelsRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster.
+        # Required. Deprecated. The name of the cluster.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The fingerprint of the previous set of labels for this resource,
+        # Required. The fingerprint of the previous set of labels for this resource,
         # used to detect conflicts. The fingerprint is initially generated by
         # Kubernetes Engine and changes after every request to modify or update
         # labels. You must always provide an up-to-date fingerprint hash when
@@ -3344,19 +3488,19 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://developers.google.com/console/help/new/#projectnumber).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # The labels to set for that cluster.
+        # Required. The labels to set for that cluster.
         # Corresponds to the JSON property `resourceLabels`
         # @return [Hash<String,String>]
         attr_accessor :resource_labels
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3384,13 +3528,13 @@ module Google
       class SetLegacyAbacRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to update.
+        # Required. Deprecated. The name of the cluster to update.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # Whether ABAC authorization will be enabled in the cluster.
+        # Required. Whether ABAC authorization will be enabled in the cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -3402,14 +3546,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3435,13 +3579,13 @@ module Google
       class SetLocationsRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The desired list of Google Compute Engine
+        # Required. The desired list of Google Compute Engine
         # [zones](/compute/docs/zones#available) in which the cluster's nodes
         # should be located. Changing the locations a cluster is in will result
         # in nodes being either created or removed from the cluster, depending on
@@ -3457,14 +3601,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3490,13 +3634,13 @@ module Google
       class SetLoggingServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The logging service the cluster should use to write metrics.
+        # Required. The logging service the cluster should use to write metrics.
         # Currently available options:
         # * "logging.googleapis.com" - the Google Cloud Logging service
         # * "none" - no metrics will be exported from the cluster
@@ -3510,14 +3654,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3543,7 +3687,7 @@ module Google
       class SetMaintenancePolicyRequest
         include Google::Apis::Core::Hashable
       
-        # The name of the cluster to update.
+        # Required. The name of the cluster to update.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
@@ -3560,13 +3704,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The Google Developers Console [project ID or project
+        # Required. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # The name of the Google Compute Engine
+        # Required. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # Corresponds to the JSON property `zone`
@@ -3591,12 +3735,12 @@ module Google
       class SetMasterAuthRequest
         include Google::Apis::Core::Hashable
       
-        # The exact form of action to be taken on the master auth.
+        # Required. The exact form of action to be taken on the master auth.
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3608,7 +3752,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
@@ -3622,7 +3766,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MasterAuth]
         attr_accessor :update
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3649,13 +3793,13 @@ module Google
       class SetMonitoringServiceRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The monitoring service the cluster should use to write metrics.
+        # Required. The monitoring service the cluster should use to write metrics.
         # Currently available options:
         # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
         # * "none" - no metrics will be exported from the cluster
@@ -3669,14 +3813,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3702,7 +3846,7 @@ module Google
       class SetNetworkPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster.
+        # Required. Deprecated. The name of the cluster.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3720,14 +3864,14 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NetworkPolicy]
         attr_accessor :network_policy
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://developers.google.com/console/help/new/#projectnumber).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3759,7 +3903,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodePoolAutoscaling]
         attr_accessor :autoscaling
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3772,20 +3916,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The name of the node pool to upgrade.
+        # Required. Deprecated. The name of the node pool to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3813,7 +3957,7 @@ module Google
       class SetNodePoolManagementRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to update.
+        # Required. Deprecated. The name of the cluster to update.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3832,20 +3976,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The name of the node pool to update.
+        # Required. Deprecated. The name of the node pool to update.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3873,7 +4017,7 @@ module Google
       class SetNodePoolSizeRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to update.
+        # Required. Deprecated. The name of the cluster to update.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3886,25 +4030,25 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The desired node count for the pool.
+        # Required. The desired node count for the pool.
         # Corresponds to the JSON property `nodeCount`
         # @return [Fixnum]
         attr_accessor :node_count
       
-        # Deprecated. The name of the node pool to update.
+        # Required. Deprecated. The name of the node pool to update.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -3986,7 +4130,7 @@ module Google
       class StartIpRotationRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster.
+        # Required. Deprecated. The name of the cluster.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -3998,7 +4142,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://developers.google.com/console/help/new/#projectnumber).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
@@ -4011,7 +4155,7 @@ module Google
         attr_accessor :rotate_credentials
         alias_method :rotate_credentials?, :rotate_credentials
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -4136,7 +4280,7 @@ module Google
       class UpdateClusterRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
@@ -4148,7 +4292,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
@@ -4162,7 +4306,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ClusterUpdate]
         attr_accessor :update
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -4188,13 +4332,13 @@ module Google
       class UpdateMasterRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The Kubernetes version to change the master to.
+        # Required. The Kubernetes version to change the master to.
         # Users may specify either explicit versions offered by
         # Kubernetes Engine or version aliases, which have the following behavior:
         # - "latest": picks the highest valid Kubernetes version
@@ -4212,14 +4356,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.
@@ -4245,13 +4389,13 @@ module Google
       class UpdateNodePoolRequest
         include Google::Apis::Core::Hashable
       
-        # Deprecated. The name of the cluster to upgrade.
+        # Required. Deprecated. The name of the cluster to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The desired image type for the node pool.
+        # Required. The desired image type for the node pool.
         # Corresponds to the JSON property `imageType`
         # @return [String]
         attr_accessor :image_type
@@ -4272,13 +4416,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The name of the node pool to upgrade.
+        # Required. Deprecated. The name of the node pool to upgrade.
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `nodePoolId`
         # @return [String]
         attr_accessor :node_pool_id
       
-        # The Kubernetes version to change the nodes to (typically an
+        # Required. The Kubernetes version to change the nodes to (typically an
         # upgrade).
         # Users may specify either explicit versions offered by Kubernetes Engine or
         # version aliases, which have the following behavior:
@@ -4291,7 +4435,7 @@ module Google
         # @return [String]
         attr_accessor :node_version
       
-        # Deprecated. The Google Developers Console [project ID or project
+        # Required. Deprecated. The Google Developers Console [project ID or project
         # number](https://support.google.com/cloud/answer/6158840).
         # This field has been deprecated and replaced by the name field.
         # Corresponds to the JSON property `projectId`
@@ -4326,7 +4470,7 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::WorkloadMetadataConfig]
         attr_accessor :workload_metadata_config
       
-        # Deprecated. The name of the Google Compute Engine
+        # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
         # This field has been deprecated and replaced by the name field.

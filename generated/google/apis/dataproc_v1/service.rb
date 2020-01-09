@@ -1079,7 +1079,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
@@ -1126,7 +1126,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] cluster_uuid
@@ -1178,7 +1178,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::DiagnoseClusterRequest] diagnose_cluster_request_object
@@ -1218,7 +1218,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [String] fields
@@ -1290,7 +1290,7 @@ module Google
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] filter
         #   Optional. A filter constraining the clusters to list. Filters are case-
         #   sensitive and have the following syntax:field = value AND field = value ...
@@ -1343,7 +1343,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Required. The cluster name.
         # @param [Google::Apis::DataprocV1::Cluster] cluster_object
@@ -1352,8 +1352,10 @@ module Google
         #   allows removing nodes from the cluster without interrupting jobs in progress.
         #   Timeout specifies how long to wait for jobs in progress to finish before
         #   forcefully removing nodes (and potentially interrupting jobs). Default timeout
-        #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day.
-        #   Only supported on Dataproc image versions 1.2 and higher.
+        #   is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (
+        #   see JSON representation of Duration (https://developers.google.com/protocol-
+        #   buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and
+        #   higher.
         # @param [String] request_id
         #   Optional. A unique id used to identify the request. If the server receives two
         #   UpdateClusterRequest requests with the same id, then the second request will
@@ -1506,7 +1508,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [Google::Apis::DataprocV1::CancelJobRequest] cancel_job_request_object
@@ -1546,7 +1548,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [String] fields
@@ -1582,7 +1584,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [String] fields
@@ -1653,7 +1655,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] cluster_name
         #   Optional. If set, the returned jobs list includes only jobs that were
         #   submitted to the named cluster.
@@ -1710,7 +1712,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [String] job_id
         #   Required. The job ID.
         # @param [Google::Apis::DataprocV1::Job] job_object
@@ -1792,7 +1794,7 @@ module Google
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
-        #   Required. The Cloud Dataproc region in which to handle the request.
+        #   Required. The Dataproc region in which to handle the request.
         # @param [Google::Apis::DataprocV1::SubmitJobRequest] submit_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

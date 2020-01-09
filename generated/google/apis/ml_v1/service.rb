@@ -50,8 +50,6 @@ module Google
         # Performs explanation on the data in the request.
         # AI Platform implements a custom `explain` verb on top of an HTTP POST
         # method.
-        # For details of the request and response format, see the **guide
-        # to the [explain request format](/ml-engine/docs/v1/explain-request)**.
         # @param [String] name
         #   Required. The resource name of a model or a version.
         #   Authorization: requires the `predict` permission on the specified resource.
@@ -118,11 +116,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Performs prediction on the data in the request.
-        # AI Platform implements a custom `predict` verb on top of an HTTP POST
-        # method.
-        # For details of the request and response format, see the **guide
-        # to the [predict request format](/ml-engine/docs/v1/predict-request)**.
+        # Performs online prediction on the data in the request.
+        # <div>`% dynamic include "/ai-platform/includes/___predict-request" %`</div>
         # @param [String] name
         #   Required. The resource name of a model or a version.
         #   Authorization: requires the `predict` permission on the specified resource.
