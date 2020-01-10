@@ -238,6 +238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountWarning
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -507,6 +513,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :entity, as: 'entity', class: Google::Apis::AlertcenterV1beta1::User, decorator: Google::Apis::AlertcenterV1beta1::User::Representation
+      
           property :from_header, as: 'fromHeader'
         end
       end
@@ -593,6 +601,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :customer_id, as: 'customerId'
+        end
+      end
+      
+      class User
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :email_address, as: 'emailAddress'
         end
       end
     end

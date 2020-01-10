@@ -364,10 +364,10 @@ module Google
         end
       end
       
-      # Creates a Footer. The new footer will be
-      # applied to the DocumentStyle.
-      # If a footer of the specified type already exists then a 400 bad request error
-      # will be returned.
+      # Creates a Footer. The new footer is applied to
+      # the DocumentStyle.
+      # If a footer of the specified type already exists, a 400 bad request error
+      # is returned.
       class CreateFooterRequest
         include Google::Apis::Core::Hashable
       
@@ -405,10 +405,59 @@ module Google
         end
       end
       
-      # Creates a Header. The new header will be
-      # applied to the DocumentStyle.
-      # If a header of the specified type already exists then a 400 bad request error
-      # will be returned.
+      # Creates a Footnote segment
+      # and inserts a new FootnoteReference
+      # to it at the given location.
+      # The new Footnote segment will contain a
+      # space followed by a newline character.
+      class CreateFootnoteRequest
+        include Google::Apis::Core::Hashable
+      
+        # Location at the end of a body, header, footer or footnote. The location is
+        # immediately before the last newline in the document segment.
+        # Corresponds to the JSON property `endOfSegmentLocation`
+        # @return [Google::Apis::DocsV1::EndOfSegmentLocation]
+        attr_accessor :end_of_segment_location
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `location`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :location
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_of_segment_location = args[:end_of_segment_location] if args.key?(:end_of_segment_location)
+          @location = args[:location] if args.key?(:location)
+        end
+      end
+      
+      # The result of creating a footnote.
+      class CreateFootnoteResponse
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the created footnote.
+        # Corresponds to the JSON property `footnoteId`
+        # @return [String]
+        attr_accessor :footnote_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footnote_id = args[:footnote_id] if args.key?(:footnote_id)
+        end
+      end
+      
+      # Creates a Header. The new header is applied to
+      # the DocumentStyle.
+      # If a header of the specified type already exists, a 400 bad request error
+      # is returned.
       class CreateHeaderRequest
         include Google::Apis::Core::Hashable
       
@@ -3901,18 +3950,27 @@ module Google
       class Request
         include Google::Apis::Core::Hashable
       
-        # Creates a Footer. The new footer will be
-        # applied to the DocumentStyle.
-        # If a footer of the specified type already exists then a 400 bad request error
-        # will be returned.
+        # Creates a Footer. The new footer is applied to
+        # the DocumentStyle.
+        # If a footer of the specified type already exists, a 400 bad request error
+        # is returned.
         # Corresponds to the JSON property `createFooter`
         # @return [Google::Apis::DocsV1::CreateFooterRequest]
         attr_accessor :create_footer
       
-        # Creates a Header. The new header will be
-        # applied to the DocumentStyle.
-        # If a header of the specified type already exists then a 400 bad request error
-        # will be returned.
+        # Creates a Footnote segment
+        # and inserts a new FootnoteReference
+        # to it at the given location.
+        # The new Footnote segment will contain a
+        # space followed by a newline character.
+        # Corresponds to the JSON property `createFootnote`
+        # @return [Google::Apis::DocsV1::CreateFootnoteRequest]
+        attr_accessor :create_footnote
+      
+        # Creates a Header. The new header is applied to
+        # the DocumentStyle.
+        # If a header of the specified type already exists, a 400 bad request error
+        # is returned.
         # Corresponds to the JSON property `createHeader`
         # @return [Google::Apis::DocsV1::CreateHeaderRequest]
         attr_accessor :create_header
@@ -4089,6 +4147,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
+          @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
@@ -4129,6 +4188,11 @@ module Google
         # @return [Google::Apis::DocsV1::CreateFooterResponse]
         attr_accessor :create_footer
       
+        # The result of creating a footnote.
+        # Corresponds to the JSON property `createFootnote`
+        # @return [Google::Apis::DocsV1::CreateFootnoteResponse]
+        attr_accessor :create_footnote
+      
         # The result of creating a header.
         # Corresponds to the JSON property `createHeader`
         # @return [Google::Apis::DocsV1::CreateHeaderResponse]
@@ -4161,6 +4225,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_footer = args[:create_footer] if args.key?(:create_footer)
+          @create_footnote = args[:create_footnote] if args.key?(:create_footnote)
           @create_header = args[:create_header] if args.key?(:create_header)
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @insert_inline_image = args[:insert_inline_image] if args.key?(:insert_inline_image)

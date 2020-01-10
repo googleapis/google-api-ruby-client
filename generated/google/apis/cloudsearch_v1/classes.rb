@@ -284,6 +284,7 @@ module Google
         # specific item, as users need to have ACL permissions on the contained
         # items. This ensures a high level access on the entire datasource, and
         # that the individual items are not shared outside this visibility.
+        # This should not be set if anonymous search is enabled for the data source.
         # Corresponds to the JSON property `itemsVisibility`
         # @return [Array<Google::Apis::CloudsearchV1::GSuitePrincipal>]
         attr_accessor :items_visibility
@@ -3387,6 +3388,12 @@ module Google
         # @return [String]
         attr_accessor :less_than_operator_name
       
+        # Name of the object corresponding to the operator. This field is only filled
+        # for schema-specific operators, and is unset for common operators.
+        # Corresponds to the JSON property `objectType`
+        # @return [String]
+        attr_accessor :object_type
+      
         # The name of the operator.
         # Corresponds to the JSON property `operatorName`
         # @return [String]
@@ -3412,6 +3419,7 @@ module Google
           @is_sortable = args[:is_sortable] if args.key?(:is_sortable)
           @is_suggestable = args[:is_suggestable] if args.key?(:is_suggestable)
           @less_than_operator_name = args[:less_than_operator_name] if args.key?(:less_than_operator_name)
+          @object_type = args[:object_type] if args.key?(:object_type)
           @operator_name = args[:operator_name] if args.key?(:operator_name)
           @type = args[:type] if args.key?(:type)
         end

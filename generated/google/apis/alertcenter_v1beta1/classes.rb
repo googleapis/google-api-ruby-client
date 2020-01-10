@@ -1008,6 +1008,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # A user.
+        # Corresponds to the JSON property `entity`
+        # @return [Google::Apis::AlertcenterV1beta1::User]
+        attr_accessor :entity
+      
         # The sender email address.
         # Corresponds to the JSON property `fromHeader`
         # @return [String]
@@ -1020,6 +1025,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @entity = args[:entity] if args.key?(:entity)
           @from_header = args[:from_header] if args.key?(:from_header)
         end
       end
@@ -1309,6 +1315,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @customer_id = args[:customer_id] if args.key?(:customer_id)
+        end
+      end
+      
+      # A user.
+      class User
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the user.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Email address of the user.
+        # Corresponds to the JSON property `emailAddress`
+        # @return [String]
+        attr_accessor :email_address
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @email_address = args[:email_address] if args.key?(:email_address)
         end
       end
     end

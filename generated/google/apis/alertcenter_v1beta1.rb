@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/admin-sdk/alertcenter/
     module AlertcenterV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20190910'
+      REVISION = '20200104'
 
       # See and delete your domain's G Suite alerts, and send alert feedback
       AUTH_APPS_ALERTS = 'https://www.googleapis.com/auth/apps.alerts'

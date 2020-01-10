@@ -102,7 +102,7 @@ module Google
       class GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest
         include Google::Apis::Core::Hashable
       
-        # Fingerprint of the Recommendation. Provides optimistic locking.
+        # Required. Fingerprint of the Recommendation. Provides optimistic locking.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -130,7 +130,7 @@ module Google
       class GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest
         include Google::Apis::Core::Hashable
       
-        # Fingerprint of the Recommendation. Provides optimistic locking.
+        # Required. Fingerprint of the Recommendation. Provides optimistic locking.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -158,7 +158,7 @@ module Google
       class GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
         include Google::Apis::Core::Hashable
       
-        # Fingerprint of the Recommendation. Provides optimistic locking.
+        # Required. Fingerprint of the Recommendation. Provides optimistic locking.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -353,9 +353,6 @@ module Google
         attr_accessor :last_refresh_time
       
         # Name of recommendation.
-        # A project recommendation is represented as
-        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/
-        # recommendations/[RECOMMENDATION_ID]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

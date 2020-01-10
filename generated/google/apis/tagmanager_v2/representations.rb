@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Client
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class FolderEntities
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GalleryReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -383,6 +395,24 @@ module Google
         end
       end
       
+      class Client
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :account_id, as: 'accountId'
+          property :client_id, as: 'clientId'
+          property :container_id, as: 'containerId'
+          property :fingerprint, as: 'fingerprint'
+          property :name, as: 'name'
+          collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :path, as: 'path'
+          property :priority, as: 'priority'
+          property :tag_manager_url, as: 'tagManagerUrl'
+          property :type, as: 'type'
+          property :workspace_id, as: 'workspaceId'
+        end
+      end
+      
       class Condition
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -421,6 +451,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_id, as: 'accountId'
           collection :built_in_variable, as: 'builtInVariable', class: Google::Apis::TagmanagerV2::BuiltInVariable, decorator: Google::Apis::TagmanagerV2::BuiltInVariable::Representation
+      
+          collection :client, as: 'client', class: Google::Apis::TagmanagerV2::Client, decorator: Google::Apis::TagmanagerV2::Client::Representation
       
           property :container, as: 'container', class: Google::Apis::TagmanagerV2::Container, decorator: Google::Apis::TagmanagerV2::Container::Representation
       
@@ -500,6 +532,8 @@ module Google
           property :account_id, as: 'accountId'
           property :container_id, as: 'containerId'
           property :fingerprint, as: 'fingerprint'
+          property :gallery_reference, as: 'galleryReference', class: Google::Apis::TagmanagerV2::GalleryReference, decorator: Google::Apis::TagmanagerV2::GalleryReference::Representation
+      
           property :name, as: 'name'
           property :path, as: 'path'
           property :tag_manager_url, as: 'tagManagerUrl'
@@ -570,6 +604,18 @@ module Google
       
           collection :variable, as: 'variable', class: Google::Apis::TagmanagerV2::Variable, decorator: Google::Apis::TagmanagerV2::Variable::Representation
       
+        end
+      end
+      
+      class GalleryReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :host, as: 'host'
+          property :is_modified, as: 'isModified'
+          property :owner, as: 'owner'
+          property :repository, as: 'repository'
+          property :signature, as: 'signature'
+          property :version, as: 'version'
         end
       end
       
@@ -835,6 +881,9 @@ module Google
           collection :firing_rule_id, as: 'firingRuleId'
           collection :firing_trigger_id, as: 'firingTriggerId'
           property :live_only, as: 'liveOnly'
+          property :monitoring_metadata, as: 'monitoringMetadata', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation
+      
+          property :monitoring_metadata_tag_name_key, as: 'monitoringMetadataTagNameKey'
           property :name, as: 'name'
           property :notes, as: 'notes'
           collection :parameter, as: 'parameter', class: Google::Apis::TagmanagerV2::Parameter, decorator: Google::Apis::TagmanagerV2::Parameter::Representation

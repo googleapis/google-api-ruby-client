@@ -94,6 +94,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CreateFootnoteRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateFootnoteResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CreateHeaderRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -982,6 +994,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :footer_id, as: 'footerId'
+        end
+      end
+      
+      class CreateFootnoteRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_of_segment_location, as: 'endOfSegmentLocation', class: Google::Apis::DocsV1::EndOfSegmentLocation, decorator: Google::Apis::DocsV1::EndOfSegmentLocation::Representation
+      
+          property :location, as: 'location', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
+        end
+      end
+      
+      class CreateFootnoteResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footnote_id, as: 'footnoteId'
         end
       end
       
@@ -1907,6 +1936,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterRequest, decorator: Google::Apis::DocsV1::CreateFooterRequest::Representation
       
+          property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteRequest, decorator: Google::Apis::DocsV1::CreateFootnoteRequest::Representation
+      
           property :create_header, as: 'createHeader', class: Google::Apis::DocsV1::CreateHeaderRequest, decorator: Google::Apis::DocsV1::CreateHeaderRequest::Representation
       
           property :create_named_range, as: 'createNamedRange', class: Google::Apis::DocsV1::CreateNamedRangeRequest, decorator: Google::Apis::DocsV1::CreateNamedRangeRequest::Representation
@@ -1970,6 +2001,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_footer, as: 'createFooter', class: Google::Apis::DocsV1::CreateFooterResponse, decorator: Google::Apis::DocsV1::CreateFooterResponse::Representation
+      
+          property :create_footnote, as: 'createFootnote', class: Google::Apis::DocsV1::CreateFootnoteResponse, decorator: Google::Apis::DocsV1::CreateFootnoteResponse::Representation
       
           property :create_header, as: 'createHeader', class: Google::Apis::DocsV1::CreateHeaderResponse, decorator: Google::Apis::DocsV1::CreateHeaderResponse::Representation
       

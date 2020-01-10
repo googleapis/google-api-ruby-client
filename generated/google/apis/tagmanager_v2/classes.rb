@@ -156,6 +156,94 @@ module Google
         end
       end
       
+      # 
+      class Client
+        include Google::Apis::Core::Hashable
+      
+        # GTM Account ID.
+        # Corresponds to the JSON property `accountId`
+        # @return [String]
+        attr_accessor :account_id
+      
+        # The Client ID uniquely identifies the GTM client.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # GTM Container ID.
+        # Corresponds to the JSON property `containerId`
+        # @return [String]
+        attr_accessor :container_id
+      
+        # The fingerprint of the GTM Client as computed at storage time.
+        # This value is recomputed whenever the client is modified.
+        # Corresponds to the JSON property `fingerprint`
+        # @return [String]
+        attr_accessor :fingerprint
+      
+        # Client display name.
+        # @mutable tagmanager.accounts.containers.workspaces.clients.create
+        # @mutable tagmanager.accounts.containers.workspaces.clients.update
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The client's parameters.
+        # @mutable tagmanager.accounts.containers.workspaces.clients.create
+        # @mutable tagmanager.accounts.containers.workspaces.clients.update
+        # Corresponds to the JSON property `parameter`
+        # @return [Array<Google::Apis::TagmanagerV2::Parameter>]
+        attr_accessor :parameter
+      
+        # GTM client's API relative path.
+        # Corresponds to the JSON property `path`
+        # @return [String]
+        attr_accessor :path
+      
+        # Priority determines relative firing order.
+        # @mutable tagmanager.accounts.containers.workspaces.clients.create
+        # @mutable tagmanager.accounts.containers.workspaces.clients.update
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # Auto generated link to the tag manager UI
+        # Corresponds to the JSON property `tagManagerUrl`
+        # @return [String]
+        attr_accessor :tag_manager_url
+      
+        # Client type.
+        # @mutable tagmanager.accounts.containers.workspaces.clients.create
+        # @mutable tagmanager.accounts.containers.workspaces.clients.update
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # GTM Workspace ID.
+        # Corresponds to the JSON property `workspaceId`
+        # @return [String]
+        attr_accessor :workspace_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @account_id = args[:account_id] if args.key?(:account_id)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @container_id = args[:container_id] if args.key?(:container_id)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @name = args[:name] if args.key?(:name)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @path = args[:path] if args.key?(:path)
+          @priority = args[:priority] if args.key?(:priority)
+          @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
+          @type = args[:type] if args.key?(:type)
+          @workspace_id = args[:workspace_id] if args.key?(:workspace_id)
+        end
+      end
+      
       # Represents a predicate.
       class Condition
         include Google::Apis::Core::Hashable
@@ -326,6 +414,11 @@ module Google
         # @return [Array<Google::Apis::TagmanagerV2::BuiltInVariable>]
         attr_accessor :built_in_variable
       
+        # The clients in the container that this version was taken from.
+        # Corresponds to the JSON property `client`
+        # @return [Array<Google::Apis::TagmanagerV2::Client>]
+        attr_accessor :client
+      
         # Represents a Google Tag Manager Container, which specifies the platform tags
         # will run on, manages workspaces, and retains container versions.
         # Corresponds to the JSON property `container`
@@ -415,6 +508,7 @@ module Google
         def update!(**args)
           @account_id = args[:account_id] if args.key?(:account_id)
           @built_in_variable = args[:built_in_variable] if args.key?(:built_in_variable)
+          @client = args[:client] if args.key?(:client)
           @container = args[:container] if args.key?(:container)
           @container_id = args[:container_id] if args.key?(:container_id)
           @container_version_id = args[:container_version_id] if args.key?(:container_version_id)
@@ -629,6 +723,12 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # Represents the link between a custom template and an entry on the Community
+        # Template Gallery site.
+        # Corresponds to the JSON property `galleryReference`
+        # @return [Google::Apis::TagmanagerV2::GalleryReference]
+        attr_accessor :gallery_reference
+      
         # Custom Template display name.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -668,6 +768,7 @@ module Google
           @account_id = args[:account_id] if args.key?(:account_id)
           @container_id = args[:container_id] if args.key?(:container_id)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @gallery_reference = args[:gallery_reference] if args.key?(:gallery_reference)
           @name = args[:name] if args.key?(:name)
           @path = args[:path] if args.key?(:path)
           @tag_manager_url = args[:tag_manager_url] if args.key?(:tag_manager_url)
@@ -944,6 +1045,58 @@ module Google
           @tag = args[:tag] if args.key?(:tag)
           @trigger = args[:trigger] if args.key?(:trigger)
           @variable = args[:variable] if args.key?(:variable)
+        end
+      end
+      
+      # Represents the link between a custom template and an entry on the Community
+      # Template Gallery site.
+      class GalleryReference
+        include Google::Apis::Core::Hashable
+      
+        # The name of the host for the community gallery template.
+        # Corresponds to the JSON property `host`
+        # @return [String]
+        attr_accessor :host
+      
+        # If a user has manually edited the community  gallery template.
+        # Corresponds to the JSON property `isModified`
+        # @return [Boolean]
+        attr_accessor :is_modified
+        alias_method :is_modified?, :is_modified
+      
+        # The name of the owner for the community gallery template.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
+        # The name of the repository for the community gallery template.
+        # Corresponds to the JSON property `repository`
+        # @return [String]
+        attr_accessor :repository
+      
+        # The signature of the community gallery template as computed at import time.
+        # This value is recomputed whenever the template is updated from the gallery.
+        # Corresponds to the JSON property `signature`
+        # @return [String]
+        attr_accessor :signature
+      
+        # The version of the community gallery template.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @host = args[:host] if args.key?(:host)
+          @is_modified = args[:is_modified] if args.key?(:is_modified)
+          @owner = args[:owner] if args.key?(:owner)
+          @repository = args[:repository] if args.key?(:repository)
+          @signature = args[:signature] if args.key?(:signature)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1375,6 +1528,8 @@ module Google
         # non-string types)</li>
         # <li><code>trigger_reference</code>: The value represents a trigger,
         # represented as the trigger id</li>
+        # <li><code>tag_reference</code>: The value represents a tag, represented as
+        # the tag name</li>
         # </ul>
         # @mutable tagmanager.accounts.containers.workspaces.variables.create
         # @mutable tagmanager.accounts.containers.workspaces.variables.update
@@ -1750,6 +1905,19 @@ module Google
         attr_accessor :live_only
         alias_method :live_only?, :live_only
       
+        # Represents a Google Tag Manager Parameter.
+        # Corresponds to the JSON property `monitoringMetadata`
+        # @return [Google::Apis::TagmanagerV2::Parameter]
+        attr_accessor :monitoring_metadata
+      
+        # If non-empty, then the tag display name will be included in the monitoring
+        # metadata map using the key specified.
+        # @mutable tagmanager.accounts.containers.workspaces.tags.create
+        # @mutable tagmanager.accounts.containers.workspaces.tags.update
+        # Corresponds to the JSON property `monitoringMetadataTagNameKey`
+        # @return [String]
+        attr_accessor :monitoring_metadata_tag_name_key
+      
         # Tag display name.
         # @mutable tagmanager.accounts.containers.workspaces.tags.create
         # @mutable tagmanager.accounts.containers.workspaces.tags.update
@@ -1859,6 +2027,8 @@ module Google
           @firing_rule_id = args[:firing_rule_id] if args.key?(:firing_rule_id)
           @firing_trigger_id = args[:firing_trigger_id] if args.key?(:firing_trigger_id)
           @live_only = args[:live_only] if args.key?(:live_only)
+          @monitoring_metadata = args[:monitoring_metadata] if args.key?(:monitoring_metadata)
+          @monitoring_metadata_tag_name_key = args[:monitoring_metadata_tag_name_key] if args.key?(:monitoring_metadata_tag_name_key)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)
           @parameter = args[:parameter] if args.key?(:parameter)

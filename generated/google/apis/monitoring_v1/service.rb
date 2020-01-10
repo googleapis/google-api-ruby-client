@@ -56,8 +56,8 @@ module Google
         # create permission on the specified project. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] parent
-        #   The project on which to execute the request. The format is "projects/`
-        #   project_id_or_number`". The `project_id_or_number` must match the dashboard
+        #   Required. The project on which to execute the request. The format is "projects/
+        #   `project_id_or_number`". The `project_id_or_number` must match the dashboard
         #   resource name.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
         # @param [String] fields
@@ -93,7 +93,7 @@ module Google
         # dashboards.delete permission on the specified dashboard. For more information,
         # see Google Cloud IAM (https://cloud.google.com/iam).
         # @param [String] name
-        #   The resource name of the Dashboard. The format is "projects/`
+        #   Required. The resource name of the Dashboard. The format is "projects/`
         #   project_id_or_number`/dashboards/`dashboard_id`".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -126,8 +126,8 @@ module Google
         # get permission on the specified dashboard. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] name
-        #   The resource name of the Dashboard. The format is one of "dashboards/`
-        #   dashboard_id`" (for system dashboards) or "projects/`project_id_or_number`/
+        #   Required. The resource name of the Dashboard. The format is one of "dashboards/
+        #   `dashboard_id`" (for system dashboards) or "projects/`project_id_or_number`/
         #   dashboards/`dashboard_id`" (for custom dashboards).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -160,8 +160,8 @@ module Google
         # list permission on the specified project. For more information, see Google
         # Cloud IAM (https://cloud.google.com/iam).
         # @param [String] parent
-        #   The scope of the dashboards to list. A project scope must be specified in the
-        #   form of "projects/`project_id_or_number`".
+        #   Required. The scope of the dashboards to list. A project scope must be
+        #   specified in the form of "projects/`project_id_or_number`".
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return. If
         #   unspecified, a default of 1000 is used.

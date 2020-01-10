@@ -1875,6 +1875,7 @@ module Google
           property :is_sortable, as: 'isSortable'
           property :is_suggestable, as: 'isSuggestable'
           property :less_than_operator_name, as: 'lessThanOperatorName'
+          property :object_type, as: 'objectType'
           property :operator_name, as: 'operatorName'
           property :type, as: 'type'
         end

@@ -1543,7 +1543,7 @@ module Google
         # Soft delete this Service.
         # @param [String] name
         #   Resource name of the Service to delete. Of the form projects/`project_id`/
-        #   service/`service_id`.
+        #   services/`service_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

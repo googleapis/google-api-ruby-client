@@ -50,7 +50,7 @@ module Google
         # Gets the requested recommendation. Requires the recommender.*.get
         # IAM permission for the specified recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -92,14 +92,16 @@ module Google
         #   filter fields: state_info.state
         #   Eg: `state_info.state:"DISMISSED" or state_info.state:"FAILED"
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of results to return from this request.
-        #   Non-positive values are ignored. If not specified, the server will
-        #   determine the number of results to return.
+        #   Optional. The maximum number of results to return from this request.  Non-
+        #   positive
+        #   values are ignored. If not specified, the server will determine the number
+        #   of results to return.
         # @param [String] page_token
-        #   Optional. If present, retrieves the next batch of results from the
-        #   preceding call to this method. `page_token` must be the value of
-        #   `next_page_token` from the previous response. The values of other method
-        #   parameters must be identical to those in the previous call.
+        #   Optional. If present, retrieves the next batch of results from the preceding
+        #   call to
+        #   this method. `page_token` must be the value of `next_page_token` from the
+        #   previous response. The values of other method parameters must be identical
+        #   to those in the previous call.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -139,7 +141,7 @@ module Google
         # Requires the recommender.*.update IAM permission for the specified
         # recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest] google_cloud_recommender_v1beta1_mark_recommendation_claimed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -180,7 +182,7 @@ module Google
         # Requires the recommender.*.update IAM permission for the specified
         # recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest] google_cloud_recommender_v1beta1_mark_recommendation_failed_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -221,7 +223,7 @@ module Google
         # Requires the recommender.*.update IAM permission for the specified
         # recommender.
         # @param [String] name
-        #   Name of the recommendation.
+        #   Required. Name of the recommendation.
         # @param [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest] google_cloud_recommender_v1beta1_mark_recommendation_succeeded_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
