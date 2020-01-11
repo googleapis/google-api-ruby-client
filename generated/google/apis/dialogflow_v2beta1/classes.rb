@@ -121,6 +121,11 @@ module Google
         # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
         # The `Context ID` is always converted to lowercase, may only contain
         # characters in [a-zA-Z0-9_-%] and may be at most 250 bytes long.
+        # The following context names are reserved for internal use by Dialogflow.
+        # You should not use these contexts or create contexts with these names:
+        # * `__system_counters__`
+        # * `*_id_dialog_context`
+        # * `*_dialog_params_size`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3088,6 +3093,9 @@ module Google
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
         # hints)
         # for more details.
+        # This field is deprecated. Please use [speech_contexts]() instead. If you
+        # specify both [phrase_hints]() and [speech_contexts](), Dialogflow will
+        # treat the [phrase_hints]() as a single additional [SpeechContext]().
         # Corresponds to the JSON property `phraseHints`
         # @return [Array<String>]
         attr_accessor :phrase_hints

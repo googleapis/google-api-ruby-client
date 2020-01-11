@@ -487,6 +487,37 @@ module Google
       end
       
       # 
+      class DeviceSpec
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `screenDensity`
+        # @return [Fixnum]
+        attr_accessor :screen_density
+      
+        # 
+        # Corresponds to the JSON property `supportedAbis`
+        # @return [Array<String>]
+        attr_accessor :supported_abis
+      
+        # 
+        # Corresponds to the JSON property `supportedLocales`
+        # @return [Array<String>]
+        attr_accessor :supported_locales
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_density = args[:screen_density] if args.key?(:screen_density)
+          @supported_abis = args[:supported_abis] if args.key?(:supported_abis)
+          @supported_locales = args[:supported_locales] if args.key?(:supported_locales)
+        end
+      end
+      
+      # 
       class ExpansionFile
         include Google::Apis::Core::Hashable
       
@@ -1268,6 +1299,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :purchase_type
       
+        # The quantity associated with the purchase of the inapp product.
+        # Corresponds to the JSON property `quantity`
+        # @return [Fixnum]
+        attr_accessor :quantity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1284,6 +1320,7 @@ module Google
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_token = args[:purchase_token] if args.key?(:purchase_token)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
+          @quantity = args[:quantity] if args.key?(:quantity)
         end
       end
       
@@ -1884,6 +1921,44 @@ module Google
       end
       
       # 
+      class SystemApkVariantsCreateRequest
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deviceSpec`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceSpec]
+        attr_accessor :device_spec
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_spec = args[:device_spec] if args.key?(:device_spec)
+        end
+      end
+      
+      # 
+      class SystemApkVariantsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `variants`
+        # @return [Array<Google::Apis::AndroidpublisherV3::Variant>]
+        attr_accessor :variants
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @variants = args[:variants] if args.key?(:variants)
+        end
+      end
+      
+      # 
       class Testers
         include Google::Apis::Core::Hashable
       
@@ -2161,6 +2236,31 @@ module Google
           @text = args[:text] if args.key?(:text)
           @thumbs_down_count = args[:thumbs_down_count] if args.key?(:thumbs_down_count)
           @thumbs_up_count = args[:thumbs_up_count] if args.key?(:thumbs_up_count)
+        end
+      end
+      
+      # Represents the variant of a generated system APK from an uploaded App Bundle.
+      class Variant
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `deviceSpec`
+        # @return [Google::Apis::AndroidpublisherV3::DeviceSpec]
+        attr_accessor :device_spec
+      
+        # 
+        # Corresponds to the JSON property `variantId`
+        # @return [Fixnum]
+        attr_accessor :variant_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_spec = args[:device_spec] if args.key?(:device_spec)
+          @variant_id = args[:variant_id] if args.key?(:variant_id)
         end
       end
       

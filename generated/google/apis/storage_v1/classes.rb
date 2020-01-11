@@ -158,9 +158,10 @@ module Google
         # The bucket's default storage class, used whenever no storageClass is specified
         # for a newly-created object. This defines how objects in the bucket are stored
         # and determines the SLA and the cost of storage. Values include MULTI_REGIONAL,
-        # REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If
-        # this value is not specified when the bucket is created, it will default to
-        # STANDARD. For more information, see storage classes.
+        # REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and
+        # DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket
+        # is created, it will default to STANDARD. For more information, see storage
+        # classes.
         # Corresponds to the JSON property `storageClass`
         # @return [String]
         attr_accessor :storage_class
@@ -307,7 +308,11 @@ module Google
         class IamConfiguration
           include Google::Apis::Core::Hashable
         
-          # The bucket's Bucket Policy Only configuration.
+          # The bucket's uniform bucket-level access configuration. The feature was
+          # formerly known as Bucket Policy Only. For backward compatibility, this field
+          # will be populated with identical information as the uniformBucketLevelAccess
+          # field. We recommend using the uniformBucketLevelAccess field to enable and
+          # disable the feature.
           # Corresponds to the JSON property `bucketPolicyOnly`
           # @return [Google::Apis::StorageV1::Bucket::IamConfiguration::BucketPolicyOnly]
           attr_accessor :bucket_policy_only
@@ -327,7 +332,11 @@ module Google
             @uniform_bucket_level_access = args[:uniform_bucket_level_access] if args.key?(:uniform_bucket_level_access)
           end
           
-          # The bucket's Bucket Policy Only configuration.
+          # The bucket's uniform bucket-level access configuration. The feature was
+          # formerly known as Bucket Policy Only. For backward compatibility, this field
+          # will be populated with identical information as the uniformBucketLevelAccess
+          # field. We recommend using the uniformBucketLevelAccess field to enable and
+          # disable the feature.
           class BucketPolicyOnly
             include Google::Apis::Core::Hashable
           
@@ -489,8 +498,8 @@ module Google
               attr_accessor :matches_pattern
             
               # Objects having any of the storage classes specified by this condition will be
-              # matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD,
-              # and DURABLE_REDUCED_AVAILABILITY.
+              # matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE,
+              # STANDARD, and DURABLE_REDUCED_AVAILABILITY.
               # Corresponds to the JSON property `matchesStorageClass`
               # @return [Array<String>]
               attr_accessor :matches_storage_class

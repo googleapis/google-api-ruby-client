@@ -1631,7 +1631,9 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :is_linked, as: 'isLinked'
           property :long_uploads_status, as: 'longUploadsStatus'
+          property :made_for_kids, as: 'madeForKids'
           property :privacy_status, as: 'privacyStatus'
+          property :self_declared_made_for_kids, as: 'selfDeclaredMadeForKids'
         end
       end
       
@@ -2125,8 +2127,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :life_cycle_status, as: 'lifeCycleStatus'
           property :live_broadcast_priority, as: 'liveBroadcastPriority'
+          property :made_for_kids, as: 'madeForKids'
           property :privacy_status, as: 'privacyStatus'
           property :recording_status, as: 'recordingStatus'
+          property :self_declared_made_for_kids, as: 'selfDeclaredMadeForKids'
         end
       end
       
@@ -2486,7 +2490,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :etag, as: 'etag'
-          property :id, as: 'id'
           property :kind, as: 'kind'
           property :snippet, as: 'snippet', class: Google::Apis::YoutubeV3::MemberSnippet, decorator: Google::Apis::YoutubeV3::MemberSnippet::Representation
       
@@ -2525,6 +2528,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accessible_levels, as: 'accessibleLevels'
+          property :highest_accessible_level, as: 'highestAccessibleLevel'
+          property :highest_accessible_level_display_name, as: 'highestAccessibleLevelDisplayName'
           property :member_since, as: 'memberSince'
           property :member_since_current_level, as: 'memberSinceCurrentLevel'
           property :member_total_duration, as: 'memberTotalDuration'
@@ -3412,11 +3417,13 @@ module Google
           property :embeddable, as: 'embeddable'
           property :failure_reason, as: 'failureReason'
           property :license, as: 'license'
+          property :made_for_kids, as: 'madeForKids'
           property :privacy_status, as: 'privacyStatus'
           property :public_stats_viewable, as: 'publicStatsViewable'
           property :publish_at, as: 'publishAt', type: DateTime
       
           property :rejection_reason, as: 'rejectionReason'
+          property :self_declared_made_for_kids, as: 'selfDeclaredMadeForKids'
           property :upload_status, as: 'uploadStatus'
         end
       end

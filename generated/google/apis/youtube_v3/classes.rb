@@ -1827,10 +1827,22 @@ module Google
         # @return [String]
         attr_accessor :long_uploads_status
       
+        # 
+        # Corresponds to the JSON property `madeForKids`
+        # @return [Boolean]
+        attr_accessor :made_for_kids
+        alias_method :made_for_kids?, :made_for_kids
+      
         # Privacy status of the channel.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
         attr_accessor :privacy_status
+      
+        # 
+        # Corresponds to the JSON property `selfDeclaredMadeForKids`
+        # @return [Boolean]
+        attr_accessor :self_declared_made_for_kids
+        alias_method :self_declared_made_for_kids?, :self_declared_made_for_kids
       
         def initialize(**args)
            update!(**args)
@@ -1840,7 +1852,9 @@ module Google
         def update!(**args)
           @is_linked = args[:is_linked] if args.key?(:is_linked)
           @long_uploads_status = args[:long_uploads_status] if args.key?(:long_uploads_status)
+          @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
+          @self_declared_made_for_kids = args[:self_declared_made_for_kids] if args.key?(:self_declared_made_for_kids)
         end
       end
       
@@ -3942,6 +3956,12 @@ module Google
         # @return [String]
         attr_accessor :live_broadcast_priority
       
+        # 
+        # Corresponds to the JSON property `madeForKids`
+        # @return [Boolean]
+        attr_accessor :made_for_kids
+        alias_method :made_for_kids?, :made_for_kids
+      
         # The broadcast's privacy status. Note that the broadcast represents exactly one
         # YouTube video, so the privacy settings are identical to those supported for
         # videos. In addition, you can set this field by modifying the broadcast
@@ -3956,6 +3976,12 @@ module Google
         # @return [String]
         attr_accessor :recording_status
       
+        # 
+        # Corresponds to the JSON property `selfDeclaredMadeForKids`
+        # @return [Boolean]
+        attr_accessor :self_declared_made_for_kids
+        alias_method :self_declared_made_for_kids?, :self_declared_made_for_kids
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3964,8 +3990,10 @@ module Google
         def update!(**args)
           @life_cycle_status = args[:life_cycle_status] if args.key?(:life_cycle_status)
           @live_broadcast_priority = args[:live_broadcast_priority] if args.key?(:live_broadcast_priority)
+          @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
           @recording_status = args[:recording_status] if args.key?(:recording_status)
+          @self_declared_made_for_kids = args[:self_declared_made_for_kids] if args.key?(:self_declared_made_for_kids)
         end
       end
       
@@ -5213,11 +5241,6 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The ID that YouTube assigns to uniquely identify the member.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
         # Identifies what kind of resource this is. Value: the fixed string "youtube#
         # member".
         # Corresponds to the JSON property `kind`
@@ -5236,7 +5259,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @etag = args[:etag] if args.key?(:etag)
-          @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @snippet = args[:snippet] if args.key?(:snippet)
         end
@@ -5341,11 +5363,21 @@ module Google
       class MembershipsDetails
         include Google::Apis::Core::Hashable
       
-        # All levels that the user has access to. This includes the purchased level and
-        # all other levels that are included because of a higher purchase.
+        # All levels that the user has access to. This includes the currently active
+        # level and all other levels that are included because of a higher purchase.
         # Corresponds to the JSON property `accessibleLevels`
         # @return [Array<String>]
         attr_accessor :accessible_levels
+      
+        # The highest level that the user has access to at the moment.
+        # Corresponds to the JSON property `highestAccessibleLevel`
+        # @return [String]
+        attr_accessor :highest_accessible_level
+      
+        # Display name for the highest level that the user has access to at the moment.
+        # Corresponds to the JSON property `highestAccessibleLevelDisplayName`
+        # @return [String]
+        attr_accessor :highest_accessible_level_display_name
       
         # The date and time when the user became a continuous member across all levels.
         # Corresponds to the JSON property `memberSince`
@@ -5370,7 +5402,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :member_total_duration_current_level
       
-        # The highest level the user has access to at the moment.
+        # The highest level that the user has access to at the moment. DEPRECATED -
+        # highest_accessible_level should be used instead. This will be removed after we
+        # make sure there are no 3rd parties relying on it.
         # Corresponds to the JSON property `purchasedLevel`
         # @return [String]
         attr_accessor :purchased_level
@@ -5382,6 +5416,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accessible_levels = args[:accessible_levels] if args.key?(:accessible_levels)
+          @highest_accessible_level = args[:highest_accessible_level] if args.key?(:highest_accessible_level)
+          @highest_accessible_level_display_name = args[:highest_accessible_level_display_name] if args.key?(:highest_accessible_level_display_name)
           @member_since = args[:member_since] if args.key?(:member_since)
           @member_since_current_level = args[:member_since_current_level] if args.key?(:member_since_current_level)
           @member_total_duration = args[:member_total_duration] if args.key?(:member_total_duration)
@@ -8670,6 +8706,12 @@ module Google
         # @return [String]
         attr_accessor :license
       
+        # 
+        # Corresponds to the JSON property `madeForKids`
+        # @return [Boolean]
+        attr_accessor :made_for_kids
+        alias_method :made_for_kids?, :made_for_kids
+      
         # The video's privacy status.
         # Corresponds to the JSON property `privacyStatus`
         # @return [String]
@@ -8697,6 +8739,14 @@ module Google
         # @return [String]
         attr_accessor :rejection_reason
       
+        # Allows clients to set the Crosswalk self_declared state for a Video. This maps
+        # to VAPI.Video.creator_flags.is_crosswalk_self_declared() and VAPI.Video.
+        # creator_flags.is_not_crosswalk_self_declared().
+        # Corresponds to the JSON property `selfDeclaredMadeForKids`
+        # @return [Boolean]
+        attr_accessor :self_declared_made_for_kids
+        alias_method :self_declared_made_for_kids?, :self_declared_made_for_kids
+      
         # The status of the uploaded video.
         # Corresponds to the JSON property `uploadStatus`
         # @return [String]
@@ -8711,10 +8761,12 @@ module Google
           @embeddable = args[:embeddable] if args.key?(:embeddable)
           @failure_reason = args[:failure_reason] if args.key?(:failure_reason)
           @license = args[:license] if args.key?(:license)
+          @made_for_kids = args[:made_for_kids] if args.key?(:made_for_kids)
           @privacy_status = args[:privacy_status] if args.key?(:privacy_status)
           @public_stats_viewable = args[:public_stats_viewable] if args.key?(:public_stats_viewable)
           @publish_at = args[:publish_at] if args.key?(:publish_at)
           @rejection_reason = args[:rejection_reason] if args.key?(:rejection_reason)
+          @self_declared_made_for_kids = args[:self_declared_made_for_kids] if args.key?(:self_declared_made_for_kids)
           @upload_status = args[:upload_status] if args.key?(:upload_status)
         end
       end

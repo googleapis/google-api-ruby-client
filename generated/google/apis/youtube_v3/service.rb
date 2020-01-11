@@ -2638,7 +2638,12 @@ module Google
         # Lists members for a channel.
         # @param [String] part
         #   The part parameter specifies the member resource parts that the API response
-        #   will include. Supported values are id and snippet.
+        #   will include. Set the parameter value to snippet.
+        # @param [String] filter_by_member_channel_id
+        #   The filterByMemberChannelId parameter represents a comma separated list of
+        #   channel IDs. Only data about members that are part of this list will be
+        #   included in the response. It can be used to efficiently check whether specific
+        #   users are entitled to perks offered via third parties.
         # @param [String] has_access_to_level
         #   The hasAccessToLevel parameter specifies, when set, the ID of a pricing level
         #   that members from the results set should have access to. When not set, all
@@ -2671,10 +2676,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_members(part, has_access_to_level: nil, max_results: nil, mode: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_members(part, filter_by_member_channel_id: nil, has_access_to_level: nil, max_results: nil, mode: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'members', options)
           command.response_representation = Google::Apis::YoutubeV3::MemberListResponse::Representation
           command.response_class = Google::Apis::YoutubeV3::MemberListResponse
+          command.query['filterByMemberChannelId'] = filter_by_member_channel_id unless filter_by_member_channel_id.nil?
           command.query['hasAccessToLevel'] = has_access_to_level unless has_access_to_level.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['mode'] = mode unless mode.nil?

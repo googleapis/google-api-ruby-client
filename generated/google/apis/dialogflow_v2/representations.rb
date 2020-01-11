@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2SpeechContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2SynthesizeSpeechConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1149,11 +1155,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :audio_encoding, as: 'audioEncoding'
+          property :enable_word_info, as: 'enableWordInfo'
           property :language_code, as: 'languageCode'
+          property :model, as: 'model'
           property :model_variant, as: 'modelVariant'
           collection :phrase_hints, as: 'phraseHints'
           property :sample_rate_hertz, as: 'sampleRateHertz'
           property :single_utterance, as: 'singleUtterance'
+          collection :speech_contexts, as: 'speechContexts', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SpeechContext::Representation
+      
         end
       end
       
@@ -1703,6 +1713,14 @@ module Google
       
           property :entity_override_mode, as: 'entityOverrideMode'
           property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2SpeechContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :boost, as: 'boost'
+          collection :phrases, as: 'phrases'
         end
       end
       
