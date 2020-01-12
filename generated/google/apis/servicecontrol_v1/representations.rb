@@ -268,6 +268,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SpanContext
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -760,6 +766,13 @@ module Google
       
           property :third_party_principal, as: 'thirdPartyPrincipal', class: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal, decorator: Google::Apis::ServicecontrolV1::ThirdPartyPrincipal::Representation
       
+        end
+      end
+      
+      class SpanContext
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :span_name, as: 'spanName'
         end
       end
       

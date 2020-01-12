@@ -2196,6 +2196,33 @@ module Google
         end
       end
       
+      # The context of a span, attached to google.api.Distribution.Exemplars
+      # in google.api.Distribution values during aggregation.
+      # It contains the name of a span with format:
+      # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
+      class SpanContext
+        include Google::Apis::Core::Hashable
+      
+        # The resource name of the span in the following format:
+        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+        # identifier for a trace within a project;
+        # it is a 32-character hexadecimal encoding of a 16-byte array.
+        # [SPAN_ID] is a unique identifier for a span within a trace; it
+        # is a 16-character hexadecimal encoding of an 8-byte array.
+        # Corresponds to the JSON property `spanName`
+        # @return [String]
+        attr_accessor :span_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @span_name = args[:span_name] if args.key?(:span_name)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
       # used by [gRPC](https://github.com/grpc). Each `Status` message contains
