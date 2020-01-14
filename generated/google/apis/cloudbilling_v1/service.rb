@@ -500,7 +500,7 @@ module Google
         
         # Lists all publicly available SKUs for a given cloud service.
         # @param [String] parent
-        #   The name of the service.
+        #   Required. The name of the service.
         #   Example: "services/DA34-426B-A397"
         # @param [String] currency_code
         #   The ISO 4217 currency code for the pricing info in the response proto.
