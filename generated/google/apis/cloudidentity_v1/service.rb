@@ -141,7 +141,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List groups within a customer or a domain.
+        # Lists groups within a customer or a domain.
         # @param [Fixnum] page_size
         #   The default page size is 200 (max 1000) for the BASIC view, and 50
         #   (max 500) for the FULL view.
@@ -408,7 +408,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # List Memberships within a Group.
+        # Lists Memberships within a Group.
         # @param [String] parent
         #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
         #   Group to list Memberships within.
