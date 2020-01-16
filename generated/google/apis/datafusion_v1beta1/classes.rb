@@ -77,11 +77,6 @@ module Google
         # @return [Array<Google::Apis::DatafusionV1beta1::AuditLogConfig>]
         attr_accessor :audit_log_configs
       
-        # 
-        # Corresponds to the JSON property `exemptedMembers`
-        # @return [Array<String>]
-        attr_accessor :exempted_members
-      
         # Specifies a service that will be enabled for audit logging.
         # For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
         # `allServices` is a special value that covers all services.
@@ -96,7 +91,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @audit_log_configs = args[:audit_log_configs] if args.key?(:audit_log_configs)
-          @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
           @service = args[:service] if args.key?(:service)
         end
       end
@@ -128,12 +122,6 @@ module Google
         # @return [Array<String>]
         attr_accessor :exempted_members
       
-        # 
-        # Corresponds to the JSON property `ignoreChildExemptions`
-        # @return [Boolean]
-        attr_accessor :ignore_child_exemptions
-        alias_method :ignore_child_exemptions?, :ignore_child_exemptions
-      
         # The log type that this config enables.
         # Corresponds to the JSON property `logType`
         # @return [String]
@@ -146,27 +134,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @exempted_members = args[:exempted_members] if args.key?(:exempted_members)
-          @ignore_child_exemptions = args[:ignore_child_exemptions] if args.key?(:ignore_child_exemptions)
           @log_type = args[:log_type] if args.key?(:log_type)
-        end
-      end
-      
-      # Authorization-related information used by Cloud Audit Logging.
-      class AuthorizationLoggingOptions
-        include Google::Apis::Core::Hashable
-      
-        # The type of the permission that was checked.
-        # Corresponds to the JSON property `permissionType`
-        # @return [String]
-        attr_accessor :permission_type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @permission_type = args[:permission_type] if args.key?(:permission_type)
         end
       end
       
@@ -194,6 +162,23 @@ module Google
         # account. For example, `my-other-app@appspot.gserviceaccount.com`.
         # * `group:`emailid``: An email address that represents a Google group.
         # For example, `admins@example.com`.
+        # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a user that has been recently deleted. For
+        # example, `alice@example.com?uid=123456789012345678901`. If the user is
+        # recovered, this value reverts to `user:`emailid`` and the recovered user
+        # retains the role in the binding.
+        # * `deleted:serviceAccount:`emailid`?uid=`uniqueid``: An email address (plus
+        # unique identifier) representing a service account that has been recently
+        # deleted. For example,
+        # `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.
+        # If the service account is undeleted, this value reverts to
+        # `serviceAccount:`emailid`` and the undeleted service account retains the
+        # role in the binding.
+        # * `deleted:group:`emailid`?uid=`uniqueid``: An email address (plus unique
+        # identifier) representing a Google group that has been recently
+        # deleted. For example, `admins@example.com?uid=123456789012345678901`. If
+        # the group is recovered, this value reverts to `group:`emailid`` and the
+        # recovered group retains the role in the binding.
         # * `domain:`domain``: The G Suite domain (primary) that represents all the
         # users of that domain. For example, `google.com` or `example.com`.
         # Corresponds to the JSON property `members`
@@ -228,172 +213,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-        end
-      end
-      
-      # Write a Cloud Audit log
-      class CloudAuditOptions
-        include Google::Apis::Core::Hashable
-      
-        # Authorization-related information used by Cloud Audit Logging.
-        # Corresponds to the JSON property `authorizationLoggingOptions`
-        # @return [Google::Apis::DatafusionV1beta1::AuthorizationLoggingOptions]
-        attr_accessor :authorization_logging_options
-      
-        # The log_name to populate in the Cloud Audit Record.
-        # Corresponds to the JSON property `logName`
-        # @return [String]
-        attr_accessor :log_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @authorization_logging_options = args[:authorization_logging_options] if args.key?(:authorization_logging_options)
-          @log_name = args[:log_name] if args.key?(:log_name)
-        end
-      end
-      
-      # A condition to be met.
-      class Condition
-        include Google::Apis::Core::Hashable
-      
-        # Trusted attributes supplied by the IAM system.
-        # Corresponds to the JSON property `iam`
-        # @return [String]
-        attr_accessor :iam
-      
-        # An operator to apply the subject with.
-        # Corresponds to the JSON property `op`
-        # @return [String]
-        attr_accessor :op
-      
-        # Trusted attributes discharged by the service.
-        # Corresponds to the JSON property `svc`
-        # @return [String]
-        attr_accessor :svc
-      
-        # Trusted attributes supplied by any service that owns resources and uses
-        # the IAM system for access control.
-        # Corresponds to the JSON property `sys`
-        # @return [String]
-        attr_accessor :sys
-      
-        # The objects of the condition.
-        # Corresponds to the JSON property `values`
-        # @return [Array<String>]
-        attr_accessor :values
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @iam = args[:iam] if args.key?(:iam)
-          @op = args[:op] if args.key?(:op)
-          @svc = args[:svc] if args.key?(:svc)
-          @sys = args[:sys] if args.key?(:sys)
-          @values = args[:values] if args.key?(:values)
-        end
-      end
-      
-      # Increment a streamz counter with the specified metric and field names.
-      # Metric names should start with a '/', generally be lowercase-only,
-      # and end in "_count". Field names should not contain an initial slash.
-      # The actual exported metric names will have "/iam/policy" prepended.
-      # Field names correspond to IAM request parameters and field values are
-      # their respective values.
-      # Supported field names:
-      # - "authority", which is "[token]" if IAMContext.token is present,
-      # otherwise the value of IAMContext.authority_selector if present, and
-      # otherwise a representation of IAMContext.principal; or
-      # - "iam_principal", a representation of IAMContext.principal even if a
-      # token or authority selector is present; or
-      # - "" (empty string), resulting in a counter with no fields.
-      # Examples:
-      # counter ` metric: "/debug_access_count"  field: "iam_principal" `
-      # ==> increment counter /iam/policy/debug_access_count
-      # `iam_principal=[value of IAMContext.principal]`
-      class CounterOptions
-        include Google::Apis::Core::Hashable
-      
-        # Custom fields.
-        # Corresponds to the JSON property `customFields`
-        # @return [Array<Google::Apis::DatafusionV1beta1::CustomField>]
-        attr_accessor :custom_fields
-      
-        # The field value to attribute.
-        # Corresponds to the JSON property `field`
-        # @return [String]
-        attr_accessor :field
-      
-        # The metric to update.
-        # Corresponds to the JSON property `metric`
-        # @return [String]
-        attr_accessor :metric
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @custom_fields = args[:custom_fields] if args.key?(:custom_fields)
-          @field = args[:field] if args.key?(:field)
-          @metric = args[:metric] if args.key?(:metric)
-        end
-      end
-      
-      # Custom fields.
-      # These can be used to create a counter with arbitrary field/value
-      # pairs.
-      # See: go/rpcsp-custom-fields.
-      class CustomField
-        include Google::Apis::Core::Hashable
-      
-        # Name is the field name.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Value is the field value. It is important that in contrast to the
-        # CounterOptions.field, the value here is a constant that is not
-        # derived from the IAMContext.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @value = args[:value] if args.key?(:value)
-        end
-      end
-      
-      # Write a Data Access (Gin) log
-      class DataAccessOptions
-        include Google::Apis::Core::Hashable
-      
-        # Whether Gin logging should happen in a fail-closed manner at the caller.
-        # This is relevant only in the LocalIAM implementation, for now.
-        # Corresponds to the JSON property `logMode`
-        # @return [String]
-        attr_accessor :log_mode
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @log_mode = args[:log_mode] if args.key?(:log_mode)
         end
       end
       
@@ -505,9 +324,15 @@ module Google
         attr_accessor :enable_stackdriver_monitoring
         alias_method :enable_stackdriver_monitoring?, :enable_stackdriver_monitoring
       
+        # Output only. Cloud Storage bucket generated by Data Fusion in the customer
+        # project.
+        # Corresponds to the JSON property `gcsBucket`
+        # @return [String]
+        attr_accessor :gcs_bucket
+      
         # The resource labels for instance to use to annotate any related underlying
-        # resources such as GCE VMs. The character '=' is not allowed to be used
-        # within the labels.
+        # resources such as Compute Engine VMs. The character '=' is not allowed to
+        # be used within the labels.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -574,7 +399,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Current version of the Data Fusion. Only specifiable in Update.
+        # Current version of Data Fusion.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -597,6 +422,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @enable_stackdriver_logging = args[:enable_stackdriver_logging] if args.key?(:enable_stackdriver_logging)
           @enable_stackdriver_monitoring = args[:enable_stackdriver_monitoring] if args.key?(:enable_stackdriver_monitoring)
+          @gcs_bucket = args[:gcs_bucket] if args.key?(:gcs_bucket)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @network_config = args[:network_config] if args.key?(:network_config)
@@ -739,53 +565,6 @@ module Google
           @location_id = args[:location_id] if args.key?(:location_id)
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # Specifies what kind of log the caller must write
-      class LogConfig
-        include Google::Apis::Core::Hashable
-      
-        # Write a Cloud Audit log
-        # Corresponds to the JSON property `cloudAudit`
-        # @return [Google::Apis::DatafusionV1beta1::CloudAuditOptions]
-        attr_accessor :cloud_audit
-      
-        # Increment a streamz counter with the specified metric and field names.
-        # Metric names should start with a '/', generally be lowercase-only,
-        # and end in "_count". Field names should not contain an initial slash.
-        # The actual exported metric names will have "/iam/policy" prepended.
-        # Field names correspond to IAM request parameters and field values are
-        # their respective values.
-        # Supported field names:
-        # - "authority", which is "[token]" if IAMContext.token is present,
-        # otherwise the value of IAMContext.authority_selector if present, and
-        # otherwise a representation of IAMContext.principal; or
-        # - "iam_principal", a representation of IAMContext.principal even if a
-        # token or authority selector is present; or
-        # - "" (empty string), resulting in a counter with no fields.
-        # Examples:
-        # counter ` metric: "/debug_access_count"  field: "iam_principal" `
-        # ==> increment counter /iam/policy/debug_access_count
-        # `iam_principal=[value of IAMContext.principal]`
-        # Corresponds to the JSON property `counter`
-        # @return [Google::Apis::DatafusionV1beta1::CounterOptions]
-        attr_accessor :counter
-      
-        # Write a Data Access (Gin) log
-        # Corresponds to the JSON property `dataAccess`
-        # @return [Google::Apis::DatafusionV1beta1::DataAccessOptions]
-        attr_accessor :data_access
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @cloud_audit = args[:cloud_audit] if args.key?(:cloud_audit)
-          @counter = args[:counter] if args.key?(:counter)
-          @data_access = args[:data_access] if args.key?(:data_access)
         end
       end
       
@@ -947,16 +726,18 @@ module Google
         end
       end
       
-      # Defines an Identity and Access Management (IAM) policy. It is used to
-      # specify access control policies for Cloud Platform resources.
+      # An Identity and Access Management (IAM) policy, which specifies access
+      # controls for Google Cloud resources.
       # A `Policy` is a collection of `bindings`. A `binding` binds one or more
       # `members` to a single `role`. Members can be user accounts, service accounts,
       # Google groups, and domains (such as G Suite). A `role` is a named list of
-      # permissions (defined by IAM or configured by users). A `binding` can
-      # optionally specify a `condition`, which is a logic expression that further
-      # constrains the role binding based on attributes about the request and/or
-      # target resource.
-      # **JSON Example**
+      # permissions; each `role` can be an IAM predefined role or a user-created
+      # custom role.
+      # Optionally, a `binding` can specify a `condition`, which is a logical
+      # expression that allows access to a resource only if the expression evaluates
+      # to `true`. A condition can add constraints based on attributes of the
+      # request, the resource, or both.
+      # **JSON example:**
       # `
       # "bindings": [
       # `
@@ -974,13 +755,15 @@ module Google
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
-      # "expression": "request.time <
-      # timestamp('2020-10-01T00:00:00.000Z')",
+      # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # ",
       # `
       # `
-      # ]
+      # ],
+      # "etag": "BwWWja0YfJA=",
+      # "version": 3
       # `
-      # **YAML Example**
+      # **YAML example:**
       # bindings:
       # - members:
       # - user:mike@example.com
@@ -995,8 +778,10 @@ module Google
       # title: expirable access
       # description: Does not grant access after Sep 2020
       # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+      # - etag: BwWWja0YfJA=
+      # - version: 3
       # For a description of IAM and its features, see the
-      # [IAM developer's guide](https://cloud.google.com/iam/docs).
+      # [IAM documentation](https://cloud.google.com/iam/docs/).
       class Policy
         include Google::Apis::Core::Hashable
       
@@ -1005,9 +790,9 @@ module Google
         # @return [Array<Google::Apis::DatafusionV1beta1::AuditConfig>]
         attr_accessor :audit_configs
       
-        # Associates a list of `members` to a `role`. Optionally may specify a
-        # `condition` that determines when binding is in effect.
-        # `bindings` with no members will result in an error.
+        # Associates a list of `members` to a `role`. Optionally, may specify a
+        # `condition` that determines how and when the `bindings` are applied. Each
+        # of the `bindings` must contain at least one member.
         # Corresponds to the JSON property `bindings`
         # @return [Array<Google::Apis::DatafusionV1beta1::Binding>]
         attr_accessor :bindings
@@ -1019,44 +804,31 @@ module Google
         # conditions: An `etag` is returned in the response to `getIamPolicy`, and
         # systems are expected to put that etag in the request to `setIamPolicy` to
         # ensure that their change will be applied to the same version of the policy.
-        # If no `etag` is provided in the call to `setIamPolicy`, then the existing
-        # policy is overwritten. Due to blind-set semantics of an etag-less policy,
-        # 'setIamPolicy' will not fail even if either of incoming or stored policy
-        # does not meet the version requirements.
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
         # Corresponds to the JSON property `etag`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :etag
       
-        # 
-        # Corresponds to the JSON property `iamOwned`
-        # @return [Boolean]
-        attr_accessor :iam_owned
-        alias_method :iam_owned?, :iam_owned
-      
-        # If more than one rule is specified, the rules are applied in the following
-        # manner:
-        # - All matching LOG rules are always applied.
-        # - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-        # granted.
-        # Logging will be applied if one or more matching rule requires logging.
-        # - Otherwise, if no rule applies, permission is denied.
-        # Corresponds to the JSON property `rules`
-        # @return [Array<Google::Apis::DatafusionV1beta1::Rule>]
-        attr_accessor :rules
-      
         # Specifies the format of the policy.
-        # Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-        # rejected.
-        # Operations affecting conditional bindings must specify version 3. This can
-        # be either setting a conditional policy, modifying a conditional binding,
-        # or removing a conditional binding from the stored conditional policy.
-        # Operations on non-conditional policies may specify any valid value or
-        # leave the field unset.
-        # If no etag is provided in the call to `setIamPolicy`, any version
-        # compliance checks on the incoming and/or stored policy is skipped.
+        # Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+        # are rejected.
+        # Any operation that affects conditional role bindings must specify version
+        # `3`. This requirement applies to the following operations:
+        # * Getting a policy that includes a conditional role binding
+        # * Adding a conditional role binding to a policy
+        # * Changing a conditional role binding in a policy
+        # * Removing any role binding, with or without a condition, from a policy
+        # that includes conditions
+        # **Important:** If you use IAM Conditions, you must include the `etag` field
+        # whenever you call `setIamPolicy`. If you omit this field, then IAM allows
+        # you to overwrite a version `3` policy with a version `1` policy, and all of
+        # the conditions in the version `3` policy are lost.
+        # If a policy does not include any conditions, operations on that policy may
+        # specify any valid version or leave the field unset.
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1070,8 +842,6 @@ module Google
           @audit_configs = args[:audit_configs] if args.key?(:audit_configs)
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
-          @iam_owned = args[:iam_owned] if args.key?(:iam_owned)
-          @rules = args[:rules] if args.key?(:rules)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -1089,83 +859,22 @@ module Google
         end
       end
       
-      # A rule to be applied in a Policy.
-      class Rule
-        include Google::Apis::Core::Hashable
-      
-        # Required
-        # Corresponds to the JSON property `action`
-        # @return [String]
-        attr_accessor :action
-      
-        # Additional restrictions that must be met. All conditions must pass for the
-        # rule to match.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::DatafusionV1beta1::Condition>]
-        attr_accessor :conditions
-      
-        # Human-readable description of the rule.
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # If one or more 'in' clauses are specified, the rule matches if
-        # the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-        # Corresponds to the JSON property `in`
-        # @return [Array<String>]
-        attr_accessor :in
-      
-        # The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-        # that match the LOG action.
-        # Corresponds to the JSON property `logConfig`
-        # @return [Array<Google::Apis::DatafusionV1beta1::LogConfig>]
-        attr_accessor :log_config
-      
-        # If one or more 'not_in' clauses are specified, the rule matches
-        # if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-        # The format for in and not_in entries can be found at in the Local IAM
-        # documentation (see go/local-iam#features).
-        # Corresponds to the JSON property `notIn`
-        # @return [Array<String>]
-        attr_accessor :not_in
-      
-        # A permission is a string of form '<service>.<resource type>.<verb>'
-        # (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-        # and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-        # Corresponds to the JSON property `permissions`
-        # @return [Array<String>]
-        attr_accessor :permissions
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @action = args[:action] if args.key?(:action)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @description = args[:description] if args.key?(:description)
-          @in = args[:in] if args.key?(:in)
-          @log_config = args[:log_config] if args.key?(:log_config)
-          @not_in = args[:not_in] if args.key?(:not_in)
-          @permissions = args[:permissions] if args.key?(:permissions)
-        end
-      end
-      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
       
-        # Defines an Identity and Access Management (IAM) policy. It is used to
-        # specify access control policies for Cloud Platform resources.
+        # An Identity and Access Management (IAM) policy, which specifies access
+        # controls for Google Cloud resources.
         # A `Policy` is a collection of `bindings`. A `binding` binds one or more
         # `members` to a single `role`. Members can be user accounts, service accounts,
         # Google groups, and domains (such as G Suite). A `role` is a named list of
-        # permissions (defined by IAM or configured by users). A `binding` can
-        # optionally specify a `condition`, which is a logic expression that further
-        # constrains the role binding based on attributes about the request and/or
-        # target resource.
-        # **JSON Example**
+        # permissions; each `role` can be an IAM predefined role or a user-created
+        # custom role.
+        # Optionally, a `binding` can specify a `condition`, which is a logical
+        # expression that allows access to a resource only if the expression evaluates
+        # to `true`. A condition can add constraints based on attributes of the
+        # request, the resource, or both.
+        # **JSON example:**
         # `
         # "bindings": [
         # `
@@ -1183,13 +892,15 @@ module Google
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
-        # "expression": "request.time <
-        # timestamp('2020-10-01T00:00:00.000Z')",
+        # "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # ",
         # `
         # `
-        # ]
+        # ],
+        # "etag": "BwWWja0YfJA=",
+        # "version": 3
         # `
-        # **YAML Example**
+        # **YAML example:**
         # bindings:
         # - members:
         # - user:mike@example.com
@@ -1204,8 +915,10 @@ module Google
         # title: expirable access
         # description: Does not grant access after Sep 2020
         # expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+        # - etag: BwWWja0YfJA=
+        # - version: 3
         # For a description of IAM and its features, see the
-        # [IAM developer's guide](https://cloud.google.com/iam/docs).
+        # [IAM documentation](https://cloud.google.com/iam/docs/).
         # Corresponds to the JSON property `policy`
         # @return [Google::Apis::DatafusionV1beta1::Policy]
         attr_accessor :policy

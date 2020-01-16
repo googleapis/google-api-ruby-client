@@ -12,27 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/servicenetworking_v1/service.rb'
-require 'google/apis/servicenetworking_v1/classes.rb'
-require 'google/apis/servicenetworking_v1/representations.rb'
+require 'google/apis/translate_v3/service.rb'
+require 'google/apis/translate_v3/classes.rb'
+require 'google/apis/translate_v3/representations.rb'
 
 module Google
   module Apis
-    # Service Networking API
+    # Cloud Translation API
     #
-    # Provides automatic management of network configurations necessary for certain
-    # services.
+    # Integrates text translation into your website or application.
     #
-    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
-    module ServicenetworkingV1
-      VERSION = 'V1'
-      REVISION = '20200114'
+    # @see https://cloud.google.com/translate/docs/quickstarts
+    module TranslateV3
+      VERSION = 'V3'
+      REVISION = '20200110'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
 
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
+      # Translate text from one language to another using Google Translate
+      AUTH_CLOUD_TRANSLATION = 'https://www.googleapis.com/auth/cloud-translation'
     end
   end
 end

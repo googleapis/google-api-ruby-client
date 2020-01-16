@@ -52,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DevicePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +65,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,6 +136,8 @@ module Google
           property :basic, as: 'basic', class: Google::Apis::AccesscontextmanagerV1::BasicLevel, decorator: Google::Apis::AccesscontextmanagerV1::BasicLevel::Representation
       
           property :create_time, as: 'createTime'
+          property :custom, as: 'custom', class: Google::Apis::AccesscontextmanagerV1::CustomLevel, decorator: Google::Apis::AccesscontextmanagerV1::CustomLevel::Representation
+      
           property :description, as: 'description'
           property :name, as: 'name'
           property :title, as: 'title'
@@ -170,6 +184,14 @@ module Google
         end
       end
       
+      class CustomLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expr, as: 'expr', class: Google::Apis::AccesscontextmanagerV1::Expr, decorator: Google::Apis::AccesscontextmanagerV1::Expr::Representation
+      
+        end
+      end
+      
       class DevicePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -186,6 +208,16 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       

@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AuthorizationLoggingOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Binding
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -47,36 +41,6 @@ module Google
       end
       
       class CancelOperationRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CloudAuditOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Condition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CounterOptions
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class CustomField
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -124,12 +88,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LogConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -155,12 +113,6 @@ module Google
       end
       
       class RestartInstanceRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Rule
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -207,7 +159,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :audit_log_configs, as: 'auditLogConfigs', class: Google::Apis::DatafusionV1beta1::AuditLogConfig, decorator: Google::Apis::DatafusionV1beta1::AuditLogConfig::Representation
       
-          collection :exempted_members, as: 'exemptedMembers'
           property :service, as: 'service'
         end
       end
@@ -216,15 +167,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
-          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
-        end
-      end
-      
-      class AuthorizationLoggingOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :permission_type, as: 'permissionType'
         end
       end
       
@@ -241,51 +184,6 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class CloudAuditOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :authorization_logging_options, as: 'authorizationLoggingOptions', class: Google::Apis::DatafusionV1beta1::AuthorizationLoggingOptions, decorator: Google::Apis::DatafusionV1beta1::AuthorizationLoggingOptions::Representation
-      
-          property :log_name, as: 'logName'
-        end
-      end
-      
-      class Condition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :iam, as: 'iam'
-          property :op, as: 'op'
-          property :svc, as: 'svc'
-          property :sys, as: 'sys'
-          collection :values, as: 'values'
-        end
-      end
-      
-      class CounterOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :custom_fields, as: 'customFields', class: Google::Apis::DatafusionV1beta1::CustomField, decorator: Google::Apis::DatafusionV1beta1::CustomField::Representation
-      
-          property :field, as: 'field'
-          property :metric, as: 'metric'
-        end
-      end
-      
-      class CustomField
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-          property :value, as: 'value'
-        end
-      end
-      
-      class DataAccessOptions
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :log_mode, as: 'logMode'
         end
       end
       
@@ -316,6 +214,7 @@ module Google
           property :display_name, as: 'displayName'
           property :enable_stackdriver_logging, as: 'enableStackdriverLogging'
           property :enable_stackdriver_monitoring, as: 'enableStackdriverMonitoring'
+          property :gcs_bucket, as: 'gcsBucket'
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :network_config, as: 'networkConfig', class: Google::Apis::DatafusionV1beta1::NetworkConfig, decorator: Google::Apis::DatafusionV1beta1::NetworkConfig::Representation
@@ -372,18 +271,6 @@ module Google
         end
       end
       
-      class LogConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :cloud_audit, as: 'cloudAudit', class: Google::Apis::DatafusionV1beta1::CloudAuditOptions, decorator: Google::Apis::DatafusionV1beta1::CloudAuditOptions::Representation
-      
-          property :counter, as: 'counter', class: Google::Apis::DatafusionV1beta1::CounterOptions, decorator: Google::Apis::DatafusionV1beta1::CounterOptions::Representation
-      
-          property :data_access, as: 'dataAccess', class: Google::Apis::DatafusionV1beta1::DataAccessOptions, decorator: Google::Apis::DatafusionV1beta1::DataAccessOptions::Representation
-      
-        end
-      end
-      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -425,9 +312,6 @@ module Google
           collection :bindings, as: 'bindings', class: Google::Apis::DatafusionV1beta1::Binding, decorator: Google::Apis::DatafusionV1beta1::Binding::Representation
       
           property :etag, :base64 => true, as: 'etag'
-          property :iam_owned, as: 'iamOwned'
-          collection :rules, as: 'rules', class: Google::Apis::DatafusionV1beta1::Rule, decorator: Google::Apis::DatafusionV1beta1::Rule::Representation
-      
           property :version, as: 'version'
         end
       end
@@ -435,21 +319,6 @@ module Google
       class RestartInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class Rule
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :action, as: 'action'
-          collection :conditions, as: 'conditions', class: Google::Apis::DatafusionV1beta1::Condition, decorator: Google::Apis::DatafusionV1beta1::Condition::Representation
-      
-          property :description, as: 'description'
-          collection :in, as: 'in'
-          collection :log_config, as: 'logConfig', class: Google::Apis::DatafusionV1beta1::LogConfig, decorator: Google::Apis::DatafusionV1beta1::LogConfig::Representation
-      
-          collection :not_in, as: 'notIn'
-          collection :permissions, as: 'permissions'
         end
       end
       

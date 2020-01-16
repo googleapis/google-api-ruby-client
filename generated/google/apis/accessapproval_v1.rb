@@ -12,27 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/servicenetworking_v1/service.rb'
-require 'google/apis/servicenetworking_v1/classes.rb'
-require 'google/apis/servicenetworking_v1/representations.rb'
+require 'google/apis/accessapproval_v1/service.rb'
+require 'google/apis/accessapproval_v1/classes.rb'
+require 'google/apis/accessapproval_v1/representations.rb'
 
 module Google
   module Apis
-    # Service Networking API
+    # Access Approval API
     #
-    # Provides automatic management of network configurations necessary for certain
-    # services.
+    # An API for controlling access to data by Google personnel.
     #
-    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
-    module ServicenetworkingV1
+    # @see https://cloud.google.com/access-approval/docs
+    module AccessapprovalV1
       VERSION = 'V1'
-      REVISION = '20200114'
+      REVISION = '20200113'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end

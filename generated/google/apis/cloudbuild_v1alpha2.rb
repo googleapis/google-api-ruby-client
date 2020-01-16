@@ -12,27 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/servicenetworking_v1/service.rb'
-require 'google/apis/servicenetworking_v1/classes.rb'
-require 'google/apis/servicenetworking_v1/representations.rb'
+require 'google/apis/cloudbuild_v1alpha2/service.rb'
+require 'google/apis/cloudbuild_v1alpha2/classes.rb'
+require 'google/apis/cloudbuild_v1alpha2/representations.rb'
 
 module Google
   module Apis
-    # Service Networking API
+    # Cloud Build API
     #
-    # Provides automatic management of network configurations necessary for certain
-    # services.
+    # Creates and manages builds on Google Cloud Platform.
     #
-    # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
-    module ServicenetworkingV1
-      VERSION = 'V1'
-      REVISION = '20200114'
+    # @see https://cloud.google.com/cloud-build/docs/
+    module CloudbuildV1alpha2
+      VERSION = 'V1alpha2'
+      REVISION = '20200108'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end

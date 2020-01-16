@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
     module ServicenetworkingV1beta
       VERSION = 'V1beta'
-      REVISION = '20191230'
+      REVISION = '20200114'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
