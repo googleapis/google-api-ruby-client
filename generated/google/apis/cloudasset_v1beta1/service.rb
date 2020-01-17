@@ -30,7 +30,7 @@ module Google
       #    Cloudasset = Google::Apis::CloudassetV1beta1 # Alias the module
       #    service = Cloudasset::CloudAssetService.new
       #
-      # @see https://cloud.google.com/resource-manager/docs/cloud-asset-inventory/quickstart-cloud-asset-inventory
+      # @see https://cloud.google.com/asset-inventory/docs/quickstart
       class CloudAssetService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

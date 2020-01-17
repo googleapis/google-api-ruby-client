@@ -34,6 +34,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CmekSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -230,6 +236,15 @@ module Google
       
           property :linear_buckets, as: 'linearBuckets', class: Google::Apis::LoggingV2::Linear, decorator: Google::Apis::LoggingV2::Linear::Representation
       
+        end
+      end
+      
+      class CmekSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+          property :name, as: 'name'
+          property :service_account_id, as: 'serviceAccountId'
         end
       end
       

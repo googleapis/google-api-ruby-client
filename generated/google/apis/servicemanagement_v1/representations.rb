@@ -959,6 +959,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_bindings, as: 'additionalBindings', class: Google::Apis::ServicemanagementV1::HttpRule, decorator: Google::Apis::ServicemanagementV1::HttpRule::Representation
       
+          property :allow_half_duplex, as: 'allowHalfDuplex'
           property :body, as: 'body'
           property :custom, as: 'custom', class: Google::Apis::ServicemanagementV1::CustomHttpPattern, decorator: Google::Apis::ServicemanagementV1::CustomHttpPattern::Representation
       

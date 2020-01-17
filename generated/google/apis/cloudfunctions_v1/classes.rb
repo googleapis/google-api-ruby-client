@@ -297,6 +297,12 @@ module Google
         # @return [Google::Apis::CloudfunctionsV1::HttpsTrigger]
         attr_accessor :https_trigger
       
+        # The ingress settings for the function, controlling what traffic can reach
+        # it.
+        # Corresponds to the JSON property `ingressSettings`
+        # @return [String]
+        attr_accessor :ingress_settings
+      
         # Labels associated with this Cloud Function.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -399,6 +405,12 @@ module Google
         # @return [String]
         attr_accessor :vpc_connector
       
+        # The egress settings for the connector, controlling what traffic is diverted
+        # through it.
+        # Corresponds to the JSON property `vpcConnectorEgressSettings`
+        # @return [String]
+        attr_accessor :vpc_connector_egress_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -411,6 +423,7 @@ module Google
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @event_trigger = args[:event_trigger] if args.key?(:event_trigger)
           @https_trigger = args[:https_trigger] if args.key?(:https_trigger)
+          @ingress_settings = args[:ingress_settings] if args.key?(:ingress_settings)
           @labels = args[:labels] if args.key?(:labels)
           @max_instances = args[:max_instances] if args.key?(:max_instances)
           @name = args[:name] if args.key?(:name)
@@ -425,6 +438,7 @@ module Google
           @update_time = args[:update_time] if args.key?(:update_time)
           @version_id = args[:version_id] if args.key?(:version_id)
           @vpc_connector = args[:vpc_connector] if args.key?(:vpc_connector)
+          @vpc_connector_egress_settings = args[:vpc_connector_egress_settings] if args.key?(:vpc_connector_egress_settings)
         end
       end
       

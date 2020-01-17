@@ -575,11 +575,10 @@ module Google
         # A list of types of the assets to receive updates. You must specify either
         # or both of asset_names and asset_types. Only asset updates matching
         # specified asset_names and asset_types are exported to the feed.
-        # For example:
-        # "compute.googleapis.com/Disk" See [Introduction to Cloud Asset
-        # Inventory](https://cloud.google.com/resource-manager/docs/cloud-asset-
-        # inventory/overview)
-        # for all supported asset types.
+        # For example: `"compute.googleapis.com/Disk"`
+        # See [this
+        # topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+        # for a list of all supported asset types.
         # Corresponds to the JSON property `assetTypes`
         # @return [Array<String>]
         attr_accessor :asset_types
@@ -1027,6 +1026,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
+        # to represent the necessary conditions for the level to apply to a request.
+        # See CEL spec at: https://github.com/google/cel-spec
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1CustomLevel]
+        attr_accessor :custom
+      
         # Description of the `AccessLevel` and its use. Does not affect behavior.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -1057,6 +1063,7 @@ module Google
         def update!(**args)
           @basic = args[:basic] if args.key?(:basic)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom = args[:custom] if args.key?(:custom)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @title = args[:title] if args.key?(:title)
@@ -1221,6 +1228,30 @@ module Google
           @negate = args[:negate] if args.key?(:negate)
           @regions = args[:regions] if args.key?(:regions)
           @required_access_levels = args[:required_access_levels] if args.key?(:required_access_levels)
+        end
+      end
+      
+      # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
+      # to represent the necessary conditions for the level to apply to a request.
+      # See CEL spec at: https://github.com/google/cel-spec
+      class GoogleIdentityAccesscontextmanagerV1CustomLevel
+        include Google::Apis::Core::Hashable
+      
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `expr`
+        # @return [Google::Apis::CloudassetV1::Expr]
+        attr_accessor :expr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expr = args[:expr] if args.key?(:expr)
         end
       end
       

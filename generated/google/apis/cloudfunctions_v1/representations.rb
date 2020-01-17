@@ -244,6 +244,7 @@ module Google
       
           property :https_trigger, as: 'httpsTrigger', class: Google::Apis::CloudfunctionsV1::HttpsTrigger, decorator: Google::Apis::CloudfunctionsV1::HttpsTrigger::Representation
       
+          property :ingress_settings, as: 'ingressSettings'
           hash :labels, as: 'labels'
           property :max_instances, as: 'maxInstances'
           property :name, as: 'name'
@@ -259,6 +260,7 @@ module Google
           property :update_time, as: 'updateTime'
           property :version_id, :numeric_string => true, as: 'versionId'
           property :vpc_connector, as: 'vpcConnector'
+          property :vpc_connector_egress_settings, as: 'vpcConnectorEgressSettings'
         end
       end
       

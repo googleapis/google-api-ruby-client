@@ -104,6 +104,58 @@ module Google
         end
       end
       
+      # Describes the customer-managed encryption key (CMEK) settings associated with
+      # a project, folder, organization, billing account, or flexible resource.Note:
+      # CMEK for the Logs Router can currently only be configured for GCP
+      # organizations. Once configured, it applies to all projects and folders in the
+      # GCP organization.See Enabling CMEK for Logs Router for more information.
+      class CmekSettings
+        include Google::Apis::Core::Hashable
+      
+        # The resource name for the configured Cloud KMS key.KMS key name format:  "
+        # projects/PROJECT_ID/locations/LOCATION/keyRings/KEYRING/cryptoKeys/KEY"For
+        # example:  "projects/my-project-id/locations/my-region/keyRings/key-ring-name/
+        # cryptoKeys/key-name"To enable CMEK for the Logs Router, set this field to a
+        # valid kms_key_name for which the associated service account has the required
+        # roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key.The Cloud
+        # KMS key used by the Log Router can be updated by changing the kms_key_name to
+        # a new valid key name. Encryption operations that are in progress will be
+        # completed with the key that was in use when they started. Decryption
+        # operations will be completed using the key that was used at the time of
+        # encryption unless access to that key has been revoked.To disable CMEK for the
+        # Logs Router, set this field to an empty string.See Enabling CMEK for Logs
+        # Router for more information.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        # Output Only. The resource name of the CMEK settings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output Only. The service account that will be used by the Logs Router to
+        # access your Cloud KMS key.Before enabling CMEK for Logs Router, you must first
+        # assign the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service
+        # account that the Logs Router will use to access your Cloud KMS key. Use
+        # GetCmekSettings to obtain the service account ID.See Enabling CMEK for Logs
+        # Router for more information.
+        # Corresponds to the JSON property `serviceAccountId`
+        # @return [String]
+        attr_accessor :service_account_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+          @name = args[:name] if args.key?(:name)
+          @service_account_id = args[:service_account_id] if args.key?(:service_account_id)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated empty
       # messages in your APIs. A typical example is to use it as the request or the
       # response type of an API method. For instance:
@@ -1302,6 +1354,43 @@ module Google
         # @return [String]
         attr_accessor :type
       
+        # The units in which the metric value is reported. It is only applicable if the
+        # value_type is INT64, DOUBLE, or DISTRIBUTION. The unit defines the
+        # representation of the stored metric values.Different systems may scale the
+        # values to be more easily displayed (so a value of 0.02KBy might be displayed
+        # as 20By, and a value of 3523KBy might be displayed as 3.5MBy). However, if the
+        # unit is KBy, then the value of the metric is always in thousands of bytes, no
+        # matter how it may be displayed..If you want a custom metric to record the
+        # exact number of CPU-seconds used by a job, you can create an INT64 CUMULATIVE
+        # metric whose unit is s`CPU` (or equivalently 1s`CPU` or just s). If the job
+        # uses 12,005 CPU-seconds, then the value is written as 12005.Alternatively, if
+        # you want a custom metric to record data in a more granular way, you can create
+        # a DOUBLE CUMULATIVE metric whose unit is ks`CPU`, and then write the value 12.
+        # 005 (which is 12005/1000), or use Kis`CPU` and write 11.723 (which is 12005/
+        # 1024).The supported units are a subset of The Unified Code for Units of
+        # Measure (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
+        # bit bit
+        # By byte
+        # s second
+        # min minute
+        # h hour
+        # d dayPrefixes (PREFIX)
+        # k kilo (10^3)
+        # M mega (10^6)
+        # G giga (10^9)
+        # T tera (10^12)
+        # P peta (10^15)
+        # E exa (10^18)
+        # Z zetta (10^21)
+        # Y yotta (10^24)
+        # m milli (10^-3)
+        # u micro (10^-6)
+        # n nano (10^-9)
+        # p pico (10^-12)
+        # f femto (10^-15)
+        # a atto (10^-18)
+        # z zepto (10^-21)
+        # y yocto (10^-24)
         # Ki kibi (2^10)
         # Mi mebi (2^20)
         # Gi gibi (2^30)

@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1CustomLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleIdentityAccesscontextmanagerV1DevicePolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +413,8 @@ module Google
           property :basic, as: 'basic', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1BasicLevel, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1BasicLevel::Representation
       
           property :create_time, as: 'createTime'
+          property :custom, as: 'custom', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1CustomLevel, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1CustomLevel::Representation
+      
           property :description, as: 'description'
           property :name, as: 'name'
           property :title, as: 'title'
@@ -444,6 +452,14 @@ module Google
           property :negate, as: 'negate'
           collection :regions, as: 'regions'
           collection :required_access_levels, as: 'requiredAccessLevels'
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1CustomLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expr, as: 'expr', class: Google::Apis::CloudassetV1::Expr, decorator: Google::Apis::CloudassetV1::Expr::Representation
+      
         end
       end
       

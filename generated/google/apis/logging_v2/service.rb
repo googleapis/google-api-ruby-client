@@ -1602,6 +1602,98 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
+        # Logs Router can currently only be configured for GCP organizations. Once
+        # configured, it applies to all projects and folders in the GCP organization.See
+        # Enabling CMEK for Logs Router for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve CMEK settings.
+        #   "projects/[PROJECT_ID]/cmekSettings"
+        #   "organizations/[ORGANIZATION_ID]/cmekSettings"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+        #   "folders/[FOLDER_ID]/cmekSettings"
+        #   Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
+        #   currently only be configured for GCP organizations. Once configured, it
+        #   applies to all projects and folders in the GCP organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::CmekSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::CmekSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_cmek_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/cmekSettings', options)
+          command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Logs Router CMEK settings for the given resource.Note: CMEK for
+        # the Logs Router can currently only be configured for GCP organizations. Once
+        # configured, it applies to all projects and folders in the GCP organization.
+        # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        # associated service account does not have the required roles/cloudkms.
+        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
+        # is disabled.See Enabling CMEK for Logs Router for more information.
+        # @param [String] name
+        #   Required. The resource name for the CMEK settings to update.
+        #   "projects/[PROJECT_ID]/cmekSettings"
+        #   "organizations/[ORGANIZATION_ID]/cmekSettings"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+        #   "folders/[FOLDER_ID]/cmekSettings"
+        #   Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
+        #   currently only be configured for GCP organizations. Once configured, it
+        #   applies to all projects and folders in the GCP organization.
+        # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
+        # @param [String] update_mask
+        #   Optional. Field mask identifying which fields from cmek_settings should be
+        #   updated. A field will be overwritten if and only if it is in the update mask.
+        #   Output only fields cannot be updated.See FieldMask for more information.
+        #   Example: "updateMask=kmsKeyName"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::CmekSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::CmekSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_organization_cmek_settings(name, cmek_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}/cmekSettings', options)
+          command.request_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.request_object = cmek_settings_object
+          command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new exclusion in a specified parent resource. Only log entries
         # belonging to that resource can be excluded. You can have up to 10 exclusions
         # in a resource.
@@ -3163,6 +3255,98 @@ module Google
           command.response_class = Google::Apis::LoggingV2::LogSink
           command.params['sinkName'] = sink_name unless sink_name.nil?
           command.query['uniqueWriterIdentity'] = unique_writer_identity unless unique_writer_identity.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
+        # Logs Router can currently only be configured for GCP organizations. Once
+        # configured, it applies to all projects and folders in the GCP organization.See
+        # Enabling CMEK for Logs Router for more information.
+        # @param [String] name
+        #   Required. The resource for which to retrieve CMEK settings.
+        #   "projects/[PROJECT_ID]/cmekSettings"
+        #   "organizations/[ORGANIZATION_ID]/cmekSettings"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+        #   "folders/[FOLDER_ID]/cmekSettings"
+        #   Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
+        #   currently only be configured for GCP organizations. Once configured, it
+        #   applies to all projects and folders in the GCP organization.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::CmekSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::CmekSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_cmek_settings(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}/cmekSettings', options)
+          command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the Logs Router CMEK settings for the given resource.Note: CMEK for
+        # the Logs Router can currently only be configured for GCP organizations. Once
+        # configured, it applies to all projects and folders in the GCP organization.
+        # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
+        # associated service account does not have the required roles/cloudkms.
+        # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
+        # is disabled.See Enabling CMEK for Logs Router for more information.
+        # @param [String] name
+        #   Required. The resource name for the CMEK settings to update.
+        #   "projects/[PROJECT_ID]/cmekSettings"
+        #   "organizations/[ORGANIZATION_ID]/cmekSettings"
+        #   "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
+        #   "folders/[FOLDER_ID]/cmekSettings"
+        #   Example: "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
+        #   currently only be configured for GCP organizations. Once configured, it
+        #   applies to all projects and folders in the GCP organization.
+        # @param [Google::Apis::LoggingV2::CmekSettings] cmek_settings_object
+        # @param [String] update_mask
+        #   Optional. Field mask identifying which fields from cmek_settings should be
+        #   updated. A field will be overwritten if and only if it is in the update mask.
+        #   Output only fields cannot be updated.See FieldMask for more information.
+        #   Example: "updateMask=kmsKeyName"
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::LoggingV2::CmekSettings] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::LoggingV2::CmekSettings]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_cmek_settings(name, cmek_settings_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}/cmekSettings', options)
+          command.request_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.request_object = cmek_settings_object
+          command.response_representation = Google::Apis::LoggingV2::CmekSettings::Representation
+          command.response_class = Google::Apis::LoggingV2::CmekSettings
+          command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

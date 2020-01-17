@@ -1993,6 +1993,13 @@ module Google
         # @return [Array<Google::Apis::ServicemanagementV1::HttpRule>]
         attr_accessor :additional_bindings
       
+        # When this flag is set to true, HTTP requests will be allowed to invoke a
+        # half-duplex streaming method.
+        # Corresponds to the JSON property `allowHalfDuplex`
+        # @return [Boolean]
+        attr_accessor :allow_half_duplex
+        alias_method :allow_half_duplex?, :allow_half_duplex
+      
         # The name of the request field whose value is mapped to the HTTP request
         # body, or `*` for mapping all request fields not captured by the path
         # pattern to the HTTP body, or omitted for not having any HTTP request body.
@@ -2055,6 +2062,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_bindings = args[:additional_bindings] if args.key?(:additional_bindings)
+          @allow_half_duplex = args[:allow_half_duplex] if args.key?(:allow_half_duplex)
           @body = args[:body] if args.key?(:body)
           @custom = args[:custom] if args.key?(:custom)
           @delete = args[:delete] if args.key?(:delete)
