@@ -1168,6 +1168,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PickupCarrierService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PickupServicesPickupService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PosCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1505,6 +1517,12 @@ module Google
       end
       
       class ShippingsettingsGetSupportedHolidaysResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShippingsettingsGetSupportedPickupServicesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3737,6 +3755,23 @@ module Google
         end
       end
       
+      class PickupCarrierService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
+      class PickupServicesPickupService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :country, as: 'country'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
       class PosCustomBatchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4364,8 +4399,11 @@ module Google
           property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
       
           property :name, as: 'name'
+          property :pickup_service, as: 'pickupService', class: Google::Apis::ContentV2::PickupCarrierService, decorator: Google::Apis::ContentV2::PickupCarrierService::Representation
+      
           collection :rate_groups, as: 'rateGroups', class: Google::Apis::ContentV2::RateGroup, decorator: Google::Apis::ContentV2::RateGroup::Representation
       
+          property :shipment_type, as: 'shipmentType'
         end
       end
       
@@ -4466,6 +4504,15 @@ module Google
           collection :holidays, as: 'holidays', class: Google::Apis::ContentV2::HolidaysHoliday, decorator: Google::Apis::ContentV2::HolidaysHoliday::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ShippingsettingsGetSupportedPickupServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :pickup_services, as: 'pickupServices', class: Google::Apis::ContentV2::PickupServicesPickupService, decorator: Google::Apis::ContentV2::PickupServicesPickupService::Representation
+      
         end
       end
       

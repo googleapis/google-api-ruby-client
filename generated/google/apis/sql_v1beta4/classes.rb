@@ -1080,6 +1080,12 @@ module Google
       class Flag
         include Google::Apis::Core::Hashable
       
+        # Use this field if only certain integers are accepted. Can be combined
+        # with min_value and max_value to add additional values.
+        # Corresponds to the JSON property `allowedIntValues`
+        # @return [Array<Fixnum>]
+        attr_accessor :allowed_int_values
+      
         # For <code>STRING</code> flags, a list of strings that the value can be set
         # to.
         # Corresponds to the JSON property `allowedStringValues`
@@ -1141,6 +1147,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @allowed_int_values = args[:allowed_int_values] if args.key?(:allowed_int_values)
           @allowed_string_values = args[:allowed_string_values] if args.key?(:allowed_string_values)
           @applies_to = args[:applies_to] if args.key?(:applies_to)
           @in_beta = args[:in_beta] if args.key?(:in_beta)
@@ -1437,7 +1444,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of warnings that ocurred while handling the request.
+        # List of warnings that occurred while handling the request.
         # Corresponds to the JSON property `warnings`
         # @return [Array<Google::Apis::SqlV1beta4::ApiWarning>]
         attr_accessor :warnings
@@ -2427,6 +2434,32 @@ module Google
         end
       end
       
+      # Represents a Sql Server user on the Cloud SQL instance.
+      class SqlServerUserDetails
+        include Google::Apis::Core::Hashable
+      
+        # If the user has been disabled
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        # The server roles for this user
+        # Corresponds to the JSON property `serverRoles`
+        # @return [Array<String>]
+        attr_accessor :server_roles
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
+          @server_roles = args[:server_roles] if args.key?(:server_roles)
+        end
+      end
+      
       # SslCerts Resource
       class SslCert
         include Google::Apis::Core::Hashable
@@ -2770,6 +2803,11 @@ module Google
         # @return [String]
         attr_accessor :project
       
+        # Represents a Sql Server user on the Cloud SQL instance.
+        # Corresponds to the JSON property `sqlserverUserDetails`
+        # @return [Google::Apis::SqlV1beta4::SqlServerUserDetails]
+        attr_accessor :sqlserver_user_details
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2783,6 +2821,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @password = args[:password] if args.key?(:password)
           @project = args[:project] if args.key?(:project)
+          @sqlserver_user_details = args[:sqlserver_user_details] if args.key?(:sqlserver_user_details)
         end
       end
       

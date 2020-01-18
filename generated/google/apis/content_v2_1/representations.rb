@@ -994,6 +994,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PickupCarrierService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PickupServicesPickupService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PosCustomBatchRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1432,6 +1444,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ShippingsettingsGetSupportedPickupServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ShippingsettingsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1736,6 +1754,7 @@ module Google
           property :action, as: 'action'
           property :link_type, as: 'linkType'
           property :linked_account_id, as: 'linkedAccountId'
+          collection :services, as: 'services'
         end
       end
       
@@ -1766,6 +1785,7 @@ module Google
           property :action, as: 'action'
           property :link_type, as: 'linkType'
           property :linked_account_id, as: 'linkedAccountId'
+          collection :services, as: 'services'
         end
       end
       
@@ -3241,6 +3261,23 @@ module Google
         end
       end
       
+      class PickupCarrierService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
+      class PickupServicesPickupService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :carrier_name, as: 'carrierName'
+          property :country, as: 'country'
+          property :service_name, as: 'serviceName'
+        end
+      end
+      
       class PosCustomBatchRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4034,8 +4071,11 @@ module Google
           property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
           property :name, as: 'name'
+          property :pickup_service, as: 'pickupService', class: Google::Apis::ContentV2_1::PickupCarrierService, decorator: Google::Apis::ContentV2_1::PickupCarrierService::Representation
+      
           collection :rate_groups, as: 'rateGroups', class: Google::Apis::ContentV2_1::RateGroup, decorator: Google::Apis::ContentV2_1::RateGroup::Representation
       
+          property :shipment_type, as: 'shipmentType'
         end
       end
       
@@ -4136,6 +4176,15 @@ module Google
           collection :holidays, as: 'holidays', class: Google::Apis::ContentV2_1::HolidaysHoliday, decorator: Google::Apis::ContentV2_1::HolidaysHoliday::Representation
       
           property :kind, as: 'kind'
+        end
+      end
+      
+      class ShippingsettingsGetSupportedPickupServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :pickup_services, as: 'pickupServices', class: Google::Apis::ContentV2_1::PickupServicesPickupService, decorator: Google::Apis::ContentV2_1::PickupServicesPickupService::Representation
+      
         end
       end
       

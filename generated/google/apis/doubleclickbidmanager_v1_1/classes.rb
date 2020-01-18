@@ -268,6 +268,28 @@ module Google
         end
       end
       
+      # Additional query options.
+      class Options
+        include Google::Apis::Core::Hashable
+      
+        # Set to true and filter your report by `FILTER_INSERTION_ORDER` or `
+        # FILTER_LINE_ITEM` to include data for audience lists specifically targeted by
+        # those items.
+        # Corresponds to the JSON property `includeOnlyTargetedUserLists`
+        # @return [Boolean]
+        attr_accessor :include_only_targeted_user_lists
+        alias_method :include_only_targeted_user_lists?, :include_only_targeted_user_lists
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_only_targeted_user_lists = args[:include_only_targeted_user_lists] if args.key?(:include_only_targeted_user_lists)
+        end
+      end
+      
       # Parameters of a query or report.
       class Parameters
         include Google::Apis::Core::Hashable
@@ -293,6 +315,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :metrics
       
+        # Additional query options.
+        # Corresponds to the JSON property `options`
+        # @return [Google::Apis::DoubleclickbidmanagerV1_1::Options]
+        attr_accessor :options
+      
         # Report type.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -308,6 +335,7 @@ module Google
           @group_bys = args[:group_bys] if args.key?(:group_bys)
           @include_invite_data = args[:include_invite_data] if args.key?(:include_invite_data)
           @metrics = args[:metrics] if args.key?(:metrics)
+          @options = args[:options] if args.key?(:options)
           @type = args[:type] if args.key?(:type)
         end
       end

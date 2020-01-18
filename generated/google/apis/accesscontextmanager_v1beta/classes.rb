@@ -37,6 +37,13 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
+        # to represent the necessary conditions for the level to apply to a request.
+        # See CEL spec at: https://github.com/google/cel-spec
+        # Corresponds to the JSON property `custom`
+        # @return [Google::Apis::AccesscontextmanagerV1beta::CustomLevel]
+        attr_accessor :custom
+      
         # Description of the `AccessLevel` and its use. Does not affect behavior.
         # Corresponds to the JSON property `description`
         # @return [String]
@@ -67,6 +74,7 @@ module Google
         def update!(**args)
           @basic = args[:basic] if args.key?(:basic)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @custom = args[:custom] if args.key?(:custom)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @title = args[:title] if args.key?(:title)
@@ -234,6 +242,30 @@ module Google
         end
       end
       
+      # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
+      # to represent the necessary conditions for the level to apply to a request.
+      # See CEL spec at: https://github.com/google/cel-spec
+      class CustomLevel
+        include Google::Apis::Core::Hashable
+      
+        # Represents an expression text. Example:
+        # title: "User account presence"
+        # description: "Determines whether the request has a user account"
+        # expression: "size(request.user) > 0"
+        # Corresponds to the JSON property `expr`
+        # @return [Google::Apis::AccesscontextmanagerV1beta::Expr]
+        attr_accessor :expr
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expr = args[:expr] if args.key?(:expr)
+        end
+      end
+      
       # `DevicePolicy` specifies device specific restrictions necessary to acquire a
       # given access level. A `DevicePolicy` specifies requirements for requests from
       # devices to be granted access levels, it does not do any enforcement on the
@@ -293,6 +325,53 @@ module Google
           @require_admin_approval = args[:require_admin_approval] if args.key?(:require_admin_approval)
           @require_corp_owned = args[:require_corp_owned] if args.key?(:require_corp_owned)
           @require_screenlock = args[:require_screenlock] if args.key?(:require_screenlock)
+        end
+      end
+      
+      # Represents an expression text. Example:
+      # title: "User account presence"
+      # description: "Determines whether the request has a user account"
+      # expression: "size(request.user) > 0"
+      class Expr
+        include Google::Apis::Core::Hashable
+      
+        # An optional description of the expression. This is a longer text which
+        # describes the expression, e.g. when hovered over it in a UI.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Textual representation of an expression in
+        # Common Expression Language syntax.
+        # The application context of the containing message determines which
+        # well-known feature set of CEL is supported.
+        # Corresponds to the JSON property `expression`
+        # @return [String]
+        attr_accessor :expression
+      
+        # An optional string indicating the location of the expression for error
+        # reporting, e.g. a file name and a position in the file.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # An optional title for the expression, i.e. a short string describing
+        # its purpose. This can be used e.g. in UIs which allow to enter the
+        # expression.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @expression = args[:expression] if args.key?(:expression)
+          @location = args[:location] if args.key?(:location)
+          @title = args[:title] if args.key?(:title)
         end
       end
       

@@ -123,6 +123,71 @@ module Google
         end
       end
       
+      # The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+      class AttributeValue
+        include Google::Apis::Core::Hashable
+      
+        # A Boolean value represented by `true` or `false`.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # A 64-bit signed integer.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Represents a string that might be shortened to a specified length.
+        # Corresponds to the JSON property `stringValue`
+        # @return [Google::Apis::ServicecontrolV1::TruncatableString]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
+      # A set of attributes, each in the format `[KEY]:[VALUE]`.
+      class Attributes
+        include Google::Apis::Core::Hashable
+      
+        # The set of attributes. Each attribute's key can be up to 128 bytes
+        # long. The value can be a string up to 256 bytes, a signed 64-bit integer,
+        # or the Boolean values `true` and `false`. For example:
+        # "/instance_id": "my-instance"
+        # "/http/user_agent": ""
+        # "/http/request_bytes": 300
+        # "abc.com/myattribute": true
+        # Corresponds to the JSON property `attributeMap`
+        # @return [Hash<String,Google::Apis::ServicecontrolV1::AttributeValue>]
+        attr_accessor :attribute_map
+      
+        # The number of attributes that were discarded. Attributes can be discarded
+        # because their keys are too long or because there are too many attributes.
+        # If this value is 0 then all attributes are valid.
+        # Corresponds to the JSON property `droppedAttributesCount`
+        # @return [Fixnum]
+        attr_accessor :dropped_attributes_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attribute_map = args[:attribute_map] if args.key?(:attribute_map)
+          @dropped_attributes_count = args[:dropped_attributes_count] if args.key?(:dropped_attributes_count)
+        end
+      end
+      
       # Common audit log format for Google Cloud Platform API operations.
       class AuditLog
         include Google::Apis::Core::Hashable
@@ -1472,6 +1537,13 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # Unimplemented. A list of Cloud Trace spans. The span names shall contain
+        # the id of the destination project which can be either the produce or the
+        # consumer project.
+        # Corresponds to the JSON property `traceSpans`
+        # @return [Array<Google::Apis::ServicecontrolV1::TraceSpan>]
+        attr_accessor :trace_spans
+      
         # User defined labels for the resource that this operation is associated
         # with. Only a combination of 1000 user labels per consumer project are
         # allowed.
@@ -1496,6 +1568,7 @@ module Google
           @quota_properties = args[:quota_properties] if args.key?(:quota_properties)
           @resources = args[:resources] if args.key?(:resources)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @trace_spans = args[:trace_spans] if args.key?(:trace_spans)
           @user_labels = args[:user_labels] if args.key?(:user_labels)
         end
       end
@@ -2278,6 +2351,143 @@ module Google
         # Update properties of this object
         def update!(**args)
           @third_party_claims = args[:third_party_claims] if args.key?(:third_party_claims)
+        end
+      end
+      
+      # A span represents a single operation within a trace. Spans can be
+      # nested to form a trace tree. Often, a trace contains a root span
+      # that describes the end-to-end latency, and one or more subspans for
+      # its sub-operations. A trace can also contain multiple root spans,
+      # or none at all. Spans do not need to be contiguous&mdash;there may be
+      # gaps or overlaps between spans in a trace.
+      class TraceSpan
+        include Google::Apis::Core::Hashable
+      
+        # A set of attributes, each in the format `[KEY]:[VALUE]`.
+        # Corresponds to the JSON property `attributes`
+        # @return [Google::Apis::ServicecontrolV1::Attributes]
+        attr_accessor :attributes
+      
+        # An optional number of child spans that were generated while this span
+        # was active. If set, allows implementation to detect missing child spans.
+        # Corresponds to the JSON property `childSpanCount`
+        # @return [Fixnum]
+        attr_accessor :child_span_count
+      
+        # Represents a string that might be shortened to a specified length.
+        # Corresponds to the JSON property `displayName`
+        # @return [Google::Apis::ServicecontrolV1::TruncatableString]
+        attr_accessor :display_name
+      
+        # The end time of the span. On the client side, this is the time kept by
+        # the local machine where the span execution ends. On the server side, this
+        # is the time when the server application handler stops running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The resource name of the span in the following format:
+        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+        # identifier for a trace within a project;
+        # it is a 32-character hexadecimal encoding of a 16-byte array.
+        # [SPAN_ID] is a unique identifier for a span within a trace; it
+        # is a 16-character hexadecimal encoding of an 8-byte array.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The [SPAN_ID] of this span's parent span. If this is a root span,
+        # then this field must be empty.
+        # Corresponds to the JSON property `parentSpanId`
+        # @return [String]
+        attr_accessor :parent_span_id
+      
+        # (Optional) Set this parameter to indicate whether this span is in
+        # the same process as its parent. If you do not set this parameter,
+        # Stackdriver Trace is unable to take advantage of this helpful
+        # information.
+        # Corresponds to the JSON property `sameProcessAsParentSpan`
+        # @return [Boolean]
+        attr_accessor :same_process_as_parent_span
+        alias_method :same_process_as_parent_span?, :same_process_as_parent_span
+      
+        # The [SPAN_ID] portion of the span's resource name.
+        # Corresponds to the JSON property `spanId`
+        # @return [String]
+        attr_accessor :span_id
+      
+        # Distinguishes between spans generated in a particular context. For example,
+        # two spans with the same name may be distinguished using `CLIENT` (caller)
+        # and `SERVER` (callee) to identify an RPC call.
+        # Corresponds to the JSON property `spanKind`
+        # @return [String]
+        attr_accessor :span_kind
+      
+        # The start time of the span. On the client side, this is the time kept by
+        # the local machine where the span execution starts. On the server side, this
+        # is the time when the server's application handler starts running.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::ServicecontrolV1::Status]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @attributes = args[:attributes] if args.key?(:attributes)
+          @child_span_count = args[:child_span_count] if args.key?(:child_span_count)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @name = args[:name] if args.key?(:name)
+          @parent_span_id = args[:parent_span_id] if args.key?(:parent_span_id)
+          @same_process_as_parent_span = args[:same_process_as_parent_span] if args.key?(:same_process_as_parent_span)
+          @span_id = args[:span_id] if args.key?(:span_id)
+          @span_kind = args[:span_kind] if args.key?(:span_kind)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Represents a string that might be shortened to a specified length.
+      class TruncatableString
+        include Google::Apis::Core::Hashable
+      
+        # The number of bytes removed from the original string. If this
+        # value is 0, then the string was not shortened.
+        # Corresponds to the JSON property `truncatedByteCount`
+        # @return [Fixnum]
+        attr_accessor :truncated_byte_count
+      
+        # The shortened string. For example, if the original string is 500
+        # bytes long and the limit of the string is 128 bytes, then
+        # `value` contains the first 128 bytes of the 500-byte string.
+        # Truncation always happens on a UTF8 character boundary. If there
+        # are multi-byte characters in the string, then the length of the
+        # shortened string might be less than the size limit.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @truncated_byte_count = args[:truncated_byte_count] if args.key?(:truncated_byte_count)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end

@@ -40,6 +40,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AttributeValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Attributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditLog
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +298,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TraceSpan
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TruncatableString
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AllocateInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -313,6 +337,25 @@ module Google
           collection :quota_metrics, as: 'quotaMetrics', class: Google::Apis::ServicecontrolV1::MetricValueSet, decorator: Google::Apis::ServicecontrolV1::MetricValueSet::Representation
       
           property :service_config_id, as: 'serviceConfigId'
+        end
+      end
+      
+      class AttributeValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :string_value, as: 'stringValue', class: Google::Apis::ServicecontrolV1::TruncatableString, decorator: Google::Apis::ServicecontrolV1::TruncatableString::Representation
+      
+        end
+      end
+      
+      class Attributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :attribute_map, as: 'attributeMap', class: Google::Apis::ServicecontrolV1::AttributeValue, decorator: Google::Apis::ServicecontrolV1::AttributeValue::Representation
+      
+          property :dropped_attributes_count, as: 'droppedAttributesCount'
         end
       end
       
@@ -607,6 +650,8 @@ module Google
           collection :resources, as: 'resources', class: Google::Apis::ServicecontrolV1::ResourceInfo, decorator: Google::Apis::ServicecontrolV1::ResourceInfo::Representation
       
           property :start_time, as: 'startTime'
+          collection :trace_spans, as: 'traceSpans', class: Google::Apis::ServicecontrolV1::TraceSpan, decorator: Google::Apis::ServicecontrolV1::TraceSpan::Representation
+      
           hash :user_labels, as: 'userLabels'
         end
       end
@@ -789,6 +834,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :third_party_claims, as: 'thirdPartyClaims'
+        end
+      end
+      
+      class TraceSpan
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attributes, as: 'attributes', class: Google::Apis::ServicecontrolV1::Attributes, decorator: Google::Apis::ServicecontrolV1::Attributes::Representation
+      
+          property :child_span_count, as: 'childSpanCount'
+          property :display_name, as: 'displayName', class: Google::Apis::ServicecontrolV1::TruncatableString, decorator: Google::Apis::ServicecontrolV1::TruncatableString::Representation
+      
+          property :end_time, as: 'endTime'
+          property :name, as: 'name'
+          property :parent_span_id, as: 'parentSpanId'
+          property :same_process_as_parent_span, as: 'sameProcessAsParentSpan'
+          property :span_id, as: 'spanId'
+          property :span_kind, as: 'spanKind'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status', class: Google::Apis::ServicecontrolV1::Status, decorator: Google::Apis::ServicecontrolV1::Status::Representation
+      
+        end
+      end
+      
+      class TruncatableString
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :truncated_byte_count, as: 'truncatedByteCount'
+          property :value, as: 'value'
         end
       end
     end

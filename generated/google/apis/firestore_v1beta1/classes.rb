@@ -237,7 +237,8 @@ module Google
       class CommitResponse
         include Google::Apis::Core::Hashable
       
-        # The time at which the commit occurred.
+        # The time at which the commit occurred. Any read with an equal or greater
+        # `read_time` is guaranteed to see the effects of the commit.
         # Corresponds to the JSON property `commitTime`
         # @return [String]
         attr_accessor :commit_time
@@ -2141,7 +2142,8 @@ module Google
       class WriteResponse
         include Google::Apis::Core::Hashable
       
-        # The time at which the commit occurred.
+        # The time at which the commit occurred. Any read with an equal or greater
+        # `read_time` is guaranteed to see the effects of the write.
         # Corresponds to the JSON property `commitTime`
         # @return [String]
         attr_accessor :commit_time

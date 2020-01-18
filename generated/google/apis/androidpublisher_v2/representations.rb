@@ -196,12 +196,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class MonthDay
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class PageInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,12 +209,6 @@ module Google
       end
       
       class ProductPurchase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Prorate
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -251,12 +239,6 @@ module Google
       end
       
       class ReviewsReplyResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Season
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -585,8 +567,6 @@ module Google
           hash :prices, as: 'prices', class: Google::Apis::AndroidpublisherV2::Price, decorator: Google::Apis::AndroidpublisherV2::Price::Representation
       
           property :purchase_type, as: 'purchaseType'
-          property :season, as: 'season', class: Google::Apis::AndroidpublisherV2::Season, decorator: Google::Apis::AndroidpublisherV2::Season::Representation
-      
           property :sku, as: 'sku'
           property :status, as: 'status'
           property :subscription_period, as: 'subscriptionPeriod'
@@ -635,14 +615,6 @@ module Google
         end
       end
       
-      class MonthDay
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :day, as: 'day'
-          property :month, as: 'month'
-        end
-      end
-      
       class PageInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -670,16 +642,6 @@ module Google
           property :purchase_state, as: 'purchaseState'
           property :purchase_time_millis, :numeric_string => true, as: 'purchaseTimeMillis'
           property :purchase_type, as: 'purchaseType'
-        end
-      end
-      
-      class Prorate
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :default_price, as: 'defaultPrice', class: Google::Apis::AndroidpublisherV2::Price, decorator: Google::Apis::AndroidpublisherV2::Price::Representation
-      
-          property :start, as: 'start', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
-      
         end
       end
       
@@ -725,18 +687,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :result, as: 'result', class: Google::Apis::AndroidpublisherV2::ReviewReplyResult, decorator: Google::Apis::AndroidpublisherV2::ReviewReplyResult::Representation
-      
-        end
-      end
-      
-      class Season
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :end, as: 'end', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
-      
-          collection :prorations, as: 'prorations', class: Google::Apis::AndroidpublisherV2::Prorate, decorator: Google::Apis::AndroidpublisherV2::Prorate::Representation
-      
-          property :start, as: 'start', class: Google::Apis::AndroidpublisherV2::MonthDay, decorator: Google::Apis::AndroidpublisherV2::MonthDay::Representation
       
         end
       end

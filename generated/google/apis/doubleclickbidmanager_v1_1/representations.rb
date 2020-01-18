@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Options
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Parameters
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -215,6 +221,13 @@ module Google
         end
       end
       
+      class Options
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_only_targeted_user_lists, as: 'includeOnlyTargetedUserLists'
+        end
+      end
+      
       class Parameters
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -223,6 +236,8 @@ module Google
           collection :group_bys, as: 'groupBys'
           property :include_invite_data, as: 'includeInviteData'
           collection :metrics, as: 'metrics'
+          property :options, as: 'options', class: Google::Apis::DoubleclickbidmanagerV1_1::Options, decorator: Google::Apis::DoubleclickbidmanagerV1_1::Options::Representation
+      
           property :type, as: 'type'
         end
       end

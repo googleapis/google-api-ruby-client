@@ -5295,6 +5295,7 @@ module Google
         # - "boxtal" (Boxtal)
         # - "geodis" (GEODIS)
         # - "tnt" (TNT)
+        # - "db schenker" (DB Schenker)
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -7662,6 +7663,62 @@ module Google
         def update!(**args)
           @execution_status = args[:execution_status] if args.key?(:execution_status)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class PickupCarrierService
+        include Google::Apis::Core::Hashable
+      
+        # The name of the pickup carrier (e.g., "UPS"). Required.
+        # Corresponds to the JSON property `carrierName`
+        # @return [String]
+        attr_accessor :carrier_name
+      
+        # The name of the pickup service (e.g., "Access point"). Required.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @service_name = args[:service_name] if args.key?(:service_name)
+        end
+      end
+      
+      # 
+      class PickupServicesPickupService
+        include Google::Apis::Core::Hashable
+      
+        # The name of the carrier (e.g., "UPS"). Always present.
+        # Corresponds to the JSON property `carrierName`
+        # @return [String]
+        attr_accessor :carrier_name
+      
+        # The CLDR country code of the carrier (e.g., "US"). Always present.
+        # Corresponds to the JSON property `country`
+        # @return [String]
+        attr_accessor :country
+      
+        # The name of the pickup service (e.g., "Access point"). Always present.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @carrier_name = args[:carrier_name] if args.key?(:carrier_name)
+          @country = args[:country] if args.key?(:country)
+          @service_name = args[:service_name] if args.key?(:service_name)
         end
       end
       
@@ -10059,12 +10116,24 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The carrier-service pair delivering items to collection points. The list of
+        # supported pickup services can be retrieved via the getSupportedPickupServices
+        # method. Required if and only if the service delivery type is pickup.
+        # Corresponds to the JSON property `pickupService`
+        # @return [Google::Apis::ContentV2::PickupCarrierService]
+        attr_accessor :pickup_service
+      
         # Shipping rate group definitions. Only the last one is allowed to have an empty
         # applicableShippingLabels, which means "everything else". The other
         # applicableShippingLabels must not overlap.
         # Corresponds to the JSON property `rateGroups`
         # @return [Array<Google::Apis::ContentV2::RateGroup>]
         attr_accessor :rate_groups
+      
+        # Type of locations this service ships orders to.
+        # Corresponds to the JSON property `shipmentType`
+        # @return [String]
+        attr_accessor :shipment_type
       
         def initialize(**args)
            update!(**args)
@@ -10079,7 +10148,9 @@ module Google
           @eligibility = args[:eligibility] if args.key?(:eligibility)
           @minimum_order_value = args[:minimum_order_value] if args.key?(:minimum_order_value)
           @name = args[:name] if args.key?(:name)
+          @pickup_service = args[:pickup_service] if args.key?(:pickup_service)
           @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
+          @shipment_type = args[:shipment_type] if args.key?(:shipment_type)
         end
       end
       
@@ -10392,6 +10463,32 @@ module Google
         def update!(**args)
           @holidays = args[:holidays] if args.key?(:holidays)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class ShippingsettingsGetSupportedPickupServicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # shippingsettingsGetSupportedPickupServicesResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # A list of supported pickup services. May be empty.
+        # Corresponds to the JSON property `pickupServices`
+        # @return [Array<Google::Apis::ContentV2::PickupServicesPickupService>]
+        attr_accessor :pickup_services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @pickup_services = args[:pickup_services] if args.key?(:pickup_services)
         end
       end
       

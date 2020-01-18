@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/firestore
     module FirestoreV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20191206'
+      REVISION = '20200104'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

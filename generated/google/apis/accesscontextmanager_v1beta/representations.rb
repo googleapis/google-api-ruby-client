@@ -46,7 +46,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DevicePolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Expr
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -112,6 +124,8 @@ module Google
           property :basic, as: 'basic', class: Google::Apis::AccesscontextmanagerV1beta::BasicLevel, decorator: Google::Apis::AccesscontextmanagerV1beta::BasicLevel::Representation
       
           property :create_time, as: 'createTime'
+          property :custom, as: 'custom', class: Google::Apis::AccesscontextmanagerV1beta::CustomLevel, decorator: Google::Apis::AccesscontextmanagerV1beta::CustomLevel::Representation
+      
           property :description, as: 'description'
           property :name, as: 'name'
           property :title, as: 'title'
@@ -152,6 +166,14 @@ module Google
         end
       end
       
+      class CustomLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expr, as: 'expr', class: Google::Apis::AccesscontextmanagerV1beta::Expr, decorator: Google::Apis::AccesscontextmanagerV1beta::Expr::Representation
+      
+        end
+      end
+      
       class DevicePolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -162,6 +184,16 @@ module Google
           property :require_admin_approval, as: 'requireAdminApproval'
           property :require_corp_owned, as: 'requireCorpOwned'
           property :require_screenlock, as: 'requireScreenlock'
+        end
+      end
+      
+      class Expr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :expression, as: 'expression'
+          property :location, as: 'location'
+          property :title, as: 'title'
         end
       end
       

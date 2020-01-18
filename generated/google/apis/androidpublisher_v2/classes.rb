@@ -804,12 +804,6 @@ module Google
         # @return [String]
         attr_accessor :purchase_type
       
-        # Definition of a season for a seasonal subscription. Can be defined only for
-        # yearly subscriptions.
-        # Corresponds to the JSON property `season`
-        # @return [Google::Apis::AndroidpublisherV2::Season]
-        attr_accessor :season
-      
         # The stock-keeping-unit (SKU) of the product, unique within an app.
         # Corresponds to the JSON property `sku`
         # @return [String]
@@ -847,7 +841,6 @@ module Google
           @package_name = args[:package_name] if args.key?(:package_name)
           @prices = args[:prices] if args.key?(:prices)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
-          @season = args[:season] if args.key?(:season)
           @sku = args[:sku] if args.key?(:sku)
           @status = args[:status] if args.key?(:status)
           @subscription_period = args[:subscription_period] if args.key?(:subscription_period)
@@ -989,32 +982,6 @@ module Google
       end
       
       # 
-      class MonthDay
-        include Google::Apis::Core::Hashable
-      
-        # Day of a month, value in [1, 31] range. Valid range depends on the specified
-        # month.
-        # Corresponds to the JSON property `day`
-        # @return [Fixnum]
-        attr_accessor :day
-      
-        # Month of a year. e.g. 1 = JAN, 2 = FEB etc.
-        # Corresponds to the JSON property `month`
-        # @return [Fixnum]
-        attr_accessor :month
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @day = args[:day] if args.key?(:day)
-          @month = args[:month] if args.key?(:month)
-        end
-      end
-      
-      # 
       class PageInfo
         include Google::Apis::Core::Hashable
       
@@ -1135,34 +1102,6 @@ module Google
           @purchase_state = args[:purchase_state] if args.key?(:purchase_state)
           @purchase_time_millis = args[:purchase_time_millis] if args.key?(:purchase_time_millis)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
-        end
-      end
-      
-      # 
-      class Prorate
-        include Google::Apis::Core::Hashable
-      
-        # Default price cannot be zero and must be less than the full subscription price.
-        # Default price is always in the developer's Checkout merchant currency.
-        # Targeted countries have their prices set automatically based on the
-        # default_price.
-        # Corresponds to the JSON property `defaultPrice`
-        # @return [Google::Apis::AndroidpublisherV2::Price]
-        attr_accessor :default_price
-      
-        # Defines the first day on which the price takes effect.
-        # Corresponds to the JSON property `start`
-        # @return [Google::Apis::AndroidpublisherV2::MonthDay]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @default_price = args[:default_price] if args.key?(:default_price)
-          @start = args[:start] if args.key?(:start)
         end
       end
       
@@ -1289,39 +1228,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @result = args[:result] if args.key?(:result)
-        end
-      end
-      
-      # 
-      class Season
-        include Google::Apis::Core::Hashable
-      
-        # Inclusive end date of the recurrence period.
-        # Corresponds to the JSON property `end`
-        # @return [Google::Apis::AndroidpublisherV2::MonthDay]
-        attr_accessor :end
-      
-        # Optionally present list of prorations for the season. Each proration is a one-
-        # off discounted entry into a subscription. Each proration contains the first
-        # date on which the discount is available and the new pricing information.
-        # Corresponds to the JSON property `prorations`
-        # @return [Array<Google::Apis::AndroidpublisherV2::Prorate>]
-        attr_accessor :prorations
-      
-        # Inclusive start date of the recurrence period.
-        # Corresponds to the JSON property `start`
-        # @return [Google::Apis::AndroidpublisherV2::MonthDay]
-        attr_accessor :start
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @end = args[:end] if args.key?(:end)
-          @prorations = args[:prorations] if args.key?(:prorations)
-          @start = args[:start] if args.key?(:start)
         end
       end
       

@@ -358,6 +358,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlServerUserDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -690,6 +696,7 @@ module Google
       class Flag
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_int_values, as: 'allowedIntValues'
           collection :allowed_string_values, as: 'allowedStringValues'
           collection :applies_to, as: 'appliesTo'
           property :in_beta, as: 'inBeta'
@@ -1048,6 +1055,14 @@ module Google
         end
       end
       
+      class SqlServerUserDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disabled, as: 'disabled'
+          collection :server_roles, as: 'serverRoles'
+        end
+      end
+      
       class SslCert
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1146,6 +1161,8 @@ module Google
           property :name, as: 'name'
           property :password, as: 'password'
           property :project, as: 'project'
+          property :sqlserver_user_details, as: 'sqlserverUserDetails', class: Google::Apis::SqlV1beta4::SqlServerUserDetails, decorator: Google::Apis::SqlV1beta4::SqlServerUserDetails::Representation
+      
         end
       end
       

@@ -384,6 +384,12 @@ module Google
         
         # Partially updates a resource containing information about a database inside
         # a Cloud SQL instance. This method supports patch semantics.
+        # <aside
+        # class="caution"><strong>Caution:</strong> This is not a partial update, so
+        # you must include values for all the settings that you want to retain. For
+        # partial updates, use <a
+        # href="/sql/docs/db_path/admin-api/rest/v1beta4/instances/update">update</a>.</
+        # aside>
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
@@ -867,13 +873,22 @@ module Google
         # @param [String] project
         #   Project ID of the project for which to list Cloud SQL instances.
         # @param [String] filter
-        #   An expression for filtering the results of the request, such as by name or
-        #   label.
+        #   A filter expression that filters resources listed in the response.
+        #   The expression is in the form of field:value. For example,
+        #   'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per
+        #   their JSON representation, such as 'settings.userLabels.auto_start:true'.
+        #   Multiple filter queries are space-separated. For example.
+        #   'state:RUNNABLE instanceType:CLOUD_SQL_INSTANCE'. By default, each
+        #   expression is an AND expression. However, you can include AND and OR
+        #   expressions explicitly.
         # @param [Fixnum] max_results
         #   The maximum number of results to return per response.
         # @param [String] page_token
         #   A previously-returned page token representing part of the larger set of
         #   results to view.
+        # @param [String] parent
+        #   The parent, which owns this collection of database instances.
+        #   Format: projects/`project`/locations/`location`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -891,7 +906,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_instances(project, filter: nil, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_instances(project, filter: nil, max_results: nil, page_token: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'sql/v1beta4/projects/{project}/instances', options)
           command.response_representation = Google::Apis::SqlV1beta4::InstancesListResponse::Representation
           command.response_class = Google::Apis::SqlV1beta4::InstancesListResponse
@@ -899,6 +914,7 @@ module Google
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1296,12 +1312,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates settings of a Cloud SQL instance. <aside
-        # class="caution"><strong>Caution:</strong> This is not a partial update, so
-        # you must include values for all the settings that you want to retain. For
-        # partial updates, use <a
-        # href="/sql/docs/db_path/admin-api/rest/v1beta4/instances/patch">patch</a>.</
-        # aside>
+        # Updates settings of a Cloud SQL instance.
         # @param [String] project
         #   Project ID of the project that contains the instance.
         # @param [String] instance
