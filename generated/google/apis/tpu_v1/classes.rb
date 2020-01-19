@@ -299,7 +299,6 @@ module Google
         # conflicts with any subnetworks in the user's provided network, or the
         # provided network is peered with another network that is using that CIDR
         # block.
-        # Required.
         # Corresponds to the JSON property `cidrBlock`
         # @return [String]
         attr_accessor :cidr_block

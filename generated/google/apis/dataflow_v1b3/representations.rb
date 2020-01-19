@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ContainerSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CounterMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -323,6 +329,24 @@ module Google
       end
       
       class KeyRangeLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LaunchFlexTemplateParameter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LaunchFlexTemplateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LaunchFlexTemplateResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -987,6 +1011,17 @@ module Google
         end
       end
       
+      class ContainerSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :image, as: 'image'
+          property :metadata, as: 'metadata', class: Google::Apis::DataflowV1b3::TemplateMetadata, decorator: Google::Apis::DataflowV1b3::TemplateMetadata::Representation
+      
+          property :sdk_info, as: 'sdkInfo', class: Google::Apis::DataflowV1b3::SdkInfo, decorator: Google::Apis::DataflowV1b3::SdkInfo::Representation
+      
+        end
+      end
+      
       class CounterMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1437,6 +1472,34 @@ module Google
           property :deprecated_persistent_directory, as: 'deprecatedPersistentDirectory'
           property :end, as: 'end'
           property :start, as: 'start'
+        end
+      end
+      
+      class LaunchFlexTemplateParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_spec, as: 'containerSpec', class: Google::Apis::DataflowV1b3::ContainerSpec, decorator: Google::Apis::DataflowV1b3::ContainerSpec::Representation
+      
+          property :container_spec_gcs_path, as: 'containerSpecGcsPath'
+          property :job_name, as: 'jobName'
+          hash :parameters, as: 'parameters'
+        end
+      end
+      
+      class LaunchFlexTemplateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :launch_parameter, as: 'launchParameter', class: Google::Apis::DataflowV1b3::LaunchFlexTemplateParameter, decorator: Google::Apis::DataflowV1b3::LaunchFlexTemplateParameter::Representation
+      
+          property :validate_only, as: 'validateOnly'
+        end
+      end
+      
+      class LaunchFlexTemplateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job, as: 'job', class: Google::Apis::DataflowV1b3::Job, decorator: Google::Apis::DataflowV1b3::Job::Representation
+      
         end
       end
       

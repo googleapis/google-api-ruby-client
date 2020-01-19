@@ -455,6 +455,37 @@ module Google
         end
       end
       
+      # Container Spec.
+      class ContainerSpec
+        include Google::Apis::Core::Hashable
+      
+        # Name of the docker container image. E.g., gcr.io/project/some-image
+        # Corresponds to the JSON property `image`
+        # @return [String]
+        attr_accessor :image
+      
+        # Metadata describing a template.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::DataflowV1b3::TemplateMetadata]
+        attr_accessor :metadata
+      
+        # SDK Information.
+        # Corresponds to the JSON property `sdkInfo`
+        # @return [Google::Apis::DataflowV1b3::SdkInfo]
+        attr_accessor :sdk_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @image = args[:image] if args.key?(:image)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @sdk_info = args[:sdk_info] if args.key?(:sdk_info)
+        end
+      end
+      
       # CounterMetadata includes all static non-name non-value counter attributes.
       class CounterMetadata
         include Google::Apis::Core::Hashable
@@ -2209,6 +2240,90 @@ module Google
         end
       end
       
+      # Launch FlexTemplate Parameter.
+      class LaunchFlexTemplateParameter
+        include Google::Apis::Core::Hashable
+      
+        # Container Spec.
+        # Corresponds to the JSON property `containerSpec`
+        # @return [Google::Apis::DataflowV1b3::ContainerSpec]
+        attr_accessor :container_spec
+      
+        # Gcs path to a file with json serialized ContainerSpec as content.
+        # Corresponds to the JSON property `containerSpecGcsPath`
+        # @return [String]
+        attr_accessor :container_spec_gcs_path
+      
+        # Required. The job name to use for the created job.
+        # Corresponds to the JSON property `jobName`
+        # @return [String]
+        attr_accessor :job_name
+      
+        # The parameters for FlexTemplate.
+        # Ex. `"num_workers":"5"`
+        # Corresponds to the JSON property `parameters`
+        # @return [Hash<String,String>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_spec = args[:container_spec] if args.key?(:container_spec)
+          @container_spec_gcs_path = args[:container_spec_gcs_path] if args.key?(:container_spec_gcs_path)
+          @job_name = args[:job_name] if args.key?(:job_name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # A request to launch a Cloud Dataflow job from a FlexTemplate.
+      class LaunchFlexTemplateRequest
+        include Google::Apis::Core::Hashable
+      
+        # Launch FlexTemplate Parameter.
+        # Corresponds to the JSON property `launchParameter`
+        # @return [Google::Apis::DataflowV1b3::LaunchFlexTemplateParameter]
+        attr_accessor :launch_parameter
+      
+        # If true, the request is validated but not actually executed.
+        # Defaults to false.
+        # Corresponds to the JSON property `validateOnly`
+        # @return [Boolean]
+        attr_accessor :validate_only
+        alias_method :validate_only?, :validate_only
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @launch_parameter = args[:launch_parameter] if args.key?(:launch_parameter)
+          @validate_only = args[:validate_only] if args.key?(:validate_only)
+        end
+      end
+      
+      # Response to the request to launch a job from Flex Template.
+      class LaunchFlexTemplateResponse
+        include Google::Apis::Core::Hashable
+      
+        # Defines a job to be run by the Cloud Dataflow service.
+        # Corresponds to the JSON property `job`
+        # @return [Google::Apis::DataflowV1b3::Job]
+        attr_accessor :job
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job = args[:job] if args.key?(:job)
+        end
+      end
+      
       # Parameters to provide to the template being launched.
       class LaunchTemplateParameters
         include Google::Apis::Core::Hashable
@@ -2389,8 +2504,11 @@ module Google
         end
       end
       
-      # Response to a request to list Cloud Dataflow jobs.  This may be a partial
-      # response, depending on the page size in the ListJobsRequest.
+      # Response to a request to list Cloud Dataflow jobs in a project. This might
+      # be a partial response, depending on the page size in the ListJobsRequest.
+      # However, if the project does not have any jobs, an instance of
+      # ListJobsResponse is not returned and the requests's response
+      # body is empty ``.
       class ListJobsResponse
         include Google::Apis::Core::Hashable
       

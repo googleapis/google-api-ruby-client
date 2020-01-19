@@ -620,6 +620,44 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Launch a job with a FlexTemplate.
+        # @param [String] project_id
+        #   Required. The ID of the Cloud Platform project that the job belongs to.
+        # @param [String] location
+        #   Required. The [regional endpoint]
+        #   (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to
+        #   which to direct the request. E.g., us-central1, us-west1.
+        # @param [Google::Apis::DataflowV1b3::LaunchFlexTemplateRequest] launch_flex_template_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::LaunchFlexTemplateResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::LaunchFlexTemplateResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def launch_flex_template(project_id, location, launch_flex_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch', options)
+          command.request_representation = Google::Apis::DataflowV1b3::LaunchFlexTemplateRequest::Representation
+          command.request_object = launch_flex_template_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::LaunchFlexTemplateResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::LaunchFlexTemplateResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a Cloud Dataflow job.
         # To create a job, we recommend using `projects.locations.jobs.create` with a
         # [regional endpoint]
