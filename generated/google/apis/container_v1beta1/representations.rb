@@ -667,6 +667,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :management, as: 'management', class: Google::Apis::ContainerV1beta1::NodeManagement, decorator: Google::Apis::ContainerV1beta1::NodeManagement::Representation
       
+          property :min_cpu_platform, as: 'minCpuPlatform'
           collection :oauth_scopes, as: 'oauthScopes'
           property :service_account, as: 'serviceAccount'
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1beta1::UpgradeSettings, decorator: Google::Apis::ContainerV1beta1::UpgradeSettings::Representation
@@ -1215,6 +1216,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :accelerators, as: 'accelerators', class: Google::Apis::ContainerV1beta1::AcceleratorConfig, decorator: Google::Apis::ContainerV1beta1::AcceleratorConfig::Representation
       
+          property :boot_disk_kms_key, as: 'bootDiskKmsKey'
           property :disk_size_gb, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           property :image_type, as: 'imageType'
@@ -1431,6 +1433,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sandbox_type, as: 'sandboxType'
+          property :type, as: 'type'
         end
       end
       

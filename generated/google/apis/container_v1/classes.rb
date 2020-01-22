@@ -628,6 +628,11 @@ module Google
         # @return [String]
         attr_accessor :services_ipv4_cidr
       
+        # Configuration of Shielded Nodes feature.
+        # Corresponds to the JSON property `shieldedNodes`
+        # @return [Google::Apis::ContainerV1::ShieldedNodes]
+        attr_accessor :shielded_nodes
+      
         # [Output only] The current status of this cluster.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -716,6 +721,7 @@ module Google
           @resource_usage_export_config = args[:resource_usage_export_config] if args.key?(:resource_usage_export_config)
           @self_link = args[:self_link] if args.key?(:self_link)
           @services_ipv4_cidr = args[:services_ipv4_cidr] if args.key?(:services_ipv4_cidr)
+          @shielded_nodes = args[:shielded_nodes] if args.key?(:shielded_nodes)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
@@ -893,6 +899,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ResourceUsageExportConfig]
         attr_accessor :desired_resource_usage_export_config
       
+        # Configuration of Shielded Nodes feature.
+        # Corresponds to the JSON property `desiredShieldedNodes`
+        # @return [Google::Apis::ContainerV1::ShieldedNodes]
+        attr_accessor :desired_shielded_nodes
+      
         # VerticalPodAutoscaling contains global, per-cluster information
         # required by Vertical Pod Autoscaler to automatically adjust
         # the resources of pods controlled by it.
@@ -921,6 +932,7 @@ module Google
           @desired_node_pool_id = args[:desired_node_pool_id] if args.key?(:desired_node_pool_id)
           @desired_node_version = args[:desired_node_version] if args.key?(:desired_node_version)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
+          @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
         end
       end
@@ -2094,6 +2106,11 @@ module Google
         # @return [Google::Apis::ContainerV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
+        # SandboxConfig contains configurations of the sandbox to use for the node.
+        # Corresponds to the JSON property `sandboxConfig`
+        # @return [Google::Apis::ContainerV1::SandboxConfig]
+        attr_accessor :sandbox_config
+      
         # The Google Cloud Platform Service Account to be used by the node VMs. If
         # no Service Account is specified, the "default" service account is used.
         # Corresponds to the JSON property `serviceAccount`
@@ -2138,6 +2155,7 @@ module Google
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @preemptible = args[:preemptible] if args.key?(:preemptible)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
+          @sandbox_config = args[:sandbox_config] if args.key?(:sandbox_config)
           @service_account = args[:service_account] if args.key?(:service_account)
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
@@ -2491,6 +2509,11 @@ module Google
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
       
+        # Output only. The peering name in the customer VPC used by this cluster.
+        # Corresponds to the JSON property `peeringName`
+        # @return [String]
+        attr_accessor :peering_name
+      
         # Output only. The internal IP address of this cluster's master endpoint.
         # Corresponds to the JSON property `privateEndpoint`
         # @return [String]
@@ -2510,6 +2533,7 @@ module Google
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @peering_name = args[:peering_name] if args.key?(:peering_name)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
         end
@@ -2714,6 +2738,25 @@ module Google
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @project_id = args[:project_id] if args.key?(:project_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # SandboxConfig contains configurations of the sandbox to use for the node.
+      class SandboxConfig
+        include Google::Apis::Core::Hashable
+      
+        # Type of the sandbox to use for the node.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -3455,6 +3498,26 @@ module Google
         def update!(**args)
           @enable_integrity_monitoring = args[:enable_integrity_monitoring] if args.key?(:enable_integrity_monitoring)
           @enable_secure_boot = args[:enable_secure_boot] if args.key?(:enable_secure_boot)
+        end
+      end
+      
+      # Configuration of Shielded Nodes feature.
+      class ShieldedNodes
+        include Google::Apis::Core::Hashable
+      
+        # Whether Shielded Nodes features are enabled on all nodes in this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       

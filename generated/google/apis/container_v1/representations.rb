@@ -352,6 +352,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SandboxConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServerConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class ShieldedInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ShieldedNodes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -647,6 +659,8 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :services_ipv4_cidr, as: 'servicesIpv4Cidr'
+          property :shielded_nodes, as: 'shieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
+      
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
@@ -694,6 +708,8 @@ module Google
           property :desired_node_pool_id, as: 'desiredNodePoolId'
           property :desired_node_version, as: 'desiredNodeVersion'
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1::ResourceUsageExportConfig::Representation
+      
+          property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
@@ -990,6 +1006,8 @@ module Google
           property :preemptible, as: 'preemptible'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ContainerV1::ReservationAffinity, decorator: Google::Apis::ContainerV1::ReservationAffinity::Representation
       
+          property :sandbox_config, as: 'sandboxConfig', class: Google::Apis::ContainerV1::SandboxConfig, decorator: Google::Apis::ContainerV1::SandboxConfig::Representation
+      
           property :service_account, as: 'serviceAccount'
           property :shielded_instance_config, as: 'shieldedInstanceConfig', class: Google::Apis::ContainerV1::ShieldedInstanceConfig, decorator: Google::Apis::ContainerV1::ShieldedInstanceConfig::Representation
       
@@ -1079,6 +1097,7 @@ module Google
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :enable_private_nodes, as: 'enablePrivateNodes'
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :peering_name, as: 'peeringName'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
         end
@@ -1130,6 +1149,13 @@ module Google
           property :node_pool_id, as: 'nodePoolId'
           property :project_id, as: 'projectId'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class SandboxConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :type, as: 'type'
         end
       end
       
@@ -1292,6 +1318,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable_integrity_monitoring, as: 'enableIntegrityMonitoring'
           property :enable_secure_boot, as: 'enableSecureBoot'
+        end
+      end
+      
+      class ShieldedNodes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

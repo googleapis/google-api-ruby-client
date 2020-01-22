@@ -183,6 +183,19 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::NodeManagement]
         attr_accessor :management
       
+        # Minimum CPU platform to be used for NAP created node pools.
+        # The instance may be scheduled on the specified or newer CPU platform.
+        # Applicable values are the friendly names of CPU platforms, such as
+        # <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
+        # <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
+        # information, read [how to specify min CPU
+        # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
+        # platform)
+        # To unset the min cpu platform field pass "automatic" as field value.
+        # Corresponds to the JSON property `minCpuPlatform`
+        # @return [String]
+        attr_accessor :min_cpu_platform
+      
         # Scopes that are used by NAP when creating node pools. If oauth_scopes are
         # specified, service_account should be empty.
         # Corresponds to the JSON property `oauthScopes`
@@ -224,6 +237,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @management = args[:management] if args.key?(:management)
+          @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @oauth_scopes = args[:oauth_scopes] if args.key?(:oauth_scopes)
           @service_account = args[:service_account] if args.key?(:service_account)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
@@ -2384,6 +2398,17 @@ module Google
         # @return [Array<Google::Apis::ContainerV1beta1::AcceleratorConfig>]
         attr_accessor :accelerators
       
+        # The Customer Managed Encryption Key used to encrypt the boot disk attached
+        # to each node in the node pool. This should be of the form
+        # projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/
+        # [KEY_NAME].
+        # For more information about protecting resources with Cloud KMS Keys please
+        # see:
+        # https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        # Corresponds to the JSON property `bootDiskKmsKey`
+        # @return [String]
+        attr_accessor :boot_disk_kms_key
+      
         # Size of the disk attached to each node, specified in GB.
         # The smallest allowed disk size is 10GB.
         # If unspecified, the default disk size is 100GB.
@@ -2474,7 +2499,6 @@ module Google
         # information, read [how to specify min CPU
         # platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-
         # platform)
-        # To unset the min cpu platform field pass "automatic" as field value.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -2553,6 +2577,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerators = args[:accelerators] if args.key?(:accelerators)
+          @boot_disk_kms_key = args[:boot_disk_kms_key] if args.key?(:boot_disk_kms_key)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @image_type = args[:image_type] if args.key?(:image_type)
@@ -3344,6 +3369,11 @@ module Google
         # @return [String]
         attr_accessor :sandbox_type
       
+        # Type of the sandbox to use for the node.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3351,6 +3381,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sandbox_type = args[:sandbox_type] if args.key?(:sandbox_type)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
