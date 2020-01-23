@@ -108,7 +108,7 @@ module Google
         #   * ``pubsub.project_id.`topic.id.with.dots` ``
         #   * `bigquery.table.project_id.dataset_id.table_id`
         #   * `bigquery.dataset.project_id.dataset_id`
-        #   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+        #   * `datacatalog.entry.project_id.location_id.entry_group_id.entry_id`
         #   `*_id`s shoud satisfy the standard SQL rules for identifiers.
         #   https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
         # @param [String] fields
@@ -610,53 +610,6 @@ module Google
           command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Sets the access control policy for a resource. Replaces any existing
-        # policy.
-        # Supported resources are:
-        # - Tag templates.
-        # - Entries.
-        # - Entry groups.
-        # Note, this method cannot be used to manage policies for BigQuery, Cloud
-        # Pub/Sub and any external Google Cloud Platform resources synced to Cloud
-        # Data Catalog.
-        # Callers must have following Google IAM permission
-        # - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag
-        # templates.
-        # - `datacatalog.entries.setIamPolicy` to set policies on entries.
-        # - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
-        # @param [String] resource
-        #   REQUIRED: The resource for which the policy is being specified.
-        #   See the operation documentation for the appropriate value for this field.
-        # @param [Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest] set_iam_policy_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Policy] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DatacatalogV1beta1::Policy]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_entry_iam_policy(resource, set_iam_policy_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+resource}:setIamPolicy', options)
-          command.request_representation = Google::Apis::DatacatalogV1beta1::SetIamPolicyRequest::Representation
-          command.request_object = set_iam_policy_request_object
-          command.response_representation = Google::Apis::DatacatalogV1beta1::Policy::Representation
-          command.response_class = Google::Apis::DatacatalogV1beta1::Policy
-          command.params['resource'] = resource unless resource.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -52,12 +52,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,13 +125,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :slot_pools, as: 'slotPools', class: Google::Apis::BigqueryreservationV1alpha2::SlotPool, decorator: Google::Apis::BigqueryreservationV1alpha2::SlotPool::Representation
       
-        end
-      end
-      
-      class LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :legacy_location_id, as: 'legacyLocationId'
         end
       end
       

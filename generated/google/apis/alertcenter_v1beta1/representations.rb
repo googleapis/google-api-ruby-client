@@ -506,6 +506,7 @@ module Google
       
           collection :messages, as: 'messages', class: Google::Apis::AlertcenterV1beta1::GmailMessageInfo, decorator: Google::Apis::AlertcenterV1beta1::GmailMessageInfo::Representation
       
+          property :system_action_type, as: 'systemActionType'
         end
       end
       

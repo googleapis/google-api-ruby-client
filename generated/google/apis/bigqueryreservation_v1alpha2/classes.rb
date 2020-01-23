@@ -140,28 +140,6 @@ module Google
         end
       end
       
-      # BigQuery-specific metadata about a location. This will be set on
-      # google.cloud.location.Location.metadata in Cloud Location API
-      # responses.
-      class LocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
-        # This is for any API consumers that need the legacy “US” and “EU” locations.
-        # Corresponds to the JSON property `legacyLocationId`
-        # @return [String]
-        attr_accessor :legacy_location_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @legacy_location_id = args[:legacy_location_id] if args.key?(:legacy_location_id)
-        end
-      end
-      
       # This resource represents a long-running operation that is the result of a
       # network API call.
       class Operation

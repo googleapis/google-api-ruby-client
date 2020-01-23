@@ -3904,6 +3904,32 @@ module Google
         end
       end
       
+      # Face detection annotation.
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The thumbnail of a person's face.
+        # Corresponds to the JSON property `thumbnail`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :thumbnail
+      
+        # The face tracks with attributes.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1Track>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
+          @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
       # Label annotation.
       class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         include Google::Apis::Core::Hashable
@@ -4633,6 +4659,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation]
         attr_accessor :explicit_annotation
       
+        # Face detection annotations.
+        # Corresponds to the JSON property `faceDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation>]
+        attr_accessor :face_detection_annotations
+      
         # Label annotations on frame level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `frameLabelAnnotations`
@@ -4717,6 +4748,7 @@ module Google
           @celebrity_recognition_annotations = args[:celebrity_recognition_annotations] if args.key?(:celebrity_recognition_annotations)
           @error = args[:error] if args.key?(:error)
           @explicit_annotation = args[:explicit_annotation] if args.key?(:explicit_annotation)
+          @face_detection_annotations = args[:face_detection_annotations] if args.key?(:face_detection_annotations)
           @frame_label_annotations = args[:frame_label_annotations] if args.key?(:frame_label_annotations)
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)

@@ -1613,9 +1613,12 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::RedactConfig]
         attr_accessor :redact_config
       
-        # When using the INSPECT_AND_TRANSFORM action, each match is replaced with
-        # the name of the info_type. For example, "My name is Jake" becomes "My name is
-        # [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+        # When using the
+        # INSPECT_AND_TRANSFORM
+        # action, each match is replaced with the name of the info_type. For example,
+        # "My name is Jake" becomes "My name is [PERSON_NAME]." The
+        # TRANSFORM
+        # action is equivalent to redacting.
         # Corresponds to the JSON property `replaceWithInfoTypeConfig`
         # @return [Google::Apis::HealthcareV1beta1::ReplaceWithInfoTypeConfig]
         attr_accessor :replace_with_info_type_config
@@ -2368,9 +2371,12 @@ module Google
         end
       end
       
-      # When using the INSPECT_AND_TRANSFORM action, each match is replaced with
-      # the name of the info_type. For example, "My name is Jake" becomes "My name is
-      # [PERSON_NAME]." The TRANSFORM action is equivalent to redacting.
+      # When using the
+      # INSPECT_AND_TRANSFORM
+      # action, each match is replaced with the name of the info_type. For example,
+      # "My name is Jake" becomes "My name is [PERSON_NAME]." The
+      # TRANSFORM
+      # action is equivalent to redacting.
       class ReplaceWithInfoTypeConfig
         include Google::Apis::Core::Hashable
       

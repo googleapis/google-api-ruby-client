@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class LocationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -64,13 +58,6 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::BigqueryreservationV1::Operation, decorator: Google::Apis::BigqueryreservationV1::Operation::Representation
       
-        end
-      end
-      
-      class LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :legacy_location_id, as: 'legacyLocationId'
         end
       end
       

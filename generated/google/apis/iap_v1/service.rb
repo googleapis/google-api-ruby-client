@@ -75,8 +75,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_oauth_project_brand(parent, brand_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/oauth/{+parent}/brands', options)
+        def create_project_brand(parent, brand_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/brands', options)
           command.request_representation = Google::Apis::IapV1::Brand::Representation
           command.request_object = brand_object
           command.response_representation = Google::Apis::IapV1::Brand::Representation
@@ -108,8 +108,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_oauth_project_brand(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/oauth/{+name}', options)
+        def get_project_brand(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::IapV1::Brand::Representation
           command.response_class = Google::Apis::IapV1::Brand
           command.params['name'] = name unless name.nil?
@@ -139,8 +139,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_oauth_project_brands(parent, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/oauth/{+parent}/brands', options)
+        def list_project_brands(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/brands', options)
           command.response_representation = Google::Apis::IapV1::ListBrandsResponse::Representation
           command.response_class = Google::Apis::IapV1::ListBrandsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -175,8 +175,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_oauth_project_brand_identity_aware_proxy_client(parent, identity_aware_proxy_client_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/oauth/{+parent}/identityAwareProxyClients', options)
+        def create_project_brand_identity_aware_proxy_client(parent, identity_aware_proxy_client_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/identityAwareProxyClients', options)
           command.request_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
           command.request_object = identity_aware_proxy_client_object
           command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
@@ -212,8 +212,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_oauth_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/oauth/{+name}', options)
+        def delete_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
           command.response_representation = Google::Apis::IapV1::Empty::Representation
           command.response_class = Google::Apis::IapV1::Empty
           command.params['name'] = name unless name.nil?
@@ -246,8 +246,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_oauth_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/oauth/{+name}', options)
+        def get_project_brand_identity_aware_proxy_client(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation
           command.response_class = Google::Apis::IapV1::IdentityAwareProxyClient
           command.params['name'] = name unless name.nil?
@@ -288,8 +288,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_oauth_project_brand_identity_aware_proxy_clients(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/oauth/{+parent}/identityAwareProxyClients', options)
+        def list_project_brand_identity_aware_proxy_clients(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/identityAwareProxyClients', options)
           command.response_representation = Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse::Representation
           command.response_class = Google::Apis::IapV1::ListIdentityAwareProxyClientsResponse
           command.params['parent'] = parent unless parent.nil?
@@ -325,8 +325,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reset_oauth_project_brand_identity_aware_proxy_client_secret(name, reset_identity_aware_proxy_client_secret_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/oauth/{+name}:resetSecret', options)
+        def reset_project_brand_identity_aware_proxy_client_secret(name, reset_identity_aware_proxy_client_secret_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:resetSecret', options)
           command.request_representation = Google::Apis::IapV1::ResetIdentityAwareProxyClientSecretRequest::Representation
           command.request_object = reset_identity_aware_proxy_client_secret_request_object
           command.response_representation = Google::Apis::IapV1::IdentityAwareProxyClient::Representation

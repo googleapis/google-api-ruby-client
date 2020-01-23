@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/video-intelligence/docs/
     module VideointelligenceV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20191109'
+      REVISION = '20200115'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

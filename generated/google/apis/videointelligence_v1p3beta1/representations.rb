@@ -616,6 +616,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1833,6 +1845,24 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :include_attributes, as: 'includeAttributes'
+          property :include_bounding_boxes, as: 'includeBoundingBoxes'
+          property :model, as: 'model'
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2109,6 +2139,8 @@ module Google
       
           property :explicit_annotation, as: 'explicitAnnotation', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation::Representation
       
+          collection :face_detection_annotations, as: 'faceDetectionAnnotations', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation::Representation
+      
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
       
           property :input_uri, as: 'inputUri'
@@ -2139,6 +2171,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :explicit_content_detection_config, as: 'explicitContentDetectionConfig', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentDetectionConfig, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentDetectionConfig::Representation
+      
+          property :face_detection_config, as: 'faceDetectionConfig', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionConfig, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionConfig::Representation
       
           property :label_detection_config, as: 'labelDetectionConfig', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelDetectionConfig, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelDetectionConfig::Representation
       

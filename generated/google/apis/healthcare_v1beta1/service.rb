@@ -3599,6 +3599,11 @@ module Google
         end
         
         # Update the message.
+        # The contents of the message in Message.data and data extracted from
+        # the contents such as Message.create_time cannot be altered. Only the
+        # Message.labels field is allowed to be updated. The labels in the
+        # request are merged with the existing set of labels. Existing labels with
+        # the same keys are updated.
         # @param [String] name
         #   Resource name of the Message, of the form
         #   `projects/`project_id`/datasets/`dataset_id`/hl7V2Stores/`hl7_v2_store_id`/
@@ -3610,9 +3615,6 @@ module Google
         #   see
         #   https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
         #   fieldmask
-        #   Only the `labels` field is allowed to be updated.
-        #   The labels in the request are merged with the existing set of labels.
-        #   Existing labels with the same keys are updated.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -962,6 +962,7 @@ module Google
       # * Suspicious message reported
       # * Phishing reclassification
       # * Malware reclassification
+      # * Gmail potential employee spoofing
       class MailPhishing
         include Google::Apis::Core::Hashable
       
@@ -986,6 +987,11 @@ module Google
         # @return [Array<Google::Apis::AlertcenterV1beta1::GmailMessageInfo>]
         attr_accessor :messages
       
+        # System actions on the messages.
+        # Corresponds to the JSON property `systemActionType`
+        # @return [String]
+        attr_accessor :system_action_type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -996,6 +1002,7 @@ module Google
           @is_internal = args[:is_internal] if args.key?(:is_internal)
           @malicious_entity = args[:malicious_entity] if args.key?(:malicious_entity)
           @messages = args[:messages] if args.key?(:messages)
+          @system_action_type = args[:system_action_type] if args.key?(:system_action_type)
         end
       end
       

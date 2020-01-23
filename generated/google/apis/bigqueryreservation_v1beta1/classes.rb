@@ -231,31 +231,6 @@ module Google
         end
       end
       
-      # The response message for Locations.ListLocations.
-      class ListLocationsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of locations that matches the specified filter in the request.
-        # Corresponds to the JSON property `locations`
-        # @return [Array<Google::Apis::BigqueryreservationV1beta1::Location>]
-        attr_accessor :locations
-      
-        # The standard List next-page token.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @locations = args[:locations] if args.key?(:locations)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
       # The response for ReservationService.ListReservations.
       class ListReservationsResponse
         include Google::Apis::Core::Hashable
@@ -279,75 +254,6 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @reservations = args[:reservations] if args.key?(:reservations)
-        end
-      end
-      
-      # A resource that represents Google Cloud Platform location.
-      class Location
-        include Google::Apis::Core::Hashable
-      
-        # The friendly name for this location, typically a nearby city name.
-        # For example, "Tokyo".
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Cross-service attributes for the location. For example
-        # `"cloud.googleapis.com/region": "us-east1"`
-        # Corresponds to the JSON property `labels`
-        # @return [Hash<String,String>]
-        attr_accessor :labels
-      
-        # The canonical id for this location. For example: `"us-east1"`.
-        # Corresponds to the JSON property `locationId`
-        # @return [String]
-        attr_accessor :location_id
-      
-        # Service-specific metadata. For example the available capacity at the given
-        # location.
-        # Corresponds to the JSON property `metadata`
-        # @return [Hash<String,Object>]
-        attr_accessor :metadata
-      
-        # Resource name for the location, which may vary between implementations.
-        # For example: `"projects/example-project/locations/us-east1"`
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @labels = args[:labels] if args.key?(:labels)
-          @location_id = args[:location_id] if args.key?(:location_id)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # BigQuery-specific metadata about a location. This will be set on
-      # google.cloud.location.Location.metadata in Cloud Location API
-      # responses.
-      class LocationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # The legacy BigQuery location ID, e.g. “EU” for the “europe” location.
-        # This is for any API consumers that need the legacy “US” and “EU” locations.
-        # Corresponds to the JSON property `legacyLocationId`
-        # @return [String]
-        attr_accessor :legacy_location_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @legacy_location_id = args[:legacy_location_id] if args.key?(:legacy_location_id)
         end
       end
       
@@ -382,7 +288,7 @@ module Google
       
         # If false, any query using this reservation will use idle slots from other
         # reservations within the same admin project. If true, a query using this
-        # reservation will execute with the maximum slot capacity as specified above.
+        # reservation will execute with the slot capacity specified above at most.
         # Corresponds to the JSON property `ignoreIdleSlots`
         # @return [Boolean]
         attr_accessor :ignore_idle_slots
@@ -394,10 +300,10 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Maximum slots available to this reservation. A slot is a unit of
-        # computational power in BigQuery, and serves as the unit of parallelism. In
-        # a scan of a multi-partitioned table, a single slot operates on a single
-        # partition of the table.
+        # Minimum slots available to this reservation. A slot is a unit of
+        # computational power in BigQuery, and serves as the unit of parallelism.
+        # Queries using this reservation might use more slots during runtime if
+        # ignore_idle_slots is set to false.
         # If the new reservation's slot capacity exceed the parent's slot capacity or
         # if total slot capacity of the new reservation and its siblings exceeds the
         # parent's slot capacity, the request will fail with

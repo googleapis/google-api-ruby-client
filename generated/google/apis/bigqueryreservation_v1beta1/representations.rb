@@ -58,25 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListLocationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListReservationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Location
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class LocationMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -162,39 +144,12 @@ module Google
         end
       end
       
-      class ListLocationsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :locations, as: 'locations', class: Google::Apis::BigqueryreservationV1beta1::Location, decorator: Google::Apis::BigqueryreservationV1beta1::Location::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class ListReservationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :reservations, as: 'reservations', class: Google::Apis::BigqueryreservationV1beta1::Reservation, decorator: Google::Apis::BigqueryreservationV1beta1::Reservation::Representation
       
-        end
-      end
-      
-      class Location
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :display_name, as: 'displayName'
-          hash :labels, as: 'labels'
-          property :location_id, as: 'locationId'
-          hash :metadata, as: 'metadata'
-          property :name, as: 'name'
-        end
-      end
-      
-      class LocationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :legacy_location_id, as: 'legacyLocationId'
         end
       end
       

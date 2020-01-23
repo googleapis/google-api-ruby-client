@@ -658,6 +658,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1927,6 +1933,15 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :thumbnail, :base64 => true, as: 'thumbnail'
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2146,6 +2161,8 @@ module Google
           property :error, as: 'error', class: Google::Apis::VideointelligenceV1::GoogleRpcStatus, decorator: Google::Apis::VideointelligenceV1::GoogleRpcStatus::Representation
       
           property :explicit_annotation, as: 'explicitAnnotation', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation::Representation
+      
+          collection :face_detection_annotations, as: 'faceDetectionAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation::Representation
       
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation::Representation
       
