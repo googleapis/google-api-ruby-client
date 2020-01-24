@@ -2682,6 +2682,11 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
         attr_accessor :labels
       
+        # The product launch stage for channels of this type.
+        # Corresponds to the JSON property `launchStage`
+        # @return [String]
+        attr_accessor :launch_stage
+      
         # The full REST resource name for this descriptor. The syntax is:
         # projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]
         # In the above, [TYPE] is the value of the type field.
@@ -2704,6 +2709,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @labels = args[:labels] if args.key?(:labels)
+          @launch_stage = args[:launch_stage] if args.key?(:launch_stage)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end

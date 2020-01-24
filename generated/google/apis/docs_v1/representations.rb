@@ -154,6 +154,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteFooterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeleteHeaderRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DeleteNamedRangeRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -986,6 +998,8 @@ module Google
       class CreateFooterRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :section_break_location, as: 'sectionBreakLocation', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1017,6 +1031,8 @@ module Google
       class CreateHeaderRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :section_break_location, as: 'sectionBreakLocation', class: Google::Apis::DocsV1::Location, decorator: Google::Apis::DocsV1::Location::Representation
+      
           property :type, as: 'type'
         end
       end
@@ -1080,6 +1096,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :range, as: 'range', class: Google::Apis::DocsV1::Range, decorator: Google::Apis::DocsV1::Range::Representation
       
+        end
+      end
+      
+      class DeleteFooterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :footer_id, as: 'footerId'
+        end
+      end
+      
+      class DeleteHeaderRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header_id, as: 'headerId'
         end
       end
       
@@ -1946,6 +1976,10 @@ module Google
       
           property :delete_content_range, as: 'deleteContentRange', class: Google::Apis::DocsV1::DeleteContentRangeRequest, decorator: Google::Apis::DocsV1::DeleteContentRangeRequest::Representation
       
+          property :delete_footer, as: 'deleteFooter', class: Google::Apis::DocsV1::DeleteFooterRequest, decorator: Google::Apis::DocsV1::DeleteFooterRequest::Representation
+      
+          property :delete_header, as: 'deleteHeader', class: Google::Apis::DocsV1::DeleteHeaderRequest, decorator: Google::Apis::DocsV1::DeleteHeaderRequest::Representation
+      
           property :delete_named_range, as: 'deleteNamedRange', class: Google::Apis::DocsV1::DeleteNamedRangeRequest, decorator: Google::Apis::DocsV1::DeleteNamedRangeRequest::Representation
       
           property :delete_paragraph_bullets, as: 'deleteParagraphBullets', class: Google::Apis::DocsV1::DeleteParagraphBulletsRequest, decorator: Google::Apis::DocsV1::DeleteParagraphBulletsRequest::Representation
@@ -2053,6 +2087,12 @@ module Google
       
           property :column_separator_style, as: 'columnSeparatorStyle'
           property :content_direction, as: 'contentDirection'
+          property :default_footer_id, as: 'defaultFooterId'
+          property :default_header_id, as: 'defaultHeaderId'
+          property :even_page_footer_id, as: 'evenPageFooterId'
+          property :even_page_header_id, as: 'evenPageHeaderId'
+          property :first_page_footer_id, as: 'firstPageFooterId'
+          property :first_page_header_id, as: 'firstPageHeaderId'
           property :margin_bottom, as: 'marginBottom', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
           property :margin_footer, as: 'marginFooter', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
@@ -2066,6 +2106,7 @@ module Google
           property :margin_top, as: 'marginTop', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
           property :section_type, as: 'sectionType'
+          property :use_first_page_header_footer, as: 'useFirstPageHeaderFooter'
         end
       end
       

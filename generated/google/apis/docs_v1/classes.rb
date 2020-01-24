@@ -365,11 +365,18 @@ module Google
       end
       
       # Creates a Footer. The new footer is applied to
-      # the DocumentStyle.
+      # the SectionStyle at the location of the
+      # SectionBreak if specificed, otherwise
+      # it is applied to the DocumentStyle.
       # If a footer of the specified type already exists, a 400 bad request error
       # is returned.
       class CreateFooterRequest
         include Google::Apis::Core::Hashable
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `sectionBreakLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :section_break_location
       
         # The type of footer to create.
         # Corresponds to the JSON property `type`
@@ -382,6 +389,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @section_break_location = args[:section_break_location] if args.key?(:section_break_location)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -455,11 +463,18 @@ module Google
       end
       
       # Creates a Header. The new header is applied to
-      # the DocumentStyle.
+      # the SectionStyle at the location of the
+      # SectionBreak if specificed, otherwise
+      # it is applied to the DocumentStyle.
       # If a header of the specified type already exists, a 400 bad request error
       # is returned.
       class CreateHeaderRequest
         include Google::Apis::Core::Hashable
+      
+        # A particular location in the document.
+        # Corresponds to the JSON property `sectionBreakLocation`
+        # @return [Google::Apis::DocsV1::Location]
+        attr_accessor :section_break_location
       
         # The type of header to create.
         # Corresponds to the JSON property `type`
@@ -472,6 +487,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @section_break_location = args[:section_break_location] if args.key?(:section_break_location)
           @type = args[:type] if args.key?(:type)
         end
       end
@@ -699,6 +715,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @range = args[:range] if args.key?(:range)
+        end
+      end
+      
+      # Deletes a Footer from the document.
+      class DeleteFooterRequest
+        include Google::Apis::Core::Hashable
+      
+        # The id of the footer to delete. If this footer is defined on
+        # DocumentStyle, the reference to
+        # this footer is removed, resulting in no footer of that type for
+        # the first section of the document. If this footer is defined on a
+        # SectionStyle, the reference to this
+        # footer is removed and the footer of that type is now continued from
+        # the previous section.
+        # Corresponds to the JSON property `footerId`
+        # @return [String]
+        attr_accessor :footer_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @footer_id = args[:footer_id] if args.key?(:footer_id)
+        end
+      end
+      
+      # Deletes a Header from the document.
+      class DeleteHeaderRequest
+        include Google::Apis::Core::Hashable
+      
+        # The id of the header to delete. If this header is defined on
+        # DocumentStyle, the reference to
+        # this header is removed, resulting in no header of that type for
+        # the first section of the document. If this header is defined on a
+        # SectionStyle, the reference to this
+        # header is removed and the header of that type is now continued from
+        # the previous section.
+        # Corresponds to the JSON property `headerId`
+        # @return [String]
+        attr_accessor :header_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header_id = args[:header_id] if args.key?(:header_id)
         end
       end
       
@@ -1077,7 +1143,6 @@ module Google
       
         # Indicates whether to use the even page header / footer IDs for the even
         # pages.
-        # This property is read-only.
         # Corresponds to the JSON property `useEvenPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_even_page_header_footer
@@ -1085,7 +1150,6 @@ module Google
       
         # Indicates whether to use the first page header / footer IDs for the first
         # page.
-        # This property is read-only.
         # Corresponds to the JSON property `useFirstPageHeaderFooter`
         # @return [Boolean]
         attr_accessor :use_first_page_header_footer
@@ -3951,7 +4015,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Creates a Footer. The new footer is applied to
-        # the DocumentStyle.
+        # the SectionStyle at the location of the
+        # SectionBreak if specificed, otherwise
+        # it is applied to the DocumentStyle.
         # If a footer of the specified type already exists, a 400 bad request error
         # is returned.
         # Corresponds to the JSON property `createFooter`
@@ -3968,7 +4034,9 @@ module Google
         attr_accessor :create_footnote
       
         # Creates a Header. The new header is applied to
-        # the DocumentStyle.
+        # the SectionStyle at the location of the
+        # SectionBreak if specificed, otherwise
+        # it is applied to the DocumentStyle.
         # If a header of the specified type already exists, a 400 bad request error
         # is returned.
         # Corresponds to the JSON property `createHeader`
@@ -3997,6 +4065,16 @@ module Google
         # Corresponds to the JSON property `deleteContentRange`
         # @return [Google::Apis::DocsV1::DeleteContentRangeRequest]
         attr_accessor :delete_content_range
+      
+        # Deletes a Footer from the document.
+        # Corresponds to the JSON property `deleteFooter`
+        # @return [Google::Apis::DocsV1::DeleteFooterRequest]
+        attr_accessor :delete_footer
+      
+        # Deletes a Header from the document.
+        # Corresponds to the JSON property `deleteHeader`
+        # @return [Google::Apis::DocsV1::DeleteHeaderRequest]
+        attr_accessor :delete_header
       
         # Deletes a NamedRange.
         # Corresponds to the JSON property `deleteNamedRange`
@@ -4152,6 +4230,8 @@ module Google
           @create_named_range = args[:create_named_range] if args.key?(:create_named_range)
           @create_paragraph_bullets = args[:create_paragraph_bullets] if args.key?(:create_paragraph_bullets)
           @delete_content_range = args[:delete_content_range] if args.key?(:delete_content_range)
+          @delete_footer = args[:delete_footer] if args.key?(:delete_footer)
+          @delete_header = args[:delete_header] if args.key?(:delete_header)
           @delete_named_range = args[:delete_named_range] if args.key?(:delete_named_range)
           @delete_paragraph_bullets = args[:delete_paragraph_bullets] if args.key?(:delete_paragraph_bullets)
           @delete_positioned_object = args[:delete_positioned_object] if args.key?(:delete_positioned_object)
@@ -4337,21 +4417,102 @@ module Google
         # The section's columns properties.
         # If empty, the section contains one column with the default properties in
         # the Docs editor.
+        # A section can be updated to have no more than three columns.
+        # When updating this property, setting a concrete value is required.
+        # Unsetting this property will result in a 400 bad request error.
         # Corresponds to the JSON property `columnProperties`
         # @return [Array<Google::Apis::DocsV1::SectionColumnProperties>]
         attr_accessor :column_properties
       
         # The style of column separators.
         # This style can be set even when there is one column in the section.
+        # When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `columnSeparatorStyle`
         # @return [String]
         attr_accessor :column_separator_style
       
         # The content direction of this section. If unset, the value defaults to
         # LEFT_TO_RIGHT.
+        # When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
         # Corresponds to the JSON property `contentDirection`
         # @return [String]
         attr_accessor :content_direction
+      
+        # The ID of the default footer. If unset, the value inherits from the
+        # previous SectionBreak's SectionStyle.
+        # If the value is unset in the first SectionBreak, it inherits from
+        # DocumentStyle's default_footer_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `defaultFooterId`
+        # @return [String]
+        attr_accessor :default_footer_id
+      
+        # The ID of the default header. If unset, the value inherits from the
+        # previous SectionBreak's SectionStyle.
+        # If the value is unset in the first SectionBreak, it inherits from
+        # DocumentStyle's default_header_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `defaultHeaderId`
+        # @return [String]
+        attr_accessor :default_header_id
+      
+        # The ID of the footer used only for even pages. If the value of
+        # DocumentStyle's use_even_page_header_footer is true,
+        # this value is used for the footers on even pages in the section. If it
+        # is false, the footers on even pages uses the default_footer_id. If unset, the
+        # value
+        # inherits from the previous SectionBreak's SectionStyle. If the value is unset
+        # in
+        # the first SectionBreak, it inherits from DocumentStyle's
+        # even_page_footer_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `evenPageFooterId`
+        # @return [String]
+        attr_accessor :even_page_footer_id
+      
+        # The ID of the header used only for even pages. If the value of
+        # DocumentStyle's use_even_page_header_footer is true,
+        # this value is used for the headers on even pages in the section. If it
+        # is false, the headers on even pages uses the default_header_id. If unset, the
+        # value
+        # inherits from the previous SectionBreak's SectionStyle. If the value is unset
+        # in
+        # the first SectionBreak, it inherits from DocumentStyle's
+        # even_page_header_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `evenPageHeaderId`
+        # @return [String]
+        attr_accessor :even_page_header_id
+      
+        # The ID of the footer used only for the first page of the section.
+        # If use_first_page_header_footer is true,
+        # this value is used for the footer on the first page of the section. If
+        # it is false, the footer on the first page of the section uses the
+        # default_footer_id.
+        # If unset, the value inherits from the previous SectionBreak's SectionStyle. If
+        # the value is unset in
+        # the first SectionBreak, it inherits from DocumentStyle's
+        # first_page_footer_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `firstPageFooterId`
+        # @return [String]
+        attr_accessor :first_page_footer_id
+      
+        # The ID of the header used only for the first page of the section.
+        # If use_first_page_header_footer is true,
+        # this value is used for the header on the first page of the section. If
+        # it is false, the header on the first page of the section uses the
+        # default_header_id.
+        # If unset, the value inherits from the previous SectionBreak's SectionStyle. If
+        # the value is unset in
+        # the first SectionBreak, it inherits from DocumentStyle's
+        # first_page_header_id.
+        # This property is read-only.
+        # Corresponds to the JSON property `firstPageHeaderId`
+        # @return [String]
+        attr_accessor :first_page_header_id
       
         # A magnitude in a single direction in the specified units.
         # Corresponds to the JSON property `marginBottom`
@@ -4388,6 +4549,18 @@ module Google
         # @return [String]
         attr_accessor :section_type
       
+        # Indicates whether to use the first page header / footer IDs for the first
+        # page of the section. If unset, it inherits from DocumentStyle's
+        # use_first_page_header_footer for the
+        # first section. If the value is unset for subsequent sectors, it should be
+        # interpreted as false.
+        # When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
+        # Corresponds to the JSON property `useFirstPageHeaderFooter`
+        # @return [Boolean]
+        attr_accessor :use_first_page_header_footer
+        alias_method :use_first_page_header_footer?, :use_first_page_header_footer
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4397,6 +4570,12 @@ module Google
           @column_properties = args[:column_properties] if args.key?(:column_properties)
           @column_separator_style = args[:column_separator_style] if args.key?(:column_separator_style)
           @content_direction = args[:content_direction] if args.key?(:content_direction)
+          @default_footer_id = args[:default_footer_id] if args.key?(:default_footer_id)
+          @default_header_id = args[:default_header_id] if args.key?(:default_header_id)
+          @even_page_footer_id = args[:even_page_footer_id] if args.key?(:even_page_footer_id)
+          @even_page_header_id = args[:even_page_header_id] if args.key?(:even_page_header_id)
+          @first_page_footer_id = args[:first_page_footer_id] if args.key?(:first_page_footer_id)
+          @first_page_header_id = args[:first_page_header_id] if args.key?(:first_page_header_id)
           @margin_bottom = args[:margin_bottom] if args.key?(:margin_bottom)
           @margin_footer = args[:margin_footer] if args.key?(:margin_footer)
           @margin_header = args[:margin_header] if args.key?(:margin_header)
@@ -4404,6 +4583,7 @@ module Google
           @margin_right = args[:margin_right] if args.key?(:margin_right)
           @margin_top = args[:margin_top] if args.key?(:margin_top)
           @section_type = args[:section_type] if args.key?(:section_type)
+          @use_first_page_header_footer = args[:use_first_page_header_footer] if args.key?(:use_first_page_header_footer)
         end
       end
       

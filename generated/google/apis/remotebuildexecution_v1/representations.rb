@@ -806,6 +806,7 @@ module Google
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'
           property :machine_type, as: 'machineType'
+          property :max_concurrent_actions, :numeric_string => true, as: 'maxConcurrentActions'
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :network_access, as: 'networkAccess'
           property :reserved, as: 'reserved'

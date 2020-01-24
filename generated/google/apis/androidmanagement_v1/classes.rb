@@ -1483,6 +1483,11 @@ module Google
       class KioskCustomization
         include Google::Apis::Core::Hashable
       
+        # Specifies whether the Settings app is allowed in kiosk mode.
+        # Corresponds to the JSON property `deviceSettings`
+        # @return [String]
+        attr_accessor :device_settings
+      
         # Sets the behavior of a device in kiosk mode when a user presses and holds (
         # long-presses) the Power button.
         # Corresponds to the JSON property `powerButtonActions`
@@ -1513,6 +1518,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @device_settings = args[:device_settings] if args.key?(:device_settings)
           @power_button_actions = args[:power_button_actions] if args.key?(:power_button_actions)
           @status_bar = args[:status_bar] if args.key?(:status_bar)
           @system_error_warnings = args[:system_error_warnings] if args.key?(:system_error_warnings)
@@ -2406,8 +2412,8 @@ module Google
       
         # Whether the kiosk custom launcher is enabled. This replaces the home screen
         # with a launcher that locks down the device to the apps installed via the
-        # applications setting. Apps appear on a single page in alphabetical order. The
-        # status bar is disabled when this is set.
+        # applications setting. Apps appear on a single page in alphabetical order. Use
+        # kioskCustomization to further configure the kiosk device behavior.
         # Corresponds to the JSON property `kioskCustomLauncherEnabled`
         # @return [Boolean]
         attr_accessor :kiosk_custom_launcher_enabled

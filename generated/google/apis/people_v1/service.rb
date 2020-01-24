@@ -190,11 +190,11 @@ module Google
         #   1 and
         #   1000, inclusive. Defaults to 30 if not set or set to 0.
         # @param [String] page_token
-        #   The next_page_token value returned from a previous call to
+        #   Optional. The next_page_token value returned from a previous call to
         #   [ListContactGroups](/people/api/rest/v1/contactgroups/list).
         #   Requests the next page of resources.
         # @param [String] sync_token
-        #   A sync token, returned by a previous call to `contactgroups.list`.
+        #   Optional. A sync token, returned by a previous call to `contactgroups.list`.
         #   Only resources changed since the sync token was created will be returned.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -229,7 +229,7 @@ module Google
         # user.
         # @param [String] resource_name
         #   The resource name for the contact group, assigned by the server. An ASCII
-        #   string, in the form of `contactGroups/`<var>contact_group_id</var>.
+        #   string, in the form of `contactGroups/`contact_group_id``.
         # @param [Google::Apis::PeopleV1::UpdateContactGroupRequest] update_contact_group_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -261,7 +261,6 @@ module Google
         end
         
         # Modify the members of a contact group owned by the authenticated user.
-        # <br>
         # The only system contact groups that can have members added are
         # `contactGroups/myContacts` and `contactGroups/starred`. Other system
         # contact groups are deprecated and can only have contacts removed.
@@ -424,13 +423,12 @@ module Google
         
         # Provides information about a person by specifying a resource name. Use
         # `people/me` to indicate the authenticated user.
-        # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] resource_name
         #   Required. The resource name of the person to provide information about.
         #   - To get information about the authenticated user, specify `people/me`.
         #   - To get information about a google account, specify
-        #   `people/`<var>account_id</var>.
+        #   `people/`account_id``.
         #   - To get information about a contact, specify the resource name that
         #   identifies the contact as returned by
         #   [`people.connections.list`](/people/api/rest/v1/people.connections/list).
@@ -504,7 +502,6 @@ module Google
         # Provides information about a list of specific people by specifying a list
         # of requested resource names. Use `people/me` to indicate the authenticated
         # user.
-        # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
@@ -548,7 +545,7 @@ module Google
         #   Required. The resource names of the people to provide information about.
         #   - To get information about the authenticated user, specify `people/me`.
         #   - To get information about a google account, specify
-        #   `people/`<var>account_id</var>.
+        #   `people/`account_id``.
         #   - To get information about a contact, specify the resource name that
         #   identifies the contact as returned by
         #   [`people.connections.list`](/people/api/rest/v1/people.connections/list).
@@ -585,10 +582,8 @@ module Google
         # Update contact data for an existing contact person. Any non-contact data
         # will not be modified.
         # The request throws a 400 error if `updatePersonFields` is not specified.
-        # <br>
         # The request throws a 400 error if `person.metadata.sources` is not
         # specified for the contact to be updated.
-        # <br>
         # The request throws a 400 error with an error with reason
         # `"failedPrecondition"` if `person.metadata.sources.etag` is different than
         # the contact's etag, which indicates the contact has changed since its data
@@ -597,7 +592,7 @@ module Google
         # @param [String] resource_name
         #   The resource name for the person, assigned by the server. An ASCII string
         #   with a max length of 27 characters, in the form of
-        #   `people/`<var>person_id</var>.
+        #   `people/`person_id``.
         # @param [Google::Apis::PeopleV1::Person] person_object
         # @param [String] update_person_fields
         #   Required. A field mask to restrict which fields on the person are updated.
@@ -689,7 +684,6 @@ module Google
         
         # Provides a list of the authenticated user's contacts merged with any
         # connected profiles.
-        # <br>
         # The request throws a 400 error if 'personFields' is not specified.
         # @param [String] resource_name
         #   Required. The resource name to return connections for. Only `people/me` is
@@ -699,7 +693,7 @@ module Google
         #   are
         #   between 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.
         # @param [String] page_token
-        #   The token of the page to be returned.
+        #   Optional. The token of the page to be returned.
         # @param [String] person_fields
         #   Required. A field mask to restrict which fields on each person are returned.
         #   Multiple
@@ -739,15 +733,17 @@ module Google
         #   path should start with `person.`: for example, `person.names` or
         #   `person.photos`.
         # @param [Boolean] request_sync_token
-        #   Whether the response should include a sync token, which can be used to get
+        #   Optional. Whether the response should include a sync token, which can be used
+        #   to get
         #   all changes since the last request. For subsequent sync requests use the
         #   `sync_token` param instead. Initial sync requests that specify
         #   `request_sync_token` have an additional rate limit.
         # @param [String] sort_order
-        #   The order in which the connections should be sorted. Defaults to
+        #   Optional. The order in which the connections should be sorted. Defaults to
         #   `LAST_MODIFIED_ASCENDING`.
         # @param [String] sync_token
-        #   A sync token returned by a previous call to `people.connections.list`.
+        #   Optional. A sync token returned by a previous call to `people.connections.list`
+        #   .
         #   Only resources changed since the sync token was created will be returned.
         #   Sync requests that specify `sync_token` have an additional rate limit.
         # @param [String] fields

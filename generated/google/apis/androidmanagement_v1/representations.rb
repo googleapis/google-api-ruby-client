@@ -752,6 +752,7 @@ module Google
       class KioskCustomization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_settings, as: 'deviceSettings'
           property :power_button_actions, as: 'powerButtonActions'
           property :status_bar, as: 'statusBar'
           property :system_error_warnings, as: 'systemErrorWarnings'

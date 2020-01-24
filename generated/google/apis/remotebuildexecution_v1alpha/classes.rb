@@ -2096,6 +2096,11 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # The maximum number of actions a worker can execute concurrently.
+        # Corresponds to the JSON property `maxConcurrentActions`
+        # @return [Fixnum]
+        attr_accessor :max_concurrent_actions
+      
         # Minimum CPU platform to use when creating the worker.
         # See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
         # Corresponds to the JSON property `minCpuPlatform`
@@ -2131,6 +2136,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @labels = args[:labels] if args.key?(:labels)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @max_concurrent_actions = args[:max_concurrent_actions] if args.key?(:max_concurrent_actions)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_access = args[:network_access] if args.key?(:network_access)
           @reserved = args[:reserved] if args.key?(:reserved)

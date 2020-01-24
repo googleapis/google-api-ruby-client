@@ -21,12 +21,11 @@ module Google
     # Cloud OS Login API
     #
     # You can use OS Login to manage access to your VM instances using IAM roles.
-    # For more information, read [OS Login](/compute/docs/oslogin/).
     #
     # @see https://cloud.google.com/compute/docs/oslogin/
     module OsloginV1
       VERSION = 'V1'
-      REVISION = '20191030'
+      REVISION = '20200120'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

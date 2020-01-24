@@ -305,7 +305,7 @@ module Google
         attr_accessor :name
       
         # The resource name for the contact group, assigned by the server. An ASCII
-        # string, in the form of `contactGroups/`<var>contact_group_id</var>.
+        # string, in the form of `contactGroups/`contact_group_id``.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -337,7 +337,7 @@ module Google
         attr_accessor :contact_group_id
       
         # The resource name for the contact group, assigned by the server. An ASCII
-        # string, in the form of `contactGroups/`<var>contact_group_id</var>.
+        # string, in the form of `contactGroups/`contact_group_id``.
         # Only contact_group_resource_name can be used for modifying memberships.
         # Any contact group membership can be removed, but only user group or
         # "myContacts" or "starred" system groups memberships can be added. A
@@ -749,7 +749,7 @@ module Google
         end
       end
       
-      # 
+      # The response to a get request for a list of people by resource name.
       class GetPeopleResponse
         include Google::Apis::Core::Hashable
       
@@ -858,7 +858,7 @@ module Google
         end
       end
       
-      # 
+      # The response to a request for the authenticated user's connections.
       class ListConnectionsResponse
         include Google::Apis::Core::Hashable
       
@@ -1004,14 +1004,14 @@ module Google
       class ModifyContactGroupMembersRequest
         include Google::Apis::Core::Hashable
       
-        # The resource names of the contact people to add in the form of
-        # `people/`<var>person_id</var>.
+        # Optional. The resource names of the contact people to add in the form of
+        # `people/`person_id``.
         # Corresponds to the JSON property `resourceNamesToAdd`
         # @return [Array<String>]
         attr_accessor :resource_names_to_add
       
-        # The resource names of the contact people to remove in the form of
-        # `people/`<var>person_id</var>.
+        # Optional. The resource names of the contact people to remove in the form of
+        # `people/`person_id``.
         # Corresponds to the JSON property `resourceNamesToRemove`
         # @return [Array<String>]
         attr_accessor :resource_names_to_remove
@@ -1342,7 +1342,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Address>]
         attr_accessor :addresses
       
-        # Output only. **DEPRECATED** (Please use `person.ageRanges` instead)**
+        # Output only. **DEPRECATED** (Please use `person.ageRanges` instead)
         # The person's age range.
         # Corresponds to the JSON property `ageRange`
         # @return [String]
@@ -1471,7 +1471,7 @@ module Google
       
         # The resource name for the person, assigned by the server. An ASCII string
         # with a max length of 27 characters, in the form of
-        # `people/`<var>person_id</var>.
+        # `people/`person_id``.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
@@ -1724,9 +1724,10 @@ module Google
         attr_accessor :metadata
       
         # The URL of the photo. You can change the desired size by appending a query
-        # parameter `sz=`<var>size</var> at the end of the url. Example:
-        # `https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/
-        # 00gzXvDBYqw/s100/photo.jpg?sz=50`
+        # parameter `sz=`size`` at the end of the url, where `size` is the size in
+        # pixels. Example:
+        # https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/
+        # 00gzXvDBYqw/s100/photo.jpg?sz=50
         # Corresponds to the JSON property `url`
         # @return [String]
         attr_accessor :url
