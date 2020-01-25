@@ -352,7 +352,7 @@ module Google
         #   The ID of the spreadsheet to update.
         # @param [String] range
         #   The A1 notation of a range to search for a logical table of data.
-        #   Values will be appended after the last row of the table.
+        #   Values are appended after the last row of the table.
         # @param [Google::Apis::SheetsV4::ValueRange] value_range_object
         # @param [Boolean] include_values_in_response
         #   Determines if the update response should include the values
@@ -490,9 +490,8 @@ module Google
         # @param [String] major_dimension
         #   The major dimension that results should use.
         #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
-        #   `[[1,2],[3,4]]`,
-        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        #   then requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
+        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns
         #   `[[1,3],[2,4]]`.
         # @param [Array<String>, String] ranges
         #   The A1 notation of the values to retrieve.
@@ -690,10 +689,9 @@ module Google
         #   The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
         # @param [String] major_dimension
         #   The major dimension that results should use.
-        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        #   then requesting `range=A1:B2,majorDimension=ROWS` will return
-        #   `[[1,2],[3,4]]`,
-        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+        #   For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then
+        #   requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,
+        #   whereas requesting `range=A1:B2,majorDimension=COLUMNS` returns
         #   `[[1,3],[2,4]]`.
         # @param [String] value_render_option
         #   How values should be represented in the output.
@@ -741,9 +739,9 @@ module Google
         #   Determines if the update response should include the values
         #   of the cells that were updated. By default, responses
         #   do not include the updated values.
-        #   If the range to write was larger than than the range actually written,
-        #   the response will include all values in the requested range (excluding
-        #   trailing empty rows and columns).
+        #   If the range to write was larger than the range actually written, the
+        #   response includes all values in the requested range (excluding trailing
+        #   empty rows and columns).
         # @param [String] response_date_time_render_option
         #   Determines how dates, times, and durations in the response should be
         #   rendered. This is ignored if response_value_render_option is

@@ -56,8 +56,7 @@ module Google
       # Google Cloud Platform provides graphics processing units (accelerators) that
       # you can add to VM instances to improve or accelerate performance when working
       # with intensive workloads. For more information, read GPUs on Compute Engine. (=
-      # = resource_for beta.acceleratorTypes ==) (== resource_for v1.acceleratorTypes =
-      # =)
+      # = resource_for `$api_version`.acceleratorTypes ==)
       class AcceleratorType
         include Google::Apis::Core::Hashable
       
@@ -527,21 +526,22 @@ module Google
         end
       end
       
-      # Represents an IP Address resource.
-      # An address resource represents a regional internal IP address. Regional
-      # internal IP addresses are RFC 1918 addresses that come from either a primary
-      # or secondary IP range of a subnet in a VPC network. Regional external IP
-      # addresses can be assigned to GCP VM instances, Cloud VPN gateways, regional
-      # external forwarding rules for network load balancers (in either Standard or
-      # Premium Tier), and regional external forwarding rules for HTTP(S), SSL Proxy,
-      # and TCP Proxy load balancers in Standard Tier. For more information, read IP
-      # addresses.
-      # A globalAddresses resource represent a global external IP address. Global
-      # external IP addresses are IPv4 or IPv6 addresses. They can only be assigned to
-      # global forwarding rules for HTTP(S), SSL Proxy, or TCP Proxy load balancers in
-      # Premium Tier. For more information, read Global resources. (== resource_for
-      # beta.addresses ==) (== resource_for v1.addresses ==) (== resource_for beta.
-      # globalAddresses ==) (== resource_for v1.globalAddresses ==)
+      # Use global external addresses for GFE-based external HTTP(S) load balancers in
+      # Premium Tier.
+      # Use global internal addresses for reserved peering network range.
+      # Use regional external addresses for the following resources:
+      # - External IP addresses for VM instances - Regional external forwarding rules -
+      # Cloud NAT external IP addresses - GFE based LBs in Standard Tier - Network
+      # LBs in Premium or Standard Tier - Cloud VPN gateways (both Classic and HA)
+      # Use regional internal IP addresses for subnet IP ranges (primary and secondary)
+      # . This includes:
+      # - Internal IP addresses for VM instances - Alias IP ranges of VM instances (/
+      # 32 only) - Regional internal forwarding rules - Internal TCP/UDP load balancer
+      # addresses - Internal HTTP(S) load balancer addresses - Cloud DNS inbound
+      # forwarding IP addresses
+      # For more information, read reserved IP address.
+      # (== resource_for `$api_version`.addresses ==) (== resource_for `$api_version`.
+      # globalAddresses ==)
       class Address
         include Google::Apis::Core::Hashable
       
@@ -1175,6 +1175,11 @@ module Google
         # @return [Google::Apis::ComputeV1::CustomerEncryptionKey]
         attr_accessor :disk_encryption_key
       
+        # The size of the disk in GB.
+        # Corresponds to the JSON property `diskSizeGb`
+        # @return [Fixnum]
+        attr_accessor :disk_size_gb
+      
         # A list of features to enable on the guest operating system. Applicable only
         # for bootable images. Read  Enabling guest operating system features to see a
         # list of available options.
@@ -1253,6 +1258,7 @@ module Google
           @boot = args[:boot] if args.key?(:boot)
           @device_name = args[:device_name] if args.key?(:device_name)
           @disk_encryption_key = args[:disk_encryption_key] if args.key?(:disk_encryption_key)
+          @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @index = args[:index] if args.key?(:index)
           @initialize_params = args[:initialize_params] if args.key?(:initialize_params)
@@ -1489,14 +1495,16 @@ module Google
       end
       
       # Represents an Autoscaler resource.
+      # Google Compute Engine has two Autoscaler resources:
+      # * [Global](/compute/docs/reference/rest/latest/autoscalers) * [Regional](/
+      # compute/docs/reference/rest/latest/regionAutoscalers)
       # Use autoscalers to automatically add or delete instances from a managed
       # instance group according to your defined autoscaling policy. For more
       # information, read Autoscaling Groups of Instances.
       # For zonal managed instance groups resource, use the autoscaler resource.
       # For regional managed instance groups, use the regionAutoscalers resource. (==
-      # resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==) (==
-      # resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers =
-      # =)
+      # resource_for `$api_version`.autoscalers ==) (== resource_for `$api_version`.
+      # regionAutoscalers ==)
       class Autoscaler
         include Google::Apis::Core::Hashable
       
@@ -2549,8 +2557,12 @@ module Google
       # Represents a Backend Service resource.
       # A backend service contains configuration values for Google Cloud Platform load
       # balancing services.
+      # Backend services in Google Compute Engine can be either regionally or globally
+      # scoped.
+      # * [Global](/compute/docs/reference/rest/latest/backendServices) * [Regional](/
+      # compute/docs/reference/rest/latest/regionBackendServices)
       # For more information, read Backend Services.
-      # (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)
+      # (== resource_for `$api_version`.backendService ==)
       class BackendService
         include Google::Apis::Core::Hashable
       
@@ -2622,9 +2634,11 @@ module Google
       
         # The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for
         # health checking this BackendService. Currently at most one health check can be
-        # specified, and a health check is required for Compute Engine backend services.
-        # A health check must not be specified for App Engine backend and Cloud Function
-        # backend.
+        # specified. Health check is optional for Compute Engine backend services if
+        # there is no backend. A health check must not be specified when adding Internet
+        # Network Endpoint Group or Serverless Network Endpoint Group as backends. In
+        # all other cases, a health check is required for Compute Engine backend
+        # services.
         # For internal load balancing, a URL to a HealthCheck resource must be specified
         # instead.
         # Corresponds to the JSON property `healthChecks`
@@ -3279,7 +3293,7 @@ module Google
         # * `group:`emailid``: An email address that represents a Google group. For
         # example, `admins@example.com`.
         # * `deleted:user:`emailid`?uid=`uniqueid``: An email address (plus unique
-        # identifier) representing a user that has been recently deleted. For example,`
+        # identifier) representing a user that has been recently deleted. For example, `
         # alice@example.com?uid=123456789012345678901`. If the user is recovered, this
         # value reverts to `user:`emailid`` and the recovered user retains the role in
         # the binding.
@@ -3454,8 +3468,8 @@ module Google
       # Creating a commitment resource means that you are purchasing a committed use
       # contract with an explicit start and end time. You can create commitments based
       # on vCPUs and memory usage and receive discounted rates. For full details, read
-      # Signing Up for Committed Use Discounts. (== resource_for beta.
-      # regionCommitments ==) (== resource_for v1.regionCommitments ==)
+      # Signing Up for Committed Use Discounts. (== resource_for `$api_version`.
+      # regionCommitments ==)
       class Commitment
         include Google::Apis::Core::Hashable
       
@@ -4077,8 +4091,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :expose_headers
       
-        # Specifies how long the results of a preflight request can be cached. This
-        # translates to the content for the Access-Control-Max-Age header.
+        # Specifies how long results of a preflight request can be cached in seconds.
+        # This translates to the Access-Control-Max-Age header.
         # Corresponds to the JSON property `maxAge`
         # @return [Fixnum]
         attr_accessor :max_age
@@ -4216,15 +4230,17 @@ module Google
       end
       
       # Represents a Persistent Disk resource.
+      # Google Compute Engine has two Disk resources:
+      # * [Global](/compute/docs/reference/rest/latest/disks) * [Regional](/compute/
+      # docs/reference/rest/latest/regionDisks)
       # Persistent disks are required for running your VM instances. Create both boot
       # and non-boot (data) persistent disks. For more information, read Persistent
       # Disks. For more storage options, read Storage options.
       # The disks resource represents a zonal persistent disk. For more information,
       # read Zonal persistent disks.
       # The regionDisks resource represents a regional persistent disk. For more
-      # information, read  Regional resources. (== resource_for beta.disks ==) (==
-      # resource_for v1.disks ==) (== resource_for v1.regionDisks ==) (== resource_for
-      # beta.regionDisks ==)
+      # information, read  Regional resources. (== resource_for `$api_version`.disks ==
+      # ) (== resource_for `$api_version`.regionDisks ==)
       class Disk
         include Google::Apis::Core::Hashable
       
@@ -4802,14 +4818,16 @@ module Google
       end
       
       # Represents a Disk Type resource.
+      # Google Compute Engine has two Disk Type resources:
+      # * [Global](/compute/docs/reference/rest/latest/diskTypes) * [Regional](/
+      # compute/docs/reference/rest/latest/regionDiskTypes)
       # You can choose from a variety of disk types based on your needs. For more
       # information, read Storage options.
       # The diskTypes resource represents disk types for a zonal persistent disk. For
       # more information, read Zonal persistent disks.
       # The regionDiskTypes resource represents disk types for a regional persistent
-      # disk. For more information, read Regional persistent disks. (== resource_for
-      # beta.diskTypes ==) (== resource_for v1.diskTypes ==) (== resource_for v1.
-      # regionDiskTypes ==) (== resource_for beta.regionDiskTypes ==)
+      # disk. For more information, read Regional persistent disks. (== resource_for `$
+      # api_version`.diskTypes ==) (== resource_for `$api_version`.regionDiskTypes ==)
       class DiskType
         include Google::Apis::Core::Hashable
       
@@ -5670,7 +5688,7 @@ module Google
       end
       
       # External VPN gateway is the on-premises VPN gateway(s) or another cloud
-      # provider?s VPN gateway that connects to your Google Cloud VPN gateway. To
+      # provider's VPN gateway that connects to your Google Cloud VPN gateway. To
       # create a highly available VPN from Google Cloud to your on-premises side or
       # another Cloud provider's VPN gateway, you must create a external VPN gateway
       # resource in GCP, which provides the information to GCP about your external VPN
@@ -5779,7 +5797,7 @@ module Google
       
         # IP address of the interface in the external VPN gateway. Only IPv4 is
         # supported. This IP address can be either from your on-premise gateway or
-        # another Cloud provider?s VPN gateway, it cannot be an IP address from Google
+        # another Cloud provider's VPN gateway, it cannot be an IP address from Google
         # Compute Engine.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
@@ -6356,16 +6374,18 @@ module Google
       end
       
       # Represents a Forwarding Rule resource.
+      # Forwarding rule resources in GCP can be either regional or global in scope:
+      # * [Global](/compute/docs/reference/rest/latest/globalForwardingRules) * [
+      # Regional](/compute/docs/reference/rest/latest/forwardingRules)
       # A forwarding rule and its corresponding IP address represent the frontend
       # configuration of a Google Cloud Platform load balancer. Forwarding rules can
       # also reference target instances and Cloud VPN Classic gateways (
       # targetVpnGateway).
       # For more information, read Forwarding rule concepts and Using protocol
       # forwarding.
-      # (== resource_for beta.forwardingRules ==) (== resource_for v1.forwardingRules =
-      # =) (== resource_for beta.globalForwardingRules ==) (== resource_for v1.
-      # globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (==
-      # resource_for v1.regionForwardingRules ==)
+      # (== resource_for `$api_version`.forwardingRules ==) (== resource_for `$
+      # api_version`.globalForwardingRules ==) (== resource_for `$api_version`.
+      # regionForwardingRules ==)
       class ForwardingRule
         include Google::Apis::Core::Hashable
       
@@ -6412,6 +6432,15 @@ module Google
         attr_accessor :all_ports
         alias_method :all_ports?, :all_ports
       
+        # This field is used along with the backend_service field for internal load
+        # balancing or with the target field for internal TargetInstance. If the field
+        # is set to TRUE, clients can access ILB from all regions. Otherwise only allows
+        # access from clients in the same region as the internal load balancer.
+        # Corresponds to the JSON property `allowGlobalAccess`
+        # @return [Boolean]
+        attr_accessor :allow_global_access
+        alias_method :allow_global_access?, :allow_global_access
+      
         # This field is only used for INTERNAL load balancing.
         # For internal load balancing, this field identifies the BackendService resource
         # to receive the matched traffic.
@@ -6430,6 +6459,18 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a ForwardingRule. Include the fingerprint in patch request to ensure
+        # that you do not overwrite changes that were applied from another concurrent
+        # request.
+        # To see the latest fingerprint, make a get() request to retrieve a
+        # ForwardingRule.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -6443,19 +6484,36 @@ module Google
         # @return [String]
         attr_accessor :ip_version
       
+        # Indicates whether or not this load balancer can be used as a collector for
+        # packet mirroring. To prevent mirroring loops, instances behind this load
+        # balancer will not have their traffic mirrored even if a PacketMirroring rule
+        # applies to them. This can only be set to true for load balancers that have
+        # their loadBalancingScheme set to INTERNAL.
+        # Corresponds to the JSON property `isMirroringCollector`
+        # @return [Boolean]
+        attr_accessor :is_mirroring_collector
+        alias_method :is_mirroring_collector?, :is_mirroring_collector
+      
         # [Output Only] Type of the resource. Always compute#forwardingRule for
         # Forwarding Rule resources.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # Specifies the forwarding rule type. EXTERNAL is used for: - Classic Cloud VPN
-        # gateways - Protocol forwarding to VMs from an external IP address - The
-        # following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/UDP.
-        # INTERNAL is used for: - Protocol forwarding to VMs from an internal IP address
+        # Specifies the forwarding rule type.
+        # 
+        # - EXTERNAL is used for:
+        # - Classic Cloud VPN gateways
+        # - Protocol forwarding to VMs from an external IP address
+        # - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network TCP/
+        # UDP
+        # - INTERNAL is used for:
+        # - Protocol forwarding to VMs from an internal IP address
         # - Internal TCP/UDP load balancers
-        # INTERNAL_MANAGED is used for: - Internal HTTP(S) load balancers
-        # INTERNAL_SELF_MANAGED is used for: - Traffic Director
+        # - INTERNAL_MANAGED is used for:
+        # - Internal HTTP(S) load balancers
+        # - >INTERNAL_SELF_MANAGED is used for:
+        # - Traffic Director
         # For more information about forwarding rules, refer to Forwarding rule concepts.
         # Corresponds to the JSON property `loadBalancingScheme`
         # @return [String]
@@ -6589,8 +6647,8 @@ module Google
         # forwarding rules, this target must live in the same region as the forwarding
         # rule. For global forwarding rules, this target must be a global load balancing
         # resource. The forwarded traffic must be of a type appropriate to the target
-        # object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        # are valid.
+        # object. For INTERNAL_SELF_MANAGED load balancing, only targetHttpProxy is
+        # valid, not targetHttpsProxy.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -6604,11 +6662,14 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
           @all_ports = args[:all_ports] if args.key?(:all_ports)
+          @allow_global_access = args[:allow_global_access] if args.key?(:allow_global_access)
           @backend_service = args[:backend_service] if args.key?(:backend_service)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @ip_version = args[:ip_version] if args.key?(:ip_version)
+          @is_mirroring_collector = args[:is_mirroring_collector] if args.key?(:is_mirroring_collector)
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @metadata_filters = args[:metadata_filters] if args.key?(:metadata_filters)
@@ -7215,20 +7276,13 @@ module Google
       
         # Specifies how port is selected for health checking, can be one of following
         # values:
-        # USE_FIXED_PORT: The port number in
-        # port
-        # is used for health checking.
-        # USE_NAMED_PORT: The
-        # portName
-        # is used for health checking.
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
         # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
         # network endpoint is used for health checking. For other backends, the port or
         # named port specified in the Backend Service is used for health checking.
-        # If not specified, HTTP2 health check follows behavior specified in
-        # port
-        # and
-        # portName
-        # fields.
+        # If not specified, HTTP2 health check follows behavior specified in port and
+        # portName fields.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -7292,20 +7346,13 @@ module Google
       
         # Specifies how port is selected for health checking, can be one of following
         # values:
-        # USE_FIXED_PORT: The port number in
-        # port
-        # is used for health checking.
-        # USE_NAMED_PORT: The
-        # portName
-        # is used for health checking.
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
         # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
         # network endpoint is used for health checking. For other backends, the port or
         # named port specified in the Backend Service is used for health checking.
-        # If not specified, HTTP health check follows behavior specified in
-        # port
-        # and
-        # portName
-        # fields.
+        # If not specified, HTTP health check follows behavior specified in port and
+        # portName fields.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -7369,20 +7416,13 @@ module Google
       
         # Specifies how port is selected for health checking, can be one of following
         # values:
-        # USE_FIXED_PORT: The port number in
-        # port
-        # is used for health checking.
-        # USE_NAMED_PORT: The
-        # portName
-        # is used for health checking.
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
         # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
         # network endpoint is used for health checking. For other backends, the port or
         # named port specified in the Backend Service is used for health checking.
-        # If not specified, HTTPS health check follows behavior specified in
-        # port
-        # and
-        # portName
-        # fields.
+        # If not specified, HTTPS health check follows behavior specified in port and
+        # portName fields.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -7422,8 +7462,12 @@ module Google
       end
       
       # Represents a Health Check resource.
-      # Health checks are used for most GCP load balancers and managed instance group
-      # auto-healing. For more information, read Health Check Concepts.
+      # Google Compute Engine has two Health Check resources:
+      # * [Global](/compute/docs/reference/rest/latest/healthChecks) * [Regional](/
+      # compute/docs/reference/rest/latest/regionHealthChecks)
+      # Internal HTTP(S) load balancers use regional health checks. All other types of
+      # GCP load balancers and managed instance group auto-healing use global health
+      # checks. For more information, read Health Check Concepts.
       # To perform health checks on network load balancers, you must use either
       # httpHealthChecks or httpsHealthChecks.
       class HealthCheck
@@ -8568,7 +8612,9 @@ module Google
       
         # The path that will be used in the redirect response instead of the one that
         # was supplied in the request.
-        # Only one of pathRedirect or prefixRedirect must be specified.
+        # pathRedirect cannot be supplied together with prefixRedirect. Supply one alone
+        # or neither. If neither is supplied, the path of the original request will be
+        # used for the redirect.
         # The value must be between 1 and 1024 characters.
         # Corresponds to the JSON property `pathRedirect`
         # @return [String]
@@ -8576,6 +8622,10 @@ module Google
       
         # The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
         # retaining the remaining portion of the URL before redirecting the request.
+        # prefixRedirect cannot be supplied together with pathRedirect. Supply one alone
+        # or neither. If neither is supplied, the path of the original request will be
+        # used for the redirect.
+        # The value must be between 1 and 1024 characters.
         # Corresponds to the JSON property `prefixRedirect`
         # @return [String]
         attr_accessor :prefix_redirect
@@ -9144,8 +9194,7 @@ module Google
       
       # Represents an Image resource.
       # You can use images to create boot disks for your VM instances. For more
-      # information, read Images. (== resource_for beta.images ==) (== resource_for v1.
-      # images ==)
+      # information, read Images. (== resource_for `$api_version`.images ==)
       class Image
         include Google::Apis::Core::Hashable
       
@@ -9532,8 +9581,8 @@ module Google
       
       # Represents an Instance resource.
       # An instance is a virtual machine that is hosted on Google Cloud Platform. For
-      # more information, read Virtual Machine Instances. (== resource_for beta.
-      # instances ==) (== resource_for v1.instances ==)
+      # more information, read Virtual Machine Instances. (== resource_for `$
+      # api_version`.instances ==)
       class Instance
         include Google::Apis::Core::Hashable
       
@@ -9897,9 +9946,8 @@ module Google
       # groups of heterogeneous instances or if you need to manage the instances
       # yourself. You cannot create regional unmanaged instance groups.
       # For more information, read Instance groups.
-      # (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==)
-      # (== resource_for beta.regionInstanceGroups ==) (== resource_for v1.
-      # regionInstanceGroups ==)
+      # (== resource_for `$api_version`.instanceGroups ==) (== resource_for `$
+      # api_version`.regionInstanceGroups ==)
       class InstanceGroup
         include Google::Apis::Core::Hashable
       
@@ -10246,9 +10294,8 @@ module Google
       # single entity. For more information, read Instance groups.
       # For zonal Managed Instance Group, use the instanceGroupManagers resource.
       # For regional Managed Instance Group, use the regionInstanceGroupManagers
-      # resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for v1.
-      # instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==)
-      # (== resource_for v1.regionInstanceGroupManagers ==)
+      # resource. (== resource_for `$api_version`.instanceGroupManagers ==) (==
+      # resource_for `$api_version`.regionInstanceGroupManagers ==)
       class InstanceGroupManager
         include Google::Apis::Core::Hashable
       
@@ -11868,8 +11915,8 @@ module Google
       
       # Represents an Instance Template resource.
       # You can use instance templates to create VM instances and managed instance
-      # groups. For more information, read Instance Templates. (== resource_for beta.
-      # instanceTemplates ==) (== resource_for v1.instanceTemplates ==)
+      # groups. For more information, read Instance Templates. (== resource_for `$
+      # api_version`.instanceTemplates ==)
       class InstanceTemplate
         include Google::Apis::Core::Hashable
       
@@ -12356,8 +12403,7 @@ module Google
       # Represents an Interconnect resource.
       # An Interconnect resource is a dedicated connection between the GCP network and
       # your on-premises network. For more information, read the  Dedicated
-      # Interconnect Overview. (== resource_for v1.interconnects ==) (== resource_for
-      # beta.interconnects ==)
+      # Interconnect Overview. (== resource_for `$api_version`.interconnects ==)
       class Interconnect
         include Google::Apis::Core::Hashable
       
@@ -12551,8 +12597,8 @@ module Google
       # Represents an Interconnect Attachment (VLAN) resource.
       # You can use Interconnect attachments (VLANS) to connect your Virtual Private
       # Cloud networks to your on-premises networks through an Interconnect. For more
-      # information, read  Creating VLAN Attachments. (== resource_for beta.
-      # interconnectAttachments ==) (== resource_for v1.interconnectAttachments ==)
+      # information, read  Creating VLAN Attachments. (== resource_for `$api_version`.
+      # interconnectAttachments ==)
       class InterconnectAttachment
         include Google::Apis::Core::Hashable
       
@@ -12589,7 +12635,7 @@ module Google
         # prefixes must be within link-local address space (169.254.0.0/16) and must be /
         # 29 or shorter (/28, /27, etc). Google will attempt to select an unused /29
         # from the supplied candidate prefix(es). The request will fail if all possible /
-        # 29s are in use on Google?s edge. If not supplied, Google will randomly select
+        # 29s are in use on Google's edge. If not supplied, Google will randomly select
         # an unused /29 from all of link-local space.
         # Corresponds to the JSON property `candidateSubnets`
         # @return [Array<String>]
@@ -13038,7 +13084,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Plain text name of the Interconnect this attachment is connected to, as
-        # displayed in the Partner?s portal. For instance "Chicago 1". This value may be
+        # displayed in the Partner's portal. For instance "Chicago 1". This value may be
         # validated to match approved Partner values.
         # Corresponds to the JSON property `interconnectName`
         # @return [String]
@@ -13050,7 +13096,7 @@ module Google
         # @return [String]
         attr_accessor :partner_name
       
-        # URL of the Partner?s portal for this Attachment. Partners may customise this
+        # URL of the Partner's portal for this Attachment. Partners may customise this
         # to be a deep link to the specific resource on the Partner portal. This value
         # may be validated to match approved Partner values.
         # Corresponds to the JSON property `portalUrl`
@@ -13216,7 +13262,7 @@ module Google
       end
       
       # Diagnostics information about interconnect, contains detailed and current
-      # technical information about Google?s side of the connection.
+      # technical information about Google's side of the connection.
       class InterconnectDiagnostics
         include Google::Apis::Core::Hashable
       
@@ -13279,12 +13325,12 @@ module Google
       class InterconnectDiagnosticsLinkLacpStatus
         include Google::Apis::Core::Hashable
       
-        # System ID of the port on Google?s side of the LACP exchange.
+        # System ID of the port on Google's side of the LACP exchange.
         # Corresponds to the JSON property `googleSystemId`
         # @return [String]
         attr_accessor :google_system_id
       
-        # System ID of the port on the neighbor?s side of the LACP exchange.
+        # System ID of the port on the neighbor's side of the LACP exchange.
         # Corresponds to the JSON property `neighborSystemId`
         # @return [String]
         attr_accessor :neighbor_system_id
@@ -13872,7 +13918,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Diagnostics information about interconnect, contains detailed and current
-        # technical information about Google?s side of the connection.
+        # technical information about Google's side of the connection.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::ComputeV1::InterconnectDiagnostics]
         attr_accessor :result
@@ -14371,7 +14417,7 @@ module Google
       # Represents a Machine Type resource.
       # You can use specific machine types for your VM instances based on performance
       # and pricing requirements. For more information, read Machine Types. (==
-      # resource_for v1.machineTypes ==) (== resource_for beta.machineTypes ==)
+      # resource_for `$api_version`.machineTypes ==)
       class MachineType
         include Google::Apis::Core::Hashable
       
@@ -14867,6 +14913,11 @@ module Google
         # @return [String]
         attr_accessor :instance
       
+        # [Output Only] Health state of the instance per health-check.
+        # Corresponds to the JSON property `instanceHealth`
+        # @return [Array<Google::Apis::ComputeV1::ManagedInstanceInstanceHealth>]
+        attr_accessor :instance_health
+      
         # [Output Only] The status of the instance. This field is empty when the
         # instance does not exist.
         # Corresponds to the JSON property `instanceStatus`
@@ -14893,9 +14944,36 @@ module Google
           @current_action = args[:current_action] if args.key?(:current_action)
           @id = args[:id] if args.key?(:id)
           @instance = args[:instance] if args.key?(:instance)
+          @instance_health = args[:instance_health] if args.key?(:instance_health)
           @instance_status = args[:instance_status] if args.key?(:instance_status)
           @last_attempt = args[:last_attempt] if args.key?(:last_attempt)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # 
+      class ManagedInstanceInstanceHealth
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The current detailed instance health state.
+        # Corresponds to the JSON property `detailedHealthState`
+        # @return [String]
+        attr_accessor :detailed_health_state
+      
+        # [Output Only] The URL for the health check that verifies whether the instance
+        # is healthy.
+        # Corresponds to the JSON property `healthCheck`
+        # @return [String]
+        attr_accessor :health_check
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detailed_health_state = args[:detailed_health_state] if args.key?(:detailed_health_state)
+          @health_check = args[:health_check] if args.key?(:health_check)
         end
       end
       
@@ -15171,8 +15249,8 @@ module Google
       
       # Represents a VPC Network resource.
       # Networks connect resources to each other and to the internet. For more
-      # information, read Virtual Private Cloud (VPC) Network. (== resource_for v1.
-      # networks ==) (== resource_for beta.networks ==)
+      # information, read Virtual Private Cloud (VPC) Network. (== resource_for `$
+      # api_version`.networks ==)
       class Network
         include Google::Apis::Core::Hashable
       
@@ -15316,8 +15394,7 @@ module Google
       
       # Represents a collection of network endpoints.
       # For more information read Setting up network endpoint groups in load balancing.
-      # (== resource_for v1.networkEndpointGroups ==) (== resource_for beta.
-      # networkEndpointGroups ==) Next ID: 21
+      # (== resource_for `$api_version`.networkEndpointGroups ==) Next ID: 21
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -16346,8 +16423,7 @@ module Google
       # instances only for your specific project. Use sole-tenant nodes to keep your
       # instances physically separated from instances in other projects, or to group
       # your instances together on the same host hardware. For more information, read
-      # Sole-tenant nodes. (== resource_for beta.nodeGroups ==) (== resource_for v1.
-      # nodeGroups ==)
+      # Sole-tenant nodes. (== resource_for `$api_version`.nodeGroups ==)
       class NodeGroup
         include Google::Apis::Core::Hashable
       
@@ -16978,8 +17054,8 @@ module Google
       
       # Represent a sole-tenant Node Template resource.
       # You can use a template to define properties for nodes in a node group. For
-      # more information, read Creating node groups and instances. (== resource_for
-      # beta.nodeTemplates ==) (== resource_for v1.nodeTemplates ==)
+      # more information, read Creating node groups and instances. (== resource_for `$
+      # api_version`.nodeTemplates ==) (== NextID: 18 ==)
       class NodeTemplate
         include Google::Apis::Core::Hashable
       
@@ -17452,7 +17528,7 @@ module Google
       # total amount of cores and memory for that node. Currently, the only available
       # node type is n1-node-96-624 node type that has 96 vCPUs and 624 GB of memory,
       # available in multiple zones. For more information read Node types. (==
-      # resource_for beta.nodeTypes ==) (== resource_for v1.nodeTypes ==)
+      # resource_for `$api_version`.nodeTypes ==)
       class NodeType
         include Google::Apis::Core::Hashable
       
@@ -17868,6 +17944,10 @@ module Google
       end
       
       # Represents an Operation resource.
+      # Google Compute Engine has three Operation resources:
+      # * [Global](/compute/docs/reference/rest/latest/globalOperations) * [Regional](/
+      # compute/docs/reference/rest/latest/regionOperations) * [Zonal](/compute/docs/
+      # reference/rest/latest/zoneOperations)
       # You can use an operation resource to manage asynchronous API requests. For
       # more information, read Handling API responses.
       # Operations can be global, regional or zonal.
@@ -17875,10 +17955,9 @@ module Google
       # - For regional operations, use the regionOperations resource.
       # - For zonal operations, use the zonalOperations resource.
       # For more information, read  Global, Regional, and Zonal Resources. (==
-      # resource_for v1.globalOperations ==) (== resource_for beta.globalOperations ==)
-      # (== resource_for v1.regionOperations ==) (== resource_for beta.
-      # regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for
-      # beta.zoneOperations ==)
+      # resource_for `$api_version`.globalOperations ==) (== resource_for `$
+      # api_version`.regionOperations ==) (== resource_for `$api_version`.
+      # zoneOperations ==)
       class Operation
         include Google::Apis::Core::Hashable
       
@@ -18606,6 +18685,613 @@ module Google
         end
       end
       
+      # Represents a PacketMirroring resource.
+      class PacketMirroring
+        include Google::Apis::Core::Hashable
+      
+        # The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be
+        # used as collector for mirrored traffic. The specified forwarding rule must
+        # have isMirroringCollector set to true.
+        # Corresponds to the JSON property `collectorIlb`
+        # @return [Google::Apis::ComputeV1::PacketMirroringForwardingRuleInfo]
+        attr_accessor :collector_ilb
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Indicates whether or not this packet mirroring takes effect. If set to FALSE,
+        # this packet mirroring policy will not be enforced on the network.
+        # The default is TRUE.
+        # Corresponds to the JSON property `enable`
+        # @return [String]
+        attr_accessor :enable
+      
+        # Filter for mirrored traffic. If unspecified, all traffic is mirrored.
+        # Corresponds to the JSON property `filter`
+        # @return [Google::Apis::ComputeV1::PacketMirroringFilter]
+        attr_accessor :filter
+      
+        # [Output Only] The unique identifier for the resource. This identifier is
+        # defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#packetMirroring for packet
+        # mirrorings.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of
+        # mirrored VM instances, subnetworks and/or tags for which traffic from/to all
+        # VM instances will be mirrored.
+        # Corresponds to the JSON property `mirroredResources`
+        # @return [Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfo]
+        attr_accessor :mirrored_resources
+      
+        # Name of the resource; provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Specifies the mirrored VPC network. Only packets in this network will be
+        # mirrored. All mirrored VMs should have a NIC in the given network. All
+        # mirrored subnetworks should belong to the given network.
+        # Corresponds to the JSON property `network`
+        # @return [Google::Apis::ComputeV1::PacketMirroringNetworkInfo]
+        attr_accessor :network
+      
+        # The priority of applying this configuration. Priority is used to break ties in
+        # cases where there is more than one matching rule. In the case of two rules
+        # that apply for a given Instance, the one with the lowest-numbered priority
+        # value wins.
+        # Default value is 1000. Valid range is 0 through 65535.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        # [Output Only] URI of the region where the packetMirroring resides.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @collector_ilb = args[:collector_ilb] if args.key?(:collector_ilb)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @enable = args[:enable] if args.key?(:enable)
+          @filter = args[:filter] if args.key?(:filter)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @mirrored_resources = args[:mirrored_resources] if args.key?(:mirrored_resources)
+          @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
+          @priority = args[:priority] if args.key?(:priority)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # Contains a list of packetMirrorings.
+      class PacketMirroringAggregatedList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PacketMirroring resources.
+        # Corresponds to the JSON property `items`
+        # @return [Hash<String,Google::Apis::ComputeV1::PacketMirroringsScopedList>]
+        attr_accessor :items
+      
+        # Type of resource.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class PacketMirroringFilter
+        include Google::Apis::Core::Hashable
+      
+        # Protocols that apply as filter on mirrored traffic. If no protocols are
+        # specified, all traffic that matches the specified CIDR ranges is mirrored. If
+        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # Corresponds to the JSON property `IPProtocols`
+        # @return [Array<String>]
+        attr_accessor :ip_protocols
+      
+        # IP CIDR ranges that apply as filter on the source (ingress) or destination (
+        # egress) IP in the IP header. Only IPv4 is supported. If no ranges are
+        # specified, all traffic that matches the specified IPProtocols is mirrored. If
+        # neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        # Corresponds to the JSON property `cidrRanges`
+        # @return [Array<String>]
+        attr_accessor :cidr_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_protocols = args[:ip_protocols] if args.key?(:ip_protocols)
+          @cidr_ranges = args[:cidr_ranges] if args.key?(:cidr_ranges)
+        end
+      end
+      
+      # 
+      class PacketMirroringForwardingRuleInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the forwarding rule; defined by the server.
+        # Corresponds to the JSON property `canonicalUrl`
+        # @return [String]
+        attr_accessor :canonical_url
+      
+        # Resource URL to the forwarding rule representing the ILB configured as
+        # destination of the mirrored traffic.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # Contains a list of PacketMirroring resources.
+      class PacketMirroringList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of PacketMirroring resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeV1::PacketMirroring>]
+        attr_accessor :items
+      
+        # [Output Only] Type of resource. Always compute#packetMirroring for
+        # packetMirrorings.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PacketMirroringList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PacketMirroringList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
+      # 
+      class PacketMirroringMirroredResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # A set of virtual machine instances that are being mirrored. They must live in
+        # zones contained in the same region as this packetMirroring.
+        # Note that this config will apply only to those network interfaces of the
+        # Instances that belong to the network specified in this packetMirroring.
+        # You may specify a maximum of 50 Instances.
+        # Corresponds to the JSON property `instances`
+        # @return [Array<Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoInstanceInfo>]
+        attr_accessor :instances
+      
+        # A set of subnetworks for which traffic from/to all VM instances will be
+        # mirrored. They must live in the same region as this packetMirroring.
+        # You may specify a maximum of 5 subnetworks.
+        # Corresponds to the JSON property `subnetworks`
+        # @return [Array<Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoSubnetInfo>]
+        attr_accessor :subnetworks
+      
+        # A set of mirrored tags. Traffic from/to all VM instances that have one or more
+        # of these tags will be mirrored.
+        # Corresponds to the JSON property `tags`
+        # @return [Array<String>]
+        attr_accessor :tags
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
+          @tags = args[:tags] if args.key?(:tags)
+        end
+      end
+      
+      # 
+      class PacketMirroringMirroredResourceInfoInstanceInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the instance; defined by the server.
+        # Corresponds to the JSON property `canonicalUrl`
+        # @return [String]
+        attr_accessor :canonical_url
+      
+        # Resource URL to the virtual machine instance which is being mirrored.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class PacketMirroringMirroredResourceInfoSubnetInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the subnetwork; defined by the server.
+        # Corresponds to the JSON property `canonicalUrl`
+        # @return [String]
+        attr_accessor :canonical_url
+      
+        # Resource URL to the subnetwork for which traffic from/to all VM instances will
+        # be mirrored.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class PacketMirroringNetworkInfo
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the network; defined by the server.
+        # Corresponds to the JSON property `canonicalUrl`
+        # @return [String]
+        attr_accessor :canonical_url
+      
+        # URL of the network resource.
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @canonical_url = args[:canonical_url] if args.key?(:canonical_url)
+          @url = args[:url] if args.key?(:url)
+        end
+      end
+      
+      # 
+      class PacketMirroringsScopedList
+        include Google::Apis::Core::Hashable
+      
+        # A list of packetMirrorings contained in this scope.
+        # Corresponds to the JSON property `packetMirrorings`
+        # @return [Array<Google::Apis::ComputeV1::PacketMirroring>]
+        attr_accessor :packet_mirrorings
+      
+        # Informational warning which replaces the list of packetMirrorings when the
+        # list is empty.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @packet_mirrorings = args[:packet_mirrorings] if args.key?(:packet_mirrorings)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # Informational warning which replaces the list of packetMirrorings when the
+        # list is empty.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
+        end
+      end
+      
       # A matcher for the path portion of the URL. The BackendService from the longest-
       # matched rule will serve the URL. If no rule was matched, the default service
       # will be used.
@@ -18903,8 +19589,8 @@ module Google
       
       # Represents a Project resource.
       # A project is used to organize resources in a Google Cloud Platform environment.
-      # For more information, read about the  Resource Hierarchy. (== resource_for v1.
-      # projects ==) (== resource_for beta.projects ==)
+      # For more information, read about the  Resource Hierarchy. (== resource_for `$
+      # api_version`.projects ==)
       class Project
         include Google::Apis::Core::Hashable
       
@@ -19196,8 +19882,8 @@ module Google
       
       # Represents a Region resource.
       # A region is a geographical area where a resource is located. For more
-      # information, read Regions and Zones. (== resource_for beta.regions ==) (==
-      # resource_for v1.regions ==)
+      # information, read Regions and Zones. (== resource_for `$api_version`.regions ==
+      # )
       class Region
         include Google::Apis::Core::Hashable
       
@@ -20357,12 +21043,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a URL Map resource.
-        # A URL map resource is a component of certain types of load balancers. This
-        # resource defines mappings from host names and URL paths to either a backend
-        # service or a backend bucket.
-        # To use this resource, the backend service must have a loadBalancingScheme of
-        # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
-        # information, read URL Map Concepts.
+        # Google Compute Engine has two URL Map resources:
+        # * [Global](/compute/docs/reference/rest/latest/urlMaps) * [Regional](/compute/
+        # docs/reference/rest/latest/regionUrlMaps)
+        # A URL map resource is a component of certain types of GCP load balancers and
+        # Traffic Director.
+        # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
+        # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # This resource defines mappings from host names and URL paths to either a
+        # backend service or a backend bucket.
+        # To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::UrlMap]
         attr_accessor :resource
@@ -20401,8 +21094,8 @@ module Google
       
       # Represents a reservation resource. A reservation ensures that capacity is held
       # in a specific zone even if the reserved VMs are not running. For more
-      # information, read  Reserving zonal resources. (== resource_for beta.
-      # reservations ==) (== resource_for v1.reservations ==)
+      # information, read  Reserving zonal resources. (== resource_for `$api_version`.
+      # reservations ==)
       class Reservation
         include Google::Apis::Core::Hashable
       
@@ -21511,7 +22204,7 @@ module Google
       class ResourcePolicySnapshotSchedulePolicySnapshotProperties
         include Google::Apis::Core::Hashable
       
-        # Indication to perform a ?guest aware? snapshot.
+        # Indication to perform a 'guest aware' snapshot.
         # Corresponds to the JSON property `guestFlush`
         # @return [Boolean]
         attr_accessor :guest_flush
@@ -21596,8 +22289,8 @@ module Google
       # Represents a Route resource.
       # A route defines a path from VM instances in the VPC network to a specific
       # destination. This destination can be inside or outside the VPC network. For
-      # more information, read the Routes overview. (== resource_for beta.routes ==) (=
-      # = resource_for v1.routes ==)
+      # more information, read the Routes overview. (== resource_for `$api_version`.
+      # routes ==)
       class Route
         include Google::Apis::Core::Hashable
       
@@ -23067,20 +23760,13 @@ module Google
       
         # Specifies how port is selected for health checking, can be one of following
         # values:
-        # USE_FIXED_PORT: The port number in
-        # port
-        # is used for health checking.
-        # USE_NAMED_PORT: The
-        # portName
-        # is used for health checking.
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
         # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
         # network endpoint is used for health checking. For other backends, the port or
         # named port specified in the Backend Service is used for health checking.
-        # If not specified, SSL health check follows behavior specified in
-        # port
-        # and
-        # portName
-        # fields.
+        # If not specified, SSL health check follows behavior specified in port and
+        # portName fields.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -23207,8 +23893,7 @@ module Google
       # Represents a Cloud Armor Security Policy resource.
       # Only external backend services that use load balancers can reference a
       # Security Policy. For more information, read  Cloud Armor Security Policy
-      # Concepts. (== resource_for v1.securityPolicies ==) (== resource_for beta.
-      # securityPolicies ==)
+      # Concepts. (== resource_for `$api_version`.securityPolicies ==)
       class SecurityPolicy
         include Google::Apis::Core::Hashable
       
@@ -23765,8 +24450,8 @@ module Google
       
       # Represents a Persistent Disk Snapshot resource.
       # You can use snapshots to back up data on a regular interval. For more
-      # information, read  Creating persistent disk snapshots. (== resource_for beta.
-      # snapshots ==) (== resource_for v1.snapshots ==)
+      # information, read  Creating persistent disk snapshots. (== resource_for `$
+      # api_version`.snapshots ==)
       class Snapshot
         include Google::Apis::Core::Hashable
       
@@ -23792,6 +24477,11 @@ module Google
         # Corresponds to the JSON property `diskSizeGb`
         # @return [Fixnum]
         attr_accessor :disk_size_gb
+      
+        # [Output Only] Number of bytes downloaded to restore a snapshot to a disk.
+        # Corresponds to the JSON property `downloadBytes`
+        # @return [Fixnum]
+        attr_accessor :download_bytes
       
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
@@ -23909,6 +24599,7 @@ module Google
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @download_bytes = args[:download_bytes] if args.key?(:download_bytes)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
@@ -24069,12 +24760,17 @@ module Google
       end
       
       # Represents an SSL Certificate resource.
+      # Google Compute Engine has two SSL Certificate resources:
+      # * [Global](/compute/docs/reference/rest/latest/sslCertificates) * [Regional](/
+      # compute/docs/reference/rest/latest/regionSslCertificates)
+      # - sslCertificates are used by: - external HTTPS load balancers - SSL proxy
+      # load balancers
+      # - regionSslCertificates are used by: - internal HTTPS load balancers
       # This SSL certificate resource also contains a private key. You can use SSL
       # keys and certificates to secure connections to a load balancer. For more
-      # information, read  Creating and Using SSL Certificates. (== resource_for beta.
-      # sslCertificates ==) (== resource_for v1.sslCertificates ==) (== resource_for
-      # beta.regionSslCertificates ==) (== resource_for v1.regionSslCertificates ==)
-      # Next ID: 17
+      # information, read  Creating and Using SSL Certificates. (== resource_for `$
+      # api_version`.sslCertificates ==) (== resource_for `$api_version`.
+      # regionSslCertificates ==) Next ID: 17
       class SslCertificate
         include Google::Apis::Core::Hashable
       
@@ -24619,8 +25315,7 @@ module Google
       # Represents a Cloud Armor Security Policy resource.
       # Only external backend services used by HTTP or HTTPS load balancers can
       # reference a Security Policy. For more information, read read  Cloud Armor
-      # Security Policy Concepts. (== resource_for beta.sslPolicies ==) (==
-      # resource_for v1.sslPolicies ==)
+      # Security Policy Concepts. (== resource_for `$api_version`.sslPolicies ==)
       class SslPolicy
         include Google::Apis::Core::Hashable
       
@@ -24814,7 +25509,7 @@ module Google
       # A subnetwork (also known as a subnet) is a logical partition of a Virtual
       # Private Cloud network with one primary IP range and zero or more secondary IP
       # ranges. For more information, read  Virtual Private Cloud (VPC) Network. (==
-      # resource_for beta.subnetworks ==) (== resource_for v1.subnetworks ==)
+      # resource_for `$api_version`.subnetworks ==)
       class Subnetwork
         include Google::Apis::Core::Hashable
       
@@ -25444,20 +26139,13 @@ module Google
       
         # Specifies how port is selected for health checking, can be one of following
         # values:
-        # USE_FIXED_PORT: The port number in
-        # port
-        # is used for health checking.
-        # USE_NAMED_PORT: The
-        # portName
-        # is used for health checking.
+        # USE_FIXED_PORT: The port number in port is used for health checking.
+        # USE_NAMED_PORT: The portName is used for health checking.
         # USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each
         # network endpoint is used for health checking. For other backends, the port or
         # named port specified in the Backend Service is used for health checking.
-        # If not specified, TCP health check follows behavior specified in
-        # port
-        # and
-        # portName
-        # fields.
+        # If not specified, TCP health check follows behavior specified in port and
+        # portName fields.
         # Corresponds to the JSON property `portSpecification`
         # @return [String]
         attr_accessor :port_specification
@@ -25622,12 +26310,16 @@ module Google
       end
       
       # Represents a Target HTTP Proxy resource.
-      # A target HTTP proxy is a component of GCP HTTP load balancers. Forwarding
-      # rules reference a target HTTP proxy, and the target proxy then references a
-      # URL map. For more information, read Using Target Proxies and  Forwarding rule
-      # concepts. (== resource_for beta.targetHttpProxies ==) (== resource_for v1.
-      # targetHttpProxies ==) (== resource_for beta.regionTargetHttpProxies ==) (==
-      # resource_for v1.regionTargetHttpProxies ==)
+      # Google Compute Engine has two Target HTTP Proxy resources:
+      # * [Global](/compute/docs/reference/rest/latest/targetHttpProxies) * [Regional](
+      # /compute/docs/reference/rest/latest/regionTargetHttpProxies)
+      # A target HTTP proxy is a component of GCP HTTP load balancers.
+      # * targetHttpProxies are used by external HTTP load balancers and Traffic
+      # Director. * regionTargetHttpProxies are used by internal HTTP load balancers.
+      # Forwarding rules reference a target HTTP proxy, and the target proxy then
+      # references a URL map. For more information, read Using Target Proxies and
+      # Forwarding rule concepts. (== resource_for `$api_version`.targetHttpProxies ==)
+      # (== resource_for `$api_version`.regionTargetHttpProxies ==)
       class TargetHttpProxy
         include Google::Apis::Core::Hashable
       
@@ -25995,12 +26687,16 @@ module Google
       end
       
       # Represents a Target HTTPS Proxy resource.
-      # A target HTTPS proxy is a component of GCP HTTPS load balancers. Forwarding
-      # rules reference a target HTTPS proxy, and the target proxy then references a
-      # URL map. For more information, read Using Target Proxies and  Forwarding rule
-      # concepts. (== resource_for beta.targetHttpsProxies ==) (== resource_for v1.
-      # targetHttpsProxies ==) (== resource_for beta.regionTargetHttpsProxies ==) (==
-      # resource_for v1.regionTargetHttpsProxies ==)
+      # Google Compute Engine has two Target HTTPS Proxy resources:
+      # * [Global](/compute/docs/reference/rest/latest/targetHttpsProxies) * [Regional]
+      # (/compute/docs/reference/rest/latest/regionTargetHttpsProxies)
+      # A target HTTPS proxy is a component of GCP HTTPS load balancers.
+      # * targetHttpsProxies are used by external HTTPS load balancers. *
+      # regionTargetHttpsProxies are used by internal HTTPS load balancers.
+      # Forwarding rules reference a target HTTPS proxy, and the target proxy then
+      # references a URL map. For more information, read Using Target Proxies and
+      # Forwarding rule concepts. (== resource_for `$api_version`.targetHttpsProxies ==
+      # ) (== resource_for `$api_version`.regionTargetHttpsProxies ==)
       class TargetHttpsProxy
         include Google::Apis::Core::Hashable
       
@@ -26345,8 +27041,7 @@ module Google
       # You can use a target instance to handle traffic for one or more forwarding
       # rules, which is ideal for forwarding protocol traffic that is managed by a
       # single source. For example, ESP, AH, TCP, or UDP. For more information, read
-      # Target instances. (== resource_for beta.targetInstances ==) (== resource_for
-      # v1.targetInstances ==)
+      # Target instances. (== resource_for `$api_version`.targetInstances ==)
       class TargetInstance
         include Google::Apis::Core::Hashable
       
@@ -26760,8 +27455,7 @@ module Google
       # Target pools are used for network TCP/UDP load balancing. A target pool
       # references member instances, an associated legacy HttpHealthCheck resource,
       # and, optionally, a backup target pool. For more information, read Using target
-      # pools. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools ==
-      # )
+      # pools. (== resource_for `$api_version`.targetPools ==)
       class TargetPool
         include Google::Apis::Core::Hashable
       
@@ -27404,8 +28098,7 @@ module Google
       # A target SSL proxy is a component of a SSL Proxy load balancer. Global
       # forwarding rules reference a target SSL proxy, and the target proxy then
       # references an external backend service. For more information, read Using
-      # Target Proxies. (== resource_for beta.targetSslProxies ==) (== resource_for v1.
-      # targetSslProxies ==)
+      # Target Proxies. (== resource_for `$api_version`.targetSslProxies ==)
       class TargetSslProxy
         include Google::Apis::Core::Hashable
       
@@ -27651,8 +28344,7 @@ module Google
       # A target TCP proxy is a component of a TCP Proxy load balancer. Global
       # forwarding rules reference target TCP proxy, and the target proxy then
       # references an external backend service. For more information, read TCP Proxy
-      # Load Balancing Concepts. (== resource_for beta.targetTcpProxies ==) (==
-      # resource_for v1.targetTcpProxies ==)
+      # Load Balancing Concepts. (== resource_for `$api_version`.targetTcpProxies ==)
       class TargetTcpProxy
         include Google::Apis::Core::Hashable
       
@@ -27841,8 +28533,8 @@ module Google
       
       # Represents a Target VPN Gateway resource.
       # The target VPN gateway resource represents a Classic Cloud VPN gateway. For
-      # more information, read the the Cloud VPN Overview. (== resource_for beta.
-      # targetVpnGateways ==) (== resource_for v1.targetVpnGateways ==)
+      # more information, read the the Cloud VPN Overview. (== resource_for `$
+      # api_version`.targetVpnGateways ==)
       class TargetVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -28340,12 +29032,19 @@ module Google
       end
       
       # Represents a URL Map resource.
-      # A URL map resource is a component of certain types of load balancers. This
-      # resource defines mappings from host names and URL paths to either a backend
-      # service or a backend bucket.
-      # To use this resource, the backend service must have a loadBalancingScheme of
-      # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
-      # information, read URL Map Concepts.
+      # Google Compute Engine has two URL Map resources:
+      # * [Global](/compute/docs/reference/rest/latest/urlMaps) * [Regional](/compute/
+      # docs/reference/rest/latest/regionUrlMaps)
+      # A URL map resource is a component of certain types of GCP load balancers and
+      # Traffic Director.
+      # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
+      # regionUrlMaps are used by internal HTTP(S) load balancers.
+      # This resource defines mappings from host names and URL paths to either a
+      # backend service or a backend bucket.
+      # To use the global urlMaps resource, the backend service must have a
+      # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+      # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+      # INTERNAL_MANAGED. For more information, read URL Map Concepts.
       class UrlMap
         include Google::Apis::Core::Hashable
       
@@ -28907,12 +29606,19 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Represents a URL Map resource.
-        # A URL map resource is a component of certain types of load balancers. This
-        # resource defines mappings from host names and URL paths to either a backend
-        # service or a backend bucket.
-        # To use this resource, the backend service must have a loadBalancingScheme of
-        # either EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more
-        # information, read URL Map Concepts.
+        # Google Compute Engine has two URL Map resources:
+        # * [Global](/compute/docs/reference/rest/latest/urlMaps) * [Regional](/compute/
+        # docs/reference/rest/latest/regionUrlMaps)
+        # A URL map resource is a component of certain types of GCP load balancers and
+        # Traffic Director.
+        # * urlMaps are used by external HTTP(S) load balancers and Traffic Director. *
+        # regionUrlMaps are used by internal HTTP(S) load balancers.
+        # This resource defines mappings from host names and URL paths to either a
+        # backend service or a backend bucket.
+        # To use the global urlMaps resource, the backend service must have a
+        # loadBalancingScheme of either EXTERNAL or INTERNAL_SELF_MANAGED. To use the
+        # regionUrlMaps resource, the backend service must have a loadBalancingScheme of
+        # INTERNAL_MANAGED. For more information, read URL Map Concepts.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::ComputeV1::UrlMap]
         attr_accessor :resource
@@ -29984,7 +30690,7 @@ module Google
       
       # Represents a Cloud VPN Tunnel resource.
       # For more information about VPN, read the the Cloud VPN Overview. (==
-      # resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)
+      # resource_for `$api_version`.vpnTunnels ==)
       class VpnTunnel
         include Google::Apis::Core::Hashable
       
@@ -30693,8 +31399,7 @@ module Google
       # Represents a Zone resource.
       # A zone is a deployment area. These deployment areas are subsets of a region.
       # For example the zone us-east1-a is located in the us-east1 region. For more
-      # information, read Regions and Zones. (== resource_for beta.zones ==) (==
-      # resource_for v1.zones ==)
+      # information, read Regions and Zones. (== resource_for `$api_version`.zones ==)
       class Zone
         include Google::Apis::Core::Hashable
       

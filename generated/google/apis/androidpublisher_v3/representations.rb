@@ -880,6 +880,8 @@ module Google
           property :price_currency_code, as: 'priceCurrencyCode'
           property :profile_id, as: 'profileId'
           property :profile_name, as: 'profileName'
+          property :promotion_code, as: 'promotionCode'
+          property :promotion_type, as: 'promotionType'
           property :purchase_type, as: 'purchaseType'
           property :start_time_millis, :numeric_string => true, as: 'startTimeMillis'
           property :user_cancellation_time_millis, :numeric_string => true, as: 'userCancellationTimeMillis'

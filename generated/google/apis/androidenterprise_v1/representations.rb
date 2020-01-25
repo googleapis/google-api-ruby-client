@@ -1077,6 +1077,7 @@ module Google
           property :description, as: 'description'
           property :details_url, as: 'detailsUrl'
           property :distribution_channel, as: 'distributionChannel'
+          collection :features, as: 'features'
           property :icon_url, as: 'iconUrl'
           property :kind, as: 'kind'
           property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'

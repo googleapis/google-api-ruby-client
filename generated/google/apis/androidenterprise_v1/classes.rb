@@ -1433,7 +1433,7 @@ module Google
         # @return [Google::Apis::AndroidenterpriseV1::ConfigurationVariables]
         attr_accessor :configuration_variables
       
-        # 
+        # Deprecated.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2055,6 +2055,11 @@ module Google
         # @return [String]
         attr_accessor :distribution_channel
       
+        # Noteworthy features (if any) of this product.
+        # Corresponds to the JSON property `features`
+        # @return [Array<String>]
+        attr_accessor :features
+      
         # A link to an image that can be used as an icon for the product. This image is
         # suitable for use at up to 512px x 512px.
         # Corresponds to the JSON property `iconUrl`
@@ -2149,6 +2154,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @details_url = args[:details_url] if args.key?(:details_url)
           @distribution_channel = args[:distribution_channel] if args.key?(:distribution_channel)
+          @features = args[:features] if args.key?(:features)
           @icon_url = args[:icon_url] if args.key?(:icon_url)
           @kind = args[:kind] if args.key?(:kind)
           @last_updated_timestamp_millis = args[:last_updated_timestamp_millis] if args.key?(:last_updated_timestamp_millis)

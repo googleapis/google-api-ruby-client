@@ -1912,6 +1912,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ManagedInstanceInstanceHealth
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ManagedInstanceLastAttempt
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2448,6 +2454,102 @@ module Google
       
       class OutlierDetection
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroring
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringAggregatedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringForwardingRuleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringMirroredResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringMirroredResourceInfoInstanceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringMirroredResourceInfoSubnetInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringNetworkInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PacketMirroringsScopedList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -4560,6 +4662,7 @@ module Google
           property :device_name, as: 'deviceName'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeV1::GuestOsFeature, decorator: Google::Apis::ComputeV1::GuestOsFeature::Representation
       
           property :index, as: 'index'
@@ -5774,11 +5877,14 @@ module Google
           property :ip_address, as: 'IPAddress'
           property :ip_protocol, as: 'IPProtocol'
           property :all_ports, as: 'allPorts'
+          property :allow_global_access, as: 'allowGlobalAccess'
           property :backend_service, as: 'backendService'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :ip_version, as: 'ipVersion'
+          property :is_mirroring_collector, as: 'isMirroringCollector'
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           collection :metadata_filters, as: 'metadataFilters', class: Google::Apis::ComputeV1::MetadataFilter, decorator: Google::Apis::ComputeV1::MetadataFilter::Representation
@@ -7828,11 +7934,21 @@ module Google
           property :current_action, as: 'currentAction'
           property :id, :numeric_string => true, as: 'id'
           property :instance, as: 'instance'
+          collection :instance_health, as: 'instanceHealth', class: Google::Apis::ComputeV1::ManagedInstanceInstanceHealth, decorator: Google::Apis::ComputeV1::ManagedInstanceInstanceHealth::Representation
+      
           property :instance_status, as: 'instanceStatus'
           property :last_attempt, as: 'lastAttempt', class: Google::Apis::ComputeV1::ManagedInstanceLastAttempt, decorator: Google::Apis::ComputeV1::ManagedInstanceLastAttempt::Representation
       
           property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
       
+        end
+      end
+      
+      class ManagedInstanceInstanceHealth
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detailed_health_state, as: 'detailedHealthState'
+          property :health_check, as: 'healthCheck'
         end
       end
       
@@ -8790,6 +8906,172 @@ module Google
           property :success_rate_minimum_hosts, as: 'successRateMinimumHosts'
           property :success_rate_request_volume, as: 'successRateRequestVolume'
           property :success_rate_stdev_factor, as: 'successRateStdevFactor'
+        end
+      end
+      
+      class PacketMirroring
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :collector_ilb, as: 'collectorIlb', class: Google::Apis::ComputeV1::PacketMirroringForwardingRuleInfo, decorator: Google::Apis::ComputeV1::PacketMirroringForwardingRuleInfo::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :enable, as: 'enable'
+          property :filter, as: 'filter', class: Google::Apis::ComputeV1::PacketMirroringFilter, decorator: Google::Apis::ComputeV1::PacketMirroringFilter::Representation
+      
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :mirrored_resources, as: 'mirroredResources', class: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfo, decorator: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfo::Representation
+      
+          property :name, as: 'name'
+          property :network, as: 'network', class: Google::Apis::ComputeV1::PacketMirroringNetworkInfo, decorator: Google::Apis::ComputeV1::PacketMirroringNetworkInfo::Representation
+      
+          property :priority, as: 'priority'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class PacketMirroringAggregatedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          hash :items, as: 'items', class: Google::Apis::ComputeV1::PacketMirroringsScopedList, decorator: Google::Apis::ComputeV1::PacketMirroringsScopedList::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning, decorator: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Datum, decorator: Google::Apis::ComputeV1::PacketMirroringAggregatedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PacketMirroringFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :ip_protocols, as: 'IPProtocols'
+          collection :cidr_ranges, as: 'cidrRanges'
+        end
+      end
+      
+      class PacketMirroringForwardingRuleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_url, as: 'canonicalUrl'
+          property :url, as: 'url'
+        end
+      end
+      
+      class PacketMirroringList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::PacketMirroring, decorator: Google::Apis::ComputeV1::PacketMirroring::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PacketMirroringList::Warning, decorator: Google::Apis::ComputeV1::PacketMirroringList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PacketMirroringList::Warning::Datum, decorator: Google::Apis::ComputeV1::PacketMirroringList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
+        end
+      end
+      
+      class PacketMirroringMirroredResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :instances, as: 'instances', class: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoInstanceInfo, decorator: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoInstanceInfo::Representation
+      
+          collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoSubnetInfo, decorator: Google::Apis::ComputeV1::PacketMirroringMirroredResourceInfoSubnetInfo::Representation
+      
+          collection :tags, as: 'tags'
+        end
+      end
+      
+      class PacketMirroringMirroredResourceInfoInstanceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_url, as: 'canonicalUrl'
+          property :url, as: 'url'
+        end
+      end
+      
+      class PacketMirroringMirroredResourceInfoSubnetInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_url, as: 'canonicalUrl'
+          property :url, as: 'url'
+        end
+      end
+      
+      class PacketMirroringNetworkInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :canonical_url, as: 'canonicalUrl'
+          property :url, as: 'url'
+        end
+      end
+      
+      class PacketMirroringsScopedList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :packet_mirrorings, as: 'packetMirrorings', class: Google::Apis::ComputeV1::PacketMirroring, decorator: Google::Apis::ComputeV1::PacketMirroring::Representation
+      
+          property :warning, as: 'warning', class: Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning, decorator: Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning::Datum, decorator: Google::Apis::ComputeV1::PacketMirroringsScopedList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       
@@ -10139,6 +10421,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'

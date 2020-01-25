@@ -1465,6 +1465,7 @@ module Google
         # purchase was not made using the standard in-app billing flow. Possible values
         # are:
         # - Test (i.e. purchased from a license testing account)
+        # - Promo (i.e. purchased using a promo code)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type

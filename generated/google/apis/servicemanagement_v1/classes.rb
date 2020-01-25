@@ -618,10 +618,28 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL)
+        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+        # are documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit"
+        # description: "Determines if a summary is less than 100 chars"
+        # expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner"
+        # description: "Determines if requestor is the document owner"
+        # expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents"
+        # description: "Determine whether the document should be publicly visible"
+        # expression: "document.type != 'private' && document.type != 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string"
+        # description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service
+        # documentation for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::ServicemanagementV1::Expr]
         attr_accessor :condition
@@ -1462,34 +1480,50 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL)
+      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+      # are documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit"
+      # description: "Determines if a summary is less than 100 chars"
+      # expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner"
+      # description: "Determines if requestor is the document owner"
+      # expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents"
+      # description: "Determine whether the document should be publicly visible"
+      # expression: "document.type != 'private' && document.type != 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string"
+      # description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service
+      # documentation for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
+        # Optional. Description of the expression. This is a longer text which
         # describes the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
+        # Textual representation of an expression in Common Expression Language
+        # syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
+        # Optional. String indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing
+        # Optional. Title for the expression, i.e. a short string describing
         # its purpose. This can be used e.g. in UIs which allow to enter the
         # expression.
         # Corresponds to the JSON property `title`
@@ -3981,6 +4015,48 @@ module Google
         end
       end
       
+      # The per-product per-project service identity for a service.
+      # Use this field to configure per-product per-project service identity.
+      # Example of a service identity configuration.
+      # usage:
+      # service_identity:
+      # - service_account_parent: "projects/123456789"
+      # display_name: "Cloud XXX Service Agent"
+      # description: "Used as the identity of Cloud XXX to access resources"
+      class ServiceIdentity
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A user-specified opaque description of the service account.
+        # Must be less than or equal to 256 UTF-8 bytes.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Optional. A user-specified name for the service account.
+        # Must be less than or equal to 100 UTF-8 bytes.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # A service account project that hosts the service accounts.
+        # An example name would be:
+        # `projects/123456789`
+        # Corresponds to the JSON property `serviceAccountParent`
+        # @return [String]
+        attr_accessor :service_account_parent
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @service_account_parent = args[:service_account_parent] if args.key?(:service_account_parent)
+        end
+      end
+      
       # Request message for `SetIamPolicy` method.
       class SetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -4534,6 +4610,18 @@ module Google
         # @return [Array<Google::Apis::ServicemanagementV1::UsageRule>]
         attr_accessor :rules
       
+        # The per-product per-project service identity for a service.
+        # Use this field to configure per-product per-project service identity.
+        # Example of a service identity configuration.
+        # usage:
+        # service_identity:
+        # - service_account_parent: "projects/123456789"
+        # display_name: "Cloud XXX Service Agent"
+        # description: "Used as the identity of Cloud XXX to access resources"
+        # Corresponds to the JSON property `serviceIdentity`
+        # @return [Google::Apis::ServicemanagementV1::ServiceIdentity]
+        attr_accessor :service_identity
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4543,6 +4631,7 @@ module Google
           @producer_notification_channel = args[:producer_notification_channel] if args.key?(:producer_notification_channel)
           @requirements = args[:requirements] if args.key?(:requirements)
           @rules = args[:rules] if args.key?(:rules)
+          @service_identity = args[:service_identity] if args.key?(:service_identity)
         end
       end
       

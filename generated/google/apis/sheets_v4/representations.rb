@@ -1459,9 +1459,13 @@ module Google
           property :description, as: 'description'
           property :negative_color, as: 'negativeColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :negative_color_style, as: 'negativeColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :position, as: 'position', class: Google::Apis::SheetsV4::TextPosition, decorator: Google::Apis::SheetsV4::TextPosition::Representation
       
           property :positive_color, as: 'positiveColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :positive_color_style, as: 'positiveColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :text_format, as: 'textFormat', class: Google::Apis::SheetsV4::TextFormat, decorator: Google::Apis::SheetsV4::TextFormat::Representation
       
@@ -1495,6 +1499,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :line_style, as: 'lineStyle', class: Google::Apis::SheetsV4::LineStyle, decorator: Google::Apis::SheetsV4::LineStyle::Representation
       
@@ -1717,6 +1723,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bubble_border_color, as: 'bubbleBorderColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :bubble_border_color_style, as: 'bubbleBorderColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :bubble_labels, as: 'bubbleLabels', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
           property :bubble_max_radius_size, as: 'bubbleMaxRadiusSize'
@@ -1861,6 +1869,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alt_text, as: 'altText'
           property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :background_color_style, as: 'backgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :basic_chart, as: 'basicChart', class: Google::Apis::SheetsV4::BasicChartSpec, decorator: Google::Apis::SheetsV4::BasicChartSpec::Representation
       
@@ -2469,6 +2479,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :bar_color, as: 'barColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :bar_color_style, as: 'barColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :data, as: 'data', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
         end
@@ -2609,10 +2621,14 @@ module Google
       
           property :node_color, as: 'nodeColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :node_color_style, as: 'nodeColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :node_size, as: 'nodeSize'
           property :parent_labels, as: 'parentLabels', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
           property :selected_node_color, as: 'selectedNodeColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :selected_node_color_style, as: 'selectedNodeColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :tooltips, as: 'tooltips', class: Google::Apis::SheetsV4::ChartData, decorator: Google::Apis::SheetsV4::ChartData::Representation
       
@@ -3229,11 +3245,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_value_color, as: 'maxValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :max_value_color_style, as: 'maxValueColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :mid_value_color, as: 'midValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :mid_value_color_style, as: 'midValueColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :min_value_color, as: 'minValueColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :min_value_color_style, as: 'minValueColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :no_data_color, as: 'noDataColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :no_data_color_style, as: 'noDataColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
         end
       end
@@ -3246,6 +3270,8 @@ module Google
           property :color_scale, as: 'colorScale', class: Google::Apis::SheetsV4::TreemapChartColorScale, decorator: Google::Apis::SheetsV4::TreemapChartColorScale::Representation
       
           property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :header_color_style, as: 'headerColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :hide_tooltips, as: 'hideTooltips'
           property :hinted_levels, as: 'hintedLevels'
@@ -3516,6 +3542,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :label, as: 'label'
         end

@@ -20,12 +20,13 @@ module Google
   module Apis
     # Secret Manager API
     #
-    # Stores, manages, and secures access to application secrets.
+    # Stores and manages access to application secrets. Provides convenience while
+    # improving security.
     #
     # @see https://cloud.google.com/secret-manager/
     module SecretmanagerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20191210'
+      REVISION = '20200118'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

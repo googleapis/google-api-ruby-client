@@ -519,6 +519,11 @@ module Google
         # @return [String]
         attr_accessor :next_run_timezone_code
       
+        # When to start running the query. Not applicable to `ONE_TIME` frequency.
+        # Corresponds to the JSON property `startTimeMs`
+        # @return [Fixnum]
+        attr_accessor :start_time_ms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -529,6 +534,7 @@ module Google
           @frequency = args[:frequency] if args.key?(:frequency)
           @next_run_minute_of_day = args[:next_run_minute_of_day] if args.key?(:next_run_minute_of_day)
           @next_run_timezone_code = args[:next_run_timezone_code] if args.key?(:next_run_timezone_code)
+          @start_time_ms = args[:start_time_ms] if args.key?(:start_time_ms)
         end
       end
       

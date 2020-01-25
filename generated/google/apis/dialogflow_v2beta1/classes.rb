@@ -268,7 +268,7 @@ module Google
         # For example, if the entity type is *vegetable*, the value could be
         # *scallions*.
         # For `KIND_MAP` entity types:
-        # *   A canonical value to be used in place of synonyms.
+        # *   A reference value to be used in place of synonyms.
         # For `KIND_LIST` entity types:
         # *   A string that can contain references to other entity types (with or
         # without aliases).
@@ -1932,8 +1932,8 @@ module Google
       end
       
       # Represents a session entity type.
-      # Extends or replaces a developer entity type at the user session level (we
-      # refer to the entity types defined at the agent level as "developer entity
+      # Extends or replaces a custom entity type at the user session level (we
+      # refer to the entity types defined at the agent level as "custom entity
       # types").
       # Note: session entity types apply to all queries, regardless of the language.
       class GoogleCloudDialogflowV2SessionEntityType
@@ -1946,7 +1946,7 @@ module Google
         attr_accessor :entities
       
         # Required. Indicates whether the additional data should override or
-        # supplement the developer entity type definition.
+        # supplement the custom entity type definition.
         # Corresponds to the JSON property `entityOverrideMode`
         # @return [String]
         attr_accessor :entity_override_mode
@@ -2321,7 +2321,7 @@ module Google
       class GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. The canonical `values` of the entities to delete. Note that
+        # Required. The reference `values` of the entities to delete. Note that
         # these are not fully-qualified names, i.e. they don't start with
         # `projects/<Project ID>`.
         # Corresponds to the JSON property `entityValues`
@@ -2883,7 +2883,7 @@ module Google
         # For example, if the entity type is *vegetable*, the value could be
         # *scallions*.
         # For `KIND_MAP` entity types:
-        # *   A canonical value to be used in place of synonyms.
+        # *   A reference value to be used in place of synonyms.
         # For `KIND_LIST` entity types:
         # *   A string that can contain references to other entity types (with or
         # without aliases).
@@ -5776,8 +5776,8 @@ module Google
       end
       
       # Represents a session entity type.
-      # Extends or replaces a developer entity type at the user session level (we
-      # refer to the entity types defined at the agent level as "developer entity
+      # Extends or replaces a custom entity type at the user session level (we
+      # refer to the entity types defined at the agent level as "custom entity
       # types").
       # Note: session entity types apply to all queries, regardless of the language.
       class GoogleCloudDialogflowV2beta1SessionEntityType
@@ -5790,7 +5790,7 @@ module Google
         attr_accessor :entities
       
         # Required. Indicates whether the additional data should override or
-        # supplement the developer entity type definition.
+        # supplement the custom entity type definition.
         # Corresponds to the JSON property `entityOverrideMode`
         # @return [String]
         attr_accessor :entity_override_mode

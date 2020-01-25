@@ -448,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ServiceIdentity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1300,6 +1306,15 @@ module Google
         end
       end
       
+      class ServiceIdentity
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :display_name, as: 'displayName'
+          property :service_account_parent, as: 'serviceAccountParent'
+        end
+      end
+      
       class SetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1433,6 +1448,8 @@ module Google
           property :producer_notification_channel, as: 'producerNotificationChannel'
           collection :requirements, as: 'requirements'
           collection :rules, as: 'rules', class: Google::Apis::ServicemanagementV1::UsageRule, decorator: Google::Apis::ServicemanagementV1::UsageRule::Representation
+      
+          property :service_identity, as: 'serviceIdentity', class: Google::Apis::ServicemanagementV1::ServiceIdentity, decorator: Google::Apis::ServicemanagementV1::ServiceIdentity::Representation
       
         end
       end

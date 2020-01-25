@@ -1716,10 +1716,26 @@ module Google
         # @return [String]
         attr_accessor :profile_name
       
+        # The promotion code applied on this purchase. This field is only set if a
+        # vanity code promotion is applied when the subscription was purchased.
+        # Corresponds to the JSON property `promotionCode`
+        # @return [String]
+        attr_accessor :promotion_code
+      
+        # The type of promotion applied on this purchase. This field is only set if a
+        # promotion is applied when the subscription was purchased. Possible values are:
+        # 
+        # - One time code
+        # - Vanity code
+        # Corresponds to the JSON property `promotionType`
+        # @return [Fixnum]
+        attr_accessor :promotion_type
+      
         # The type of purchase of the subscription. This field is only set if this
         # purchase was not made using the standard in-app billing flow. Possible values
         # are:
         # - Test (i.e. purchased from a license testing account)
+        # - Promo (i.e. purchased using a promo code)
         # Corresponds to the JSON property `purchaseType`
         # @return [Fixnum]
         attr_accessor :purchase_type
@@ -1762,6 +1778,8 @@ module Google
           @price_currency_code = args[:price_currency_code] if args.key?(:price_currency_code)
           @profile_id = args[:profile_id] if args.key?(:profile_id)
           @profile_name = args[:profile_name] if args.key?(:profile_name)
+          @promotion_code = args[:promotion_code] if args.key?(:promotion_code)
+          @promotion_type = args[:promotion_type] if args.key?(:promotion_type)
           @purchase_type = args[:purchase_type] if args.key?(:purchase_type)
           @start_time_millis = args[:start_time_millis] if args.key?(:start_time_millis)
           @user_cancellation_time_millis = args[:user_cancellation_time_millis] if args.key?(:user_cancellation_time_millis)

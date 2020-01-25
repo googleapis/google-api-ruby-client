@@ -283,6 +283,7 @@ module Google
           property :frequency, as: 'frequency'
           property :next_run_minute_of_day, as: 'nextRunMinuteOfDay'
           property :next_run_timezone_code, as: 'nextRunTimezoneCode'
+          property :start_time_ms, :numeric_string => true, as: 'startTimeMs'
         end
       end
       

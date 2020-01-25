@@ -1018,6 +1018,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDuration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GrpcServiceConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5851,6 +5857,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_scaled_down_replicas, as: 'maxScaledDownReplicas', class: Google::Apis::ComputeAlpha::FixedOrPercent, decorator: Google::Apis::ComputeAlpha::FixedOrPercent::Representation
       
+          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeAlpha::GoogleDuration, decorator: Google::Apis::ComputeAlpha::GoogleDuration::Representation
+      
           property :time_window_sec, as: 'timeWindowSec'
         end
       end
@@ -6273,7 +6281,7 @@ module Google
           property :end_timestamp, as: 'endTimestamp'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          collection :license_resources, as: 'licenseResources', class: Google::Apis::ComputeAlpha::LicenseResourceCommitment, decorator: Google::Apis::ComputeAlpha::LicenseResourceCommitment::Representation
+          property :license_resource, as: 'licenseResource', class: Google::Apis::ComputeAlpha::LicenseResourceCommitment, decorator: Google::Apis::ComputeAlpha::LicenseResourceCommitment::Representation
       
           property :name, as: 'name'
           property :plan, as: 'plan'
@@ -7173,6 +7181,14 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::ComputeAlpha::Policy, decorator: Google::Apis::ComputeAlpha::Policy::Representation
       
+        end
+      end
+      
+      class GoogleDuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nanos, as: 'nanos'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       
@@ -9721,12 +9737,10 @@ module Google
           property :i_pv4_range, as: 'IPv4Range'
           property :auto_create_subnetworks, as: 'autoCreateSubnetworks'
           property :creation_timestamp, as: 'creationTimestamp'
-          property :cross_vm_encryption, as: 'crossVmEncryption'
           property :description, as: 'description'
           property :gateway_i_pv4, as: 'gatewayIPv4'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
-          property :load_balancer_vm_encryption, as: 'loadBalancerVmEncryption'
           property :mtu, as: 'mtu'
           property :multicast_mode, as: 'multicastMode'
           property :name, as: 'name'
@@ -10201,6 +10215,8 @@ module Google
       class NodeGroupNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::LocalDisk, decorator: Google::Apis::ComputeAlpha::LocalDisk::Representation
       
           collection :instances, as: 'instances'
@@ -10305,6 +10321,8 @@ module Google
       class NodeTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeAlpha::AcceleratorConfig, decorator: Google::Apis::ComputeAlpha::AcceleratorConfig::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeAlpha::LocalDisk, decorator: Google::Apis::ComputeAlpha::LocalDisk::Representation
@@ -13683,6 +13701,7 @@ module Google
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :nat_policy, as: 'natPolicy'
+          property :network, as: 'network'
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'

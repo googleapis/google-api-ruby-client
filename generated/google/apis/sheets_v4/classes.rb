@@ -1207,6 +1207,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :negative_color
       
+        # A color value.
+        # Corresponds to the JSON property `negativeColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :negative_color_style
+      
         # Position settings for text.
         # Corresponds to the JSON property `position`
         # @return [Google::Apis::SheetsV4::TextPosition]
@@ -1319,6 +1324,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :positive_color
       
+        # A color value.
+        # Corresponds to the JSON property `positiveColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :positive_color_style
+      
         # The format of a run of text in a cell.
         # Absent values indicate that the field isn't specified.
         # Corresponds to the JSON property `textFormat`
@@ -1334,8 +1344,10 @@ module Google
           @comparison_type = args[:comparison_type] if args.key?(:comparison_type)
           @description = args[:description] if args.key?(:description)
           @negative_color = args[:negative_color] if args.key?(:negative_color)
+          @negative_color_style = args[:negative_color_style] if args.key?(:negative_color_style)
           @position = args[:position] if args.key?(:position)
           @positive_color = args[:positive_color] if args.key?(:positive_color)
+          @positive_color_style = args[:positive_color_style] if args.key?(:positive_color_style)
           @text_format = args[:text_format] if args.key?(:text_format)
         end
       end
@@ -1528,6 +1540,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
       
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
         # Properties that describe the style of a line.
         # Corresponds to the JSON property `lineStyle`
         # @return [Google::Apis::SheetsV4::LineStyle]
@@ -1566,6 +1583,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
           @line_style = args[:line_style] if args.key?(:line_style)
           @series = args[:series] if args.key?(:series)
           @target_axis = args[:target_axis] if args.key?(:target_axis)
@@ -1748,10 +1766,9 @@ module Google
       class BatchClearValuesByDataFilterResponse
         include Google::Apis::Core::Hashable
       
-        # The ranges that were cleared, in A1 notation.
-        # (If the requests were for an unbounded range or a ranger larger
-        # than the bounds of the sheet, this will be the actual ranges
-        # that were cleared, bounded to the sheet's limits.)
+        # The ranges that were cleared, in A1 notation. If the requests are for an
+        # unbounded range or a ranger larger than the bounds of the sheet, this is
+        # the actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1795,10 +1812,9 @@ module Google
       class BatchClearValuesResponse
         include Google::Apis::Core::Hashable
       
-        # The ranges that were cleared, in A1 notation.
-        # (If the requests were for an unbounded range or a ranger larger
-        # than the bounds of the sheet, this will be the actual ranges
-        # that were cleared, bounded to the sheet's limits.)
+        # The ranges that were cleared, in A1 notation. If the requests are for an
+        # unbounded range or a ranger larger than the bounds of the sheet, this is
+        # the actual ranges that were cleared, bounded to the sheet's limits.
         # Corresponds to the JSON property `clearedRanges`
         # @return [Array<String>]
         attr_accessor :cleared_ranges
@@ -1824,9 +1840,8 @@ module Google
       class BatchGetValuesByDataFilterRequest
         include Google::Apis::Core::Hashable
       
-        # The data filters used to match the ranges of values to retrieve.  Ranges
-        # that match any of the specified data filters will be included in the
-        # response.
+        # The data filters used to match the ranges of values to retrieve. Ranges
+        # that match any of the specified data filters are included in the response.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
@@ -1841,10 +1856,9 @@ module Google
       
         # The major dimension that results should use.
         # For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-        # then a request that selects that range and sets `majorDimension=ROWS` will
-        # return `[[1,2],[3,4]]`,
-        # whereas a request that sets `majorDimension=COLUMNS` will return
-        # `[[1,3],[2,4]]`.
+        # then a request that selects that range and sets `majorDimension=ROWS`
+        # returns `[[1,2],[3,4]]`, whereas a request that sets
+        # `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
         # Corresponds to the JSON property `majorDimension`
         # @return [String]
         attr_accessor :major_dimension
@@ -2002,8 +2016,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The new values to apply to the spreadsheet.  If more than one range is
-        # matched by the specified DataFilter the specified values will be
-        # applied to all of those ranges.
+        # matched by the specified DataFilter the specified values are applied to
+        # all of those ranges.
         # Corresponds to the JSON property `data`
         # @return [Array<Google::Apis::SheetsV4::DataFilterValueRange>]
         attr_accessor :data
@@ -2011,10 +2025,10 @@ module Google
         # Determines if the update response should include the values
         # of the cells that were updated. By default, responses
         # do not include the updated values. The `updatedData` field within
-        # each of the BatchUpdateValuesResponse.responses will contain
-        # the updated values. If the range to write was larger than than the range
-        # actually written, the response will include all values in the requested
-        # range (excluding trailing empty rows and columns).
+        # each of the BatchUpdateValuesResponse.responses contains the updated
+        # values. If the range to write was larger than the range actually written,
+        # the response includes all values in the requested range (excluding trailing
+        # empty rows and columns).
         # Corresponds to the JSON property `includeValuesInResponse`
         # @return [Boolean]
         attr_accessor :include_values_in_response
@@ -2117,10 +2131,10 @@ module Google
         # Determines if the update response should include the values
         # of the cells that were updated. By default, responses
         # do not include the updated values. The `updatedData` field within
-        # each of the BatchUpdateValuesResponse.responses will contain
-        # the updated values. If the range to write was larger than than the range
-        # actually written, the response will include all values in the requested
-        # range (excluding trailing empty rows and columns).
+        # each of the BatchUpdateValuesResponse.responses contains the updated
+        # values. If the range to write was larger than the range actually written,
+        # the response includes all values in the requested range (excluding trailing
+        # empty rows and columns).
         # Corresponds to the JSON property `includeValuesInResponse`
         # @return [Boolean]
         attr_accessor :include_values_in_response
@@ -2551,6 +2565,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :bubble_border_color
       
+        # A color value.
+        # Corresponds to the JSON property `bubbleBorderColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :bubble_border_color_style
+      
         # The data included in a domain or series.
         # Corresponds to the JSON property `bubbleLabels`
         # @return [Google::Apis::SheetsV4::ChartData]
@@ -2612,6 +2631,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bubble_border_color = args[:bubble_border_color] if args.key?(:bubble_border_color)
+          @bubble_border_color_style = args[:bubble_border_color_style] if args.key?(:bubble_border_color_style)
           @bubble_labels = args[:bubble_labels] if args.key?(:bubble_labels)
           @bubble_max_radius_size = args[:bubble_max_radius_size] if args.key?(:bubble_max_radius_size)
           @bubble_min_radius_size = args[:bubble_min_radius_size] if args.key?(:bubble_min_radius_size)
@@ -3233,6 +3253,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
       
+        # A color value.
+        # Corresponds to the JSON property `backgroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :background_color_style
+      
         # The specification for a basic chart.  See BasicChartType for the list
         # of charts this supports.
         # Corresponds to the JSON property `basicChart`
@@ -3359,6 +3384,7 @@ module Google
         def update!(**args)
           @alt_text = args[:alt_text] if args.key?(:alt_text)
           @background_color = args[:background_color] if args.key?(:background_color)
+          @background_color_style = args[:background_color_style] if args.key?(:background_color_style)
           @basic_chart = args[:basic_chart] if args.key?(:basic_chart)
           @bubble_chart = args[:bubble_chart] if args.key?(:bubble_chart)
           @candlestick_chart = args[:candlestick_chart] if args.key?(:candlestick_chart)
@@ -4065,9 +4091,9 @@ module Google
         attr_accessor :major_dimension
       
         # The data to be written.  If the provided values exceed any of the ranges
-        # matched by the data filter then the request will fail.  If the provided
-        # values are less than the matched ranges only the specified values will be
-        # written, existing values in the matched ranges will remain unaffected.
+        # matched by the data filter then the request fails.  If the provided values
+        # are less than the matched ranges only the specified values are written,
+        # existing values in the matched ranges remain unaffected.
         # Corresponds to the JSON property `values`
         # @return [Array<Array<Object>>]
         attr_accessor :values
@@ -6106,6 +6132,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :bar_color
       
+        # A color value.
+        # Corresponds to the JSON property `barColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :bar_color_style
+      
         # The data included in a domain or series.
         # Corresponds to the JSON property `data`
         # @return [Google::Apis::SheetsV4::ChartData]
@@ -6118,6 +6149,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @bar_color = args[:bar_color] if args.key?(:bar_color)
+          @bar_color_style = args[:bar_color_style] if args.key?(:bar_color_style)
           @data = args[:data] if args.key?(:data)
         end
       end
@@ -6848,6 +6880,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :node_color
       
+        # A color value.
+        # Corresponds to the JSON property `nodeColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :node_color_style
+      
         # The size of the org chart nodes.
         # Corresponds to the JSON property `nodeSize`
         # @return [String]
@@ -6965,6 +7002,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :selected_node_color
       
+        # A color value.
+        # Corresponds to the JSON property `selectedNodeColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :selected_node_color_style
+      
         # The data included in a domain or series.
         # Corresponds to the JSON property `tooltips`
         # @return [Google::Apis::SheetsV4::ChartData]
@@ -6978,9 +7020,11 @@ module Google
         def update!(**args)
           @labels = args[:labels] if args.key?(:labels)
           @node_color = args[:node_color] if args.key?(:node_color)
+          @node_color_style = args[:node_color_style] if args.key?(:node_color_style)
           @node_size = args[:node_size] if args.key?(:node_size)
           @parent_labels = args[:parent_labels] if args.key?(:parent_labels)
           @selected_node_color = args[:selected_node_color] if args.key?(:selected_node_color)
+          @selected_node_color_style = args[:selected_node_color_style] if args.key?(:selected_node_color_style)
           @tooltips = args[:tooltips] if args.key?(:tooltips)
         end
       end
@@ -8454,7 +8498,7 @@ module Google
       
         # The data filters describing the criteria used to determine which
         # DeveloperMetadata entries to return.  DeveloperMetadata matching any of the
-        # specified filters will be included in the response.
+        # specified filters are included in the response.
         # Corresponds to the JSON property `dataFilters`
         # @return [Array<Google::Apis::SheetsV4::DataFilter>]
         attr_accessor :data_filters
@@ -9514,8 +9558,8 @@ module Google
         # @return [String]
         attr_accessor :primary_font_family
       
-        # The spreadsheet theme color pairs. For update users need to give all pairs
-        # of theme colors.
+        # The spreadsheet theme color pairs. To update you must provide all theme
+        # color pairs.
         # Corresponds to the JSON property `themeColors`
         # @return [Array<Google::Apis::SheetsV4::ThemeColorPair>]
         attr_accessor :theme_colors
@@ -9972,6 +10016,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :max_value_color
       
+        # A color value.
+        # Corresponds to the JSON property `maxValueColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :max_value_color_style
+      
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
         # languages over compactness; for example, the fields of this representation
@@ -10078,6 +10127,11 @@ module Google
         # Corresponds to the JSON property `midValueColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :mid_value_color
+      
+        # A color value.
+        # Corresponds to the JSON property `midValueColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :mid_value_color_style
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
@@ -10186,6 +10240,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :min_value_color
       
+        # A color value.
+        # Corresponds to the JSON property `minValueColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :min_value_color_style
+      
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
         # languages over compactness; for example, the fields of this representation
@@ -10293,6 +10352,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :no_data_color
       
+        # A color value.
+        # Corresponds to the JSON property `noDataColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :no_data_color_style
+      
         def initialize(**args)
            update!(**args)
         end
@@ -10300,9 +10364,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_value_color = args[:max_value_color] if args.key?(:max_value_color)
+          @max_value_color_style = args[:max_value_color_style] if args.key?(:max_value_color_style)
           @mid_value_color = args[:mid_value_color] if args.key?(:mid_value_color)
+          @mid_value_color_style = args[:mid_value_color_style] if args.key?(:mid_value_color_style)
           @min_value_color = args[:min_value_color] if args.key?(:min_value_color)
+          @min_value_color_style = args[:min_value_color_style] if args.key?(:min_value_color_style)
           @no_data_color = args[:no_data_color] if args.key?(:no_data_color)
+          @no_data_color_style = args[:no_data_color_style] if args.key?(:no_data_color_style)
         end
       end
       
@@ -10427,6 +10495,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :header_color
       
+        # A color value.
+        # Corresponds to the JSON property `headerColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :header_color_style
+      
         # True to hide tooltips.
         # Corresponds to the JSON property `hideTooltips`
         # @return [Boolean]
@@ -10493,6 +10566,7 @@ module Google
           @color_data = args[:color_data] if args.key?(:color_data)
           @color_scale = args[:color_scale] if args.key?(:color_scale)
           @header_color = args[:header_color] if args.key?(:header_color)
+          @header_color_style = args[:header_color_style] if args.key?(:header_color_style)
           @hide_tooltips = args[:hide_tooltips] if args.key?(:hide_tooltips)
           @hinted_levels = args[:hinted_levels] if args.key?(:hinted_levels)
           @labels = args[:labels] if args.key?(:labels)
@@ -11508,6 +11582,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
       
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
         # The label of the column's legend.
         # Corresponds to the JSON property `label`
         # @return [String]
@@ -11520,6 +11599,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
           @label = args[:label] if args.key?(:label)
         end
       end

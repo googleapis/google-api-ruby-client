@@ -298,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AutoscalingPolicyScaleDownControl
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Backend
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -928,6 +934,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GlobalSetLabelsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -935,6 +953,12 @@ module Google
       end
       
       class GlobalSetPolicyRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleDuration
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3214,6 +3238,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ResourcePolicyGroupPlacementPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResourcePolicyHourlyCycle
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -5018,6 +5048,7 @@ module Google
           property :device_name, as: 'deviceName'
           property :disk_encryption_key, as: 'diskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
+          property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           property :index, as: 'index'
@@ -5212,6 +5243,8 @@ module Google
           property :max_num_replicas, as: 'maxNumReplicas'
           property :min_num_replicas, as: 'minNumReplicas'
           property :mode, as: 'mode'
+          property :scale_down_control, as: 'scaleDownControl', class: Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl, decorator: Google::Apis::ComputeBeta::AutoscalingPolicyScaleDownControl::Representation
+      
         end
       end
       
@@ -5237,6 +5270,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :utilization_target, as: 'utilizationTarget'
+        end
+      end
+      
+      class AutoscalingPolicyScaleDownControl
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_scaled_down_replicas, as: 'maxScaledDownReplicas', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
+      
+          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeBeta::GoogleDuration, decorator: Google::Apis::ComputeBeta::GoogleDuration::Representation
+      
         end
       end
       
@@ -6301,6 +6344,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
+          property :metadata, as: 'metadata'
         end
       end
       
@@ -6446,6 +6490,22 @@ module Google
         end
       end
       
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeBeta::NetworkEndpoint, decorator: Google::Apis::ComputeBeta::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeBeta::NetworkEndpoint, decorator: Google::Apis::ComputeBeta::NetworkEndpoint::Representation
+      
+        end
+      end
+      
       class GlobalSetLabelsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6462,6 +6522,14 @@ module Google
           property :etag, :base64 => true, as: 'etag'
           property :policy, as: 'policy', class: Google::Apis::ComputeBeta::Policy, decorator: Google::Apis::ComputeBeta::Policy::Representation
       
+        end
+      end
+      
+      class GoogleDuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :nanos, as: 'nanos'
+          property :seconds, :numeric_string => true, as: 'seconds'
         end
       end
       
@@ -7062,6 +7130,7 @@ module Google
       
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
+          collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeBeta::Scheduling, decorator: Google::Apis::ComputeBeta::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -8714,6 +8783,7 @@ module Google
       class NetworkEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
@@ -10544,6 +10614,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeBeta::ResourcePolicyGroupPlacementPolicy::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -10594,6 +10666,15 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyGroupPlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain_count, as: 'availabilityDomainCount'
+          property :collocation, as: 'collocation'
+          property :vm_count, as: 'vmCount'
         end
       end
       
@@ -11335,6 +11416,7 @@ module Google
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :download_bytes, :numeric_string => true, as: 'downloadBytes'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'

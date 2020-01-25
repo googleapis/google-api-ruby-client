@@ -3349,8 +3349,7 @@ module Google
       class Revision
         include Google::Apis::Core::Hashable
       
-        # Short term download URL for the file. This will only be populated on files
-        # with content stored in Drive.
+        # 
         # Corresponds to the JSON property `downloadUrl`
         # @return [String]
         attr_accessor :download_url
