@@ -686,6 +686,25 @@ module Google
           @message = args[:message] if args.key?(:message)
         end
       end
+      
+      # Request for UpgradeInstance.
+      class UpgradeInstanceRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Specifies the target version of Redis software to upgrade to.
+        # Corresponds to the JSON property `redisVersion`
+        # @return [String]
+        attr_accessor :redis_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @redis_version = args[:redis_version] if args.key?(:redis_version)
+        end
+      end
     end
   end
 end
