@@ -143,7 +143,7 @@ module Google
         attr_accessor :group_id
       
         # The group resource name.
-        # Example: <code>projects/my-project-123/groups/my-groupid</code>
+        # Example: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

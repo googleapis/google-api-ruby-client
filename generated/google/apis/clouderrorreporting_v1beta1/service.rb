@@ -307,7 +307,7 @@ module Google
         # Fails if the group does not exist.
         # @param [String] name
         #   The group resource name.
-        #   Example: <code>projects/my-project-123/groups/my-groupid</code>
+        #   Example: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>
         # @param [Google::Apis::ClouderrorreportingV1beta1::ErrorGroup] error_group_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
