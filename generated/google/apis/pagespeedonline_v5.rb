@@ -20,13 +20,18 @@ module Google
   module Apis
     # PageSpeed Insights API
     #
-    # Analyzes the performance of a web page and provides tailored suggestions to
-    # make that page faster.
+    # The PageSpeed Insights API lets you analyze the performance of your website
+    # with a simple API.  It offers tailored suggestions for how you can optimize
+    # your site, and lets you easily integrate PageSpeed Insights analysis into your
+    # development tools and workflow.
     #
-    # @see https://developers.google.com/speed/docs/insights/v5/get-started
+    # @see https://developers.google.com/speed/docs/insights/v5/about
     module PagespeedonlineV5
       VERSION = 'V5'
-      REVISION = '20191028'
+      REVISION = '20200117'
+
+      # Associate you with your personal info on Google
+      PENID = 'openid'
     end
   end
 end

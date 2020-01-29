@@ -114,6 +114,12 @@ module Google
         attr_accessor :location
       
         # Reserved for future use.
+        # Corresponds to the JSON property `pointInTimeRecoveryEnabled`
+        # @return [Boolean]
+        attr_accessor :point_in_time_recovery_enabled
+        alias_method :point_in_time_recovery_enabled?, :point_in_time_recovery_enabled
+      
+        # Reserved for future use.
         # Corresponds to the JSON property `replicationLogArchivingEnabled`
         # @return [Boolean]
         attr_accessor :replication_log_archiving_enabled
@@ -135,6 +141,7 @@ module Google
           @enabled = args[:enabled] if args.key?(:enabled)
           @kind = args[:kind] if args.key?(:kind)
           @location = args[:location] if args.key?(:location)
+          @point_in_time_recovery_enabled = args[:point_in_time_recovery_enabled] if args.key?(:point_in_time_recovery_enabled)
           @replication_log_archiving_enabled = args[:replication_log_archiving_enabled] if args.key?(:replication_log_archiving_enabled)
           @start_time = args[:start_time] if args.key?(:start_time)
         end
@@ -339,6 +346,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :pitr_timestamp_ms
       
+        # Reserved for future use.
+        # Corresponds to the JSON property `pointInTime`
+        # @return [String]
+        attr_accessor :point_in_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -349,6 +361,7 @@ module Google
           @destination_instance_name = args[:destination_instance_name] if args.key?(:destination_instance_name)
           @kind = args[:kind] if args.key?(:kind)
           @pitr_timestamp_ms = args[:pitr_timestamp_ms] if args.key?(:pitr_timestamp_ms)
+          @point_in_time = args[:point_in_time] if args.key?(:point_in_time)
         end
       end
       

@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloneVersionRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CloudRunRewrite
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +106,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PathFilter
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PopulateVersionFilesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -148,6 +166,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -181,6 +205,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :path, as: 'path'
           property :token, as: 'token'
+        end
+      end
+      
+      class CloneVersionRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exclude, as: 'exclude', class: Google::Apis::FirebasehostingV1beta1::PathFilter, decorator: Google::Apis::FirebasehostingV1beta1::PathFilter::Representation
+      
+          property :finalize, as: 'finalize'
+          property :include, as: 'include', class: Google::Apis::FirebasehostingV1beta1::PathFilter, decorator: Google::Apis::FirebasehostingV1beta1::PathFilter::Representation
+      
+          property :source_version, as: 'sourceVersion'
         end
       end
       
@@ -281,6 +317,25 @@ module Google
         end
       end
       
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::FirebasehostingV1beta1::Status, decorator: Google::Apis::FirebasehostingV1beta1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
+        end
+      end
+      
+      class PathFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :regexes, as: 'regexes'
+        end
+      end
+      
       class PopulateVersionFilesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -360,6 +415,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_versions, :numeric_string => true, as: 'maxVersions'
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

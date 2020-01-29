@@ -455,6 +455,7 @@ module Google
           property :enabled, as: 'enabled'
           property :kind, as: 'kind'
           property :location, as: 'location'
+          property :point_in_time_recovery_enabled, as: 'pointInTimeRecoveryEnabled'
           property :replication_log_archiving_enabled, as: 'replicationLogArchivingEnabled'
           property :start_time, as: 'startTime'
         end
@@ -511,6 +512,7 @@ module Google
           property :destination_instance_name, as: 'destinationInstanceName'
           property :kind, as: 'kind'
           property :pitr_timestamp_ms, :numeric_string => true, as: 'pitrTimestampMs'
+          property :point_in_time, as: 'pointInTime'
         end
       end
       
