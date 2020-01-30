@@ -3824,6 +3824,40 @@ module Google
         end
       end
       
+      # A generic detected landmark represented by name in string format and a 2D
+      # location.
+      class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected landmark. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A vertex represents a 2D point in the image.
+        # NOTE: the normalized vertex coordinates are relative to the original image
+        # and range from 0 to 1.
+        # Corresponds to the JSON property `point`
+        # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1NormalizedVertex]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @name = args[:name] if args.key?(:name)
+          @point = args[:point] if args.key?(:point)
+        end
+      end
+      
       # Detected entity from video analysis.
       class GoogleCloudVideointelligenceV1p3beta1Entity
         include Google::Apis::Core::Hashable
@@ -4232,6 +4266,25 @@ module Google
         end
       end
       
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The trackes that a person is detected.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1Track>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
       # The recognized celebrity with confidence score.
       class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
         include Google::Apis::Core::Hashable
@@ -4519,6 +4572,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>]
         attr_accessor :attributes
       
+        # Optional. The detected landmarks.
+        # Corresponds to the JSON property `landmarks`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>]
+        attr_accessor :landmarks
+      
         # Normalized bounding box.
         # The normalized vertex coordinates are relative to the original image.
         # Range: [0, 1].
@@ -4539,6 +4597,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @landmarks = args[:landmarks] if args.key?(:landmarks)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
         end
@@ -4686,6 +4745,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
+      
         # Video segment.
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
@@ -4753,6 +4817,7 @@ module Google
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)

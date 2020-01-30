@@ -628,7 +628,7 @@ module Google
         attr_accessor :id
       
         # ignored_files and included_files are file glob matches using
-        # http://godoc/pkg/path/filepath#Match extended with support for "**".
+        # https://golang.org/pkg/path/filepath/#Match extended with support for "**".
         # If ignored_files and changed files are both empty, then they are
         # not used to determine whether or not to trigger a build.
         # If ignored_files is not empty, then we ignore any files that match

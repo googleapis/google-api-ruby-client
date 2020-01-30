@@ -326,7 +326,7 @@ module Google
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
         #   The reservation ID. This field must only contain lower case alphanumeric
-        #   characters or dash.
+        #   characters or dash. Max length is 64 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

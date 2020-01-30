@@ -3490,6 +3490,40 @@ module Google
         end
       end
       
+      # A generic detected landmark represented by name in string format and a 2D
+      # location.
+      class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark
+        include Google::Apis::Core::Hashable
+      
+        # The confidence score of the detected landmark. Range [0, 1].
+        # Corresponds to the JSON property `confidence`
+        # @return [Float]
+        attr_accessor :confidence
+      
+        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # A vertex represents a 2D point in the image.
+        # NOTE: the normalized vertex coordinates are relative to the original image
+        # and range from 0 to 1.
+        # Corresponds to the JSON property `point`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1NormalizedVertex]
+        attr_accessor :point
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @confidence = args[:confidence] if args.key?(:confidence)
+          @name = args[:name] if args.key?(:name)
+          @point = args[:point] if args.key?(:point)
+        end
+      end
+      
       # Detected entity from video analysis.
       class GoogleCloudVideointelligenceV1p3beta1Entity
         include Google::Apis::Core::Hashable
@@ -4036,6 +4070,64 @@ module Google
         end
       end
       
+      # Person detection annotation per video.
+      class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # The trackes that a person is detected.
+        # Corresponds to the JSON property `tracks`
+        # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track>]
+        attr_accessor :tracks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @tracks = args[:tracks] if args.key?(:tracks)
+        end
+      end
+      
+      # Config for PERSON_DETECTION.
+      class GoogleCloudVideointelligenceV1p3beta1PersonDetectionConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether to enable person attributes detection, such as cloth color (black,
+        # blue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair
+        # color (black, blonde, etc), hair length (long, short, bald), etc.
+        # Ignored if 'include_bounding_boxes' is false.
+        # Corresponds to the JSON property `includeAttributes`
+        # @return [Boolean]
+        attr_accessor :include_attributes
+        alias_method :include_attributes?, :include_attributes
+      
+        # Whether bounding boxes be included in the person detection annotation
+        # output.
+        # Corresponds to the JSON property `includeBoundingBoxes`
+        # @return [Boolean]
+        attr_accessor :include_bounding_boxes
+        alias_method :include_bounding_boxes?, :include_bounding_boxes
+      
+        # Whether to enable pose landmarks detection. Ignored if
+        # 'include_bounding_boxes' is false.
+        # Corresponds to the JSON property `includePoseLandmarks`
+        # @return [Boolean]
+        attr_accessor :include_pose_landmarks
+        alias_method :include_pose_landmarks?, :include_pose_landmarks
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @include_attributes = args[:include_attributes] if args.key?(:include_attributes)
+          @include_bounding_boxes = args[:include_bounding_boxes] if args.key?(:include_bounding_boxes)
+          @include_pose_landmarks = args[:include_pose_landmarks] if args.key?(:include_pose_landmarks)
+        end
+      end
+      
       # The recognized celebrity with confidence score.
       class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity
         include Google::Apis::Core::Hashable
@@ -4498,6 +4590,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1DetectedAttribute>]
         attr_accessor :attributes
       
+        # Optional. The detected landmarks.
+        # Corresponds to the JSON property `landmarks`
+        # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1DetectedLandmark>]
+        attr_accessor :landmarks
+      
         # Normalized bounding box.
         # The normalized vertex coordinates are relative to the original image.
         # Range: [0, 1].
@@ -4518,6 +4615,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
+          @landmarks = args[:landmarks] if args.key?(:landmarks)
           @normalized_bounding_box = args[:normalized_bounding_box] if args.key?(:normalized_bounding_box)
           @time_offset = args[:time_offset] if args.key?(:time_offset)
         end
@@ -4665,6 +4763,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation>]
         attr_accessor :object_annotations
       
+        # Person detection annotations.
+        # Corresponds to the JSON property `personDetectionAnnotations`
+        # @return [Array<Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation>]
+        attr_accessor :person_detection_annotations
+      
         # Video segment.
         # Corresponds to the JSON property `segment`
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
@@ -4732,6 +4835,7 @@ module Google
           @input_uri = args[:input_uri] if args.key?(:input_uri)
           @logo_recognition_annotations = args[:logo_recognition_annotations] if args.key?(:logo_recognition_annotations)
           @object_annotations = args[:object_annotations] if args.key?(:object_annotations)
+          @person_detection_annotations = args[:person_detection_annotations] if args.key?(:person_detection_annotations)
           @segment = args[:segment] if args.key?(:segment)
           @segment_label_annotations = args[:segment_label_annotations] if args.key?(:segment_label_annotations)
           @segment_presence_label_annotations = args[:segment_presence_label_annotations] if args.key?(:segment_presence_label_annotations)
@@ -4767,6 +4871,11 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ObjectTrackingConfig]
         attr_accessor :object_tracking_config
       
+        # Config for PERSON_DETECTION.
+        # Corresponds to the JSON property `personDetectionConfig`
+        # @return [Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1PersonDetectionConfig]
+        attr_accessor :person_detection_config
+      
         # Video segments to annotate. The segments may overlap and are not required
         # to be contiguous or span the whole video. If unspecified, each video is
         # treated as a single segment.
@@ -4799,6 +4908,7 @@ module Google
           @face_detection_config = args[:face_detection_config] if args.key?(:face_detection_config)
           @label_detection_config = args[:label_detection_config] if args.key?(:label_detection_config)
           @object_tracking_config = args[:object_tracking_config] if args.key?(:object_tracking_config)
+          @person_detection_config = args[:person_detection_config] if args.key?(:person_detection_config)
           @segments = args[:segments] if args.key?(:segments)
           @shot_change_detection_config = args[:shot_change_detection_config] if args.key?(:shot_change_detection_config)
           @speech_transcription_config = args[:speech_transcription_config] if args.key?(:speech_transcription_config)
