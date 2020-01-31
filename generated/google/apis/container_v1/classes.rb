@@ -2243,6 +2243,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
+        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
+        # in which the NodePool's nodes should be located.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # NodeManagement defines the set of node management services turned on for the
         # node pool.
         # Corresponds to the JSON property `management`
@@ -2280,6 +2286,28 @@ module Google
         # @return [String]
         attr_accessor :status_message
       
+        # These upgrade settings control the level of parallelism and the level of
+        # disruption caused by an upgrade.
+        # maxUnavailable controls the number of nodes that can be simultaneously
+        # unavailable.
+        # maxSurge controls the number of additional nodes that can be added to the
+        # node pool temporarily for the time of the upgrade to increase the number of
+        # available nodes.
+        # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+        # nodes are being upgraded at the same time).
+        # Note: upgrades inevitably introduce some disruption since workloads need to
+        # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+        # this holds true. (Disruption stays within the limits of
+        # PodDisruptionBudget, if it is configured.)
+        # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+        # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+        # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+        # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+        # there are always at least 4 nodes available.
+        # Corresponds to the JSON property `upgradeSettings`
+        # @return [Google::Apis::ContainerV1::UpgradeSettings]
+        attr_accessor :upgrade_settings
+      
         # The version of the Kubernetes of this node.
         # Corresponds to the JSON property `version`
         # @return [String]
@@ -2296,6 +2324,7 @@ module Google
           @config = args[:config] if args.key?(:config)
           @initial_node_count = args[:initial_node_count] if args.key?(:initial_node_count)
           @instance_group_urls = args[:instance_group_urls] if args.key?(:instance_group_urls)
+          @locations = args[:locations] if args.key?(:locations)
           @management = args[:management] if args.key?(:management)
           @max_pods_constraint = args[:max_pods_constraint] if args.key?(:max_pods_constraint)
           @name = args[:name] if args.key?(:name)
@@ -2303,6 +2332,7 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
+          @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @version = args[:version] if args.key?(:version)
         end
       end
@@ -3749,6 +3779,15 @@ module Google
         # @return [String]
         attr_accessor :image_type
       
+        # The desired list of Google Compute Engine
+        # [zones](/compute/docs/zones#available) in which the node pool's nodes
+        # should be located. Changing the locations for a node pool will result
+        # in nodes being either created or removed from the node pool, depending
+        # on whether locations are being added or removed.
+        # Corresponds to the JSON property `locations`
+        # @return [Array<String>]
+        attr_accessor :locations
+      
         # The name (project, location, cluster, node pool) of the node pool to
         # update. Specified in the format
         # 'projects/*/locations/*/clusters/*/nodePools/*'.
@@ -3782,6 +3821,28 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # These upgrade settings control the level of parallelism and the level of
+        # disruption caused by an upgrade.
+        # maxUnavailable controls the number of nodes that can be simultaneously
+        # unavailable.
+        # maxSurge controls the number of additional nodes that can be added to the
+        # node pool temporarily for the time of the upgrade to increase the number of
+        # available nodes.
+        # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+        # nodes are being upgraded at the same time).
+        # Note: upgrades inevitably introduce some disruption since workloads need to
+        # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+        # this holds true. (Disruption stays within the limits of
+        # PodDisruptionBudget, if it is configured.)
+        # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+        # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+        # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+        # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+        # there are always at least 4 nodes available.
+        # Corresponds to the JSON property `upgradeSettings`
+        # @return [Google::Apis::ContainerV1::UpgradeSettings]
+        attr_accessor :upgrade_settings
+      
         # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -3798,11 +3859,58 @@ module Google
         def update!(**args)
           @cluster_id = args[:cluster_id] if args.key?(:cluster_id)
           @image_type = args[:image_type] if args.key?(:image_type)
+          @locations = args[:locations] if args.key?(:locations)
           @name = args[:name] if args.key?(:name)
           @node_pool_id = args[:node_pool_id] if args.key?(:node_pool_id)
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # These upgrade settings control the level of parallelism and the level of
+      # disruption caused by an upgrade.
+      # maxUnavailable controls the number of nodes that can be simultaneously
+      # unavailable.
+      # maxSurge controls the number of additional nodes that can be added to the
+      # node pool temporarily for the time of the upgrade to increase the number of
+      # available nodes.
+      # (maxUnavailable + maxSurge) determines the level of parallelism (how many
+      # nodes are being upgraded at the same time).
+      # Note: upgrades inevitably introduce some disruption since workloads need to
+      # be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,
+      # this holds true. (Disruption stays within the limits of
+      # PodDisruptionBudget, if it is configured.)
+      # Consider a hypothetical node pool with 5 nodes having maxSurge=2,
+      # maxUnavailable=1. This means the upgrade process upgrades 3 nodes
+      # simultaneously. It creates 2 additional (upgraded) nodes, then it brings
+      # down 3 old (not yet upgraded) nodes at the same time. This ensures that
+      # there are always at least 4 nodes available.
+      class UpgradeSettings
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of nodes that can be created beyond the current size
+        # of the node pool during the upgrade process.
+        # Corresponds to the JSON property `maxSurge`
+        # @return [Fixnum]
+        attr_accessor :max_surge
+      
+        # The maximum number of nodes that can be simultaneously unavailable during
+        # the upgrade process. A node is considered available if its status is
+        # Ready.
+        # Corresponds to the JSON property `maxUnavailable`
+        # @return [Fixnum]
+        attr_accessor :max_unavailable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_surge = args[:max_surge] if args.key?(:max_surge)
+          @max_unavailable = args[:max_unavailable] if args.key?(:max_unavailable)
         end
       end
       

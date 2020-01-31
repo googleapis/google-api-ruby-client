@@ -12,23 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/remotebuildexecution_v1/service.rb'
-require 'google/apis/remotebuildexecution_v1/classes.rb'
-require 'google/apis/remotebuildexecution_v1/representations.rb'
+require 'google/apis/admob_v1/service.rb'
+require 'google/apis/admob_v1/classes.rb'
+require 'google/apis/admob_v1/representations.rb'
 
 module Google
   module Apis
-    # Remote Build Execution API
+    # AdMob API
     #
-    # Supplies a Remote Execution API service for tools such as bazel.
+    # The Google AdMob API lets you programmatically get reports on earnings.
     #
-    # @see https://cloud.google.com/remote-build-execution/docs/
-    module RemotebuildexecutionV1
+    # @see https://developers.google.com/admob/api/
+    module AdmobV1
       VERSION = 'V1'
-      REVISION = '20200128'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      REVISION = '20200130'
     end
   end
 end

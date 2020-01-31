@@ -1071,7 +1071,7 @@ module Google
         # `.../`study_id`/`series_id`/`instance_id`[/`frame_number`].`extension``
         # The frame_number component exists only for multi-frame instances.
         # Refer to the DICOM conformance statement for permissible MIME types:
-        # https://cloud.google.com/healthcare/docs/dicom#wado-rs
+        # https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction
         # The following extensions are used for output files:
         # application/dicom -> .dcm
         # image/jpeg -> .jpg
@@ -2447,7 +2447,8 @@ module Google
         # The FHIR resource type to search, such as Patient or Observation. For a
         # complete list, see the FHIR Resource Index
         # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html)).
+        # [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        # [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type

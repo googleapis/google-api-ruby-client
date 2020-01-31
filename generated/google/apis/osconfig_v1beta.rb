@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/remotebuildexecution_v1/service.rb'
-require 'google/apis/remotebuildexecution_v1/classes.rb'
-require 'google/apis/remotebuildexecution_v1/representations.rb'
+require 'google/apis/osconfig_v1beta/service.rb'
+require 'google/apis/osconfig_v1beta/classes.rb'
+require 'google/apis/osconfig_v1beta/representations.rb'
 
 module Google
   module Apis
-    # Remote Build Execution API
+    # Cloud OS Config API
     #
-    # Supplies a Remote Execution API service for tools such as bazel.
+    # OS management tools that can be used for patch management, patch compliance,
+    # and configuration management on VM instances.
     #
-    # @see https://cloud.google.com/remote-build-execution/docs/
-    module RemotebuildexecutionV1
-      VERSION = 'V1'
-      REVISION = '20200128'
+    # @see https://cloud.google.com/
+    module OsconfigV1beta
+      VERSION = 'V1beta'
+      REVISION = '20200109'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View and manage your Google Compute Engine resources
+      AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
     end
   end
 end

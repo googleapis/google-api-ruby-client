@@ -484,6 +484,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpgradeSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UsableSubnetwork
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1038,6 +1044,7 @@ module Google
       
           property :initial_node_count, as: 'initialNodeCount'
           collection :instance_group_urls, as: 'instanceGroupUrls'
+          collection :locations, as: 'locations'
           property :management, as: 'management', class: Google::Apis::ContainerV1::NodeManagement, decorator: Google::Apis::ContainerV1::NodeManagement::Representation
       
           property :max_pods_constraint, as: 'maxPodsConstraint', class: Google::Apis::ContainerV1::MaxPodsConstraint, decorator: Google::Apis::ContainerV1::MaxPodsConstraint::Representation
@@ -1047,6 +1054,8 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
+          property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
+      
           property :version, as: 'version'
         end
       end
@@ -1383,11 +1392,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :cluster_id, as: 'clusterId'
           property :image_type, as: 'imageType'
+          collection :locations, as: 'locations'
           property :name, as: 'name'
           property :node_pool_id, as: 'nodePoolId'
           property :node_version, as: 'nodeVersion'
           property :project_id, as: 'projectId'
+          property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
+      
           property :zone, as: 'zone'
+        end
+      end
+      
+      class UpgradeSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_surge, as: 'maxSurge'
+          property :max_unavailable, as: 'maxUnavailable'
         end
       end
       

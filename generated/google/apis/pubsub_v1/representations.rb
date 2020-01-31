@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeadLetterPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -251,6 +257,14 @@ module Google
         end
       end
       
+      class DeadLetterPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dead_letter_topic, as: 'deadLetterTopic'
+          property :max_delivery_attempts, as: 'maxDeliveryAttempts'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -413,6 +427,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_id, as: 'ackId'
+          property :delivery_attempt, as: 'deliveryAttempt'
           property :message, as: 'message', class: Google::Apis::PubsubV1::Message, decorator: Google::Apis::PubsubV1::Message::Representation
       
         end
@@ -454,6 +469,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ack_deadline_seconds, as: 'ackDeadlineSeconds'
+          property :dead_letter_policy, as: 'deadLetterPolicy', class: Google::Apis::PubsubV1::DeadLetterPolicy, decorator: Google::Apis::PubsubV1::DeadLetterPolicy::Representation
+      
           property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::PubsubV1::ExpirationPolicy, decorator: Google::Apis::PubsubV1::ExpirationPolicy::Representation
       
           hash :labels, as: 'labels'

@@ -46,10 +46,28 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL)
+        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+        # are documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit"
+        # description: "Determines if a summary is less than 100 chars"
+        # expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner"
+        # description: "Determines if requestor is the document owner"
+        # expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents"
+        # description: "Determine whether the document should be publicly visible"
+        # expression: "document.type != 'private' && document.type != 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string"
+        # description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service
+        # documentation for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::PubsubV1::Expr]
         attr_accessor :condition
@@ -141,6 +159,49 @@ module Google
         end
       end
       
+      # Dead lettering is done on a best effort basis. The same message might be
+      # dead lettered multiple times.
+      # If validation on any of the fields fails at subscription creation/updation,
+      # the create/update subscription request will fail.
+      class DeadLetterPolicy
+        include Google::Apis::Core::Hashable
+      
+        # The name of the topic to which dead letter messages should be published.
+        # Format is `projects/`project`/topics/`topic``.The Cloud Pub/Sub service
+        # account associated with the enclosing subscription's parent project (i.e.,
+        # service-`project_number`@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        # permission to Publish() to this topic.
+        # The operation will fail if the topic does not exist.
+        # Users should ensure that there is a subscription attached to this topic
+        # since messages published to a topic with no subscriptions are lost.
+        # Corresponds to the JSON property `deadLetterTopic`
+        # @return [String]
+        attr_accessor :dead_letter_topic
+      
+        # The maximum number of delivery attempts for any message. The value must be
+        # between 5 and 100.
+        # The number of delivery attempts is defined as 1 + (the sum of number of
+        # NACKs and number of times the acknowledgement deadline has been exceeded
+        # for the message).
+        # A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+        # client libraries may automatically extend ack_deadlines.
+        # This field will be honored on a best effort basis.
+        # If this parameter is 0, a default value of 5 is used.
+        # Corresponds to the JSON property `maxDeliveryAttempts`
+        # @return [Fixnum]
+        attr_accessor :max_delivery_attempts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dead_letter_topic = args[:dead_letter_topic] if args.key?(:dead_letter_topic)
+          @max_delivery_attempts = args[:max_delivery_attempts] if args.key?(:max_delivery_attempts)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -185,34 +246,50 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL)
+      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+      # are documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit"
+      # description: "Determines if a summary is less than 100 chars"
+      # expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner"
+      # description: "Determines if requestor is the document owner"
+      # expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents"
+      # description: "Determine whether the document should be publicly visible"
+      # expression: "document.type != 'private' && document.type != 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string"
+      # description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service
+      # documentation for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
+        # Optional. Description of the expression. This is a longer text which
         # describes the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
+        # Textual representation of an expression in Common Expression Language
+        # syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
+        # Optional. String indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing
+        # Optional. Title for the expression, i.e. a short string describing
         # its purpose. This can be used e.g. in UIs which allow to enter the
         # expression.
         # Corresponds to the JSON property `title`
@@ -792,6 +869,23 @@ module Google
         # @return [String]
         attr_accessor :ack_id
       
+        # Delivery attempt counter is 1 + (the sum of number of NACKs and number of
+        # ack_deadline exceeds) for this message.
+        # A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
+        # exceeds event is whenever a message is not acknowledged within
+        # ack_deadline. Note that ack_deadline is initially
+        # Subscription.ackDeadlineSeconds, but may get extended automatically by
+        # the client library.
+        # The first delivery of a given message will have this value as 1. The value
+        # is calculated at best effort and is approximate.
+        # If a DeadLetterPolicy is not set on the subscription, this will be 0.
+        # <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
+        # API might be changed in backward-incompatible ways and is not recommended
+        # for production use. It is not subject to any SLA or deprecation policy.
+        # Corresponds to the JSON property `deliveryAttempt`
+        # @return [Fixnum]
+        attr_accessor :delivery_attempt
+      
         # A message that is published by publishers and consumed by subscribers. The
         # message must contain either a non-empty data field or at least one attribute.
         # Note that client libraries represent this object differently
@@ -811,6 +905,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_id = args[:ack_id] if args.key?(:ack_id)
+          @delivery_attempt = args[:delivery_attempt] if args.key?(:delivery_attempt)
           @message = args[:message] if args.key?(:message)
         end
       end
@@ -1016,6 +1111,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
+        # Dead lettering is done on a best effort basis. The same message might be
+        # dead lettered multiple times.
+        # If validation on any of the fields fails at subscription creation/updation,
+        # the create/update subscription request will fail.
+        # Corresponds to the JSON property `deadLetterPolicy`
+        # @return [Google::Apis::PubsubV1::DeadLetterPolicy]
+        attr_accessor :dead_letter_policy
+      
         # A policy that specifies the conditions for resource expiration (i.e.,
         # automatic resource deletion).
         # Corresponds to the JSON property `expirationPolicy`
@@ -1080,6 +1183,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
+          @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
