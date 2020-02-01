@@ -9058,6 +9058,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a HealthCheckService. An up-to-date fingerprint must be provided in
+        # order to patch/update the HealthCheckService; Otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the HealthCheckService.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # List of URLs to the HealthCheck resources. Must have at least one HealthCheck,
         # and not more than 10. HealthCheck resources must have portSpecification=
         # USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be
@@ -9155,6 +9166,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @health_checks = args[:health_checks] if args.key?(:health_checks)
           @health_status_aggregation_policy = args[:health_status_aggregation_policy] if args.key?(:health_status_aggregation_policy)
           @health_status_aggregation_strategy = args[:health_status_aggregation_strategy] if args.key?(:health_status_aggregation_strategy)

@@ -84,11 +84,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new cloudauditlog.
+        # Creates a new cloudauditlogssource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudauditlog should
+        #   The project ID or project number in which this cloudauditlogssource should
         #   be created.
-        # @param [Google::Apis::RunV1alpha1::CloudAuditLog] cloud_audit_log_object
+        # @param [Google::Apis::RunV1alpha1::CloudAuditLogsSource] cloud_audit_logs_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -98,29 +98,29 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLogsSource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_cloudauditlog(parent, cloud_audit_log_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogs', options)
-          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.request_object = cloud_audit_log_object
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
+        def create_namespace_cloudauditlogssource(parent, cloud_audit_logs_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogssources', options)
+          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.request_object = cloud_audit_logs_source_object
+          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLogsSource
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to delete a cloudauditlog.
+        # Rpc to delete a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlog being deleted. If needed, replace
+        #   The name of the cloudauditlogssource being deleted. If needed, replace
         #   `namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
@@ -148,7 +148,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_cloudauditlog(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_namespace_cloudauditlogssource(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
           command.response_class = Google::Apis::RunV1alpha1::Empty
@@ -161,9 +161,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to get information about a cloudauditlog.
+        # Rpc to get information about a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlog being retrieved. If needed, replace
+        #   The name of the cloudauditlogssource being retrieved. If needed, replace
         #   `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -174,27 +174,192 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLogsSource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_namespace_cloudauditlog(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_namespace_cloudauditlogssource(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
+          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLogsSource
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to list cloudauditlogs.
+        # Rpc to list cloudauditlogssources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudauditlogs should
+        #   The project ID or project number from which the cloudauditlogssources
+        #   should be listed.
+        # @param [String] continue
+        #   Optional encoded string to continue paging.
+        # @param [String] field_selector
+        #   Allows to filter resources based on a specific value for a field name.
+        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
+        #   Not currently used by Cloud Run.
+        # @param [Boolean] include_uninitialized
+        #   Not currently used by Cloud Run.
+        # @param [String] label_selector
+        #   Allows to filter resources based on a label. Supported operations are
+        #   =, !=, exists, in, and notIn.
+        # @param [Fixnum] limit
+        #   The maximum number of records that should be returned.
+        # @param [String] resource_version
+        #   The baseline resource version from which the list or watch operation should
+        #   start. Not currently used by Cloud Run.
+        # @param [Boolean] watch
+        #   Flag that indicates that the client expects to watch this resource as well.
+        #   Not currently used by Cloud Run.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_namespace_cloudauditlogssources(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogssources', options)
+          command.response_representation = Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse::Representation
+          command.response_class = Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['continue'] = continue unless continue.nil?
+          command.query['fieldSelector'] = field_selector unless field_selector.nil?
+          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
+          command.query['labelSelector'] = label_selector unless label_selector.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['resourceVersion'] = resource_version unless resource_version.nil?
+          command.query['watch'] = watch unless watch.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new cloudpubsubsource.
+        # @param [String] parent
+        #   The project ID or project number in which this cloudpubsubsource should
+        #   be created.
+        # @param [Google::Apis::RunV1alpha1::CloudPubSubSource] cloud_pub_sub_source_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudPubSubSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_namespace_cloudpubsubsource(parent, cloud_pub_sub_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudpubsubsources', options)
+          command.request_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.request_object = cloud_pub_sub_source_object
+          command.response_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudPubSubSource
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to delete a cloudpubsubsource.
+        # @param [String] name
+        #   The name of the cloudpubsubsource being deleted. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] api_version
+        #   Cloud Run currently ignores this parameter.
+        # @param [String] kind
+        #   Cloud Run currently ignores this parameter.
+        # @param [String] propagation_policy
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores
+        #   this setting, and deletes in the background. Please see
+        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
+        #   more information.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_namespace_cloudpubsubsource(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
+          command.response_class = Google::Apis::RunV1alpha1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['kind'] = kind unless kind.nil?
+          command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to get information about a cloudpubsubsource.
+        # @param [String] name
+        #   The name of the cloudpubsubsource being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudPubSubSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_namespace_cloudpubsubsource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudPubSubSource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to list cloudpubsubsources.
+        # @param [String] parent
+        #   The project ID or project number from which the cloudpubsubsources should
         #   be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
@@ -224,18 +389,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse]
+        # @return [Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_namespace_cloudauditlogs(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudauditlogs', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse
+        def list_namespace_cloudpubsubsources(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+parent}/cloudpubsubsources', options)
+          command.response_representation = Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse::Representation
+          command.response_class = Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['continue'] = continue unless continue.nil?
           command.query['fieldSelector'] = field_selector unless field_selector.nil?
@@ -244,45 +409,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a cloudauditlog.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the cloudauditlog being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::CloudAuditLog] cloud_audit_log_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_cloudauditlog_cloud_audit_log(name, cloud_audit_log_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.request_object = cloud_audit_log_object
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -543,298 +669,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to get information about an EventType.
-        # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::EventType] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::EventType]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_namespace_eventtype(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'apis/eventing.knative.dev/v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::EventType::Representation
-          command.response_class = Google::Apis::RunV1alpha1::EventType
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to list EventTypes.
-        # @param [String] parent
-        #   The project ID or project number from which the EventTypes should be
-        #   listed.
-        # @param [String] continue
-        #   Optional encoded string to continue paging.
-        # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
-        # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
-        # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
-        # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
-        # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
-        # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListEventTypesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::ListEventTypesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_namespace_eventtypes(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'apis/eventing.knative.dev/v1alpha1/{+parent}/eventtypes', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListEventTypesResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListEventTypesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['continue'] = continue unless continue.nil?
-          command.query['fieldSelector'] = field_selector unless field_selector.nil?
-          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
-          command.query['labelSelector'] = label_selector unless label_selector.nil?
-          command.query['limit'] = limit unless limit.nil?
-          command.query['resourceVersion'] = resource_version unless resource_version.nil?
-          command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new pubsub.
-        # @param [String] parent
-        #   The project ID or project number in which this pubsub should
-        #   be created.
-        # @param [Google::Apis::RunV1alpha1::PubSub] pub_sub_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_namespace_pubsub(parent, pub_sub_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'apis/events.cloud.google.com/v1alpha1/{+parent}/pubsubs', options)
-          command.request_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.request_object = pub_sub_object
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to delete a pubsub.
-        # @param [String] name
-        #   The name of the pubsub being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] api_version
-        #   Cloud Run currently ignores this parameter.
-        # @param [String] kind
-        #   Cloud Run currently ignores this parameter.
-        # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_namespace_pubsub(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
-          command.response_class = Google::Apis::RunV1alpha1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['apiVersion'] = api_version unless api_version.nil?
-          command.query['kind'] = kind unless kind.nil?
-          command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to get information about a pubsub.
-        # @param [String] name
-        #   The name of the pubsub being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_namespace_pubsub(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to list pubsubs.
-        # @param [String] parent
-        #   The project ID or project number from which the pubsubs should
-        #   be listed.
-        # @param [String] continue
-        #   Optional encoded string to continue paging.
-        # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
-        # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
-        # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
-        # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
-        # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
-        # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListPubSubsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::ListPubSubsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_namespace_pubsubs(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'apis/events.cloud.google.com/v1alpha1/{+parent}/pubsubs', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListPubSubsResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListPubSubsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['continue'] = continue unless continue.nil?
-          command.query['fieldSelector'] = field_selector unless field_selector.nil?
-          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
-          command.query['labelSelector'] = label_selector unless label_selector.nil?
-          command.query['limit'] = limit unless limit.nil?
-          command.query['resourceVersion'] = resource_version unless resource_version.nil?
-          command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a pubsub.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the pubsub being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::PubSub] pub_sub_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_pubsub_pub_sub(name, pub_sub_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'apis/events.cloud.google.com/v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.request_object = pub_sub_object
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1592,7 +1426,7 @@ module Google
         #   The project ID or project number from which the triggers should
         #   be listed.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name.
         #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
@@ -1639,45 +1473,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a trigger.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::Trigger] trigger_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::Trigger] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::Trigger]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_namespace_trigger_trigger(name, trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'apis/eventing.knative.dev/v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::Trigger::Representation
-          command.request_object = trigger_object
-          command.response_representation = Google::Apis::RunV1alpha1::Trigger::Representation
-          command.response_class = Google::Apis::RunV1alpha1::Trigger
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1758,11 +1553,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new cloudauditlog.
+        # Creates a new cloudauditlogssource.
         # @param [String] parent
-        #   The project ID or project number in which this cloudauditlog should
+        #   The project ID or project number in which this cloudauditlogssource should
         #   be created.
-        # @param [Google::Apis::RunV1alpha1::CloudAuditLog] cloud_audit_log_object
+        # @param [Google::Apis::RunV1alpha1::CloudAuditLogsSource] cloud_audit_logs_source_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1772,29 +1567,29 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLogsSource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_cloudauditlog(parent, cloud_audit_log_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/cloudauditlogs', options)
-          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.request_object = cloud_audit_log_object
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
+        def create_project_location_cloudauditlogssource(parent, cloud_audit_logs_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/cloudauditlogssources', options)
+          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.request_object = cloud_audit_logs_source_object
+          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLogsSource
           command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to delete a cloudauditlog.
+        # Rpc to delete a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlog being deleted. If needed, replace
+        #   The name of the cloudauditlogssource being deleted. If needed, replace
         #   `namespace_id` with the project ID.
         # @param [String] api_version
         #   Cloud Run currently ignores this parameter.
@@ -1822,7 +1617,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_cloudauditlog(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def delete_project_location_cloudauditlogssource(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
           command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
           command.response_class = Google::Apis::RunV1alpha1::Empty
@@ -1835,9 +1630,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to get information about a cloudauditlog.
+        # Rpc to get information about a cloudauditlogssource.
         # @param [String] name
-        #   The name of the cloudauditlog being retrieved. If needed, replace
+        #   The name of the cloudauditlogssource being retrieved. If needed, replace
         #   `namespace_id` with the project ID.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1848,27 +1643,192 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLogsSource] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSource]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_cloudauditlog(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_cloudauditlogssource(name, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
+          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLogsSource
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Rpc to list cloudauditlogs.
+        # Rpc to list cloudauditlogssources.
         # @param [String] parent
-        #   The project ID or project number from which the cloudauditlogs should
+        #   The project ID or project number from which the cloudauditlogssources
+        #   should be listed.
+        # @param [String] continue
+        #   Optional encoded string to continue paging.
+        # @param [String] field_selector
+        #   Allows to filter resources based on a specific value for a field name.
+        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
+        #   Not currently used by Cloud Run.
+        # @param [Boolean] include_uninitialized
+        #   Not currently used by Cloud Run.
+        # @param [String] label_selector
+        #   Allows to filter resources based on a label. Supported operations are
+        #   =, !=, exists, in, and notIn.
+        # @param [Fixnum] limit
+        #   The maximum number of records that should be returned.
+        # @param [String] resource_version
+        #   The baseline resource version from which the list or watch operation should
+        #   start. Not currently used by Cloud Run.
+        # @param [Boolean] watch
+        #   Flag that indicates that the client expects to watch this resource as well.
+        #   Not currently used by Cloud Run.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_cloudauditlogssources(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/cloudauditlogssources', options)
+          command.response_representation = Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse::Representation
+          command.response_class = Google::Apis::RunV1alpha1::ListCloudAuditLogsSourcesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['continue'] = continue unless continue.nil?
+          command.query['fieldSelector'] = field_selector unless field_selector.nil?
+          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
+          command.query['labelSelector'] = label_selector unless label_selector.nil?
+          command.query['limit'] = limit unless limit.nil?
+          command.query['resourceVersion'] = resource_version unless resource_version.nil?
+          command.query['watch'] = watch unless watch.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new cloudpubsubsource.
+        # @param [String] parent
+        #   The project ID or project number in which this cloudpubsubsource should
+        #   be created.
+        # @param [Google::Apis::RunV1alpha1::CloudPubSubSource] cloud_pub_sub_source_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudPubSubSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_cloudpubsubsource(parent, cloud_pub_sub_source_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1alpha1/{+parent}/cloudpubsubsources', options)
+          command.request_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.request_object = cloud_pub_sub_source_object
+          command.response_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudPubSubSource
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to delete a cloudpubsubsource.
+        # @param [String] name
+        #   The name of the cloudpubsubsource being deleted. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] api_version
+        #   Cloud Run currently ignores this parameter.
+        # @param [String] kind
+        #   Cloud Run currently ignores this parameter.
+        # @param [String] propagation_policy
+        #   Specifies the propagation policy of delete. Cloud Run currently ignores
+        #   this setting, and deletes in the background. Please see
+        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
+        #   more information.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_cloudpubsubsource(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
+          command.response_class = Google::Apis::RunV1alpha1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['apiVersion'] = api_version unless api_version.nil?
+          command.query['kind'] = kind unless kind.nil?
+          command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to get information about a cloudpubsubsource.
+        # @param [String] name
+        #   The name of the cloudpubsubsource being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1alpha1::CloudPubSubSource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_cloudpubsubsource(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+          command.response_class = Google::Apis::RunV1alpha1::CloudPubSubSource
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to list cloudpubsubsources.
+        # @param [String] parent
+        #   The project ID or project number from which the cloudpubsubsources should
         #   be listed.
         # @param [String] continue
         #   Optional encoded string to continue paging.
@@ -1898,18 +1858,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse] parsed result object
+        # @yieldparam result [Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse]
+        # @return [Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_cloudauditlogs(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+parent}/cloudauditlogs', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListCloudAuditLogsResponse
+        def list_project_location_cloudpubsubsources(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1alpha1/{+parent}/cloudpubsubsources', options)
+          command.response_representation = Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse::Representation
+          command.response_class = Google::Apis::RunV1alpha1::ListCloudPubSubSourcesResponse
           command.params['parent'] = parent unless parent.nil?
           command.query['continue'] = continue unless continue.nil?
           command.query['fieldSelector'] = field_selector unless field_selector.nil?
@@ -1918,45 +1878,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a cloudauditlog.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the cloudauditlog being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::CloudAuditLog] cloud_audit_log_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::CloudAuditLog] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLog]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_project_location_cloudauditlog_cloud_audit_log(name, cloud_audit_log_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.request_object = cloud_audit_log_object
-          command.response_representation = Google::Apis::RunV1alpha1::CloudAuditLog::Representation
-          command.response_class = Google::Apis::RunV1alpha1::CloudAuditLog
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2217,298 +2138,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to get information about an EventType.
-        # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::EventType] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::EventType]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_eventtype(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::EventType::Representation
-          command.response_class = Google::Apis::RunV1alpha1::EventType
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to list EventTypes.
-        # @param [String] parent
-        #   The project ID or project number from which the EventTypes should be
-        #   listed.
-        # @param [String] continue
-        #   Optional encoded string to continue paging.
-        # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
-        # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
-        # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
-        # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
-        # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
-        # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListEventTypesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::ListEventTypesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_eventtypes(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+parent}/eventtypes', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListEventTypesResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListEventTypesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['continue'] = continue unless continue.nil?
-          command.query['fieldSelector'] = field_selector unless field_selector.nil?
-          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
-          command.query['labelSelector'] = label_selector unless label_selector.nil?
-          command.query['limit'] = limit unless limit.nil?
-          command.query['resourceVersion'] = resource_version unless resource_version.nil?
-          command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates a new pubsub.
-        # @param [String] parent
-        #   The project ID or project number in which this pubsub should
-        #   be created.
-        # @param [Google::Apis::RunV1alpha1::PubSub] pub_sub_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_pubsub(parent, pub_sub_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1alpha1/{+parent}/pubsubs', options)
-          command.request_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.request_object = pub_sub_object
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to delete a pubsub.
-        # @param [String] name
-        #   The name of the pubsub being deleted. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] api_version
-        #   Cloud Run currently ignores this parameter.
-        # @param [String] kind
-        #   Cloud Run currently ignores this parameter.
-        # @param [String] propagation_policy
-        #   Specifies the propagation policy of delete. Cloud Run currently ignores
-        #   this setting, and deletes in the background. Please see
-        #   kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
-        #   more information.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::Empty] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::Empty]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_project_location_pubsub(name, api_version: nil, kind: nil, propagation_policy: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::Empty::Representation
-          command.response_class = Google::Apis::RunV1alpha1::Empty
-          command.params['name'] = name unless name.nil?
-          command.query['apiVersion'] = api_version unless api_version.nil?
-          command.query['kind'] = kind unless kind.nil?
-          command.query['propagationPolicy'] = propagation_policy unless propagation_policy.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to get information about a pubsub.
-        # @param [String] name
-        #   The name of the pubsub being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_pubsub(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+name}', options)
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to list pubsubs.
-        # @param [String] parent
-        #   The project ID or project number from which the pubsubs should
-        #   be listed.
-        # @param [String] continue
-        #   Optional encoded string to continue paging.
-        # @param [String] field_selector
-        #   Allows to filter resources based on a specific value for a field name.
-        #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
-        #   Not currently used by Cloud Run.
-        # @param [Boolean] include_uninitialized
-        #   Not currently used by Cloud Run.
-        # @param [String] label_selector
-        #   Allows to filter resources based on a label. Supported operations are
-        #   =, !=, exists, in, and notIn.
-        # @param [Fixnum] limit
-        #   The maximum number of records that should be returned.
-        # @param [String] resource_version
-        #   The baseline resource version from which the list or watch operation should
-        #   start. Not currently used by Cloud Run.
-        # @param [Boolean] watch
-        #   Flag that indicates that the client expects to watch this resource as well.
-        #   Not currently used by Cloud Run.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::ListPubSubsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::ListPubSubsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_pubsubs(parent, continue: nil, field_selector: nil, include_uninitialized: nil, label_selector: nil, limit: nil, resource_version: nil, watch: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1alpha1/{+parent}/pubsubs', options)
-          command.response_representation = Google::Apis::RunV1alpha1::ListPubSubsResponse::Representation
-          command.response_class = Google::Apis::RunV1alpha1::ListPubSubsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['continue'] = continue unless continue.nil?
-          command.query['fieldSelector'] = field_selector unless field_selector.nil?
-          command.query['includeUninitialized'] = include_uninitialized unless include_uninitialized.nil?
-          command.query['labelSelector'] = label_selector unless label_selector.nil?
-          command.query['limit'] = limit unless limit.nil?
-          command.query['resourceVersion'] = resource_version unless resource_version.nil?
-          command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a pubsub.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the pubsub being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::PubSub] pub_sub_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::PubSub] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::PubSub]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_project_location_pubsub_pub_sub(name, pub_sub_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.request_object = pub_sub_object
-          command.response_representation = Google::Apis::RunV1alpha1::PubSub::Representation
-          command.response_class = Google::Apis::RunV1alpha1::PubSub
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3376,7 +3005,7 @@ module Google
         #   The project ID or project number from which the triggers should
         #   be listed.
         # @param [String] continue
-        #   Optional encoded string to continue paging.
+        #   Optional. Encoded string to continue paging.
         # @param [String] field_selector
         #   Allows to filter resources based on a specific value for a field name.
         #   Send this in a query string format. i.e. 'metadata.name%3Dlorem'.
@@ -3423,45 +3052,6 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Rpc to replace a trigger.
-        # Only the spec and metadata labels and annotations are modifiable. After
-        # the Update request, Cloud Run will work to make the 'status'
-        # match the requested 'spec'.
-        # May provide metadata.resourceVersion to enforce update from last read for
-        # optimistic concurrency control.
-        # @param [String] name
-        #   The name of the trigger being retrieved. If needed, replace
-        #   `namespace_id` with the project ID.
-        # @param [Google::Apis::RunV1alpha1::Trigger] trigger_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::RunV1alpha1::Trigger] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::RunV1alpha1::Trigger]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def replace_project_location_trigger_trigger(name, trigger_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'v1alpha1/{+name}', options)
-          command.request_representation = Google::Apis::RunV1alpha1::Trigger::Representation
-          command.request_object = trigger_object
-          command.response_representation = Google::Apis::RunV1alpha1::Trigger::Representation
-          command.response_class = Google::Apis::RunV1alpha1::Trigger
-          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

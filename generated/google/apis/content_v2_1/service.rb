@@ -352,6 +352,50 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the list of accounts linked to your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the managing account. If this parameter is not the same as accountId,
+        #   then this account must be a multi-client account and accountId must be the ID
+        #   of a sub-account of this account.
+        # @param [Fixnum] account_id
+        #   The ID of the account for which to list links.
+        # @param [Fixnum] max_results
+        #   The maximum number of links to return in the response, used for pagination.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::AccountsListLinksResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::AccountsListLinksResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def listlinks_account(merchant_id, account_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/accounts/{accountId}/listlinks', options)
+          command.response_representation = Google::Apis::ContentV2_1::AccountsListLinksResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::AccountsListLinksResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['accountId'] = account_id unless account_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,

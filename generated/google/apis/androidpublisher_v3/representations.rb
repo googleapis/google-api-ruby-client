@@ -866,6 +866,7 @@ module Google
           property :developer_payload, as: 'developerPayload'
           property :email_address, as: 'emailAddress'
           property :expiry_time_millis, :numeric_string => true, as: 'expiryTimeMillis'
+          property :external_account_id, as: 'externalAccountId'
           property :family_name, as: 'familyName'
           property :given_name, as: 'givenName'
           property :introductory_price_info, as: 'introductoryPriceInfo', class: Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo, decorator: Google::Apis::AndroidpublisherV3::IntroductoryPriceInfo::Representation
@@ -965,6 +966,7 @@ module Google
       
           property :country_targeting, as: 'countryTargeting', class: Google::Apis::AndroidpublisherV3::CountryTargeting, decorator: Google::Apis::AndroidpublisherV3::CountryTargeting::Representation
       
+          property :in_app_update_priority, as: 'inAppUpdatePriority'
           property :name, as: 'name'
           collection :release_notes, as: 'releaseNotes', class: Google::Apis::AndroidpublisherV3::LocalizedText, decorator: Google::Apis::AndroidpublisherV3::LocalizedText::Representation
       

@@ -112,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class VpcAccessibleServices
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class VpcServiceRestriction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -266,6 +272,8 @@ module Google
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
           collection :unrestricted_services, as: 'unrestrictedServices'
+          property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::AccesscontextmanagerV1beta::VpcAccessibleServices, decorator: Google::Apis::AccesscontextmanagerV1beta::VpcAccessibleServices::Representation
+      
           property :vpc_service_restriction, as: 'vpcServiceRestriction', class: Google::Apis::AccesscontextmanagerV1beta::VpcServiceRestriction, decorator: Google::Apis::AccesscontextmanagerV1beta::VpcServiceRestriction::Representation
       
         end
@@ -277,6 +285,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class VpcAccessibleServices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_services, as: 'allowedServices'
+          property :enable_restriction, as: 'enableRestriction'
         end
       end
       

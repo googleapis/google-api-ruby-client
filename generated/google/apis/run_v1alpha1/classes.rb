@@ -195,10 +195,28 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL)
+        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+        # are documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit"
+        # description: "Determines if a summary is less than 100 chars"
+        # expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner"
+        # description: "Determines if requestor is the document owner"
+        # expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents"
+        # description: "Determine whether the document should be publicly visible"
+        # expression: "document.type != 'private' && document.type != 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string"
+        # description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service
+        # documentation for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::RunV1alpha1::Expr]
         attr_accessor :condition
@@ -284,7 +302,7 @@ module Google
       end
       
       # 
-      class CloudAuditLog
+      class CloudAuditLogsSource
         include Google::Apis::Core::Hashable
       
         # The API version for this call such as "events.cloud.google.com/v1alpha1".
@@ -292,7 +310,7 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # The kind of resource, in this case "CloudAuditLog".
+        # The kind of resource, in this case "CloudAuditLogsSource".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -303,14 +321,15 @@ module Google
         # @return [Google::Apis::RunV1alpha1::ObjectMeta]
         attr_accessor :metadata
       
-        # The desired state of the CloudAuditLog.
+        # The desired state of the CloudAuditLogsSource.
         # Corresponds to the JSON property `spec`
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLogSpec]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSourceSpec]
         attr_accessor :spec
       
-        # CloudAuditLogStatus represents the current state of a CloudAuditLog.
+        # CloudAuditLogsSourceStatus represents the current state of a
+        # CloudAuditLogsSource.
         # Corresponds to the JSON property `status`
-        # @return [Google::Apis::RunV1alpha1::CloudAuditLogStatus]
+        # @return [Google::Apis::RunV1alpha1::CloudAuditLogsSourceStatus]
         attr_accessor :status
       
         def initialize(**args)
@@ -327,8 +346,8 @@ module Google
         end
       end
       
-      # The desired state of the CloudAuditLog.
-      class CloudAuditLogSpec
+      # The desired state of the CloudAuditLogsSource.
+      class CloudAuditLogsSourceSpec
         include Google::Apis::Core::Hashable
       
         # CloudEventOverrides defines arguments for a Source that control the output
@@ -345,19 +364,6 @@ module Google
         # @return [String]
         attr_accessor :method_name
       
-        # Project is the ID of the Google Cloud Project that the PubSub Topic exists
-        # in. If omitted, defaults to same as the cluster. +optional
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
-        # Cloud Run fully managed: not supported
-        # Cloud Run on GKE: supported
-        # SecretKeySelector selects a key of a Secret.
-        # Corresponds to the JSON property `pubsubSecret`
-        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
-        attr_accessor :pubsub_secret
-      
         # Optional. The resource specification. This must match "methodName"
         # in Cloud Audit Logs. Regex or Wildcards (*) are not supported.
         # Example: "projects/my-project/jobs/foo".
@@ -365,18 +371,11 @@ module Google
         # @return [String]
         attr_accessor :resource_name
       
-        # Cloud Run fully managed: not supported
-        # Cloud Run on GKE: supported
-        # SecretKeySelector selects a key of a Secret.
-        # Corresponds to the JSON property `secret`
-        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
-        attr_accessor :secret
-      
-        # Email address of the IAM service account associated with the source. The
+        # Optional. Email address of the IAM service account associated with the source.
+        # The
         # service account represents the identity of the source, and determines what
         # permissions the source has. If not provided, the source will use the
         # project's default service account.
-        # +optional
         # Corresponds to the JSON property `serviceAccountName`
         # @return [String]
         attr_accessor :service_account_name
@@ -403,27 +402,25 @@ module Google
         def update!(**args)
           @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
           @method_name = args[:method_name] if args.key?(:method_name)
-          @project = args[:project] if args.key?(:project)
-          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
           @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @secret = args[:secret] if args.key?(:secret)
           @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
           @service_name = args[:service_name] if args.key?(:service_name)
           @sink = args[:sink] if args.key?(:sink)
         end
       end
       
-      # CloudAuditLogStatus represents the current state of a CloudAuditLog.
-      class CloudAuditLogStatus
+      # CloudAuditLogsSourceStatus represents the current state of a
+      # CloudAuditLogsSource.
+      class CloudAuditLogsSourceStatus
         include Google::Apis::Core::Hashable
       
-        # Array of observed CloudAuditLogConditions, indicating the current state
-        # of the CloudAuditLog.
+        # Array of observed CloudAuditLogsSourceConditions, indicating the current
+        # state of the CloudAuditLogsSource.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::RunV1alpha1::Condition>]
         attr_accessor :conditions
       
-        # ObservedGeneration is the 'Generation' of the CloudAuditLog that
+        # ObservedGeneration is the 'Generation' of the CloudAuditLogsSource that
         # was last processed by the controller.
         # Corresponds to the JSON property `observedGeneration`
         # @return [Fixnum]
@@ -468,6 +465,173 @@ module Google
         # Update properties of this object
         def update!(**args)
           @extensions = args[:extensions] if args.key?(:extensions)
+        end
+      end
+      
+      # 
+      class CloudPubSubSource
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # The kind of resource, in this case "CloudPubSubSource".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ObjectMeta is metadata that all persisted resources must have, which includes
+        # all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # The desired state of the CloudPubSubSource.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSourceSpec]
+        attr_accessor :spec
+      
+        # CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1alpha1::CloudPubSubSourceStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # The desired state of the CloudPubSubSource.
+      class CloudPubSubSourceSpec
+        include Google::Apis::Core::Hashable
+      
+        # AckDeadline is the default maximum time after a subscriber receives a
+        # message before the subscriber should acknowledge the message. Defaults
+        # to 30 seconds ('30s').
+        # +optional
+        # Corresponds to the JSON property `ackDeadline`
+        # @return [String]
+        attr_accessor :ack_deadline
+      
+        # CloudEventOverrides defines arguments for a Source that control the output
+        # format of the CloudEvents produced by the Source.
+        # Corresponds to the JSON property `ceOverrides`
+        # @return [Google::Apis::RunV1alpha1::CloudEventOverrides]
+        attr_accessor :ce_overrides
+      
+        # Project is the ID of the Google Cloud Project that the CloudPubSubSource
+        # Topic exists in. If omitted, defaults to same as the cluster. +optional
+        # Corresponds to the JSON property `project`
+        # @return [String]
+        attr_accessor :project
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `pubsubSecret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :pubsub_secret
+      
+        # RetainAckedMessages defines whether to retain acknowledged messages. If
+        # true, acknowledged messages will not be expunged until they fall out of
+        # the RetentionDuration window.
+        # Corresponds to the JSON property `retainAckedMessages`
+        # @return [Boolean]
+        attr_accessor :retain_acked_messages
+        alias_method :retain_acked_messages?, :retain_acked_messages
+      
+        # RetentionDuration defines how long to retain messages in backlog, from
+        # the time of publish. If RetainAckedMessages is true, this duration
+        # affects the retention of acknowledged messages, otherwise only
+        # unacknowledged messages are retained. Cannot be longer than 7 days or
+        # shorter than 10 minutes. Defaults to 7 days ('7d').
+        # +optional
+        # Corresponds to the JSON property `retentionDuration`
+        # @return [String]
+        attr_accessor :retention_duration
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # SecretKeySelector selects a key of a Secret.
+        # Corresponds to the JSON property `secret`
+        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
+        attr_accessor :secret
+      
+        # Sink is a reference to an object that will resolve to a domain name or a
+        # URI directly to use as the sink.
+        # Corresponds to the JSON property `sink`
+        # @return [Google::Apis::RunV1alpha1::Destination]
+        attr_accessor :sink
+      
+        # Topic is the ID of the CloudPubSubSource Topic to Subscribe to. It must
+        # be in the form of the unique identifier within the project, not the
+        # entire name. E.g. it must be 'laconia', not
+        # 'projects/my-proj/topics/laconia'.
+        # Corresponds to the JSON property `topic`
+        # @return [String]
+        attr_accessor :topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ack_deadline = args[:ack_deadline] if args.key?(:ack_deadline)
+          @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
+          @project = args[:project] if args.key?(:project)
+          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
+          @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
+          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
+          @secret = args[:secret] if args.key?(:secret)
+          @sink = args[:sink] if args.key?(:sink)
+          @topic = args[:topic] if args.key?(:topic)
+        end
+      end
+      
+      # CloudPubSubSourceStatus represents the current state of a CloudPubSubSource.
+      class CloudPubSubSourceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Array of observed CloudPubSubSourceConditions, indicating the current state
+        # of the CloudPubSubSource.
+        # Corresponds to the JSON property `conditions`
+        # @return [Array<Google::Apis::RunV1alpha1::Condition>]
+        attr_accessor :conditions
+      
+        # ObservedGeneration is the 'Generation' of the CloudPubSubSource that
+        # was last processed by the controller.
+        # Corresponds to the JSON property `observedGeneration`
+        # @return [Fixnum]
+        attr_accessor :observed_generation
+      
+        # SinkURI is the current active sink URI that has been configured for the
+        # Source.
+        # +optional
+        # Corresponds to the JSON property `sinkUri`
+        # @return [String]
+        attr_accessor :sink_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @conditions = args[:conditions] if args.key?(:conditions)
+          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
+          @sink_uri = args[:sink_uri] if args.key?(:sink_uri)
         end
       end
       
@@ -1480,154 +1644,6 @@ module Google
         end
       end
       
-      # 
-      class EventType
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "eventing.knative.dev/v1alpha1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # The kind of resource, in this case "EventType".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ObjectMeta is metadata that all persisted resources must have, which includes
-        # all objects users must create.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
-        attr_accessor :metadata
-      
-        # Spec defines the desired state of the EventType.
-        # Corresponds to the JSON property `spec`
-        # @return [Google::Apis::RunV1alpha1::EventTypeSpec]
-        attr_accessor :spec
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @spec = args[:spec] if args.key?(:spec)
-        end
-      end
-      
-      # 
-      class EventTypeImporter
-        include Google::Apis::Core::Hashable
-      
-        # The API version of the importer CRD.
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # The kind of the importer CRD.
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # Parameters required to create an importer for the EventType.
-        # Corresponds to the JSON property `parameters`
-        # @return [Array<Google::Apis::RunV1alpha1::EventTypeParameter>]
-        attr_accessor :parameters
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @kind = args[:kind] if args.key?(:kind)
-          @parameters = args[:parameters] if args.key?(:parameters)
-        end
-      end
-      
-      # 
-      class EventTypeParameter
-        include Google::Apis::Core::Hashable
-      
-        # Description of the parameter. E.g. "Google Cloud Project Id."
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # Name of the parameter. E.g. googleCloudProject.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @description = args[:description] if args.key?(:description)
-          @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # 
-      class EventTypeSpec
-        include Google::Apis::Core::Hashable
-      
-        # Refers to the Broker that can provide the EventType.
-        # Corresponds to the JSON property `broker`
-        # @return [String]
-        attr_accessor :broker
-      
-        # Description is a string describing what the EventType is about.
-        # +optional
-        # Corresponds to the JSON property `description`
-        # @return [String]
-        attr_accessor :description
-      
-        # The importer that provides this EventType to the eventing mesh.
-        # Corresponds to the JSON property `importer`
-        # @return [Google::Apis::RunV1alpha1::EventTypeImporter]
-        attr_accessor :importer
-      
-        # Schema is a URI with the EventType schema. It may be a JSON schema, a
-        # protobuf schema, etc.
-        # +optional
-        # Corresponds to the JSON property `schema`
-        # @return [String]
-        attr_accessor :schema
-      
-        # Source is a valid URI. Refers to the CloudEvent source as it enters into
-        # the eventing mesh.
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # Type is authoritative. This refers to the CloudEvent type as it enters
-        # into the eventing mesh.
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @broker = args[:broker] if args.key?(:broker)
-          @description = args[:description] if args.key?(:description)
-          @importer = args[:importer] if args.key?(:importer)
-          @schema = args[:schema] if args.key?(:schema)
-          @source = args[:source] if args.key?(:source)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
       # ExecAction describes a "run in container" action.
       class ExecAction
         include Google::Apis::Core::Hashable
@@ -1652,34 +1668,50 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL)
+      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+      # are documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit"
+      # description: "Determines if a summary is less than 100 chars"
+      # expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner"
+      # description: "Determines if requestor is the document owner"
+      # expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents"
+      # description: "Determine whether the document should be publicly visible"
+      # expression: "document.type != 'private' && document.type != 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string"
+      # description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service
+      # documentation for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
+        # Optional. Description of the expression. This is a longer text which
         # describes the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
+        # Textual representation of an expression in Common Expression Language
+        # syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
+        # Optional. String indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing
+        # Optional. Title for the expression, i.e. a short string describing
         # its purpose. This can be used e.g. in UIs which allow to enter the
         # expression.
         # Corresponds to the JSON property `title`
@@ -1975,8 +2007,9 @@ module Google
         end
       end
       
-      # ListCloudAuditLogsResponse is a list of CloudAuditLog resources.
-      class ListCloudAuditLogsResponse
+      # ListCloudAuditLogsSourcesResponse is a list of CloudAuditLogsSource
+      # resources.
+      class ListCloudAuditLogsSourcesResponse
         include Google::Apis::Core::Hashable
       
         # The API version for this call such as "events.cloud.google.com/v1alpha1".
@@ -1984,12 +2017,57 @@ module Google
         # @return [String]
         attr_accessor :api_version
       
-        # List of CloudAuditLogs.
+        # List of CloudAuditLogsSources.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1alpha1::CloudAuditLog>]
+        # @return [Array<Google::Apis::RunV1alpha1::CloudAuditLogsSource>]
         attr_accessor :items
       
-        # The kind of this resource, in this case "CloudAuditLogList".
+        # The kind of this resource, in this case "CloudAuditLogsSourceList".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # ListMeta describes metadata that synthetic resources must have, including
+        # lists and various status objects. A resource may have only one of
+        # `ObjectMeta, ListMeta`.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1alpha1::ListMeta]
+        attr_accessor :metadata
+      
+        # Locations that could not be reached.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
+        end
+      end
+      
+      # ListCloudPubSubSourcesResponse is a list of CloudPubSubSource resources.
+      class ListCloudPubSubSourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The API version for this call such as "events.cloud.google.com/v1alpha1".
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # List of CloudPubSubSources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::RunV1alpha1::CloudPubSubSource>]
+        attr_accessor :items
+      
+        # The kind of this resource, in this case "CloudPubSubSourceList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2110,51 +2188,6 @@ module Google
         end
       end
       
-      # ListEventTypesResponse is a list of EventType resources.
-      class ListEventTypesResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "eventing.knative.dev/v1alpha1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of EventTypes.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1alpha1::EventType>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "EventTypeList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1alpha1::ListMeta]
-        attr_accessor :metadata
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
-        end
-      end
-      
       # The response message for Locations.ListLocations.
       class ListLocationsResponse
         include Google::Apis::Core::Hashable
@@ -2228,51 +2261,6 @@ module Google
           @continue = args[:continue] if args.key?(:continue)
           @resource_version = args[:resource_version] if args.key?(:resource_version)
           @self_link = args[:self_link] if args.key?(:self_link)
-        end
-      end
-      
-      # ListPubSubsResponse is a list of PubSub resources.
-      class ListPubSubsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "events.cloud.google.com/v1alpha1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # List of PubSubs.
-        # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::RunV1alpha1::PubSub>]
-        attr_accessor :items
-      
-        # The kind of this resource, in this case "PubSubList".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ListMeta describes metadata that synthetic resources must have, including
-        # lists and various status objects. A resource may have only one of
-        # `ObjectMeta, ListMeta`.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1alpha1::ListMeta]
-        attr_accessor :metadata
-      
-        # Locations that could not be reached.
-        # Corresponds to the JSON property `unreachable`
-        # @return [Array<String>]
-        attr_accessor :unreachable
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @items = args[:items] if args.key?(:items)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -3107,183 +3095,6 @@ module Google
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
           @success_threshold = args[:success_threshold] if args.key?(:success_threshold)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
-        end
-      end
-      
-      # 
-      class PubSub
-        include Google::Apis::Core::Hashable
-      
-        # The API version for this call such as "events.cloud.google.com/v1alpha1".
-        # Corresponds to the JSON property `apiVersion`
-        # @return [String]
-        attr_accessor :api_version
-      
-        # The kind of resource, in this case "PubSub".
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # ObjectMeta is metadata that all persisted resources must have, which includes
-        # all objects users must create.
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::RunV1alpha1::ObjectMeta]
-        attr_accessor :metadata
-      
-        # The desired state of the PubSub.
-        # Corresponds to the JSON property `spec`
-        # @return [Google::Apis::RunV1alpha1::PubSubSpec]
-        attr_accessor :spec
-      
-        # PubSubStatus represents the current state of a PubSub.
-        # Corresponds to the JSON property `status`
-        # @return [Google::Apis::RunV1alpha1::PubSubStatus]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_version = args[:api_version] if args.key?(:api_version)
-          @kind = args[:kind] if args.key?(:kind)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @spec = args[:spec] if args.key?(:spec)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # The desired state of the PubSub.
-      class PubSubSpec
-        include Google::Apis::Core::Hashable
-      
-        # AckDeadline is the default maximum time after a subscriber receives a
-        # message before the subscriber should acknowledge the message. Defaults
-        # to 30 seconds ('30s').
-        # +optional
-        # Corresponds to the JSON property `ackDeadline`
-        # @return [String]
-        attr_accessor :ack_deadline
-      
-        # CloudEventOverrides defines arguments for a Source that control the output
-        # format of the CloudEvents produced by the Source.
-        # Corresponds to the JSON property `ceOverrides`
-        # @return [Google::Apis::RunV1alpha1::CloudEventOverrides]
-        attr_accessor :ce_overrides
-      
-        # Project is the ID of the Google Cloud Project that the PubSub Topic exists
-        # in. If omitted, defaults to same as the cluster. +optional
-        # Corresponds to the JSON property `project`
-        # @return [String]
-        attr_accessor :project
-      
-        # Cloud Run fully managed: not supported
-        # Cloud Run on GKE: supported
-        # SecretKeySelector selects a key of a Secret.
-        # Corresponds to the JSON property `pubsubSecret`
-        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
-        attr_accessor :pubsub_secret
-      
-        # RetainAckedMessages defines whether to retain acknowledged messages. If
-        # true, acknowledged messages will not be expunged until they fall out of
-        # the RetentionDuration window.
-        # Corresponds to the JSON property `retainAckedMessages`
-        # @return [Boolean]
-        attr_accessor :retain_acked_messages
-        alias_method :retain_acked_messages?, :retain_acked_messages
-      
-        # RetentionDuration defines how long to retain messages in backlog, from
-        # the time of publish. If RetainAckedMessages is true, this duration
-        # affects the retention of acknowledged messages, otherwise only
-        # unacknowledged messages are retained. Cannot be longer than 7 days or
-        # shorter than 10 minutes. Defaults to 7 days ('7d').
-        # +optional
-        # Corresponds to the JSON property `retentionDuration`
-        # @return [String]
-        attr_accessor :retention_duration
-      
-        # Cloud Run fully managed: not supported
-        # Cloud Run on GKE: supported
-        # SecretKeySelector selects a key of a Secret.
-        # Corresponds to the JSON property `secret`
-        # @return [Google::Apis::RunV1alpha1::SecretKeySelector]
-        attr_accessor :secret
-      
-        # Email address of the IAM service account associated with the source. The
-        # service account represents the identity of the source, and determines what
-        # permissions the source has. If not provided, the source will use the
-        # project's Compute Engine default service account.
-        # +optional
-        # Corresponds to the JSON property `serviceAccountName`
-        # @return [String]
-        attr_accessor :service_account_name
-      
-        # Sink is a reference to an object that will resolve to a domain name or a
-        # URI directly to use as the sink.
-        # Corresponds to the JSON property `sink`
-        # @return [Google::Apis::RunV1alpha1::Destination]
-        attr_accessor :sink
-      
-        # Topic is the ID of the PubSub Topic to Subscribe to. It must
-        # be in the form of the unique identifier within the project, not the
-        # entire name. E.g. it must be 'laconia', not
-        # 'projects/my-proj/topics/laconia'.
-        # Corresponds to the JSON property `topic`
-        # @return [String]
-        attr_accessor :topic
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ack_deadline = args[:ack_deadline] if args.key?(:ack_deadline)
-          @ce_overrides = args[:ce_overrides] if args.key?(:ce_overrides)
-          @project = args[:project] if args.key?(:project)
-          @pubsub_secret = args[:pubsub_secret] if args.key?(:pubsub_secret)
-          @retain_acked_messages = args[:retain_acked_messages] if args.key?(:retain_acked_messages)
-          @retention_duration = args[:retention_duration] if args.key?(:retention_duration)
-          @secret = args[:secret] if args.key?(:secret)
-          @service_account_name = args[:service_account_name] if args.key?(:service_account_name)
-          @sink = args[:sink] if args.key?(:sink)
-          @topic = args[:topic] if args.key?(:topic)
-        end
-      end
-      
-      # PubSubStatus represents the current state of a PubSub.
-      class PubSubStatus
-        include Google::Apis::Core::Hashable
-      
-        # Array of observed PubSubConditions, indicating the current state
-        # of the PubSub.
-        # Corresponds to the JSON property `conditions`
-        # @return [Array<Google::Apis::RunV1alpha1::Condition>]
-        attr_accessor :conditions
-      
-        # ObservedGeneration is the 'Generation' of the PubSub that
-        # was last processed by the controller.
-        # Corresponds to the JSON property `observedGeneration`
-        # @return [Fixnum]
-        attr_accessor :observed_generation
-      
-        # SinkURI is the current active sink URI that has been configured for the
-        # Source.
-        # +optional
-        # Corresponds to the JSON property `sinkUri`
-        # @return [String]
-        attr_accessor :sink_uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @conditions = args[:conditions] if args.key?(:conditions)
-          @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
-          @sink_uri = args[:sink_uri] if args.key?(:sink_uri)
         end
       end
       
@@ -4787,34 +4598,6 @@ module Google
         end
       end
       
-      # 
-      class SubscriberSpec
-        include Google::Apis::Core::Hashable
-      
-        # ObjectReference contains enough information to let you inspect or modify the
-        # referred object.
-        # Corresponds to the JSON property `ref`
-        # @return [Google::Apis::RunV1alpha1::ObjectReference]
-        attr_accessor :ref
-      
-        # Reference to a 'known' endpoint where no resolving is done.
-        # http://k8s-service for example
-        # http://myexternalhandler.example.com/foo/bar
-        # Corresponds to the JSON property `uri`
-        # @return [String]
-        attr_accessor :uri
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @ref = args[:ref] if args.key?(:ref)
-          @uri = args[:uri] if args.key?(:uri)
-        end
-      end
-      
       # TCPSocketAction describes an action based on opening a socket
       class TcpSocketAction
         include Google::Apis::Core::Hashable
@@ -5015,26 +4798,23 @@ module Google
       class TriggerCondition
         include Google::Apis::Core::Hashable
       
-        # Last time the condition transitioned from one status to another.
-        # +optional
+        # Optional. Last time the condition transitioned from one status to another.
         # Corresponds to the JSON property `lastTransitionTime`
         # @return [String]
         attr_accessor :last_transition_time
       
-        # Human readable message indicating details about the current status.
-        # +optional
+        # Optional. Human readable message indicating details about the current status.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
       
-        # One-word CamelCase reason for the condition's current status.
-        # +optional
+        # Optional. One-word CamelCase reason for the condition's current status.
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
       
-        # How to interpret failures of this condition, one of Error, Warning, Info
-        # +optional
+        # Optional. How to interpret failures of this condition, one of Error, Warning,
+        # Info
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -5068,24 +4848,17 @@ module Google
       class TriggerFilter
         include Google::Apis::Core::Hashable
       
-        # Cloud Run fully managed: not supported
-        # Cloud Run on GKE: supported
-        # Attributes filters events by exact match on event context attributes.
+        # Optional. Attributes filters events by exact match on event context attributes.
         # Each key in the map is compared with the equivalent key in the event
         # context. An event passes the filter if all values are equal to the
         # specified values.
         # Nested context attributes are not supported as keys.
         # Only string values are supported.
-        # +optional
+        # Note that this field is optional in knative. In fully managed, 'type'
+        # attribute is required due to different broker implementation.
         # Corresponds to the JSON property `attributes`
         # @return [Hash<String,String>]
         attr_accessor :attributes
-      
-        # TriggerFilterSourceAndType is DEPRECATED. Filters are now contained in the
-        # map of attributes in TriggerFilter proto.
-        # Corresponds to the JSON property `sourceAndType`
-        # @return [Google::Apis::RunV1alpha1::TriggerFilterSourceAndType]
-        attr_accessor :source_and_type
       
         def initialize(**args)
            update!(**args)
@@ -5094,59 +4867,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attributes = args[:attributes] if args.key?(:attributes)
-          @source_and_type = args[:source_and_type] if args.key?(:source_and_type)
-        end
-      end
-      
-      # TriggerFilterSourceAndType is DEPRECATED. Filters are now contained in the
-      # map of attributes in TriggerFilter proto.
-      class TriggerFilterSourceAndType
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `source`
-        # @return [String]
-        attr_accessor :source
-      
-        # 
-        # Corresponds to the JSON property `type`
-        # @return [String]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @source = args[:source] if args.key?(:source)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
-      # Deprecated, importer specification will be available via GcpImporterDao.
-      class TriggerImporterSpec
-        include Google::Apis::Core::Hashable
-      
-        # Arguments to use for the importer. These must match the parameters in the
-        # EventType's importer.
-        # Corresponds to the JSON property `arguments`
-        # @return [Hash<String,String>]
-        attr_accessor :arguments
-      
-        # Name of the EventType that this importer provides.
-        # Corresponds to the JSON property `eventTypeName`
-        # @return [String]
-        attr_accessor :event_type_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @arguments = args[:arguments] if args.key?(:arguments)
-          @event_type_name = args[:event_type_name] if args.key?(:event_type_name)
         end
       end
       
@@ -5161,30 +4881,18 @@ module Google
         # @return [String]
         attr_accessor :broker
       
-        # Filter is the filter to apply against all events from the Broker. Only
+        # Optional. Filter is the filter to apply against all events from the Broker.
+        # Only
         # events that pass this filter will be sent to the Subscriber.
+        # Note that filter is optional in knative and is only required in fully
+        # managed due to different broker implementation.
         # Corresponds to the JSON property `filter`
         # @return [Google::Apis::RunV1alpha1::TriggerFilter]
         attr_accessor :filter
       
-        # Deprecated, importer specification will be replaced by information stored
-        # in GcpImporterDao.
-        # Corresponds to the JSON property `importers`
-        # @return [Array<Google::Apis::RunV1alpha1::TriggerImporterSpec>]
-        attr_accessor :importers
-      
         # Sink is the addressable that will receive events.
-        # Corresponds to the JSON property `sink`
-        # @return [Google::Apis::RunV1alpha1::Destination]
-        attr_accessor :sink
-      
-        # Deprecated, sink will be represented by Destination.
-        # Subscriber is the addressable that receives events from the Broker that
-        # pass the Filter. It is required.
-        # E.g. https://us-central1-myproject.cloudfunctions.net/myfunction or
-        # /namespaces/my-project/services/my-service.
         # Corresponds to the JSON property `subscriber`
-        # @return [Google::Apis::RunV1alpha1::SubscriberSpec]
+        # @return [Google::Apis::RunV1alpha1::Destination]
         attr_accessor :subscriber
       
         def initialize(**args)
@@ -5195,8 +4903,6 @@ module Google
         def update!(**args)
           @broker = args[:broker] if args.key?(:broker)
           @filter = args[:filter] if args.key?(:filter)
-          @importers = args[:importers] if args.key?(:importers)
-          @sink = args[:sink] if args.key?(:sink)
           @subscriber = args[:subscriber] if args.key?(:subscriber)
         end
       end

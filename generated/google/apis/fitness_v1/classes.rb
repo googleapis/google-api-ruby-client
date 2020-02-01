@@ -479,9 +479,11 @@ module Google
         # When any of the optional fields that make up the data stream ID are absent,
         # they will be omitted from the data stream ID. The minimum viable data stream
         # ID would be: type:dataType.name:developer project number
-        # Finally, the developer project number is obfuscated when read by any REST or
-        # Android client that did not create the data source. Only the data source
-        # creator will see the developer project number in clear and normal form.
+        # Finally, the developer project number and device UID are obfuscated when read
+        # by any REST or Android client that did not create the data source. Only the
+        # data source creator will see the developer project number in clear and normal
+        # form. This means a client will see a different set of data_stream_ids than
+        # another client with different credentials.
         # Corresponds to the JSON property `dataStreamId`
         # @return [String]
         attr_accessor :data_stream_id
@@ -695,6 +697,8 @@ module Google
         # obfuscated when read by any REST or Android client that did not create the
         # data source. Only the data source creator will see the uid field in clear and
         # normal form.
+        # The obfuscation preserves equality; that is, given two IDs, if id1 == id2,
+        # obfuscated(id1) == obfuscated(id2).
         # Corresponds to the JSON property `uid`
         # @return [String]
         attr_accessor :uid
@@ -912,7 +916,7 @@ module Google
       
       # Holder object for the value of a single field in a data point.
       # A field value has a particular format and is only ever set to one of an
-      # integer or a floating point value. LINT.IfChange
+      # integer or a floating point value.
       class Value
         include Google::Apis::Core::Hashable
       

@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'storage/v1/')
+          super('https://storage.googleapis.com/', 'storage/v1/')
           @batch_path = 'batch/storage/v1'
         end
         

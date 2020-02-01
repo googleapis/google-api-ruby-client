@@ -7363,6 +7363,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
           property :health_status_aggregation_policy, as: 'healthStatusAggregationPolicy'
           property :health_status_aggregation_strategy, as: 'healthStatusAggregationStrategy'

@@ -58,25 +58,43 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditLog
+      class CloudAuditLogsSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditLogSpec
+      class CloudAuditLogsSourceSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class CloudAuditLogStatus
+      class CloudAuditLogsSourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
       class CloudEventOverrides
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudPubSubSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudPubSubSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudPubSubSourceStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -196,30 +214,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class EventType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EventTypeImporter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EventTypeParameter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class EventTypeSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ExecAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,7 +280,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListCloudAuditLogsResponse
+      class ListCloudAuditLogsSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCloudPubSubSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -304,12 +304,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class ListEventTypesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListLocationsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -317,12 +311,6 @@ module Google
       end
       
       class ListMeta
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListPubSubsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -395,24 +383,6 @@ module Google
       end
       
       class Probe
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PubSub
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PubSubSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class PubSubStatus
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -592,12 +562,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SubscriberSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -635,18 +599,6 @@ module Google
       end
       
       class TriggerFilter
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TriggerFilterSourceAndType
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TriggerImporterSpec
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -733,32 +685,27 @@ module Google
         end
       end
       
-      class CloudAuditLog
+      class CloudAuditLogsSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
       
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::CloudAuditLogSpec, decorator: Google::Apis::RunV1alpha1::CloudAuditLogSpec::Representation
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::CloudAuditLogsSourceSpec, decorator: Google::Apis::RunV1alpha1::CloudAuditLogsSourceSpec::Representation
       
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::CloudAuditLogStatus, decorator: Google::Apis::RunV1alpha1::CloudAuditLogStatus::Representation
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::CloudAuditLogsSourceStatus, decorator: Google::Apis::RunV1alpha1::CloudAuditLogsSourceStatus::Representation
       
         end
       end
       
-      class CloudAuditLogSpec
+      class CloudAuditLogsSourceSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
       
           property :method_name, as: 'methodName'
-          property :project, as: 'project'
-          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
           property :resource_name, as: 'resourceName'
-          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
           property :service_account_name, as: 'serviceAccountName'
           property :service_name, as: 'serviceName'
           property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
@@ -766,7 +713,7 @@ module Google
         end
       end
       
-      class CloudAuditLogStatus
+      class CloudAuditLogsSourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
@@ -780,6 +727,49 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :extensions, as: 'extensions'
+        end
+      end
+      
+      class CloudPubSubSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::CloudPubSubSourceSpec, decorator: Google::Apis::RunV1alpha1::CloudPubSubSourceSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::CloudPubSubSourceStatus, decorator: Google::Apis::RunV1alpha1::CloudPubSubSourceStatus::Representation
+      
+        end
+      end
+      
+      class CloudPubSubSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ack_deadline, as: 'ackDeadline'
+          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
+      
+          property :project, as: 'project'
+          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :retain_acked_messages, as: 'retainAckedMessages'
+          property :retention_duration, as: 'retentionDuration'
+          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
+      
+          property :topic, as: 'topic'
+        end
+      end
+      
+      class CloudPubSubSourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :sink_uri, as: 'sinkUri'
         end
       end
       
@@ -1016,49 +1006,6 @@ module Google
         end
       end
       
-      class EventType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::EventTypeSpec, decorator: Google::Apis::RunV1alpha1::EventTypeSpec::Representation
-      
-        end
-      end
-      
-      class EventTypeImporter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          collection :parameters, as: 'parameters', class: Google::Apis::RunV1alpha1::EventTypeParameter, decorator: Google::Apis::RunV1alpha1::EventTypeParameter::Representation
-      
-        end
-      end
-      
-      class EventTypeParameter
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :description, as: 'description'
-          property :name, as: 'name'
-        end
-      end
-      
-      class EventTypeSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :broker, as: 'broker'
-          property :description, as: 'description'
-          property :importer, as: 'importer', class: Google::Apis::RunV1alpha1::EventTypeImporter, decorator: Google::Apis::RunV1alpha1::EventTypeImporter::Representation
-      
-          property :schema, as: 'schema'
-          property :source, as: 'source'
-          property :type, as: 'type'
-        end
-      end
-      
       class ExecAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1161,11 +1108,24 @@ module Google
         end
       end
       
-      class ListCloudAuditLogsResponse
+      class ListCloudAuditLogsSourcesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudAuditLog, decorator: Google::Apis::RunV1alpha1::CloudAuditLog::Representation
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudAuditLogsSource, decorator: Google::Apis::RunV1alpha1::CloudAuditLogsSource::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCloudPubSubSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudPubSubSource, decorator: Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
@@ -1200,19 +1160,6 @@ module Google
         end
       end
       
-      class ListEventTypesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::EventType, decorator: Google::Apis::RunV1alpha1::EventType::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListLocationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1228,19 +1175,6 @@ module Google
           property :continue, as: 'continue'
           property :resource_version, as: 'resourceVersion'
           property :self_link, as: 'selfLink'
-        end
-      end
-      
-      class ListPubSubsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::PubSub, decorator: Google::Apis::RunV1alpha1::PubSub::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -1398,50 +1332,6 @@ module Google
           property :period_seconds, as: 'periodSeconds'
           property :success_threshold, as: 'successThreshold'
           property :timeout_seconds, as: 'timeoutSeconds'
-        end
-      end
-      
-      class PubSub
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::PubSubSpec, decorator: Google::Apis::RunV1alpha1::PubSubSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::PubSubStatus, decorator: Google::Apis::RunV1alpha1::PubSubStatus::Representation
-      
-        end
-      end
-      
-      class PubSubSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ack_deadline, as: 'ackDeadline'
-          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
-      
-          property :project, as: 'project'
-          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
-          property :retain_acked_messages, as: 'retainAckedMessages'
-          property :retention_duration, as: 'retentionDuration'
-          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
-          property :service_account_name, as: 'serviceAccountName'
-          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
-      
-          property :topic, as: 'topic'
-        end
-      end
-      
-      class PubSubStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
-      
-          property :observed_generation, as: 'observedGeneration'
-          property :sink_uri, as: 'sinkUri'
         end
       end
       
@@ -1795,15 +1685,6 @@ module Google
         end
       end
       
-      class SubscriberSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :ref, as: 'ref', class: Google::Apis::RunV1alpha1::ObjectReference, decorator: Google::Apis::RunV1alpha1::ObjectReference::Representation
-      
-          property :uri, as: 'uri'
-        end
-      end
-      
       class TcpSocketAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1870,24 +1751,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :attributes, as: 'attributes'
-          property :source_and_type, as: 'sourceAndType', class: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType, decorator: Google::Apis::RunV1alpha1::TriggerFilterSourceAndType::Representation
-      
-        end
-      end
-      
-      class TriggerFilterSourceAndType
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :source, as: 'source'
-          property :type, as: 'type'
-        end
-      end
-      
-      class TriggerImporterSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :arguments, as: 'arguments'
-          property :event_type_name, as: 'eventTypeName'
         end
       end
       
@@ -1897,11 +1760,7 @@ module Google
           property :broker, as: 'broker'
           property :filter, as: 'filter', class: Google::Apis::RunV1alpha1::TriggerFilter, decorator: Google::Apis::RunV1alpha1::TriggerFilter::Representation
       
-          collection :importers, as: 'importers', class: Google::Apis::RunV1alpha1::TriggerImporterSpec, decorator: Google::Apis::RunV1alpha1::TriggerImporterSpec::Representation
-      
-          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
-      
-          property :subscriber, as: 'subscriber', class: Google::Apis::RunV1alpha1::SubscriberSpec, decorator: Google::Apis::RunV1alpha1::SubscriberSpec::Representation
+          property :subscriber, as: 'subscriber', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
       
         end
       end

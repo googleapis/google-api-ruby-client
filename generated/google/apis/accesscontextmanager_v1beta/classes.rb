@@ -699,8 +699,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :unrestricted_services
       
+        # Specifies how APIs are allowed to communicate within the Service
+        # Perimeter.
+        # Corresponds to the JSON property `vpcAccessibleServices`
+        # @return [Google::Apis::AccesscontextmanagerV1beta::VpcAccessibleServices]
+        attr_accessor :vpc_accessible_services
+      
         # Alpha. Specifies how APIs are allowed to communicate within the Service
         # Perimeter.
+        # This message is DEPRECATED and had been renamed to VpcAccessibleServices
         # Corresponds to the JSON property `vpcServiceRestriction`
         # @return [Google::Apis::AccesscontextmanagerV1beta::VpcServiceRestriction]
         attr_accessor :vpc_service_restriction
@@ -715,6 +722,7 @@ module Google
           @resources = args[:resources] if args.key?(:resources)
           @restricted_services = args[:restricted_services] if args.key?(:restricted_services)
           @unrestricted_services = args[:unrestricted_services] if args.key?(:unrestricted_services)
+          @vpc_accessible_services = args[:vpc_accessible_services] if args.key?(:vpc_accessible_services)
           @vpc_service_restriction = args[:vpc_service_restriction] if args.key?(:vpc_service_restriction)
         end
       end
@@ -758,8 +766,38 @@ module Google
         end
       end
       
+      # Specifies how APIs are allowed to communicate within the Service
+      # Perimeter.
+      class VpcAccessibleServices
+        include Google::Apis::Core::Hashable
+      
+        # The list of APIs usable within the Service Perimeter. Must be empty
+        # unless 'enable_restriction' is True.
+        # Corresponds to the JSON property `allowedServices`
+        # @return [Array<String>]
+        attr_accessor :allowed_services
+      
+        # Whether to restrict API calls within the Service Perimeter to the list of
+        # APIs specified in 'allowed_services'.
+        # Corresponds to the JSON property `enableRestriction`
+        # @return [Boolean]
+        attr_accessor :enable_restriction
+        alias_method :enable_restriction?, :enable_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
+          @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
+        end
+      end
+      
       # Alpha. Specifies how APIs are allowed to communicate within the Service
       # Perimeter.
+      # This message is DEPRECATED and had been renamed to VpcAccessibleServices
       class VpcServiceRestriction
         include Google::Apis::Core::Hashable
       

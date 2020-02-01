@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccountsListLinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccountsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -551,6 +557,18 @@ module Google
       end
       
       class LiasettingsSetPosDataProviderResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LinkedAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1796,6 +1814,16 @@ module Google
         end
       end
       
+      class AccountsListLinksResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          collection :links, as: 'links', class: Google::Apis::ContentV2_1::LinkedAccount, decorator: Google::Apis::ContentV2_1::LinkedAccount::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class AccountsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2458,6 +2486,23 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
+        end
+      end
+      
+      class LinkService
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :service, as: 'service'
+          property :status, as: 'status'
+        end
+      end
+      
+      class LinkedAccount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :linked_account_id, as: 'linkedAccountId'
+          collection :services, as: 'services', class: Google::Apis::ContentV2_1::LinkService, decorator: Google::Apis::ContentV2_1::LinkService::Representation
+      
         end
       end
       

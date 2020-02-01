@@ -1010,6 +1010,38 @@ module Google
       end
       
       # 
+      class AccountsListLinksResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # accountsListLinksResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The list of available links.
+        # Corresponds to the JSON property `links`
+        # @return [Array<Google::Apis::ContentV2_1::LinkedAccount>]
+        attr_accessor :links
+      
+        # The token for the retrieval of the next page of links.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @links = args[:links] if args.key?(:links)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # 
       class AccountsListResponse
         include Google::Apis::Core::Hashable
       
@@ -3272,6 +3304,56 @@ module Google
         # Update properties of this object
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class LinkService
+        include Google::Apis::Core::Hashable
+      
+        # Service provided to or by the linked account.
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # Status of the link
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service = args[:service] if args.key?(:service)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class LinkedAccount
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the linked account.
+        # Corresponds to the JSON property `linkedAccountId`
+        # @return [String]
+        attr_accessor :linked_account_id
+      
+        # List of provided services.
+        # Corresponds to the JSON property `services`
+        # @return [Array<Google::Apis::ContentV2_1::LinkService>]
+        attr_accessor :services
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @linked_account_id = args[:linked_account_id] if args.key?(:linked_account_id)
+          @services = args[:services] if args.key?(:services)
         end
       end
       

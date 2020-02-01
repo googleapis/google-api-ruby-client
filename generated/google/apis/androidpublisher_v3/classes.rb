@@ -1630,6 +1630,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :expiry_time_millis
       
+        # User account identifier in the third-party service. Only present if account
+        # linking happened as part of the subscription purchase flow.
+        # Corresponds to the JSON property `externalAccountId`
+        # @return [String]
+        attr_accessor :external_account_id
+      
         # The family name of the user when the subscription was purchased. Only present
         # for purchases made with 'Subscribe with Google'.
         # Corresponds to the JSON property `familyName`
@@ -1766,6 +1772,7 @@ module Google
           @developer_payload = args[:developer_payload] if args.key?(:developer_payload)
           @email_address = args[:email_address] if args.key?(:email_address)
           @expiry_time_millis = args[:expiry_time_millis] if args.key?(:expiry_time_millis)
+          @external_account_id = args[:external_account_id] if args.key?(:external_account_id)
           @family_name = args[:family_name] if args.key?(:family_name)
           @given_name = args[:given_name] if args.key?(:given_name)
           @introductory_price_info = args[:introductory_price_info] if args.key?(:introductory_price_info)
@@ -1992,6 +1999,14 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::CountryTargeting]
         attr_accessor :country_targeting
       
+        # In-app update priority of the release. All newly added APKs in the release
+        # will be considered at this priority. in_app_update_priority can take values
+        # between [0, 5]. 5 is the highest priority. Default priority is 0. See https://
+        # developer.android.com/guide/playcore/in-app-updates.
+        # Corresponds to the JSON property `inAppUpdatePriority`
+        # @return [Fixnum]
+        attr_accessor :in_app_update_priority
+      
         # The release name, used to identify this release in the Play Console UI. Not
         # required to be unique. This is optional, if not set it will be generated from
         # the version_name in the APKs.
@@ -2036,6 +2051,7 @@ module Google
         def update!(**args)
           @controls = args[:controls] if args.key?(:controls)
           @country_targeting = args[:country_targeting] if args.key?(:country_targeting)
+          @in_app_update_priority = args[:in_app_update_priority] if args.key?(:in_app_update_priority)
           @name = args[:name] if args.key?(:name)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
           @sampling = args[:sampling] if args.key?(:sampling)
