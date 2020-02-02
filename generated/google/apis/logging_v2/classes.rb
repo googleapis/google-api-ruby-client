@@ -36,6 +36,16 @@ module Google
         attr_accessor :use_partitioned_tables
         alias_method :use_partitioned_tables?, :use_partitioned_tables
       
+        # Output only. True if new timestamp column based partitioning is in use, false
+        # if legacy ingestion-time partitioning is in use. All new sinks will have this
+        # field set true and will use timestamp column based partitioning. If
+        # use_partitioned_tables is false, this value has no meaning and will be false.
+        # Legacy sinks using partitioned tables will have this field set to false.
+        # Corresponds to the JSON property `usesTimestampColumnPartitioning`
+        # @return [Boolean]
+        attr_accessor :uses_timestamp_column_partitioning
+        alias_method :uses_timestamp_column_partitioning?, :uses_timestamp_column_partitioning
+      
         def initialize(**args)
            update!(**args)
         end
@@ -43,6 +53,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @use_partitioned_tables = args[:use_partitioned_tables] if args.key?(:use_partitioned_tables)
+          @uses_timestamp_column_partitioning = args[:uses_timestamp_column_partitioning] if args.key?(:uses_timestamp_column_partitioning)
         end
       end
       
@@ -675,10 +686,12 @@ module Google
       
         # Optional. A unique identifier for the log entry. If you provide a value, then
         # Logging considers other log entries in the same project, with the same
-        # timestamp, and with the same insert_id to be duplicates which can be removed.
-        # If omitted in new log entries, then Logging assigns its own unique identifier.
-        # The insert_id is also used to order log entries that have the same timestamp
-        # value.
+        # timestamp, and with the same insert_id to be duplicates which are removed in a
+        # single query result. However, there are no guarantees of de-duplication in the
+        # export of logs.If the insert_id is omitted when writing a log entry, the
+        # Logging API  assigns its own unique identifier in this field.In queries, the
+        # insert_id is also used to order log entries that have the same log_name and
+        # timestamp values.
         # Corresponds to the JSON property `insertId`
         # @return [String]
         attr_accessor :insert_id

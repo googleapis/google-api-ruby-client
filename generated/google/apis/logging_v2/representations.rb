@@ -224,6 +224,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :use_partitioned_tables, as: 'usePartitionedTables'
+          property :uses_timestamp_column_partitioning, as: 'usesTimestampColumnPartitioning'
         end
       end
       
