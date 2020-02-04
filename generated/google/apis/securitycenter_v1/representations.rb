@@ -94,6 +94,54 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1p1beta1Asset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1IamPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1TemporalAsset
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GroupAssetsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -356,6 +404,96 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Asset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :iam_policy, as: 'iamPolicy', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1IamPolicy, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1IamPolicy::Representation
+      
+          property :name, as: 'name'
+          hash :resource_properties, as: 'resourceProperties'
+          property :security_center_properties, as: 'securityCenterProperties', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties::Representation
+      
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks::Representation
+      
+          property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :event_time, as: 'eventTime'
+          property :external_uri, as: 'externalUri'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :resource_name, as: 'resourceName'
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1SecurityMarks::Representation
+      
+          hash :source_properties, as: 'sourceProperties'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1IamPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :policy_blob, as: 'policyBlob'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1NotificationMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Finding, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Finding::Representation
+      
+          property :notification_config_name, as: 'notificationConfigName'
+          property :temporal_asset, as: 'temporalAsset', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1TemporalAsset::Representation
+      
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration, as: 'duration'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_display_name, as: 'resourceDisplayName'
+          property :resource_name, as: 'resourceName'
+          collection :resource_owners, as: 'resourceOwners'
+          property :resource_parent, as: 'resourceParent'
+          property :resource_parent_display_name, as: 'resourceParentDisplayName'
+          property :resource_project, as: 'resourceProject'
+          property :resource_project_display_name, as: 'resourceProjectDisplayName'
+          property :resource_type, as: 'resourceType'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1SecurityMarks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :marks, as: 'marks'
+          property :name, as: 'name'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1p1beta1TemporalAsset
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :asset, as: 'asset', class: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Asset, decorator: Google::Apis::SecuritycenterV1::GoogleCloudSecuritycenterV1p1beta1Asset::Representation
+      
+          property :change_type, as: 'changeType'
         end
       end
       

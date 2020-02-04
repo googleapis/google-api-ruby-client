@@ -53,6 +53,8 @@ module Google
         
         # Sends new spans to new or existing traces. You cannot update
         # existing spans.
+        # In this case, writing traces is not consider an active developer
+        # method since traces are machine generated.
         # @param [String] name
         #   Required. The name of the project where the spans belong. The format is
         #   `projects/[PROJECT_ID]`.
@@ -87,6 +89,8 @@ module Google
         end
         
         # Creates a new span.
+        # In this case, writing traces is not consider an active developer
+        # method since traces are machine generated.
         # @param [String] name
         #   The resource name of the span in the following format:
         #   projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
