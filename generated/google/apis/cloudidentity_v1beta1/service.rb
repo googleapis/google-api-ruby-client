@@ -49,6 +49,8 @@ module Google
         
         # Creates a `Group`.
         # @param [Google::Apis::CloudidentityV1beta1::Group] group_object
+        # @param [String] initial_group_config
+        #   Required. The initial configuration option for the `Group`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -66,12 +68,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_group(group_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_group(group_object = nil, initial_group_config: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/groups', options)
           command.request_representation = Google::Apis::CloudidentityV1beta1::Group::Representation
           command.request_object = group_object
           command.response_representation = Google::Apis::CloudidentityV1beta1::Operation::Representation
           command.response_class = Google::Apis::CloudidentityV1beta1::Operation
+          command.query['initialGroupConfig'] = initial_group_config unless initial_group_config.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -79,7 +82,8 @@ module Google
         
         # Deletes a `Group`.
         # @param [String] name
-        #   The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of
         #   the `Group` to retrieve.
         #   Must be of the form `groups/`group_id``.
         # @param [String] fields
@@ -111,7 +115,8 @@ module Google
         
         # Retrieves a `Group`.
         # @param [String] name
-        #   The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of
         #   the `Group` to retrieve.
         #   Must be of the form `groups/`group_id``.
         # @param [String] fields
@@ -141,13 +146,61 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists the `Group`s within a customer or namespace.
+        # @param [Fixnum] page_size
+        #   The maximum number of results to return.
+        #   Note that the number of results returned may be less than this value even
+        #   if there are more available results. To fetch all results, clients must
+        #   continue calling this method repeatedly until the response no longer
+        #   contains a `next_page_token`.
+        #   If unspecified, defaults to 200 for `View.BASIC` and to 50 for `View.FULL`.
+        #   Must not be greater than 1000 for `View.BASIC` or 500 for `View.FULL`.
+        # @param [String] page_token
+        #   The `next_page_token` value returned from a previous list request, if any.
+        # @param [String] parent
+        #   Required. The parent resource under which to list all `Group`s.
+        #   Must be of the form `identitysources/`identity_source_id`` for external-
+        #   identity-mapped groups or `customers/`customer_id`` for Google Groups.
+        # @param [String] view
+        #   The level of detail to be returned.
+        #   If unspecified, defaults to `View.BASIC`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::ListGroupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::ListGroupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_groups(page_size: nil, page_token: nil, parent: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/groups', options)
+          command.response_representation = Google::Apis::CloudidentityV1beta1::ListGroupsResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::ListGroupsResponse
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Looks up the [resource
         # name](https://cloud.google.com/apis/design/resource_names) of a `Group` by
         # its `EntityKey`.
         # @param [String] group_key_id
         #   The ID of the entity.
-        #   For Google-managed entities, the `id` must be the email address of a group
-        #   or user.
+        #   For Google-managed entities, the `id` must be the email address of an
+        #   existing group or user.
         #   For external-identity-mapped entities, the `id` must be a string conforming
         #   to the Identity Source's requirements.
         #   Must be unique within a `namespace`.
@@ -194,7 +247,7 @@ module Google
         #   Shall be of the form `groups/`group_id``.
         # @param [Google::Apis::CloudidentityV1beta1::Group] group_object
         # @param [String] update_mask
-        #   The fully-qualified names of fields to update.
+        #   Required. The fully-qualified names of fields to update.
         #   May only contain the following fields: `display_name`, `description`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -241,13 +294,12 @@ module Google
         #   The `next_page_token` value returned from a previous search request, if
         #   any.
         # @param [String] query
-        #   The search query.
-        #   Only queries on the parent and labels of `Group`s are supported.
+        #   Required. The search query.
         #   Must be specified in [Common Expression
         #   Language](https://opensource.google/projects/cel). May only contain
-        #   equality operators on the parent (e.g. `parent ==
-        #   'customers/`customer_id`'`) and inclusion operators on labels (e.g.,
-        #   `'cloudidentity.googleapis.com/groups.discussion_forum' in labels`).
+        #   equality operators on the parent and inclusion operators on labels (e.g.,
+        #   `parent == 'customers/`customer_id`' &&
+        #   'cloudidentity.googleapis.com/groups.discussion_forum' in labels`).
         # @param [String] view
         #   The level of detail to be returned.
         #   If unspecified, defaults to `View.BASIC`.
@@ -283,7 +335,7 @@ module Google
         
         # Creates a `Membership`.
         # @param [String] parent
-        #   The parent `Group` resource under which to create the `Membership`.
+        #   Required. The parent `Group` resource under which to create the `Membership`.
         #   Must be of the form `groups/`group_id``.
         # @param [Google::Apis::CloudidentityV1beta1::Membership] membership_object
         # @param [String] fields
@@ -317,7 +369,8 @@ module Google
         
         # Deletes a `Membership`.
         # @param [String] name
-        #   The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of
         #   the `Membership` to delete.
         #   Must be of the form `groups/`group_id`/memberships/`membership_id``.
         # @param [String] fields
@@ -349,7 +402,8 @@ module Google
         
         # Retrieves a `Membership`.
         # @param [String] name
-        #   The [resource name](https://cloud.google.com/apis/design/resource_names) of
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of
         #   the `Membership` to retrieve.
         #   Must be of the form `groups/`group_id`/memberships/`membership_id``.
         # @param [String] fields
@@ -381,7 +435,8 @@ module Google
         
         # Lists the `Membership`s within a `Group`.
         # @param [String] parent
-        #   The parent `Group` resource under which to lookup the `Membership` name.
+        #   Required. The parent `Group` resource under which to lookup the `Membership`
+        #   name.
         #   Must be of the form `groups/`group_id``.
         # @param [Fixnum] page_size
         #   The maximum number of results to return.
@@ -433,12 +488,13 @@ module Google
         # name](https://cloud.google.com/apis/design/resource_names) of a
         # `Membership` by its `EntityKey`.
         # @param [String] parent
-        #   The parent `Group` resource under which to lookup the `Membership` name.
+        #   Required. The parent `Group` resource under which to lookup the `Membership`
+        #   name.
         #   Must be of the form `groups/`group_id``.
         # @param [String] member_key_id
         #   The ID of the entity.
-        #   For Google-managed entities, the `id` must be the email address of a group
-        #   or user.
+        #   For Google-managed entities, the `id` must be the email address of an
+        #   existing group or user.
         #   For external-identity-mapped entities, the `id` must be a string conforming
         #   to the Identity Source's requirements.
         #   Must be unique within a `namespace`.
@@ -473,6 +529,42 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['memberKey.id'] = member_key_id unless member_key_id.nil?
           command.query['memberKey.namespace'] = member_key_namespace unless member_key_namespace.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Modifies the `MembershipRole`s of a `Membership`.
+        # @param [String] name
+        #   Required. The [resource name](https://cloud.google.com/apis/design/
+        #   resource_names) of
+        #   the `Membership` whose roles are to be modified.
+        #   Must be of the form `groups/`group_id`/memberships/`membership_id``.
+        # @param [Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesRequest] modify_membership_roles_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def modify_membership_roles(name, modify_membership_roles_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+name}:modifyMembershipRoles', options)
+          command.request_representation = Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesRequest::Representation
+          command.request_object = modify_membership_roles_request_object
+          command.response_representation = Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse::Representation
+          command.response_class = Google::Apis::CloudidentityV1beta1::ModifyMembershipRolesResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

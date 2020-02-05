@@ -1443,11 +1443,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :first_band_color, as: 'firstBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :first_band_color_style, as: 'firstBandColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :footer_color, as: 'footerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :footer_color_style, as: 'footerColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :header_color, as: 'headerColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :header_color_style, as: 'headerColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :second_band_color, as: 'secondBandColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :second_band_color_style, as: 'secondBandColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
         end
       end
@@ -1699,6 +1707,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :style, as: 'style'
           property :width, as: 'width'
         end
@@ -1812,6 +1822,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :background_color_style, as: 'backgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :borders, as: 'borders', class: Google::Apis::SheetsV4::Borders, decorator: Google::Apis::SheetsV4::Borders::Representation
       
@@ -2338,7 +2350,11 @@ module Google
           collection :hidden_values, as: 'hiddenValues'
           property :visible_background_color, as: 'visibleBackgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :visible_background_color_style, as: 'visibleBackgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :visible_foreground_color, as: 'visibleForegroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :visible_foreground_color_style, as: 'visibleForegroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
         end
       end
@@ -2508,6 +2524,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :color, as: 'color', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :color_style, as: 'colorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :type, as: 'type'
           property :value, as: 'value'
@@ -3077,6 +3095,8 @@ module Google
           property :sheet_type, as: 'sheetType'
           property :tab_color, as: 'tabColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :tab_color_style, as: 'tabColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :title, as: 'title'
         end
       end
@@ -3097,6 +3117,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :apply_to_pivot_tables, as: 'applyToPivotTables'
           property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :background_color_style, as: 'backgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :column_index, as: 'columnIndex'
           property :data_range, as: 'dataRange', class: Google::Apis::SheetsV4::GridRange, decorator: Google::Apis::SheetsV4::GridRange::Representation
@@ -3125,8 +3147,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :background_color, as: 'backgroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
       
+          property :background_color_style, as: 'backgroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
+      
           property :dimension_index, as: 'dimensionIndex'
           property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :foreground_color_style, as: 'foregroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :sort_order, as: 'sortOrder'
         end
@@ -3190,6 +3216,8 @@ module Google
           property :font_family, as: 'fontFamily'
           property :font_size, as: 'fontSize'
           property :foreground_color, as: 'foregroundColor', class: Google::Apis::SheetsV4::Color, decorator: Google::Apis::SheetsV4::Color::Representation
+      
+          property :foreground_color_style, as: 'foregroundColorStyle', class: Google::Apis::SheetsV4::ColorStyle, decorator: Google::Apis::SheetsV4::ColorStyle::Representation
       
           property :italic, as: 'italic'
           property :strikethrough, as: 'strikethrough'

@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GcePersistentDiskCsiDriverConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetJsonWebKeysResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -631,6 +637,8 @@ module Google
       
           property :dns_cache_config, as: 'dnsCacheConfig', class: Google::Apis::ContainerV1beta1::DnsCacheConfig, decorator: Google::Apis::ContainerV1beta1::DnsCacheConfig::Representation
       
+          property :gce_persistent_disk_csi_driver_config, as: 'gcePersistentDiskCsiDriverConfig', class: Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig, decorator: Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig::Representation
+      
           property :horizontal_pod_autoscaling, as: 'horizontalPodAutoscaling', class: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::HorizontalPodAutoscaling::Representation
       
           property :http_load_balancing, as: 'httpLoadBalancing', class: Google::Apis::ContainerV1beta1::HttpLoadBalancing, decorator: Google::Apis::ContainerV1beta1::HttpLoadBalancing::Representation
@@ -953,6 +961,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :feature, as: 'feature'
           property :tier, as: 'tier'
+        end
+      end
+      
+      class GcePersistentDiskCsiDriverConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       

@@ -222,10 +222,28 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL)
+        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+        # are documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit"
+        # description: "Determines if a summary is less than 100 chars"
+        # expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner"
+        # description: "Determines if requestor is the document owner"
+        # expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents"
+        # description: "Determine whether the document should be publicly visible"
+        # expression: "document.type != 'private' && document.type != 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string"
+        # description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service
+        # documentation for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::CloudkmsV1::Expr]
         attr_accessor :condition
@@ -686,34 +704,50 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL)
+      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+      # are documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit"
+      # description: "Determines if a summary is less than 100 chars"
+      # expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner"
+      # description: "Determines if requestor is the document owner"
+      # expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents"
+      # description: "Determine whether the document should be publicly visible"
+      # expression: "document.type != 'private' && document.type != 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string"
+      # description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service
+      # documentation for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
+        # Optional. Description of the expression. This is a longer text which
         # describes the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
+        # Textual representation of an expression in Common Expression Language
+        # syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
+        # Optional. String indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing
+        # Optional. Title for the expression, i.e. a short string describing
         # its purpose. This can be used e.g. in UIs which allow to enter the
         # expression.
         # Corresponds to the JSON property `title`
@@ -1178,6 +1212,14 @@ module Google
       
         # Indicates whether CryptoKeys with
         # protection_level
+        # EXTERNAL can be created in this location.
+        # Corresponds to the JSON property `ekmAvailable`
+        # @return [Boolean]
+        attr_accessor :ekm_available
+        alias_method :ekm_available?, :ekm_available
+      
+        # Indicates whether CryptoKeys with
+        # protection_level
         # HSM can be created in this location.
         # Corresponds to the JSON property `hsmAvailable`
         # @return [Boolean]
@@ -1190,6 +1232,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @ekm_available = args[:ekm_available] if args.key?(:ekm_available)
           @hsm_available = args[:hsm_available] if args.key?(:hsm_available)
         end
       end

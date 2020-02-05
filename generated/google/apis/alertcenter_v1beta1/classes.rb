@@ -717,6 +717,26 @@ module Google
         end
       end
       
+      # Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.
+      class DlpRuleViolation
+        include Google::Apis::Core::Hashable
+      
+        # Common alert information about violated rules that are configured by G Suite
+        # administrators.
+        # Corresponds to the JSON property `ruleViolationInfo`
+        # @return [Google::Apis::AlertcenterV1beta1::RuleViolationInfo]
+        attr_accessor :rule_violation_info
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @rule_violation_info = args[:rule_violation_info] if args.key?(:rule_violation_info)
+        end
+      end
+      
       # Domain ID of Gmail phishing alerts.
       class DomainId
         include Google::Apis::Core::Hashable
@@ -1037,6 +1057,31 @@ module Google
         end
       end
       
+      # Proto that contains match information from the condition part of the rule.
+      class MatchInfo
+        include Google::Apis::Core::Hashable
+      
+        # Detector provided by Google.
+        # Corresponds to the JSON property `predefinedDetector`
+        # @return [Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo]
+        attr_accessor :predefined_detector
+      
+        # Detector defined by administrators.
+        # Corresponds to the JSON property `userDefinedDetector`
+        # @return [Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo]
+        attr_accessor :user_defined_detector
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @predefined_detector = args[:predefined_detector] if args.key?(:predefined_detector)
+          @user_defined_detector = args[:user_defined_detector] if args.key?(:user_defined_detector)
+        end
+      end
+      
       # Settings for callback notifications.
       # For more details see [G Suite Alert
       # Notification](/admin-sdk/alertcenter/guides/notifications).
@@ -1102,6 +1147,25 @@ module Google
         end
       end
       
+      # Detector provided by Google.
+      class PredefinedDetectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name that uniquely identifies the detector.
+        # Corresponds to the JSON property `detectorName`
+        # @return [String]
+        attr_accessor :detector_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detector_name = args[:detector_name] if args.key?(:detector_name)
+        end
+      end
+      
       # Requests for one application that needs default SQL setup.
       class RequestInfo
         include Google::Apis::Core::Hashable
@@ -1132,6 +1196,131 @@ module Google
           @app_developer_email = args[:app_developer_email] if args.key?(:app_developer_email)
           @app_key = args[:app_key] if args.key?(:app_key)
           @number_of_requests = args[:number_of_requests] if args.key?(:number_of_requests)
+        end
+      end
+      
+      # Proto that contains resource information.
+      class ResourceInfo
+        include Google::Apis::Core::Hashable
+      
+        # Drive file ID.
+        # Corresponds to the JSON property `documentId`
+        # @return [String]
+        attr_accessor :document_id
+      
+        # Title of the resource, e.g. email subject, or document title.
+        # Corresponds to the JSON property `resourceTitle`
+        # @return [String]
+        attr_accessor :resource_title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @document_id = args[:document_id] if args.key?(:document_id)
+          @resource_title = args[:resource_title] if args.key?(:resource_title)
+        end
+      end
+      
+      # Proto that contains rule information.
+      class RuleInfo
+        include Google::Apis::Core::Hashable
+      
+        # User provided name of the rule.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name that uniquely identifies the rule.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Common alert information about violated rules that are configured by G Suite
+      # administrators.
+      class RuleViolationInfo
+        include Google::Apis::Core::Hashable
+      
+        # Source of the data.
+        # Corresponds to the JSON property `dataSource`
+        # @return [String]
+        attr_accessor :data_source
+      
+        # List of matches that were found in the resource content.
+        # Corresponds to the JSON property `matchInfo`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::MatchInfo>]
+        attr_accessor :match_info
+      
+        # Resource recipients.
+        # For Drive, they are grantees that the Drive file was shared with at the
+        # time of rule triggering. Valid values include user emails, group emails,
+        # domains, or 'anyone' if the file was publicly accessible. If the file was
+        # private the recipients list will be empty.
+        # For Gmail, they are emails of the users or groups that the Gmail message
+        # was sent to.
+        # Corresponds to the JSON property `recipients`
+        # @return [Array<String>]
+        attr_accessor :recipients
+      
+        # Proto that contains resource information.
+        # Corresponds to the JSON property `resourceInfo`
+        # @return [Google::Apis::AlertcenterV1beta1::ResourceInfo]
+        attr_accessor :resource_info
+      
+        # Proto that contains rule information.
+        # Corresponds to the JSON property `ruleInfo`
+        # @return [Google::Apis::AlertcenterV1beta1::RuleInfo]
+        attr_accessor :rule_info
+      
+        # Actions suppressed due to other actions with higher priority.
+        # Corresponds to the JSON property `suppressedActionTypes`
+        # @return [Array<String>]
+        attr_accessor :suppressed_action_types
+      
+        # Trigger of the rule.
+        # Corresponds to the JSON property `trigger`
+        # @return [String]
+        attr_accessor :trigger
+      
+        # Actions applied as a consequence of the rule being triggered.
+        # Corresponds to the JSON property `triggeredActionTypes`
+        # @return [Array<String>]
+        attr_accessor :triggered_action_types
+      
+        # Email of the user who caused the violation. Value could be empty if not
+        # applicable, for example, a violation found by drive continuous scan.
+        # Corresponds to the JSON property `triggeringUserEmail`
+        # @return [String]
+        attr_accessor :triggering_user_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data_source = args[:data_source] if args.key?(:data_source)
+          @match_info = args[:match_info] if args.key?(:match_info)
+          @recipients = args[:recipients] if args.key?(:recipients)
+          @resource_info = args[:resource_info] if args.key?(:resource_info)
+          @rule_info = args[:rule_info] if args.key?(:rule_info)
+          @suppressed_action_types = args[:suppressed_action_types] if args.key?(:suppressed_action_types)
+          @trigger = args[:trigger] if args.key?(:trigger)
+          @triggered_action_types = args[:triggered_action_types] if args.key?(:triggered_action_types)
+          @triggering_user_email = args[:triggering_user_email] if args.key?(:triggering_user_email)
         end
       end
       
@@ -1347,6 +1536,31 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @email_address = args[:email_address] if args.key?(:email_address)
+        end
+      end
+      
+      # Detector defined by administrators.
+      class UserDefinedDetectorInfo
+        include Google::Apis::Core::Hashable
+      
+        # Display name of the detector.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # Resource name that uniquely identifies the detector.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
     end

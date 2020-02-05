@@ -124,6 +124,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DlpRuleViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DomainId
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -184,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MatchInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Notification
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -196,7 +208,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PredefinedDetectorInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RequestInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourceInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuleInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RuleViolationInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -239,6 +275,12 @@ module Google
       end
       
       class User
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UserDefinedDetectorInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -425,6 +467,14 @@ module Google
         end
       end
       
+      class DlpRuleViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :rule_violation_info, as: 'ruleViolationInfo', class: Google::Apis::AlertcenterV1beta1::RuleViolationInfo, decorator: Google::Apis::AlertcenterV1beta1::RuleViolationInfo::Representation
+      
+        end
+      end
+      
       class DomainId
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -520,6 +570,16 @@ module Google
         end
       end
       
+      class MatchInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :predefined_detector, as: 'predefinedDetector', class: Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::PredefinedDetectorInfo::Representation
+      
+          property :user_defined_detector, as: 'userDefinedDetector', class: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo, decorator: Google::Apis::AlertcenterV1beta1::UserDefinedDetectorInfo::Representation
+      
+        end
+      end
+      
       class Notification
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -541,12 +601,53 @@ module Google
         end
       end
       
+      class PredefinedDetectorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detector_name, as: 'detectorName'
+        end
+      end
+      
       class RequestInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :app_developer_email, as: 'appDeveloperEmail'
           property :app_key, as: 'appKey'
           property :number_of_requests, :numeric_string => true, as: 'numberOfRequests'
+        end
+      end
+      
+      class ResourceInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :document_id, as: 'documentId'
+          property :resource_title, as: 'resourceTitle'
+        end
+      end
+      
+      class RuleInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class RuleViolationInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data_source, as: 'dataSource'
+          collection :match_info, as: 'matchInfo', class: Google::Apis::AlertcenterV1beta1::MatchInfo, decorator: Google::Apis::AlertcenterV1beta1::MatchInfo::Representation
+      
+          collection :recipients, as: 'recipients'
+          property :resource_info, as: 'resourceInfo', class: Google::Apis::AlertcenterV1beta1::ResourceInfo, decorator: Google::Apis::AlertcenterV1beta1::ResourceInfo::Representation
+      
+          property :rule_info, as: 'ruleInfo', class: Google::Apis::AlertcenterV1beta1::RuleInfo, decorator: Google::Apis::AlertcenterV1beta1::RuleInfo::Representation
+      
+          collection :suppressed_action_types, as: 'suppressedActionTypes'
+          property :trigger, as: 'trigger'
+          collection :triggered_action_types, as: 'triggeredActionTypes'
+          property :triggering_user_email, as: 'triggeringUserEmail'
         end
       end
       
@@ -610,6 +711,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :email_address, as: 'emailAddress'
+        end
+      end
+      
+      class UserDefinedDetectorInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :resource_name, as: 'resourceName'
         end
       end
     end

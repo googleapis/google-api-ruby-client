@@ -63,6 +63,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsCacheConfig]
         attr_accessor :dns_cache_config
       
+        # Configuration for the GCE PD CSI driver. This option can only be enabled
+        # at cluster creation time.
+        # Corresponds to the JSON property `gcePersistentDiskCsiDriverConfig`
+        # @return [Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig]
+        attr_accessor :gce_persistent_disk_csi_driver_config
+      
         # Configuration options for the horizontal pod autoscaling feature, which
         # increases or decreases the number of replica pods a replication controller
         # has based on the resource usage of the existing pods.
@@ -106,6 +112,7 @@ module Google
         def update!(**args)
           @cloud_run_config = args[:cloud_run_config] if args.key?(:cloud_run_config)
           @dns_cache_config = args[:dns_cache_config] if args.key?(:dns_cache_config)
+          @gce_persistent_disk_csi_driver_config = args[:gce_persistent_disk_csi_driver_config] if args.key?(:gce_persistent_disk_csi_driver_config)
           @horizontal_pod_autoscaling = args[:horizontal_pod_autoscaling] if args.key?(:horizontal_pod_autoscaling)
           @http_load_balancing = args[:http_load_balancing] if args.key?(:http_load_balancing)
           @istio_config = args[:istio_config] if args.key?(:istio_config)
@@ -1429,6 +1436,27 @@ module Google
         end
       end
       
+      # Configuration for the GCE PD CSI driver. This option can only be enabled
+      # at cluster creation time.
+      class GcePersistentDiskCsiDriverConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether the GCE PD CSI driver is enabled for this cluster.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
       # GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517
       class GetJsonWebKeysResponse
         include Google::Apis::Core::Hashable
@@ -2538,8 +2566,9 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::SandboxConfig]
         attr_accessor :sandbox_config
       
-        # The Google Cloud Platform Service Account to be used by the node VMs. If
-        # no Service Account is specified, the "default" service account is used.
+        # The Google Cloud Platform Service Account to be used by the node VMs.
+        # Specify the email address of the Service Account; otherwise, if no Service
+        # Account is specified, the "default" service account is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account

@@ -79,7 +79,8 @@ module Google
         
         # Deletes a Group.
         # @param [String] name
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Group in the format: `groups/`group_id``, where `group_id` is the unique ID
         #   assigned to the Group.
         # @param [String] fields
@@ -111,7 +112,8 @@ module Google
         
         # Retrieves a Group.
         # @param [String] name
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Group in the format: `groups/`group_id``, where `group_id` is the unique ID
         #   assigned to the Group.
         # @param [String] fields
@@ -148,8 +150,7 @@ module Google
         # @param [String] page_token
         #   The next_page_token value returned from a previous list request, if any.
         # @param [String] parent
-        #   `Required`. May be made Optional in the future.
-        #   Customer ID to list all groups from.
+        #   Required. Customer ID to list all groups from.
         # @param [String] view
         #   Group resource view to be returned. Defaults to [View.BASIC]().
         # @param [String] fields
@@ -231,7 +232,7 @@ module Google
         #   Must be left blank while creating a Group.
         # @param [Google::Apis::CloudidentityV1::Group] group_object
         # @param [String] update_mask
-        #   Editable fields: `display_name`, `description`
+        #   Required. Editable fields: `display_name`, `description`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -269,7 +270,8 @@ module Google
         # @param [String] page_token
         #   The next_page_token value returned from a previous search request, if any.
         # @param [String] query
-        #   `Required`. Query string for performing search on groups. Users can search
+        #   Required. `Required`. Query string for performing search on groups. Users can
+        #   search
         #   on parent and label attributes of groups.
         #   EXACT match ('==') is supported on parent, and CONTAINS match ('in') is
         #   supported on labels.
@@ -307,7 +309,8 @@ module Google
         
         # Creates a Membership.
         # @param [String] parent
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Group to create Membership within. Format: `groups/`group_id``, where
         #   `group_id` is the unique ID assigned to the Group.
         # @param [Google::Apis::CloudidentityV1::Membership] membership_object
@@ -342,7 +345,8 @@ module Google
         
         # Deletes a Membership.
         # @param [String] name
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Membership to be deleted.
         #   Format: `groups/`group_id`/memberships/`member_id``, where `group_id` is
         #   the unique ID assigned to the Group to which Membership belongs to, and
@@ -376,7 +380,8 @@ module Google
         
         # Retrieves a Membership.
         # @param [String] name
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Membership to be retrieved.
         #   Format: `groups/`group_id`/memberships/`member_id``, where `group_id` is
         #   the unique id assigned to the Group to which Membership belongs to, and
@@ -410,7 +415,8 @@ module Google
         
         # Lists Memberships within a Group.
         # @param [String] parent
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Group to list Memberships within.
         #   Format: `groups/`group_id``, where `group_id` is the unique ID assigned to
         #   the Group.
@@ -455,7 +461,8 @@ module Google
         # name](https://cloud.google.com/apis/design/resource_names) of a Membership
         # within a Group by member's EntityKey.
         # @param [String] parent
-        #   [Resource name](https://cloud.google.com/apis/design/resource_names) of the
+        #   Required. [Resource name](https://cloud.google.com/apis/design/resource_names)
+        #   of the
         #   Group to lookup Membership within.
         #   Format: `groups/`group_id``, where `group_id` is the unique ID assigned to
         #   the Group.

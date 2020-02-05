@@ -514,6 +514,7 @@ module Google
       class LocationMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :ekm_available, as: 'ekmAvailable'
           property :hsm_available, as: 'hsmAvailable'
         end
       end

@@ -255,8 +255,11 @@ module Google
       class GooglePrivacyDlpV2BigQueryKey
         include Google::Apis::Core::Hashable
       
-        # Absolute number of the row from the beginning of the table at the time
-        # of scanning.
+        # Row number inferred at the time the table was scanned. This value is
+        # nondeterministic, cannot be queried, and may be null for inspection
+        # jobs. To locate findings within a table, specify
+        # `inspect_job.storage_config.big_query_options.identifying_fields` in
+        # `CreateDlpJobRequest`.
         # Corresponds to the JSON property `rowNumber`
         # @return [Fixnum]
         attr_accessor :row_number
@@ -291,8 +294,11 @@ module Google
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :excluded_fields
       
-        # References to fields uniquely identifying rows within the table.
-        # Nested fields in the format, like `person.birthdate.year`, are allowed.
+        # Table fields that may uniquely identify a row within the table. When
+        # `actions.saveFindings.outputConfig.table` is specified, the values of
+        # columns specified here are available in the output table under
+        # `location.content_locations.record_location.record_key.id_values`. Nested
+        # fields such as `person.birthdate.year` are allowed.
         # Corresponds to the JSON property `identifyingFields`
         # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
         attr_accessor :identifying_fields
@@ -995,7 +1001,8 @@ module Google
         end
       end
       
-      # Findings container location data.
+      # Precise location of the finding within a document, record, image, or metadata
+      # container.
       class GooglePrivacyDlpV2ContentLocation
         include Google::Apis::Core::Hashable
       
@@ -4697,7 +4704,7 @@ module Google
         attr_accessor :datastore_key
       
         # Values of identifying columns in the given row. Order of values matches
-        # the order of field identifiers specified in the scanning request.
+        # the order of `identifying_fields` specified in the scanning request.
         # Corresponds to the JSON property `idValues`
         # @return [Array<String>]
         attr_accessor :id_values

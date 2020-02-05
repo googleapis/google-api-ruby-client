@@ -751,6 +751,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :first_band_color
       
+        # A color value.
+        # Corresponds to the JSON property `firstBandColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :first_band_color_style
+      
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
         # languages over compactness; for example, the fields of this representation
@@ -857,6 +862,11 @@ module Google
         # Corresponds to the JSON property `footerColor`
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :footer_color
+      
+        # A color value.
+        # Corresponds to the JSON property `footerColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :footer_color_style
       
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
@@ -965,6 +975,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :header_color
       
+        # A color value.
+        # Corresponds to the JSON property `headerColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :header_color_style
+      
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
         # languages over compactness; for example, the fields of this representation
@@ -1072,6 +1087,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :second_band_color
       
+        # A color value.
+        # Corresponds to the JSON property `secondBandColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :second_band_color_style
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1079,9 +1099,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @first_band_color = args[:first_band_color] if args.key?(:first_band_color)
+          @first_band_color_style = args[:first_band_color_style] if args.key?(:first_band_color_style)
           @footer_color = args[:footer_color] if args.key?(:footer_color)
+          @footer_color_style = args[:footer_color_style] if args.key?(:footer_color_style)
           @header_color = args[:header_color] if args.key?(:header_color)
+          @header_color_style = args[:header_color_style] if args.key?(:header_color_style)
           @second_band_color = args[:second_band_color] if args.key?(:second_band_color)
+          @second_band_color_style = args[:second_band_color_style] if args.key?(:second_band_color_style)
         end
       end
       
@@ -2394,6 +2418,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
       
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
         # The style of the border.
         # Corresponds to the JSON property `style`
         # @return [String]
@@ -2412,6 +2441,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
           @style = args[:style] if args.key?(:style)
           @width = args[:width] if args.key?(:width)
         end
@@ -2951,6 +2981,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
       
+        # A color value.
+        # Corresponds to the JSON property `backgroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :background_color_style
+      
         # The borders of the cell.
         # Corresponds to the JSON property `borders`
         # @return [Google::Apis::SheetsV4::Borders]
@@ -3010,6 +3045,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
+          @background_color_style = args[:background_color_style] if args.key?(:background_color_style)
           @borders = args[:borders] if args.key?(:borders)
           @horizontal_alignment = args[:horizontal_alignment] if args.key?(:horizontal_alignment)
           @hyperlink_display_type = args[:hyperlink_display_type] if args.key?(:hyperlink_display_type)
@@ -5283,6 +5319,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :visible_background_color
       
+        # A color value.
+        # Corresponds to the JSON property `visibleBackgroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :visible_background_color_style
+      
         # Represents a color in the RGBA color space. This representation is designed
         # for simplicity of conversion to/from color representations in various
         # languages over compactness; for example, the fields of this representation
@@ -5390,6 +5431,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :visible_foreground_color
       
+        # A color value.
+        # Corresponds to the JSON property `visibleForegroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :visible_foreground_color_style
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5399,7 +5445,9 @@ module Google
           @condition = args[:condition] if args.key?(:condition)
           @hidden_values = args[:hidden_values] if args.key?(:hidden_values)
           @visible_background_color = args[:visible_background_color] if args.key?(:visible_background_color)
+          @visible_background_color_style = args[:visible_background_color_style] if args.key?(:visible_background_color_style)
           @visible_foreground_color = args[:visible_foreground_color] if args.key?(:visible_foreground_color)
+          @visible_foreground_color_style = args[:visible_foreground_color_style] if args.key?(:visible_foreground_color_style)
         end
       end
       
@@ -6355,6 +6403,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :color
       
+        # A color value.
+        # Corresponds to the JSON property `colorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :color_style
+      
         # How the value should be interpreted.
         # Corresponds to the JSON property `type`
         # @return [String]
@@ -6374,6 +6427,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @color = args[:color] if args.key?(:color)
+          @color_style = args[:color_style] if args.key?(:color_style)
           @type = args[:type] if args.key?(:type)
           @value = args[:value] if args.key?(:value)
         end
@@ -8852,6 +8906,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :tab_color
       
+        # A color value.
+        # Corresponds to the JSON property `tabColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :tab_color_style
+      
         # The name of the sheet.
         # Corresponds to the JSON property `title`
         # @return [String]
@@ -8870,6 +8929,7 @@ module Google
           @sheet_id = args[:sheet_id] if args.key?(:sheet_id)
           @sheet_type = args[:sheet_type] if args.key?(:sheet_type)
           @tab_color = args[:tab_color] if args.key?(:tab_color)
+          @tab_color_style = args[:tab_color_style] if args.key?(:tab_color_style)
           @title = args[:title] if args.key?(:title)
         end
       end
@@ -9023,6 +9083,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
       
+        # A color value.
+        # Corresponds to the JSON property `backgroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :background_color_style
+      
         # The column index in the data table on which the filter is applied to.
         # Corresponds to the JSON property `columnIndex`
         # @return [Fixnum]
@@ -9084,6 +9149,7 @@ module Google
         def update!(**args)
           @apply_to_pivot_tables = args[:apply_to_pivot_tables] if args.key?(:apply_to_pivot_tables)
           @background_color = args[:background_color] if args.key?(:background_color)
+          @background_color_style = args[:background_color_style] if args.key?(:background_color_style)
           @column_index = args[:column_index] if args.key?(:column_index)
           @data_range = args[:data_range] if args.key?(:data_range)
           @filter_criteria = args[:filter_criteria] if args.key?(:filter_criteria)
@@ -9251,6 +9317,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :background_color
       
+        # A color value.
+        # Corresponds to the JSON property `backgroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :background_color_style
+      
         # The dimension the sort should be applied to.
         # Corresponds to the JSON property `dimensionIndex`
         # @return [Fixnum]
@@ -9363,6 +9434,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :foreground_color
       
+        # A color value.
+        # Corresponds to the JSON property `foregroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :foreground_color_style
+      
         # The order data should be sorted.
         # Corresponds to the JSON property `sortOrder`
         # @return [String]
@@ -9375,8 +9451,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @background_color = args[:background_color] if args.key?(:background_color)
+          @background_color_style = args[:background_color_style] if args.key?(:background_color_style)
           @dimension_index = args[:dimension_index] if args.key?(:dimension_index)
           @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
+          @foreground_color_style = args[:foreground_color_style] if args.key?(:foreground_color_style)
           @sort_order = args[:sort_order] if args.key?(:sort_order)
         end
       end
@@ -9703,6 +9781,11 @@ module Google
         # @return [Google::Apis::SheetsV4::Color]
         attr_accessor :foreground_color
       
+        # A color value.
+        # Corresponds to the JSON property `foregroundColorStyle`
+        # @return [Google::Apis::SheetsV4::ColorStyle]
+        attr_accessor :foreground_color_style
+      
         # True if the text is italicized.
         # Corresponds to the JSON property `italic`
         # @return [Boolean]
@@ -9731,6 +9814,7 @@ module Google
           @font_family = args[:font_family] if args.key?(:font_family)
           @font_size = args[:font_size] if args.key?(:font_size)
           @foreground_color = args[:foreground_color] if args.key?(:foreground_color)
+          @foreground_color_style = args[:foreground_color_style] if args.key?(:foreground_color_style)
           @italic = args[:italic] if args.key?(:italic)
           @strikethrough = args[:strikethrough] if args.key?(:strikethrough)
           @underline = args[:underline] if args.key?(:underline)

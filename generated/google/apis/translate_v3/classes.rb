@@ -733,8 +733,11 @@ module Google
       class TranslateTextGlossaryConfig
         include Google::Apis::Core::Hashable
       
-        # Required. Specifies the glossary used for this translation. Use
-        # this format: projects/*/locations/*/glossaries/*
+        # Required. The `glossary` to be applied for this translation.
+        # The format depends on glossary:
+        # - User provided custom glossary:
+        # `projects/`project-number-or-id`/locations/`location-id`/glossaries/`
+        # glossary-id``
         # Corresponds to the JSON property `glossary`
         # @return [String]
         attr_accessor :glossary
