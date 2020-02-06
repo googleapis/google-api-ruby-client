@@ -271,6 +271,13 @@ module Google
         # @return [String]
         attr_accessor :authorized_network
       
+        # Optional. The connect mode of Redis instance.
+        # If not provided, default one will be used.
+        # Current default: DIRECT_PEERING.
+        # Corresponds to the JSON property `connectMode`
+        # @return [String]
+        attr_accessor :connect_mode
+      
         # Output only. The time the instance was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
@@ -396,6 +403,7 @@ module Google
         def update!(**args)
           @alternative_location_id = args[:alternative_location_id] if args.key?(:alternative_location_id)
           @authorized_network = args[:authorized_network] if args.key?(:authorized_network)
+          @connect_mode = args[:connect_mode] if args.key?(:connect_mode)
           @create_time = args[:create_time] if args.key?(:create_time)
           @current_location_id = args[:current_location_id] if args.key?(:current_location_id)
           @display_name = args[:display_name] if args.key?(:display_name)

@@ -219,6 +219,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :alternative_location_id, as: 'alternativeLocationId'
           property :authorized_network, as: 'authorizedNetwork'
+          property :connect_mode, as: 'connectMode'
           property :create_time, as: 'createTime'
           property :current_location_id, as: 'currentLocationId'
           property :display_name, as: 'displayName'

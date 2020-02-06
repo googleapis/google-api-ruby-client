@@ -612,7 +612,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. A description of the instance (2048 characters or less).
+        # Optional. The description of the instance (2048 characters or less).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
