@@ -56,7 +56,7 @@ module Google
         # in the existing trace and its spans are overwritten by the provided values,
         # and any new fields provided are merged with the existing trace data. If the
         # ID does not match, a new trace is created.
-        # In this case, writing traces is not consider an active developer
+        # In this case, writing traces is not considered an active developer
         # method since traces are machine generated.
         # @param [String] project_id
         #   Required. ID of the Cloud project where the trace data is stored.

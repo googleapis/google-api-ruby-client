@@ -794,12 +794,12 @@ module Google
       class CreateTimeSeriesRequest
         include Google::Apis::Core::Hashable
       
-        # The new data to be added to a list of time series. Adds at most one data point
-        # to each of several time series. The new data point must be more recent than
-        # any other point in its time series. Each TimeSeries value must fully specify a
-        # unique time series by supplying all label values for the metric and the
-        # monitored resource.The maximum number of TimeSeries objects per Create request
-        # is 200.
+        # Required. The new data to be added to a list of time series. Adds at most one
+        # data point to each of several time series. The new data point must be more
+        # recent than any other point in its time series. Each TimeSeries value must
+        # fully specify a unique time series by supplying all label values for the
+        # metric and the monitored resource.The maximum number of TimeSeries objects per
+        # Create request is 200.
         # Corresponds to the JSON property `timeSeries`
         # @return [Array<Google::Apis::MonitoringV3::TimeSeries>]
         attr_accessor :time_series
@@ -3721,8 +3721,8 @@ module Google
       class VerifyNotificationChannelRequest
         include Google::Apis::Core::Hashable
       
-        # The verification code that was delivered to the channel as a result of
-        # invoking the SendNotificationChannelVerificationCode API method or that was
+        # Required. The verification code that was delivered to the channel as a result
+        # of invoking the SendNotificationChannelVerificationCode API method or that was
         # retrieved from a verified channel via GetNotificationChannelVerificationCode.
         # For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in
         # general, one is only guaranteed that the code is valid UTF-8; one should not
