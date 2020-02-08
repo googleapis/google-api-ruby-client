@@ -208,54 +208,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the device policy. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] device_id
-        #   The ID of the device.
-        # @param [Google::Apis::AndroidenterpriseV1::Device] device_object
-        # @param [String] update_mask
-        #   Mask that identifies which fields to update. If not set, all modifiable fields
-        #   will be modified.
-        #   When set in a query parameter, this field should be specified as updateMask=<
-        #   field1>,<field2>,...
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Device] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Device]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_device(enterprise_id, user_id, device_id, device_object = nil, update_mask: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
-          command.request_object = device_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Device::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Device
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['deviceId'] = device_id unless device_id.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Sets whether a device's access to Google services is enabled or disabled. The
         # device state takes effect only if enforcing EMM policies on Android devices is
         # enabled in the Google Admin Console. Otherwise, the device state is ignored
@@ -995,55 +947,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds or updates an entitlement to an app for a user. This method supports
-        # patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] entitlement_id
-        #   The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm".
-        # @param [Google::Apis::AndroidenterpriseV1::Entitlement] entitlement_object
-        # @param [Boolean] install
-        #   Set to true to also install the product on all the user's devices where
-        #   possible. Failure to install on one or more devices will not prevent this
-        #   operation from returning successfully, as long as the entitlement was
-        #   successfully assigned to the user.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Entitlement] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Entitlement]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_entitlement(enterprise_id, user_id, entitlement_id, entitlement_object = nil, install: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Entitlement::Representation
-          command.request_object = entitlement_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Entitlement::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Entitlement
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['entitlementId'] = entitlement_id unless entitlement_id.nil?
-          command.query['install'] = install unless install.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Adds or updates an entitlement to an app for a user.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1325,54 +1228,6 @@ module Google
         end
         
         # Requests to install the latest version of an app to a device. If the app is
-        # already installed, then it is updated to the latest version if necessary. This
-        # method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] device_id
-        #   The Android ID of the device.
-        # @param [String] install_id
-        #   The ID of the product represented by the install, e.g. "app:com.google.android.
-        #   gm".
-        # @param [Google::Apis::AndroidenterpriseV1::Install] install_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::Install] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::Install]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_install(enterprise_id, user_id, device_id, install_id, install_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::Install::Representation
-          command.request_object = install_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::Install::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::Install
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['deviceId'] = device_id unless device_id.nil?
-          command.params['installId'] = install_id unless install_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Requests to install the latest version of an app to a device. If the app is
         # already installed, then it is updated to the latest version if necessary.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1544,53 +1399,6 @@ module Google
         end
         
         # Adds or updates a per-device managed configuration for an app for the
-        # specified device. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] device_id
-        #   The Android ID of the device.
-        # @param [String] managed_configuration_for_device_id
-        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
-        #   android.gm".
-        # @param [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] managed_configuration_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::ManagedConfiguration]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_managedconfigurationsfordevice(enterprise_id, user_id, device_id, managed_configuration_for_device_id, managed_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
-          command.request_object = managed_configuration_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ManagedConfiguration
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['deviceId'] = device_id unless device_id.nil?
-          command.params['managedConfigurationForDeviceId'] = managed_configuration_for_device_id unless managed_configuration_for_device_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds or updates a per-device managed configuration for an app for the
         # specified device.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -1747,54 +1555,6 @@ module Google
           command.response_class = Google::Apis::AndroidenterpriseV1::ManagedConfigurationsForUserListResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Adds or updates the managed configuration settings for an app for the
-        # specified user. If you support the Managed configurations iframe, you can
-        # apply managed configurations to a user by specifying an mcmId and its
-        # associated configuration variables (if any) in the request. Alternatively, all
-        # EMMs can apply managed configurations by passing a list of managed properties.
-        # This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [String] managed_configuration_for_user_id
-        #   The ID of the managed configuration (a product ID), e.g. "app:com.google.
-        #   android.gm".
-        # @param [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] managed_configuration_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::ManagedConfiguration] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::ManagedConfiguration]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_managedconfigurationsforuser(enterprise_id, user_id, managed_configuration_for_user_id, managed_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
-          command.request_object = managed_configuration_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::ManagedConfiguration
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.params['managedConfigurationForUserId'] = managed_configuration_for_user_id unless managed_configuration_for_user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2485,48 +2245,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a cluster. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] page_id
-        #   The ID of the page.
-        # @param [String] cluster_id
-        #   The ID of the cluster.
-        # @param [Google::Apis::AndroidenterpriseV1::StoreCluster] store_cluster_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StoreCluster] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::StoreCluster]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_storelayoutcluster(enterprise_id, page_id, cluster_id, store_cluster_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
-          command.request_object = store_cluster_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::StoreCluster
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['pageId'] = page_id unless page_id.nil?
-          command.params['clusterId'] = cluster_id unless cluster_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a cluster.
         # @param [String] enterprise_id
         #   The ID of the enterprise.
@@ -2702,45 +2420,6 @@ module Google
           command.response_representation = Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::StoreLayoutPagesListResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates the content of a store page. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] page_id
-        #   The ID of the page.
-        # @param [Google::Apis::AndroidenterpriseV1::StorePage] store_page_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::StorePage] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::StorePage]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_storelayoutpage(enterprise_id, page_id, store_page_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
-          command.request_object = store_page_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::StorePage::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::StorePage
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['pageId'] = page_id unless page_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -3050,49 +2729,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates the details of an EMM-managed user.
-        # Can be used with EMM-managed users only (not Google managed users). Pass the
-        # new details in the Users resource in the request body. Only the displayName
-        # field can be changed. Other fields must either be unset or have the currently
-        # active value. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] user_id
-        #   The ID of the user.
-        # @param [Google::Apis::AndroidenterpriseV1::User] user_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::User] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::User]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_user(enterprise_id, user_id, user_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/users/{userId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.request_object = user_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::User::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::User
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['userId'] = user_id unless user_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Revokes access to all devices currently provisioned to the user. The user will
         # no longer be able to use the managed Play store on any of their managed
         # devices.
@@ -3381,45 +3017,6 @@ module Google
           command.response_representation = Google::Apis::AndroidenterpriseV1::WebAppsListResponse::Representation
           command.response_class = Google::Apis::AndroidenterpriseV1::WebAppsListResponse
           command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing web app. This method supports patch semantics.
-        # @param [String] enterprise_id
-        #   The ID of the enterprise.
-        # @param [String] web_app_id
-        #   The ID of the web app.
-        # @param [Google::Apis::AndroidenterpriseV1::WebApp] web_app_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidenterpriseV1::WebApp] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidenterpriseV1::WebApp]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_webapp(enterprise_id, web_app_id, web_app_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'enterprises/{enterpriseId}/webApps/{webAppId}', options)
-          command.request_representation = Google::Apis::AndroidenterpriseV1::WebApp::Representation
-          command.request_object = web_app_object
-          command.response_representation = Google::Apis::AndroidenterpriseV1::WebApp::Representation
-          command.response_class = Google::Apis::AndroidenterpriseV1::WebApp
-          command.params['enterpriseId'] = enterprise_id unless enterprise_id.nil?
-          command.params['webAppId'] = web_app_id unless web_app_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

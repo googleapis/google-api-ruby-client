@@ -136,6 +136,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDatacatalogV1beta1ListEntriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +382,7 @@ module Google
           property :display_name, as: 'displayName'
           property :gcs_fileset_spec, as: 'gcsFilesetSpec', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1GcsFilesetSpec, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1GcsFilesetSpec::Representation
       
+          property :integrated_system, as: 'integratedSystem'
           property :linked_resource, as: 'linkedResource'
           property :name, as: 'name'
           property :schema, as: 'schema', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Schema, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Schema::Representation
@@ -377,6 +390,8 @@ module Google
           property :source_system_timestamps, as: 'sourceSystemTimestamps', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SystemTimestamps::Representation
       
           property :type, as: 'type'
+          property :user_specified_system, as: 'userSpecifiedSystem'
+          property :user_specified_type, as: 'userSpecifiedType'
         end
       end
       
@@ -463,6 +478,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :taxonomies, as: 'taxonomies', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SerializedTaxonomy::Representation
       
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListEntriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entry_groups, as: 'entryGroups', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

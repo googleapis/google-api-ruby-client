@@ -391,7 +391,13 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1GcsFilesetSpec]
         attr_accessor :gcs_fileset_spec
       
-        # Output only. The resource this metadata entry refers to.
+        # Output only. This field indicates the entry's source system that Data Catalog
+        # integrates with, such as BigQuery or Cloud Pub/Sub.
+        # Corresponds to the JSON property `integratedSystem`
+        # @return [String]
+        attr_accessor :integrated_system
+      
+        # The resource this metadata entry refers to.
         # For Google Cloud Platform resources, `linked_resource` is the [full name of
         # the
         # resource](https://cloud.google.com/apis/design/resource_names#
@@ -399,6 +405,9 @@ module Google
         # For example, the `linked_resource` for a table resource from BigQuery is:
         # * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/
         # tableId
+        # Output only when Entry is of type in the EntryType enum. For entries with
+        # user_specified_type, this field is optional and defaults to an empty
+        # string.
         # Corresponds to the JSON property `linkedResource`
         # @return [String]
         attr_accessor :linked_resource
@@ -423,9 +432,32 @@ module Google
         attr_accessor :source_system_timestamps
       
         # The type of the entry.
+        # Only used for Entries with types in the EntryType enum.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
+      
+        # This field indicates the entry's source system that Data Catalog does not
+        # integrate with. `user_specified_system` strings must begin with a letter
+        # or underscore and can only contain letters, numbers, and underscores; are
+        # case insensitive; must be at least 1 character and at most 64 characters
+        # long.
+        # Corresponds to the JSON property `userSpecifiedSystem`
+        # @return [String]
+        attr_accessor :user_specified_system
+      
+        # Entry type if it does not fit any of the input-allowed values listed in
+        # `EntryType` enum above. When creating an entry, users should check the
+        # enum values first, if nothing matches the entry to be created, then
+        # provide a custom value, for example "my_special_type".
+        # `user_specified_type` strings must begin with a letter or underscore and
+        # can only contain letters, numbers, and underscores; are case insensitive;
+        # must be at least 1 character and at most 64 characters long.
+        # Currently, only FILESET enum value is allowed. All other entries created
+        # through Data Catalog must use `user_specified_type`.
+        # Corresponds to the JSON property `userSpecifiedType`
+        # @return [String]
+        attr_accessor :user_specified_type
       
         def initialize(**args)
            update!(**args)
@@ -438,11 +470,14 @@ module Google
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @gcs_fileset_spec = args[:gcs_fileset_spec] if args.key?(:gcs_fileset_spec)
+          @integrated_system = args[:integrated_system] if args.key?(:integrated_system)
           @linked_resource = args[:linked_resource] if args.key?(:linked_resource)
           @name = args[:name] if args.key?(:name)
           @schema = args[:schema] if args.key?(:schema)
           @source_system_timestamps = args[:source_system_timestamps] if args.key?(:source_system_timestamps)
           @type = args[:type] if args.key?(:type)
+          @user_specified_system = args[:user_specified_system] if args.key?(:user_specified_system)
+          @user_specified_type = args[:user_specified_type] if args.key?(:user_specified_type)
         end
       end
       
@@ -719,6 +754,60 @@ module Google
       end
       
       # Response message for
+      # ListEntries.
+      class GoogleCloudDatacatalogV1beta1ListEntriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Entry details.
+        # Corresponds to the JSON property `entries`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry>]
+        attr_accessor :entries
+      
+        # Token to retrieve the next page of results. It is set to empty if no items
+        # remain in results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entries = args[:entries] if args.key?(:entries)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for
+      # ListEntryGroups.
+      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # EntryGroup details.
+        # Corresponds to the JSON property `entryGroups`
+        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup>]
+        attr_accessor :entry_groups
+      
+        # Token to retrieve the next page of results. It is set to empty if no items
+        # remain in results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @entry_groups = args[:entry_groups] if args.key?(:entry_groups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for
       # ListPolicyTags.
       class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
         include Google::Apis::Core::Hashable
@@ -800,7 +889,7 @@ module Google
       end
       
       # Denotes one policy tag in a taxonomy (e.g. ssn). Policy Tags can be defined
-      # in a hierarchy. For example, consider the following hierachy:
+      # in a hierarchy. For example, consider the following hierarchy:
       # Geolocation -&gt; (LatLong, City, ZipCode). PolicyTag "Geolocation"
       # contains three child policy tags: "LatLong", "City", and "ZipCode".
       class GoogleCloudDatacatalogV1beta1PolicyTag
@@ -907,9 +996,7 @@ module Google
       
         # Specifies the ordering of results, currently supported case-sensitive
         # choices are:
-        # * `relevance`, only supports desecending
-        # * `last_access_timestamp [asc|desc]`, defaults to descending if not
-        # specified
+        # * `relevance`, only supports descending
         # * `last_modified_timestamp [asc|desc]`, defaults to descending if not
         # specified
         # If not specified, defaults to `relevance` descending.

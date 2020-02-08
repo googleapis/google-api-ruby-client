@@ -320,6 +320,27 @@ module Google
         end
       end
       
+      # Represents preferences for sending email notifications for transfer run
+      # events.
+      class EmailPreferences
+        include Google::Apis::Core::Hashable
+      
+        # If true, email notifications will be sent on transfer run failures.
+        # Corresponds to the JSON property `enableFailureEmail`
+        # @return [Boolean]
+        attr_accessor :enable_failure_email
+        alias_method :enable_failure_email?, :enable_failure_email
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_failure_email = args[:enable_failure_email] if args.key?(:enable_failure_email)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -774,6 +795,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Represents preferences for sending email notifications for transfer run
+        # events.
+        # Corresponds to the JSON property `emailPreferences`
+        # @return [Google::Apis::BigquerydatatransferV1::EmailPreferences]
+        attr_accessor :email_preferences
+      
         # The resource name of the transfer config.
         # Transfer config names have the form of
         # `projects/`project_id`/locations/`region`/transferConfigs/`config_id``.
@@ -789,6 +816,12 @@ module Google
         # Corresponds to the JSON property `nextRunTime`
         # @return [String]
         attr_accessor :next_run_time
+      
+        # Pub/Sub topic where notifications will be sent after transfer runs
+        # associated with this transfer config finish.
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
       
         # Data transfer specific parameters.
         # Corresponds to the JSON property `params`
@@ -844,8 +877,10 @@ module Google
           @destination_dataset_id = args[:destination_dataset_id] if args.key?(:destination_dataset_id)
           @disabled = args[:disabled] if args.key?(:disabled)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @name = args[:name] if args.key?(:name)
           @next_run_time = args[:next_run_time] if args.key?(:next_run_time)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @params = args[:params] if args.key?(:params)
           @schedule = args[:schedule] if args.key?(:schedule)
           @schedule_options = args[:schedule_options] if args.key?(:schedule_options)
@@ -900,6 +935,12 @@ module Google
         # @return [String]
         attr_accessor :destination_dataset_id
       
+        # Represents preferences for sending email notifications for transfer run
+        # events.
+        # Corresponds to the JSON property `emailPreferences`
+        # @return [Google::Apis::BigquerydatatransferV1::EmailPreferences]
+        attr_accessor :email_preferences
+      
         # Output only. Time when transfer run ended.
         # Parameter ignored by server for input requests.
         # Corresponds to the JSON property `endTime`
@@ -924,6 +965,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Output only. Pub/Sub topic where a notification will be sent after this
+        # transfer run finishes
+        # Corresponds to the JSON property `notificationPubsubTopic`
+        # @return [String]
+        attr_accessor :notification_pubsub_topic
       
         # Output only. Data transfer specific parameters.
         # Corresponds to the JSON property `params`
@@ -979,9 +1026,11 @@ module Google
         def update!(**args)
           @data_source_id = args[:data_source_id] if args.key?(:data_source_id)
           @destination_dataset_id = args[:destination_dataset_id] if args.key?(:destination_dataset_id)
+          @email_preferences = args[:email_preferences] if args.key?(:email_preferences)
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_status = args[:error_status] if args.key?(:error_status)
           @name = args[:name] if args.key?(:name)
+          @notification_pubsub_topic = args[:notification_pubsub_topic] if args.key?(:notification_pubsub_topic)
           @params = args[:params] if args.key?(:params)
           @run_time = args[:run_time] if args.key?(:run_time)
           @schedule = args[:schedule] if args.key?(:schedule)

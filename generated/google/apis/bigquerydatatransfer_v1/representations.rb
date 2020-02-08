@@ -46,6 +46,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class EmailPreferences
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -209,6 +215,13 @@ module Google
         end
       end
       
+      class EmailPreferences
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_failure_email, as: 'enableFailureEmail'
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -339,8 +352,11 @@ module Google
           property :destination_dataset_id, as: 'destinationDatasetId'
           property :disabled, as: 'disabled'
           property :display_name, as: 'displayName'
+          property :email_preferences, as: 'emailPreferences', class: Google::Apis::BigquerydatatransferV1::EmailPreferences, decorator: Google::Apis::BigquerydatatransferV1::EmailPreferences::Representation
+      
           property :name, as: 'name'
           property :next_run_time, as: 'nextRunTime'
+          property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           hash :params, as: 'params'
           property :schedule, as: 'schedule'
           property :schedule_options, as: 'scheduleOptions', class: Google::Apis::BigquerydatatransferV1::ScheduleOptions, decorator: Google::Apis::BigquerydatatransferV1::ScheduleOptions::Representation
@@ -365,10 +381,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data_source_id, as: 'dataSourceId'
           property :destination_dataset_id, as: 'destinationDatasetId'
+          property :email_preferences, as: 'emailPreferences', class: Google::Apis::BigquerydatatransferV1::EmailPreferences, decorator: Google::Apis::BigquerydatatransferV1::EmailPreferences::Representation
+      
           property :end_time, as: 'endTime'
           property :error_status, as: 'errorStatus', class: Google::Apis::BigquerydatatransferV1::Status, decorator: Google::Apis::BigquerydatatransferV1::Status::Representation
       
           property :name, as: 'name'
+          property :notification_pubsub_topic, as: 'notificationPubsubTopic'
           hash :params, as: 'params'
           property :run_time, as: 'runTime'
           property :schedule, as: 'schedule'

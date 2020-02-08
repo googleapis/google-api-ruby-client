@@ -1407,6 +1407,42 @@ module Google
         end
       end
       
+      # All parameters related to queuing and scheduling of training jobs.
+      class GoogleCloudMlV1Scheduling
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The maximum job running time, expressed in seconds. By default
+        # there is no limit.
+        # If the training job is still running after this duration, AI Platform
+        # Training cancels it.
+        # For example, if you want to ensure your job runs for no more than 2 hours,
+        # set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds /
+        # minute).
+        # If you submit your training job using the `gcloud` tool, you can [provide
+        # this field in a `config.yaml`
+        # file](/ml-engine/docs/training-jobs#formatting_your_configuration_parameters).
+        # For example:
+        # ```yaml
+        # trainingInput:
+        # ...
+        # scheduling:
+        # maxRunningTime: 7200s
+        # ...
+        # ```
+        # Corresponds to the JSON property `maxRunningTime`
+        # @return [String]
+        attr_accessor :max_running_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_running_time = args[:max_running_time] if args.key?(:max_running_time)
+        end
+      end
+      
       # Request message for the SetDefaultVersion request.
       class GoogleCloudMlV1SetDefaultVersionRequest
         include Google::Apis::Core::Hashable
@@ -1586,6 +1622,11 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
+        # All parameters related to queuing and scheduling of training jobs.
+        # Corresponds to the JSON property `scheduling`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Scheduling]
+        attr_accessor :scheduling
+      
         # Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom
         # Container is used and evaluator is not specified.
         # Defaults to false.
@@ -1645,6 +1686,7 @@ module Google
           @region = args[:region] if args.key?(:region)
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @scale_tier = args[:scale_tier] if args.key?(:scale_tier)
+          @scheduling = args[:scheduling] if args.key?(:scheduling)
           @use_chief_in_tf_config = args[:use_chief_in_tf_config] if args.key?(:use_chief_in_tf_config)
           @worker_config = args[:worker_config] if args.key?(:worker_config)
           @worker_count = args[:worker_count] if args.key?(:worker_count)

@@ -26,13 +26,10 @@ module Google
     # @see https://cloud.google.com/
     module OsconfigV1beta
       VERSION = 'V1beta'
-      REVISION = '20200109'
+      REVISION = '20200207'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View and manage your Google Compute Engine resources
-      AUTH_COMPUTE = 'https://www.googleapis.com/auth/compute'
     end
   end
 end

@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1Scheduling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -609,6 +615,13 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1Scheduling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_running_time, as: 'maxRunningTime'
+        end
+      end
+      
       class GoogleCloudMlV1SetDefaultVersionRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -635,6 +648,8 @@ module Google
           property :region, as: 'region'
           property :runtime_version, as: 'runtimeVersion'
           property :scale_tier, as: 'scaleTier'
+          property :scheduling, as: 'scheduling', class: Google::Apis::MlV1::GoogleCloudMlV1Scheduling, decorator: Google::Apis::MlV1::GoogleCloudMlV1Scheduling::Representation
+      
           property :use_chief_in_tf_config, as: 'useChiefInTfConfig'
           property :worker_config, as: 'workerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
