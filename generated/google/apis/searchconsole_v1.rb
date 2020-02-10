@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/webmaster-tools/search-console-api/
     module SearchconsoleV1
       VERSION = 'V1'
-      REVISION = '20200104'
+      REVISION = '20200208'
     end
   end
 end
