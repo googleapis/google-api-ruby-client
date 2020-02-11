@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/knowledge-graph/
     module KgsearchV1
       VERSION = 'V1'
-      REVISION = '20180809'
+      REVISION = '20200210'
     end
   end
 end

@@ -1477,6 +1477,91 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Start External master migration.
+        # @param [String] project
+        #   ID of the project that contains the first generation instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] parent
+        #   The parent resource where Cloud SQL starts this database instance
+        #   external sync. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [String] sync_mode
+        #   External sync mode
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_instance_external_sync(project, instance, parent: nil, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/startExternalSync', options)
+          command.response_representation = Google::Apis::SqlV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqlV1beta4::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['syncMode'] = sync_mode unless sync_mode.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verify External master external sync settings.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] parent
+        #   The parent resource where Cloud SQL verifies this database instance
+        #   external sync settings. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [String] sync_mode
+        #   External sync mode
+        # @param [Boolean] verify_connection_only
+        #   Flag to enable verifying connection only
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verify_project_instance_external_sync_settings(project, instance, parent: nil, sync_mode: nil, verify_connection_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/projects/{project}/instances/{instance}/verifyExternalSyncSettings', options)
+          command.response_representation = Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse::Representation
+          command.response_class = Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['parent'] = parent unless parent.nil?
+          command.query['syncMode'] = sync_mode unless sync_mode.nil?
+          command.query['verifyConnectionOnly'] = verify_connection_only unless verify_connection_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Reschedules the maintenance on the given instance.
         # @param [String] parent
         #   The parent resource where Cloud SQL reshedule this database instance's
@@ -1513,6 +1598,91 @@ module Google
           command.params['parent'] = parent unless parent.nil?
           command.query['instance'] = instance unless instance.nil?
           command.query['project'] = project unless project.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Start External master migration.
+        # @param [String] parent
+        #   The parent resource where Cloud SQL starts this database instance
+        #   external sync. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] project
+        #   ID of the project that contains the first generation instance.
+        # @param [String] sync_mode
+        #   External sync mode
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def start_project_location_instance_external_sync(parent, instance: nil, project: nil, sync_mode: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/{+parent}/startExternalSync', options)
+          command.response_representation = Google::Apis::SqlV1beta4::Operation::Representation
+          command.response_class = Google::Apis::SqlV1beta4::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instance'] = instance unless instance.nil?
+          command.query['project'] = project unless project.nil?
+          command.query['syncMode'] = sync_mode unless sync_mode.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Verify External master external sync settings.
+        # @param [String] parent
+        #   The parent resource where Cloud SQL verifies this database instance
+        #   external sync settings. Format:
+        #   projects/`project`/locations/`location`/instances/`instance`
+        # @param [String] instance
+        #   Cloud SQL instance ID. This does not include the project ID.
+        # @param [String] project
+        #   Project ID of the project that contains the instance.
+        # @param [String] sync_mode
+        #   External sync mode
+        # @param [Boolean] verify_connection_only
+        #   Flag to enable verifying connection only
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def verify_project_location_instance_external_sync_settings(parent, instance: nil, project: nil, sync_mode: nil, verify_connection_only: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'sql/v1beta4/{+parent}/verifyExternalSyncSettings', options)
+          command.response_representation = Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse::Representation
+          command.response_class = Google::Apis::SqlV1beta4::SqlInstancesVerifyExternalSyncSettingsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['instance'] = instance unless instance.nil?
+          command.query['project'] = project unless project.nil?
+          command.query['syncMode'] = sync_mode unless sync_mode.nil?
+          command.query['verifyConnectionOnly'] = verify_connection_only unless verify_connection_only.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -340,7 +340,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SqlExternalSyncSettingError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SqlInstancesRescheduleMaintenanceRequestBody
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -908,8 +920,11 @@ module Google
           property :ca_certificate, as: 'caCertificate'
           property :client_certificate, as: 'clientCertificate'
           property :client_key, as: 'clientKey'
+          property :dump_file_path, as: 'dumpFilePath'
           property :host_port, as: 'hostPort'
           property :kind, as: 'kind'
+          property :password, as: 'password'
+          property :username, as: 'username'
         end
       end
       
@@ -1032,11 +1047,29 @@ module Google
         end
       end
       
+      class SqlExternalSyncSettingError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :detail, as: 'detail'
+          property :kind, as: 'kind'
+          property :type, as: 'type'
+        end
+      end
+      
       class SqlInstancesRescheduleMaintenanceRequestBody
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :reschedule, as: 'reschedule', class: Google::Apis::SqlV1beta4::Reschedule, decorator: Google::Apis::SqlV1beta4::Reschedule::Representation
       
+        end
+      end
+      
+      class SqlInstancesVerifyExternalSyncSettingsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :errors, as: 'errors', class: Google::Apis::SqlV1beta4::SqlExternalSyncSettingError, decorator: Google::Apis::SqlV1beta4::SqlExternalSyncSettingError::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       

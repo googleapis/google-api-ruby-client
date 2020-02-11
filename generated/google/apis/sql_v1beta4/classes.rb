@@ -1833,6 +1833,11 @@ module Google
         # @return [String]
         attr_accessor :client_key
       
+        # The dump file to create the Cloud SQL replica.
+        # Corresponds to the JSON property `dumpFilePath`
+        # @return [String]
+        attr_accessor :dump_file_path
+      
         # The host and port of the on-premises instance in host:port format
         # Corresponds to the JSON property `hostPort`
         # @return [String]
@@ -1843,6 +1848,16 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The password for connecting to on-premises instance.
+        # Corresponds to the JSON property `password`
+        # @return [String]
+        attr_accessor :password
+      
+        # The username for connecting to on-premises instance.
+        # Corresponds to the JSON property `username`
+        # @return [String]
+        attr_accessor :username
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1852,8 +1867,11 @@ module Google
           @ca_certificate = args[:ca_certificate] if args.key?(:ca_certificate)
           @client_certificate = args[:client_certificate] if args.key?(:client_certificate)
           @client_key = args[:client_key] if args.key?(:client_key)
+          @dump_file_path = args[:dump_file_path] if args.key?(:dump_file_path)
           @host_port = args[:host_port] if args.key?(:host_port)
           @kind = args[:kind] if args.key?(:kind)
+          @password = args[:password] if args.key?(:password)
+          @username = args[:username] if args.key?(:username)
         end
       end
       
@@ -2112,7 +2130,9 @@ module Google
         attr_accessor :reschedule_type
       
         # Optional. Timestamp when the maintenance shall be rescheduled to if
-        # reschedule_type=SPECIFIC_TIME.
+        # reschedule_type=SPECIFIC_TIME, in <a
+        # href="https://tools.ietf.org/html/rfc3339">RFC 3339</a> format, for
+        # example <code>2012-11-15T16:19:00.094Z</code>.
         # Corresponds to the JSON property `scheduleTime`
         # @return [String]
         attr_accessor :schedule_time
@@ -2370,6 +2390,37 @@ module Google
         end
       end
       
+      # External master migration setting error.
+      class SqlExternalSyncSettingError
+        include Google::Apis::Core::Hashable
+      
+        # Additional information about the error encountered.
+        # Corresponds to the JSON property `detail`
+        # @return [String]
+        attr_accessor :detail
+      
+        # This is always <code>sql#migrationSettingError</code>.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Identifies the specific error that occurred.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @detail = args[:detail] if args.key?(:detail)
+          @kind = args[:kind] if args.key?(:kind)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # Reschedule options for maintenance windows.
       class SqlInstancesRescheduleMaintenanceRequestBody
         include Google::Apis::Core::Hashable
@@ -2386,6 +2437,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @reschedule = args[:reschedule] if args.key?(:reschedule)
+        end
+      end
+      
+      # Instance verify external sync settings response.
+      class SqlInstancesVerifyExternalSyncSettingsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of migration violations.
+        # Corresponds to the JSON property `errors`
+        # @return [Array<Google::Apis::SqlV1beta4::SqlExternalSyncSettingError>]
+        attr_accessor :errors
+      
+        # This is always <code>sql#migrationSettingErrorList</code>.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @errors = args[:errors] if args.key?(:errors)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
