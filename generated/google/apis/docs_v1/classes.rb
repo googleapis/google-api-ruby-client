@@ -4544,6 +4544,17 @@ module Google
         # @return [Google::Apis::DocsV1::Dimension]
         attr_accessor :margin_top
       
+        # The page number from which to start counting the number of pages for this
+        # section. If unset, page numbering continues from the previous section.
+        # If the value is unset in the first
+        # SectionBreak, refer to DocumentStyle's
+        # page_number_start.
+        # When updating this property, setting a concrete value is required.
+        # Unsetting this property results in a 400 bad request error.
+        # Corresponds to the JSON property `pageNumberStart`
+        # @return [Fixnum]
+        attr_accessor :page_number_start
+      
         # Output only. The type of section.
         # Corresponds to the JSON property `sectionType`
         # @return [String]
@@ -4582,6 +4593,7 @@ module Google
           @margin_left = args[:margin_left] if args.key?(:margin_left)
           @margin_right = args[:margin_right] if args.key?(:margin_right)
           @margin_top = args[:margin_top] if args.key?(:margin_top)
+          @page_number_start = args[:page_number_start] if args.key?(:page_number_start)
           @section_type = args[:section_type] if args.key?(:section_type)
           @use_first_page_header_footer = args[:use_first_page_header_footer] if args.key?(:use_first_page_header_footer)
         end

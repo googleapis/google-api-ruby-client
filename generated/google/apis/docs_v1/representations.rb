@@ -2105,6 +2105,7 @@ module Google
       
           property :margin_top, as: 'marginTop', class: Google::Apis::DocsV1::Dimension, decorator: Google::Apis::DocsV1::Dimension::Representation
       
+          property :page_number_start, as: 'pageNumberStart'
           property :section_type, as: 'sectionType'
           property :use_first_page_header_footer, as: 'useFirstPageHeaderFooter'
         end

@@ -130,7 +130,7 @@ module Google
       class GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Fingerprint of the Recommendation. Provides optimistic locking.
+        # Fingerprint of the Recommendation. Provides optimistic locking.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag

@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/drive/activity/
     module DriveactivityV2
       VERSION = 'V2'
-      REVISION = '20191218'
+      REVISION = '20200210'
 
       # View and add to the activity record of files in your Google Drive
       AUTH_DRIVE_ACTIVITY = 'https://www.googleapis.com/auth/drive.activity'

@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/iam/
     module PolicytroubleshooterV1beta
       VERSION = 'V1beta'
-      REVISION = '20200120'
+      REVISION = '20200210'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

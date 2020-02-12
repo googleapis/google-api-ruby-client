@@ -521,6 +521,16 @@ module Google
         # @return [Fixnum]
         attr_accessor :column
       
+        # Start position relative to the beginning of the file.
+        # Corresponds to the JSON property `currentOffset`
+        # @return [Fixnum]
+        attr_accessor :current_offset
+      
+        # End position relative to the beginning of the file.
+        # Corresponds to the JSON property `endOffset`
+        # @return [Fixnum]
+        attr_accessor :end_offset
+      
         # Name of the `File`.
         # Corresponds to the JSON property `fileName`
         # @return [String]
@@ -538,6 +548,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @column = args[:column] if args.key?(:column)
+          @current_offset = args[:current_offset] if args.key?(:current_offset)
+          @end_offset = args[:end_offset] if args.key?(:end_offset)
           @file_name = args[:file_name] if args.key?(:file_name)
           @line = args[:line] if args.key?(:line)
         end

@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/tag-manager
     module TagmanagerV1
       VERSION = 'V1'
-      REVISION = '20191212'
+      REVISION = '20200210'
 
       # Delete your Google Tag Manager containers
       AUTH_TAGMANAGER_DELETE_CONTAINERS = 'https://www.googleapis.com/auth/tagmanager.delete.containers'

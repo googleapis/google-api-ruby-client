@@ -536,6 +536,8 @@ module Google
         end
       end
       
+      # ============================================================================
+      # Requests and responses for custom methods.
       # The request to detect user's intent.
       class GoogleCloudDialogflowV2DetectIntentRequest
         include Google::Apis::Core::Hashable

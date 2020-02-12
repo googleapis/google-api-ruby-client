@@ -311,6 +311,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :column, as: 'column'
+          property :current_offset, as: 'currentOffset'
+          property :end_offset, as: 'endOffset'
           property :file_name, as: 'fileName'
           property :line, as: 'line'
         end

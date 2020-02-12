@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20200122'
+      REVISION = '20200210'
 
       # See, edit, download, and permanently delete your contacts
       AUTH_CONTACTS = 'https://www.googleapis.com/auth/contacts'

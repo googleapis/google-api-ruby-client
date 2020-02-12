@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/docs/
     module DocsV1
       VERSION = 'V1'
-      REVISION = '20200121'
+      REVISION = '20200207'
 
       # View and manage your Google Docs documents
       AUTH_DOCUMENTS = 'https://www.googleapis.com/auth/documents'
