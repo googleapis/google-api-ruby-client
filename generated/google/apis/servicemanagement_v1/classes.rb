@@ -487,9 +487,6 @@ module Google
         # @return [Float]
         attr_accessor :deadline
       
-        # When disable_auth is false,  a JWT ID token will be generated with the
-        # value from BackendRule.address as jwt_audience, overrode to the HTTP
-        # "Authorization" request header and sent to the backend.
         # When disable_auth is true, a JWT ID token won't be generated and the
         # original "Authorization" HTTP header will be preserved. If the header is
         # used to carry the original token and is expected by the backend, this

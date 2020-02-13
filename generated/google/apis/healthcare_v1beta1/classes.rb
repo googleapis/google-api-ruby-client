@@ -142,10 +142,28 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence"
-        # description: "Determines whether the request has a user account"
-        # expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL)
+        # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+        # are documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit"
+        # description: "Determines if a summary is less than 100 chars"
+        # expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner"
+        # description: "Determines if requestor is the document owner"
+        # expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents"
+        # description: "Determine whether the document should be publicly visible"
+        # expression: "document.type != 'private' && document.type != 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string"
+        # description: "Create a notification string with a timestamp."
+        # expression: "'New message received at ' + string(document.create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service
+        # documentation for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::HealthcareV1beta1::Expr]
         attr_accessor :condition
@@ -378,8 +396,9 @@ module Google
       
         # The name of the dataset resource to create and write the redacted data to.
         # * The destination dataset must not exist.
-        # * The destination dataset must be in the same project as the source
-        # dataset. De-identifying data across multiple projects is not supported.
+        # * The destination dataset must be in the same project and location as the
+        # source dataset. De-identifying data across multiple projects or locations
+        # is not supported.
         # Corresponds to the JSON property `destinationDataset`
         # @return [String]
         attr_accessor :destination_dataset
@@ -773,34 +792,50 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence"
-      # description: "Determines whether the request has a user account"
-      # expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL)
+      # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
+      # are documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit"
+      # description: "Determines if a summary is less than 100 chars"
+      # expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner"
+      # description: "Determines if requestor is the document owner"
+      # expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents"
+      # description: "Determine whether the document should be publicly visible"
+      # expression: "document.type != 'private' && document.type != 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string"
+      # description: "Create a notification string with a timestamp."
+      # expression: "'New message received at ' + string(document.create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service
+      # documentation for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
+        # Optional. Description of the expression. This is a longer text which
         # describes the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # Textual representation of an expression in
-        # Common Expression Language syntax.
-        # The application context of the containing message determines which
-        # well-known feature set of CEL is supported.
+        # Textual representation of an expression in Common Expression Language
+        # syntax.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
+        # Optional. String indicating the location of the expression for error
         # reporting, e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing
+        # Optional. Title for the expression, i.e. a short string describing
         # its purpose. This can be used e.g. in UIs which allow to enter the
         # expression.
         # Corresponds to the JSON property `title`
@@ -827,6 +862,8 @@ module Google
         # Specifies FHIR paths to match and how to transform them. Any field that
         # is not matched by a FieldMetadata is passed through to the output
         # dataset unmodified. All extensions are removed in the output.
+        # If a field can be matched by more than one FieldMetadata, the first
+        # FieldMetadata.Action is applied.
         # Corresponds to the JSON property `fieldMetadataList`
         # @return [Array<Google::Apis::HealthcareV1beta1::FieldMetadata>]
         attr_accessor :field_metadata_list
@@ -963,15 +1000,21 @@ module Google
         # @return [String]
         attr_accessor :action
       
-        # List of paths to FHIR fields to be redacted. Each path is a
+        # List of paths to FHIR fields to redact. Each path is a
         # period-separated list where each component is either a field name or
-        # FHIR type name, for example: Patient, HumanName.
-        # For "choice" types (those defined in the FHIR spec with the form:
-        # field[x]) we use two separate components. For example,
-        # "deceasedAge.unit" is matched by "Deceased.Age.unit".
-        # Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
-        # Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid,
-        # Xhtml.
+        # FHIR type name. All types begin with an upper case letter. For example,
+        # the resource field "Patient.Address.city", which uses a string type,
+        # can be matched by "Patient.Address.String". Path also supports partial
+        # matching. For example, "Patient.Address.city" can be matched by
+        # "Address.city" (Patient omitted). Partial matching and type matching
+        # can be combined, for example "Patient.Address.city" can be matched by
+        # "Address.String". For "choice" types (those defined in the FHIR spec
+        # with the form: field[x]), use two separate components. For example,
+        # "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types
+        # are: AdministrativeGenderCode, Code, Date, DateTime, Decimal,
+        # HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
+        # The sub-type for HumanName(for example HumanName.given,
+        # HumanName.family) can be omitted.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -1415,6 +1458,22 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ParserConfig]
         attr_accessor :parser_config
       
+        # Determines whether duplicate messages should be rejected. A duplicate
+        # message is a message with the same raw bytes as a message that has already
+        # been ingested/created in this HL7v2 store.
+        # The default value is false, meaning that the store accepts the duplicate
+        # messages and it also returns the same ACK message in the
+        # IngestMessageResponse as has been returned previously. Note that only
+        # one resource is created in the store.
+        # When this field is set to true,
+        # CreateMessage/IngestMessage
+        # requests with a duplicate message will be rejected by the store, and
+        # IngestMessageErrorDetail returns a NACK message upon rejection.
+        # Corresponds to the JSON property `rejectDuplicateMessage`
+        # @return [Boolean]
+        attr_accessor :reject_duplicate_message
+        alias_method :reject_duplicate_message?, :reject_duplicate_message
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1425,6 +1484,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
           @parser_config = args[:parser_config] if args.key?(:parser_config)
+          @reject_duplicate_message = args[:reject_duplicate_message] if args.key?(:reject_duplicate_message)
         end
       end
       
@@ -1601,8 +1661,9 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::DateShiftConfig]
         attr_accessor :date_shift_config
       
-        # InfoTypes to apply this transformation to. If this is not specified, the
-        # transformation applies to any info_type.
+        # InfoTypes to apply this transformation to. If this is not specified, this
+        # transformation becomes the default transformation, and is used for any
+        # info_type that is not specified in another transformation.
         # Corresponds to the JSON property `infoTypes`
         # @return [Array<String>]
         attr_accessor :info_types
@@ -1824,6 +1885,15 @@ module Google
       class ListMessagesResponse
         include Google::Apis::Core::Hashable
       
+        # The returned Messages. Won't be more Messages than the value of
+        # page_size in the request. See
+        # view for
+        # populated fields.
+        # Corresponds to the JSON property `hl7V2Messages`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Message>]
+        attr_accessor :hl7_v2_messages
+      
+        # Deprecated. Use `hl7_v2_messages` instead.
         # The returned message names. Won't be more values than the value of
         # page_size in the request.
         # Corresponds to the JSON property `messages`
@@ -1842,6 +1912,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hl7_v2_messages = args[:hl7_v2_messages] if args.key?(:hl7_v2_messages)
           @messages = args[:messages] if args.key?(:messages)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end

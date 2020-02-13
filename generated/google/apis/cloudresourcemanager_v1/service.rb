@@ -296,7 +296,7 @@ module Google
         # For example, a Lien with a `parent` of `projects/1234` requires permission
         # `resourcemanager.projects.updateLiens`.
         # @param [String] name
-        #   The name/identifier of the Lien to delete.
+        #   Required. The name/identifier of the Lien to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -330,7 +330,7 @@ module Google
         # requires permission `resourcemanager.projects.get` or
         # `resourcemanager.projects.updateLiens`.
         # @param [String] name
-        #   The name/identifier of the Lien.
+        #   Required. The name/identifier of the Lien.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -367,7 +367,7 @@ module Google
         # @param [String] page_token
         #   The `next_page_token` value returned from a previous List request, if any.
         # @param [String] parent
-        #   The name of the resource to list all attached Liens.
+        #   Required. The name of the resource to list all attached Liens.
         #   For example, `projects/1234`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

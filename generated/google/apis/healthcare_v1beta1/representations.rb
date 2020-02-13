@@ -825,6 +825,7 @@ module Google
       
           property :parser_config, as: 'parserConfig', class: Google::Apis::HealthcareV1beta1::ParserConfig, decorator: Google::Apis::HealthcareV1beta1::ParserConfig::Representation
       
+          property :reject_duplicate_message, as: 'rejectDuplicateMessage'
         end
       end
       
@@ -951,6 +952,8 @@ module Google
       class ListMessagesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :hl7_v2_messages, as: 'hl7V2Messages', class: Google::Apis::HealthcareV1beta1::Message, decorator: Google::Apis::HealthcareV1beta1::Message::Representation
+      
           collection :messages, as: 'messages'
           property :next_page_token, as: 'nextPageToken'
         end

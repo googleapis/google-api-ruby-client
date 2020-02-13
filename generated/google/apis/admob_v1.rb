@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/admob/api/
     module AdmobV1
       VERSION = 'V1'
-      REVISION = '20200210'
+      REVISION = '20200212'
     end
   end
 end

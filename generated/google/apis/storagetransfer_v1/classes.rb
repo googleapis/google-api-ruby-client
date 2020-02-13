@@ -785,10 +785,19 @@ module Google
         # @return [String]
         attr_accessor :last_modification_time
       
-        # A globally unique name assigned by Storage Transfer Service when the
-        # job is created. This field should be left empty in requests to create a new
-        # transfer job; otherwise, the requests result in an `INVALID_ARGUMENT`
-        # error.
+        # A unique name (within the transfer project) assigned when the job is
+        # created.
+        # If this field is left empty in a CreateTransferJobRequest,
+        # Storage Transfer Service will assign a unique name. Otherwise, the supplied
+        # name is used as the unique name for this job.
+        # This name must start with "transferJobs/" prefix and end with a letter or a
+        # number, and should be no more than 128 characters.
+        # Example of a valid format : "transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"
+        # **NOTE:**
+        # If the supplied name is already in use, the creation request results in an
+        # `ALREADY_EXISTS` error and the transfer job will not be created.
+        # Invalid job names will return an 'INVALID_ARGUMENT' error and the job will
+        # not be created.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
