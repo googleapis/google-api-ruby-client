@@ -22,6 +22,38 @@ module Google
   module Apis
     module ComposerV1beta1
       
+      # Allowed IP range with user-provided description.
+      class AllowedIpRange
+        include Google::Apis::Core::Hashable
+      
+        # Optional. User-provided description.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # IP address or range, defined using CIDR notation, of requests that this
+        # rule applies to. You can use the wildcard character "*" to match all IPs
+        # equivalent to "0/0" and "::/0" together.
+        # Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32`
+        # or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.
+        # <p>IP range prefixes should be properly truncated. For example,
+        # `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6,
+        # `2001:db8::1/32` should be truncated to `2001:db8::/32`.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -68,6 +100,8 @@ module Google
       
         # The resource name of the environment, in the form:
         # "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
+        # EnvironmentId must start with a lowercase letter followed by up to 63
+        # lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -154,6 +188,11 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::SoftwareConfig]
         attr_accessor :software_config
       
+        # Network-level access control policy for the Airflow web server.
+        # Corresponds to the JSON property `webServerNetworkAccessControl`
+        # @return [Google::Apis::ComposerV1beta1::WebServerNetworkAccessControl]
+        attr_accessor :web_server_network_access_control
+      
         def initialize(**args)
            update!(**args)
         end
@@ -167,6 +206,7 @@ module Google
           @node_count = args[:node_count] if args.key?(:node_count)
           @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+          @web_server_network_access_control = args[:web_server_network_access_control] if args.key?(:web_server_network_access_control)
         end
       end
       
@@ -790,6 +830,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Network-level access control policy for the Airflow web server.
+      class WebServerNetworkAccessControl
+        include Google::Apis::Core::Hashable
+      
+        # A collection of allowed IP ranges with descriptions.
+        # Corresponds to the JSON property `allowedIpRanges`
+        # @return [Array<Google::Apis::ComposerV1beta1::AllowedIpRange>]
+        attr_accessor :allowed_ip_ranges
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_ip_ranges = args[:allowed_ip_ranges] if args.key?(:allowed_ip_ranges)
         end
       end
     end

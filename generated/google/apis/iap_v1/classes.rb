@@ -37,7 +37,8 @@ module Google
         # @return [Google::Apis::IapV1::GcipSettings]
         attr_accessor :gcip_settings
       
-        # Configuration for OAuth login&consent flow behavior.
+        # Configuration for OAuth login&consent flow behavior as well as for OAuth
+        # Credentials.
         # Corresponds to the JSON property `oauthSettings`
         # @return [Google::Apis::IapV1::OAuthSettings]
         attr_accessor :oauth_settings
@@ -510,9 +511,22 @@ module Google
         end
       end
       
-      # Configuration for OAuth login&consent flow behavior.
+      # Configuration for OAuth login&consent flow behavior as well as for OAuth
+      # Credentials.
       class OAuthSettings
         include Google::Apis::Core::Hashable
+      
+        # OAuth 2.0 client ID used in the OAuth flow to generate an access token. If
+        # this field is set, you can skip obtaining the OAuth credentials in this
+        # step:
+        # https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-
+        # oauth-2.0-credentials-from-the-google-api-console.
+        # However, this could allow for client sharing. The risks of client sharing
+        # are outlined here:
+        # https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
       
         # Domain hint to send as hd=? parameter in OAuth request flow. Enables
         # redirect to primary IDP by skipping Google's login screen.
@@ -529,6 +543,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
           @login_hint = args[:login_hint] if args.key?(:login_hint)
         end
       end

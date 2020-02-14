@@ -281,6 +281,7 @@ module Google
       class OAuthSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
           property :login_hint, as: 'loginHint'
         end
       end

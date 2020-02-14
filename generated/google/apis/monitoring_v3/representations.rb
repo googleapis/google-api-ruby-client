@@ -328,6 +328,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MeshIstio
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Metric
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1050,6 +1056,15 @@ module Google
         end
       end
       
+      class MeshIstio
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mesh_uid, as: 'meshUid'
+          property :service_name, as: 'serviceName'
+          property :service_namespace, as: 'serviceNamespace'
+        end
+      end
+      
       class Metric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1261,6 +1276,8 @@ module Google
           property :custom, as: 'custom', class: Google::Apis::MonitoringV3::Custom, decorator: Google::Apis::MonitoringV3::Custom::Representation
       
           property :display_name, as: 'displayName'
+          property :mesh_istio, as: 'meshIstio', class: Google::Apis::MonitoringV3::MeshIstio, decorator: Google::Apis::MonitoringV3::MeshIstio::Representation
+      
           property :name, as: 'name'
           property :telemetry, as: 'telemetry', class: Google::Apis::MonitoringV3::Telemetry, decorator: Google::Apis::MonitoringV3::Telemetry::Representation
       

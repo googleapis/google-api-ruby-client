@@ -206,7 +206,8 @@ module Google
       class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a Device.
+        # Represents a Device known to Google Cloud, independent of the device
+        # ownership, type, and whether it is assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1Device]
         attr_accessor :device
@@ -240,7 +241,8 @@ module Google
         end
       end
       
-      # Resource representing a Device.
+      # Represents a Device known to Google Cloud, independent of the device
+      # ownership, type, and whether it is assigned or in use by a user.
       class GoogleAppsCloudidentityDevicesV1alpha1Device
         include Google::Apis::Core::Hashable
       
@@ -577,7 +579,8 @@ module Google
       class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a Device.
+        # Represents a Device known to Google Cloud, independent of the device
+        # ownership, type, and whether it is assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1Device]
         attr_accessor :device

@@ -1407,12 +1407,13 @@ module Google
         end
       end
       
-      # All parameters related to queuing and scheduling of training jobs.
+      # All parameters related to scheduling of training jobs.
       class GoogleCloudMlV1Scheduling
         include Google::Apis::Core::Hashable
       
-        # Optional. The maximum job running time, expressed in seconds. By default
-        # there is no limit.
+        # Optional. The maximum job running time, expressed in seconds. The field can
+        # contain up to nine fractional digits, terminated by `s`. By default there
+        # is no limit to the running time.
         # If the training job is still running after this duration, AI Platform
         # Training cancels it.
         # For example, if you want to ensure your job runs for no more than 2 hours,
@@ -1420,7 +1421,8 @@ module Google
         # minute).
         # If you submit your training job using the `gcloud` tool, you can [provide
         # this field in a `config.yaml`
-        # file](/ml-engine/docs/training-jobs#formatting_your_configuration_parameters).
+        # file](/ai-platform/training/docs/training-jobs#
+        # formatting_your_configuration_parameters).
         # For example:
         # ```yaml
         # trainingInput:
@@ -1622,7 +1624,7 @@ module Google
         # @return [String]
         attr_accessor :scale_tier
       
-        # All parameters related to queuing and scheduling of training jobs.
+        # All parameters related to scheduling of training jobs.
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Scheduling]
         attr_accessor :scheduling

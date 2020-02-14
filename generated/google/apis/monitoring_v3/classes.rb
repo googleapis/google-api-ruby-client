@@ -129,9 +129,8 @@ module Google
       
         # A list of conditions for the policy. The conditions are combined by AND or OR
         # according to the combiner field. If the combined conditions evaluate to true,
-        # then an incident is created. A policy can have from one to six conditions. If |
-        # condition_time_series_uery_language| is present, it must be the only |
-        # condition|.
+        # then an incident is created. A policy can have from one to six conditions. If
+        # condition_time_series_query_language is present, it must be the only condition.
         # Corresponds to the JSON property `conditions`
         # @return [Array<Google::Apis::MonitoringV3::Condition>]
         attr_accessor :conditions
@@ -169,9 +168,9 @@ module Google
         # @return [Google::Apis::MonitoringV3::MutationRecord]
         attr_accessor :mutation_record
       
-        # Required if the policy exists. The resource name for this policy. The syntax
+        # Required if the policy exists. The resource name for this policy. The format
         # is:
-        # projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        # projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
         # [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
         # created. When calling the alertPolicies.create method, do not include the name
         # field in the alerting policy passed as part of the request.
@@ -183,8 +182,8 @@ module Google
         # when incidents are opened or closed or when new violations occur on an already
         # opened incident. Each element of this array corresponds to the name field in
         # each of the NotificationChannel objects that are returned from the
-        # ListNotificationChannels method. The syntax of the entries in this field is:
-        # projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        # ListNotificationChannels method. The format of the entries in this field is:
+        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
         # Corresponds to the JSON property `notificationChannels`
         # @return [Array<String>]
         attr_accessor :notification_channels
@@ -425,7 +424,8 @@ module Google
         end
       end
       
-      # Istio service. Learn more at http://istio.io.
+      # Istio service scoped to a single Kubernetes cluster. Learn more at http://
+      # istio.io.
       class ClusterIstio
         include Google::Apis::Core::Hashable
       
@@ -657,8 +657,9 @@ module Google
         attr_accessor :display_name
       
         # Required if the condition exists. The unique resource name for this condition.
-        # Its syntax is:
-        # projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
+        # Its format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[
+        # CONDITION_ID]
         # [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
         # created as part of a new or updated alerting policy.When calling the
         # alertPolicies.create method, do not include the name field in the conditions
@@ -1391,17 +1392,18 @@ module Google
         attr_accessor :is_cluster
         alias_method :is_cluster?, :is_cluster
       
-        # Output only. The name of this group. The format is "projects/`
-        # project_id_or_number`/groups/`group_id`". When creating a group, this field is
-        # ignored and a new name is created consisting of the project specified in the
-        # call to CreateGroup and a unique `group_id` that is generated automatically.
+        # Output only. The name of this group. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        # When creating a group, this field is ignored and a new name is created
+        # consisting of the project specified in the call to CreateGroup and a unique [
+        # GROUP_ID] that is generated automatically.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The name of the group's parent, if it has one. The format is "projects/`
-        # project_id_or_number`/groups/`group_id`". For groups with no parent,
-        # parentName is the empty string, "".
+        # The name of the group's parent, if it has one. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        # For groups with no parent, parent_name is the empty string, "".
         # Corresponds to the JSON property `parentName`
         # @return [String]
         attr_accessor :parent_name
@@ -1516,10 +1518,10 @@ module Google
         # @return [String]
         attr_accessor :gcp_zone
       
-        # A unique resource name for this InternalChecker. The format is:projects/[
-        # PROJECT_ID]/internalCheckers/[INTERNAL_CHECKER_ID].[PROJECT_ID] is the
-        # Stackdriver Workspace project for the Uptime check config associated with the
-        # internal checker.
+        # A unique resource name for this InternalChecker. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID]
+        # [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
+        # check config associated with the internal checker.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1657,8 +1659,8 @@ module Google
         attr_accessor :alert_policies
       
         # If there might be more results than were returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1684,8 +1686,8 @@ module Google
         attr_accessor :members
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1717,8 +1719,8 @@ module Google
         attr_accessor :group
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1745,8 +1747,8 @@ module Google
         attr_accessor :metric_descriptors
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1767,8 +1769,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1850,8 +1852,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1877,8 +1879,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1910,8 +1912,8 @@ module Google
         attr_accessor :execution_errors
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1996,6 +1998,40 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @uptime_check_ips = args[:uptime_check_ips] if args.key?(:uptime_check_ips)
+        end
+      end
+      
+      # Istio service scoped to an Istio mesh
+      class MeshIstio
+        include Google::Apis::Core::Hashable
+      
+        # Identifier for the mesh in which this Istio service is defined. Corresponds to
+        # the mesh_uid metric label in Istio metrics.
+        # Corresponds to the JSON property `meshUid`
+        # @return [String]
+        attr_accessor :mesh_uid
+      
+        # The name of the Istio service underlying this service. Corresponds to the
+        # destination_service_name metric label in Istio metrics.
+        # Corresponds to the JSON property `serviceName`
+        # @return [String]
+        attr_accessor :service_name
+      
+        # The namespace of the Istio service underlying this service. Corresponds to the
+        # destination_service_namespace metric label in Istio metrics.
+        # Corresponds to the JSON property `serviceNamespace`
+        # @return [String]
+        attr_accessor :service_namespace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mesh_uid = args[:mesh_uid] if args.key?(:mesh_uid)
+          @service_name = args[:service_name] if args.key?(:service_name)
+          @service_namespace = args[:service_namespace] if args.key?(:service_namespace)
         end
       end
       
@@ -2624,8 +2660,8 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The full REST resource name for this channel. The syntax is:
-        # projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        # The full REST resource name for this channel. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
         # The [CHANNEL_ID] is automatically assigned by the server on creation.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2711,8 +2747,8 @@ module Google
         # @return [String]
         attr_accessor :launch_stage
       
-        # The full REST resource name for this descriptor. The syntax is:
-        # projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE]
+        # The full REST resource name for this descriptor. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE]
         # In the above, [TYPE] is the value of the type field.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2914,7 +2950,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The group of resources being monitored. Should be only the [GROUP_ID], and not
-        # the full-path projects/[PROJECT_ID]/groups/[GROUP_ID].
+        # the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
         # Corresponds to the JSON property `groupId`
         # @return [String]
         attr_accessor :group_id
@@ -2965,7 +3001,8 @@ module Google
         # @return [Google::Apis::MonitoringV3::CloudEndpoints]
         attr_accessor :cloud_endpoints
       
-        # Istio service. Learn more at http://istio.io.
+        # Istio service scoped to a single Kubernetes cluster. Learn more at http://
+        # istio.io.
         # Corresponds to the JSON property `clusterIstio`
         # @return [Google::Apis::MonitoringV3::ClusterIstio]
         attr_accessor :cluster_istio
@@ -2981,8 +3018,13 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Resource name for this Service. Of the form projects/`project_id`/services/`
-        # service_id`.
+        # Istio service scoped to an Istio mesh
+        # Corresponds to the JSON property `meshIstio`
+        # @return [Google::Apis::MonitoringV3::MeshIstio]
+        attr_accessor :mesh_istio
+      
+        # Resource name for this Service. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3003,6 +3045,7 @@ module Google
           @cluster_istio = args[:cluster_istio] if args.key?(:cluster_istio)
           @custom = args[:custom] if args.key?(:custom)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @mesh_istio = args[:mesh_istio] if args.key?(:mesh_istio)
           @name = args[:name] if args.key?(:name)
           @telemetry = args[:telemetry] if args.key?(:telemetry)
         end
@@ -3085,8 +3128,9 @@ module Google
         # @return [Float]
         attr_accessor :goal
       
-        # Resource name for this ServiceLevelObjective. Of the form projects/`project_id`
-        # /services/`service_id`/serviceLevelObjectives/`slo_name`.
+        # Resource name for this ServiceLevelObjective. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        # SLO_NAME]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3150,16 +3194,16 @@ module Google
         end
       end
       
-      # The context of a span, attached to google.api.Distribution.Exemplars in google.
-      # api.Distribution values during aggregation.It contains the name of a span with
-      # format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID
+      # The context of a span, attached to Exemplars in Distribution values during
+      # aggregation.It contains the name of a span with format:
+      # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
       class SpanContext
         include Google::Apis::Core::Hashable
       
-        # The resource name of the span in the following format:
-        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        # TRACE_ID is a unique identifier for a trace within a project; it is a 32-
-        # character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique
+        # The resource name of the span. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+        # [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-
+        # character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
         # identifier for a span within a trace; it is a 16-character hexadecimal
         # encoding of an 8-byte array.
         # Corresponds to the JSON property `spanName`
@@ -3619,9 +3663,10 @@ module Google
         attr_accessor :monitored_resource
       
         # A unique resource name for this Uptime check configuration. The format is:
-        # projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should
-        # be omitted when creating the Uptime check configuration; on create, the
-        # resource name is assigned by the server and included in the response.
+        # projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
+        # This field should be omitted when creating the Uptime check configuration; on
+        # create, the resource name is assigned by the server and included in the
+        # response.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

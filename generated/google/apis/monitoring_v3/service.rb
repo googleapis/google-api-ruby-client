@@ -54,12 +54,13 @@ module Google
         
         # Creates a new alerting policy.
         # @param [String] name
-        #   Required. The project in which to create the alerting policy. The format is
-        #   projects/[PROJECT_ID].Note that this field names the parent container in which
-        #   the alerting policy will be written, not the name of the created policy. The
-        #   alerting policy that is returned will have a name that contains a normalized
-        #   representation of this name as a prefix but adds a suffix of the form /
-        #   alertPolicies/[POLICY_ID], identifying the policy in the container.
+        #   Required. The project in which to create the alerting policy. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   Note that this field names the parent container in which the alerting policy
+        #   will be written, not the name of the created policy. The alerting policy that
+        #   is returned will have a name that contains a normalized representation of this
+        #   name as a prefix but adds a suffix of the form /alertPolicies/[ALERT_POLICY_ID]
+        #   , identifying the policy in the container.
         # @param [Google::Apis::MonitoringV3::AlertPolicy] alert_policy_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -93,7 +94,7 @@ module Google
         # Deletes an alerting policy.
         # @param [String] name
         #   Required. The alerting policy to delete. The format is:
-        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        #   projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
         #   For more information, see AlertPolicy.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -124,8 +125,8 @@ module Google
         
         # Gets a single alerting policy.
         # @param [String] name
-        #   Required. The alerting policy to retrieve. The format is
-        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        #   Required. The alerting policy to retrieve. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -155,8 +156,8 @@ module Google
         
         # Lists the existing alerting policies for the project.
         # @param [String] name
-        #   Required. The project whose alert policies are to be listed. The format is
-        #   projects/[PROJECT_ID]
+        #   Required. The project whose alert policies are to be listed. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         #   Note that this field names the parent container in which the alerting policies
         #   to be listed are stored. To retrieve a single alerting policy by name, use the
         #   GetAlertPolicy operation, instead.
@@ -211,9 +212,9 @@ module Google
         # specifying the fields to be updated via updateMask. Returns the updated
         # alerting policy.
         # @param [String] name
-        #   Required if the policy exists. The resource name for this policy. The syntax
+        #   Required if the policy exists. The resource name for this policy. The format
         #   is:
-        #   projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID]
+        #   projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
         #   [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
         #   created. When calling the alertPolicies.create method, do not include the name
         #   field in the alerting policy passed as part of the request.
@@ -269,8 +270,8 @@ module Google
         # caution">This method is only for use by the Stackdriver Monitoring Agent. Use
         # projects.timeSeries.create instead.</aside>
         # @param [String] name
-        #   The project in which to create the time series. The format is "projects/
-        #   PROJECT_ID_OR_NUMBER".
+        #   The project in which to create the time series. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::CreateCollectdTimeSeriesRequest] create_collectd_time_series_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -303,8 +304,8 @@ module Google
         
         # Creates a new group.
         # @param [String] name
-        #   Required. The project in which to create the group. The format is "projects/`
-        #   project_id_or_number`".
+        #   Required. The project in which to create the group. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not create the group.
@@ -340,8 +341,8 @@ module Google
         
         # Deletes an existing group.
         # @param [String] name
-        #   Required. The group to delete. The format is "projects/`project_id_or_number`/
-        #   groups/`group_id`".
+        #   Required. The group to delete. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
         # @param [Boolean] recursive
         #   If this field is true, then the request means to delete a group with all its
         #   descendants. Otherwise, the request means to delete a group only when it has
@@ -376,8 +377,8 @@ module Google
         
         # Gets a single group.
         # @param [String] name
-        #   Required. The group to retrieve. The format is "projects/`project_id_or_number`
-        #   /groups/`group_id`".
+        #   Required. The group to retrieve. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -407,26 +408,30 @@ module Google
         
         # Lists the existing groups.
         # @param [String] name
-        #   Required. The project whose groups are to be listed. The format is "projects/`
-        #   project_id_or_number`".
+        #   Required. The project whose groups are to be listed. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] ancestors_of_group
-        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns
-        #   groups that are ancestors of the specified group. The groups are returned in
-        #   order, starting with the immediate parent and ending with the most distant
-        #   ancestor. If the specified group has no immediate parent, the results are
-        #   empty.
+        #   A group name. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        #   Returns groups that are ancestors of the specified group. The groups are
+        #   returned in order, starting with the immediate parent and ending with the most
+        #   distant ancestor. If the specified group has no immediate parent, the results
+        #   are empty.
         # @param [String] children_of_group
-        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns
-        #   groups whose parentName field contains the group name. If no groups have this
-        #   parent, the results are empty.
+        #   A group name. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        #   Returns groups whose parent_name field contains the group name. If no groups
+        #   have this parent, the results are empty.
         # @param [String] descendants_of_group
-        #   A group name: "projects/`project_id_or_number`/groups/`group_id`". Returns the
-        #   descendants of the specified group. This is a superset of the results returned
-        #   by the childrenOfGroup filter, and includes children-of-children, and so forth.
+        #   A group name. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        #   Returns the descendants of the specified group. This is a superset of the
+        #   results returned by the children_of_group filter, and includes children-of-
+        #   children, and so forth.
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
+        #   If this field is not empty then it must contain the next_page_token value
         #   returned by a previous call to this method. Using this field causes the method
         #   to return additional results from the previous method call.
         # @param [String] fields
@@ -463,10 +468,11 @@ module Google
         
         # Updates an existing group. You can change any group attributes except name.
         # @param [String] name
-        #   Output only. The name of this group. The format is "projects/`
-        #   project_id_or_number`/groups/`group_id`". When creating a group, this field is
-        #   ignored and a new name is created consisting of the project specified in the
-        #   call to CreateGroup and a unique `group_id` that is generated automatically.
+        #   Output only. The name of this group. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
+        #   When creating a group, this field is ignored and a new name is created
+        #   consisting of the project specified in the call to CreateGroup and a unique [
+        #   GROUP_ID] that is generated automatically.
         # @param [Google::Apis::MonitoringV3::Group] group_object
         # @param [Boolean] validate_only
         #   If true, validate this request but do not update the existing group.
@@ -502,14 +508,14 @@ module Google
         
         # Lists the monitored resources that are members of a group.
         # @param [String] name
-        #   Required. The group whose members are listed. The format is "projects/`
-        #   project_id_or_number`/groups/`group_id`".
+        #   Required. The group whose members are listed. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
         # @param [String] filter
         #   An optional list filter describing the members to be returned. The filter may
         #   reference the type, labels, and metadata of monitored resources that comprise
         #   the group. For example, to return only resources representing Compute Engine
         #   VM instances, use this filter:
-        #   resource.type = "gce_instance"
+        #   `resource.type = "gce_instance"`
         # @param [String] interval_end_time
         #   Required. The end of the time interval.
         # @param [String] interval_start_time
@@ -518,7 +524,7 @@ module Google
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
         # @param [String] page_token
-        #   If this field is not empty then it must contain the nextPageToken value
+        #   If this field is not empty then it must contain the next_page_token value
         #   returned by a previous call to this method. Using this field causes the method
         #   to return additional results from the previous method call.
         # @param [String] fields
@@ -556,8 +562,8 @@ module Google
         # Creates a new metric descriptor. User-created metric descriptors define custom
         # metrics.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is "projects/
-        #   `project_id_or_number`".
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::MetricDescriptor] metric_descriptor_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -590,9 +596,9 @@ module Google
         
         # Deletes a metric descriptor. Only user-created custom metrics can be deleted.
         # @param [String] name
-        #   Required. The metric descriptor on which to execute the request. The format is
-        #   "projects/`project_id_or_number`/metricDescriptors/`metric_id`". An example of
-        #   `metric_id` is: "custom.googleapis.com/my_test_metric".
+        #   Required. The metric descriptor on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
+        #   An example of [METRIC_ID] is: "custom.googleapis.com/my_test_metric".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -623,10 +629,10 @@ module Google
         # Gets a single metric descriptor. This method does not require a Stackdriver
         # account.
         # @param [String] name
-        #   Required. The metric descriptor on which to execute the request. The format is
-        #   "projects/`project_id_or_number`/metricDescriptors/`metric_id`". An example
-        #   value of `metric_id` is "compute.googleapis.com/instance/disk/read_bytes_count"
-        #   .
+        #   Required. The metric descriptor on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
+        #   An example value of [METRIC_ID] is "compute.googleapis.com/instance/disk/
+        #   read_bytes_count".
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -657,8 +663,8 @@ module Google
         # Lists metric descriptors that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is "projects/
-        #   `project_id_or_number`".
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   If this field is empty, all custom and system-defined metric descriptors are
         #   returned. Otherwise, the filter specifies which metric descriptors are to be
@@ -703,9 +709,9 @@ module Google
         # Gets a single monitored resource descriptor. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   Required. The monitored resource descriptor to get. The format is "projects/`
-        #   project_id_or_number`/monitoredResourceDescriptors/`resource_type`". The `
-        #   resource_type` is a predefined type, such as cloudsql_database.
+        #   Required. The monitored resource descriptor to get. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE]
+        #   The [RESOURCE_TYPE] is a predefined type, such as cloudsql_database.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -736,8 +742,8 @@ module Google
         # Lists monitored resource descriptors that match a filter. This method does not
         # require a Stackdriver account.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is "projects/
-        #   `project_id_or_number`".
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   An optional filter describing the descriptors to be returned. The filter can
         #   reference the descriptor's type and labels. For example, the following filter
@@ -782,8 +788,8 @@ module Google
         # Gets a single channel descriptor. The descriptor indicates which fields are
         # expected / permitted for a notification channel of the given type.
         # @param [String] name
-        #   Required. The channel type for which to execute the request. The format is
-        #   projects/[PROJECT_ID]/notificationChannelDescriptors/`channel_type`.
+        #   Required. The channel type for which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -816,7 +822,7 @@ module Google
         # @param [String] name
         #   Required. The REST resource name of the parent from which to retrieve the
         #   notification channel descriptors. The expected syntax is:
-        #   projects/[PROJECT_ID]
+        #   projects/[PROJECT_ID_OR_NUMBER]
         #   Note that this names the parent container in which to look for the descriptors;
         #   to retrieve a single descriptor by name, use the
         #   GetNotificationChannelDescriptor operation, instead.
@@ -859,10 +865,10 @@ module Google
         # endpoint such as an email address, SMS number, or PagerDuty service.
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
-        #   projects/[PROJECT_ID]
-        #   Note that this names the container into which the channel will be written.
-        #   This does not name the newly created channel. The resulting channel's name
-        #   will have a normalized version of this field as a prefix, but will add /
+        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   This names the container into which the channel will be written, this does not
+        #   name the newly created channel. The resulting channel's name will have a
+        #   normalized version of this field as a prefix, but will add /
         #   notificationChannels/[CHANNEL_ID] to identify the channel.
         # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
         # @param [String] fields
@@ -896,8 +902,8 @@ module Google
         
         # Deletes a notification channel.
         # @param [String] name
-        #   Required. The channel for which to execute the request. The format is projects/
-        #   [PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+        #   Required. The channel for which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
         # @param [Boolean] force
         #   If true, the notification channel will be deleted regardless of its use in
         #   alert policies (the policies will be updated to remove the channel). If false,
@@ -937,8 +943,8 @@ module Google
         # and thus the response may not be 100% identical to the information that was
         # supplied in the call to the create method.
         # @param [String] name
-        #   Required. The channel for which to execute the request. The format is projects/
-        #   [PROJECT_ID]/notificationChannels/[CHANNEL_ID].
+        #   Required. The channel for which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1020,11 +1026,11 @@ module Google
         
         # Lists the notification channels that have been created for the project.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is projects/[
-        #   PROJECT_ID]. That is, this names the container in which to look for the
-        #   notification channels; it does not name a specific channel. To query a
-        #   specific channel by REST resource name, use the GetNotificationChannel
-        #   operation.
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   This names the container in which to look for the notification channels; it
+        #   does not name a specific channel. To query a specific channel by REST resource
+        #   name, use the GetNotificationChannel operation.
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by
         #   notification channels to be included in the response.For more details, see
@@ -1074,8 +1080,8 @@ module Google
         # Updates a notification channel. Fields not specified in the field mask remain
         # unchanged.
         # @param [String] name
-        #   The full REST resource name for this channel. The syntax is:
-        #   projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]
+        #   The full REST resource name for this channel. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
         #   The [CHANNEL_ID] is automatically assigned by the server on creation.
         # @param [Google::Apis::MonitoringV3::NotificationChannel] notification_channel_object
         # @param [String] update_mask
@@ -1182,8 +1188,8 @@ module Google
         # time series in the request were written. If any time series could not be
         # written, a corresponding failure message is included in the error response.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is "projects/
-        #   `project_id_or_number`".
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::CreateTimeSeriesRequest] create_time_series_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1217,8 +1223,8 @@ module Google
         # Lists time series that match a filter. This method does not require a
         # Stackdriver account.
         # @param [String] name
-        #   Required. The project on which to execute the request. The format is "projects/
-        #   `project_id_or_number`".
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] aggregation_alignment_period
         #   The alignment_period specifies a time interval, in seconds, that is used to
         #   divide the data in all the time series into consistent blocks of time. This
@@ -1329,8 +1335,8 @@ module Google
         
         # Creates a new Uptime check configuration.
         # @param [String] parent
-        #   Required. The project in which to create the Uptime check. The format  is
-        #   projects/[PROJECT_ID].
+        #   Required. The project in which to create the Uptime check. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1365,8 +1371,8 @@ module Google
         # Uptime check configuration is referenced by an alert policy or other dependent
         # configs that would be rendered invalid by the deletion.
         # @param [String] name
-        #   Required. The Uptime check configuration to delete. The format  is projects/[
-        #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        #   Required. The Uptime check configuration to delete. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1396,8 +1402,8 @@ module Google
         
         # Gets a single Uptime check configuration.
         # @param [String] name
-        #   Required. The Uptime check configuration to retrieve. The format  is projects/[
-        #   PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        #   Required. The Uptime check configuration to retrieve. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1429,7 +1435,8 @@ module Google
         # out any invalid configurations).
         # @param [String] parent
         #   Required. The project whose Uptime check configurations are listed. The format
-        #   is projects/[PROJECT_ID].
+        #   is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. The server may
         #   further constrain the maximum number of results returned in a single page. If
@@ -1474,9 +1481,10 @@ module Google
         # the updated configuration.
         # @param [String] name
         #   A unique resource name for this Uptime check configuration. The format is:
-        #   projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field should
-        #   be omitted when creating the Uptime check configuration; on create, the
-        #   resource name is assigned by the server and included in the response.
+        #   projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
+        #   This field should be omitted when creating the Uptime check configuration; on
+        #   create, the resource name is assigned by the server and included in the
+        #   response.
         # @param [Google::Apis::MonitoringV3::UptimeCheckConfig] uptime_check_config_object
         # @param [String] update_mask
         #   Optional. If present, only the listed fields in the current Uptime check
@@ -1515,12 +1523,12 @@ module Google
         
         # Create a Service.
         # @param [String] parent
-        #   Required. Resource name of the parent workspace. Of the form projects/`
-        #   project_id`.
+        #   Required. Resource name of the parent workspace. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] service_id
         #   Optional. The Service id to use for this Service. If omitted, an id will be
-        #   generated instead. Must match the pattern a-z0-9-+
+        #   generated instead. Must match the pattern [a-z0-9\-]+
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1553,8 +1561,8 @@ module Google
         
         # Soft delete this Service.
         # @param [String] name
-        #   Required. Resource name of the Service to delete. Of the form projects/`
-        #   project_id`/services/`service_id`.
+        #   Required. Resource name of the Service to delete. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1584,8 +1592,8 @@ module Google
         
         # Get the named Service.
         # @param [String] name
-        #   Required. Resource name of the Service. Of the form projects/`project_id`/
-        #   services/`service_id`.
+        #   Required. Resource name of the Service. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1616,8 +1624,9 @@ module Google
         # List Services for this workspace.
         # @param [String] parent
         #   Required. Resource name of the parent containing the listed services, either a
-        #   project or Stackdriver Account (workspace).One of the forms: "projects/`
-        #   project_id`" "workspaces/`host_project_id`"
+        #   project or Stackdriver Account (workspace). The formats are:
+        #   projects/[PROJECT_ID_OR_NUMBER]
+        #   workspaces/[HOST_PROJECT_ID]
         # @param [String] filter
         #   A filter specifying what Services to return. The filter currently supports the
         #   following fields:
@@ -1671,8 +1680,8 @@ module Google
         
         # Update this Service.
         # @param [String] name
-        #   Resource name for this Service. Of the form projects/`project_id`/services/`
-        #   service_id`.
+        #   Resource name for this Service. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID`
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] update_mask
         #   A set of field paths defining which fields to use for the update.
@@ -1708,12 +1717,12 @@ module Google
         
         # Create a ServiceLevelObjective for the given Service.
         # @param [String] parent
-        #   Required. Resource name of the parent Service. Of the form projects/`
-        #   project_id`/services/`service_id`.
+        #   Required. Resource name of the parent Service. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
         # @param [String] service_level_objective_id
         #   Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective.
-        #   If omitted, an id will be generated instead. Must match the pattern a-z0-9-+
+        #   If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1746,8 +1755,9 @@ module Google
         
         # Delete the given ServiceLevelObjective.
         # @param [String] name
-        #   Required. Resource name of the ServiceLevelObjective to delete. Of the form
-        #   projects/`project_id`/services/`service_id`/serviceLevelObjectives/`slo_name`.
+        #   Required. Resource name of the ServiceLevelObjective to delete. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        #   SLO_NAME]
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1777,8 +1787,9 @@ module Google
         
         # Get a ServiceLevelObjective by name.
         # @param [String] name
-        #   Required. Resource name of the ServiceLevelObjective to get. Of the form
-        #   projects/`project_id`/services/`service_id`/serviceLevelObjectives/`slo_name`.
+        #   Required. Resource name of the ServiceLevelObjective to get. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        #   SLO_NAME]
         # @param [String] view
         #   View of the ServiceLevelObjective to return. If DEFAULT, return the
         #   ServiceLevelObjective as originally defined. If EXPLICIT and the
@@ -1814,8 +1825,8 @@ module Google
         
         # List the ServiceLevelObjectives for the given Service.
         # @param [String] parent
-        #   Required. Resource name of the parent Service. Of the form projects/`
-        #   project_id`/services/`service_id`.
+        #   Required. Resource name of the parent Service. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [String] filter
         #   A filter specifying what ServiceLevelObjectives to return.
         # @param [Fixnum] page_size
@@ -1863,8 +1874,9 @@ module Google
         
         # Update the given ServiceLevelObjective.
         # @param [String] name
-        #   Resource name for this ServiceLevelObjective. Of the form projects/`project_id`
-        #   /services/`service_id`/serviceLevelObjectives/`slo_name`.
+        #   Resource name for this ServiceLevelObjective. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[
+        #   SLO_NAME]
         # @param [Google::Apis::MonitoringV3::ServiceLevelObjective] service_level_objective_object
         # @param [String] update_mask
         #   A set of field paths defining which fields to use for the update.

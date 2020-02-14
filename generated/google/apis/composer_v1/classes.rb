@@ -68,6 +68,8 @@ module Google
       
         # The resource name of the environment, in the form:
         # "projects/`projectId`/locations/`locationId`/environments/`environmentId`"
+        # EnvironmentId must start with a lowercase letter followed by up to 63
+        # lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

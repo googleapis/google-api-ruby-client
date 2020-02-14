@@ -498,8 +498,8 @@ module Google
         attr_accessor :dashboards
       
         # If there are more results than have been returned, then this field is set to a
-        # non-empty value. To see the additional results, use that value as pageToken in
-        # the next call to this method.
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -756,16 +756,16 @@ module Google
         end
       end
       
-      # The context of a span, attached to google.api.Distribution.Exemplars in google.
-      # api.Distribution values during aggregation.It contains the name of a span with
-      # format:  projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID
+      # The context of a span, attached to Exemplars in Distribution values during
+      # aggregation.It contains the name of a span with format:
+      # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
       class SpanContext
         include Google::Apis::Core::Hashable
       
-        # The resource name of the span in the following format:
-        # projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]
-        # TRACE_ID is a unique identifier for a trace within a project; it is a 32-
-        # character hexadecimal encoding of a 16-byte array.SPAN_ID is a unique
+        # The resource name of the span. The format is:
+        # projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+        # [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-
+        # character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
         # identifier for a span within a trace; it is a 16-character hexadecimal
         # encoding of an 8-byte array.
         # Corresponds to the JSON property `spanName`

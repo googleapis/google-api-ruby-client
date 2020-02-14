@@ -42,9 +42,9 @@ module Google
         # The namespace in which the entity exists.
         # If not specified, the `EntityKey` represents a Google-managed entity such
         # as a Google user or a Google Group.
-        # If specified, the `EntityKey` represents an external-identity-mapped group
-        # created through Admin Console. Must be of the form
-        # `identitysources/`identity_source_id`.
+        # If specified, the `EntityKey` represents an external-identity-mapped group.
+        # The namespace must correspond to an identity source created in Admin
+        # Console. Must be of the form `identitysources/`identity_source_id`.
         # Corresponds to the JSON property `namespace`
         # @return [String]
         attr_accessor :namespace
@@ -212,7 +212,8 @@ module Google
       class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a Device.
+        # Represents a Device known to Google Cloud, independent of the device
+        # ownership, type, and whether it is assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1alpha1Device]
         attr_accessor :device
@@ -246,7 +247,8 @@ module Google
         end
       end
       
-      # Resource representing a Device.
+      # Represents a Device known to Google Cloud, independent of the device
+      # ownership, type, and whether it is assigned or in use by a user.
       class GoogleAppsCloudidentityDevicesV1alpha1Device
         include Google::Apis::Core::Hashable
       
@@ -583,7 +585,8 @@ module Google
       class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a Device.
+        # Represents a Device known to Google Cloud, independent of the device
+        # ownership, type, and whether it is assigned or in use by a user.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::CloudidentityV1beta1::GoogleAppsCloudidentityDevicesV1alpha1Device]
         attr_accessor :device

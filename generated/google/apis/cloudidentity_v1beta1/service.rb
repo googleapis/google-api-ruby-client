@@ -146,7 +146,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the `Group`s within a customer or namespace.
+        # Lists the `Group`s under a customer or namespace.
         # @param [Fixnum] page_size
         #   The maximum number of results to return.
         #   Note that the number of results returned may be less than this value even
@@ -208,9 +208,9 @@ module Google
         #   The namespace in which the entity exists.
         #   If not specified, the `EntityKey` represents a Google-managed entity such
         #   as a Google user or a Google Group.
-        #   If specified, the `EntityKey` represents an external-identity-mapped group
-        #   created through Admin Console. Must be of the form
-        #   `identitysources/`identity_source_id`.
+        #   If specified, the `EntityKey` represents an external-identity-mapped group.
+        #   The namespace must correspond to an identity source created in Admin
+        #   Console. Must be of the form `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -502,9 +502,9 @@ module Google
         #   The namespace in which the entity exists.
         #   If not specified, the `EntityKey` represents a Google-managed entity such
         #   as a Google user or a Google Group.
-        #   If specified, the `EntityKey` represents an external-identity-mapped group
-        #   created through Admin Console. Must be of the form
-        #   `identitysources/`identity_source_id`.
+        #   If specified, the `EntityKey` represents an external-identity-mapped group.
+        #   The namespace must correspond to an identity source created in Admin
+        #   Console. Must be of the form `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

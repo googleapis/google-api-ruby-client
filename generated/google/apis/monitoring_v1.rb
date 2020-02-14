@@ -30,7 +30,7 @@ module Google
     # @see https://cloud.google.com/monitoring/api/
     module MonitoringV1
       VERSION = 'V1'
-      REVISION = '20200126'
+      REVISION = '20200210'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
