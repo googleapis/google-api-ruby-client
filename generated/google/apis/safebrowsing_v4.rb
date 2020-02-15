@@ -29,7 +29,7 @@ module Google
     # @see https://developers.google.com/safe-browsing/
     module SafebrowsingV4
       VERSION = 'V4'
-      REVISION = '20190923'
+      REVISION = '20200210'
     end
   end
 end

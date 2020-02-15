@@ -86,8 +86,8 @@ module Google
         attr_accessor :language
       
         # Sets the maximum number of entries that the client is willing to have
-        # in the local database. This should be a power of 2 between 2**10 and
-        # 2**20. If zero, no database size limit is set.
+        # in the local database for the specified list. This should be a power of
+        # 2 between 2**10 and 2**20. If zero, no database size limit is set.
         # Corresponds to the JSON property `maxDatabaseEntries`
         # @return [Fixnum]
         attr_accessor :max_database_entries

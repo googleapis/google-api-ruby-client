@@ -182,6 +182,76 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves the fulfillment.
+        # @param [String] name
+        #   Required. The name of the fulfillment.
+        #   Format: `projects/<Project ID>/agent/fulfillment`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_fulfillment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets agent validation result. Agent validation is performed during
+        # training time and is updated automatically when training is completed.
+        # @param [String] parent
+        #   Required. The project that the agent is associated with.
+        #   Format: `projects/<Project ID>`.
+        # @param [String] language_code
+        #   Optional. The language for which you want a validation result. If not
+        #   specified, the agent's default language is used. [Many
+        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
+        #   are supported. Note: languages must be enabled in the agent before they can
+        #   be used.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ValidationResult] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ValidationResult]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_validation_result(parent, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/agent/validationResult', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ValidationResult::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ValidationResult
+          command.params['parent'] = parent unless parent.nil?
+          command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Imports the specified agent from a ZIP file.
         # Uploads new intents and entity types without deleting the existing ones.
         # Intents and entity types with the same name are replaced with the new
@@ -331,6 +401,44 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the fulfillment.
+        # @param [String] name
+        #   Required. The unique identifier of the fulfillment.
+        #   Format: `projects/<Project ID>/agent/fulfillment`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment] google_cloud_dialogflow_v2_fulfillment_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields get updated. If the mask is not
+        #   present, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_project_agent_fulfillment(name, google_cloud_dialogflow_v2_fulfillment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment::Representation
+          command.request_object = google_cloud_dialogflow_v2_fulfillment_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Fulfillment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -713,6 +821,226 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an agent environment.
+        # @param [String] parent
+        #   Required. The agent to create a environment for.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] google_cloud_dialogflow_v2_environment_object
+        # @param [String] environment_id
+        #   Required. The unique id of the new environment.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_agent_environment(parent, google_cloud_dialogflow_v2_environment_object = nil, environment_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/environments', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment::Representation
+          command.request_object = google_cloud_dialogflow_v2_environment_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment
+          command.params['parent'] = parent unless parent.nil?
+          command.query['environmentId'] = environment_id unless environment_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified agent environment.
+        # @param [String] name
+        #   Required. The name of the environment to delete.
+        #   Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_agent_environment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified agent environment.
+        # @param [String] name
+        #   Required. The name of the environment.
+        #   Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_environment(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the history of the specified environment.
+        # @param [String] parent
+        #   Required. The name of the environment to retrieve history for.
+        #   Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By default
+        #   100 and
+        #   at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EnvironmentHistory] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EnvironmentHistory]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_environment_history(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/history', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EnvironmentHistory::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EnvironmentHistory
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all environments of the specified agent.
+        # @param [String] parent
+        #   Required. The agent to list all environments from.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By default
+        #   100 and
+        #   at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEnvironmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEnvironmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_environments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/environments', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEnvironmentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListEnvironmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified agent environment.
+        # This method allows you to deploy new agent versions into the environment.
+        # When a environment is pointed to a new agent version by setting
+        # `environment.agent_version`, the environment is temporarily set to the
+        # `LOADING` state. During that time, the environment keeps on serving the
+        # previous version of the agent. After the new agent version is done loading,
+        # the environment is set back to the `RUNNING` state.
+        # @param [String] name
+        #   Output only. The unique identifier of this agent environment.
+        #   Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] google_cloud_dialogflow_v2_environment_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_environment(name, google_cloud_dialogflow_v2_environment_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment::Representation
+          command.request_object = google_cloud_dialogflow_v2_environment_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Environment
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1442,6 +1770,150 @@ module Google
           command.request_object = google_cloud_dialogflow_v2_session_entity_type_object
           command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType::Representation
           command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2SessionEntityType
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an agent version.
+        # @param [String] parent
+        #   Required. The agent to create a version for.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version] google_cloud_dialogflow_v2_version_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_agent_version(parent, google_cloud_dialogflow_v2_version_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/versions', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version::Representation
+          command.request_object = google_cloud_dialogflow_v2_version_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the specified agent version.
+        # @param [String] name
+        #   Required. The name of the version.
+        #   Format: `projects/<Project ID>/agent/versions/<Version ID>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_agent_version(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+name}', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all versions of the specified agent.
+        # @param [String] parent
+        #   Required. The agent to list all versions from.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By default
+        #   100 and
+        #   at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListVersionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListVersionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_versions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/versions', options)
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListVersionsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2ListVersionsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates the specified agent version.
+        # Note that this method does not allow you to update the state of the agent
+        # the given version points to. It allows you to update only mutable
+        # properties of the version resource.
+        # @param [String] name
+        #   Output only. The unique identifier of this agent version.
+        #   Format: `projects/<Project ID>/agent/versions/<Version ID>`.
+        # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version] google_cloud_dialogflow_v2_version_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_agent_version(name, google_cloud_dialogflow_v2_version_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v2/{+name}', options)
+          command.request_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version::Representation
+          command.request_object = google_cloud_dialogflow_v2_version_object
+          command.response_representation = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version::Representation
+          command.response_class = Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Version
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
