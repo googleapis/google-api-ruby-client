@@ -8246,7 +8246,7 @@ module Google
         # @return [Google::Apis::ComputeV1::Int64RangeMatch]
         attr_accessor :range_match
       
-        # The value of the header must match the regualar expression specified in
+        # The value of the header must match the regular expression specified in
         # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
         # cpp/regex/ecmascript
         # For matching against a port specified in the HTTP request, use a headerMatch
@@ -8254,6 +8254,8 @@ module Google
         # RFC2616 Host header's port specifier.
         # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
         # rangeMatch must be set.
+        # Note that regexMatch only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -8571,6 +8573,8 @@ module Google
         # regular expression specified by regexMatch. For the regular expression grammar,
         # please see en.cppreference.com/w/cpp/regex/ecmascript
         # Only one of presentMatch, exactMatch or regexMatch must be set.
+        # Note that regexMatch only applies when the loadBalancingScheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -8948,6 +8952,8 @@ module Google
         # parameters and anchor supplied with the original URL. For regular expression
         # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Note that regexMatch only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -10984,6 +10990,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # InstanceGroupManagers.applyUpdatesToInstances
+      class InstanceGroupManagersApplyUpdatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of URLs of one or more instances for which you want to apply updates.
+        # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
+        # INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        # The minimal action that you want to perform on each instance during the update:
+        # 
+        # - REPLACE: At minimum, delete the instance and create it again.
+        # - RESTART: Stop the instance and start it again.
+        # - REFRESH: Do not stop the instance.
+        # - NONE: Do not disrupt the instance at all.  By default, the minimum action is
+        # NONE. If your update requires a more disruptive action than you set with this
+        # flag, the necessary action is performed to execute the update.
+        # Corresponds to the JSON property `minimalAction`
+        # @return [String]
+        attr_accessor :minimal_action
+      
+        # The most disruptive action that you want to perform on each instance during
+        # the update:
+        # - REPLACE: Delete the instance and create it again.
+        # - RESTART: Stop the instance and start it again.
+        # - REFRESH: Do not stop the instance.
+        # - NONE: Do not disrupt the instance at all.  By default, the most disruptive
+        # allowed action is REPLACE. If your update requires a more disruptive action
+        # than you set with this flag, the update request will fail.
+        # Corresponds to the JSON property `mostDisruptiveAllowedAction`
+        # @return [String]
+        attr_accessor :most_disruptive_allowed_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+          @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
         end
       end
       
@@ -19367,8 +19420,7 @@ module Google
         # The list of HTTP route rules. Use this list instead of pathRules when advanced
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
-        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
-        # routeRules are not supported in UrlMaps intended for External Load balancers.
+        # Within a given pathMatcher, you can set only one of pathRules or routeRules.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeV1::HttpRouteRule>]
         attr_accessor :route_rules
@@ -20503,6 +20555,53 @@ module Google
         # Update properties of this object
         def update!(**args)
           @instances = args[:instances] if args.key?(:instances)
+        end
+      end
+      
+      # InstanceGroupManagers.applyUpdatesToInstances
+      class RegionInstanceGroupManagersApplyUpdatesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The list of URLs of one or more instances for which you want to apply updates.
+        # Each URL can be a full URL or a partial URL, such as zones/[ZONE]/instances/[
+        # INSTANCE_NAME].
+        # Corresponds to the JSON property `instances`
+        # @return [Array<String>]
+        attr_accessor :instances
+      
+        # The minimal action that you want to perform on each instance during the update:
+        # 
+        # - REPLACE: At minimum, delete the instance and create it again.
+        # - RESTART: Stop the instance and start it again.
+        # - REFRESH: Do not stop the instance.
+        # - NONE: Do not disrupt the instance at all.  By default, the minimum action is
+        # NONE. If your update requires a more disruptive action than you set with this
+        # flag, the necessary action is performed to execute the update.
+        # Corresponds to the JSON property `minimalAction`
+        # @return [String]
+        attr_accessor :minimal_action
+      
+        # The most disruptive action that you want to perform on each instance during
+        # the update:
+        # - REPLACE: Delete the instance and create it again.
+        # - RESTART: Stop the instance and start it again.
+        # - REFRESH: Do not stop the instance.
+        # - NONE: Do not disrupt the instance at all.  By default, the most disruptive
+        # allowed action is REPLACE. If your update requires a more disruptive action
+        # than you set with this flag, the update request will fail.
+        # Corresponds to the JSON property `mostDisruptiveAllowedAction`
+        # @return [String]
+        attr_accessor :most_disruptive_allowed_action
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @instances = args[:instances] if args.key?(:instances)
+          @minimal_action = args[:minimal_action] if args.key?(:minimal_action)
+          @most_disruptive_allowed_action = args[:most_disruptive_allowed_action] if args.key?(:most_disruptive_allowed_action)
         end
       end
       

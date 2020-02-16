@@ -4888,6 +4888,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpcomingMaintenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class UrlMap
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -7898,6 +7904,7 @@ module Google
       
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
           property :preserved_state_size_gb, :numeric_string => true, as: 'preservedStateSizeGb'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -7922,6 +7929,8 @@ module Google
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :tags, as: 'tags', class: Google::Apis::ComputeAlpha::Tags, decorator: Google::Apis::ComputeAlpha::Tags::Representation
+      
+          property :upcoming_maintenance, as: 'upcomingMaintenance', class: Google::Apis::ComputeAlpha::UpcomingMaintenance, decorator: Google::Apis::ComputeAlpha::UpcomingMaintenance::Representation
       
           property :zone, as: 'zone'
         end
@@ -8618,6 +8627,7 @@ module Google
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeAlpha::NetworkInterface, decorator: Google::Apis::ComputeAlpha::NetworkInterface::Representation
       
           property :post_key_revocation_action_type, as: 'postKeyRevocationActionType'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeAlpha::ReservationAffinity, decorator: Google::Apis::ComputeAlpha::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -14270,6 +14280,15 @@ module Google
           property :port_name, as: 'portName'
           property :request, as: 'request'
           property :response, as: 'response'
+        end
+      end
+      
+      class UpcomingMaintenance
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :date, as: 'date'
+          property :time, as: 'time'
+          property :type, as: 'type'
         end
       end
       

@@ -116,6 +116,8 @@ module Google
         end
         
         # Creates a new task list and adds it to the authenticated user's task lists.
+        # Fails with HTTP code 403 or 429 after reaching the storage limit of 2,000
+        # lists.
         # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -361,7 +363,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new task on the specified task list.
+        # Creates a new task on the specified task list. Fails with HTTP code 403 or 429
+        # after reaching the storage limit of 100,000 tasks per account.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object

@@ -9849,7 +9849,7 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Int64RangeMatch]
         attr_accessor :range_match
       
-        # The value of the header must match the regualar expression specified in
+        # The value of the header must match the regular expression specified in
         # regexMatch. For regular expression grammar, please see:  en.cppreference.com/w/
         # cpp/regex/ecmascript
         # For matching against a port specified in the HTTP request, use a headerMatch
@@ -9857,6 +9857,8 @@ module Google
         # RFC2616 Host header's port specifier.
         # Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or
         # rangeMatch must be set.
+        # Note that regexMatch only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -10180,6 +10182,8 @@ module Google
         # regular expression specified by regexMatch. For the regular expression grammar,
         # please see en.cppreference.com/w/cpp/regex/ecmascript
         # Only one of presentMatch, exactMatch or regexMatch must be set.
+        # Note that regexMatch only applies when the loadBalancingScheme is set to
+        # INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -10557,6 +10561,8 @@ module Google
         # parameters and anchor supplied with the original URL. For regular expression
         # grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         # Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
+        # Note that regexMatch only applies to Loadbalancers that have their
+        # loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         # Corresponds to the JSON property `regexMatch`
         # @return [String]
         attr_accessor :regex_match
@@ -11419,6 +11425,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :preserved_state_size_gb
       
+        # The private IPv6 google access type for the VM. If not specified, use
+        # INHERIT_FROM_SUBNETWORK as default.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
@@ -11509,6 +11521,11 @@ module Google
         # @return [Google::Apis::ComputeAlpha::Tags]
         attr_accessor :tags
       
+        # Upcoming Maintenance notification information.
+        # Corresponds to the JSON property `upcomingMaintenance`
+        # @return [Google::Apis::ComputeAlpha::UpcomingMaintenance]
+        attr_accessor :upcoming_maintenance
+      
         # [Output Only] URL of the zone where the instance resides. You must specify
         # this field as part of the HTTP request URL. It is not settable as a field in
         # the request body.
@@ -11546,6 +11563,7 @@ module Google
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
           @preserved_state_size_gb = args[:preserved_state_size_gb] if args.key?(:preserved_state_size_gb)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -11562,6 +11580,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @tags = args[:tags] if args.key?(:tags)
+          @upcoming_maintenance = args[:upcoming_maintenance] if args.key?(:upcoming_maintenance)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -14170,6 +14189,12 @@ module Google
         # @return [String]
         attr_accessor :post_key_revocation_action_type
       
+        # The private IPv6 google access type for the VM. If not specified, use
+        # INHERIT_FROM_SUBNETWORK as default.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeAlpha::ReservationAffinity]
@@ -14226,6 +14251,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
           @post_key_revocation_action_type = args[:post_key_revocation_action_type] if args.key?(:post_key_revocation_action_type)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -23567,8 +23593,7 @@ module Google
         # The list of HTTP route rules. Use this list instead of pathRules when advanced
         # route matching and routing actions are desired. routeRules are evaluated in
         # order of priority, from the lowest to highest number.
-        # Within a given pathMatcher, only one of pathRules or routeRules must be set.
-        # routeRules are not supported in UrlMaps intended for External Load balancers.
+        # Within a given pathMatcher, you can set only one of pathRules or routeRules.
         # Corresponds to the JSON property `routeRules`
         # @return [Array<Google::Apis::ComputeAlpha::HttpRouteRule>]
         attr_accessor :route_rules
@@ -36293,6 +36318,39 @@ module Google
           @port_name = args[:port_name] if args.key?(:port_name)
           @request = args[:request] if args.key?(:request)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Upcoming Maintenance notification information.
+      class UpcomingMaintenance
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The date when the maintenance will take place. This value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `date`
+        # @return [String]
+        attr_accessor :date
+      
+        # [Output Only] The time when the maintenance will take place. This value is in
+        # RFC3339 text format.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        # Defines the type of maintenance.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @date = args[:date] if args.key?(:date)
+          @time = args[:time] if args.key?(:time)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

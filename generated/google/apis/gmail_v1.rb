@@ -25,10 +25,22 @@ module Google
     # @see https://developers.google.com/gmail/api/
     module GmailV1
       VERSION = 'V1'
-      REVISION = '20200110'
+      REVISION = '20200203'
 
       # Read, compose, send, and permanently delete all your email from Gmail
       AUTH_SCOPE = 'https://mail.google.com/'
+
+      # Manage drafts and send emails when you interact with the add-on
+      AUTH_GMAIL_ADDONS_CURRENT_ACTION_COMPOSE = 'https://www.googleapis.com/auth/gmail.addons.current.action.compose'
+
+      # View your email messages when you interact with the add-on
+      AUTH_GMAIL_ADDONS_CURRENT_MESSAGE_ACTION = 'https://www.googleapis.com/auth/gmail.addons.current.message.action'
+
+      # View your email message metadata when the add-on is running
+      AUTH_GMAIL_ADDONS_CURRENT_MESSAGE_METADATA = 'https://www.googleapis.com/auth/gmail.addons.current.message.metadata'
+
+      # View your email messages when the add-on is running
+      AUTH_GMAIL_ADDONS_CURRENT_MESSAGE_READONLY = 'https://www.googleapis.com/auth/gmail.addons.current.message.readonly'
 
       # Manage drafts and send emails
       AUTH_GMAIL_COMPOSE = 'https://www.googleapis.com/auth/gmail.compose'
