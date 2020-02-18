@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/youtube/analytics
     module YoutubeAnalyticsV1
       VERSION = 'V1'
-      REVISION = '20200212'
+      REVISION = '20200215'
     end
   end
 end
