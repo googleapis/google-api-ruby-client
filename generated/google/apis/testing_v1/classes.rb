@@ -1903,6 +1903,26 @@ module Google
         end
       end
       
+      # 
+      class SystraceSetup
+        include Google::Apis::Core::Hashable
+      
+        # Systrace duration in seconds.
+        # Should be between 1 and 30 seconds. 0 disables systrace.
+        # Corresponds to the JSON property `durationSeconds`
+        # @return [Fixnum]
+        attr_accessor :duration_seconds
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @duration_seconds = args[:duration_seconds] if args.key?(:duration_seconds)
+        end
+      end
+      
       # Additional details about the progress of the running test.
       class TestDetails
         include Google::Apis::Core::Hashable
@@ -2182,6 +2202,14 @@ module Google
         # @return [String]
         attr_accessor :network_profile
       
+        # Systrace configuration for the run.
+        # If set a systrace will be taken, starting on test start and lasting for the
+        # configured duration. The systrace file thus obtained is put in the results
+        # bucket together with the other artifacts from the run.
+        # Corresponds to the JSON property `systrace`
+        # @return [Google::Apis::TestingV1::SystraceSetup]
+        attr_accessor :systrace
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2194,6 +2222,7 @@ module Google
           @environment_variables = args[:environment_variables] if args.key?(:environment_variables)
           @files_to_push = args[:files_to_push] if args.key?(:files_to_push)
           @network_profile = args[:network_profile] if args.key?(:network_profile)
+          @systrace = args[:systrace] if args.key?(:systrace)
         end
       end
       

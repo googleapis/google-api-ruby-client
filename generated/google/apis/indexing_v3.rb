@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/search/apis/indexing-api/
     module IndexingV3
       VERSION = 'V3'
-      REVISION = '20181012'
+      REVISION = '20200214'
 
       # Submit data to Google for indexing
       AUTH_INDEXING = 'https://www.googleapis.com/auth/indexing'

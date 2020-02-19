@@ -351,9 +351,10 @@ module Google
       
       # Entry Metadata.
       # A Data Catalog Entry resource represents another resource in Google
-      # Cloud Platform, such as a BigQuery dataset or a Cloud Pub/Sub topic.
-      # Clients can use the `linked_resource` field in the Entry resource to refer to
-      # the original resource ID of the source system.
+      # Cloud Platform (such as a BigQuery dataset or a Cloud Pub/Sub topic), or
+      # outside of Google Cloud Platform. Clients can use the `linked_resource` field
+      # in the Entry resource to refer to the original resource ID of the source
+      # system.
       # An Entry resource contains resource details, such as its schema. An Entry can
       # also be used to attach flexible metadata, such as a
       # Tag.

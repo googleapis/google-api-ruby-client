@@ -782,6 +782,70 @@ module Google
         end
       end
       
+      # A Drive file
+      class DriveFile
+        include Google::Apis::Core::Hashable
+      
+        # Abuse type of the file.
+        # Corresponds to the JSON property `abuseType`
+        # @return [String]
+        attr_accessor :abuse_type
+      
+        # The ID of the file.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The name of the file.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The number of recent downloads of the file. This is available for the
+        # following alert types:
+        # *Drive malware sharing detected
+        # Corresponds to the JSON property `numRecentDownload`
+        # @return [Fixnum]
+        attr_accessor :num_recent_download
+      
+        # The email address of the file owner.
+        # Corresponds to the JSON property `owner`
+        # @return [String]
+        attr_accessor :owner
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @abuse_type = args[:abuse_type] if args.key?(:abuse_type)
+          @id = args[:id] if args.key?(:id)
+          @name = args[:name] if args.key?(:name)
+          @num_recent_download = args[:num_recent_download] if args.key?(:num_recent_download)
+          @owner = args[:owner] if args.key?(:owner)
+        end
+      end
+      
+      # Alerts for suspicious Drive files or activities.
+      class DriveFileWarning
+        include Google::Apis::Core::Hashable
+      
+        # List of files in the alert.
+        # Corresponds to the JSON property `files`
+        # @return [Array<Google::Apis::AlertcenterV1beta1::DriveFile>]
+        attr_accessor :files
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @files = args[:files] if args.key?(:files)
+        end
+      end
+      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:

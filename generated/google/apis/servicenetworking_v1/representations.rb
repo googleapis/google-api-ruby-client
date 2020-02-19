@@ -437,6 +437,7 @@ module Google
           property :consumer_network, as: 'consumerNetwork'
           property :description, as: 'description'
           property :ip_prefix_length, as: 'ipPrefixLength'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :region, as: 'region'
           property :requested_address, as: 'requestedAddress'
           property :subnetwork, as: 'subnetwork'
@@ -967,6 +968,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_prefix_length, as: 'ipPrefixLength'
+          collection :secondary_range_ip_prefix_lengths, as: 'secondaryRangeIpPrefixLengths'
         end
       end
       

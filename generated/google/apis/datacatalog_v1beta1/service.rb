@@ -139,12 +139,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an EntryGroup.
-        # The user should enable the Data Catalog API in the project identified by
-        # the `parent` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
         # A maximum of 10,000 entry groups may be created per organization across all
         # locations.
+        # Users should enable the Data Catalog API in the project identified by
+        # the `parent` parameter (see [Data Catalog Resource Project]
+        # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] parent
         #   Required. The name of the project this entry group is in. Example:
         #   * projects/`project_id`/locations/`location`
@@ -186,7 +185,7 @@ module Google
         end
         
         # Deletes an EntryGroup. Only entry groups that do not contain entries can be
-        # deleted. The user should enable the Data Catalog API in the project
+        # deleted. Users should enable the Data Catalog API in the project
         # identified by the `name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -484,7 +483,7 @@ module Google
         
         # Creates an entry. Only entries of 'FILESET' type or user-specified type can
         # be created.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `parent` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # A maximum of 100,000 entries may be created per entry group.
@@ -529,7 +528,7 @@ module Google
         # Deletes an existing entry. Only entries created through
         # CreateEntry
         # method can be deleted.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -568,10 +567,6 @@ module Google
         #   Required. The name of the entry. Example:
         #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
         #   entries/`entry_id`
-        #   Entry groups are logical groupings of entries. Currently, users cannot
-        #   create/modify entry groups. They are created by Data Catalog; they include
-        #   `@bigquery` for all BigQuery entries, and `@pubsub` for all Cloud Pub/Sub
-        #   entries.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -694,7 +689,7 @@ module Google
         end
         
         # Updates an existing entry.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `entry.name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -716,6 +711,14 @@ module Google
         #   * `description`
         #   * `gcs_fileset_spec`
         #   * `gcs_fileset_spec.file_patterns`
+        #   * For entries with `user_specified_type`
+        #   * `schema`
+        #   * `display_name`
+        #   * `description`
+        #   * user_specified_type
+        #   * user_specified_system
+        #   * linked_resource
+        #   * source_system_timestamps
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -873,7 +876,13 @@ module Google
         # Lists the tags on an Entry.
         # @param [String] parent
         #   Required. The name of the Data Catalog resource to list the tags of. The
-        #   resource could be an Entry.
+        #   resource
+        #   could be an Entry or an
+        #   EntryGroup.
+        #   Examples:
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
+        #   entries/`entry_id`
         # @param [Fixnum] page_size
         #   The maximum number of tags to return. Default is 10. Max limit is 1000.
         # @param [String] page_token
@@ -949,6 +958,170 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a tag on an Entry.
+        # Note: The project identified by the `parent` parameter for the
+        # [tag](/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.
+        # entries.tags/create#path-parameters)
+        # and the
+        # [tag
+        # template](/data-catalog/docs/reference/rest/v1beta1/projects.locations.
+        # tagTemplates/create#path-parameters)
+        # used to create the tag must be from the same organization.
+        # @param [String] parent
+        #   Required. The name of the resource to attach this tag to. Tags can be attached
+        #   to
+        #   Entries. Example:
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
+        #   entries/`entry_id`
+        #   Note that this Tag and its child resources may not actually be stored in
+        #   the location in this name.
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] google_cloud_datacatalog_v1beta1_tag_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_entry_group_tag(parent, google_cloud_datacatalog_v1beta1_tag_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/tags', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_tag_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a tag.
+        # @param [String] name
+        #   Required. The name of the tag to delete. Example:
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
+        #   entries/`entry_id`/tags/`tag_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_entry_group_tag(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::Empty::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the tags on an Entry.
+        # @param [String] parent
+        #   Required. The name of the Data Catalog resource to list the tags of. The
+        #   resource
+        #   could be an Entry or an
+        #   EntryGroup.
+        #   Examples:
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`
+        #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
+        #   entries/`entry_id`
+        # @param [Fixnum] page_size
+        #   The maximum number of tags to return. Default is 10. Max limit is 1000.
+        # @param [String] page_token
+        #   Token that specifies which page is requested. If empty, the first page is
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTagsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTagsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_entry_group_tags(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/tags', options)
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTagsResponse::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ListTagsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an existing tag.
+        # @param [String] name
+        #   The resource name of the tag in URL format. Example:
+        #   * projects/`project_id`/locations/`location`/entrygroups/`entry_group_id`/
+        #   entries/`entry_id`/tags/`tag_id`
+        #   where `tag_id` is a system-generated identifier.
+        #   Note that this Tag may not actually be stored in the location in this name.
+        # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] google_cloud_datacatalog_v1beta1_tag_object
+        # @param [String] update_mask
+        #   The fields to update on the Tag. If absent or empty, all modifiable fields
+        #   are updated. Currently the only modifiable field is the field `fields`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_entry_group_tag(name, google_cloud_datacatalog_v1beta1_tag_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag::Representation
+          command.request_object = google_cloud_datacatalog_v1beta1_tag_object
+          command.response_representation = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag::Representation
+          command.response_class = Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Tag
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a tag template. The user should enable the Data Catalog API in
         # the project identified by the `parent` parameter (see [Data Catalog
         # Resource Project](/data-catalog/docs/concepts/resource-project) for more
@@ -993,7 +1166,7 @@ module Google
         end
         
         # Deletes a tag template and all tags using the template.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -1113,7 +1286,7 @@ module Google
         # Updates a tag template. This method cannot be used to update the fields of
         # a template. The tag template fields are represented as separate resources
         # and should be updated using their own create/update/delete methods.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `tag_template.name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -1298,7 +1471,7 @@ module Google
         end
         
         # Deletes a field in a tag template and all uses of that field.
-        # The user should enable the Data Catalog API in the project identified by
+        # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name
@@ -1338,7 +1511,7 @@ module Google
         end
         
         # Updates a field in a tag template. This method cannot be used to update the
-        # field type. The user should enable the Data Catalog API in the project
+        # field type. Users should enable the Data Catalog API in the project
         # identified by the `name` parameter (see [Data Catalog Resource Project]
         # (/data-catalog/docs/concepts/resource-project) for more information).
         # @param [String] name

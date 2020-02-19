@@ -340,6 +340,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SystraceSetup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TestDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -955,6 +961,13 @@ module Google
         end
       end
       
+      class SystraceSetup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :duration_seconds, as: 'durationSeconds'
+        end
+      end
+      
       class TestDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1034,6 +1047,8 @@ module Google
           collection :files_to_push, as: 'filesToPush', class: Google::Apis::TestingV1::DeviceFile, decorator: Google::Apis::TestingV1::DeviceFile::Representation
       
           property :network_profile, as: 'networkProfile'
+          property :systrace, as: 'systrace', class: Google::Apis::TestingV1::SystraceSetup, decorator: Google::Apis::TestingV1::SystraceSetup::Representation
+      
         end
       end
       
