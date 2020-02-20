@@ -2510,7 +2510,7 @@ module Google
         attr_accessor :max_findings_per_info_type
       
         # Max number of findings that will be returned for each item scanned.
-        # When set within `InspectDataSourceRequest`,
+        # When set within `InspectJobConfig`,
         # the maximum returned is 2000 regardless if this is set higher.
         # When set within `InspectContentRequest`, this field is ignored.
         # Corresponds to the JSON property `maxFindingsPerItem`
@@ -4133,6 +4133,7 @@ module Google
         # If unspecified, then all available columns will be used for a new table or
         # an (existing) table with no schema, and no changes will be made to an
         # existing table that has a schema.
+        # Only for use with external storage.
         # Corresponds to the JSON property `outputSchema`
         # @return [String]
         attr_accessor :output_schema

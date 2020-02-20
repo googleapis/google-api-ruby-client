@@ -22,40 +22,8 @@ module Google
   module Apis
     module CloudidentityV1
       
-      # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
-      # isolation for IDs. A single ID can be reused across namespaces but the
-      # combination of a namespace and an ID must be unique.
-      class EntityKey
-        include Google::Apis::Core::Hashable
-      
-        # The ID of the entity within the given namespace. The ID must be unique
-        # within its namespace.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Namespaces provide isolation for IDs, so an ID only needs to be unique
-        # within its namespace.
-        # Namespaces are currently only created as part of IdentitySource creation
-        # from Admin Console. A namespace `"identitysources/`identity_source_id`"` is
-        # created corresponding to every Identity Source `identity_source_id`.
-        # Corresponds to the JSON property `namespace`
-        # @return [String]
-        attr_accessor :namespace
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @id = args[:id] if args.key?(:id)
-          @namespace = args[:namespace] if args.key?(:namespace)
-        end
-      end
-      
       # Resource representing the Android specific attributes of a Device.
-      class GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes
+      class AndroidAttributes
         include Google::Apis::Core::Hashable
       
         # Baseband version of Android device.
@@ -165,12 +133,12 @@ module Google
       end
       
       # Response message for approving the device to access user data.
-      class GoogleAppsCloudidentityDevicesV1alpha1ApproveDeviceUserResponse
+      class ApproveDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a user's use of a Device
+        # A DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -184,12 +152,12 @@ module Google
       end
       
       # Response message for blocking the device from accessing user data.
-      class GoogleAppsCloudidentityDevicesV1alpha1BlockDeviceUserResponse
+      class BlockDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a user's use of a Device
+        # A DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -203,13 +171,13 @@ module Google
       end
       
       # Response message for cancelling an unfinished device wipe.
-      class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceResponse
+      class CancelWipeDeviceResponse
         include Google::Apis::Core::Hashable
       
         # Represents a Device known to Google Cloud, independent of the device
         # ownership, type, and whether it is assigned or in use by a user.
         # Corresponds to the JSON property `device`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1Device]
+        # @return [Google::Apis::CloudidentityV1::Device]
         attr_accessor :device
       
         def initialize(**args)
@@ -223,12 +191,12 @@ module Google
       end
       
       # Response message for cancelling an unfinished user account wipe.
-      class GoogleAppsCloudidentityDevicesV1alpha1CancelWipeDeviceUserResponse
+      class CancelWipeDeviceUserResponse
         include Google::Apis::Core::Hashable
       
-        # Resource representing a user's use of a Device
+        # A DeviceUser is a resource representing a user's use of a Device
         # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1DeviceUser]
+        # @return [Google::Apis::CloudidentityV1::DeviceUser]
         attr_accessor :device_user
       
         def initialize(**args)
@@ -243,12 +211,12 @@ module Google
       
       # Represents a Device known to Google Cloud, independent of the device
       # ownership, type, and whether it is assigned or in use by a user.
-      class GoogleAppsCloudidentityDevicesV1alpha1Device
+      class Device
         include Google::Apis::Core::Hashable
       
         # Resource representing the Android specific attributes of a Device.
         # Corresponds to the JSON property `androidSpecificAttributes`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1AndroidAttributes]
+        # @return [Google::Apis::CloudidentityV1::AndroidAttributes]
         attr_accessor :android_specific_attributes
       
         # Asset tag of the device.
@@ -374,8 +342,8 @@ module Google
         end
       end
       
-      # Resource representing a user's use of a Device
-      class GoogleAppsCloudidentityDevicesV1alpha1DeviceUser
+      # A DeviceUser is a resource representing a user's use of a Device
+      class DeviceUser
         include Google::Apis::Core::Hashable
       
         # Compromised State of the DeviceUser object
@@ -444,8 +412,9 @@ module Google
         end
       end
       
+      # An EndpointApp represents an app that is installed on a device
       # Next ID to use: 7
-      class GoogleAppsCloudidentityDevicesV1alpha1EndpointApp
+      class EndpointApp
         include Google::Apis::Core::Hashable
       
         # Output only. Name of the app displayed to the user
@@ -497,46 +466,26 @@ module Google
         end
       end
       
-      # Response message that is returned in LRO result of ListDeviceUsers Operation.
-      class GoogleAppsCloudidentityDevicesV1alpha1ListDeviceUsersResponse
+      # An EntityKey uniquely identifies an Entity. Namespaces are used to provide
+      # isolation for IDs. A single ID can be reused across namespaces but the
+      # combination of a namespace and an ID must be unique.
+      class EntityKey
         include Google::Apis::Core::Hashable
       
-        # Devices meeting the list restrictions.
-        # Corresponds to the JSON property `deviceUsers`
-        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1DeviceUser>]
-        attr_accessor :device_users
-      
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
-        # Corresponds to the JSON property `nextPageToken`
+        # The ID of the entity within the given namespace. The ID must be unique
+        # within its namespace.
+        # Corresponds to the JSON property `id`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :id
       
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_users = args[:device_users] if args.key?(:device_users)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response message that is returned in LRO result of ListDevices Operation.
-      class GoogleAppsCloudidentityDevicesV1alpha1ListDevicesResponse
-        include Google::Apis::Core::Hashable
-      
-        # Devices meeting the list restrictions.
-        # Corresponds to the JSON property `devices`
-        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1Device>]
-        attr_accessor :devices
-      
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
-        # Corresponds to the JSON property `nextPageToken`
+        # Namespaces provide isolation for IDs, so an ID only needs to be unique
+        # within its namespace.
+        # Namespaces are currently only created as part of IdentitySource creation
+        # from Admin Console. A namespace `"identitysources/`identity_source_id`"` is
+        # created corresponding to every Identity Source `identity_source_id`.
+        # Corresponds to the JSON property `namespace`
         # @return [String]
-        attr_accessor :next_page_token
+        attr_accessor :namespace
       
         def initialize(**args)
            update!(**args)
@@ -544,73 +493,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @devices = args[:devices] if args.key?(:devices)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response message for listing all apps on the device.
-      class GoogleAppsCloudidentityDevicesV1alpha1ListEndpointAppsResponse
-        include Google::Apis::Core::Hashable
-      
-        # The list of matching EndpointApps found as a result of the request.
-        # Corresponds to the JSON property `endpointApps`
-        # @return [Array<Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1EndpointApp>]
-        attr_accessor :endpoint_apps
-      
-        # Token to retrieve the next page of results. Empty if there are no more
-        # results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @endpoint_apps = args[:endpoint_apps] if args.key?(:endpoint_apps)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response message for wiping all data on the device.
-      class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceResponse
-        include Google::Apis::Core::Hashable
-      
-        # Represents a Device known to Google Cloud, independent of the device
-        # ownership, type, and whether it is assigned or in use by a user.
-        # Corresponds to the JSON property `device`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1Device]
-        attr_accessor :device
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device = args[:device] if args.key?(:device)
-        end
-      end
-      
-      # Response message for wiping the user's account from the device.
-      class GoogleAppsCloudidentityDevicesV1alpha1WipeDeviceUserResponse
-        include Google::Apis::Core::Hashable
-      
-        # Resource representing a user's use of a Device
-        # Corresponds to the JSON property `deviceUser`
-        # @return [Google::Apis::CloudidentityV1::GoogleAppsCloudidentityDevicesV1alpha1DeviceUser]
-        attr_accessor :device_user
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @device_user = args[:device_user] if args.key?(:device_user)
+          @id = args[:id] if args.key?(:id)
+          @namespace = args[:namespace] if args.key?(:namespace)
         end
       end
       
@@ -688,6 +572,84 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message that is returned in LRO result of ListDeviceUsers Operation.
+      class ListDeviceUsersResponse
+        include Google::Apis::Core::Hashable
+      
+        # Devices meeting the list restrictions.
+        # Corresponds to the JSON property `deviceUsers`
+        # @return [Array<Google::Apis::CloudidentityV1::DeviceUser>]
+        attr_accessor :device_users
+      
+        # Token to retrieve the next page of results. Empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_users = args[:device_users] if args.key?(:device_users)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message that is returned in LRO result of ListDevices Operation.
+      class ListDevicesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Devices meeting the list restrictions.
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::CloudidentityV1::Device>]
+        attr_accessor :devices
+      
+        # Token to retrieve the next page of results. Empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @devices = args[:devices] if args.key?(:devices)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for listing all apps on the device.
+      class ListEndpointAppsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching EndpointApps found as a result of the request.
+        # Corresponds to the JSON property `endpointApps`
+        # @return [Array<Google::Apis::CloudidentityV1::EndpointApp>]
+        attr_accessor :endpoint_apps
+      
+        # Token to retrieve the next page of results. Empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @endpoint_apps = args[:endpoint_apps] if args.key?(:endpoint_apps)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -985,6 +947,45 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Response message for wiping all data on the device.
+      class WipeDeviceResponse
+        include Google::Apis::Core::Hashable
+      
+        # Represents a Device known to Google Cloud, independent of the device
+        # ownership, type, and whether it is assigned or in use by a user.
+        # Corresponds to the JSON property `device`
+        # @return [Google::Apis::CloudidentityV1::Device]
+        attr_accessor :device
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device = args[:device] if args.key?(:device)
+        end
+      end
+      
+      # Response message for wiping the user's account from the device.
+      class WipeDeviceUserResponse
+        include Google::Apis::Core::Hashable
+      
+        # A DeviceUser is a resource representing a user's use of a Device
+        # Corresponds to the JSON property `deviceUser`
+        # @return [Google::Apis::CloudidentityV1::DeviceUser]
+        attr_accessor :device_user
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @device_user = args[:device_user] if args.key?(:device_user)
         end
       end
     end

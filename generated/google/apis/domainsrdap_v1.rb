@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/domains/rdap/
     module DomainsrdapV1
       VERSION = 'V1'
-      REVISION = '20190826'
+      REVISION = '20200218'
     end
   end
 end

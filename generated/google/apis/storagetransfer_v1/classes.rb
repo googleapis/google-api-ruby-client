@@ -24,7 +24,7 @@ module Google
       
       # AWS access key (see
       # [AWS Security
-      # Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-
+      # Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-
       # credentials.html)).
       class AwsAccessKey
         include Google::Apis::Core::Hashable
@@ -58,7 +58,7 @@ module Google
       
         # AWS access key (see
         # [AWS Security
-        # Credentials](http://docs.aws.amazon.com/general/latest/gr/aws-security-
+        # Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-
         # credentials.html)).
         # Corresponds to the JSON property `awsAccessKey`
         # @return [Google::Apis::StoragetransferV1::AwsAccessKey]
@@ -66,7 +66,7 @@ module Google
       
         # Required. S3 Bucket name (see
         # [Creating a
-        # bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-
+        # bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-
         # location-example.html)).
         # Corresponds to the JSON property `bucketName`
         # @return [String]
@@ -205,8 +205,9 @@ module Google
       end
       
       # In a GcsData resource, an object's name is the Cloud Storage object's
-      # name and its `lastModificationTime` refers to the object's updated time,
-      # which changes when the content or the metadata of the object is updated.
+      # name and its "last modification time" refers to the object's `updated`
+      # property of Cloud Storage objects, which changes when the content or the
+      # metadata of the object is updated.
       class GcsData
         include Google::Apis::Core::Hashable
       
@@ -249,15 +250,15 @@ module Google
       # An HttpData resource specifies a list of objects on the web to be transferred
       # over HTTP.  The information of the objects to be transferred is contained in
       # a file referenced by a URL. The first line in the file must be
-      # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
-      # specify the information of the list of objects, one object per list entry.
-      # Each entry has the following tab-delimited fields:
-      # * HTTP URL - The location of the object.
-      # * Length - The size of the object in bytes.
-      # * MD5 - The base64-encoded MD5 hash of the object.
+      # `"TsvHttpData-1.0"`, which specifies the format of the file.  Subsequent
+      # lines specify the information of the list of objects, one object per list
+      # entry. Each entry has the following tab-delimited fields:
+      # * **HTTP URL** — The location of the object.
+      # * **Length** — The size of the object in bytes.
+      # * **MD5** — The base64-encoded MD5 hash of the object.
       # For an example of a valid TSV file, see
       # [Transferring data from
-      # URLs](https://cloud.google.com/storage/transfer/create-url-list).
+      # URLs](https://cloud.google.com/storage-transfer/docs/create-url-list).
       # When transferring data based on a URL list, keep the following in mind:
       # * When an object located at `http(s)://hostname:port/<URL-path>` is
       # transferred to a data sink, the name of the object at the data sink is
@@ -266,7 +267,8 @@ module Google
       # object fetched, the object will not be transferred.
       # * If the specified MD5 does not match the MD5 computed from the transferred
       # bytes, the object transfer will fail. For more information, see
-      # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+      # [Generating MD5
+      # hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
       # * Ensure that each URL you specify is publicly accessible. For
       # example, in Cloud Storage you can
       # [share an object publicly]
@@ -275,8 +277,7 @@ module Google
       # * Storage Transfer Service obeys `robots.txt` rules and requires the source
       # HTTP server to support `Range` requests and to return a `Content-Length`
       # header in each response.
-      # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
-      # to transfer.
+      # * ObjectConditions have no effect when filtering objects to transfer.
       class HttpData
         include Google::Apis::Core::Hashable
       
@@ -349,26 +350,30 @@ module Google
       
       # Conditions that determine which objects will be transferred. Applies only
       # to S3 and Cloud Storage objects.
+      # The "last modification time" refers to the time of the
+      # last change to the object's content or metadata — specifically, this is
+      # the `updated` property of Cloud Storage objects and the `LastModified`
+      # field of S3 objects.
       class ObjectConditions
         include Google::Apis::Core::Hashable
       
-        # `excludePrefixes` must follow the requirements described for
-        # `includePrefixes`.
-        # The max size of `excludePrefixes` is 1000.
+        # `exclude_prefixes` must follow the requirements described for
+        # include_prefixes.
+        # The max size of `exclude_prefixes` is 1000.
         # Corresponds to the JSON property `excludePrefixes`
         # @return [Array<String>]
         attr_accessor :exclude_prefixes
       
-        # If `includePrefixes` is specified, objects that satisfy the object
-        # conditions must have names that start with one of the `includePrefixes`
-        # and that do not start with any of the `excludePrefixes`. If
-        # `includePrefixes` is not specified, all objects except those that have
-        # names starting with one of the `excludePrefixes` must satisfy the object
+        # If `include_prefixes` is specified, objects that satisfy the object
+        # conditions must have names that start with one of the `include_prefixes`
+        # and that do not start with any of the exclude_prefixes. If
+        # `include_prefixes` is not specified, all objects except those that have
+        # names starting with one of the `exclude_prefixes` must satisfy the object
         # conditions.
         # Requirements:
         # * Each include-prefix and exclude-prefix can contain any sequence of
-        # Unicode characters, of max length 1024 bytes when UTF8-encoded, and
-        # must not contain Carriage Return or Line Feed characters.  Wildcard
+        # Unicode characters, to a max length of 1024 bytes when UTF8-encoded,
+        # and must not contain Carriage Return or Line Feed characters.  Wildcard
         # matching and regular expression matching are not supported.
         # * Each include-prefix and exclude-prefix must omit the leading slash.
         # For example, to include the `requests.gz` object in a transfer from
@@ -377,40 +382,34 @@ module Google
         # * None of the include-prefix or the exclude-prefix values can be empty,
         # if specified.
         # * Each include-prefix must include a distinct portion of the object
-        # namespace, i.e., no include-prefix may be a prefix of another
+        # namespace. No include-prefix may be a prefix of another
         # include-prefix.
         # * Each exclude-prefix must exclude a distinct portion of the object
-        # namespace, i.e., no exclude-prefix may be a prefix of another
+        # namespace. No exclude-prefix may be a prefix of another
         # exclude-prefix.
-        # * If `includePrefixes` is specified, then each exclude-prefix must start
-        # with the value of a path explicitly included by `includePrefixes`.
-        # The max size of `includePrefixes` is 1000.
+        # * If `include_prefixes` is specified, then each exclude-prefix must start
+        # with the value of a path explicitly included by `include_prefixes`.
+        # The max size of `include_prefixes` is 1000.
         # Corresponds to the JSON property `includePrefixes`
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
-        # If specified, only objects with a `lastModificationTime` on or after
-        # `NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have
-        # a `lastModificationTime` are transferred.
-        # Note that, for each `TransferOperation` started by this `TransferJob`,
-        # `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
-        # `lastModificationTime` refers to the time of the last change to the
-        # object's content or metadata - specifically, this would be the `updated`
-        # property of Cloud Storage objects and the `LastModified` field of S3
-        # objects.
+        # If specified, only objects with a "last modification time" on or after
+        # `NOW` - `max_time_elapsed_since_last_modification` and objects that don't
+        # have a "last modification time" are transferred.
+        # For each TransferOperation started by this TransferJob,
+        # `NOW` refers to the start_time of the
+        # `TransferOperation`.
         # Corresponds to the JSON property `maxTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :max_time_elapsed_since_last_modification
       
-        # If specified, only objects with a `lastModificationTime` before
-        # `NOW` - `minTimeElapsedSinceLastModification` and objects that don't have a
-        # `lastModificationTime` are transferred.
-        # Note that, for each `TransferOperation` started by this `TransferJob`,
-        # `NOW` refers to the `start_time` of the 'TransferOperation`. Also,
-        # `lastModificationTime` refers to the time of the last change to the
-        # object's content or metadata - specifically, this would be the `updated`
-        # property of Cloud Storage objects and the `LastModified` field of S3
-        # objects.
+        # If specified, only objects with a "last modification time" before
+        # `NOW` - `min_time_elapsed_since_last_modification` and objects that don't
+        # have a "last modification time" are transferred.
+        # For each TransferOperation started by this TransferJob, `NOW`
+        # refers to the start_time of the
+        # `TransferOperation`.
         # Corresponds to the JSON property `minTimeElapsedSinceLastModification`
         # @return [String]
         attr_accessor :min_time_elapsed_since_last_modification
@@ -787,16 +786,16 @@ module Google
       
         # A unique name (within the transfer project) assigned when the job is
         # created.
-        # If this field is left empty in a CreateTransferJobRequest,
-        # Storage Transfer Service will assign a unique name. Otherwise, the supplied
-        # name is used as the unique name for this job.
-        # This name must start with "transferJobs/" prefix and end with a letter or a
-        # number, and should be no more than 128 characters.
-        # Example of a valid format : "transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"
-        # **NOTE:**
-        # If the supplied name is already in use, the creation request results in an
-        # `ALREADY_EXISTS` error and the transfer job will not be created.
-        # Invalid job names will return an 'INVALID_ARGUMENT' error and the job will
+        # If this field is left empty in a CreateTransferJobRequest, Storage Transfer
+        # Service will assign a unique name. Otherwise, the supplied name is used as
+        # the unique name for this job.
+        # This name must start with `"transferJobs/"` prefix and end with a letter or
+        # a number, and should be no more than 128 characters.
+        # Example of a valid format : `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
+        # **Note:** If the supplied name is already in use, the creation request
+        # results in an ALREADY_EXISTS error and
+        # the transfer job will not be created.  Invalid job names will return an
+        # INVALID_ARGUMENT error and the job will
         # not be created.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -814,10 +813,11 @@ module Google
       
         # Status of the job. This value MUST be specified for
         # `CreateTransferJobRequests`.
-        # NOTE: The effect of the new job status takes place during a subsequent job
-        # run. For example, if you change the job status from `ENABLED` to
-        # `DISABLED`, and an operation spawned by the transfer is running, the status
-        # change would not affect the current operation.
+        # **Note:** The effect of the new job status takes place during a subsequent
+        # job run. For example, if you change the job status from
+        # ENABLED to DISABLED, and an operation
+        # spawned by the transfer is running, the status change would not affect the
+        # current operation.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -918,16 +918,17 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether objects should be deleted from the source after they are
-        # transferred to the sink.  Note that this option and
-        # `deleteObjectsUniqueInSink` are mutually exclusive.
+        # transferred to the sink.
+        # **Note:** This option and delete_objects_unique_in_sink are mutually
+        # exclusive.
         # Corresponds to the JSON property `deleteObjectsFromSourceAfterTransfer`
         # @return [Boolean]
         attr_accessor :delete_objects_from_source_after_transfer
         alias_method :delete_objects_from_source_after_transfer?, :delete_objects_from_source_after_transfer
       
-        # Whether objects that exist only in the sink should be deleted.  Note that
-        # this option and `deleteObjectsFromSourceAfterTransfer` are mutually
-        # exclusive.
+        # Whether objects that exist only in the sink should be deleted.
+        # **Note:** This option and delete_objects_from_source_after_transfer are
+        # mutually exclusive.
         # Corresponds to the JSON property `deleteObjectsUniqueInSink`
         # @return [Boolean]
         attr_accessor :delete_objects_unique_in_sink
@@ -962,15 +963,17 @@ module Google
         attr_accessor :aws_s3_data_source
       
         # In a GcsData resource, an object's name is the Cloud Storage object's
-        # name and its `lastModificationTime` refers to the object's updated time,
-        # which changes when the content or the metadata of the object is updated.
+        # name and its "last modification time" refers to the object's `updated`
+        # property of Cloud Storage objects, which changes when the content or the
+        # metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSink`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_sink
       
         # In a GcsData resource, an object's name is the Cloud Storage object's
-        # name and its `lastModificationTime` refers to the object's updated time,
-        # which changes when the content or the metadata of the object is updated.
+        # name and its "last modification time" refers to the object's `updated`
+        # property of Cloud Storage objects, which changes when the content or the
+        # metadata of the object is updated.
         # Corresponds to the JSON property `gcsDataSource`
         # @return [Google::Apis::StoragetransferV1::GcsData]
         attr_accessor :gcs_data_source
@@ -978,15 +981,15 @@ module Google
         # An HttpData resource specifies a list of objects on the web to be transferred
         # over HTTP.  The information of the objects to be transferred is contained in
         # a file referenced by a URL. The first line in the file must be
-        # "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines
-        # specify the information of the list of objects, one object per list entry.
-        # Each entry has the following tab-delimited fields:
-        # * HTTP URL - The location of the object.
-        # * Length - The size of the object in bytes.
-        # * MD5 - The base64-encoded MD5 hash of the object.
+        # `"TsvHttpData-1.0"`, which specifies the format of the file.  Subsequent
+        # lines specify the information of the list of objects, one object per list
+        # entry. Each entry has the following tab-delimited fields:
+        # * **HTTP URL** — The location of the object.
+        # * **Length** — The size of the object in bytes.
+        # * **MD5** — The base64-encoded MD5 hash of the object.
         # For an example of a valid TSV file, see
         # [Transferring data from
-        # URLs](https://cloud.google.com/storage/transfer/create-url-list).
+        # URLs](https://cloud.google.com/storage-transfer/docs/create-url-list).
         # When transferring data based on a URL list, keep the following in mind:
         # * When an object located at `http(s)://hostname:port/<URL-path>` is
         # transferred to a data sink, the name of the object at the data sink is
@@ -995,7 +998,8 @@ module Google
         # object fetched, the object will not be transferred.
         # * If the specified MD5 does not match the MD5 computed from the transferred
         # bytes, the object transfer will fail. For more information, see
-        # [Generating MD5 hashes](https://cloud.google.com/storage/transfer/#md5)
+        # [Generating MD5
+        # hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
         # * Ensure that each URL you specify is publicly accessible. For
         # example, in Cloud Storage you can
         # [share an object publicly]
@@ -1004,14 +1008,17 @@ module Google
         # * Storage Transfer Service obeys `robots.txt` rules and requires the source
         # HTTP server to support `Range` requests and to return a `Content-Length`
         # header in each response.
-        # * [ObjectConditions](#ObjectConditions) have no effect when filtering objects
-        # to transfer.
+        # * ObjectConditions have no effect when filtering objects to transfer.
         # Corresponds to the JSON property `httpDataSource`
         # @return [Google::Apis::StoragetransferV1::HttpData]
         attr_accessor :http_data_source
       
         # Conditions that determine which objects will be transferred. Applies only
         # to S3 and Cloud Storage objects.
+        # The "last modification time" refers to the time of the
+        # last change to the object's content or metadata — specifically, this is
+        # the `updated` property of Cloud Storage objects and the `LastModified`
+        # field of S3 objects.
         # Corresponds to the JSON property `objectConditions`
         # @return [Google::Apis::StoragetransferV1::ObjectConditions]
         attr_accessor :object_conditions
@@ -1055,10 +1062,12 @@ module Google
       
         # The field mask of the fields in `transferJob` that are to be updated in
         # this request.  Fields in `transferJob` that can be updated are:
-        # `description`, `transferSpec`, and `status`.  To update the `transferSpec`
-        # of the job, a complete transfer specification has to be provided. An
-        # incomplete specification which misses any required fields will be rejected
-        # with the error `INVALID_ARGUMENT`.
+        # description,
+        # transfer_spec, and
+        # status.  To update the `transfer_spec` of the job, a
+        # complete transfer specification must be provided. An incomplete
+        # specification missing any required fields will be rejected with the error
+        # INVALID_ARGUMENT.
         # Corresponds to the JSON property `updateTransferJobFieldMask`
         # @return [String]
         attr_accessor :update_transfer_job_field_mask

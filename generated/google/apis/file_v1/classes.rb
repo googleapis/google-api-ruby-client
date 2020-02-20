@@ -106,22 +106,6 @@ module Google
       # "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-
       # policy",
       # `
-      # "rollout_metadata": `
-      # "projects/cloud-sql/locations/global/rolloutTypes/software_update": `
-      # "release":
-      # "projects/cloud-sql/locations/global/releases/cloud-sql-09-28-2018",
-      # "rollout":
-      # "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-
-      # canary",
-      # `,
-      # "projects/cloud-sql/locations/global/rolloutTypes/instance_restart": `
-      # "release":
-      # "projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair",
-      # "rollout":
-      # "projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-
-      # 100-percent",
-      # `
-      # `
       # "tenant_project_id": "cloud-sql-test-tenant",
       # "producer_metadata": `
       # "cloud-sql-tier": "basic",
@@ -367,6 +351,7 @@ module Google
         end
       end
       
+      # This message has been deprecated.
       # NotificationMetadata is the notification state for an instance.
       class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
         include Google::Apis::Core::Hashable
@@ -438,10 +423,12 @@ module Google
         end
       end
       
+      # This message has been deprecated.
       # RolloutMetadata for an actuation instance. It maps to a single RolloutType.
       class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
         include Google::Apis::Core::Hashable
       
+        # This message has been deprecated.
         # NotificationMetadata is the notification state for an instance.
         # Corresponds to the JSON property `notification`
         # @return [Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata]
@@ -574,7 +561,7 @@ module Google
         # @return [Array<Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>]
         attr_accessor :exclusions
       
-        # Optional: list of nodes.
+        # Optional. List of nodes.
         # Some producers need to use per-node metadata to calculate SLO.
         # This field allows such producers to publish per-node SLO meta data,
         # which will be consumed by SSA Eligibility Exporter and published in the
@@ -612,7 +599,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Optional. A description of the instance (2048 characters or less).
+        # Optional. The description of the instance (2048 characters or less).
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -635,7 +622,7 @@ module Google
         attr_accessor :labels
       
         # Output only. The resource name of the instance, in the format
-        # projects/`project_id`/locations/`location_id`/instances/`instance_id`.
+        # projects/`project`/locations/`location`/instances/`instance`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

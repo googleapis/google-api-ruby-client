@@ -1552,8 +1552,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.
-        # When enabled, it ensures that a Heapster pod is running in the cluster,
-        # which is also used by the Cloud Monitoring service.
+        # When enabled, it ensures that metrics are collected into Stackdriver
+        # Monitoring.
         # Corresponds to the JSON property `disabled`
         # @return [Boolean]
         attr_accessor :disabled
