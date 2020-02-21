@@ -390,7 +390,10 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # The aspect ratio of this image (width/height).
+        # The aspect ratio of this image (width/height). This field allows clients
+        # to reserve the right height for the image while waiting for it to load.
+        # It's not meant to override the native aspect ratio of the image.
+        # If unset, server will fill it by prefetching the image.
         # Corresponds to the JSON property `aspectRatio`
         # @return [Float]
         attr_accessor :aspect_ratio
@@ -882,6 +885,11 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Obfuscated domain information.
+        # Corresponds to the JSON property `domainId`
+        # @return [String]
+        attr_accessor :domain_id
+      
         # Resource name, in the format "users/*".
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -899,6 +907,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @domain_id = args[:domain_id] if args.key?(:domain_id)
           @name = args[:name] if args.key?(:name)
           @type = args[:type] if args.key?(:type)
         end

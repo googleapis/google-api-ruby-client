@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/actions/smarthome/create-app#request-sync
     module HomegraphV1
       VERSION = 'V1'
-      REVISION = '20200115'
+      REVISION = '20200219'
     end
   end
 end

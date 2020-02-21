@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PrestoJob
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class PySparkJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -780,6 +786,8 @@ module Google
       
           property :placement, as: 'placement', class: Google::Apis::DataprocV1::JobPlacement, decorator: Google::Apis::DataprocV1::JobPlacement::Representation
       
+          property :presto_job, as: 'prestoJob', class: Google::Apis::DataprocV1::PrestoJob, decorator: Google::Apis::DataprocV1::PrestoJob::Representation
+      
           property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1::PySparkJob, decorator: Google::Apis::DataprocV1::PySparkJob::Representation
       
           property :reference, as: 'reference', class: Google::Apis::DataprocV1::JobReference, decorator: Google::Apis::DataprocV1::JobReference::Representation
@@ -1010,6 +1018,21 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class PrestoJob
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :client_tags, as: 'clientTags'
+          property :continue_on_failure, as: 'continueOnFailure'
+          property :logging_config, as: 'loggingConfig', class: Google::Apis::DataprocV1::LoggingConfig, decorator: Google::Apis::DataprocV1::LoggingConfig::Representation
+      
+          property :output_format, as: 'outputFormat'
+          hash :properties, as: 'properties'
+          property :query_file_uri, as: 'queryFileUri'
+          property :query_list, as: 'queryList', class: Google::Apis::DataprocV1::QueryList, decorator: Google::Apis::DataprocV1::QueryList::Representation
+      
         end
       end
       

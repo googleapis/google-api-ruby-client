@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudtasks_v2beta3/service.rb'
-require 'google/apis/cloudtasks_v2beta3/classes.rb'
-require 'google/apis/cloudtasks_v2beta3/representations.rb'
+require 'google/apis/secretmanager_v1/service.rb'
+require 'google/apis/secretmanager_v1/classes.rb'
+require 'google/apis/secretmanager_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Tasks API
+    # Secret Manager API
     #
-    # Manages the execution of large numbers of distributed requests.
+    # Stores and manages access to application secrets. Provides convenience while
+    # improving security.
     #
-    # @see https://cloud.google.com/tasks/
-    module CloudtasksV2beta3
-      VERSION = 'V2beta3'
-      REVISION = '20200210'
+    # @see https://cloud.google.com/secret-manager/
+    module SecretmanagerV1
+      VERSION = 'V1'
+      REVISION = '20200208'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

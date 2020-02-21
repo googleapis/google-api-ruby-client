@@ -1390,6 +1390,11 @@ module Google
         # @return [Google::Apis::DataprocV1::JobPlacement]
         attr_accessor :placement
       
+        # A Dataproc job for running Presto (https://prestosql.io/) queries
+        # Corresponds to the JSON property `prestoJob`
+        # @return [Google::Apis::DataprocV1::PrestoJob]
+        attr_accessor :presto_job
+      
         # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
         # python-programming-guide.html) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
@@ -1455,6 +1460,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @pig_job = args[:pig_job] if args.key?(:pig_job)
           @placement = args[:placement] if args.key?(:placement)
+          @presto_job = args[:presto_job] if args.key?(:presto_job)
           @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
           @reference = args[:reference] if args.key?(:reference)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -2344,6 +2350,67 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A Dataproc job for running Presto (https://prestosql.io/) queries
+      class PrestoJob
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Presto client tags to attach to this query
+        # Corresponds to the JSON property `clientTags`
+        # @return [Array<String>]
+        attr_accessor :client_tags
+      
+        # Optional. Whether to continue executing queries if a query fails. The default
+        # value is false. Setting to true can be useful when executing independent
+        # parallel queries.
+        # Corresponds to the JSON property `continueOnFailure`
+        # @return [Boolean]
+        attr_accessor :continue_on_failure
+        alias_method :continue_on_failure?, :continue_on_failure
+      
+        # The runtime logging config of the job.
+        # Corresponds to the JSON property `loggingConfig`
+        # @return [Google::Apis::DataprocV1::LoggingConfig]
+        attr_accessor :logging_config
+      
+        # Optional. The format in which query output will be displayed. See the Presto
+        # documentation for supported output formats
+        # Corresponds to the JSON property `outputFormat`
+        # @return [String]
+        attr_accessor :output_format
+      
+        # Optional. A mapping of property names to values. Used to set Presto session
+        # properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent
+        # to using the --session flag in the Presto CLI
+        # Corresponds to the JSON property `properties`
+        # @return [Hash<String,String>]
+        attr_accessor :properties
+      
+        # The HCFS URI of the script that contains SQL queries.
+        # Corresponds to the JSON property `queryFileUri`
+        # @return [String]
+        attr_accessor :query_file_uri
+      
+        # A list of queries to run on a cluster.
+        # Corresponds to the JSON property `queryList`
+        # @return [Google::Apis::DataprocV1::QueryList]
+        attr_accessor :query_list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_tags = args[:client_tags] if args.key?(:client_tags)
+          @continue_on_failure = args[:continue_on_failure] if args.key?(:continue_on_failure)
+          @logging_config = args[:logging_config] if args.key?(:logging_config)
+          @output_format = args[:output_format] if args.key?(:output_format)
+          @properties = args[:properties] if args.key?(:properties)
+          @query_file_uri = args[:query_file_uri] if args.key?(:query_file_uri)
+          @query_list = args[:query_list] if args.key?(:query_list)
         end
       end
       

@@ -439,6 +439,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
+          property :domain_id, as: 'domainId'
           property :name, as: 'name'
           property :type, as: 'type'
         end
