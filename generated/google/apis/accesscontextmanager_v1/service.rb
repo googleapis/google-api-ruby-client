@@ -432,6 +432,98 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Replace all existing Access Levels in an Access
+        # Policy with
+        # the Access Levels provided. This
+        # is done within one transaction. The longrunning operation from this RPC
+        # will have a successful status once all replacements have propagated to
+        # long-lasting storage. Replacements containing errors will result in an
+        # error response for the first error encountered and the transaction will be
+        # cancelled. Operation.response field will contain
+        # ReplaceAccessLevelsResponse. Removing Access Levels contained in existing
+        # Service Perimeters will result in
+        # error.
+        # @param [String] parent
+        #   Required. Resource name for the access policy which owns these
+        #   Access Levels.
+        #   Format: `accessPolicies/`policy_id``
+        # @param [Google::Apis::AccesscontextmanagerV1::ReplaceAccessLevelsRequest] replace_access_levels_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_access_policy_access_level_all(parent, replace_access_levels_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/accessLevels:replaceAll', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::ReplaceAccessLevelsRequest::Representation
+          command.request_object = replace_access_levels_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Commit the dry-run spec for all the Service Perimeters in an
+        # Access Policy.
+        # A commit operation on a Service Perimeter involves copying its `spec` field
+        # to that Service Perimeter's `status` field. Only Service Perimeters with
+        # `use_explicit_dry_run_spec` field set to true are affected by a commit
+        # operation. The longrunning operation from this RPC will have a successful
+        # status once the dry-run specs for all the Service Perimeters have been
+        # committed. If a commit fails, it will cause the longrunning operation to
+        # return an error response and the entire commit operation will be cancelled.
+        # When successful, Operation.response field will contain
+        # CommitServicePerimetersResponse. The `dry_run` and the `spec` fields will
+        # be cleared after a successful commit operation.
+        # @param [String] parent
+        #   Required. Resource name for the parent Access Policy which owns all
+        #   Service Perimeters in scope for
+        #   the commit operation.
+        #   Format: `accessPolicies/`policy_id``
+        # @param [Google::Apis::AccesscontextmanagerV1::CommitServicePerimetersRequest] commit_service_perimeters_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def commit_service_perimeters(parent, commit_service_perimeters_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/servicePerimeters:commit', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::CommitServicePerimetersRequest::Representation
+          command.request_object = commit_service_perimeters_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Create an Service Perimeter. The
         # longrunning operation from this RPC will have a successful status once the
         # Service Perimeter has
@@ -617,6 +709,49 @@ module Google
           command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Replace all existing Service Perimeters in an
+        # Access Policy
+        # with the Service Perimeters provided.
+        # This is done within one transaction. The longrunning operation from this
+        # RPC will have a successful status once all replacements have propagated to
+        # long-lasting storage. Replacements containing errors will result in an
+        # error response for the first error encountered and the transaction will be
+        # cancelled. Operation.response field will contain
+        # ReplaceServicePerimetersResponse.
+        # @param [String] parent
+        #   Required. Resource name for the access policy which owns these
+        #   Service Perimeters.
+        #   Format: `accessPolicies/`policy_id``
+        # @param [Google::Apis::AccesscontextmanagerV1::ReplaceServicePerimetersRequest] replace_service_perimeters_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::AccesscontextmanagerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::AccesscontextmanagerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def replace_access_policy_service_perimeter_all(parent, replace_service_perimeters_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/servicePerimeters:replaceAll', options)
+          command.request_representation = Google::Apis::AccesscontextmanagerV1::ReplaceServicePerimetersRequest::Representation
+          command.request_object = replace_service_perimeters_request_object
+          command.response_representation = Google::Apis::AccesscontextmanagerV1::Operation::Representation
+          command.response_class = Google::Apis::AccesscontextmanagerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

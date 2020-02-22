@@ -2701,6 +2701,12 @@ module Google
         # @return [String]
         attr_accessor :locality_lb_policy
       
+        # The available logging options for the load balancer traffic served by this
+        # backend service.
+        # Corresponds to the JSON property `logConfig`
+        # @return [Google::Apis::ComputeV1::BackendServiceLogConfig]
+        attr_accessor :log_config
+      
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
@@ -2710,6 +2716,12 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # The URL of the network to which this backend service belongs. This field can
+        # only be spcified when the load balancing scheme is set to INTERNAL.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
       
         # Settings controlling the eviction of unhealthy hosts from the load balancing
         # pool for the backend service.
@@ -2808,7 +2820,9 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @load_balancing_scheme = args[:load_balancing_scheme] if args.key?(:load_balancing_scheme)
           @locality_lb_policy = args[:locality_lb_policy] if args.key?(:locality_lb_policy)
+          @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
+          @network = args[:network] if args.key?(:network)
           @outlier_detection = args[:outlier_detection] if args.key?(:outlier_detection)
           @port = args[:port] if args.key?(:port)
           @port_name = args[:port_name] if args.key?(:port_name)
@@ -3159,6 +3173,38 @@ module Google
         end
       end
       
+      # The available logging options for the load balancer traffic served by this
+      # backend service.
+      class BackendServiceLogConfig
+        include Google::Apis::Core::Hashable
+      
+        # This field denotes whether to enable logging for the load balancer traffic
+        # served by this backend service.
+        # Corresponds to the JSON property `enable`
+        # @return [Boolean]
+        attr_accessor :enable
+        alias_method :enable?, :enable
+      
+        # This field can only be specified if logging is enabled for this backend
+        # service. The value of the field must be in [0, 1]. This configures the
+        # sampling rate of requests to the load balancer where 1.0 means all logged
+        # requests are reported and 0.0 means no logged requests are reported. The
+        # default value is 1.0.
+        # Corresponds to the JSON property `sampleRate`
+        # @return [Float]
+        attr_accessor :sample_rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable = args[:enable] if args.key?(:enable)
+          @sample_rate = args[:sample_rate] if args.key?(:sample_rate)
+        end
+      end
+      
       # 
       class BackendServiceReference
         include Google::Apis::Core::Hashable
@@ -3273,9 +3319,26 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence" description: "Determines whether the request
-        # has a user account" expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit" description: "Determines if a summary is less than
+        # 100 chars" expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner" description: "Determines if requestor is the
+        # document owner" expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents" description: "Determine whether the document should
+        # be publicly visible" expression: "document.type != 'private' && document.type !
+        # = 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string" description: "Create a notification string with a
+        # timestamp." expression: "'New message received at ' + string(document.
+        # create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service documentation
+        # for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::ComputeV1::Expr]
         attr_accessor :condition
@@ -5643,33 +5706,48 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence" description: "Determines whether the request
-      # has a user account" expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit" description: "Determines if a summary is less than
+      # 100 chars" expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner" description: "Determines if requestor is the
+      # document owner" expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents" description: "Determine whether the document should
+      # be publicly visible" expression: "document.type != 'private' && document.type !
+      # = 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string" description: "Create a notification string with a
+      # timestamp." expression: "'New message received at ' + string(document.
+      # create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service documentation
+      # for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Textual representation of an expression in Common Expression Language syntax.
-        # The application context of the containing message determines which well-known
-        # feature set of CEL is supported.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing its
-        # purpose. This can be used e.g. in UIs which allow to enter the expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -7961,12 +8039,13 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # The IP address represented by this resource.
+        # A forwarding rule IP address assigned to this instance.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # The port on the instance.
+        # The named port of the instance group, not necessarily the port that is health-
+        # checked.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -10414,9 +10493,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_pools
       
-        # The target number of running instances for this managed instance group.
-        # Deleting or abandoning instances reduces this number. Resizing the group
-        # changes this number.
+        # The target number of running instances for this managed instance group. You
+        # can reduce this number by using the instanceGroupManager deleteInstances or
+        # abandonInstances methods. Resizing the group also changes this number.
         # Corresponds to the JSON property `targetSize`
         # @return [Fixnum]
         attr_accessor :target_size
@@ -24273,6 +24352,30 @@ module Google
         # @return [Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig]
         attr_accessor :config
       
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit" description: "Determines if a summary is less than
+        # 100 chars" expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner" description: "Determines if requestor is the
+        # document owner" expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents" description: "Determine whether the document should
+        # be publicly visible" expression: "document.type != 'private' && document.type !
+        # = 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string" description: "Create a notification string with a
+        # timestamp." expression: "'New message received at ' + string(document.
+        # create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service documentation
+        # for additional information.
+        # Corresponds to the JSON property `expr`
+        # @return [Google::Apis::ComputeV1::Expr]
+        attr_accessor :expr
+      
         # Preconfigured versioned expression. If this field is specified, config must
         # also be specified. Available preconfigured expressions along with their
         # requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range
@@ -24288,6 +24391,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @config = args[:config] if args.key?(:config)
+          @expr = args[:expr] if args.key?(:expr)
           @versioned_expr = args[:versioned_expr] if args.key?(:versioned_expr)
         end
       end

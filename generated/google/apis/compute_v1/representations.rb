@@ -394,6 +394,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceLogConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4992,7 +4998,10 @@ module Google
           property :kind, as: 'kind'
           property :load_balancing_scheme, as: 'loadBalancingScheme'
           property :locality_lb_policy, as: 'localityLbPolicy'
+          property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::BackendServiceLogConfig, decorator: Google::Apis::ComputeV1::BackendServiceLogConfig::Representation
+      
           property :name, as: 'name'
+          property :network, as: 'network'
           property :outlier_detection, as: 'outlierDetection', class: Google::Apis::ComputeV1::OutlierDetection, decorator: Google::Apis::ComputeV1::OutlierDetection::Representation
       
           property :port, as: 'port'
@@ -5096,6 +5105,14 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class BackendServiceLogConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable, as: 'enable'
+          property :sample_rate, as: 'sampleRate'
         end
       end
       
@@ -10363,6 +10380,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :config, as: 'config', class: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig, decorator: Google::Apis::ComputeV1::SecurityPolicyRuleMatcherConfig::Representation
+      
+          property :expr, as: 'expr', class: Google::Apis::ComputeV1::Expr, decorator: Google::Apis::ComputeV1::Expr::Representation
       
           property :versioned_expr, as: 'versionedExpr'
         end

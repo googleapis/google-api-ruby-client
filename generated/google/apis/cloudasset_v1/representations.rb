@@ -178,6 +178,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListFeedsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -492,10 +498,13 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
+          property :spec, as: 'spec', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
+      
           property :status, as: 'status', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
       
           property :title, as: 'title'
           property :update_time, as: 'updateTime'
+          property :use_explicit_dry_run_spec, as: 'useExplicitDryRunSpec'
         end
       end
       
@@ -505,6 +514,16 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
+          property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices::Representation
+      
+        end
+      end
+      
+      class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_services, as: 'allowedServices'
+          property :enable_restriction, as: 'enableRestriction'
         end
       end
       

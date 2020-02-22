@@ -164,12 +164,13 @@ module Google
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by alert
         #   policies to be included in the response.For more details, see sorting and
-        #   filtering.
+        #   filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
         # @param [String] order_by
         #   A comma-separated list of fields by which to sort the result. Supports the
         #   same set of field references as the filter field. Entries can be prefixed with
         #   a minus sign to sort by the field in descending order.For more details, see
-        #   sorting and filtering.
+        #   sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
+        #   filtering).
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response.
         # @param [String] page_token
@@ -511,10 +512,11 @@ module Google
         #   Required. The group whose members are listed. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
         # @param [String] filter
-        #   An optional list filter describing the members to be returned. The filter may
-        #   reference the type, labels, and metadata of monitored resources that comprise
-        #   the group. For example, to return only resources representing Compute Engine
-        #   VM instances, use this filter:
+        #   An optional list filter (https://cloud.google.com/monitoring/api/learn_more#
+        #   filtering) describing the members to be returned. The filter may reference the
+        #   type, labels, and metadata of monitored resources that comprise the group. For
+        #   example, to return only resources representing Compute Engine VM instances,
+        #   use this filter:
         #   `resource.type = "gce_instance"`
         # @param [String] interval_end_time
         #   Required. The end of the time interval.
@@ -560,7 +562,7 @@ module Google
         end
         
         # Creates a new metric descriptor. User-created metric descriptors define custom
-        # metrics.
+        # metrics (https://cloud.google.com/monitoring/custom-metrics).
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]
@@ -594,7 +596,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a metric descriptor. Only user-created custom metrics can be deleted.
+        # Deletes a metric descriptor. Only user-created custom metrics (https://cloud.
+        # google.com/monitoring/custom-metrics) can be deleted.
         # @param [String] name
         #   Required. The metric descriptor on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
@@ -667,8 +670,10 @@ module Google
         #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   If this field is empty, all custom and system-defined metric descriptors are
-        #   returned. Otherwise, the filter specifies which metric descriptors are to be
-        #   returned. For example, the following filter matches all custom metrics:
+        #   returned. Otherwise, the filter (https://cloud.google.com/monitoring/api/v3/
+        #   filters) specifies which metric descriptors are to be returned. For example,
+        #   the following filter matches all custom metrics (https://cloud.google.com/
+        #   monitoring/custom-metrics):
         #   metric.type = starts_with("custom.googleapis.com/")
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
@@ -745,9 +750,10 @@ module Google
         #   Required. The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]
         # @param [String] filter
-        #   An optional filter describing the descriptors to be returned. The filter can
-        #   reference the descriptor's type and labels. For example, the following filter
-        #   returns only Google Compute Engine descriptors that have an id label:
+        #   An optional filter (https://cloud.google.com/monitoring/api/v3/filters)
+        #   describing the descriptors to be returned. The filter can reference the
+        #   descriptor's type and labels. For example, the following filter returns only
+        #   Google Compute Engine descriptors that have an id label:
         #   resource.type = starts_with("gce_") AND resource.label:id
         # @param [Fixnum] page_size
         #   A positive number that is the maximum number of results to return.
@@ -1034,12 +1040,14 @@ module Google
         # @param [String] filter
         #   If provided, this field specifies the criteria that must be met by
         #   notification channels to be included in the response.For more details, see
-        #   sorting and filtering.
+        #   sorting and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
+        #   filtering).
         # @param [String] order_by
         #   A comma-separated list of fields by which to sort the result. Supports the
         #   same set of fields as in filter. Entries can be prefixed with a minus sign to
         #   sort in descending rather than ascending order.For more details, see sorting
-        #   and filtering.
+        #   and filtering (https://cloud.google.com/monitoring/api/v3/sorting-and-
+        #   filtering).
         # @param [Fixnum] page_size
         #   The maximum number of results to return in a single response. If not set to a
         #   positive number, a reasonable value will be chosen by the service.
@@ -1270,9 +1278,10 @@ module Google
         #   per_series_aligner must be specified and not equal to ALIGN_NONE and
         #   alignment_period must be specified; otherwise, an error is returned.
         # @param [String] filter
-        #   Required. A monitoring filter that specifies which time series should be
-        #   returned. The filter must specify a single metric type, and can additionally
-        #   specify metric labels and other information. For example:
+        #   Required. A monitoring filter (https://cloud.google.com/monitoring/api/v3/
+        #   filters) that specifies which time series should be returned. The filter must
+        #   specify a single metric type, and can additionally specify metric labels and
+        #   other information. For example:
         #   metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
         #   metric.labels.instance_name = "my-instance-name"
         # @param [String] interval_end_time

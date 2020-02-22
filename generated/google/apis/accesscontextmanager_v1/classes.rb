@@ -22,8 +22,9 @@ module Google
   module Apis
     module AccesscontextmanagerV1
       
-      # An `AccessLevel` is a label that can be applied to requests to GCP services,
-      # along with a list of requirements necessary for the label to be applied.
+      # An `AccessLevel` is a label that can be applied to requests to Google Cloud
+      # services, along with a list of requirements necessary for the label to be
+      # applied.
       class AccessLevel
         include Google::Apis::Core::Hashable
       
@@ -83,10 +84,10 @@ module Google
       end
       
       # `AccessPolicy` is a container for `AccessLevels` (which define the necessary
-      # attributes to use GCP services) and `ServicePerimeters` (which define regions
-      # of services able to freely pass data within a perimeter). An access policy is
-      # globally visible within an organization, and the restrictions it specifies
-      # apply to all projects within an organization.
+      # attributes to use Google Cloud services) and `ServicePerimeters` (which
+      # define regions of services able to freely pass data within a perimeter). An
+      # access policy is globally visible within an organization, and the
+      # restrictions it specifies apply to all projects within an organization.
       class AccessPolicy
         include Google::Apis::Core::Hashable
       
@@ -171,6 +172,52 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # A request to commit dry-run specs in all Service Perimeters belonging to
+      # an Access Policy.
+      class CommitServicePerimetersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for the version of the Access Policy that this
+        # commit operation is to be performed on. If, at the time of commit, the
+        # etag for the Access Policy stored in Access Context Manager is different
+        # from the specified etag, then the commit operation will not be performed
+        # and the call will fail. This field is not required. If etag is not
+        # provided, the operation will be performed as if a valid etag is provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+        end
+      end
+      
+      # A response to CommitServicePerimetersRequest. This will be put inside of
+      # Operation.response field.
+      class CommitServicePerimetersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of all the Service Perimeter instances in
+        # the Access Policy.
+        # Corresponds to the JSON property `servicePerimeters`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePerimeter>]
+        attr_accessor :service_perimeters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_perimeters = args[:service_perimeters] if args.key?(:service_perimeters)
         end
       end
       
@@ -645,15 +692,122 @@ module Google
         end
       end
       
-      # `ServicePerimeter` describes a set of GCP resources which can freely import
-      # and export data amongst themselves, but not export outside of the
+      # A request to replace all existing Access Levels in an Access Policy with
+      # the Access Levels provided. This is done within one transaction.
+      class ReplaceAccessLevelsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The desired Access Levels that should
+        # replace all existing Access Levels in the
+        # Access Policy.
+        # Corresponds to the JSON property `accessLevels`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::AccessLevel>]
+        attr_accessor :access_levels
+      
+        # Optional. The etag for the version of the Access Policy that this
+        # replace operation is to be performed on. If, at the time of replace, the
+        # etag for the Access Policy stored in Access Context Manager is different
+        # from the specified etag, then the replace operation will not be performed
+        # and the call will fail. This field is not required. If etag is not
+        # provided, the operation will be performed as if a valid etag is provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_levels = args[:access_levels] if args.key?(:access_levels)
+          @etag = args[:etag] if args.key?(:etag)
+        end
+      end
+      
+      # A response to ReplaceAccessLevelsRequest. This will be put inside of
+      # Operation.response field.
+      class ReplaceAccessLevelsResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of the Access Level instances.
+        # Corresponds to the JSON property `accessLevels`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::AccessLevel>]
+        attr_accessor :access_levels
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_levels = args[:access_levels] if args.key?(:access_levels)
+        end
+      end
+      
+      # A request to replace all existing Service Perimeters in an Access Policy
+      # with the Service Perimeters provided. This is done within one transaction.
+      class ReplaceServicePerimetersRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The etag for the version of the Access Policy that this
+        # replace operation is to be performed on. If, at the time of replace, the
+        # etag for the Access Policy stored in Access Context Manager is different
+        # from the specified etag, then the replace operation will not be performed
+        # and the call will fail. This field is not required. If etag is not
+        # provided, the operation will be performed as if a valid etag is provided.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Required. The desired Service Perimeters that should
+        # replace all existing Service Perimeters in the
+        # Access Policy.
+        # Corresponds to the JSON property `servicePerimeters`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePerimeter>]
+        attr_accessor :service_perimeters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @service_perimeters = args[:service_perimeters] if args.key?(:service_perimeters)
+        end
+      end
+      
+      # A response to ReplaceServicePerimetersRequest. This will be put inside of
+      # Operation.response field.
+      class ReplaceServicePerimetersResponse
+        include Google::Apis::Core::Hashable
+      
+        # List of the Service Perimeter instances.
+        # Corresponds to the JSON property `servicePerimeters`
+        # @return [Array<Google::Apis::AccesscontextmanagerV1::ServicePerimeter>]
+        attr_accessor :service_perimeters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @service_perimeters = args[:service_perimeters] if args.key?(:service_perimeters)
+        end
+      end
+      
+      # `ServicePerimeter` describes a set of Google Cloud resources which can freely
+      # import and export data amongst themselves, but not export outside of the
       # `ServicePerimeter`. If a request with a source within this `ServicePerimeter`
       # has a target outside of the `ServicePerimeter`, the request will be blocked.
       # Otherwise the request is allowed. There are two types of Service Perimeter -
-      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single GCP
-      # project can only belong to a single regular Service Perimeter. Service
-      # Perimeter Bridges can contain only GCP projects as members, a single GCP
-      # project may belong to multiple Service Perimeter Bridges.
+      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single
+      # Google Cloud project can only belong to a single regular Service Perimeter.
+      # Service Perimeter Bridges can contain only Google Cloud projects as members,
+      # a single Google Cloud project may belong to multiple Service Perimeter
+      # Bridges.
       class ServicePerimeter
         include Google::Apis::Core::Hashable
       
@@ -685,8 +839,14 @@ module Google
         # @return [String]
         attr_accessor :perimeter_type
       
-        # `ServicePerimeterConfig` specifies a set of GCP resources that describe
-        # specific Service Perimeter configuration.
+        # `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+        # describe specific Service Perimeter configuration.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig]
+        attr_accessor :spec
+      
+        # `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+        # describe specific Service Perimeter configuration.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig]
         attr_accessor :status
@@ -701,6 +861,21 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
+        # Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
+        # exists  for all Service Perimeters, and that spec is identical to the
+        # status for those Service Perimeters. When this flag is set, it inhibits the
+        # generation of the implicit spec, thereby allowing the user to explicitly
+        # provide a configuration ("spec") to use in a dry-run version of the Service
+        # Perimeter. This allows the user to test changes to the enforced config
+        # ("status") without actually enforcing them. This testing is done through
+        # analyzing the differences between currently enforced and suggested
+        # restrictions. use_explicit_dry_run_spec must bet set to True if any of the
+        # fields in the spec are set to non-default values.
+        # Corresponds to the JSON property `useExplicitDryRunSpec`
+        # @return [Boolean]
+        attr_accessor :use_explicit_dry_run_spec
+        alias_method :use_explicit_dry_run_spec?, :use_explicit_dry_run_spec
+      
         def initialize(**args)
            update!(**args)
         end
@@ -711,14 +886,16 @@ module Google
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
+          @spec = args[:spec] if args.key?(:spec)
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
           @update_time = args[:update_time] if args.key?(:update_time)
+          @use_explicit_dry_run_spec = args[:use_explicit_dry_run_spec] if args.key?(:use_explicit_dry_run_spec)
         end
       end
       
-      # `ServicePerimeterConfig` specifies a set of GCP resources that describe
-      # specific Service Perimeter configuration.
+      # `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+      # describe specific Service Perimeter configuration.
       class ServicePerimeterConfig
         include Google::Apis::Core::Hashable
       
@@ -726,26 +903,33 @@ module Google
         # `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
         # must be in the same policy as this `ServicePerimeter`. Referencing a
         # nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-        # listed, resources within the perimeter can only be accessed via GCP calls
-        # with request origins within the perimeter. Example:
+        # listed, resources within the perimeter can only be accessed via Google
+        # Cloud calls with request origins within the perimeter. Example:
         # `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`.
         # For Service Perimeter Bridge, must be empty.
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # A list of GCP resources that are inside of the service perimeter.
+        # A list of Google Cloud resources that are inside of the service perimeter.
         # Currently only projects are allowed. Format: `projects/`project_number``
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
       
-        # GCP services that are subject to the Service Perimeter restrictions. For
-        # example, if `storage.googleapis.com` is specified, access to the storage
-        # buckets inside the perimeter must meet the perimeter's access restrictions.
+        # Google Cloud services that are subject to the Service Perimeter
+        # restrictions. For example, if `storage.googleapis.com` is specified, access
+        # to the storage buckets inside the perimeter must meet the perimeter's
+        # access restrictions.
         # Corresponds to the JSON property `restrictedServices`
         # @return [Array<String>]
         attr_accessor :restricted_services
+      
+        # Specifies how APIs are allowed to communicate within the Service
+        # Perimeter.
+        # Corresponds to the JSON property `vpcAccessibleServices`
+        # @return [Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices]
+        attr_accessor :vpc_accessible_services
       
         def initialize(**args)
            update!(**args)
@@ -756,6 +940,7 @@ module Google
           @access_levels = args[:access_levels] if args.key?(:access_levels)
           @resources = args[:resources] if args.key?(:resources)
           @restricted_services = args[:restricted_services] if args.key?(:restricted_services)
+          @vpc_accessible_services = args[:vpc_accessible_services] if args.key?(:vpc_accessible_services)
         end
       end
       
@@ -795,6 +980,35 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Specifies how APIs are allowed to communicate within the Service
+      # Perimeter.
+      class VpcAccessibleServices
+        include Google::Apis::Core::Hashable
+      
+        # The list of APIs usable within the Service Perimeter. Must be empty
+        # unless 'enable_restriction' is True.
+        # Corresponds to the JSON property `allowedServices`
+        # @return [Array<String>]
+        attr_accessor :allowed_services
+      
+        # Whether to restrict API calls within the Service Perimeter to the list of
+        # APIs specified in 'allowed_services'.
+        # Corresponds to the JSON property `enableRestriction`
+        # @return [Boolean]
+        attr_accessor :enable_restriction
+        alias_method :enable_restriction?, :enable_restriction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allowed_services = args[:allowed_services] if args.key?(:allowed_services)
+          @enable_restriction = args[:enable_restriction] if args.key?(:enable_restriction)
         end
       end
     end

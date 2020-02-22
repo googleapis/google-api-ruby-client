@@ -2674,12 +2674,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class NodeGroupsSetAutoscalingPolicyRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class NodeGroupsSetNodeTemplateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3964,6 +3958,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Screenshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4043,6 +4043,12 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfigDestinationPort
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherConfigLayer4Config
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5818,6 +5824,7 @@ module Google
       class AutoscalingPolicyCpuUtilization
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :predictive_method, as: 'predictiveMethod'
           property :utilization_target, as: 'utilizationTarget'
         end
       end
@@ -10314,14 +10321,6 @@ module Google
         end
       end
       
-      class NodeGroupsSetAutoscalingPolicyRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy, decorator: Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy::Representation
-      
-        end
-      end
-      
       class NodeGroupsSetNodeTemplateRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12650,6 +12649,14 @@ module Google
         end
       end
       
+      class Screenshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class SdsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -12683,12 +12690,14 @@ module Google
       
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :parent, as: 'parent'
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::SecurityPolicyRule, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRule::Representation
       
@@ -12702,6 +12711,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :attachment_id, as: 'attachmentId'
+          property :display_name, as: 'displayName'
           property :name, as: 'name'
           property :security_policy_id, as: 'securityPolicyId'
         end
@@ -12768,6 +12778,7 @@ module Google
       
           property :rule_tuple_count, as: 'ruleTupleCount'
           collection :target_resources, as: 'targetResources'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
         end
       end
       
@@ -12788,11 +12799,21 @@ module Google
           collection :dest_ip_ranges, as: 'destIpRanges'
           collection :dest_ports, as: 'destPorts', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigDestinationPort, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigDestinationPort::Representation
       
+          collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigLayer4Config, decorator: Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigLayer4Config::Representation
+      
           collection :src_ip_ranges, as: 'srcIpRanges'
         end
       end
       
       class SecurityPolicyRuleMatcherConfigDestinationPort
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherConfigLayer4Config
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_protocol, as: 'ipProtocol'

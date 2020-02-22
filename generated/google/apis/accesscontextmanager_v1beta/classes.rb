@@ -22,8 +22,9 @@ module Google
   module Apis
     module AccesscontextmanagerV1beta
       
-      # An `AccessLevel` is a label that can be applied to requests to GCP services,
-      # along with a list of requirements necessary for the label to be applied.
+      # An `AccessLevel` is a label that can be applied to requests to Google Cloud
+      # services, along with a list of requirements necessary for the label to be
+      # applied.
       class AccessLevel
         include Google::Apis::Core::Hashable
       
@@ -83,10 +84,10 @@ module Google
       end
       
       # `AccessPolicy` is a container for `AccessLevels` (which define the necessary
-      # attributes to use GCP services) and `ServicePerimeters` (which define regions
-      # of services able to freely pass data within a perimeter). An access policy is
-      # globally visible within an organization, and the restrictions it specifies
-      # apply to all projects within an organization.
+      # attributes to use Google Cloud services) and `ServicePerimeters` (which
+      # define regions of services able to freely pass data within a perimeter). An
+      # access policy is globally visible within an organization, and the
+      # restrictions it specifies apply to all projects within an organization.
       class AccessPolicy
         include Google::Apis::Core::Hashable
       
@@ -588,15 +589,16 @@ module Google
         end
       end
       
-      # `ServicePerimeter` describes a set of GCP resources which can freely import
-      # and export data amongst themselves, but not export outside of the
+      # `ServicePerimeter` describes a set of Google Cloud resources which can freely
+      # import and export data amongst themselves, but not export outside of the
       # `ServicePerimeter`. If a request with a source within this `ServicePerimeter`
       # has a target outside of the `ServicePerimeter`, the request will be blocked.
       # Otherwise the request is allowed. There are two types of Service Perimeter -
-      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single GCP
-      # project can only belong to a single regular Service Perimeter. Service
-      # Perimeter Bridges can contain only GCP projects as members, a single GCP
-      # project may belong to multiple Service Perimeter Bridges.
+      # Regular and Bridge. Regular Service Perimeters cannot overlap, a single
+      # Google Cloud project can only belong to a single regular Service Perimeter.
+      # Service Perimeter Bridges can contain only Google Cloud projects as members,
+      # a single Google Cloud project may belong to multiple Service Perimeter
+      # Bridges.
       class ServicePerimeter
         include Google::Apis::Core::Hashable
       
@@ -628,8 +630,8 @@ module Google
         # @return [String]
         attr_accessor :perimeter_type
       
-        # `ServicePerimeterConfig` specifies a set of GCP resources that describe
-        # specific Service Perimeter configuration.
+        # `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+        # describe specific Service Perimeter configuration.
         # Corresponds to the JSON property `status`
         # @return [Google::Apis::AccesscontextmanagerV1beta::ServicePerimeterConfig]
         attr_accessor :status
@@ -660,8 +662,8 @@ module Google
         end
       end
       
-      # `ServicePerimeterConfig` specifies a set of GCP resources that describe
-      # specific Service Perimeter configuration.
+      # `ServicePerimeterConfig` specifies a set of Google Cloud resources that
+      # describe specific Service Perimeter configuration.
       class ServicePerimeterConfig
         include Google::Apis::Core::Hashable
       
@@ -669,29 +671,29 @@ module Google
         # `ServicePerimeter` to be accessed from the internet. `AccessLevels` listed
         # must be in the same policy as this `ServicePerimeter`. Referencing a
         # nonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are
-        # listed, resources within the perimeter can only be accessed via GCP calls
-        # with request origins within the perimeter. Example:
+        # listed, resources within the perimeter can only be accessed via Google
+        # Cloud calls with request origins within the perimeter. Example:
         # `"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL"`.
         # For Service Perimeter Bridge, must be empty.
         # Corresponds to the JSON property `accessLevels`
         # @return [Array<String>]
         attr_accessor :access_levels
       
-        # A list of GCP resources that are inside of the service perimeter.
+        # A list of Google Cloud resources that are inside of the service perimeter.
         # Currently only projects are allowed. Format: `projects/`project_number``
         # Corresponds to the JSON property `resources`
         # @return [Array<String>]
         attr_accessor :resources
       
-        # GCP services that are subject to the Service Perimeter restrictions. Must
-        # contain a list of services. For example, if
+        # Google Cloud services that are subject to the Service Perimeter
+        # restrictions. Must contain a list of services. For example, if
         # `storage.googleapis.com` is specified, access to the storage buckets
         # inside the perimeter must meet the perimeter's access restrictions.
         # Corresponds to the JSON property `restrictedServices`
         # @return [Array<String>]
         attr_accessor :restricted_services
       
-        # GCP services that are not subject to the Service Perimeter
+        # Google Cloud services that are not subject to the Service Perimeter
         # restrictions. Deprecated. Must be set to a single wildcard "*".
         # The wildcard means that unless explicitly specified by
         # "restricted_services" list, any service is treated as unrestricted.

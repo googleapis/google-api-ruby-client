@@ -656,6 +656,7 @@ module Google
           property :min_deadline, as: 'minDeadline'
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
+          property :protocol, as: 'protocol'
           property :selector, as: 'selector'
         end
       end

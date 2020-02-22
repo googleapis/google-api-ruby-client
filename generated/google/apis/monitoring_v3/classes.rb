@@ -2089,12 +2089,13 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # A filter that identifies which time series should be compared with the
-        # threshold.The filter is similar to the one that is specified in the
-        # ListTimeSeries request (that call is useful to verify the time series that
-        # will be retrieved / processed) and must specify the metric type and optionally
-        # may contain restrictions on resource type, resource labels, and metric labels.
-        # This field may not exceed 2048 Unicode characters in length.
+        # A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies
+        # which time series should be compared with the threshold.The filter is similar
+        # to the one that is specified in the ListTimeSeries request (that call is
+        # useful to verify the time series that will be retrieved / processed) and must
+        # specify the metric type and optionally may contain restrictions on resource
+        # type, resource labels, and metric labels. This field may not exceed 2048
+        # Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2390,12 +2391,13 @@ module Google
         # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
         attr_accessor :denominator_aggregations
       
-        # A filter that identifies a time series that should be used as the denominator
-        # of a ratio that will be compared with the threshold. If a denominator_filter
-        # is specified, the time series specified by the filter field will be used as
-        # the numerator.The filter must specify the metric type and optionally may
-        # contain restrictions on resource type, resource labels, and metric labels.
-        # This field may not exceed 2048 Unicode characters in length.
+        # A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies
+        # a time series that should be used as the denominator of a ratio that will be
+        # compared with the threshold. If a denominator_filter is specified, the time
+        # series specified by the filter field will be used as the numerator.The filter
+        # must specify the metric type and optionally may contain restrictions on
+        # resource type, resource labels, and metric labels. This field may not exceed
+        # 2048 Unicode characters in length.
         # Corresponds to the JSON property `denominatorFilter`
         # @return [String]
         attr_accessor :denominator_filter
@@ -2413,12 +2415,13 @@ module Google
         # @return [String]
         attr_accessor :duration
       
-        # A filter that identifies which time series should be compared with the
-        # threshold.The filter is similar to the one that is specified in the
-        # ListTimeSeries request (that call is useful to verify the time series that
-        # will be retrieved / processed) and must specify the metric type and optionally
-        # may contain restrictions on resource type, resource labels, and metric labels.
-        # This field may not exceed 2048 Unicode characters in length.
+        # A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies
+        # which time series should be compared with the threshold.The filter is similar
+        # to the one that is specified in the ListTimeSeries request (that call is
+        # useful to verify the time series that will be retrieved / processed) and must
+        # specify the metric type and optionally may contain restrictions on resource
+        # type, resource labels, and metric labels. This field may not exceed 2048
+        # Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter

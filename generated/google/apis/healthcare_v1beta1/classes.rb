@@ -513,9 +513,9 @@ module Google
         # * The destination dataset must exist.
         # * The source dataset and destination dataset must both reside in the same
         # project. De-identifying data across multiple projects is not supported.
-        # * The destination FHIR store must not exist.
-        # * The caller must have the necessary permissions to create the destination
-        # FHIR store.
+        # * The destination FHIR store must exist.
+        # * The caller must have the healthcare.fhirResources.update permission to
+        # write to the destination FHIR store.
         # Corresponds to the JSON property `destinationStore`
         # @return [String]
         attr_accessor :destination_store

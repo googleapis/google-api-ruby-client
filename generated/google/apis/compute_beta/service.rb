@@ -18022,8 +18022,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update the shape of reservations for GPUS/Local SSDs of reservations within
-        # the commitments.
+        # Transfers GPUs or local SSDs between reservations within commitments.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region

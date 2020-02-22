@@ -46,6 +46,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CommitServicePerimetersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CommitServicePerimetersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -112,6 +124,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReplaceAccessLevelsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceAccessLevelsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceServicePerimetersRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ReplaceServicePerimetersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ServicePerimeter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +161,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VpcAccessibleServices
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -168,6 +210,21 @@ module Google
       class CancelOperationRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class CommitServicePerimetersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+        end
+      end
+      
+      class CommitServicePerimetersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
+      
         end
       end
       
@@ -278,6 +335,40 @@ module Google
         end
       end
       
+      class ReplaceAccessLevelsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels', class: Google::Apis::AccesscontextmanagerV1::AccessLevel, decorator: Google::Apis::AccesscontextmanagerV1::AccessLevel::Representation
+      
+          property :etag, as: 'etag'
+        end
+      end
+      
+      class ReplaceAccessLevelsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :access_levels, as: 'accessLevels', class: Google::Apis::AccesscontextmanagerV1::AccessLevel, decorator: Google::Apis::AccesscontextmanagerV1::AccessLevel::Representation
+      
+        end
+      end
+      
+      class ReplaceServicePerimetersRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
+      
+        end
+      end
+      
+      class ReplaceServicePerimetersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :service_perimeters, as: 'servicePerimeters', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeter, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeter::Representation
+      
+        end
+      end
+      
       class ServicePerimeter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -285,10 +376,13 @@ module Google
           property :description, as: 'description'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
+          property :spec, as: 'spec', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig::Representation
+      
           property :status, as: 'status', class: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig, decorator: Google::Apis::AccesscontextmanagerV1::ServicePerimeterConfig::Representation
       
           property :title, as: 'title'
           property :update_time, as: 'updateTime'
+          property :use_explicit_dry_run_spec, as: 'useExplicitDryRunSpec'
         end
       end
       
@@ -298,6 +392,8 @@ module Google
           collection :access_levels, as: 'accessLevels'
           collection :resources, as: 'resources'
           collection :restricted_services, as: 'restrictedServices'
+          property :vpc_accessible_services, as: 'vpcAccessibleServices', class: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices, decorator: Google::Apis::AccesscontextmanagerV1::VpcAccessibleServices::Representation
+      
         end
       end
       
@@ -307,6 +403,14 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class VpcAccessibleServices
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :allowed_services, as: 'allowedServices'
+          property :enable_restriction, as: 'enableRestriction'
         end
       end
     end

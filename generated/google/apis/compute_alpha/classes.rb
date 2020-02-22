@@ -2255,6 +2255,17 @@ module Google
       class AutoscalingPolicyCpuUtilization
         include Google::Apis::Core::Hashable
       
+        # Indicates which method of prediction is used for CPU utilization metric, if
+        # any. Current set of possible values: * NONE: No predictions are made based on
+        # the scaling metric when calculating the number of VM instances. * STANDARD:
+        # Standard predictive autoscaling predicts the future values of the scaling
+        # metric and then scales a MIG to ensure that new VM instances are ready in time
+        # to cover the predicted peak. New values might be added in the future. Some of
+        # the values might not be available in all API versions.
+        # Corresponds to the JSON property `predictiveMethod`
+        # @return [String]
+        attr_accessor :predictive_method
+      
         # The target CPU utilization that the autoscaler should maintain. Must be a
         # float value in the range (0, 1]. If not specified, the default is 0.6.
         # If the CPU level is below the target utilization, the autoscaler scales down
@@ -2274,6 +2285,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @predictive_method = args[:predictive_method] if args.key?(:predictive_method)
           @utilization_target = args[:utilization_target] if args.key?(:utilization_target)
         end
       end
@@ -4070,9 +4082,26 @@ module Google
       class Binding
         include Google::Apis::Core::Hashable
       
-        # Represents an expression text. Example:
-        # title: "User account presence" description: "Determines whether the request
-        # has a user account" expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit" description: "Determines if a summary is less than
+        # 100 chars" expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner" description: "Determines if requestor is the
+        # document owner" expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents" description: "Determine whether the document should
+        # be publicly visible" expression: "document.type != 'private' && document.type !
+        # = 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string" description: "Create a notification string with a
+        # timestamp." expression: "'New message received at ' + string(document.
+        # create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service documentation
+        # for additional information.
         # Corresponds to the JSON property `condition`
         # @return [Google::Apis::ComputeAlpha::Expr]
         attr_accessor :condition
@@ -6698,33 +6727,48 @@ module Google
         end
       end
       
-      # Represents an expression text. Example:
-      # title: "User account presence" description: "Determines whether the request
-      # has a user account" expression: "size(request.user) > 0"
+      # Represents a textual expression in the Common Expression Language (CEL) syntax.
+      # CEL is a C-like expression language. The syntax and semantics of CEL are
+      # documented at https://github.com/google/cel-spec.
+      # Example (Comparison):
+      # title: "Summary size limit" description: "Determines if a summary is less than
+      # 100 chars" expression: "document.summary.size() < 100"
+      # Example (Equality):
+      # title: "Requestor is owner" description: "Determines if requestor is the
+      # document owner" expression: "document.owner == request.auth.claims.email"
+      # Example (Logic):
+      # title: "Public documents" description: "Determine whether the document should
+      # be publicly visible" expression: "document.type != 'private' && document.type !
+      # = 'internal'"
+      # Example (Data Manipulation):
+      # title: "Notification string" description: "Create a notification string with a
+      # timestamp." expression: "'New message received at ' + string(document.
+      # create_time)"
+      # The exact variables and functions that may be referenced within an expression
+      # are determined by the service that evaluates it. See the service documentation
+      # for additional information.
       class Expr
         include Google::Apis::Core::Hashable
       
-        # An optional description of the expression. This is a longer text which
-        # describes the expression, e.g. when hovered over it in a UI.
+        # Optional. Description of the expression. This is a longer text which describes
+        # the expression, e.g. when hovered over it in a UI.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
         # Textual representation of an expression in Common Expression Language syntax.
-        # The application context of the containing message determines which well-known
-        # feature set of CEL is supported.
         # Corresponds to the JSON property `expression`
         # @return [String]
         attr_accessor :expression
       
-        # An optional string indicating the location of the expression for error
-        # reporting, e.g. a file name and a position in the file.
+        # Optional. String indicating the location of the expression for error reporting,
+        # e.g. a file name and a position in the file.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # An optional title for the expression, i.e. a short string describing its
-        # purpose. This can be used e.g. in UIs which allow to enter the expression.
+        # Optional. Title for the expression, i.e. a short string describing its purpose.
+        # This can be used e.g. in UIs which allow to enter the expression.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -9551,12 +9595,13 @@ module Google
         # @return [String]
         attr_accessor :instance
       
-        # The IP address represented by this resource.
+        # A forwarding rule IP address assigned to this instance.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
       
-        # The port on the instance.
+        # The named port of the instance group, not necessarily the port that is health-
+        # checked.
         # Corresponds to the JSON property `port`
         # @return [Fixnum]
         attr_accessor :port
@@ -12213,9 +12258,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_pools
       
-        # The target number of running instances for this managed instance group.
-        # Deleting or abandoning instances reduces this number. Resizing the group
-        # changes this number.
+        # The target number of running instances for this managed instance group. You
+        # can reduce this number by using the instanceGroupManager deleteInstances or
+        # abandonInstances methods. Resizing the group also changes this number.
         # Corresponds to the JSON property `targetSize`
         # @return [Fixnum]
         attr_accessor :target_size
@@ -17475,7 +17520,11 @@ module Google
         end
       end
       
-      # Machine image resource.
+      # Represents a machine image resource.
+      # A machine image is a Compute Engine resource that stores all the configuration,
+      # metadata, permissions, and data from one or more disks required to create a
+      # Virtual machine (VM) instance. For more information, see Machine images. (==
+      # resource_for `$api_version`.machineImages ==)
       class MachineImage
         include Google::Apis::Core::Hashable
       
@@ -20860,25 +20909,6 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
-        end
-      end
-      
-      # 
-      class NodeGroupsSetAutoscalingPolicyRequest
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `autoscalingPolicy`
-        # @return [Google::Apis::ComputeAlpha::NodeGroupAutoscalingPolicy]
-        attr_accessor :autoscaling_policy
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @autoscaling_policy = args[:autoscaling_policy] if args.key?(:autoscaling_policy)
         end
       end
       
@@ -24679,7 +24709,7 @@ module Google
       
         # [Output Only] The status of the public delegated prefix.
         # Corresponds to the JSON property `status`
-        # @return [Object]
+        # @return [String]
         attr_accessor :status
       
         def initialize(**args)
@@ -24982,7 +25012,7 @@ module Google
       
         # [Output Only] The status of the sub public delegated prefix.
         # Corresponds to the JSON property `status`
-        # @return [Object]
+        # @return [String]
         attr_accessor :status
       
         def initialize(**args)
@@ -25405,7 +25435,7 @@ module Google
       class RegionCommitmentsUpdateReservationsRequest
         include Google::Apis::Core::Hashable
       
-        # List of two reservations to transfer GPUs and local SSD between.
+        # A list of two reservations to transfer GPUs and local SSD between.
         # Corresponds to the JSON property `reservations`
         # @return [Array<Google::Apis::ComputeAlpha::Reservation>]
         attr_accessor :reservations
@@ -29941,6 +29971,32 @@ module Google
         end
       end
       
+      # An instance's screenshot.
+      class Screenshot
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] The Base64-encoded screenshot data.
+        # Corresponds to the JSON property `contents`
+        # @return [String]
+        attr_accessor :contents
+      
+        # [Output Only] Type of the resource. Always compute#screenshot for the
+        # screenshots.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @contents = args[:contents] if args.key?(:contents)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
       # The configuration to access the SDS server.
       class SdsConfig
         include Google::Apis::Core::Hashable
@@ -30005,7 +30061,7 @@ module Google
       class SecurityPolicy
         include Google::Apis::Core::Hashable
       
-        # A list of assocations that belong to this policy.
+        # A list of associations that belong to this policy.
         # Corresponds to the JSON property `associations`
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyAssociation>]
         attr_accessor :associations
@@ -30025,6 +30081,18 @@ module Google
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
+      
+        # User-provided name of the Organization security plicy. The name should be
+        # unique in the organization in which the security policy is created. This
+        # should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63
+        # characters long, and comply with RFC1035. Specifically, the name must be 1-63
+        # characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`
+        # which means the first character must be a lowercase letter, and all following
+        # characters must be a dash, lowercase letter, or digit, except the last
+        # character, which cannot be a dash.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # Specifies a fingerprint for this resource, which is essentially a hash of the
         # metadata's contents and used for optimistic locking. The fingerprint is
@@ -30078,6 +30146,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # [Output Only] The parent of the security policy.
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
         # [Output Only] Total count of all security policy rule tuples. A security
         # policy can not exceed a set number of tuples.
         # Corresponds to the JSON property `ruleTupleCount`
@@ -30118,12 +30191,14 @@ module Google
           @cloud_armor_config = args[:cloud_armor_config] if args.key?(:cloud_armor_config)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @label_fingerprint = args[:label_fingerprint] if args.key?(:label_fingerprint)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @rules = args[:rules] if args.key?(:rules)
           @self_link = args[:self_link] if args.key?(:self_link)
@@ -30140,6 +30215,11 @@ module Google
         # Corresponds to the JSON property `attachmentId`
         # @return [String]
         attr_accessor :attachment_id
+      
+        # [Output Only] The display name of the security policy of the association.
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
       
         # The name for an association.
         # Corresponds to the JSON property `name`
@@ -30158,6 +30238,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @attachment_id = args[:attachment_id] if args.key?(:attachment_id)
+          @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
           @security_policy_id = args[:security_policy_id] if args.key?(:security_policy_id)
         end
@@ -30394,6 +30475,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :target_resources
       
+        # A list of service accounts indicating the sets of instances that are applied
+        # with this rule.
+        # Corresponds to the JSON property `targetServiceAccounts`
+        # @return [Array<String>]
+        attr_accessor :target_service_accounts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -30411,6 +30498,7 @@ module Google
           @rate_limit_options = args[:rate_limit_options] if args.key?(:rate_limit_options)
           @rule_tuple_count = args[:rule_tuple_count] if args.key?(:rule_tuple_count)
           @target_resources = args[:target_resources] if args.key?(:target_resources)
+          @target_service_accounts = args[:target_service_accounts] if args.key?(:target_service_accounts)
         end
       end
       
@@ -30426,9 +30514,26 @@ module Google
         # @return [Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfig]
         attr_accessor :config
       
-        # Represents an expression text. Example:
-        # title: "User account presence" description: "Determines whether the request
-        # has a user account" expression: "size(request.user) > 0"
+        # Represents a textual expression in the Common Expression Language (CEL) syntax.
+        # CEL is a C-like expression language. The syntax and semantics of CEL are
+        # documented at https://github.com/google/cel-spec.
+        # Example (Comparison):
+        # title: "Summary size limit" description: "Determines if a summary is less than
+        # 100 chars" expression: "document.summary.size() < 100"
+        # Example (Equality):
+        # title: "Requestor is owner" description: "Determines if requestor is the
+        # document owner" expression: "document.owner == request.auth.claims.email"
+        # Example (Logic):
+        # title: "Public documents" description: "Determine whether the document should
+        # be publicly visible" expression: "document.type != 'private' && document.type !
+        # = 'internal'"
+        # Example (Data Manipulation):
+        # title: "Notification string" description: "Create a notification string with a
+        # timestamp." expression: "'New message received at ' + string(document.
+        # create_time)"
+        # The exact variables and functions that may be referenced within an expression
+        # are determined by the service that evaluates it. See the service documentation
+        # for additional information.
         # Corresponds to the JSON property `expr`
         # @return [Google::Apis::ComputeAlpha::Expr]
         attr_accessor :expr
@@ -30469,6 +30574,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigDestinationPort>]
         attr_accessor :dest_ports
       
+        # Pairs of IP protocols and ports that the rule should match.
+        # This field may only be specified when versioned_expr is set to FIREWALL.
+        # Corresponds to the JSON property `layer4Configs`
+        # @return [Array<Google::Apis::ComputeAlpha::SecurityPolicyRuleMatcherConfigLayer4Config>]
+        attr_accessor :layer4_configs
+      
         # CIDR IP address range.
         # Corresponds to the JSON property `srcIpRanges`
         # @return [Array<String>]
@@ -30482,12 +30593,45 @@ module Google
         def update!(**args)
           @dest_ip_ranges = args[:dest_ip_ranges] if args.key?(:dest_ip_ranges)
           @dest_ports = args[:dest_ports] if args.key?(:dest_ports)
+          @layer4_configs = args[:layer4_configs] if args.key?(:layer4_configs)
           @src_ip_ranges = args[:src_ip_ranges] if args.key?(:src_ip_ranges)
         end
       end
       
       # 
       class SecurityPolicyRuleMatcherConfigDestinationPort
+        include Google::Apis::Core::Hashable
+      
+        # The IP protocol to which this rule applies. The protocol type is required when
+        # creating a firewall rule. This value can either be one of the following well
+        # known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP
+        # protocol number.
+        # Corresponds to the JSON property `ipProtocol`
+        # @return [String]
+        attr_accessor :ip_protocol
+      
+        # An optional list of ports to which this rule applies. This field is only
+        # applicable for UDP or TCP protocol. Each entry must be either an integer or a
+        # range. If not specified, this rule applies to connections through any port.
+        # Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        # This field may only be specified when versioned_expr is set to FIREWALL.
+        # Corresponds to the JSON property `ports`
+        # @return [Array<String>]
+        attr_accessor :ports
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ip_protocol = args[:ip_protocol] if args.key?(:ip_protocol)
+          @ports = args[:ports] if args.key?(:ports)
+        end
+      end
+      
+      # 
+      class SecurityPolicyRuleMatcherConfigLayer4Config
         include Google::Apis::Core::Hashable
       
         # The IP protocol to which this rule applies. The protocol type is required when
