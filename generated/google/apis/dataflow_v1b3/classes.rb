@@ -3623,6 +3623,36 @@ module Google
         end
       end
       
+      # Defines a SDK harness container for executing Dataflow pipelines.
+      class SdkHarnessContainerImage
+        include Google::Apis::Core::Hashable
+      
+        # A docker container image that resides in Google Container Registry.
+        # Corresponds to the JSON property `containerImage`
+        # @return [String]
+        attr_accessor :container_image
+      
+        # If true, recommends the Dataflow service to use only one core per SDK
+        # container instance with this image. If false (or unset) recommends using
+        # more than one core per SDK container instance with this image for
+        # efficiency. Note that Dataflow service may choose to override this property
+        # if needed.
+        # Corresponds to the JSON property `useSingleCorePerContainer`
+        # @return [Boolean]
+        attr_accessor :use_single_core_per_container
+        alias_method :use_single_core_per_container?, :use_single_core_per_container
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_image = args[:container_image] if args.key?(:container_image)
+          @use_single_core_per_container = args[:use_single_core_per_container] if args.key?(:use_single_core_per_container)
+        end
+      end
+      
       # The version of the SDK used to run the job.
       class SdkVersion
         include Google::Apis::Core::Hashable
@@ -5886,6 +5916,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :pool_args
       
+        # Set of SDK harness containers needed to execute this pipeline. This will
+        # only be set in the Fn API path. For non-cross-language pipelines this
+        # should have only one entry. Cross-language pipelines will have two or more
+        # entries.
+        # Corresponds to the JSON property `sdkHarnessContainerImages`
+        # @return [Array<Google::Apis::DataflowV1b3::SdkHarnessContainerImage>]
+        attr_accessor :sdk_harness_container_images
+      
         # Subnetwork to which VMs will be assigned, if desired.  Expected to be of
         # the form "regions/REGION/subnetworks/SUBNETWORK".
         # Corresponds to the JSON property `subnetwork`
@@ -5917,6 +5955,7 @@ module Google
       
         # Required. Docker container image that executes the Cloud Dataflow worker
         # harness, residing in Google Container Registry.
+        # Deprecated for the Fn API path. Use sdk_harness_container_images instead.
         # Corresponds to the JSON property `workerHarnessContainerImage`
         # @return [String]
         attr_accessor :worker_harness_container_image
@@ -5949,6 +5988,7 @@ module Google
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)
           @packages = args[:packages] if args.key?(:packages)
           @pool_args = args[:pool_args] if args.key?(:pool_args)
+          @sdk_harness_container_images = args[:sdk_harness_container_images] if args.key?(:sdk_harness_container_images)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @taskrunner_settings = args[:taskrunner_settings] if args.key?(:taskrunner_settings)
           @teardown_policy = args[:teardown_policy] if args.key?(:teardown_policy)

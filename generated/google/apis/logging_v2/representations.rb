@@ -76,6 +76,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBucketsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListExclusionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -113,6 +119,12 @@ module Google
       end
       
       class ListSinksResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +322,15 @@ module Google
         end
       end
       
+      class ListBucketsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :buckets, as: 'buckets', class: Google::Apis::LoggingV2::LogBucket, decorator: Google::Apis::LoggingV2::LogBucket::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListExclusionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -372,6 +393,18 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :sinks, as: 'sinks', class: Google::Apis::LoggingV2::LogSink, decorator: Google::Apis::LoggingV2::LogSink::Representation
       
+        end
+      end
+      
+      class LogBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :description, as: 'description'
+          property :lifecycle_state, as: 'lifecycleState'
+          property :name, as: 'name'
+          property :retention_days, as: 'retentionDays'
+          property :update_time, as: 'updateTime'
         end
       end
       

@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SdkHarnessContainerImage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SdkVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1848,6 +1854,14 @@ module Google
         end
       end
       
+      class SdkHarnessContainerImage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_image, as: 'containerImage'
+          property :use_single_core_per_container, as: 'useSingleCorePerContainer'
+        end
+      end
+      
       class SdkVersion
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2453,6 +2467,8 @@ module Google
           collection :packages, as: 'packages', class: Google::Apis::DataflowV1b3::Package, decorator: Google::Apis::DataflowV1b3::Package::Representation
       
           hash :pool_args, as: 'poolArgs'
+          collection :sdk_harness_container_images, as: 'sdkHarnessContainerImages', class: Google::Apis::DataflowV1b3::SdkHarnessContainerImage, decorator: Google::Apis::DataflowV1b3::SdkHarnessContainerImage::Representation
+      
           property :subnetwork, as: 'subnetwork'
           property :taskrunner_settings, as: 'taskrunnerSettings', class: Google::Apis::DataflowV1b3::TaskRunnerSettings, decorator: Google::Apis::DataflowV1b3::TaskRunnerSettings::Representation
       

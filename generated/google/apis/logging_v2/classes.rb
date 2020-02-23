@@ -432,6 +432,33 @@ module Google
         end
       end
       
+      # The response from ListBuckets (Beta).
+      class ListBucketsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A list of buckets.
+        # Corresponds to the JSON property `buckets`
+        # @return [Array<Google::Apis::LoggingV2::LogBucket>]
+        attr_accessor :buckets
+      
+        # If there might be more results than appear in this response, then
+        # nextPageToken is included. To get the next set of results, call the same
+        # method again using the value of nextPageToken as pageToken.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @buckets = args[:buckets] if args.key?(:buckets)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Result returned from ListExclusions.
       class ListExclusionsResponse
         include Google::Apis::Core::Hashable
@@ -670,6 +697,63 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sinks = args[:sinks] if args.key?(:sinks)
+        end
+      end
+      
+      # Describes a repository of logs (Beta).
+      class LogBucket
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The creation timestamp of the bucket. This is not set for any of
+        # the default buckets.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Describes this bucket.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The bucket lifecycle state.Output only.
+        # Corresponds to the JSON property `lifecycleState`
+        # @return [String]
+        attr_accessor :lifecycle_state
+      
+        # The resource name of the bucket. For example: "projects/my-project-id/
+        # locations/my-location/buckets/my-bucket-id The supported locations are:  "
+        # global"  "us-central1"For the location of global it is unspecified where logs
+        # are actually stored. Once a bucket has been created, the location can not be
+        # changed.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Logs will be retained by default for this amount of time, after which they
+        # will automatically be deleted. The minimum retention period is 1 day. If this
+        # value is set to zero at bucket creation time, the default time of 30 days will
+        # be used.
+        # Corresponds to the JSON property `retentionDays`
+        # @return [Fixnum]
+        attr_accessor :retention_days
+      
+        # Output only. The last update timestamp of the bucket.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @description = args[:description] if args.key?(:description)
+          @lifecycle_state = args[:lifecycle_state] if args.key?(:lifecycle_state)
+          @name = args[:name] if args.key?(:name)
+          @retention_days = args[:retention_days] if args.key?(:retention_days)
+          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
