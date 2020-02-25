@@ -248,6 +248,7 @@ module Google
           property :outdated_library, as: 'outdatedLibrary', class: Google::Apis::WebsecurityscannerV1beta::OutdatedLibrary, decorator: Google::Apis::WebsecurityscannerV1beta::OutdatedLibrary::Representation
       
           property :reproduction_url, as: 'reproductionUrl'
+          property :severity, as: 'severity'
           property :tracking_id, as: 'trackingId'
           property :violating_resource, as: 'violatingResource', class: Google::Apis::WebsecurityscannerV1beta::ViolatingResource, decorator: Google::Apis::WebsecurityscannerV1beta::ViolatingResource::Representation
       

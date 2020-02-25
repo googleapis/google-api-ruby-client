@@ -284,7 +284,6 @@ module Google
         # specific item, as users need to have ACL permissions on the contained
         # items. This ensures a high level access on the entire datasource, and
         # that the individual items are not shared outside this visibility.
-        # This should not be set if anonymous search is enabled for the data source.
         # Corresponds to the JSON property `itemsVisibility`
         # @return [Array<Google::Apis::CloudsearchV1::GSuitePrincipal>]
         attr_accessor :items_visibility
@@ -3023,7 +3022,6 @@ module Google
         # property. Only supported for Text properties. IsReturnable must be true to
         # set this option. In a given datasource maximum of 5 properties can be
         # marked as is_wildcard_searchable.
-        # Note: This is an alpha feature and is enabled for whitelisted users only.
         # Corresponds to the JSON property `isWildcardSearchable`
         # @return [Boolean]
         attr_accessor :is_wildcard_searchable

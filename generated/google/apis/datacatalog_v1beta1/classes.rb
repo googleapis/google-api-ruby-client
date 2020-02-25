@@ -782,33 +782,6 @@ module Google
       end
       
       # Response message for
-      # ListEntryGroups.
-      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
-        include Google::Apis::Core::Hashable
-      
-        # EntryGroup details.
-        # Corresponds to the JSON property `entryGroups`
-        # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup>]
-        attr_accessor :entry_groups
-      
-        # Token to retrieve the next page of results. It is set to empty if no items
-        # remain in results.
-        # Corresponds to the JSON property `nextPageToken`
-        # @return [String]
-        attr_accessor :next_page_token
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @entry_groups = args[:entry_groups] if args.key?(:entry_groups)
-          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
-        end
-      end
-      
-      # Response message for
       # ListPolicyTags.
       class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
         include Google::Apis::Core::Hashable

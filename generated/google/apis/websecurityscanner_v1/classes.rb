@@ -213,6 +213,11 @@ module Google
         # @return [String]
         attr_accessor :reproduction_url
       
+        # Output only. The severity level of the reported vulnerability.
+        # Corresponds to the JSON property `severity`
+        # @return [String]
+        attr_accessor :severity
+      
         # Output only. The tracking ID uniquely identifies a vulnerability instance
         # across
         # multiple ScanRuns.
@@ -258,6 +263,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @outdated_library = args[:outdated_library] if args.key?(:outdated_library)
           @reproduction_url = args[:reproduction_url] if args.key?(:reproduction_url)
+          @severity = args[:severity] if args.key?(:severity)
           @tracking_id = args[:tracking_id] if args.key?(:tracking_id)
           @violating_resource = args[:violating_resource] if args.key?(:violating_resource)
           @vulnerable_headers = args[:vulnerable_headers] if args.key?(:vulnerable_headers)

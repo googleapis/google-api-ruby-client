@@ -1238,12 +1238,15 @@ module Google
           property :first_page_footer_id_suggested, as: 'firstPageFooterIdSuggested'
           property :first_page_header_id_suggested, as: 'firstPageHeaderIdSuggested'
           property :margin_bottom_suggested, as: 'marginBottomSuggested'
+          property :margin_footer_suggested, as: 'marginFooterSuggested'
+          property :margin_header_suggested, as: 'marginHeaderSuggested'
           property :margin_left_suggested, as: 'marginLeftSuggested'
           property :margin_right_suggested, as: 'marginRightSuggested'
           property :margin_top_suggested, as: 'marginTopSuggested'
           property :page_number_start_suggested, as: 'pageNumberStartSuggested'
           property :page_size_suggestion_state, as: 'pageSizeSuggestionState', class: Google::Apis::DocsV1::SizeSuggestionState, decorator: Google::Apis::DocsV1::SizeSuggestionState::Representation
       
+          property :use_custom_header_footer_margins_suggested, as: 'useCustomHeaderFooterMarginsSuggested'
           property :use_even_page_header_footer_suggested, as: 'useEvenPageHeaderFooterSuggested'
           property :use_first_page_header_footer_suggested, as: 'useFirstPageHeaderFooterSuggested'
         end

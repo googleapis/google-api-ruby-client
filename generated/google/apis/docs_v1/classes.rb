@@ -1237,6 +1237,18 @@ module Google
         attr_accessor :margin_bottom_suggested
         alias_method :margin_bottom_suggested?, :margin_bottom_suggested
       
+        # Indicates if there was a suggested change to margin_footer.
+        # Corresponds to the JSON property `marginFooterSuggested`
+        # @return [Boolean]
+        attr_accessor :margin_footer_suggested
+        alias_method :margin_footer_suggested?, :margin_footer_suggested
+      
+        # Indicates if there was a suggested change to margin_header.
+        # Corresponds to the JSON property `marginHeaderSuggested`
+        # @return [Boolean]
+        attr_accessor :margin_header_suggested
+        alias_method :margin_header_suggested?, :margin_header_suggested
+      
         # Indicates if there was a suggested change to margin_left.
         # Corresponds to the JSON property `marginLeftSuggested`
         # @return [Boolean]
@@ -1269,6 +1281,13 @@ module Google
         # @return [Google::Apis::DocsV1::SizeSuggestionState]
         attr_accessor :page_size_suggestion_state
       
+        # Indicates if there was a suggested change to
+        # use_custom_header_footer_margins.
+        # Corresponds to the JSON property `useCustomHeaderFooterMarginsSuggested`
+        # @return [Boolean]
+        attr_accessor :use_custom_header_footer_margins_suggested
+        alias_method :use_custom_header_footer_margins_suggested?, :use_custom_header_footer_margins_suggested
+      
         # Indicates if there was a suggested change to use_even_page_header_footer.
         # Corresponds to the JSON property `useEvenPageHeaderFooterSuggested`
         # @return [Boolean]
@@ -1295,11 +1314,14 @@ module Google
           @first_page_footer_id_suggested = args[:first_page_footer_id_suggested] if args.key?(:first_page_footer_id_suggested)
           @first_page_header_id_suggested = args[:first_page_header_id_suggested] if args.key?(:first_page_header_id_suggested)
           @margin_bottom_suggested = args[:margin_bottom_suggested] if args.key?(:margin_bottom_suggested)
+          @margin_footer_suggested = args[:margin_footer_suggested] if args.key?(:margin_footer_suggested)
+          @margin_header_suggested = args[:margin_header_suggested] if args.key?(:margin_header_suggested)
           @margin_left_suggested = args[:margin_left_suggested] if args.key?(:margin_left_suggested)
           @margin_right_suggested = args[:margin_right_suggested] if args.key?(:margin_right_suggested)
           @margin_top_suggested = args[:margin_top_suggested] if args.key?(:margin_top_suggested)
           @page_number_start_suggested = args[:page_number_start_suggested] if args.key?(:page_number_start_suggested)
           @page_size_suggestion_state = args[:page_size_suggestion_state] if args.key?(:page_size_suggestion_state)
+          @use_custom_header_footer_margins_suggested = args[:use_custom_header_footer_margins_suggested] if args.key?(:use_custom_header_footer_margins_suggested)
           @use_even_page_header_footer_suggested = args[:use_even_page_header_footer_suggested] if args.key?(:use_even_page_header_footer_suggested)
           @use_first_page_header_footer_suggested = args[:use_first_page_header_footer_suggested] if args.key?(:use_first_page_header_footer_suggested)
         end

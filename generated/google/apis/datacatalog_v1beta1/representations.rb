@@ -142,12 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -485,15 +479,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entries, as: 'entries', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1Entry::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
-      class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entry_groups, as: 'entryGroups', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1EntryGroup::Representation
       
           property :next_page_token, as: 'nextPageToken'
         end
