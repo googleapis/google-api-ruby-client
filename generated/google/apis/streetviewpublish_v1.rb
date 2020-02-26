@@ -27,7 +27,7 @@ module Google
     # @see https://developers.google.com/streetview/publish/
     module StreetviewpublishV1
       VERSION = 'V1'
-      REVISION = '20200215'
+      REVISION = '20200224'
 
       # Publish and manage your 360 photos on Google Street View
       AUTH_STREETVIEWPUBLISH = 'https://www.googleapis.com/auth/streetviewpublish'

@@ -1757,12 +1757,17 @@ module Google
           property :create_time, as: 'createTime'
           property :info_type, as: 'infoType', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType::Representation
       
+          property :job_create_time, as: 'jobCreateTime'
+          property :job_name, as: 'jobName'
           property :likelihood, as: 'likelihood'
           property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Location, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Location::Representation
       
+          property :name, as: 'name'
           property :quote, as: 'quote'
           property :quote_info, as: 'quoteInfo', class: Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo::Representation
       
+          property :resource_name, as: 'resourceName'
+          property :trigger_name, as: 'triggerName'
         end
       end
       

@@ -49,7 +49,7 @@ module Google
         
         # Retrieves a BI reservation.
         # @param [String] name
-        #   Name of the requested reservation, for example:
+        #   Required. Name of the requested reservation, for example:
         #   `projects/`project_id`/locations/`location_id`/bireservation`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -95,7 +95,8 @@ module Google
         # Note "-" cannot be used for projects
         # nor locations.
         # @param [String] parent
-        #   The resource name of the admin project(containing project and location),
+        #   Required. The resource name of the admin project(containing project and
+        #   location),
         #   e.g.:
         #   "projects/myproject/locations/US".
         # @param [Fixnum] page_size
@@ -182,7 +183,7 @@ module Google
         
         # Creates a new capacity commitment resource.
         # @param [String] parent
-        #   Resource name of the parent reservation. E.g.,
+        #   Required. Resource name of the parent reservation. E.g.,
         #   projects/myproject/locations/US
         # @param [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] capacity_commitment_object
         # @param [Boolean] enforce_single_admin_project_per_org
@@ -222,7 +223,7 @@ module Google
         # before its commitment_end_time will fail with the error code
         # `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
-        #   Resource name of the capacity commitment to delete. E.g.,
+        #   Required. Resource name of the capacity commitment to delete. E.g.,
         #   projects/myproject/locations/US/capacityCommitments/123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -253,7 +254,7 @@ module Google
         
         # Returns information about the capacity commitment.
         # @param [String] name
-        #   Resource name of the capacity commitment to retrieve. E.g.,
+        #   Required. Resource name of the capacity commitment to retrieve. E.g.,
         #   projects/myproject/locations/US/capacityCommitments/123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -284,7 +285,7 @@ module Google
         
         # Lists all the capacity commitments for the admin project.
         # @param [String] parent
-        #   Resource name of the parent reservation. E.g.,
+        #   Required. Resource name of the parent reservation. E.g.,
         #   projects/myproject/locations/US
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
@@ -321,7 +322,7 @@ module Google
         
         # Creates a new reservation resource.
         # @param [String] parent
-        #   Project, location. E.g.,
+        #   Required. Project, location. E.g.,
         #   projects/myproject/locations/US
         # @param [Google::Apis::BigqueryreservationV1beta1::Reservation] reservation_object
         # @param [String] reservation_id
@@ -361,7 +362,7 @@ module Google
         # Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has
         # assignments.
         # @param [String] name
-        #   Resource name of the reservation to retrieve. E.g.,
+        #   Required. Resource name of the reservation to retrieve. E.g.,
         #   projects/myproject/locations/US/reservations/team1-prod
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -392,7 +393,7 @@ module Google
         
         # Returns information about the reservation.
         # @param [String] name
-        #   Resource name of the reservation to retrieve. E.g.,
+        #   Required. Resource name of the reservation to retrieve. E.g.,
         #   projects/myproject/locations/US/reservations/team1-prod
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -423,7 +424,7 @@ module Google
         
         # Lists all the reservations for the project in the specified location.
         # @param [String] parent
-        #   The parent resource name containing project and location, e.g.:
+        #   Required. The parent resource name containing project and location, e.g.:
         #   "projects/myproject/locations/US"
         # @param [String] filter
         #   Can be used to filter out reservations based on names, capacity, etc, e.g.:
@@ -508,7 +509,7 @@ module Google
         # Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment
         # does not match location of the reservation.
         # @param [String] parent
-        #   The parent resource name of the assignment
+        #   Required. The parent resource name of the assignment
         #   E.g.: projects/myproject/locations/US/reservations/team1-prod
         # @param [Google::Apis::BigqueryreservationV1beta1::Assignment] assignment_object
         # @param [String] fields
@@ -551,7 +552,7 @@ module Google
         # deletion of <organizationA, res1>, queries from project1 will still use
         # res1, while queries from project2 will use on-demand mode.
         # @param [String] name
-        #   Name of the resource, e.g.:
+        #   Required. Name of the resource, e.g.:
         #   projects/myproject/locations/US/reservations/team1-prod/assignments/123
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -593,7 +594,7 @@ module Google
         # specified project and location will be listed. Note
         # "-" cannot be used for projects nor locations.
         # @param [String] parent
-        #   The parent resource name e.g.:
+        #   Required. The parent resource name e.g.:
         #   projects/myproject/locations/US/reservations/team1-prod
         #   Or:
         #   projects/myproject/locations/US/reservations/-
@@ -637,7 +638,7 @@ module Google
         # Without the method customers might see some queries run on-demand which
         # might be unexpected.
         # @param [String] name
-        #   The resource name of the assignment,
+        #   Required. The resource name of the assignment,
         #   e.g.:
         #   projects/myproject/locations/US/reservations/team1-prod/assignments/123
         # @param [Google::Apis::BigqueryreservationV1beta1::MoveAssignmentRequest] move_assignment_request_object

@@ -70,12 +70,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Finding
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,7 +88,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudSecuritycenterV1beta1Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1beta1SecurityMarks
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,12 +244,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SecurityMarks
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class SetFindingStateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -288,7 +288,7 @@ module Google
           hash :resource_properties, as: 'resourceProperties'
           property :security_center_properties, as: 'securityCenterProperties', class: Google::Apis::SecuritycenterV1beta1::SecurityCenterProperties, decorator: Google::Apis::SecuritycenterV1beta1::SecurityCenterProperties::Representation
       
-          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
       
           property :update_time, as: 'updateTime'
         end
@@ -351,23 +351,6 @@ module Google
         end
       end
       
-      class Finding
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :category, as: 'category'
-          property :create_time, as: 'createTime'
-          property :event_time, as: 'eventTime'
-          property :external_uri, as: 'externalUri'
-          property :name, as: 'name'
-          property :parent, as: 'parent'
-          property :resource_name, as: 'resourceName'
-          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
-      
-          hash :source_properties, as: 'sourceProperties'
-          property :state, as: 'state'
-        end
-      end
-      
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -391,11 +374,36 @@ module Google
         end
       end
       
+      class GoogleCloudSecuritycenterV1beta1Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :event_time, as: 'eventTime'
+          property :external_uri, as: 'externalUri'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :resource_name, as: 'resourceName'
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
+      
+          hash :source_properties, as: 'sourceProperties'
+          property :state, as: 'state'
+        end
+      end
+      
       class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :duration, as: 'duration'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1beta1SecurityMarks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :marks, as: 'marks'
+          property :name, as: 'name'
         end
       end
       
@@ -563,7 +571,7 @@ module Google
       class ListFindingsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :findings, as: 'findings', class: Google::Apis::SecuritycenterV1beta1::Finding, decorator: Google::Apis::SecuritycenterV1beta1::Finding::Representation
+          collection :findings, as: 'findings', class: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding, decorator: Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
       
           property :next_page_token, as: 'nextPageToken'
           property :read_time, as: 'readTime'
@@ -637,14 +645,6 @@ module Google
           property :resource_parent, as: 'resourceParent'
           property :resource_project, as: 'resourceProject'
           property :resource_type, as: 'resourceType'
-        end
-      end
-      
-      class SecurityMarks
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          hash :marks, as: 'marks'
-          property :name, as: 'name'
         end
       end
       

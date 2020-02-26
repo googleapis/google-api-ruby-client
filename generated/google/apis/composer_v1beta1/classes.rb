@@ -26,7 +26,7 @@ module Google
       class AllowedIpRange
         include Google::Apis::Core::Hashable
       
-        # Optional. User-provided description.
+        # Optional. User-provided description. It must contain at most 300 characters.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description

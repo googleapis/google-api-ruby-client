@@ -305,7 +305,7 @@ module Google
         #   "organizations/`organization_id`/assets/`asset_id`/securityMarks"
         #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
         #   securityMarks".
-        # @param [Google::Apis::SecuritycenterV1beta1::SecurityMarks] security_marks_object
+        # @param [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks] google_cloud_securitycenter_v1beta1_security_marks_object
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect.
         # @param [String] update_mask
@@ -319,20 +319,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::SecurityMarks] parsed result object
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SecuritycenterV1beta1::SecurityMarks]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_asset_security_marks(name, security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_organization_asset_security_marks(name, google_cloud_securitycenter_v1beta1_security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
-          command.request_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
-          command.request_object = security_marks_object
-          command.response_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta1::SecurityMarks
+          command.request_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
+          command.request_object = google_cloud_securitycenter_v1beta1_security_marks_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks
           command.params['name'] = name unless name.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
@@ -746,7 +746,7 @@ module Google
         # @param [String] parent
         #   Required. Resource name of the new finding's parent. Its format should be
         #   "organizations/[organization_id]/sources/[source_id]".
-        # @param [Google::Apis::SecuritycenterV1beta1::Finding] finding_object
+        # @param [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding] google_cloud_securitycenter_v1beta1_finding_object
         # @param [String] finding_id
         #   Required. Unique identifier provided by the client within the parent scope.
         #   It must be alphanumeric and less than or equal to 32 characters and
@@ -760,20 +760,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::Finding] parsed result object
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SecuritycenterV1beta1::Finding]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_source_finding(parent, finding_object = nil, finding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def create_organization_source_finding(parent, google_cloud_securitycenter_v1beta1_finding_object = nil, finding_id: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v1beta1/{+parent}/findings', options)
-          command.request_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
-          command.request_object = finding_object
-          command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta1::Finding
+          command.request_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
+          command.request_object = google_cloud_securitycenter_v1beta1_finding_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding
           command.params['parent'] = parent unless parent.nil?
           command.query['findingId'] = finding_id unless finding_id.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -912,7 +912,7 @@ module Google
         #   https://cloud.google.com/apis/design/resource_names#relative_resource_name
         #   Example:
         #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
-        # @param [Google::Apis::SecuritycenterV1beta1::Finding] finding_object
+        # @param [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding] google_cloud_securitycenter_v1beta1_finding_object
         # @param [String] update_mask
         #   The FieldMask to use when updating the finding resource. This field should
         #   not be specified when creating a finding.
@@ -925,20 +925,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::Finding] parsed result object
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SecuritycenterV1beta1::Finding]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_organization_source_finding(name, finding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def patch_organization_source_finding(name, google_cloud_securitycenter_v1beta1_finding_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
-          command.request_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
-          command.request_object = finding_object
-          command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta1::Finding
+          command.request_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
+          command.request_object = google_cloud_securitycenter_v1beta1_finding_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding
           command.params['name'] = name unless name.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -962,10 +962,10 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::Finding] parsed result object
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SecuritycenterV1beta1::Finding]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
@@ -974,8 +974,8 @@ module Google
           command = make_simple_command(:post, 'v1beta1/{+name}:setState', options)
           command.request_representation = Google::Apis::SecuritycenterV1beta1::SetFindingStateRequest::Representation
           command.request_object = set_finding_state_request_object
-          command.response_representation = Google::Apis::SecuritycenterV1beta1::Finding::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta1::Finding
+          command.response_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -990,7 +990,7 @@ module Google
         #   "organizations/`organization_id`/assets/`asset_id`/securityMarks"
         #   "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
         #   securityMarks".
-        # @param [Google::Apis::SecuritycenterV1beta1::SecurityMarks] security_marks_object
+        # @param [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks] google_cloud_securitycenter_v1beta1_security_marks_object
         # @param [String] start_time
         #   The time at which the updated SecurityMarks take effect.
         # @param [String] update_mask
@@ -1004,20 +1004,20 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::SecurityMarks] parsed result object
+        # @yieldparam result [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::SecuritycenterV1beta1::SecurityMarks]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_source_finding_security_marks(name, security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def update_organization_source_finding_security_marks(name, google_cloud_securitycenter_v1beta1_security_marks_object = nil, start_time: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:patch, 'v1beta1/{+name}', options)
-          command.request_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
-          command.request_object = security_marks_object
-          command.response_representation = Google::Apis::SecuritycenterV1beta1::SecurityMarks::Representation
-          command.response_class = Google::Apis::SecuritycenterV1beta1::SecurityMarks
+          command.request_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
+          command.request_object = google_cloud_securitycenter_v1beta1_security_marks_object
+          command.response_representation = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks::Representation
+          command.response_class = Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks
           command.params['name'] = name unless name.nil?
           command.query['startTime'] = start_time unless start_time.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?

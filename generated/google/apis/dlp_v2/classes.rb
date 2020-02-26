@@ -2461,6 +2461,16 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InfoType]
         attr_accessor :info_type
       
+        # Time the job started that produced this finding.
+        # Corresponds to the JSON property `jobCreateTime`
+        # @return [String]
+        attr_accessor :job_create_time
+      
+        # The job that stored the finding.
+        # Corresponds to the JSON property `jobName`
+        # @return [String]
+        attr_accessor :job_name
+      
         # Confidence of how likely it is that the `info_type` is correct.
         # Corresponds to the JSON property `likelihood`
         # @return [String]
@@ -2470,6 +2480,12 @@ module Google
         # Corresponds to the JSON property `location`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Location]
         attr_accessor :location
+      
+        # Resource name in format projects/`id`/locations/`id`/inspectFindings/`id`
+        # Populated only when viewing persisted findings.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
       
         # The content that was found. Even if the content is not textual, it
         # may be converted to a textual representation here.
@@ -2485,6 +2501,16 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2QuoteInfo]
         attr_accessor :quote_info
       
+        # The job that stored the finding.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # Job trigger name, if applicable, for this finding.
+        # Corresponds to the JSON property `triggerName`
+        # @return [String]
+        attr_accessor :trigger_name
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2493,10 +2519,15 @@ module Google
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
           @info_type = args[:info_type] if args.key?(:info_type)
+          @job_create_time = args[:job_create_time] if args.key?(:job_create_time)
+          @job_name = args[:job_name] if args.key?(:job_name)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @location = args[:location] if args.key?(:location)
+          @name = args[:name] if args.key?(:name)
           @quote = args[:quote] if args.key?(:quote)
           @quote_info = args[:quote_info] if args.key?(:quote_info)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @trigger_name = args[:trigger_name] if args.key?(:trigger_name)
         end
       end
       

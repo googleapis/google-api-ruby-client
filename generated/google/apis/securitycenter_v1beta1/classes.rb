@@ -60,7 +60,7 @@ module Google
         # SCC organization -- they can be modified and viewed by all users who have
         # proper permissions on the organization.
         # Corresponds to the JSON property `securityMarks`
-        # @return [Google::Apis::SecuritycenterV1beta1::SecurityMarks]
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks]
         attr_accessor :security_marks
       
         # The time at which the asset was last updated, added, or deleted in Cloud
@@ -403,108 +403,6 @@ module Google
         end
       end
       
-      # Cloud Security Command Center (Cloud SCC) finding.
-      # A finding is a record of assessment data (security, risk, health or privacy)
-      # ingested into Cloud SCC for presentation, notification, analysis,
-      # policy testing, and enforcement. For example, an XSS vulnerability in an
-      # App Engine application is a finding.
-      class Finding
-        include Google::Apis::Core::Hashable
-      
-        # The additional taxonomy group within findings from a given source.
-        # This field is immutable after creation time.
-        # Example: "XSS_FLASH_INJECTION"
-        # Corresponds to the JSON property `category`
-        # @return [String]
-        attr_accessor :category
-      
-        # The time at which the finding was created in Cloud SCC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
-        # The time at which the event took place. For example, if the finding
-        # represents an open firewall it would capture the time the detector believes
-        # the firewall became open. The accuracy is determined by the detector.
-        # Corresponds to the JSON property `eventTime`
-        # @return [String]
-        attr_accessor :event_time
-      
-        # The URI that, if available, points to a web page outside of Cloud SCC
-        # where additional information about the finding can be found. This field is
-        # guaranteed to be either empty or a well formed URL.
-        # Corresponds to the JSON property `externalUri`
-        # @return [String]
-        attr_accessor :external_uri
-      
-        # The relative resource name of this finding. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Example:
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Immutable. The relative resource name of the source the finding belongs to.
-        # See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # This field is immutable after creation time.
-        # For example:
-        # "organizations/`organization_id`/sources/`source_id`"
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        # For findings on Google Cloud Platform (GCP) resources, the full resource
-        # name of the GCP resource this finding is for. See:
-        # https://cloud.google.com/apis/design/resource_names#full_resource_name
-        # When the finding is for a non-GCP resource, the resourceName can be a
-        # customer or partner defined string.
-        # This field is immutable after creation time.
-        # Corresponds to the JSON property `resourceName`
-        # @return [String]
-        attr_accessor :resource_name
-      
-        # User specified security marks that are attached to the parent Cloud Security
-        # Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
-        # SCC organization -- they can be modified and viewed by all users who have
-        # proper permissions on the organization.
-        # Corresponds to the JSON property `securityMarks`
-        # @return [Google::Apis::SecuritycenterV1beta1::SecurityMarks]
-        attr_accessor :security_marks
-      
-        # Source specific properties. These properties are managed by the source
-        # that writes the finding. The key names in the source_properties map must be
-        # between 1 and 255 characters, and must start with a letter and contain
-        # alphanumeric characters or underscores only.
-        # Corresponds to the JSON property `sourceProperties`
-        # @return [Hash<String,Object>]
-        attr_accessor :source_properties
-      
-        # The state of the finding.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @category = args[:category] if args.key?(:category)
-          @create_time = args[:create_time] if args.key?(:create_time)
-          @event_time = args[:event_time] if args.key?(:event_time)
-          @external_uri = args[:external_uri] if args.key?(:external_uri)
-          @name = args[:name] if args.key?(:name)
-          @parent = args[:parent] if args.key?(:parent)
-          @resource_name = args[:resource_name] if args.key?(:resource_name)
-          @security_marks = args[:security_marks] if args.key?(:security_marks)
-          @source_properties = args[:source_properties] if args.key?(:source_properties)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
       # Request message for `GetIamPolicy` method.
       class GetIamPolicyRequest
         include Google::Apis::Core::Hashable
@@ -573,6 +471,108 @@ module Google
         end
       end
       
+      # Cloud Security Command Center (Cloud SCC) finding.
+      # A finding is a record of assessment data (security, risk, health or privacy)
+      # ingested into Cloud SCC for presentation, notification, analysis,
+      # policy testing, and enforcement. For example, an XSS vulnerability in an
+      # App Engine application is a finding.
+      class GoogleCloudSecuritycenterV1beta1Finding
+        include Google::Apis::Core::Hashable
+      
+        # The additional taxonomy group within findings from a given source.
+        # This field is immutable after creation time.
+        # Example: "XSS_FLASH_INJECTION"
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # The time at which the finding was created in Cloud SCC.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The time at which the event took place. For example, if the finding
+        # represents an open firewall it would capture the time the detector believes
+        # the firewall became open. The accuracy is determined by the detector.
+        # Corresponds to the JSON property `eventTime`
+        # @return [String]
+        attr_accessor :event_time
+      
+        # The URI that, if available, points to a web page outside of Cloud SCC
+        # where additional information about the finding can be found. This field is
+        # guaranteed to be either empty or a well formed URL.
+        # Corresponds to the JSON property `externalUri`
+        # @return [String]
+        attr_accessor :external_uri
+      
+        # The relative resource name of this finding. See:
+        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
+        # Example:
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`"
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Immutable. The relative resource name of the source the finding belongs to.
+        # See:
+        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
+        # This field is immutable after creation time.
+        # For example:
+        # "organizations/`organization_id`/sources/`source_id`"
+        # Corresponds to the JSON property `parent`
+        # @return [String]
+        attr_accessor :parent
+      
+        # For findings on Google Cloud Platform (GCP) resources, the full resource
+        # name of the GCP resource this finding is for. See:
+        # https://cloud.google.com/apis/design/resource_names#full_resource_name
+        # When the finding is for a non-GCP resource, the resourceName can be a
+        # customer or partner defined string.
+        # This field is immutable after creation time.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # User specified security marks that are attached to the parent Cloud Security
+        # Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
+        # SCC organization -- they can be modified and viewed by all users who have
+        # proper permissions on the organization.
+        # Corresponds to the JSON property `securityMarks`
+        # @return [Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1SecurityMarks]
+        attr_accessor :security_marks
+      
+        # Source specific properties. These properties are managed by the source
+        # that writes the finding. The key names in the source_properties map must be
+        # between 1 and 255 characters, and must start with a letter and contain
+        # alphanumeric characters or underscores only.
+        # Corresponds to the JSON property `sourceProperties`
+        # @return [Hash<String,Object>]
+        attr_accessor :source_properties
+      
+        # The state of the finding.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @event_time = args[:event_time] if args.key?(:event_time)
+          @external_uri = args[:external_uri] if args.key?(:external_uri)
+          @name = args[:name] if args.key?(:name)
+          @parent = args[:parent] if args.key?(:parent)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @security_marks = args[:security_marks] if args.key?(:security_marks)
+          @source_properties = args[:source_properties] if args.key?(:source_properties)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
       # Response of asset discovery run
       class GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
         include Google::Apis::Core::Hashable
@@ -595,6 +595,45 @@ module Google
         def update!(**args)
           @duration = args[:duration] if args.key?(:duration)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # User specified security marks that are attached to the parent Cloud Security
+      # Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
+      # SCC organization -- they can be modified and viewed by all users who have
+      # proper permissions on the organization.
+      class GoogleCloudSecuritycenterV1beta1SecurityMarks
+        include Google::Apis::Core::Hashable
+      
+        # Mutable user specified security marks belonging to the parent resource.
+        # Constraints are as follows:
+        # * Keys and values are treated as case insensitive
+        # * Keys must be between 1 - 256 characters (inclusive)
+        # * Keys must be letters, numbers, underscores, or dashes
+        # * Values have leading and trailing whitespace trimmed, remaining
+        # characters must be between 1 - 4096 characters (inclusive)
+        # Corresponds to the JSON property `marks`
+        # @return [Hash<String,String>]
+        attr_accessor :marks
+      
+        # The relative resource name of the SecurityMarks. See:
+        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
+        # Examples:
+        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
+        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
+        # securityMarks".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @marks = args[:marks] if args.key?(:marks)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -1333,7 +1372,7 @@ module Google
       
         # Findings matching the list request.
         # Corresponds to the JSON property `findings`
-        # @return [Array<Google::Apis::SecuritycenterV1beta1::Finding>]
+        # @return [Array<Google::Apis::SecuritycenterV1beta1::GoogleCloudSecuritycenterV1beta1Finding>]
         attr_accessor :findings
       
         # Token to retrieve the next page of results, or empty if there are no more
@@ -1700,45 +1739,6 @@ module Google
           @resource_parent = args[:resource_parent] if args.key?(:resource_parent)
           @resource_project = args[:resource_project] if args.key?(:resource_project)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
-        end
-      end
-      
-      # User specified security marks that are attached to the parent Cloud Security
-      # Command Center (Cloud SCC) resource. Security marks are scoped within a Cloud
-      # SCC organization -- they can be modified and viewed by all users who have
-      # proper permissions on the organization.
-      class SecurityMarks
-        include Google::Apis::Core::Hashable
-      
-        # Mutable user specified security marks belonging to the parent resource.
-        # Constraints are as follows:
-        # * Keys and values are treated as case insensitive
-        # * Keys must be between 1 - 256 characters (inclusive)
-        # * Keys must be letters, numbers, underscores, or dashes
-        # * Values have leading and trailing whitespace trimmed, remaining
-        # characters must be between 1 - 4096 characters (inclusive)
-        # Corresponds to the JSON property `marks`
-        # @return [Hash<String,String>]
-        attr_accessor :marks
-      
-        # The relative resource name of the SecurityMarks. See:
-        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
-        # Examples:
-        # "organizations/`organization_id`/assets/`asset_id`/securityMarks"
-        # "organizations/`organization_id`/sources/`source_id`/findings/`finding_id`/
-        # securityMarks".
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @marks = args[:marks] if args.key?(:marks)
-          @name = args[:name] if args.key?(:name)
         end
       end
       
