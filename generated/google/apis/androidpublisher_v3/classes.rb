@@ -31,6 +31,11 @@ module Google
         # @return [Google::Apis::AndroidpublisherV3::ApkBinary]
         attr_accessor :binary
       
+        # Represents the binary payload of an APK.
+        # Corresponds to the JSON property `testBinary`
+        # @return [Google::Apis::AndroidpublisherV3::ApkBinary]
+        attr_accessor :test_binary
+      
         # The version code of the APK, as specified in the APK's manifest file.
         # Corresponds to the JSON property `versionCode`
         # @return [Fixnum]
@@ -43,6 +48,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @binary = args[:binary] if args.key?(:binary)
+          @test_binary = args[:test_binary] if args.key?(:test_binary)
           @version_code = args[:version_code] if args.key?(:version_code)
         end
       end
@@ -303,6 +309,11 @@ module Google
         attr_accessor :mod_ranges
       
         # 
+        # Corresponds to the JSON property `stratifiedSamplings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::StratifiedSampling>]
+        attr_accessor :stratified_samplings
+      
+        # 
         # Corresponds to the JSON property `versionCodes`
         # @return [Array<Fixnum>]
         attr_accessor :version_codes
@@ -314,6 +325,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
+          @stratified_samplings = args[:stratified_samplings] if args.key?(:stratified_samplings)
           @version_codes = args[:version_codes] if args.key?(:version_codes)
         end
       end
@@ -1455,6 +1467,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :salt
       
+        # 
+        # Corresponds to the JSON property `stratifiedSamplings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::StratifiedSampling>]
+        attr_accessor :stratified_samplings
+      
+        # 
+        # Corresponds to the JSON property `useAndroidId`
+        # @return [Boolean]
+        attr_accessor :use_android_id
+        alias_method :use_android_id?, :use_android_id
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1464,6 +1487,52 @@ module Google
           @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
           @modulus = args[:modulus] if args.key?(:modulus)
           @salt = args[:salt] if args.key?(:salt)
+          @stratified_samplings = args[:stratified_samplings] if args.key?(:stratified_samplings)
+          @use_android_id = args[:use_android_id] if args.key?(:use_android_id)
+        end
+      end
+      
+      # 
+      class StratifiedSampling
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `modRanges`
+        # @return [Array<Google::Apis::AndroidpublisherV3::ModRange>]
+        attr_accessor :mod_ranges
+      
+        # 
+        # Corresponds to the JSON property `stratum`
+        # @return [Google::Apis::AndroidpublisherV3::Stratum]
+        attr_accessor :stratum
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mod_ranges = args[:mod_ranges] if args.key?(:mod_ranges)
+          @stratum = args[:stratum] if args.key?(:stratum)
+        end
+      end
+      
+      # 
+      class Stratum
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
         end
       end
       
@@ -1893,6 +1962,21 @@ module Google
       class Testers
         include Google::Apis::Core::Hashable
       
+        # 
+        # Corresponds to the JSON property `autoEnrolledAndroidGroups`
+        # @return [Array<String>]
+        attr_accessor :auto_enrolled_android_groups
+      
+        # 
+        # Corresponds to the JSON property `autoEnrolledGoogleGroups`
+        # @return [Array<String>]
+        attr_accessor :auto_enrolled_google_groups
+      
+        # 
+        # Corresponds to the JSON property `excludedGoogleGroups`
+        # @return [Array<String>]
+        attr_accessor :excluded_google_groups
+      
         # A list of all Google Groups, as email addresses, that define testers for this
         # track.
         # Corresponds to the JSON property `googleGroups`
@@ -1905,6 +1989,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @auto_enrolled_android_groups = args[:auto_enrolled_android_groups] if args.key?(:auto_enrolled_android_groups)
+          @auto_enrolled_google_groups = args[:auto_enrolled_google_groups] if args.key?(:auto_enrolled_google_groups)
+          @excluded_google_groups = args[:excluded_google_groups] if args.key?(:excluded_google_groups)
           @google_groups = args[:google_groups] if args.key?(:google_groups)
         end
       end
@@ -2014,10 +2101,21 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # 
+        # Corresponds to the JSON property `pinnedVersions`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TrackReleasePin>]
+        attr_accessor :pinned_versions
+      
         # The description of what is new in the app in this release.
         # Corresponds to the JSON property `releaseNotes`
         # @return [Array<Google::Apis::AndroidpublisherV3::LocalizedText>]
         attr_accessor :release_notes
+      
+        # 
+        # Corresponds to the JSON property `rollbackEnabled`
+        # @return [Boolean]
+        attr_accessor :rollback_enabled
+        alias_method :rollback_enabled?, :rollback_enabled
       
         # 
         # Corresponds to the JSON property `sampling`
@@ -2053,11 +2151,106 @@ module Google
           @country_targeting = args[:country_targeting] if args.key?(:country_targeting)
           @in_app_update_priority = args[:in_app_update_priority] if args.key?(:in_app_update_priority)
           @name = args[:name] if args.key?(:name)
+          @pinned_versions = args[:pinned_versions] if args.key?(:pinned_versions)
           @release_notes = args[:release_notes] if args.key?(:release_notes)
+          @rollback_enabled = args[:rollback_enabled] if args.key?(:rollback_enabled)
           @sampling = args[:sampling] if args.key?(:sampling)
           @status = args[:status] if args.key?(:status)
           @user_fraction = args[:user_fraction] if args.key?(:user_fraction)
           @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # 
+      class TrackReleasePin
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `targetings`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargeting>]
+        attr_accessor :targetings
+      
+        # 
+        # Corresponds to the JSON property `versionCodes`
+        # @return [Array<Fixnum>]
+        attr_accessor :version_codes
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @targetings = args[:targetings] if args.key?(:targetings)
+          @version_codes = args[:version_codes] if args.key?(:version_codes)
+        end
+      end
+      
+      # 
+      class TrackReleasePinPinTargeting
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `countryCodes`
+        # @return [Array<String>]
+        attr_accessor :country_codes
+      
+        # 
+        # Corresponds to the JSON property `devices`
+        # @return [Array<Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargetingDevicePin>]
+        attr_accessor :devices
+      
+        # 
+        # Corresponds to the JSON property `phoneskyVersions`
+        # @return [Array<Fixnum>]
+        attr_accessor :phonesky_versions
+      
+        # 
+        # Corresponds to the JSON property `sdkVersions`
+        # @return [Array<Fixnum>]
+        attr_accessor :sdk_versions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @country_codes = args[:country_codes] if args.key?(:country_codes)
+          @devices = args[:devices] if args.key?(:devices)
+          @phonesky_versions = args[:phonesky_versions] if args.key?(:phonesky_versions)
+          @sdk_versions = args[:sdk_versions] if args.key?(:sdk_versions)
+        end
+      end
+      
+      # 
+      class TrackReleasePinPinTargetingDevicePin
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `brand`
+        # @return [String]
+        attr_accessor :brand
+      
+        # 
+        # Corresponds to the JSON property `device`
+        # @return [String]
+        attr_accessor :device
+      
+        # 
+        # Corresponds to the JSON property `product`
+        # @return [String]
+        attr_accessor :product
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @brand = args[:brand] if args.key?(:brand)
+          @device = args[:device] if args.key?(:device)
+          @product = args[:product] if args.key?(:product)
         end
       end
       

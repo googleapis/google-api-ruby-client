@@ -2661,6 +2661,54 @@ module Google
       end
       
       # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # Secret holds secret data of a certain type. The total bytes of the values in
+      # the Data field must be less than MaxSecretSize bytes.
+      class Secret
+        include Google::Apis::Core::Hashable
+      
+        # Data contains the secret data. Each key must consist of alphanumeric
+        # characters, '-', '_' or '.'. The serialized form of the secret data is a
+        # base64 encoded string, representing the arbitrary (possibly non-string)
+        # data value here. Described in https://tools.ietf.org/html/rfc4648#section-4
+        # Corresponds to the JSON property `data`
+        # @return [Hash<String,String>]
+        attr_accessor :data
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
+        # persisted resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # stringData allows specifying non-binary secret data in string form.
+        # It is provided as a write-only convenience method.
+        # All keys and values are merged into the data field on write, overwriting
+        # any existing values. It is never output when reading from the API.
+        # +k8s:conversion-gen=false
+        # Corresponds to the JSON property `stringData`
+        # @return [Hash<String,String>]
+        attr_accessor :string_data
+      
+        # Used to facilitate programmatic handling of secret data.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @string_data = args[:string_data] if args.key?(:string_data)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
       # Cloud Run for Anthos: supported
       # SecretEnvSource selects a Secret to populate the environment
       # variables with.

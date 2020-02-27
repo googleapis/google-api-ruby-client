@@ -547,6 +547,43 @@ module Google
       end
       
       # 
+      class BooksSubscriptionReleaseInfo
+        include Google::Apis::Core::Hashable
+      
+        # Amount in micros of the specified currency code.
+        # Corresponds to the JSON property `amountInMicros`
+        # @return [Fixnum]
+        attr_accessor :amount_in_micros
+      
+        # Currency code of the amount.
+        # Corresponds to the JSON property `currencyCode`
+        # @return [String]
+        attr_accessor :currency_code
+      
+        # The release number of this issue/volume/book.
+        # Corresponds to the JSON property `releaseNumber`
+        # @return [String]
+        attr_accessor :release_number
+      
+        # The release date.
+        # Corresponds to the JSON property `releaseTimestampUs`
+        # @return [Fixnum]
+        attr_accessor :release_timestamp_us
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount_in_micros = args[:amount_in_micros] if args.key?(:amount_in_micros)
+          @currency_code = args[:currency_code] if args.key?(:currency_code)
+          @release_number = args[:release_number] if args.key?(:release_number)
+          @release_timestamp_us = args[:release_timestamp_us] if args.key?(:release_timestamp_us)
+        end
+      end
+      
+      # 
       class RateRecommendedVolumeResponse
         include Google::Apis::Core::Hashable
       
@@ -2544,9 +2581,19 @@ module Google
           alias_method :is_complete?, :is_complete
         
           # 
+          # Corresponds to the JSON property `seriesFormatType`
+          # @return [String]
+          attr_accessor :series_format_type
+        
+          # 
           # Corresponds to the JSON property `seriesId`
           # @return [String]
           attr_accessor :series_id
+        
+          # 
+          # Corresponds to the JSON property `seriesSubscriptionReleaseInfo`
+          # @return [Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo]
+          attr_accessor :series_subscription_release_info
         
           # 
           # Corresponds to the JSON property `seriesType`
@@ -2573,10 +2620,49 @@ module Google
             @eligible_for_subscription = args[:eligible_for_subscription] if args.key?(:eligible_for_subscription)
             @image_url = args[:image_url] if args.key?(:image_url)
             @is_complete = args[:is_complete] if args.key?(:is_complete)
+            @series_format_type = args[:series_format_type] if args.key?(:series_format_type)
             @series_id = args[:series_id] if args.key?(:series_id)
+            @series_subscription_release_info = args[:series_subscription_release_info] if args.key?(:series_subscription_release_info)
             @series_type = args[:series_type] if args.key?(:series_type)
             @subscription_id = args[:subscription_id] if args.key?(:subscription_id)
             @title = args[:title] if args.key?(:title)
+          end
+          
+          # 
+          class SeriesSubscriptionReleaseInfo
+            include Google::Apis::Core::Hashable
+          
+            # Cancellation date of the series subscription (or when it ends).
+            # Corresponds to the JSON property `cancellationTimestampUs`
+            # @return [Fixnum]
+            attr_accessor :cancellation_timestamp_us
+          
+            # Release information for the last release.
+            # Corresponds to the JSON property `currentReleaseInfo`
+            # @return [Google::Apis::BooksV1::BooksSubscriptionReleaseInfo]
+            attr_accessor :current_release_info
+          
+            # Release information for the next release.
+            # Corresponds to the JSON property `nextReleaseInfo`
+            # @return [Google::Apis::BooksV1::BooksSubscriptionReleaseInfo]
+            attr_accessor :next_release_info
+          
+            # series subscription type.
+            # Corresponds to the JSON property `seriesSubscriptionType`
+            # @return [String]
+            attr_accessor :series_subscription_type
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @cancellation_timestamp_us = args[:cancellation_timestamp_us] if args.key?(:cancellation_timestamp_us)
+              @current_release_info = args[:current_release_info] if args.key?(:current_release_info)
+              @next_release_info = args[:next_release_info] if args.key?(:next_release_info)
+              @series_subscription_type = args[:series_subscription_type] if args.key?(:series_subscription_type)
+            end
           end
         end
       end

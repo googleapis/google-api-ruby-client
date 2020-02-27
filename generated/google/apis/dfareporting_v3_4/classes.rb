@@ -5568,12 +5568,6 @@ module Google
       class DirectorySite
         include Google::Apis::Core::Hashable
       
-        # Whether this directory site is active.
-        # Corresponds to the JSON property `active`
-        # @return [Boolean]
-        attr_accessor :active
-        alias_method :active?, :active
-      
         # ID of this directory site. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
         # @return [Fixnum]
@@ -5630,7 +5624,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @active = args[:active] if args.key?(:active)
           @id = args[:id] if args.key?(:id)
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @inpage_tag_formats = args[:inpage_tag_formats] if args.key?(:inpage_tag_formats)

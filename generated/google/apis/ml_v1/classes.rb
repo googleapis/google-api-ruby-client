@@ -658,13 +658,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Represents input parameters for a training job. When using the
-        # gcloud command to submit your training job, you can specify
-        # the input parameters as command-line arguments and/or in a YAML configuration
-        # file referenced from the --config command-line argument. For
-        # details, see the guide to
-        # <a href="/ml-engine/docs/tensorflow/training-jobs">submitting a training
-        # job</a>.
+        # Represents input parameters for a training job. When using the gcloud command
+        # to submit your training job, you can specify the input parameters as
+        # command-line arguments and/or in a YAML configuration file referenced from
+        # the --config command-line argument. For details, see the guide to [submitting
+        # a training job](/ai-platform/training/docs/training-jobs).
         # Corresponds to the JSON property `trainingInput`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1TrainingInput]
         attr_accessor :training_input
@@ -1458,13 +1456,11 @@ module Google
         end
       end
       
-      # Represents input parameters for a training job. When using the
-      # gcloud command to submit your training job, you can specify
-      # the input parameters as command-line arguments and/or in a YAML configuration
-      # file referenced from the --config command-line argument. For
-      # details, see the guide to
-      # <a href="/ml-engine/docs/tensorflow/training-jobs">submitting a training
-      # job</a>.
+      # Represents input parameters for a training job. When using the gcloud command
+      # to submit your training job, you can specify the input parameters as
+      # command-line arguments and/or in a YAML configuration file referenced from
+      # the --config command-line argument. For details, see the guide to [submitting
+      # a training job](/ai-platform/training/docs/training-jobs).
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
@@ -1580,40 +1576,32 @@ module Google
         # @return [String]
         attr_accessor :python_module
       
-        # Optional. The version of Python used in training. If not set, the default
-        # version is '2.7'. Starting [January 13,
-        # 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
-        # required.
+        # Optional. The version of Python used in training. You must either specify
+        # this field or specify `masterConfig.imageUri`.
         # The following Python versions are available:
         # * Python '3.7' is available when `runtime_version` is set to '1.15' or
         # later.
         # * Python '3.5' is available when `runtime_version` is set to a version
         # from '1.4' to '1.14'.
         # * Python '2.7' is available when `runtime_version` is set to '1.15' or
-        # earlier. (Runtime versions released [after January 1,
-        # 2020](/ml-engine/docs/release-notes#december_10_2019) do not support
-        # Python 2.7.)
+        # earlier.
         # Read more about the Python versions available for [each runtime
         # version](/ml-engine/docs/runtime-version-list).
         # Corresponds to the JSON property `pythonVersion`
         # @return [String]
         attr_accessor :python_version
       
-        # Required. The Google Compute Engine region to run the training job in.
-        # See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
-        # for AI Platform services.
+        # Required. The region to run the training job in. See the [available
+        # regions](/ai-platform/training/docs/regions) for AI Platform Training.
         # Corresponds to the JSON property `region`
         # @return [String]
         attr_accessor :region
       
-        # Optional. The AI Platform runtime version to use for training. If not
-        # set, AI Platform uses the default stable version, 1.0. Starting [January
-        # 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
-        # required.
-        # For more information, see the
-        # <a href="/ml-engine/docs/runtime-version-list">runtime version list</a>
-        # and
-        # <a href="/ml-engine/docs/versioning">how to manage runtime versions</a>.
+        # Optional. The AI Platform runtime version to use for training. You must
+        # either specify this field or specify `masterConfig.imageUri`.
+        # For more information, see the [runtime version
+        # list](/ai-platform/training/docs/runtime-version-list) and learn [how to
+        # manage runtime versions](/ai-platform/training/docs/versioning).
         # Corresponds to the JSON property `runtimeVersion`
         # @return [String]
         attr_accessor :runtime_version
@@ -1973,19 +1961,14 @@ module Google
         # @return [String]
         attr_accessor :prediction_class
       
-        # Optional. The version of Python used in prediction. If not set, the default
-        # version is '2.7'. Starting [January 13,
-        # 2020](/ml-engine/docs/release-notes#december_10_2019), this field is
-        # required.
+        # Required. The version of Python used in prediction.
         # The following Python versions are available:
         # * Python '3.7' is available when `runtime_version` is set to '1.15' or
         # later.
         # * Python '3.5' is available when `runtime_version` is set to a version
         # from '1.4' to '1.14'.
         # * Python '2.7' is available when `runtime_version` is set to '1.15' or
-        # earlier. (Runtime versions released [after January 1,
-        # 2020](/ml-engine/docs/release-notes#december_10_2019) do not support
-        # Python 2.7.)
+        # earlier.
         # Read more about the Python versions available for [each runtime
         # version](/ml-engine/docs/runtime-version-list).
         # Corresponds to the JSON property `pythonVersion`
@@ -2007,10 +1990,7 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1RequestLoggingConfig]
         attr_accessor :request_logging_config
       
-        # Optional. The AI Platform runtime version to use for this deployment.
-        # If not set, AI Platform uses the default stable version, 1.0. Starting
-        # [January 13, 2020](/ml-engine/docs/release-notes#december_10_2019), this
-        # field is required.
+        # Required. The AI Platform runtime version to use for this deployment.
         # For more information, see the
         # [runtime version list](/ml-engine/docs/runtime-version-list) and
         # [how to manage runtime versions](/ml-engine/docs/versioning).

@@ -3668,7 +3668,11 @@ module Google
         # @return [String]
         attr_accessor :latency_preference
       
-        # 
+        # The mesh for projecting the video if projection is mesh. The mesh value must
+        # be a UTF-8 string containing the base-64 encoding of 3D mesh data that follows
+        # the  Spherical Video V2 RFC specification for an mshp box, excluding the box
+        # size and type but including the following four reserved zero bytes for the
+        # version and flags.
         # Corresponds to the JSON property `mesh`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -5363,51 +5367,33 @@ module Google
       class MembershipsDetails
         include Google::Apis::Core::Hashable
       
-        # All levels that the user has access to. This includes the currently active
-        # level and all other levels that are included because of a higher purchase.
+        # Ids of all levels that the user has access to. This includes the currently
+        # active level and all other levels that are included because of a higher
+        # purchase.
         # Corresponds to the JSON property `accessibleLevels`
         # @return [Array<String>]
         attr_accessor :accessible_levels
       
-        # The highest level that the user has access to at the moment.
+        # Id of the highest level that the user has access to at the moment.
         # Corresponds to the JSON property `highestAccessibleLevel`
         # @return [String]
         attr_accessor :highest_accessible_level
       
-        # Display name for the highest level that the user has access to at the moment.
+        # Display name of the highest level that the user has access to at the moment.
         # Corresponds to the JSON property `highestAccessibleLevelDisplayName`
         # @return [String]
         attr_accessor :highest_accessible_level_display_name
       
-        # The date and time when the user became a continuous member across all levels.
-        # Corresponds to the JSON property `memberSince`
-        # @return [String]
-        attr_accessor :member_since
+        # Data about memberships duration without taking into consideration pricing
+        # levels.
+        # Corresponds to the JSON property `membershipsDuration`
+        # @return [Google::Apis::YoutubeV3::MembershipsDuration]
+        attr_accessor :memberships_duration
       
-        # The date and time when the user started to continuously have access to the
-        # currently highest level.
-        # Corresponds to the JSON property `memberSinceCurrentLevel`
-        # @return [String]
-        attr_accessor :member_since_current_level
-      
-        # The cumulative time the user has been a member across all levels in complete
-        # months (the time is rounded down to the nearest integer).
-        # Corresponds to the JSON property `memberTotalDuration`
-        # @return [Fixnum]
-        attr_accessor :member_total_duration
-      
-        # The cumulative time the user has had access to the currently highest level in
-        # complete months (the time is rounded down to the nearest integer).
-        # Corresponds to the JSON property `memberTotalDurationCurrentLevel`
-        # @return [Fixnum]
-        attr_accessor :member_total_duration_current_level
-      
-        # The highest level that the user has access to at the moment. DEPRECATED -
-        # highest_accessible_level should be used instead. This will be removed after we
-        # make sure there are no 3rd parties relying on it.
-        # Corresponds to the JSON property `purchasedLevel`
-        # @return [String]
-        attr_accessor :purchased_level
+        # Data about memberships duration on particular pricing levels.
+        # Corresponds to the JSON property `membershipsDurationAtLevels`
+        # @return [Array<Google::Apis::YoutubeV3::MembershipsDurationAtLevel>]
+        attr_accessor :memberships_duration_at_levels
       
         def initialize(**args)
            update!(**args)
@@ -5418,11 +5404,66 @@ module Google
           @accessible_levels = args[:accessible_levels] if args.key?(:accessible_levels)
           @highest_accessible_level = args[:highest_accessible_level] if args.key?(:highest_accessible_level)
           @highest_accessible_level_display_name = args[:highest_accessible_level_display_name] if args.key?(:highest_accessible_level_display_name)
+          @memberships_duration = args[:memberships_duration] if args.key?(:memberships_duration)
+          @memberships_duration_at_levels = args[:memberships_duration_at_levels] if args.key?(:memberships_duration_at_levels)
+        end
+      end
+      
+      # 
+      class MembershipsDuration
+        include Google::Apis::Core::Hashable
+      
+        # The date and time when the user became a continuous member across all levels.
+        # Corresponds to the JSON property `memberSince`
+        # @return [String]
+        attr_accessor :member_since
+      
+        # The cumulative time the user has been a member across all levels in complete
+        # months (the time is rounded down to the nearest integer).
+        # Corresponds to the JSON property `memberTotalDurationMonths`
+        # @return [Fixnum]
+        attr_accessor :member_total_duration_months
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
           @member_since = args[:member_since] if args.key?(:member_since)
-          @member_since_current_level = args[:member_since_current_level] if args.key?(:member_since_current_level)
-          @member_total_duration = args[:member_total_duration] if args.key?(:member_total_duration)
-          @member_total_duration_current_level = args[:member_total_duration_current_level] if args.key?(:member_total_duration_current_level)
-          @purchased_level = args[:purchased_level] if args.key?(:purchased_level)
+          @member_total_duration_months = args[:member_total_duration_months] if args.key?(:member_total_duration_months)
+        end
+      end
+      
+      # 
+      class MembershipsDurationAtLevel
+        include Google::Apis::Core::Hashable
+      
+        # Pricing level id.
+        # Corresponds to the JSON property `level`
+        # @return [String]
+        attr_accessor :level
+      
+        # The date and time when the user became a continuous member for the given level.
+        # Corresponds to the JSON property `memberSince`
+        # @return [String]
+        attr_accessor :member_since
+      
+        # The cumulative time the user has been a member for the given level in complete
+        # months (the time is rounded down to the nearest integer).
+        # Corresponds to the JSON property `memberTotalDurationMonths`
+        # @return [Fixnum]
+        attr_accessor :member_total_duration_months
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @level = args[:level] if args.key?(:level)
+          @member_since = args[:member_since] if args.key?(:member_since)
+          @member_total_duration_months = args[:member_total_duration_months] if args.key?(:member_total_duration_months)
         end
       end
       
@@ -8739,9 +8780,7 @@ module Google
         # @return [String]
         attr_accessor :rejection_reason
       
-        # Allows clients to set the Crosswalk self_declared state for a Video. This maps
-        # to VAPI.Video.creator_flags.is_crosswalk_self_declared() and VAPI.Video.
-        # creator_flags.is_not_crosswalk_self_declared().
+        # 
         # Corresponds to the JSON property `selfDeclaredMadeForKids`
         # @return [Boolean]
         attr_accessor :self_declared_made_for_kids

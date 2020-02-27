@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BooksSubscriptionReleaseInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RateRecommendedVolumeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -399,6 +405,12 @@ module Google
         
         class Series
           class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class SeriesSubscriptionReleaseInfo
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -801,6 +813,16 @@ module Google
           property :processing_state, as: 'processingState'
           property :title, as: 'title'
           property :volume_id, as: 'volumeId'
+        end
+      end
+      
+      class BooksSubscriptionReleaseInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount_in_micros, :numeric_string => true, as: 'amountInMicros'
+          property :currency_code, as: 'currencyCode'
+          property :release_number, as: 'releaseNumber'
+          property :release_timestamp_us, :numeric_string => true, as: 'releaseTimestampUs'
         end
       end
       
@@ -1380,10 +1402,25 @@ module Google
             property :eligible_for_subscription, as: 'eligibleForSubscription'
             property :image_url, as: 'imageUrl'
             property :is_complete, as: 'isComplete'
+            property :series_format_type, as: 'seriesFormatType'
             property :series_id, as: 'seriesId'
+            property :series_subscription_release_info, as: 'seriesSubscriptionReleaseInfo', class: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo, decorator: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::Representation
+        
             property :series_type, as: 'seriesType'
             property :subscription_id, as: 'subscriptionId'
             property :title, as: 'title'
+          end
+          
+          class SeriesSubscriptionReleaseInfo
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :cancellation_timestamp_us, :numeric_string => true, as: 'cancellationTimestampUs'
+              property :current_release_info, as: 'currentReleaseInfo', class: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo, decorator: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo::Representation
+          
+              property :next_release_info, as: 'nextReleaseInfo', class: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo, decorator: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo::Representation
+          
+              property :series_subscription_type, as: 'seriesSubscriptionType'
+            end
           end
         end
       end

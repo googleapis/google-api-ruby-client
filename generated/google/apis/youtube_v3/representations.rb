@@ -676,6 +676,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MembershipsDuration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipsDurationAtLevel
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MembershipsLevel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2530,11 +2542,27 @@ module Google
           collection :accessible_levels, as: 'accessibleLevels'
           property :highest_accessible_level, as: 'highestAccessibleLevel'
           property :highest_accessible_level_display_name, as: 'highestAccessibleLevelDisplayName'
+          property :memberships_duration, as: 'membershipsDuration', class: Google::Apis::YoutubeV3::MembershipsDuration, decorator: Google::Apis::YoutubeV3::MembershipsDuration::Representation
+      
+          collection :memberships_duration_at_levels, as: 'membershipsDurationAtLevels', class: Google::Apis::YoutubeV3::MembershipsDurationAtLevel, decorator: Google::Apis::YoutubeV3::MembershipsDurationAtLevel::Representation
+      
+        end
+      end
+      
+      class MembershipsDuration
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           property :member_since, as: 'memberSince'
-          property :member_since_current_level, as: 'memberSinceCurrentLevel'
-          property :member_total_duration, as: 'memberTotalDuration'
-          property :member_total_duration_current_level, as: 'memberTotalDurationCurrentLevel'
-          property :purchased_level, as: 'purchasedLevel'
+          property :member_total_duration_months, as: 'memberTotalDurationMonths'
+        end
+      end
+      
+      class MembershipsDurationAtLevel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :level, as: 'level'
+          property :member_since, as: 'memberSince'
+          property :member_total_duration_months, as: 'memberTotalDurationMonths'
         end
       end
       

@@ -100,6 +100,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CloudSchedulerSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSchedulerSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudSchedulerSourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageSourceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CloudStorageSourceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Condition
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -244,18 +280,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Initializer
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Initializers
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class IntOrString
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -287,6 +311,18 @@ module Google
       end
       
       class ListCloudPubSubSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCloudSchedulerSourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListCloudStorageSourcesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,12 +365,6 @@ module Google
       end
       
       class ListServicesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListStoragesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -544,24 +574,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Storage
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StorageSpec
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class StorageStatus
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TcpSocketAction
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -764,6 +776,92 @@ module Google
       end
       
       class CloudPubSubSourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :sink_uri, as: 'sinkUri'
+        end
+      end
+      
+      class CloudSchedulerSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::CloudSchedulerSourceSpec, decorator: Google::Apis::RunV1alpha1::CloudSchedulerSourceSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::CloudSchedulerSourceStatus, decorator: Google::Apis::RunV1alpha1::CloudSchedulerSourceStatus::Representation
+      
+        end
+      end
+      
+      class CloudSchedulerSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
+      
+          property :data, as: 'data'
+          property :location, as: 'location'
+          property :project, as: 'project'
+          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :schedule, as: 'schedule'
+          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
+      
+        end
+      end
+      
+      class CloudSchedulerSourceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
+      
+          property :observed_generation, as: 'observedGeneration'
+          property :sink_uri, as: 'sinkUri'
+        end
+      end
+      
+      class CloudStorageSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::CloudStorageSourceSpec, decorator: Google::Apis::RunV1alpha1::CloudStorageSourceSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1alpha1::CloudStorageSourceStatus, decorator: Google::Apis::RunV1alpha1::CloudStorageSourceStatus::Representation
+      
+        end
+      end
+      
+      class CloudStorageSourceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bucket, as: 'bucket'
+          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
+      
+          collection :event_types, as: 'eventTypes'
+          property :object_name_prefix, as: 'objectNamePrefix'
+          property :payload_format, as: 'payloadFormat'
+          property :project, as: 'project'
+          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
+      
+          property :service_account_name, as: 'serviceAccountName'
+          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
+      
+        end
+      end
+      
+      class CloudStorageSourceStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
@@ -1056,21 +1154,6 @@ module Google
         end
       end
       
-      class Initializer
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :name, as: 'name'
-        end
-      end
-      
-      class Initializers
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :pending, as: 'pending', class: Google::Apis::RunV1alpha1::Initializer, decorator: Google::Apis::RunV1alpha1::Initializer::Representation
-      
-        end
-      end
-      
       class IntOrString
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1126,6 +1209,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_version, as: 'apiVersion'
           collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudPubSubSource, decorator: Google::Apis::RunV1alpha1::CloudPubSubSource::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCloudSchedulerSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudSchedulerSource, decorator: Google::Apis::RunV1alpha1::CloudSchedulerSource::Representation
+      
+          property :kind, as: 'kind'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
+      
+          collection :unreachable, as: 'unreachable'
+        end
+      end
+      
+      class ListCloudStorageSourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::CloudStorageSource, decorator: Google::Apis::RunV1alpha1::CloudStorageSource::Representation
       
           property :kind, as: 'kind'
           property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
@@ -1217,19 +1326,6 @@ module Google
         end
       end
       
-      class ListStoragesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          collection :items, as: 'items', class: Google::Apis::RunV1alpha1::Storage, decorator: Google::Apis::RunV1alpha1::Storage::Representation
-      
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ListMeta, decorator: Google::Apis::RunV1alpha1::ListMeta::Representation
-      
-          collection :unreachable, as: 'unreachable'
-        end
-      end
-      
       class ListTriggersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1272,8 +1368,6 @@ module Google
           collection :finalizers, as: 'finalizers'
           property :generate_name, as: 'generateName'
           property :generation, as: 'generation'
-          property :initializers, as: 'initializers', class: Google::Apis::RunV1alpha1::Initializers, decorator: Google::Apis::RunV1alpha1::Initializers::Representation
-      
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :namespace, as: 'namespace'
@@ -1639,49 +1733,6 @@ module Google
           property :policy, as: 'policy', class: Google::Apis::RunV1alpha1::Policy, decorator: Google::Apis::RunV1alpha1::Policy::Representation
       
           property :update_mask, as: 'updateMask'
-        end
-      end
-      
-      class Storage
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :api_version, as: 'apiVersion'
-          property :kind, as: 'kind'
-          property :metadata, as: 'metadata', class: Google::Apis::RunV1alpha1::ObjectMeta, decorator: Google::Apis::RunV1alpha1::ObjectMeta::Representation
-      
-          property :spec, as: 'spec', class: Google::Apis::RunV1alpha1::StorageSpec, decorator: Google::Apis::RunV1alpha1::StorageSpec::Representation
-      
-          property :status, as: 'status', class: Google::Apis::RunV1alpha1::StorageStatus, decorator: Google::Apis::RunV1alpha1::StorageStatus::Representation
-      
-        end
-      end
-      
-      class StorageSpec
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :bucket, as: 'bucket'
-          property :ce_overrides, as: 'ceOverrides', class: Google::Apis::RunV1alpha1::CloudEventOverrides, decorator: Google::Apis::RunV1alpha1::CloudEventOverrides::Representation
-      
-          collection :event_types, as: 'eventTypes'
-          property :object_name_prefix, as: 'objectNamePrefix'
-          property :payload_format, as: 'payloadFormat'
-          property :project, as: 'project'
-          property :pubsub_secret, as: 'pubsubSecret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
-          property :secret, as: 'secret', class: Google::Apis::RunV1alpha1::SecretKeySelector, decorator: Google::Apis::RunV1alpha1::SecretKeySelector::Representation
-      
-          property :service_account_name, as: 'serviceAccountName'
-          property :sink, as: 'sink', class: Google::Apis::RunV1alpha1::Destination, decorator: Google::Apis::RunV1alpha1::Destination::Representation
-      
-        end
-      end
-      
-      class StorageStatus
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :conditions, as: 'conditions', class: Google::Apis::RunV1alpha1::Condition, decorator: Google::Apis::RunV1alpha1::Condition::Representation
-      
-          property :observed_generation, as: 'observedGeneration'
         end
       end
       

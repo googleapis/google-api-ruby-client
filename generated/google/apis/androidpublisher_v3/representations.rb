@@ -286,6 +286,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StratifiedSampling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Stratum
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SubscriptionCancelSurveyResult
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -370,6 +382,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TrackReleasePin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrackReleasePinPinTargeting
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TrackReleasePinPinTargetingDevicePin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TracksListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +434,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :binary, as: 'binary', class: Google::Apis::AndroidpublisherV3::ApkBinary, decorator: Google::Apis::AndroidpublisherV3::ApkBinary::Representation
+      
+          property :test_binary, as: 'testBinary', class: Google::Apis::AndroidpublisherV3::ApkBinary, decorator: Google::Apis::AndroidpublisherV3::ApkBinary::Representation
       
           property :version_code, as: 'versionCode'
         end
@@ -492,6 +524,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
+      
+          collection :stratified_samplings, as: 'stratifiedSamplings', class: Google::Apis::AndroidpublisherV3::StratifiedSampling, decorator: Google::Apis::AndroidpublisherV3::StratifiedSampling::Representation
       
           collection :version_codes, as: 'versionCodes'
         end
@@ -825,6 +859,26 @@ module Google
       
           property :modulus, :numeric_string => true, as: 'modulus'
           property :salt, as: 'salt'
+          collection :stratified_samplings, as: 'stratifiedSamplings', class: Google::Apis::AndroidpublisherV3::StratifiedSampling, decorator: Google::Apis::AndroidpublisherV3::StratifiedSampling::Representation
+      
+          property :use_android_id, as: 'useAndroidId'
+        end
+      end
+      
+      class StratifiedSampling
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :mod_ranges, as: 'modRanges', class: Google::Apis::AndroidpublisherV3::ModRange, decorator: Google::Apis::AndroidpublisherV3::ModRange::Representation
+      
+          property :stratum, as: 'stratum', class: Google::Apis::AndroidpublisherV3::Stratum, decorator: Google::Apis::AndroidpublisherV3::Stratum::Representation
+      
+        end
+      end
+      
+      class Stratum
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
         end
       end
       
@@ -930,6 +984,9 @@ module Google
       class Testers
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :auto_enrolled_android_groups, as: 'autoEnrolledAndroidGroups'
+          collection :auto_enrolled_google_groups, as: 'autoEnrolledGoogleGroups'
+          collection :excluded_google_groups, as: 'excludedGoogleGroups'
           collection :google_groups, as: 'googleGroups'
         end
       end
@@ -968,13 +1025,45 @@ module Google
       
           property :in_app_update_priority, as: 'inAppUpdatePriority'
           property :name, as: 'name'
+          collection :pinned_versions, as: 'pinnedVersions', class: Google::Apis::AndroidpublisherV3::TrackReleasePin, decorator: Google::Apis::AndroidpublisherV3::TrackReleasePin::Representation
+      
           collection :release_notes, as: 'releaseNotes', class: Google::Apis::AndroidpublisherV3::LocalizedText, decorator: Google::Apis::AndroidpublisherV3::LocalizedText::Representation
       
+          property :rollback_enabled, as: 'rollbackEnabled'
           property :sampling, as: 'sampling', class: Google::Apis::AndroidpublisherV3::Sampling, decorator: Google::Apis::AndroidpublisherV3::Sampling::Representation
       
           property :status, as: 'status'
           property :user_fraction, as: 'userFraction'
           collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
+      class TrackReleasePin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :targetings, as: 'targetings', class: Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargeting, decorator: Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargeting::Representation
+      
+          collection :version_codes, as: 'versionCodes'
+        end
+      end
+      
+      class TrackReleasePinPinTargeting
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :country_codes, as: 'countryCodes'
+          collection :devices, as: 'devices', class: Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargetingDevicePin, decorator: Google::Apis::AndroidpublisherV3::TrackReleasePinPinTargetingDevicePin::Representation
+      
+          collection :phonesky_versions, as: 'phoneskyVersions'
+          collection :sdk_versions, as: 'sdkVersions'
+        end
+      end
+      
+      class TrackReleasePinPinTargetingDevicePin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :brand, as: 'brand'
+          property :device, as: 'device'
+          property :product, as: 'product'
         end
       end
       

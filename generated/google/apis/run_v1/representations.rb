@@ -322,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Secret
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecretEnvSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -982,6 +988,17 @@ module Google
           collection :traffic, as: 'traffic', class: Google::Apis::RunV1::TrafficTarget, decorator: Google::Apis::RunV1::TrafficTarget::Representation
       
           property :url, as: 'url'
+        end
+      end
+      
+      class Secret
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :data, as: 'data'
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          hash :string_data, as: 'stringData'
+          property :type, as: 'type'
         end
       end
       

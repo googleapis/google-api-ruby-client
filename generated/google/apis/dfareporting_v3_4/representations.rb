@@ -2753,7 +2753,6 @@ module Google
       class DirectorySite
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :active, as: 'active'
           property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
       
