@@ -12,26 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/genomics_v1/service.rb'
-require 'google/apis/genomics_v1/classes.rb'
-require 'google/apis/genomics_v1/representations.rb'
+require 'google/apis/displayvideo_v1/service.rb'
+require 'google/apis/displayvideo_v1/classes.rb'
+require 'google/apis/displayvideo_v1/representations.rb'
 
 module Google
   module Apis
-    # Genomics API
+    # Display & Video 360 API
     #
-    # Uploads, processes, queries, and searches Genomics data in the cloud.
+    # Display & Video 360 API allows users to manage and create campaigns and
+    # reports.
     #
-    # @see https://cloud.google.com/genomics
-    module GenomicsV1
+    # @see https://developers.google.com/display-video/
+    module DisplayvideoV1
       VERSION = 'V1'
       REVISION = '20200226'
 
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+      # Create, see, edit, and permanently delete your Display & Video 360 entities and reports
+      AUTH_DISPLAY_VIDEO = 'https://www.googleapis.com/auth/display-video'
 
-      # View and manage Genomics data
-      AUTH_GENOMICS = 'https://www.googleapis.com/auth/genomics'
+      # View and manage your reports in DoubleClick Bid Manager
+      AUTH_DOUBLECLICKBIDMANAGER = 'https://www.googleapis.com/auth/doubleclickbidmanager'
     end
   end
 end

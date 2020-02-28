@@ -22,8 +22,8 @@ module Google
     module SecretmanagerV1
       # Secret Manager API
       #
-      # Stores and manages access to application secrets. Provides convenience while
-      #  improving security.
+      # Stores API keys, passwords, certificates, and other sensitive data. Provides
+      #  convenience while improving security.
       #
       # @example
       #    require 'google/apis/secretmanager_v1'

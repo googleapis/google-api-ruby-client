@@ -693,7 +693,7 @@ module Google
       end
       
       # A request to replace all existing Access Levels in an Access Policy with
-      # the Access Levels provided. This is done within one transaction.
+      # the Access Levels provided. This is done atomically.
       class ReplaceAccessLevelsRequest
         include Google::Apis::Core::Hashable
       
@@ -746,7 +746,7 @@ module Google
       end
       
       # A request to replace all existing Service Perimeters in an Access Policy
-      # with the Service Perimeters provided. This is done within one transaction.
+      # with the Service Perimeters provided. This is done atomically.
       class ReplaceServicePerimetersRequest
         include Google::Apis::Core::Hashable
       

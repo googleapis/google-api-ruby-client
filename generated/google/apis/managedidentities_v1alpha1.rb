@@ -12,29 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/appengine_v1/service.rb'
-require 'google/apis/appengine_v1/classes.rb'
-require 'google/apis/appengine_v1/representations.rb'
+require 'google/apis/managedidentities_v1alpha1/service.rb'
+require 'google/apis/managedidentities_v1alpha1/classes.rb'
+require 'google/apis/managedidentities_v1alpha1/representations.rb'
 
 module Google
   module Apis
-    # App Engine Admin API
+    # Managed Service for Microsoft Active Directory API
     #
-    # Provisions and manages developers' App Engine applications.
+    # The Managed Service for Microsoft Active Directory API is used for managing a
+    # highly available, hardened service running Microsoft Active Directory (AD).
     #
-    # @see https://cloud.google.com/appengine/docs/admin-api/
-    module AppengineV1
-      VERSION = 'V1'
-      REVISION = '20200215'
-
-      # View and manage your applications deployed on Google App Engine
-      AUTH_APPENGINE_ADMIN = 'https://www.googleapis.com/auth/appengine.admin'
+    # @see https://cloud.google.com/managed-microsoft-ad/
+    module ManagedidentitiesV1alpha1
+      VERSION = 'V1alpha1'
+      REVISION = '20200219'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
 end

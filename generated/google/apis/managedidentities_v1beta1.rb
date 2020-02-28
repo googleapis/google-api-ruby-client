@@ -12,31 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/serviceusage_v1beta1/service.rb'
-require 'google/apis/serviceusage_v1beta1/classes.rb'
-require 'google/apis/serviceusage_v1beta1/representations.rb'
+require 'google/apis/managedidentities_v1beta1/service.rb'
+require 'google/apis/managedidentities_v1beta1/classes.rb'
+require 'google/apis/managedidentities_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Service Usage API
+    # Managed Service for Microsoft Active Directory API
     #
-    # Enables services that service consumers want to use on Google Cloud Platform,
-    # lists the available or enabled services, or disables services that service
-    # consumers no longer use.
+    # The Managed Service for Microsoft Active Directory API is used for managing a
+    # highly available, hardened service running Microsoft Active Directory (AD).
     #
-    # @see https://cloud.google.com/service-usage/
-    module ServiceusageV1beta1
+    # @see https://cloud.google.com/managed-microsoft-ad/
+    module ManagedidentitiesV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200226'
+      REVISION = '20200219'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # View your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
-
-      # Manage your Google API service configuration
-      AUTH_SERVICE_MANAGEMENT = 'https://www.googleapis.com/auth/service.management'
     end
   end
 end

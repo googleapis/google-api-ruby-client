@@ -208,6 +208,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JwtLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LabelDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -470,6 +476,8 @@ module Google
           property :id, as: 'id'
           property :issuer, as: 'issuer'
           property :jwks_uri, as: 'jwksUri'
+          collection :jwt_locations, as: 'jwtLocations', class: Google::Apis::ServicenetworkingV1::JwtLocation, decorator: Google::Apis::ServicenetworkingV1::JwtLocation::Representation
+      
         end
       end
       
@@ -746,6 +754,15 @@ module Google
           property :put, as: 'put'
           property :response_body, as: 'responseBody'
           property :selector, as: 'selector'
+        end
+      end
+      
+      class JwtLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :header, as: 'header'
+          property :query, as: 'query'
+          property :value_prefix, as: 'valuePrefix'
         end
       end
       
