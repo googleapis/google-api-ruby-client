@@ -140,12 +140,12 @@ module Google
         # @return [String]
         attr_accessor :kms_key_name
       
-        # Output Only. The resource name of the CMEK settings.
+        # Output only. The resource name of the CMEK settings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Output Only. The service account that will be used by the Logs Router to
+        # Output only. The service account that will be used by the Logs Router to
         # access your Cloud KMS key.Before enabling CMEK for Logs Router, you must first
         # assign the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service
         # account that the Logs Router will use to access your Cloud KMS key. Use
@@ -524,8 +524,9 @@ module Google
         # @return [String]
         attr_accessor :page_token
       
-        # Deprecated. Use resource_names instead. One or more project identifiers or
-        # project numbers from which to retrieve log entries. Example: "my-project-1A".
+        # Optional. Deprecated. Use resource_names instead. One or more project
+        # identifiers or project numbers from which to retrieve log entries. Example: "
+        # my-project-1A".
         # Corresponds to the JSON property `projectIds`
         # @return [Array<String>]
         attr_accessor :project_ids
@@ -715,7 +716,7 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # The bucket lifecycle state.Output only.
+        # Output only. The bucket lifecycle state.
         # Corresponds to the JSON property `lifecycleState`
         # @return [String]
         attr_accessor :lifecycle_state
@@ -797,17 +798,17 @@ module Google
         # "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
         # "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
         # "folders/[FOLDER_ID]/logs/[LOG_ID]"
-        # A project number may optionally be used in place of PROJECT_ID. The project
-        # number is translated to its corresponding PROJECT_ID internally and the
-        # log_name field will contain PROJECT_ID in queries and exports.[LOG_ID] must be
-        # URL-encoded within log_name. Example: "organizations/1234567890/logs/
-        # cloudresourcemanager.googleapis.com%2Factivity". [LOG_ID] must be less than
-        # 512 characters long and can only include the following characters: upper and
-        # lower case alphanumeric characters, forward-slash, underscore, hyphen, and
-        # period.For backward compatibility, if log_name begins with a forward-slash,
-        # such as /projects/..., then the log entry is ingested as usual but the forward-
-        # slash is removed. Listing the log entry will not show the leading slash and
-        # filtering for a log name with a leading slash will never return any results.
+        # A project number may be used in place of PROJECT_ID. The project number is
+        # translated to its corresponding PROJECT_ID internally and the log_name field
+        # will contain PROJECT_ID in queries and exports.[LOG_ID] must be URL-encoded
+        # within log_name. Example: "organizations/1234567890/logs/cloudresourcemanager.
+        # googleapis.com%2Factivity". [LOG_ID] must be less than 512 characters long and
+        # can only include the following characters: upper and lower case alphanumeric
+        # characters, forward-slash, underscore, hyphen, and period.For backward
+        # compatibility, if log_name begins with a forward-slash, such as /projects/...,
+        # then the log entry is ingested as usual but the forward-slash is removed.
+        # Listing the log entry will not show the leading slash and filtering for a log
+        # name with a leading slash will never return any results.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
@@ -871,8 +872,7 @@ module Google
       
         # Optional. The span ID within the trace associated with the log entry.For Trace
         # spans, this is the same format that the Trace API v2 uses: a 16-character
-        # hexadecimal encoding of an 8-byte array, such as <code>"000000000000004a"</
-        # code>.
+        # hexadecimal encoding of an 8-byte array, such as 000000000000004a.
         # Corresponds to the JSON property `spanId`
         # @return [String]
         attr_accessor :span_id
@@ -1293,11 +1293,6 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Do not use. This field is ignored.
-        # Corresponds to the JSON property `endTime`
-        # @return [String]
-        attr_accessor :end_time
-      
         # Optional. An advanced logs filter. The only exported log entries are those
         # that are in the resource owning the sink and that match the filter. For
         # example:
@@ -1338,11 +1333,6 @@ module Google
         # @return [String]
         attr_accessor :output_version_format
       
-        # Do not use. This field is ignored.
-        # Corresponds to the JSON property `startTime`
-        # @return [String]
-        attr_accessor :start_time
-      
         # Output only. The last update timestamp of the sink.This field may not be
         # present for older sinks.
         # Corresponds to the JSON property `updateTime`
@@ -1372,12 +1362,10 @@ module Google
           @description = args[:description] if args.key?(:description)
           @destination = args[:destination] if args.key?(:destination)
           @disabled = args[:disabled] if args.key?(:disabled)
-          @end_time = args[:end_time] if args.key?(:end_time)
           @filter = args[:filter] if args.key?(:filter)
           @include_children = args[:include_children] if args.key?(:include_children)
           @name = args[:name] if args.key?(:name)
           @output_version_format = args[:output_version_format] if args.key?(:output_version_format)
-          @start_time = args[:start_time] if args.key?(:start_time)
           @update_time = args[:update_time] if args.key?(:update_time)
           @writer_identity = args[:writer_identity] if args.key?(:writer_identity)
         end
@@ -2074,10 +2062,9 @@ module Google
         # [LOG_ID] must be URL-encoded. For example:
         # "projects/my-project-id/logs/syslog"
         # "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"
-        # The permission <code>logging.logEntries.create</code> is needed on each
-        # project, organization, billing account, or folder that is receiving new log
-        # entries, whether the resource is specified in <code>logName</code> or in an
-        # individual log entry.
+        # The permission logging.logEntries.create is needed on each project,
+        # organization, billing account, or folder that is receiving new log entries,
+        # whether the resource is specified in logName or in an individual log entry.
         # Corresponds to the JSON property `logName`
         # @return [String]
         attr_accessor :log_name
@@ -2123,7 +2110,7 @@ module Google
         end
       end
       
-      # Result returned from WriteLogEntries. empty
+      # Result returned from WriteLogEntries.
       class WriteLogEntriesResponse
         include Google::Apis::Core::Hashable
       

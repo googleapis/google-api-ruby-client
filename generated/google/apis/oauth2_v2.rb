@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/accounts/docs/OAuth2
     module Oauth2V2
       VERSION = 'V2'
-      REVISION = '20190313'
+      REVISION = '20200213'
 
       # Associate you with your personal info on Google
       AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'

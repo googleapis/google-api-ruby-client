@@ -66,7 +66,8 @@ module Google
         # generated name is populated in the returned Snapshot object. Note that for
         # REST API requests, you must specify a name in the request.
         # @param [String] name
-        #   User-provided name for this snapshot. If the name is not provided in the
+        #   Required. User-provided name for this snapshot. If the name is not provided in
+        #   the
         #   request, the server will assign a random name for this snapshot on the same
         #   project as the subscription. Note that for REST API requests, you must
         #   specify a name.  See the <a
@@ -113,7 +114,7 @@ module Google
         # created with the same name, but the new one has no association with the old
         # snapshot or its subscription, unless the same subscription is specified.
         # @param [String] snapshot
-        #   The name of the snapshot to delete.
+        #   Required. The name of the snapshot to delete.
         #   Format is `projects/`project`/snapshots/`snap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -148,7 +149,7 @@ module Google
         # is, you can set the acknowledgment state of messages in an existing
         # subscription to the state captured by a snapshot.
         # @param [String] snapshot
-        #   The name of the snapshot to get.
+        #   Required. The name of the snapshot to get.
         #   Format is `projects/`project`/snapshots/`snap``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -225,7 +226,7 @@ module Google
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.
         # @param [String] project
-        #   The name of the project in which to list snapshots.
+        #   Required. The name of the project in which to list snapshots.
         #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of snapshots to return.
@@ -382,7 +383,7 @@ module Google
         # but such a message may be redelivered later. Acknowledging a message more
         # than once will not result in an error.
         # @param [String] subscription
-        #   The subscription whose message is being acknowledged.
+        #   Required. The subscription whose message is being acknowledged.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [Google::Apis::PubsubV1::AcknowledgeRequest] acknowledge_request_object
         # @param [String] fields
@@ -427,7 +428,7 @@ module Google
         # generated name is populated in the returned Subscription object. Note that
         # for REST API requests, you must specify a name in the request.
         # @param [String] name
-        #   The name of the subscription. It must have the format
+        #   Required. The name of the subscription. It must have the format
         #   `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
         #   start with a letter, and contain only letters (`[A-Za-z]`), numbers
         #   (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -469,7 +470,7 @@ module Google
         # the same name, but the new one has no association with the old
         # subscription or its topic unless the same topic is specified.
         # @param [String] subscription
-        #   The subscription to delete.
+        #   Required. The subscription to delete.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -500,7 +501,7 @@ module Google
         
         # Gets the configuration details of a subscription.
         # @param [String] subscription
-        #   The name of the subscription to get.
+        #   Required. The name of the subscription to get.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -572,7 +573,7 @@ module Google
         
         # Lists matching subscriptions.
         # @param [String] project
-        #   The name of the project in which to list subscriptions.
+        #   Required. The name of the project in which to list subscriptions.
         #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of subscriptions to return.
@@ -615,7 +616,7 @@ module Google
         # processing was interrupted. Note that this does not modify the
         # subscription-level `ackDeadlineSeconds` used for subsequent messages.
         # @param [String] subscription
-        #   The name of the subscription.
+        #   Required. The name of the subscription.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [Google::Apis::PubsubV1::ModifyAckDeadlineRequest] modify_ack_deadline_request_object
         # @param [String] fields
@@ -653,7 +654,7 @@ module Google
         # attributes of a push subscription. Messages will accumulate for delivery
         # continuously through the call regardless of changes to the `PushConfig`.
         # @param [String] subscription
-        #   The name of the subscription.
+        #   Required. The name of the subscription.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [Google::Apis::PubsubV1::ModifyPushConfigRequest] modify_push_config_request_object
         # @param [String] fields
@@ -688,7 +689,7 @@ module Google
         # Updates an existing subscription. Note that certain properties of a
         # subscription, such as its topic, are not modifiable.
         # @param [String] name
-        #   The name of the subscription. It must have the format
+        #   Required. The name of the subscription. It must have the format
         #   `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
         #   start with a letter, and contain only letters (`[A-Za-z]`), numbers
         #   (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -728,7 +729,7 @@ module Google
         # there are too many concurrent pull requests pending for the given
         # subscription.
         # @param [String] subscription
-        #   The subscription from which messages should be pulled.
+        #   Required. The subscription from which messages should be pulled.
         #   Format is `projects/`project`/subscriptions/`sub``.
         # @param [Google::Apis::PubsubV1::PullRequest] pull_request_object
         # @param [String] fields
@@ -769,7 +770,7 @@ module Google
         # captured by a snapshot. Note that both the subscription and the snapshot
         # must be on the same topic.
         # @param [String] subscription
-        #   The subscription to affect.
+        #   Required. The subscription to affect.
         # @param [Google::Apis::PubsubV1::SeekRequest] seek_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -879,7 +880,7 @@ module Google
         # <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">
         # resource name rules</a>.
         # @param [String] name
-        #   The name of the topic. It must have the format
+        #   Required. The name of the topic. It must have the format
         #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
         #   and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
         #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -921,7 +922,7 @@ module Google
         # configuration or subscriptions. Existing subscriptions to this topic are
         # not deleted, but their `topic` field is set to `_deleted-topic_`.
         # @param [String] topic
-        #   Name of the topic to delete.
+        #   Required. Name of the topic to delete.
         #   Format is `projects/`project`/topics/`topic``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -952,7 +953,7 @@ module Google
         
         # Gets the configuration of a topic.
         # @param [String] topic
-        #   The name of the topic to get.
+        #   Required. The name of the topic to get.
         #   Format is `projects/`project`/topics/`topic``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1024,7 +1025,7 @@ module Google
         
         # Lists matching topics.
         # @param [String] project
-        #   The name of the project in which to list topics.
+        #   Required. The name of the project in which to list topics.
         #   Format is `projects/`project-id``.
         # @param [Fixnum] page_size
         #   Maximum number of topics to return.
@@ -1064,7 +1065,7 @@ module Google
         # Updates an existing topic. Note that certain properties of a
         # topic are not modifiable.
         # @param [String] name
-        #   The name of the topic. It must have the format
+        #   Required. The name of the topic. It must have the format
         #   `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
         #   and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
         #   underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -1103,7 +1104,7 @@ module Google
         # Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
         # does not exist.
         # @param [String] topic
-        #   The messages in the request will be published on this topic.
+        #   Required. The messages in the request will be published on this topic.
         #   Format is `projects/`project`/topics/`topic``.
         # @param [Google::Apis::PubsubV1::PublishRequest] publish_request_object
         # @param [String] fields
@@ -1256,7 +1257,7 @@ module Google
         
         # Lists the names of the subscriptions on this topic.
         # @param [String] topic
-        #   The name of the topic that subscriptions are attached to.
+        #   Required. The name of the topic that subscriptions are attached to.
         #   Format is `projects/`project`/topics/`topic``.
         # @param [Fixnum] page_size
         #   Maximum number of subscription names to return.

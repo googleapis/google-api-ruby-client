@@ -633,6 +633,7 @@ module Google
           property :double_value, as: 'doubleValue'
           property :enum_value, as: 'enumValue', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagFieldEnumValue, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagFieldEnumValue::Representation
       
+          property :order, as: 'order'
           property :string_value, as: 'stringValue'
           property :timestamp_value, as: 'timestampValue'
         end
@@ -661,6 +662,7 @@ module Google
           property :display_name, as: 'displayName'
           property :is_required, as: 'isRequired'
           property :name, as: 'name'
+          property :order, as: 'order'
           property :type, as: 'type', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType::Representation
       
         end

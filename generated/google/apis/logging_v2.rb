@@ -29,7 +29,7 @@ module Google
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2
       VERSION = 'V2'
-      REVISION = '20200221'
+      REVISION = '20200222'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -505,12 +505,10 @@ module Google
           property :description, as: 'description'
           property :destination, as: 'destination'
           property :disabled, as: 'disabled'
-          property :end_time, as: 'endTime'
           property :filter, as: 'filter'
           property :include_children, as: 'includeChildren'
           property :name, as: 'name'
           property :output_version_format, as: 'outputVersionFormat'
-          property :start_time, as: 'startTime'
           property :update_time, as: 'updateTime'
           property :writer_identity, as: 'writerIdentity'
         end

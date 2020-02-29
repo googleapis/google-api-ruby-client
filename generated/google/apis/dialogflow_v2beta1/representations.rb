@@ -436,24 +436,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1Environment
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1EnvironmentHistory
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1EventInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -844,12 +826,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudDialogflowV2beta1ListIntentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,12 +839,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -983,12 +953,6 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1ValidationResult
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudDialogflowV2beta1Version
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1724,6 +1688,7 @@ module Google
           property :input_audio, :base64 => true, as: 'inputAudio'
           property :output_audio_config, as: 'outputAudioConfig', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1OutputAudioConfig, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1OutputAudioConfig::Representation
       
+          property :output_audio_config_mask, as: 'outputAudioConfigMask'
           property :query_input, as: 'queryInput', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryInput, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryInput::Representation
       
           property :query_params, as: 'queryParams', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryParameters, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1QueryParameters::Representation
@@ -1786,36 +1751,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :synonyms, as: 'synonyms'
           property :value, as: 'value'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1Environment
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_version, as: 'agentVersion'
-          property :description, as: 'description'
-          property :name, as: 'name'
-          property :state, as: 'state'
-          property :update_time, as: 'updateTime'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1EnvironmentHistory
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :entries, as: 'entries', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-          property :parent, as: 'parent'
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1EnvironmentHistoryEntry
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :agent_version, as: 'agentVersion'
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
         end
       end
       
@@ -2479,15 +2414,6 @@ module Google
         end
       end
       
-      class GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :environments, as: 'environments', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Environment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Environment::Representation
-      
-          property :next_page_token, as: 'nextPageToken'
-        end
-      end
-      
       class GoogleCloudDialogflowV2beta1ListIntentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2511,15 +2437,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
-      
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1ListVersionsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :versions, as: 'versions', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Version, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Version::Representation
       
         end
       end
@@ -2717,17 +2634,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :validation_errors, as: 'validationErrors', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationError, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ValidationError::Representation
       
-        end
-      end
-      
-      class GoogleCloudDialogflowV2beta1Version
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
-          property :description, as: 'description'
-          property :name, as: 'name'
-          property :status, as: 'status'
-          property :version_number, as: 'versionNumber'
         end
       end
       

@@ -26,7 +26,8 @@ module Google
       class AcknowledgeRequest
         include Google::Apis::Core::Hashable
       
-        # The acknowledgment ID for the messages being acknowledged that was returned
+        # Required. The acknowledgment ID for the messages being acknowledged that was
+        # returned
         # by the Pub/Sub system in the `Pull` response. Must not be empty.
         # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
@@ -135,7 +136,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The subscription whose backlog the snapshot retains.
+        # Required. The subscription whose backlog the snapshot retains.
         # Specifically, the created snapshot is guaranteed to retain:
         # (a) The existing backlog on the subscription. More precisely, this is
         # defined as the messages in the subscription's backlog that are
@@ -469,7 +470,8 @@ module Google
       class ModifyAckDeadlineRequest
         include Google::Apis::Core::Hashable
       
-        # The new ack deadline with respect to the time this request was sent to
+        # Required. The new ack deadline with respect to the time this request was sent
+        # to
         # the Pub/Sub system. For example, if the value is 10, the new
         # ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
         # was made. Specifying zero might immediately make the message available for
@@ -481,7 +483,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :ack_deadline_seconds
       
-        # List of acknowledgment IDs.
+        # Required. List of acknowledgment IDs.
         # Corresponds to the JSON property `ackIds`
         # @return [Array<String>]
         attr_accessor :ack_ids
@@ -670,7 +672,7 @@ module Google
       class PublishRequest
         include Google::Apis::Core::Hashable
       
-        # The messages to publish.
+        # Required. The messages to publish.
         # Corresponds to the JSON property `messages`
         # @return [Array<Google::Apis::PubsubV1::Message>]
         attr_accessor :messages
@@ -762,7 +764,7 @@ module Google
       class PullRequest
         include Google::Apis::Core::Hashable
       
-        # The maximum number of messages to return for this request. Must be a
+        # Required. The maximum number of messages to return for this request. Must be a
         # positive integer. The Pub/Sub system may return fewer than the number
         # specified.
         # Corresponds to the JSON property `maxMessages`
@@ -1141,7 +1143,7 @@ module Google
         # @return [String]
         attr_accessor :message_retention_duration
       
-        # The name of the subscription. It must have the format
+        # Required. The name of the subscription. It must have the format
         # `"projects/`project`/subscriptions/`subscription`"`. ``subscription`` must
         # start with a letter, and contain only letters (`[A-Za-z]`), numbers
         # (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -1168,7 +1170,8 @@ module Google
         attr_accessor :retain_acked_messages
         alias_method :retain_acked_messages?, :retain_acked_messages
       
-        # The name of the topic from which this subscription is receiving messages.
+        # Required. The name of the topic from which this subscription is receiving
+        # messages.
         # Format is `projects/`project`/topics/`topic``.
         # The value of this field will be `_deleted-topic_` if the topic has been
         # deleted.
@@ -1260,7 +1263,7 @@ module Google
         # @return [Google::Apis::PubsubV1::MessageStoragePolicy]
         attr_accessor :message_storage_policy
       
-        # The name of the topic. It must have the format
+        # Required. The name of the topic. It must have the format
         # `"projects/`project`/topics/`topic`"`. ``topic`` must start with a letter,
         # and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
         # underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
@@ -1297,7 +1300,7 @@ module Google
         # @return [Google::Apis::PubsubV1::Snapshot]
         attr_accessor :snapshot
       
-        # Indicates which fields in the provided snapshot to update.
+        # Required. Indicates which fields in the provided snapshot to update.
         # Must be specified and non-empty.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
@@ -1323,7 +1326,7 @@ module Google
         # @return [Google::Apis::PubsubV1::Subscription]
         attr_accessor :subscription
       
-        # Indicates which fields in the provided subscription to update.
+        # Required. Indicates which fields in the provided subscription to update.
         # Must be specified and non-empty.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
@@ -1349,7 +1352,8 @@ module Google
         # @return [Google::Apis::PubsubV1::Topic]
         attr_accessor :topic
       
-        # Indicates which fields in the provided topic to update. Must be specified
+        # Required. Indicates which fields in the provided topic to update. Must be
+        # specified
         # and non-empty. Note that if `update_mask` contains
         # "message_storage_policy" then the new value will be determined based on the
         # policy configured at the project or organization level. The

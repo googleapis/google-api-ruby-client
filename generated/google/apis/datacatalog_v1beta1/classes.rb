@@ -1006,7 +1006,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # Required. The scope of this search request.
+        # The criteria that select the subspace used for query matching.
         # Corresponds to the JSON property `scope`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope]
         attr_accessor :scope
@@ -1025,7 +1025,7 @@ module Google
         end
       end
       
-      # 
+      # The criteria that select the subspace used for query matching.
       class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope
         include Google::Apis::Core::Hashable
       
@@ -1038,19 +1038,14 @@ module Google
         attr_accessor :include_gcp_public_datasets
         alias_method :include_gcp_public_datasets?, :include_gcp_public_datasets
       
-        # Data Catalog tries to automatically choose the right corpus of data to
-        # search through. You can ensure an organization is included by adding it
-        # to `include_org_ids`. You can ensure a project's org is included with
-        # `include_project_ids`. You must specify at least one organization
-        # using `include_org_ids` or `include_project_ids` in all search requests.
-        # List of organization IDs to search within. To find your organization ID,
-        # follow instructions in
+        # The list of organization IDs to search within. To find your organization
+        # ID, follow instructions in
         # https://cloud.google.com/resource-manager/docs/creating-managing-organization.
         # Corresponds to the JSON property `includeOrgIds`
         # @return [Array<String>]
         attr_accessor :include_org_ids
       
-        # List of project IDs to search within. To learn more about the
+        # The list of project IDs to search within. To learn more about the
         # distinction between project names/IDs/numbers, go to
         # https://cloud.google.com/docs/overview/#projects.
         # Corresponds to the JSON property `includeProjectIds`
@@ -1354,6 +1349,16 @@ module Google
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagFieldEnumValue]
         attr_accessor :enum_value
       
+        # Output only. The order of this field with respect to other fields in this tag.
+        # It can be
+        # set in Tag. For
+        # example, a higher value can indicate a more important field. The value can
+        # be negative. Multiple fields can have the same order, and field orders
+        # within a tag do not have to be sequential.
+        # Corresponds to the JSON property `order`
+        # @return [Fixnum]
+        attr_accessor :order
+      
         # Holds the value for a tag field with string type.
         # Corresponds to the JSON property `stringValue`
         # @return [String]
@@ -1374,6 +1379,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @double_value = args[:double_value] if args.key?(:double_value)
           @enum_value = args[:enum_value] if args.key?(:enum_value)
+          @order = args[:order] if args.key?(:order)
           @string_value = args[:string_value] if args.key?(:string_value)
           @timestamp_value = args[:timestamp_value] if args.key?(:timestamp_value)
         end
@@ -1468,6 +1474,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The order of this field with respect to other fields in this tag
+        # template.  A higher value indicates a more important field. The value can
+        # be negative. Multiple fields can have the same order, and field orders
+        # within a tag do not have to be sequential.
+        # Corresponds to the JSON property `order`
+        # @return [Fixnum]
+        attr_accessor :order
+      
         # Required. The type of value this tag field can contain.
         # Corresponds to the JSON property `type`
         # @return [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1FieldType]
@@ -1482,6 +1496,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @is_required = args[:is_required] if args.key?(:is_required)
           @name = args[:name] if args.key?(:name)
+          @order = args[:order] if args.key?(:order)
           @type = args[:type] if args.key?(:type)
         end
       end

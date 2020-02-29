@@ -22,18 +22,6 @@ module Google
   module Apis
     module Oauth2V2
       
-      class Jwk
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Key
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Tokeninfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -44,26 +32,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Jwk
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :keys, as: 'keys', class: Google::Apis::Oauth2V2::Jwk::Key, decorator: Google::Apis::Oauth2V2::Jwk::Key::Representation
-      
-        end
-        
-        class Key
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :alg, as: 'alg'
-            property :e, as: 'e'
-            property :kid, as: 'kid'
-            property :kty, as: 'kty'
-            property :n, as: 'n'
-            property :use, as: 'use'
-          end
-        end
       end
       
       class Tokeninfo

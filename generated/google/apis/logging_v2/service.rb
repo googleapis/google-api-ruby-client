@@ -295,8 +295,8 @@ module Google
         #   "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
         #   "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
         #   "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
-        #   Note: The locations portion of the resource is required, but supplying the
-        #   character - in place of LOCATION_ID will return all buckets.
+        #   Note: The locations portion of the resource must be specified, but supplying
+        #   the character - in place of LOCATION_ID will return all buckets.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1278,8 +1278,8 @@ module Google
         #   "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
         #   "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
         #   "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
-        #   Note: The locations portion of the resource is required, but supplying the
-        #   character - in place of LOCATION_ID will return all buckets.
+        #   Note: The locations portion of the resource must be specified, but supplying
+        #   the character - in place of LOCATION_ID will return all buckets.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -1793,8 +1793,8 @@ module Google
         #   "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
         #   "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
         #   "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
-        #   Note: The locations portion of the resource is required, but supplying the
-        #   character - in place of LOCATION_ID will return all buckets.
+        #   Note: The locations portion of the resource must be specified, but supplying
+        #   the character - in place of LOCATION_ID will return all buckets.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -2346,8 +2346,8 @@ module Google
         #   "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
         #   "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
         #   "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
-        #   Note: The locations portion of the resource is required, but supplying the
-        #   character - in place of LOCATION_ID will return all buckets.
+        #   Note: The locations portion of the resource must be specified, but supplying
+        #   the character - in place of LOCATION_ID will return all buckets.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -3062,8 +3062,8 @@ module Google
         #   "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
         #   "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
         #   "folders/[FOLDER_ID]/locations/[LOCATION_ID]"
-        #   Note: The locations portion of the resource is required, but supplying the
-        #   character - in place of LOCATION_ID will return all buckets.
+        #   Note: The locations portion of the resource must be specified, but supplying
+        #   the character - in place of LOCATION_ID will return all buckets.
         # @param [Fixnum] page_size
         #   Optional. The maximum number of results to return from this request. Non-
         #   positive values are ignored. The presence of nextPageToken in the response
@@ -3243,7 +3243,7 @@ module Google
         
         # Creates a logs-based metric.
         # @param [String] parent
-        #   The resource name of the project in which to create the metric:
+        #   Required. The resource name of the project in which to create the metric:
         #   "projects/[PROJECT_ID]"
         #   The new metric must be provided in the request.
         # @param [Google::Apis::LoggingV2::LogMetric] log_metric_object
@@ -3278,7 +3278,7 @@ module Google
         
         # Deletes a logs-based metric.
         # @param [String] metric_name
-        #   The resource name of the metric to delete:
+        #   Required. The resource name of the metric to delete:
         #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3309,7 +3309,7 @@ module Google
         
         # Gets a logs-based metric.
         # @param [String] metric_name
-        #   The resource name of the desired metric:
+        #   Required. The resource name of the desired metric:
         #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3382,7 +3382,7 @@ module Google
         
         # Creates or updates a logs-based metric.
         # @param [String] metric_name
-        #   The resource name of the metric to update:
+        #   Required. The resource name of the metric to update:
         #   "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
         #   The updated metric must be provided in the request and it's name field must be
         #   the same as [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a
