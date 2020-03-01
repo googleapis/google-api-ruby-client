@@ -280,6 +280,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class QueryOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class QueryPlan
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -593,6 +599,8 @@ module Google
           hash :params, as: 'params'
           property :partition_token, :base64 => true, as: 'partitionToken'
           property :query_mode, as: 'queryMode'
+          property :query_options, as: 'queryOptions', class: Google::Apis::SpannerV1::QueryOptions, decorator: Google::Apis::SpannerV1::QueryOptions::Representation
+      
           property :resume_token, :base64 => true, as: 'resumeToken'
           property :seqno, :numeric_string => true, as: 'seqno'
           property :sql, as: 'sql'
@@ -857,6 +865,13 @@ module Google
       
           property :etag, :base64 => true, as: 'etag'
           property :version, as: 'version'
+        end
+      end
+      
+      class QueryOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :optimizer_version, as: 'optimizerVersion'
         end
       end
       

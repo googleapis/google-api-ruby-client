@@ -1055,6 +1055,11 @@ module Google
         # @return [String]
         attr_accessor :query_mode
       
+        # Query optimizer configuration.
+        # Corresponds to the JSON property `queryOptions`
+        # @return [Google::Apis::SpannerV1::QueryOptions]
+        attr_accessor :query_options
+      
         # If this request is resuming a previously interrupted SQL statement
         # execution, `resume_token` should be copied from the last
         # PartialResultSet yielded before the interruption. Doing this
@@ -1101,6 +1106,7 @@ module Google
           @params = args[:params] if args.key?(:params)
           @partition_token = args[:partition_token] if args.key?(:partition_token)
           @query_mode = args[:query_mode] if args.key?(:query_mode)
+          @query_options = args[:query_options] if args.key?(:query_options)
           @resume_token = args[:resume_token] if args.key?(:resume_token)
           @seqno = args[:seqno] if args.key?(:seqno)
           @sql = args[:sql] if args.key?(:sql)
@@ -1284,17 +1290,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. A set of endpoint URIs based on your instance config
-        # that you can use instead of the global endpoint `spanner.googleapis.com`.
-        # For example, if your instance config is `us-central1` (a regional config
-        # in Iowa), then your instance specific endpoints may include
-        # `us-central1-spanner.googleapis.com`. By calling these endpoints instead of
-        # the global endpoint, you optimize network routing which could reduce
-        # network latency.
-        # The client libraries, JDBC drivers, and other SDK clients automatically
-        # call these instance specific endpoints.
-        # If you are using DNS whitelists, firewalls, or filtering to control access
-        # to endpoints, make sure you grant access to `*spanner.googleapis.com`.
+        # Deprecated. This field is not populated.
         # Corresponds to the JSON property `endpointUris`
         # @return [Array<String>]
         attr_accessor :endpoint_uris
@@ -2307,6 +2303,37 @@ module Google
           @bindings = args[:bindings] if args.key?(:bindings)
           @etag = args[:etag] if args.key?(:etag)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Query optimizer configuration.
+      class QueryOptions
+        include Google::Apis::Core::Hashable
+      
+        # An option to control the selection of optimizer version.
+        # This parameter allows individual queries to pick different query
+        # optimizer versions.
+        # Specifying "latest" as a value instructs Cloud Spanner to use the
+        # latest supported query optimizer version. If not specified, Cloud Spanner
+        # uses optimizer version set at the database level options. Any other
+        # positive integer (from the list of supported optimizer versions)
+        # overrides the default optimizer version for query execution.
+        # The list of supported optimizer versions can be queried from
+        # SPANNER_SYS.SUPPORTED_OPTIMIZER_VERSIONS. Executing a SQL statement
+        # with an invalid optimizer version will fail with a syntax error
+        # (`INVALID_ARGUMENT`) status.
+        # The `optimizer_version` statement hint has precedence over this setting.
+        # Corresponds to the JSON property `optimizerVersion`
+        # @return [String]
+        attr_accessor :optimizer_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @optimizer_version = args[:optimizer_version] if args.key?(:optimizer_version)
         end
       end
       

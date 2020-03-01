@@ -1307,6 +1307,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_instances
       
+        # Optional. Specifies the preemptibility of the instance group.
+        # Corresponds to the JSON property `preemptibility`
+        # @return [String]
+        attr_accessor :preemptibility
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1322,6 +1327,7 @@ module Google
           @managed_group_config = args[:managed_group_config] if args.key?(:managed_group_config)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @num_instances = args[:num_instances] if args.key?(:num_instances)
+          @preemptibility = args[:preemptibility] if args.key?(:preemptibility)
         end
       end
       
@@ -1374,6 +1380,14 @@ module Google
       # A Dataproc job resource.
       class Job
         include Google::Apis::Core::Hashable
+      
+        # Output only. Indicates whether the job is completed. If the value is false,
+        # the job is still in progress. If true, the job is completed, and status.state
+        # field will indicate if it was successful, failed, or cancelled.
+        # Corresponds to the JSON property `done`
+        # @return [Boolean]
+        attr_accessor :done
+        alias_method :done?, :done
       
         # Output only. If present, the location of miscellaneous control files which may
         # be used as part of job setup and handling. If not present, control files may
@@ -1500,6 +1514,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @done = args[:done] if args.key?(:done)
           @driver_control_files_uri = args[:driver_control_files_uri] if args.key?(:driver_control_files_uri)
           @driver_output_resource_uri = args[:driver_output_resource_uri] if args.key?(:driver_output_resource_uri)
           @hadoop_job = args[:hadoop_job] if args.key?(:hadoop_job)
