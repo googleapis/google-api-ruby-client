@@ -759,6 +759,7 @@ module Google
       
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :num_instances, as: 'numInstances'
+          property :preemptibility, as: 'preemptibility'
         end
       end
       
@@ -774,6 +775,7 @@ module Google
       class Job
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
           property :driver_control_files_uri, as: 'driverControlFilesUri'
           property :driver_output_resource_uri, as: 'driverOutputResourceUri'
           property :hadoop_job, as: 'hadoopJob', class: Google::Apis::DataprocV1::HadoopJob, decorator: Google::Apis::DataprocV1::HadoopJob::Representation

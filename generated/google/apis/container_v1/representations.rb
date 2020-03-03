@@ -262,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Metric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworkConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,6 +317,12 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -508,6 +520,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WorkloadIdentityConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WorkloadMetadataConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AcceleratorConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -677,6 +701,8 @@ module Google
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
       
+          property :workload_identity_config, as: 'workloadIdentityConfig', class: Google::Apis::ContainerV1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1::WorkloadIdentityConfig::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -722,6 +748,8 @@ module Google
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1::ShieldedNodes, decorator: Google::Apis::ContainerV1::ShieldedNodes::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1::VerticalPodAutoscaling::Representation
+      
+          property :desired_workload_identity_config, as: 'desiredWorkloadIdentityConfig', class: Google::Apis::ContainerV1::WorkloadIdentityConfig, decorator: Google::Apis::ContainerV1::WorkloadIdentityConfig::Representation
       
         end
       end
@@ -975,6 +1003,16 @@ module Google
         end
       end
       
+      class Metric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :double_value, as: 'doubleValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :name, as: 'name'
+          property :string_value, as: 'stringValue'
+        end
+      end
+      
       class NetworkConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1023,6 +1061,8 @@ module Google
       
           collection :tags, as: 'tags'
           collection :taints, as: 'taints', class: Google::Apis::ContainerV1::NodeTaint, decorator: Google::Apis::ContainerV1::NodeTaint::Representation
+      
+          property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
       
         end
       end
@@ -1095,12 +1135,26 @@ module Google
           collection :nodepool_conditions, as: 'nodepoolConditions', class: Google::Apis::ContainerV1::StatusCondition, decorator: Google::Apis::ContainerV1::StatusCondition::Representation
       
           property :operation_type, as: 'operationType'
+          property :progress, as: 'progress', class: Google::Apis::ContainerV1::OperationProgress, decorator: Google::Apis::ContainerV1::OperationProgress::Representation
+      
           property :self_link, as: 'selfLink'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :target_link, as: 'targetLink'
           property :zone, as: 'zone'
+        end
+      end
+      
+      class OperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::ContainerV1::Metric, decorator: Google::Apis::ContainerV1::Metric::Representation
+      
+          property :name, as: 'name'
+          collection :stages, as: 'stages', class: Google::Apis::ContainerV1::OperationProgress, decorator: Google::Apis::ContainerV1::OperationProgress::Representation
+      
+          property :status, as: 'status'
         end
       end
       
@@ -1403,6 +1457,8 @@ module Google
           property :project_id, as: 'projectId'
           property :upgrade_settings, as: 'upgradeSettings', class: Google::Apis::ContainerV1::UpgradeSettings, decorator: Google::Apis::ContainerV1::UpgradeSettings::Representation
       
+          property :workload_metadata_config, as: 'workloadMetadataConfig', class: Google::Apis::ContainerV1::WorkloadMetadataConfig, decorator: Google::Apis::ContainerV1::WorkloadMetadataConfig::Representation
+      
           property :zone, as: 'zone'
         end
       end
@@ -1440,6 +1496,20 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enabled, as: 'enabled'
+        end
+      end
+      
+      class WorkloadIdentityConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :workload_pool, as: 'workloadPool'
+        end
+      end
+      
+      class WorkloadMetadataConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
         end
       end
     end

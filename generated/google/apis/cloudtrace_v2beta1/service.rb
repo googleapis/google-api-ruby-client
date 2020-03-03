@@ -20,13 +20,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module CloudtraceV2beta1
-      # Stackdriver Trace API
+      # Cloud Trace API
       #
-      # Sends application trace data to Stackdriver Trace for viewing. Trace data is
+      # Sends application trace data to Cloud Trace for viewing. Trace data is
       #  collected for all App Engine applications by default. Trace data from other
       #  applications can be provided using this API. This library is used to interact
       #  with the Trace API directly. If you are looking to instrument your application
-      #  for Stackdriver Trace, we recommend using OpenCensus.
+      #  for Cloud Trace, we recommend using OpenCensus.
       #
       # @example
       #    require 'google/apis/cloudtrace_v2beta1'

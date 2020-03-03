@@ -695,6 +695,12 @@ module Google
         # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
         attr_accessor :vertical_pod_autoscaling
       
+        # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+        # policies.
+        # Corresponds to the JSON property `workloadIdentityConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
+        attr_accessor :workload_identity_config
+      
         # [Output only] The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -757,6 +763,7 @@ module Google
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
+          @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -941,6 +948,12 @@ module Google
         # @return [Google::Apis::ContainerV1::VerticalPodAutoscaling]
         attr_accessor :desired_vertical_pod_autoscaling
       
+        # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+        # policies.
+        # Corresponds to the JSON property `desiredWorkloadIdentityConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadIdentityConfig]
+        attr_accessor :desired_workload_identity_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -964,6 +977,7 @@ module Google
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
+          @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
       end
       
@@ -1914,6 +1928,43 @@ module Google
         end
       end
       
+      # Progress metric is (string, int|float|string) pair.
+      class Metric
+        include Google::Apis::Core::Hashable
+      
+        # For metrics with floating point value.
+        # Corresponds to the JSON property `doubleValue`
+        # @return [Float]
+        attr_accessor :double_value
+      
+        # For metrics with integer value.
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # Required. Metric name, e.g., "nodes total", "percent done".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # For metrics with custom values (ratios, visual progress, etc.).
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @double_value = args[:double_value] if args.key?(:double_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @name = args[:name] if args.key?(:name)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # NetworkConfig reports the relative names of network & subnetwork.
       class NetworkConfig
         include Google::Apis::Core::Hashable
@@ -2168,6 +2219,12 @@ module Google
         # @return [Array<Google::Apis::ContainerV1::NodeTaint>]
         attr_accessor :taints
       
+        # WorkloadMetadataConfig defines the metadata configuration to expose to
+        # workloads on the node pool.
+        # Corresponds to the JSON property `workloadMetadataConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadMetadataConfig]
+        attr_accessor :workload_metadata_config
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2191,6 +2248,7 @@ module Google
           @shielded_instance_config = args[:shielded_instance_config] if args.key?(:shielded_instance_config)
           @tags = args[:tags] if args.key?(:tags)
           @taints = args[:taints] if args.key?(:taints)
+          @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
         end
       end
       
@@ -2488,6 +2546,11 @@ module Google
         # @return [String]
         attr_accessor :operation_type
       
+        # Information about operation (or operation stage) progress.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::ContainerV1::OperationProgress]
+        attr_accessor :progress
+      
         # Server-defined URL for the resource.
         # Corresponds to the JSON property `selfLink`
         # @return [String]
@@ -2504,7 +2567,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # If an error has occurred, a textual description of the error.
+        # Output only. If an error has occurred, a textual description of the error.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -2535,12 +2598,57 @@ module Google
           @name = args[:name] if args.key?(:name)
           @nodepool_conditions = args[:nodepool_conditions] if args.key?(:nodepool_conditions)
           @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @progress = args[:progress] if args.key?(:progress)
           @self_link = args[:self_link] if args.key?(:self_link)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @target_link = args[:target_link] if args.key?(:target_link)
           @zone = args[:zone] if args.key?(:zone)
+        end
+      end
+      
+      # Information about operation (or operation stage) progress.
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # Progress metric bundle, for example:
+        # metrics: [`name: "nodes done",     int_value: 15`,
+        # `name: "nodes total",    int_value: 32`]
+        # or
+        # metrics: [`name: "progress",       double_value: 0.56`,
+        # `name: "progress scale", double_value: 1.0`]
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ContainerV1::Metric>]
+        attr_accessor :metrics
+      
+        # A non-parameterized string describing an operation stage.
+        # Unset for single-stage operations.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Substages of an operation or a stage.
+        # Corresponds to the JSON property `stages`
+        # @return [Array<Google::Apis::ContainerV1::OperationProgress>]
+        attr_accessor :stages
+      
+        # Status of an operation stage.
+        # Unset for single-stage operations.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @name = args[:name] if args.key?(:name)
+          @stages = args[:stages] if args.key?(:stages)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -2661,7 +2769,9 @@ module Google
         # @return [String]
         attr_accessor :consume_reservation_type
       
-        # Corresponds to the label key of reservation resource.
+        # Corresponds to the label key of a reservation resource. To target a
+        # SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as
+        # the key and specify the name of your reservation as its value.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -3874,6 +3984,12 @@ module Google
         # @return [Google::Apis::ContainerV1::UpgradeSettings]
         attr_accessor :upgrade_settings
       
+        # WorkloadMetadataConfig defines the metadata configuration to expose to
+        # workloads on the node pool.
+        # Corresponds to the JSON property `workloadMetadataConfig`
+        # @return [Google::Apis::ContainerV1::WorkloadMetadataConfig]
+        attr_accessor :workload_metadata_config
+      
         # Required. Deprecated. The name of the Google Compute Engine
         # [zone](/compute/docs/zones#available) in which the cluster
         # resides.
@@ -3896,6 +4012,7 @@ module Google
           @node_version = args[:node_version] if args.key?(:node_version)
           @project_id = args[:project_id] if args.key?(:project_id)
           @upgrade_settings = args[:upgrade_settings] if args.key?(:upgrade_settings)
+          @workload_metadata_config = args[:workload_metadata_config] if args.key?(:workload_metadata_config)
           @zone = args[:zone] if args.key?(:zone)
         end
       end
@@ -4045,6 +4162,47 @@ module Google
         # Update properties of this object
         def update!(**args)
           @enabled = args[:enabled] if args.key?(:enabled)
+        end
+      end
+      
+      # Configuration for the use of Kubernetes Service Accounts in GCP IAM
+      # policies.
+      class WorkloadIdentityConfig
+        include Google::Apis::Core::Hashable
+      
+        # The workload pool to attach all Kubernetes service accounts to.
+        # Corresponds to the JSON property `workloadPool`
+        # @return [String]
+        attr_accessor :workload_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @workload_pool = args[:workload_pool] if args.key?(:workload_pool)
+        end
+      end
+      
+      # WorkloadMetadataConfig defines the metadata configuration to expose to
+      # workloads on the node pool.
+      class WorkloadMetadataConfig
+        include Google::Apis::Core::Hashable
+      
+        # Mode is the configuration for how to expose metadata to workloads running
+        # on the node pool.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
         end
       end
     end

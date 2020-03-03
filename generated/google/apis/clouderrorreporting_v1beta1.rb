@@ -18,7 +18,7 @@ require 'google/apis/clouderrorreporting_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Stackdriver Error Reporting API
+    # Error Reporting API
     #
     # Groups and counts similar errors from cloud services and applications, reports
     # new errors, and provides access to error groups and their associated errors.
@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/error-reporting/
     module ClouderrorreportingV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200122'
+      REVISION = '20200226'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
