@@ -65,6 +65,17 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       expect(command.header['X-Goog-Api-Client']).to eql "foo/1.2.3 bar/4.5.6 #{x_goog_api_client_value}"
       expect(command.header['x-goog-api-client']).to be nil
     end
+
+    it 'should not set the X-Goog-User-Project header if there is no quota_project' do
+      command.prepare!
+      expect(command.header['X-Goog-User-Project']).to be_nil
+    end
+
+    it 'should set the X-Goog-User-Project to a given quota_project' do
+      command.options.authorization = OpenStruct.new quota_project_id: "b_project_id"
+      command.prepare!
+      expect(command.header['X-Goog-User-Project']).to eql "b_project_id"
+    end
   end
 
   context('with a request body') do
