@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FormInput
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Image
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -259,7 +265,11 @@ module Google
           property :action, as: 'action', class: Google::Apis::ChatV1::FormAction, decorator: Google::Apis::ChatV1::FormAction::Representation
       
           property :config_complete_redirect_url, as: 'configCompleteRedirectUrl'
+          property :dialog_event_type, as: 'dialogEventType'
           property :event_time, as: 'eventTime'
+          collection :form_inputs, as: 'formInputs', class: Google::Apis::ChatV1::FormInput, decorator: Google::Apis::ChatV1::FormInput::Representation
+      
+          property :is_dialog_event, as: 'isDialogEvent'
           property :message, as: 'message', class: Google::Apis::ChatV1::Message, decorator: Google::Apis::ChatV1::Message::Representation
       
           property :space, as: 'space', class: Google::Apis::ChatV1::Space, decorator: Google::Apis::ChatV1::Space::Representation
@@ -284,6 +294,14 @@ module Google
           property :action_method_name, as: 'actionMethodName'
           collection :parameters, as: 'parameters', class: Google::Apis::ChatV1::ActionParameter, decorator: Google::Apis::ChatV1::ActionParameter::Representation
       
+        end
+      end
+      
+      class FormInput
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       

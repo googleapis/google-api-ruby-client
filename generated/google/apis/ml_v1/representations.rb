@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1EncryptionConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1ExplainRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -367,6 +373,13 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1EncryptionConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kms_key_name, as: 'kmsKeyName'
+        end
+      end
+      
       class GoogleCloudMlV1ExplainRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -632,6 +645,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :args, as: 'args'
+          property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig::Representation
+      
           property :hyperparameters, as: 'hyperparameters', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec::Representation
       
           property :job_dir, as: 'jobDir'

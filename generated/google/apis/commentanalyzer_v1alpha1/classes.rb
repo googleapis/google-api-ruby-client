@@ -81,8 +81,8 @@ module Google
         # For the prod installation, known as Perspective API, at
         # blade:commentanalyzer-esf and commentanalyzer.googleapis.com, see
         # go/checker-models (internal) and
-        # https://github.com/conversationai/perspectiveapi/blob/master/api_reference.md#
-        # models.
+        # https://github.com/conversationai/perspectiveapi/blob/master/2-api/models.md#
+        # all-attribute-types.
         # Corresponds to the JSON property `requestedAttributes`
         # @return [Hash<String,Google::Apis::CommentanalyzerV1alpha1::AttributeParameters>]
         attr_accessor :requested_attributes

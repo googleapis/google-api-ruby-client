@@ -294,6 +294,28 @@ module Google
         end
       end
       
+      # Represents a custom encryption key configuration that can be applied to
+      # a resource.
+      class GoogleCloudMlV1EncryptionConfig
+        include Google::Apis::Core::Hashable
+      
+        # The Cloud KMS resource identifier of the customer managed encryption key
+        # used to protect a resource, such as a training job. Has the form:
+        # `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        # Corresponds to the JSON property `kmsKeyName`
+        # @return [String]
+        attr_accessor :kms_key_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kms_key_name = args[:kms_key_name] if args.key?(:kms_key_name)
+        end
+      end
+      
       # Request for explanations to be issued against a trained model.
       class GoogleCloudMlV1ExplainRequest
         include Google::Apis::Core::Hashable
@@ -1469,6 +1491,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :args
       
+        # Represents a custom encryption key configuration that can be applied to
+        # a resource.
+        # Corresponds to the JSON property `encryptionConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig]
+        attr_accessor :encryption_config
+      
         # Represents a set of hyperparameters to optimize.
         # Corresponds to the JSON property `hyperparameters`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec]
@@ -1663,6 +1691,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @args = args[:args] if args.key?(:args)
+          @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
           @job_dir = args[:job_dir] if args.key?(:job_dir)
           @master_config = args[:master_config] if args.key?(:master_config)
