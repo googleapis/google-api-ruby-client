@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2Container
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2ContentItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -400,6 +406,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2FinishDlpJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -407,6 +419,48 @@ module Google
       end
       
       class GooglePrivacyDlpV2HotwordRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridContentItem
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridFindingDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectDlpJobRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectJobTriggerRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectStatistics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2HybridOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -677,6 +731,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2Location
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2Manual
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -959,6 +1019,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2TableLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2TableOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1349,6 +1415,19 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :conditions, as: 'conditions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Condition, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Condition::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2Container
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_path, as: 'fullPath'
+          property :project_id, as: 'projectId'
+          property :relative_path, as: 'relativePath'
+          property :root_path, as: 'rootPath'
+          property :type, as: 'type'
+          property :update_time, as: 'updateTime'
+          property :version, as: 'version'
         end
       end
       
@@ -1759,6 +1838,7 @@ module Google
       
           property :job_create_time, as: 'jobCreateTime'
           property :job_name, as: 'jobName'
+          hash :labels, as: 'labels'
           property :likelihood, as: 'likelihood'
           property :location, as: 'location', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Location, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Location::Representation
       
@@ -1781,6 +1861,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2FinishDlpJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2FixedSizeBucketingConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1800,6 +1886,71 @@ module Google
           property :likelihood_adjustment, as: 'likelihoodAdjustment', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LikelihoodAdjustment::Representation
       
           property :proximity, as: 'proximity', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Proximity::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridContentItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding_details, as: 'findingDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails::Representation
+      
+          property :item, as: 'item', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridFindingDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :container_details, as: 'containerDetails', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Container, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Container::Representation
+      
+          property :file_offset, :numeric_string => true, as: 'fileOffset'
+          hash :labels, as: 'labels'
+          property :row_offset, :numeric_string => true, as: 'rowOffset'
+          property :table_options, as: 'tableOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectDlpJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hybrid_item, as: 'hybridItem', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectJobTriggerRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hybrid_item, as: 'hybridItem', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem::Representation
+      
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridInspectStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hybrid_requests_aborted, :numeric_string => true, as: 'hybridRequestsAborted'
+          property :hybrid_requests_pending, :numeric_string => true, as: 'hybridRequestsPending'
+          property :hybrid_requests_processed, :numeric_string => true, as: 'hybridRequestsProcessed'
+        end
+      end
+      
+      class GooglePrivacyDlpV2HybridOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          hash :labels, as: 'labels'
+          collection :required_finding_label_keys, as: 'requiredFindingLabelKeys'
+          property :table_options, as: 'tableOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions::Representation
       
         end
       end
@@ -2248,6 +2399,12 @@ module Google
         end
       end
       
+      class GooglePrivacyDlpV2Manual
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class GooglePrivacyDlpV2NumericalStatsConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2559,6 +2716,8 @@ module Google
       class GooglePrivacyDlpV2Result
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :hybrid_stats, as: 'hybridStats', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectStatistics, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectStatistics::Representation
+      
           collection :info_type_stats, as: 'infoTypeStats', class: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2InfoTypeStats::Representation
       
           property :processed_bytes, :numeric_string => true, as: 'processedBytes'
@@ -2622,6 +2781,8 @@ module Google
       
           property :datastore_options, as: 'datastoreOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreOptions::Representation
       
+          property :hybrid_options, as: 'hybridOptions', class: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridOptions, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2HybridOptions::Representation
+      
           property :timespan_config, as: 'timespanConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig::Representation
       
         end
@@ -2642,8 +2803,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
+          property :dictionary, as: 'dictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary::Representation
+      
           property :display_name, as: 'displayName'
           property :large_custom_dictionary, as: 'largeCustomDictionary', class: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig::Representation
+      
+          property :regex, as: 'regex', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Regex::Representation
       
         end
       end
@@ -2707,6 +2872,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :row_index, :numeric_string => true, as: 'rowIndex'
+        end
+      end
+      
+      class GooglePrivacyDlpV2TableOptions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :identifying_fields, as: 'identifyingFields', class: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId::Representation
+      
         end
       end
       
@@ -2802,6 +2975,8 @@ module Google
       class GooglePrivacyDlpV2Trigger
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :manual, as: 'manual', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Manual, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Manual::Representation
+      
           property :schedule, as: 'schedule', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Schedule, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Schedule::Representation
       
         end

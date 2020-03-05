@@ -2304,8 +2304,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_value
       
-        # Metric name, required.
-        # e.g., "nodes total", "percent done"
+        # Required. Metric name, e.g., "nodes total", "percent done".
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2937,7 +2936,7 @@ module Google
         # @return [String]
         attr_accessor :status
       
-        # If an error has occurred, a textual description of the error.
+        # Output only. If an error has occurred, a textual description of the error.
         # Corresponds to the JSON property `statusMessage`
         # @return [String]
         attr_accessor :status_message
@@ -3248,7 +3247,9 @@ module Google
         # @return [String]
         attr_accessor :consume_reservation_type
       
-        # Corresponds to the label key of reservation resource.
+        # Corresponds to the label key of a reservation resource. To target a
+        # SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as
+        # the key and specify the name of your reservation as its value.
         # Corresponds to the JSON property `key`
         # @return [String]
         attr_accessor :key
@@ -4715,6 +4716,11 @@ module Google
         # @return [String]
         attr_accessor :identity_namespace
       
+        # The workload pool to attach all Kubernetes service accounts to.
+        # Corresponds to the JSON property `workloadPool`
+        # @return [String]
+        attr_accessor :workload_pool
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4722,6 +4728,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @identity_namespace = args[:identity_namespace] if args.key?(:identity_namespace)
+          @workload_pool = args[:workload_pool] if args.key?(:workload_pool)
         end
       end
       
@@ -4729,6 +4736,12 @@ module Google
       # workloads on the node pool.
       class WorkloadMetadataConfig
         include Google::Apis::Core::Hashable
+      
+        # Mode is the configuration for how to expose metadata to workloads running
+        # on the node pool.
+        # Corresponds to the JSON property `mode`
+        # @return [String]
+        attr_accessor :mode
       
         # NodeMetadata is the configuration for how to expose metadata to the
         # workloads running on the node.
@@ -4742,6 +4755,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @mode = args[:mode] if args.key?(:mode)
           @node_metadata = args[:node_metadata] if args.key?(:node_metadata)
         end
       end

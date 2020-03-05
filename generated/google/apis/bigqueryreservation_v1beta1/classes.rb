@@ -96,20 +96,18 @@ module Google
       end
       
       # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-      # (in the form of slots) with some minimum committed period of usage. Capacity
-      # commitment is immutable and cannot be deleted until the end of the commitment
-      # period. After the end of the commitment period, slots are still available but
-      # can be freely removed any time. Annual commitments will automatically be
-      # downgraded to monthly after the commitment ends.
+      # (in the form of slots) with some committed period of usage. Monthly and
+      # annual commitments renew by default. Only flex commitments can be removed. In
+      # order to remove monthly or annual commitments, their plan needs to be changed
+      # to flex first.
       # A capacity commitment resource exists as a child resource of the admin
       # project.
       class CapacityCommitment
         include Google::Apis::Core::Hashable
       
-        # Output only. The end of the commitment period. Capacity commitment cannot be
-        # removed before commitment_end_time. It is applicable only for ACTIVE
-        # capacity commitments and is computed as a combination of the plan and the
-        # time when the capacity commitment became ACTIVE.
+        # Output only. The end of the current commitment period. It is applicable only
+        # for ACTIVE
+        # capacity commitments.
         # Corresponds to the JSON property `commitmentEndTime`
         # @return [String]
         attr_accessor :commitment_end_time
@@ -135,6 +133,13 @@ module Google
         # @return [String]
         attr_accessor :plan
       
+        # The plan this capacity commitment is converted to after commitment_end_time
+        # passes. Once the plan is changed, committed period is extended according to
+        # commitment plan. Only applicable for MONTHLY and ANNUAL commitments.
+        # Corresponds to the JSON property `renewalPlan`
+        # @return [String]
+        attr_accessor :renewal_plan
+      
         # Number of slots in this commitment.
         # Corresponds to the JSON property `slotCount`
         # @return [Fixnum]
@@ -155,6 +160,7 @@ module Google
           @failure_status = args[:failure_status] if args.key?(:failure_status)
           @name = args[:name] if args.key?(:name)
           @plan = args[:plan] if args.key?(:plan)
+          @renewal_plan = args[:renewal_plan] if args.key?(:renewal_plan)
           @slot_count = args[:slot_count] if args.key?(:slot_count)
           @state = args[:state] if args.key?(:state)
         end
@@ -257,6 +263,27 @@ module Google
         end
       end
       
+      # The request for ReservationService.MergeCapacityCommitments.
+      class MergeCapacityCommitmentsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Ids of capacity commitments to merge.
+        # These capacity commitments must exist under admin project and location
+        # specified in the parent.
+        # Corresponds to the JSON property `capacityCommitmentIds`
+        # @return [Array<String>]
+        attr_accessor :capacity_commitment_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @capacity_commitment_ids = args[:capacity_commitment_ids] if args.key?(:capacity_commitment_ids)
+        end
+      end
+      
       # The request for
       # ReservationService.MoveAssignment.
       # Note: "bigquery.reservationAssignments.create" permission is required on the
@@ -350,6 +377,62 @@ module Google
         end
       end
       
+      # The request for ReservationService.SplitCapacityCommitment.
+      class SplitCapacityCommitmentRequest
+        include Google::Apis::Core::Hashable
+      
+        # Number of slots in the capacity commitment after the split.
+        # Corresponds to the JSON property `slotCount`
+        # @return [Fixnum]
+        attr_accessor :slot_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @slot_count = args[:slot_count] if args.key?(:slot_count)
+        end
+      end
+      
+      # The response for ReservationService.SplitCapacityCommitment.
+      class SplitCapacityCommitmentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
+        # (in the form of slots) with some committed period of usage. Monthly and
+        # annual commitments renew by default. Only flex commitments can be removed. In
+        # order to remove monthly or annual commitments, their plan needs to be changed
+        # to flex first.
+        # A capacity commitment resource exists as a child resource of the admin
+        # project.
+        # Corresponds to the JSON property `first`
+        # @return [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment]
+        attr_accessor :first
+      
+        # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
+        # (in the form of slots) with some committed period of usage. Monthly and
+        # annual commitments renew by default. Only flex commitments can be removed. In
+        # order to remove monthly or annual commitments, their plan needs to be changed
+        # to flex first.
+        # A capacity commitment resource exists as a child resource of the admin
+        # project.
+        # Corresponds to the JSON property `second`
+        # @return [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment]
+        attr_accessor :second
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @first = args[:first] if args.key?(:first)
+          @second = args[:second] if args.key?(:second)
+        end
+      end
+      
       # The `Status` type defines a logical error model that is suitable for
       # different programming environments, including REST APIs and RPC APIs. It is
       # used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -386,6 +469,25 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The request for ReservationService.UpgradeCapacityCommitmentPlan.
+      class UpgradeCapacityCommitmentPlanRequest
+        include Google::Apis::Core::Hashable
+      
+        # New capacity commitment plan.
+        # Corresponds to the JSON property `plan`
+        # @return [String]
+        attr_accessor :plan
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @plan = args[:plan] if args.key?(:plan)
         end
       end
     end

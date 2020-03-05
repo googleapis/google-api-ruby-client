@@ -968,6 +968,80 @@ module Google
         end
       end
       
+      # Represents a container that may contain DLP findings.
+      # Examples of a container include a file, table, or database record.
+      class GooglePrivacyDlpV2Container
+        include Google::Apis::Core::Hashable
+      
+        # A string representation of the full container name.
+        # Examples:
+        # - BigQuery: 'Project:DataSetId.TableId'
+        # - Google Cloud Storage: 'gs://Bucket/folders/filename.txt'
+        # Corresponds to the JSON property `fullPath`
+        # @return [String]
+        attr_accessor :full_path
+      
+        # Project where the finding was found.
+        # Can be different from the project that owns the finding.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # The rest of the path after the root.
+        # Examples:
+        # - For BigQuery table `project_id:dataset_id.table_id`, the relative path is
+        # `table_id`
+        # - Google Cloud Storage file `gs://bucket/folder/filename.txt`, the relative
+        # path is `folder/filename.txt`
+        # Corresponds to the JSON property `relativePath`
+        # @return [String]
+        attr_accessor :relative_path
+      
+        # The root of the container.
+        # Examples:
+        # - For BigQuery table `project_id:dataset_id.table_id`, the root is
+        # `dataset_id`
+        # - For Google Cloud Storage file `gs://bucket/folder/filename.txt`, the root
+        # is `gs://bucket`
+        # Corresponds to the JSON property `rootPath`
+        # @return [String]
+        attr_accessor :root_path
+      
+        # Container type, for example BigQuery or Google Cloud Storage.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # Findings container modification timestamp, if applicable.
+        # For Google Cloud Storage contains last file modification timestamp.
+        # For BigQuery table contains last_modified_time property.
+        # For Datastore - not populated.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        # Findings container version, if available
+        # ("generation" for Google Cloud Storage).
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_path = args[:full_path] if args.key?(:full_path)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @relative_path = args[:relative_path] if args.key?(:relative_path)
+          @root_path = args[:root_path] if args.key?(:root_path)
+          @type = args[:type] if args.key?(:type)
+          @update_time = args[:update_time] if args.key?(:update_time)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
       # Container structure for the content to inspect.
       class GooglePrivacyDlpV2ContentItem
         include Google::Apis::Core::Hashable
@@ -2471,6 +2545,18 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
+        # The labels associated with this `InspectFinding`.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 10 labels can be associated with a given finding.
+        # Example: <code>"environment" : "production"</code>
+        # Example: <code>"pipeline" : "etl"</code>
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # Confidence of how likely it is that the `info_type` is correct.
         # Corresponds to the JSON property `likelihood`
         # @return [String]
@@ -2521,6 +2607,7 @@ module Google
           @info_type = args[:info_type] if args.key?(:info_type)
           @job_create_time = args[:job_create_time] if args.key?(:job_create_time)
           @job_name = args[:job_name] if args.key?(:job_name)
+          @labels = args[:labels] if args.key?(:labels)
           @likelihood = args[:likelihood] if args.key?(:likelihood)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
@@ -2564,6 +2651,22 @@ module Google
           @max_findings_per_info_type = args[:max_findings_per_info_type] if args.key?(:max_findings_per_info_type)
           @max_findings_per_item = args[:max_findings_per_item] if args.key?(:max_findings_per_item)
           @max_findings_per_request = args[:max_findings_per_request] if args.key?(:max_findings_per_request)
+        end
+      end
+      
+      # The request message for finishing a DLP hybrid job.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2FinishDlpJobRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -2653,6 +2756,267 @@ module Google
           @hotword_regex = args[:hotword_regex] if args.key?(:hotword_regex)
           @likelihood_adjustment = args[:likelihood_adjustment] if args.key?(:likelihood_adjustment)
           @proximity = args[:proximity] if args.key?(:proximity)
+        end
+      end
+      
+      # An individual hybrid item to inspect. Will be stored temporarily during
+      # processing.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridContentItem
+        include Google::Apis::Core::Hashable
+      
+        # Populate to associate additional data with each finding.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `findingDetails`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails]
+        attr_accessor :finding_details
+      
+        # Container structure for the content to inspect.
+        # Corresponds to the JSON property `item`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
+        attr_accessor :item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finding_details = args[:finding_details] if args.key?(:finding_details)
+          @item = args[:item] if args.key?(:item)
+        end
+      end
+      
+      # Populate to associate additional data with each finding.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridFindingDetails
+        include Google::Apis::Core::Hashable
+      
+        # Represents a container that may contain DLP findings.
+        # Examples of a container include a file, table, or database record.
+        # Corresponds to the JSON property `containerDetails`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Container]
+        attr_accessor :container_details
+      
+        # Offset in bytes of the line, from the beginning of the file, where the
+        # finding  is located. Populate if the item being scanned is only part of a
+        # bigger item, such as a shard of a file and you want to track the absolute
+        # position of the finding.
+        # Corresponds to the JSON property `fileOffset`
+        # @return [Fixnum]
+        attr_accessor :file_offset
+      
+        # Labels to represent user provided metadata about the data being inspected.
+        # If configured by the job, some key values may be required.
+        # The labels associated with `Finding`'s produced by hybrid
+        # inspection.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 10 labels can be associated with a given finding.
+        # Example: <code>"environment" : "production"</code>
+        # Example: <code>"pipeline" : "etl"</code>
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Offset of the row for tables. Populate if the row(s) being scanned are
+        # part of a bigger dataset and you want to keep track of their absolute
+        # position.
+        # Corresponds to the JSON property `rowOffset`
+        # @return [Fixnum]
+        attr_accessor :row_offset
+      
+        # Instructions regarding the table content being inspected.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `tableOptions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions]
+        attr_accessor :table_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @container_details = args[:container_details] if args.key?(:container_details)
+          @file_offset = args[:file_offset] if args.key?(:file_offset)
+          @labels = args[:labels] if args.key?(:labels)
+          @row_offset = args[:row_offset] if args.key?(:row_offset)
+          @table_options = args[:table_options] if args.key?(:table_options)
+        end
+      end
+      
+      # Request to search for potentially sensitive info in a custom location.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridInspectDlpJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # An individual hybrid item to inspect. Will be stored temporarily during
+        # processing.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `hybridItem`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem]
+        attr_accessor :hybrid_item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hybrid_item = args[:hybrid_item] if args.key?(:hybrid_item)
+        end
+      end
+      
+      # Request to search for potentially sensitive info in a custom location.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridInspectJobTriggerRequest
+        include Google::Apis::Core::Hashable
+      
+        # An individual hybrid item to inspect. Will be stored temporarily during
+        # processing.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `hybridItem`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem]
+        attr_accessor :hybrid_item
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hybrid_item = args[:hybrid_item] if args.key?(:hybrid_item)
+        end
+      end
+      
+      # Quota exceeded errors will be thrown once quota has been met.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridInspectResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Statistics related to processing hybrid inspect requests
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridInspectStatistics
+        include Google::Apis::Core::Hashable
+      
+        # The number of hybrid inspection requests aborted because the job ran
+        # out of quota or was ended before they could be processed.
+        # Corresponds to the JSON property `hybridRequestsAborted`
+        # @return [Fixnum]
+        attr_accessor :hybrid_requests_aborted
+      
+        # The number of hybrid requests currently being processed. Only populated
+        # when called via method `getDlpJob`.
+        # A burst of traffic may cause hybrid inspect requests to be enqueued.
+        # Processing will take place as quickly as possible, but resource limitations
+        # may impact how long a request is enqueued for.
+        # Corresponds to the JSON property `hybridRequestsPending`
+        # @return [Fixnum]
+        attr_accessor :hybrid_requests_pending
+      
+        # The number of hybrid inspection requests processed within this job.
+        # Corresponds to the JSON property `hybridRequestsProcessed`
+        # @return [Fixnum]
+        attr_accessor :hybrid_requests_processed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hybrid_requests_aborted = args[:hybrid_requests_aborted] if args.key?(:hybrid_requests_aborted)
+          @hybrid_requests_pending = args[:hybrid_requests_pending] if args.key?(:hybrid_requests_pending)
+          @hybrid_requests_processed = args[:hybrid_requests_processed] if args.key?(:hybrid_requests_processed)
+        end
+      end
+      
+      # Configuration to control jobs where the content being inspected is outside
+      # of Google Cloud Platform.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2HybridOptions
+        include Google::Apis::Core::Hashable
+      
+        # A short description of where the data is coming from. Will be stored once
+        # in the job. 256 max length.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # To organize findings, these labels will be added to each finding.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # Label values must be between 0 and 63 characters long and must conform
+        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # No more than 10 labels can be associated with a given finding.
+        # Example: <code>"environment" : "production"</code>
+        # Example: <code>"pipeline" : "etl"</code>
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # These are labels that each inspection request must include within their
+        # 'finding_labels' map. Request may contain others, but any missing one of
+        # these will be rejected.
+        # Label keys must be between 1 and 63 characters long and must conform
+        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # No more than 10 keys can be required.
+        # Corresponds to the JSON property `requiredFindingLabelKeys`
+        # @return [Array<String>]
+        attr_accessor :required_finding_label_keys
+      
+        # Instructions regarding the table content being inspected.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `tableOptions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions]
+        attr_accessor :table_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @labels = args[:labels] if args.key?(:labels)
+          @required_finding_label_keys = args[:required_finding_label_keys] if args.key?(:required_finding_label_keys)
+          @table_options = args[:table_options] if args.key?(:table_options)
         end
       end
       
@@ -4090,6 +4454,23 @@ module Google
         end
       end
       
+      # Job trigger option for hybrid jobs. Jobs must be manually created
+      # and finished.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2Manual
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Compute numerical stats over an individual column, including
       # min, max, and quantiles.
       class GooglePrivacyDlpV2NumericalStatsConfig
@@ -5113,6 +5494,14 @@ module Google
       class GooglePrivacyDlpV2Result
         include Google::Apis::Core::Hashable
       
+        # Statistics related to processing hybrid inspect requests
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `hybridStats`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectStatistics]
+        attr_accessor :hybrid_stats
+      
         # Statistics of how many instances of each info type were found during
         # inspect job.
         # Corresponds to the JSON property `infoTypeStats`
@@ -5135,6 +5524,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @hybrid_stats = args[:hybrid_stats] if args.key?(:hybrid_stats)
           @info_type_stats = args[:info_type_stats] if args.key?(:info_type_stats)
           @processed_bytes = args[:processed_bytes] if args.key?(:processed_bytes)
           @total_estimated_bytes = args[:total_estimated_bytes] if args.key?(:total_estimated_bytes)
@@ -5304,6 +5694,15 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DatastoreOptions]
         attr_accessor :datastore_options
       
+        # Configuration to control jobs where the content being inspected is outside
+        # of Google Cloud Platform.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `hybridOptions`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridOptions]
+        attr_accessor :hybrid_options
+      
         # Configuration of the timespan of the items to include in scanning.
         # Currently only supported when inspecting Google Cloud Storage and BigQuery.
         # Corresponds to the JSON property `timespanConfig`
@@ -5319,6 +5718,7 @@ module Google
           @big_query_options = args[:big_query_options] if args.key?(:big_query_options)
           @cloud_storage_options = args[:cloud_storage_options] if args.key?(:cloud_storage_options)
           @datastore_options = args[:datastore_options] if args.key?(:datastore_options)
+          @hybrid_options = args[:hybrid_options] if args.key?(:hybrid_options)
           @timespan_config = args[:timespan_config] if args.key?(:timespan_config)
         end
       end
@@ -5368,6 +5768,32 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Custom information type based on a dictionary of words or phrases. This can
+        # be used to match sensitive information specific to the data, such as a list
+        # of employee IDs or job titles.
+        # Dictionary words are case-insensitive and all characters other than letters
+        # and digits in the unicode [Basic Multilingual
+        # Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#
+        # Basic_Multilingual_Plane)
+        # will be replaced with whitespace when scanning for matches, so the
+        # dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+        # "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+        # surrounding any match must be of a different type than the adjacent
+        # characters within the word, so letters must be next to non-letters and
+        # digits next to non-digits. For example, the dictionary word "jen" will
+        # match the first three letters of the text "jen123" but will return no
+        # matches for "jennifer".
+        # Dictionary words containing a large number of characters that are not
+        # letters or digits may result in unexpected findings because such characters
+        # are treated as whitespace. The
+        # [limits](https://cloud.google.com/dlp/limits) page contains details about
+        # the size limits of dictionaries. For dictionaries that do not fit within
+        # these constraints, consider using `LargeCustomDictionaryConfig` in the
+        # `StoredInfoType` API.
+        # Corresponds to the JSON property `dictionary`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Dictionary]
+        attr_accessor :dictionary
+      
         # Display name of the StoredInfoType (max 256 characters).
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -5383,6 +5809,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2LargeCustomDictionaryConfig]
         attr_accessor :large_custom_dictionary
       
+        # Message defining a custom regular expression.
+        # Corresponds to the JSON property `regex`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Regex]
+        attr_accessor :regex
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5390,8 +5821,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @description = args[:description] if args.key?(:description)
+          @dictionary = args[:dictionary] if args.key?(:dictionary)
           @display_name = args[:display_name] if args.key?(:display_name)
           @large_custom_dictionary = args[:large_custom_dictionary] if args.key?(:large_custom_dictionary)
+          @regex = args[:regex] if args.key?(:regex)
         end
       end
       
@@ -5597,6 +6030,31 @@ module Google
         # Update properties of this object
         def update!(**args)
           @row_index = args[:row_index] if args.key?(:row_index)
+        end
+      end
+      
+      # Instructions regarding the table content being inspected.
+      # Early access feature is in a pre-release state and might change or have
+      # limited support. For more information, see
+      # https://cloud.google.com/products#product-launch-stages.
+      class GooglePrivacyDlpV2TableOptions
+        include Google::Apis::Core::Hashable
+      
+        # The columns that are the primary keys for table objects included in
+        # ContentItem. A copy of this cell's value will stored alongside alongside
+        # each finding so that the finding can be traced to the specific row it came
+        # from. No more than 3 may be provided.
+        # Corresponds to the JSON property `identifyingFields`
+        # @return [Array<Google::Apis::DlpV2::GooglePrivacyDlpV2FieldId>]
+        attr_accessor :identifying_fields
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @identifying_fields = args[:identifying_fields] if args.key?(:identifying_fields)
         end
       end
       
@@ -5890,6 +6348,15 @@ module Google
       class GooglePrivacyDlpV2Trigger
         include Google::Apis::Core::Hashable
       
+        # Job trigger option for hybrid jobs. Jobs must be manually created
+        # and finished.
+        # Early access feature is in a pre-release state and might change or have
+        # limited support. For more information, see
+        # https://cloud.google.com/products#product-launch-stages.
+        # Corresponds to the JSON property `manual`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Manual]
+        attr_accessor :manual
+      
         # Schedule for triggeredJobs.
         # Corresponds to the JSON property `schedule`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Schedule]
@@ -5901,6 +6368,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @manual = args[:manual] if args.key?(:manual)
           @schedule = args[:schedule] if args.key?(:schedule)
         end
       end

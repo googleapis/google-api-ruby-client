@@ -508,6 +508,7 @@ module Google
           collection :supported_abis, as: 'supportedAbis'
           collection :supported_version_ids, as: 'supportedVersionIds'
           collection :tags, as: 'tags'
+          property :thumbnail_url, as: 'thumbnailUrl'
         end
       end
       

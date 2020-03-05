@@ -368,6 +368,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
+        # URL of a thumbnail image of the device.
+        # Corresponds to the JSON property `thumbnailUrl`
+        # @return [String]
+        attr_accessor :thumbnail_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -388,6 +393,7 @@ module Google
           @supported_abis = args[:supported_abis] if args.key?(:supported_abis)
           @supported_version_ids = args[:supported_version_ids] if args.key?(:supported_version_ids)
           @tags = args[:tags] if args.key?(:tags)
+          @thumbnail_url = args[:thumbnail_url] if args.key?(:thumbnail_url)
         end
       end
       
@@ -1203,7 +1209,7 @@ module Google
       end
       
       # A description of an iOS device tests may be run on.
-      # Next tag: 11
+      # Next tag: 12
       class IosModel
         include Google::Apis::Core::Hashable
       

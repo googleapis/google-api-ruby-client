@@ -1476,6 +1476,272 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a course work material.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course, create course work material in the requested course,
+        # share a Drive attachment, or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed or if more than 20
+        # * materials are provided.
+        # * `NOT_FOUND` if the requested course does not exist.
+        # * `FAILED_PRECONDITION` for the following request error:
+        # * AttachmentNotVisible
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [Google::Apis::ClassroomV1::CourseWorkMaterial] course_work_material_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::CourseWorkMaterial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::CourseWorkMaterial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_course_course_work_material(course_id, course_work_material_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/courses/{courseId}/courseWorkMaterials', options)
+          command.request_representation = Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
+          command.request_object = course_work_material_object
+          command.response_representation = Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
+          command.response_class = Google::Apis::ClassroomV1::CourseWorkMaterial
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a course work material.
+        # This request must be made by the Developer Console project of the
+        # [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+        # create the corresponding course work material item.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project did not create
+        # the corresponding course work material, if the requesting user is not
+        # permitted to delete the requested course or for access errors.
+        # * `FAILED_PRECONDITION` if the requested course work material has already
+        # been deleted.
+        # * `NOT_FOUND` if no course exists with the requested ID.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the course work material to delete.
+        #   This identifier is a Classroom-assigned identifier.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_course_course_work_material(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/courses/{courseId}/courseWorkMaterials/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::Empty::Representation
+          command.response_class = Google::Apis::ClassroomV1::Empty
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a course work material.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access the
+        # requested course or course work material, or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course or course work material does not
+        # exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the course work material.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::CourseWorkMaterial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::CourseWorkMaterial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_course_course_work_material(course_id, id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWorkMaterials/{id}', options)
+          command.response_representation = Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
+          command.response_class = Google::Apis::ClassroomV1::CourseWorkMaterial
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a list of course work material that the requester is permitted to
+        # view.
+        # Course students may only view `PUBLISHED` course work material. Course
+        # teachers and domain administrators may view all course work material.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting user is not permitted to access
+        # the requested course or for access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `NOT_FOUND` if the requested course does not exist.
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [Array<String>, String] course_work_material_states
+        #   Restriction on the work status to return. Only course work material that
+        #   matches is returned. If unspecified, items with a work status of
+        #   `PUBLISHED` is returned.
+        # @param [String] material_drive_id
+        #   Optional filtering for course work material with at least one Drive
+        #   material whose ID matches the provided string. If `material_link` is also
+        #   specified, course work material must have materials matching both filters.
+        # @param [String] material_link
+        #   Optional filtering for course work material with at least one link material
+        #   whose URL partially matches the provided string.
+        # @param [String] order_by
+        #   Optional sort ordering for results. A comma-separated list of fields with
+        #   an optional sort direction keyword. Supported field is `updateTime`.
+        #   Supported direction keywords are `asc` and `desc`.
+        #   If not specified, `updateTime desc` is the default behavior.
+        #   Examples: `updateTime asc`, `updateTime`
+        # @param [Fixnum] page_size
+        #   Maximum number of items to return. Zero or unspecified indicates that the
+        #   server may assign a maximum.
+        #   The server may return fewer than the specified number of results.
+        # @param [String] page_token
+        #   nextPageToken
+        #   value returned from a previous
+        #   list call,
+        #   indicating that the subsequent page of results should be returned.
+        #   The list request
+        #   must be otherwise identical to the one that resulted in this token.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::ListCourseWorkMaterialResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::ListCourseWorkMaterialResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_course_course_work_materials(course_id, course_work_material_states: nil, material_drive_id: nil, material_link: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/courses/{courseId}/courseWorkMaterials', options)
+          command.response_representation = Google::Apis::ClassroomV1::ListCourseWorkMaterialResponse::Representation
+          command.response_class = Google::Apis::ClassroomV1::ListCourseWorkMaterialResponse
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.query['courseWorkMaterialStates'] = course_work_material_states unless course_work_material_states.nil?
+          command.query['materialDriveId'] = material_drive_id unless material_drive_id.nil?
+          command.query['materialLink'] = material_link unless material_link.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates one or more fields of a course work material.
+        # This method returns the following error codes:
+        # * `PERMISSION_DENIED` if the requesting developer project for
+        # access errors.
+        # * `INVALID_ARGUMENT` if the request is malformed.
+        # * `FAILED_PRECONDITION` if the requested course work material has already
+        # been deleted.
+        # * `NOT_FOUND` if the requested course or course work material does not
+        # exist
+        # @param [String] course_id
+        #   Identifier of the course.
+        #   This identifier can be either the Classroom-assigned identifier or an
+        #   alias.
+        # @param [String] id
+        #   Identifier of the course work material.
+        # @param [Google::Apis::ClassroomV1::CourseWorkMaterial] course_work_material_object
+        # @param [String] update_mask
+        #   Mask that identifies which fields on the course work material to update.
+        #   This field is required to do an update. The update fails if invalid
+        #   fields are specified. If a field supports empty values, it can be cleared
+        #   by specifying it in the update mask and not in the course work material
+        #   object. If a field that does not support empty values is included in the
+        #   update mask and not set in the course work material object, an
+        #   `INVALID_ARGUMENT` error will be returned.
+        #   The following fields may be specified by teachers:
+        #   * `title`
+        #   * `description`
+        #   * `state`
+        #   * `scheduled_time`
+        #   * `topic_id`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ClassroomV1::CourseWorkMaterial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ClassroomV1::CourseWorkMaterial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_course_course_work_material(course_id, id, course_work_material_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/courses/{courseId}/courseWorkMaterials/{id}', options)
+          command.request_representation = Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
+          command.request_object = course_work_material_object
+          command.response_representation = Google::Apis::ClassroomV1::CourseWorkMaterial::Representation
+          command.response_class = Google::Apis::ClassroomV1::CourseWorkMaterial
+          command.params['courseId'] = course_id unless course_id.nil?
+          command.params['id'] = id unless id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Adds a user as a student of a course.
         # This method returns the following error codes:
         # * `PERMISSION_DENIED` if the requesting user is not permitted to create

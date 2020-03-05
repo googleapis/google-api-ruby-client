@@ -1748,12 +1748,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :identity_namespace, as: 'identityNamespace'
+          property :workload_pool, as: 'workloadPool'
         end
       end
       
       class WorkloadMetadataConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :mode, as: 'mode'
           property :node_metadata, as: 'nodeMetadata'
         end
       end

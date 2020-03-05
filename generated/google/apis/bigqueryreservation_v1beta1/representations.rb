@@ -64,6 +64,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MergeCapacityCommitmentsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveAssignmentRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -82,7 +88,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SplitCapacityCommitmentRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SplitCapacityCommitmentResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeCapacityCommitmentPlanRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -115,6 +139,7 @@ module Google
       
           property :name, as: 'name'
           property :plan, as: 'plan'
+          property :renewal_plan, as: 'renewalPlan'
           property :slot_count, :numeric_string => true, as: 'slotCount'
           property :state, as: 'state'
         end
@@ -153,6 +178,13 @@ module Google
         end
       end
       
+      class MergeCapacityCommitmentsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :capacity_commitment_ids, as: 'capacityCommitmentIds'
+        end
+      end
+      
       class MoveAssignmentRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -178,12 +210,36 @@ module Google
         end
       end
       
+      class SplitCapacityCommitmentRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :slot_count, :numeric_string => true, as: 'slotCount'
+        end
+      end
+      
+      class SplitCapacityCommitmentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :first, as: 'first', class: Google::Apis::BigqueryreservationV1beta1::CapacityCommitment, decorator: Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
+      
+          property :second, as: 'second', class: Google::Apis::BigqueryreservationV1beta1::CapacityCommitment, decorator: Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
+      
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class UpgradeCapacityCommitmentPlanRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :plan, as: 'plan'
         end
       end
     end
