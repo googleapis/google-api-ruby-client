@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/classroom/
     module ClassroomV1
       VERSION = 'V1'
-      REVISION = '20200229'
+      REVISION = '20200305'
 
       # View and manage announcements in Google Classroom
       AUTH_CLASSROOM_ANNOUNCEMENTS = 'https://www.googleapis.com/auth/classroom.announcements'
@@ -50,12 +50,6 @@ module Google
 
       # View course work and grades for students in the Google Classroom classes you teach or administer
       AUTH_CLASSROOM_COURSEWORK_STUDENTS_READONLY = 'https://www.googleapis.com/auth/classroom.coursework.students.readonly'
-
-      # See, edit, and create classwork materials in Google Classroom
-      AUTH_CLASSROOM_COURSEWORKMATERIALS = 'https://www.googleapis.com/auth/classroom.courseworkmaterials'
-
-      # See all classwork materials for your Google Classroom classes
-      AUTH_CLASSROOM_COURSEWORKMATERIALS_READONLY = 'https://www.googleapis.com/auth/classroom.courseworkmaterials.readonly'
 
       # View your Google Classroom guardians
       AUTH_CLASSROOM_GUARDIANLINKS_ME_READONLY = 'https://www.googleapis.com/auth/classroom.guardianlinks.me.readonly'

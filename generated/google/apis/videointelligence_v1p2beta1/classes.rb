@@ -593,7 +593,7 @@ module Google
         attr_accessor :feature
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -662,7 +662,7 @@ module Google
         attr_accessor :frame_label_annotations
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -1404,7 +1404,7 @@ module Google
         attr_accessor :feature
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -1473,7 +1473,7 @@ module Google
         attr_accessor :frame_label_annotations
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -2215,7 +2215,7 @@ module Google
         attr_accessor :feature
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -2284,7 +2284,7 @@ module Google
         attr_accessor :frame_label_annotations
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -2494,7 +2494,7 @@ module Google
         attr_accessor :input_content
       
         # Input video location. Currently, only
-        # [Google Cloud Storage](https://cloud.google.com/storage/) URIs are
+        # [Cloud Storage](https://cloud.google.com/storage/) URIs are
         # supported, which must be specified in the following format:
         # `gs://bucket-id/object-id` (other URI formats return
         # google.rpc.Code.INVALID_ARGUMENT). For more information, see
@@ -2515,7 +2515,7 @@ module Google
         attr_accessor :location_id
       
         # Optional. Location where the output (in JSON format) should be stored.
-        # Currently, only [Google Cloud Storage](https://cloud.google.com/storage/)
+        # Currently, only [Cloud Storage](https://cloud.google.com/storage/)
         # URIs are supported, which must be specified in the following format:
         # `gs://bucket-id/object-id` (other URI formats return
         # google.rpc.Code.INVALID_ARGUMENT). For more information, see
@@ -3371,7 +3371,7 @@ module Google
         attr_accessor :feature
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -3440,7 +3440,7 @@ module Google
         attr_accessor :frame_label_annotations
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -4391,7 +4391,7 @@ module Google
         # @return [Google::Apis::VideointelligenceV1p2beta1::GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults]
         attr_accessor :annotation_results
       
-        # GCS URI that stores annotation results of one streaming session.
+        # Cloud Storage URI that stores annotation results of one streaming session.
         # It is a directory that can hold multiple files in JSON format.
         # Example uri format:
         # gs://bucket_id/object_id/cloud_project_name-session_id
@@ -4651,7 +4651,7 @@ module Google
         attr_accessor :feature
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
@@ -4730,7 +4730,7 @@ module Google
         attr_accessor :frame_label_annotations
       
         # Video file location in
-        # [Google Cloud Storage](https://cloud.google.com/storage/).
+        # [Cloud Storage](https://cloud.google.com/storage/).
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri

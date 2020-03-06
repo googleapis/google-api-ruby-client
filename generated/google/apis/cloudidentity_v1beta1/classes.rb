@@ -62,11 +62,11 @@ module Google
       
       # A group within the Cloud Identity Groups API.
       # A `Group` is a collection of entities, where each entity is either a user or
-      # another group.
+      # another group or a service account.
       class Group
         include Google::Apis::Core::Hashable
       
-        # Optional. Additional entity key aliases for a Group.
+        # Additional entity key aliases for a Group.
         # Corresponds to the JSON property `additionalGroupKeys`
         # @return [Array<Google::Apis::CloudidentityV1beta1::EntityKey>]
         attr_accessor :additional_group_keys

@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StackdriverLoggingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -380,6 +386,8 @@ module Google
       
           property :retry_config, as: 'retryConfig', class: Google::Apis::CloudtasksV2::RetryConfig, decorator: Google::Apis::CloudtasksV2::RetryConfig::Representation
       
+          property :stackdriver_logging_config, as: 'stackdriverLoggingConfig', class: Google::Apis::CloudtasksV2::StackdriverLoggingConfig, decorator: Google::Apis::CloudtasksV2::StackdriverLoggingConfig::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -422,6 +430,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :policy, as: 'policy', class: Google::Apis::CloudtasksV2::Policy, decorator: Google::Apis::CloudtasksV2::Policy::Representation
       
+        end
+      end
+      
+      class StackdriverLoggingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sampling_ratio, as: 'samplingRatio'
         end
       end
       

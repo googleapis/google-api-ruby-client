@@ -1110,6 +1110,12 @@ module Google
         # @return [Google::Apis::CloudtasksV2::RetryConfig]
         attr_accessor :retry_config
       
+        # Configuration options for writing logs to
+        # [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+        # Corresponds to the JSON property `stackdriverLoggingConfig`
+        # @return [Google::Apis::CloudtasksV2::StackdriverLoggingConfig]
+        attr_accessor :stackdriver_logging_config
+      
         # Output only. The state of the queue.
         # `state` can only be changed by called
         # PauseQueue,
@@ -1132,6 +1138,7 @@ module Google
           @purge_time = args[:purge_time] if args.key?(:purge_time)
           @rate_limits = args[:rate_limits] if args.key?(:rate_limits)
           @retry_config = args[:retry_config] if args.key?(:retry_config)
+          @stackdriver_logging_config = args[:stackdriver_logging_config] if args.key?(:stackdriver_logging_config)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -1439,6 +1446,29 @@ module Google
         # Update properties of this object
         def update!(**args)
           @policy = args[:policy] if args.key?(:policy)
+        end
+      end
+      
+      # Configuration options for writing logs to
+      # [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+      class StackdriverLoggingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Specifies the fraction of operations to write to
+        # [Stackdriver Logging](https://cloud.google.com/logging/docs/).
+        # This field may contain any value between 0.0 and 1.0, inclusive.
+        # 0.0 is the default and means that no operations are logged.
+        # Corresponds to the JSON property `samplingRatio`
+        # @return [Float]
+        attr_accessor :sampling_ratio
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sampling_ratio = args[:sampling_ratio] if args.key?(:sampling_ratio)
         end
       end
       
