@@ -300,6 +300,24 @@ module Google
         # @return [String]
         attr_accessor :jwks_uri
       
+        # Defines the locations to extract the JWT.
+        # JWT locations can be either from HTTP headers or URL query parameters.
+        # The rule is that the first match wins. The checking order is: checking
+        # all headers first, then URL query parameters.
+        # If not specified,  default to use following 3 locations:
+        # 1) Authorization: Bearer
+        # 2) x-goog-iap-jwt-assertion
+        # 3) access_token query parameter
+        # Default locations can be specified as followings:
+        # jwt_locations:
+        # - header: Authorization
+        # value_prefix: "Bearer "
+        # - header: x-goog-iap-jwt-assertion
+        # - query: access_token
+        # Corresponds to the JSON property `jwtLocations`
+        # @return [Array<Google::Apis::ServicemanagementV1::JwtLocation>]
+        attr_accessor :jwt_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -311,6 +329,7 @@ module Google
           @id = args[:id] if args.key?(:id)
           @issuer = args[:issuer] if args.key?(:issuer)
           @jwks_uri = args[:jwks_uri] if args.key?(:jwks_uri)
+          @jwt_locations = args[:jwt_locations] if args.key?(:jwt_locations)
         end
       end
       
@@ -2142,6 +2161,43 @@ module Google
         end
       end
       
+      # Specifies a location to extract JWT from an API request.
+      class JwtLocation
+        include Google::Apis::Core::Hashable
+      
+        # Specifies HTTP header name to extract JWT token.
+        # Corresponds to the JSON property `header`
+        # @return [String]
+        attr_accessor :header
+      
+        # Specifies URL query parameter name to extract JWT token.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # The value prefix. The value format is "value_prefix`token`"
+        # Only applies to "in" header type. Must be empty for "in" query type.
+        # If not empty, the header value has to match (case sensitive) this prefix.
+        # If not matched, JWT will not be extracted. If matched, JWT will be
+        # extracted after the prefix is removed.
+        # For example, for "Authorization: Bearer `JWT`",
+        # value_prefix="Bearer " with a space at the end.
+        # Corresponds to the JSON property `valuePrefix`
+        # @return [String]
+        attr_accessor :value_prefix
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @header = args[:header] if args.key?(:header)
+          @query = args[:query] if args.key?(:query)
+          @value_prefix = args[:value_prefix] if args.key?(:value_prefix)
+        end
+      end
+      
       # A description of a label.
       class LabelDescriptor
         include Google::Apis::Core::Hashable
@@ -3522,7 +3578,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The user who created the Rollout. Readonly.
+        # This field is deprecated and will be deleted. Please remove usage of
+        # this field.
         # Corresponds to the JSON property `createdBy`
         # @return [String]
         attr_accessor :created_by

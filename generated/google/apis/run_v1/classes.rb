@@ -1776,6 +1776,90 @@ module Google
         end
       end
       
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # Namespace provides a scope for Names.
+      # Use of multiple namespaces is optional.
+      class Namespace
+        include Google::Apis::Core::Hashable
+      
+        # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
+        # persisted resources must have, which includes all objects users must create.
+        # Corresponds to the JSON property `metadata`
+        # @return [Google::Apis::RunV1::ObjectMeta]
+        attr_accessor :metadata
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # NamespaceSpec describes the attributes on a Namespace.
+        # Corresponds to the JSON property `spec`
+        # @return [Google::Apis::RunV1::NamespaceSpec]
+        attr_accessor :spec
+      
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # NamespaceStatus is information about the current status of a Namespace.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::RunV1::NamespaceStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metadata = args[:metadata] if args.key?(:metadata)
+          @spec = args[:spec] if args.key?(:spec)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # NamespaceSpec describes the attributes on a Namespace.
+      class NamespaceSpec
+        include Google::Apis::Core::Hashable
+      
+        # Finalizers is an opaque list of values that must be empty to permanently
+        # remove object from storage. More info:
+        # https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+        # Corresponds to the JSON property `finalizers`
+        # @return [Array<String>]
+        attr_accessor :finalizers
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finalizers = args[:finalizers] if args.key?(:finalizers)
+        end
+      end
+      
+      # Cloud Run fully managed: not supported
+      # Cloud Run on GKE: supported
+      # NamespaceStatus is information about the current status of a Namespace.
+      class NamespaceStatus
+        include Google::Apis::Core::Hashable
+      
+        # Phase is the current lifecycle phase of the namespace.
+        # More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+        # Corresponds to the JSON property `phase`
+        # @return [String]
+        attr_accessor :phase
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @phase = args[:phase] if args.key?(:phase)
+        end
+      end
+      
       # k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all
       # persisted resources must have, which includes all objects users must create.
       class ObjectMeta

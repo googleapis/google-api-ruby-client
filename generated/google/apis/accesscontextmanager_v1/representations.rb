@@ -191,6 +191,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :title, as: 'title'

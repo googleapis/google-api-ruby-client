@@ -1793,8 +1793,6 @@ module Google
         # Creates a new document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] parent
         #   Required. The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -1831,8 +1829,6 @@ module Google
         # Deletes the specified document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: google.protobuf.Empty,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The name of the document to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -1941,8 +1937,6 @@ module Google
         # Updates the specified document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The document resource name.
         #   The name must be empty when creating a document.
@@ -1989,8 +1983,6 @@ module Google
         # may be side effects because of internal implementation changes.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The name of the document to reload.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -2704,8 +2696,6 @@ module Google
         # Creates a new document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] parent
         #   Required. The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
@@ -2742,8 +2732,6 @@ module Google
         # Deletes the specified document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: google.protobuf.Empty,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The name of the document to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -2852,8 +2840,6 @@ module Google
         # Updates the specified document.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The document resource name.
         #   The name must be empty when creating a document.
@@ -2900,8 +2886,6 @@ module Google
         # may be side effects because of internal implementation changes.
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
-        # Operation <response: Document,
-        # metadata: KnowledgeOperationMetadata>
         # @param [String] name
         #   The name of the document to reload.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
@@ -2931,43 +2915,6 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates/updates the specified agent.
-        # @param [String] parent
-        #   Required. The project of this agent.
-        #   Format: `projects/<Project ID>`.
-        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] google_cloud_dialogflow_v2beta1_agent_object
-        # @param [String] update_mask
-        #   Optional. The mask to control which fields get updated.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def agent_project_location(parent, google_cloud_dialogflow_v2beta1_agent_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2beta1/{+parent}/agent', options)
-          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
-          command.request_object = google_cloud_dialogflow_v2beta1_agent_object
-          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
-          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent
-          command.params['parent'] = parent unless parent.nil?
-          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3030,6 +2977,43 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates/updates the specified agent.
+        # @param [String] parent
+        #   Required. The project of this agent.
+        #   Format: `projects/<Project ID>`.
+        # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] google_cloud_dialogflow_v2beta1_agent_object
+        # @param [String] update_mask
+        #   Optional. The mask to control which fields get updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def set_project_location_agent(parent, google_cloud_dialogflow_v2beta1_agent_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2beta1/{+parent}/agent', options)
+          command.request_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
+          command.request_object = google_cloud_dialogflow_v2beta1_agent_object
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Agent
+          command.params['parent'] = parent unless parent.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

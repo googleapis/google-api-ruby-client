@@ -52,7 +52,8 @@ module Google
       
         # Required. Resource name for the Access Level. The `short_name` component
         # must begin with a letter and only include alphanumeric and '_'. Format:
-        # `accessPolicies/`policy_id`/accessLevels/`short_name``
+        # `accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length
+        # of the `short_name` component is 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -96,6 +97,14 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
+        # Output only. An opaque identifier for the current version of the
+        # `AccessPolicy`. This will always be a strongly validated etag, meaning that
+        # two Access Polices will be identical if and only if their etags are
+        # identical. Clients should not expect this to be in any specific format.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
         # Output only. Resource name of the `AccessPolicy`. Format:
         # `accessPolicies/`policy_id``
         # Corresponds to the JSON property `name`
@@ -126,6 +135,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @title = args[:title] if args.key?(:title)

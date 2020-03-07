@@ -48,6 +48,75 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Rpc to get information about a namespace.
+        # @param [String] name
+        #   Required. The name of the namespace being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_api_v1_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'api/v1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1::Namespace::Representation
+          command.response_class = Google::Apis::RunV1::Namespace
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to update a namespace.
+        # @param [String] name
+        #   Required. The name of the namespace being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [Google::Apis::RunV1::Namespace] namespace_object
+        # @param [String] update_mask
+        #   Required. Indicates which fields in the provided namespace to update.
+        #   This field is currently unused.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_api_v1_namespace(name, namespace_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'api/v1/{+name}', options)
+          command.request_representation = Google::Apis::RunV1::Namespace::Representation
+          command.request_object = namespace_object
+          command.response_representation = Google::Apis::RunV1::Namespace::Representation
+          command.response_class = Google::Apis::RunV1::Namespace
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new secret.
         # @param [String] parent
         #   Required. The project ID or project number in which this secret should
@@ -1211,6 +1280,75 @@ module Google
           command.query['limit'] = limit unless limit.nil?
           command.query['resourceVersion'] = resource_version unless resource_version.nil?
           command.query['watch'] = watch unless watch.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to get information about a namespace.
+        # @param [String] name
+        #   Required. The name of the namespace being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_namespace(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::RunV1::Namespace::Representation
+          command.response_class = Google::Apis::RunV1::Namespace
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Rpc to update a namespace.
+        # @param [String] name
+        #   Required. The name of the namespace being retrieved. If needed, replace
+        #   `namespace_id` with the project ID.
+        # @param [Google::Apis::RunV1::Namespace] namespace_object
+        # @param [String] update_mask
+        #   Required. Indicates which fields in the provided namespace to update.
+        #   This field is currently unused.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::RunV1::Namespace] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::RunV1::Namespace]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_location_namespace(name, namespace_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::RunV1::Namespace::Representation
+          command.request_object = namespace_object
+          command.response_representation = Google::Apis::RunV1::Namespace::Representation
+          command.response_class = Google::Apis::RunV1::Namespace
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -244,6 +244,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Namespace
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespaceStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ObjectMeta
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -827,6 +845,32 @@ module Google
           property :location_id, as: 'locationId'
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
+        end
+      end
+      
+      class Namespace
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metadata, as: 'metadata', class: Google::Apis::RunV1::ObjectMeta, decorator: Google::Apis::RunV1::ObjectMeta::Representation
+      
+          property :spec, as: 'spec', class: Google::Apis::RunV1::NamespaceSpec, decorator: Google::Apis::RunV1::NamespaceSpec::Representation
+      
+          property :status, as: 'status', class: Google::Apis::RunV1::NamespaceStatus, decorator: Google::Apis::RunV1::NamespaceStatus::Representation
+      
+        end
+      end
+      
+      class NamespaceSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :finalizers, as: 'finalizers'
+        end
+      end
+      
+      class NamespaceStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :phase, as: 'phase'
         end
       end
       

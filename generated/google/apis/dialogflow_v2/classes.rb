@@ -459,9 +459,13 @@ module Google
         attr_accessor :lifespan_count
       
         # Required. The unique identifier of the context. Format:
-        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.
+        # `projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,
+        # or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User
+        # ID>/sessions/<Session ID>/contexts/<Context ID>`.
         # The `Context ID` is always converted to lowercase, may only contain
-        # characters in [a-zA-Z0-9_-%] and may be at most 250 bytes long.
+        # characters in a-zA-Z0-9_-% and may be at most 250 bytes long.
+        # If `Environment ID` is not specified, we assume default 'draft'
+        # environment. If `User ID` is not specified, we assume default '-' user.
         # The following context names are reserved for internal use by Dialogflow.
         # You should not use these contexts or create contexts with these names:
         # * `__system_counters__`
@@ -3056,7 +3060,11 @@ module Google
       
         # Required. The unique identifier of this session entity type. Format:
         # `projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type
-        # Display Name>`.
+        # Display Name>`, or `projects/<Project ID>/agent/environments/<Environment
+        # ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display
+        # Name>`.
+        # If `Environment ID` is not specified, we assume default 'draft'
+        # environment. If `User ID` is not specified, we assume default '-' user.
         # `<Entity Type Display Name>` must be the display name of an existing entity
         # type in the same agent that will be overridden or supplemented.
         # Corresponds to the JSON property `name`

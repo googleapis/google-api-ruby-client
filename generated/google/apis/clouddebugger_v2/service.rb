@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module ClouddebuggerV2
-      # Stackdriver Debugger API
+      # Cloud Debugger API
       #
       # Examines the call stack and variables of a running application without
       #  stopping or slowing it down.
