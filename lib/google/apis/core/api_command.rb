@@ -53,6 +53,10 @@ module Google
         # @return [void]
         def prepare!
           set_xgac
+          if options&.authorization.respond_to? :quota_project_id
+            quota_project_id = options.authorization.quota_project_id
+            header['X-Goog-User-Project'] = quota_project_id if quota_project_id
+          end
           if options && options.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
