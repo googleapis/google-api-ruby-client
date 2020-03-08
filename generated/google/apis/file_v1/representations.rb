@@ -58,19 +58,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -181,8 +169,6 @@ module Google
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
       
-          hash :rollout_metadata, as: 'rolloutMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata::Representation
-      
           property :slm_instance_template, as: 'slmInstanceTemplate'
           property :slo_metadata, as: 'sloMetadata', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata::Representation
       
@@ -213,31 +199,11 @@ module Google
         end
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rescheduled, as: 'rescheduled'
-          property :scheduled_end_time, as: 'scheduledEndTime'
-          property :scheduled_start_time, as: 'scheduledStartTime'
-          property :target_release, as: 'targetRelease'
-        end
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
-        end
-      end
-      
-      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :notification, as: 'notification', class: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata, decorator: Google::Apis::FileV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata::Representation
-      
-          property :release_name, as: 'releaseName'
-          property :rollout_name, as: 'rolloutName'
         end
       end
       

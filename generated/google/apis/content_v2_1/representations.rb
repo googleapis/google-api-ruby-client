@@ -1252,6 +1252,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PubsubNotificationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RateGroup
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3836,6 +3842,15 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::ProductStatus, decorator: Google::Apis::ContentV2_1::ProductStatus::Representation
       
+        end
+      end
+      
+      class PubsubNotificationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_topic_name, as: 'cloudTopicName'
+          property :kind, as: 'kind'
+          collection :registered_events, as: 'registeredEvents'
         end
       end
       

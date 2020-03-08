@@ -3201,7 +3201,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the products in your Merchant Center account.
+        # Lists the products in your Merchant Center account. The response might contain
+        # fewer items than specified by maxResults. Rely on nextPageToken to determine
+        # if there are more items to be requested.
         # @param [Fixnum] merchant_id
         #   The ID of the account that contains the products. This account cannot be a
         #   multi-client account.

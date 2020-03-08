@@ -4119,8 +4119,24 @@ module Google
         # @return [String]
         attr_accessor :placed_date
       
-        # The details of the merchant provided promotions applied to the order. More
-        # details about the program are here.
+        # The details of the merchant provided promotions applied to the order.
+        # To determine which promotions apply to which products, check the Promotions[].
+        # Benefits[].OfferIds field against the LineItems[].Product.OfferId field for
+        # each promotion. If a promotion is applied to more than 1 offerId, divide the
+        # discount value by the number of affected offers to determine how much discount
+        # to apply to each offerId.
+        # Examples:
+        # - To calculate the line item level discount for a single specific item: For
+        # each promotion, subtract the Promotions[].Benefits[].Discount.value amount
+        # from the LineItems[].Price.value.
+        # - To calculate the line item level discount for multiple quantity of a
+        # specific item: For each promotion, divide the Promotions[].Benefits[].Discount.
+        # value by the quantity of products and substract it from LineItems[].Product.
+        # Price.value for each quantity item.
+        # Only 1 promotion can be applied to an offerId in a given order. To refund an
+        # item which had a promotion applied to it, make sure to refund the amount after
+        # first subtracting the promotion discount from the item price.
+        # More details about the program are here.
         # Corresponds to the JSON property `promotions`
         # @return [Array<Google::Apis::ContentV2::OrderLegacyPromotion>]
         attr_accessor :promotions
