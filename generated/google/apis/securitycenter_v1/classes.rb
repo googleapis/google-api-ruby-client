@@ -543,6 +543,36 @@ module Google
         end
       end
       
+      # Cloud SCC's Notification
+      class GoogleCloudSecuritycenterV1NotificationMessage
+        include Google::Apis::Core::Hashable
+      
+        # Cloud Security Command Center (Cloud SCC) finding.
+        # A finding is a record of assessment data like security, risk, health, or
+        # privacy, that is ingested into Cloud SCC for presentation, notification,
+        # analysis, policy testing, and enforcement. For example, a
+        # cross-site scripting (XSS) vulnerability in an App Engine application is a
+        # finding.
+        # Corresponds to the JSON property `finding`
+        # @return [Google::Apis::SecuritycenterV1::Finding]
+        attr_accessor :finding
+      
+        # Name of the notification config that generated current notification.
+        # Corresponds to the JSON property `notificationConfigName`
+        # @return [String]
+        attr_accessor :notification_config_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @finding = args[:finding] if args.key?(:finding)
+          @notification_config_name = args[:notification_config_name] if args.key?(:notification_config_name)
+        end
+      end
+      
       # Response of asset discovery run
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         include Google::Apis::Core::Hashable
@@ -1511,6 +1541,32 @@ module Google
         end
       end
       
+      # Response message for listing notification configs.
+      class ListNotificationConfigsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token to retrieve the next page of results, or empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Notification configs belonging to the requested parent.
+        # Corresponds to the JSON property `notificationConfigs`
+        # @return [Array<Google::Apis::SecuritycenterV1::NotificationConfig>]
+        attr_accessor :notification_configs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -1559,6 +1615,57 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sources = args[:sources] if args.key?(:sources)
+        end
+      end
+      
+      # Cloud Security Command Center (Cloud SCC) notification configs.
+      # A notification config is a Cloud SCC resource that contains the configuration
+      # to send notifications for create/update events of findings, assets and etc.
+      class NotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # The description of the notification config (max of 1024 characters).
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The relative resource name of this notification config. See:
+        # https://cloud.google.com/apis/design/resource_names#relative_resource_name
+        # Example:
+        # "organizations/`organization_id`/notificationConfigs/notify_public_bucket".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The PubSub topic to send notifications to. Its format is
+        # "projects/[project_id]/topics/[topic]".
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        # Output only. The service account that needs "pubsub.topics.publish"
+        # permission to publish to the PubSub topic.
+        # Corresponds to the JSON property `serviceAccount`
+        # @return [String]
+        attr_accessor :service_account
+      
+        # The config for streaming-based notifications, which send each event as soon
+        # as it is detected.
+        # Corresponds to the JSON property `streamingConfig`
+        # @return [Google::Apis::SecuritycenterV1::StreamingConfig]
+        attr_accessor :streaming_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+          @service_account = args[:service_account] if args.key?(:service_account)
+          @streaming_config = args[:streaming_config] if args.key?(:streaming_config)
         end
       end
       
@@ -2143,6 +2250,41 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # The config for streaming-based notifications, which send each event as soon
+      # as it is detected.
+      class StreamingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Expression that defines the filter to apply across create/update events
+        # of assets or findings as specified by the event type. The expression is a
+        # list of zero or more restrictions combined via logical operators `AND`
+        # and `OR`. Parentheses are supported, and `OR` has higher precedence than
+        # `AND`.
+        # Restrictions have the form `<field> <operator> <value>` and may have a
+        # `-` character in front of them to indicate negation. The fields map to
+        # those defined in the corresponding resource.
+        # The supported operators are:
+        # * `=` for all value types.
+        # * `>`, `<`, `>=`, `<=` for integer values.
+        # * `:`, meaning substring matching, for strings.
+        # The supported value types are:
+        # * string literals in quotes.
+        # * integer literals without quotes.
+        # * boolean literals `true` and `false` without quotes.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
         end
       end
       

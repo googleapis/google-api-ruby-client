@@ -28,6 +28,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1NotificationMessage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -100,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityMarks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -109,6 +127,32 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :event_time, as: 'eventTime'
+          property :external_uri, as: 'externalUri'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :resource_name, as: 'resourceName'
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1p1alpha1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1p1alpha1::SecurityMarks::Representation
+      
+          hash :source_properties, as: 'sourceProperties'
+          property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1NotificationMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1p1alpha1::Finding, decorator: Google::Apis::SecuritycenterV1p1alpha1::Finding::Representation
+      
+          property :notification_config_name, as: 'notificationConfigName'
         end
       end
       
@@ -236,6 +280,14 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class SecurityMarks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :marks, as: 'marks'
+          property :name, as: 'name'
         end
       end
       

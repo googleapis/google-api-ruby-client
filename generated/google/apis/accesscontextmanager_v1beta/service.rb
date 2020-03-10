@@ -398,7 +398,8 @@ module Google
         # @param [String] name
         #   Required. Resource name for the Access Level. The `short_name` component
         #   must begin with a letter and only include alphanumeric and '_'. Format:
-        #   `accessPolicies/`policy_id`/accessLevels/`short_name``
+        #   `accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length
+        #   // of the `short_name` component is 50 characters.
         # @param [Google::Apis::AccesscontextmanagerV1beta::AccessLevel] access_level_object
         # @param [String] update_mask
         #   Required. Mask to control which fields get updated. Must be non-empty.
@@ -432,7 +433,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create an Service Perimeter. The
+        # Create a Service Perimeter. The
         # longrunning operation from this RPC will have a successful status once the
         # Service Perimeter has
         # propagated to long-lasting storage. Service Perimeters containing
@@ -471,7 +472,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Delete an Service Perimeter by resource
+        # Delete a Service Perimeter by resource
         # name. The longrunning operation from this RPC will have a successful status
         # once the Service Perimeter has been
         # removed from long-lasting storage.
@@ -506,7 +507,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get an Service Perimeter by resource
+        # Get a Service Perimeter by resource
         # name.
         # @param [String] name
         #   Required. Resource name for the Service Perimeter.
@@ -580,7 +581,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Update an Service Perimeter. The
+        # Update a Service Perimeter. The
         # longrunning operation from this RPC will have a successful status once the
         # changes to the Service Perimeter have
         # propagated to long-lasting storage. Service Perimeter containing

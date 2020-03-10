@@ -181,6 +181,12 @@ module Google
         # @return [String]
         attr_accessor :release_date
       
+        # Rich product content. For more information, see
+        # https://support.google.com/manufacturers/answer/9389865
+        # Corresponds to the JSON property `richContent`
+        # @return [Array<String>]
+        attr_accessor :rich_content
+      
         # The scent of the product. For more information, see
         # https://support.google.com/manufacturers/answer/6124116#scent.
         # Corresponds to the JSON property `scent`
@@ -266,6 +272,7 @@ module Google
           @product_page_url = args[:product_page_url] if args.key?(:product_page_url)
           @product_type = args[:product_type] if args.key?(:product_type)
           @release_date = args[:release_date] if args.key?(:release_date)
+          @rich_content = args[:rich_content] if args.key?(:rich_content)
           @scent = args[:scent] if args.key?(:scent)
           @size = args[:size] if args.key?(:size)
           @size_system = args[:size_system] if args.key?(:size_system)

@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/translate/docs/quickstarts
     module TranslateV3
       VERSION = 'V3'
-      REVISION = '20200221'
+      REVISION = '20200306'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

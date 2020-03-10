@@ -58,6 +58,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Finding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GetIamPolicyRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +71,12 @@ module Google
       end
       
       class GetPolicyOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudSecuritycenterV1NotificationMessage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -238,6 +250,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SecurityMarks
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SetFindingStateRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -331,6 +349,23 @@ module Google
         end
       end
       
+      class Finding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :create_time, as: 'createTime'
+          property :event_time, as: 'eventTime'
+          property :external_uri, as: 'externalUri'
+          property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :resource_name, as: 'resourceName'
+          property :security_marks, as: 'securityMarks', class: Google::Apis::SecuritycenterV1p1beta1::SecurityMarks, decorator: Google::Apis::SecuritycenterV1p1beta1::SecurityMarks::Representation
+      
+          hash :source_properties, as: 'sourceProperties'
+          property :state, as: 'state'
+        end
+      end
+      
       class GetIamPolicyRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -343,6 +378,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :requested_policy_version, as: 'requestedPolicyVersion'
+        end
+      end
+      
+      class GoogleCloudSecuritycenterV1NotificationMessage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :finding, as: 'finding', class: Google::Apis::SecuritycenterV1p1beta1::Finding, decorator: Google::Apis::SecuritycenterV1p1beta1::Finding::Representation
+      
+          property :notification_config_name, as: 'notificationConfigName'
         end
       end
       
@@ -636,6 +680,14 @@ module Google
       class RunAssetDiscoveryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class SecurityMarks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :marks, as: 'marks'
+          property :name, as: 'name'
         end
       end
       

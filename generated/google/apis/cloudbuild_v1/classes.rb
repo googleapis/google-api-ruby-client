@@ -1024,6 +1024,12 @@ module Google
         # @return [String]
         attr_accessor :comment_control
       
+        # If true, branches that do NOT match the git_ref will trigger a build.
+        # Corresponds to the JSON property `invertRegex`
+        # @return [Boolean]
+        attr_accessor :invert_regex
+        alias_method :invert_regex?, :invert_regex
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1032,6 +1038,7 @@ module Google
         def update!(**args)
           @branch = args[:branch] if args.key?(:branch)
           @comment_control = args[:comment_control] if args.key?(:comment_control)
+          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
         end
       end
       
@@ -1045,6 +1052,13 @@ module Google
         # Corresponds to the JSON property `branch`
         # @return [String]
         attr_accessor :branch
+      
+        # When true, only trigger a build if the revision regex does NOT match the
+        # git_ref regex.
+        # Corresponds to the JSON property `invertRegex`
+        # @return [Boolean]
+        attr_accessor :invert_regex
+        alias_method :invert_regex?, :invert_regex
       
         # Regexes matching tags to build.
         # The syntax of the regular expressions accepted is the syntax accepted by
@@ -1060,6 +1074,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @branch = args[:branch] if args.key?(:branch)
+          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
           @tag = args[:tag] if args.key?(:tag)
         end
       end
@@ -1086,6 +1101,13 @@ module Google
         # Corresponds to the JSON property `dir`
         # @return [String]
         attr_accessor :dir
+      
+        # Only trigger a build if the revision regex does NOT match the revision
+        # regex.
+        # Corresponds to the JSON property `invertRegex`
+        # @return [Boolean]
+        attr_accessor :invert_regex
+        alias_method :invert_regex?, :invert_regex
       
         # ID of the project that owns the Cloud Source Repository. If omitted, the
         # project ID requesting the build is assumed.
@@ -1120,6 +1142,7 @@ module Google
           @branch_name = args[:branch_name] if args.key?(:branch_name)
           @commit_sha = args[:commit_sha] if args.key?(:commit_sha)
           @dir = args[:dir] if args.key?(:dir)
+          @invert_regex = args[:invert_regex] if args.key?(:invert_regex)
           @project_id = args[:project_id] if args.key?(:project_id)
           @repo_name = args[:repo_name] if args.key?(:repo_name)
           @substitutions = args[:substitutions] if args.key?(:substitutions)

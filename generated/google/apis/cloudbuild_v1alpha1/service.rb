@@ -48,7 +48,6 @@ module Google
         end
         
         # Creates a `WorkerPool` to run the builds, and returns the new worker pool.
-        # This API is experimental.
         # @param [String] parent
         #   ID of the parent project.
         # @param [Google::Apis::CloudbuildV1alpha1::WorkerPool] worker_pool_object
@@ -82,7 +81,6 @@ module Google
         end
         
         # Deletes a `WorkerPool` by its project ID and WorkerPool name.
-        # This API is experimental.
         # @param [String] name
         #   The field will contain name of the resource requested, for example:
         #   "projects/project-1/workerPools/workerpool-name"
@@ -114,7 +112,6 @@ module Google
         end
         
         # Returns information about a `WorkerPool`.
-        # This API is experimental.
         # @param [String] name
         #   The field will contain name of the resource requested, for example:
         #   "projects/project-1/workerPools/workerpool-name"
@@ -146,7 +143,6 @@ module Google
         end
         
         # List project's `WorkerPool`s.
-        # This API is experimental.
         # @param [String] parent
         #   ID of the parent project.
         # @param [String] fields
@@ -177,7 +173,6 @@ module Google
         end
         
         # Update a `WorkerPool`.
-        # This API is experimental.
         # @param [String] name
         #   The field will contain name of the resource requested, for example:
         #   "projects/project-1/workerPools/workerpool-name"

@@ -443,6 +443,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch, as: 'branch'
           property :comment_control, as: 'commentControl'
+          property :invert_regex, as: 'invertRegex'
         end
       end
       
@@ -450,6 +451,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :branch, as: 'branch'
+          property :invert_regex, as: 'invertRegex'
           property :tag, as: 'tag'
         end
       end
@@ -460,6 +462,7 @@ module Google
           property :branch_name, as: 'branchName'
           property :commit_sha, as: 'commitSha'
           property :dir, as: 'dir'
+          property :invert_regex, as: 'invertRegex'
           property :project_id, as: 'projectId'
           property :repo_name, as: 'repoName'
           hash :substitutions, as: 'substitutions'
