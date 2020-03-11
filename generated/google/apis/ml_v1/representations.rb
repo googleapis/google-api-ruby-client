@@ -28,7 +28,85 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1MeasurementMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigMetricSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpec
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1TrialParameter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -40,7 +118,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1AddTrialMeasurementRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1AutoScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1AutomatedStoppingConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -59,6 +149,30 @@ module Google
       end
       
       class GoogleCloudMlV1Capability
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1CompleteTrialRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -136,6 +250,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1ListStudiesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1ListTrialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1ListVersionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +275,12 @@ module Google
       end
       
       class GoogleCloudMlV1ManualScaling
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1Measurement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -220,6 +352,42 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1StopTrialRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1Study
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1StudyConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1TrainingInput
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,7 +400,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudMlV1Trial
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudMlV1Version
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudMlV1XraiAttribution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -319,11 +499,127 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_elapsed_time, as: 'useElapsedTime'
+        end
+      end
+      
+      class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :use_elapsed_time, as: 'useElapsedTime'
+        end
+      end
+      
       class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :objective_value, as: 'objectiveValue'
           property :training_step, :numeric_string => true, as: 'trainingStep'
+        end
+      end
+      
+      class GoogleCloudMlV1MeasurementMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :metric, as: 'metric'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_value, as: 'maxValue'
+          property :min_value, as: 'minValue'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_value, :numeric_string => true, as: 'maxValue'
+          property :min_value, :numeric_string => true, as: 'minValue'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :values, as: 'values'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigMetricSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :goal, as: 'goal'
+          property :metric, as: 'metric'
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfigParameterSpec
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :categorical_value_spec, as: 'categoricalValueSpec', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec::Representation
+      
+          collection :child_parameter_specs, as: 'childParameterSpecs', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec::Representation
+      
+          property :discrete_value_spec, as: 'discreteValueSpec', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec::Representation
+      
+          property :double_value_spec, as: 'doubleValueSpec', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec::Representation
+      
+          property :integer_value_spec, as: 'integerValueSpec', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec::Representation
+      
+          property :parameter, as: 'parameter'
+          property :parent_categorical_values, as: 'parentCategoricalValues', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec::Representation
+      
+          property :parent_discrete_values, as: 'parentDiscreteValues', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec::Representation
+      
+          property :parent_int_values, as: 'parentIntValues', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec::Representation
+      
+          property :scale_type, as: 'scaleType'
+          property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudMlV1TrialParameter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :float_value, as: 'floatValue'
+          property :int_value, :numeric_string => true, as: 'intValue'
+          property :parameter, as: 'parameter'
+          property :string_value, as: 'stringValue'
         end
       end
       
@@ -335,10 +631,28 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1AddTrialMeasurementRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :measurement, as: 'measurement', class: Google::Apis::MlV1::GoogleCloudMlV1Measurement, decorator: Google::Apis::MlV1::GoogleCloudMlV1Measurement::Representation
+      
+        end
+      end
+      
       class GoogleCloudMlV1AutoScaling
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :min_nodes, as: 'minNodes'
+        end
+      end
+      
+      class GoogleCloudMlV1AutomatedStoppingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :decay_curve_stopping_config, as: 'decayCurveStoppingConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig::Representation
+      
+          property :median_automated_stopping_config, as: 'medianAutomatedStoppingConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig::Representation
+      
         end
       end
       
@@ -363,6 +677,40 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :available_accelerators, as: 'availableAccelerators'
           property :type, as: 'type'
+        end
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :study, as: 'study'
+          property :trial, as: 'trial'
+        end
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :should_stop, as: 'shouldStop'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class GoogleCloudMlV1CompleteTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :final_measurement, as: 'finalMeasurement', class: Google::Apis::MlV1::GoogleCloudMlV1Measurement, decorator: Google::Apis::MlV1::GoogleCloudMlV1Measurement::Representation
+      
+          property :infeasible_reason, as: 'infeasibleReason'
+          property :trial_infeasible, as: 'trialInfeasible'
         end
       end
       
@@ -394,6 +742,8 @@ module Google
           property :integrated_gradients_attribution, as: 'integratedGradientsAttribution', class: Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution, decorator: Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution::Representation
       
           property :sampled_shapley_attribution, as: 'sampledShapleyAttribution', class: Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution, decorator: Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution::Representation
+      
+          property :xrai_attribution, as: 'xraiAttribution', class: Google::Apis::MlV1::GoogleCloudMlV1XraiAttribution, decorator: Google::Apis::MlV1::GoogleCloudMlV1XraiAttribution::Representation
       
         end
       end
@@ -498,6 +848,22 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1ListStudiesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :studies, as: 'studies', class: Google::Apis::MlV1::GoogleCloudMlV1Study, decorator: Google::Apis::MlV1::GoogleCloudMlV1Study::Representation
+      
+        end
+      end
+      
+      class GoogleCloudMlV1ListTrialsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1Trial, decorator: Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+      
+        end
+      end
+      
       class GoogleCloudMlV1ListVersionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -520,6 +886,16 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nodes, as: 'nodes'
+        end
+      end
+      
+      class GoogleCloudMlV1Measurement
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :elapsed_time, as: 'elapsedTime'
+          collection :metrics, as: 'metrics', class: Google::Apis::MlV1::GoogleCloudMlV1MeasurementMetric, decorator: Google::Apis::MlV1::GoogleCloudMlV1MeasurementMetric::Representation
+      
+          property :step_count, :numeric_string => true, as: 'stepCount'
         end
       end
       
@@ -641,6 +1017,66 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1StopTrialRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GoogleCloudMlV1Study
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :inactive_reason, as: 'inactiveReason'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :study_config, as: 'studyConfig', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfig::Representation
+      
+        end
+      end
+      
+      class GoogleCloudMlV1StudyConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :algorithm, as: 'algorithm'
+          property :automated_stopping_config, as: 'automatedStoppingConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfig::Representation
+      
+          collection :metrics, as: 'metrics', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigMetricSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigMetricSpec::Representation
+      
+          collection :parameters, as: 'parameters', class: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec::Representation
+      
+        end
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :create_time, as: 'createTime'
+          property :study, as: 'study'
+          property :suggestion_count, as: 'suggestionCount'
+        end
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :suggestion_count, as: 'suggestionCount'
+        end
+      end
+      
+      class GoogleCloudMlV1SuggestTrialsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :start_time, as: 'startTime'
+          property :study_state, as: 'studyState'
+          collection :trials, as: 'trials', class: Google::Apis::MlV1::GoogleCloudMlV1Trial, decorator: Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+      
+        end
+      end
+      
       class GoogleCloudMlV1TrainingInput
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -688,6 +1124,25 @@ module Google
         end
       end
       
+      class GoogleCloudMlV1Trial
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :client_id, as: 'clientId'
+          property :end_time, as: 'endTime'
+          property :final_measurement, as: 'finalMeasurement', class: Google::Apis::MlV1::GoogleCloudMlV1Measurement, decorator: Google::Apis::MlV1::GoogleCloudMlV1Measurement::Representation
+      
+          property :infeasible_reason, as: 'infeasibleReason'
+          collection :measurements, as: 'measurements', class: Google::Apis::MlV1::GoogleCloudMlV1Measurement, decorator: Google::Apis::MlV1::GoogleCloudMlV1Measurement::Representation
+      
+          property :name, as: 'name'
+          collection :parameters, as: 'parameters', class: Google::Apis::MlV1::GoogleCloudMlV1TrialParameter, decorator: Google::Apis::MlV1::GoogleCloudMlV1TrialParameter::Representation
+      
+          property :start_time, as: 'startTime'
+          property :state, as: 'state'
+          property :trial_infeasible, as: 'trialInfeasible'
+        end
+      end
+      
       class GoogleCloudMlV1Version
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -718,6 +1173,13 @@ module Google
           property :runtime_version, as: 'runtimeVersion'
           property :service_account, as: 'serviceAccount'
           property :state, as: 'state'
+        end
+      end
+      
+      class GoogleCloudMlV1XraiAttribution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :num_integral_steps, as: 'numIntegralSteps'
         end
       end
       

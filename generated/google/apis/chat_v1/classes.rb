@@ -282,29 +282,10 @@ module Google
         # @return [String]
         attr_accessor :config_complete_redirect_url
       
-        # The type of dialog event we have received.
-        # Corresponds to the JSON property `dialogEventType`
-        # @return [String]
-        attr_accessor :dialog_event_type
-      
         # The timestamp indicating when the event was dispatched.
         # Corresponds to the JSON property `eventTime`
         # @return [String]
         attr_accessor :event_time
-      
-        # The list of form inputs we will supply to the bot. These are just the
-        # inputs from the dialog that are populated by the user. This will only be
-        # populated for CARD_CLICKED events.
-        # Corresponds to the JSON property `formInputs`
-        # @return [Array<Google::Apis::ChatV1::FormInput>]
-        attr_accessor :form_inputs
-      
-        # Whether or not this event is related to dialogs request, submit or cancel.
-        # This will be set to true when we want a request/submit/cancel event.
-        # Corresponds to the JSON property `isDialogEvent`
-        # @return [Boolean]
-        attr_accessor :is_dialog_event
-        alias_method :is_dialog_event?, :is_dialog_event
       
         # A message in Hangouts Chat.
         # Corresponds to the JSON property `message`
@@ -349,10 +330,7 @@ module Google
         def update!(**args)
           @action = args[:action] if args.key?(:action)
           @config_complete_redirect_url = args[:config_complete_redirect_url] if args.key?(:config_complete_redirect_url)
-          @dialog_event_type = args[:dialog_event_type] if args.key?(:dialog_event_type)
           @event_time = args[:event_time] if args.key?(:event_time)
-          @form_inputs = args[:form_inputs] if args.key?(:form_inputs)
-          @is_dialog_event = args[:is_dialog_event] if args.key?(:is_dialog_event)
           @message = args[:message] if args.key?(:message)
           @space = args[:space] if args.key?(:space)
           @thread_key = args[:thread_key] if args.key?(:thread_key)
@@ -386,8 +364,10 @@ module Google
       class FormAction
         include Google::Apis::Core::Hashable
       
-        # Apps Script function to invoke when the containing element is
-        # clicked/activated.
+        # The method name is used to identify which part of the form triggered the
+        # form submission. This information is echoed back to the bot as part of
+        # the card click event. The same method name can be used for several
+        # elements that trigger a common behavior if desired.
         # Corresponds to the JSON property `actionMethodName`
         # @return [String]
         attr_accessor :action_method_name
@@ -405,31 +385,6 @@ module Google
         def update!(**args)
           @action_method_name = args[:action_method_name] if args.key?(:action_method_name)
           @parameters = args[:parameters] if args.key?(:parameters)
-        end
-      end
-      
-      # A single user input from an editable widget from Card API.
-      class FormInput
-        include Google::Apis::Core::Hashable
-      
-        # The name of the editable widget.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # Value entered by user.
-        # Corresponds to the JSON property `value`
-        # @return [String]
-        attr_accessor :value
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @name = args[:name] if args.key?(:name)
-          @value = args[:value] if args.key?(:value)
         end
       end
       

@@ -2545,7 +2545,7 @@ module Google
         # @return [String]
         attr_accessor :job_name
       
-        # The labels associated with this `InspectFinding`.
+        # The labels associated with this `Finding`.
         # Label keys must be between 1 and 63 characters long and must conform
         # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
         # Label values must be between 0 and 63 characters long and must conform
@@ -2567,8 +2567,9 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Location]
         attr_accessor :location
       
-        # Resource name in format projects/`id`/locations/`id`/inspectFindings/`id`
-        # Populated only when viewing persisted findings.
+        # Resource name in format
+        # projects/`project`/locations/`location`/findings/`finding` Populated only
+        # when viewing persisted findings.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2655,9 +2656,6 @@ module Google
       end
       
       # The request message for finishing a DLP hybrid job.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2FinishDlpJobRequest
         include Google::Apis::Core::Hashable
       
@@ -2761,16 +2759,10 @@ module Google
       
       # An individual hybrid item to inspect. Will be stored temporarily during
       # processing.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridContentItem
         include Google::Apis::Core::Hashable
       
         # Populate to associate additional data with each finding.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `findingDetails`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridFindingDetails]
         attr_accessor :finding_details
@@ -2792,9 +2784,6 @@ module Google
       end
       
       # Populate to associate additional data with each finding.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridFindingDetails
         include Google::Apis::Core::Hashable
       
@@ -2835,9 +2824,6 @@ module Google
         attr_accessor :row_offset
       
         # Instructions regarding the table content being inspected.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `tableOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions]
         attr_accessor :table_options
@@ -2857,17 +2843,11 @@ module Google
       end
       
       # Request to search for potentially sensitive info in a custom location.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridInspectDlpJobRequest
         include Google::Apis::Core::Hashable
       
         # An individual hybrid item to inspect. Will be stored temporarily during
         # processing.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `hybridItem`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem]
         attr_accessor :hybrid_item
@@ -2883,17 +2863,11 @@ module Google
       end
       
       # Request to search for potentially sensitive info in a custom location.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridInspectJobTriggerRequest
         include Google::Apis::Core::Hashable
       
         # An individual hybrid item to inspect. Will be stored temporarily during
         # processing.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `hybridItem`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridContentItem]
         attr_accessor :hybrid_item
@@ -2909,9 +2883,6 @@ module Google
       end
       
       # Quota exceeded errors will be thrown once quota has been met.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridInspectResponse
         include Google::Apis::Core::Hashable
       
@@ -2924,32 +2895,29 @@ module Google
         end
       end
       
-      # Statistics related to processing hybrid inspect requests
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
+      # Statistics related to processing hybrid inspect requests.
       class GooglePrivacyDlpV2HybridInspectStatistics
         include Google::Apis::Core::Hashable
       
         # The number of hybrid inspection requests aborted because the job ran
         # out of quota or was ended before they could be processed.
-        # Corresponds to the JSON property `hybridRequestsAborted`
+        # Corresponds to the JSON property `abortedCount`
         # @return [Fixnum]
-        attr_accessor :hybrid_requests_aborted
+        attr_accessor :aborted_count
       
         # The number of hybrid requests currently being processed. Only populated
         # when called via method `getDlpJob`.
         # A burst of traffic may cause hybrid inspect requests to be enqueued.
         # Processing will take place as quickly as possible, but resource limitations
         # may impact how long a request is enqueued for.
-        # Corresponds to the JSON property `hybridRequestsPending`
+        # Corresponds to the JSON property `pendingCount`
         # @return [Fixnum]
-        attr_accessor :hybrid_requests_pending
+        attr_accessor :pending_count
       
         # The number of hybrid inspection requests processed within this job.
-        # Corresponds to the JSON property `hybridRequestsProcessed`
+        # Corresponds to the JSON property `processedCount`
         # @return [Fixnum]
-        attr_accessor :hybrid_requests_processed
+        attr_accessor :processed_count
       
         def initialize(**args)
            update!(**args)
@@ -2957,17 +2925,14 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @hybrid_requests_aborted = args[:hybrid_requests_aborted] if args.key?(:hybrid_requests_aborted)
-          @hybrid_requests_pending = args[:hybrid_requests_pending] if args.key?(:hybrid_requests_pending)
-          @hybrid_requests_processed = args[:hybrid_requests_processed] if args.key?(:hybrid_requests_processed)
+          @aborted_count = args[:aborted_count] if args.key?(:aborted_count)
+          @pending_count = args[:pending_count] if args.key?(:pending_count)
+          @processed_count = args[:processed_count] if args.key?(:processed_count)
         end
       end
       
       # Configuration to control jobs where the content being inspected is outside
       # of Google Cloud Platform.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2HybridOptions
         include Google::Apis::Core::Hashable
       
@@ -3000,9 +2965,6 @@ module Google
         attr_accessor :required_finding_label_keys
       
         # Instructions regarding the table content being inspected.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `tableOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2TableOptions]
         attr_accessor :table_options
@@ -4456,9 +4418,6 @@ module Google
       
       # Job trigger option for hybrid jobs. Jobs must be manually created
       # and finished.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2Manual
         include Google::Apis::Core::Hashable
       
@@ -5494,10 +5453,7 @@ module Google
       class GooglePrivacyDlpV2Result
         include Google::Apis::Core::Hashable
       
-        # Statistics related to processing hybrid inspect requests
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
+        # Statistics related to processing hybrid inspect requests.
         # Corresponds to the JSON property `hybridStats`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridInspectStatistics]
         attr_accessor :hybrid_stats
@@ -5696,9 +5652,6 @@ module Google
       
         # Configuration to control jobs where the content being inspected is outside
         # of Google Cloud Platform.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `hybridOptions`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2HybridOptions]
         attr_accessor :hybrid_options
@@ -6034,9 +5987,6 @@ module Google
       end
       
       # Instructions regarding the table content being inspected.
-      # Early access feature is in a pre-release state and might change or have
-      # limited support. For more information, see
-      # https://cloud.google.com/products#product-launch-stages.
       class GooglePrivacyDlpV2TableOptions
         include Google::Apis::Core::Hashable
       
@@ -6350,9 +6300,6 @@ module Google
       
         # Job trigger option for hybrid jobs. Jobs must be manually created
         # and finished.
-        # Early access feature is in a pre-release state and might change or have
-        # limited support. For more information, see
-        # https://cloud.google.com/products#product-launch-stages.
         # Corresponds to the JSON property `manual`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Manual]
         attr_accessor :manual

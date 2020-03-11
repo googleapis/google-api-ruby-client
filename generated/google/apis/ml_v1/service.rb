@@ -614,6 +614,426 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a study.
+        # @param [String] parent
+        #   Required. The project and location that the study belongs to.
+        #   Format: projects/`project`/locations/`location`
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1Study] google_cloud_ml_v1__study_object
+        # @param [String] study_id
+        #   Required. The ID to use for the study, which will become the final component
+        #   of
+        #   the study's resource name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Study] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Study]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_study(parent, google_cloud_ml_v1__study_object = nil, study_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/studies', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Study::Representation
+          command.request_object = google_cloud_ml_v1__study_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Study::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Study
+          command.params['parent'] = parent unless parent.nil?
+          command.query['studyId'] = study_id unless study_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a study.
+        # @param [String] name
+        #   Required. The study name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_study(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a study.
+        # @param [String] name
+        #   Required. The study name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Study] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Study]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_study(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Study::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Study
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all the studies in a region for an associated project.
+        # @param [String] parent
+        #   Required. The project and location that the study belongs to.
+        #   Format: projects/`project`/locations/`location`
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1ListStudiesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ListStudiesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_studies(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/studies', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListStudiesResponse::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListStudiesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a measurement of the objective metrics to a Trial. This measurement
+        # is assumed to have been taken before the Trial is complete.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1AddTrialMeasurementRequest] google_cloud_ml_v1__add_trial_measurement_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_project_location_study_trial_measurement(name, google_cloud_ml_v1__add_trial_measurement_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:addMeasurement', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1AddTrialMeasurementRequest::Representation
+          command.request_object = google_cloud_ml_v1__add_trial_measurement_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Trial
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Checks whether a trial should stop or not.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest] google_cloud_ml_v1__check_trial_early_stopping_state_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def check_project_location_study_trial_early_stopping_state(name, google_cloud_ml_v1__check_trial_early_stopping_state_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:checkEarlyStoppingState', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest::Representation
+          command.request_object = google_cloud_ml_v1__check_trial_early_stopping_state_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Marks a Trial as complete.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1CompleteTrialRequest] google_cloud_ml_v1__complete_trial_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def complete_project_location_study_trial(name, google_cloud_ml_v1__complete_trial_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:complete', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1CompleteTrialRequest::Representation
+          command.request_object = google_cloud_ml_v1__complete_trial_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Trial
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Adds a user provided trial to a Study.
+        # @param [String] parent
+        #   Required. The name of the study that the trial belongs to.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1Trial] google_cloud_ml_v1__trial_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_location_study_trial(parent, google_cloud_ml_v1__trial_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trials', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.request_object = google_cloud_ml_v1__trial_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Trial
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a Trial.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleProtobufEmpty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleProtobufEmpty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_study_trial(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleProtobufEmpty::Representation
+          command.response_class = Google::Apis::MlV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a Trial.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_study_trial(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Trial
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the trials associated with a Study.
+        # @param [String] parent
+        #   Required. The name of the study that the trial belongs to.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1ListTrialsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ListTrialsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_study_trials(parent, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/trials', options)
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1ListTrialsResponse::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1ListTrialsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Stops a trial.
+        # @param [String] name
+        #   Required. The trial name.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1StopTrialRequest] google_cloud_ml_v1__stop_trial_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleCloudMlV1Trial] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Trial]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def stop_project_location_study_trial(name, google_cloud_ml_v1__stop_trial_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+name}:stop', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1StopTrialRequest::Representation
+          command.request_object = google_cloud_ml_v1__stop_trial_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleCloudMlV1Trial::Representation
+          command.response_class = Google::Apis::MlV1::GoogleCloudMlV1Trial
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns a long-running operation associated with the generation of trial
+        # suggestions.
+        # @param [String] parent
+        #   Required. The name of the study that the trial belongs to.
+        # @param [Google::Apis::MlV1::GoogleCloudMlV1SuggestTrialsRequest] google_cloud_ml_v1__suggest_trials_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MlV1::GoogleLongrunningOperation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MlV1::GoogleLongrunningOperation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def suggest_project_location_study_trial(parent, google_cloud_ml_v1__suggest_trials_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/trials:suggest', options)
+          command.request_representation = Google::Apis::MlV1::GoogleCloudMlV1SuggestTrialsRequest::Representation
+          command.request_object = google_cloud_ml_v1__suggest_trials_request_object
+          command.response_representation = Google::Apis::MlV1::GoogleLongrunningOperation::Representation
+          command.response_class = Google::Apis::MlV1::GoogleLongrunningOperation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a model which will later contain one or more versions.
         # You must add at least one version before you can request predictions from
         # the model. Add versions by calling

@@ -83,6 +83,55 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
+        include Google::Apis::Core::Hashable
+      
+        # True if measurement.elapsed_time is used as the x-axis of each
+        # Trials Decay Curve. Otherwise, Measurement.steps will be used as the
+        # x-axis.
+        # Corresponds to the JSON property `useElapsedTime`
+        # @return [Boolean]
+        attr_accessor :use_elapsed_time
+        alias_method :use_elapsed_time?, :use_elapsed_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_elapsed_time = args[:use_elapsed_time] if args.key?(:use_elapsed_time)
+        end
+      end
+      
+      # The median automated stopping rule stops a pending trial if the trial's
+      # best objective_value is strictly below the median 'performance' of all
+      # completed trials reported up to the trial's last measurement.
+      # Currently, 'performance' refers to the running average of the objective
+      # values reported by the trial in each measurement.
+      class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
+        include Google::Apis::Core::Hashable
+      
+        # True if median automated stopping rule applies on
+        # measurement.use_elapsed_time. it means that elapsed_time field of
+        # latest measurement of current trial is used to compute median objective
+        # value for each completed trials.
+        # Corresponds to the JSON property `useElapsedTime`
+        # @return [Boolean]
+        attr_accessor :use_elapsed_time
+        alias_method :use_elapsed_time?, :use_elapsed_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @use_elapsed_time = args[:use_elapsed_time] if args.key?(:use_elapsed_time)
+        end
+      end
+      
       # An observed value of a metric.
       class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric
         include Google::Apis::Core::Hashable
@@ -105,6 +154,329 @@ module Google
         def update!(**args)
           @objective_value = args[:objective_value] if args.key?(:objective_value)
           @training_step = args[:training_step] if args.key?(:training_step)
+        end
+      end
+      
+      # A message representing a metric in the measurement.
+      class GoogleCloudMlV1MeasurementMetric
+        include Google::Apis::Core::Hashable
+      
+        # Required. Metric name.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # Required. The value for this metric.
+        # Corresponds to the JSON property `value`
+        # @return [Float]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metric = args[:metric] if args.key?(:metric)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Must be specified if type is `CATEGORICAL`.
+        # The list of possible categories.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # 
+      class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Must be specified if type is `DISCRETE`.
+        # A list of feasible points.
+        # The list should be in strictly increasing order. For instance, this
+        # parameter might have possible settings of 1.5, 2.5, and 4.0. This list
+        # should not contain more than 1,000 values.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # 
+      class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Must be specified if type is `DOUBLE`. Maximum value of the parameter.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Float]
+        attr_accessor :max_value
+      
+        # Must be specified if type is `DOUBLE`. Minimum value of the parameter.
+        # Corresponds to the JSON property `minValue`
+        # @return [Float]
+        attr_accessor :min_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+        end
+      end
+      
+      # 
+      class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Must be specified if type is `INTEGER`. Maximum value of the parameter.
+        # Corresponds to the JSON property `maxValue`
+        # @return [Fixnum]
+        attr_accessor :max_value
+      
+        # Must be specified if type is `INTEGER`. Minimum value of the parameter.
+        # Corresponds to the JSON property `minValue`
+        # @return [Fixnum]
+        attr_accessor :min_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_value = args[:max_value] if args.key?(:max_value)
+          @min_value = args[:min_value] if args.key?(:min_value)
+        end
+      end
+      
+      # Represents the spec to match categorical values from parent parameter.
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Matches values of the parent parameter with type 'CATEGORICAL'.
+        # All values must exist in `categorical_value_spec` of parent parameter.
+        # Corresponds to the JSON property `values`
+        # @return [Array<String>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents the spec to match discrete values from parent parameter.
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Matches values of the parent parameter with type 'DISCRETE'.
+        # All values must exist in `discrete_value_spec` of parent parameter.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Float>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents the spec to match integer values from parent parameter.
+      class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
+        include Google::Apis::Core::Hashable
+      
+        # Matches values of the parent parameter with type 'INTEGER'.
+        # All values must lie in `integer_value_spec` of parent parameter.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Fixnum>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # Represents a metric to optimize.
+      class GoogleCloudMlV1StudyConfigMetricSpec
+        include Google::Apis::Core::Hashable
+      
+        # Required. The optimization goal of the metric.
+        # Corresponds to the JSON property `goal`
+        # @return [String]
+        attr_accessor :goal
+      
+        # Required. The name of the metric.
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @goal = args[:goal] if args.key?(:goal)
+          @metric = args[:metric] if args.key?(:metric)
+        end
+      end
+      
+      # Represents a single parameter to optimize.
+      class GoogleCloudMlV1StudyConfigParameterSpec
+        include Google::Apis::Core::Hashable
+      
+        # The value spec for a 'CATEGORICAL' parameter.
+        # Corresponds to the JSON property `categoricalValueSpec`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec]
+        attr_accessor :categorical_value_spec
+      
+        # A child node is active if the parameter's value matches the child node's
+        # matching_parent_values.
+        # If two items in child_parameter_specs have the same name, they must have
+        # disjoint matching_parent_values.
+        # Corresponds to the JSON property `childParameterSpecs`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec>]
+        attr_accessor :child_parameter_specs
+      
+        # The value spec for a 'DISCRETE' parameter.
+        # Corresponds to the JSON property `discreteValueSpec`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec]
+        attr_accessor :discrete_value_spec
+      
+        # The value spec for a 'DOUBLE' parameter.
+        # Corresponds to the JSON property `doubleValueSpec`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec]
+        attr_accessor :double_value_spec
+      
+        # The value spec for an 'INTEGER' parameter.
+        # Corresponds to the JSON property `integerValueSpec`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec]
+        attr_accessor :integer_value_spec
+      
+        # Required. The parameter name must be unique amongst all ParameterSpecs.
+        # Corresponds to the JSON property `parameter`
+        # @return [String]
+        attr_accessor :parameter
+      
+        # Represents the spec to match categorical values from parent parameter.
+        # Corresponds to the JSON property `parentCategoricalValues`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec]
+        attr_accessor :parent_categorical_values
+      
+        # Represents the spec to match discrete values from parent parameter.
+        # Corresponds to the JSON property `parentDiscreteValues`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec]
+        attr_accessor :parent_discrete_values
+      
+        # Represents the spec to match integer values from parent parameter.
+        # Corresponds to the JSON property `parentIntValues`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec]
+        attr_accessor :parent_int_values
+      
+        # How the parameter should be scaled.
+        # Leave unset for categorical parameters.
+        # Corresponds to the JSON property `scaleType`
+        # @return [String]
+        attr_accessor :scale_type
+      
+        # Required. The type of the parameter.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @categorical_value_spec = args[:categorical_value_spec] if args.key?(:categorical_value_spec)
+          @child_parameter_specs = args[:child_parameter_specs] if args.key?(:child_parameter_specs)
+          @discrete_value_spec = args[:discrete_value_spec] if args.key?(:discrete_value_spec)
+          @double_value_spec = args[:double_value_spec] if args.key?(:double_value_spec)
+          @integer_value_spec = args[:integer_value_spec] if args.key?(:integer_value_spec)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @parent_categorical_values = args[:parent_categorical_values] if args.key?(:parent_categorical_values)
+          @parent_discrete_values = args[:parent_discrete_values] if args.key?(:parent_discrete_values)
+          @parent_int_values = args[:parent_int_values] if args.key?(:parent_int_values)
+          @scale_type = args[:scale_type] if args.key?(:scale_type)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # A message representing a parameter to be tuned.
+      class GoogleCloudMlV1TrialParameter
+        include Google::Apis::Core::Hashable
+      
+        # Must be set if ParameterType is DOUBLE or DISCRETE.
+        # Corresponds to the JSON property `floatValue`
+        # @return [Float]
+        attr_accessor :float_value
+      
+        # Must be set if ParameterType is INTEGER
+        # Corresponds to the JSON property `intValue`
+        # @return [Fixnum]
+        attr_accessor :int_value
+      
+        # The name of the parameter.
+        # Corresponds to the JSON property `parameter`
+        # @return [String]
+        attr_accessor :parameter
+      
+        # Must be set if ParameterTypeis CATEGORICAL
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @float_value = args[:float_value] if args.key?(:float_value)
+          @int_value = args[:int_value] if args.key?(:int_value)
+          @parameter = args[:parameter] if args.key?(:parameter)
+          @string_value = args[:string_value] if args.key?(:string_value)
         end
       end
       
@@ -134,6 +506,25 @@ module Google
         def update!(**args)
           @count = args[:count] if args.key?(:count)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The request message for the AddTrialMeasurement service method.
+      class GoogleCloudMlV1AddTrialMeasurementRequest
+        include Google::Apis::Core::Hashable
+      
+        # A message representing a Measurement.
+        # Corresponds to the JSON property `measurement`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
+        attr_accessor :measurement
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @measurement = args[:measurement] if args.key?(:measurement)
         end
       end
       
@@ -194,6 +585,36 @@ module Google
         # Update properties of this object
         def update!(**args)
           @min_nodes = args[:min_nodes] if args.key?(:min_nodes)
+        end
+      end
+      
+      # Configuration for Automated Early Stopping of Trials. If no
+      # implementation_config is set, automated early stopping will not be run.
+      class GoogleCloudMlV1AutomatedStoppingConfig
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `decayCurveStoppingConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig]
+        attr_accessor :decay_curve_stopping_config
+      
+        # The median automated stopping rule stops a pending trial if the trial's
+        # best objective_value is strictly below the median 'performance' of all
+        # completed trials reported up to the trial's last measurement.
+        # Currently, 'performance' refers to the running average of the objective
+        # values reported by the trial in each measurement.
+        # Corresponds to the JSON property `medianAutomatedStoppingConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig]
+        attr_accessor :median_automated_stopping_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @decay_curve_stopping_config = args[:decay_curve_stopping_config] if args.key?(:decay_curve_stopping_config)
+          @median_automated_stopping_config = args[:median_automated_stopping_config] if args.key?(:median_automated_stopping_config)
         end
       end
       
@@ -272,6 +693,120 @@ module Google
         def update!(**args)
           @available_accelerators = args[:available_accelerators] if args.key?(:available_accelerators)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # This message will be placed in the metadata field of a
+      # google.longrunning.Operation associated with a CheckTrialEarlyStoppingState
+      # request.
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata
+        include Google::Apis::Core::Hashable
+      
+        # The time operation was submitted.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The name of the study that the trial belongs to.
+        # Corresponds to the JSON property `study`
+        # @return [String]
+        attr_accessor :study
+      
+        # The Trial name.
+        # Corresponds to the JSON property `trial`
+        # @return [String]
+        attr_accessor :trial
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @study = args[:study] if args.key?(:study)
+          @trial = args[:trial] if args.key?(:trial)
+        end
+      end
+      
+      # The request message for the CheckTrialEarlyStoppingState service method.
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # The message will be placed in the response field of a completed
+      # google.longrunning.Operation associated with a CheckTrialEarlyStoppingState
+      # request.
+      class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse
+        include Google::Apis::Core::Hashable
+      
+        # The time operation processing completed.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # True if the Trial should stop.
+        # Corresponds to the JSON property `shouldStop`
+        # @return [Boolean]
+        attr_accessor :should_stop
+        alias_method :should_stop?, :should_stop
+      
+        # The time operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @should_stop = args[:should_stop] if args.key?(:should_stop)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # The request message for the CompleteTrial service method.
+      class GoogleCloudMlV1CompleteTrialRequest
+        include Google::Apis::Core::Hashable
+      
+        # A message representing a Measurement.
+        # Corresponds to the JSON property `finalMeasurement`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
+        attr_accessor :final_measurement
+      
+        # Optional. A human readable reason why the Trial was infeasible. This should
+        # only be provided if `trial_infeasible` is true.
+        # Corresponds to the JSON property `infeasibleReason`
+        # @return [String]
+        attr_accessor :infeasible_reason
+      
+        # Optional. True if the trial cannot be run with the given Parameter, and
+        # final_measurement will be ignored.
+        # Corresponds to the JSON property `trialInfeasible`
+        # @return [Boolean]
+        attr_accessor :trial_infeasible
+        alias_method :trial_infeasible?, :trial_infeasible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @final_measurement = args[:final_measurement] if args.key?(:final_measurement)
+          @infeasible_reason = args[:infeasible_reason] if args.key?(:infeasible_reason)
+          @trial_infeasible = args[:trial_infeasible] if args.key?(:trial_infeasible)
         end
       end
       
@@ -366,8 +901,8 @@ module Google
       # Message holding configuration options for explaining model predictions.
       # There are two feature attribution methods supported for TensorFlow models:
       # integrated gradients and sampled Shapley.
-      # <a href="/ml-engine/docs/ai-explanations/overview">Learn more about feature
-      # attributions</a>.
+      # [Learn more about feature
+      # attributions.](/ml-engine/docs/ai-explanations/overview)
       class GoogleCloudMlV1ExplanationConfig
         include Google::Apis::Core::Hashable
       
@@ -385,6 +920,14 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1SampledShapleyAttribution]
         attr_accessor :sampled_shapley_attribution
       
+        # Attributes credit by computing the XRAI taking advantage
+        # of the model's fully differentiable structure. Refer to this paper for
+        # more details: https://arxiv.org/abs/1906.02825
+        # Currently only implemented for models with natural image inputs.
+        # Corresponds to the JSON property `xraiAttribution`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1XraiAttribution]
+        attr_accessor :xrai_attribution
+      
         def initialize(**args)
            update!(**args)
         end
@@ -393,6 +936,7 @@ module Google
         def update!(**args)
           @integrated_gradients_attribution = args[:integrated_gradients_attribution] if args.key?(:integrated_gradients_attribution)
           @sampled_shapley_attribution = args[:sampled_shapley_attribution] if args.key?(:sampled_shapley_attribution)
+          @xrai_attribution = args[:xrai_attribution] if args.key?(:xrai_attribution)
         end
       end
       
@@ -793,6 +1337,44 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1ListStudiesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The Studies associated with the project.
+        # Corresponds to the JSON property `studies`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Study>]
+        attr_accessor :studies
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @studies = args[:studies] if args.key?(:studies)
+        end
+      end
+      
+      # The response message for the ListTrials method.
+      class GoogleCloudMlV1ListTrialsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The trials associated with the study.
+        # Corresponds to the JSON property `trials`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Trial>]
+        attr_accessor :trials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @trials = args[:trials] if args.key?(:trials)
+        end
+      end
+      
       # Response message for the ListVersions method.
       class GoogleCloudMlV1ListVersionsResponse
         include Google::Apis::Core::Hashable
@@ -863,6 +1445,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @nodes = args[:nodes] if args.key?(:nodes)
+        end
+      end
+      
+      # A message representing a Measurement.
+      class GoogleCloudMlV1Measurement
+        include Google::Apis::Core::Hashable
+      
+        # Time that the Trial has been running at the point of this Measurement.
+        # Corresponds to the JSON property `elapsedTime`
+        # @return [String]
+        attr_accessor :elapsed_time
+      
+        # Provides a list of metrics that act as inputs into the objective
+        # function.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1MeasurementMetric>]
+        attr_accessor :metrics
+      
+        # The number of steps a machine learning model has been trained for.
+        # Must be non-negative.
+        # Corresponds to the JSON property `stepCount`
+        # @return [Fixnum]
+        attr_accessor :step_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @elapsed_time = args[:elapsed_time] if args.key?(:elapsed_time)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @step_count = args[:step_count] if args.key?(:step_count)
         end
       end
       
@@ -1478,6 +2093,205 @@ module Google
         end
       end
       
+      # 
+      class GoogleCloudMlV1StopTrialRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A message representing a Study.
+      class GoogleCloudMlV1Study
+        include Google::Apis::Core::Hashable
+      
+        # Output only. Time that the study was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. A human readable reason why the Study is inactive.
+        # This should be empty if a study is ACTIVE or COMPLETED.
+        # Corresponds to the JSON property `inactiveReason`
+        # @return [String]
+        attr_accessor :inactive_reason
+      
+        # Output only. The name of a study.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The detailed state of a study.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Represents configuration of a study.
+        # Corresponds to the JSON property `studyConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1StudyConfig]
+        attr_accessor :study_config
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @inactive_reason = args[:inactive_reason] if args.key?(:inactive_reason)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @study_config = args[:study_config] if args.key?(:study_config)
+        end
+      end
+      
+      # Represents configuration of a study.
+      class GoogleCloudMlV1StudyConfig
+        include Google::Apis::Core::Hashable
+      
+        # The search algorithm specified for the study.
+        # Corresponds to the JSON property `algorithm`
+        # @return [String]
+        attr_accessor :algorithm
+      
+        # Configuration for Automated Early Stopping of Trials. If no
+        # implementation_config is set, automated early stopping will not be run.
+        # Corresponds to the JSON property `automatedStoppingConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfig]
+        attr_accessor :automated_stopping_config
+      
+        # 
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1StudyConfigMetricSpec>]
+        attr_accessor :metrics
+      
+        # Required. The set of parameters to tune.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1StudyConfigParameterSpec>]
+        attr_accessor :parameters
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @automated_stopping_config = args[:automated_stopping_config] if args.key?(:automated_stopping_config)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @parameters = args[:parameters] if args.key?(:parameters)
+        end
+      end
+      
+      # Metadata field of a google.longrunning.Operation associated
+      # with a SuggestTrialsRequest.
+      class GoogleCloudMlV1SuggestTrialsMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the client that is requesting the suggestion.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # The time operation was submitted.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # The name of the study that the trial belongs to.
+        # Corresponds to the JSON property `study`
+        # @return [String]
+        attr_accessor :study
+      
+        # The number of suggestions requested.
+        # Corresponds to the JSON property `suggestionCount`
+        # @return [Fixnum]
+        attr_accessor :suggestion_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @study = args[:study] if args.key?(:study)
+          @suggestion_count = args[:suggestion_count] if args.key?(:suggestion_count)
+        end
+      end
+      
+      # The request message for the SuggestTrial service method.
+      class GoogleCloudMlV1SuggestTrialsRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. The identifier of the client that is requesting the suggestion.
+        # If multiple SuggestTrialsRequests have the same `client_id`,
+        # the service will return the identical suggested trial if the trial is
+        # pending, and provide a new trial if the last suggested trial was completed.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Required. The number of suggestions requested.
+        # Corresponds to the JSON property `suggestionCount`
+        # @return [Fixnum]
+        attr_accessor :suggestion_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @suggestion_count = args[:suggestion_count] if args.key?(:suggestion_count)
+        end
+      end
+      
+      # This message will be placed in the response field of a completed
+      # google.longrunning.Operation associated with a SuggestTrials request.
+      class GoogleCloudMlV1SuggestTrialsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The time operation processing completed.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # The time operation was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The state of the study.
+        # Corresponds to the JSON property `studyState`
+        # @return [String]
+        attr_accessor :study_state
+      
+        # A list of Trials.
+        # Corresponds to the JSON property `trials`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Trial>]
+        attr_accessor :trials
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @study_state = args[:study_state] if args.key?(:study_state)
+          @trials = args[:trials] if args.key?(:trials)
+        end
+      end
+      
       # Represents input parameters for a training job. When using the gcloud command
       # to submit your training job, you can specify the input parameters as
       # command-line arguments and/or in a YAML configuration file referenced from
@@ -1776,6 +2590,84 @@ module Google
         end
       end
       
+      # A message representing a Trial.
+      class GoogleCloudMlV1Trial
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The identifier of the client that originally requested this trial.
+        # Corresponds to the JSON property `clientId`
+        # @return [String]
+        attr_accessor :client_id
+      
+        # Output only. Time the Trial's status changed to COMPLETED.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # A message representing a Measurement.
+        # Corresponds to the JSON property `finalMeasurement`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
+        attr_accessor :final_measurement
+      
+        # Output only. A human readable string describing why the Trial is
+        # infeasible. This should only be set if trial_infeasible is true.
+        # Corresponds to the JSON property `infeasibleReason`
+        # @return [String]
+        attr_accessor :infeasible_reason
+      
+        # A list of measurements that are strictly lexicographically
+        # ordered by their induced tuples (steps, elapsed_time).
+        # These are used for early stopping computations.
+        # Corresponds to the JSON property `measurements`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Measurement>]
+        attr_accessor :measurements
+      
+        # Output only. Name of the trial assigned by the service.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The parameters of the Trial.
+        # Corresponds to the JSON property `parameters`
+        # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1TrialParameter>]
+        attr_accessor :parameters
+      
+        # Output only. Time the Trial was started.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # The detailed state of a trial.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. True if the parameters in this trial should not be attempted
+        # again.
+        # Corresponds to the JSON property `trialInfeasible`
+        # @return [Boolean]
+        attr_accessor :trial_infeasible
+        alias_method :trial_infeasible?, :trial_infeasible
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_id = args[:client_id] if args.key?(:client_id)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @final_measurement = args[:final_measurement] if args.key?(:final_measurement)
+          @infeasible_reason = args[:infeasible_reason] if args.key?(:infeasible_reason)
+          @measurements = args[:measurements] if args.key?(:measurements)
+          @name = args[:name] if args.key?(:name)
+          @parameters = args[:parameters] if args.key?(:parameters)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @state = args[:state] if args.key?(:state)
+          @trial_infeasible = args[:trial_infeasible] if args.key?(:trial_infeasible)
+        end
+      end
+      
       # Represents a version of the model.
       # Each version is a trained model deployed in the cloud, ready to handle
       # prediction requests. A model can have multiple versions. You can get
@@ -1843,8 +2735,8 @@ module Google
         # Message holding configuration options for explaining model predictions.
         # There are two feature attribution methods supported for TensorFlow models:
         # integrated gradients and sampled Shapley.
-        # <a href="/ml-engine/docs/ai-explanations/overview">Learn more about feature
-        # attributions</a>.
+        # [Learn more about feature
+        # attributions.](/ml-engine/docs/ai-explanations/overview)
         # Corresponds to the JSON property `explanationConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig]
         attr_accessor :explanation_config
@@ -2065,6 +2957,30 @@ module Google
           @runtime_version = args[:runtime_version] if args.key?(:runtime_version)
           @service_account = args[:service_account] if args.key?(:service_account)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Attributes credit by computing the XRAI taking advantage
+      # of the model's fully differentiable structure. Refer to this paper for
+      # more details: https://arxiv.org/abs/1906.02825
+      # Currently only implemented for models with natural image inputs.
+      class GoogleCloudMlV1XraiAttribution
+        include Google::Apis::Core::Hashable
+      
+        # Number of steps for approximating the path integral.
+        # A good value to start is 50 and gradually increase until the
+        # sum to diff property is met within the desired error range.
+        # Corresponds to the JSON property `numIntegralSteps`
+        # @return [Fixnum]
+        attr_accessor :num_integral_steps
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @num_integral_steps = args[:num_integral_steps] if args.key?(:num_integral_steps)
         end
       end
       

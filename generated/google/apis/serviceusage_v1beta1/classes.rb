@@ -623,6 +623,116 @@ module Google
         end
       end
       
+      # Consumer quota settings for a quota limit.
+      class ConsumerQuotaLimit
+        include Google::Apis::Core::Hashable
+      
+        # Whether admin overrides are allowed on this limit
+        # Corresponds to the JSON property `allowsAdminOverrides`
+        # @return [Boolean]
+        attr_accessor :allows_admin_overrides
+        alias_method :allows_admin_overrides?, :allows_admin_overrides
+      
+        # Whether this limit is precise or imprecise.
+        # Corresponds to the JSON property `isPrecise`
+        # @return [Boolean]
+        attr_accessor :is_precise
+        alias_method :is_precise?, :is_precise
+      
+        # The name of the parent metric of this limit.
+        # An example name would be:
+        # `compute.googleapis.com/cpus`
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource name of the quota limit.
+        # An example name would be:
+        # `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        # googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # The resource name is intended to be opaque and should not be parsed for
+        # its component strings, since its representation could change in the future.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Summary of the enforced quota buckets, organized by quota dimension,
+        # ordered from least specific to most specific (for example, the global
+        # default bucket, with no quota dimensions, will always appear first).
+        # Corresponds to the JSON property `quotaBuckets`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaBucket>]
+        attr_accessor :quota_buckets
+      
+        # The limit unit.
+        # An example unit would be
+        # `1/`project`/`region``
+        # Note that ``project`` and ``region`` are not placeholders in this example;
+        # the literal characters ``` and ``` occur in the string.
+        # Corresponds to the JSON property `unit`
+        # @return [String]
+        attr_accessor :unit
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @allows_admin_overrides = args[:allows_admin_overrides] if args.key?(:allows_admin_overrides)
+          @is_precise = args[:is_precise] if args.key?(:is_precise)
+          @metric = args[:metric] if args.key?(:metric)
+          @name = args[:name] if args.key?(:name)
+          @quota_buckets = args[:quota_buckets] if args.key?(:quota_buckets)
+          @unit = args[:unit] if args.key?(:unit)
+        end
+      end
+      
+      # Consumer quota settings for a quota metric.
+      class ConsumerQuotaMetric
+        include Google::Apis::Core::Hashable
+      
+        # The consumer quota for each quota limit defined on the metric.
+        # Corresponds to the JSON property `consumerQuotaLimits`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit>]
+        attr_accessor :consumer_quota_limits
+      
+        # The display name of the metric.
+        # An example name would be:
+        # "CPUs"
+        # Corresponds to the JSON property `displayName`
+        # @return [String]
+        attr_accessor :display_name
+      
+        # The name of the metric.
+        # An example name would be:
+        # `compute.googleapis.com/cpus`
+        # Corresponds to the JSON property `metric`
+        # @return [String]
+        attr_accessor :metric
+      
+        # The resource name of the quota settings on this metric for this consumer.
+        # An example name would be:
+        # `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        # googleapis.com%2Fcpus
+        # The resource name is intended to be opaque and should not be parsed for
+        # its component strings, since its representation could change in the future.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @consumer_quota_limits = args[:consumer_quota_limits] if args.key?(:consumer_quota_limits)
+          @display_name = args[:display_name] if args.key?(:display_name)
+          @metric = args[:metric] if args.key?(:metric)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # `Context` defines which contexts an API requests.
       # Example:
       # context:
@@ -2518,6 +2628,84 @@ module Google
         end
       end
       
+      # Response message for ListAdminOverrides.
+      class ListAdminOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying which result to start with; returned by a previous list
+        # call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Admin overrides on this limit.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Response message for ListConsumerOverrides.
+      class ListConsumerOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying which result to start with; returned by a previous list
+        # call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Consumer overrides on this limit.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @overrides = args[:overrides] if args.key?(:overrides)
+        end
+      end
+      
+      # Response message for ListConsumerQuotaMetrics
+      class ListConsumerQuotaMetricsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Quota settings for the consumer, organized by quota metric.
+        # Corresponds to the JSON property `metrics`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric>]
+        attr_accessor :metrics
+      
+        # Token identifying which result to start with; returned by a previous list
+        # call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @metrics = args[:metrics] if args.key?(:metrics)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # The response message for Operations.ListOperations.
       class ListOperationsResponse
         include Google::Apis::Core::Hashable
@@ -2540,6 +2728,32 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # Response message for ListProducerOverrides.
+      class ListProducerOverridesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Token identifying which result to start with; returned by a previous list
+        # call.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Producer overrides on this limit.
+        # Corresponds to the JSON property `overrides`
+        # @return [Array<Google::Apis::ServiceusageV1beta1::QuotaOverride>]
+        attr_accessor :overrides
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @overrides = args[:overrides] if args.key?(:overrides)
         end
       end
       
@@ -3526,6 +3740,64 @@ module Google
         def update!(**args)
           @limits = args[:limits] if args.key?(:limits)
           @metric_rules = args[:metric_rules] if args.key?(:metric_rules)
+        end
+      end
+      
+      # A quota bucket is a quota provisioning unit for a specific set of dimensions.
+      class QuotaBucket
+        include Google::Apis::Core::Hashable
+      
+        # A quota override
+        # Corresponds to the JSON property `adminOverride`
+        # @return [Google::Apis::ServiceusageV1beta1::QuotaOverride]
+        attr_accessor :admin_override
+      
+        # A quota override
+        # Corresponds to the JSON property `consumerOverride`
+        # @return [Google::Apis::ServiceusageV1beta1::QuotaOverride]
+        attr_accessor :consumer_override
+      
+        # The default limit of this quota bucket, as specified by the service
+        # configuration.
+        # Corresponds to the JSON property `defaultLimit`
+        # @return [Fixnum]
+        attr_accessor :default_limit
+      
+        # The dimensions of this quota bucket.
+        # If this map is empty, this is the global bucket, which is the default quota
+        # value applied to all requests that do not have a more specific override.
+        # If this map is nonempty, the default limit, effective limit, and quota
+        # overrides apply only to requests that have the dimensions given in the map.
+        # For example, if the map has key "region" and value "us-east-1", then the
+        # specified effective limit is only effective in that region, and the
+        # specified overrides apply only in that region.
+        # Corresponds to the JSON property `dimensions`
+        # @return [Hash<String,String>]
+        attr_accessor :dimensions
+      
+        # The effective limit of this quota bucket. Equal to default_limit if there
+        # are no overrides.
+        # Corresponds to the JSON property `effectiveLimit`
+        # @return [Fixnum]
+        attr_accessor :effective_limit
+      
+        # A quota override
+        # Corresponds to the JSON property `producerOverride`
+        # @return [Google::Apis::ServiceusageV1beta1::QuotaOverride]
+        attr_accessor :producer_override
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @admin_override = args[:admin_override] if args.key?(:admin_override)
+          @consumer_override = args[:consumer_override] if args.key?(:consumer_override)
+          @default_limit = args[:default_limit] if args.key?(:default_limit)
+          @dimensions = args[:dimensions] if args.key?(:dimensions)
+          @effective_limit = args[:effective_limit] if args.key?(:effective_limit)
+          @producer_override = args[:producer_override] if args.key?(:producer_override)
         end
       end
       

@@ -142,18 +142,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DriveFile
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class DriveFileWarning
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -499,25 +487,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           property :takeout_request_id, as: 'takeoutRequestId'
-        end
-      end
-      
-      class DriveFile
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :abuse_type, as: 'abuseType'
-          property :id, as: 'id'
-          property :name, as: 'name'
-          property :num_recent_download, :numeric_string => true, as: 'numRecentDownload'
-          property :owner, as: 'owner'
-        end
-      end
-      
-      class DriveFileWarning
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :files, as: 'files', class: Google::Apis::AlertcenterV1beta1::DriveFile, decorator: Google::Apis::AlertcenterV1beta1::DriveFile::Representation
-      
         end
       end
       

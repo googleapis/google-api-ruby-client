@@ -1938,9 +1938,9 @@ module Google
       class GooglePrivacyDlpV2HybridInspectStatistics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :hybrid_requests_aborted, :numeric_string => true, as: 'hybridRequestsAborted'
-          property :hybrid_requests_pending, :numeric_string => true, as: 'hybridRequestsPending'
-          property :hybrid_requests_processed, :numeric_string => true, as: 'hybridRequestsProcessed'
+          property :aborted_count, :numeric_string => true, as: 'abortedCount'
+          property :pending_count, :numeric_string => true, as: 'pendingCount'
+          property :processed_count, :numeric_string => true, as: 'processedCount'
         end
       end
       

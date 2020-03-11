@@ -88,7 +88,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :superseded_alerts
       
-        # Alert id superseding this alert. It is used to indicate that superseding
+        # Alert ID superseding this alert. It is used to indicate that superseding
         # alert is essentially extension of this alert and we found the relationship
         # after creating both alerts.
         # Corresponds to the JSON property `supersedingAlert`
@@ -461,7 +461,7 @@ module Google
       class BatchDeleteAlertsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. list of alert ids.
+        # Required. list of alert IDs.
         # Corresponds to the JSON property `alertId`
         # @return [Array<String>]
         attr_accessor :alert_id
@@ -492,7 +492,7 @@ module Google
         # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
         attr_accessor :failed_alert_status
       
-        # The successful list of alert ids.
+        # The successful list of alert IDs.
         # Corresponds to the JSON property `successAlertIds`
         # @return [Array<String>]
         attr_accessor :success_alert_ids
@@ -512,7 +512,7 @@ module Google
       class BatchUndeleteAlertsRequest
         include Google::Apis::Core::Hashable
       
-        # Required. list of alert ids.
+        # Required. list of alert IDs.
         # Corresponds to the JSON property `alertId`
         # @return [Array<String>]
         attr_accessor :alert_id
@@ -543,7 +543,7 @@ module Google
         # @return [Hash<String,Google::Apis::AlertcenterV1beta1::Status>]
         attr_accessor :failed_alert_status
       
-        # The successful list of alert ids.
+        # The successful list of alert IDs.
         # Corresponds to the JSON property `successAlertIds`
         # @return [Array<String>]
         attr_accessor :success_alert_ids
@@ -782,70 +782,6 @@ module Google
         end
       end
       
-      # A Drive file
-      class DriveFile
-        include Google::Apis::Core::Hashable
-      
-        # Abuse type of the file.
-        # Corresponds to the JSON property `abuseType`
-        # @return [String]
-        attr_accessor :abuse_type
-      
-        # The ID of the file.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # The name of the file.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The number of recent downloads of the file. This is available for the
-        # following alert types:
-        # *Drive malware sharing detected
-        # Corresponds to the JSON property `numRecentDownload`
-        # @return [Fixnum]
-        attr_accessor :num_recent_download
-      
-        # The email address of the file owner.
-        # Corresponds to the JSON property `owner`
-        # @return [String]
-        attr_accessor :owner
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @abuse_type = args[:abuse_type] if args.key?(:abuse_type)
-          @id = args[:id] if args.key?(:id)
-          @name = args[:name] if args.key?(:name)
-          @num_recent_download = args[:num_recent_download] if args.key?(:num_recent_download)
-          @owner = args[:owner] if args.key?(:owner)
-        end
-      end
-      
-      # Alerts for suspicious Drive files or activities.
-      class DriveFileWarning
-        include Google::Apis::Core::Hashable
-      
-        # List of files in the alert.
-        # Corresponds to the JSON property `files`
-        # @return [Array<Google::Apis::AlertcenterV1beta1::DriveFile>]
-        attr_accessor :files
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @files = args[:files] if args.key?(:files)
-        end
-      end
-      
       # A generic empty message that you can re-use to avoid defining duplicated
       # empty messages in your APIs. A typical example is to use it as the request
       # or the response type of an API method. For instance:
@@ -1023,7 +959,7 @@ module Google
         attr_accessor :ip_address
       
         # Optional. The successful login time that is associated with the warning
-        # event. This will not be present for blocked login attempts.
+        # event. This isn't present for blocked login attempts.
         # Corresponds to the JSON property `loginTime`
         # @return [String]
         attr_accessor :login_time
@@ -1272,7 +1208,7 @@ module Google
         # @return [String]
         attr_accessor :document_id
       
-        # Title of the resource, e.g. email subject, or document title.
+        # Title of the resource, for example email subject, or document title.
         # Corresponds to the JSON property `resourceTitle`
         # @return [String]
         attr_accessor :resource_title

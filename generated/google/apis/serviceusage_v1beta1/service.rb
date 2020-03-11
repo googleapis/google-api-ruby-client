@@ -335,6 +335,521 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
+        
+        # Retrieves a summary of quota information for a specific quota metric
+        # @param [String] name
+        #   The resource name of the quota limit.
+        #   An example name would be:
+        #   projects/123/services/serviceusage.googleapis.com/quotas/metrics/serviceusage.
+        #   googleapis.com%2Fmutate_requests
+        # @param [String] view
+        #   Specifies the level of detail for quota information in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_consumer_quota_metric(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a summary of all quota information visible to the service
+        # consumer, organized by service metric. Each metric includes information
+        # about all of its defined limits. Each limit includes the limit
+        # configuration (quota unit, preciseness, default value), the current
+        # effective limit value, and all of the overrides applied to the limit.
+        # @param [String] parent
+        #   Parent of the quotas resource.
+        #   Some example names would be:
+        #   projects/123/services/serviceconsumermanagement.googleapis.com
+        #   folders/345/services/serviceconsumermanagement.googleapis.com
+        #   organizations/456/services/serviceconsumermanagement.googleapis.com
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list
+        #   call.
+        # @param [String] view
+        #   Specifies the level of detail for quota information in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListConsumerQuotaMetricsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ListConsumerQuotaMetricsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_consumer_quota_metrics(parent, page_size: nil, page_token: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/consumerQuotaMetrics', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListConsumerQuotaMetricsResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListConsumerQuotaMetricsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a summary of quota information for a specific quota limit.
+        # @param [String] name
+        #   The resource name of the quota limit.
+        #   Use the quota limit resource name returned by previous
+        #   ListConsumerQuotaMetrics and GetConsumerQuotaMetric API calls.
+        # @param [String] view
+        #   Specifies the level of detail for quota information in the response.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_service_consumer_quota_metric_limit(name, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit
+          command.params['name'] = name unless name.nil?
+          command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an admin override.
+        # An admin override is applied by an administrator of a parent folder or
+        # parent organization of the consumer receiving the override. An admin
+        # override is intended to limit the amount of quota the consumer can use out
+        # of the total quota pool allocated to all children of the folder or
+        # organization.
+        # @param [String] parent
+        #   The resource name of the parent quota limit, returned by a
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
+        # @param [Boolean] force
+        #   Whether to force the creation of the quota override.
+        #   If creating an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service_consumer_quota_metric_limit_admin_override(parent, quota_override_object = nil, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/adminOverrides', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+          command.request_object = quota_override_object
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an admin override.
+        # @param [String] name
+        #   The resource name of the override to delete.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+        # @param [Boolean] force
+        #   Whether to force the deletion of the quota override.
+        #   If deleting an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service_consumer_quota_metric_limit_admin_override(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all admin overrides on this limit.
+        # @param [String] parent
+        #   The resource name of the parent quota limit, returned by a
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListAdminOverridesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ListAdminOverridesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_consumer_quota_metric_limit_admin_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/adminOverrides', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListAdminOverridesResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListAdminOverridesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an admin override.
+        # @param [String] name
+        #   The resource name of the override to update.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+        # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
+        # @param [Boolean] force
+        #   Whether to force the update of the quota override.
+        #   If updating an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] update_mask
+        #   Update only the specified fields of the override.
+        #   If unset, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service_consumer_quota_metric_limit_admin_override(name, quota_override_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+          command.request_object = quota_override_object
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a consumer override.
+        # A consumer override is applied to the consumer on its own authority to
+        # limit its own quota usage. Consumer overrides cannot be used to grant more
+        # quota than would be allowed by admin overrides, producer overrides, or the
+        # default limit of the service.
+        # @param [String] parent
+        #   The resource name of the parent quota limit, returned by a
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
+        # @param [Boolean] force
+        #   Whether to force the creation of the quota override.
+        #   If creating an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_service_consumer_quota_metric_limit_consumer_override(parent, quota_override_object = nil, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1beta1/{+parent}/consumerOverrides', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+          command.request_object = quota_override_object
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a consumer override.
+        # @param [String] name
+        #   The resource name of the override to delete.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
+        # @param [Boolean] force
+        #   Whether to force the deletion of the quota override.
+        #   If deleting an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_service_consumer_quota_metric_limit_consumer_override(name, force: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1beta1/{+name}', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all consumer overrides on this limit.
+        # @param [String] parent
+        #   The resource name of the parent quota limit, returned by a
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListConsumerOverridesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ListConsumerOverridesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_consumer_quota_metric_limit_consumer_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/consumerOverrides', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListConsumerOverridesResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListConsumerOverridesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a consumer override.
+        # @param [String] name
+        #   The resource name of the override to update.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/consumerOverrides/4a3f2c1d`
+        # @param [Google::Apis::ServiceusageV1beta1::QuotaOverride] quota_override_object
+        # @param [Boolean] force
+        #   Whether to force the update of the quota override.
+        #   If updating an override would cause the effective quota for the consumer to
+        #   decrease by more than 10 percent, the call is rejected, as a safety measure
+        #   to avoid accidentally decreasing quota too quickly. Setting the force
+        #   parameter to true ignores this restriction.
+        # @param [String] update_mask
+        #   Update only the specified fields of the override.
+        #   If unset, all fields will be updated.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_service_consumer_quota_metric_limit_consumer_override(name, quota_override_object = nil, force: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1beta1/{+name}', options)
+          command.request_representation = Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+          command.request_object = quota_override_object
+          command.response_representation = Google::Apis::ServiceusageV1beta1::Operation::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::Operation
+          command.params['name'] = name unless name.nil?
+          command.query['force'] = force unless force.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists all producer overrides on this limit.
+        # Unlike other types of overrides, producer overrides are under the control
+        # of the service producer and cannot be modified using this API.
+        # @param [String] parent
+        #   The resource name of the parent quota limit, returned by a
+        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
+        #   An example name would be:
+        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
+        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+        # @param [Fixnum] page_size
+        #   Requested size of the next page of data.
+        # @param [String] page_token
+        #   Token identifying which result to start with; returned by a previous list
+        #   call.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_service_consumer_quota_metric_limit_producer_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1beta1/{+parent}/producerOverrides', options)
+          command.response_representation = Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
 
         protected
 

@@ -107,7 +107,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Required. Rules that trigger alerts (notifications of thresholds
+        # Optional. Rules that trigger alerts (notifications of thresholds
         # being crossed) when spend exceeds the specified percentages of the budget.
         # Corresponds to the JSON property `thresholdRules`
         # @return [Array<Google::Apis::BillingbudgetsV1beta1::GoogleCloudBillingBudgetsV1beta1ThresholdRule>]
@@ -190,7 +190,7 @@ module Google
         # @return [String]
         attr_accessor :credit_types_treatment
       
-        # Optional. A set of projects of the form `projects/`project_id``,
+        # Optional. A set of projects of the form `projects/`project``,
         # specifying that usage from only this set of projects should be
         # included in the budget. If omitted, the report will include all usage for
         # the billing account, regardless of which project the usage occurred on.

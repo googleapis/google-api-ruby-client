@@ -100,6 +100,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConsumerQuotaLimit
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ConsumerQuotaMetric
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Context
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,7 +292,31 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdminOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsumerOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListConsumerQuotaMetricsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListProducerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -389,6 +425,12 @@ module Google
       end
       
       class Quota
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QuotaBucket
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -607,6 +649,30 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :metrics, as: 'metrics'
           property :monitored_resource, as: 'monitoredResource'
+        end
+      end
+      
+      class ConsumerQuotaLimit
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :allows_admin_overrides, as: 'allowsAdminOverrides'
+          property :is_precise, as: 'isPrecise'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
+          collection :quota_buckets, as: 'quotaBuckets', class: Google::Apis::ServiceusageV1beta1::QuotaBucket, decorator: Google::Apis::ServiceusageV1beta1::QuotaBucket::Representation
+      
+          property :unit, as: 'unit'
+        end
+      end
+      
+      class ConsumerQuotaMetric
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :consumer_quota_limits, as: 'consumerQuotaLimits', class: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit, decorator: Google::Apis::ServiceusageV1beta1::ConsumerQuotaLimit::Representation
+      
+          property :display_name, as: 'displayName'
+          property :metric, as: 'metric'
+          property :name, as: 'name'
         end
       end
       
@@ -952,11 +1018,47 @@ module Google
         end
       end
       
+      class ListAdminOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class ListConsumerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class ListConsumerQuotaMetricsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :metrics, as: 'metrics', class: Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric, decorator: Google::Apis::ServiceusageV1beta1::ConsumerQuotaMetric::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListOperationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServiceusageV1beta1::Operation, decorator: Google::Apis::ServiceusageV1beta1::Operation::Representation
+      
+        end
+      end
+      
+      class ListProducerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
       
         end
       end
@@ -1138,6 +1240,21 @@ module Google
           collection :limits, as: 'limits', class: Google::Apis::ServiceusageV1beta1::QuotaLimit, decorator: Google::Apis::ServiceusageV1beta1::QuotaLimit::Representation
       
           collection :metric_rules, as: 'metricRules', class: Google::Apis::ServiceusageV1beta1::MetricRule, decorator: Google::Apis::ServiceusageV1beta1::MetricRule::Representation
+      
+        end
+      end
+      
+      class QuotaBucket
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :admin_override, as: 'adminOverride', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+          property :consumer_override, as: 'consumerOverride', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+          property :default_limit, :numeric_string => true, as: 'defaultLimit'
+          hash :dimensions, as: 'dimensions'
+          property :effective_limit, :numeric_string => true, as: 'effectiveLimit'
+          property :producer_override, as: 'producerOverride', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
       
         end
       end

@@ -119,7 +119,7 @@ module Google
         # WARNING: There are some fields exposed on the Google Cloud Console that
         # aren’t available on this API. When reading from the API, you will not
         # see these fields in the return value, though they may have been set
-        # in the cloud console.
+        # in the Cloud Console.
         # @param [String] name
         #   Required. Name of budget to get. Values are of the form
         #   `billingAccounts/`billingAccountId`/budgets/`budgetId``.
@@ -154,7 +154,7 @@ module Google
         # WARNING: There are some fields exposed on the Google Cloud Console that
         # aren’t available on this API. When reading from the API, you will not
         # see these fields in the return value, though they may have been set
-        # in the cloud console.
+        # in the Cloud Console.
         # @param [String] parent
         #   Required. Name of billing account to list budgets under. Values
         #   are of the form `billingAccounts/`billingAccountId``.

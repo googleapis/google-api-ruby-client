@@ -72,6 +72,166 @@ module Google
         end
       end
       
+      # An insight along with the information used to derive the insight. The insight
+      # may have associated recomendations as well.
+      class GoogleCloudRecommenderV1beta1Insight
+        include Google::Apis::Core::Hashable
+      
+        # Recommendations derived from this insight.
+        # Corresponds to the JSON property `associatedRecommendations`
+        # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightRecommendationReference>]
+        attr_accessor :associated_recommendations
+      
+        # Category being targeted by the insight.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # A struct of custom fields to explain the insight.
+        # Example: "grantedPermissionsCount": "1000"
+        # Corresponds to the JSON property `content`
+        # @return [Hash<String,Object>]
+        attr_accessor :content
+      
+        # Free-form human readable summary in English. The maximum length is 500
+        # characters.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Fingerprint of the Insight. Provides optimistic locking when updating
+        # states.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Insight subtype. Insight content schema will be stable for a given subtype.
+        # Corresponds to the JSON property `insightSubtype`
+        # @return [String]
+        attr_accessor :insight_subtype
+      
+        # Timestamp of the latest data used to generate the insight.
+        # Corresponds to the JSON property `lastRefreshTime`
+        # @return [String]
+        attr_accessor :last_refresh_time
+      
+        # Name of the insight.
+        # * A project insight is represented as
+        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]
+        # /insights/[insight_id]
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Observation period that led to the insight. The source data used to
+        # generate the insight ends at last_refresh_time and begins at
+        # (last_refresh_time - observation_period).
+        # Corresponds to the JSON property `observationPeriod`
+        # @return [String]
+        attr_accessor :observation_period
+      
+        # Information related to insight state.
+        # Corresponds to the JSON property `stateInfo`
+        # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightStateInfo]
+        attr_accessor :state_info
+      
+        # Fully qualified resource names that this insight is targeting.
+        # Corresponds to the JSON property `targetResources`
+        # @return [Array<String>]
+        attr_accessor :target_resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @associated_recommendations = args[:associated_recommendations] if args.key?(:associated_recommendations)
+          @category = args[:category] if args.key?(:category)
+          @content = args[:content] if args.key?(:content)
+          @description = args[:description] if args.key?(:description)
+          @etag = args[:etag] if args.key?(:etag)
+          @insight_subtype = args[:insight_subtype] if args.key?(:insight_subtype)
+          @last_refresh_time = args[:last_refresh_time] if args.key?(:last_refresh_time)
+          @name = args[:name] if args.key?(:name)
+          @observation_period = args[:observation_period] if args.key?(:observation_period)
+          @state_info = args[:state_info] if args.key?(:state_info)
+          @target_resources = args[:target_resources] if args.key?(:target_resources)
+        end
+      end
+      
+      # Reference to an associated recommendation.
+      class GoogleCloudRecommenderV1beta1InsightRecommendationReference
+        include Google::Apis::Core::Hashable
+      
+        # Recommendation resource name, e.g.
+        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/
+        # recommendations/[RECOMMENDATION_ID]
+        # Corresponds to the JSON property `recommendation`
+        # @return [String]
+        attr_accessor :recommendation
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @recommendation = args[:recommendation] if args.key?(:recommendation)
+        end
+      end
+      
+      # Information related to insight state.
+      class GoogleCloudRecommenderV1beta1InsightStateInfo
+        include Google::Apis::Core::Hashable
+      
+        # Insight state.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # A map of metadata for the state, provided by user or automations systems.
+        # Corresponds to the JSON property `stateMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :state_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @state = args[:state] if args.key?(:state)
+          @state_metadata = args[:state_metadata] if args.key?(:state_metadata)
+        end
+      end
+      
+      # Response to the `ListInsights` method.
+      class GoogleCloudRecommenderV1beta1ListInsightsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The set of insights for the `parent` resource.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight>]
+        attr_accessor :insights
+      
+        # A token that can be used to request the next page of results. This field is
+        # empty if there are no additional results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insights = args[:insights] if args.key?(:insights)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # Response to the `ListRecommendations` method.
       class GoogleCloudRecommenderV1beta1ListRecommendationsResponse
         include Google::Apis::Core::Hashable
@@ -95,6 +255,33 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @recommendations = args[:recommendations] if args.key?(:recommendations)
+        end
+      end
+      
+      # Request for the `MarkInsightAccepted` method.
+      class GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. Fingerprint of the Insight. Provides optimistic locking.
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # Optional. State properties user wish to include with this state.  Full replace
+        # of the
+        # current state_metadata.
+        # Corresponds to the JSON property `stateMetadata`
+        # @return [Hash<String,String>]
+        attr_accessor :state_metadata
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @etag = args[:etag] if args.key?(:etag)
+          @state_metadata = args[:state_metadata] if args.key?(:state_metadata)
         end
       end
       
@@ -329,6 +516,11 @@ module Google
         # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact>]
         attr_accessor :additional_impact
       
+        # Insights that led to this recommendation.
+        # Corresponds to the JSON property `associatedInsights`
+        # @return [Array<Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationInsightReference>]
+        attr_accessor :associated_insights
+      
         # Contains what resources are changing and how they are changing.
         # Corresponds to the JSON property `content`
         # @return [Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationContent]
@@ -386,6 +578,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_impact = args[:additional_impact] if args.key?(:additional_impact)
+          @associated_insights = args[:associated_insights] if args.key?(:associated_insights)
           @content = args[:content] if args.key?(:content)
           @description = args[:description] if args.key?(:description)
           @etag = args[:etag] if args.key?(:etag)
@@ -415,6 +608,27 @@ module Google
         # Update properties of this object
         def update!(**args)
           @operation_groups = args[:operation_groups] if args.key?(:operation_groups)
+        end
+      end
+      
+      # Reference to an associated insight.
+      class GoogleCloudRecommenderV1beta1RecommendationInsightReference
+        include Google::Apis::Core::Hashable
+      
+        # Insight resource name, e.g.
+        # projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/
+        # insights/[INSIGHT_ID]
+        # Corresponds to the JSON property `insight`
+        # @return [String]
+        attr_accessor :insight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @insight = args[:insight] if args.key?(:insight)
         end
       end
       

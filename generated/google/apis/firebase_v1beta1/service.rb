@@ -588,7 +588,7 @@ module Google
         # the provisioning process. The `Operation` is automatically deleted after
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
-        #   The parent Project for which to list Apps, in the format:
+        #   The parent Project in which to create an App, in the format:
         #   <br><code>projects/<var>projectId</var></code>
         # @param [Google::Apis::FirebaseV1beta1::AndroidApp] android_app_object
         # @param [String] fields
@@ -1028,7 +1028,7 @@ module Google
         # the provisioning process. The `Operation` is automatically deleted after
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
-        #   The parent Project for which to list Apps, in the format:
+        #   The parent Project in which to create an App, in the format:
         #   <br><code>projects/<var>projectId</var></code>
         # @param [Google::Apis::FirebaseV1beta1::IosApp] ios_app_object
         # @param [String] fields
@@ -1220,7 +1220,7 @@ module Google
         # the provisioning process. The `Operation` is automatically deleted after
         # completion, so there is no need to call `DeleteOperation`.
         # @param [String] parent
-        #   The parent Project for which to list Apps, in the format:
+        #   The parent Project in which to create an App, in the format:
         #   <br><code>projects/<var>projectId</var></code>
         # @param [Google::Apis::FirebaseV1beta1::WebApp] web_app_object
         # @param [String] fields

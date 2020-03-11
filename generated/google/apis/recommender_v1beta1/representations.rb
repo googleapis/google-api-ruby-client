@@ -34,7 +34,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1beta1Insight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightRecommendationReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightStateInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1ListInsightsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1beta1ListRecommendationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -82,6 +112,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudRecommenderV1beta1RecommendationInsightReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudRecommenderV1beta1RecommendationStateInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -118,12 +154,63 @@ module Google
         end
       end
       
+      class GoogleCloudRecommenderV1beta1Insight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associated_recommendations, as: 'associatedRecommendations', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightRecommendationReference, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightRecommendationReference::Representation
+      
+          property :category, as: 'category'
+          hash :content, as: 'content'
+          property :description, as: 'description'
+          property :etag, as: 'etag'
+          property :insight_subtype, as: 'insightSubtype'
+          property :last_refresh_time, as: 'lastRefreshTime'
+          property :name, as: 'name'
+          property :observation_period, as: 'observationPeriod'
+          property :state_info, as: 'stateInfo', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightStateInfo, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1InsightStateInfo::Representation
+      
+          collection :target_resources, as: 'targetResources'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightRecommendationReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :recommendation, as: 'recommendation'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1InsightStateInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :state, as: 'state'
+          hash :state_metadata, as: 'stateMetadata'
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1ListInsightsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :insights, as: 'insights', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Insight::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudRecommenderV1beta1ListRecommendationsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :recommendations, as: 'recommendations', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Recommendation, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Recommendation::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :etag, as: 'etag'
+          hash :state_metadata, as: 'stateMetadata'
         end
       end
       
@@ -182,6 +269,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :additional_impact, as: 'additionalImpact', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1Impact::Representation
       
+          collection :associated_insights, as: 'associatedInsights', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationInsightReference, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationInsightReference::Representation
+      
           property :content, as: 'content', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationContent, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1RecommendationContent::Representation
       
           property :description, as: 'description'
@@ -201,6 +290,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :operation_groups, as: 'operationGroups', class: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1OperationGroup, decorator: Google::Apis::RecommenderV1beta1::GoogleCloudRecommenderV1beta1OperationGroup::Representation
       
+        end
+      end
+      
+      class GoogleCloudRecommenderV1beta1RecommendationInsightReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :insight, as: 'insight'
         end
       end
       
