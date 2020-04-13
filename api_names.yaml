@@ -965,6 +965,8 @@
 "/sheets:v4/sheets.spreadsheets.sheets.copyTo": copy_spreadsheet
 "/sheets:v4/sheets.spreadsheets.values.batchGet": batch_get_spreadsheet_values
 "/sheets:v4/sheets.spreadsheets.values.get": get_spreadsheet_values
+"/spanner:v1/spanner.projects.instances.backupOperations.list": list_project_instance_backupoperations
+"/spanner:v1/spanner.projects.instances.databaseOperations.list": list_project_instance_databaseoperations
 "/sqladmin:v1beta4/BackupRunsListResponse": list_backup_runs_response
 "/sqladmin:v1beta4/DatabasesListResponse": list_databases_response
 "/sqladmin:v1beta4/FlagsListResponse": list_flags_response

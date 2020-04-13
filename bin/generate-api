@@ -10,6 +10,7 @@ end
 require 'open-uri'
 require 'google/apis/discovery_v1'
 require 'logger'
+require 'psych'
 
 module Google
   class ApiGenerator < Thor
@@ -77,8 +78,11 @@ module Google
       def generate_from_discovery(preferred_only: false)
         say 'Fetching API list'
         apis = discovery.list_apis
+        exclude_apis = api_list_config["exclude"] || []
         apis.items.each do |api|
-          if (preferred_only && !api.preferred?)
+          if exclude_apis.include? "#{api.name}.#{api.version}"
+            say "Ignoring excluded API #{api.name} #{api.version}"
+          elsif (preferred_only && !api.preferred?)
             say sprintf('Ignoring disoverable API %s', api.id)
           else
 	    # The Discovery service may returned cached versions of a Discovery document that are
@@ -107,6 +111,10 @@ module Google
 
       def generator
         @generator ||= Google::Apis::Generator.new(api_names: options[:names], api_names_out: options[:names_out])
+      end
+
+      def api_list_config
+        @api_list_config ||= Psych.load_file(__dir__ + "/../api_list_config.yaml")
       end
 
       def ensure_active_support
