@@ -280,6 +280,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ImportAdminOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportConsumerOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JwtLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -311,12 +323,6 @@ module Google
       end
       
       class ListOperationsResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class ListProducerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -599,6 +605,7 @@ module Google
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
+          property :rename_to, as: 'renameTo'
           property :selector, as: 'selector'
         end
       end
@@ -1000,6 +1007,22 @@ module Google
         end
       end
       
+      class ImportAdminOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class ImportConsumerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
+      
+        end
+      end
+      
       class JwtLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1050,15 +1073,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :next_page_token, as: 'nextPageToken'
           collection :operations, as: 'operations', class: Google::Apis::ServiceusageV1beta1::Operation, decorator: Google::Apis::ServiceusageV1beta1::Operation::Representation
-      
-        end
-      end
-      
-      class ListProducerOverridesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :next_page_token, as: 'nextPageToken'
-          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1beta1::QuotaOverride, decorator: Google::Apis::ServiceusageV1beta1::QuotaOverride::Representation
       
         end
       end
@@ -1279,8 +1293,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
           property :name, as: 'name'
           property :override_value, :numeric_string => true, as: 'overrideValue'
+          property :unit, as: 'unit'
         end
       end
       

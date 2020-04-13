@@ -145,6 +145,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :node_count
       
+        # The configuration information for configuring a Private IP Cloud Composer
+        # environment.
+        # Corresponds to the JSON property `privateEnvironmentConfig`
+        # @return [Google::Apis::ComposerV1::PrivateEnvironmentConfig]
+        attr_accessor :private_environment_config
+      
         # Specifies the selection and configuration of software inside the environment.
         # Corresponds to the JSON property `softwareConfig`
         # @return [Google::Apis::ComposerV1::SoftwareConfig]
@@ -161,7 +167,78 @@ module Google
           @gke_cluster = args[:gke_cluster] if args.key?(:gke_cluster)
           @node_config = args[:node_config] if args.key?(:node_config)
           @node_count = args[:node_count] if args.key?(:node_count)
+          @private_environment_config = args[:private_environment_config] if args.key?(:private_environment_config)
           @software_config = args[:software_config] if args.key?(:software_config)
+        end
+      end
+      
+      # Configuration for controlling how IPs are allocated in the
+      # GKE cluster running the Apache Airflow software.
+      class IpAllocationPolicy
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The IP address range used to allocate IP addresses to pods in
+        # the GKE cluster.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Set to blank to have GKE choose a range with the default size.
+        # Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `clusterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cluster_ipv4_cidr_block
+      
+        # Optional. The name of the GKE cluster's secondary range used to allocate
+        # IP addresses to pods.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Corresponds to the JSON property `clusterSecondaryRangeName`
+        # @return [String]
+        attr_accessor :cluster_secondary_range_name
+      
+        # Optional. The IP address range of the services IP addresses in this
+        # GKE cluster.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Set to blank to have GKE choose a range with the default size.
+        # Set to /netmask (e.g. `/14`) to have GKE choose a range with a specific
+        # netmask.
+        # Set to a
+        # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
+        # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
+        # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
+        # to use.
+        # Corresponds to the JSON property `servicesIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :services_ipv4_cidr_block
+      
+        # Optional. The name of the services' secondary range used to allocate
+        # IP addresses to the GKE cluster.
+        # This field is applicable only when `use_ip_aliases` is true.
+        # Corresponds to the JSON property `servicesSecondaryRangeName`
+        # @return [String]
+        attr_accessor :services_secondary_range_name
+      
+        # Optional. Whether or not to enable Alias IPs in the GKE cluster.
+        # If `true`, a VPC-native cluster is created.
+        # Corresponds to the JSON property `useIpAliases`
+        # @return [Boolean]
+        attr_accessor :use_ip_aliases
+        alias_method :use_ip_aliases?, :use_ip_aliases
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_ipv4_cidr_block = args[:cluster_ipv4_cidr_block] if args.key?(:cluster_ipv4_cidr_block)
+          @cluster_secondary_range_name = args[:cluster_secondary_range_name] if args.key?(:cluster_secondary_range_name)
+          @services_ipv4_cidr_block = args[:services_ipv4_cidr_block] if args.key?(:services_ipv4_cidr_block)
+          @services_secondary_range_name = args[:services_secondary_range_name] if args.key?(:services_secondary_range_name)
+          @use_ip_aliases = args[:use_ip_aliases] if args.key?(:use_ip_aliases)
         end
       end
       
@@ -285,6 +362,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Configuration for controlling how IPs are allocated in the
+        # GKE cluster running the Apache Airflow software.
+        # Corresponds to the JSON property `ipAllocationPolicy`
+        # @return [Google::Apis::ComposerV1::IpAllocationPolicy]
+        attr_accessor :ip_allocation_policy
+      
         # Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which
         # to deploy the VMs used to run the Apache Airflow software, specified as a
         # [relative resource
@@ -379,6 +462,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @ip_allocation_policy = args[:ip_allocation_policy] if args.key?(:ip_allocation_policy)
           @location = args[:location] if args.key?(:location)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @network = args[:network] if args.key?(:network)
@@ -501,6 +585,100 @@ module Google
           @resource = args[:resource] if args.key?(:resource)
           @resource_uuid = args[:resource_uuid] if args.key?(:resource_uuid)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Configuration options for the private GKE cluster in a Cloud Composer
+      # environment.
+      class PrivateClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. If `true`, access to the public endpoint of the GKE cluster is
+        # denied.
+        # Corresponds to the JSON property `enablePrivateEndpoint`
+        # @return [Boolean]
+        attr_accessor :enable_private_endpoint
+        alias_method :enable_private_endpoint?, :enable_private_endpoint
+      
+        # Optional. The CIDR block from which IPv4 range for GKE master will be reserved.
+        # If
+        # left blank, the default value of '172.16.0.0/23' is used.
+        # Corresponds to the JSON property `masterIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :master_ipv4_cidr_block
+      
+        # Output only. The IP range in CIDR notation to use for the hosted master
+        # network. This
+        # range is used for assigning internal IP addresses to the GKE cluster
+        # master or set of masters and to the internal load balancer virtual IP.
+        # This range must not overlap with any other ranges in use
+        # within the cluster's network.
+        # Corresponds to the JSON property `masterIpv4ReservedRange`
+        # @return [String]
+        attr_accessor :master_ipv4_reserved_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
+          @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @master_ipv4_reserved_range = args[:master_ipv4_reserved_range] if args.key?(:master_ipv4_reserved_range)
+        end
+      end
+      
+      # The configuration information for configuring a Private IP Cloud Composer
+      # environment.
+      class PrivateEnvironmentConfig
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The CIDR block from which IP range in tenant project will be
+        # reserved for
+        # Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
+        # Corresponds to the JSON property `cloudSqlIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cloud_sql_ipv4_cidr_block
+      
+        # Optional. If `true`, a Private IP Cloud Composer environment is created.
+        # If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be
+        # set to true.
+        # Corresponds to the JSON property `enablePrivateEnvironment`
+        # @return [Boolean]
+        attr_accessor :enable_private_environment
+        alias_method :enable_private_environment?, :enable_private_environment
+      
+        # Configuration options for the private GKE cluster in a Cloud Composer
+        # environment.
+        # Corresponds to the JSON property `privateClusterConfig`
+        # @return [Google::Apis::ComposerV1::PrivateClusterConfig]
+        attr_accessor :private_cluster_config
+      
+        # Optional. The CIDR block from which IP range for web server will be reserved.
+        # Needs
+        # to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and
+        # `cloud_sql_ipv4_cidr_block`.
+        # Corresponds to the JSON property `webServerIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :web_server_ipv4_cidr_block
+      
+        # Output only. The IP range reserved for the tenant project's App Engine VMs.
+        # Corresponds to the JSON property `webServerIpv4ReservedRange`
+        # @return [String]
+        attr_accessor :web_server_ipv4_reserved_range
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
+          @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
+          @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
+          @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
         end
       end
       

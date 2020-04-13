@@ -1977,7 +1977,7 @@ module Google
         attr_accessor :requests
       
         # True if grid data should be returned. Meaningful only if
-        # if include_spreadsheet_in_response is 'true'.
+        # include_spreadsheet_in_response is 'true'.
         # This parameter is ignored if a field mask was set in the request.
         # Corresponds to the JSON property `responseIncludeGridData`
         # @return [Boolean]
@@ -1985,7 +1985,7 @@ module Google
         alias_method :response_include_grid_data?, :response_include_grid_data
       
         # Limits the ranges included in the response spreadsheet.
-        # Meaningful only if include_spreadsheet_response is 'true'.
+        # Meaningful only if include_spreadsheet_in_response is 'true'.
         # Corresponds to the JSON property `responseRanges`
         # @return [Array<String>]
         attr_accessor :response_ranges

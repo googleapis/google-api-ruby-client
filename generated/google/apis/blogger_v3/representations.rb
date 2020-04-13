@@ -246,12 +246,10 @@ module Google
       
           property :posts, as: 'posts', class: Google::Apis::BloggerV3::Blog::Posts, decorator: Google::Apis::BloggerV3::Blog::Posts::Representation
       
-          property :published, as: 'published', type: DateTime
-      
+          property :published, as: 'published'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :url, as: 'url'
         end
         
@@ -331,12 +329,10 @@ module Google
           property :kind, as: 'kind'
           property :post, as: 'post', class: Google::Apis::BloggerV3::Comment::Post, decorator: Google::Apis::BloggerV3::Comment::Post::Representation
       
-          property :published, as: 'published', type: DateTime
-      
+          property :published, as: 'published'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
         end
         
         class Author
@@ -402,13 +398,11 @@ module Google
           property :etag, as: 'etag'
           property :id, as: 'id'
           property :kind, as: 'kind'
-          property :published, as: 'published', type: DateTime
-      
+          property :published, as: 'published'
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :title, as: 'title'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :url, as: 'url'
         end
         
@@ -484,8 +478,7 @@ module Google
           collection :labels, as: 'labels'
           property :location, as: 'location', class: Google::Apis::BloggerV3::Post::Location, decorator: Google::Apis::BloggerV3::Post::Location::Representation
       
-          property :published, as: 'published', type: DateTime
-      
+          property :published, as: 'published'
           property :reader_comments, as: 'readerComments'
           property :replies, as: 'replies', class: Google::Apis::BloggerV3::Post::Replies, decorator: Google::Apis::BloggerV3::Post::Replies::Representation
       
@@ -493,8 +486,7 @@ module Google
           property :status, as: 'status'
           property :title, as: 'title'
           property :title_link, as: 'titleLink'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :url, as: 'url'
         end
         
@@ -559,6 +551,7 @@ module Google
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
+          property :prev_page_token, as: 'prevPageToken'
         end
       end
       
@@ -600,8 +593,7 @@ module Google
           property :about, as: 'about'
           property :blogs, as: 'blogs', class: Google::Apis::BloggerV3::User::Blogs, decorator: Google::Apis::BloggerV3::User::Blogs::Representation
       
-          property :created, as: 'created', type: DateTime
-      
+          property :created, as: 'created'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
           property :kind, as: 'kind'

@@ -27,7 +27,7 @@ module Google
     # @see https://cloud.google.com/natural-language/
     module LanguageV1beta2
       VERSION = 'V1beta2'
-      REVISION = '20200222'
+      REVISION = '20200406'
 
       # Apply machine learning models to reveal the structure and meaning of text
       AUTH_CLOUD_LANGUAGE = 'https://www.googleapis.com/auth/cloud-language'

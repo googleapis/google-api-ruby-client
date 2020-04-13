@@ -241,6 +241,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the service configurations and enabled states for a given list of
+        # services.
+        # @param [String] parent
+        #   Parent to retrieve services from.
+        #   If this is set, the parent of all of the services specified in `names` must
+        #   match this field. An example name would be: `projects/123` where `123` is
+        #   the project number. The `BatchGetServices` method currently only supports
+        #   projects.
+        # @param [Array<String>, String] names
+        #   Names of the services to retrieve.
+        #   An example name would be:
+        #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
+        #   project number.
+        #   A single request can get a maximum of 20 services at a time.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServiceusageV1::BatchGetServicesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServiceusageV1::BatchGetServicesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def batch_service_get(parent, names: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/services:batchGet', options)
+          command.response_representation = Google::Apis::ServiceusageV1::BatchGetServicesResponse::Representation
+          command.response_class = Google::Apis::ServiceusageV1::BatchGetServicesResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['names'] = names unless names.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Disable a service so that it can no longer be used with a project.
         # This prevents unintended usage that may cause unexpected billing
         # charges or security leaks.

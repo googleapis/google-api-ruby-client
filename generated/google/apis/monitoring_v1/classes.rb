@@ -41,7 +41,8 @@ module Google
       # 95% latency across the average of all tasks in a cluster". This representative
       # data can be more easily graphed and comprehended, and the individual time
       # series data is still available for later drilldown. For more details, see
-      # Aggregating Time Series.
+      # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+      # aggregation).
       class Aggregation
         include Google::Apis::Core::Hashable
       
@@ -217,7 +218,7 @@ module Google
         # @return [Google::Apis::MonitoringV1::ColumnLayout]
         attr_accessor :column_layout
       
-        # The mutable, human-readable name.
+        # Required. The mutable, human-readable name.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
@@ -238,7 +239,7 @@ module Google
         # @return [Google::Apis::MonitoringV1::GridLayout]
         attr_accessor :grid_layout
       
-        # The resource name of the dashboard.
+        # Immutable. The resource name of the dashboard.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -608,13 +609,14 @@ module Google
         # 95% latency across the average of all tasks in a cluster". This representative
         # data can be more easily graphed and comprehended, and the individual time
         # series data is still available for later drilldown. For more details, see
-        # Aggregating Time Series.
+        # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+        # aggregation).
         # Corresponds to the JSON property `aggregation`
         # @return [Google::Apis::MonitoringV1::Aggregation]
         attr_accessor :aggregation
       
-        # Required. The monitoring filter that identifies the metric types, resources,
-        # and projects to query.
+        # Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/
+        # filters) that identifies the metric types, resources, and projects to query.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -797,7 +799,7 @@ module Google
         # @return [String]
         attr_accessor :min_alignment_period
       
-        # The type of sparkchart to show in this chartView.
+        # Required. The type of sparkchart to show in this chartView.
         # Corresponds to the JSON property `sparkChartType`
         # @return [String]
         attr_accessor :spark_chart_type
@@ -877,7 +879,8 @@ module Google
       end
       
       # A filter that defines a subset of time series data that is displayed in a
-      # widget. Time series data is fetched using the ListTimeSeries method.
+      # widget. Time series data is fetched using the ListTimeSeries (https://cloud.
+      # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
       class TimeSeriesFilter
         include Google::Apis::Core::Hashable
       
@@ -900,13 +903,14 @@ module Google
         # 95% latency across the average of all tasks in a cluster". This representative
         # data can be more easily graphed and comprehended, and the individual time
         # series data is still available for later drilldown. For more details, see
-        # Aggregating Time Series.
+        # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+        # aggregation).
         # Corresponds to the JSON property `aggregation`
         # @return [Google::Apis::MonitoringV1::Aggregation]
         attr_accessor :aggregation
       
-        # Required. The monitoring filter that identifies the metric types, resources,
-        # and projects to query.
+        # Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/
+        # filters) that identifies the metric types, resources, and projects to query.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -921,6 +925,31 @@ module Google
         # @return [Google::Apis::MonitoringV1::PickTimeSeriesFilter]
         attr_accessor :pick_time_series_filter
       
+        # Describes how to combine multiple time series to provide a different view of
+        # the data. Aggregation of time series is done in two steps. First, each time
+        # series in the set is aligned to the same time interval boundaries, then the
+        # set of time series is optionally reduced in number.Alignment consists of
+        # applying the per_series_aligner operation to each time series after its data
+        # has been divided into regular alignment_period time intervals. This process
+        # takes all of the data points in an alignment period, applies a mathematical
+        # transformation such as averaging, minimum, maximum, delta, etc., and converts
+        # them into a single data point per period.Reduction is when the aligned and
+        # transformed time series can optionally be combined, reducing the number of
+        # time series through similar mathematical transformations. Reduction involves
+        # applying a cross_series_reducer to all the time series, optionally sorting the
+        # time series into subsets with group_by_fields, and applying the reducer to
+        # each subset.The raw time series data can contain a huge amount of information
+        # from multiple sources. Alignment and reduction transforms this mass of data
+        # into a more manageable and representative collection of data, for example "the
+        # 95% latency across the average of all tasks in a cluster". This representative
+        # data can be more easily graphed and comprehended, and the individual time
+        # series data is still available for later drilldown. For more details, see
+        # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+        # aggregation).
+        # Corresponds to the JSON property `secondaryAggregation`
+        # @return [Google::Apis::MonitoringV1::Aggregation]
+        attr_accessor :secondary_aggregation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -930,6 +959,7 @@ module Google
           @aggregation = args[:aggregation] if args.key?(:aggregation)
           @filter = args[:filter] if args.key?(:filter)
           @pick_time_series_filter = args[:pick_time_series_filter] if args.key?(:pick_time_series_filter)
+          @secondary_aggregation = args[:secondary_aggregation] if args.key?(:secondary_aggregation)
         end
       end
       
@@ -980,7 +1010,8 @@ module Google
         # 95% latency across the average of all tasks in a cluster". This representative
         # data can be more easily graphed and comprehended, and the individual time
         # series data is still available for later drilldown. For more details, see
-        # Aggregating Time Series.
+        # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+        # aggregation).
         # Corresponds to the JSON property `secondaryAggregation`
         # @return [Google::Apis::MonitoringV1::Aggregation]
         attr_accessor :secondary_aggregation
@@ -1004,7 +1035,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A filter that defines a subset of time series data that is displayed in a
-        # widget. Time series data is fetched using the ListTimeSeries method.
+        # widget. Time series data is fetched using the ListTimeSeries (https://cloud.
+        # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
         # Corresponds to the JSON property `timeSeriesFilter`
         # @return [Google::Apis::MonitoringV1::TimeSeriesFilter]
         attr_accessor :time_series_filter
@@ -1016,9 +1048,15 @@ module Google
         # @return [Google::Apis::MonitoringV1::TimeSeriesFilterRatio]
         attr_accessor :time_series_filter_ratio
       
+        # A query used to fetch time series.
+        # Corresponds to the JSON property `timeSeriesQueryLanguage`
+        # @return [String]
+        attr_accessor :time_series_query_language
+      
         # The unit of data contained in fetched time series. If non-empty, this unit
         # will override any unit that accompanies fetched data. The format is the same
-        # as the unit field in MetricDescriptor.
+        # as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.
+        # metricDescriptors) field in MetricDescriptor.
         # Corresponds to the JSON property `unitOverride`
         # @return [String]
         attr_accessor :unit_override
@@ -1031,6 +1069,7 @@ module Google
         def update!(**args)
           @time_series_filter = args[:time_series_filter] if args.key?(:time_series_filter)
           @time_series_filter_ratio = args[:time_series_filter_ratio] if args.key?(:time_series_filter_ratio)
+          @time_series_query_language = args[:time_series_query_language] if args.key?(:time_series_query_language)
           @unit_override = args[:unit_override] if args.key?(:unit_override)
         end
       end
@@ -1145,7 +1184,7 @@ module Google
         # @return [Google::Apis::MonitoringV1::ChartOptions]
         attr_accessor :chart_options
       
-        # The data displayed in this chart.
+        # Required. The data displayed in this chart.
         # Corresponds to the JSON property `dataSets`
         # @return [Array<Google::Apis::MonitoringV1::DataSet>]
         attr_accessor :data_sets

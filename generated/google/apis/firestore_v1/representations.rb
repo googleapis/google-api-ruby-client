@@ -1125,6 +1125,8 @@ module Google
       
           property :update_mask, as: 'updateMask', class: Google::Apis::FirestoreV1::DocumentMask, decorator: Google::Apis::FirestoreV1::DocumentMask::Representation
       
+          collection :update_transforms, as: 'updateTransforms', class: Google::Apis::FirestoreV1::FieldTransform, decorator: Google::Apis::FirestoreV1::FieldTransform::Representation
+      
         end
       end
       

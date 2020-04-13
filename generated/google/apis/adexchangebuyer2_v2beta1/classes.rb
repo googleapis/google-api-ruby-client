@@ -1634,9 +1634,15 @@ module Google
         # @return [String]
         attr_accessor :environment
       
-        # The list of formats on which to filter; may be empty. The filters
-        # represented by multiple formats are ORed together (i.e., if non-empty,
-        # results must match any one of the formats).
+        # Creative format bidded on or allowed to bid on, can be empty.
+        # Corresponds to the JSON property `format`
+        # @return [String]
+        attr_accessor :format
+      
+        # Creative formats bidded on or allowed to bid on, can be empty. Although
+        # this field is a list, it can only be populated with a single item. A
+        # HTTP 400 bad request error will be returned in the response if you specify
+        # multiple items.
         # Corresponds to the JSON property `formats`
         # @return [Array<String>]
         attr_accessor :formats
@@ -1713,6 +1719,7 @@ module Google
           @creative_id = args[:creative_id] if args.key?(:creative_id)
           @deal_id = args[:deal_id] if args.key?(:deal_id)
           @environment = args[:environment] if args.key?(:environment)
+          @format = args[:format] if args.key?(:format)
           @formats = args[:formats] if args.key?(:formats)
           @name = args[:name] if args.key?(:name)
           @platforms = args[:platforms] if args.key?(:platforms)

@@ -317,6 +317,8 @@ module Google
       
           property :website, as: 'website', class: Google::Apis::StorageV1::Bucket::Website, decorator: Google::Apis::StorageV1::Bucket::Website::Representation
       
+          collection :zone_affinity, as: 'zoneAffinity'
+          property :zone_separation, as: 'zoneSeparation'
         end
         
         class Billing

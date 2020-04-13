@@ -221,6 +221,19 @@ module Google
         end
       end
       
+      # The request message for Operations.CancelOperation.
+      class CancelOperationRequest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Mask a string by replacing its characters with a fixed character.
       class CharacterMaskConfig
         include Google::Apis::Core::Hashable
@@ -767,6 +780,19 @@ module Google
         end
       end
       
+      # Returns additional information in regards to a completed DICOM store export.
+      class ExportDicomDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to export resources.
       class ExportResourcesRequest
         include Google::Apis::Core::Hashable
@@ -901,6 +927,18 @@ module Google
       class FhirStore
         include Google::Apis::Core::Hashable
       
+        # If true, overrides the default search behavior for this FHIR store to
+        # `handling=strict` which returns an error for unrecognized search
+        # parameters. If false, uses the FHIR specification default
+        # `handling=lenient` which ignores unrecognized search parameters.
+        # The handling can always be changed from the default on an individual API
+        # call by setting the HTTP header `Prefer: handling=strict` or
+        # `Prefer: handling=lenient`.
+        # Corresponds to the JSON property `defaultSearchHandlingStrict`
+        # @return [Boolean]
+        attr_accessor :default_search_handling_strict
+        alias_method :default_search_handling_strict?, :default_search_handling_strict
+      
         # Whether to disable referential integrity in this FHIR store. This field is
         # immutable after FHIR store creation.
         # The default value is false, meaning that the API enforces referential
@@ -966,6 +1004,24 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
       
+        # A list of streaming configs that configure the destinations of streaming
+        # export for every resource mutation in this FHIR store. Each store is
+        # allowed to have up to 10 streaming configs.
+        # After a new config is added, the next resource mutation is streamed to
+        # the new location in addition to the existing ones.
+        # When a location is removed from the list, the server stops
+        # streaming to that location. Before adding a new config, you must add the
+        # required
+        # [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#
+        # bigquery.dataEditor)
+        # role to your project's **Cloud Healthcare Service Agent**
+        # [service account](https://cloud.google.com/iam/docs/service-accounts).
+        # Some lag (typically on the order of dozens of seconds) is expected before
+        # the results show up in the streaming destination.
+        # Corresponds to the JSON property `streamConfigs`
+        # @return [Array<Google::Apis::HealthcareV1beta1::StreamConfig>]
+        attr_accessor :stream_configs
+      
         # The FHIR specification version that this FHIR store supports natively. This
         # field is immutable after store creation. Requests are rejected if they
         # contain FHIR resources of a different version.
@@ -980,13 +1036,61 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_search_handling_strict = args[:default_search_handling_strict] if args.key?(:default_search_handling_strict)
           @disable_referential_integrity = args[:disable_referential_integrity] if args.key?(:disable_referential_integrity)
           @disable_resource_versioning = args[:disable_resource_versioning] if args.key?(:disable_resource_versioning)
           @enable_update_create = args[:enable_update_create] if args.key?(:enable_update_create)
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @stream_configs = args[:stream_configs] if args.key?(:stream_configs)
           @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # A (sub) field of a type.
+      class Field
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of times this field can be repeated. 0 or -1 means
+        # unbounded.
+        # Corresponds to the JSON property `maxOccurs`
+        # @return [Fixnum]
+        attr_accessor :max_occurs
+      
+        # The minimum number of times this field must be present/repeated.
+        # Corresponds to the JSON property `minOccurs`
+        # @return [Fixnum]
+        attr_accessor :min_occurs
+      
+        # The name of the field. For example, "PID-1" or just "1".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The HL7v2 table this field refers to. For example, PID-15 (Patient's
+        # Primary Language) usually refers to table "0296".
+        # Corresponds to the JSON property `table`
+        # @return [String]
+        attr_accessor :table
+      
+        # The type of this field. A Type with this name must be defined in an
+        # Hl7TypesConfig.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_occurs = args[:max_occurs] if args.key?(:max_occurs)
+          @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
+          @name = args[:name] if args.key?(:name)
+          @table = args[:table] if args.key?(:table)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -1113,14 +1217,33 @@ module Google
         # Each file is written in the following format:
         # `.../`study_id`/`series_id`/`instance_id`[/`frame_number`].`extension``
         # The frame_number component exists only for multi-frame instances.
-        # Refer to the DICOM conformance statement for permissible MIME types:
-        # https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction
+        # Supported MIME types are consistent with supported formats in DICOMweb:
+        # https://cloud.google.com/healthcare/docs/dicom#retrieve_transaction.
+        # Specifically, the following are supported:
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.1
+        # (uncompressed DICOM)
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50
+        # (DICOM with embedded JPEG Baseline)
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90
+        # (DICOM with embedded JPEG 2000 Lossless Only)
+        # - application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91
+        # (DICOM with embedded JPEG 2000)h
+        # - application/dicom; transfer-syntax=*
+        # (DICOM with no transcoding)
+        # - application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1
+        # (raw uncompressed PixelData)
+        # - application/octet-stream; transfer-syntax=*
+        # (raw PixelData in whatever format it was uploaded in)
+        # - image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50
+        # (Consumer JPEG)
+        # - image/png
         # The following extensions are used for output files:
-        # application/dicom -> .dcm
-        # image/jpeg -> .jpg
-        # image/png -> .png
-        # If unspecified, the instances are exported in their original
-        # DICOM format.
+        # - application/dicom -> .dcm
+        # - image/jpeg -> .jpg
+        # - image/png -> .png
+        # - application/octet-stream -> no extension
+        # If unspecified, the instances are exported in the original
+        # DICOM format they were uploaded in.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
@@ -1424,6 +1547,148 @@ module Google
         end
       end
       
+      # Construct representing a logical group or a segment.
+      class GroupOrSegment
+        include Google::Apis::Core::Hashable
+      
+        # An HL7v2 logical group construct.
+        # Corresponds to the JSON property `group`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaGroup]
+        attr_accessor :group
+      
+        # An HL7v2 Segment.
+        # Corresponds to the JSON property `segment`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaSegment]
+        attr_accessor :segment
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @group = args[:group] if args.key?(:group)
+          @segment = args[:segment] if args.key?(:segment)
+        end
+      end
+      
+      # Root config message for HL7v2 schema. This contains a schema structure of
+      # groups and segments, and filters that determine which messages to apply the
+      # schema structure to.
+      class Hl7SchemaConfig
+        include Google::Apis::Core::Hashable
+      
+        # Map from each HL7v2 message type and trigger event pair, such as ADT_A04,
+        # to its schema configuration root group.
+        # Corresponds to the JSON property `messageSchemaConfigs`
+        # @return [Hash<String,Google::Apis::HealthcareV1beta1::SchemaGroup>]
+        attr_accessor :message_schema_configs
+      
+        # Each VersionSource is tested and only if they all match is the schema used
+        # for the message.
+        # Corresponds to the JSON property `version`
+        # @return [Array<Google::Apis::HealthcareV1beta1::VersionSource>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @message_schema_configs = args[:message_schema_configs] if args.key?(:message_schema_configs)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Root config for HL7v2 datatype definitions for a specific HL7v2 version.
+      class Hl7TypesConfig
+        include Google::Apis::Core::Hashable
+      
+        # The HL7v2 type definitions.
+        # Corresponds to the JSON property `type`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Type>]
+        attr_accessor :type
+      
+        # The version selectors that this config applies to. A message must match
+        # ALL version sources to apply.
+        # Corresponds to the JSON property `version`
+        # @return [Array<Google::Apis::HealthcareV1beta1::VersionSource>]
+        attr_accessor :version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @type = args[:type] if args.key?(:type)
+          @version = args[:version] if args.key?(:version)
+        end
+      end
+      
+      # Specifies where and whether to send notifications upon changes to a
+      # data store.
+      class Hl7V2NotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Restricts notifications sent for messages matching a filter. If this is
+        # empty, all messages are matched. Syntax:
+        # https://cloud.google.com/appengine/docs/standard/python/search/query_strings
+        # Fields/functions available for filtering are:
+        # *  `message_type`, from the MSH-9.1 field. For example,
+        # `NOT message_type = "ADT"`.
+        # *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
+        # the dataset's time_zone, from the MSH-7 segment. For example,
+        # `send_date < "2017-01-02"`.
+        # *  `send_time`, the timestamp when the message was sent, using the
+        # RFC3339 time format for comparisons, from the MSH-7 segment. For example,
+        # `send_time < "2017-01-02T00:00:00-05:00"`.
+        # *  `send_facility`, the care center that the message came from, from the
+        # MSH-4 segment. For example, `send_facility = "ABC"`.
+        # *  `PatientId(value, type)`, which matches if the message lists a patient
+        # having an ID of the given value and type in the PID-2, PID-3, or PID-4
+        # segments. For example, `PatientId("123456", "MRN")`.
+        # *  `labels.x`, a string value of the label with key `x` as set using the
+        # Message.labels
+        # map. For example, `labels."priority"="high"`. The operator `:*` can be
+        # used to assert the existence of a label. For example,
+        # `labels."priority":*`.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
+        # The [Cloud Pubsub](https://cloud.google.com/pubsub/docs/) topic that
+        # notifications of changes are published on. Supplied by the client. The
+        # notification is a `PubsubMessage` with the following fields:
+        # *  `PubsubMessage.Data` contains the resource name.
+        # *  `PubsubMessage.MessageId` is the ID of this notification. It is
+        # guaranteed to be unique within the topic.
+        # *  `PubsubMessage.PublishTime` is the time at which the message was
+        # published.
+        # Note that notifications are only sent if the topic is non-empty. [Topic
+        # names](https://cloud.google.com/pubsub/docs/overview#names) must be
+        # scoped to a project. cloud-healthcare@system.gserviceaccount.com must
+        # have publisher permissions on the given Pubsub topic. Not having adequate
+        # permissions causes the calls that send notifications to fail.
+        # If a notification cannot be published to Cloud Pub/Sub, errors will be
+        # logged to Stackdriver (see [Viewing logs](/healthcare/docs/how-
+        # tos/stackdriver-logging)).
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @filter = args[:filter] if args.key?(:filter)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+        end
+      end
+      
       # Represents an HL7v2 store.
       class Hl7V2Store
         include Google::Apis::Core::Hashable
@@ -1451,6 +1716,14 @@ module Google
         # Corresponds to the JSON property `notificationConfig`
         # @return [Google::Apis::HealthcareV1beta1::NotificationConfig]
         attr_accessor :notification_config
+      
+        # A list of notification configs. Each configuration uses a filter to
+        # determine whether to publish a message (both Ingest & Create) on
+        # the corresponding notification destination. Only the message name is sent
+        # as part of the notification. Supplied by the client.
+        # Corresponds to the JSON property `notificationConfigs`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Hl7V2NotificationConfig>]
+        attr_accessor :notification_configs
       
         # The configuration for the parser. It determines how the server parses the
         # messages.
@@ -1483,6 +1756,7 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @name = args[:name] if args.key?(:name)
           @notification_config = args[:notification_config] if args.key?(:notification_config)
+          @notification_configs = args[:notification_configs] if args.key?(:notification_configs)
           @parser_config = args[:parser_config] if args.key?(:parser_config)
           @reject_duplicate_message = args[:reject_duplicate_message] if args.key?(:reject_duplicate_message)
         end
@@ -1611,6 +1885,19 @@ module Google
         end
       end
       
+      # Returns additional information in regards to a completed DICOM store import.
+      class ImportDicomDataResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Request to import resources.
       class ImportResourcesRequest
         include Google::Apis::Core::Hashable
@@ -1669,7 +1956,7 @@ module Google
         attr_accessor :info_types
       
         # Define how to redact sensitive values. Default behaviour is erase.
-        # For example, "My name is Jake." becomes "My name is ."
+        # For example, "My name is Jane." becomes "My name is ."
         # Corresponds to the JSON property `redactConfig`
         # @return [Google::Apis::HealthcareV1beta1::RedactConfig]
         attr_accessor :redact_config
@@ -1677,7 +1964,7 @@ module Google
         # When using the
         # INSPECT_AND_TRANSFORM
         # action, each match is replaced with the name of the info_type. For example,
-        # "My name is Jake" becomes "My name is [PERSON_NAME]." The
+        # "My name is Jane" becomes "My name is [PERSON_NAME]." The
         # TRANSFORM
         # action is equivalent to redacting.
         # Corresponds to the JSON property `replaceWithInfoTypeConfig`
@@ -1893,13 +2180,6 @@ module Google
         # @return [Array<Google::Apis::HealthcareV1beta1::Message>]
         attr_accessor :hl7_v2_messages
       
-        # Deprecated. Use `hl7_v2_messages` instead.
-        # The returned message names. Won't be more values than the value of
-        # page_size in the request.
-        # Corresponds to the JSON property `messages`
-        # @return [Array<String>]
-        attr_accessor :messages
-      
         # Token to retrieve the next page of results or empty if there are no more
         # results in the list.
         # Corresponds to the JSON property `nextPageToken`
@@ -1913,7 +2193,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @hl7_v2_messages = args[:hl7_v2_messages] if args.key?(:hl7_v2_messages)
-          @messages = args[:messages] if args.key?(:messages)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -2020,7 +2299,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The message type and trigger event for this message. MSH-9.
+        # The message type for this message. MSH-9.1.
         # Corresponds to the JSON property `messageType`
         # @return [String]
         attr_accessor :message_type
@@ -2033,7 +2312,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The content of a HL7v2 message in a structured format.
+        # The content of an HL7v2 message in a structured format.
         # Corresponds to the JSON property `parsedData`
         # @return [Google::Apis::HealthcareV1beta1::ParsedData]
         attr_accessor :parsed_data
@@ -2043,6 +2322,12 @@ module Google
         # Corresponds to the JSON property `patientIds`
         # @return [Array<Google::Apis::HealthcareV1beta1::PatientId>]
         attr_accessor :patient_ids
+      
+        # The content of an HL7v2 message in a structured format as specified by a
+        # schema.
+        # Corresponds to the JSON property `schematizedData`
+        # @return [Google::Apis::HealthcareV1beta1::SchematizedData]
+        attr_accessor :schematized_data
       
         # The hospital that this message came from. MSH-4.
         # Corresponds to the JSON property `sendFacility`
@@ -2067,6 +2352,7 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parsed_data = args[:parsed_data] if args.key?(:parsed_data)
           @patient_ids = args[:patient_ids] if args.key?(:patient_ids)
+          @schematized_data = args[:schematized_data] if args.key?(:schematized_data)
           @send_facility = args[:send_facility] if args.key?(:send_facility)
           @send_time = args[:send_time] if args.key?(:send_time)
         end
@@ -2180,6 +2466,12 @@ module Google
         # @return [String]
         attr_accessor :api_method_name
       
+        # Specifies if cancellation was requested for the operation.
+        # Corresponds to the JSON property `cancelRequested`
+        # @return [Boolean]
+        attr_accessor :cancel_requested
+        alias_method :cancel_requested?, :cancel_requested
+      
         # ProgressCounter provides counters to describe an operation's progress.
         # Corresponds to the JSON property `counter`
         # @return [Google::Apis::HealthcareV1beta1::ProgressCounter]
@@ -2195,6 +2487,13 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
+        # A link to audit and error logs in the log viewer. Error logs are generated
+        # only by some operations, listed at
+        # https://cloud.google.com/healthcare/docs/how-tos/stackdriver-logging.
+        # Corresponds to the JSON property `logsUrl`
+        # @return [String]
+        attr_accessor :logs_url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2202,13 +2501,15 @@ module Google
         # Update properties of this object
         def update!(**args)
           @api_method_name = args[:api_method_name] if args.key?(:api_method_name)
+          @cancel_requested = args[:cancel_requested] if args.key?(:cancel_requested)
           @counter = args[:counter] if args.key?(:counter)
           @create_time = args[:create_time] if args.key?(:create_time)
           @end_time = args[:end_time] if args.key?(:end_time)
+          @logs_url = args[:logs_url] if args.key?(:logs_url)
         end
       end
       
-      # The content of a HL7v2 message in a structured format.
+      # The content of an HL7v2 message in a structured format.
       class ParsedData
         include Google::Apis::Core::Hashable
       
@@ -2238,8 +2539,14 @@ module Google
         attr_accessor :allow_null_header
         alias_method :allow_null_header?, :allow_null_header
       
+        # A schema package contains a set of schemas and type definitions.
+        # Corresponds to the JSON property `schema`
+        # @return [Google::Apis::HealthcareV1beta1::SchemaPackage]
+        attr_accessor :schema
+      
         # Byte(s) to use as the segment terminator. If this is unset, '\r' is
-        # used as segment terminator.
+        # used as segment terminator, matching the HL7 version 2
+        # specification.
         # Corresponds to the JSON property `segmentTerminator`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -2252,6 +2559,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @allow_null_header = args[:allow_null_header] if args.key?(:allow_null_header)
+          @schema = args[:schema] if args.key?(:schema)
           @segment_terminator = args[:segment_terminator] if args.key?(:segment_terminator)
         end
       end
@@ -2433,7 +2741,7 @@ module Google
       end
       
       # Define how to redact sensitive values. Default behaviour is erase.
-      # For example, "My name is Jake." becomes "My name is ."
+      # For example, "My name is Jane." becomes "My name is ."
       class RedactConfig
         include Google::Apis::Core::Hashable
       
@@ -2449,7 +2757,7 @@ module Google
       # When using the
       # INSPECT_AND_TRANSFORM
       # action, each match is replaced with the name of the info_type. For example,
-      # "My name is Jake" becomes "My name is [PERSON_NAME]." The
+      # "My name is Jane" becomes "My name is [PERSON_NAME]." The
       # TRANSFORM
       # action is equivalent to redacting.
       class ReplaceWithInfoTypeConfig
@@ -2512,6 +2820,156 @@ module Google
         def update!(**args)
           @recursive_structure_depth = args[:recursive_structure_depth] if args.key?(:recursive_structure_depth)
           @schema_type = args[:schema_type] if args.key?(:schema_type)
+        end
+      end
+      
+      # An HL7v2 logical group construct.
+      class SchemaGroup
+        include Google::Apis::Core::Hashable
+      
+        # True indicates that this is a choice group, meaning that only one of its
+        # segments can exist in a given message.
+        # Corresponds to the JSON property `choice`
+        # @return [Boolean]
+        attr_accessor :choice
+        alias_method :choice?, :choice
+      
+        # The maximum number of times this group can be repeated. 0 or -1 means
+        # unbounded.
+        # Corresponds to the JSON property `maxOccurs`
+        # @return [Fixnum]
+        attr_accessor :max_occurs
+      
+        # Nested groups and/or segments.
+        # Corresponds to the JSON property `members`
+        # @return [Array<Google::Apis::HealthcareV1beta1::GroupOrSegment>]
+        attr_accessor :members
+      
+        # The minimum number of times this group must be present/repeated.
+        # Corresponds to the JSON property `minOccurs`
+        # @return [Fixnum]
+        attr_accessor :min_occurs
+      
+        # The name of this group. For example, "ORDER_DETAIL".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @choice = args[:choice] if args.key?(:choice)
+          @max_occurs = args[:max_occurs] if args.key?(:max_occurs)
+          @members = args[:members] if args.key?(:members)
+          @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A schema package contains a set of schemas and type definitions.
+      class SchemaPackage
+        include Google::Apis::Core::Hashable
+      
+        # Flag to ignore all min_occurs restrictions in the schema. This means that
+        # incoming messages can omit any group, segment, field, component, or
+        # subcomponent.
+        # Corresponds to the JSON property `ignoreMinOccurs`
+        # @return [Boolean]
+        attr_accessor :ignore_min_occurs
+        alias_method :ignore_min_occurs?, :ignore_min_occurs
+      
+        # Schema configs that are layered based on their VersionSources that
+        # match the incoming message. Schema configs present in higher indices
+        # override those in lower indices with the same message type and trigger
+        # event if their VersionSources all match an incoming message.
+        # Corresponds to the JSON property `schemas`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Hl7SchemaConfig>]
+        attr_accessor :schemas
+      
+        # Determines how messages that don't parse successfully are handled.
+        # Corresponds to the JSON property `schematizedParsingType`
+        # @return [String]
+        attr_accessor :schematized_parsing_type
+      
+        # Schema type definitions that are layered based on their VersionSources
+        # that match the incoming message. Type definitions present in higher indices
+        # override those in lower indices with the same type name if their
+        # VersionSources all match an incoming message.
+        # Corresponds to the JSON property `types`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Hl7TypesConfig>]
+        attr_accessor :types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ignore_min_occurs = args[:ignore_min_occurs] if args.key?(:ignore_min_occurs)
+          @schemas = args[:schemas] if args.key?(:schemas)
+          @schematized_parsing_type = args[:schematized_parsing_type] if args.key?(:schematized_parsing_type)
+          @types = args[:types] if args.key?(:types)
+        end
+      end
+      
+      # An HL7v2 Segment.
+      class SchemaSegment
+        include Google::Apis::Core::Hashable
+      
+        # The maximum number of times this segment can be present in this group.
+        # 0 or -1 means unbounded.
+        # Corresponds to the JSON property `maxOccurs`
+        # @return [Fixnum]
+        attr_accessor :max_occurs
+      
+        # The minimum number of times this segment can be present in this group.
+        # Corresponds to the JSON property `minOccurs`
+        # @return [Fixnum]
+        attr_accessor :min_occurs
+      
+        # The Segment type. For example, "PID".
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_occurs = args[:max_occurs] if args.key?(:max_occurs)
+          @min_occurs = args[:min_occurs] if args.key?(:min_occurs)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # The content of an HL7v2 message in a structured format as specified by a
+      # schema.
+      class SchematizedData
+        include Google::Apis::Core::Hashable
+      
+        # JSON output of the parser.
+        # Corresponds to the JSON property `data`
+        # @return [String]
+        attr_accessor :data
+      
+        # The error output of the parser.
+        # Corresponds to the JSON property `error`
+        # @return [String]
+        attr_accessor :error
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @data = args[:data] if args.key?(:data)
+          @error = args[:error] if args.key?(:error)
         end
       end
       
@@ -2704,6 +3162,35 @@ module Google
         end
       end
       
+      # This structure contains configuration for streaming FHIR export.
+      class StreamConfig
+        include Google::Apis::Core::Hashable
+      
+        # The configuration for exporting to BigQuery.
+        # Corresponds to the JSON property `bigqueryDestination`
+        # @return [Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination]
+        attr_accessor :bigquery_destination
+      
+        # Supply a FHIR resource type (such as "Patient" or "Observation").
+        # See https://www.hl7.org/fhir/valueset-resource-types.html for a list of
+        # all FHIR resource types.
+        # The server treats an empty list as an intent to stream all the
+        # supported resource types in this FHIR store.
+        # Corresponds to the JSON property `resourceTypes`
+        # @return [Array<String>]
+        attr_accessor :resource_types
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bigquery_destination = args[:bigquery_destination] if args.key?(:bigquery_destination)
+          @resource_types = args[:resource_types] if args.key?(:resource_types)
+        end
+      end
+      
       # List of tags to be filtered.
       class TagFilterList
         include Google::Apis::Core::Hashable
@@ -2785,6 +3272,65 @@ module Google
         # Update properties of this object
         def update!(**args)
           @transformations = args[:transformations] if args.key?(:transformations)
+        end
+      end
+      
+      # A type definition for some HL7v2 type (incl. Segments and Datatypes).
+      class Type
+        include Google::Apis::Core::Hashable
+      
+        # The (sub) fields this type has (if not primitive).
+        # Corresponds to the JSON property `fields`
+        # @return [Array<Google::Apis::HealthcareV1beta1::Field>]
+        attr_accessor :fields
+      
+        # The name of this type. This would be the segment or datatype name.
+        # For example, "PID" or "XPN".
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If this is a primitive type then this field is the type of the primitive
+        # For example, STRING. Leave unspecified for composite types.
+        # Corresponds to the JSON property `primitive`
+        # @return [String]
+        attr_accessor :primitive
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @fields = args[:fields] if args.key?(:fields)
+          @name = args[:name] if args.key?(:name)
+          @primitive = args[:primitive] if args.key?(:primitive)
+        end
+      end
+      
+      # Describes a selector for extracting and matching an MSH field to a value.
+      class VersionSource
+        include Google::Apis::Core::Hashable
+      
+        # The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
+        # Corresponds to the JSON property `mshField`
+        # @return [String]
+        attr_accessor :msh_field
+      
+        # The value to match with the field. For example, "My Application Name" or
+        # "2.3".
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @msh_field = args[:msh_field] if args.key?(:msh_field)
+          @value = args[:value] if args.key?(:value)
         end
       end
     end

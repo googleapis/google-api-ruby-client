@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class FeatureConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GcePersistentDiskCsiDriverConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,13 +382,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PremiumConfig
+      class PrivateClusterConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class PrivateClusterConfig
+      class PrivateClusterMasterGlobalAccessConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -550,19 +544,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TierConfig
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TierSettings
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TimeWindow
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TpuConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -813,7 +801,7 @@ module Google
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
           property :subnetwork, as: 'subnetwork'
-          property :tier_settings, as: 'tierSettings', class: Google::Apis::ContainerV1beta1::TierSettings, decorator: Google::Apis::ContainerV1beta1::TierSettings::Representation
+          property :tpu_config, as: 'tpuConfig', class: Google::Apis::ContainerV1beta1::TpuConfig, decorator: Google::Apis::ContainerV1beta1::TpuConfig::Representation
       
           property :tpu_ipv4_cidr_block, as: 'tpuIpv4CidrBlock'
           property :vertical_pod_autoscaling, as: 'verticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
@@ -879,6 +867,8 @@ module Google
           property :desired_resource_usage_export_config, as: 'desiredResourceUsageExportConfig', class: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig, decorator: Google::Apis::ContainerV1beta1::ResourceUsageExportConfig::Representation
       
           property :desired_shielded_nodes, as: 'desiredShieldedNodes', class: Google::Apis::ContainerV1beta1::ShieldedNodes, decorator: Google::Apis::ContainerV1beta1::ShieldedNodes::Representation
+      
+          property :desired_tpu_config, as: 'desiredTpuConfig', class: Google::Apis::ContainerV1beta1::TpuConfig, decorator: Google::Apis::ContainerV1beta1::TpuConfig::Representation
       
           property :desired_vertical_pod_autoscaling, as: 'desiredVerticalPodAutoscaling', class: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling, decorator: Google::Apis::ContainerV1beta1::VerticalPodAutoscaling::Representation
       
@@ -953,14 +943,6 @@ module Google
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-        end
-      end
-      
-      class FeatureConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :feature, as: 'feature'
-          property :tier, as: 'tier'
         end
       end
       
@@ -1355,26 +1337,24 @@ module Google
         end
       end
       
-      class PremiumConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :features, as: 'features', class: Google::Apis::ContainerV1beta1::FeatureConfig, decorator: Google::Apis::ContainerV1beta1::FeatureConfig::Representation
-      
-          collection :tiers, as: 'tiers', class: Google::Apis::ContainerV1beta1::TierConfig, decorator: Google::Apis::ContainerV1beta1::TierConfig::Representation
-      
-        end
-      end
-      
       class PrivateClusterConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :enable_peering_route_sharing, as: 'enablePeeringRouteSharing'
           property :enable_private_endpoint, as: 'enablePrivateEndpoint'
           property :enable_private_nodes, as: 'enablePrivateNodes'
+          property :master_global_access_config, as: 'masterGlobalAccessConfig', class: Google::Apis::ContainerV1beta1::PrivateClusterMasterGlobalAccessConfig, decorator: Google::Apis::ContainerV1beta1::PrivateClusterMasterGlobalAccessConfig::Representation
+      
           property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
           property :peering_name, as: 'peeringName'
           property :private_endpoint, as: 'privateEndpoint'
           property :public_endpoint, as: 'publicEndpoint'
+        end
+      end
+      
+      class PrivateClusterMasterGlobalAccessConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
         end
       end
       
@@ -1459,8 +1439,6 @@ module Google
       
           property :default_cluster_version, as: 'defaultClusterVersion'
           property :default_image_type, as: 'defaultImageType'
-          property :premium_config, as: 'premiumConfig', class: Google::Apis::ContainerV1beta1::PremiumConfig, decorator: Google::Apis::ContainerV1beta1::PremiumConfig::Representation
-      
           collection :valid_image_types, as: 'validImageTypes'
           collection :valid_master_versions, as: 'validMasterVersions'
           collection :valid_node_versions, as: 'validNodeVersions'
@@ -1644,26 +1622,20 @@ module Google
         end
       end
       
-      class TierConfig
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :parent, as: 'parent'
-          property :tier, as: 'tier'
-        end
-      end
-      
-      class TierSettings
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :tier, as: 'tier'
-        end
-      end
-      
       class TimeWindow
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :end_time, as: 'endTime'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class TpuConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enabled, as: 'enabled'
+          property :ipv4_cidr_block, as: 'ipv4CidrBlock'
+          property :use_service_networking, as: 'useServiceNetworking'
         end
       end
       

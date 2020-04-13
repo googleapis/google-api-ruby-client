@@ -22,6 +22,28 @@ module Google
   module Apis
     module IapV1
       
+      # Custom content configuration for access denied page.
+      # IAP allows customers to define a custom URI to use as the error page when
+      # access is denied to users. If IAP prevents access to this page, the default
+      # IAP error page will be displayed instead.
+      class AccessDeniedPageSettings
+        include Google::Apis::Core::Hashable
+      
+        # The URI to be redirected to when access is denied.
+        # Corresponds to the JSON property `accessDeniedPageUri`
+        # @return [String]
+        attr_accessor :access_denied_page_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @access_denied_page_uri = args[:access_denied_page_uri] if args.key?(:access_denied_page_uri)
+        end
+      end
+      
       # Access related settings for IAP protected apps.
       class AccessSettings
         include Google::Apis::Core::Hashable
@@ -43,6 +65,15 @@ module Google
         # @return [Google::Apis::IapV1::OAuthSettings]
         attr_accessor :oauth_settings
       
+        # PolicyDelegationConfig allows google-internal teams to use IAP for apps
+        # hosted in a tenant project. Using these settings, the app can delegate
+        # permission check to happen against the linked customer project.
+        # This is only ever supposed to be used by google internal teams, hence the
+        # restriction on the proto.
+        # Corresponds to the JSON property `policyDelegationSettings`
+        # @return [Google::Apis::IapV1::PolicyDelegationSettings]
+        attr_accessor :policy_delegation_settings
+      
         def initialize(**args)
            update!(**args)
         end
@@ -52,12 +83,21 @@ module Google
           @cors_settings = args[:cors_settings] if args.key?(:cors_settings)
           @gcip_settings = args[:gcip_settings] if args.key?(:gcip_settings)
           @oauth_settings = args[:oauth_settings] if args.key?(:oauth_settings)
+          @policy_delegation_settings = args[:policy_delegation_settings] if args.key?(:policy_delegation_settings)
         end
       end
       
       # Wrapper over application specific settings for IAP.
       class ApplicationSettings
         include Google::Apis::Core::Hashable
+      
+        # Custom content configuration for access denied page.
+        # IAP allows customers to define a custom URI to use as the error page when
+        # access is denied to users. If IAP prevents access to this page, the default
+        # IAP error page will be displayed instead.
+        # Corresponds to the JSON property `accessDeniedPageSettings`
+        # @return [Google::Apis::IapV1::AccessDeniedPageSettings]
+        attr_accessor :access_denied_page_settings
       
         # Configuration for RCTokens generated for CSM workloads protected by IAP.
         # RCTokens are IAP generated JWTs that can be verified at the application. The
@@ -73,6 +113,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @access_denied_page_settings = args[:access_denied_page_settings] if args.key?(:access_denied_page_settings)
           @csm_settings = args[:csm_settings] if args.key?(:csm_settings)
         end
       end
@@ -662,6 +703,88 @@ module Google
         end
       end
       
+      # PolicyDelegationConfig allows google-internal teams to use IAP for apps
+      # hosted in a tenant project. Using these settings, the app can delegate
+      # permission check to happen against the linked customer project.
+      # This is only ever supposed to be used by google internal teams, hence the
+      # restriction on the proto.
+      class PolicyDelegationSettings
+        include Google::Apis::Core::Hashable
+      
+        # Permission to check in IAM.
+        # Corresponds to the JSON property `iamPermission`
+        # @return [String]
+        attr_accessor :iam_permission
+      
+        # The DNS name of the service (e.g. "resourcemanager.googleapis.com").
+        # This should be the domain name part of the full resource names (see
+        # https://aip.dev/122#full-resource-names), which is usually
+        # the same as IamServiceSpec.service of the service where the resource type
+        # is defined.
+        # Corresponds to the JSON property `iamServiceName`
+        # @return [String]
+        attr_accessor :iam_service_name
+      
+        # Policy name to be checked
+        # Corresponds to the JSON property `policyName`
+        # @return [Google::Apis::IapV1::PolicyName]
+        attr_accessor :policy_name
+      
+        # IAM resource to check permission on
+        # Corresponds to the JSON property `resource`
+        # @return [Google::Apis::IapV1::Resource]
+        attr_accessor :resource
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @iam_permission = args[:iam_permission] if args.key?(:iam_permission)
+          @iam_service_name = args[:iam_service_name] if args.key?(:iam_service_name)
+          @policy_name = args[:policy_name] if args.key?(:policy_name)
+          @resource = args[:resource] if args.key?(:resource)
+        end
+      end
+      
+      # 
+      class PolicyName
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # For Cloud IAM:
+        # The location of the Policy.
+        # Must be empty or "global" for Policies owned by global IAM.  Must name a
+        # region from prodspec/cloud-iam-cloudspec for Regional IAM Policies, see
+        # http://go/iam-faq#where-is-iam-currently-deployed.
+        # For Local IAM:
+        # This field should be set to "local".
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # Valid values for type might be 'gce', 'gcs', 'project', 'account' etc.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @region = args[:region] if args.key?(:region)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
       # The request sent to ResetIdentityAwareProxyClientSecret.
       class ResetIdentityAwareProxyClientSecretRequest
         include Google::Apis::Core::Hashable
@@ -672,6 +795,73 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # 
+      class Resource
+        include Google::Apis::Core::Hashable
+      
+        # The service defined labels of the resource on which the conditions will be
+        # evaluated. The semantics - including the key names - are vague to IAM.
+        # If the effective condition has a reference to a `resource.labels[foo]`
+        # construct, IAM consults with this map to retrieve the values associated
+        # with `foo` key for Conditions evaluation. If the provided key is not found
+        # in the labels map, the condition would evaluate to false.
+        # This field is in limited use. If your intended use case is not expected
+        # to express resource.labels attribute in IAM Conditions, leave this field
+        # empty. Before planning on using this attribute please:
+        # * Read go/iam-conditions-labels-comm and ensure your service can meet the
+        # data availability and management requirements.
+        # * Talk to iam-conditions-eng@ about your use case.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
+        # Name of the resource on which conditions will be evaluated.
+        # Must use the Relative Resource Name of the resource, which is the URI
+        # path of the resource without the leading "/". Examples are
+        # "projects/_/buckets/[BUCKET-ID]" for storage buckets or
+        # "projects/[PROJECT-ID]/global/firewalls/[FIREWALL-ID]" for a firewall.
+        # This field is required for evaluating conditions with rules on resource
+        # names. For a `list` permission check, the resource.name value must be set
+        # to the parent resource. If the parent resource is a project, this field
+        # should be left unset.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # The name of the service this resource belongs to. It is configured using
+        # the official_service_name of the Service as defined in service
+        # configurations under //configs/cloud/resourcetypes.
+        # For example, the official_service_name of cloud resource manager service
+        # is set as 'cloudresourcemanager.googleapis.com' according to
+        # //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml
+        # Corresponds to the JSON property `service`
+        # @return [String]
+        attr_accessor :service
+      
+        # The public resource type name of the resource on which conditions will be
+        # evaluated. It is configured using the official_name of the ResourceType as
+        # defined in service configurations under //configs/cloud/resourcetypes.
+        # For example, the official_name for GCP projects is set as
+        # 'cloudresourcemanager.googleapis.com/Project' according to
+        # //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml
+        # For details see go/iam-conditions-integration-guide.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @labels = args[:labels] if args.key?(:labels)
+          @name = args[:name] if args.key?(:name)
+          @service = args[:service] if args.key?(:service)
+          @type = args[:type] if args.key?(:type)
         end
       end
       

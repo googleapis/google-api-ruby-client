@@ -22,19 +22,19 @@ module Google
     #
     # Obtains end-user authorization grants for use with other Google APIs.
     #
-    # @see https://developers.google.com/accounts/docs/OAuth2
+    # @see https://developers.google.com/identity/protocols/oauth2/
     module Oauth2V2
       VERSION = 'V2'
       REVISION = '20200213'
-
-      # Associate you with your personal info on Google
-      AUTH_PLUS_ME = 'https://www.googleapis.com/auth/plus.me'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'
 
       # See your personal info, including any personal info you've made publicly available
       AUTH_USERINFO_PROFILE = 'https://www.googleapis.com/auth/userinfo.profile'
+
+      # Associate you with your personal info on Google
+      PENID = 'openid'
     end
   end
 end

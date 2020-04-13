@@ -420,6 +420,11 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::GceClusterConfig]
         attr_accessor :gce_cluster_config
       
+        # The GKE config for this cluster.
+        # Corresponds to the JSON property `gkeClusterConfig`
+        # @return [Google::Apis::DataprocV1beta2::GkeClusterConfig]
+        attr_accessor :gke_cluster_config
+      
         # Optional. Commands to execute on each node after config is completed. By
         # default, executables are run on master and all worker nodes. You can test a
         # node's <code>role</code> metadata to run an executable on a master or worker
@@ -479,6 +484,7 @@ module Google
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
           @endpoint_config = args[:endpoint_config] if args.key?(:endpoint_config)
           @gce_cluster_config = args[:gce_cluster_config] if args.key?(:gce_cluster_config)
+          @gke_cluster_config = args[:gke_cluster_config] if args.key?(:gke_cluster_config)
           @initialization_actions = args[:initialization_actions] if args.key?(:initialization_actions)
           @lifecycle_config = args[:lifecycle_config] if args.key?(:lifecycle_config)
           @master_config = args[:master_config] if args.key?(:master_config)
@@ -1058,6 +1064,25 @@ module Google
         end
       end
       
+      # The GKE config for this cluster.
+      class GkeClusterConfig
+        include Google::Apis::Core::Hashable
+      
+        # A full, namespace-isolated deployment target for an existing GKE cluster.
+        # Corresponds to the JSON property `namespacedGkeDeploymentTarget`
+        # @return [Google::Apis::DataprocV1beta2::NamespacedGkeDeploymentTarget]
+        attr_accessor :namespaced_gke_deployment_target
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @namespaced_gke_deployment_target = args[:namespaced_gke_deployment_target] if args.key?(:namespaced_gke_deployment_target)
+        end
+      end
+      
       # A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/
       # docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/
       # MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/
@@ -1260,8 +1285,18 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::DiskConfig]
         attr_accessor :disk_config
       
-        # Optional. The Compute Engine image resource used for cluster instances. It can
-        # be specified or may be inferred from SoftwareConfig.image_version.
+        # Optional. The Compute Engine image resource used for cluster instances.The URI
+        # can represent an image or image family.Image examples:
+        # https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[
+        # image-id]
+        # projects/[project_id]/global/images/[image-id]
+        # image-idImage family examples. Dataproc will use the most recent image from
+        # the family:
+        # https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/
+        # family/[custom-image-family-name]
+        # projects/[project_id]/global/images/family/[custom-image-family-name]If the
+        # URI is unspecified, it will be inferred from SoftwareConfig.image_version or
+        # the system default.
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -1272,7 +1307,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :instance_names
       
-        # Optional. Specifies that this instance group contains preemptible instances.
+        # Output only. Specifies that this instance group contains preemptible instances.
         # Corresponds to the JSON property `isPreemptible`
         # @return [Boolean]
         attr_accessor :is_preemptible
@@ -1307,7 +1342,9 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_instances
       
-        # Optional. Specifies the preemptibility of the instance group.
+        # Optional. Specifies the preemptibility of the instance group.The default value
+        # for master and worker groups is NON_PREEMPTIBLE. This default cannot be
+        # changed.The default value for secondary instances is PREEMPTIBLE.
         # Corresponds to the JSON property `preemptibility`
         # @return [String]
         attr_accessor :preemptibility
@@ -1443,7 +1480,9 @@ module Google
         # @return [Google::Apis::DataprocV1beta2::JobPlacement]
         attr_accessor :placement
       
-        # A Dataproc job for running Presto (https://prestosql.io/) queries
+        # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
+        # The Dataproc Presto Optional Component must be enabled when the cluster is
+        # created to submit a Presto job to the cluster.
         # Corresponds to the JSON property `prestoJob`
         # @return [Google::Apis::DataprocV1beta2::PrestoJob]
         attr_accessor :presto_job
@@ -1534,6 +1573,43 @@ module Google
           @status_history = args[:status_history] if args.key?(:status_history)
           @submitted_by = args[:submitted_by] if args.key?(:submitted_by)
           @yarn_applications = args[:yarn_applications] if args.key?(:yarn_applications)
+        end
+      end
+      
+      # Job Operation metadata.
+      class JobMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The job id.
+        # Corresponds to the JSON property `jobId`
+        # @return [String]
+        attr_accessor :job_id
+      
+        # Output only. Operation type.
+        # Corresponds to the JSON property `operationType`
+        # @return [String]
+        attr_accessor :operation_type
+      
+        # Output only. Job submission time.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        # Dataproc job status.
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DataprocV1beta2::JobStatus]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @job_id = args[:job_id] if args.key?(:job_id)
+          @operation_type = args[:operation_type] if args.key?(:operation_type)
+          @start_time = args[:start_time] if args.key?(:start_time)
+          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1681,7 +1757,8 @@ module Google
         # @return [String]
         attr_accessor :cross_realm_trust_shared_password_uri
       
-        # Optional. Flag to indicate whether to Kerberize the cluster.
+        # Optional. Flag to indicate whether to Kerberize the cluster (default: false).
+        # Set this field to true to enable Kerberos on a cluster.
         # Corresponds to the JSON property `enableKerberos`
         # @return [Boolean]
         attr_accessor :enable_kerberos
@@ -2037,6 +2114,32 @@ module Google
         end
       end
       
+      # A full, namespace-isolated deployment target for an existing GKE cluster.
+      class NamespacedGkeDeploymentTarget
+        include Google::Apis::Core::Hashable
+      
+        # Optional. A namespace within the GKE cluster to deploy into.
+        # Corresponds to the JSON property `clusterNamespace`
+        # @return [String]
+        attr_accessor :cluster_namespace
+      
+        # Optional. The target GKE cluster to deploy to. Format: 'projects/`project`/
+        # locations/`location`/clusters/`cluster_id`'
+        # Corresponds to the JSON property `targetGkeCluster`
+        # @return [String]
+        attr_accessor :target_gke_cluster
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_namespace = args[:cluster_namespace] if args.key?(:cluster_namespace)
+          @target_gke_cluster = args[:target_gke_cluster] if args.key?(:target_gke_cluster)
+        end
+      end
+      
       # Specifies an executable to run on a fully configured node and a timeout period
       # for executable completion.
       class NodeInitializationAction
@@ -2169,6 +2272,13 @@ module Google
         # @return [Array<String>]
         attr_accessor :prerequisite_step_ids
       
+        # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
+        # The Dataproc Presto Optional Component must be enabled when the cluster is
+        # created to submit a Presto job to the cluster.
+        # Corresponds to the JSON property `prestoJob`
+        # @return [Google::Apis::DataprocV1beta2::PrestoJob]
+        attr_accessor :presto_job
+      
         # A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/
         # python-programming-guide.html) applications on YARN.
         # Corresponds to the JSON property `pysparkJob`
@@ -2188,6 +2298,12 @@ module Google
         # Corresponds to the JSON property `sparkJob`
         # @return [Google::Apis::DataprocV1beta2::SparkJob]
         attr_accessor :spark_job
+      
+        # A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/
+        # sparkr.html) applications on YARN.
+        # Corresponds to the JSON property `sparkRJob`
+        # @return [Google::Apis::DataprocV1beta2::SparkRJob]
+        attr_accessor :spark_r_job
       
         # A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/)
         # queries.
@@ -2216,9 +2332,11 @@ module Google
           @labels = args[:labels] if args.key?(:labels)
           @pig_job = args[:pig_job] if args.key?(:pig_job)
           @prerequisite_step_ids = args[:prerequisite_step_ids] if args.key?(:prerequisite_step_ids)
+          @presto_job = args[:presto_job] if args.key?(:presto_job)
           @pyspark_job = args[:pyspark_job] if args.key?(:pyspark_job)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
           @spark_job = args[:spark_job] if args.key?(:spark_job)
+          @spark_r_job = args[:spark_r_job] if args.key?(:spark_r_job)
           @spark_sql_job = args[:spark_sql_job] if args.key?(:spark_sql_job)
           @step_id = args[:step_id] if args.key?(:step_id)
         end
@@ -2420,7 +2538,9 @@ module Google
         end
       end
       
-      # A Dataproc job for running Presto (https://prestosql.io/) queries
+      # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
+      # The Dataproc Presto Optional Component must be enabled when the cluster is
+      # created to submit a Presto job to the cluster.
       class PrestoJob
         include Google::Apis::Core::Hashable
       
@@ -2957,6 +3077,38 @@ module Google
         end
       end
       
+      # A request to start a cluster.
+      class StartClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifying the cluster_uuid means the RPC should fail (with error
+        # NOT_FOUND) if cluster with specified UUID does not exist.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # Optional. A unique id used to identify the request. If the server receives two
+        # StartClusterRequest requests with the same id, then the second request will be
+        # ignored and the first google.longrunning.Operation created and stored in the
+        # backend is returned.It is recommended to always set this value to a UUID (
+        # https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+        # contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        # ). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @request_id = args[:request_id] if args.key?(:request_id)
+        end
+      end
+      
       # The Status type defines a logical error model that is suitable for different
       # programming environments, including REST APIs and RPC APIs. It is used by gRPC
       # (https://github.com/grpc). Each Status message contains three pieces of data:
@@ -2993,6 +3145,38 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # A request to stop a cluster.
+      class StopClusterRequest
+        include Google::Apis::Core::Hashable
+      
+        # Optional. Specifying the cluster_uuid means the RPC should fail (with error
+        # NOT_FOUND) if cluster with specified UUID does not exist.
+        # Corresponds to the JSON property `clusterUuid`
+        # @return [String]
+        attr_accessor :cluster_uuid
+      
+        # Optional. A unique id used to identify the request. If the server receives two
+        # StopClusterRequest requests with the same id, then the second request will be
+        # ignored and the first google.longrunning.Operation created and stored in the
+        # backend is returned.It is recommended to always set this value to a UUID (
+        # https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must
+        # contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-
+        # ). The maximum length is 40 characters.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cluster_uuid = args[:cluster_uuid] if args.key?(:cluster_uuid)
+          @request_id = args[:request_id] if args.key?(:request_id)
         end
       end
       

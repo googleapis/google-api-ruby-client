@@ -244,6 +244,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LabelValue
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LatencyCriteria
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -424,6 +430,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PointData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryTimeSeriesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class QueryTimeSeriesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Range
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -508,6 +532,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TimeSeriesData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeSeriesDescriptor
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TimeSeriesQueryLanguageCondition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TimeSeriesRatio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -539,6 +581,12 @@ module Google
       end
       
       class UptimeCheckIp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ValueDescriptor
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -703,6 +751,8 @@ module Google
           property :condition_absent, as: 'conditionAbsent', class: Google::Apis::MonitoringV3::MetricAbsence, decorator: Google::Apis::MonitoringV3::MetricAbsence::Representation
       
           property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
+      
+          property :condition_time_series_query_language, as: 'conditionTimeSeriesQueryLanguage', class: Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition::Representation
       
           property :display_name, as: 'displayName'
           property :name, as: 'name'
@@ -925,6 +975,15 @@ module Google
           property :description, as: 'description'
           property :key, as: 'key'
           property :value_type, as: 'valueType'
+        end
+      end
+      
+      class LabelValue
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bool_value, as: 'boolValue'
+          property :int64_value, :numeric_string => true, as: 'int64Value'
+          property :string_value, as: 'stringValue'
         end
       end
       
@@ -1232,6 +1291,38 @@ module Google
         end
       end
       
+      class PointData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :time_interval, as: 'timeInterval', class: Google::Apis::MonitoringV3::TimeInterval, decorator: Google::Apis::MonitoringV3::TimeInterval::Representation
+      
+          collection :values, as: 'values', class: Google::Apis::MonitoringV3::TypedValue, decorator: Google::Apis::MonitoringV3::TypedValue::Representation
+      
+        end
+      end
+      
+      class QueryTimeSeriesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :page_size, as: 'pageSize'
+          property :page_token, as: 'pageToken'
+          property :query, as: 'query'
+        end
+      end
+      
+      class QueryTimeSeriesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :partial_errors, as: 'partialErrors', class: Google::Apis::MonitoringV3::Status, decorator: Google::Apis::MonitoringV3::Status::Representation
+      
+          collection :time_series_data, as: 'timeSeriesData', class: Google::Apis::MonitoringV3::TimeSeriesData, decorator: Google::Apis::MonitoringV3::TimeSeriesData::Representation
+      
+          property :time_series_descriptor, as: 'timeSeriesDescriptor', class: Google::Apis::MonitoringV3::TimeSeriesDescriptor, decorator: Google::Apis::MonitoringV3::TimeSeriesDescriptor::Representation
+      
+        end
+      end
+      
       class Range
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1370,6 +1461,34 @@ module Google
         end
       end
       
+      class TimeSeriesData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_values, as: 'labelValues', class: Google::Apis::MonitoringV3::LabelValue, decorator: Google::Apis::MonitoringV3::LabelValue::Representation
+      
+          collection :point_data, as: 'pointData', class: Google::Apis::MonitoringV3::PointData, decorator: Google::Apis::MonitoringV3::PointData::Representation
+      
+        end
+      end
+      
+      class TimeSeriesDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :label_descriptors, as: 'labelDescriptors', class: Google::Apis::MonitoringV3::LabelDescriptor, decorator: Google::Apis::MonitoringV3::LabelDescriptor::Representation
+      
+          collection :point_descriptors, as: 'pointDescriptors', class: Google::Apis::MonitoringV3::ValueDescriptor, decorator: Google::Apis::MonitoringV3::ValueDescriptor::Representation
+      
+        end
+      end
+      
+      class TimeSeriesQueryLanguageCondition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :query, as: 'query'
+          property :summary, as: 'summary'
+        end
+      end
+      
       class TimeSeriesRatio
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1444,6 +1563,15 @@ module Google
           property :ip_address, as: 'ipAddress'
           property :location, as: 'location'
           property :region, as: 'region'
+        end
+      end
+      
+      class ValueDescriptor
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :metric_kind, as: 'metricKind'
+          property :value_type, as: 'valueType'
         end
       end
       

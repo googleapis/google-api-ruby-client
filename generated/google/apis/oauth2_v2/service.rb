@@ -30,7 +30,7 @@ module Google
       #    Oauth2 = Google::Apis::Oauth2V2 # Alias the module
       #    service = Oauth2::Oauth2Service.new
       #
-      # @see https://developers.google.com/accounts/docs/OAuth2
+      # @see https://developers.google.com/identity/protocols/oauth2/
       class Oauth2Service < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -54,7 +54,6 @@ module Google
         # 
         # @param [String] access_token
         # @param [String] id_token
-        # @param [String] token_handle
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -74,13 +73,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def tokeninfo(access_token: nil, id_token: nil, token_handle: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def tokeninfo(access_token: nil, id_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'oauth2/v2/tokeninfo', options)
           command.response_representation = Google::Apis::Oauth2V2::Tokeninfo::Representation
           command.response_class = Google::Apis::Oauth2V2::Tokeninfo
           command.query['access_token'] = access_token unless access_token.nil?
           command.query['id_token'] = id_token unless id_token.nil?
-          command.query['token_handle'] = token_handle unless token_handle.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -99,18 +97,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Oauth2V2::Userinfoplus] parsed result object
+        # @yieldparam result [Google::Apis::Oauth2V2::Userinfo] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Oauth2V2::Userinfoplus]
+        # @return [Google::Apis::Oauth2V2::Userinfo]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_userinfo(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'oauth2/v2/userinfo', options)
-          command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
-          command.response_class = Google::Apis::Oauth2V2::Userinfoplus
+          command.response_representation = Google::Apis::Oauth2V2::Userinfo::Representation
+          command.response_class = Google::Apis::Oauth2V2::Userinfo
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -129,18 +127,18 @@ module Google
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::Oauth2V2::Userinfoplus] parsed result object
+        # @yieldparam result [Google::Apis::Oauth2V2::Userinfo] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::Oauth2V2::Userinfoplus]
+        # @return [Google::Apis::Oauth2V2::Userinfo]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_userinfo_v2(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'userinfo/v2/me', options)
-          command.response_representation = Google::Apis::Oauth2V2::Userinfoplus::Representation
-          command.response_class = Google::Apis::Oauth2V2::Userinfoplus
+          command.response_representation = Google::Apis::Oauth2V2::Userinfo::Representation
+          command.response_class = Google::Apis::Oauth2V2::Userinfo
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

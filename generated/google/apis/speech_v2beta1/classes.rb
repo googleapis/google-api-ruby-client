@@ -70,6 +70,12 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The URI of the audio file being transcribed. Empty if the audio was sent
+        # as byte content.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -79,6 +85,7 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       

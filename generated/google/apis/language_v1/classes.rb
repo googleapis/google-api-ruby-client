@@ -349,7 +349,7 @@ module Google
         attr_accessor :confidence
       
         # The name of the category representing the document, from the [predefined
-        # taxonomy](/natural-language/docs/categories).
+        # taxonomy](https://cloud.google.com/natural-language/docs/categories).
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -457,11 +457,11 @@ module Google
         # The language of the document (if not specified, the language is
         # automatically detected). Both ISO and BCP-47 language codes are
         # accepted.<br>
-        # [Language Support](/natural-language/docs/languages)
-        # lists currently supported languages for each API method.
-        # If the language (either specified by the caller or automatically detected)
-        # is not supported by the called API method, an `INVALID_ARGUMENT` error
-        # is returned.
+        # [Language
+        # Support](https://cloud.google.com/natural-language/docs/languages) lists
+        # currently supported languages for each API method. If the language (either
+        # specified by the caller or automatically detected) is not supported by the
+        # called API method, an `INVALID_ARGUMENT` error is returned.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language

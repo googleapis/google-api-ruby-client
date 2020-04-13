@@ -2420,6 +2420,8 @@ module Google
         # @param [String] location_id
         #   The geographic location to process content inspection. Reserved for future
         #   extensions.
+        #   When inspecting images location is restricted to 'global', 'us', 'asia',
+        #   and 'europe'.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3013,6 +3015,7 @@ module Google
         # @param [String] location_id
         #   The geographic location to process the request. Reserved for future
         #   extensions.
+        #   Location is restricted to 'global', 'us', 'asia', and 'europe'.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

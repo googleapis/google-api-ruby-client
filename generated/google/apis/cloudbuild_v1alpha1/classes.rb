@@ -200,6 +200,14 @@ module Google
         # @return [String]
         attr_accessor :project_id
       
+        # TTL in queue for this build. If provided and the build is enqueued longer
+        # than this value, the build will expire and the build status will be
+        # `EXPIRED`.
+        # The TTL starts ticking from create_time.
+        # Corresponds to the JSON property `queueTtl`
+        # @return [String]
+        attr_accessor :queue_ttl
+      
         # Artifacts created by the build pipeline.
         # Corresponds to the JSON property `results`
         # @return [Google::Apis::CloudbuildV1alpha1::Results]
@@ -286,6 +294,7 @@ module Google
           @logs_bucket = args[:logs_bucket] if args.key?(:logs_bucket)
           @options = args[:options] if args.key?(:options)
           @project_id = args[:project_id] if args.key?(:project_id)
+          @queue_ttl = args[:queue_ttl] if args.key?(:queue_ttl)
           @results = args[:results] if args.key?(:results)
           @secrets = args[:secrets] if args.key?(:secrets)
           @source = args[:source] if args.key?(:source)

@@ -438,15 +438,8 @@ module Google
       class CalendarNotification
         include Google::Apis::Core::Hashable
       
-        # The method used to deliver the notification. Possible values are:
+        # The method used to deliver the notification. The possible value is:
         # - "email" - Notifications are sent via email.
-        # - "sms" - Deprecated. Once this feature is shutdown, the API will no longer
-        # return notifications using this method. Any newly added SMS notifications will
-        # be ignored. See  Google Calendar SMS notifications to be removed for more
-        # information.
-        # Notifications are sent via SMS. This value is read-only and is ignored on
-        # inserts and updates. SMS notifications are only available for G Suite
-        # customers.
         # Required when adding a notification.
         # Corresponds to the JSON property `method`
         # @return [String]
@@ -1782,12 +1775,6 @@ module Google
       
         # The method used by this reminder. Possible values are:
         # - "email" - Reminders are sent via email.
-        # - "sms" - Deprecated. Once this feature is shutdown, the API will no longer
-        # return reminders using this method. Any newly added SMS reminders will be
-        # ignored. See  Google Calendar SMS notifications to be removed for more
-        # information.
-        # Reminders are sent via SMS. These are only available for G Suite customers.
-        # Requests to set SMS reminders for other account types are ignored.
         # - "popup" - Reminders are sent via a UI popup.
         # Required when adding a reminder.
         # Corresponds to the JSON property `method`

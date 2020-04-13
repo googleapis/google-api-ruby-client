@@ -3771,8 +3771,8 @@ module Google
         # @return [Google::Apis::DfareportingV3_3::CreativeAssetId]
         attr_accessor :asset_identifier
       
-        # List of detected click tags for assets. This is a read-only auto-generated
-        # field.
+        # List of detected click tags for assets. This is a read-only, auto-generated
+        # field. This field is empty for a rich media asset.
         # Corresponds to the JSON property `clickTags`
         # @return [Array<Google::Apis::DfareportingV3_3::ClickTag>]
         attr_accessor :click_tags
@@ -5623,7 +5623,7 @@ module Google
         # @return [Google::Apis::DfareportingV3_3::DateRange]
         attr_accessor :date_range
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -5643,7 +5643,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The kind of resource this is, in this case dfareporting#file.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#file".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -5712,21 +5713,22 @@ module Google
         end
       end
       
-      # Represents the list of File resources.
+      # 
       class FileList
         include Google::Apis::Core::Hashable
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # The files returned in this response.
+        # 
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DfareportingV3_3::File>]
         attr_accessor :items
       
-        # The kind of list this is, in this case dfareporting#fileList.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#fileList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11844,7 +11846,9 @@ module Google
         end
       end
       
-      # Represents a UserProfile resource.
+      # A UserProfile resource lets you list all DFA user profiles that are associated
+      # with a Google user account. The profile_id needs to be specified in other API
+      # requests. 
       class UserProfile
         include Google::Apis::Core::Hashable
       
@@ -11858,12 +11862,13 @@ module Google
         # @return [String]
         attr_accessor :account_name
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # The kind of resource this is, in this case dfareporting#userProfile.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#userProfile".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -11909,7 +11914,7 @@ module Google
       class UserProfileList
         include Google::Apis::Core::Hashable
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -11919,7 +11924,8 @@ module Google
         # @return [Array<Google::Apis::DfareportingV3_3::UserProfile>]
         attr_accessor :items
       
-        # The kind of list this is, in this case dfareporting#userProfileList.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#userProfileList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

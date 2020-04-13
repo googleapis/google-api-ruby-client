@@ -123,24 +123,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basic, as: 'basic', class: Google::Apis::AccesscontextmanagerV1beta::BasicLevel, decorator: Google::Apis::AccesscontextmanagerV1beta::BasicLevel::Representation
       
-          property :create_time, as: 'createTime'
           property :custom, as: 'custom', class: Google::Apis::AccesscontextmanagerV1beta::CustomLevel, decorator: Google::Apis::AccesscontextmanagerV1beta::CustomLevel::Representation
       
           property :description, as: 'description'
           property :name, as: 'name'
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
         end
       end
       
       class AccessPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -248,14 +244,12 @@ module Google
       class ServicePerimeter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
           property :status, as: 'status', class: Google::Apis::AccesscontextmanagerV1beta::ServicePerimeterConfig, decorator: Google::Apis::AccesscontextmanagerV1beta::ServicePerimeterConfig::Representation
       
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
         end
       end
       

@@ -2007,6 +2007,12 @@ module Google
         # @return [Google::Apis::GamesV1::PlayerExperienceInfo]
         attr_accessor :experience_info
       
+        # The friend status of the given player, relative to the requester. This is
+        # unset if the player is not sharing their friends list with the game.
+        # Corresponds to the JSON property `friendStatus`
+        # @return [String]
+        attr_accessor :friend_status
+      
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string games#player.
         # Corresponds to the JSON property `kind`
@@ -2064,6 +2070,7 @@ module Google
           @banner_url_portrait = args[:banner_url_portrait] if args.key?(:banner_url_portrait)
           @display_name = args[:display_name] if args.key?(:display_name)
           @experience_info = args[:experience_info] if args.key?(:experience_info)
+          @friend_status = args[:friend_status] if args.key?(:friend_status)
           @kind = args[:kind] if args.key?(:kind)
           @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
           @name = args[:name] if args.key?(:name)
@@ -2662,6 +2669,11 @@ module Google
       class ProfileSettings
         include Google::Apis::Core::Hashable
       
+        # Whether the player's friends list is visible to the game.
+        # Corresponds to the JSON property `friendsListVisibility`
+        # @return [String]
+        attr_accessor :friends_list_visibility
+      
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string games#profileSettings.
         # Corresponds to the JSON property `kind`
@@ -2680,6 +2692,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @friends_list_visibility = args[:friends_list_visibility] if args.key?(:friends_list_visibility)
           @kind = args[:kind] if args.key?(:kind)
           @profile_visible = args[:profile_visible] if args.key?(:profile_visible)
         end

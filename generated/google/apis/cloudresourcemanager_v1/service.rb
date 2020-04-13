@@ -369,6 +369,9 @@ module Google
         # @param [String] parent
         #   Required. The name of the resource to list all attached Liens.
         #   For example, `projects/1234`.
+        #   (google.api.field_policy).resource_type annotation is not set since the
+        #   parent depends on the meta api implementation. This field could be a
+        #   project or other sub project resources.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

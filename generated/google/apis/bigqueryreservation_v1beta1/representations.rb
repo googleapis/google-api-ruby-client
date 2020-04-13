@@ -28,6 +28,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Autoscale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BiReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -35,6 +41,12 @@ module Google
       end
       
       class CapacityCommitment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateSlotPoolMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,12 +118,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UpgradeCapacityCommitmentPlanRequest
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Assignment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -119,6 +125,14 @@ module Google
           property :job_type, as: 'jobType'
           property :name, as: 'name'
           property :state, as: 'state'
+        end
+      end
+      
+      class Autoscale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_slots, :numeric_string => true, as: 'currentSlots'
+          property :max_slots, :numeric_string => true, as: 'maxSlots'
         end
       end
       
@@ -142,6 +156,13 @@ module Google
           property :renewal_plan, as: 'renewalPlan'
           property :slot_count, :numeric_string => true, as: 'slotCount'
           property :state, as: 'state'
+        end
+      end
+      
+      class CreateSlotPoolMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :slot_pool, as: 'slotPool'
         end
       end
       
@@ -195,6 +216,8 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscale, as: 'autoscale', class: Google::Apis::BigqueryreservationV1beta1::Autoscale, decorator: Google::Apis::BigqueryreservationV1beta1::Autoscale::Representation
+      
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :name, as: 'name'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'
@@ -233,13 +256,6 @@ module Google
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
-        end
-      end
-      
-      class UpgradeCapacityCommitmentPlanRequest
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :plan, as: 'plan'
         end
       end
     end

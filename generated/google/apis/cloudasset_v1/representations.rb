@@ -418,24 +418,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :basic, as: 'basic', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1BasicLevel, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1BasicLevel::Representation
       
-          property :create_time, as: 'createTime'
           property :custom, as: 'custom', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1CustomLevel, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1CustomLevel::Representation
       
           property :description, as: 'description'
           property :name, as: 'name'
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
         end
       end
       
       class GoogleIdentityAccesscontextmanagerV1AccessPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
+          property :etag, as: 'etag'
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
         end
       end
       
@@ -494,7 +491,6 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1ServicePerimeter
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :create_time, as: 'createTime'
           property :description, as: 'description'
           property :name, as: 'name'
           property :perimeter_type, as: 'perimeterType'
@@ -503,7 +499,6 @@ module Google
           property :status, as: 'status', class: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig, decorator: Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig::Representation
       
           property :title, as: 'title'
-          property :update_time, as: 'updateTime'
           property :use_explicit_dry_run_spec, as: 'useExplicitDryRunSpec'
         end
       end

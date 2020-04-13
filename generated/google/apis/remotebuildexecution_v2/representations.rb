@@ -184,6 +184,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildBazelRemoteExecutionV2NodeProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildBazelRemoteExecutionV2OutputDirectory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -504,6 +510,7 @@ module Google
           property :do_not_cache, as: 'doNotCache'
           property :input_root_digest, as: 'inputRootDigest', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest::Representation
       
+          collection :output_node_properties, as: 'outputNodeProperties'
           property :timeout, as: 'timeout'
         end
       end
@@ -528,6 +535,8 @@ module Google
           collection :output_file_symlinks, as: 'outputFileSymlinks', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputSymlink, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputSymlink::Representation
       
           collection :output_files, as: 'outputFiles', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputFile, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputFile::Representation
+      
+          collection :output_symlinks, as: 'outputSymlinks', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputSymlink, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2OutputSymlink::Representation
       
           property :stderr_digest, as: 'stderrDigest', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest::Representation
       
@@ -621,6 +630,7 @@ module Google
       
           collection :output_directories, as: 'outputDirectories'
           collection :output_files, as: 'outputFiles'
+          collection :output_paths, as: 'outputPaths'
           property :platform, as: 'platform', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Platform, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Platform::Representation
       
           property :working_directory, as: 'workingDirectory'
@@ -649,6 +659,8 @@ module Google
           collection :directories, as: 'directories', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2DirectoryNode, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2DirectoryNode::Representation
       
           collection :files, as: 'files', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2FileNode, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2FileNode::Representation
+      
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty::Representation
       
           collection :symlinks, as: 'symlinks', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2SymlinkNode, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2SymlinkNode::Representation
       
@@ -725,6 +737,7 @@ module Google
           property :exec_enabled, as: 'execEnabled'
           property :execution_priority_capabilities, as: 'executionPriorityCapabilities', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2PriorityCapabilities, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2PriorityCapabilities::Representation
       
+          collection :supported_node_properties, as: 'supportedNodeProperties'
         end
       end
       
@@ -742,6 +755,8 @@ module Google
       
           property :is_executable, as: 'isExecutable'
           property :name, as: 'name'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
         end
       end
       
@@ -779,6 +794,14 @@ module Google
         end
       end
       
+      class BuildBazelRemoteExecutionV2NodeProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
       class BuildBazelRemoteExecutionV2OutputDirectory
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -795,6 +818,8 @@ module Google
           property :digest, as: 'digest', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2Digest::Representation
       
           property :is_executable, as: 'isExecutable'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :path, as: 'path'
         end
       end
@@ -802,6 +827,8 @@ module Google
       class BuildBazelRemoteExecutionV2OutputSymlink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :path, as: 'path'
           property :target, as: 'target'
         end
@@ -877,6 +904,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV2::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :target, as: 'target'
         end
       end

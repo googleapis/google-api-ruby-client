@@ -22,13 +22,13 @@ module Google
     #
     # Writes log entries and manages your Cloud Logging configuration. The table
     # entries below are presented in alphabetical order, not in order of common use.
-    # For explanations of the concepts found in the table entries, read the <a href=
-    # https://cloud.google.com/logging/docs>Cloud Logging documentation</a>.
+    # For explanations of the concepts found in the table entries, read the
+    # documentation at https://cloud.google.com/logging/docs.
     #
     # @see https://cloud.google.com/logging/docs/
     module LoggingV2
       VERSION = 'V2'
-      REVISION = '20200228'
+      REVISION = '20200407'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

@@ -634,14 +634,11 @@ module Google
         attr_accessor :name
       
         # (Optional)
-        # Cloud Run fully managed: not supported
-        # Cloud Run for Anthos: supported
-        # List of ports to expose from the container. Exposing a port here gives
-        # the system additional information about the network connections a
-        # container uses, but is primarily informational. Not specifying a port here
-        # DOES NOT prevent that port from being exposed. Any port which is
-        # listening on the default "0.0.0.0" address inside a container will be
-        # accessible from the network.
+        # List of ports to expose from the container. Only a single port can be
+        # specified. The specified ports must be listening on all interfaces
+        # (0.0.0.0) within the container to be accessible.
+        # If omitted, a port number will be chosen and passed to the container
+        # through the PORT environment variable for the container to listen on.
         # Corresponds to the JSON property `ports`
         # @return [Array<Google::Apis::RunV1::ContainerPort>]
         attr_accessor :ports
@@ -738,15 +735,11 @@ module Google
         end
       end
       
-      # Cloud Run fully managed: not supported
-      # Cloud Run for Anthos: supported
       # ContainerPort represents a network port in a single container.
       class ContainerPort
         include Google::Apis::Core::Hashable
       
         # (Optional)
-        # Cloud Run fully managed: supported
-        # Cloud Run for Anthos: supported
         # Port number the container listens on.
         # This must be a valid port number, 0 < x < 65536.
         # Corresponds to the JSON property `containerPort`
@@ -765,7 +758,7 @@ module Google
         # (Optional)
         # Cloud Run fully managed: not supported
         # Cloud Run for Anthos: supported
-        # Protocol for port. Must be TCP.
+        # Protocol for port. Must be "TCP".
         # Defaults to "TCP".
         # Corresponds to the JSON property `protocol`
         # @return [String]

@@ -12,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/proximitybeacon_v1beta1/service.rb'
-require 'google/apis/proximitybeacon_v1beta1/classes.rb'
-require 'google/apis/proximitybeacon_v1beta1/representations.rb'
+require 'google/apis/healthcare_v1/service.rb'
+require 'google/apis/healthcare_v1/classes.rb'
+require 'google/apis/healthcare_v1/representations.rb'
 
 module Google
   module Apis
-    # Proximity Beacon API
+    # Cloud Healthcare API
     #
-    # Registers, manages, indexes, and searches beacons.
+    # Manage, store, and access healthcare data in Google Cloud Platform.
     #
-    # @see https://developers.google.com/beacons/proximity/
-    module ProximitybeaconV1beta1
-      VERSION = 'V1beta1'
-      REVISION = '20190913'
+    # @see https://cloud.google.com/healthcare
+    module HealthcareV1
+      VERSION = 'V1'
+      REVISION = '20200327'
 
-      # View and modify your beacons
-      AUTH_USERLOCATION_BEACON_REGISTRY = 'https://www.googleapis.com/auth/userlocation.beacon.registry'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

@@ -2040,6 +2040,12 @@ module Google
         # @return [Google::Apis::DriveV2::User]
         attr_accessor :sharing_user
       
+        # Shortcut file details. Only populated for shortcut files, which have the
+        # mimeType field set to application/vnd.google-apps.shortcut.
+        # Corresponds to the JSON property `shortcutDetails`
+        # @return [Google::Apis::DriveV2::File::ShortcutDetails]
+        attr_accessor :shortcut_details
+      
         # The list of spaces which contain the file. Supported values are 'drive', '
         # appDataFolder' and 'photos'.
         # Corresponds to the JSON property `spaces`
@@ -2183,6 +2189,7 @@ module Google
           @shared = args[:shared] if args.key?(:shared)
           @shared_with_me_date = args[:shared_with_me_date] if args.key?(:shared_with_me_date)
           @sharing_user = args[:sharing_user] if args.key?(:sharing_user)
+          @shortcut_details = args[:shortcut_details] if args.key?(:shortcut_details)
           @spaces = args[:spaces] if args.key?(:spaces)
           @team_drive_id = args[:team_drive_id] if args.key?(:team_drive_id)
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
@@ -2210,6 +2217,13 @@ module Google
           # @return [Boolean]
           attr_accessor :can_add_children
           alias_method :can_add_children?, :can_add_children
+        
+          # Whether the current user can add a parent for the item without removing an
+          # existing parent in the same request. Not populated for shared drive files.
+          # Corresponds to the JSON property `canAddMyDriveParent`
+          # @return [Boolean]
+          attr_accessor :can_add_my_drive_parent
+          alias_method :can_add_my_drive_parent?, :can_add_my_drive_parent
         
           # Whether the current user can change the copyRequiresWriterPermission
           # restriction of this file.
@@ -2375,6 +2389,13 @@ module Google
           attr_accessor :can_remove_children
           alias_method :can_remove_children?, :can_remove_children
         
+          # Whether the current user can remove a parent from the item without adding
+          # another parent in the same request. Not populated for shared drive files.
+          # Corresponds to the JSON property `canRemoveMyDriveParent`
+          # @return [Boolean]
+          attr_accessor :can_remove_my_drive_parent
+          alias_method :can_remove_my_drive_parent?, :can_remove_my_drive_parent
+        
           # Whether the current user can rename this file.
           # Corresponds to the JSON property `canRename`
           # @return [Boolean]
@@ -2413,6 +2434,7 @@ module Google
           # Update properties of this object
           def update!(**args)
             @can_add_children = args[:can_add_children] if args.key?(:can_add_children)
+            @can_add_my_drive_parent = args[:can_add_my_drive_parent] if args.key?(:can_add_my_drive_parent)
             @can_change_copy_requires_writer_permission = args[:can_change_copy_requires_writer_permission] if args.key?(:can_change_copy_requires_writer_permission)
             @can_change_restricted_download = args[:can_change_restricted_download] if args.key?(:can_change_restricted_download)
             @can_comment = args[:can_comment] if args.key?(:can_comment)
@@ -2437,6 +2459,7 @@ module Google
             @can_read_revisions = args[:can_read_revisions] if args.key?(:can_read_revisions)
             @can_read_team_drive = args[:can_read_team_drive] if args.key?(:can_read_team_drive)
             @can_remove_children = args[:can_remove_children] if args.key?(:can_remove_children)
+            @can_remove_my_drive_parent = args[:can_remove_my_drive_parent] if args.key?(:can_remove_my_drive_parent)
             @can_rename = args[:can_rename] if args.key?(:can_rename)
             @can_share = args[:can_share] if args.key?(:can_share)
             @can_trash = args[:can_trash] if args.key?(:can_trash)
@@ -2532,7 +2555,8 @@ module Google
           # @return [String]
           attr_accessor :metering_mode
         
-          # The rotation in clockwise degrees from the image's original orientation.
+          # The number of clockwise 90 degree rotations applied from the image's original
+          # orientation.
           # Corresponds to the JSON property `rotation`
           # @return [Fixnum]
           attr_accessor :rotation
@@ -2690,6 +2714,34 @@ module Google
             @starred = args[:starred] if args.key?(:starred)
             @trashed = args[:trashed] if args.key?(:trashed)
             @viewed = args[:viewed] if args.key?(:viewed)
+          end
+        end
+        
+        # Shortcut file details. Only populated for shortcut files, which have the
+        # mimeType field set to application/vnd.google-apps.shortcut.
+        class ShortcutDetails
+          include Google::Apis::Core::Hashable
+        
+          # The ID of the file that this shortcut points to.
+          # Corresponds to the JSON property `targetId`
+          # @return [String]
+          attr_accessor :target_id
+        
+          # The MIME type of the file that this shortcut points to. The value of this
+          # field is a snapshot of the target's MIME type, captured when the shortcut is
+          # created.
+          # Corresponds to the JSON property `targetMimeType`
+          # @return [String]
+          attr_accessor :target_mime_type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @target_id = args[:target_id] if args.key?(:target_id)
+            @target_mime_type = args[:target_mime_type] if args.key?(:target_mime_type)
           end
         end
         
@@ -3097,7 +3149,7 @@ module Google
           alias_method :inherited?, :inherited
         
           # The ID of the item from which this permission is inherited. This is an output-
-          # only field and is only populated for members of the shared drive.
+          # only field.
           # Corresponds to the JSON property `inheritedFrom`
           # @return [String]
           attr_accessor :inherited_from

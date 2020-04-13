@@ -742,6 +742,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GooglePrivacyDlpV2MetadataLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GooglePrivacyDlpV2NumericalStatsConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -965,6 +971,12 @@ module Google
       end
       
       class GooglePrivacyDlpV2StorageConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GooglePrivacyDlpV2StorageMetadataLabel
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1451,6 +1463,8 @@ module Google
           property :document_location, as: 'documentLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2DocumentLocation::Representation
       
           property :image_location, as: 'imageLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ImageLocation::Representation
+      
+          property :metadata_location, as: 'metadataLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataLocation::Representation
       
           property :record_location, as: 'recordLocation', class: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2RecordLocation::Representation
       
@@ -2394,6 +2408,8 @@ module Google
       
           property :codepoint_range, as: 'codepointRange', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Range, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Range::Representation
       
+          property :container, as: 'container', class: Google::Apis::DlpV2::GooglePrivacyDlpV2Container, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2Container::Representation
+      
           collection :content_locations, as: 'contentLocations', class: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentLocation, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2ContentLocation::Representation
       
         end
@@ -2402,6 +2418,15 @@ module Google
       class GooglePrivacyDlpV2Manual
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class GooglePrivacyDlpV2MetadataLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :storage_label, as: 'storageLabel', class: Google::Apis::DlpV2::GooglePrivacyDlpV2StorageMetadataLabel, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2StorageMetadataLabel::Representation
+      
+          property :type, as: 'type'
         end
       end
       
@@ -2785,6 +2810,13 @@ module Google
       
           property :timespan_config, as: 'timespanConfig', class: Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig, decorator: Google::Apis::DlpV2::GooglePrivacyDlpV2TimespanConfig::Representation
       
+        end
+      end
+      
+      class GooglePrivacyDlpV2StorageMetadataLabel
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
         end
       end
       

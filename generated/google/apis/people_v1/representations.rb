@@ -533,6 +533,7 @@ module Google
       class Gender
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :address_me_as, as: 'addressMeAs'
           property :formatted_value, as: 'formattedValue'
           property :metadata, as: 'metadata', class: Google::Apis::PeopleV1::FieldMetadata, decorator: Google::Apis::PeopleV1::FieldMetadata::Representation
       

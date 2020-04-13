@@ -205,6 +205,7 @@ module Google
           property :display_name, as: 'displayName'
           property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesManagementV1management::GamesPlayerExperienceInfoResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayerExperienceInfoResource::Representation
       
+          property :friend_status, as: 'friendStatus'
           property :kind, as: 'kind'
           property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesManagementV1management::GamesPlayedResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayedResource::Representation
       

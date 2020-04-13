@@ -94,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BuildBazelRemoteExecutionV2NodeProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BuildBazelRemoteExecutionV2OutputDirectory
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -378,6 +384,7 @@ module Google
           property :do_not_cache, as: 'doNotCache'
           property :input_root_digest, as: 'inputRootDigest', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest::Representation
       
+          collection :output_node_properties, as: 'outputNodeProperties'
           property :timeout, as: 'timeout'
         end
       end
@@ -396,6 +403,8 @@ module Google
       
           collection :output_files, as: 'outputFiles', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputFile, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputFile::Representation
       
+          collection :output_symlinks, as: 'outputSymlinks', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputSymlink, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2OutputSymlink::Representation
+      
           property :stderr_digest, as: 'stderrDigest', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest::Representation
       
           property :stderr_raw, :base64 => true, as: 'stderrRaw'
@@ -413,6 +422,7 @@ module Google
       
           collection :output_directories, as: 'outputDirectories'
           collection :output_files, as: 'outputFiles'
+          collection :output_paths, as: 'outputPaths'
           property :platform, as: 'platform', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Platform, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Platform::Representation
       
           property :working_directory, as: 'workingDirectory'
@@ -441,6 +451,8 @@ module Google
           collection :directories, as: 'directories', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2DirectoryNode, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2DirectoryNode::Representation
       
           collection :files, as: 'files', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2FileNode, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2FileNode::Representation
+      
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty::Representation
       
           collection :symlinks, as: 'symlinks', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2SymlinkNode, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2SymlinkNode::Representation
       
@@ -504,6 +516,8 @@ module Google
       
           property :is_executable, as: 'isExecutable'
           property :name, as: 'name'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
         end
       end
       
@@ -513,6 +527,14 @@ module Google
           property :digest, as: 'digest', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest::Representation
       
           property :human_readable, as: 'humanReadable'
+        end
+      end
+      
+      class BuildBazelRemoteExecutionV2NodeProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -532,6 +554,8 @@ module Google
           property :digest, as: 'digest', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2Digest::Representation
       
           property :is_executable, as: 'isExecutable'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :path, as: 'path'
         end
       end
@@ -539,6 +563,8 @@ module Google
       class BuildBazelRemoteExecutionV2OutputSymlink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :path, as: 'path'
           property :target, as: 'target'
         end
@@ -575,6 +601,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :name, as: 'name'
+          collection :node_properties, as: 'nodeProperties', class: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty, decorator: Google::Apis::RemotebuildexecutionV1alpha::BuildBazelRemoteExecutionV2NodeProperty::Representation
+      
           property :target, as: 'target'
         end
       end

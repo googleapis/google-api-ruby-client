@@ -200,8 +200,8 @@ module Google
         
         # Create an instance within a project.
         # @param [String] parent
-        #   The unique name of the project in which to create the new instance.
-        #   Values are of the form `projects/<project>`.
+        #   Required. The unique name of the project in which to create the new instance.
+        #   Values are of the form `projects/`project``.
         # @param [Google::Apis::BigtableadminV2::CreateInstanceRequest] create_instance_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -234,8 +234,8 @@ module Google
         
         # Delete an instance from a project.
         # @param [String] name
-        #   The unique name of the instance to be deleted.
-        #   Values are of the form `projects/<project>/instances/<instance>`.
+        #   Required. The unique name of the instance to be deleted.
+        #   Values are of the form `projects/`project`/instances/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -265,8 +265,8 @@ module Google
         
         # Gets information about an instance.
         # @param [String] name
-        #   The unique name of the requested instance. Values are of the form
-        #   `projects/<project>/instances/<instance>`.
+        #   Required. The unique name of the requested instance. Values are of the form
+        #   `projects/`project`/instances/`instance``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -331,8 +331,9 @@ module Google
         
         # Lists information about instances in a project.
         # @param [String] parent
-        #   The unique name of the project for which a list of instances is requested.
-        #   Values are of the form `projects/<project>`.
+        #   Required. The unique name of the project for which a list of instances is
+        #   requested.
+        #   Values are of the form `projects/`project``.
         # @param [String] page_token
         #   DEPRECATED: This field is unused and ignored.
         # @param [String] fields
@@ -366,12 +367,12 @@ module Google
         # Partially updates an instance within a project. This method can modify all
         # fields of an Instance and is the preferred way to update an Instance.
         # @param [String] name
-        #   (`OutputOnly`)
+        #   Required. (`OutputOnly`)
         #   The unique name of the instance. Values are of the form
-        #   `projects/<project>/instances/a-z+[a-z0-9]`.
+        #   `projects/`project`/instances/a-z+[a-z0-9]`.
         # @param [Google::Apis::BigtableadminV2::Instance] instance_object
         # @param [String] update_mask
-        #   The subset of Instance fields which should be replaced.
+        #   Required. The subset of Instance fields which should be replaced.
         #   Must be explicitly set.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -476,9 +477,9 @@ module Google
         # name and type for an Instance. To update other Instance properties, such as
         # labels, use PartialUpdateInstance.
         # @param [String] name
-        #   (`OutputOnly`)
+        #   Required. (`OutputOnly`)
         #   The unique name of the instance. Values are of the form
-        #   `projects/<project>/instances/a-z+[a-z0-9]`.
+        #   `projects/`project`/instances/a-z+[a-z0-9]`.
         # @param [Google::Apis::BigtableadminV2::Instance] instance_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -511,12 +512,13 @@ module Google
         
         # Creates an app profile within an instance.
         # @param [String] parent
-        #   The unique name of the instance in which to create the new app profile.
+        #   Required. The unique name of the instance in which to create the new app
+        #   profile.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>`.
+        #   `projects/`project`/instances/`instance``.
         # @param [Google::Apis::BigtableadminV2::AppProfile] app_profile_object
         # @param [String] app_profile_id
-        #   The ID to be used when referring to the new app profile within its
+        #   Required. The ID to be used when referring to the new app profile within its
         #   instance, e.g., just `myprofile` rather than
         #   `projects/myproject/instances/myinstance/appProfiles/myprofile`.
         # @param [Boolean] ignore_warnings
@@ -554,10 +556,11 @@ module Google
         
         # Deletes an app profile from an instance.
         # @param [String] name
-        #   The unique name of the app profile to be deleted. Values are of the form
-        #   `projects/<project>/instances/<instance>/appProfiles/<app_profile>`.
+        #   Required. The unique name of the app profile to be deleted. Values are of the
+        #   form
+        #   `projects/`project`/instances/`instance`/appProfiles/`app_profile``.
         # @param [Boolean] ignore_warnings
-        #   If true, ignore safety checks when deleting the app profile.
+        #   Required. If true, ignore safety checks when deleting the app profile.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -588,8 +591,8 @@ module Google
         
         # Gets information about an app profile.
         # @param [String] name
-        #   The unique name of the requested app profile. Values are of the form
-        #   `projects/<project>/instances/<instance>/appProfiles/<app_profile>`.
+        #   Required. The unique name of the requested app profile. Values are of the form
+        #   `projects/`project`/instances/`instance`/appProfiles/`app_profile``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -619,10 +622,10 @@ module Google
         
         # Lists information about app profiles in an instance.
         # @param [String] parent
-        #   The unique name of the instance for which a list of app profiles is
+        #   Required. The unique name of the instance for which a list of app profiles is
         #   requested. Values are of the form
-        #   `projects/<project>/instances/<instance>`.
-        #   Use `<instance> = '-'` to list AppProfiles for all Instances in a project,
+        #   `projects/`project`/instances/`instance``.
+        #   Use ``instance` = '-'` to list AppProfiles for all Instances in a project,
         #   e.g., `projects/myproject/instances/-`.
         # @param [Fixnum] page_size
         #   Maximum number of results per page.
@@ -672,7 +675,7 @@ module Google
         # @param [Boolean] ignore_warnings
         #   If true, ignore safety checks when updating the app profile.
         # @param [String] update_mask
-        #   The subset of app profile fields which should be replaced.
+        #   Required. The subset of app profile fields which should be replaced.
         #   If unset, all fields will be replaced.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -707,12 +710,13 @@ module Google
         
         # Creates a cluster within an instance.
         # @param [String] parent
-        #   The unique name of the instance in which to create the new cluster.
+        #   Required. The unique name of the instance in which to create the new cluster.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>`.
+        #   `projects/`project`/instances/`instance``.
         # @param [Google::Apis::BigtableadminV2::Cluster] cluster_object
         # @param [String] cluster_id
-        #   The ID to be used when referring to the new cluster within its instance,
+        #   Required. The ID to be used when referring to the new cluster within its
+        #   instance,
         #   e.g., just `mycluster` rather than
         #   `projects/myproject/instances/myinstance/clusters/mycluster`.
         # @param [String] fields
@@ -747,8 +751,8 @@ module Google
         
         # Deletes a cluster from an instance.
         # @param [String] name
-        #   The unique name of the cluster to be deleted. Values are of the form
-        #   `projects/<project>/instances/<instance>/clusters/<cluster>`.
+        #   Required. The unique name of the cluster to be deleted. Values are of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -778,8 +782,8 @@ module Google
         
         # Gets information about a cluster.
         # @param [String] name
-        #   The unique name of the requested cluster. Values are of the form
-        #   `projects/<project>/instances/<instance>/clusters/<cluster>`.
+        #   Required. The unique name of the requested cluster. Values are of the form
+        #   `projects/`project`/instances/`instance`/clusters/`cluster``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -809,9 +813,10 @@ module Google
         
         # Lists information about clusters in an instance.
         # @param [String] parent
-        #   The unique name of the instance for which a list of clusters is requested.
-        #   Values are of the form `projects/<project>/instances/<instance>`.
-        #   Use `<instance> = '-'` to list Clusters for all Instances in a project,
+        #   Required. The unique name of the instance for which a list of clusters is
+        #   requested.
+        #   Values are of the form `projects/`project`/instances/`instance``.
+        #   Use ``instance` = '-'` to list Clusters for all Instances in a project,
         #   e.g., `projects/myproject/instances/-`.
         # @param [String] page_token
         #   DEPRECATED: This field is unused and ignored.
@@ -845,9 +850,9 @@ module Google
         
         # Updates a cluster within an instance.
         # @param [String] name
-        #   (`OutputOnly`)
+        #   Required. (`OutputOnly`)
         #   The unique name of the cluster. Values are of the form
-        #   `projects/<project>/instances/<instance>/clusters/a-z*`.
+        #   `projects/`project`/instances/`instance`/clusters/a-z*`.
         # @param [Google::Apis::BigtableadminV2::Cluster] cluster_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -949,13 +954,48 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns permissions that the caller has on the specified table resource.
+        # @param [String] resource
+        #   REQUIRED: The resource for which the policy detail is being requested.
+        #   See the operation documentation for the appropriate value for this field.
+        # @param [Google::Apis::BigtableadminV2::TestIamPermissionsRequest] test_iam_permissions_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::BigtableadminV2::TestIamPermissionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::BigtableadminV2::TestIamPermissionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def test_backup_iam_permissions(resource, test_iam_permissions_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+resource}:testIamPermissions', options)
+          command.request_representation = Google::Apis::BigtableadminV2::TestIamPermissionsRequest::Representation
+          command.request_object = test_iam_permissions_request_object
+          command.response_representation = Google::Apis::BigtableadminV2::TestIamPermissionsResponse::Representation
+          command.response_class = Google::Apis::BigtableadminV2::TestIamPermissionsResponse
+          command.params['resource'] = resource unless resource.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Checks replication consistency based on a consistency token, that is, if
         # replication has caught up based on the conditions specified in the token
         # and the check request.
         # @param [String] name
-        #   The unique name of the Table for which to check replication consistency.
+        #   Required. The unique name of the Table for which to check replication
+        #   consistency.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [Google::Apis::BigtableadminV2::CheckConsistencyRequest] check_consistency_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -990,8 +1030,8 @@ module Google
         # The table can be created with a full set of initial column families,
         # specified in the request.
         # @param [String] parent
-        #   The unique name of the instance in which to create the table.
-        #   Values are of the form `projects/<project>/instances/<instance>`.
+        #   Required. The unique name of the instance in which to create the table.
+        #   Values are of the form `projects/`project`/instances/`instance``.
         # @param [Google::Apis::BigtableadminV2::CreateTableRequest] create_table_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1024,9 +1064,9 @@ module Google
         
         # Permanently deletes a specified table and all of its data.
         # @param [String] name
-        #   The unique name of the table to be deleted.
+        #   Required. The unique name of the table to be deleted.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1058,9 +1098,9 @@ module Google
         # specify whether to delete all rows in a table, or only those that match a
         # particular prefix.
         # @param [String] name
-        #   The unique name of the table on which to drop a range of rows.
+        #   Required. The unique name of the table on which to drop a range of rows.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [Google::Apis::BigtableadminV2::DropRowRangeRequest] drop_row_range_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1096,9 +1136,9 @@ module Google
         # before this call started have been replicated. The tokens will be available
         # for 90 days.
         # @param [String] name
-        #   The unique name of the Table for which to create a consistency token.
+        #   Required. The unique name of the Table for which to create a consistency token.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [Google::Apis::BigtableadminV2::GenerateConsistencyTokenRequest] generate_consistency_token_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1131,9 +1171,9 @@ module Google
         
         # Gets metadata information about the specified table.
         # @param [String] name
-        #   The unique name of the requested table.
+        #   Required. The unique name of the requested table.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [String] view
         #   The view to be applied to the returned table's fields.
         #   Defaults to `SCHEMA_VIEW` if unspecified.
@@ -1203,8 +1243,8 @@ module Google
         
         # Lists all tables served from a specified instance.
         # @param [String] parent
-        #   The unique name of the instance for which tables should be listed.
-        #   Values are of the form `projects/<project>/instances/<instance>`.
+        #   Required. The unique name of the instance for which tables should be listed.
+        #   Values are of the form `projects/`project`/instances/`instance``.
         # @param [Fixnum] page_size
         #   Maximum number of results per page.
         #   A page_size of zero lets the server choose the number of items to return.
@@ -1253,9 +1293,9 @@ module Google
         # returns, but data requests received prior to that point may see a table
         # where only some modifications have taken effect.
         # @param [String] name
-        #   The unique name of the table whose families should be modified.
+        #   Required. The unique name of the table whose families should be modified.
         #   Values are of the form
-        #   `projects/<project>/instances/<instance>/tables/<table>`.
+        #   `projects/`project`/instances/`instance`/tables/`table``.
         # @param [Google::Apis::BigtableadminV2::ModifyColumnFamiliesRequest] modify_column_families_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

@@ -244,7 +244,7 @@ module Google
       class AppRestrictionsSchema
         include Google::Apis::Core::Hashable
       
-        # 
+        # Deprecated.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -2649,7 +2649,7 @@ module Google
         # @return [String]
         attr_accessor :completion_token
       
-        # 
+        # Deprecated.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

@@ -26,10 +26,13 @@ module Google
     # @see https://developers.google.com/youtube/v3
     module YoutubeV3
       VERSION = 'V3'
-      REVISION = '20200213'
+      REVISION = '20200402'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'
+
+      # See a list of your current active channel members, their current level, and when they became a member
+      AUTH_YOUTUBE_CHANNEL_MEMBERSHIPS_CREATOR = 'https://www.googleapis.com/auth/youtube.channel-memberships.creator'
 
       # See, edit, and permanently delete your YouTube videos, ratings, comments and captions
       AUTH_YOUTUBE_FORCE_SSL = 'https://www.googleapis.com/auth/youtube.force-ssl'

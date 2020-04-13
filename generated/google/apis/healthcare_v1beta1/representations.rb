@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CharacterMaskConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ExportDicomDataResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ExportResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +179,12 @@ module Google
       end
       
       class FhirStore
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Field
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -250,6 +268,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GroupOrSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hl7SchemaConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hl7TypesConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Hl7V2NotificationConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Hl7V2Store
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -275,6 +317,12 @@ module Google
       end
       
       class ImportDicomDataRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportDicomDataResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -430,6 +478,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SchemaGroup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaPackage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchemaSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SchematizedData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SearchResourcesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -449,6 +521,12 @@ module Google
       end
       
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StreamConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -478,6 +556,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Type
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class VersionSource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -502,6 +592,12 @@ module Google
       
           collection :members, as: 'members'
           property :role, as: 'role'
+        end
+      end
+      
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -660,6 +756,12 @@ module Google
         end
       end
       
+      class ExportDicomDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class ExportResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -699,6 +801,7 @@ module Google
       class FhirStore
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :default_search_handling_strict, as: 'defaultSearchHandlingStrict'
           property :disable_referential_integrity, as: 'disableReferentialIntegrity'
           property :disable_resource_versioning, as: 'disableResourceVersioning'
           property :enable_update_create, as: 'enableUpdateCreate'
@@ -706,7 +809,20 @@ module Google
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
       
+          collection :stream_configs, as: 'streamConfigs', class: Google::Apis::HealthcareV1beta1::StreamConfig, decorator: Google::Apis::HealthcareV1beta1::StreamConfig::Representation
+      
           property :version, as: 'version'
+        end
+      end
+      
+      class Field
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_occurs, as: 'maxOccurs'
+          property :min_occurs, as: 'minOccurs'
+          property :name, as: 'name'
+          property :table, as: 'table'
+          property :type, as: 'type'
         end
       end
       
@@ -816,12 +932,52 @@ module Google
         end
       end
       
+      class GroupOrSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :group, as: 'group', class: Google::Apis::HealthcareV1beta1::SchemaGroup, decorator: Google::Apis::HealthcareV1beta1::SchemaGroup::Representation
+      
+          property :segment, as: 'segment', class: Google::Apis::HealthcareV1beta1::SchemaSegment, decorator: Google::Apis::HealthcareV1beta1::SchemaSegment::Representation
+      
+        end
+      end
+      
+      class Hl7SchemaConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :message_schema_configs, as: 'messageSchemaConfigs', class: Google::Apis::HealthcareV1beta1::SchemaGroup, decorator: Google::Apis::HealthcareV1beta1::SchemaGroup::Representation
+      
+          collection :version, as: 'version', class: Google::Apis::HealthcareV1beta1::VersionSource, decorator: Google::Apis::HealthcareV1beta1::VersionSource::Representation
+      
+        end
+      end
+      
+      class Hl7TypesConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :type, as: 'type', class: Google::Apis::HealthcareV1beta1::Type, decorator: Google::Apis::HealthcareV1beta1::Type::Representation
+      
+          collection :version, as: 'version', class: Google::Apis::HealthcareV1beta1::VersionSource, decorator: Google::Apis::HealthcareV1beta1::VersionSource::Representation
+      
+        end
+      end
+      
+      class Hl7V2NotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :filter, as: 'filter'
+          property :pubsub_topic, as: 'pubsubTopic'
+        end
+      end
+      
       class Hl7V2Store
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :labels, as: 'labels'
           property :name, as: 'name'
           property :notification_config, as: 'notificationConfig', class: Google::Apis::HealthcareV1beta1::NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::NotificationConfig::Representation
+      
+          collection :notification_configs, as: 'notificationConfigs', class: Google::Apis::HealthcareV1beta1::Hl7V2NotificationConfig, decorator: Google::Apis::HealthcareV1beta1::Hl7V2NotificationConfig::Representation
       
           property :parser_config, as: 'parserConfig', class: Google::Apis::HealthcareV1beta1::ParserConfig, decorator: Google::Apis::HealthcareV1beta1::ParserConfig::Representation
       
@@ -858,6 +1014,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :gcs_source, as: 'gcsSource', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsSource, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1DicomGcsSource::Representation
       
+        end
+      end
+      
+      class ImportDicomDataResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -954,7 +1116,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :hl7_v2_messages, as: 'hl7V2Messages', class: Google::Apis::HealthcareV1beta1::Message, decorator: Google::Apis::HealthcareV1beta1::Message::Representation
       
-          collection :messages, as: 'messages'
           property :next_page_token, as: 'nextPageToken'
         end
       end
@@ -991,6 +1152,8 @@ module Google
       
           collection :patient_ids, as: 'patientIds', class: Google::Apis::HealthcareV1beta1::PatientId, decorator: Google::Apis::HealthcareV1beta1::PatientId::Representation
       
+          property :schematized_data, as: 'schematizedData', class: Google::Apis::HealthcareV1beta1::SchematizedData, decorator: Google::Apis::HealthcareV1beta1::SchematizedData::Representation
+      
           property :send_facility, as: 'sendFacility'
           property :send_time, as: 'sendTime'
         end
@@ -1019,10 +1182,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :api_method_name, as: 'apiMethodName'
+          property :cancel_requested, as: 'cancelRequested'
           property :counter, as: 'counter', class: Google::Apis::HealthcareV1beta1::ProgressCounter, decorator: Google::Apis::HealthcareV1beta1::ProgressCounter::Representation
       
           property :create_time, as: 'createTime'
           property :end_time, as: 'endTime'
+          property :logs_url, as: 'logsUrl'
         end
       end
       
@@ -1038,6 +1203,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :allow_null_header, as: 'allowNullHeader'
+          property :schema, as: 'schema', class: Google::Apis::HealthcareV1beta1::SchemaPackage, decorator: Google::Apis::HealthcareV1beta1::SchemaPackage::Representation
+      
           property :segment_terminator, :base64 => true, as: 'segmentTerminator'
         end
       end
@@ -1098,6 +1265,47 @@ module Google
         end
       end
       
+      class SchemaGroup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :choice, as: 'choice'
+          property :max_occurs, as: 'maxOccurs'
+          collection :members, as: 'members', class: Google::Apis::HealthcareV1beta1::GroupOrSegment, decorator: Google::Apis::HealthcareV1beta1::GroupOrSegment::Representation
+      
+          property :min_occurs, as: 'minOccurs'
+          property :name, as: 'name'
+        end
+      end
+      
+      class SchemaPackage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ignore_min_occurs, as: 'ignoreMinOccurs'
+          collection :schemas, as: 'schemas', class: Google::Apis::HealthcareV1beta1::Hl7SchemaConfig, decorator: Google::Apis::HealthcareV1beta1::Hl7SchemaConfig::Representation
+      
+          property :schematized_parsing_type, as: 'schematizedParsingType'
+          collection :types, as: 'types', class: Google::Apis::HealthcareV1beta1::Hl7TypesConfig, decorator: Google::Apis::HealthcareV1beta1::Hl7TypesConfig::Representation
+      
+        end
+      end
+      
+      class SchemaSegment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_occurs, as: 'maxOccurs'
+          property :min_occurs, as: 'minOccurs'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SchematizedData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :data, as: 'data'
+          property :error, as: 'error'
+        end
+      end
+      
       class SearchResourcesRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1132,6 +1340,15 @@ module Google
         end
       end
       
+      class StreamConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bigquery_destination, as: 'bigqueryDestination', class: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination, decorator: Google::Apis::HealthcareV1beta1::GoogleCloudHealthcareV1beta1FhirBigQueryDestination::Representation
+      
+          collection :resource_types, as: 'resourceTypes'
+        end
+      end
+      
       class TagFilterList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1158,6 +1375,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :transformations, as: 'transformations', class: Google::Apis::HealthcareV1beta1::InfoTypeTransformation, decorator: Google::Apis::HealthcareV1beta1::InfoTypeTransformation::Representation
       
+        end
+      end
+      
+      class Type
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :fields, as: 'fields', class: Google::Apis::HealthcareV1beta1::Field, decorator: Google::Apis::HealthcareV1beta1::Field::Representation
+      
+          property :name, as: 'name'
+          property :primitive, as: 'primitive'
+        end
+      end
+      
+      class VersionSource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :msh_field, as: 'mshField'
+          property :value, as: 'value'
         end
       end
     end

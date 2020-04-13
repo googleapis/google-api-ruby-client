@@ -364,6 +364,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BackendServiceFailoverPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BackendServiceGroupHealth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -790,6 +796,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileContentBuffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -900,6 +912,18 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1192,6 +1216,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InitialStateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Instance
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1360,6 +1390,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceGroupManagersListErrorsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InstanceGroupManagersListManagedInstancesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1498,6 +1534,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InstanceManagedByIgmError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagedByIgmErrorInstanceActionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstanceManagedByIgmErrorManagedInstanceError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MoveInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1541,6 +1595,18 @@ module Google
       end
       
       class InstanceWithNamedPorts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRemoveResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2176,6 +2242,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NodeGroupAutoscalingPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NodeGroupList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -2590,6 +2662,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PreconfiguredWafSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Project
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2753,6 +2831,12 @@ module Google
       end
       
       class RegionInstanceGroupManagersDeleteInstancesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RegionInstanceGroupManagersListErrorsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2987,6 +3071,12 @@ module Google
       end
       
       class ResourcePolicyDailyCycle
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ResourcePolicyGroupPlacementPolicy
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3239,6 +3329,18 @@ module Google
       end
       
       class SchedulingNodeAffinity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesListPreconfiguredExpressionSetsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPoliciesWafConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -4324,6 +4426,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WafExpressionSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WafExpressionSetExpression
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class WeightedBackendService
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4690,6 +4804,8 @@ module Google
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeV1::InitialStateConfig, decorator: Google::Apis::ComputeV1::InitialStateConfig::Representation
+      
           property :source, as: 'source'
           property :type, as: 'type'
         end
@@ -4703,6 +4819,7 @@ module Google
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
           property :disk_type, as: 'diskType'
           hash :labels, as: 'labels'
+          property :on_update_action, as: 'onUpdateAction'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
@@ -4905,6 +5022,7 @@ module Google
           property :balancing_mode, as: 'balancingMode'
           property :capacity_scaler, as: 'capacityScaler'
           property :description, as: 'description'
+          property :failover, as: 'failover'
           property :group, as: 'group'
           property :max_connections, as: 'maxConnections'
           property :max_connections_per_endpoint, as: 'maxConnectionsPerEndpoint'
@@ -4990,6 +5108,8 @@ module Google
           collection :custom_request_headers, as: 'customRequestHeaders'
           property :description, as: 'description'
           property :enable_cdn, as: 'enableCDN'
+          property :failover_policy, as: 'failoverPolicy', class: Google::Apis::ComputeV1::BackendServiceFailoverPolicy, decorator: Google::Apis::ComputeV1::BackendServiceFailoverPolicy::Representation
+      
           property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :health_checks, as: 'healthChecks'
           property :iap, as: 'iap', class: Google::Apis::ComputeV1::BackendServiceIap, decorator: Google::Apis::ComputeV1::BackendServiceIap::Representation
@@ -5054,6 +5174,15 @@ module Google
       
           property :signed_url_cache_max_age_sec, :numeric_string => true, as: 'signedUrlCacheMaxAgeSec'
           collection :signed_url_key_names, as: 'signedUrlKeyNames'
+        end
+      end
+      
+      class BackendServiceFailoverPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :disable_connection_drain_on_failover, as: 'disableConnectionDrainOnFailover'
+          property :drop_traffic_if_unhealthy, as: 'dropTrafficIfUnhealthy'
+          property :failover_ratio, as: 'failoverRatio'
         end
       end
       
@@ -5361,6 +5490,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kms_key_name, as: 'kmsKeyName'
+          property :kms_key_service_account, as: 'kmsKeyServiceAccount'
           property :raw_key, as: 'rawKey'
           property :sha256, as: 'sha256'
         end
@@ -5808,6 +5938,14 @@ module Google
         end
       end
       
+      class FileContentBuffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :file_type, as: 'fileType'
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6028,6 +6166,22 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class GlobalNetworkEndpointGroupsAttachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
+        end
+      end
+      
+      class GlobalNetworkEndpointGroupsDetachEndpointsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :network_endpoints, as: 'networkEndpoints', class: Google::Apis::ComputeV1::NetworkEndpoint, decorator: Google::Apis::ComputeV1::NetworkEndpoint::Representation
+      
         end
       end
       
@@ -6559,6 +6713,8 @@ module Google
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeV1::Image::RawDisk, decorator: Google::Apis::ComputeV1::Image::RawDisk::Representation
       
           property :self_link, as: 'selfLink'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeV1::InitialStateConfig, decorator: Google::Apis::ComputeV1::InitialStateConfig::Representation
+      
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeV1::CustomerEncryptionKey, decorator: Google::Apis::ComputeV1::CustomerEncryptionKey::Representation
       
@@ -6618,6 +6774,20 @@ module Google
         end
       end
       
+      class InitialStateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dbs, as: 'dbs', class: Google::Apis::ComputeV1::FileContentBuffer, decorator: Google::Apis::ComputeV1::FileContentBuffer::Representation
+      
+          collection :dbxs, as: 'dbxs', class: Google::Apis::ComputeV1::FileContentBuffer, decorator: Google::Apis::ComputeV1::FileContentBuffer::Representation
+      
+          collection :keks, as: 'keks', class: Google::Apis::ComputeV1::FileContentBuffer, decorator: Google::Apis::ComputeV1::FileContentBuffer::Representation
+      
+          property :pk, as: 'pk', class: Google::Apis::ComputeV1::FileContentBuffer, decorator: Google::Apis::ComputeV1::FileContentBuffer::Representation
+      
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6630,6 +6800,7 @@ module Google
       
           property :display_device, as: 'displayDevice', class: Google::Apis::ComputeV1::DisplayDevice, decorator: Google::Apis::ComputeV1::DisplayDevice::Representation
       
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeV1::AcceleratorConfig, decorator: Google::Apis::ComputeV1::AcceleratorConfig::Representation
       
           property :hostname, as: 'hostname'
@@ -6646,6 +6817,7 @@ module Google
       
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
+          collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
           property :self_link, as: 'selfLink'
@@ -6904,6 +7076,7 @@ module Google
       class InstanceGroupManagerStatus
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaler, as: 'autoscaler'
           property :is_stable, as: 'isStable'
           property :version_target, as: 'versionTarget', class: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget, decorator: Google::Apis::ComputeV1::InstanceGroupManagerStatusVersionTarget::Representation
       
@@ -6926,6 +7099,7 @@ module Google
           property :max_unavailable, as: 'maxUnavailable', class: Google::Apis::ComputeV1::FixedOrPercent, decorator: Google::Apis::ComputeV1::FixedOrPercent::Representation
       
           property :minimal_action, as: 'minimalAction'
+          property :replacement_method, as: 'replacementMethod'
           property :type, as: 'type'
         end
       end
@@ -6971,11 +7145,21 @@ module Google
         end
       end
       
+      class InstanceGroupManagersListErrorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceManagedByIgmError, decorator: Google::Apis::ComputeV1::InstanceManagedByIgmError::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class InstanceGroupManagersListManagedInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeV1::ManagedInstance, decorator: Google::Apis::ComputeV1::ManagedInstance::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -7185,6 +7369,35 @@ module Google
         end
       end
       
+      class InstanceManagedByIgmError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :error, as: 'error', class: Google::Apis::ComputeV1::InstanceManagedByIgmErrorManagedInstanceError, decorator: Google::Apis::ComputeV1::InstanceManagedByIgmErrorManagedInstanceError::Representation
+      
+          property :instance_action_details, as: 'instanceActionDetails', class: Google::Apis::ComputeV1::InstanceManagedByIgmErrorInstanceActionDetails, decorator: Google::Apis::ComputeV1::InstanceManagedByIgmErrorInstanceActionDetails::Representation
+      
+          property :timestamp, as: 'timestamp'
+        end
+      end
+      
+      class InstanceManagedByIgmErrorInstanceActionDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :instance, as: 'instance'
+          property :version, as: 'version', class: Google::Apis::ComputeV1::ManagedInstanceVersion, decorator: Google::Apis::ComputeV1::ManagedInstanceVersion::Representation
+      
+        end
+      end
+      
+      class InstanceManagedByIgmErrorManagedInstanceError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          property :message, as: 'message'
+        end
+      end
+      
       class MoveInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7211,6 +7424,7 @@ module Google
       
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
+          collection :resource_policies, as: 'resourcePolicies'
           property :scheduling, as: 'scheduling', class: Google::Apis::ComputeV1::Scheduling, decorator: Google::Apis::ComputeV1::Scheduling::Representation
       
           collection :service_accounts, as: 'serviceAccounts', class: Google::Apis::ComputeV1::ServiceAccount, decorator: Google::Apis::ComputeV1::ServiceAccount::Representation
@@ -7285,6 +7499,20 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeV1::NamedPort, decorator: Google::Apis::ComputeV1::NamedPort::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class InstancesAddResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class InstancesRemoveResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
         end
       end
       
@@ -8089,6 +8317,7 @@ module Google
       class NetworkEndpoint
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :fqdn, as: 'fqdn'
           property :instance, as: 'instance'
           property :ip_address, as: 'ipAddress'
           property :port, as: 'port'
@@ -8367,10 +8596,14 @@ module Google
       class NodeGroup
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscaling_policy, as: 'autoscalingPolicy', class: Google::Apis::ComputeV1::NodeGroupAutoscalingPolicy, decorator: Google::Apis::ComputeV1::NodeGroupAutoscalingPolicy::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :maintenance_policy, as: 'maintenancePolicy'
           property :name, as: 'name'
           property :node_template, as: 'nodeTemplate'
           property :self_link, as: 'selfLink'
@@ -8409,6 +8642,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class NodeGroupAutoscalingPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_nodes, as: 'maxNodes'
+          property :min_nodes, as: 'minNodes'
+          property :mode, as: 'mode'
         end
       end
       
@@ -8452,6 +8694,7 @@ module Google
           property :node_type, as: 'nodeType'
           property :server_binding, as: 'serverBinding', class: Google::Apis::ComputeV1::ServerBinding, decorator: Google::Apis::ComputeV1::ServerBinding::Representation
       
+          property :server_id, as: 'serverId'
           property :status, as: 'status'
         end
       end
@@ -9167,6 +9410,14 @@ module Google
         end
       end
       
+      class PreconfiguredWafSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expression_sets, as: 'expressionSets', class: Google::Apis::ComputeV1::WafExpressionSet, decorator: Google::Apis::ComputeV1::WafExpressionSet::Representation
+      
+        end
+      end
+      
       class Project
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9447,11 +9698,21 @@ module Google
         end
       end
       
+      class RegionInstanceGroupManagersListErrorsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :items, as: 'items', class: Google::Apis::ComputeV1::InstanceManagedByIgmError, decorator: Google::Apis::ComputeV1::InstanceManagedByIgmError::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class RegionInstanceGroupManagersListInstancesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :managed_instances, as: 'managedInstances', class: Google::Apis::ComputeV1::ManagedInstance, decorator: Google::Apis::ComputeV1::ManagedInstance::Representation
       
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -9774,6 +10035,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :group_placement_policy, as: 'groupPlacementPolicy', class: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy, decorator: Google::Apis::ComputeV1::ResourcePolicyGroupPlacementPolicy::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -9824,6 +10087,15 @@ module Google
           property :days_in_cycle, as: 'daysInCycle'
           property :duration, as: 'duration'
           property :start_time, as: 'startTime'
+        end
+      end
+      
+      class ResourcePolicyGroupPlacementPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability_domain_count, as: 'availabilityDomainCount'
+          property :collocation, as: 'collocation'
+          property :vm_count, as: 'vmCount'
         end
       end
       
@@ -10307,6 +10579,22 @@ module Google
           property :key, as: 'key'
           property :operator, as: 'operator'
           collection :values, as: 'values'
+        end
+      end
+      
+      class SecurityPoliciesListPreconfiguredExpressionSetsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :preconfigured_expression_sets, as: 'preconfiguredExpressionSets', class: Google::Apis::ComputeV1::SecurityPoliciesWafConfig, decorator: Google::Apis::ComputeV1::SecurityPoliciesWafConfig::Representation
+      
+        end
+      end
+      
+      class SecurityPoliciesWafConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :waf_rules, as: 'wafRules', class: Google::Apis::ComputeV1::PreconfiguredWafSet, decorator: Google::Apis::ComputeV1::PreconfiguredWafSet::Representation
+      
         end
       end
       
@@ -10817,8 +11105,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
           property :enable, as: 'enable'
+          property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
           property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
         end
       end
       
@@ -12191,6 +12481,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class WafExpressionSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :aliases, as: 'aliases'
+          collection :expressions, as: 'expressions', class: Google::Apis::ComputeV1::WafExpressionSetExpression, decorator: Google::Apis::ComputeV1::WafExpressionSetExpression::Representation
+      
+          property :id, as: 'id'
+        end
+      end
+      
+      class WafExpressionSetExpression
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
         end
       end
       

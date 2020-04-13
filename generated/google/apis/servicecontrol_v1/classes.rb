@@ -660,7 +660,7 @@ module Google
         # @return [String]
         attr_accessor :service_config_id
       
-        # Unimplemented. The current service rollout id used to process the request.
+        # The current service rollout id used to process the request.
         # Corresponds to the JSON property `serviceRolloutId`
         # @return [String]
         attr_accessor :service_rollout_id
@@ -1928,7 +1928,7 @@ module Google
         # @return [String]
         attr_accessor :service_config_id
       
-        # Unimplemented. The current service rollout id used to process the request.
+        # The current service rollout id used to process the request.
         # Corresponds to the JSON property `serviceRolloutId`
         # @return [String]
         attr_accessor :service_rollout_id

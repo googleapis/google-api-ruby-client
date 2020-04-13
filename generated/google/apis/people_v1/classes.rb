@@ -230,6 +230,7 @@ module Google
         end
       end
       
+      # **DEPRECATED**: No data will be returned
       # A person's bragging rights.
       class BraggingRights
         include Google::Apis::Core::Hashable
@@ -716,8 +717,19 @@ module Google
       class Gender
         include Google::Apis::Core::Hashable
       
+        # The type of pronouns that should be used to address the person. The value
+        # can be custom or one of these predefined values:
+        # * `male`
+        # * `female`
+        # * `other`
+        # Corresponds to the JSON property `addressMeAs`
+        # @return [String]
+        attr_accessor :address_me_as
+      
         # Output only. The value of the gender translated and formatted in the viewer's
-        # account locale or the `Accept-Language` HTTP header locale.
+        # account
+        # locale or the `Accept-Language` HTTP header locale. Unspecified or custom
+        # value are not localized.
         # Corresponds to the JSON property `formattedValue`
         # @return [String]
         attr_accessor :formatted_value
@@ -731,8 +743,7 @@ module Google
         # predefined values:
         # * `male`
         # * `female`
-        # * `other`
-        # * `unknown`
+        # * `unspecified`
         # Corresponds to the JSON property `value`
         # @return [String]
         attr_accessor :value
@@ -743,6 +754,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @address_me_as = args[:address_me_as] if args.key?(:address_me_as)
           @formatted_value = args[:formatted_value] if args.key?(:formatted_value)
           @metadata = args[:metadata] if args.key?(:metadata)
           @value = args[:value] if args.key?(:value)
@@ -867,12 +879,15 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Person>]
         attr_accessor :connections
       
-        # The token that can be used to retrieve the next page of results.
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # The token that can be used to retrieve changes since the last request.
+        # A token, which can be sent as `sync_token` to retrieve changes since the
+        # last request. Request must set `request_sync_token` to return the sync
+        # token.
         # Corresponds to the JSON property `nextSyncToken`
         # @return [String]
         attr_accessor :next_sync_token
@@ -1363,6 +1378,7 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Birthday>]
         attr_accessor :birthdays
       
+        # **DEPRECATED**: No data will be returned
         # The person's bragging rights.
         # Corresponds to the JSON property `braggingRights`
         # @return [Array<Google::Apis::PeopleV1::BraggingRights>]
@@ -1454,12 +1470,14 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Relation>]
         attr_accessor :relations
       
-        # Output only. The person's relationship interests.
+        # Output only. **DEPRECATED**: No data will be returned
+        # The person's relationship interests.
         # Corresponds to the JSON property `relationshipInterests`
         # @return [Array<Google::Apis::PeopleV1::RelationshipInterest>]
         attr_accessor :relationship_interests
       
-        # Output only. The person's relationship statuses.
+        # Output only. **DEPRECATED**: No data will be returned
+        # The person's relationship statuses.
         # Corresponds to the JSON property `relationshipStatuses`
         # @return [Array<Google::Apis::PeopleV1::RelationshipStatus>]
         attr_accessor :relationship_statuses
@@ -1486,7 +1504,8 @@ module Google
         # @return [Array<Google::Apis::PeopleV1::Skill>]
         attr_accessor :skills
       
-        # Output only. The person's taglines.
+        # Output only. **DEPRECATED**: No data will be returned
+        # The person's taglines.
         # Corresponds to the JSON property `taglines`
         # @return [Array<Google::Apis::PeopleV1::Tagline>]
         attr_accessor :taglines
@@ -1822,6 +1841,7 @@ module Google
         end
       end
       
+      # **DEPRECATED**: No data will be returned
       # A person's relationship interest .
       class RelationshipInterest
         include Google::Apis::Core::Hashable
@@ -1860,6 +1880,7 @@ module Google
         end
       end
       
+      # **DEPRECATED**: No data will be returned
       # A person's relationship status.
       class RelationshipStatus
         include Google::Apis::Core::Hashable
@@ -2091,6 +2112,7 @@ module Google
         end
       end
       
+      # **DEPRECATED**: No data will be returned
       # A brief one-line description of the person.
       class Tagline
         include Google::Apis::Core::Hashable
@@ -2149,7 +2171,6 @@ module Google
         # * ageRanges
         # * biographies
         # * birthdays
-        # * braggingRights
         # * coverPhotos
         # * emailAddresses
         # * events
@@ -2166,12 +2187,9 @@ module Google
         # * phoneNumbers
         # * photos
         # * relations
-        # * relationshipInterests
-        # * relationshipStatuses
         # * residences
         # * sipAddresses
         # * skills
-        # * taglines
         # * urls
         # * userDefined
         # Corresponds to the JSON property `personFields`

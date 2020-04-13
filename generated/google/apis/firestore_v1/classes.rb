@@ -68,7 +68,7 @@ module Google
         attr_accessor :new_transaction
       
         # Reads documents as they were at the given time.
-        # This may not be older than 60 seconds.
+        # This may not be older than 270 seconds.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -1941,7 +1941,7 @@ module Google
         attr_accessor :new_transaction
       
         # Reads documents as they were at the given time.
-        # This may not be older than 60 seconds.
+        # This may not be older than 270 seconds.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -2427,6 +2427,14 @@ module Google
         # @return [Google::Apis::FirestoreV1::DocumentMask]
         attr_accessor :update_mask
       
+        # The transforms to perform after update.
+        # This field can be set only when the operation is `update`. If present, this
+        # write is equivalent to performing `update` and `transform` to the same
+        # document atomically and in order.
+        # Corresponds to the JSON property `updateTransforms`
+        # @return [Array<Google::Apis::FirestoreV1::FieldTransform>]
+        attr_accessor :update_transforms
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2438,6 +2446,7 @@ module Google
           @transform = args[:transform] if args.key?(:transform)
           @update = args[:update] if args.key?(:update)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
+          @update_transforms = args[:update_transforms] if args.key?(:update_transforms)
         end
       end
       

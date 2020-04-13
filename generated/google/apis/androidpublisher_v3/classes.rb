@@ -820,8 +820,8 @@ module Google
       
         # Grace period of the subscription, specified in ISO 8601 format. It will allow
         # developers to give their subscribers a grace period when the payment for the
-        # new recurrence period is declined. Acceptable values = "P3D" (three days) and "
-        # P7D" (seven days)
+        # new recurrence period is declined. Acceptable values = "P3D" (three days), "
+        # P7D" (seven days), "P14D" (fourteen days), and "P30D" (thirty days)
         # Corresponds to the JSON property `gracePeriod`
         # @return [String]
         attr_accessor :grace_period

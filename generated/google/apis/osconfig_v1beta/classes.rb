@@ -1032,7 +1032,9 @@ module Google
       
       # Patch deployments are configurations that individual patch jobs use to
       # complete a patch. These configurations include instance filter, package
-      # repository settings, and a schedule.
+      # repository settings, and a schedule. For more information about creating and
+      # managing patch deployments, see [Scheduling patch
+      # jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
       class PatchDeployment
         include Google::Apis::Core::Hashable
       
@@ -1204,6 +1206,8 @@ module Google
       # or has completed.
       # Instances details are not included in the job. To paginate through instance
       # details, use ListPatchJobInstanceDetails.
+      # For more information about patch jobs, see
+      # [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
       class PatchJob
         include Google::Apis::Core::Hashable
       
@@ -1314,7 +1318,11 @@ module Google
         end
       end
       
-      # Patch details for a VM instance.
+      # Patch details for a VM instance. For more information about reviewing VM
+      # instance details, see
+      # [Listing all VM instance details for a specific patch
+      # job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details)
+      # .
       class PatchJobInstanceDetails
         include Google::Apis::Core::Hashable
       

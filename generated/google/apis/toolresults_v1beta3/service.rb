@@ -47,7 +47,7 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'toolresults/v1beta3/projects/')
+          super('https://www.googleapis.com/', 'toolresults/v1beta3/')
           @batch_path = 'batch/toolresults/v1beta3'
         end
         
@@ -77,7 +77,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_settings(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/settings', options)
+          command = make_simple_command(:get, 'projects/{projectId}/settings', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ProjectSettings::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ProjectSettings
           command.params['projectId'] = project_id unless project_id.nil?
@@ -129,7 +129,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def initialize_project_settings(project_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}:initializeSettings', options)
+          command = make_simple_command(:post, 'projects/{projectId}:initializeSettings', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ProjectSettings::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ProjectSettings
           command.params['projectId'] = project_id unless project_id.nil?
@@ -173,7 +173,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_history(project_id, history_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::History::Representation
           command.request_object = history_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::History::Representation
@@ -217,7 +217,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history(project_id, history_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::History::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::History
           command.params['projectId'] = project_id unless project_id.nil?
@@ -270,7 +270,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_histories(project_id, filter_by_name: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListHistoriesResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListHistoriesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -320,7 +320,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_history_execution(project_id, history_id, execution_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::Execution::Representation
           command.request_object = execution_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::Execution::Representation
@@ -368,7 +368,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution(project_id, history_id, execution_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::Execution::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::Execution
           command.params['projectId'] = project_id unless project_id.nil?
@@ -422,7 +422,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_executions(project_id, history_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListExecutionsResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListExecutionsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -472,7 +472,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_history_execution(project_id, history_id, execution_id, execution_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{projectId}/histories/{historyId}/executions/{executionId}', options)
+          command = make_simple_command(:patch, 'projects/{projectId}/histories/{historyId}/executions/{executionId}', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::Execution::Representation
           command.request_object = execution_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::Execution::Representation
@@ -520,7 +520,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_cluster(project_id, history_id, execution_id, cluster_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ScreenshotCluster::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ScreenshotCluster
           command.params['projectId'] = project_id unless project_id.nil?
@@ -569,7 +569,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_clusters(project_id, history_id, execution_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/clusters', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListScreenshotClustersResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListScreenshotClustersResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -614,7 +614,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_environment(project_id, history_id, execution_id, environment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::Environment::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::Environment
           command.params['projectId'] = project_id unless project_id.nil?
@@ -665,7 +665,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_environments(project_id, history_id, execution_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/environments', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/environments', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListEnvironmentsResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListEnvironmentsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -673,6 +673,53 @@ module Google
           command.params['executionId'] = execution_id unless execution_id.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists accessibility clusters for a given Step
+        # May return any of the following canonical error codes:
+        # - PERMISSION_DENIED - if the user is not authorized to read project -
+        # INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an
+        # argument in the request happens to be invalid; e.g. if the locale format is
+        # incorrect - NOT_FOUND - if the containing Step does not exist
+        # @param [String] name
+        #   A full resource name of the step. For example, projects/my-project/histories/
+        #   bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
+        #   Required.
+        # @param [String] locale
+        #   The accepted format is the canonical Unicode format with hyphen as a delimiter.
+        #   Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE.
+        #   See http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for
+        #   details.
+        #   Required.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ToolresultsV1beta3::ListStepAccessibilityClustersResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ToolresultsV1beta3::ListStepAccessibilityClustersResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def accessibility_project_history_execution_step_clusters(name, locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{+name}:accessibilityClusters', options)
+          command.response_representation = Google::Apis::ToolresultsV1beta3::ListStepAccessibilityClustersResponse::Representation
+          command.response_class = Google::Apis::ToolresultsV1beta3::ListStepAccessibilityClustersResponse
+          command.params['name'] = name unless name.nil?
+          command.query['locale'] = locale unless locale.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -717,7 +764,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_history_execution_step(project_id, history_id, execution_id, step_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions/{executionId}/steps', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
           command.request_object = step_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
@@ -769,7 +816,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_step(project_id, history_id, execution_id, step_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::Step
           command.params['projectId'] = project_id unless project_id.nil?
@@ -813,7 +860,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_step_perf_metrics_summary(project_id, history_id, execution_id, step_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::PerfMetricsSummary::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::PerfMetricsSummary
           command.params['projectId'] = project_id unless project_id.nil?
@@ -872,7 +919,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_steps(project_id, history_id, execution_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListStepsResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListStepsResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -930,7 +977,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def patch_project_history_execution_step(project_id, history_id, execution_id, step_id, step_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', options)
+          command = make_simple_command(:patch, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
           command.request_object = step_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
@@ -985,7 +1032,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def publish_step_xunit_xml_files(project_id, history_id, execution_id, step_id, publish_xunit_xml_files_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::PublishXunitXmlFilesRequest::Representation
           command.request_object = publish_xunit_xml_files_request_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::Step::Representation
@@ -1033,7 +1080,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_history_execution_step_perf_metrics_summary(project_id, history_id, execution_id, step_id, perf_metrics_summary_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::PerfMetricsSummary::Representation
           command.request_object = perf_metrics_summary_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::PerfMetricsSummary::Representation
@@ -1081,7 +1128,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def create_project_history_execution_step_perf_sample_series(project_id, history_id, execution_id, step_id, perf_sample_series_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::PerfSampleSeries::Representation
           command.request_object = perf_sample_series_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::PerfSampleSeries::Representation
@@ -1129,7 +1176,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_step_perf_sample_series(project_id, history_id, execution_id, step_id, sample_series_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::PerfSampleSeries::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::PerfSampleSeries
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1179,7 +1226,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_step_perf_sample_series(project_id, history_id, execution_id, step_id, filter: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListPerfSampleSeriesResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListPerfSampleSeriesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1232,7 +1279,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def batch_create_perf_samples(project_id, history_id, execution_id, step_id, sample_series_id, batch_create_perf_samples_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate', options)
+          command = make_simple_command(:post, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate', options)
           command.request_representation = Google::Apis::ToolresultsV1beta3::BatchCreatePerfSamplesRequest::Representation
           command.request_object = batch_create_perf_samples_request_object
           command.response_representation = Google::Apis::ToolresultsV1beta3::BatchCreatePerfSamplesResponse::Representation
@@ -1292,7 +1339,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_step_perf_sample_series_samples(project_id, history_id, execution_id, step_id, sample_series_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListPerfSamplesResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListPerfSamplesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1349,7 +1396,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def get_project_history_execution_step_test_case(project_id, history_id, execution_id, step_id, test_case_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::TestCase::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::TestCase
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1409,7 +1456,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_step_test_cases(project_id, history_id, execution_id, step_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListTestCasesResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListTestCasesResponse
           command.params['projectId'] = project_id unless project_id.nil?
@@ -1469,7 +1516,7 @@ module Google
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
         def list_project_history_execution_step_thumbnails(project_id, history_id, execution_id, step_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', options)
+          command = make_simple_command(:get, 'projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', options)
           command.response_representation = Google::Apis::ToolresultsV1beta3::ListStepThumbnailsResponse::Representation
           command.response_class = Google::Apis::ToolresultsV1beta3::ListStepThumbnailsResponse
           command.params['projectId'] = project_id unless project_id.nil?

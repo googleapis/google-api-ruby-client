@@ -26,11 +26,6 @@ module Google
       class Tokeninfo
         include Google::Apis::Core::Hashable
       
-        # The access type granted with this token. It can be offline or online.
-        # Corresponds to the JSON property `access_type`
-        # @return [String]
-        attr_accessor :access_type
-      
         # Who is the intended audience for this token. In general the same as issued_to.
         # Corresponds to the JSON property `audience`
         # @return [String]
@@ -57,11 +52,6 @@ module Google
         # @return [String]
         attr_accessor :scope
       
-        # The token handle associated with this token.
-        # Corresponds to the JSON property `token_handle`
-        # @return [String]
-        attr_accessor :token_handle
-      
         # The obfuscated user id.
         # Corresponds to the JSON property `user_id`
         # @return [String]
@@ -80,20 +70,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @access_type = args[:access_type] if args.key?(:access_type)
           @audience = args[:audience] if args.key?(:audience)
           @email = args[:email] if args.key?(:email)
           @expires_in = args[:expires_in] if args.key?(:expires_in)
           @issued_to = args[:issued_to] if args.key?(:issued_to)
           @scope = args[:scope] if args.key?(:scope)
-          @token_handle = args[:token_handle] if args.key?(:token_handle)
           @user_id = args[:user_id] if args.key?(:user_id)
           @verified_email = args[:verified_email] if args.key?(:verified_email)
         end
       end
       
       # 
-      class Userinfoplus
+      class Userinfo
         include Google::Apis::Core::Hashable
       
         # The user's email address.

@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudManagedidentitiesV1alpha1OpMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudManagedidentitiesV1beta1OpMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -94,19 +100,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -305,6 +299,18 @@ module Google
         end
       end
       
+      class GoogleCloudManagedidentitiesV1alpha1OpMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_version, as: 'apiVersion'
+          property :create_time, as: 'createTime'
+          property :end_time, as: 'endTime'
+          property :requested_cancellation, as: 'requestedCancellation'
+          property :target, as: 'target'
+          property :verb, as: 'verb'
+        end
+      end
+      
       class GoogleCloudManagedidentitiesV1beta1OpMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -329,8 +335,6 @@ module Google
           property :name, as: 'name'
           hash :producer_metadata, as: 'producerMetadata'
           collection :provisioned_resources, as: 'provisionedResources', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource::Representation
-      
-          hash :rollout_metadata, as: 'rolloutMetadata', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata::Representation
       
           property :slm_instance_template, as: 'slmInstanceTemplate'
           property :slo_metadata, as: 'sloMetadata', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata::Representation
@@ -362,31 +366,11 @@ module Google
         end
       end
       
-      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :rescheduled, as: 'rescheduled'
-          property :scheduled_end_time, as: 'scheduledEndTime'
-          property :scheduled_start_time, as: 'scheduledStartTime'
-          property :target_release, as: 'targetRelease'
-        end
-      end
-      
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :resource_type, as: 'resourceType'
           property :resource_url, as: 'resourceUrl'
-        end
-      end
-      
-      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :notification, as: 'notification', class: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata, decorator: Google::Apis::ManagedidentitiesV1alpha1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata::Representation
-      
-          property :release_name, as: 'releaseName'
-          property :rollout_name, as: 'rolloutName'
         end
       end
       

@@ -515,8 +515,11 @@ module Google
         # will complete when entire workflow is finished.The running workflow can be
         # aborted via operations.cancel. This will cause any inflight jobs to be
         # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
-        # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-        # completion, Operation.response will be Empty.
+        # will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (
+        # https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#
+        # using_workflowmetadata).On successful completion, Operation.response will be
+        # Empty.
         # @param [String] name
         #   Required. The resource name of the workflow template, as described in https://
         #   cloud.google.com/apis/design/resource_names.
@@ -562,8 +565,11 @@ module Google
         # of workflow by polling operations.get. The Operation will complete when entire
         # workflow is finished.The running workflow can be aborted via operations.cancel.
         # This will cause any inflight jobs to be cancelled and workflow-owned clusters
-        # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
-        # WorkflowMetadata.On successful completion, Operation.response will be Empty.
+        # to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.
+        # google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#
+        # workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/
+        # dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+        # successful completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The resource name of the region or location, as described in https://
         #   cloud.google.com/apis/design/resource_names.
@@ -1074,7 +1080,8 @@ module Google
         end
         
         # Creates a cluster in a project. The returned Operation.metadata will be
-        # ClusterOperationMetadata.
+        # ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#clusteroperationmetadata).
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1121,7 +1128,8 @@ module Google
         end
         
         # Deletes a cluster in a project. The returned Operation.metadata will be
-        # ClusterOperationMetadata.
+        # ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#clusteroperationmetadata).
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1172,8 +1180,11 @@ module Google
         end
         
         # Gets cluster diagnostic information. The returned Operation.metadata will be
-        # ClusterOperationMetadata. After the operation completes, Operation.response
-        # contains DiagnoseClusterResults.
+        # ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#clusteroperationmetadata). After the operation
+        # completes, Operation.response contains DiagnoseClusterResults (https://cloud.
+        # google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#
+        # diagnoseclusterresults).
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1285,7 +1296,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists all regions/`region`/clusters in a project.
+        # Lists all regions/`region`/clusters in a project alphabetically.
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the cluster belongs
         #   to.
@@ -1339,7 +1350,8 @@ module Google
         end
         
         # Updates a cluster in a project. The returned Operation.metadata will be
-        # ClusterOperationMetadata.
+        # ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#clusteroperationmetadata).
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project the cluster belongs to.
         # @param [String] region
@@ -1504,7 +1516,10 @@ module Google
         end
         
         # Starts a job cancellation request. To access the job resource after
-        # cancellation, call regions/`region`/jobs.list or regions/`region`/jobs.get.
+        # cancellation, call regions/`region`/jobs.list (https://cloud.google.com/
+        # dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or regions/`region`
+        # /jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.
+        # regions.jobs/get).
         # @param [String] project_id
         #   Required. The ID of the Google Cloud Platform project that the job belongs to.
         # @param [String] region
@@ -1819,6 +1834,42 @@ module Google
           command.request_object = submit_job_request_object
           command.response_representation = Google::Apis::DataprocV1::Job::Representation
           command.response_class = Google::Apis::DataprocV1::Job
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['region'] = region unless region.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Submits job to a cluster.
+        # @param [String] project_id
+        #   Required. The ID of the Google Cloud Platform project that the job belongs to.
+        # @param [String] region
+        #   Required. The Dataproc region in which to handle the request.
+        # @param [Google::Apis::DataprocV1::SubmitJobRequest] submit_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataprocV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataprocV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def submit_project_region_job_as_operation(project_id, region, submit_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation', options)
+          command.request_representation = Google::Apis::DataprocV1::SubmitJobRequest::Representation
+          command.request_object = submit_job_request_object
+          command.response_representation = Google::Apis::DataprocV1::Operation::Representation
+          command.response_class = Google::Apis::DataprocV1::Operation
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['region'] = region unless region.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2282,8 +2333,11 @@ module Google
         # will complete when entire workflow is finished.The running workflow can be
         # aborted via operations.cancel. This will cause any inflight jobs to be
         # cancelled and workflow-owned clusters to be deleted.The Operation.metadata
-        # will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful
-        # completion, Operation.response will be Empty.
+        # will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/
+        # google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (
+        # https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#
+        # using_workflowmetadata).On successful completion, Operation.response will be
+        # Empty.
         # @param [String] name
         #   Required. The resource name of the workflow template, as described in https://
         #   cloud.google.com/apis/design/resource_names.
@@ -2329,8 +2383,11 @@ module Google
         # of workflow by polling operations.get. The Operation will complete when entire
         # workflow is finished.The running workflow can be aborted via operations.cancel.
         # This will cause any inflight jobs to be cancelled and workflow-owned clusters
-        # to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using
-        # WorkflowMetadata.On successful completion, Operation.response will be Empty.
+        # to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.
+        # google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#
+        # workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/
+        # dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On
+        # successful completion, Operation.response will be Empty.
         # @param [String] parent
         #   Required. The resource name of the region or location, as described in https://
         #   cloud.google.com/apis/design/resource_names.

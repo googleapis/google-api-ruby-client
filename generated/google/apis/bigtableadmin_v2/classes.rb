@@ -285,7 +285,7 @@ module Google
       class CheckConsistencyRequest
         include Google::Apis::Core::Hashable
       
-        # The token created using GenerateConsistencyToken for the Table.
+        # Required. The token created using GenerateConsistencyToken for the Table.
         # Corresponds to the JSON property `consistencyToken`
         # @return [String]
         attr_accessor :consistency_token
@@ -339,19 +339,20 @@ module Google
         # The location where this cluster's nodes and storage reside. For best
         # performance, clients should be located as close as possible to this
         # cluster. Currently only zones are supported, so values should be of the
-        # form `projects/<project>/locations/<zone>`.
+        # form `projects/`project`/locations/`zone``.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
-        # (`OutputOnly`)
+        # Required. (`OutputOnly`)
         # The unique name of the cluster. Values are of the form
-        # `projects/<project>/instances/<instance>/clusters/a-z*`.
+        # `projects/`project`/instances/`instance`/clusters/a-z*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The number of nodes allocated to this cluster. More nodes enable higher
+        # Required. The number of nodes allocated to this cluster. More nodes enable
+        # higher
         # throughput and more consistent performance.
         # Corresponds to the JSON property `serveNodes`
         # @return [Fixnum]
@@ -469,16 +470,17 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Cluster]
         attr_accessor :cluster
       
-        # The ID to be used when referring to the new cluster within its instance,
+        # Required. The ID to be used when referring to the new cluster within its
+        # instance,
         # e.g., just `mycluster` rather than
         # `projects/myproject/instances/myinstance/clusters/mycluster`.
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # The unique name of the instance in which to create the new cluster.
+        # Required. The unique name of the instance in which to create the new cluster.
         # Values are of the form
-        # `projects/<project>/instances/<instance>`.
+        # `projects/`project`/instances/`instance``.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -530,7 +532,7 @@ module Google
       class CreateInstanceRequest
         include Google::Apis::Core::Hashable
       
-        # The clusters to be created within the instance, mapped by desired
+        # Required. The clusters to be created within the instance, mapped by desired
         # cluster ID, e.g., just `mycluster` rather than
         # `projects/myproject/instances/myinstance/clusters/mycluster`.
         # Fields marked `OutputOnly` must be left blank.
@@ -547,15 +549,16 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Instance]
         attr_accessor :instance
       
-        # The ID to be used when referring to the new instance within its project,
+        # Required. The ID to be used when referring to the new instance within its
+        # project,
         # e.g., just `myinstance` rather than
         # `projects/myproject/instances/myinstance`.
         # Corresponds to the JSON property `instanceId`
         # @return [String]
         attr_accessor :instance_id
       
-        # The unique name of the project in which to create the new instance.
-        # Values are of the form `projects/<project>`.
+        # Required. The unique name of the project in which to create the new instance.
+        # Values are of the form `projects/`project``.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -602,8 +605,9 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Table]
         attr_accessor :table
       
-        # The name by which the new table should be referred to within the parent
-        # instance, e.g., `foobar` rather than `<parent>/tables/foobar`.
+        # Required. The name by which the new table should be referred to within the
+        # parent
+        # instance, e.g., `foobar` rather than ``parent`/tables/foobar`.
         # Maximum 50 characters.
         # Corresponds to the JSON property `tableId`
         # @return [String]
@@ -855,14 +859,14 @@ module Google
       class Instance
         include Google::Apis::Core::Hashable
       
-        # The descriptive name for this instance as it appears in UIs.
+        # Required. The descriptive name for this instance as it appears in UIs.
         # Can be changed at any time, but should be kept globally unique
         # to avoid confusion.
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
-        # Labels are a flexible and lightweight mechanism for organizing cloud
+        # Required. Labels are a flexible and lightweight mechanism for organizing cloud
         # resources into groups that reflect a customer's organizational needs and
         # deployment strategies. They can be used to filter resources and aggregate
         # metrics.
@@ -876,9 +880,9 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # (`OutputOnly`)
+        # Required. (`OutputOnly`)
         # The unique name of the instance. Values are of the form
-        # `projects/<project>/instances/a-z+[a-z0-9]`.
+        # `projects/`project`/instances/a-z+[a-z0-9]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -889,7 +893,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The type of the instance. Defaults to `PRODUCTION`.
+        # Required. The type of the instance. Defaults to `PRODUCTION`.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -1203,7 +1207,8 @@ module Google
       class ModifyColumnFamiliesRequest
         include Google::Apis::Core::Hashable
       
-        # Modifications to be atomically applied to the specified table's families.
+        # Required. Modifications to be atomically applied to the specified table's
+        # families.
         # Entries are applied in order, meaning that earlier modifications can be
         # masked by later ones (in the case of repeated updates to the same family,
         # for example).
@@ -1314,7 +1319,7 @@ module Google
         # @return [Google::Apis::BigtableadminV2::Instance]
         attr_accessor :instance
       
-        # The subset of Instance fields which should be replaced.
+        # Required. The subset of Instance fields which should be replaced.
         # Must be explicitly set.
         # Corresponds to the JSON property `updateMask`
         # @return [String]

@@ -18,14 +18,14 @@ require 'google/apis/customsearch_v1/representations.rb'
 
 module Google
   module Apis
-    # CustomSearch API
+    # Custom Search API
     #
     # Searches over a website or collection of websites
     #
-    # @see https://developers.google.com/custom-search/v1/using_rest
+    # @see https://developers.google.com/custom-search/v1/introduction
     module CustomsearchV1
       VERSION = 'V1'
-      REVISION = '20181001'
+      REVISION = '20200408'
     end
   end
 end

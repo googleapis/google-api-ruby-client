@@ -2068,6 +2068,7 @@ module Google
       
           property :closed_captions_type, as: 'closedCaptionsType'
           property :enable_auto_start, as: 'enableAutoStart'
+          property :enable_auto_stop, as: 'enableAutoStop'
           property :enable_closed_captions, as: 'enableClosedCaptions'
           property :enable_content_encryption, as: 'enableContentEncryption'
           property :enable_dvr, as: 'enableDvr'

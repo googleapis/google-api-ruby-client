@@ -807,49 +807,6 @@ module Google
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
         end
-        
-        # Lists all producer overrides on this limit.
-        # Unlike other types of overrides, producer overrides are under the control
-        # of the service producer and cannot be modified using this API.
-        # @param [String] parent
-        #   The resource name of the parent quota limit, returned by a
-        #   ListConsumerQuotaMetrics or GetConsumerQuotaMetric call.
-        #   An example name would be:
-        #   `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.
-        #   googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
-        # @param [Fixnum] page_size
-        #   Requested size of the next page of data.
-        # @param [String] page_token
-        #   Token identifying which result to start with; returned by a previous list
-        #   call.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_service_consumer_quota_metric_limit_producer_overrides(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1beta1/{+parent}/producerOverrides', options)
-          command.response_representation = Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse::Representation
-          command.response_class = Google::Apis::ServiceusageV1beta1::ListProducerOverridesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['pageSize'] = page_size unless page_size.nil?
-          command.query['pageToken'] = page_token unless page_token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
 
         protected
 

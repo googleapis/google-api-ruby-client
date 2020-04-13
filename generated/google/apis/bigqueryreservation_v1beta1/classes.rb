@@ -62,6 +62,40 @@ module Google
         end
       end
       
+      # Auto scaling settings and current situation.
+      # System will create a dedicated FLEX capacity commitment to hold the slots
+      # for auto-scale. Users won't be able to manage it,to avoid conflicts.
+      # Scale-up will happen, if there are always pending tasks for the past 10
+      # minutes.
+      # Scale-down will happen, if the system knows that scale-up won't be
+      # triggered again.
+      # Note this is an alpha feature.
+      class Autoscale
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The slot capacity added to this reservation when autoscale
+        # happens. Will
+        # be between [0, max_slots].
+        # Corresponds to the JSON property `currentSlots`
+        # @return [Fixnum]
+        attr_accessor :current_slots
+      
+        # Number of slots to be scaled when needed.
+        # Corresponds to the JSON property `maxSlots`
+        # @return [Fixnum]
+        attr_accessor :max_slots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_slots = args[:current_slots] if args.key?(:current_slots)
+          @max_slots = args[:max_slots] if args.key?(:max_slots)
+        end
+      end
+      
       # Represents a BI Reservation.
       class BiReservation
         include Google::Apis::Core::Hashable
@@ -135,7 +169,7 @@ module Google
       
         # The plan this capacity commitment is converted to after commitment_end_time
         # passes. Once the plan is changed, committed period is extended according to
-        # commitment plan. Only applicable for MONTHLY and ANNUAL commitments.
+        # commitment plan. Only applicable for ANNUAL commitments.
         # Corresponds to the JSON property `renewalPlan`
         # @return [String]
         attr_accessor :renewal_plan
@@ -163,6 +197,27 @@ module Google
           @renewal_plan = args[:renewal_plan] if args.key?(:renewal_plan)
           @slot_count = args[:slot_count] if args.key?(:slot_count)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # The metadata for operation returned from
+      # ReservationService.CreateSlotPool.
+      class CreateSlotPoolMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Resource name of the slot pool that is being created. E.g.,
+        # projects/myproject/locations/us-central1/reservations/foo/slotPools/123
+        # Corresponds to the JSON property `slotPool`
+        # @return [String]
+        attr_accessor :slot_pool
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @slot_pool = args[:slot_pool] if args.key?(:slot_pool)
         end
       end
       
@@ -313,6 +368,18 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
+        # Auto scaling settings and current situation.
+        # System will create a dedicated FLEX capacity commitment to hold the slots
+        # for auto-scale. Users won't be able to manage it,to avoid conflicts.
+        # Scale-up will happen, if there are always pending tasks for the past 10
+        # minutes.
+        # Scale-down will happen, if the system knows that scale-up won't be
+        # triggered again.
+        # Note this is an alpha feature.
+        # Corresponds to the JSON property `autoscale`
+        # @return [Google::Apis::BigqueryreservationV1beta1::Autoscale]
+        attr_accessor :autoscale
+      
         # If false, any query using this reservation will use idle slots from other
         # reservations within the same admin project. If true, a query using this
         # reservation will execute with the slot capacity specified above at most.
@@ -345,6 +412,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscale = args[:autoscale] if args.key?(:autoscale)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)
@@ -469,25 +537,6 @@ module Google
           @code = args[:code] if args.key?(:code)
           @details = args[:details] if args.key?(:details)
           @message = args[:message] if args.key?(:message)
-        end
-      end
-      
-      # The request for ReservationService.UpgradeCapacityCommitmentPlan.
-      class UpgradeCapacityCommitmentPlanRequest
-        include Google::Apis::Core::Hashable
-      
-        # New capacity commitment plan.
-        # Corresponds to the JSON property `plan`
-        # @return [String]
-        attr_accessor :plan
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @plan = args[:plan] if args.key?(:plan)
         end
       end
     end

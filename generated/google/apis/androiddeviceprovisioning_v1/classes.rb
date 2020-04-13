@@ -1113,7 +1113,7 @@ module Google
         # @return [Google::Apis::AndroiddeviceprovisioningV1::PartnerUnclaim]
         attr_accessor :unclaim
       
-        # Identifies metdata updates to one device.
+        # Identifies metadata updates to one device.
         # Corresponds to the JSON property `updateMetadata`
         # @return [Google::Apis::AndroiddeviceprovisioningV1::UpdateMetadataArguments]
         attr_accessor :update_metadata
@@ -1397,7 +1397,7 @@ module Google
         end
       end
       
-      # Identifies metdata updates to one device.
+      # Identifies metadata updates to one device.
       class UpdateMetadataArguments
         include Google::Apis::Core::Hashable
       

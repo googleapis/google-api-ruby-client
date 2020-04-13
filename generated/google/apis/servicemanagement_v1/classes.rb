@@ -249,12 +249,16 @@ module Google
         # [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#
         # section-4.1.3).
         # that are allowed to access. A JWT containing any of these audiences will
-        # be accepted. When this setting is absent, only JWTs with audience
-        # "https://Service_name/API_name"
-        # will be accepted. For example, if no audiences are in the setting,
-        # LibraryService API will only accept JWTs with the following audience
-        # "https://library-example.googleapis.com/google.example.library.v1.
-        # LibraryService".
+        # be accepted. When this setting is absent, JWTs with audiences:
+        # - "https://[service.name]/[google.protobuf.Api.name]"
+        # - "https://[service.name]/"
+        # will be accepted.
+        # For example, if no audiences are in the setting, LibraryService API will
+        # accept JWTs with the following audiences:
+        # -
+        # https://library-example.googleapis.com/google.example.library.v1.
+        # LibraryService
+        # - https://library-example.googleapis.com/
         # Example:
         # audiences: bookstore_android.apps.googleusercontent.com,
         # bookstore_web.apps.googleusercontent.com
@@ -574,6 +578,36 @@ module Google
         # @return [String]
         attr_accessor :protocol
       
+        # Unimplemented. Do not use.
+        # The new name the selected proto elements should be renamed to.
+        # The package, the service and the method can all be renamed.
+        # The backend server should implement the renamed proto. However, clients
+        # should call the original method, and ESF routes the traffic to the renamed
+        # method.
+        # HTTP clients should call the URL mapped to the original method.
+        # gRPC and Stubby clients should call the original method with package name.
+        # For legacy reasons, ESF allows Stubby clients to call with the
+        # short name (without the package name). However, for API Versioning(or
+        # multiple methods mapped to the same short name), all Stubby clients must
+        # call the method's full name with the package name, otherwise the first one
+        # (selector) wins.
+        # If this `rename_to` is specified with a trailing `*`, the `selector` must
+        # be specified with a trailing `*` as well. The all element short names
+        # matched by the `*` in the selector will be kept in the `rename_to`.
+        # For example,
+        # rename_rules:
+        # - selector: |-
+        # google.example.library.v1.*
+        # rename_to: google.example.library.*
+        # The selector matches `google.example.library.v1.Library.CreateShelf` and
+        # `google.example.library.v1.Library.CreateBook`, they will be renamed to
+        # `google.example.library.Library.CreateShelf` and
+        # `google.example.library.Library.CreateBook`. It essentially renames the
+        # proto package name section of the matched proto service and methods.
+        # Corresponds to the JSON property `renameTo`
+        # @return [String]
+        attr_accessor :rename_to
+      
         # Selects the methods to which this rule applies.
         # Refer to selector for syntax details.
         # Corresponds to the JSON property `selector`
@@ -594,6 +628,7 @@ module Google
           @operation_deadline = args[:operation_deadline] if args.key?(:operation_deadline)
           @path_translation = args[:path_translation] if args.key?(:path_translation)
           @protocol = args[:protocol] if args.key?(:protocol)
+          @rename_to = args[:rename_to] if args.key?(:rename_to)
           @selector = args[:selector] if args.key?(:selector)
         end
       end

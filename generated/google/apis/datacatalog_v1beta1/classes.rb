@@ -351,7 +351,7 @@ module Google
       
       # Entry Metadata.
       # A Data Catalog Entry resource represents another resource in Google
-      # Cloud Platform (such as a BigQuery dataset or a Cloud Pub/Sub topic), or
+      # Cloud Platform (such as a BigQuery dataset or a Pub/Sub topic), or
       # outside of Google Cloud Platform. Clients can use the `linked_resource` field
       # in the Entry resource to refer to the original resource ID of the source
       # system.
@@ -393,7 +393,7 @@ module Google
         attr_accessor :gcs_fileset_spec
       
         # Output only. This field indicates the entry's source system that Data Catalog
-        # integrates with, such as BigQuery or Cloud Pub/Sub.
+        # integrates with, such as BigQuery or Pub/Sub.
         # Corresponds to the JSON property `integratedSystem`
         # @return [String]
         attr_accessor :integrated_system

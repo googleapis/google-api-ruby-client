@@ -119,6 +119,9 @@ module Google
         
         # Creates a query.
         # @param [Google::Apis::DoubleclickbidmanagerV1_1::Query] query_object
+        # @param [Boolean] asynchronous
+        #   If true, tries to run the query asynchronously. Only applicable when the
+        #   frequency is ONE_TIME.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -138,12 +141,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def createquery_query(query_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def createquery_query(query_object = nil, asynchronous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'query', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.request_object = query_object
           command.response_representation = Google::Apis::DoubleclickbidmanagerV1_1::Query::Representation
           command.response_class = Google::Apis::DoubleclickbidmanagerV1_1::Query
+          command.query['asynchronous'] = asynchronous unless asynchronous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -255,6 +259,8 @@ module Google
         # @param [Fixnum] query_id
         #   Query ID to run.
         # @param [Google::Apis::DoubleclickbidmanagerV1_1::RunQueryRequest] run_query_request_object
+        # @param [Boolean] asynchronous
+        #   If true, tries to run the query asynchronously.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -274,11 +280,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def runquery_query(query_id, run_query_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def runquery_query(query_id, run_query_request_object = nil, asynchronous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'query/{queryId}', options)
           command.request_representation = Google::Apis::DoubleclickbidmanagerV1_1::RunQueryRequest::Representation
           command.request_object = run_query_request_object
           command.params['queryId'] = query_id unless query_id.nil?
+          command.query['asynchronous'] = asynchronous unless asynchronous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

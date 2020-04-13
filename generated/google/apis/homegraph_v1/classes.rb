@@ -22,11 +22,11 @@ module Google
   module Apis
     module HomegraphV1
       
-      # Third-party partner's device ID for one device.
+      # Third-party device ID for one device.
       class AgentDeviceId
         include Google::Apis::Core::Hashable
       
-        # Third-party partner's device ID.
+        # Third-party device ID.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -41,16 +41,16 @@ module Google
         end
       end
       
-      # Identifies a device in the third party or first party system.
+      # Alternate third-party device ID.
       class AgentOtherDeviceId
         include Google::Apis::Core::Hashable
       
-        # The agent's ID. Generally it is the agent's AoG project id.
+        # Project ID for your smart home Action.
         # Corresponds to the JSON property `agentId`
         # @return [String]
         attr_accessor :agent_id
       
-        # Device ID defined by the agent. The device_id must be unique.
+        # Unique third-party device ID.
         # Corresponds to the JSON property `deviceId`
         # @return [String]
         attr_accessor :device_id
@@ -66,7 +66,7 @@ module Google
         end
       end
       
-      # Third-party partner's device definition.
+      # Third-party device definition.
       class Device
         include Google::Apis::Core::Hashable
       
@@ -75,8 +75,14 @@ module Google
         # @return [Hash<String,Object>]
         attr_accessor :attributes
       
-        # Custom JSON data provided by the manufacturer and attached to QUERY and
-        # EXECUTE requests in AoG.
+        # Custom device attributes stored in Home Graph and provided to your
+        # smart home Action in each
+        # [QUERY](https://developers.google.com/assistant/smarthome/reference/intent/
+        # query)
+        # and
+        # [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/
+        # execute)
+        # intent.
         # Corresponds to the JSON property `customData`
         # @return [Hash<String,Object>]
         attr_accessor :custom_data
@@ -86,62 +92,61 @@ module Google
         # @return [Google::Apis::HomegraphV1::DeviceInfo]
         attr_accessor :device_info
       
-        # Third-party partner's device ID.
+        # Third-party device ID.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
       
-        # Different names for the device.
+        # Identifiers used to describe the device.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::HomegraphV1::DeviceNames]
         attr_accessor :name
       
-        # Indicates whether the device is capable of sending notifications. This
-        # field will be set by the agent (partner) on an incoming SYNC. If a device
-        # is not capable of generating notifications, the partner should set this
-        # flag to false. If a partner is not capable of calling
-        # ReportStateAndNotification to send notifications to Google, the partner
-        # should set this flag to false. If there is a user setting in the partner
-        # app to enable notifications and it is turned off, the partner should set
-        # this flag to false.
+        # Indicates whether your smart home Action will report notifications
+        # to Google for this device via ReportStateAndNotification.
+        # If your smart home Action enables users to control device notifications,
+        # you should update this field and call RequestSyncDevices.
         # Corresponds to the JSON property `notificationSupportedByAgent`
         # @return [Boolean]
         attr_accessor :notification_supported_by_agent
         alias_method :notification_supported_by_agent?, :notification_supported_by_agent
       
-        # IDs of other devices associated with this device. This is used to
-        # represent a device group (e.g. bonded zone) or "facets" synced
-        # through different flows (e.g. Google Nest Hub Max with a Nest Camera).
-        # This may also be used to pass in alternate IDs used to identify a cloud
-        # synced device for local execution (i.e. local verification). If used for
-        # local verification, this field is synced from the cloud.
+        # Alternate IDs associated with this device.
+        # This is used to identify cloud synced devices enabled for
+        # [local
+        # execution](https://developers.google.com/assistant/smarthome/concepts/local).
         # Corresponds to the JSON property `otherDeviceIds`
         # @return [Array<Google::Apis::HomegraphV1::AgentOtherDeviceId>]
         attr_accessor :other_device_ids
       
-        # If the third-party partner's cloud configuration includes placing devices
-        # in rooms, the name of the room can be provided here.
+        # Suggested name for the room where this device is installed.
+        # Google attempts to use this value during user setup.
         # Corresponds to the JSON property `roomHint`
         # @return [String]
         attr_accessor :room_hint
       
-        # As in roomHint, for structures that users set up in the partner's system.
+        # Suggested name for the structure where this device is installed.
+        # Google attempts to use this value during user setup.
         # Corresponds to the JSON property `structureHint`
         # @return [String]
         attr_accessor :structure_hint
       
         # Traits supported by the device.
+        # See [device
+        # traits](https://developers.google.com/assistant/smarthome/traits).
         # Corresponds to the JSON property `traits`
         # @return [Array<String>]
         attr_accessor :traits
       
-        # Hardware type of the device (e.g. light, outlet, etc).
+        # Hardware type of the device.
+        # See [device
+        # types](https://developers.google.com/assistant/smarthome/guides).
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
-        # Indicates whether the state of this device is being reported to Google
-        # through ReportStateAndNotification call.
+        # Indicates whether your smart home Action will report state of this device
+        # to Google via ReportStateAndNotification.
         # Corresponds to the JSON property `willReportState`
         # @return [Boolean]
         attr_accessor :will_report_state
@@ -205,12 +210,12 @@ module Google
         end
       end
       
-      # Different names for the device.
+      # Identifiers used to describe the device.
       class DeviceNames
         include Google::Apis::Core::Hashable
       
-        # List of names provided by the partner rather than the user, often
-        # manufacturer names, SKUs, etc.
+        # List of names provided by the manufacturer rather than the user, such as
+        # serial numbers, SKUs, etc.
         # Corresponds to the JSON property `defaultNames`
         # @return [Array<String>]
         attr_accessor :default_names
@@ -257,11 +262,7 @@ module Google
       end
       
       # Request type for the
-      # [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-      # be the same format as the Actions on Google `action.devices.QUERY`
-      # [request](/actions/smarthome/create-app#actiondevicesquery) with the
-      # exception of the extra `agent_user_id` and no `intent` and `customData`
-      # fields.
+      # [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
       class QueryRequest
         include Google::Apis::Core::Hashable
       
@@ -270,7 +271,7 @@ module Google
         # @return [String]
         attr_accessor :agent_user_id
       
-        # Required. Inputs containing third-party partner's device IDs for which to
+        # Required. Inputs containing third-party device IDs for which to
         # get the device states.
         # Corresponds to the JSON property `inputs`
         # @return [Array<Google::Apis::HomegraphV1::QueryRequestInput>]
@@ -316,7 +317,7 @@ module Google
       class QueryRequestPayload
         include Google::Apis::Core::Hashable
       
-        # Third-party partner's device IDs for which to get the device states.
+        # Third-party device IDs for which to get the device states.
         # Corresponds to the JSON property `devices`
         # @return [Array<Google::Apis::HomegraphV1::AgentDeviceId>]
         attr_accessor :devices
@@ -332,9 +333,11 @@ module Google
       end
       
       # Response type for the
-      # [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should
-      # follow the same format as the Actions on Google `action.devices.QUERY`
-      # [response](/actions/smarthome/create-app#actiondevicesquery).
+      # [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
+      # This should follow the same format as the Google smart home
+      # `action.devices.QUERY`
+      # [response](https://developers.google.com/assistant/smarthome/reference/intent/
+      # query).
       # # Example
       # ```json
       # `
@@ -406,12 +409,16 @@ module Google
       class ReportStateAndNotificationDevice
         include Google::Apis::Core::Hashable
       
-        # Notifications metadata for devices.
+        # Notifications metadata for devices. See the **Device NOTIFICATIONS**
+        # section of the individual trait [reference
+        # guides](https://developers.google.com/assistant/smarthome/traits).
         # Corresponds to the JSON property `notifications`
         # @return [Hash<String,Object>]
         attr_accessor :notifications
       
-        # States of devices to update.
+        # States of devices to update. See the **Device STATES** section
+        # of the individual trait [reference
+        # guides](https://developers.google.com/assistant/smarthome/traits).
         # Corresponds to the JSON property `states`
         # @return [Hash<String,Object>]
         attr_accessor :states
@@ -430,12 +437,10 @@ module Google
       # Request type for the
       # [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.
       # ReportStateAndNotification)
-      # call. It may include States, Notifications, or both. This request uses
-      # globally unique flattened state names instead of namespaces based on traits
-      # to align with the existing QUERY and EXECUTE APIs implemented by 90+ Smart
-      # Home partners. States and notifications are defined per `device_id` (for
-      # example, "123"
-      # and "456" in the following example). # Example
+      # call. It may include states, notifications, or both. States and notifications
+      # are defined per `device_id` (for example, "123" and "456" in the following
+      # example).
+      # # Example
       # ```json
       # `
       # "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
@@ -526,15 +531,14 @@ module Google
       class RequestSyncDevicesRequest
         include Google::Apis::Core::Hashable
       
-        # Required. Third-party user ID issued by agent's third-party identity
-        # provider.
+        # Required. Third-party user ID.
         # Corresponds to the JSON property `agentUserId`
         # @return [String]
         attr_accessor :agent_user_id
       
         # Optional. If set, the request will be added to a queue and a response will
-        # be returned immediately. The queue allows for de-duplication of
-        # simultaneous requests.
+        # be returned immediately. This enables concurrent requests for the given
+        # `agent_user_id`, but the caller will not receive any error responses.
         # Corresponds to the JSON property `async`
         # @return [Boolean]
         attr_accessor :async
@@ -554,7 +558,8 @@ module Google
       # Response type for the
       # [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.
       # RequestSyncDevices)
-      # call. Intentionally empty upon success. An HTTP response code is returned
+      # call.
+      # Intentionally empty upon success. An HTTP response code is returned
       # with more details upon failure.
       class RequestSyncDevicesResponse
         include Google::Apis::Core::Hashable
@@ -588,10 +593,7 @@ module Google
       end
       
       # Request type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync)
-      # call. This should follow the same format as the Actions on Google
-      # `action.devices.SYNC`
-      # [request](/actions/smarthome/create-app#actiondevicessync) with the exception
-      # of the extra `agent_user_id` and no `intent` field.
+      # call.
       class SyncRequest
         include Google::Apis::Core::Hashable
       
@@ -617,9 +619,11 @@ module Google
       end
       
       # Response type for the
-      # [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should
-      # follow the same format as the Actions on Google `action.devices.SYNC`
-      # [response](/actions/smarthome/create-app#actiondevicessync).
+      # [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
+      # This should follow the same format as the Google smart home
+      # `action.devices.SYNC`
+      # [response](https://developers.google.com/assistant/smarthome/reference/intent/
+      # sync).
       # # Example
       # ```json
       # `

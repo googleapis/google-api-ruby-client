@@ -476,6 +476,11 @@ module Google
         #   The ID of the folder.
         # @param [String] child_id
         #   The ID of the child.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the item's last parent is removed, the item will be placed
+        #   under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -495,10 +500,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_child(folder_id, child_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_child(folder_id, child_id, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{folderId}/children/{childId}', options)
           command.params['folderId'] = folder_id unless folder_id.nil?
           command.params['childId'] = child_id unless child_id.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -545,6 +551,14 @@ module Google
         # @param [String] folder_id
         #   The ID of the folder.
         # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the child's owner makes the request, the child will be
+        #   removed from all current folders and placed in the requested folder. Any other
+        #   requests that increase the number of the child's parents will fail, except
+        #   when the canAddMyDriveParent file capability is true and a single parent is
+        #   being added.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -570,13 +584,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_child(folder_id, child_reference_object = nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_child(folder_id, child_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{folderId}/children', options)
           command.request_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.request_object = child_reference_object
           command.response_representation = Google::Apis::DriveV2::ChildReference::Representation
           command.response_class = Google::Apis::DriveV2::ChildReference
           command.params['folderId'] = folder_id unless folder_id.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -1139,6 +1154,10 @@ module Google
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. Requests that specify more than one parent will fail.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1178,7 +1197,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_file(file_id, file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_file(file_id, file_object = nil, convert: nil, enforce_single_parent: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/copy', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -1186,6 +1205,7 @@ module Google
           command.response_class = Google::Apis::DriveV2::File
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['convert'] = convert unless convert.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['pinned'] = pinned unless pinned.nil?
@@ -1414,6 +1434,10 @@ module Google
         # @param [Google::Apis::DriveV2::File] file_object
         # @param [Boolean] convert
         #   Whether to convert this file to the corresponding Google Docs format.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. Requests that specify more than one parent will fail.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1459,7 +1483,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_file(file_object = nil, convert: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def insert_file(file_object = nil, convert: nil, enforce_single_parent: nil, ocr: nil, ocr_language: nil, pinned: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, use_content_as_indexable_text: nil, visibility: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:post, 'files', options)
           else
@@ -1472,6 +1496,7 @@ module Google
           command.response_representation = Google::Apis::DriveV2::File::Representation
           command.response_class = Google::Apis::DriveV2::File
           command.query['convert'] = convert unless convert.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['ocr'] = ocr unless ocr.nil?
           command.query['ocrLanguage'] = ocr_language unless ocr_language.nil?
           command.query['pinned'] = pinned unless pinned.nil?
@@ -1582,6 +1607,14 @@ module Google
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
         #   This parameter is deprecated and has no function.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the item's owner makes a request to add a single parent, the
+        #   item will be removed from all current folders and placed in the requested
+        #   folder. Other requests that increase the number of parents will fail, except
+        #   when the canAddMyDriveParent file capability is true and a single parent is
+        #   being added.
         # @param [String] modified_date_behavior
         #   Determines the behavior in which modifiedDate is updated. This overrides
         #   setModifiedDate.
@@ -1639,7 +1672,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def patch_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:patch, 'files/{fileId}', options)
           command.request_representation = Google::Apis::DriveV2::File::Representation
           command.request_object = file_object
@@ -1648,6 +1681,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
           command.query['convert'] = convert unless convert.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['modifiedDateBehavior'] = modified_date_behavior unless modified_date_behavior.nil?
           command.query['newRevision'] = new_revision unless new_revision.nil?
           command.query['ocr'] = ocr unless ocr.nil?
@@ -1799,6 +1833,14 @@ module Google
         #   Comma-separated list of parent IDs to add.
         # @param [Boolean] convert
         #   This parameter is deprecated and has no function.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the item's owner makes a request to add a single parent, the
+        #   item will be removed from all current folders and placed in the requested
+        #   folder. Other requests that increase the number of parents will fail, except
+        #   when the canAddMyDriveParent file capability is true and a single parent is
+        #   being added.
         # @param [String] modified_date_behavior
         #   Determines the behavior in which modifiedDate is updated. This overrides
         #   setModifiedDate.
@@ -1860,7 +1902,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def update_file(file_id, file_object = nil, add_parents: nil, convert: nil, enforce_single_parent: nil, modified_date_behavior: nil, new_revision: nil, ocr: nil, ocr_language: nil, pinned: nil, remove_parents: nil, set_modified_date: nil, supports_all_drives: nil, supports_team_drives: nil, timed_text_language: nil, timed_text_track_name: nil, update_viewed_date: nil, use_content_as_indexable_text: nil, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
             command = make_simple_command(:put, 'files/{fileId}', options)
           else
@@ -1875,6 +1917,7 @@ module Google
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['addParents'] = add_parents unless add_parents.nil?
           command.query['convert'] = convert unless convert.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['modifiedDateBehavior'] = modified_date_behavior unless modified_date_behavior.nil?
           command.query['newRevision'] = new_revision unless new_revision.nil?
           command.query['ocr'] = ocr unless ocr.nil?
@@ -1965,6 +2008,11 @@ module Google
         #   The ID of the file.
         # @param [String] parent_id
         #   The ID of the parent.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the item's last parent is removed, the item will be placed
+        #   under its owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1984,10 +2032,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_parent(file_id, parent_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def delete_parent(file_id, parent_id, enforce_single_parent: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:delete, 'files/{fileId}/parents/{parentId}', options)
           command.params['fileId'] = file_id unless file_id.nil?
           command.params['parentId'] = parent_id unless parent_id.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -2034,6 +2083,14 @@ module Google
         # @param [String] file_id
         #   The ID of the file.
         # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. If the child's owner makes the request, the child will be
+        #   removed from all current folders and placed in the requested folder. Any other
+        #   requests that increase the number of the child's parents will fail, except
+        #   when the canAddMyDriveParent file capability is true and a single parent is
+        #   being added.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -2059,13 +2116,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_parent(file_id, parent_reference_object = nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_parent(file_id, parent_reference_object = nil, enforce_single_parent: nil, supports_all_drives: nil, supports_team_drives: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/parents', options)
           command.request_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.request_object = parent_reference_object
           command.response_representation = Google::Apis::DriveV2::ParentReference::Representation
           command.response_class = Google::Apis::DriveV2::ParentReference
           command.params['fileId'] = file_id unless file_id.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2244,6 +2302,18 @@ module Google
         # @param [Google::Apis::DriveV2::Permission] permission_object
         # @param [String] email_message
         #   A plain text custom message to include in notification emails.
+        # @param [Boolean] enforce_single_parent
+        #   Set to true to opt in to API behavior that aims for all items to have exactly
+        #   one parent. This parameter will only take effect if the item is not in a
+        #   shared drive. See moveToNewOwnersRoot for details.
+        # @param [Boolean] move_to_new_owners_root
+        #   This parameter will only take effect if the item is not in a shared drive and
+        #   the request is attempting to transfer the ownership of the item. When set to
+        #   true, the item will be moved to the new owner's My Drive root folder and all
+        #   prior parents removed. If set to false, when enforceSingleParent=true, parents
+        #   are not changed. If set to false, when enforceSingleParent=false, existing
+        #   parents are not changed; however, the file will be added to the new owner's My
+        #   Drive root folder, unless it is already in the new owner's My Drive.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.
@@ -2277,7 +2347,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_permission(file_id, permission_object = nil, email_message: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def insert_permission(file_id, permission_object = nil, email_message: nil, enforce_single_parent: nil, move_to_new_owners_root: nil, send_notification_emails: nil, supports_all_drives: nil, supports_team_drives: nil, use_domain_admin_access: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'files/{fileId}/permissions', options)
           command.request_representation = Google::Apis::DriveV2::Permission::Representation
           command.request_object = permission_object
@@ -2285,6 +2355,8 @@ module Google
           command.response_class = Google::Apis::DriveV2::Permission
           command.params['fileId'] = file_id unless file_id.nil?
           command.query['emailMessage'] = email_message unless email_message.nil?
+          command.query['enforceSingleParent'] = enforce_single_parent unless enforce_single_parent.nil?
+          command.query['moveToNewOwnersRoot'] = move_to_new_owners_root unless move_to_new_owners_root.nil?
           command.query['sendNotificationEmails'] = send_notification_emails unless send_notification_emails.nil?
           command.query['supportsAllDrives'] = supports_all_drives unless supports_all_drives.nil?
           command.query['supportsTeamDrives'] = supports_team_drives unless supports_team_drives.nil?

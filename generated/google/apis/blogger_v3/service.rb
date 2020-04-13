@@ -20,9 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module BloggerV3
-      # Blogger API
+      # Blogger API v3
       #
-      # API for access to the data within Blogger.
+      # The Blogger API provides access to posts, comments and pages of a
+      #  Blogger blog.
       #
       # @example
       #    require 'google/apis/blogger_v3'
@@ -38,34 +39,24 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'blogger/v3/')
-          @batch_path = 'batch/blogger/v3'
+          super('https://blogger.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
-        # Gets one blog and user info pair by blogId and userId.
+        # Gets one blog and user info pair by blog id and user id.
         # @param [String] user_id
-        #   ID of the user whose blogs are to be fetched. Either the word 'self' or the
-        #   user's profile identifier.
         # @param [String] blog_id
-        #   The ID of the blog to get.
         # @param [Fixnum] max_posts
-        #   Maximum number of posts to pull back with the blog.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -78,8 +69,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_blog_user_info(user_id, blog_id, max_posts: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}', options)
+        def get_blog_user_info(user_id, blog_id, max_posts: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/users/{userId}/blogs/{blogId}', options)
           command.response_representation = Google::Apis::BloggerV3::BlogUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::BlogUserInfo
           command.params['userId'] = user_id unless user_id.nil?
@@ -87,25 +78,18 @@ module Google
           command.query['maxPosts'] = max_posts unless max_posts.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one blog by ID.
+        # Gets a blog by id.
         # @param [String] blog_id
-        #   The ID of the blog to get.
         # @param [Fixnum] max_posts
-        #   Maximum number of posts to pull back with the blog.
         # @param [String] view
-        #   Access level with which to view the blog. Note that some fields require
-        #   elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -118,8 +102,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_blog(blog_id, max_posts: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}', options)
+        def get_blog(blog_id, max_posts: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}', options)
           command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -127,23 +111,17 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a Blog by URL.
+        # Gets a blog by url.
         # @param [String] url
-        #   The URL of the blog to retrieve.
         # @param [String] view
-        #   Access level with which to view the blog. Note that some fields require
-        #   elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -156,42 +134,29 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_blog_by_url(url, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/byurl', options)
+        def get_blog_by_url(url, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/byurl', options)
           command.response_representation = Google::Apis::BloggerV3::Blog::Representation
           command.response_class = Google::Apis::BloggerV3::Blog
           command.query['url'] = url unless url.nil?
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of blogs, possibly filtered.
+        # Lists blogs by user.
         # @param [String] user_id
-        #   ID of the user whose blogs are to be fetched. Either the word 'self' or the
-        #   user's profile identifier.
         # @param [Boolean] fetch_user_info
-        #   Whether the response is a list of blogs with per-user information instead of
-        #   just blogs.
         # @param [Array<String>, String] role
-        #   User access types for blogs to include in the results, e.g. AUTHOR will return
-        #   blogs where the user has author level access. If no roles are specified,
-        #   defaults to ADMIN and AUTHOR roles.
         # @param [Array<String>, String] status
-        #   Blog statuses to include in the result (default: Live blogs only). Note that
-        #   ADMIN access is required to view deleted blogs.
+        #   Default value of status is LIVE.
         # @param [String] view
-        #   Access level with which to view the blogs. Note that some fields require
-        #   elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -204,8 +169,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_blogs_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/blogs', options)
+        def list_blogs_by_user(user_id, fetch_user_info: nil, role: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/users/{userId}/blogs', options)
           command.response_representation = Google::Apis::BloggerV3::BlogList::Representation
           command.response_class = Google::Apis::BloggerV3::BlogList
           command.params['userId'] = user_id unless user_id.nil?
@@ -215,24 +180,18 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Marks a comment as not spam.
+        # Marks a comment as not spam by blog id, post id and comment id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] comment_id
-        #   The ID of the comment to mark as not spam.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -245,8 +204,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def approve_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', options)
+        def approve_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -254,24 +213,18 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a comment by ID.
+        # Deletes a comment by blog id, post id and comment id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] comment_id
-        #   The ID of the comment to delete.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -284,36 +237,26 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
+        def delete_comment(blog_id, post_id, comment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one comment by ID.
+        # Gets a comment by id.
         # @param [String] blog_id
-        #   ID of the blog to containing the comment.
         # @param [String] post_id
-        #   ID of the post to fetch posts from.
         # @param [String] comment_id
-        #   The ID of the comment to get.
         # @param [String] view
-        #   Access level for the requested comment (default: READER). Note that some
-        #   comments will require elevated permissions, for example comments where the
-        #   parent posts which is in a draft state, or comments that are pending
-        #   moderation.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -326,8 +269,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_comment(blog_id, post_id, comment_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
+        def get_comment(blog_id, post_id, comment_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -336,36 +279,24 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the comments for a post, possibly filtered.
+        # Lists comments.
         # @param [String] blog_id
-        #   ID of the blog to fetch comments from.
         # @param [String] post_id
-        #   ID of the post to fetch posts from.
-        # @param [DateTime] end_date
-        #   Latest date of comment to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] end_date
         # @param [Boolean] fetch_bodies
-        #   Whether the body content of the comments is included.
         # @param [Fixnum] max_results
-        #   Maximum number of comments to include in the result.
         # @param [String] page_token
-        #   Continuation token if request is paged.
-        # @param [DateTime] start_date
-        #   Earliest date of comment to fetch, a date-time with RFC 3339 formatting.
-        # @param [Array<String>, String] status
+        # @param [String] start_date
+        # @param [String] status
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -378,8 +309,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comments(blog_id, post_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}/comments', options)
+        def list_comments(blog_id, post_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts/{postId}/comments', options)
           command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -393,31 +324,22 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the comments for a blog, across all posts, possibly filtered.
+        # Lists comments by blog.
         # @param [String] blog_id
-        #   ID of the blog to fetch comments from.
-        # @param [DateTime] end_date
-        #   Latest date of comment to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] end_date
         # @param [Boolean] fetch_bodies
-        #   Whether the body content of the comments is included.
         # @param [Fixnum] max_results
-        #   Maximum number of comments to include in the result.
         # @param [String] page_token
-        #   Continuation token if request is paged.
-        # @param [DateTime] start_date
-        #   Earliest date of comment to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] start_date
         # @param [Array<String>, String] status
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -430,8 +352,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_comments_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/comments', options)
+        def list_comments_by_blog(blog_id, end_date: nil, fetch_bodies: nil, max_results: nil, page_token: nil, start_date: nil, status: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/comments', options)
           command.response_representation = Google::Apis::BloggerV3::CommentList::Representation
           command.response_class = Google::Apis::BloggerV3::CommentList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -443,24 +365,18 @@ module Google
           command.query['status'] = status unless status.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Marks a comment as spam.
+        # Marks a comment as spam by blog id, post id and comment id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] comment_id
-        #   The ID of the comment to mark as spam.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -473,8 +389,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def mark_comment_as_spam(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', options)
+        def mark_comment_as_spam(blog_id, post_id, comment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -482,24 +398,18 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Removes the content of a comment.
+        # Removes the content of a comment by blog id, post id and comment id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] comment_id
-        #   The ID of the comment to delete content from.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -512,8 +422,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_comment_content(blog_id, post_id, comment_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', options)
+        def remove_comment_content(blog_id, post_id, comment_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', options)
           command.response_representation = Google::Apis::BloggerV3::Comment::Representation
           command.response_class = Google::Apis::BloggerV3::Comment
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -521,21 +431,17 @@ module Google
           command.params['commentId'] = comment_id unless comment_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve pageview stats for a Blog.
+        # Gets page views by blog id.
         # @param [String] blog_id
-        #   The ID of the blog to get.
         # @param [Array<String>, String] range
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -548,30 +454,25 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_page_view(blog_id, range: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/pageviews', options)
+        def get_page_view(blog_id, range: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/pageviews', options)
           command.response_representation = Google::Apis::BloggerV3::Pageviews::Representation
           command.response_class = Google::Apis::BloggerV3::Pageviews
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.query['range'] = range unless range.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a page by ID.
+        # Deletes a page by blog id and page id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] page_id
-        #   The ID of the Page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -584,29 +485,24 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'blogs/{blogId}/pages/{pageId}', options)
+        def delete_page(blog_id, page_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/blogs/{blogId}/pages/{pageId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one blog page by ID.
+        # Gets a page by blog id and page id.
         # @param [String] blog_id
-        #   ID of the blog containing the page.
         # @param [String] page_id
-        #   The ID of the page to get.
         # @param [String] view
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -619,8 +515,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_page(blog_id, page_id, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/pages/{pageId}', options)
+        def get_page(blog_id, page_id, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/pages/{pageId}', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -628,23 +524,18 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Add a page.
+        # Inserts a page.
         # @param [String] blog_id
-        #   ID of the blog to add the page to.
         # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] is_draft
-        #   Whether to create the page as a draft (default: false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -657,8 +548,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_page(blog_id, page_object = nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/pages', options)
+        def insert_page(blog_id, page_object = nil, is_draft: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/pages', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -667,30 +558,21 @@ module Google
           command.query['isDraft'] = is_draft unless is_draft.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves the pages for a blog, optionally including non-LIVE statuses.
+        # Lists pages.
         # @param [String] blog_id
-        #   ID of the blog to fetch Pages from.
         # @param [Boolean] fetch_bodies
-        #   Whether to retrieve the Page bodies.
         # @param [Fixnum] max_results
-        #   Maximum number of Pages to fetch.
         # @param [String] page_token
-        #   Continuation token if the request is paged.
         # @param [Array<String>, String] status
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -703,8 +585,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_pages(blog_id, fetch_bodies: nil, max_results: nil, page_token: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/pages', options)
+        def list_pages(blog_id, fetch_bodies: nil, max_results: nil, page_token: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/pages', options)
           command.response_representation = Google::Apis::BloggerV3::PageList::Representation
           command.response_class = Google::Apis::BloggerV3::PageList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -715,29 +597,20 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Update a page. This method supports patch semantics.
+        # Patches a page.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] page_id
-        #   The ID of the Page.
         # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] publish
-        #   Whether a publish action should be performed when the page is updated (default:
-        #   false).
         # @param [Boolean] revert
-        #   Whether a revert action should be performed when the page is updated (default:
-        #   false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -750,8 +623,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'blogs/{blogId}/pages/{pageId}', options)
+        def patch_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/blogs/{blogId}/pages/{pageId}', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -762,22 +635,17 @@ module Google
           command.query['revert'] = revert unless revert.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Publishes a draft page.
+        # Publishes a page.
         # @param [String] blog_id
-        #   The ID of the blog.
         # @param [String] page_id
-        #   The ID of the page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -790,30 +658,25 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/publish', options)
+        def publish_page(blog_id, page_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/pages/{pageId}/publish', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Revert a published or scheduled page to draft state.
+        # Reverts a published or scheduled page to draft state.
         # @param [String] blog_id
-        #   The ID of the blog.
         # @param [String] page_id
-        #   The ID of the page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -826,37 +689,28 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def revert_page(blog_id, page_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/pages/{pageId}/revert', options)
+        def revert_page(blog_id, page_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/pages/{pageId}/revert', options)
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
           command.response_class = Google::Apis::BloggerV3::Page
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['pageId'] = page_id unless page_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Update a page.
+        # Updates a page by blog id and page id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] page_id
-        #   The ID of the Page.
         # @param [Google::Apis::BloggerV3::Page] page_object
         # @param [Boolean] publish
-        #   Whether a publish action should be performed when the page is updated (default:
-        #   false).
         # @param [Boolean] revert
-        #   Whether a revert action should be performed when the page is updated (default:
-        #   false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -869,8 +723,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'blogs/{blogId}/pages/{pageId}', options)
+        def update_page(blog_id, page_id, page_object = nil, publish: nil, revert: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v3/blogs/{blogId}/pages/{pageId}', options)
           command.request_representation = Google::Apis::BloggerV3::Page::Representation
           command.request_object = page_object
           command.response_representation = Google::Apis::BloggerV3::Page::Representation
@@ -881,29 +735,19 @@ module Google
           command.query['revert'] = revert unless revert.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one post and user info pair, by post ID and user ID. The post user info
-        # contains per-user information about the post, such as access rights, specific
-        # to the user.
+        # Gets one post and user info pair, by post_id and user_id.
         # @param [String] user_id
-        #   ID of the user for the per-user information to be fetched. Either the word '
-        #   self' or the user's profile identifier.
         # @param [String] blog_id
-        #   The ID of the blog.
         # @param [String] post_id
-        #   The ID of the post to get.
         # @param [Fixnum] max_comments
-        #   Maximum number of comments to pull back on a post.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -916,8 +760,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_post_user_info(user_id, blog_id, post_id, max_comments: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts/{postId}', options)
+        def get_post_user_info(user_id, blog_id, post_id, max_comments: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/users/{userId}/blogs/{blogId}/posts/{postId}', options)
           command.response_representation = Google::Apis::BloggerV3::PostUserInfo::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfo
           command.params['userId'] = user_id unless user_id.nil?
@@ -926,43 +770,26 @@ module Google
           command.query['maxComments'] = max_comments unless max_comments.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of post and post user info pairs, possibly filtered. The post
-        # user info contains per-user information about the post, such as access rights,
-        # specific to the user.
+        # Lists post and user info pairs.
         # @param [String] user_id
-        #   ID of the user for the per-user information to be fetched. Either the word '
-        #   self' or the user's profile identifier.
         # @param [String] blog_id
-        #   ID of the blog to fetch posts from.
-        # @param [DateTime] end_date
-        #   Latest post date to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] end_date
         # @param [Boolean] fetch_bodies
-        #   Whether the body content of posts is included. Default is false.
         # @param [String] labels
-        #   Comma-separated list of labels to search for.
         # @param [Fixnum] max_results
-        #   Maximum number of posts to fetch.
         # @param [String] order_by
-        #   Sort order applied to search results. Default is published.
         # @param [String] page_token
-        #   Continuation token if the request is paged.
-        # @param [DateTime] start_date
-        #   Earliest post date to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] start_date
         # @param [Array<String>, String] status
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -975,8 +802,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_post_user_info(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/blogs/{blogId}/posts', options)
+        def list_post_user_info(user_id, blog_id, end_date: nil, fetch_bodies: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/users/{userId}/blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostUserInfosList::Representation
           command.response_class = Google::Apis::BloggerV3::PostUserInfosList
           command.params['userId'] = user_id unless user_id.nil?
@@ -992,22 +819,17 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Delete a post by ID.
+        # Deletes a post by blog id and post id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1020,39 +842,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_post(blog_id, post_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'blogs/{blogId}/posts/{postId}', options)
+        def delete_post(blog_id, post_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v3/blogs/{blogId}/posts/{postId}', options)
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Get a post by ID.
+        # Gets a post by blog id and post id
         # @param [String] blog_id
-        #   ID of the blog to fetch the post from.
         # @param [String] post_id
-        #   The ID of the post
         # @param [Boolean] fetch_body
-        #   Whether the body content of the post is included (default: true). This should
-        #   be set to false when the post bodies are not required, to help minimize
-        #   traffic.
         # @param [Boolean] fetch_images
-        #   Whether image URL metadata for each post is included (default: false).
         # @param [Fixnum] max_comments
-        #   Maximum number of comments to pull back on a post.
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1065,8 +875,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_post(blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts/{postId}', options)
+        def get_post(blog_id, post_id, fetch_body: nil, fetch_images: nil, max_comments: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts/{postId}', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1077,27 +887,19 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieve a Post by Path.
+        # Gets a post by path.
         # @param [String] blog_id
-        #   ID of the blog to fetch the post from.
         # @param [String] path
-        #   Path of the Post to retrieve.
         # @param [Fixnum] max_comments
-        #   Maximum number of comments to pull back on a post.
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require elevated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1110,8 +912,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_post_by_path(blog_id, path, max_comments: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts/bypath', options)
+        def get_post_by_path(blog_id, path, max_comments: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts/bypath', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1120,29 +922,20 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Add a post.
+        # Inserts a post.
         # @param [String] blog_id
-        #   ID of the blog to add the post to.
         # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
-        #   Whether the body content of the post is included with the result (default:
-        #   true).
         # @param [Boolean] fetch_images
-        #   Whether image URL metadata for each post is included in the returned result (
-        #   default: false).
         # @param [Boolean] is_draft
-        #   Whether to create the post as a draft (default: false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1155,8 +948,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_post(blog_id, post_object = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts', options)
+        def insert_post(blog_id, post_object = nil, fetch_body: nil, fetch_images: nil, is_draft: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1167,42 +960,26 @@ module Google
           command.query['isDraft'] = is_draft unless is_draft.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a list of posts, possibly filtered.
+        # Lists posts.
         # @param [String] blog_id
-        #   ID of the blog to fetch posts from.
-        # @param [DateTime] end_date
-        #   Latest post date to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] end_date
         # @param [Boolean] fetch_bodies
-        #   Whether the body content of posts is included (default: true). This should be
-        #   set to false when the post bodies are not required, to help minimize traffic.
         # @param [Boolean] fetch_images
-        #   Whether image URL metadata for each post is included.
         # @param [String] labels
-        #   Comma-separated list of labels to search for.
         # @param [Fixnum] max_results
-        #   Maximum number of posts to fetch.
         # @param [String] order_by
-        #   Sort search results
         # @param [String] page_token
-        #   Continuation token if the request is paged.
-        # @param [DateTime] start_date
-        #   Earliest post date to fetch, a date-time with RFC 3339 formatting.
+        # @param [String] start_date
         # @param [Array<String>, String] status
-        #   Statuses to include in the results.
         # @param [String] view
-        #   Access level with which to view the returned result. Note that some fields
-        #   require escalated access.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1215,8 +992,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts', options)
+        def list_posts(blog_id, end_date: nil, fetch_bodies: nil, fetch_images: nil, labels: nil, max_results: nil, order_by: nil, page_token: nil, start_date: nil, status: nil, view: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts', options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1232,37 +1009,23 @@ module Google
           command.query['view'] = view unless view.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Update a post. This method supports patch semantics.
+        # Patches a post.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
-        #   Whether the body content of the post is included with the result (default:
-        #   true).
         # @param [Boolean] fetch_images
-        #   Whether image URL metadata for each post is included in the returned result (
-        #   default: false).
         # @param [Fixnum] max_comments
-        #   Maximum number of comments to retrieve with the returned post.
         # @param [Boolean] publish
-        #   Whether a publish action should be performed when the post is updated (default:
-        #   false).
         # @param [Boolean] revert
-        #   Whether a revert action should be performed when the post is updated (default:
-        #   false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1275,8 +1038,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'blogs/{blogId}/posts/{postId}', options)
+        def patch_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v3/blogs/{blogId}/posts/{postId}', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1290,28 +1053,18 @@ module Google
           command.query['revert'] = revert unless revert.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Publishes a draft post, optionally at the specific time of the given
-        # publishDate parameter.
+        # Publishes a post.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
-        # @param [DateTime] publish_date
-        #   Optional date and time to schedule the publishing of the Blog. If no
-        #   publishDate parameter is given, the post is either published at the a
-        #   previously saved schedule date (if present), or the current time. If a future
-        #   date is given, the post will be scheduled to be published.
+        # @param [String] publish_date
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1324,8 +1077,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def publish_post(blog_id, post_id, publish_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/publish', options)
+        def publish_post(blog_id, post_id, publish_date: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts/{postId}/publish', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1333,22 +1086,17 @@ module Google
           command.query['publishDate'] = publish_date unless publish_date.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Revert a published or scheduled post to draft state.
+        # Reverts a published or scheduled post to draft state.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1361,35 +1109,27 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def revert_post(blog_id, post_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'blogs/{blogId}/posts/{postId}/revert', options)
+        def revert_post(blog_id, post_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/blogs/{blogId}/posts/{postId}/revert', options)
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
           command.response_class = Google::Apis::BloggerV3::Post
           command.params['blogId'] = blog_id unless blog_id.nil?
           command.params['postId'] = post_id unless post_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Search for a post.
+        # Searches for posts matching given query terms in the specified blog.
         # @param [String] blog_id
-        #   ID of the blog to fetch the post from.
         # @param [String] q
-        #   Query terms to search this blog for matching posts.
         # @param [Boolean] fetch_bodies
-        #   Whether the body content of posts is included (default: true). This should be
-        #   set to false when the post bodies are not required, to help minimize traffic.
         # @param [String] order_by
-        #   Sort search results
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1402,8 +1142,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def search_posts(blog_id, q, fetch_bodies: nil, order_by: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'blogs/{blogId}/posts/search', options)
+        def search_posts(blog_id, q, fetch_bodies: nil, order_by: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/blogs/{blogId}/posts/search', options)
           command.response_representation = Google::Apis::BloggerV3::PostList::Representation
           command.response_class = Google::Apis::BloggerV3::PostList
           command.params['blogId'] = blog_id unless blog_id.nil?
@@ -1412,37 +1152,23 @@ module Google
           command.query['q'] = q unless q.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Update a post.
+        # Updates a post by blog id and post id.
         # @param [String] blog_id
-        #   The ID of the Blog.
         # @param [String] post_id
-        #   The ID of the Post.
         # @param [Google::Apis::BloggerV3::Post] post_object
         # @param [Boolean] fetch_body
-        #   Whether the body content of the post is included with the result (default:
-        #   true).
         # @param [Boolean] fetch_images
-        #   Whether image URL metadata for each post is included in the returned result (
-        #   default: false).
         # @param [Fixnum] max_comments
-        #   Maximum number of comments to retrieve with the returned post.
         # @param [Boolean] publish
-        #   Whether a publish action should be performed when the post is updated (default:
-        #   false).
         # @param [Boolean] revert
-        #   Whether a revert action should be performed when the post is updated (default:
-        #   false).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1455,8 +1181,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'blogs/{blogId}/posts/{postId}', options)
+        def update_post(blog_id, post_id, post_object = nil, fetch_body: nil, fetch_images: nil, max_comments: nil, publish: nil, revert: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'v3/blogs/{blogId}/posts/{postId}', options)
           command.request_representation = Google::Apis::BloggerV3::Post::Representation
           command.request_object = post_object
           command.response_representation = Google::Apis::BloggerV3::Post::Representation
@@ -1470,20 +1196,16 @@ module Google
           command.query['revert'] = revert unless revert.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Gets one user by ID.
+        # Gets one user by user_id.
         # @param [String] user_id
-        #   The ID of the user to get.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1496,14 +1218,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user(user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}', options)
+        def get_user(user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v3/users/{userId}', options)
           command.response_representation = Google::Apis::BloggerV3::User::Representation
           command.response_class = Google::Apis::BloggerV3::User
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -1512,7 +1233,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

@@ -18,15 +18,15 @@ require 'google/apis/securitycenter_v1p1alpha1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Security Command Center API
+    # Security Command Center API
     #
-    # Cloud Security Command Center API provides access to temporal views of assets
-    # and findings within an organization.
+    # Security Command Center API provides access to temporal views of assets and
+    # findings within an organization.
     #
     # @see https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview
     module SecuritycenterV1p1alpha1
       VERSION = 'V1p1alpha1'
-      REVISION = '20200306'
+      REVISION = '20200406'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

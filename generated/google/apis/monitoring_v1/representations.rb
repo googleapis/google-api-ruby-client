@@ -431,6 +431,8 @@ module Google
           property :filter, as: 'filter'
           property :pick_time_series_filter, as: 'pickTimeSeriesFilter', class: Google::Apis::MonitoringV1::PickTimeSeriesFilter, decorator: Google::Apis::MonitoringV1::PickTimeSeriesFilter::Representation
       
+          property :secondary_aggregation, as: 'secondaryAggregation', class: Google::Apis::MonitoringV1::Aggregation, decorator: Google::Apis::MonitoringV1::Aggregation::Representation
+      
         end
       end
       
@@ -455,6 +457,7 @@ module Google
       
           property :time_series_filter_ratio, as: 'timeSeriesFilterRatio', class: Google::Apis::MonitoringV1::TimeSeriesFilterRatio, decorator: Google::Apis::MonitoringV1::TimeSeriesFilterRatio::Representation
       
+          property :time_series_query_language, as: 'timeSeriesQueryLanguage'
           property :unit_override, as: 'unitOverride'
         end
       end

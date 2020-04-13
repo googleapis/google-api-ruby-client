@@ -3617,6 +3617,12 @@ module Google
         attr_accessor :enable_auto_start
         alias_method :enable_auto_start?, :enable_auto_start
       
+        # 
+        # Corresponds to the JSON property `enableAutoStop`
+        # @return [Boolean]
+        attr_accessor :enable_auto_stop
+        alias_method :enable_auto_stop?, :enable_auto_stop
+      
         # This setting indicates whether HTTP POST closed captioning is enabled for this
         # broadcast. The ingestion URL of the closed captions is returned through the
         # liveStreams API. This is mutually exclusive with using the
@@ -3725,6 +3731,7 @@ module Google
           @bound_stream_last_update_time_ms = args[:bound_stream_last_update_time_ms] if args.key?(:bound_stream_last_update_time_ms)
           @closed_captions_type = args[:closed_captions_type] if args.key?(:closed_captions_type)
           @enable_auto_start = args[:enable_auto_start] if args.key?(:enable_auto_start)
+          @enable_auto_stop = args[:enable_auto_stop] if args.key?(:enable_auto_stop)
           @enable_closed_captions = args[:enable_closed_captions] if args.key?(:enable_closed_captions)
           @enable_content_encryption = args[:enable_content_encryption] if args.key?(:enable_content_encryption)
           @enable_dvr = args[:enable_dvr] if args.key?(:enable_dvr)

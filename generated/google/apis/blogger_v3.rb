@@ -18,14 +18,15 @@ require 'google/apis/blogger_v3/representations.rb'
 
 module Google
   module Apis
-    # Blogger API
+    # Blogger API v3
     #
-    # API for access to the data within Blogger.
+    # The Blogger API provides access to posts, comments and pages of a
+    # Blogger blog.
     #
     # @see https://developers.google.com/blogger/docs/3.0/getting_started
     module BloggerV3
       VERSION = 'V3'
-      REVISION = '20190917'
+      REVISION = '20200409'
 
       # Manage your Blogger account
       AUTH_BLOGGER = 'https://www.googleapis.com/auth/blogger'

@@ -278,8 +278,8 @@ module Google
         # @param [String] content_type
         #   Optional. The content type.
         # @param [String] read_time_window_end_time
-        #   End time of the time window (inclusive).
-        #   Current timestamp if not specified.
+        #   End time of the time window (inclusive). If not specified, the current
+        #   timestamp is used instead.
         # @param [String] read_time_window_start_time
         #   Start time of the time window (exclusive).
         # @param [String] fields

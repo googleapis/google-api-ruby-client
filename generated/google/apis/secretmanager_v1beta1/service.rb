@@ -22,7 +22,7 @@ module Google
     module SecretmanagerV1beta1
       # Secret Manager API
       #
-      # Stores API keys, passwords, certificates, and other sensitive data. Provides
+      # Stores sensitive data such as API keys, passwords, and certificates. Provides
       #  convenience while improving security.
       #
       # @example
@@ -159,6 +159,9 @@ module Google
         # @param [Google::Apis::SecretmanagerV1beta1::Secret] secret_object
         # @param [String] secret_id
         #   Required. This must be unique within the project.
+        #   A secret ID is a string with a maximum length of 255 characters and can
+        #   contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+        #   underscore (`_`) characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AzureBlobStorageData
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AzureCredentials
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Date
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -83,6 +95,12 @@ module Google
       end
       
       class ListTransferJobsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NotificationConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -183,6 +201,23 @@ module Google
         end
       end
       
+      class AzureBlobStorageData
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :azure_credentials, as: 'azureCredentials', class: Google::Apis::StoragetransferV1::AzureCredentials, decorator: Google::Apis::StoragetransferV1::AzureCredentials::Representation
+      
+          property :container, as: 'container'
+          property :storage_account, as: 'storageAccount'
+        end
+      end
+      
+      class AzureCredentials
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sas_token, as: 'sasToken'
+        end
+      end
+      
       class Date
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -255,11 +290,22 @@ module Google
         end
       end
       
+      class NotificationConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :event_types, as: 'eventTypes'
+          property :payload_format, as: 'payloadFormat'
+          property :pubsub_topic, as: 'pubsubTopic'
+        end
+      end
+      
       class ObjectConditions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exclude_prefixes, as: 'excludePrefixes'
           collection :include_prefixes, as: 'includePrefixes'
+          property :last_modified_before, as: 'lastModifiedBefore'
+          property :last_modified_since, as: 'lastModifiedSince'
           property :max_time_elapsed_since_last_modification, as: 'maxTimeElapsedSinceLastModification'
           property :min_time_elapsed_since_last_modification, as: 'minTimeElapsedSinceLastModification'
         end
@@ -350,6 +396,8 @@ module Google
           property :description, as: 'description'
           property :last_modification_time, as: 'lastModificationTime'
           property :name, as: 'name'
+          property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
+      
           property :project_id, as: 'projectId'
           property :schedule, as: 'schedule', class: Google::Apis::StoragetransferV1::Schedule, decorator: Google::Apis::StoragetransferV1::Schedule::Representation
       
@@ -368,6 +416,8 @@ module Google
           collection :error_breakdowns, as: 'errorBreakdowns', class: Google::Apis::StoragetransferV1::ErrorSummary, decorator: Google::Apis::StoragetransferV1::ErrorSummary::Representation
       
           property :name, as: 'name'
+          property :notification_config, as: 'notificationConfig', class: Google::Apis::StoragetransferV1::NotificationConfig, decorator: Google::Apis::StoragetransferV1::NotificationConfig::Representation
+      
           property :project_id, as: 'projectId'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
@@ -390,6 +440,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aws_s3_data_source, as: 'awsS3DataSource', class: Google::Apis::StoragetransferV1::AwsS3Data, decorator: Google::Apis::StoragetransferV1::AwsS3Data::Representation
+      
+          property :azure_blob_storage_data_source, as: 'azureBlobStorageDataSource', class: Google::Apis::StoragetransferV1::AzureBlobStorageData, decorator: Google::Apis::StoragetransferV1::AzureBlobStorageData::Representation
       
           property :gcs_data_sink, as: 'gcsDataSink', class: Google::Apis::StoragetransferV1::GcsData, decorator: Google::Apis::StoragetransferV1::GcsData::Representation
       

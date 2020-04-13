@@ -20,14 +20,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MonitoringV1
-      # Stackdriver Monitoring API
+      # Cloud Monitoring API
       #
-      # Manages your Stackdriver Monitoring data and configurations. Most projects
-      #  must be associated with a Stackdriver account, with a few exceptions as noted
-      #  on the individual method pages. The table entries below are presented in
-      #  alphabetical order, not in order of common use. For explanations of the
-      #  concepts found in the table entries, read the Stackdriver Monitoring
-      #  documentation.
+      # Manages your Cloud Monitoring data and configurations. Most projects must be
+      #  associated with a Workspace, with a few exceptions as noted on the individual
+      #  method pages. The table entries below are presented in alphabetical order, not
+      #  in order of common use. For explanations of the concepts found in the table
+      #  entries, read the Cloud Monitoring documentation.
       #
       # @example
       #    require 'google/apis/monitoring_v1'
@@ -204,7 +203,7 @@ module Google
         # dashboard. For more information, see Google Cloud IAM (https://cloud.google.
         # com/iam).
         # @param [String] name
-        #   The resource name of the dashboard.
+        #   Immutable. The resource name of the dashboard.
         # @param [Google::Apis::MonitoringV1::Dashboard] dashboard_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

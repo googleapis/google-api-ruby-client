@@ -466,6 +466,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CustomEventImpressionAnnotation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CustomEventInsert
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -863,6 +869,12 @@ module Google
       end
       
       class MobileCarriersListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ObaIcon
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2180,6 +2192,8 @@ module Google
           property :media_description, as: 'mediaDescription'
           property :media_duration, as: 'mediaDuration'
           property :name, as: 'name'
+          property :oba_icon, as: 'obaIcon', class: Google::Apis::DfareportingV3_4::ObaIcon, decorator: Google::Apis::DfareportingV3_4::ObaIcon::Representation
+      
           property :override_css, as: 'overrideCss'
           property :progress_offset, as: 'progressOffset', class: Google::Apis::DfareportingV3_4::VideoOffset, decorator: Google::Apis::DfareportingV3_4::VideoOffset::Representation
       
@@ -2294,11 +2308,18 @@ module Google
       
           collection :click_tags, as: 'clickTags', class: Google::Apis::DfareportingV3_4::ClickTag, decorator: Google::Apis::DfareportingV3_4::ClickTag::Representation
       
+          collection :counter_custom_events, as: 'counterCustomEvents', class: Google::Apis::DfareportingV3_4::CreativeCustomEvent, decorator: Google::Apis::DfareportingV3_4::CreativeCustomEvent::Representation
+      
           collection :detected_features, as: 'detectedFeatures'
+          collection :exit_custom_events, as: 'exitCustomEvents', class: Google::Apis::DfareportingV3_4::CreativeCustomEvent, decorator: Google::Apis::DfareportingV3_4::CreativeCustomEvent::Representation
+      
           property :id, :numeric_string => true, as: 'id'
           property :id_dimension_value, as: 'idDimensionValue', class: Google::Apis::DfareportingV3_4::DimensionValue, decorator: Google::Apis::DfareportingV3_4::DimensionValue::Representation
       
           property :kind, as: 'kind'
+          property :rich_media, as: 'richMedia'
+          collection :timer_custom_events, as: 'timerCustomEvents', class: Google::Apis::DfareportingV3_4::CreativeCustomEvent, decorator: Google::Apis::DfareportingV3_4::CreativeCustomEvent::Representation
+      
           collection :warned_validation_rules, as: 'warnedValidationRules'
         end
       end
@@ -2501,6 +2522,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :annotate_click_event, as: 'annotateClickEvent', class: Google::Apis::DfareportingV3_4::CustomEventClickAnnotation, decorator: Google::Apis::DfareportingV3_4::CustomEventClickAnnotation::Representation
       
+          property :annotate_impression_event, as: 'annotateImpressionEvent', class: Google::Apis::DfareportingV3_4::CustomEventImpressionAnnotation, decorator: Google::Apis::DfareportingV3_4::CustomEventImpressionAnnotation::Representation
+      
           collection :custom_variables, as: 'customVariables', class: Google::Apis::DfareportingV3_4::CustomVariable, decorator: Google::Apis::DfareportingV3_4::CustomVariable::Representation
       
           property :event_type, as: 'eventType'
@@ -2527,6 +2550,14 @@ module Google
           property :code, as: 'code'
           property :kind, as: 'kind'
           property :message, as: 'message'
+        end
+      end
+      
+      class CustomEventImpressionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :path_impression_id, as: 'pathImpressionId'
         end
       end
       
@@ -3319,6 +3350,21 @@ module Google
           property :kind, as: 'kind'
           collection :mobile_carriers, as: 'mobileCarriers', class: Google::Apis::DfareportingV3_4::MobileCarrier, decorator: Google::Apis::DfareportingV3_4::MobileCarrier::Representation
       
+        end
+      end
+      
+      class ObaIcon
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :icon_click_through_url, as: 'iconClickThroughUrl'
+          property :icon_click_tracking_url, as: 'iconClickTrackingUrl'
+          property :icon_view_tracking_url, as: 'iconViewTrackingUrl'
+          property :program, as: 'program'
+          property :resource_url, as: 'resourceUrl'
+          property :size, as: 'size', class: Google::Apis::DfareportingV3_4::Size, decorator: Google::Apis::DfareportingV3_4::Size::Representation
+      
+          property :x_position, as: 'xPosition'
+          property :y_position, as: 'yPosition'
         end
       end
       

@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudprivatecatalogproducer_v1beta1/service.rb'
-require 'google/apis/cloudprivatecatalogproducer_v1beta1/classes.rb'
-require 'google/apis/cloudprivatecatalogproducer_v1beta1/representations.rb'
+require 'google/apis/servicedirectory_v1beta1/service.rb'
+require 'google/apis/servicedirectory_v1beta1/classes.rb'
+require 'google/apis/servicedirectory_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Private Catalog Producer API
+    # Service Directory API
     #
-    # Enables cloud users to manage and share enterprise catalogs intheir
-    # organizations.
+    # Service Directory is a platform for discovering, publishing, and connecting
+    # services.
     #
-    # @see https://cloud.google.com/private-catalog/
-    module CloudprivatecatalogproducerV1beta1
+    # @see https://cloud.google.com/service-directory
+    module ServicedirectoryV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200210'
+      REVISION = '20200312'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

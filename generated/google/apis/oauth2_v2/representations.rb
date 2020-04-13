@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Userinfoplus
+      class Userinfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -37,19 +37,17 @@ module Google
       class Tokeninfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :access_type, as: 'access_type'
           property :audience, as: 'audience'
           property :email, as: 'email'
           property :expires_in, as: 'expires_in'
           property :issued_to, as: 'issued_to'
           property :scope, as: 'scope'
-          property :token_handle, as: 'token_handle'
           property :user_id, as: 'user_id'
           property :verified_email, as: 'verified_email'
         end
       end
       
-      class Userinfoplus
+      class Userinfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'

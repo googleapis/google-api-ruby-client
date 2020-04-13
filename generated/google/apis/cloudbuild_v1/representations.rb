@@ -251,6 +251,7 @@ module Google
           property :options, as: 'options', class: Google::Apis::CloudbuildV1::BuildOptions, decorator: Google::Apis::CloudbuildV1::BuildOptions::Representation
       
           property :project_id, as: 'projectId'
+          property :queue_ttl, as: 'queueTtl'
           property :results, as: 'results', class: Google::Apis::CloudbuildV1::Results, decorator: Google::Apis::CloudbuildV1::Results::Representation
       
           collection :secrets, as: 'secrets', class: Google::Apis::CloudbuildV1::Secret, decorator: Google::Apis::CloudbuildV1::Secret::Representation

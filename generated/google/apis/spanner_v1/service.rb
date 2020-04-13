@@ -496,11 +496,219 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a database resource.
-        # Returns an empty policy if a database exists but does
-        # not have a policy set.
+        # Lists the backup long-running operations in
+        # the given instance. A backup operation has a name of the form
+        # `projects/<project>/instances/<instance>/backups/<backup>/operations/<
+        # operation>`.
+        # The long-running operation
+        # metadata field type
+        # `metadata.type_url` describes the type of the metadata. Operations returned
+        # include those that have completed/failed/canceled within the last 7 days,
+        # and pending operations. Operations returned are ordered by
+        # `operation.metadata.value.progress.start_time` in descending order starting
+        # from the most recently started operation.
+        # @param [String] parent
+        #   Required. The instance of the backup operations. Values are of
+        #   the form `projects/<project>/instances/<instance>`.
+        # @param [String] filter
+        #   An expression that filters the list of returned backup operations.
+        #   A filter expression consists of a field name, a
+        #   comparison operator, and a value for filtering.
+        #   The value must be a string, a number, or a boolean. The comparison operator
+        #   must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`.
+        #   Colon `:` is the contains operator. Filter rules are not case sensitive.
+        #   The following fields in the operation
+        #   are eligible for filtering:
+        #   * `name` - The name of the long-running operation
+        #   * `done` - False if the operation is in progress, else true.
+        #   * `metadata.@type` - the type of metadata. For example, the type string
+        #   for CreateBackupMetadata is
+        #   `type.googleapis.com/google.spanner.admin.database.v1.
+        #   CreateBackupMetadata`.
+        #   * `metadata.<field_name>` - any field in metadata.value.
+        #   * `error` - Error associated with the long-running operation.
+        #   * `response.@type` - the type of response.
+        #   * `response.<field_name>` - any field in response.value.
+        #   You can combine multiple expressions by enclosing each expression in
+        #   parentheses. By default, expressions are combined with AND logic, but
+        #   you can specify AND, OR, and NOT logic explicitly.
+        #   Here are a few examples:
+        #   * `done:true` - The operation is complete.
+        #   * `metadata.database:prod` - The database the backup was taken from has
+        #   a name containing the string "prod".
+        #   * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.
+        #   CreateBackupMetadata) AND` <br/>
+        #   `(metadata.name:howl) AND` <br/>
+        #   `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` <br/>
+        #   `(error:*)` - Returns operations where:
+        #   * The operation's metadata type is CreateBackupMetadata.
+        #   * The backup name contains the string "howl".
+        #   * The operation started before 2018-03-28T14:50:00Z.
+        #   * The operation resulted in an error.
+        # @param [Fixnum] page_size
+        #   Number of operations to be returned in the response. If 0 or
+        #   less, defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token
+        #   from a previous ListBackupOperationsResponse to the
+        #   same `parent` and with the same `filter`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListBackupOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListBackupOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_backupoperations(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backupOperations', options)
+          command.response_representation = Google::Apis::SpannerV1::ListBackupOperationsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListBackupOperationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Starts creating a new Cloud Spanner Backup.
+        # The returned backup long-running operation
+        # will have a name of the format
+        # `projects/<project>/instances/<instance>/backups/<backup>/operations/<
+        # operation_id>`
+        # and can be used to track creation of the backup. The
+        # metadata field type is
+        # CreateBackupMetadata. The
+        # response field type is
+        # Backup, if successful. Cancelling the returned operation will stop the
+        # creation and delete the backup.
+        # There can be only one pending backup creation per database. Backup creation
+        # of different databases can run concurrently.
+        # @param [String] parent
+        #   Required. The name of the instance in which the backup will be
+        #   created. This must be the same instance that contains the database the
+        #   backup will be created from. The backup will be stored in the
+        #   location(s) specified in the instance configuration of this
+        #   instance. Values are of the form
+        #   `projects/<project>/instances/<instance>`.
+        # @param [Google::Apis::SpannerV1::Backup] backup_object
+        # @param [String] backup_id
+        #   Required. The id of the backup to be created. The `backup_id` appended to
+        #   `parent` forms the full backup name of the form
+        #   `projects/<project>/instances/<instance>/backups/<backup_id>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_project_instance_backup(parent, backup_object = nil, backup_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/backups', options)
+          command.request_representation = Google::Apis::SpannerV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
+          command.response_class = Google::Apis::SpannerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['backupId'] = backup_id unless backup_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a pending or completed Backup.
+        # @param [String] name
+        #   Required. Name of the backup to delete.
+        #   Values are of the form
+        #   `projects/<project>/instances/<instance>/backups/<backup>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_instance_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Empty::Representation
+          command.response_class = Google::Apis::SpannerV1::Empty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets metadata on a pending or completed Backup.
+        # @param [String] name
+        #   Required. Name of the backup.
+        #   Values are of the form
+        #   `projects/<project>/instances/<instance>/backups/<backup>`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_instance_backup(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::SpannerV1::Backup::Representation
+          command.response_class = Google::Apis::SpannerV1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the access control policy for a database or backup resource.
+        # Returns an empty policy if a database or backup exists but does not have a
+        # policy set.
         # Authorization requires `spanner.databases.getIamPolicy` permission on
         # resource.
+        # For backups, authorization requires `spanner.backups.getIamPolicy`
+        # permission on resource.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which the policy is being retrieved.
         #   The format is `projects/<project ID>/instances/<instance ID>` for instance
@@ -536,9 +744,134 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a database resource.
+        # Lists completed and pending backups.
+        # Backups returned are ordered by `create_time` in descending order,
+        # starting from the most recent `create_time`.
+        # @param [String] parent
+        #   Required. The instance to list backups from.  Values are of the
+        #   form `projects/<project>/instances/<instance>`.
+        # @param [String] filter
+        #   An expression that filters the list of returned backups.
+        #   A filter expression consists of a field name, a comparison operator, and a
+        #   value for filtering.
+        #   The value must be a string, a number, or a boolean. The comparison operator
+        #   must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`.
+        #   Colon `:` is the contains operator. Filter rules are not case sensitive.
+        #   The following fields in the Backup are eligible for filtering:
+        #   * `name`
+        #   * `database`
+        #   * `state`
+        #   * `create_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ)
+        #   * `expire_time` (and values are of the format YYYY-MM-DDTHH:MM:SSZ)
+        #   * `size_bytes`
+        #   You can combine multiple expressions by enclosing each expression in
+        #   parentheses. By default, expressions are combined with AND logic, but
+        #   you can specify AND, OR, and NOT logic explicitly.
+        #   Here are a few examples:
+        #   * `name:Howl` - The backup's name contains the string "howl".
+        #   * `database:prod`
+        #   - The database's name contains the string "prod".
+        #   * `state:CREATING` - The backup is pending creation.
+        #   * `state:READY` - The backup is fully created and ready for use.
+        #   * `(name:howl) AND (create_time < \"2018-03-28T14:50:00Z\")`
+        #   - The backup name contains the string "howl" and `create_time`
+        #   of the backup is before 2018-03-28T14:50:00Z.
+        #   * `expire_time < \"2018-03-28T14:50:00Z\"`
+        #   - The backup `expire_time` is before 2018-03-28T14:50:00Z.
+        #   * `size_bytes > 10000000000` - The backup's size is greater than 10GB
+        # @param [Fixnum] page_size
+        #   Number of backups to be returned in the response. If 0 or
+        #   less, defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token from a
+        #   previous ListBackupsResponse to the same `parent` and with the same
+        #   `filter`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListBackupsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListBackupsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_backups(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/backups', options)
+          command.response_representation = Google::Apis::SpannerV1::ListBackupsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListBackupsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a pending or completed Backup.
+        # @param [String] name
+        #   Output only for the CreateBackup operation.
+        #   Required for the UpdateBackup operation.
+        #   A globally unique identifier for the backup which cannot be
+        #   changed. Values are of the form
+        #   `projects/<project>/instances/<instance>/backups/a-z*[a-z0-9]`
+        #   The final segment of the name must be between 2 and 60 characters
+        #   in length.
+        #   The backup is stored in the location(s) specified in the instance
+        #   configuration of the instance containing the backup, identified
+        #   by the prefix of the backup name of the form
+        #   `projects/<project>/instances/<instance>`.
+        # @param [Google::Apis::SpannerV1::Backup] backup_object
+        # @param [String] update_mask
+        #   Required. A mask specifying which fields (e.g. `expire_time`) in the
+        #   Backup resource should be updated. This mask is relative to the Backup
+        #   resource, not to the request message. The field mask must always be
+        #   specified; this prevents any future fields from being erased accidentally
+        #   by clients that do not know about them.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Backup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Backup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_project_instance_backup(name, backup_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/{+name}', options)
+          command.request_representation = Google::Apis::SpannerV1::Backup::Representation
+          command.request_object = backup_object
+          command.response_representation = Google::Apis::SpannerV1::Backup::Representation
+          command.response_class = Google::Apis::SpannerV1::Backup
+          command.params['name'] = name unless name.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on a database or backup resource.
         # Replaces any existing policy.
         # Authorization requires `spanner.databases.setIamPolicy`
+        # permission on resource.
+        # For backups, authorization requires `spanner.backups.setIamPolicy`
         # permission on resource.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which the policy is being set. The
@@ -575,11 +908,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that the caller has on the specified database resource.
+        # Returns permissions that the caller has on the specified database or backup
+        # resource.
         # Attempting this RPC on a non-existent Cloud Spanner database will
         # result in a NOT_FOUND error if the user has
         # `spanner.databases.list` permission on the containing Cloud
         # Spanner instance. Otherwise returns an empty set of permissions.
+        # Calling this method on a backup that does not exist will
+        # result in a NOT_FOUND error if the user has
+        # `spanner.backups.list` permission on the containing instance.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which permissions are being tested.
         #   The format is `projects/<project ID>/instances/<instance ID>` for instance
@@ -766,6 +1103,93 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists database longrunning-operations.
+        # A database operation has a name of the form
+        # `projects/<project>/instances/<instance>/databases/<database>/operations/<
+        # operation>`.
+        # The long-running operation
+        # metadata field type
+        # `metadata.type_url` describes the type of the metadata. Operations returned
+        # include those that have completed/failed/canceled within the last 7 days,
+        # and pending operations.
+        # @param [String] parent
+        #   Required. The instance of the database operations.
+        #   Values are of the form `projects/<project>/instances/<instance>`.
+        # @param [String] filter
+        #   An expression that filters the list of returned operations.
+        #   A filter expression consists of a field name, a
+        #   comparison operator, and a value for filtering.
+        #   The value must be a string, a number, or a boolean. The comparison operator
+        #   must be one of: `<`, `>`, `<=`, `>=`, `!=`, `=`, or `:`.
+        #   Colon `:` is the contains operator. Filter rules are not case sensitive.
+        #   The following fields in the Operation
+        #   are eligible for filtering:
+        #   * `name` - The name of the long-running operation
+        #   * `done` - False if the operation is in progress, else true.
+        #   * `metadata.@type` - the type of metadata. For example, the type string
+        #   for RestoreDatabaseMetadata is
+        #   `type.googleapis.com/google.spanner.admin.database.v1.
+        #   RestoreDatabaseMetadata`.
+        #   * `metadata.<field_name>` - any field in metadata.value.
+        #   * `error` - Error associated with the long-running operation.
+        #   * `response.@type` - the type of response.
+        #   * `response.<field_name>` - any field in response.value.
+        #   You can combine multiple expressions by enclosing each expression in
+        #   parentheses. By default, expressions are combined with AND logic. However,
+        #   you can specify AND, OR, and NOT logic explicitly.
+        #   Here are a few examples:
+        #   * `done:true` - The operation is complete.
+        #   * `(metadata.@type=type.googleapis.com/google.spanner.admin.database.v1.
+        #   RestoreDatabaseMetadata) AND` <br/>
+        #   `(metadata.source_type:BACKUP) AND` <br/>
+        #   `(metadata.backup_info.backup:backup_howl) AND` <br/>
+        #   `(metadata.name:restored_howl) AND` <br/>
+        #   `(metadata.progress.start_time < \"2018-03-28T14:50:00Z\") AND` <br/>
+        #   `(error:*)` - Return operations where:
+        #   * The operation's metadata type is RestoreDatabaseMetadata.
+        #   * The database is restored from a backup.
+        #   * The backup name contains "backup_howl".
+        #   * The restored database's name contains "restored_howl".
+        #   * The operation started before 2018-03-28T14:50:00Z.
+        #   * The operation resulted in an error.
+        # @param [Fixnum] page_size
+        #   Number of operations to be returned in the response. If 0 or
+        #   less, defaults to the server's maximum allowed page size.
+        # @param [String] page_token
+        #   If non-empty, `page_token` should contain a
+        #   next_page_token
+        #   from a previous ListDatabaseOperationsResponse to the
+        #   same `parent` and with the same `filter`.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::ListDatabaseOperationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::ListDatabaseOperationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_instance_databaseoperations(parent, filter: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+parent}/databaseOperations', options)
+          command.response_representation = Google::Apis::SpannerV1::ListDatabaseOperationsResponse::Representation
+          command.response_class = Google::Apis::SpannerV1::ListDatabaseOperationsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new Cloud Spanner database and starts to prepare it for serving.
         # The returned long-running operation will
         # have a name of the format `<database_name>/operations/<operation_id>` and
@@ -808,6 +1232,8 @@ module Google
         end
         
         # Drops (aka deletes) a Cloud Spanner database.
+        # Completed backups for the database will be retained according to their
+        # `expire_time`.
         # @param [String] database
         #   Required. The database to be dropped.
         # @param [String] fields
@@ -900,11 +1326,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a database resource.
-        # Returns an empty policy if a database exists but does
-        # not have a policy set.
+        # Gets the access control policy for a database or backup resource.
+        # Returns an empty policy if a database or backup exists but does not have a
+        # policy set.
         # Authorization requires `spanner.databases.getIamPolicy` permission on
         # resource.
+        # For backups, authorization requires `spanner.backups.getIamPolicy`
+        # permission on resource.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which the policy is being retrieved.
         #   The format is `projects/<project ID>/instances/<instance ID>` for instance
@@ -980,9 +1408,65 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a database resource.
+        # Create a new database by restoring from a completed backup. The new
+        # database must be in the same project and in an instance with the same
+        # instance configuration as the instance containing
+        # the backup. The returned database long-running
+        # operation has a name of the format
+        # `projects/<project>/instances/<instance>/databases/<database>/operations/<
+        # operation_id>`,
+        # and can be used to track the progress of the operation, and to cancel it.
+        # The metadata field type is
+        # RestoreDatabaseMetadata.
+        # The response type
+        # is Database, if
+        # successful. Cancelling the returned operation will stop the restore and
+        # delete the database.
+        # There can be only one database being restored into an instance at a time.
+        # Once the restore operation completes, a new restore operation can be
+        # initiated, without waiting for the optimize operation associated with the
+        # first restore to complete.
+        # @param [String] parent
+        #   Required. The name of the instance in which to create the
+        #   restored database. This instance must be in the same project and
+        #   have the same instance configuration as the instance containing
+        #   the source backup. Values are of the form
+        #   `projects/<project>/instances/<instance>`.
+        # @param [Google::Apis::SpannerV1::RestoreDatabaseRequest] restore_database_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::SpannerV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::SpannerV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def restore_database(parent, restore_database_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/databases:restore', options)
+          command.request_representation = Google::Apis::SpannerV1::RestoreDatabaseRequest::Representation
+          command.request_object = restore_database_request_object
+          command.response_representation = Google::Apis::SpannerV1::Operation::Representation
+          command.response_class = Google::Apis::SpannerV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Sets the access control policy on a database or backup resource.
         # Replaces any existing policy.
         # Authorization requires `spanner.databases.setIamPolicy`
+        # permission on resource.
+        # For backups, authorization requires `spanner.backups.setIamPolicy`
         # permission on resource.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which the policy is being set. The
@@ -1019,11 +1503,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that the caller has on the specified database resource.
+        # Returns permissions that the caller has on the specified database or backup
+        # resource.
         # Attempting this RPC on a non-existent Cloud Spanner database will
         # result in a NOT_FOUND error if the user has
         # `spanner.databases.list` permission on the containing Cloud
         # Spanner instance. Otherwise returns an empty set of permissions.
+        # Calling this method on a backup that does not exist will
+        # result in a NOT_FOUND error if the user has
+        # `spanner.backups.list` permission on the containing instance.
         # @param [String] resource
         #   REQUIRED: The Cloud Spanner resource for which permissions are being tested.
         #   The format is `projects/<project ID>/instances/<instance ID>` for instance

@@ -22,6 +22,12 @@ module Google
   module Apis
     module DatafusionV1beta1
       
+      class Accelerator
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AuditConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -154,6 +160,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Accelerator
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :accelerator_type, as: 'acceleratorType'
+        end
+      end
+      
       class AuditConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -206,6 +219,8 @@ module Google
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::DatafusionV1beta1::Accelerator, decorator: Google::Apis::DatafusionV1beta1::Accelerator::Representation
+      
           property :api_endpoint, as: 'apiEndpoint'
           collection :available_version, as: 'availableVersion', class: Google::Apis::DatafusionV1beta1::Version, decorator: Google::Apis::DatafusionV1beta1::Version::Representation
       

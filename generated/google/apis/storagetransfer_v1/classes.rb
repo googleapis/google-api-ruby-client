@@ -83,6 +83,68 @@ module Google
         end
       end
       
+      # An AzureBlobStorageData resource can be a data source, but not a data sink.
+      # An AzureBlobStorageData resource represents one Azure container. The storage
+      # account determines the [Azure
+      # endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-
+      # storage-account#storage-account-endpoints).
+      # In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob
+      # Storage blob's key
+      # name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-
+      # referencing-containers--blobs--and-metadata#blob-names).
+      class AzureBlobStorageData
+        include Google::Apis::Core::Hashable
+      
+        # Azure credentials
+        # Corresponds to the JSON property `azureCredentials`
+        # @return [Google::Apis::StoragetransferV1::AzureCredentials]
+        attr_accessor :azure_credentials
+      
+        # Required. The container to transfer from the Azure Storage account.
+        # Corresponds to the JSON property `container`
+        # @return [String]
+        attr_accessor :container
+      
+        # Required. The name of the Azure Storage account.
+        # Corresponds to the JSON property `storageAccount`
+        # @return [String]
+        attr_accessor :storage_account
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @azure_credentials = args[:azure_credentials] if args.key?(:azure_credentials)
+          @container = args[:container] if args.key?(:container)
+          @storage_account = args[:storage_account] if args.key?(:storage_account)
+        end
+      end
+      
+      # Azure credentials
+      class AzureCredentials
+        include Google::Apis::Core::Hashable
+      
+        # Required. Azure shared access signature. (see
+        # [Grant limited access to Azure Storage resources using shared access
+        # signatures
+        # (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-
+        # overview)).
+        # Corresponds to the JSON property `sasToken`
+        # @return [String]
+        attr_accessor :sas_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sas_token = args[:sas_token] if args.key?(:sas_token)
+        end
+      end
+      
       # Represents a whole or partial calendar date, e.g. a birthday. The time of day
       # and time zone are either specified elsewhere or are not significant. The date
       # is relative to the Proleptic Gregorian Calendar. This can represent:
@@ -348,6 +410,54 @@ module Google
         end
       end
       
+      # Specification to configure notifications published to Cloud Pub/Sub.
+      # Notifications will be published to the customer-provided topic using the
+      # following `PubsubMessage.attributes`:
+      # * `"eventType"`: one of the EventType values
+      # * `"payloadFormat"`: one of the PayloadFormat values
+      # * `"projectId"`: the project_id of the
+      # `TransferOperation`
+      # * `"transferJobName"`: the
+      # transfer_job_name of the
+      # `TransferOperation`
+      # * `"transferOperationName"`: the name of the
+      # `TransferOperation`
+      # The `PubsubMessage.data` will contain a TransferOperation resource
+      # formatted according to the specified `PayloadFormat`.
+      class NotificationConfig
+        include Google::Apis::Core::Hashable
+      
+        # Event types for which a notification is desired. If empty, send
+        # notifications for all event types.
+        # Corresponds to the JSON property `eventTypes`
+        # @return [Array<String>]
+        attr_accessor :event_types
+      
+        # Required. The desired format of the notification message payloads.
+        # Corresponds to the JSON property `payloadFormat`
+        # @return [String]
+        attr_accessor :payload_format
+      
+        # Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish
+        # notifications. Must be of the format: `projects/`project`/topics/`topic``.
+        # Not matching this format will result in an
+        # INVALID_ARGUMENT error.
+        # Corresponds to the JSON property `pubsubTopic`
+        # @return [String]
+        attr_accessor :pubsub_topic
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @event_types = args[:event_types] if args.key?(:event_types)
+          @payload_format = args[:payload_format] if args.key?(:payload_format)
+          @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
+        end
+      end
+      
       # Conditions that determine which objects will be transferred. Applies only
       # to S3 and Cloud Storage objects.
       # The "last modification time" refers to the time of the
@@ -394,6 +504,26 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_prefixes
       
+        # If specified, only objects with a "last modification time" before this
+        # timestamp and objects that don't have a "last modification time" will be
+        # transferred.
+        # Corresponds to the JSON property `lastModifiedBefore`
+        # @return [String]
+        attr_accessor :last_modified_before
+      
+        # If specified, only objects with a "last modification time" on or after
+        # this timestamp and objects that don't have a "last modification time" are
+        # transferred.
+        # The `last_modified_since` and `last_modified_before` fields can be used
+        # together for chunked data processing. For example, consider a script that
+        # processes each day's worth of data at a time. For that you'd set each
+        # of the fields as follows:
+        # *  `last_modified_since` to the start of the day
+        # *  `last_modified_before` to the end of the day
+        # Corresponds to the JSON property `lastModifiedSince`
+        # @return [String]
+        attr_accessor :last_modified_since
+      
         # If specified, only objects with a "last modification time" on or after
         # `NOW` - `max_time_elapsed_since_last_modification` and objects that don't
         # have a "last modification time" are transferred.
@@ -422,6 +552,8 @@ module Google
         def update!(**args)
           @exclude_prefixes = args[:exclude_prefixes] if args.key?(:exclude_prefixes)
           @include_prefixes = args[:include_prefixes] if args.key?(:include_prefixes)
+          @last_modified_before = args[:last_modified_before] if args.key?(:last_modified_before)
+          @last_modified_since = args[:last_modified_since] if args.key?(:last_modified_since)
           @max_time_elapsed_since_last_modification = args[:max_time_elapsed_since_last_modification] if args.key?(:max_time_elapsed_since_last_modification)
           @min_time_elapsed_since_last_modification = args[:min_time_elapsed_since_last_modification] if args.key?(:min_time_elapsed_since_last_modification)
         end
@@ -785,21 +917,37 @@ module Google
         attr_accessor :last_modification_time
       
         # A unique name (within the transfer project) assigned when the job is
-        # created.
-        # If this field is left empty in a CreateTransferJobRequest, Storage Transfer
-        # Service will assign a unique name. Otherwise, the supplied name is used as
-        # the unique name for this job.
+        # created.  If this field is empty in a CreateTransferJobRequest, Storage
+        # Transfer Service will assign a unique name. Otherwise, the specified name
+        # is used as the unique name for this job.
+        # If the specified name is in use by a job, the creation request fails with
+        # an ALREADY_EXISTS error.
         # This name must start with `"transferJobs/"` prefix and end with a letter or
         # a number, and should be no more than 128 characters.
-        # Example of a valid format : `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
-        # **Note:** If the supplied name is already in use, the creation request
-        # results in an ALREADY_EXISTS error and
-        # the transfer job will not be created.  Invalid job names will return an
-        # INVALID_ARGUMENT error and the job will
-        # not be created.
+        # Example: `"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$"`
+        # Invalid job names will fail with an
+        # INVALID_ARGUMENT error.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Specification to configure notifications published to Cloud Pub/Sub.
+        # Notifications will be published to the customer-provided topic using the
+        # following `PubsubMessage.attributes`:
+        # * `"eventType"`: one of the EventType values
+        # * `"payloadFormat"`: one of the PayloadFormat values
+        # * `"projectId"`: the project_id of the
+        # `TransferOperation`
+        # * `"transferJobName"`: the
+        # transfer_job_name of the
+        # `TransferOperation`
+        # * `"transferOperationName"`: the name of the
+        # `TransferOperation`
+        # The `PubsubMessage.data` will contain a TransferOperation resource
+        # formatted according to the specified `PayloadFormat`.
+        # Corresponds to the JSON property `notificationConfig`
+        # @return [Google::Apis::StoragetransferV1::NotificationConfig]
+        attr_accessor :notification_config
       
         # The ID of the Google Cloud Platform Project that owns the job.
         # Corresponds to the JSON property `projectId`
@@ -838,6 +986,7 @@ module Google
           @description = args[:description] if args.key?(:description)
           @last_modification_time = args[:last_modification_time] if args.key?(:last_modification_time)
           @name = args[:name] if args.key?(:name)
+          @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)
           @schedule = args[:schedule] if args.key?(:schedule)
           @status = args[:status] if args.key?(:status)
@@ -868,6 +1017,24 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Specification to configure notifications published to Cloud Pub/Sub.
+        # Notifications will be published to the customer-provided topic using the
+        # following `PubsubMessage.attributes`:
+        # * `"eventType"`: one of the EventType values
+        # * `"payloadFormat"`: one of the PayloadFormat values
+        # * `"projectId"`: the project_id of the
+        # `TransferOperation`
+        # * `"transferJobName"`: the
+        # transfer_job_name of the
+        # `TransferOperation`
+        # * `"transferOperationName"`: the name of the
+        # `TransferOperation`
+        # The `PubsubMessage.data` will contain a TransferOperation resource
+        # formatted according to the specified `PayloadFormat`.
+        # Corresponds to the JSON property `notificationConfig`
+        # @return [Google::Apis::StoragetransferV1::NotificationConfig]
+        attr_accessor :notification_config
       
         # The ID of the Google Cloud Platform Project that owns the operation.
         # Corresponds to the JSON property `projectId`
@@ -904,6 +1071,7 @@ module Google
           @end_time = args[:end_time] if args.key?(:end_time)
           @error_breakdowns = args[:error_breakdowns] if args.key?(:error_breakdowns)
           @name = args[:name] if args.key?(:name)
+          @notification_config = args[:notification_config] if args.key?(:notification_config)
           @project_id = args[:project_id] if args.key?(:project_id)
           @start_time = args[:start_time] if args.key?(:start_time)
           @status = args[:status] if args.key?(:status)
@@ -961,6 +1129,19 @@ module Google
         # Corresponds to the JSON property `awsS3DataSource`
         # @return [Google::Apis::StoragetransferV1::AwsS3Data]
         attr_accessor :aws_s3_data_source
+      
+        # An AzureBlobStorageData resource can be a data source, but not a data sink.
+        # An AzureBlobStorageData resource represents one Azure container. The storage
+        # account determines the [Azure
+        # endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-
+        # storage-account#storage-account-endpoints).
+        # In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob
+        # Storage blob's key
+        # name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-
+        # referencing-containers--blobs--and-metadata#blob-names).
+        # Corresponds to the JSON property `azureBlobStorageDataSource`
+        # @return [Google::Apis::StoragetransferV1::AzureBlobStorageData]
+        attr_accessor :azure_blob_storage_data_source
       
         # In a GcsData resource, an object's name is the Cloud Storage object's
         # name and its "last modification time" refers to the object's `updated`
@@ -1036,6 +1217,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @aws_s3_data_source = args[:aws_s3_data_source] if args.key?(:aws_s3_data_source)
+          @azure_blob_storage_data_source = args[:azure_blob_storage_data_source] if args.key?(:azure_blob_storage_data_source)
           @gcs_data_sink = args[:gcs_data_sink] if args.key?(:gcs_data_sink)
           @gcs_data_source = args[:gcs_data_source] if args.key?(:gcs_data_source)
           @http_data_source = args[:http_data_source] if args.key?(:http_data_source)
@@ -1063,7 +1245,8 @@ module Google
         # The field mask of the fields in `transferJob` that are to be updated in
         # this request.  Fields in `transferJob` that can be updated are:
         # description,
-        # transfer_spec, and
+        # transfer_spec,
+        # notification_config, and
         # status.  To update the `transfer_spec` of the job, a
         # complete transfer specification must be provided. An incomplete
         # specification missing any required fields will be rejected with the error

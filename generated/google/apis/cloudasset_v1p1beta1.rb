@@ -12,26 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/mirror_v1/service.rb'
-require 'google/apis/mirror_v1/classes.rb'
-require 'google/apis/mirror_v1/representations.rb'
+require 'google/apis/cloudasset_v1p1beta1/service.rb'
+require 'google/apis/cloudasset_v1p1beta1/classes.rb'
+require 'google/apis/cloudasset_v1p1beta1/representations.rb'
 
 module Google
   module Apis
-    # Google Mirror API
+    # Cloud Asset API
     #
-    # Interacts with Glass users via the timeline.
+    # The cloud asset API manages the history and inventory of cloud resources.
     #
-    # @see https://developers.google.com/glass
-    module MirrorV1
-      VERSION = 'V1'
-      REVISION = '20180611'
+    # @see https://cloud.google.com/asset-inventory/docs/quickstart
+    module CloudassetV1p1beta1
+      VERSION = 'V1p1beta1'
+      REVISION = '20200403'
 
-      # View your location
-      AUTH_GLASS_LOCATION = 'https://www.googleapis.com/auth/glass.location'
-
-      # View and manage your Glass timeline
-      AUTH_GLASS_TIMELINE = 'https://www.googleapis.com/auth/glass.timeline'
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

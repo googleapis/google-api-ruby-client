@@ -20,12 +20,13 @@ module Google
   module Apis
     # Google Play Game Services Publishing API
     #
-    # The Publishing API for Google Play Game Services.
+    # The Google Play Game Services Publishing API allows developers to configure
+    # their games in Game Services.
     #
-    # @see https://developers.google.com/games/services
+    # @see https://developers.google.com/games/
     module GamesConfigurationV1configuration
       VERSION = 'V1configuration'
-      REVISION = '20180816'
+      REVISION = '20200317'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'

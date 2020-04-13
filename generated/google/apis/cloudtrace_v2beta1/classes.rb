@@ -120,8 +120,7 @@ module Google
         # granting_access_to_a_service_account_for_a_resource).
         # To create tables and write data this account will need the dataEditor role.
         # Read more about roles in the [BigQuery
-        # documentation](https://cloud.google.com/bigquery/docs/access-control#
-        # permissions_and_roles).
+        # documentation](https://cloud.google.com/bigquery/docs/access-control).
         # E.g.:
         # "service-00000001@00000002.iam.gserviceaccount.com"
         # Corresponds to the JSON property `writerIdentity`

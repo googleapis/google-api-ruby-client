@@ -1678,6 +1678,10 @@ module Google
         #   Name of the new object. Required when the object metadata is not otherwise
         #   provided. Overrides the object metadata's name value, if any.
         # @param [Google::Apis::StorageV1::Object] object_object
+        # @param [String] destination_kms_key_name
+        #   Resource name of the Cloud KMS key, of the form projects/my-project/locations/
+        #   global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the
+        #   object. Overrides the object metadata's kms_key_name value, if any.
         # @param [String] destination_predefined_acl
         #   Apply a predefined set of access controls to the destination object.
         # @param [Fixnum] if_generation_match
@@ -1737,7 +1741,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def copy_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, provisional_user_project: nil, source_generation: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def copy_object(source_bucket, source_object, destination_bucket, destination_object, object_object = nil, destination_kms_key_name: nil, destination_predefined_acl: nil, if_generation_match: nil, if_generation_not_match: nil, if_metageneration_match: nil, if_metageneration_not_match: nil, if_source_generation_match: nil, if_source_generation_not_match: nil, if_source_metageneration_match: nil, if_source_metageneration_not_match: nil, projection: nil, provisional_user_project: nil, source_generation: nil, user_project: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{sourceBucket}/o/{sourceObject}/copyTo/b/{destinationBucket}/o/{destinationObject}', options)
           command.request_representation = Google::Apis::StorageV1::Object::Representation
           command.request_object = object_object
@@ -1747,6 +1751,7 @@ module Google
           command.params['sourceObject'] = source_object unless source_object.nil?
           command.params['destinationBucket'] = destination_bucket unless destination_bucket.nil?
           command.params['destinationObject'] = destination_object unless destination_object.nil?
+          command.query['destinationKmsKeyName'] = destination_kms_key_name unless destination_kms_key_name.nil?
           command.query['destinationPredefinedAcl'] = destination_predefined_acl unless destination_predefined_acl.nil?
           command.query['ifGenerationMatch'] = if_generation_match unless if_generation_match.nil?
           command.query['ifGenerationNotMatch'] = if_generation_not_match unless if_generation_not_match.nil?
@@ -2063,6 +2068,10 @@ module Google
         #   names, aside from the prefix, contain delimiter will have their name,
         #   truncated after the delimiter, returned in prefixes. Duplicate prefixes are
         #   omitted.
+        # @param [String] end_offset
+        #   Filter results to objects whose names are lexicographically before endOffset.
+        #   If startOffset is also set, the objects listed will have names between
+        #   startOffset (inclusive) and endOffset (exclusive).
         # @param [Boolean] include_trailing_delimiter
         #   If true, objects that end in exactly one instance of delimiter will have their
         #   metadata included in items in addition to prefixes.
@@ -2081,6 +2090,10 @@ module Google
         # @param [String] provisional_user_project
         #   The project to be billed for this request if the target bucket is requester-
         #   pays bucket.
+        # @param [String] start_offset
+        #   Filter results to objects whose names are lexicographically equal to or after
+        #   startOffset. If endOffset is also set, the objects listed will have names
+        #   between startOffset (inclusive) and endOffset (exclusive).
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
@@ -2105,18 +2118,20 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_objects(bucket, delimiter: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, provisional_user_project: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_objects(bucket, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, provisional_user_project: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'b/{bucket}/o', options)
           command.response_representation = Google::Apis::StorageV1::Objects::Representation
           command.response_class = Google::Apis::StorageV1::Objects
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
+          command.query['endOffset'] = end_offset unless end_offset.nil?
           command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['provisionalUserProject'] = provisional_user_project unless provisional_user_project.nil?
+          command.query['startOffset'] = start_offset unless start_offset.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['versions'] = versions unless versions.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2514,6 +2529,10 @@ module Google
         #   names, aside from the prefix, contain delimiter will have their name,
         #   truncated after the delimiter, returned in prefixes. Duplicate prefixes are
         #   omitted.
+        # @param [String] end_offset
+        #   Filter results to objects whose names are lexicographically before endOffset.
+        #   If startOffset is also set, the objects listed will have names between
+        #   startOffset (inclusive) and endOffset (exclusive).
         # @param [Boolean] include_trailing_delimiter
         #   If true, objects that end in exactly one instance of delimiter will have their
         #   metadata included in items in addition to prefixes.
@@ -2532,6 +2551,10 @@ module Google
         # @param [String] provisional_user_project
         #   The project to be billed for this request if the target bucket is requester-
         #   pays bucket.
+        # @param [String] start_offset
+        #   Filter results to objects whose names are lexicographically equal to or after
+        #   startOffset. If endOffset is also set, the objects listed will have names
+        #   between startOffset (inclusive) and endOffset (exclusive).
         # @param [String] user_project
         #   The project to be billed for this request. Required for Requester Pays buckets.
         # @param [Boolean] versions
@@ -2556,7 +2579,7 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def watch_all_objects(bucket, channel_object = nil, delimiter: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, provisional_user_project: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def watch_all_objects(bucket, channel_object = nil, delimiter: nil, end_offset: nil, include_trailing_delimiter: nil, max_results: nil, page_token: nil, prefix: nil, projection: nil, provisional_user_project: nil, start_offset: nil, user_project: nil, versions: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'b/{bucket}/o/watch', options)
           command.request_representation = Google::Apis::StorageV1::Channel::Representation
           command.request_object = channel_object
@@ -2564,12 +2587,14 @@ module Google
           command.response_class = Google::Apis::StorageV1::Channel
           command.params['bucket'] = bucket unless bucket.nil?
           command.query['delimiter'] = delimiter unless delimiter.nil?
+          command.query['endOffset'] = end_offset unless end_offset.nil?
           command.query['includeTrailingDelimiter'] = include_trailing_delimiter unless include_trailing_delimiter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['prefix'] = prefix unless prefix.nil?
           command.query['projection'] = projection unless projection.nil?
           command.query['provisionalUserProject'] = provisional_user_project unless provisional_user_project.nil?
+          command.query['startOffset'] = start_offset unless start_offset.nil?
           command.query['userProject'] = user_project unless user_project.nil?
           command.query['versions'] = versions unless versions.nil?
           command.query['fields'] = fields unless fields.nil?

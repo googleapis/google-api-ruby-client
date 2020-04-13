@@ -22,8 +22,12 @@ module Google
   module Apis
     module CloudassetV1
       
-      # Cloud asset. This includes all Google Cloud Platform resources,
-      # Cloud IAM policies, and other non-GCP assets.
+      # An asset in Google Cloud. An asset can be any resource in the Google Cloud
+      # [resource
+      # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
+      # resource-hierarchy),
+      # a resource outside the Google Cloud resource hierarchy (such as Google
+      # Kubernetes Engine clusters and objects), or a Cloud IAM policy.
       class Asset
         include Google::Apis::Core::Hashable
       
@@ -43,16 +47,22 @@ module Google
         # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1AccessPolicy]
         attr_accessor :access_policy
       
-        # Asset's ancestry path in Cloud Resource Manager (CRM) hierarchy,
-        # represented as a list of relative resource names. Ancestry path starts with
-        # the closest CRM ancestor and ends at root. If the asset is a CRM
-        # project/folder/organization, this starts from the asset itself.
-        # Example: ["projects/123456789", "folders/5432", "organizations/1234"]
+        # The ancestry path of an asset in Google Cloud [resource
+        # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
+        # resource-hierarchy),
+        # represented as a list of relative resource names. An ancestry path starts
+        # with the closest ancestor in the hierarchy and ends at root. If the asset
+        # is a project, folder, or organization, the ancestry path starts from the
+        # asset itself.
+        # For example: `["projects/123456789", "folders/5432", "organizations/1234"]`
         # Corresponds to the JSON property `ancestors`
         # @return [Array<String>]
         attr_accessor :ancestors
       
-        # Type of the asset. Example: "compute.googleapis.com/Disk".
+        # The type of the asset. For example: "compute.googleapis.com/Disk"
+        # See [Supported asset
+        # types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+        # for more information.
         # Corresponds to the JSON property `assetType`
         # @return [String]
         attr_accessor :asset_type
@@ -118,23 +128,25 @@ module Google
         attr_accessor :iam_policy
       
         # The full name of the asset. For example:
-        # `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
-        # instance1`.
+        # "//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/
+        # instance1"
         # See [Resource
-        # Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+        # names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
         # for more information.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Representation of the Cloud Organization Policy set on an asset. For each
-        # asset, there could be multiple Organization policies with different
-        # constraints.
+        # A representation of an [organization
+        # policy](https://cloud.google.com/resource-manager/docs/organization-policy/
+        # overview#organization_policy).
+        # There can be more than one organization policy with different constraints
+        # set on a given resource.
         # Corresponds to the JSON property `orgPolicy`
         # @return [Array<Google::Apis::CloudassetV1::GoogleCloudOrgpolicyV1Policy>]
         attr_accessor :org_policy
       
-        # Representation of a cloud resource.
+        # A representation of a Google Cloud resource.
         # Corresponds to the JSON property `resource`
         # @return [Google::Apis::CloudassetV1::Resource]
         attr_accessor :resource
@@ -313,15 +325,15 @@ module Google
         # Required. The BigQuery dataset in format
         # "projects/projectId/datasets/datasetId", to which the snapshot result
         # should be exported. If this dataset does not exist, the export call returns
-        # an error.
+        # an INVALID_ARGUMENT error.
         # Corresponds to the JSON property `dataset`
         # @return [String]
         attr_accessor :dataset
       
         # If the destination table already exists and this flag is `TRUE`, the
         # table will be overwritten by the contents of assets snapshot. If the flag
-        # is not set and the destination table already exists, the export call
-        # returns an error.
+        # is `FALSE` or unset and the destination table already exists, the export
+        # call returns an INVALID_ARGUMEMT error.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
@@ -437,7 +449,7 @@ module Google
         # An asset feed filter controls what updates are exported.
         # The asset feed must be created within a project, organization, or
         # folder. Supported destinations are:
-        # Cloud Pub/Sub topics.
+        # Pub/Sub topics.
         # Corresponds to the JSON property `feed`
         # @return [Google::Apis::CloudassetV1::Feed]
         attr_accessor :feed
@@ -503,10 +515,10 @@ module Google
         attr_accessor :output_config
       
         # Timestamp to take an asset snapshot. This can only be set to a timestamp
-        # between 2018-10-02 UTC (inclusive) and the current time. If not specified,
-        # the current time will be used. Due to delays in resource data collection
-        # and indexing, there is a volatile window during which running the same
-        # query may get different results.
+        # between the current time and the current time minus 35 days (inclusive).
+        # If not specified, the current time will be used. Due to delays in resource
+        # data collection and indexing, there is a volatile window during which
+        # running the same query may get different results.
         # Corresponds to the JSON property `readTime`
         # @return [String]
         attr_accessor :read_time
@@ -591,7 +603,7 @@ module Google
       # An asset feed filter controls what updates are exported.
       # The asset feed must be created within a project, organization, or
       # folder. Supported destinations are:
-      # Cloud Pub/Sub topics.
+      # Pub/Sub topics.
       class Feed
         include Google::Apis::Core::Hashable
       
@@ -658,7 +670,7 @@ module Google
       class FeedOutputConfig
         include Google::Apis::Core::Hashable
       
-        # A Cloud Pubsub destination.
+        # A Pub/Sub destination.
         # Corresponds to the JSON property `pubsubDestination`
         # @return [Google::Apis::CloudassetV1::PubsubDestination]
         attr_accessor :pubsub_destination
@@ -1058,11 +1070,6 @@ module Google
         # @return [Google::Apis::CloudassetV1::GoogleIdentityAccesscontextmanagerV1BasicLevel]
         attr_accessor :basic
       
-        # Output only. Time the `AccessLevel` was created in UTC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
         # to represent the necessary conditions for the level to apply to a request.
         # See CEL spec at: https://github.com/google/cel-spec
@@ -1077,7 +1084,8 @@ module Google
       
         # Required. Resource name for the Access Level. The `short_name` component
         # must begin with a letter and only include alphanumeric and '_'. Format:
-        # `accessPolicies/`policy_id`/accessLevels/`short_name``
+        # `accessPolicies/`policy_id`/accessLevels/`short_name``. The maximum length
+        # of the `short_name` component is 50 characters.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1087,11 +1095,6 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `AccessLevel` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -1099,12 +1102,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic = args[:basic] if args.key?(:basic)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @custom = args[:custom] if args.key?(:custom)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1116,10 +1117,13 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1AccessPolicy
         include Google::Apis::Core::Hashable
       
-        # Output only. Time the `AccessPolicy` was created in UTC.
-        # Corresponds to the JSON property `createTime`
+        # Output only. An opaque identifier for the current version of the
+        # `AccessPolicy`. This will always be a strongly validated etag, meaning that
+        # two Access Polices will be identical if and only if their etags are
+        # identical. Clients should not expect this to be in any specific format.
+        # Corresponds to the JSON property `etag`
         # @return [String]
-        attr_accessor :create_time
+        attr_accessor :etag
       
         # Output only. Resource name of the `AccessPolicy`. Format:
         # `accessPolicies/`policy_id``
@@ -1139,22 +1143,16 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `AccessPolicy` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
+          @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -1422,11 +1420,6 @@ module Google
       class GoogleIdentityAccesscontextmanagerV1ServicePerimeter
         include Google::Apis::Core::Hashable
       
-        # Output only. Time the `ServicePerimeter` was created in UTC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # Description of the `ServicePerimeter` and its use. Does not affect
         # behavior.
         # Corresponds to the JSON property `description`
@@ -1467,11 +1460,6 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `ServicePerimeter` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         # Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
         # exists  for all Service Perimeters, and that spec is identical to the
         # status for those Service Perimeters. When this flag is set, it inhibits the
@@ -1493,14 +1481,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
           @spec = args[:spec] if args.key?(:spec)
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
           @use_explicit_dry_run_spec = args[:use_explicit_dry_run_spec] if args.key?(:use_explicit_dry_run_spec)
         end
       end
@@ -1812,11 +1798,11 @@ module Google
         end
       end
       
-      # A Cloud Pubsub destination.
+      # A Pub/Sub destination.
       class PubsubDestination
         include Google::Apis::Core::Hashable
       
-        # The name of the Cloud Pub/Sub topic to publish to.
+        # The name of the Pub/Sub topic to publish to.
         # For example: `projects/PROJECT_ID/topics/TOPIC_ID`.
         # Corresponds to the JSON property `topic`
         # @return [String]
@@ -1832,28 +1818,29 @@ module Google
         end
       end
       
-      # Representation of a cloud resource.
+      # A representation of a Google Cloud resource.
       class Resource
         include Google::Apis::Core::Hashable
       
-        # The content of the resource, in which some sensitive fields are scrubbed
-        # away and may not be present.
+        # The content of the resource, in which some sensitive fields are removed
+        # and may not be present.
         # Corresponds to the JSON property `data`
         # @return [Hash<String,Object>]
         attr_accessor :data
       
         # The URL of the discovery document containing the resource's JSON schema.
         # For example:
-        # `"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"`.
-        # It will be left unspecified for resources without a discovery-based API,
-        # such as Cloud Bigtable.
+        # "https://www.googleapis.com/discovery/v1/apis/compute/v1/rest"
+        # This value is unspecified for resources that do not have an API based on a
+        # discovery document, such as Cloud Bigtable.
         # Corresponds to the JSON property `discoveryDocumentUri`
         # @return [String]
         attr_accessor :discovery_document_uri
       
-        # The JSON schema name listed in the discovery document.
-        # Example: "Project". It will be left unspecified for resources (such as
-        # Cloud Bigtable) without a discovery-based API.
+        # The JSON schema name listed in the discovery document. For example:
+        # "Project"
+        # This value is unspecified for resources that do not have an API based on a
+        # discovery document, such as Cloud Bigtable.
         # Corresponds to the JSON property `discoveryName`
         # @return [String]
         attr_accessor :discovery_name
@@ -1862,25 +1849,25 @@ module Google
         # [Resource
         # Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
         # for more information.
-        # For GCP assets, it is the parent resource defined in the [Cloud IAM policy
+        # For Google Cloud assets, this value is the parent resource defined in the
+        # [Cloud IAM policy
         # hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
         # For example:
-        # `"//cloudresourcemanager.googleapis.com/projects/my_project_123"`.
-        # For third-party assets, it is up to the users to define.
+        # "//cloudresourcemanager.googleapis.com/projects/my_project_123"
+        # For third-party assets, this field may be set differently.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
       
-        # The REST URL for accessing the resource. An HTTP GET operation using this
-        # URL returns the resource itself.
-        # Example:
-        # `https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`.
-        # It will be left unspecified for resources without a REST API.
+        # The REST URL for accessing the resource. An HTTP `GET` request using this
+        # URL returns the resource itself. For example:
+        # "https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123"
+        # This value is unspecified for resources without a REST API.
         # Corresponds to the JSON property `resourceUrl`
         # @return [String]
         attr_accessor :resource_url
       
-        # The API version. Example: "v1".
+        # The API version. For example: "v1"
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -1939,24 +1926,28 @@ module Google
         end
       end
       
-      # Temporal asset. In addition to the asset, the temporal asset includes the
-      # status of the asset and valid from and to time of it.
+      # An asset in Google Cloud and its temporal metadata, including the time window
+      # when it was observed and its status during that window.
       class TemporalAsset
         include Google::Apis::Core::Hashable
       
-        # Cloud asset. This includes all Google Cloud Platform resources,
-        # Cloud IAM policies, and other non-GCP assets.
+        # An asset in Google Cloud. An asset can be any resource in the Google Cloud
+        # [resource
+        # hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-
+        # resource-hierarchy),
+        # a resource outside the Google Cloud resource hierarchy (such as Google
+        # Kubernetes Engine clusters and objects), or a Cloud IAM policy.
         # Corresponds to the JSON property `asset`
         # @return [Google::Apis::CloudassetV1::Asset]
         attr_accessor :asset
       
-        # If the asset is deleted or not.
+        # Whether the asset has been deleted or not.
         # Corresponds to the JSON property `deleted`
         # @return [Boolean]
         attr_accessor :deleted
         alias_method :deleted?, :deleted
       
-        # A time window of (start_time, end_time].
+        # A time window specified by its "start_time" and "end_time".
         # Corresponds to the JSON property `window`
         # @return [Google::Apis::CloudassetV1::TimeWindow]
         attr_accessor :window
@@ -1973,12 +1964,12 @@ module Google
         end
       end
       
-      # A time window of (start_time, end_time].
+      # A time window specified by its "start_time" and "end_time".
       class TimeWindow
         include Google::Apis::Core::Hashable
       
-        # End time of the time window (inclusive).
-        # Current timestamp if not specified.
+        # End time of the time window (inclusive). If not specified, the current
+        # timestamp is used instead.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -2007,7 +1998,7 @@ module Google
         # An asset feed filter controls what updates are exported.
         # The asset feed must be created within a project, organization, or
         # folder. Supported destinations are:
-        # Cloud Pub/Sub topics.
+        # Pub/Sub topics.
         # Corresponds to the JSON property `feed`
         # @return [Google::Apis::CloudassetV1::Feed]
         attr_accessor :feed

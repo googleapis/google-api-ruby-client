@@ -85,6 +85,7 @@ module Google
           property :last_update_time, as: 'lastUpdateTime'
           property :progress_percent, as: 'progressPercent'
           property :start_time, as: 'startTime'
+          property :uri, as: 'uri'
         end
       end
       

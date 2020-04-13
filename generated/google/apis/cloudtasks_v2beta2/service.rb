@@ -207,6 +207,10 @@ module Google
         # @param [String] name
         #   Required. The resource name of the queue. For example:
         #   `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+        # @param [String] read_mask
+        #   Optional. Read mask is used for a more granular control over what the API
+        #   returns. By
+        #   it includes all fields in Queue except for stats.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -224,11 +228,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_project_location_queue(name, fields: nil, quota_user: nil, options: nil, &block)
+        def get_project_location_queue(name, read_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2beta2/{+name}', options)
           command.response_representation = Google::Apis::CloudtasksV2beta2::Queue::Representation
           command.response_class = Google::Apis::CloudtasksV2beta2::Queue
           command.params['name'] = name unless name.nil?
+          command.query['readMask'] = read_mask unless read_mask.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -210,7 +210,7 @@ module Google
         #   as a Google user or a Google Group.
         #   If specified, the `EntityKey` represents an external-identity-mapped group.
         #   The namespace must correspond to an identity source created in Admin
-        #   Console. Must be of the form `identitysources/`identity_source_id`.
+        #   Console and must be in the form of `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -504,7 +504,7 @@ module Google
         #   as a Google user or a Google Group.
         #   If specified, the `EntityKey` represents an external-identity-mapped group.
         #   The namespace must correspond to an identity source created in Admin
-        #   Console. Must be of the form `identitysources/`identity_source_id`.
+        #   Console and must be in the form of `identitysources/`identity_source_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

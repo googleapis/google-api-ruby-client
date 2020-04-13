@@ -22,6 +22,18 @@ module Google
   module Apis
     module ServicenetworkingV1beta
       
+      class AddRolesMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddRolesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddSubnetworkRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -286,6 +298,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyBinding
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Quota
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -299,6 +317,12 @@ module Google
       end
       
       class Range
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -380,6 +404,20 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddRolesMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddRolesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :policy_binding, as: 'policyBinding', class: Google::Apis::ServicenetworkingV1beta::PolicyBinding, decorator: Google::Apis::ServicenetworkingV1beta::PolicyBinding::Representation
+      
+        end
       end
       
       class AddSubnetworkRequest
@@ -475,6 +513,7 @@ module Google
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
+          property :rename_to, as: 'renameTo'
           property :selector, as: 'selector'
         end
       end
@@ -850,6 +889,14 @@ module Google
         end
       end
       
+      class PolicyBinding
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :member, as: 'member'
+          property :role, as: 'role'
+        end
+      end
+      
       class Quota
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -881,6 +928,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :ip_cidr_range, as: 'ipCidrRange'
           property :network, as: 'network'
+        end
+      end
+      
+      class Route
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dest_range, as: 'destRange'
+          property :name, as: 'name'
+          property :network, as: 'network'
+          property :next_hop_gateway, as: 'nextHopGateway'
         end
       end
       

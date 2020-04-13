@@ -188,6 +188,22 @@ module Google
         # @return [Google::Apis::StorageV1::Bucket::Website]
         attr_accessor :website
       
+        # The zone or zones from which the bucket is intended to use zonal quota.
+        # Requests for data from outside the specified affinities are still allowed but
+        # won't be able to use zonal quota. The zone or zones need to be within the
+        # bucket location otherwise the requests will fail with a 400 Bad Request
+        # response.
+        # Corresponds to the JSON property `zoneAffinity`
+        # @return [Array<String>]
+        attr_accessor :zone_affinity
+      
+        # If set, objects placed in this bucket are required to be separated by disaster
+        # domain.
+        # Corresponds to the JSON property `zoneSeparation`
+        # @return [Boolean]
+        attr_accessor :zone_separation
+        alias_method :zone_separation?, :zone_separation
+      
         def initialize(**args)
            update!(**args)
         end
@@ -220,6 +236,8 @@ module Google
           @updated = args[:updated] if args.key?(:updated)
           @versioning = args[:versioning] if args.key?(:versioning)
           @website = args[:website] if args.key?(:website)
+          @zone_affinity = args[:zone_affinity] if args.key?(:zone_affinity)
+          @zone_separation = args[:zone_separation] if args.key?(:zone_separation)
         end
         
         # The bucket's billing configuration.

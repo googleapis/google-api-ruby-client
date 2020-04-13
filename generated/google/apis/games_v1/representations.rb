@@ -1104,6 +1104,7 @@ module Google
           property :display_name, as: 'displayName'
           property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesV1::PlayerExperienceInfo, decorator: Google::Apis::GamesV1::PlayerExperienceInfo::Representation
       
+          property :friend_status, as: 'friendStatus'
           property :kind, as: 'kind'
           property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesV1::Played, decorator: Google::Apis::GamesV1::Played::Representation
       
@@ -1277,6 +1278,7 @@ module Google
       class ProfileSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :friends_list_visibility, as: 'friendsListVisibility'
           property :kind, as: 'kind'
           property :profile_visible, as: 'profileVisible'
         end

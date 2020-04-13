@@ -460,7 +460,7 @@ module Google
         # Sets the locations for a specific cluster.
         # Deprecated. Use
         # [projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1/
-        # projects.locations.clusters.update)
+        # projects.locations.clusters/update)
         # instead.
         # @param [String] name
         #   The name (project, location, cluster) of the cluster to set locations.
@@ -1693,7 +1693,7 @@ module Google
         # Sets the locations for a specific cluster.
         # Deprecated. Use
         # [projects.locations.clusters.update](/kubernetes-engine/docs/reference/rest/v1/
-        # projects.locations.clusters.update)
+        # projects.locations.clusters/update)
         # instead.
         # @param [String] project_id
         #   Deprecated. The Google Developers Console [project ID or project

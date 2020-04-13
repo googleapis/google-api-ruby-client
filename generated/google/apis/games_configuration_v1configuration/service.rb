@@ -22,7 +22,8 @@ module Google
     module GamesConfigurationV1configuration
       # Google Play Game Services Publishing API
       #
-      # The Publishing API for Google Play Game Services.
+      # The Google Play Game Services Publishing API allows developers to configure
+      #  their games in Game Services.
       #
       # @example
       #    require 'google/apis/games_configuration_v1configuration'
@@ -30,7 +31,7 @@ module Google
       #    GamesConfiguration = Google::Apis::GamesConfigurationV1configuration # Alias the module
       #    service = GamesConfiguration::GamesConfigurationService.new
       #
-      # @see https://developers.google.com/games/services
+      # @see https://developers.google.com/games/
       class GamesConfigurationService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -38,17 +39,13 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'games/v1configuration/')
-          @batch_path = 'batch/gamesConfiguration/v1configuration'
+          super('https://www.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Delete the achievement configuration with the given ID.
@@ -57,10 +54,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -73,12 +68,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_achievement_configuration(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'achievements/{achievementId}', options)
+        def delete_achievement_configuration(achievement_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'games/v1configuration/achievements/{achievementId}', options)
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -88,10 +82,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -104,14 +96,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_achievement_configuration(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'achievements/{achievementId}', options)
+        def get_achievement_configuration(achievement_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'games/v1configuration/achievements/{achievementId}', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -122,10 +113,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -138,8 +127,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_achievement_configuration(application_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'applications/{applicationId}/achievements', options)
+        def insert_achievement_configuration(application_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'games/v1configuration/applications/{applicationId}/achievements', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.request_object = achievement_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
@@ -147,7 +136,6 @@ module Google
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -155,18 +143,16 @@ module Google
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [Fixnum] max_results
-        #   The maximum number of resource configurations to return in the response, used
-        #   for paging. For any response, the actual number of resources returned may be
-        #   less than the specified maxResults.
+        #   The maximum number of resource configurations to return in the response,
+        #   used for paging. For any response, the actual number of resources returned
+        #   may be less than the specified <code>maxResults</code>.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -179,8 +165,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_achievement_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'applications/{applicationId}/achievements', options)
+        def list_achievement_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'games/v1configuration/applications/{applicationId}/achievements', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::ListAchievementConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -188,44 +174,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Update the metadata of the achievement configuration with the given ID. This
-        # method supports patch semantics.
-        # @param [String] achievement_id
-        #   The ID of the achievement used by this method.
-        # @param [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] achievement_configuration_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_achievement_configuration(achievement_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'achievements/{achievementId}', options)
-          command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
-          command.request_object = achievement_configuration_object
-          command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
-          command.response_class = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration
-          command.params['achievementId'] = achievement_id unless achievement_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -236,10 +184,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -252,8 +198,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_achievement_configuration(achievement_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'achievements/{achievementId}', options)
+        def update_achievement_configuration(achievement_id, achievement_configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'games/v1configuration/achievements/{achievementId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
           command.request_object = achievement_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::AchievementConfiguration::Representation
@@ -261,7 +207,6 @@ module Google
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -273,10 +218,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [IO, String] upload_source
         #   IO stream or filename containing content to upload
         # @param [String] content_type
@@ -293,11 +236,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upload_image_configuration(resource_id, image_type, fields: nil, quota_user: nil, user_ip: nil, upload_source: nil, content_type: nil, options: nil, &block)
+        def upload_image_configuration(resource_id, image_type, fields: nil, quota_user: nil, upload_source: nil, content_type: nil, options: nil, &block)
           if upload_source.nil?
-            command = make_simple_command(:post, 'images/{resourceId}/imageType/{imageType}', options)
+            command = make_simple_command(:post, 'games/v1configuration/images/{resourceId}/imageType/{imageType}', options)
           else
-            command = make_upload_command(:post, 'images/{resourceId}/imageType/{imageType}', options)
+            command = make_upload_command(:post, 'games/v1configuration/images/{resourceId}/imageType/{imageType}', options)
             command.upload_source = upload_source
             command.upload_content_type = content_type
           end
@@ -307,7 +250,6 @@ module Google
           command.params['imageType'] = image_type unless image_type.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -317,10 +259,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -333,12 +273,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'leaderboards/{leaderboardId}', options)
+        def delete_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'games/v1configuration/leaderboards/{leaderboardId}', options)
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -348,10 +287,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -364,14 +301,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'leaderboards/{leaderboardId}', options)
+        def get_leaderboard_configuration(leaderboard_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'games/v1configuration/leaderboards/{leaderboardId}', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -382,10 +318,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -398,8 +332,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_leaderboard_configuration(application_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'applications/{applicationId}/leaderboards', options)
+        def insert_leaderboard_configuration(application_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'games/v1configuration/applications/{applicationId}/leaderboards', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.request_object = leaderboard_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
@@ -407,7 +341,6 @@ module Google
           command.params['applicationId'] = application_id unless application_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -415,18 +348,16 @@ module Google
         # @param [String] application_id
         #   The application ID from the Google Play developer console.
         # @param [Fixnum] max_results
-        #   The maximum number of resource configurations to return in the response, used
-        #   for paging. For any response, the actual number of resources returned may be
-        #   less than the specified maxResults.
+        #   The maximum number of resource configurations to return in the response,
+        #   used for paging. For any response, the actual number of resources returned
+        #   may be less than the specified <code>maxResults</code>.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -439,8 +370,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_leaderboard_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'applications/{applicationId}/leaderboards', options)
+        def list_leaderboard_configurations(application_id, max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'games/v1configuration/applications/{applicationId}/leaderboards', options)
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse::Representation
           command.response_class = Google::Apis::GamesConfigurationV1configuration::ListLeaderboardConfigurationResponse
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -448,44 +379,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Update the metadata of the leaderboard configuration with the given ID. This
-        # method supports patch semantics.
-        # @param [String] leaderboard_id
-        #   The ID of the leaderboard.
-        # @param [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] leaderboard_configuration_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_leaderboard_configuration(leaderboard_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'leaderboards/{leaderboardId}', options)
-          command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
-          command.request_object = leaderboard_configuration_object
-          command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
-          command.response_class = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration
-          command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -496,10 +389,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -512,8 +403,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_leaderboard_configuration(leaderboard_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'leaderboards/{leaderboardId}', options)
+        def update_leaderboard_configuration(leaderboard_id, leaderboard_configuration_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'games/v1configuration/leaderboards/{leaderboardId}', options)
           command.request_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
           command.request_object = leaderboard_configuration_object
           command.response_representation = Google::Apis::GamesConfigurationV1configuration::LeaderboardConfiguration::Representation
@@ -521,7 +412,6 @@ module Google
           command.params['leaderboardId'] = leaderboard_id unless leaderboard_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -530,7 +420,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

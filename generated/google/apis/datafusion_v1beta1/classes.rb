@@ -22,6 +22,25 @@ module Google
   module Apis
     module DatafusionV1beta1
       
+      # Identifies Data Fusion accelerators for an instance.
+      class Accelerator
+        include Google::Apis::Core::Hashable
+      
+        # The type of an accelator for a CDF instance.
+        # Corresponds to the JSON property `acceleratorType`
+        # @return [String]
+        attr_accessor :accelerator_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @accelerator_type = args[:accelerator_type] if args.key?(:accelerator_type)
+        end
+      end
+      
       # Specifies the audit configuration for a service.
       # The configuration determines which permission types are logged, and what
       # identities, if any, are exempted from logging.
@@ -317,8 +336,14 @@ module Google
       end
       
       # Represents a Data Fusion instance.
+      # Next available ID: 23
       class Instance
         include Google::Apis::Core::Hashable
+      
+        # List of accelerators enabled for this CDF instance.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::DatafusionV1beta1::Accelerator>]
+        attr_accessor :accelerators
       
         # Output only. Endpoint on which the REST APIs is accessible.
         # Corresponds to the JSON property `apiEndpoint`
@@ -336,7 +361,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # An optional description of this instance.
+        # Optional. An optional description of this instance.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -449,6 +474,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @api_endpoint = args[:api_endpoint] if args.key?(:api_endpoint)
           @available_version = args[:available_version] if args.key?(:available_version)
           @create_time = args[:create_time] if args.key?(:create_time)

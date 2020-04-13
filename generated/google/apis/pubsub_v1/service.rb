@@ -1218,7 +1218,7 @@ module Google
         # acknowledgment state of messages in an existing subscription to the state
         # captured by a snapshot.
         # @param [String] topic
-        #   The name of the topic that snapshots are attached to.
+        #   Required. The name of the topic that snapshots are attached to.
         #   Format is `projects/`project`/topics/`topic``.
         # @param [Fixnum] page_size
         #   Maximum number of snapshot names to return.

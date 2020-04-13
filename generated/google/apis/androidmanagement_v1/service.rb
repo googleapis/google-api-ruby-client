@@ -197,8 +197,8 @@ module Google
         # @param [Array<String>, String] wipe_data_flags
         #   Optional flags that control the device wiping behavior.
         # @param [String] wipe_reason_message
-        #   Optional short message displayed to the user before wiping the work profile on
-        #   personal devices. This has no effect on company owned devices. The maximum
+        #   Optional. A short message displayed to the user before wiping the work profile
+        #   on personal devices. This has no effect on company owned devices. The maximum
         #   message length is 200 characters.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

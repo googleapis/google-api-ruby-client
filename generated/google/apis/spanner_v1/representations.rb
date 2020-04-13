@@ -22,6 +22,18 @@ module Google
   module Apis
     module SpannerV1
       
+      class Backup
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BackupInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BatchCreateSessionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -59,6 +71,12 @@ module Google
       end
       
       class CommitResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CreateBackupMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -184,6 +202,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListBackupOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListBackupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDatabaseOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListDatabasesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -221,6 +257,18 @@ module Google
       end
       
       class Operation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OperationProgress
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OptimizeRestoredDatabaseMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -311,6 +359,24 @@ module Google
       end
       
       class ReplicaInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreDatabaseMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreDatabaseRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RestoreInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -442,6 +508,28 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Backup
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
+          property :database, as: 'database'
+          property :expire_time, as: 'expireTime'
+          property :name, as: 'name'
+          collection :referencing_databases, as: 'referencingDatabases'
+          property :size_bytes, :numeric_string => true, as: 'sizeBytes'
+          property :state, as: 'state'
+        end
+      end
+      
+      class BackupInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :create_time, as: 'createTime'
+          property :source_database, as: 'sourceDatabase'
+        end
+      end
+      
       class BatchCreateSessionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -504,6 +592,17 @@ module Google
         end
       end
       
+      class CreateBackupMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cancel_time, as: 'cancelTime'
+          property :database, as: 'database'
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
+        end
+      end
+      
       class CreateDatabaseMetadata
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -550,7 +649,10 @@ module Google
       class Database
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :create_time, as: 'createTime'
           property :name, as: 'name'
+          property :restore_info, as: 'restoreInfo', class: Google::Apis::SpannerV1::RestoreInfo, decorator: Google::Apis::SpannerV1::RestoreInfo::Representation
+      
           property :state, as: 'state'
         end
       end
@@ -697,6 +799,33 @@ module Google
         end
       end
       
+      class ListBackupOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+        end
+      end
+      
+      class ListBackupsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :backups, as: 'backups', class: Google::Apis::SpannerV1::Backup, decorator: Google::Apis::SpannerV1::Backup::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDatabaseOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::SpannerV1::Operation, decorator: Google::Apis::SpannerV1::Operation::Representation
+      
+        end
+      end
+      
       class ListDatabasesResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -767,6 +896,24 @@ module Google
           hash :metadata, as: 'metadata'
           property :name, as: 'name'
           hash :response, as: 'response'
+        end
+      end
+      
+      class OperationProgress
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_time, as: 'endTime'
+          property :progress_percent, as: 'progressPercent'
+          property :start_time, as: 'startTime'
+        end
+      end
+      
+      class OptimizeRestoredDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
         end
       end
       
@@ -923,6 +1070,37 @@ module Google
           property :default_leader_location, as: 'defaultLeaderLocation'
           property :location, as: 'location'
           property :type, as: 'type'
+        end
+      end
+      
+      class RestoreDatabaseMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_info, as: 'backupInfo', class: Google::Apis::SpannerV1::BackupInfo, decorator: Google::Apis::SpannerV1::BackupInfo::Representation
+      
+          property :cancel_time, as: 'cancelTime'
+          property :name, as: 'name'
+          property :optimize_database_operation_name, as: 'optimizeDatabaseOperationName'
+          property :progress, as: 'progress', class: Google::Apis::SpannerV1::OperationProgress, decorator: Google::Apis::SpannerV1::OperationProgress::Representation
+      
+          property :source_type, as: 'sourceType'
+        end
+      end
+      
+      class RestoreDatabaseRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup, as: 'backup'
+          property :database_id, as: 'databaseId'
+        end
+      end
+      
+      class RestoreInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :backup_info, as: 'backupInfo', class: Google::Apis::SpannerV1::BackupInfo, decorator: Google::Apis::SpannerV1::BackupInfo::Representation
+      
+          property :source_type, as: 'sourceType'
         end
       end
       

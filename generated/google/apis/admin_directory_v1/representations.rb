@@ -34,12 +34,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AppAccessCollections
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Asp
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,18 +382,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TrustedAppId
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class TrustedApps
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class User
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -555,20 +537,6 @@ module Google
           collection :aliases, as: 'aliases'
           property :etag, as: 'etag'
           property :kind, as: 'kind'
-        end
-      end
-      
-      class AppAccessCollections
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :blocked_api_access_buckets, as: 'blockedApiAccessBuckets'
-          property :enforce_settings_for_android_drive, as: 'enforceSettingsForAndroidDrive'
-          property :error_message, as: 'errorMessage'
-          property :etag, as: 'etag'
-          property :kind, as: 'kind'
-          property :resource_id, :numeric_string => true, as: 'resourceId'
-          property :resource_name, as: 'resourceName'
-          property :trust_domain_owned_apps, as: 'trustDomainOwnedApps'
         end
       end
       
@@ -1306,28 +1274,6 @@ module Google
           collection :items, as: 'items', class: Google::Apis::AdminDirectoryV1::Token, decorator: Google::Apis::AdminDirectoryV1::Token::Representation
       
           property :kind, as: 'kind'
-        end
-      end
-      
-      class TrustedAppId
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :android_package_name, as: 'androidPackageName'
-          property :certificate_hash_sha1, as: 'certificateHashSHA1'
-          property :certificate_hash_sha256, as: 'certificateHashSHA256'
-          property :etag, as: 'etag'
-          property :kind, as: 'kind'
-        end
-      end
-      
-      class TrustedApps
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :etag, as: 'etag'
-          property :kind, as: 'kind'
-          property :next_page_token, as: 'nextPageToken'
-          collection :trusted_apps, as: 'trustedApps', class: Google::Apis::AdminDirectoryV1::TrustedAppId, decorator: Google::Apis::AdminDirectoryV1::TrustedAppId::Representation
-      
         end
       end
       

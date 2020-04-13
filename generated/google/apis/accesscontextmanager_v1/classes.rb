@@ -33,11 +33,6 @@ module Google
         # @return [Google::Apis::AccesscontextmanagerV1::BasicLevel]
         attr_accessor :basic
       
-        # Output only. Time the `AccessLevel` was created in UTC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language
         # to represent the necessary conditions for the level to apply to a request.
         # See CEL spec at: https://github.com/google/cel-spec
@@ -63,11 +58,6 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `AccessLevel` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
@@ -75,12 +65,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @basic = args[:basic] if args.key?(:basic)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @custom = args[:custom] if args.key?(:custom)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -91,11 +79,6 @@ module Google
       # restrictions it specifies apply to all projects within an organization.
       class AccessPolicy
         include Google::Apis::Core::Hashable
-      
-        # Output only. Time the `AccessPolicy` was created in UTC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
       
         # Output only. An opaque identifier for the current version of the
         # `AccessPolicy`. This will always be a strongly validated etag, meaning that
@@ -123,23 +106,16 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `AccessPolicy` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @etag = args[:etag] if args.key?(:etag)
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
       
@@ -821,11 +797,6 @@ module Google
       class ServicePerimeter
         include Google::Apis::Core::Hashable
       
-        # Output only. Time the `ServicePerimeter` was created in UTC.
-        # Corresponds to the JSON property `createTime`
-        # @return [String]
-        attr_accessor :create_time
-      
         # Description of the `ServicePerimeter` and its use. Does not affect
         # behavior.
         # Corresponds to the JSON property `description`
@@ -866,11 +837,6 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Output only. Time the `ServicePerimeter` was updated in UTC.
-        # Corresponds to the JSON property `updateTime`
-        # @return [String]
-        attr_accessor :update_time
-      
         # Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly
         # exists  for all Service Perimeters, and that spec is identical to the
         # status for those Service Perimeters. When this flag is set, it inhibits the
@@ -892,14 +858,12 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @create_time = args[:create_time] if args.key?(:create_time)
           @description = args[:description] if args.key?(:description)
           @name = args[:name] if args.key?(:name)
           @perimeter_type = args[:perimeter_type] if args.key?(:perimeter_type)
           @spec = args[:spec] if args.key?(:spec)
           @status = args[:status] if args.key?(:status)
           @title = args[:title] if args.key?(:title)
-          @update_time = args[:update_time] if args.key?(:update_time)
           @use_explicit_dry_run_spec = args[:use_explicit_dry_run_spec] if args.key?(:use_explicit_dry_run_spec)
         end
       end

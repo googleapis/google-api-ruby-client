@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/billing/docs/how-to/budget-api-overview
     module BillingbudgetsV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200308'
+      REVISION = '20200315'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

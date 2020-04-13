@@ -41,7 +41,8 @@ module Google
       # 95% latency across the average of all tasks in a cluster". This representative
       # data can be more easily graphed and comprehended, and the individual time
       # series data is still available for later drilldown. For more details, see
-      # Aggregating Time Series.
+      # Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/
+      # aggregation).
       class Aggregation
         include Google::Apis::Core::Hashable
       
@@ -116,7 +117,8 @@ module Google
       
       # A description of the conditions under which some aspect of your system is
       # considered to be "unhealthy" and the ways to notify people or services about
-      # this state. For an overview of alert policies, see Introduction to Alerting.
+      # this state. For an overview of alert policies, see Introduction to Alerting (
+      # https://cloud.google.com/monitoring/alerts/).
       class AlertPolicy
         include Google::Apis::Core::Hashable
       
@@ -649,6 +651,12 @@ module Google
         # @return [Google::Apis::MonitoringV3::MetricThreshold]
         attr_accessor :condition_threshold
       
+        # A condition type that allows alert policies to be defined using Monitoring
+        # Query Language.
+        # Corresponds to the JSON property `conditionTimeSeriesQueryLanguage`
+        # @return [Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition]
+        attr_accessor :condition_time_series_query_language
+      
         # A short name or phrase used to identify the condition in dashboards,
         # notifications, and incidents. To avoid confusion, don't use the same display
         # name for multiple conditions in the same policy.
@@ -683,6 +691,7 @@ module Google
         def update!(**args)
           @condition_absent = args[:condition_absent] if args.key?(:condition_absent)
           @condition_threshold = args[:condition_threshold] if args.key?(:condition_threshold)
+          @condition_time_series_query_language = args[:condition_time_series_query_language] if args.key?(:condition_time_series_query_language)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
         end
@@ -874,14 +883,14 @@ module Google
       class Distribution
         include Google::Apis::Core::Hashable
       
-        # Required in the Stackdriver Monitoring API v3. The values for each bucket
-        # specified in bucket_options. The sum of the values in bucketCounts must equal
-        # the value in the count field of the Distribution object. The order of the
-        # bucket counts follows the numbering schemes described for the three bucket
-        # types. The underflow bucket has number 0; the finite buckets, if any, have
-        # numbers 1 through N-2; and the overflow bucket has number N-1. The size of
-        # bucket_counts must not be greater than N. If the size is less than N, then the
-        # remaining buckets are assigned values of zero.
+        # Required in the Cloud Monitoring API v3. The values for each bucket specified
+        # in bucket_options. The sum of the values in bucketCounts must equal the value
+        # in the count field of the Distribution object. The order of the bucket counts
+        # follows the numbering schemes described for the three bucket types. The
+        # underflow bucket has number 0; the finite buckets, if any, have numbers 1
+        # through N-2; and the overflow bucket has number N-1. The size of bucket_counts
+        # must not be greater than N. If the size is less than N, then the remaining
+        # buckets are assigned values of zero.
         # Corresponds to the JSON property `bucketCounts`
         # @return [Array<Fixnum>]
         attr_accessor :bucket_counts
@@ -1593,6 +1602,38 @@ module Google
         end
       end
       
+      # A label value.
+      class LabelValue
+        include Google::Apis::Core::Hashable
+      
+        # A bool label value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # An int64 label value.
+        # Corresponds to the JSON property `int64Value`
+        # @return [Fixnum]
+        attr_accessor :int64_value
+      
+        # A string label value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @int64_value = args[:int64_value] if args.key?(:int64_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Parameters for a latency threshold SLI.
       class LatencyCriteria
         include Google::Apis::Core::Hashable
@@ -2075,8 +2116,9 @@ module Google
         # multiple streams on each resource to a single stream for each resource or when
         # aggregating streams across all members of a group of resrouces). Multiple
         # aggregations are applied in the order specified.This field is similar to the
-        # one in the ListTimeSeries request. It is advisable to use the ListTimeSeries
-        # method when debugging this field.
+        # one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/
+        # ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the
+        # ListTimeSeries method when debugging this field.
         # Corresponds to the JSON property `aggregations`
         # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
         attr_accessor :aggregations
@@ -2091,11 +2133,12 @@ module Google
       
         # A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies
         # which time series should be compared with the threshold.The filter is similar
-        # to the one that is specified in the ListTimeSeries request (that call is
-        # useful to verify the time series that will be retrieved / processed) and must
-        # specify the metric type and optionally may contain restrictions on resource
-        # type, resource labels, and metric labels. This field may not exceed 2048
-        # Unicode characters in length.
+        # to the one that is specified in the ListTimeSeries request (https://cloud.
+        # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call
+        # is useful to verify the time series that will be retrieved / processed) and
+        # must specify the metric type and optionally may contain restrictions on
+        # resource type, resource labels, and metric labels. This field may not exceed
+        # 2048 Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2365,8 +2408,9 @@ module Google
         # multiple streams on each resource to a single stream for each resource or when
         # aggregating streams across all members of a group of resrouces). Multiple
         # aggregations are applied in the order specified.This field is similar to the
-        # one in the ListTimeSeries request. It is advisable to use the ListTimeSeries
-        # method when debugging this field.
+        # one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/
+        # ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the
+        # ListTimeSeries method when debugging this field.
         # Corresponds to the JSON property `aggregations`
         # @return [Array<Google::Apis::MonitoringV3::Aggregation>]
         attr_accessor :aggregations
@@ -2417,11 +2461,12 @@ module Google
       
         # A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies
         # which time series should be compared with the threshold.The filter is similar
-        # to the one that is specified in the ListTimeSeries request (that call is
-        # useful to verify the time series that will be retrieved / processed) and must
-        # specify the metric type and optionally may contain restrictions on resource
-        # type, resource labels, and metric labels. This field may not exceed 2048
-        # Unicode characters in length.
+        # to the one that is specified in the ListTimeSeries request (https://cloud.
+        # google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call
+        # is useful to verify the time series that will be retrieved / processed) and
+        # must specify the metric type and optionally may contain restrictions on
+        # resource type, resource labels, and metric labels. This field may not exceed
+        # 2048 Unicode characters in length.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -2887,6 +2932,122 @@ module Google
         end
       end
       
+      # A point's value columns and time interval. Each point has one or more point
+      # values corresponding to the entries in point_descriptors field in the
+      # TimeSeriesDescriptor associated with this object.
+      class PointData
+        include Google::Apis::Core::Hashable
+      
+        # A closed time interval. It extends from the start time to the end time, and
+        # includes both: [startTime, endTime]. Valid time intervals depend on the
+        # MetricKind of the metric value. In no case can the end time be earlier than
+        # the start time.
+        # For a GAUGE metric, the startTime value is technically optional; if  no value
+        # is specified, the start time defaults to the value of the  end time, and the
+        # interval represents a single point in time. If both  start and end times are
+        # specified, they must be identical. Such an  interval is valid only for GAUGE
+        # metrics, which are point-in-time  measurements.
+        # For DELTA and CUMULATIVE metrics, the start time must be earlier  than the end
+        # time.
+        # In all cases, the start time of the next interval must be  at least a
+        # microsecond after the end time of the previous interval.  Because the interval
+        # is closed, if the start time of a new interval  is the same as the end time of
+        # the previous interval, data written  at the new start time could overwrite
+        # data written at the previous  end time.
+        # Corresponds to the JSON property `timeInterval`
+        # @return [Google::Apis::MonitoringV3::TimeInterval]
+        attr_accessor :time_interval
+      
+        # The values that make up the point.
+        # Corresponds to the JSON property `values`
+        # @return [Array<Google::Apis::MonitoringV3::TypedValue>]
+        attr_accessor :values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @time_interval = args[:time_interval] if args.key?(:time_interval)
+          @values = args[:values] if args.key?(:values)
+        end
+      end
+      
+      # The QueryTimeSeries request.
+      class QueryTimeSeriesRequest
+        include Google::Apis::Core::Hashable
+      
+        # A positive number that is the maximum number of time_series_data to return.
+        # Corresponds to the JSON property `pageSize`
+        # @return [Fixnum]
+        attr_accessor :page_size
+      
+        # If this field is not empty then it must contain the nextPageToken value
+        # returned by a previous call to this method. Using this field causes the method
+        # to return additional results from the previous method call.
+        # Corresponds to the JSON property `pageToken`
+        # @return [String]
+        attr_accessor :page_token
+      
+        # Required. The query in the monitoring query language format. The default time
+        # zone is in UTC.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @page_size = args[:page_size] if args.key?(:page_size)
+          @page_token = args[:page_token] if args.key?(:page_token)
+          @query = args[:query] if args.key?(:query)
+        end
+      end
+      
+      # The QueryTimeSeries response.
+      class QueryTimeSeriesResponse
+        include Google::Apis::Core::Hashable
+      
+        # If there are more results than have been returned, then this field is set to a
+        # non-empty value. To see the additional results, use that value as page_token
+        # in the next call to this method.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # Query execution errors that may have caused the time series data returned to
+        # be incomplete. The available data will be available in the response.
+        # Corresponds to the JSON property `partialErrors`
+        # @return [Array<Google::Apis::MonitoringV3::Status>]
+        attr_accessor :partial_errors
+      
+        # The time series data.
+        # Corresponds to the JSON property `timeSeriesData`
+        # @return [Array<Google::Apis::MonitoringV3::TimeSeriesData>]
+        attr_accessor :time_series_data
+      
+        # A descriptor for the labels and points in a timeseries.
+        # Corresponds to the JSON property `timeSeriesDescriptor`
+        # @return [Google::Apis::MonitoringV3::TimeSeriesDescriptor]
+        attr_accessor :time_series_descriptor
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @partial_errors = args[:partial_errors] if args.key?(:partial_errors)
+          @time_series_data = args[:time_series_data] if args.key?(:time_series_data)
+          @time_series_descriptor = args[:time_series_descriptor] if args.key?(:time_series_descriptor)
+        end
+      end
+      
       # The range of the population values.
       class Range
         include Google::Apis::Core::Hashable
@@ -2989,8 +3150,8 @@ module Google
       
       # A Service is a discrete, autonomous, and network-accessible unit, designed to
       # solve an individual concern (Wikipedia (https://en.wikipedia.org/wiki/Service-
-      # orientation)). In Stackdriver Monitoring, a Service acts as the root resource
-      # under which operational aspects of the service are accessible.
+      # orientation)). In Cloud Monitoring, a Service acts as the root resource under
+      # which operational aspects of the service are accessible.
       class Service
         include Google::Apis::Core::Hashable
       
@@ -3027,7 +3188,7 @@ module Google
         attr_accessor :mesh_istio
       
         # Resource name for this Service. The format is:
-        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID`
+        # projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3427,6 +3588,87 @@ module Google
         end
       end
       
+      # Represents the values of a time series associated with a TimeSeriesDescriptor.
+      class TimeSeriesData
+        include Google::Apis::Core::Hashable
+      
+        # The values of the labels in the time series identifier, given in the same
+        # order as the label_descriptors field of the TimeSeriesDescriptor associated
+        # with this object. Each value must have a value of the type given in the
+        # corresponding entry of label_descriptors.
+        # Corresponds to the JSON property `labelValues`
+        # @return [Array<Google::Apis::MonitoringV3::LabelValue>]
+        attr_accessor :label_values
+      
+        # The points in the time series.
+        # Corresponds to the JSON property `pointData`
+        # @return [Array<Google::Apis::MonitoringV3::PointData>]
+        attr_accessor :point_data
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_values = args[:label_values] if args.key?(:label_values)
+          @point_data = args[:point_data] if args.key?(:point_data)
+        end
+      end
+      
+      # A descriptor for the labels and points in a timeseries.
+      class TimeSeriesDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # Descriptors for the labels.
+        # Corresponds to the JSON property `labelDescriptors`
+        # @return [Array<Google::Apis::MonitoringV3::LabelDescriptor>]
+        attr_accessor :label_descriptors
+      
+        # Descriptors for the point data value columns.
+        # Corresponds to the JSON property `pointDescriptors`
+        # @return [Array<Google::Apis::MonitoringV3::ValueDescriptor>]
+        attr_accessor :point_descriptors
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @label_descriptors = args[:label_descriptors] if args.key?(:label_descriptors)
+          @point_descriptors = args[:point_descriptors] if args.key?(:point_descriptors)
+        end
+      end
+      
+      # A condition type that allows alert policies to be defined using Monitoring
+      # Query Language.
+      class TimeSeriesQueryLanguageCondition
+        include Google::Apis::Core::Hashable
+      
+        # Monitoring Query Language query that generates time series data and describes
+        # a condition for alerting on that data.
+        # Corresponds to the JSON property `query`
+        # @return [String]
+        attr_accessor :query
+      
+        # A short explanation of what the query represents. For example:"Error ratio
+        # exceeds 15% for >5% of servers in >2 regions"
+        # Corresponds to the JSON property `summary`
+        # @return [String]
+        attr_accessor :summary
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @query = args[:query] if args.key?(:query)
+          @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
       # A TimeSeriesRatio specifies two TimeSeries to use for computing the
       # good_service / total_service ratio. The specified TimeSeries must have
       # ValueType = DOUBLE or ValueType = INT64 and must have MetricKind =
@@ -3762,6 +4004,37 @@ module Google
           @ip_address = args[:ip_address] if args.key?(:ip_address)
           @location = args[:location] if args.key?(:location)
           @region = args[:region] if args.key?(:region)
+        end
+      end
+      
+      # A descriptor for the value columns in a data point.
+      class ValueDescriptor
+        include Google::Apis::Core::Hashable
+      
+        # The value key.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # The value stream kind.
+        # Corresponds to the JSON property `metricKind`
+        # @return [String]
+        attr_accessor :metric_kind
+      
+        # The value type.
+        # Corresponds to the JSON property `valueType`
+        # @return [String]
+        attr_accessor :value_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @metric_kind = args[:metric_kind] if args.key?(:metric_kind)
+          @value_type = args[:value_type] if args.key?(:value_type)
         end
       end
       

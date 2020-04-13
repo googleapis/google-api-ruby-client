@@ -1555,7 +1555,7 @@ module Google
         alias_method :online_prediction_logging?, :online_prediction_logging
       
         # Optional. The list of regions where the model is going to be deployed.
-        # Currently only one region per model is supported.
+        # Only one region per model is supported.
         # Defaults to 'us-central1' if nothing is set.
         # See the <a href="/ml-engine/docs/tensorflow/regions">available regions</a>
         # for AI Platform services.
@@ -1934,7 +1934,7 @@ module Google
       
         # The Docker image to run on the replica. This image must be in Container
         # Registry. Learn more about [configuring custom
-        # containers](/ml-engine/docs/distributed-training-containers).
+        # containers](/ai-platform/training/docs/distributed-training-containers).
         # Corresponds to the JSON property `imageUri`
         # @return [String]
         attr_accessor :image_uri
@@ -2300,7 +2300,12 @@ module Google
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
-        # Optional. Command line arguments to pass to the program.
+        # Optional. Arguments passed to the training.
+        # - If it is a python package training:
+        # It will be passed as command line argument to the program.
+        # - If it is a custom container training,
+        # It will be passed as an argument to the custom container
+        # image.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
@@ -2310,6 +2315,34 @@ module Google
         # Corresponds to the JSON property `encryptionConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig]
         attr_accessor :encryption_config
+      
+        # Represents the configuration for a replica in a cluster.
+        # Corresponds to the JSON property `evaluatorConfig`
+        # @return [Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig]
+        attr_accessor :evaluator_config
+      
+        # Optional. The number of evaluator replicas to use for the training job.
+        # Each replica in the cluster will be of the type specified in
+        # `evaluator_type`.
+        # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
+        # set this value, you must also set `evaluator_type`.
+        # The default value is zero.
+        # Corresponds to the JSON property `evaluatorCount`
+        # @return [Fixnum]
+        attr_accessor :evaluator_count
+      
+        # Optional. Specifies the type of virtual machine to use for your training
+        # job's evaluator nodes.
+        # The supported values are the same as those described in the entry for
+        # `masterType`.
+        # This value must be consistent with the category of machine type that
+        # `masterType` uses. In other words, both must be Compute Engine machine
+        # types or both must be legacy machine types.
+        # This value must be present when `scaleTier` is set to `CUSTOM` and
+        # `evaluatorCount` is greater than zero.
+        # Corresponds to the JSON property `evaluatorType`
+        # @return [String]
+        attr_accessor :evaluator_type
       
         # Represents a set of hyperparameters to optimize.
         # Corresponds to the JSON property `hyperparameters`
@@ -2393,7 +2426,7 @@ module Google
         # Optional. The number of parameter server replicas to use for the training
         # job. Each replica in the cluster will be of the type specified in
         # `parameter_server_type`.
-        # This value can only be used when `scale_tier` is set to `CUSTOM`.If you
+        # This value can only be used when `scale_tier` is set to `CUSTOM`. If you
         # set this value, you must also set `parameter_server_type`.
         # The default value is zero.
         # Corresponds to the JSON property `parameterServerCount`
@@ -2459,9 +2492,13 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Scheduling]
         attr_accessor :scheduling
       
-        # Optional. Use 'chief' instead of 'master' in TF_CONFIG when Custom
-        # Container is used and evaluator is not specified.
-        # Defaults to false.
+        # Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment
+        # variable when training with a custom container. Defaults to `false`. [Learn
+        # more about this
+        # field.](/ai-platform/training/docs/distributed-training-details#chief-versus-
+        # master)
+        # This field has no effect for training jobs that don't use a custom
+        # container.
         # Corresponds to the JSON property `useChiefInTfConfig`
         # @return [Boolean]
         attr_accessor :use_chief_in_tf_config
@@ -2506,6 +2543,9 @@ module Google
         def update!(**args)
           @args = args[:args] if args.key?(:args)
           @encryption_config = args[:encryption_config] if args.key?(:encryption_config)
+          @evaluator_config = args[:evaluator_config] if args.key?(:evaluator_config)
+          @evaluator_count = args[:evaluator_count] if args.key?(:evaluator_count)
+          @evaluator_type = args[:evaluator_type] if args.key?(:evaluator_type)
           @hyperparameters = args[:hyperparameters] if args.key?(:hyperparameters)
           @job_dir = args[:job_dir] if args.key?(:job_dir)
           @master_config = args[:master_config] if args.key?(:master_config)

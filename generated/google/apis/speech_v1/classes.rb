@@ -69,6 +69,12 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
+        # The URI of the audio file being transcribed. Empty if the audio was sent
+        # as byte content.
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
         def initialize(**args)
            update!(**args)
         end
@@ -78,6 +84,7 @@ module Google
           @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
           @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
           @start_time = args[:start_time] if args.key?(:start_time)
+          @uri = args[:uri] if args.key?(:uri)
         end
       end
       
@@ -263,9 +270,6 @@ module Google
         # This feature is only available in select languages. Setting this for
         # requests in other languages has no effect at all.
         # The default 'false' value does not add punctuation to result hypotheses.
-        # Note: This is currently offered as an experimental service, complimentary
-        # to all users. In the future this may be exclusively available as a
-        # premium feature.
         # Corresponds to the JSON property `enableAutomaticPunctuation`
         # @return [Boolean]
         attr_accessor :enable_automatic_punctuation

@@ -20,10 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SecuritycenterV1beta1
-      # Cloud Security Command Center API
+      # Security Command Center API
       #
-      # Cloud Security Command Center API provides access to temporal views of assets
-      #  and findings within an organization.
+      # Security Command Center API provides access to temporal views of assets and
+      #  findings within an organization.
       #
       # @example
       #    require 'google/apis/securitycenter_v1beta1'

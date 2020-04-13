@@ -190,6 +190,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListStepAccessibilityClustersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListStepThumbnailsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -274,7 +280,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RegionProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResultsStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SafeHtmlProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -341,6 +359,18 @@ module Google
       end
       
       class SuccessDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuggestionClusterProto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SuggestionProto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -713,6 +743,15 @@ module Google
         end
       end
       
+      class ListStepAccessibilityClustersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :clusters, as: 'clusters', class: Google::Apis::ToolresultsV1beta3::SuggestionClusterProto, decorator: Google::Apis::ToolresultsV1beta3::SuggestionClusterProto::Representation
+      
+          property :name, as: 'name'
+        end
+      end
+      
       class ListStepThumbnailsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -858,6 +897,16 @@ module Google
         end
       end
       
+      class RegionProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :height_px, as: 'heightPx'
+          property :left_px, as: 'leftPx'
+          property :top_px, as: 'topPx'
+          property :width_px, as: 'widthPx'
+        end
+      end
+      
       class ResultsStorage
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -865,6 +914,13 @@ module Google
       
           property :xunit_xml_file, as: 'xunitXmlFile', class: Google::Apis::ToolresultsV1beta3::FileReference, decorator: Google::Apis::ToolresultsV1beta3::FileReference::Representation
       
+        end
+      end
+      
+      class SafeHtmlProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :private_do_not_access_or_else_safe_html_wrapped_value, as: 'privateDoNotAccessOrElseSafeHtmlWrappedValue'
         end
       end
       
@@ -983,6 +1039,34 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :other_native_crash, as: 'otherNativeCrash'
+        end
+      end
+      
+      class SuggestionClusterProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          collection :suggestions, as: 'suggestions', class: Google::Apis::ToolresultsV1beta3::SuggestionProto, decorator: Google::Apis::ToolresultsV1beta3::SuggestionProto::Representation
+      
+        end
+      end
+      
+      class SuggestionProto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :help_url, as: 'helpUrl'
+          property :long_message, as: 'longMessage', class: Google::Apis::ToolresultsV1beta3::SafeHtmlProto, decorator: Google::Apis::ToolresultsV1beta3::SafeHtmlProto::Representation
+      
+          property :priority, as: 'priority'
+          property :pseudo_resource_id, as: 'pseudoResourceId'
+          property :region, as: 'region', class: Google::Apis::ToolresultsV1beta3::RegionProto, decorator: Google::Apis::ToolresultsV1beta3::RegionProto::Representation
+      
+          property :resource_name, as: 'resourceName'
+          property :screen_id, as: 'screenId'
+          property :secondary_priority, as: 'secondaryPriority'
+          property :short_message, as: 'shortMessage', class: Google::Apis::ToolresultsV1beta3::SafeHtmlProto, decorator: Google::Apis::ToolresultsV1beta3::SafeHtmlProto::Representation
+      
+          property :title, as: 'title'
         end
       end
       

@@ -644,15 +644,22 @@ module Google
         attr_accessor :enable_private_endpoint
         alias_method :enable_private_endpoint?, :enable_private_endpoint
       
-        # The IP range in CIDR notation to use for the hosted master network. This
-        # range is used for assigning internal IP addresses to the cluster
-        # master or set of masters and to the internal load balancer virtual IP.
-        # This range must not overlap with any other ranges in use
-        # within the cluster's network. If left blank, the default value of
-        # '172.16.0.0/28' is used.
+        # Optional. The CIDR block from which IPv4 range for GKE master will be reserved.
+        # If
+        # left blank, the default value of '172.16.0.0/23' is used.
         # Corresponds to the JSON property `masterIpv4CidrBlock`
         # @return [String]
         attr_accessor :master_ipv4_cidr_block
+      
+        # Output only. The IP range in CIDR notation to use for the hosted master
+        # network. This
+        # range is used for assigning internal IP addresses to the cluster
+        # master or set of masters and to the internal load balancer virtual IP.
+        # This range must not overlap with any other ranges in use
+        # within the cluster's network.
+        # Corresponds to the JSON property `masterIpv4ReservedRange`
+        # @return [String]
+        attr_accessor :master_ipv4_reserved_range
       
         def initialize(**args)
            update!(**args)
@@ -662,6 +669,7 @@ module Google
         def update!(**args)
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
+          @master_ipv4_reserved_range = args[:master_ipv4_reserved_range] if args.key?(:master_ipv4_reserved_range)
         end
       end
       
@@ -669,6 +677,13 @@ module Google
       # environment.
       class PrivateEnvironmentConfig
         include Google::Apis::Core::Hashable
+      
+        # Optional. The CIDR block from which IP range in tenant project will be
+        # reserved for
+        # Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
+        # Corresponds to the JSON property `cloudSqlIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :cloud_sql_ipv4_cidr_block
       
         # Optional. If `true`, a Private IP Cloud Composer environment is created.
         # If this field is true, `use_ip_aliases` must be true.
@@ -683,14 +698,30 @@ module Google
         # @return [Google::Apis::ComposerV1beta1::PrivateClusterConfig]
         attr_accessor :private_cluster_config
       
+        # Optional. The CIDR block from which IP range for web server will be reserved.
+        # Needs
+        # to be disjoint from private_cluster_config.master_ipv4_cidr_block and
+        # cloud_sql_ipv4_cidr_block.
+        # Corresponds to the JSON property `webServerIpv4CidrBlock`
+        # @return [String]
+        attr_accessor :web_server_ipv4_cidr_block
+      
+        # Output only. The IP range reserved for the tenant project's App Engine VMs.
+        # Corresponds to the JSON property `webServerIpv4ReservedRange`
+        # @return [String]
+        attr_accessor :web_server_ipv4_reserved_range
+      
         def initialize(**args)
            update!(**args)
         end
       
         # Update properties of this object
         def update!(**args)
+          @cloud_sql_ipv4_cidr_block = args[:cloud_sql_ipv4_cidr_block] if args.key?(:cloud_sql_ipv4_cidr_block)
           @enable_private_environment = args[:enable_private_environment] if args.key?(:enable_private_environment)
           @private_cluster_config = args[:private_cluster_config] if args.key?(:private_cluster_config)
+          @web_server_ipv4_cidr_block = args[:web_server_ipv4_cidr_block] if args.key?(:web_server_ipv4_cidr_block)
+          @web_server_ipv4_reserved_range = args[:web_server_ipv4_reserved_range] if args.key?(:web_server_ipv4_reserved_range)
         end
       end
       

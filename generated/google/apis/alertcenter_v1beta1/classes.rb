@@ -81,7 +81,7 @@ module Google
         # @return [String]
         attr_accessor :query
       
-        # List of alert ids superseded by this alert. It is used to indicate that
+        # List of alert IDs superseded by this alert. It is used to indicate that
         # this alert is essentially extension of superseded alerts and we found the
         # relationship after creating these alerts.
         # Corresponds to the JSON property `supersededAlerts`

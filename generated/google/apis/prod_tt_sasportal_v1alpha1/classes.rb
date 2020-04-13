@@ -96,7 +96,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Required. JSON Web Token signed using a CPI private key. Payload
-        # must be the JSON encoding of the [Device].
+        # must be the JSON encoding of the [Device]. The user_id field must be set.
         # Corresponds to the JSON property `encodedDevice`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -291,7 +291,7 @@ module Google
         # @return [String]
         attr_accessor :update_time
       
-        # Output only. The identifier of a device user.
+        # The identifier of a device user.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -946,6 +946,7 @@ module Google
       
         # Required. The device to sign.
         # The device fields name, fcc_id and serial_number must be set.
+        # The user_id field must be set.
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::ProdTtSasportalV1alpha1::SasPortalDevice]
         attr_accessor :device
@@ -1049,7 +1050,7 @@ module Google
       
         # Required. The JSON Web Token signed using a CPI private key. Payload
         # must be the JSON encoding
-        # of the device.
+        # of the device. The user_id field must be set.
         # Corresponds to the JSON property `encodedDevice`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]

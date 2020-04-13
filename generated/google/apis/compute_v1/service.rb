@@ -58,36 +58,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -107,12 +114,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_accelerator_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_accelerator_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/acceleratorTypes', options)
           command.response_representation = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AcceleratorTypeAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -170,36 +178,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -242,36 +250,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -291,12 +306,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_addresses(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_addresses(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/addresses', options)
           command.response_representation = Google::Apis::ComputeV1::AddressAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AddressAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -457,36 +473,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -529,36 +545,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -578,12 +601,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_autoscalers(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_autoscalers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/autoscalers', options)
           command.response_representation = Google::Apis::ComputeV1::AutoscalerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::AutoscalerAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -745,36 +769,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1167,36 +1191,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1396,36 +1420,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1445,12 +1476,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_backend_service_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_backend_service_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/backendServices', options)
           command.response_representation = Google::Apis::ComputeV1::BackendServiceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::BackendServiceAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1638,8 +1670,8 @@ module Google
         
         # Creates a BackendService resource in the specified project using the data
         # included in the request. There are several restrictions and guidelines to keep
-        # in mind when creating a backend service. Read  Restrictions and Guidelines for
-        # more information.
+        # in mind when creating a backend service. Read  Understanding backend services
+        # for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::BackendService] backend_service_object
@@ -1695,36 +1727,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1760,8 +1792,8 @@ module Google
         end
         
         # Patches the specified BackendService resource with the data included in the
-        # request. There are several restrictions and guidelines to keep in mind when
-        # updating a backend service. Read  Restrictions and Guidelines for more
+        # request. There are several Understanding backend services to keep in mind when
+        # updating a backend service. Read  Understanding backend services for more
         # information. This method supports PATCH semantics and uses the JSON merge
         # patch format and processing rules.
         # @param [String] project
@@ -1867,8 +1899,8 @@ module Google
         end
         
         # Updates the specified BackendService resource with the data included in the
-        # request. There are several restrictions and guidelines to keep in mind when
-        # updating a backend service. Read  Restrictions and Guidelines for more
+        # request. There are several Understanding backend services to keep in mind when
+        # updating a backend service. Read  Understanding backend services for more
         # information.
         # @param [String] project
         #   Project ID for this request.
@@ -1927,36 +1959,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1976,12 +2015,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/diskTypes', options)
           command.response_representation = Google::Apis::ComputeV1::DiskTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskTypeAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2040,36 +2080,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2167,36 +2207,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2216,12 +2263,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_disk(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_disk(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/disks', options)
           command.response_representation = Google::Apis::ComputeV1::DiskAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::DiskAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2489,36 +2537,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2944,36 +2992,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3227,36 +3275,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3404,36 +3452,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3453,12 +3508,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_forwarding_rules(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_forwarding_rules(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/forwardingRules', options)
           command.response_representation = Google::Apis::ComputeV1::ForwardingRuleAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ForwardingRuleAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3620,36 +3676,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3937,36 +3993,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4143,36 +4199,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4312,6 +4368,393 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Attach a network endpoint to the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group where you are attaching network
+        #   endpoints to. It should comply with RFC1035.
+        # @param [Google::Apis::ComputeV1::GlobalNetworkEndpointGroupsAttachEndpointsRequest] global_network_endpoint_groups_attach_endpoints_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def attach_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, global_network_endpoint_groups_attach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalNetworkEndpointGroupsAttachEndpointsRequest::Representation
+          command.request_object = global_network_endpoint_groups_attach_endpoints_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the specified network endpoint group.Note that the NEG cannot be
+        # deleted if there are backend services referencing it.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group to delete. It should comply with
+        #   RFC1035.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_global_network_endpoint_group(project, network_endpoint_group, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:delete, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Detach the network endpoint from the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group where you are removing network
+        #   endpoints. It should comply with RFC1035.
+        # @param [Google::Apis::ComputeV1::GlobalNetworkEndpointGroupsDetachEndpointsRequest] global_network_endpoint_groups_detach_endpoints_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def detach_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, global_network_endpoint_groups_detach_endpoints_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints', options)
+          command.request_representation = Google::Apis::ComputeV1::GlobalNetworkEndpointGroupsDetachEndpointsRequest::Representation
+          command.request_object = global_network_endpoint_groups_detach_endpoints_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the specified network endpoint group. Gets a list of available network
+        # endpoint groups by making a list() request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group. It should comply with RFC1035.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_global_network_endpoint_group(project, network_endpoint_group, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/networkEndpointGroups/{networkEndpointGroup}', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroup
+          command.params['project'] = project unless project.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a network endpoint group in the specified project using the parameters
+        # that are included in the request.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [Google::Apis::ComputeV1::NetworkEndpointGroup] network_endpoint_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def insert_global_network_endpoint_group(project, network_endpoint_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups', options)
+          command.request_representation = Google::Apis::ComputeV1::NetworkEndpointGroup::Representation
+          command.request_object = network_endpoint_group_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves the list of network endpoint groups that are located in the
+        # specified project.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroupList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_global_network_endpoint_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/networkEndpointGroups', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupList::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the network endpoints in the specified network endpoint group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] network_endpoint_group
+        #   The name of the network endpoint group from which you want to generate a list
+        #   of included network endpoints. It should comply with RFC1035.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_global_network_endpoint_group_network_endpoints(project, network_endpoint_group, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/global/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints', options)
+          command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints::Representation
+          command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupsListNetworkEndpoints
+          command.params['project'] = project unless project.nil?
+          command.params['networkEndpointGroup'] = network_endpoint_group unless network_endpoint_group.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an aggregated list of all operations.
         # @param [String] project
         #   Project ID for this request.
@@ -4319,36 +4762,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4368,12 +4818,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_global_operation(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_global_operation(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/operations', options)
           command.response_representation = Google::Apis::ComputeV1::OperationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::OperationAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -4418,7 +4869,7 @@ module Google
         end
         
         # Retrieves the specified Operations resource. Gets a list of operations by
-        # making a list() request.
+        # making a `list()` request.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -4461,36 +4912,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4525,17 +4976,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Waits for the specified Operation resource to return as DONE or for the
+        # Waits for the specified Operation resource to return as `DONE` or for the
         # request to approach the 2 minute deadline, and retrieves the specified
-        # Operation resource. This method differs from the GET method in that it waits
+        # Operation resource. This method differs from the `GET` method in that it waits
         # for no more than the default deadline (2 minutes) and then returns the current
-        # state of the operation, which might be DONE or still in progress.
+        # state of the operation, which might be `DONE` or still in progress.
         # This method is called on a best-effort basis. Specifically:
         # - In uncommon cases, when the server is overloaded, the request might return
         # before the default deadline is reached, or might return after zero seconds.
         # - If the default deadline is reached, there is no guarantee that the operation
         # is actually done when the method returns. Be prepared to retry if the
-        # operation is not DONE.
+        # operation is not `DONE`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] operation
@@ -4579,36 +5030,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -4628,12 +5086,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_health_check_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_health_check_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/healthChecks', options)
           command.response_representation = Google::Apis::ComputeV1::HealthChecksAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::HealthChecksAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -4784,36 +5243,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5095,36 +5554,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5406,36 +5865,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -5849,36 +6308,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6104,36 +6563,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6153,12 +6619,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_group_managers(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_group_managers(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/instanceGroupManagers', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupManagerAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -6168,8 +6635,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Apply changes to selected instances on the managed instance group. This method
-        # can be used to apply new overrides and/or new versions.
+        # Applies changes to selected instances on the managed instance group. This
+        # method can be used to apply new overrides and/or new versions.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -6496,36 +6963,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6561,6 +7028,87 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all errors thrown by actions on instances for a given managed instance
+        # group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone where the managed instance group is located. It should
+        #   conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It must be a string that meets the
+        #   requirements in RFC1035, or an unsigned long integer: must match regexp
+        #   pattern: (?:[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?)|[1-9][0-9]`0,19`.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_instance_group_manager_errors(project, zone, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listErrors', options)
+          command.response_representation = Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::InstanceGroupManagersListErrorsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists all of the instances in the managed instance group. Each instance in the
         # list has a currentAction, which indicates the action that the managed instance
         # group is performing on the instance. For example, if the group is still
@@ -6576,36 +7124,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -6634,7 +7182,7 @@ module Google
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -7013,36 +7561,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7062,12 +7617,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instance_groups(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instance_groups(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/instanceGroups', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceGroupAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -7232,36 +7788,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7310,36 +7866,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7673,36 +8229,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7873,6 +8429,62 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Adds existing resource policies to an instance. You can only add one policy
+        # right now which will be applied to this instance for scheduling live
+        # migrations.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   The instance name for this request.
+        # @param [Google::Apis::ComputeV1::InstancesAddResourcePoliciesRequest] instances_add_resource_policies_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_instance_resource_policies(project, zone, instance, instances_add_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/addResourcePolicies', options)
+          command.request_representation = Google::Apis::ComputeV1::InstancesAddResourcePoliciesRequest::Representation
+          command.request_object = instances_add_resource_policies_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves aggregated list of all of the instances in your project across all
         # regions and zones.
         # @param [String] project
@@ -7881,36 +8493,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -7930,12 +8549,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_instances(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_instances(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/instances', options)
           command.response_representation = Google::Apis::ComputeV1::InstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InstanceAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -8452,36 +9072,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8530,36 +9150,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -8590,6 +9210,60 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Removes resource policies from an instance.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   The instance name for this request.
+        # @param [Google::Apis::ComputeV1::InstancesRemoveResourcePoliciesRequest] instances_remove_resource_policies_request_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_instance_resource_policies(project, zone, instance, instances_remove_resource_policies_request_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{project}/zones/{zone}/instances/{instance}/removeResourcePolicies', options)
+          command.request_representation = Google::Apis::ComputeV1::InstancesRemoveResourcePoliciesRequest::Representation
+          command.request_object = instances_remove_resource_policies_request_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -9541,6 +10215,73 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates an instance only if the necessary resources are available. This method
+        # can update only a specific set of instance properties. See  Updating a running
+        # instance for a list of updatable instance properties.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] instance
+        #   Name of the instance resource to update.
+        # @param [Google::Apis::ComputeV1::Instance] instance_object
+        # @param [String] minimal_action
+        #   Specifies the action to take when updating an instance even if the updated
+        #   properties do not require it. If not specified, then Compute Engine acts based
+        #   on the minimum action that the updated properties require.
+        # @param [String] most_disruptive_allowed_action
+        #   Specifies the most disruptive action that can be taken on the instance as part
+        #   of the update. Compute Engine returns an error if the instance properties
+        #   require a more disruptive action as part of the instance update. Valid options
+        #   from lowest to highest are NO_EFFECT, REFRESH, and RESTART.
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_instance(project, zone, instance, instance_object = nil, minimal_action: nil, most_disruptive_allowed_action: nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:put, '{project}/zones/{zone}/instances/{instance}', options)
+          command.request_representation = Google::Apis::ComputeV1::Instance::Representation
+          command.request_object = instance_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['instance'] = instance unless instance.nil?
+          command.query['minimalAction'] = minimal_action unless minimal_action.nil?
+          command.query['mostDisruptiveAllowedAction'] = most_disruptive_allowed_action unless most_disruptive_allowed_action.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the specified access config from an instance's network interface with
         # the data included in the request. This method supports PATCH semantics and
         # uses the JSON merge patch format and processing rules.
@@ -9776,36 +10517,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -9825,12 +10573,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_interconnect_attachment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_interconnect_attachment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/interconnectAttachments', options)
           command.response_representation = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::InterconnectAttachmentAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -9995,36 +10744,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10161,36 +10910,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10402,36 +11151,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10520,7 +11269,9 @@ module Google
         end
         
         # Return a specified license code. License codes are mirrored across all
-        # projects that have permissions to read the License Code.
+        # projects that have permissions to read the License Code.  Caution This
+        # resource is intended for use only by third-party partners who are creating
+        # Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license_code
@@ -10556,7 +11307,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
+        # Returns permissions that a caller has on the specified resource.  Caution This
+        # resource is intended for use only by third-party partners who are creating
+        # Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10595,7 +11348,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified license.
+        # Deletes the specified license.  Caution This resource is intended for use only
+        # by third-party partners who are creating Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -10643,7 +11397,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns the specified License resource.
+        # Returns the specified License resource.  Caution This resource is intended for
+        # use only by third-party partners who are creating Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] license
@@ -10680,7 +11435,8 @@ module Google
         end
         
         # Gets the access control policy for a resource. May be empty if no such policy
-        # or resource exists.
+        # or resource exists.  Caution This resource is intended for use only by third-
+        # party partners who are creating Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10716,7 +11472,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Create a License resource in the specified project.
+        # Create a License resource in the specified project.  Caution This resource is
+        # intended for use only by third-party partners who are creating Cloud
+        # Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [Google::Apis::ComputeV1::License] license_object
@@ -10768,43 +11526,45 @@ module Google
         # does not get any licenses that belong to other projects, including licenses
         # attached to publicly-available images, like Debian 9. If you want to get a
         # list of publicly-available licenses, use this method to make a request to the
-        # respective image project, such as debian-cloud or windows-cloud.
+        # respective image project, such as debian-cloud or windows-cloud.  Caution This
+        # resource is intended for use only by third-party partners who are creating
+        # Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] filter
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10840,7 +11600,8 @@ module Google
         end
         
         # Sets the access control policy on the specified resource. Replaces any
-        # existing policy.
+        # existing policy.  Caution This resource is intended for use only by third-
+        # party partners who are creating Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10879,7 +11640,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns permissions that a caller has on the specified resource.
+        # Returns permissions that a caller has on the specified resource.  Caution This
+        # resource is intended for use only by third-party partners who are creating
+        # Cloud Marketplace images.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] resource
@@ -10925,36 +11688,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -10974,12 +11744,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_machine_types(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_machine_types(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/machineTypes', options)
           command.response_representation = Google::Apis::ComputeV1::MachineTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::MachineTypeAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -11038,36 +11809,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11110,36 +11881,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11159,12 +11937,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_network_endpoint_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_network_endpoint_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/networkEndpointGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NetworkEndpointGroupAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -11447,36 +12226,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11526,36 +12305,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11828,36 +12607,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -11903,36 +12682,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] peering_name
         #   The response will show routes exchanged over the given peering connection.
         # @param [String] region
@@ -12242,36 +13021,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12291,12 +13077,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_group_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_group_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/nodeGroups', options)
           command.response_representation = Google::Apis::ComputeV1::NodeGroupAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeGroupAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -12557,36 +13344,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12633,36 +13420,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12693,6 +13480,60 @@ module Google
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Patch the node group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] zone
+        #   The name of the zone for this request.
+        # @param [String] node_group
+        #   Name of the NodeGroup resource to update.
+        # @param [Google::Apis::ComputeV1::NodeGroup] node_group_object
+        # @param [String] request_id
+        #   An optional request ID to identify requests. Specify a unique request ID so
+        #   that if you must retry your request, the server will know to ignore the
+        #   request if it has already been completed.
+        #   For example, consider a situation where you make an initial request and the
+        #   request times out. If you make the request again with the same request ID, the
+        #   server can check if original operation with the same request ID was received,
+        #   and if so, will ignore the second request. This prevents clients from
+        #   accidentally creating duplicate commitments.
+        #   The request ID must be a valid UUID with the exception that zero UUID is not
+        #   supported (00000000-0000-0000-0000-000000000000).
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_node_group(project, zone, node_group, node_group_object = nil, request_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:patch, '{project}/zones/{zone}/nodeGroups/{nodeGroup}', options)
+          command.request_representation = Google::Apis::ComputeV1::NodeGroup::Representation
+          command.request_object = node_group_object
+          command.response_representation = Google::Apis::ComputeV1::Operation::Representation
+          command.response_class = Google::Apis::ComputeV1::Operation
+          command.params['project'] = project unless project.nil?
+          command.params['zone'] = zone unless zone.nil?
+          command.params['nodeGroup'] = node_group unless node_group.nil?
+          command.query['requestId'] = request_id unless request_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -12845,36 +13686,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -12894,12 +13742,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_template_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_template_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/nodeTemplates', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTemplateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTemplateAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -13101,36 +13950,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13258,36 +14107,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13307,12 +14163,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_node_type_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_node_type_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/nodeTypes', options)
           command.response_representation = Google::Apis::ComputeV1::NodeTypeAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::NodeTypeAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -13371,36 +14228,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13443,36 +14300,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -13492,12 +14356,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_packet_mirroring_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_packet_mirroring_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/packetMirrorings', options)
           command.response_representation = Google::Apis::ComputeV1::PacketMirroringAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::PacketMirroringAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -13659,36 +14524,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14085,36 +14950,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14141,7 +15006,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -14157,36 +15022,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14215,7 +15080,7 @@ module Google
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -14619,36 +15484,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -14928,8 +15793,8 @@ module Google
         
         # Creates a regional BackendService resource in the specified project using the
         # data included in the request. There are several restrictions and guidelines to
-        # keep in mind when creating a regional backend service. Read  Restrictions and
-        # Guidelines for more information.
+        # keep in mind when creating a regional backend service. Read  Understanding
+        # backend services for more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -14990,36 +15855,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15056,9 +15921,9 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several restrictions and guidelines to keep in mind
-        # when updating a backend service. Read  Restrictions and Guidelines for more
-        # information. This method supports PATCH semantics and uses the JSON merge
+        # in the request. There are several Understanding backend services to keep in
+        # mind when updating a backend service. Read  Understanding backend services for
+        # more information. This method supports PATCH semantics and uses the JSON merge
         # patch format and processing rules.
         # @param [String] project
         #   Project ID for this request.
@@ -15114,9 +15979,9 @@ module Google
         end
         
         # Updates the specified regional BackendService resource with the data included
-        # in the request. There are several restrictions and guidelines to keep in mind
-        # when updating a backend service. Read  Restrictions and Guidelines for more
-        # information.
+        # in the request. There are several Understanding backend services to keep in
+        # mind when updating a backend service. Read  Understanding backend services for
+        # more information.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -15177,36 +16042,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15226,12 +16098,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_region_commitment_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_region_commitment_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/commitments', options)
           command.response_representation = Google::Apis::ComputeV1::CommitmentAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::CommitmentAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -15342,36 +16215,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15456,36 +16329,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -15787,36 +16660,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16208,36 +17081,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16772,36 +17645,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16837,6 +17710,86 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists all errors thrown by actions on instances for a given regional managed
+        # instance group.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] region
+        #   Name of the region scoping this request. This should conform to RFC1035.
+        # @param [String] instance_group_manager
+        #   The name of the managed instance group. It must be a string that meets the
+        #   requirements in RFC1035, or an unsigned long integer: must match regexp
+        #   pattern: (?:[a-z](?:[-a-z0-9]`0,61`[a-z0-9])?)|[1-9][0-9]`0,19`.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_region_instance_group_manager_errors(project, region, instance_group_manager, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listErrors', options)
+          command.response_representation = Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::RegionInstanceGroupManagersListErrorsResponse
+          command.params['project'] = project unless project.nil?
+          command.params['region'] = region unless region.nil?
+          command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Lists the instances in the managed instance group and instances that are
         # scheduled to be created. The list includes any current actions that the group
         # has scheduled for its instances.
@@ -16850,36 +17803,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -16908,7 +17861,7 @@ module Google
           command.params['instanceGroupManager'] = instance_group_manager unless instance_group_manager.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
-          command.query['order_by'] = order_by unless order_by.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -17259,36 +18212,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17338,36 +18291,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17545,36 +18498,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -17610,17 +18563,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Waits for the specified Operation resource to return as DONE or for the
+        # Waits for the specified Operation resource to return as `DONE` or for the
         # request to approach the 2 minute deadline, and retrieves the specified
-        # Operation resource. This method differs from the GET method in that it waits
+        # Operation resource. This method differs from the `GET` method in that it waits
         # for no more than the default deadline (2 minutes) and then returns the current
-        # state of the operation, which might be DONE or still in progress.
+        # state of the operation, which might be `DONE` or still in progress.
         # This method is called on a best-effort basis. Specifically:
         # - In uncommon cases, when the server is overloaded, the request might return
         # before the default deadline is reached, or might return after zero seconds.
         # - If the default deadline is reached, there is no guarantee that the operation
         # is actually done when the method returns. Be prepared to retry if the
-        # operation is not DONE.
+        # operation is not `DONE`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] region
@@ -17812,36 +18765,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18030,36 +18983,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18302,36 +19255,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18610,36 +19563,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18854,36 +19807,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18925,36 +19878,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -18974,12 +19934,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_reservation_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_reservation_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/reservations', options)
           command.response_representation = Google::Apis::ComputeV1::ReservationAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ReservationAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -19181,36 +20142,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19393,36 +20354,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19442,12 +20410,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_resource_policy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_resource_policy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/resourcePolicies', options)
           command.response_representation = Google::Apis::ComputeV1::ResourcePolicyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::ResourcePolicyAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -19648,36 +20617,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19805,36 +20774,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -19854,12 +20830,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_router_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_router_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/routers', options)
           command.response_representation = Google::Apis::ComputeV1::RouterAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::RouterAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -19972,36 +20949,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20138,36 +21115,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20500,36 +21477,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20782,36 +21759,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -20835,6 +21812,78 @@ module Google
           command = make_simple_command(:get, '{project}/global/securityPolicies', options)
           command.response_representation = Google::Apis::ComputeV1::SecurityPolicyList::Representation
           command.response_class = Google::Apis::ComputeV1::SecurityPolicyList
+          command.params['project'] = project unless project.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets the current list of preconfigured Web Application Firewall (WAF)
+        # expressions.
+        # @param [String] project
+        #   Project ID for this request.
+        # @param [String] filter
+        #   A filter expression that filters resources listed in the response. The
+        #   expression must specify the field name, a comparison operator, and the value
+        #   that you want to use for filtering. The value must be a string, a number, or a
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
+        #   For example, if you are filtering Compute Engine instances, you can exclude
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
+        #   for automatic restarts. You can use filtering on nested fields to filter based
+        #   on resource labels.
+        #   To filter on multiple expressions, provide each separate expression within
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Fixnum] max_results
+        #   The maximum number of results per page that should be returned. If the number
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+        # @param [String] order_by
+        #   Sorts list results by a certain order. By default, results are returned in
+        #   alphanumerical order based on the resource name.
+        #   You can also sort results in descending order based on the creation timestamp
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
+        #   Use this to sort resources like operations so that the newest operation is
+        #   returned first.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+        # @param [String] page_token
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_security_policy_preconfigured_expression_sets(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{project}/global/securityPolicies/listPreconfiguredExpressionSets', options)
+          command.response_representation = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse::Representation
+          command.response_class = Google::Apis::ComputeV1::SecurityPoliciesListPreconfiguredExpressionSetsResponse
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
@@ -21112,36 +22161,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21303,36 +22352,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21352,12 +22408,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_ssl_certificate_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_ssl_certificate_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/sslCertificates', options)
           command.response_representation = Google::Apis::ComputeV1::SslCertificateAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SslCertificateAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -21509,36 +22566,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21716,36 +22773,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21788,36 +22845,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21911,36 +22968,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -21960,12 +23024,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_subnetwork_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_subnetwork_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/subnetworks', options)
           command.response_representation = Google::Apis::ComputeV1::SubnetworkAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::SubnetworkAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -22221,36 +23286,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22295,36 +23360,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22361,7 +23426,7 @@ module Google
         
         # Patches the specified subnetwork with the data included in the request. Only
         # certain fields can up updated with a patch request as indicated in the field
-        # descriptions. You must specify the current fingeprint of the subnetwork
+        # descriptions. You must specify the current fingerprint of the subnetwork
         # resource being patched.
         # @param [String] project
         #   Project ID for this request.
@@ -22573,36 +23638,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22622,12 +23694,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_http_proxy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_http_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/targetHttpProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpProxyAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -22779,36 +23852,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22902,36 +23975,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -22951,12 +24031,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_target_https_proxy_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_target_https_proxy_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/targetHttpsProxies', options)
           command.response_representation = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetHttpsProxyAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -23108,36 +24189,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23388,36 +24469,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23437,12 +24525,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_instance(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_instance(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/targetInstances', options)
           command.response_representation = Google::Apis::ComputeV1::TargetInstanceAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetInstanceAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -23605,36 +24694,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23785,36 +24874,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -23834,12 +24930,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_pools(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_pools(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/targetPools', options)
           command.response_representation = Google::Apis::ComputeV1::TargetPoolAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetPoolAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -24044,36 +25141,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24416,36 +25513,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -24830,36 +25927,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25003,36 +26100,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25052,12 +26156,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_target_vpn_gateways(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_target_vpn_gateways(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/targetVpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::TargetVpnGatewayAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -25220,36 +26325,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25293,36 +26398,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25342,12 +26454,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_url_map_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_url_map_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/urlMaps', options)
           command.response_representation = Google::Apis::ComputeV1::UrlMapsAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::UrlMapsAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -25550,36 +26663,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25765,36 +26878,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -25814,12 +26934,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def aggregated_vpn_gateway_list(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def aggregated_vpn_gateway_list(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/vpnGateways', options)
           command.response_representation = Google::Apis::ComputeV1::VpnGatewayAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnGatewayAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -26020,36 +27141,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26189,36 +27310,43 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
+        # @param [Boolean] include_all_scopes
+        #   Indicates whether every visible scope for each scope type (zone, region,
+        #   global) should be included in the response. For new resource types added after
+        #   this field, the flag has no effect as new resource types will always include
+        #   every visible scope for each scope type in response. For resource types which
+        #   predate this field, if this flag is omitted or false, only scopes of the scope
+        #   types where the resource type is expected to be found will be included.
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26238,12 +27366,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_aggregated_vpn_tunnel(project, filter: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_aggregated_vpn_tunnel(project, filter: nil, include_all_scopes: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{project}/aggregated/vpnTunnels', options)
           command.response_representation = Google::Apis::ComputeV1::VpnTunnelAggregatedList::Representation
           command.response_class = Google::Apis::ComputeV1::VpnTunnelAggregatedList
           command.params['project'] = project unless project.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['includeAllScopes'] = include_all_scopes unless include_all_scopes.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -26406,36 +27535,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26556,36 +27685,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -26621,17 +27750,17 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Waits for the specified Operation resource to return as DONE or for the
+        # Waits for the specified Operation resource to return as `DONE` or for the
         # request to approach the 2 minute deadline, and retrieves the specified
-        # Operation resource. This method differs from the GET method in that it waits
+        # Operation resource. This method differs from the `GET` method in that it waits
         # for no more than the default deadline (2 minutes) and then returns the current
-        # state of the operation, which might be DONE or still in progress.
+        # state of the operation, which might be `DONE` or still in progress.
         # This method is called on a best-effort basis. Specifically:
         # - In uncommon cases, when the server is overloaded, the request might return
         # before the default deadline is reached, or might return after zero seconds.
         # - If the default deadline is reached, there is no guarantee that the operation
         # is actually done when the method returns. Be prepared to retry if the
-        # operation is not DONE.
+        # operation is not `DONE`.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone
@@ -26714,36 +27843,36 @@ module Google
         #   A filter expression that filters resources listed in the response. The
         #   expression must specify the field name, a comparison operator, and the value
         #   that you want to use for filtering. The value must be a string, a number, or a
-        #   boolean. The comparison operator must be either =, !=, >, or <.
+        #   boolean. The comparison operator must be either `=`, `!=`, `>`, or `<`.
         #   For example, if you are filtering Compute Engine instances, you can exclude
-        #   instances named example-instance by specifying name != example-instance.
-        #   You can also filter nested fields. For example, you could specify scheduling.
-        #   automaticRestart = false to include instances only if they are not scheduled
+        #   instances named `example-instance` by specifying `name != example-instance`.
+        #   You can also filter nested fields. For example, you could specify `scheduling.
+        #   automaticRestart = false` to include instances only if they are not scheduled
         #   for automatic restarts. You can use filtering on nested fields to filter based
         #   on resource labels.
         #   To filter on multiple expressions, provide each separate expression within
-        #   parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = "
-        #   Intel Skylake"). By default, each expression is an AND expression. However,
-        #   you can include AND and OR expressions explicitly. For example, (cpuPlatform =
-        #   "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.
-        #   automaticRestart = true).
+        #   parentheses. For example: ``` (scheduling.automaticRestart = true) (
+        #   cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+        #   expression. However, you can include `AND` and `OR` expressions explicitly.
+        #   For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+        #   Broadwell") AND (scheduling.automaticRestart = true) ```
         # @param [Fixnum] max_results
         #   The maximum number of results per page that should be returned. If the number
-        #   of available results is larger than maxResults, Compute Engine returns a
-        #   nextPageToken that can be used to get the next page of results in subsequent
-        #   list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)
+        #   of available results is larger than `maxResults`, Compute Engine returns a `
+        #   nextPageToken` that can be used to get the next page of results in subsequent
+        #   list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
         # @param [String] order_by
         #   Sorts list results by a certain order. By default, results are returned in
         #   alphanumerical order based on the resource name.
         #   You can also sort results in descending order based on the creation timestamp
-        #   using orderBy="creationTimestamp desc". This sorts results based on the
-        #   creationTimestamp field in reverse chronological order (newest result first).
+        #   using `orderBy="creationTimestamp desc"`. This sorts results based on the `
+        #   creationTimestamp` field in reverse chronological order (newest result first).
         #   Use this to sort resources like operations so that the newest operation is
         #   returned first.
-        #   Currently, only sorting by name or creationTimestamp desc is supported.
+        #   Currently, only sorting by `name` or `creationTimestamp desc` is supported.
         # @param [String] page_token
-        #   Specifies a page token to use. Set pageToken to the nextPageToken returned by
-        #   a previous list request to get the next page of results.
+        #   Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned
+        #   by a previous list request to get the next page of results.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

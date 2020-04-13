@@ -867,6 +867,19 @@ module Google
         end
       end
       
+      # Response from deleting a snapshot.
+      class DeleteSnapshotResponse
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # Specification of one of the bundles produced as a result of splitting
       # a Source (e.g. when executing a SourceSplitRequest, or when
       # splitting an active task using WorkItemStatus.dynamic_source_split),
@@ -2541,6 +2554,25 @@ module Google
         end
       end
       
+      # List of snapshots.
+      class ListSnapshotsResponse
+        include Google::Apis::Core::Hashable
+      
+        # Returned snapshots.
+        # Corresponds to the JSON property `snapshots`
+        # @return [Array<Google::Apis::DataflowV1b3::Snapshot>]
+        attr_accessor :snapshots
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @snapshots = args[:snapshots] if args.key?(:snapshots)
+        end
+      end
+      
       # MapTask consists of an ordered set of instructions, each of which
       # describes one particular low-level operation for the worker to
       # perform in order to accomplish the MapTask's WorkItem.
@@ -2582,6 +2614,44 @@ module Google
           @instructions = args[:instructions] if args.key?(:instructions)
           @stage_name = args[:stage_name] if args.key?(:stage_name)
           @system_name = args[:system_name] if args.key?(:system_name)
+        end
+      end
+      
+      # Information about the memory usage of a worker or a container within a
+      # worker.
+      class MemInfo
+        include Google::Apis::Core::Hashable
+      
+        # Instantenous memory limit in bytes.
+        # Corresponds to the JSON property `currentLimitBytes`
+        # @return [Fixnum]
+        attr_accessor :current_limit_bytes
+      
+        # Instantenous memory (RSS) size in bytes.
+        # Corresponds to the JSON property `currentRssBytes`
+        # @return [Fixnum]
+        attr_accessor :current_rss_bytes
+      
+        # Timestamp of the measurement.
+        # Corresponds to the JSON property `timestamp`
+        # @return [String]
+        attr_accessor :timestamp
+      
+        # Total memory (RSS) usage since start up in GB * ms.
+        # Corresponds to the JSON property `totalGbMs`
+        # @return [Fixnum]
+        attr_accessor :total_gb_ms
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @current_limit_bytes = args[:current_limit_bytes] if args.key?(:current_limit_bytes)
+          @current_rss_bytes = args[:current_rss_bytes] if args.key?(:current_rss_bytes)
+          @timestamp = args[:timestamp] if args.key?(:timestamp)
+          @total_gb_ms = args[:total_gb_ms] if args.key?(:total_gb_ms)
         end
       end
       
@@ -3281,6 +3351,37 @@ module Google
         end
       end
       
+      # Represents a Pubsub snapshot.
+      class PubsubSnapshotMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The expire time of the Pubsub snapshot.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # The name of the Pubsub snapshot.
+        # Corresponds to the JSON property `snapshotName`
+        # @return [String]
+        attr_accessor :snapshot_name
+      
+        # The name of the Pubsub topic.
+        # Corresponds to the JSON property `topicName`
+        # @return [String]
+        attr_accessor :topic_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @snapshot_name = args[:snapshot_name] if args.key?(:snapshot_name)
+          @topic_name = args[:topic_name] if args.key?(:topic_name)
+        end
+      end
+      
       # An instruction that reads records.
       # Takes no inputs, produces one output.
       class ReadInstruction
@@ -3417,10 +3518,21 @@ module Google
       class ResourceUtilizationReport
         include Google::Apis::Core::Hashable
       
+        # Per container information.
+        # Key: container name.
+        # Corresponds to the JSON property `containers`
+        # @return [Hash<String,Google::Apis::DataflowV1b3::ResourceUtilizationReport>]
+        attr_accessor :containers
+      
         # CPU utilization samples.
         # Corresponds to the JSON property `cpuTime`
         # @return [Array<Google::Apis::DataflowV1b3::CpuTime>]
         attr_accessor :cpu_time
+      
+        # Memory utilization samples.
+        # Corresponds to the JSON property `memoryInfo`
+        # @return [Array<Google::Apis::DataflowV1b3::MemInfo>]
+        attr_accessor :memory_info
       
         def initialize(**args)
            update!(**args)
@@ -3428,7 +3540,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @containers = args[:containers] if args.key?(:containers)
           @cpu_time = args[:cpu_time] if args.key?(:cpu_time)
+          @memory_info = args[:memory_info] if args.key?(:memory_info)
         end
       end
       
@@ -3941,6 +4055,112 @@ module Google
         def update!(**args)
           @codec = args[:codec] if args.key?(:codec)
           @spec = args[:spec] if args.key?(:spec)
+        end
+      end
+      
+      # Represents a snapshot of a job.
+      class Snapshot
+        include Google::Apis::Core::Hashable
+      
+        # The time this snapshot was created.
+        # Corresponds to the JSON property `creationTime`
+        # @return [String]
+        attr_accessor :creation_time
+      
+        # User specified description of the snapshot. Maybe empty.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The disk byte size of the snapshot. Only available for snapshots in READY
+        # state.
+        # Corresponds to the JSON property `diskSizeBytes`
+        # @return [Fixnum]
+        attr_accessor :disk_size_bytes
+      
+        # The unique ID of this snapshot.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # The project this snapshot belongs to.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # PubSub snapshot metadata.
+        # Corresponds to the JSON property `pubsubMetadata`
+        # @return [Array<Google::Apis::DataflowV1b3::PubsubSnapshotMetadata>]
+        attr_accessor :pubsub_metadata
+      
+        # The job this snapshot was created from.
+        # Corresponds to the JSON property `sourceJobId`
+        # @return [String]
+        attr_accessor :source_job_id
+      
+        # State of the snapshot.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # The time after which this snapshot will be automatically deleted.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @description = args[:description] if args.key?(:description)
+          @disk_size_bytes = args[:disk_size_bytes] if args.key?(:disk_size_bytes)
+          @id = args[:id] if args.key?(:id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @pubsub_metadata = args[:pubsub_metadata] if args.key?(:pubsub_metadata)
+          @source_job_id = args[:source_job_id] if args.key?(:source_job_id)
+          @state = args[:state] if args.key?(:state)
+          @ttl = args[:ttl] if args.key?(:ttl)
+        end
+      end
+      
+      # Request to create a snapshot of a job.
+      class SnapshotJobRequest
+        include Google::Apis::Core::Hashable
+      
+        # User specified description of the snapshot. Maybe empty.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The location that contains this job.
+        # Corresponds to the JSON property `location`
+        # @return [String]
+        attr_accessor :location
+      
+        # If true, perform snapshots for sources which support this.
+        # Corresponds to the JSON property `snapshotSources`
+        # @return [Boolean]
+        attr_accessor :snapshot_sources
+        alias_method :snapshot_sources?, :snapshot_sources
+      
+        # TTL for the snapshot.
+        # Corresponds to the JSON property `ttl`
+        # @return [String]
+        attr_accessor :ttl
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @location = args[:location] if args.key?(:location)
+          @snapshot_sources = args[:snapshot_sources] if args.key?(:snapshot_sources)
+          @ttl = args[:ttl] if args.key?(:ttl)
         end
       end
       

@@ -626,6 +626,9 @@ module Google
         #   Products to associate with the user.
         # @param [String] website_url
         #   The URL of the user's hosted website.
+        # @param [String] callback_url
+        #   The URL to redirect the user to once association is completed. It receives a
+        #   token parameter that can then be used to retrieve the associated account.
         # @param [String] user_locale
         #   The preferred locale of the user.
         # @param [String] website_locale
@@ -649,10 +652,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def start_association_session(product_code, website_url, user_locale: nil, website_locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def start_association_session(product_code, website_url, callback_url: nil, user_locale: nil, website_locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, 'associationsessions/start', options)
           command.response_representation = Google::Apis::AdsensehostV4_1::AssociationSession::Representation
           command.response_class = Google::Apis::AdsensehostV4_1::AssociationSession
+          command.query['callbackUrl'] = callback_url unless callback_url.nil?
           command.query['productCode'] = product_code unless product_code.nil?
           command.query['userLocale'] = user_locale unless user_locale.nil?
           command.query['websiteLocale'] = website_locale unless website_locale.nil?

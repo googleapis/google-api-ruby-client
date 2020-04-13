@@ -771,10 +771,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_messages
       
-        # If this field set to true, the system will respond immediately even if
+        # Optional. If this field set to true, the system will respond immediately even
+        # if
         # it there are no messages available to return in the `Pull` response.
         # Otherwise, the system may wait (for a bounded amount of time) until at
-        # least one message is available, rather than returning no messages.
+        # least one message is available, rather than returning no messages. Warning:
+        # setting this field to `true` is discouraged because it adversely impacts
+        # the performance of `Pull` operations. We recommend that users do not set
+        # this field.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately
@@ -1355,9 +1359,9 @@ module Google
         # Required. Indicates which fields in the provided topic to update. Must be
         # specified
         # and non-empty. Note that if `update_mask` contains
-        # "message_storage_policy" then the new value will be determined based on the
-        # policy configured at the project or organization level. The
-        # `message_storage_policy` must not be set in the `topic` provided above.
+        # "message_storage_policy" but the `message_storage_policy` is not set in
+        # the `topic` provided above, then the updated value is determined by the
+        # policy configured at the project or organization level.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask

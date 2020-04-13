@@ -625,7 +625,7 @@ module Google
         #   path syntax reference.
         # @param [String] read_time
         #   Reads the version of the document at the given time.
-        #   This may not be older than 60 seconds.
+        #   This may not be older than 270 seconds.
         # @param [String] transaction
         #   Reads the document in a transaction.
         # @param [String] fields
@@ -681,7 +681,7 @@ module Google
         #   The `next_page_token` value returned from a previous List request, if any.
         # @param [String] read_time
         #   Reads documents as they were at the given time.
-        #   This may not be older than 60 seconds.
+        #   This may not be older than 270 seconds.
         # @param [Boolean] show_missing
         #   If the list should show missing documents. A missing document is a
         #   document that does not exist but has sub-documents. These documents will

@@ -12,21 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/cloudprivatecatalog_v1beta1/service.rb'
-require 'google/apis/cloudprivatecatalog_v1beta1/classes.rb'
-require 'google/apis/cloudprivatecatalog_v1beta1/representations.rb'
+require 'google/apis/osconfig_v1/service.rb'
+require 'google/apis/osconfig_v1/classes.rb'
+require 'google/apis/osconfig_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Private Catalog API
+    # Cloud OS Config API
     #
-    # Enable cloud users to discover enterprise catalogs and products in their
-    # organizations.
+    # OS management tools that can be used for patch management, patch compliance,
+    # and configuration management on VM instances.
     #
-    # @see https://cloud.google.com/private-catalog/
-    module CloudprivatecatalogV1beta1
-      VERSION = 'V1beta1'
-      REVISION = '20200210'
+    # @see https://cloud.google.com/
+    module OsconfigV1
+      VERSION = 'V1'
+      REVISION = '20200403'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

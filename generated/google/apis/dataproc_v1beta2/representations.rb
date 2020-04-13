@@ -172,6 +172,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GkeClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class HadoopJob
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -203,6 +209,12 @@ module Google
       end
       
       class Job
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class JobMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +299,12 @@ module Google
       end
       
       class ManagedGroupConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NamespacedGkeDeploymentTarget
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -394,7 +412,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartClusterRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StopClusterRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -561,6 +591,8 @@ module Google
       
           property :gce_cluster_config, as: 'gceClusterConfig', class: Google::Apis::DataprocV1beta2::GceClusterConfig, decorator: Google::Apis::DataprocV1beta2::GceClusterConfig::Representation
       
+          property :gke_cluster_config, as: 'gkeClusterConfig', class: Google::Apis::DataprocV1beta2::GkeClusterConfig, decorator: Google::Apis::DataprocV1beta2::GkeClusterConfig::Representation
+      
           collection :initialization_actions, as: 'initializationActions', class: Google::Apis::DataprocV1beta2::NodeInitializationAction, decorator: Google::Apis::DataprocV1beta2::NodeInitializationAction::Representation
       
           property :lifecycle_config, as: 'lifecycleConfig', class: Google::Apis::DataprocV1beta2::LifecycleConfig, decorator: Google::Apis::DataprocV1beta2::LifecycleConfig::Representation
@@ -723,6 +755,14 @@ module Google
         end
       end
       
+      class GkeClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :namespaced_gke_deployment_target, as: 'namespacedGkeDeploymentTarget', class: Google::Apis::DataprocV1beta2::NamespacedGkeDeploymentTarget, decorator: Google::Apis::DataprocV1beta2::NamespacedGkeDeploymentTarget::Representation
+      
+        end
+      end
+      
       class HadoopJob
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -825,6 +865,17 @@ module Google
       
           property :submitted_by, as: 'submittedBy'
           collection :yarn_applications, as: 'yarnApplications', class: Google::Apis::DataprocV1beta2::YarnApplication, decorator: Google::Apis::DataprocV1beta2::YarnApplication::Representation
+      
+        end
+      end
+      
+      class JobMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, as: 'jobId'
+          property :operation_type, as: 'operationType'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status', class: Google::Apis::DataprocV1beta2::JobStatus, decorator: Google::Apis::DataprocV1beta2::JobStatus::Representation
       
         end
       end
@@ -963,6 +1014,14 @@ module Google
         end
       end
       
+      class NamespacedGkeDeploymentTarget
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_namespace, as: 'clusterNamespace'
+          property :target_gke_cluster, as: 'targetGkeCluster'
+        end
+      end
+      
       class NodeInitializationAction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -994,11 +1053,15 @@ module Google
           property :pig_job, as: 'pigJob', class: Google::Apis::DataprocV1beta2::PigJob, decorator: Google::Apis::DataprocV1beta2::PigJob::Representation
       
           collection :prerequisite_step_ids, as: 'prerequisiteStepIds'
+          property :presto_job, as: 'prestoJob', class: Google::Apis::DataprocV1beta2::PrestoJob, decorator: Google::Apis::DataprocV1beta2::PrestoJob::Representation
+      
           property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1beta2::PySparkJob, decorator: Google::Apis::DataprocV1beta2::PySparkJob::Representation
       
           property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1beta2::JobScheduling, decorator: Google::Apis::DataprocV1beta2::JobScheduling::Representation
       
           property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1beta2::SparkJob, decorator: Google::Apis::DataprocV1beta2::SparkJob::Representation
+      
+          property :spark_r_job, as: 'sparkRJob', class: Google::Apis::DataprocV1beta2::SparkRJob, decorator: Google::Apis::DataprocV1beta2::SparkRJob::Representation
       
           property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1beta2::SparkSqlJob, decorator: Google::Apis::DataprocV1beta2::SparkSqlJob::Representation
       
@@ -1161,12 +1224,28 @@ module Google
         end
       end
       
+      class StartClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :request_id, as: 'requestId'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
           collection :details, as: 'details'
           property :message, as: 'message'
+        end
+      end
+      
+      class StopClusterRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_uuid, as: 'clusterUuid'
+          property :request_id, as: 'requestId'
         end
       end
       

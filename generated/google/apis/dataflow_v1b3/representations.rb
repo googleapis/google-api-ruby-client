@@ -148,6 +148,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class DeleteSnapshotResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class DerivedSource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -388,7 +394,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListSnapshotsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MapTask
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MemInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -485,6 +503,12 @@ module Google
       end
       
       class PubsubLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PubsubSnapshotMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -605,6 +629,18 @@ module Google
       end
       
       class Sink
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Snapshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SnapshotJobRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1130,6 +1166,12 @@ module Google
         end
       end
       
+      class DeleteSnapshotResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class DerivedSource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1573,6 +1615,14 @@ module Google
         end
       end
       
+      class ListSnapshotsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :snapshots, as: 'snapshots', class: Google::Apis::DataflowV1b3::Snapshot, decorator: Google::Apis::DataflowV1b3::Snapshot::Representation
+      
+        end
+      end
+      
       class MapTask
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1581,6 +1631,16 @@ module Google
       
           property :stage_name, as: 'stageName'
           property :system_name, as: 'systemName'
+        end
+      end
+      
+      class MemInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :current_limit_bytes, :numeric_string => true, as: 'currentLimitBytes'
+          property :current_rss_bytes, :numeric_string => true, as: 'currentRssBytes'
+          property :timestamp, as: 'timestamp'
+          property :total_gb_ms, :numeric_string => true, as: 'totalGbMs'
         end
       end
       
@@ -1764,6 +1824,15 @@ module Google
         end
       end
       
+      class PubsubSnapshotMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :expire_time, as: 'expireTime'
+          property :snapshot_name, as: 'snapshotName'
+          property :topic_name, as: 'topicName'
+        end
+      end
+      
       class ReadInstruction
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1804,7 +1873,11 @@ module Google
       class ResourceUtilizationReport
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          hash :containers, as: 'containers', class: Google::Apis::DataflowV1b3::ResourceUtilizationReport, decorator: Google::Apis::DataflowV1b3::ResourceUtilizationReport::Representation
+      
           collection :cpu_time, as: 'cpuTime', class: Google::Apis::DataflowV1b3::CpuTime, decorator: Google::Apis::DataflowV1b3::CpuTime::Representation
+      
+          collection :memory_info, as: 'memoryInfo', class: Google::Apis::DataflowV1b3::MemInfo, decorator: Google::Apis::DataflowV1b3::MemInfo::Representation
       
         end
       end
@@ -1950,6 +2023,32 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :codec, as: 'codec'
           hash :spec, as: 'spec'
+        end
+      end
+      
+      class Snapshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :creation_time, as: 'creationTime'
+          property :description, as: 'description'
+          property :disk_size_bytes, :numeric_string => true, as: 'diskSizeBytes'
+          property :id, as: 'id'
+          property :project_id, as: 'projectId'
+          collection :pubsub_metadata, as: 'pubsubMetadata', class: Google::Apis::DataflowV1b3::PubsubSnapshotMetadata, decorator: Google::Apis::DataflowV1b3::PubsubSnapshotMetadata::Representation
+      
+          property :source_job_id, as: 'sourceJobId'
+          property :state, as: 'state'
+          property :ttl, as: 'ttl'
+        end
+      end
+      
+      class SnapshotJobRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :location, as: 'location'
+          property :snapshot_sources, as: 'snapshotSources'
+          property :ttl, as: 'ttl'
         end
       end
       

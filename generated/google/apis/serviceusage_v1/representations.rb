@@ -88,6 +88,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BatchGetServicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Billing
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -269,6 +275,18 @@ module Google
       end
       
       class HttpRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportAdminOverridesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ImportConsumerOverridesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -551,6 +569,7 @@ module Google
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
+          property :rename_to, as: 'renameTo'
           property :selector, as: 'selector'
         end
       end
@@ -583,6 +602,14 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :failures, as: 'failures', class: Google::Apis::ServiceusageV1::EnableFailure, decorator: Google::Apis::ServiceusageV1::EnableFailure::Representation
       
+          collection :services, as: 'services', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service::Representation
+      
+        end
+      end
+      
+      class BatchGetServicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
           collection :services, as: 'services', class: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service, decorator: Google::Apis::ServiceusageV1::GoogleApiServiceusageV1Service::Representation
       
         end
@@ -935,6 +962,22 @@ module Google
         end
       end
       
+      class ImportAdminOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1::QuotaOverride, decorator: Google::Apis::ServiceusageV1::QuotaOverride::Representation
+      
+        end
+      end
+      
+      class ImportConsumerOverridesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :overrides, as: 'overrides', class: Google::Apis::ServiceusageV1::QuotaOverride, decorator: Google::Apis::ServiceusageV1::QuotaOverride::Representation
+      
+        end
+      end
+      
       class JwtLocation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1163,8 +1206,10 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           hash :dimensions, as: 'dimensions'
+          property :metric, as: 'metric'
           property :name, as: 'name'
           property :override_value, :numeric_string => true, as: 'overrideValue'
+          property :unit, as: 'unit'
         end
       end
       

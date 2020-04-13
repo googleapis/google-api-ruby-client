@@ -358,7 +358,10 @@ module Google
         end
         
         # Updates an existing capacity commitment.
-        # Only renewal_plan field can be updated.
+        # Only plan and renewal_plan fields can be updated.
+        # Plan can only be changed to a plan of a longer commitment period.
+        # Attempting to change to a plan with shorter commitment period will fail
+        # with the error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
         #   Output only. The resource name of the capacity commitment, e.g.,
         #   projects/myproject/locations/US/capacityCommitments/123
@@ -428,44 +431,6 @@ module Google
           command.response_representation = Google::Apis::BigqueryreservationV1beta1::SplitCapacityCommitmentResponse::Representation
           command.response_class = Google::Apis::BigqueryreservationV1beta1::SplitCapacityCommitmentResponse
           command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Replaces an existing commitment with a new commitment of a different plan.
-        # Plan can only be changed to a plan of a longer commitment period. New
-        # commitment start is set to a current time. Attempting to change to a plan
-        # with shorter commitment period will fail with the error code
-        # `google.rpc.Code.FAILED_PRECONDITION`.
-        # @param [String] capacity_commitment
-        #   Required. The resource name e.g.,:
-        #   projects/myproject/locations/US/capacityCommitments/123
-        # @param [Google::Apis::BigqueryreservationV1beta1::UpgradeCapacityCommitmentPlanRequest] upgrade_capacity_commitment_plan_request_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::BigqueryreservationV1beta1::CapacityCommitment]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def upgrade_capacity_commitment_plan(capacity_commitment, upgrade_capacity_commitment_plan_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1beta1/{+capacityCommitment}:upgradeCapacityCommitmentPlan', options)
-          command.request_representation = Google::Apis::BigqueryreservationV1beta1::UpgradeCapacityCommitmentPlanRequest::Representation
-          command.request_object = upgrade_capacity_commitment_plan_request_object
-          command.response_representation = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment::Representation
-          command.response_class = Google::Apis::BigqueryreservationV1beta1::CapacityCommitment
-          command.params['capacityCommitment'] = capacity_commitment unless capacity_commitment.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -7202,9 +7202,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves a report file. This method supports media download.
+        # Retrieves a report file by its report ID and file ID. This method supports
+        # media download.
         # @param [Fixnum] profile_id
-        #   The DFA profile ID.
+        #   The DFA user profile ID.
         # @param [Fixnum] report_id
         #   The ID of the report.
         # @param [Fixnum] file_id
@@ -7250,9 +7251,9 @@ module Google
         
         # Lists files for a report.
         # @param [Fixnum] profile_id
-        #   The DFA profile ID.
+        #   The DFA user profile ID.
         # @param [Fixnum] report_id
-        #   The ID of the parent report.
+        #   The ID of the report.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token

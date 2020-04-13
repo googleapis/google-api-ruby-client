@@ -22,19 +22,16 @@ module Google
   module Apis
     module GamesConfigurationV1configuration
       
-      # This is a JSON template for an achievement configuration resource.
+      # An achievement configuration resource.
       class AchievementConfiguration
         include Google::Apis::Core::Hashable
       
         # The type of the achievement.
-        # Possible values are:
-        # - "STANDARD" - Achievement is either locked or unlocked.
-        # - "INCREMENTAL" - Achievement is incremental.
         # Corresponds to the JSON property `achievementType`
         # @return [String]
         attr_accessor :achievement_type
       
-        # This is a JSON template for an achievement configuration detail.
+        # An achievement configuration detail.
         # Corresponds to the JSON property `draft`
         # @return [Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail]
         attr_accessor :draft
@@ -45,26 +42,22 @@ module Google
         attr_accessor :id
       
         # The initial state of the achievement.
-        # Possible values are:
-        # - "HIDDEN" - Achievement is hidden.
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
         # Corresponds to the JSON property `initialState`
         # @return [String]
         attr_accessor :initial_state
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#achievementConfiguration.
+        # string <code>gamesConfiguration#achievementConfiguration</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for an achievement configuration detail.
+        # An achievement configuration detail.
         # Corresponds to the JSON property `published`
         # @return [Google::Apis::GamesConfigurationV1configuration::AchievementConfigurationDetail]
         attr_accessor :published
       
-        # Steps to unlock. Only applicable to incremental achievements.
+        # Steps to unlock.  Only applicable to incremental achievements.
         # Corresponds to the JSON property `stepsToUnlock`
         # @return [Fixnum]
         attr_accessor :steps_to_unlock
@@ -91,11 +84,11 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement configuration detail.
+      # An achievement configuration detail.
       class AchievementConfigurationDetail
         include Google::Apis::Core::Hashable
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `description`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :description
@@ -106,12 +99,12 @@ module Google
         attr_accessor :icon_url
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#achievementConfigurationDetail.
+        # string <code>gamesConfiguration#achievementConfigurationDetail</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :name
@@ -141,7 +134,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a ListConfigurations response.
+      # A ListConfigurations response.
       class ListAchievementConfigurationResponse
         include Google::Apis::Core::Hashable
       
@@ -151,7 +144,8 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#achievementConfigurationListResponse.
+        # string
+        # <code>gamesConfiguration#achievementConfigurationListResponse</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -173,36 +167,36 @@ module Google
         end
       end
       
-      # This is a JSON template for a number affix resource.
+      # A number affix resource.
       class GamesNumberAffixConfiguration
         include Google::Apis::Core::Hashable
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `few`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :few
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `many`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :many
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `one`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :one
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `other`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :other
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `two`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :two
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `zero`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :zero
@@ -222,7 +216,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a number format resource.
+      # A number format resource.
       class GamesNumberFormatConfiguration
         include Google::Apis::Core::Hashable
       
@@ -237,17 +231,11 @@ module Google
         attr_accessor :num_decimal_places
       
         # The formatting for the number.
-        # Possible values are:
-        # - "NUMERIC" - Numbers are formatted to have no digits or a fixed number of
-        # digits after the decimal point according to locale. An optional custom unit
-        # can be added.
-        # - "TIME_DURATION" - Numbers are formatted to hours, minutes and seconds.
-        # - "CURRENCY" - Numbers are formatted to currency according to locale.
         # Corresponds to the JSON property `numberFormatType`
         # @return [String]
         attr_accessor :number_format_type
       
-        # This is a JSON template for a number affix resource.
+        # A number affix resource.
         # Corresponds to the JSON property `suffix`
         # @return [Google::Apis::GamesConfigurationV1configuration::GamesNumberAffixConfiguration]
         attr_accessor :suffix
@@ -265,7 +253,7 @@ module Google
         end
       end
       
-      # This is a JSON template for an image configuration resource.
+      # An image configuration resource.
       class ImageConfiguration
         include Google::Apis::Core::Hashable
       
@@ -275,7 +263,7 @@ module Google
         attr_accessor :image_type
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#imageConfiguration.
+        # string <code>gamesConfiguration#imageConfiguration</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -303,11 +291,11 @@ module Google
         end
       end
       
-      # This is a JSON template for an leaderboard configuration resource.
+      # An leaderboard configuration resource.
       class LeaderboardConfiguration
         include Google::Apis::Core::Hashable
       
-        # This is a JSON template for a leaderboard configuration detail.
+        # A leaderboard configuration detail.
         # Corresponds to the JSON property `draft`
         # @return [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail]
         attr_accessor :draft
@@ -318,12 +306,12 @@ module Google
         attr_accessor :id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#leaderboardConfiguration.
+        # string <code>gamesConfiguration#leaderboardConfiguration</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for a leaderboard configuration detail.
+        # A leaderboard configuration detail.
         # Corresponds to the JSON property `published`
         # @return [Google::Apis::GamesConfigurationV1configuration::LeaderboardConfigurationDetail]
         attr_accessor :published
@@ -338,10 +326,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :score_min
       
-        # The type of the leaderboard.
-        # Possible values are:
-        # - "LARGER_IS_BETTER" - Larger scores posted are ranked higher.
-        # - "SMALLER_IS_BETTER" - Smaller scores posted are ranked higher.
+        # 
         # Corresponds to the JSON property `scoreOrder`
         # @return [String]
         attr_accessor :score_order
@@ -368,7 +353,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a leaderboard configuration detail.
+      # A leaderboard configuration detail.
       class LeaderboardConfigurationDetail
         include Google::Apis::Core::Hashable
       
@@ -378,17 +363,17 @@ module Google
         attr_accessor :icon_url
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#leaderboardConfigurationDetail.
+        # string <code>gamesConfiguration#leaderboardConfigurationDetail</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for a localized string bundle resource.
+        # A localized string bundle resource.
         # Corresponds to the JSON property `name`
         # @return [Google::Apis::GamesConfigurationV1configuration::LocalizedStringBundle]
         attr_accessor :name
       
-        # This is a JSON template for a number format resource.
+        # A number format resource.
         # Corresponds to the JSON property `scoreFormat`
         # @return [Google::Apis::GamesConfigurationV1configuration::GamesNumberFormatConfiguration]
         attr_accessor :score_format
@@ -412,7 +397,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a ListConfigurations response.
+      # A ListConfigurations response.
       class ListLeaderboardConfigurationResponse
         include Google::Apis::Core::Hashable
       
@@ -422,7 +407,8 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string games#leaderboardConfigurationListResponse.
+        # string
+        # <code>gamesConfiguration#leaderboardConfigurationListResponse</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -444,12 +430,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a localized string resource.
+      # A localized string resource.
       class LocalizedString
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#localizedString.
+        # string <code>gamesConfiguration#localizedString</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -476,12 +462,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a localized string bundle resource.
+      # A localized string bundle resource.
       class LocalizedStringBundle
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesConfiguration#localizedStringBundle.
+        # string <code>gamesConfiguration#localizedStringBundle</code>.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

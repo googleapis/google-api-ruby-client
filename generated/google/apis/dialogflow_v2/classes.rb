@@ -184,12 +184,12 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
         attr_accessor :entities
       
-        # Optional. The language of entity synonyms defined in `entities`. If not
-        # specified, the agent's default language is used.
-        # [Many
-        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        # are supported. Note: languages must be enabled in the agent before they can
-        # be used.
+        # Optional. The language used to access language-specific data.
+        # If not specified, the agent's default language is used.
+        # For more information, see
+        # [Multilingual intent and entity
+        # data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        # entity).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -216,12 +216,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :entity_values
       
-        # Optional. The language of entity synonyms defined in `entities`. If not
-        # specified, the agent's default language is used.
-        # [Many
-        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        # are supported. Note: languages must be enabled in the agent before they can
-        # be used.
+        # Optional. The language used to access language-specific data.
+        # If not specified, the agent's default language is used.
+        # For more information, see
+        # [Multilingual intent and entity
+        # data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        # entity).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -286,12 +286,12 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityTypeEntity>]
         attr_accessor :entities
       
-        # Optional. The language of entity synonyms defined in `entities`. If not
-        # specified, the agent's default language is used.
-        # [Many
-        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        # are supported. Note: languages must be enabled in the agent before they can
-        # be used.
+        # Optional. The language used to access language-specific data.
+        # If not specified, the agent's default language is used.
+        # For more information, see
+        # [Multilingual intent and entity
+        # data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        # entity).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -330,12 +330,12 @@ module Google
         # @return [String]
         attr_accessor :entity_type_batch_uri
       
-        # Optional. The language of entity synonyms defined in `entity_types`. If not
-        # specified, the agent's default language is used.
-        # [Many
-        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        # are supported. Note: languages must be enabled in the agent before they can
-        # be used.
+        # Optional. The language used to access language-specific data.
+        # If not specified, the agent's default language is used.
+        # For more information, see
+        # [Multilingual intent and entity
+        # data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        # entity).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -377,7 +377,7 @@ module Google
         end
       end
       
-      # The request message for Intents.BatchUpdateIntents.
+      # 
       class GoogleCloudDialogflowV2BatchUpdateIntentsRequest
         include Google::Apis::Core::Hashable
       
@@ -398,12 +398,12 @@ module Google
         # @return [String]
         attr_accessor :intent_view
       
-        # Optional. The language of training phrases, parameters and rich messages
-        # defined in `intents`. If not specified, the agent's default language is
-        # used. [Many
-        # languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        # are supported. Note: languages must be enabled in the agent before they can
-        # be used.
+        # Optional. The language used to access language-specific data.
+        # If not specified, the agent's default language is used.
+        # For more information, see
+        # [Multilingual intent and entity
+        # data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        # entity).
         # Corresponds to the JSON property `languageCode`
         # @return [String]
         attr_accessor :language_code
@@ -451,7 +451,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The number of conversational query requests after which the
-        # context expires. If set to `0` (the default) the context expires
+        # context expires. The default is `0`. If set to `0`, the context expires
         # immediately. Contexts expire automatically after 20 minutes if there
         # are no matching queries.
         # Corresponds to the JSON property `lifespanCount`
@@ -476,9 +476,18 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of parameters associated with this context.
-        # Refer to [this
-        # doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
-        # for syntax.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -540,8 +549,6 @@ module Google
         end
       end
       
-      # ============================================================================
-      # Requests and responses for custom methods.
       # The request to detect user's intent.
       class GoogleCloudDialogflowV2DetectIntentRequest
         include Google::Apis::Core::Hashable
@@ -1009,7 +1016,7 @@ module Google
         # @return [String]
         attr_accessor :audio_encoding
       
-        # Optional. If `true`, Dialogflow returns SpeechWordInfo in
+        # If `true`, Dialogflow returns SpeechWordInfo in
         # StreamingRecognitionResult with information about the recognized speech
         # words, e.g. start and end time offsets. If false or unspecified, Speech
         # doesn't return any word-level information.
@@ -1027,7 +1034,7 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Optional. Which Speech model to select for the given request. Select the
+        # Which Speech model to select for the given request. Select the
         # model best suited to your domain to get best results. If a model is not
         # explicitly specified, then we auto-select a model based on the parameters
         # in the InputAudioConfig.
@@ -1043,12 +1050,12 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Optional. Which variant of the Speech model to use.
+        # Which variant of the Speech model to use.
         # Corresponds to the JSON property `modelVariant`
         # @return [String]
         attr_accessor :model_variant
       
-        # Optional. A list of strings containing words and phrases that the speech
+        # A list of strings containing words and phrases that the speech
         # recognizer should recognize with higher likelihood.
         # See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
@@ -1070,7 +1077,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :sample_rate_hertz
       
-        # Optional. If `false` (default), recognition does not cease until the
+        # If `false` (default), recognition does not cease until the
         # client closes the stream.
         # If `true`, the recognizer will detect a single spoken utterance in input
         # audio. Recognition ceases when it detects the audio's voice has
@@ -1085,7 +1092,7 @@ module Google
         attr_accessor :single_utterance
         alias_method :single_utterance?, :single_utterance
       
-        # Optional. Context information to assist speech recognition.
+        # Context information to assist speech recognition.
         # See [the Cloud Speech
         # documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-
         # hints)
@@ -1138,6 +1145,7 @@ module Google
         # Optional. The collection of event names that trigger the intent.
         # If the collection of input contexts is not empty, all of the contexts must
         # be present in the active user session for an event to trigger this intent.
+        # Event names are limited to 150 characters.
         # Corresponds to the JSON property `events`
         # @return [Array<String>]
         attr_accessor :events
@@ -1176,7 +1184,7 @@ module Google
         attr_accessor :ml_disabled
         alias_method :ml_disabled?, :ml_disabled
       
-        # The unique identifier of this intent.
+        # Optional. The unique identifier of this intent.
         # Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
         # methods.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
@@ -1319,7 +1327,11 @@ module Google
         end
       end
       
-      # Corresponds to the `Response` field in the Dialogflow console.
+      # A rich response message.
+      # Corresponds to the intent `Response` field in the Dialogflow console.
+      # For more information, see
+      # [Rich response
+      # messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
       class GoogleCloudDialogflowV2IntentMessage
         include Google::Apis::Core::Hashable
       
@@ -1365,9 +1377,7 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2IntentMessageMediaContent]
         attr_accessor :media_content
       
-        # Returns a response containing a custom, platform-specific payload.
-        # See the Intent.Message.Platform type for a description of the
-        # structure that may be required for your platform.
+        # A custom platform-specific response.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -2586,7 +2596,8 @@ module Google
         # Optional. This field is set to the value of the `QueryParameters.payload`
         # field passed in the request. Some integrations that query a Dialogflow
         # agent may provide additional information in the payload.
-        # In particular for the Telephony Gateway this field has the form:
+        # In particular, for the Dialogflow Phone Gateway integration, this field has
+        # the form:
         # <pre>`
         # "telephony": `
         # "caller_id": "+18558363987"
@@ -2718,8 +2729,11 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleTypeLatLng]
         attr_accessor :geo_location
       
-        # This field can be used to pass custom data into the webhook
-        # associated with the agent. Arbitrary JSON objects are supported.
+        # This field can be used to pass custom data to your webhook.
+        # Arbitrary JSON objects are supported.
+        # If supplied, the value is used to populate the
+        # `WebhookRequest.original_detect_intent_request.payload`
+        # field sent to your webhook.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3400,28 +3414,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2Context>]
         attr_accessor :output_contexts
       
-        # Optional. This value is passed directly to `QueryResult.webhook_payload`.
-        # See the related `fulfillment_messages[i].payload field`, which may be used
-        # as an alternative to this field.
-        # This field can be used for Actions on Google responses.
-        # It should have a structure similar to the JSON message shown here. For more
-        # information, see
-        # [Actions on Google Webhook
-        # Format](https://developers.google.com/actions/dialogflow/webhook)
-        # <pre>`
-        # "google": `
-        # "expectUserResponse": true,
-        # "richResponse": `
-        # "items": [
-        # `
-        # "simpleResponse": `
-        # "textToSpeech": "this is a simple response"
-        # `
-        # `
-        # ]
-        # `
-        # `
-        # `</pre>
+        # Optional. This field can be used to pass custom data from your webhook to the
+        # API
+        # caller. Arbitrary JSON objects are supported.
+        # When provided, Dialogflow uses this field to populate
+        # `QueryResult.webhook_payload` sent to the API caller.
+        # This field is also used by the
+        # [Google Assistant
+        # integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
+        # for rich response messages.
+        # See the format definition at [Google Assistant Dialogflow webhook
+        # format](https://developers.google.com/assistant/actions/build/json/dialogflow-
+        # webhook-json)
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -3566,7 +3570,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The number of conversational query requests after which the
-        # context expires. If set to `0` (the default) the context expires
+        # context expires. The default is `0`. If set to `0`, the context expires
         # immediately. Contexts expire automatically after 20 minutes if there
         # are no matching queries.
         # Corresponds to the JSON property `lifespanCount`
@@ -3591,9 +3595,18 @@ module Google
         attr_accessor :name
       
         # Optional. The collection of parameters associated with this context.
-        # Refer to [this
-        # doc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)
-        # for syntax.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -3801,6 +3814,7 @@ module Google
         # Optional. The collection of event names that trigger the intent.
         # If the collection of input contexts is not empty, all of the contexts must
         # be present in the active user session for an event to trigger this intent.
+        # Event names are limited to 150 characters.
         # Corresponds to the JSON property `events`
         # @return [Array<String>]
         attr_accessor :events
@@ -4027,9 +4041,7 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageMediaContent]
         attr_accessor :media_content
       
-        # Returns a response containing a custom, platform-specific payload.
-        # See the Intent.Message.Platform type for a description of the
-        # structure that may be required for your platform.
+        # A custom platform-specific response.
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload
@@ -4703,18 +4715,18 @@ module Google
       
         # Rich Business Messaging (RBM) Media displayed in Cards
         # The following media-types are currently supported:
-        # ## Image Types
-        # image/jpeg
-        # image/jpg'
-        # image/gif
-        # image/png
-        # ## Video Types
-        # video/h263
-        # video/m4v
-        # video/mp4
-        # video/mpeg
-        # video/mpeg4
-        # video/webm
+        # Image Types
+        # * image/jpeg
+        # * image/jpg'
+        # * image/gif
+        # * image/png
+        # Video Types
+        # * video/h263
+        # * video/m4v
+        # * video/mp4
+        # * video/mpeg
+        # * video/mpeg4
+        # * video/webm
         # Corresponds to the JSON property `media`
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia]
         attr_accessor :media
@@ -4745,18 +4757,18 @@ module Google
       
       # Rich Business Messaging (RBM) Media displayed in Cards
       # The following media-types are currently supported:
-      # ## Image Types
-      # image/jpeg
-      # image/jpg'
-      # image/gif
-      # image/png
-      # ## Video Types
-      # video/h263
-      # video/m4v
-      # video/mp4
-      # video/mpeg
-      # video/mpeg4
-      # video/webm
+      # Image Types
+      # * image/jpeg
+      # * image/jpg'
+      # * image/gif
+      # * image/png
+      # Video Types
+      # * video/h263
+      # * video/m4v
+      # * video/mp4
+      # * video/mpeg
+      # * video/mpeg4
+      # * video/webm
       class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
         include Google::Apis::Core::Hashable
       
@@ -5678,7 +5690,8 @@ module Google
         # Optional. This field is set to the value of the `QueryParameters.payload`
         # field passed in the request. Some integrations that query a Dialogflow
         # agent may provide additional information in the payload.
-        # In particular for the Telephony Gateway this field has the form:
+        # In particular, for the Dialogflow Phone Gateway integration, this field has
+        # the form:
         # <pre>`
         # "telephony": `
         # "caller_id": "+18558363987"
@@ -6059,28 +6072,18 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowV2beta1Context>]
         attr_accessor :output_contexts
       
-        # Optional. This value is passed directly to `QueryResult.webhook_payload`.
-        # See the related `fulfillment_messages[i].payload field`, which may be used
-        # as an alternative to this field.
-        # This field can be used for Actions on Google responses.
-        # It should have a structure similar to the JSON message shown here. For more
-        # information, see
-        # [Actions on Google Webhook
-        # Format](https://developers.google.com/actions/dialogflow/webhook)
-        # <pre>`
-        # "google": `
-        # "expectUserResponse": true,
-        # "richResponse": `
-        # "items": [
-        # `
-        # "simpleResponse": `
-        # "textToSpeech": "this is a simple response"
-        # `
-        # `
-        # ]
-        # `
-        # `
-        # `</pre>
+        # Optional. This field can be used to pass custom data from your webhook to the
+        # API
+        # caller. Arbitrary JSON objects are supported.
+        # When provided, Dialogflow uses this field to populate
+        # `QueryResult.webhook_payload` sent to the API caller.
+        # This field is also used by the
+        # [Google Assistant
+        # integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
+        # for rich response messages.
+        # See the format definition at [Google Assistant Dialogflow webhook
+        # format](https://developers.google.com/assistant/actions/build/json/dialogflow-
+        # webhook-json)
         # Corresponds to the JSON property `payload`
         # @return [Hash<String,Object>]
         attr_accessor :payload

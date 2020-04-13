@@ -129,7 +129,7 @@ module Google
           property :product_page_url, as: 'productPageUrl'
           collection :product_type, as: 'productType'
           property :release_date, as: 'releaseDate'
-          collection :rich_content, as: 'richContent'
+          collection :rich_product_content, as: 'richProductContent'
           property :scent, as: 'scent'
           property :size, as: 'size'
           property :size_system, as: 'sizeSystem'

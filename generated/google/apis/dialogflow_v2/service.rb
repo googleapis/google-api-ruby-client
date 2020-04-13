@@ -520,12 +520,12 @@ module Google
         #   Format: `projects/<Project ID>/agent`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType] google_cloud_dialogflow_v2_entity_type_object
         # @param [String] language_code
-        #   Optional. The language of entity synonyms defined in `entity_type`. If not
-        #   specified, the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -592,12 +592,12 @@ module Google
         #   Required. The name of the entity type.
         #   Format: `projects/<Project ID>/agent/entityTypes/<EntityType ID>`.
         # @param [String] language_code
-        #   Optional. The language to retrieve entity synonyms for. If not specified,
-        #   the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -631,12 +631,12 @@ module Google
         #   Required. The agent to list all entity types from.
         #   Format: `projects/<Project ID>/agent`.
         # @param [String] language_code
-        #   Optional. The language to list entity synonyms for. If not specified,
-        #   the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -680,12 +680,12 @@ module Google
         #   Format: `projects/<Project ID>/agent/entityTypes/<Entity Type ID>`.
         # @param [Google::Apis::DialogflowV2::GoogleCloudDialogflowV2EntityType] google_cloud_dialogflow_v2_entity_type_object
         # @param [String] language_code
-        #   Optional. The language of entity synonyms defined in `entity_type`. If not
-        #   specified, the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields
@@ -1395,12 +1395,12 @@ module Google
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
-        #   Optional. The language of training phrases, parameters and rich messages
-        #   defined in `intent`. If not specified, the agent's default language is
-        #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1471,12 +1471,12 @@ module Google
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
-        #   Optional. The language to retrieve training phrases, parameters and rich
-        #   messages for. If not specified, the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1513,12 +1513,12 @@ module Google
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
-        #   Optional. The language to list training phrases, parameters and rich
-        #   messages for. If not specified, the agent's default language is used.
-        #   [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [Fixnum] page_size
         #   Optional. The maximum number of items to return in a single page. By
         #   default 100 and at most 1000.
@@ -1557,7 +1557,7 @@ module Google
         
         # Updates the specified intent.
         # @param [String] name
-        #   The unique identifier of this intent.
+        #   Optional. The unique identifier of this intent.
         #   Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
         #   methods.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
@@ -1565,12 +1565,12 @@ module Google
         # @param [String] intent_view
         #   Optional. The resource view to apply to the returned intent.
         # @param [String] language_code
-        #   Optional. The language of training phrases, parameters and rich messages
-        #   defined in `intent`. If not specified, the agent's default language is
-        #   used. [Many
-        #   languages](https://cloud.google.com/dialogflow/docs/reference/language)
-        #   are supported. Note: languages must be enabled in the agent before they can
-        #   be used.
+        #   Optional. The language used to access language-specific data.
+        #   If not specified, the agent's default language is used.
+        #   For more information, see
+        #   [Multilingual intent and entity
+        #   data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-
+        #   entity).
         # @param [String] update_mask
         #   Optional. The mask to control which fields get updated.
         # @param [String] fields

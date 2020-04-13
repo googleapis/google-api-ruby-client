@@ -1483,6 +1483,37 @@ module Google
         end
       end
       
+      # Response message for AccessibilityService.ListStepAccessibilityClusters.
+      class ListStepAccessibilityClustersResponse
+        include Google::Apis::Core::Hashable
+      
+        # A sequence of accessibility suggestions, grouped into clusters. Within the
+        # sequence, clusters that belong to the same SuggestionCategory should be
+        # adjacent. Within each category, clusters should be ordered by their
+        # SuggestionPriority (ERRORs first). The categories should be ordered by their
+        # highest priority cluster.
+        # Corresponds to the JSON property `clusters`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::SuggestionClusterProto>]
+        attr_accessor :clusters
+      
+        # A full resource name of the step. For example, projects/my-project/histories/
+        # bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
+        # Always presents.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @clusters = args[:clusters] if args.key?(:clusters)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
       # A response containing the thumbnails in a step.
       class ListStepThumbnailsResponse
         include Google::Apis::Core::Hashable
@@ -2005,6 +2036,43 @@ module Google
         end
       end
       
+      # A rectangular region.
+      class RegionProto
+        include Google::Apis::Core::Hashable
+      
+        # The height, in pixels. Always set.
+        # Corresponds to the JSON property `heightPx`
+        # @return [Fixnum]
+        attr_accessor :height_px
+      
+        # The left side of the rectangle, in pixels. Always set.
+        # Corresponds to the JSON property `leftPx`
+        # @return [Fixnum]
+        attr_accessor :left_px
+      
+        # The top of the rectangle, in pixels. Always set.
+        # Corresponds to the JSON property `topPx`
+        # @return [Fixnum]
+        attr_accessor :top_px
+      
+        # The width, in pixels. Always set.
+        # Corresponds to the JSON property `widthPx`
+        # @return [Fixnum]
+        attr_accessor :width_px
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @height_px = args[:height_px] if args.key?(:height_px)
+          @left_px = args[:left_px] if args.key?(:left_px)
+          @top_px = args[:top_px] if args.key?(:top_px)
+          @width_px = args[:width_px] if args.key?(:width_px)
+        end
+      end
+      
       # The storage for test results.
       class ResultsStorage
         include Google::Apis::Core::Hashable
@@ -2027,6 +2095,32 @@ module Google
         def update!(**args)
           @results_storage_path = args[:results_storage_path] if args.key?(:results_storage_path)
           @xunit_xml_file = args[:xunit_xml_file] if args.key?(:xunit_xml_file)
+        end
+      end
+      
+      # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
+      # it's trivial for an attacker to forge serialized messages that don't fulfill
+      # the type's safety contract -- for example, it could contain attacker
+      # controlled script. A system which receives a SafeHtmlProto implicitly trusts
+      # the producer of the SafeHtmlProto. So, it's generally safe to return this
+      # message in RPC responses, but generally unsafe to accept it in RPC requests.
+      class SafeHtmlProto
+        include Google::Apis::Core::Hashable
+      
+        # IMPORTANT: Never set or read this field, even from tests, it is private. See
+        # documentation at the top of .proto file for programming language packages with
+        # which to create or read this message.
+        # Corresponds to the JSON property `privateDoNotAccessOrElseSafeHtmlWrappedValue`
+        # @return [String]
+        attr_accessor :private_do_not_access_or_else_safe_html_wrapped_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @private_do_not_access_or_else_safe_html_wrapped_value = args[:private_do_not_access_or_else_safe_html_wrapped_value] if args.key?(:private_do_not_access_or_else_safe_html_wrapped_value)
         end
       end
       
@@ -2642,6 +2736,129 @@ module Google
         # Update properties of this object
         def update!(**args)
           @other_native_crash = args[:other_native_crash] if args.key?(:other_native_crash)
+        end
+      end
+      
+      # A set of similar suggestions that we suspect are closely related.
+      # This proto and most of the nested protos are branched from foxandcrown.
+      # prelaunchreport.service.SuggestionClusterProto, replacing PLR's dependencies
+      # with FTL's.
+      class SuggestionClusterProto
+        include Google::Apis::Core::Hashable
+      
+        # Category in which these types of suggestions should appear. Always set.
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # A sequence of suggestions. All of the suggestions within a cluster must have
+        # the same SuggestionPriority and belong to the same SuggestionCategory.
+        # Suggestions with the same screenshot URL should be adjacent.
+        # Corresponds to the JSON property `suggestions`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::SuggestionProto>]
+        attr_accessor :suggestions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @suggestions = args[:suggestions] if args.key?(:suggestions)
+        end
+      end
+      
+      # 
+      class SuggestionProto
+        include Google::Apis::Core::Hashable
+      
+        # Reference to a help center article concerning this type of suggestion. Always
+        # set.
+        # Corresponds to the JSON property `helpUrl`
+        # @return [String]
+        attr_accessor :help_url
+      
+        # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
+        # it's trivial for an attacker to forge serialized messages that don't fulfill
+        # the type's safety contract -- for example, it could contain attacker
+        # controlled script. A system which receives a SafeHtmlProto implicitly trusts
+        # the producer of the SafeHtmlProto. So, it's generally safe to return this
+        # message in RPC responses, but generally unsafe to accept it in RPC requests.
+        # Corresponds to the JSON property `longMessage`
+        # @return [Google::Apis::ToolresultsV1beta3::SafeHtmlProto]
+        attr_accessor :long_message
+      
+        # Relative importance of a suggestion. Always set.
+        # Corresponds to the JSON property `priority`
+        # @return [String]
+        attr_accessor :priority
+      
+        # A somewhat human readable identifier of the source view, if it does not have a
+        # resource_name. This is a path within the accessibility hierarchy, an element
+        # with resource name; similar to an XPath.
+        # Corresponds to the JSON property `pseudoResourceId`
+        # @return [String]
+        attr_accessor :pseudo_resource_id
+      
+        # A rectangular region.
+        # Corresponds to the JSON property `region`
+        # @return [Google::Apis::ToolresultsV1beta3::RegionProto]
+        attr_accessor :region
+      
+        # Reference to a view element, identified by its resource name, if it has one.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        # ID of the screen for the suggestion. It is used for getting the corresponding
+        # screenshot path. For example, screen_id "1" corresponds to "1.png" file in GCS.
+        # Always set.
+        # Corresponds to the JSON property `screenId`
+        # @return [String]
+        attr_accessor :screen_id
+      
+        # Relative importance of a suggestion as compared with other suggestions that
+        # have the same priority and category. This is a meaningless value that can be
+        # used to order suggestions that are in the same category and have the same
+        # priority. The larger values have higher priority (i.e., are more important).
+        # Optional.
+        # Corresponds to the JSON property `secondaryPriority`
+        # @return [Float]
+        attr_accessor :secondary_priority
+      
+        # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
+        # it's trivial for an attacker to forge serialized messages that don't fulfill
+        # the type's safety contract -- for example, it could contain attacker
+        # controlled script. A system which receives a SafeHtmlProto implicitly trusts
+        # the producer of the SafeHtmlProto. So, it's generally safe to return this
+        # message in RPC responses, but generally unsafe to accept it in RPC requests.
+        # Corresponds to the JSON property `shortMessage`
+        # @return [Google::Apis::ToolresultsV1beta3::SafeHtmlProto]
+        attr_accessor :short_message
+      
+        # General title for the suggestion, in the user's language, without markup.
+        # Always set.
+        # Corresponds to the JSON property `title`
+        # @return [String]
+        attr_accessor :title
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @help_url = args[:help_url] if args.key?(:help_url)
+          @long_message = args[:long_message] if args.key?(:long_message)
+          @priority = args[:priority] if args.key?(:priority)
+          @pseudo_resource_id = args[:pseudo_resource_id] if args.key?(:pseudo_resource_id)
+          @region = args[:region] if args.key?(:region)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @screen_id = args[:screen_id] if args.key?(:screen_id)
+          @secondary_priority = args[:secondary_priority] if args.key?(:secondary_priority)
+          @short_message = args[:short_message] if args.key?(:short_message)
+          @title = args[:title] if args.key?(:title)
         end
       end
       

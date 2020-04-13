@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1DetectedAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1DetectedLandmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -65,6 +77,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1LabelSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -130,6 +148,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1TimestampedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1Track
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +197,18 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2DetectedAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2DetectedLandmark
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -215,6 +257,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1beta2LabelSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -310,6 +358,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1beta2TimestampedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2Track
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -352,6 +412,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p1beta1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -383,6 +455,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p1beta1LabelSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +526,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p1beta1TimestampedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1Track
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -484,6 +574,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudVideointelligenceV1p2beta1Entity
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -515,6 +617,12 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p2beta1LabelSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -575,6 +683,18 @@ module Google
       end
       
       class GoogleCloudVideointelligenceV1p2beta1TextSegment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1TimestampedObject
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1Track
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -842,6 +962,25 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1DetectedAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1DetectedLandmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :point, as: 'point', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1NormalizedVertex, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1NormalizedVertex::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -894,6 +1033,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1Entity, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1Entity::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1Track, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1Track::Representation
       
         end
       end
@@ -995,6 +1146,32 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1TimestampedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedAttribute::Representation
+      
+          collection :landmarks, as: 'landmarks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedLandmark, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedLandmark::Representation
+      
+          property :normalized_bounding_box, as: 'normalizedBoundingBox', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1NormalizedBoundingBox, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1NormalizedBoundingBox::Representation
+      
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1Track
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1DetectedAttribute::Representation
+      
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment::Representation
+      
+          collection :timestamped_objects, as: 'timestampedObjects', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1TimestampedObject, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1TimestampedObject::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1018,6 +1195,8 @@ module Google
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LabelAnnotation::Representation
       
           property :input_uri, as: 'inputUri'
+          collection :logo_recognition_annotations, as: 'logoRecognitionAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LogoRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1LogoRecognitionAnnotation::Representation
+      
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1ObjectTrackingAnnotation::Representation
       
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1VideoSegment::Representation
@@ -1083,6 +1262,25 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :annotation_results, as: 'annotationResults', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoAnnotationResults, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoAnnotationResults::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2DetectedAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2DetectedLandmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :point, as: 'point', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2NormalizedVertex, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2NormalizedVertex::Representation
       
         end
       end
@@ -1157,6 +1355,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2Entity, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2Entity::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2Track, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2Track::Representation
       
         end
       end
@@ -1303,6 +1513,32 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1beta2TimestampedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedAttribute::Representation
+      
+          collection :landmarks, as: 'landmarks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedLandmark, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedLandmark::Representation
+      
+          property :normalized_bounding_box, as: 'normalizedBoundingBox', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox::Representation
+      
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1beta2Track
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2DetectedAttribute::Representation
+      
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
+      
+          collection :timestamped_objects, as: 'timestampedObjects', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2TimestampedObject, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2TimestampedObject::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1326,6 +1562,8 @@ module Google
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LabelAnnotation::Representation
       
           property :input_uri, as: 'inputUri'
+          collection :logo_recognition_annotations, as: 'logoRecognitionAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation::Representation
+      
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation::Representation
       
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
@@ -1402,6 +1640,25 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :point, as: 'point', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1NormalizedVertex, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1NormalizedVertex::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p1beta1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1454,6 +1711,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1Entity, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1Entity::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
+      
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1Track, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1Track::Representation
       
         end
       end
@@ -1555,6 +1824,32 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p1beta1TimestampedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedAttribute::Representation
+      
+          collection :landmarks, as: 'landmarks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedLandmark, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedLandmark::Representation
+      
+          property :normalized_bounding_box, as: 'normalizedBoundingBox', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox::Representation
+      
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p1beta1Track
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1DetectedAttribute::Representation
+      
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
+      
+          collection :timestamped_objects, as: 'timestampedObjects', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1TimestampedObject, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1TimestampedObject::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1578,6 +1873,8 @@ module Google
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation::Representation
       
           property :input_uri, as: 'inputUri'
+          collection :logo_recognition_annotations, as: 'logoRecognitionAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation::Representation
+      
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation::Representation
       
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
@@ -1634,6 +1931,25 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :confidence, as: 'confidence'
+          property :name, as: 'name'
+          property :point, as: 'point', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedVertex, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedVertex::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p2beta1Entity
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1686,6 +2002,18 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :confidence, as: 'confidence'
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
+      
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :entity, as: 'entity', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Entity, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Entity::Representation
+      
+          collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
+      
+          collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Track, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1Track::Representation
       
         end
       end
@@ -1787,6 +2115,32 @@ module Google
         end
       end
       
+      class GoogleCloudVideointelligenceV1p2beta1TimestampedObject
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedAttribute::Representation
+      
+          collection :landmarks, as: 'landmarks', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedLandmark, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedLandmark::Representation
+      
+          property :normalized_bounding_box, as: 'normalizedBoundingBox', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox::Representation
+      
+          property :time_offset, as: 'timeOffset'
+        end
+      end
+      
+      class GoogleCloudVideointelligenceV1p2beta1Track
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :attributes, as: 'attributes', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedAttribute, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1DetectedAttribute::Representation
+      
+          property :confidence, as: 'confidence'
+          property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
+      
+          collection :timestamped_objects, as: 'timestampedObjects', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TimestampedObject, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1TimestampedObject::Representation
+      
+        end
+      end
+      
       class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1810,6 +2164,8 @@ module Google
           collection :frame_label_annotations, as: 'frameLabelAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation::Representation
       
           property :input_uri, as: 'inputUri'
+          collection :logo_recognition_annotations, as: 'logoRecognitionAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation::Representation
+      
           collection :object_annotations, as: 'objectAnnotations', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation::Representation
       
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1beta2::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation

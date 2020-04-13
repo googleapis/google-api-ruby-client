@@ -574,6 +574,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LocalInventory
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalinventoryCustomBatchRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalinventoryCustomBatchRequestEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalinventoryCustomBatchResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LocalinventoryCustomBatchResponseEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LocationIdSet
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2509,6 +2539,63 @@ module Google
           property :linked_account_id, as: 'linkedAccountId'
           collection :services, as: 'services', class: Google::Apis::ContentV2_1::LinkService, decorator: Google::Apis::ContentV2_1::LinkService::Representation
       
+        end
+      end
+      
+      class LocalInventory
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :availability, as: 'availability'
+          property :instore_product_location, as: 'instoreProductLocation'
+          property :kind, as: 'kind'
+          property :pickup_method, as: 'pickupMethod'
+          property :pickup_sla, as: 'pickupSla'
+          property :price, as: 'price', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :quantity, as: 'quantity'
+          property :sale_price, as: 'salePrice', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :sale_price_effective_date, as: 'salePriceEffectiveDate'
+          property :store_code, as: 'storeCode'
+        end
+      end
+      
+      class LocalinventoryCustomBatchRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::LocalinventoryCustomBatchRequestEntry, decorator: Google::Apis::ContentV2_1::LocalinventoryCustomBatchRequestEntry::Representation
+      
+        end
+      end
+      
+      class LocalinventoryCustomBatchRequestEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :local_inventory, as: 'localInventory', class: Google::Apis::ContentV2_1::LocalInventory, decorator: Google::Apis::ContentV2_1::LocalInventory::Representation
+      
+          property :merchant_id, :numeric_string => true, as: 'merchantId'
+          property :method_prop, as: 'method'
+          property :product_id, as: 'productId'
+        end
+      end
+      
+      class LocalinventoryCustomBatchResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :entries, as: 'entries', class: Google::Apis::ContentV2_1::LocalinventoryCustomBatchResponseEntry, decorator: Google::Apis::ContentV2_1::LocalinventoryCustomBatchResponseEntry::Representation
+      
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class LocalinventoryCustomBatchResponseEntry
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_id, as: 'batchId'
+          property :errors, as: 'errors', class: Google::Apis::ContentV2_1::Errors, decorator: Google::Apis::ContentV2_1::Errors::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       

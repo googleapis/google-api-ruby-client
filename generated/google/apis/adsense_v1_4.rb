@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/adsense/management/
     module AdsenseV1_4
       VERSION = 'V1_4'
-      REVISION = '20180807'
+      REVISION = '20200311'
 
       # View and manage your AdSense data
       AUTH_ADSENSE = 'https://www.googleapis.com/auth/adsense'

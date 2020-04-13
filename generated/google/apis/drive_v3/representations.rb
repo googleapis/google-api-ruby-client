@@ -145,6 +145,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class ShortcutDetails
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class VideoMediaMetadata
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -531,6 +537,8 @@ module Google
       
           property :sharing_user, as: 'sharingUser', class: Google::Apis::DriveV3::User, decorator: Google::Apis::DriveV3::User::Representation
       
+          property :shortcut_details, as: 'shortcutDetails', class: Google::Apis::DriveV3::File::ShortcutDetails, decorator: Google::Apis::DriveV3::File::ShortcutDetails::Representation
+      
           property :size, :numeric_string => true, as: 'size'
           collection :spaces, as: 'spaces'
           property :starred, as: 'starred'
@@ -558,6 +566,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
             property :can_change_viewers_can_copy_content, as: 'canChangeViewersCanCopyContent'
             property :can_comment, as: 'canComment'
@@ -582,6 +591,7 @@ module Google
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
             property :can_remove_children, as: 'canRemoveChildren'
+            property :can_remove_my_drive_parent, as: 'canRemoveMyDriveParent'
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
             property :can_trash, as: 'canTrash'
@@ -641,6 +651,14 @@ module Google
               property :latitude, as: 'latitude'
               property :longitude, as: 'longitude'
             end
+          end
+        end
+        
+        class ShortcutDetails
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :target_id, as: 'targetId'
+            property :target_mime_type, as: 'targetMimeType'
           end
         end
         

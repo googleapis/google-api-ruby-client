@@ -26,7 +26,7 @@ module Google
       class Blog
         include Google::Apis::Core::Hashable
       
-        # The JSON custom meta-data for the Blog
+        # The JSON custom meta-data for the Blog.
         # Corresponds to the JSON property `customMetaData`
         # @return [String]
         attr_accessor :custom_meta_data
@@ -41,7 +41,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The kind of this entry. Always blogger#blog
+        # The kind of this entry. Always blogger#blog.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -68,7 +68,7 @@ module Google
       
         # RFC 3339 date-time when this blog was published.
         # Corresponds to the JSON property `published`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :published
       
         # The API REST URL to fetch this resource from.
@@ -83,7 +83,7 @@ module Google
       
         # RFC 3339 date-time when this blog was last updated.
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # The URL where this blog is published.
@@ -204,7 +204,7 @@ module Google
       class BlogList
         include Google::Apis::Core::Hashable
       
-        # Admin level list of blog per-user information
+        # Admin level list of blog per-user information.
         # Corresponds to the JSON property `blogUserInfos`
         # @return [Array<Google::Apis::BloggerV3::BlogUserInfo>]
         attr_accessor :blog_user_infos
@@ -214,7 +214,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Blog>]
         attr_accessor :items
       
-        # The kind of this entity. Always blogger#blogList
+        # The kind of this entity. Always blogger#blogList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -235,7 +235,7 @@ module Google
       class BlogPerUserInfo
         include Google::Apis::Core::Hashable
       
-        # ID of the Blog resource
+        # ID of the Blog resource.
         # Corresponds to the JSON property `blogId`
         # @return [String]
         attr_accessor :blog_id
@@ -246,22 +246,23 @@ module Google
         attr_accessor :has_admin_access
         alias_method :has_admin_access?, :has_admin_access
       
-        # The kind of this entity. Always blogger#blogPerUserInfo
+        # The kind of this entity. Always blogger#blogPerUserInfo.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The Photo Album Key for the user when adding photos to the blog
+        # The Photo Album Key for the user when adding photos to the blog.
         # Corresponds to the JSON property `photosAlbumKey`
         # @return [String]
         attr_accessor :photos_album_key
       
-        # Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER).
+        # Access permissions that the user has for the blog (ADMIN, AUTHOR, or
+        # READER).
         # Corresponds to the JSON property `role`
         # @return [String]
         attr_accessor :role
       
-        # ID of the User
+        # ID of the User.
         # Corresponds to the JSON property `userId`
         # @return [String]
         attr_accessor :user_id
@@ -295,7 +296,7 @@ module Google
         # @return [Google::Apis::BloggerV3::BlogPerUserInfo]
         attr_accessor :blog_user_info
       
-        # The kind of this entity. Always blogger#blogUserInfo
+        # The kind of this entity. Always blogger#blogUserInfo.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -341,7 +342,7 @@ module Google
         # @return [Google::Apis::BloggerV3::Comment::InReplyTo]
         attr_accessor :in_reply_to
       
-        # The kind of this entry. Always blogger#comment
+        # The kind of this entry. Always blogger#comment.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -353,7 +354,7 @@ module Google
       
         # RFC 3339 date-time when this comment was published.
         # Corresponds to the JSON property `published`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :published
       
         # The API REST URL to fetch this resource from.
@@ -361,14 +362,14 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # The status of the comment (only populated for admin users)
+        # The status of the comment (only populated for admin users).
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
         # RFC 3339 date-time when this comment was last updated.
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         def initialize(**args)
@@ -399,17 +400,17 @@ module Google
           # @return [String]
           attr_accessor :display_name
         
-          # The identifier of the Comment creator.
+          # The identifier of the creator.
           # Corresponds to the JSON property `id`
           # @return [String]
           attr_accessor :id
         
-          # The comment creator's avatar.
+          # The creator's avatar.
           # Corresponds to the JSON property `image`
           # @return [Google::Apis::BloggerV3::Comment::Author::Image]
           attr_accessor :image
         
-          # The URL of the Comment creator's Profile page.
+          # The URL of the creator's Profile page.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
@@ -426,11 +427,11 @@ module Google
             @url = args[:url] if args.key?(:url)
           end
           
-          # The comment creator's avatar.
+          # The creator's avatar.
           class Image
             include Google::Apis::Core::Hashable
           
-            # The comment creator's avatar URL.
+            # The creator's avatar URL.
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
@@ -518,7 +519,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Comment>]
         attr_accessor :items
       
-        # The kind of this entry. Always blogger#commentList
+        # The kind of this entry. Always blogger#commentList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -576,14 +577,14 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The kind of this entity. Always blogger#page
+        # The kind of this entity. Always blogger#page.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # RFC 3339 date-time when this Page was published.
         # Corresponds to the JSON property `published`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :published
       
         # The API REST URL to fetch this resource from.
@@ -604,7 +605,7 @@ module Google
       
         # RFC 3339 date-time when this Page was last updated.
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # The URL that this Page is displayed at.
@@ -641,17 +642,17 @@ module Google
           # @return [String]
           attr_accessor :display_name
         
-          # The identifier of the Page creator.
+          # The identifier of the creator.
           # Corresponds to the JSON property `id`
           # @return [String]
           attr_accessor :id
         
-          # The page author's avatar.
+          # The creator's avatar.
           # Corresponds to the JSON property `image`
           # @return [Google::Apis::BloggerV3::Page::Author::Image]
           attr_accessor :image
         
-          # The URL of the Page creator's Profile page.
+          # The URL of the creator's Profile page.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
@@ -668,11 +669,11 @@ module Google
             @url = args[:url] if args.key?(:url)
           end
           
-          # The page author's avatar.
+          # The creator's avatar.
           class Image
             include Google::Apis::Core::Hashable
           
-            # The page author's avatar URL.
+            # The creator's avatar URL.
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
@@ -722,7 +723,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Page>]
         attr_accessor :items
       
-        # The kind of this entity. Always blogger#pageList
+        # The kind of this entity. Always blogger#pageList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -749,7 +750,7 @@ module Google
       class Pageviews
         include Google::Apis::Core::Hashable
       
-        # Blog Id
+        # Blog Id.
         # Corresponds to the JSON property `blogId`
         # @return [String]
         attr_accessor :blog_id
@@ -759,7 +760,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Pageviews::Count>]
         attr_accessor :counts
       
-        # The kind of this entry. Always blogger#page_views
+        # The kind of this entry. Always blogger#page_views.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -779,12 +780,12 @@ module Google
         class Count
           include Google::Apis::Core::Hashable
         
-          # Count of page views for the given time range
+          # Count of page views for the given time range.
           # Corresponds to the JSON property `count`
           # @return [Fixnum]
           attr_accessor :count
         
-          # Time range the given count applies to
+          # Time range the given count applies to.
           # Corresponds to the JSON property `timeRange`
           # @return [String]
           attr_accessor :time_range
@@ -840,7 +841,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Post::Image>]
         attr_accessor :images
       
-        # The kind of this entity. Always blogger#post
+        # The kind of this entity. Always blogger#post.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -857,7 +858,7 @@ module Google
       
         # RFC 3339 date-time when this Post was published.
         # Corresponds to the JSON property `published`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :published
       
         # Comment control and display setting for readers of this post.
@@ -875,7 +876,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Status of the post. Only set for admin-level requests
+        # Status of the post. Only set for admin-level requests.
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -892,7 +893,7 @@ module Google
       
         # RFC 3339 date-time when this Post was last updated.
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # The URL where this Post is displayed.
@@ -936,17 +937,17 @@ module Google
           # @return [String]
           attr_accessor :display_name
         
-          # The identifier of the Post creator.
+          # The identifier of the creator.
           # Corresponds to the JSON property `id`
           # @return [String]
           attr_accessor :id
         
-          # The Post author's avatar.
+          # The creator's avatar.
           # Corresponds to the JSON property `image`
           # @return [Google::Apis::BloggerV3::Post::Author::Image]
           attr_accessor :image
         
-          # The URL of the Post creator's Profile page.
+          # The URL of the creator's Profile page.
           # Corresponds to the JSON property `url`
           # @return [String]
           attr_accessor :url
@@ -963,11 +964,11 @@ module Google
             @url = args[:url] if args.key?(:url)
           end
           
-          # The Post author's avatar.
+          # The creator's avatar.
           class Image
             include Google::Apis::Core::Hashable
           
-            # The Post author's avatar URL.
+            # The creator's avatar URL.
             # Corresponds to the JSON property `url`
             # @return [String]
             attr_accessor :url
@@ -1104,7 +1105,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::Post>]
         attr_accessor :items
       
-        # The kind of this entity. Always blogger#postList
+        # The kind of this entity. Always blogger#postList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1113,6 +1114,11 @@ module Google
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
+      
+        # Pagination token to fetch the previous page, if one exists.
+        # Corresponds to the JSON property `prevPageToken`
+        # @return [String]
+        attr_accessor :prev_page_token
       
         def initialize(**args)
            update!(**args)
@@ -1124,6 +1130,7 @@ module Google
           @items = args[:items] if args.key?(:items)
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @prev_page_token = args[:prev_page_token] if args.key?(:prev_page_token)
         end
       end
       
@@ -1142,7 +1149,7 @@ module Google
         attr_accessor :has_edit_access
         alias_method :has_edit_access?, :has_edit_access
       
-        # The kind of this entity. Always blogger#postPerUserInfo
+        # The kind of this entity. Always blogger#postPerUserInfo.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1175,7 +1182,7 @@ module Google
       class PostUserInfo
         include Google::Apis::Core::Hashable
       
-        # The kind of this entity. Always blogger#postUserInfo
+        # The kind of this entity. Always blogger#postUserInfo.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1211,7 +1218,7 @@ module Google
         # @return [Array<Google::Apis::BloggerV3::PostUserInfo>]
         attr_accessor :items
       
-        # The kind of this entity. Always blogger#postList
+        # The kind of this entity. Always blogger#postList.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1249,7 +1256,7 @@ module Google
       
         # The timestamp of when this profile was created, in seconds since epoch.
         # Corresponds to the JSON property `created`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :created
       
         # The display name.
@@ -1262,7 +1269,7 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # The kind of this entity. Always blogger#user
+        # The kind of this entity. Always blogger#user.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1322,17 +1329,17 @@ module Google
         class Locale
           include Google::Apis::Core::Hashable
         
-          # The user's country setting.
+          # The country this blog's locale is set to.
           # Corresponds to the JSON property `country`
           # @return [String]
           attr_accessor :country
         
-          # The user's language setting.
+          # The language this blog is authored in.
           # Corresponds to the JSON property `language`
           # @return [String]
           attr_accessor :language
         
-          # The user's language variant setting.
+          # The language variant this blog is authored in.
           # Corresponds to the JSON property `variant`
           # @return [String]
           attr_accessor :variant

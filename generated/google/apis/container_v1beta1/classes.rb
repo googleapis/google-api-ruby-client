@@ -63,8 +63,8 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DnsCacheConfig]
         attr_accessor :dns_cache_config
       
-        # Configuration for the GCE PD CSI driver. This option can only be enabled
-        # at cluster creation time.
+        # Configuration for the Compute Engine PD CSI driver. This option can only be
+        # enabled at cluster creation time.
         # Corresponds to the JSON property `gcePersistentDiskCsiDriverConfig`
         # @return [Google::Apis::ContainerV1beta1::GcePersistentDiskCsiDriverConfig]
         attr_accessor :gce_persistent_disk_csi_driver_config
@@ -525,6 +525,7 @@ module Google
         alias_method :enable_kubernetes_alpha?, :enable_kubernetes_alpha
       
         # Enable the ability to use Cloud TPUs in this cluster.
+        # This field is deprecated, use tpu_config.enabled instead.
         # Corresponds to the JSON property `enableTpu`
         # @return [Boolean]
         attr_accessor :enable_tpu
@@ -611,9 +612,13 @@ module Google
       
         # The logging service the cluster should use to write logs.
         # Currently available options:
-        # * `logging.googleapis.com` - the Google Cloud Logging service.
+        # * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        # service with a Kubernetes-native resource model
+        # * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        # available as of GKE 1.15).
         # * `none` - no logs will be exported from the cluster.
-        # * if left as an empty string,`logging.googleapis.com` will be used.
+        # If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `loggingService`
         # @return [String]
         attr_accessor :logging_service
@@ -649,9 +654,13 @@ module Google
       
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
-        # * `monitoring.googleapis.com` - the Google Cloud Monitoring service.
-        # * `none` - no metrics will be exported from the cluster.
-        # * if left as an empty string, `monitoring.googleapis.com` will be used.
+        # * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        # service with a Kubernetes-native resource model
+        # * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        # longer available as of GKE 1.15).
+        # * `none` - No metrics will be exported from the cluster.
+        # If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `monitoringService`
         # @return [String]
         attr_accessor :monitoring_service
@@ -786,10 +795,10 @@ module Google
         # @return [String]
         attr_accessor :subnetwork
       
-        # Cluster tier settings.
-        # Corresponds to the JSON property `tierSettings`
-        # @return [Google::Apis::ContainerV1beta1::TierSettings]
-        attr_accessor :tier_settings
+        # Configuration for Cloud TPU.
+        # Corresponds to the JSON property `tpuConfig`
+        # @return [Google::Apis::ContainerV1beta1::TpuConfig]
+        attr_accessor :tpu_config
       
         # [Output only] The IP address range of the Cloud TPUs in this cluster, in
         # [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
@@ -876,7 +885,7 @@ module Google
           @status = args[:status] if args.key?(:status)
           @status_message = args[:status_message] if args.key?(:status_message)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
-          @tier_settings = args[:tier_settings] if args.key?(:tier_settings)
+          @tpu_config = args[:tpu_config] if args.key?(:tpu_config)
           @tpu_ipv4_cidr_block = args[:tpu_ipv4_cidr_block] if args.key?(:tpu_ipv4_cidr_block)
           @vertical_pod_autoscaling = args[:vertical_pod_autoscaling] if args.key?(:vertical_pod_autoscaling)
           @workload_identity_config = args[:workload_identity_config] if args.key?(:workload_identity_config)
@@ -1010,12 +1019,15 @@ module Google
         # @return [Array<String>]
         attr_accessor :desired_locations
       
-        # The logging service the cluster should use to write metrics.
+        # The logging service the cluster should use to write logs.
         # Currently available options:
-        # * "logging.googleapis.com/kubernetes" - the Google Cloud Logging
-        # service with Kubernetes-native resource model
-        # * "logging.googleapis.com" - the Google Cloud Logging service
-        # * "none" - no logs will be exported from the cluster
+        # * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        # service with a Kubernetes-native resource model
+        # * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        # available as of GKE 1.15).
+        # * `none` - no logs will be exported from the cluster.
+        # If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `desiredLoggingService`
         # @return [String]
         attr_accessor :desired_logging_service
@@ -1043,10 +1055,13 @@ module Google
       
         # The monitoring service the cluster should use to write metrics.
         # Currently available options:
-        # * "monitoring.googleapis.com/kubernetes" - the Google Cloud Monitoring
-        # service with Kubernetes-native resource model
-        # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-        # * "none" - no metrics will be exported from the cluster
+        # * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        # service with a Kubernetes-native resource model
+        # * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        # longer available as of GKE 1.15).
+        # * `none` - No metrics will be exported from the cluster.
+        # If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `desiredMonitoringService`
         # @return [String]
         attr_accessor :desired_monitoring_service
@@ -1109,6 +1124,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::ShieldedNodes]
         attr_accessor :desired_shielded_nodes
       
+        # Configuration for Cloud TPU.
+        # Corresponds to the JSON property `desiredTpuConfig`
+        # @return [Google::Apis::ContainerV1beta1::TpuConfig]
+        attr_accessor :desired_tpu_config
+      
         # VerticalPodAutoscaling contains global, per-cluster information
         # required by Vertical Pod Autoscaler to automatically adjust
         # the resources of pods controlled by it.
@@ -1148,6 +1168,7 @@ module Google
           @desired_release_channel = args[:desired_release_channel] if args.key?(:desired_release_channel)
           @desired_resource_usage_export_config = args[:desired_resource_usage_export_config] if args.key?(:desired_resource_usage_export_config)
           @desired_shielded_nodes = args[:desired_shielded_nodes] if args.key?(:desired_shielded_nodes)
+          @desired_tpu_config = args[:desired_tpu_config] if args.key?(:desired_tpu_config)
           @desired_vertical_pod_autoscaling = args[:desired_vertical_pod_autoscaling] if args.key?(:desired_vertical_pod_autoscaling)
           @desired_workload_identity_config = args[:desired_workload_identity_config] if args.key?(:desired_workload_identity_config)
         end
@@ -1410,38 +1431,12 @@ module Google
         end
       end
       
-      # FeatureConfig is the configuration for a specific feature including the
-      # definition of the feature as well as the tier in which it resides.
-      class FeatureConfig
-        include Google::Apis::Core::Hashable
-      
-        # The feature that is being configured with this value.
-        # Corresponds to the JSON property `feature`
-        # @return [String]
-        attr_accessor :feature
-      
-        # The tier in which the configured feature resides.
-        # Corresponds to the JSON property `tier`
-        # @return [String]
-        attr_accessor :tier
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @feature = args[:feature] if args.key?(:feature)
-          @tier = args[:tier] if args.key?(:tier)
-        end
-      end
-      
-      # Configuration for the GCE PD CSI driver. This option can only be enabled
-      # at cluster creation time.
+      # Configuration for the Compute Engine PD CSI driver. This option can only be
+      # enabled at cluster creation time.
       class GcePersistentDiskCsiDriverConfig
         include Google::Apis::Core::Hashable
       
-        # Whether the GCE PD CSI driver is enabled for this cluster.
+        # Whether the Compute Engine PD CSI driver is enabled for this cluster.
         # Corresponds to the JSON property `enabled`
         # @return [Boolean]
         attr_accessor :enabled
@@ -1747,6 +1742,7 @@ module Google
         # notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.
         # `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range
         # to use.
+        # This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         # Corresponds to the JSON property `tpuIpv4CidrBlock`
         # @return [String]
         attr_accessor :tpu_ipv4_cidr_block
@@ -3042,40 +3038,9 @@ module Google
         end
       end
       
-      # PremiumConfig is the configuration for all premium features and tiers.
-      class PremiumConfig
-        include Google::Apis::Core::Hashable
-      
-        # The features that GKE provides.
-        # Corresponds to the JSON property `features`
-        # @return [Array<Google::Apis::ContainerV1beta1::FeatureConfig>]
-        attr_accessor :features
-      
-        # The tiers that are part of the premium offering.
-        # Corresponds to the JSON property `tiers`
-        # @return [Array<Google::Apis::ContainerV1beta1::TierConfig>]
-        attr_accessor :tiers
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @features = args[:features] if args.key?(:features)
-          @tiers = args[:tiers] if args.key?(:tiers)
-        end
-      end
-      
       # Configuration options for private clusters.
       class PrivateClusterConfig
         include Google::Apis::Core::Hashable
-      
-        # Whether to enable route sharing over the network peering.
-        # Corresponds to the JSON property `enablePeeringRouteSharing`
-        # @return [Boolean]
-        attr_accessor :enable_peering_route_sharing
-        alias_method :enable_peering_route_sharing?, :enable_peering_route_sharing
       
         # Whether the master's internal IP address is used as the cluster endpoint.
         # Corresponds to the JSON property `enablePrivateEndpoint`
@@ -3090,6 +3055,11 @@ module Google
         # @return [Boolean]
         attr_accessor :enable_private_nodes
         alias_method :enable_private_nodes?, :enable_private_nodes
+      
+        # Configuration for controlling master global access settings.
+        # Corresponds to the JSON property `masterGlobalAccessConfig`
+        # @return [Google::Apis::ContainerV1beta1::PrivateClusterMasterGlobalAccessConfig]
+        attr_accessor :master_global_access_config
       
         # The IP range in CIDR notation to use for the hosted master network. This
         # range will be used for assigning internal IP addresses to the master or
@@ -3120,13 +3090,33 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @enable_peering_route_sharing = args[:enable_peering_route_sharing] if args.key?(:enable_peering_route_sharing)
           @enable_private_endpoint = args[:enable_private_endpoint] if args.key?(:enable_private_endpoint)
           @enable_private_nodes = args[:enable_private_nodes] if args.key?(:enable_private_nodes)
+          @master_global_access_config = args[:master_global_access_config] if args.key?(:master_global_access_config)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
           @peering_name = args[:peering_name] if args.key?(:peering_name)
           @private_endpoint = args[:private_endpoint] if args.key?(:private_endpoint)
           @public_endpoint = args[:public_endpoint] if args.key?(:public_endpoint)
+        end
+      end
+      
+      # Configuration for controlling master global access settings.
+      class PrivateClusterMasterGlobalAccessConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whenever master is accessible globally or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
         end
       end
       
@@ -3434,11 +3424,6 @@ module Google
         # @return [String]
         attr_accessor :default_image_type
       
-        # PremiumConfig is the configuration for all premium features and tiers.
-        # Corresponds to the JSON property `premiumConfig`
-        # @return [Google::Apis::ContainerV1beta1::PremiumConfig]
-        attr_accessor :premium_config
-      
         # List of valid image types.
         # Corresponds to the JSON property `validImageTypes`
         # @return [Array<String>]
@@ -3463,7 +3448,6 @@ module Google
           @channels = args[:channels] if args.key?(:channels)
           @default_cluster_version = args[:default_cluster_version] if args.key?(:default_cluster_version)
           @default_image_type = args[:default_image_type] if args.key?(:default_image_type)
-          @premium_config = args[:premium_config] if args.key?(:premium_config)
           @valid_image_types = args[:valid_image_types] if args.key?(:valid_image_types)
           @valid_master_versions = args[:valid_master_versions] if args.key?(:valid_master_versions)
           @valid_node_versions = args[:valid_node_versions] if args.key?(:valid_node_versions)
@@ -3701,10 +3685,15 @@ module Google
         # @return [String]
         attr_accessor :cluster_id
       
-        # Required. The logging service the cluster should use to write metrics.
+        # Required. The logging service the cluster should use to write logs.
         # Currently available options:
-        # * "logging.googleapis.com" - the Google Cloud Logging service
-        # * "none" - no metrics will be exported from the cluster
+        # * `logging.googleapis.com/kubernetes` - The Cloud Logging
+        # service with a Kubernetes-native resource model
+        # * `logging.googleapis.com` - The legacy Cloud Logging service (no longer
+        # available as of GKE 1.15).
+        # * `none` - no logs will be exported from the cluster.
+        # If left as an empty string,`logging.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `loggingService`
         # @return [String]
         attr_accessor :logging_service
@@ -3862,8 +3851,13 @@ module Google
       
         # Required. The monitoring service the cluster should use to write metrics.
         # Currently available options:
-        # * "monitoring.googleapis.com" - the Google Cloud Monitoring service
-        # * "none" - no metrics will be exported from the cluster
+        # * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring
+        # service with a Kubernetes-native resource model
+        # * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
+        # longer available as of GKE 1.15).
+        # * `none` - No metrics will be exported from the cluster.
+        # If left as an empty string,`monitoring.googleapis.com/kubernetes` will be
+        # used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
         # Corresponds to the JSON property `monitoringService`
         # @return [String]
         attr_accessor :monitoring_service
@@ -4264,53 +4258,6 @@ module Google
         end
       end
       
-      # TierConfig is the configuration for a tier offering.  For example the GKE
-      # standard or advanced offerings which contain different levels of
-      # functionality and possibly cost.
-      class TierConfig
-        include Google::Apis::Core::Hashable
-      
-        # The tier from which the tier being configured inherits.  The configured
-        # tier will inherit all the features from its parent tier.
-        # Corresponds to the JSON property `parent`
-        # @return [String]
-        attr_accessor :parent
-      
-        # The tier that is being configured with this value.
-        # Corresponds to the JSON property `tier`
-        # @return [String]
-        attr_accessor :tier
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @parent = args[:parent] if args.key?(:parent)
-          @tier = args[:tier] if args.key?(:tier)
-        end
-      end
-      
-      # Cluster tier settings.
-      class TierSettings
-        include Google::Apis::Core::Hashable
-      
-        # Cluster tier.
-        # Corresponds to the JSON property `tier`
-        # @return [String]
-        attr_accessor :tier
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @tier = args[:tier] if args.key?(:tier)
-        end
-      end
-      
       # Represents an arbitrary window of time.
       class TimeWindow
         include Google::Apis::Core::Hashable
@@ -4334,6 +4281,39 @@ module Google
         def update!(**args)
           @end_time = args[:end_time] if args.key?(:end_time)
           @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Configuration for Cloud TPU.
+      class TpuConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether Cloud TPU integration is enabled or not.
+        # Corresponds to the JSON property `enabled`
+        # @return [Boolean]
+        attr_accessor :enabled
+        alias_method :enabled?, :enabled
+      
+        # IPv4 CIDR block reserved for Cloud TPU in the VPC.
+        # Corresponds to the JSON property `ipv4CidrBlock`
+        # @return [String]
+        attr_accessor :ipv4_cidr_block
+      
+        # Whether to use service networking for Cloud TPU or not.
+        # Corresponds to the JSON property `useServiceNetworking`
+        # @return [Boolean]
+        attr_accessor :use_service_networking
+        alias_method :use_service_networking?, :use_service_networking
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @enabled = args[:enabled] if args.key?(:enabled)
+          @ipv4_cidr_block = args[:ipv4_cidr_block] if args.key?(:ipv4_cidr_block)
+          @use_service_networking = args[:use_service_networking] if args.key?(:use_service_networking)
         end
       end
       

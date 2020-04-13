@@ -202,15 +202,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # For service producers, provisions a new subnet in a
-        # peered service's shared VPC network in the requested region and with the
-        # requested size that's expressed as a CIDR range (number of leading bits of
-        # ipV4 network mask). The method checks against the assigned allocated ranges
-        # to find a non-conflicting IP address range. The method will reuse a subnet
-        # if subsequent calls contain the same subnet name, region, and prefix
-        # length. This method will make producer's tenant project to be a shared VPC
-        # service project as needed. The response from the `get` operation will be of
-        # type `Subnetwork` if the operation successfully completes.
+        # For service producers, provisions a new subnet in a peered service's shared
+        # VPC network in the requested region and with the requested size that's
+        # expressed as a CIDR range (number of leading bits of ipV4 network mask).
+        # The method checks against the assigned allocated ranges to find a
+        # non-conflicting IP address range. The method will reuse a subnet if
+        # subsequent calls contain the same subnet name, region, and prefix length.
+        # This method will make producer's tenant project to be a shared VPC service
+        # project as needed.
         # @param [String] parent
         #   Required. A tenant project in the service producer organization, in the
         #   following format: services/`service`/`collection-id`/`resource-id`.
@@ -321,13 +320,11 @@ module Google
         end
         
         # Service producers can use this method to find a currently unused range
-        # within consumer allocated ranges.   This returned range is not reserved,
-        # and not guaranteed to remain unused.
-        # It will validate previously provided allocated ranges, find
-        # non-conflicting sub-range of requested size (expressed in
-        # number of leading bits of ipv4 network mask, as in CIDR range
+        # within consumer allocated ranges. This returned range is not reserved,
+        # and not guaranteed to remain unused. It will validate previously provided
+        # allocated ranges, find non-conflicting sub-range of requested size
+        # (expressed in number of leading bits of ipv4 network mask, as in CIDR range
         # notation).
-        # Operation<response: Range>
         # @param [String] parent
         #   Required. This is in a form services/`service`. `service` the name of the
         #   private
@@ -363,7 +360,7 @@ module Google
         end
         
         # Service producers use this method to validate if the consumer provided
-        # network, project and the requested range is valid. This allows them to use
+        # network, project and requested range are valid. This allows them to use
         # a fail-fast mechanism for consumer requests, and not have to wait for
         # AddSubnetwork operation completion to determine if user request is invalid.
         # @param [String] parent
@@ -407,9 +404,7 @@ module Google
         # method. The administrator must assign one or more allocated IP ranges for
         # provisioning subnetworks in the service producer's VPC network. This
         # connection is used for all supported services in the service producer's
-        # organization, so it only needs to be invoked once. The response from the
-        # `get` operation will be of type `Connection` if the operation successfully
-        # completes.
+        # organization, so it only needs to be invoked once.
         # @param [String] parent
         #   The service that is managing peering connectivity for a service producer's
         #   organization. For Google services that support this functionality, this
@@ -489,8 +484,6 @@ module Google
         end
         
         # Updates the allocated ranges that are assigned to a connection.
-        # The response from the `get` operation will be of type `Connection` if the
-        # operation successfully completes.
         # @param [String] name
         #   The private service connection that connects to a service producer
         #   organization. The name includes both the private service name and the VPC
@@ -532,6 +525,45 @@ module Google
           command.params['name'] = name unless name.nil?
           command.query['force'] = force unless force.nil?
           command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to add roles in the shared VPC host
+        # project. Each role is bound to the provided member. Each role must be
+        # selected from within a whitelisted set of roles. Each role is applied at
+        # only the granularity specified in the whitelist.
+        # @param [String] parent
+        #   Required. This is in a form services/`service` where `service` is the name of
+        #   the
+        #   private access management service. For example
+        #   'service-peering.example.com'.
+        # @param [Google::Apis::ServicenetworkingV1::AddRolesRequest] add_roles_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_roles(parent, add_roles_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/roles:add', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::AddRolesRequest::Representation
+          command.request_object = add_roles_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

@@ -1083,6 +1083,10 @@ module Google
           collection :args, as: 'args'
           property :encryption_config, as: 'encryptionConfig', class: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1EncryptionConfig::Representation
       
+          property :evaluator_config, as: 'evaluatorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
+      
+          property :evaluator_count, :numeric_string => true, as: 'evaluatorCount'
+          property :evaluator_type, as: 'evaluatorType'
           property :hyperparameters, as: 'hyperparameters', class: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec, decorator: Google::Apis::MlV1::GoogleCloudMlV1HyperparameterSpec::Representation
       
           property :job_dir, as: 'jobDir'

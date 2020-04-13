@@ -47,6 +47,8 @@ module Google
         end
       end
       
+      # ------------------------------------------------------------------------------
+      # ## Breakpoint (the resource)
       # Represents the breakpoint specification, status and results.
       class Breakpoint
         include Google::Apis::Core::Hashable
@@ -517,6 +519,8 @@ module Google
       class GetBreakpointResponse
         include Google::Apis::Core::Hashable
       
+        # ------------------------------------------------------------------------------
+        # ## Breakpoint (the resource)
         # Represents the breakpoint specification, status and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
@@ -748,6 +752,8 @@ module Google
       class SetBreakpointResponse
         include Google::Apis::Core::Hashable
       
+        # ------------------------------------------------------------------------------
+        # ## Breakpoint (the resource)
         # Represents the breakpoint specification, status and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]
@@ -915,6 +921,8 @@ module Google
       class UpdateActiveBreakpointRequest
         include Google::Apis::Core::Hashable
       
+        # ------------------------------------------------------------------------------
+        # ## Breakpoint (the resource)
         # Represents the breakpoint specification, status and results.
         # Corresponds to the JSON property `breakpoint`
         # @return [Google::Apis::ClouddebuggerV2::Breakpoint]

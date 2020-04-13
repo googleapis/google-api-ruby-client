@@ -22,18 +22,6 @@ module Google
   module Apis
     module CustomsearchV1
       
-      class Context
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-        class Facet
-          class Representation < Google::Apis::Core::JsonRepresentation; end
-        
-          include Google::Apis::Core::JsonObjectSupport
-        end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Promotion
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -48,12 +36,6 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Query
-        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -79,6 +61,30 @@ module Google
       class Search
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Queries
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class NextPage
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class PreviousPage
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+          
+          class Request
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class SearchInformation
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -98,28 +104,6 @@ module Google
         end
       
         include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class Context
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :facets, as: 'facets', :class => Array do
-        include Representable::JSON::Collection
-        items class: Google::Apis::CustomsearchV1::Context::Facet, decorator: Google::Apis::CustomsearchV1::Context::Facet::Representation
-      
-      end
-      
-          property :title, as: 'title'
-        end
-        
-        class Facet
-          # @private
-          class Representation < Google::Apis::Core::JsonRepresentation
-            property :anchor, as: 'anchor'
-            property :label, as: 'label'
-            property :label_with_op, as: 'label_with_op'
-          end
-        end
       end
       
       class Promotion
@@ -155,48 +139,6 @@ module Google
         end
       end
       
-      class Query
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :count, as: 'count'
-          property :cr, as: 'cr'
-          property :cx, as: 'cx'
-          property :date_restrict, as: 'dateRestrict'
-          property :disable_cn_tw_translation, as: 'disableCnTwTranslation'
-          property :exact_terms, as: 'exactTerms'
-          property :exclude_terms, as: 'excludeTerms'
-          property :file_type, as: 'fileType'
-          property :filter, as: 'filter'
-          property :gl, as: 'gl'
-          property :google_host, as: 'googleHost'
-          property :high_range, as: 'highRange'
-          property :hl, as: 'hl'
-          property :hq, as: 'hq'
-          property :img_color_type, as: 'imgColorType'
-          property :img_dominant_color, as: 'imgDominantColor'
-          property :img_size, as: 'imgSize'
-          property :img_type, as: 'imgType'
-          property :input_encoding, as: 'inputEncoding'
-          property :language, as: 'language'
-          property :link_site, as: 'linkSite'
-          property :low_range, as: 'lowRange'
-          property :or_terms, as: 'orTerms'
-          property :output_encoding, as: 'outputEncoding'
-          property :related_site, as: 'relatedSite'
-          property :rights, as: 'rights'
-          property :safe, as: 'safe'
-          property :search_terms, as: 'searchTerms'
-          property :search_type, as: 'searchType'
-          property :site_search, as: 'siteSearch'
-          property :site_search_filter, as: 'siteSearchFilter'
-          property :sort, as: 'sort'
-          property :start_index, as: 'startIndex'
-          property :start_page, as: 'startPage'
-          property :title, as: 'title'
-          property :total_results, :numeric_string => true, as: 'totalResults'
-        end
-      end
-      
       class Result
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -214,11 +156,7 @@ module Google
       
           property :link, as: 'link'
           property :mime, as: 'mime'
-          hash :pagemap, as: 'pagemap', :class => Array do
-        include Representable::JSON::Collection
-        items
-      end
-      
+          hash :pagemap, as: 'pagemap'
           property :snippet, as: 'snippet'
           property :title, as: 'title'
         end
@@ -249,18 +187,13 @@ module Google
       class Search
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :context, as: 'context', class: Google::Apis::CustomsearchV1::Context, decorator: Google::Apis::CustomsearchV1::Context::Representation
-      
+          hash :context, as: 'context'
           collection :items, as: 'items', class: Google::Apis::CustomsearchV1::Result, decorator: Google::Apis::CustomsearchV1::Result::Representation
       
           property :kind, as: 'kind'
           collection :promotions, as: 'promotions', class: Google::Apis::CustomsearchV1::Promotion, decorator: Google::Apis::CustomsearchV1::Promotion::Representation
       
-          hash :queries, as: 'queries', :class => Array do
-        include Representable::JSON::Collection
-        items class: Google::Apis::CustomsearchV1::Query, decorator: Google::Apis::CustomsearchV1::Query::Representation
-      
-      end
+          property :queries, as: 'queries', class: Google::Apis::CustomsearchV1::Search::Queries, decorator: Google::Apis::CustomsearchV1::Search::Queries::Representation
       
           property :search_information, as: 'searchInformation', class: Google::Apis::CustomsearchV1::Search::SearchInformation, decorator: Google::Apis::CustomsearchV1::Search::SearchInformation::Representation
       
@@ -270,13 +203,151 @@ module Google
       
         end
         
+        class Queries
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            collection :next_page, as: 'nextPage', class: Google::Apis::CustomsearchV1::Search::Queries::NextPage, decorator: Google::Apis::CustomsearchV1::Search::Queries::NextPage::Representation
+        
+            collection :previous_page, as: 'previousPage', class: Google::Apis::CustomsearchV1::Search::Queries::PreviousPage, decorator: Google::Apis::CustomsearchV1::Search::Queries::PreviousPage::Representation
+        
+            collection :request, as: 'request', class: Google::Apis::CustomsearchV1::Search::Queries::Request, decorator: Google::Apis::CustomsearchV1::Search::Queries::Request::Representation
+        
+          end
+          
+          class NextPage
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :count, as: 'count'
+              property :cr, as: 'cr'
+              property :cx, as: 'cx'
+              property :date_restrict, as: 'dateRestrict'
+              property :disable_cn_tw_translation, as: 'disableCnTwTranslation'
+              property :exact_terms, as: 'exactTerms'
+              property :exclude_terms, as: 'excludeTerms'
+              property :file_type, as: 'fileType'
+              property :filter, as: 'filter'
+              property :gl, as: 'gl'
+              property :google_host, as: 'googleHost'
+              property :high_range, as: 'highRange'
+              property :hl, as: 'hl'
+              property :hq, as: 'hq'
+              property :img_color_type, as: 'imgColorType'
+              property :img_dominant_color, as: 'imgDominantColor'
+              property :img_size, as: 'imgSize'
+              property :img_type, as: 'imgType'
+              property :input_encoding, as: 'inputEncoding'
+              property :language, as: 'language'
+              property :link_site, as: 'linkSite'
+              property :low_range, as: 'lowRange'
+              property :or_terms, as: 'orTerms'
+              property :output_encoding, as: 'outputEncoding'
+              property :related_site, as: 'relatedSite'
+              property :rights, as: 'rights'
+              property :safe, as: 'safe'
+              property :search_terms, as: 'searchTerms'
+              property :search_type, as: 'searchType'
+              property :site_search, as: 'siteSearch'
+              property :site_search_filter, as: 'siteSearchFilter'
+              property :sort, as: 'sort'
+              property :start_index, as: 'startIndex'
+              property :start_page, as: 'startPage'
+              property :title, as: 'title'
+              property :total_results, :numeric_string => true, as: 'totalResults'
+            end
+          end
+          
+          class PreviousPage
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :count, as: 'count'
+              property :cr, as: 'cr'
+              property :cx, as: 'cx'
+              property :date_restrict, as: 'dateRestrict'
+              property :disable_cn_tw_translation, as: 'disableCnTwTranslation'
+              property :exact_terms, as: 'exactTerms'
+              property :exclude_terms, as: 'excludeTerms'
+              property :file_type, as: 'fileType'
+              property :filter, as: 'filter'
+              property :gl, as: 'gl'
+              property :google_host, as: 'googleHost'
+              property :high_range, as: 'highRange'
+              property :hl, as: 'hl'
+              property :hq, as: 'hq'
+              property :img_color_type, as: 'imgColorType'
+              property :img_dominant_color, as: 'imgDominantColor'
+              property :img_size, as: 'imgSize'
+              property :img_type, as: 'imgType'
+              property :input_encoding, as: 'inputEncoding'
+              property :language, as: 'language'
+              property :link_site, as: 'linkSite'
+              property :low_range, as: 'lowRange'
+              property :or_terms, as: 'orTerms'
+              property :output_encoding, as: 'outputEncoding'
+              property :related_site, as: 'relatedSite'
+              property :rights, as: 'rights'
+              property :safe, as: 'safe'
+              property :search_terms, as: 'searchTerms'
+              property :search_type, as: 'searchType'
+              property :site_search, as: 'siteSearch'
+              property :site_search_filter, as: 'siteSearchFilter'
+              property :sort, as: 'sort'
+              property :start_index, as: 'startIndex'
+              property :start_page, as: 'startPage'
+              property :title, as: 'title'
+              property :total_results, :numeric_string => true, as: 'totalResults'
+            end
+          end
+          
+          class Request
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :count, as: 'count'
+              property :cr, as: 'cr'
+              property :cx, as: 'cx'
+              property :date_restrict, as: 'dateRestrict'
+              property :disable_cn_tw_translation, as: 'disableCnTwTranslation'
+              property :exact_terms, as: 'exactTerms'
+              property :exclude_terms, as: 'excludeTerms'
+              property :file_type, as: 'fileType'
+              property :filter, as: 'filter'
+              property :gl, as: 'gl'
+              property :google_host, as: 'googleHost'
+              property :high_range, as: 'highRange'
+              property :hl, as: 'hl'
+              property :hq, as: 'hq'
+              property :img_color_type, as: 'imgColorType'
+              property :img_dominant_color, as: 'imgDominantColor'
+              property :img_size, as: 'imgSize'
+              property :img_type, as: 'imgType'
+              property :input_encoding, as: 'inputEncoding'
+              property :language, as: 'language'
+              property :link_site, as: 'linkSite'
+              property :low_range, as: 'lowRange'
+              property :or_terms, as: 'orTerms'
+              property :output_encoding, as: 'outputEncoding'
+              property :related_site, as: 'relatedSite'
+              property :rights, as: 'rights'
+              property :safe, as: 'safe'
+              property :search_terms, as: 'searchTerms'
+              property :search_type, as: 'searchType'
+              property :site_search, as: 'siteSearch'
+              property :site_search_filter, as: 'siteSearchFilter'
+              property :sort, as: 'sort'
+              property :start_index, as: 'startIndex'
+              property :start_page, as: 'startPage'
+              property :title, as: 'title'
+              property :total_results, :numeric_string => true, as: 'totalResults'
+            end
+          end
+        end
+        
         class SearchInformation
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :formatted_search_time, as: 'formattedSearchTime'
             property :formatted_total_results, as: 'formattedTotalResults'
             property :search_time, as: 'searchTime'
-            property :total_results, :numeric_string => true, as: 'totalResults'
+            property :total_results, as: 'totalResults'
           end
         end
         

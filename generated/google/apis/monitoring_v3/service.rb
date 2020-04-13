@@ -20,14 +20,13 @@ require 'google/apis/errors'
 module Google
   module Apis
     module MonitoringV3
-      # Stackdriver Monitoring API
+      # Cloud Monitoring API
       #
-      # Manages your Stackdriver Monitoring data and configurations. Most projects
-      #  must be associated with a Stackdriver account, with a few exceptions as noted
-      #  on the individual method pages. The table entries below are presented in
-      #  alphabetical order, not in order of common use. For explanations of the
-      #  concepts found in the table entries, read the Stackdriver Monitoring
-      #  documentation.
+      # Manages your Cloud Monitoring data and configurations. Most projects must be
+      #  associated with a Workspace, with a few exceptions as noted on the individual
+      #  method pages. The table entries below are presented in alphabetical order, not
+      #  in order of common use. For explanations of the concepts found in the table
+      #  entries, read the Cloud Monitoring documentation.
       #
       # @example
       #    require 'google/apis/monitoring_v3'
@@ -629,8 +628,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a single metric descriptor. This method does not require a Stackdriver
-        # account.
+        # Gets a single metric descriptor. This method does not require a Workspace.
         # @param [String] name
         #   Required. The metric descriptor on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID]
@@ -664,7 +662,7 @@ module Google
         end
         
         # Lists metric descriptors that match a filter. This method does not require a
-        # Stackdriver account.
+        # Workspace.
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]
@@ -712,7 +710,7 @@ module Google
         end
         
         # Gets a single monitored resource descriptor. This method does not require a
-        # Stackdriver account.
+        # Workspace.
         # @param [String] name
         #   Required. The monitored resource descriptor to get. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE]
@@ -745,7 +743,7 @@ module Google
         end
         
         # Lists monitored resource descriptors that match a filter. This method does not
-        # require a Stackdriver account.
+        # require a Workspace.
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]
@@ -1229,7 +1227,7 @@ module Google
         end
         
         # Lists time series that match a filter. This method does not require a
-        # Stackdriver account.
+        # Workspace.
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
         #   projects/[PROJECT_ID_OR_NUMBER]
@@ -1337,6 +1335,41 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Queries time series using the time series query language. This method does not
+        # require a Workspace.
+        # @param [String] name
+        #   Required. The project on which to execute the request. The format is:
+        #   projects/[PROJECT_ID_OR_NUMBER]
+        # @param [Google::Apis::MonitoringV3::QueryTimeSeriesRequest] query_time_series_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::MonitoringV3::QueryTimeSeriesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::MonitoringV3::QueryTimeSeriesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def query_time_series(name, query_time_series_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v3/{+name}/timeSeries:query', options)
+          command.request_representation = Google::Apis::MonitoringV3::QueryTimeSeriesRequest::Representation
+          command.request_object = query_time_series_request_object
+          command.response_representation = Google::Apis::MonitoringV3::QueryTimeSeriesResponse::Representation
+          command.response_class = Google::Apis::MonitoringV3::QueryTimeSeriesResponse
+          command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1633,9 +1666,9 @@ module Google
         # List Services for this workspace.
         # @param [String] parent
         #   Required. Resource name of the parent containing the listed services, either a
-        #   project or Stackdriver Account (workspace). The formats are:
+        #   project or a Monitoring Workspace. The formats are:
         #   projects/[PROJECT_ID_OR_NUMBER]
-        #   workspaces/[HOST_PROJECT_ID]
+        #   workspaces/[HOST_PROJECT_ID_OR_NUMBER]
         # @param [String] filter
         #   A filter specifying what Services to return. The filter currently supports the
         #   following fields:
@@ -1690,7 +1723,7 @@ module Google
         # Update this Service.
         # @param [String] name
         #   Resource name for this Service. The format is:
-        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID`
+        #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         # @param [Google::Apis::MonitoringV3::Service] service_object
         # @param [String] update_mask
         #   A set of field paths defining which fields to use for the update.
@@ -1834,8 +1867,10 @@ module Google
         
         # List the ServiceLevelObjectives for the given Service.
         # @param [String] parent
-        #   Required. Resource name of the parent Service. The format is:
+        #   Required. Resource name of the parent containing the listed SLOs, either a
+        #   project or a Monitoring Workspace. The formats are:
         #   projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+        #   workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/-
         # @param [String] filter
         #   A filter specifying what ServiceLevelObjectives to return.
         # @param [Fixnum] page_size

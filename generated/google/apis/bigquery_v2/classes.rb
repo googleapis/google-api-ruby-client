@@ -1541,6 +1541,12 @@ module Google
         # @return [Google::Apis::BigqueryV2::MultiClassClassificationMetrics]
         attr_accessor :multi_class_classification_metrics
       
+        # Evaluation metrics used by weighted-ALS models specified by
+        # feedback_type=implicit.
+        # Corresponds to the JSON property `rankingMetrics`
+        # @return [Google::Apis::BigqueryV2::RankingMetrics]
+        attr_accessor :ranking_metrics
+      
         # Evaluation metrics for regression and explicit feedback type matrix
         # factorization models.
         # Corresponds to the JSON property `regressionMetrics`
@@ -1556,6 +1562,7 @@ module Google
           @binary_classification_metrics = args[:binary_classification_metrics] if args.key?(:binary_classification_metrics)
           @clustering_metrics = args[:clustering_metrics] if args.key?(:clustering_metrics)
           @multi_class_classification_metrics = args[:multi_class_classification_metrics] if args.key?(:multi_class_classification_metrics)
+          @ranking_metrics = args[:ranking_metrics] if args.key?(:ranking_metrics)
           @regression_metrics = args[:regression_metrics] if args.key?(:regression_metrics)
         end
       end
@@ -2355,14 +2362,16 @@ module Google
       
         # [Optional] The compression type to use for exported files. Possible values
         # include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE
-        # and SNAPPY are only supported for Avro.
+        # and SNAPPY are only supported for Avro. Not applicable when extracting models.
         # Corresponds to the JSON property `compression`
         # @return [String]
         attr_accessor :compression
       
         # [Optional] The exported file format. Possible values include CSV,
-        # NEWLINE_DELIMITED_JSON and AVRO. The default value is CSV. Tables with nested
-        # or repeated fields cannot be exported as CSV.
+        # NEWLINE_DELIMITED_JSON or AVRO for tables and ML_TF_SAVED_MODEL or
+        # ML_XGBOOST_BOOSTER for models. The default value for tables is CSV. Tables
+        # with nested or repeated fields cannot be exported as CSV. The default value
+        # for models is ML_TF_SAVED_MODEL.
         # Corresponds to the JSON property `destinationFormat`
         # @return [String]
         attr_accessor :destination_format
@@ -2381,11 +2390,13 @@ module Google
         attr_accessor :destination_uris
       
         # [Optional] Delimiter to use between fields in the exported data. Default is ','
+        # . Not applicable when extracting models.
         # Corresponds to the JSON property `fieldDelimiter`
         # @return [String]
         attr_accessor :field_delimiter
       
         # [Optional] Whether to print out a header row in the results. Default is true.
+        # Not applicable when extracting models.
         # Corresponds to the JSON property `printHeader`
         # @return [Boolean]
         attr_accessor :print_header
@@ -2404,7 +2415,7 @@ module Google
         # [Optional] If destinationFormat is set to "AVRO", this flag indicates whether
         # to enable extracting applicable column types (such as TIMESTAMP) to their
         # corresponding AVRO logical types (timestamp-micros), instead of only using
-        # their raw types (avro-long).
+        # their raw types (avro-long). Not applicable when extracting models.
         # Corresponds to the JSON property `useAvroLogicalTypes`
         # @return [Boolean]
         attr_accessor :use_avro_logical_types
@@ -2715,6 +2726,11 @@ module Google
         # @return [Google::Apis::BigqueryV2::Clustering]
         attr_accessor :clustering
       
+        # Connection properties.
+        # Corresponds to the JSON property `connectionProperties`
+        # @return [Array<Object>]
+        attr_accessor :connection_properties
+      
         # [Optional] Specifies whether the job is allowed to create new tables. The
         # following values are supported: CREATE_IF_NEEDED: If the table does not exist,
         # BigQuery creates the table. CREATE_NEVER: The table must already exist. If it
@@ -2872,6 +2888,7 @@ module Google
         def update!(**args)
           @allow_large_results = args[:allow_large_results] if args.key?(:allow_large_results)
           @clustering = args[:clustering] if args.key?(:clustering)
+          @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @create_disposition = args[:create_disposition] if args.key?(:create_disposition)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @destination_encryption_configuration = args[:destination_encryption_configuration] if args.key?(:destination_encryption_configuration)
@@ -3160,6 +3177,12 @@ module Google
         # @return [String]
         attr_accessor :reservation_id
       
+        # [Output-only] [Preview] Statistics for row-level security. Present only for
+        # query and extract jobs.
+        # Corresponds to the JSON property `rowLevelSecurityStatistics`
+        # @return [Google::Apis::BigqueryV2::RowLevelSecurityStatistics]
+        attr_accessor :row_level_security_statistics
+      
         # [Output-only] Statistics for a child job of a script.
         # Corresponds to the JSON property `scriptStatistics`
         # @return [Google::Apis::BigqueryV2::ScriptStatistics]
@@ -3200,6 +3223,7 @@ module Google
           @quota_deferments = args[:quota_deferments] if args.key?(:quota_deferments)
           @reservation_usage = args[:reservation_usage] if args.key?(:reservation_usage)
           @reservation_id = args[:reservation_id] if args.key?(:reservation_id)
+          @row_level_security_statistics = args[:row_level_security_statistics] if args.key?(:row_level_security_statistics)
           @script_statistics = args[:script_statistics] if args.key?(:script_statistics)
           @start_time = args[:start_time] if args.key?(:start_time)
           @total_bytes_processed = args[:total_bytes_processed] if args.key?(:total_bytes_processed)
@@ -3247,6 +3271,12 @@ module Google
         attr_accessor :cache_hit
         alias_method :cache_hit?, :cache_hit
       
+        # [Output-only] [Preview] The number of row access policies affected by a DDL
+        # statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
+        # Corresponds to the JSON property `ddlAffectedRowAccessPolicyCount`
+        # @return [Fixnum]
+        attr_accessor :ddl_affected_row_access_policy_count
+      
         # The DDL operation performed, possibly dependent on the pre-existence of the
         # DDL target. Possible values (new values might be added in the future): "CREATE"
         # : The query created the DDL target. "SKIP": No-op. Example cases: the query is
@@ -3264,7 +3294,14 @@ module Google
         # @return [Google::Apis::BigqueryV2::RoutineReference]
         attr_accessor :ddl_target_routine
       
-        # The DDL target table. Present only for CREATE/DROP TABLE/VIEW queries.
+        # [Output-only] [Preview] The DDL target row access policy. Present only for
+        # CREATE/DROP ROW ACCESS POLICY queries.
+        # Corresponds to the JSON property `ddlTargetRowAccessPolicy`
+        # @return [Google::Apis::BigqueryV2::RowAccessPolicyReference]
+        attr_accessor :ddl_target_row_access_policy
+      
+        # [Output-only] The DDL target table. Present only for CREATE/DROP TABLE/VIEW
+        # and DROP ALL ROW ACCESS POLICIES queries.
         # Corresponds to the JSON property `ddlTargetTable`
         # @return [Google::Apis::BigqueryV2::TableReference]
         attr_accessor :ddl_target_table
@@ -3392,8 +3429,10 @@ module Google
         def update!(**args)
           @billing_tier = args[:billing_tier] if args.key?(:billing_tier)
           @cache_hit = args[:cache_hit] if args.key?(:cache_hit)
+          @ddl_affected_row_access_policy_count = args[:ddl_affected_row_access_policy_count] if args.key?(:ddl_affected_row_access_policy_count)
           @ddl_operation_performed = args[:ddl_operation_performed] if args.key?(:ddl_operation_performed)
           @ddl_target_routine = args[:ddl_target_routine] if args.key?(:ddl_target_routine)
+          @ddl_target_row_access_policy = args[:ddl_target_row_access_policy] if args.key?(:ddl_target_row_access_policy)
           @ddl_target_table = args[:ddl_target_table] if args.key?(:ddl_target_table)
           @estimated_bytes_processed = args[:estimated_bytes_processed] if args.key?(:estimated_bytes_processed)
           @model_training = args[:model_training] if args.key?(:model_training)
@@ -4145,6 +4184,11 @@ module Google
       class QueryRequest
         include Google::Apis::Core::Hashable
       
+        # Connection properties.
+        # Corresponds to the JSON property `connectionProperties`
+        # @return [Array<Object>]
+        attr_accessor :connection_properties
+      
         # [Optional] Specifies the default datasetId and projectId to assume for any
         # unqualified table names in the query. If not set, all table names in the query
         # string must be qualified in the format 'datasetId.tableId'.
@@ -4239,6 +4283,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @connection_properties = args[:connection_properties] if args.key?(:connection_properties)
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
@@ -4451,6 +4496,51 @@ module Google
         end
       end
       
+      # Evaluation metrics used by weighted-ALS models specified by
+      # feedback_type=implicit.
+      class RankingMetrics
+        include Google::Apis::Core::Hashable
+      
+        # Determines the goodness of a ranking by computing the percentile rank
+        # from the predicted confidence and dividing it by the original rank.
+        # Corresponds to the JSON property `averageRank`
+        # @return [Float]
+        attr_accessor :average_rank
+      
+        # Calculates a precision per user for all the items by ranking them and
+        # then averages all the precisions across all the users.
+        # Corresponds to the JSON property `meanAveragePrecision`
+        # @return [Float]
+        attr_accessor :mean_average_precision
+      
+        # Similar to the mean squared error computed in regression and explicit
+        # recommendation models except instead of computing the rating directly,
+        # the output from evaluate is computed against a preference which is 1 or 0
+        # depending on if the rating exists or not.
+        # Corresponds to the JSON property `meanSquaredError`
+        # @return [Float]
+        attr_accessor :mean_squared_error
+      
+        # A metric to determine the goodness of a ranking calculated from the
+        # predicted confidence by comparing it to an ideal rank measured by the
+        # original ratings.
+        # Corresponds to the JSON property `normalizedDiscountedCumulativeGain`
+        # @return [Float]
+        attr_accessor :normalized_discounted_cumulative_gain
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @average_rank = args[:average_rank] if args.key?(:average_rank)
+          @mean_average_precision = args[:mean_average_precision] if args.key?(:mean_average_precision)
+          @mean_squared_error = args[:mean_squared_error] if args.key?(:mean_squared_error)
+          @normalized_discounted_cumulative_gain = args[:normalized_discounted_cumulative_gain] if args.key?(:normalized_discounted_cumulative_gain)
+        end
+      end
+      
       # Evaluation metrics for regression and explicit feedback type matrix
       # factorization models.
       class RegressionMetrics
@@ -4653,6 +4743,66 @@ module Google
         def update!(**args)
           @actual_label = args[:actual_label] if args.key?(:actual_label)
           @entries = args[:entries] if args.key?(:entries)
+        end
+      end
+      
+      # 
+      class RowAccessPolicyReference
+        include Google::Apis::Core::Hashable
+      
+        # [Required] The ID of the dataset containing this row access policy.
+        # Corresponds to the JSON property `datasetId`
+        # @return [String]
+        attr_accessor :dataset_id
+      
+        # [Required] The ID of the row access policy. The ID must contain only letters (
+        # a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256
+        # characters.
+        # Corresponds to the JSON property `policyId`
+        # @return [String]
+        attr_accessor :policy_id
+      
+        # [Required] The ID of the project containing this row access policy.
+        # Corresponds to the JSON property `projectId`
+        # @return [String]
+        attr_accessor :project_id
+      
+        # [Required] The ID of the table containing this row access policy.
+        # Corresponds to the JSON property `tableId`
+        # @return [String]
+        attr_accessor :table_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @dataset_id = args[:dataset_id] if args.key?(:dataset_id)
+          @policy_id = args[:policy_id] if args.key?(:policy_id)
+          @project_id = args[:project_id] if args.key?(:project_id)
+          @table_id = args[:table_id] if args.key?(:table_id)
+        end
+      end
+      
+      # 
+      class RowLevelSecurityStatistics
+        include Google::Apis::Core::Hashable
+      
+        # [Output-only] [Preview] Whether any accessed data was protected by row access
+        # policies.
+        # Corresponds to the JSON property `rowLevelSecurityApplied`
+        # @return [Boolean]
+        attr_accessor :row_level_security_applied
+        alias_method :row_level_security_applied?, :row_level_security_applied
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @row_level_security_applied = args[:row_level_security_applied] if args.key?(:row_level_security_applied)
         end
       end
       
@@ -5652,6 +5802,11 @@ module Google
       class TrainingOptions
         include Google::Apis::Core::Hashable
       
+        # Batch size for dnn models.
+        # Corresponds to the JSON property `batchSize`
+        # @return [Fixnum]
+        attr_accessor :batch_size
+      
         # The column to split data with. This column won't be used as a
         # feature.
         # 1. When data_split_method is CUSTOM, the corresponding column should
@@ -5685,6 +5840,11 @@ module Google
         # @return [String]
         attr_accessor :distance_type
       
+        # Dropout probability for dnn models.
+        # Corresponds to the JSON property `dropout`
+        # @return [Float]
+        attr_accessor :dropout
+      
         # Whether to stop early when the loss doesn't improve significantly
         # any more (compared to min_relative_progress). Used only for iterative
         # training algorithms.
@@ -5692,6 +5852,17 @@ module Google
         # @return [Boolean]
         attr_accessor :early_stop
         alias_method :early_stop?, :early_stop
+      
+        # Feedback type that specifies which algorithm to run for matrix
+        # factorization.
+        # Corresponds to the JSON property `feedbackType`
+        # @return [String]
+        attr_accessor :feedback_type
+      
+        # Hidden units for dnn models.
+        # Corresponds to the JSON property `hiddenUnits`
+        # @return [Array<Fixnum>]
+        attr_accessor :hidden_units
       
         # Specifies the initial learning rate for the line search learn rate
         # strategy.
@@ -5703,6 +5874,11 @@ module Google
         # Corresponds to the JSON property `inputLabelColumns`
         # @return [Array<String>]
         attr_accessor :input_label_columns
+      
+        # Item column specified for matrix factorization models.
+        # Corresponds to the JSON property `itemColumn`
+        # @return [String]
+        attr_accessor :item_column
       
         # The column used to provide the initial centroids for kmeans algorithm
         # when kmeans_initialization_method is CUSTOM.
@@ -5752,12 +5928,22 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_iterations
       
+        # Maximum depth of a tree for boosted tree models.
+        # Corresponds to the JSON property `maxTreeDepth`
+        # @return [Fixnum]
+        attr_accessor :max_tree_depth
+      
         # When early_stop is true, stops training when accuracy improvement is
         # less than 'min_relative_progress'. Used only for iterative training
         # algorithms.
         # Corresponds to the JSON property `minRelativeProgress`
         # @return [Float]
         attr_accessor :min_relative_progress
+      
+        # Minimum split loss for boosted tree models.
+        # Corresponds to the JSON property `minSplitLoss`
+        # @return [Float]
+        attr_accessor :min_split_loss
       
         # [Beta] Google Cloud Storage URI from which the model was imported. Only
         # applicable for imported models.
@@ -5770,10 +5956,32 @@ module Google
         # @return [Fixnum]
         attr_accessor :num_clusters
       
+        # Num factors specified for matrix factorization models.
+        # Corresponds to the JSON property `numFactors`
+        # @return [Fixnum]
+        attr_accessor :num_factors
+      
         # Optimization strategy for training linear regression models.
         # Corresponds to the JSON property `optimizationStrategy`
         # @return [String]
         attr_accessor :optimization_strategy
+      
+        # Subsample fraction of the training data to grow tree to prevent
+        # overfitting for boosted tree models.
+        # Corresponds to the JSON property `subsample`
+        # @return [Float]
+        attr_accessor :subsample
+      
+        # User column specified for matrix factorization models.
+        # Corresponds to the JSON property `userColumn`
+        # @return [String]
+        attr_accessor :user_column
+      
+        # Hyperparameter for matrix factoration when implicit feedback type is
+        # specified.
+        # Corresponds to the JSON property `walsAlpha`
+        # @return [Float]
+        attr_accessor :wals_alpha
       
         # Whether to train a model from the last checkpoint.
         # Corresponds to the JSON property `warmStart`
@@ -5787,13 +5995,18 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @batch_size = args[:batch_size] if args.key?(:batch_size)
           @data_split_column = args[:data_split_column] if args.key?(:data_split_column)
           @data_split_eval_fraction = args[:data_split_eval_fraction] if args.key?(:data_split_eval_fraction)
           @data_split_method = args[:data_split_method] if args.key?(:data_split_method)
           @distance_type = args[:distance_type] if args.key?(:distance_type)
+          @dropout = args[:dropout] if args.key?(:dropout)
           @early_stop = args[:early_stop] if args.key?(:early_stop)
+          @feedback_type = args[:feedback_type] if args.key?(:feedback_type)
+          @hidden_units = args[:hidden_units] if args.key?(:hidden_units)
           @initial_learn_rate = args[:initial_learn_rate] if args.key?(:initial_learn_rate)
           @input_label_columns = args[:input_label_columns] if args.key?(:input_label_columns)
+          @item_column = args[:item_column] if args.key?(:item_column)
           @kmeans_initialization_column = args[:kmeans_initialization_column] if args.key?(:kmeans_initialization_column)
           @kmeans_initialization_method = args[:kmeans_initialization_method] if args.key?(:kmeans_initialization_method)
           @l1_regularization = args[:l1_regularization] if args.key?(:l1_regularization)
@@ -5803,10 +6016,16 @@ module Google
           @learn_rate_strategy = args[:learn_rate_strategy] if args.key?(:learn_rate_strategy)
           @loss_type = args[:loss_type] if args.key?(:loss_type)
           @max_iterations = args[:max_iterations] if args.key?(:max_iterations)
+          @max_tree_depth = args[:max_tree_depth] if args.key?(:max_tree_depth)
           @min_relative_progress = args[:min_relative_progress] if args.key?(:min_relative_progress)
+          @min_split_loss = args[:min_split_loss] if args.key?(:min_split_loss)
           @model_uri = args[:model_uri] if args.key?(:model_uri)
           @num_clusters = args[:num_clusters] if args.key?(:num_clusters)
+          @num_factors = args[:num_factors] if args.key?(:num_factors)
           @optimization_strategy = args[:optimization_strategy] if args.key?(:optimization_strategy)
+          @subsample = args[:subsample] if args.key?(:subsample)
+          @user_column = args[:user_column] if args.key?(:user_column)
+          @wals_alpha = args[:wals_alpha] if args.key?(:wals_alpha)
           @warm_start = args[:warm_start] if args.key?(:warm_start)
         end
       end

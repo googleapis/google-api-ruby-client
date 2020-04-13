@@ -397,6 +397,59 @@ module Google
       end
       
       # Represents the metadata of the long-running operation.
+      class GoogleCloudManagedidentitiesV1alpha1OpMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Output only. API version used to start the operation.
+        # Corresponds to the JSON property `apiVersion`
+        # @return [String]
+        attr_accessor :api_version
+      
+        # Output only. The time the operation was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Output only. The time the operation finished running.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Output only. Identifies whether the user has requested cancellation
+        # of the operation. Operations that have successfully been cancelled
+        # have Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `requestedCancellation`
+        # @return [Boolean]
+        attr_accessor :requested_cancellation
+        alias_method :requested_cancellation?, :requested_cancellation
+      
+        # Output only. Server-defined resource path for the target of the operation.
+        # Corresponds to the JSON property `target`
+        # @return [String]
+        attr_accessor :target
+      
+        # Output only. Name of the verb executed by the operation.
+        # Corresponds to the JSON property `verb`
+        # @return [String]
+        attr_accessor :verb
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_version = args[:api_version] if args.key?(:api_version)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @requested_cancellation = args[:requested_cancellation] if args.key?(:requested_cancellation)
+          @target = args[:target] if args.key?(:target)
+          @verb = args[:verb] if args.key?(:verb)
+        end
+      end
+      
+      # Represents the metadata of the long-running operation.
       class GoogleCloudManagedidentitiesV1beta1OpMetadata
         include Google::Apis::Core::Hashable
       
@@ -449,66 +502,7 @@ module Google
         end
       end
       
-      # Instance represents the interface for SLM services to actuate the state
-      # of control plane resources.
-      # Example Instance in JSON, where
-      # consumer-project=snapchat,
-      # producer-project=cloud-sql:
-      # ```json
-      # Instance:
-      # `
-      # "name":
-      # "projects/snapchat/locations/us-east1/instances/prod-instance",
-      # "create_time": `
-      # "seconds": 1526406431,
-      # `,
-      # "labels": `
-      # "env": "prod",
-      # "foo": "bar"
-      # `,
-      # "state": READY,
-      # "software_versions": `
-      # "software_update": "cloud-sql-09-28-2018",
-      # `,
-      # "maintenance_policy_names": `
-      # "UpdatePolicy":
-      # "projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-
-      # policy",
-      # `
-      # "tenant_project_id": "cloud-sql-test-tenant",
-      # "producer_metadata": `
-      # "cloud-sql-tier": "basic",
-      # "cloud-sql-instance-size": "1G",
-      # `,
-      # "provisioned_resources": [
-      # `
-      # "resource-type": "compute-instance",
-      # "resource-url":
-      # "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-
-      # b/instances/vm-1",
-      # `
-      # ],
-      # "maintenance_schedules": `
-      # "csa_rollout": `
-      # "start_time": `
-      # "seconds": 1526406431,
-      # `,
-      # "end_time": `
-      # "seconds": 1535406431,
-      # `,
-      # `,
-      # "ncsa_rollout": `
-      # "start_time": `
-      # "seconds": 1526406431,
-      # `,
-      # "end_time": `
-      # "seconds": 1535406431,
-      # `,
-      # `
-      # `,
-      # "consumer_defined_name": "my-sql-instance1",
-      # `
-      # ```
+      # 
       class GoogleCloudSaasacceleratorManagementProvidersV1Instance
         include Google::Apis::Core::Hashable
       
@@ -567,16 +561,6 @@ module Google
         # @return [Array<Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>]
         attr_accessor :provisioned_resources
       
-        # The map between RolloutType and the corresponding RolloutMetadata.
-        # This is only mutated by rollout service. For actuation implementation,
-        # this information is pass-through for Rollout management. Producer shall
-        # not modify by itself.
-        # For update of a single entry in this map, the update field mask shall
-        # follow this sementics: go/advanced-field-masks
-        # Corresponds to the JSON property `rolloutMetadata`
-        # @return [Hash<String,Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata>]
-        attr_accessor :rollout_metadata
-      
         # Link to the SLM instance template. Only populated when updating SLM
         # instances via SSA's Actuation service adaptor.
         # Service producers with custom control plane (e.g. Cloud SQL) doesn't
@@ -628,7 +612,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @producer_metadata = args[:producer_metadata] if args.key?(:producer_metadata)
           @provisioned_resources = args[:provisioned_resources] if args.key?(:provisioned_resources)
-          @rollout_metadata = args[:rollout_metadata] if args.key?(:rollout_metadata)
           @slm_instance_template = args[:slm_instance_template] if args.key?(:slm_instance_template)
           @slo_metadata = args[:slo_metadata] if args.key?(:slo_metadata)
           @software_versions = args[:software_versions] if args.key?(:software_versions)
@@ -720,47 +703,6 @@ module Google
         end
       end
       
-      # This message has been deprecated.
-      # NotificationMetadata is the notification state for an instance.
-      class GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-        include Google::Apis::Core::Hashable
-      
-        # Whether the instance update has been rescheduled.
-        # Corresponds to the JSON property `rescheduled`
-        # @return [Boolean]
-        attr_accessor :rescheduled
-        alias_method :rescheduled?, :rescheduled
-      
-        # The scheduled end time for the maintenance window during which update
-        # can be performed on the instance.
-        # Corresponds to the JSON property `scheduledEndTime`
-        # @return [String]
-        attr_accessor :scheduled_end_time
-      
-        # The scheduled start time for the maintenance window during which
-        # update can be performed on the instance.
-        # Corresponds to the JSON property `scheduledStartTime`
-        # @return [String]
-        attr_accessor :scheduled_start_time
-      
-        # The target release to be applied to the instance.
-        # Corresponds to the JSON property `targetRelease`
-        # @return [String]
-        attr_accessor :target_release
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @rescheduled = args[:rescheduled] if args.key?(:rescheduled)
-          @scheduled_end_time = args[:scheduled_end_time] if args.key?(:scheduled_end_time)
-          @scheduled_start_time = args[:scheduled_start_time] if args.key?(:scheduled_start_time)
-          @target_release = args[:target_release] if args.key?(:target_release)
-        end
-      end
-      
       # Describes provisioned dataplane resources.
       class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
         include Google::Apis::Core::Hashable
@@ -789,39 +731,6 @@ module Google
         def update!(**args)
           @resource_type = args[:resource_type] if args.key?(:resource_type)
           @resource_url = args[:resource_url] if args.key?(:resource_url)
-        end
-      end
-      
-      # This message has been deprecated.
-      # RolloutMetadata for an actuation instance. It maps to a single RolloutType.
-      class GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
-        include Google::Apis::Core::Hashable
-      
-        # This message has been deprecated.
-        # NotificationMetadata is the notification state for an instance.
-        # Corresponds to the JSON property `notification`
-        # @return [Google::Apis::ManagedidentitiesV1::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata]
-        attr_accessor :notification
-      
-        # The last Release that has been applied to the instance.
-        # Corresponds to the JSON property `releaseName`
-        # @return [String]
-        attr_accessor :release_name
-      
-        # The last rollout that has been applied to the instance.
-        # Corresponds to the JSON property `rolloutName`
-        # @return [String]
-        attr_accessor :rollout_name
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @notification = args[:notification] if args.key?(:notification)
-          @release_name = args[:release_name] if args.key?(:release_name)
-          @rollout_name = args[:rollout_name] if args.key?(:rollout_name)
         end
       end
       

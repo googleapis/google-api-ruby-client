@@ -20,10 +20,10 @@ require 'google/apis/errors'
 module Google
   module Apis
     module SecuritycenterV1
-      # Cloud Security Command Center API
+      # Security Command Center API
       #
-      # Cloud Security Command Center API provides access to temporal views of assets
-      #  and findings within an organization.
+      # Security Command Center API provides access to temporal views of assets and
+      #  findings within an organization.
       #
       # @example
       #    require 'google/apis/securitycenter_v1'
@@ -229,6 +229,10 @@ module Google
         #   * security_center_properties.resource_project_display_name: `=`, `:`
         #   * security_center_properties.resource_owners: `=`, `:`
         #   For example, `resource_properties.size = 100` is a valid filter string.
+        #   Use a partial match on the empty string to filter based on a property
+        #   existing: "resource_properties.my_property : \"\""
+        #   Use a negated partial match on the empty string to filter based on a
+        #   property not existing: "-resource_properties.my_property : \"\""
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The
         #   string value should follow SQL syntax: comma separated list of fields. For
@@ -1114,6 +1118,10 @@ module Google
         #   security_marks.marks: `=`, `:`
         #   source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`
         #   For example, `source_properties.size = 100` is a valid filter string.
+        #   Use a partial match on the empty string to filter based on a property
+        #   existing: "source_properties.my_property : \"\""
+        #   Use a negated partial match on the empty string to filter based on a
+        #   property not existing: "-source_properties.my_property : \"\""
         # @param [String] order_by
         #   Expression that defines what fields and order to use for sorting. The
         #   string value should follow SQL syntax: comma separated list of fields. For

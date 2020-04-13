@@ -22,13 +22,85 @@ module Google
   module Apis
     module CloudidentityV1beta1
       
+      class AndroidAttributes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ApproveDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BlockDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelWipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class CancelWipeDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Device
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DeviceUser
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EndpointApp
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class EntityKey
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GetMembershipGraphResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Group
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDeviceUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListDevicesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListEndpointAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -58,7 +130,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LookupSelfDeviceUsersResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Membership
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MembershipAdjacencyList
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,11 +190,138 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class WipeDeviceResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class WipeDeviceUserResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AndroidAttributes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :baseband_version, as: 'basebandVersion'
+          property :bootloader_version, as: 'bootloaderVersion'
+          property :build_number, as: 'buildNumber'
+          property :enabled_developer_options, as: 'enabledDeveloperOptions'
+          property :enabled_unknown_sources, as: 'enabledUnknownSources'
+          property :enabled_usb_debugging, as: 'enabledUsbDebugging'
+          property :encryption_state, as: 'encryptionState'
+          property :hardware, as: 'hardware'
+          property :kernel_version, as: 'kernelVersion'
+          collection :other_accounts, as: 'otherAccounts'
+          property :owner_profile_account, as: 'ownerProfileAccount'
+          property :ownership_privilege, as: 'ownershipPrivilege'
+          property :security_patch_time, as: 'securityPatchTime'
+          property :supports_work_profile, as: 'supportsWorkProfile'
+        end
+      end
+      
+      class ApproveDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
+      
+        end
+      end
+      
+      class BlockDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
+      
+        end
+      end
+      
+      class CancelWipeDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
+      
+        end
+      end
+      
+      class CancelWipeDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
+      
+        end
+      end
+      
+      class Device
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :android_specific_attributes, as: 'androidSpecificAttributes', class: Google::Apis::CloudidentityV1beta1::AndroidAttributes, decorator: Google::Apis::CloudidentityV1beta1::AndroidAttributes::Representation
+      
+          property :asset_tag, as: 'assetTag'
+          property :brand, as: 'brand'
+          property :compromised_state, as: 'compromisedState'
+          property :create_time, as: 'createTime'
+          property :device_type, as: 'deviceType'
+          property :imei, as: 'imei'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :management_state, as: 'managementState'
+          property :manufacturer, as: 'manufacturer'
+          property :meid, as: 'meid'
+          property :model, as: 'model'
+          property :name, as: 'name'
+          property :network_operator, as: 'networkOperator'
+          property :os_version, as: 'osVersion'
+          property :owner_type, as: 'ownerType'
+          property :release_version, as: 'releaseVersion'
+          property :serial_number, as: 'serialNumber'
+          collection :wifi_mac_addresses, as: 'wifiMacAddresses'
+        end
+      end
+      
+      class DeviceUser
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :compromised_state, as: 'compromisedState'
+          property :first_sync_time, as: 'firstSyncTime'
+          property :language_code, as: 'languageCode'
+          property :last_sync_time, as: 'lastSyncTime'
+          property :management_state, as: 'managementState'
+          property :name, as: 'name'
+          property :password_state, as: 'passwordState'
+          property :user_agent, as: 'userAgent'
+          property :user_email, as: 'userEmail'
+        end
+      end
+      
+      class EndpointApp
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :package_name, as: 'packageName'
+          collection :permissions, as: 'permissions'
+          property :version_code, as: 'versionCode'
+          property :version_name, as: 'versionName'
+        end
+      end
+      
       class EntityKey
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
           property :namespace, as: 'namespace'
+        end
+      end
+      
+      class GetMembershipGraphResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :adjacency_list, as: 'adjacencyList', class: Google::Apis::CloudidentityV1beta1::MembershipAdjacencyList, decorator: Google::Apis::CloudidentityV1beta1::MembershipAdjacencyList::Representation
+      
+          collection :groups, as: 'groups', class: Google::Apis::CloudidentityV1beta1::Group, decorator: Google::Apis::CloudidentityV1beta1::Group::Representation
+      
         end
       end
       
@@ -128,6 +339,33 @@ module Google
           property :name, as: 'name'
           property :parent, as: 'parent'
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class ListDeviceUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :device_users, as: 'deviceUsers', class: Google::Apis::CloudidentityV1beta1::DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListDevicesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :devices, as: 'devices', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListEndpointAppsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_apps, as: 'endpointApps', class: Google::Apis::CloudidentityV1beta1::EndpointApp, decorator: Google::Apis::CloudidentityV1beta1::EndpointApp::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -163,6 +401,15 @@ module Google
         end
       end
       
+      class LookupSelfDeviceUsersResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :customer, as: 'customer'
+          collection :names, as: 'names'
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class Membership
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -175,6 +422,15 @@ module Google
           collection :roles, as: 'roles', class: Google::Apis::CloudidentityV1beta1::MembershipRole, decorator: Google::Apis::CloudidentityV1beta1::MembershipRole::Representation
       
           property :update_time, as: 'updateTime'
+        end
+      end
+      
+      class MembershipAdjacencyList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :edges, as: 'edges', class: Google::Apis::CloudidentityV1beta1::Membership, decorator: Google::Apis::CloudidentityV1beta1::Membership::Representation
+      
+          property :group, as: 'group'
         end
       end
       
@@ -239,6 +495,22 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :field_mask, as: 'fieldMask'
           property :membership_role, as: 'membershipRole', class: Google::Apis::CloudidentityV1beta1::MembershipRole, decorator: Google::Apis::CloudidentityV1beta1::MembershipRole::Representation
+      
+        end
+      end
+      
+      class WipeDeviceResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device, as: 'device', class: Google::Apis::CloudidentityV1beta1::Device, decorator: Google::Apis::CloudidentityV1beta1::Device::Representation
+      
+        end
+      end
+      
+      class WipeDeviceUserResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :device_user, as: 'deviceUser', class: Google::Apis::CloudidentityV1beta1::DeviceUser, decorator: Google::Apis::CloudidentityV1beta1::DeviceUser::Representation
       
         end
       end

@@ -202,6 +202,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class JobMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class JobPlacement
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -811,6 +817,17 @@ module Google
         end
       end
       
+      class JobMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :job_id, as: 'jobId'
+          property :operation_type, as: 'operationType'
+          property :start_time, as: 'startTime'
+          property :status, as: 'status', class: Google::Apis::DataprocV1::JobStatus, decorator: Google::Apis::DataprocV1::JobStatus::Representation
+      
+        end
+      end
+      
       class JobPlacement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -976,11 +993,15 @@ module Google
           property :pig_job, as: 'pigJob', class: Google::Apis::DataprocV1::PigJob, decorator: Google::Apis::DataprocV1::PigJob::Representation
       
           collection :prerequisite_step_ids, as: 'prerequisiteStepIds'
+          property :presto_job, as: 'prestoJob', class: Google::Apis::DataprocV1::PrestoJob, decorator: Google::Apis::DataprocV1::PrestoJob::Representation
+      
           property :pyspark_job, as: 'pysparkJob', class: Google::Apis::DataprocV1::PySparkJob, decorator: Google::Apis::DataprocV1::PySparkJob::Representation
       
           property :scheduling, as: 'scheduling', class: Google::Apis::DataprocV1::JobScheduling, decorator: Google::Apis::DataprocV1::JobScheduling::Representation
       
           property :spark_job, as: 'sparkJob', class: Google::Apis::DataprocV1::SparkJob, decorator: Google::Apis::DataprocV1::SparkJob::Representation
+      
+          property :spark_r_job, as: 'sparkRJob', class: Google::Apis::DataprocV1::SparkRJob, decorator: Google::Apis::DataprocV1::SparkRJob::Representation
       
           property :spark_sql_job, as: 'sparkSqlJob', class: Google::Apis::DataprocV1::SparkSqlJob, decorator: Google::Apis::DataprocV1::SparkSqlJob::Representation
       

@@ -662,6 +662,7 @@ module Google
           property :operation_deadline, as: 'operationDeadline'
           property :path_translation, as: 'pathTranslation'
           property :protocol, as: 'protocol'
+          property :rename_to, as: 'renameTo'
           property :selector, as: 'selector'
         end
       end

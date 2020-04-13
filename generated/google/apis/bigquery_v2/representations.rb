@@ -514,6 +514,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RankingMetrics
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RegressionMetrics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -533,6 +539,18 @@ module Google
       end
       
       class Row
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RowAccessPolicyReference
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RowLevelSecurityStatistics
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1076,6 +1094,8 @@ module Google
       
           property :multi_class_classification_metrics, as: 'multiClassClassificationMetrics', class: Google::Apis::BigqueryV2::MultiClassClassificationMetrics, decorator: Google::Apis::BigqueryV2::MultiClassClassificationMetrics::Representation
       
+          property :ranking_metrics, as: 'rankingMetrics', class: Google::Apis::BigqueryV2::RankingMetrics, decorator: Google::Apis::BigqueryV2::RankingMetrics::Representation
+      
           property :regression_metrics, as: 'regressionMetrics', class: Google::Apis::BigqueryV2::RegressionMetrics, decorator: Google::Apis::BigqueryV2::RegressionMetrics::Representation
       
         end
@@ -1331,6 +1351,7 @@ module Google
           property :allow_large_results, as: 'allowLargeResults'
           property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
       
+          collection :connection_properties, as: 'connectionProperties'
           property :create_disposition, as: 'createDisposition'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
@@ -1436,6 +1457,8 @@ module Google
           collection :reservation_usage, as: 'reservationUsage', class: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage, decorator: Google::Apis::BigqueryV2::JobStatistics::ReservationUsage::Representation
       
           property :reservation_id, as: 'reservation_id'
+          property :row_level_security_statistics, as: 'rowLevelSecurityStatistics', class: Google::Apis::BigqueryV2::RowLevelSecurityStatistics, decorator: Google::Apis::BigqueryV2::RowLevelSecurityStatistics::Representation
+      
           property :script_statistics, as: 'scriptStatistics', class: Google::Apis::BigqueryV2::ScriptStatistics, decorator: Google::Apis::BigqueryV2::ScriptStatistics::Representation
       
           property :start_time, :numeric_string => true, as: 'startTime'
@@ -1457,8 +1480,11 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :billing_tier, as: 'billingTier'
           property :cache_hit, as: 'cacheHit'
+          property :ddl_affected_row_access_policy_count, :numeric_string => true, as: 'ddlAffectedRowAccessPolicyCount'
           property :ddl_operation_performed, as: 'ddlOperationPerformed'
           property :ddl_target_routine, as: 'ddlTargetRoutine', class: Google::Apis::BigqueryV2::RoutineReference, decorator: Google::Apis::BigqueryV2::RoutineReference::Representation
+      
+          property :ddl_target_row_access_policy, as: 'ddlTargetRowAccessPolicy', class: Google::Apis::BigqueryV2::RowAccessPolicyReference, decorator: Google::Apis::BigqueryV2::RowAccessPolicyReference::Representation
       
           property :ddl_target_table, as: 'ddlTargetTable', class: Google::Apis::BigqueryV2::TableReference, decorator: Google::Apis::BigqueryV2::TableReference::Representation
       
@@ -1704,6 +1730,7 @@ module Google
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :connection_properties, as: 'connectionProperties'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
           property :dry_run, as: 'dryRun'
@@ -1771,6 +1798,16 @@ module Google
         end
       end
       
+      class RankingMetrics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :average_rank, as: 'averageRank'
+          property :mean_average_precision, as: 'meanAveragePrecision'
+          property :mean_squared_error, as: 'meanSquaredError'
+          property :normalized_discounted_cumulative_gain, as: 'normalizedDiscountedCumulativeGain'
+        end
+      end
+      
       class RegressionMetrics
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1817,6 +1854,23 @@ module Google
           property :actual_label, as: 'actualLabel'
           collection :entries, as: 'entries', class: Google::Apis::BigqueryV2::Entry, decorator: Google::Apis::BigqueryV2::Entry::Representation
       
+        end
+      end
+      
+      class RowAccessPolicyReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dataset_id, as: 'datasetId'
+          property :policy_id, as: 'policyId'
+          property :project_id, as: 'projectId'
+          property :table_id, as: 'tableId'
+        end
+      end
+      
+      class RowLevelSecurityStatistics
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :row_level_security_applied, as: 'rowLevelSecurityApplied'
         end
       end
       
@@ -2090,13 +2144,18 @@ module Google
       class TrainingOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :batch_size, :numeric_string => true, as: 'batchSize'
           property :data_split_column, as: 'dataSplitColumn'
           property :data_split_eval_fraction, as: 'dataSplitEvalFraction'
           property :data_split_method, as: 'dataSplitMethod'
           property :distance_type, as: 'distanceType'
+          property :dropout, as: 'dropout'
           property :early_stop, as: 'earlyStop'
+          property :feedback_type, as: 'feedbackType'
+          collection :hidden_units, as: 'hiddenUnits'
           property :initial_learn_rate, as: 'initialLearnRate'
           collection :input_label_columns, as: 'inputLabelColumns'
+          property :item_column, as: 'itemColumn'
           property :kmeans_initialization_column, as: 'kmeansInitializationColumn'
           property :kmeans_initialization_method, as: 'kmeansInitializationMethod'
           property :l1_regularization, as: 'l1Regularization'
@@ -2106,10 +2165,16 @@ module Google
           property :learn_rate_strategy, as: 'learnRateStrategy'
           property :loss_type, as: 'lossType'
           property :max_iterations, :numeric_string => true, as: 'maxIterations'
+          property :max_tree_depth, :numeric_string => true, as: 'maxTreeDepth'
           property :min_relative_progress, as: 'minRelativeProgress'
+          property :min_split_loss, as: 'minSplitLoss'
           property :model_uri, as: 'modelUri'
           property :num_clusters, :numeric_string => true, as: 'numClusters'
+          property :num_factors, :numeric_string => true, as: 'numFactors'
           property :optimization_strategy, as: 'optimizationStrategy'
+          property :subsample, as: 'subsample'
+          property :user_column, as: 'userColumn'
+          property :wals_alpha, as: 'walsAlpha'
           property :warm_start, as: 'warmStart'
         end
       end

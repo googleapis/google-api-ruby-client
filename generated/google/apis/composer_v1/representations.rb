@@ -40,6 +40,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IpAllocationPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ImageVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -77,6 +83,18 @@ module Google
       end
       
       class OperationMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateClusterConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PrivateEnvironmentConfig
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -123,8 +141,21 @@ module Google
           property :node_config, as: 'nodeConfig', class: Google::Apis::ComposerV1::NodeConfig, decorator: Google::Apis::ComposerV1::NodeConfig::Representation
       
           property :node_count, as: 'nodeCount'
+          property :private_environment_config, as: 'privateEnvironmentConfig', class: Google::Apis::ComposerV1::PrivateEnvironmentConfig, decorator: Google::Apis::ComposerV1::PrivateEnvironmentConfig::Representation
+      
           property :software_config, as: 'softwareConfig', class: Google::Apis::ComposerV1::SoftwareConfig, decorator: Google::Apis::ComposerV1::SoftwareConfig::Representation
       
+        end
+      end
+      
+      class IpAllocationPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cluster_ipv4_cidr_block, as: 'clusterIpv4CidrBlock'
+          property :cluster_secondary_range_name, as: 'clusterSecondaryRangeName'
+          property :services_ipv4_cidr_block, as: 'servicesIpv4CidrBlock'
+          property :services_secondary_range_name, as: 'servicesSecondaryRangeName'
+          property :use_ip_aliases, as: 'useIpAliases'
         end
       end
       
@@ -168,6 +199,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, as: 'diskSizeGb'
+          property :ip_allocation_policy, as: 'ipAllocationPolicy', class: Google::Apis::ComposerV1::IpAllocationPolicy, decorator: Google::Apis::ComposerV1::IpAllocationPolicy::Representation
+      
           property :location, as: 'location'
           property :machine_type, as: 'machineType'
           property :network, as: 'network'
@@ -199,6 +232,27 @@ module Google
           property :resource, as: 'resource'
           property :resource_uuid, as: 'resourceUuid'
           property :state, as: 'state'
+        end
+      end
+      
+      class PrivateClusterConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_private_endpoint, as: 'enablePrivateEndpoint'
+          property :master_ipv4_cidr_block, as: 'masterIpv4CidrBlock'
+          property :master_ipv4_reserved_range, as: 'masterIpv4ReservedRange'
+        end
+      end
+      
+      class PrivateEnvironmentConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :cloud_sql_ipv4_cidr_block, as: 'cloudSqlIpv4CidrBlock'
+          property :enable_private_environment, as: 'enablePrivateEnvironment'
+          property :private_cluster_config, as: 'privateClusterConfig', class: Google::Apis::ComposerV1::PrivateClusterConfig, decorator: Google::Apis::ComposerV1::PrivateClusterConfig::Representation
+      
+          property :web_server_ipv4_cidr_block, as: 'webServerIpv4CidrBlock'
+          property :web_server_ipv4_reserved_range, as: 'webServerIpv4ReservedRange'
         end
       end
       

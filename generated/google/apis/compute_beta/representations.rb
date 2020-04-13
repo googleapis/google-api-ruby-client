@@ -820,6 +820,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FileContentBuffer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Firewall
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -958,12 +964,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleDuration
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GuestAttributes
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1043,6 +1043,12 @@ module Google
       end
       
       class HealthCheckService
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class HealthCheckServiceReference
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1266,6 +1272,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InitialStateConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -1703,6 +1715,30 @@ module Google
       end
       
       class InstanceWithNamedPorts
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesAddResourcePoliciesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InstancesRemoveResourcePoliciesRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -2332,6 +2368,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NetworksGetEffectiveFirewallsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class NetworksRemovePeeringRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2688,6 +2736,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3568,6 +3622,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Screenshot
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SecurityPoliciesListPreconfiguredExpressionSetsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -3581,6 +3641,12 @@ module Google
       end
       
       class SecurityPolicy
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyAssociation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -3623,6 +3689,18 @@ module Google
       end
       
       class SecurityPolicyRuleMatcherConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecurityPolicyRuleMatcherConfigLayer4Config
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SecuritySettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5118,6 +5196,8 @@ module Google
           property :kind, as: 'kind'
           collection :licenses, as: 'licenses'
           property :mode, as: 'mode'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
+      
           property :source, as: 'source'
           property :type, as: 'type'
         end
@@ -5133,6 +5213,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeBeta::GuestOsFeature, decorator: Google::Apis::ComputeBeta::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          property :on_update_action, as: 'onUpdateAction'
           collection :resource_policies, as: 'resourcePolicies'
           property :source_image, as: 'sourceImage'
           property :source_image_encryption_key, as: 'sourceImageEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
@@ -5338,8 +5419,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_scaled_down_replicas, as: 'maxScaledDownReplicas', class: Google::Apis::ComputeBeta::FixedOrPercent, decorator: Google::Apis::ComputeBeta::FixedOrPercent::Representation
       
-          property :time_window, as: 'timeWindow', class: Google::Apis::ComputeBeta::GoogleDuration, decorator: Google::Apis::ComputeBeta::GoogleDuration::Representation
-      
+          property :time_window_sec, as: 'timeWindowSec'
         end
       end
       
@@ -5456,6 +5536,8 @@ module Google
           property :protocol, as: 'protocol'
           property :region, as: 'region'
           property :security_policy, as: 'securityPolicy'
+          property :security_settings, as: 'securitySettings', class: Google::Apis::ComputeBeta::SecuritySettings, decorator: Google::Apis::ComputeBeta::SecuritySettings::Representation
+      
           property :self_link, as: 'selfLink'
           property :session_affinity, as: 'sessionAffinity'
           property :timeout_sec, as: 'timeoutSec'
@@ -6324,6 +6406,14 @@ module Google
         end
       end
       
+      class FileContentBuffer
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :content, :base64 => true, as: 'content'
+          property :file_type, as: 'fileType'
+        end
+      end
+      
       class Firewall
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6586,14 +6676,6 @@ module Google
         end
       end
       
-      class GoogleDuration
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :nanos, as: 'nanos'
-          property :seconds, :numeric_string => true, as: 'seconds'
-        end
-      end
-      
       class GuestAttributes
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6765,6 +6847,13 @@ module Google
         end
       end
       
+      class HealthCheckServiceReference
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :health_check_service, as: 'healthCheckService'
+        end
+      end
+      
       class HealthCheckServicesList
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -6876,6 +6965,8 @@ module Google
           property :forwarding_rule, as: 'forwardingRule', class: Google::Apis::ComputeBeta::ForwardingRuleReference, decorator: Google::Apis::ComputeBeta::ForwardingRuleReference::Representation
       
           property :health_check, as: 'healthCheck', class: Google::Apis::ComputeBeta::HealthCheckReference, decorator: Google::Apis::ComputeBeta::HealthCheckReference::Representation
+      
+          property :health_check_service, as: 'healthCheckService', class: Google::Apis::ComputeBeta::HealthCheckServiceReference, decorator: Google::Apis::ComputeBeta::HealthCheckServiceReference::Representation
       
           property :health_state, as: 'healthState'
         end
@@ -7164,6 +7255,8 @@ module Google
           property :raw_disk, as: 'rawDisk', class: Google::Apis::ComputeBeta::Image::RawDisk, decorator: Google::Apis::ComputeBeta::Image::RawDisk::Representation
       
           property :self_link, as: 'selfLink'
+          property :shielded_instance_initial_state, as: 'shieldedInstanceInitialState', class: Google::Apis::ComputeBeta::InitialStateConfig, decorator: Google::Apis::ComputeBeta::InitialStateConfig::Representation
+      
           property :source_disk, as: 'sourceDisk'
           property :source_disk_encryption_key, as: 'sourceDiskEncryptionKey', class: Google::Apis::ComputeBeta::CustomerEncryptionKey, decorator: Google::Apis::ComputeBeta::CustomerEncryptionKey::Representation
       
@@ -7223,6 +7316,20 @@ module Google
         end
       end
       
+      class InitialStateConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dbs, as: 'dbs', class: Google::Apis::ComputeBeta::FileContentBuffer, decorator: Google::Apis::ComputeBeta::FileContentBuffer::Representation
+      
+          collection :dbxs, as: 'dbxs', class: Google::Apis::ComputeBeta::FileContentBuffer, decorator: Google::Apis::ComputeBeta::FileContentBuffer::Representation
+      
+          collection :keks, as: 'keks', class: Google::Apis::ComputeBeta::FileContentBuffer, decorator: Google::Apis::ComputeBeta::FileContentBuffer::Representation
+      
+          property :pk, as: 'pk', class: Google::Apis::ComputeBeta::FileContentBuffer, decorator: Google::Apis::ComputeBeta::FileContentBuffer::Representation
+      
+        end
+      end
+      
       class Instance
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -7236,6 +7343,7 @@ module Google
           property :display_device, as: 'displayDevice', class: Google::Apis::ComputeBeta::DisplayDevice, decorator: Google::Apis::ComputeBeta::DisplayDevice::Representation
       
           property :erase_windows_vss_signature, as: 'eraseWindowsVssSignature'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           collection :guest_accelerators, as: 'guestAccelerators', class: Google::Apis::ComputeBeta::AcceleratorConfig, decorator: Google::Apis::ComputeBeta::AcceleratorConfig::Representation
       
           property :hostname, as: 'hostname'
@@ -7250,6 +7358,7 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
       
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -7546,6 +7655,7 @@ module Google
       class InstanceGroupManagerStatusStateful
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :has_stateful_config, as: 'hasStatefulConfig'
           property :is_stateful, as: 'isStateful'
         end
       end
@@ -7960,6 +8070,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeBeta::NetworkInterface, decorator: Google::Apis::ComputeBeta::NetworkInterface::Representation
       
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeBeta::ReservationAffinity, decorator: Google::Apis::ComputeBeta::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -8039,6 +8150,39 @@ module Google
           collection :named_ports, as: 'namedPorts', class: Google::Apis::ComputeBeta::NamedPort, decorator: Google::Apis::ComputeBeta::NamedPort::Representation
       
           property :status, as: 'status'
+        end
+      end
+      
+      class InstancesAddResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeBeta::Firewall, decorator: Google::Apis::ComputeBeta::Firewall::Representation
+      
+          collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeBeta::InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
+      
+        end
+      end
+      
+      class InstancesGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
+      
+        end
+      end
+      
+      class InstancesRemoveResourcePoliciesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_policies, as: 'resourcePolicies'
         end
       end
       
@@ -9184,6 +9328,25 @@ module Google
         end
       end
       
+      class NetworksGetEffectiveFirewallsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :firewalls, as: 'firewalls', class: Google::Apis::ComputeBeta::Firewall, decorator: Google::Apis::ComputeBeta::Firewall::Representation
+      
+          collection :organization_firewalls, as: 'organizationFirewalls', class: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy, decorator: Google::Apis::ComputeBeta::NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy::Representation
+      
+        end
+      end
+      
+      class NetworksGetEffectiveFirewallsResponseOrganizationFirewallPolicy
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, :numeric_string => true, as: 'id'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
+      
+        end
+      end
+      
       class NetworksRemovePeeringRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -9295,6 +9458,7 @@ module Google
       class NodeGroupNode
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_overcommit_type, as: 'cpuOvercommitType'
           collection :instances, as: 'instances'
           property :name, as: 'name'
           property :node_type, as: 'nodeType'
@@ -9389,6 +9553,7 @@ module Google
       class NodeTemplate
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :cpu_overcommit_type, as: 'cpuOvercommitType'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
@@ -9833,6 +9998,15 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class OrganizationSecurityPoliciesListAssociationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeBeta::SecurityPolicyAssociation, decorator: Google::Apis::ComputeBeta::SecurityPolicyAssociation::Representation
+      
+          property :kind, as: 'kind'
         end
       end
       
@@ -11389,6 +11563,14 @@ module Google
         end
       end
       
+      class Screenshot
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :contents, as: 'contents'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class SecurityPoliciesListPreconfiguredExpressionSetsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -11408,17 +11590,34 @@ module Google
       class SecurityPolicy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :associations, as: 'associations', class: Google::Apis::ComputeBeta::SecurityPolicyAssociation, decorator: Google::Apis::ComputeBeta::SecurityPolicyAssociation::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :display_name, as: 'displayName'
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :label_fingerprint, :base64 => true, as: 'labelFingerprint'
           hash :labels, as: 'labels'
           property :name, as: 'name'
+          property :parent, as: 'parent'
+          property :rule_tuple_count, as: 'ruleTupleCount'
           collection :rules, as: 'rules', class: Google::Apis::ComputeBeta::SecurityPolicyRule, decorator: Google::Apis::ComputeBeta::SecurityPolicyRule::Representation
       
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SecurityPolicyAssociation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :attachment_id, as: 'attachmentId'
+          property :display_name, as: 'displayName'
+          property :name, as: 'name'
+          property :security_policy_id, as: 'securityPolicyId'
         end
       end
       
@@ -11465,11 +11664,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
           property :description, as: 'description'
+          property :direction, as: 'direction'
+          property :enable_logging, as: 'enableLogging'
           property :kind, as: 'kind'
           property :match, as: 'match', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcher::Representation
       
           property :preview, as: 'preview'
           property :priority, as: 'priority'
+          property :rule_tuple_count, as: 'ruleTupleCount'
+          collection :target_resources, as: 'targetResources'
+          collection :target_service_accounts, as: 'targetServiceAccounts'
         end
       end
       
@@ -11487,7 +11691,26 @@ module Google
       class SecurityPolicyRuleMatcherConfig
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :dest_ip_ranges, as: 'destIpRanges'
+          collection :layer4_configs, as: 'layer4Configs', class: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfigLayer4Config, decorator: Google::Apis::ComputeBeta::SecurityPolicyRuleMatcherConfigLayer4Config::Representation
+      
           collection :src_ip_ranges, as: 'srcIpRanges'
+        end
+      end
+      
+      class SecurityPolicyRuleMatcherConfigLayer4Config
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ip_protocol, as: 'ipProtocol'
+          collection :ports, as: 'ports'
+        end
+      end
+      
+      class SecuritySettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication'
+          collection :subject_alt_names, as: 'subjectAltNames'
         end
       end
       
@@ -12035,8 +12258,10 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :aggregation_interval, as: 'aggregationInterval'
           property :enable, as: 'enable'
+          property :filter_expr, as: 'filterExpr'
           property :flow_sampling, as: 'flowSampling'
           property :metadata, as: 'metadata'
+          collection :metadata_fields, as: 'metadataFields'
         end
       end
       
@@ -12146,6 +12371,7 @@ module Google
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
           property :url_map, as: 'urlMap'
@@ -12261,11 +12487,14 @@ module Google
       class TargetHttpsProxy
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :authentication, as: 'authentication'
+          property :authorization, as: 'authorization'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
+          property :proxy_bind, as: 'proxyBind'
           property :quic_override, as: 'quicOverride'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'

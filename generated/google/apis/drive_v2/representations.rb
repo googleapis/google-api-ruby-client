@@ -223,6 +223,12 @@ module Google
           include Google::Apis::Core::JsonObjectSupport
         end
         
+        class ShortcutDetails
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class Thumbnail
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -835,6 +841,8 @@ module Google
       
           property :sharing_user, as: 'sharingUser', class: Google::Apis::DriveV2::User, decorator: Google::Apis::DriveV2::User::Representation
       
+          property :shortcut_details, as: 'shortcutDetails', class: Google::Apis::DriveV2::File::ShortcutDetails, decorator: Google::Apis::DriveV2::File::ShortcutDetails::Representation
+      
           collection :spaces, as: 'spaces'
           property :team_drive_id, as: 'teamDriveId'
           property :thumbnail, as: 'thumbnail', class: Google::Apis::DriveV2::File::Thumbnail, decorator: Google::Apis::DriveV2::File::Thumbnail::Representation
@@ -860,6 +868,7 @@ module Google
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
             property :can_add_children, as: 'canAddChildren'
+            property :can_add_my_drive_parent, as: 'canAddMyDriveParent'
             property :can_change_copy_requires_writer_permission, as: 'canChangeCopyRequiresWriterPermission'
             property :can_change_restricted_download, as: 'canChangeRestrictedDownload'
             property :can_comment, as: 'canComment'
@@ -884,6 +893,7 @@ module Google
             property :can_read_revisions, as: 'canReadRevisions'
             property :can_read_team_drive, as: 'canReadTeamDrive'
             property :can_remove_children, as: 'canRemoveChildren'
+            property :can_remove_my_drive_parent, as: 'canRemoveMyDriveParent'
             property :can_rename, as: 'canRename'
             property :can_share, as: 'canShare'
             property :can_trash, as: 'canTrash'
@@ -945,6 +955,14 @@ module Google
             property :starred, as: 'starred'
             property :trashed, as: 'trashed'
             property :viewed, as: 'viewed'
+          end
+        end
+        
+        class ShortcutDetails
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :target_id, as: 'targetId'
+            property :target_mime_type, as: 'targetMimeType'
           end
         end
         

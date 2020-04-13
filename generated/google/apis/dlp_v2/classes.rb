@@ -747,6 +747,9 @@ module Google
         # If empty, all files are scanned and available data format processors
         # are applied. In addition, the binary content of the selected files
         # is always scanned as well.
+        # Images are scanned only as binary if the specified region
+        # does not support image inspection and no file_types were specified.
+        # Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
         # Corresponds to the JSON property `fileTypes`
         # @return [Array<String>]
         attr_accessor :file_types
@@ -1116,6 +1119,11 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ImageLocation]
         attr_accessor :image_location
       
+        # Metadata Location
+        # Corresponds to the JSON property `metadataLocation`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2MetadataLocation]
+        attr_accessor :metadata_location
+      
         # Location of a finding within a row or record.
         # Corresponds to the JSON property `recordLocation`
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2RecordLocation]
@@ -1132,6 +1140,7 @@ module Google
           @container_version = args[:container_version] if args.key?(:container_version)
           @document_location = args[:document_location] if args.key?(:document_location)
           @image_location = args[:image_location] if args.key?(:image_location)
+          @metadata_location = args[:metadata_location] if args.key?(:metadata_location)
           @record_location = args[:record_location] if args.key?(:record_location)
         end
       end
@@ -2547,12 +2556,13 @@ module Google
       
         # The labels associated with this `Finding`.
         # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
         # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         # No more than 10 labels can be associated with a given finding.
-        # Example: <code>"environment" : "production"</code>
-        # Example: <code>"pipeline" : "etl"</code>
+        # Examples:
+        # * `"environment" : "production"`
+        # * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2806,12 +2816,13 @@ module Google
         # The labels associated with `Finding`'s produced by hybrid
         # inspection.
         # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
         # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         # No more than 10 labels can be associated with a given finding.
-        # Example: <code>"environment" : "production"</code>
-        # Example: <code>"pipeline" : "etl"</code>
+        # Examples:
+        # * `"environment" : "production"`
+        # * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2944,12 +2955,13 @@ module Google
       
         # To organize findings, these labels will be added to each finding.
         # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
         # Label values must be between 0 and 63 characters long and must conform
-        # to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?.
+        # to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
         # No more than 10 labels can be associated with a given finding.
-        # Example: <code>"environment" : "production"</code>
-        # Example: <code>"pipeline" : "etl"</code>
+        # Examples:
+        # * `"environment" : "production"`
+        # * `"pipeline" : "etl"`
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -2958,7 +2970,7 @@ module Google
         # 'finding_labels' map. Request may contain others, but any missing one of
         # these will be rejected.
         # Label keys must be between 1 and 63 characters long and must conform
-        # to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?.
+        # to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
         # No more than 10 keys can be required.
         # Corresponds to the JSON property `requiredFindingLabelKeys`
         # @return [Array<String>]
@@ -3042,7 +3054,7 @@ module Google
         # creating a CustomInfoType, or one of the names listed
         # at https://cloud.google.com/dlp/docs/infotypes-reference when specifying
         # a built-in type. InfoType names should conform to the pattern
-        # [a-zA-Z0-9_]`1,64`.
+        # `[a-zA-Z0-9_]`1,64``.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3304,6 +3316,8 @@ module Google
       
         # The geographic location to process content inspection. Reserved for future
         # extensions.
+        # When inspecting images location is restricted to 'global', 'us', 'asia',
+        # and 'europe'.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -4398,6 +4412,12 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Range]
         attr_accessor :codepoint_range
       
+        # Represents a container that may contain DLP findings.
+        # Examples of a container include a file, table, or database record.
+        # Corresponds to the JSON property `container`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2Container]
+        attr_accessor :container
+      
         # List of nested objects pointing to the precise location of the finding
         # within the file or record.
         # Corresponds to the JSON property `contentLocations`
@@ -4412,6 +4432,7 @@ module Google
         def update!(**args)
           @byte_range = args[:byte_range] if args.key?(:byte_range)
           @codepoint_range = args[:codepoint_range] if args.key?(:codepoint_range)
+          @container = args[:container] if args.key?(:container)
           @content_locations = args[:content_locations] if args.key?(:content_locations)
         end
       end
@@ -4427,6 +4448,31 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+        end
+      end
+      
+      # Metadata Location
+      class GooglePrivacyDlpV2MetadataLocation
+        include Google::Apis::Core::Hashable
+      
+        # Storage metadata label to indicate which metadata entry contains findings.
+        # Corresponds to the JSON property `storageLabel`
+        # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StorageMetadataLabel]
+        attr_accessor :storage_label
+      
+        # Type of metadata containing the finding.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @storage_label = args[:storage_label] if args.key?(:storage_label)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -5218,6 +5264,7 @@ module Google
       
         # The geographic location to process the request. Reserved for future
         # extensions.
+        # Location is restricted to 'global', 'us', 'asia', and 'europe'.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -5673,6 +5720,25 @@ module Google
           @datastore_options = args[:datastore_options] if args.key?(:datastore_options)
           @hybrid_options = args[:hybrid_options] if args.key?(:hybrid_options)
           @timespan_config = args[:timespan_config] if args.key?(:timespan_config)
+        end
+      end
+      
+      # Storage metadata label to indicate which metadata entry contains findings.
+      class GooglePrivacyDlpV2StorageMetadataLabel
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
         end
       end
       

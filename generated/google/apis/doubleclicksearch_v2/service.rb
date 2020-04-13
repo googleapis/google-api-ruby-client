@@ -148,61 +148,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Updates a batch of conversions in DoubleClick Search. This method supports
-        # patch semantics.
-        # @param [Fixnum] advertiser_id
-        #   Numeric ID of the advertiser.
-        # @param [Fixnum] agency_id
-        #   Numeric ID of the agency.
-        # @param [Fixnum] end_date
-        #   Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-        # @param [Fixnum] engine_account_id
-        #   Numeric ID of the engine account.
-        # @param [Fixnum] row_count
-        #   The number of conversions to return per call.
-        # @param [Fixnum] start_date
-        #   First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-        # @param [Fixnum] start_row
-        #   The 0-based starting index for retrieving conversions results.
-        # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::DoubleclicksearchV2::ConversionList] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::DoubleclicksearchV2::ConversionList]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_conversion(advertiser_id, agency_id, end_date, engine_account_id, row_count, start_date, start_row, conversion_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'conversion', options)
-          command.request_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
-          command.request_object = conversion_list_object
-          command.response_representation = Google::Apis::DoubleclicksearchV2::ConversionList::Representation
-          command.response_class = Google::Apis::DoubleclicksearchV2::ConversionList
-          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
-          command.query['agencyId'] = agency_id unless agency_id.nil?
-          command.query['endDate'] = end_date unless end_date.nil?
-          command.query['engineAccountId'] = engine_account_id unless engine_account_id.nil?
-          command.query['rowCount'] = row_count unless row_count.nil?
-          command.query['startDate'] = start_date unless start_date.nil?
-          command.query['startRow'] = start_row unless start_row.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Updates a batch of conversions in DoubleClick Search.
         # @param [Google::Apis::DoubleclicksearchV2::ConversionList] conversion_list_object
         # @param [String] fields

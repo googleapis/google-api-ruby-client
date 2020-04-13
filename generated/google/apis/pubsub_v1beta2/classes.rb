@@ -587,11 +587,14 @@ module Google
         # @return [Fixnum]
         attr_accessor :max_messages
       
-        # If this is specified as true the system will respond immediately even if
+        # Optional. If this is specified as true the system will respond immediately
+        # even if
         # it is not able to return a message in the `Pull` response. Otherwise the
         # system is allowed to wait until at least one message is available rather
         # than returning no messages. The client may cancel the request if it does
-        # not wish to wait any longer for the response.
+        # not wish to wait any longer for the response. Warning: setting this field
+        # to `true` is discouraged because it adversely impacts the performance of
+        # `Pull` operations. We recommend that users do not set this field.
         # Corresponds to the JSON property `returnImmediately`
         # @return [Boolean]
         attr_accessor :return_immediately

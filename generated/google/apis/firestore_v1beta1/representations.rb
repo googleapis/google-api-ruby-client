@@ -980,6 +980,8 @@ module Google
       
           property :update_mask, as: 'updateMask', class: Google::Apis::FirestoreV1beta1::DocumentMask, decorator: Google::Apis::FirestoreV1beta1::DocumentMask::Representation
       
+          collection :update_transforms, as: 'updateTransforms', class: Google::Apis::FirestoreV1beta1::FieldTransform, decorator: Google::Apis::FirestoreV1beta1::FieldTransform::Representation
+      
         end
       end
       

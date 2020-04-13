@@ -47,6 +47,42 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Deletes a snapshot.
+        # @param [String] project_id
+        #   The ID of the Cloud Platform project that the snapshot belongs to.
+        # @param [String] location
+        #   The location that contains this snapshot.
+        # @param [String] snapshot_id
+        #   The ID of the snapshot.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::DeleteSnapshotResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::DeleteSnapshotResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_snapshots(project_id, location: nil, snapshot_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1b3/projects/{projectId}/snapshots', options)
+          command.response_representation = Google::Apis::DataflowV1b3::DeleteSnapshotResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::DeleteSnapshotResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['snapshotId'] = snapshot_id unless snapshot_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Send a worker_message to the service.
         # @param [String] project_id
         #   The project to send the WorkerMessages to.
@@ -323,6 +359,42 @@ module Google
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['view'] = view unless view.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Snapshot the state of a streaming job.
+        # @param [String] project_id
+        #   The project which owns the job to be snapshotted.
+        # @param [String] job_id
+        #   The job to be snapshotted.
+        # @param [Google::Apis::DataflowV1b3::SnapshotJobRequest] snapshot_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def snapshot_project_job(project_id, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/jobs/{jobId}:snapshot', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
+          command.request_object = snapshot_job_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -856,6 +928,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Snapshot the state of a streaming job.
+        # @param [String] project_id
+        #   The project which owns the job to be snapshotted.
+        # @param [String] location
+        #   The location that contains this job.
+        # @param [String] job_id
+        #   The job to be snapshotted.
+        # @param [Google::Apis::DataflowV1b3::SnapshotJobRequest] snapshot_job_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def snapshot_project_location_job(project_id, location, job_id, snapshot_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', options)
+          command.request_representation = Google::Apis::DataflowV1b3::SnapshotJobRequest::Representation
+          command.request_object = snapshot_job_request_object
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Updates the state of an existing Cloud Dataflow job.
         # To update the state of an existing job, we recommend using
         # `projects.locations.jobs.update` with a [regional endpoint]
@@ -1048,6 +1159,42 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Lists snapshots.
+        # @param [String] project_id
+        #   The project ID to list snapshots for.
+        # @param [String] location
+        #   The location to list snapshots in.
+        # @param [String] job_id
+        #   If specified, list snapshots created from this job.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_job_snapshots(project_id, location, job_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListSnapshotsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListSnapshotsResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Leases a dataflow WorkItem to run.
         # @param [String] project_id
         #   Identifies the project this worker belongs to.
@@ -1125,6 +1272,114 @@ module Google
           command.params['projectId'] = project_id unless project_id.nil?
           command.params['location'] = location unless location.nil?
           command.params['jobId'] = job_id unless job_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a snapshot.
+        # @param [String] project_id
+        #   The ID of the Cloud Platform project that the snapshot belongs to.
+        # @param [String] location
+        #   The location that contains this snapshot.
+        # @param [String] snapshot_id
+        #   The ID of the snapshot.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::DeleteSnapshotResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::DeleteSnapshotResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_project_location_snapshot(project_id, location, snapshot_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::DeleteSnapshotResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::DeleteSnapshotResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['snapshotId'] = snapshot_id unless snapshot_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a snapshot.
+        # @param [String] project_id
+        #   The ID of the Cloud Platform project that the snapshot belongs to.
+        # @param [String] location
+        #   The location that contains this snapshot.
+        # @param [String] snapshot_id
+        #   The ID of the snapshot.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_location_snapshot(project_id, location, snapshot_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.params['snapshotId'] = snapshot_id unless snapshot_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists snapshots.
+        # @param [String] project_id
+        #   The project ID to list snapshots for.
+        # @param [String] location
+        #   The location to list snapshots in.
+        # @param [String] job_id
+        #   If specified, list snapshots created from this job.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_snapshots(project_id, location, job_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/locations/{location}/snapshots', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListSnapshotsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListSnapshotsResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['location'] = location unless location.nil?
+          command.query['jobId'] = job_id unless job_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1302,6 +1557,78 @@ module Google
           command.query['dynamicTemplate.stagingLocation'] = dynamic_template_staging_location unless dynamic_template_staging_location.nil?
           command.query['gcsPath'] = gcs_path unless gcs_path.nil?
           command.query['validateOnly'] = validate_only unless validate_only.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets information about a snapshot.
+        # @param [String] project_id
+        #   The ID of the Cloud Platform project that the snapshot belongs to.
+        # @param [String] snapshot_id
+        #   The ID of the snapshot.
+        # @param [String] location
+        #   The location that contains this snapshot.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::Snapshot] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::Snapshot]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_project_snapshot(project_id, snapshot_id, location: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots/{snapshotId}', options)
+          command.response_representation = Google::Apis::DataflowV1b3::Snapshot::Representation
+          command.response_class = Google::Apis::DataflowV1b3::Snapshot
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.params['snapshotId'] = snapshot_id unless snapshot_id.nil?
+          command.query['location'] = location unless location.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists snapshots.
+        # @param [String] project_id
+        #   The project ID to list snapshots for.
+        # @param [String] job_id
+        #   If specified, list snapshots created from this job.
+        # @param [String] location
+        #   The location to list snapshots in.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DataflowV1b3::ListSnapshotsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DataflowV1b3::ListSnapshotsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_snapshots(project_id, job_id: nil, location: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1b3/projects/{projectId}/snapshots', options)
+          command.response_representation = Google::Apis::DataflowV1b3::ListSnapshotsResponse::Representation
+          command.response_class = Google::Apis::DataflowV1b3::ListSnapshotsResponse
+          command.params['projectId'] = project_id unless project_id.nil?
+          command.query['jobId'] = job_id unless job_id.nil?
+          command.query['location'] = location unless location.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

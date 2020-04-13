@@ -887,10 +887,9 @@ module Google
         # If this field is omitted in a new log entry, then Logging assigns it the
         # current time. Timestamps have nanosecond accuracy, but trailing zeros in the
         # fractional seconds might be omitted when the timestamp is displayed.Incoming
-        # log entries should have timestamps that are no more than the logs retention
-        # period in the past, and no more than 24 hours in the future. Log entries
-        # outside those time boundaries will not be available when calling entries.list,
-        # but those log entries can still be exported with LogSinks.
+        # log entries must have timestamps that don't exceed the logs retention period
+        # in the past, and that don't exceed 24 hours in the future. Log entries outside
+        # those time boundaries aren't ingested by Logging.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp

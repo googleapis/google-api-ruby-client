@@ -90,8 +90,8 @@ module Google
       class BackupConfiguration
         include Google::Apis::Core::Hashable
       
-        # Whether binary log is enabled. If backup configuration is disabled, binary
-        # log must be disabled as well.
+        # (MySQL only) Whether binary log is enabled. If backup configuration is
+        # disabled, binarylog must be disabled as well.
         # Corresponds to the JSON property `binaryLogEnabled`
         # @return [Boolean]
         attr_accessor :binary_log_enabled
@@ -2236,7 +2236,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :authorized_gae_applications
       
-        # Availability type (PostgreSQL instances only). Potential values:
+        # Availability type (PostgreSQL and MySQL instances only). Potential values:
         # <br><code>ZONAL</code>: The instance serves data from only one zone.
         # Outages in that zone affect data accessibility. <br><code>REGIONAL</code>:
         # The instance can serve data from more than one zone in a region (it is

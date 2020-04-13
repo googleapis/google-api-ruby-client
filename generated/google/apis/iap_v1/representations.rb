@@ -22,6 +22,12 @@ module Google
   module Apis
     module IapV1
       
+      class AccessDeniedPageSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AccessSettings
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -124,7 +130,25 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class PolicyDelegationSettings
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PolicyName
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ResetIdentityAwareProxyClientSecretRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Resource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -148,6 +172,13 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AccessDeniedPageSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_denied_page_uri, as: 'accessDeniedPageUri'
+        end
+      end
+      
       class AccessSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -157,12 +188,16 @@ module Google
       
           property :oauth_settings, as: 'oauthSettings', class: Google::Apis::IapV1::OAuthSettings, decorator: Google::Apis::IapV1::OAuthSettings::Representation
       
+          property :policy_delegation_settings, as: 'policyDelegationSettings', class: Google::Apis::IapV1::PolicyDelegationSettings, decorator: Google::Apis::IapV1::PolicyDelegationSettings::Representation
+      
         end
       end
       
       class ApplicationSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :access_denied_page_settings, as: 'accessDeniedPageSettings', class: Google::Apis::IapV1::AccessDeniedPageSettings, decorator: Google::Apis::IapV1::AccessDeniedPageSettings::Representation
+      
           property :csm_settings, as: 'csmSettings', class: Google::Apis::IapV1::CsmSettings, decorator: Google::Apis::IapV1::CsmSettings::Representation
       
         end
@@ -296,9 +331,40 @@ module Google
         end
       end
       
+      class PolicyDelegationSettings
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :iam_permission, as: 'iamPermission'
+          property :iam_service_name, as: 'iamServiceName'
+          property :policy_name, as: 'policyName', class: Google::Apis::IapV1::PolicyName, decorator: Google::Apis::IapV1::PolicyName::Representation
+      
+          property :resource, as: 'resource', class: Google::Apis::IapV1::Resource, decorator: Google::Apis::IapV1::Resource::Representation
+      
+        end
+      end
+      
+      class PolicyName
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          property :region, as: 'region'
+          property :type, as: 'type'
+        end
+      end
+      
       class ResetIdentityAwareProxyClientSecretRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class Resource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :labels, as: 'labels'
+          property :name, as: 'name'
+          property :service, as: 'service'
+          property :type, as: 'type'
         end
       end
       

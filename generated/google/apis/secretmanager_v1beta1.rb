@@ -20,13 +20,13 @@ module Google
   module Apis
     # Secret Manager API
     #
-    # Stores API keys, passwords, certificates, and other sensitive data. Provides
+    # Stores sensitive data such as API keys, passwords, and certificates. Provides
     # convenience while improving security.
     #
     # @see https://cloud.google.com/secret-manager/
     module SecretmanagerV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200222'
+      REVISION = '20200403'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

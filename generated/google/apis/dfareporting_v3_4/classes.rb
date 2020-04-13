@@ -3127,6 +3127,11 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Online Behavioral Advertiser icon.
+        # Corresponds to the JSON property `obaIcon`
+        # @return [Google::Apis::DfareportingV3_4::ObaIcon]
+        attr_accessor :oba_icon
+      
         # Override CSS value for rich media creatives. Applicable to the following
         # creative types: all RICH_MEDIA.
         # Corresponds to the JSON property `overrideCss`
@@ -3337,6 +3342,7 @@ module Google
           @media_description = args[:media_description] if args.key?(:media_description)
           @media_duration = args[:media_duration] if args.key?(:media_duration)
           @name = args[:name] if args.key?(:name)
+          @oba_icon = args[:oba_icon] if args.key?(:oba_icon)
           @override_css = args[:override_css] if args.key?(:override_css)
           @progress_offset = args[:progress_offset] if args.key?(:progress_offset)
           @redirect_url = args[:redirect_url] if args.key?(:redirect_url)
@@ -3821,11 +3827,17 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::CreativeAssetId]
         attr_accessor :asset_identifier
       
-        # List of detected click tags for assets. This is a read-only auto-generated
-        # field.
+        # List of detected click tags for assets. This is a read-only, auto-generated
+        # field. This field is empty for a rich media asset.
         # Corresponds to the JSON property `clickTags`
         # @return [Array<Google::Apis::DfareportingV3_4::ClickTag>]
         attr_accessor :click_tags
+      
+        # List of counter events configured for the asset. This is a read-only, auto-
+        # generated field and only applicable to a rich media asset.
+        # Corresponds to the JSON property `counterCustomEvents`
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
+        attr_accessor :counter_custom_events
       
         # List of feature dependencies for the creative asset that are detected by
         # Campaign Manager. Feature dependencies are features that a browser must be
@@ -3834,6 +3846,12 @@ module Google
         # Corresponds to the JSON property `detectedFeatures`
         # @return [Array<String>]
         attr_accessor :detected_features
+      
+        # List of exit events configured for the asset. This is a read-only, auto-
+        # generated field and only applicable to a rich media asset.
+        # Corresponds to the JSON property `exitCustomEvents`
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
+        attr_accessor :exit_custom_events
       
         # Numeric ID of the asset. This is a read-only, auto-generated field.
         # Corresponds to the JSON property `id`
@@ -3850,6 +3868,19 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # True if the uploaded asset is a rich media asset. This is a read-only, auto-
+        # generated field.
+        # Corresponds to the JSON property `richMedia`
+        # @return [Boolean]
+        attr_accessor :rich_media
+        alias_method :rich_media?, :rich_media
+      
+        # List of timer events configured for the asset. This is a read-only, auto-
+        # generated field and only applicable to a rich media asset.
+        # Corresponds to the JSON property `timerCustomEvents`
+        # @return [Array<Google::Apis::DfareportingV3_4::CreativeCustomEvent>]
+        attr_accessor :timer_custom_events
       
         # Rules validated during code generation that generated a warning. This is a
         # read-only, auto-generated field.
@@ -3890,10 +3921,14 @@ module Google
         def update!(**args)
           @asset_identifier = args[:asset_identifier] if args.key?(:asset_identifier)
           @click_tags = args[:click_tags] if args.key?(:click_tags)
+          @counter_custom_events = args[:counter_custom_events] if args.key?(:counter_custom_events)
           @detected_features = args[:detected_features] if args.key?(:detected_features)
+          @exit_custom_events = args[:exit_custom_events] if args.key?(:exit_custom_events)
           @id = args[:id] if args.key?(:id)
           @id_dimension_value = args[:id_dimension_value] if args.key?(:id_dimension_value)
           @kind = args[:kind] if args.key?(:kind)
+          @rich_media = args[:rich_media] if args.key?(:rich_media)
+          @timer_custom_events = args[:timer_custom_events] if args.key?(:timer_custom_events)
           @warned_validation_rules = args[:warned_validation_rules] if args.key?(:warned_validation_rules)
         end
       end
@@ -4635,14 +4670,19 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::CustomEventClickAnnotation]
         attr_accessor :annotate_click_event
       
+        # Annotate an impression.
+        # Corresponds to the JSON property `annotateImpressionEvent`
+        # @return [Google::Apis::DfareportingV3_4::CustomEventImpressionAnnotation]
+        attr_accessor :annotate_impression_event
+      
         # Custom variables associated with the event.
         # Corresponds to the JSON property `customVariables`
         # @return [Array<Google::Apis::DfareportingV3_4::CustomVariable>]
         attr_accessor :custom_variables
       
         # The type of event. If INSERT, the fields in insertEvent need to be populated.
-        # If ANNOTATE_CLICK, the fields in annotateClickEvent need to be populated. A
-        # custom event cannot have both insertEvent and annotateClickEvent populated.
+        # If ANNOTATE, the fields in either annotateClickEvent or
+        # annotateImpressionEvent need to be populated.
         # Corresponds to the JSON property `eventType`
         # @return [String]
         attr_accessor :event_type
@@ -4682,6 +4722,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @annotate_click_event = args[:annotate_click_event] if args.key?(:annotate_click_event)
+          @annotate_impression_event = args[:annotate_impression_event] if args.key?(:annotate_impression_event)
           @custom_variables = args[:custom_variables] if args.key?(:custom_variables)
           @event_type = args[:event_type] if args.key?(:event_type)
           @floodlight_configuration_id = args[:floodlight_configuration_id] if args.key?(:floodlight_configuration_id)
@@ -4748,6 +4789,33 @@ module Google
           @code = args[:code] if args.key?(:code)
           @kind = args[:kind] if args.key?(:kind)
           @message = args[:message] if args.key?(:message)
+        end
+      end
+      
+      # Annotate an impression.
+      class CustomEventImpressionAnnotation
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#customEventImpressionAnnotation".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The path impression ID. Use this field to annotate the impression associated
+        # with the pathImpressionId.
+        # Corresponds to the JSON property `pathImpressionId`
+        # @return [String]
+        attr_accessor :path_impression_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @path_impression_id = args[:path_impression_id] if args.key?(:path_impression_id)
         end
       end
       
@@ -6024,7 +6092,7 @@ module Google
         # @return [Google::Apis::DfareportingV3_4::DateRange]
         attr_accessor :date_range
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -6044,7 +6112,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The kind of resource this is, in this case dfareporting#file.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#file".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -6113,21 +6182,22 @@ module Google
         end
       end
       
-      # Represents the list of File resources.
+      # 
       class FileList
         include Google::Apis::Core::Hashable
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # The files returned in this response.
+        # 
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DfareportingV3_4::File>]
         attr_accessor :items
       
-        # The kind of list this is, in this case dfareporting#fileList.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#fileList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7811,6 +7881,69 @@ module Google
         def update!(**args)
           @kind = args[:kind] if args.key?(:kind)
           @mobile_carriers = args[:mobile_carriers] if args.key?(:mobile_carriers)
+        end
+      end
+      
+      # Online Behavioral Advertiser icon.
+      class ObaIcon
+        include Google::Apis::Core::Hashable
+      
+        # URL to redirect to when an OBA icon is clicked.
+        # Corresponds to the JSON property `iconClickThroughUrl`
+        # @return [String]
+        attr_accessor :icon_click_through_url
+      
+        # URL to track click when an OBA icon is clicked.
+        # Corresponds to the JSON property `iconClickTrackingUrl`
+        # @return [String]
+        attr_accessor :icon_click_tracking_url
+      
+        # URL to track view when an OBA icon is clicked.
+        # Corresponds to the JSON property `iconViewTrackingUrl`
+        # @return [String]
+        attr_accessor :icon_view_tracking_url
+      
+        # Identifies the industry initiative that the icon supports. For example,
+        # AdChoices.
+        # Corresponds to the JSON property `program`
+        # @return [String]
+        attr_accessor :program
+      
+        # OBA icon resource URL. Campaign Manager only supports image and JavaScript
+        # icons. Learn more
+        # Corresponds to the JSON property `resourceUrl`
+        # @return [String]
+        attr_accessor :resource_url
+      
+        # Represents the dimensions of ads, placements, creatives, or creative assets.
+        # Corresponds to the JSON property `size`
+        # @return [Google::Apis::DfareportingV3_4::Size]
+        attr_accessor :size
+      
+        # OBA icon x coordinate position. Accepted values are left or right.
+        # Corresponds to the JSON property `xPosition`
+        # @return [String]
+        attr_accessor :x_position
+      
+        # OBA icon y coordinate position. Accepted values are top or bottom.
+        # Corresponds to the JSON property `yPosition`
+        # @return [String]
+        attr_accessor :y_position
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @icon_click_through_url = args[:icon_click_through_url] if args.key?(:icon_click_through_url)
+          @icon_click_tracking_url = args[:icon_click_tracking_url] if args.key?(:icon_click_tracking_url)
+          @icon_view_tracking_url = args[:icon_view_tracking_url] if args.key?(:icon_view_tracking_url)
+          @program = args[:program] if args.key?(:program)
+          @resource_url = args[:resource_url] if args.key?(:resource_url)
+          @size = args[:size] if args.key?(:size)
+          @x_position = args[:x_position] if args.key?(:x_position)
+          @y_position = args[:y_position] if args.key?(:y_position)
         end
       end
       
@@ -12241,7 +12374,9 @@ module Google
         end
       end
       
-      # Represents a UserProfile resource.
+      # A UserProfile resource lets you list all DFA user profiles that are associated
+      # with a Google user account. The profile_id needs to be specified in other API
+      # requests. 
       class UserProfile
         include Google::Apis::Core::Hashable
       
@@ -12255,12 +12390,13 @@ module Google
         # @return [String]
         attr_accessor :account_name
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
       
-        # The kind of resource this is, in this case dfareporting#userProfile.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#userProfile".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -12306,7 +12442,7 @@ module Google
       class UserProfileList
         include Google::Apis::Core::Hashable
       
-        # The eTag of this response for caching purposes.
+        # Etag of this resource.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -12316,7 +12452,8 @@ module Google
         # @return [Array<Google::Apis::DfareportingV3_4::UserProfile>]
         attr_accessor :items
       
-        # The kind of list this is, in this case dfareporting#userProfileList.
+        # Identifies what kind of resource this is. Value: the fixed string "
+        # dfareporting#userProfileList".
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

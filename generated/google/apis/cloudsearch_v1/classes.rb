@@ -31,9 +31,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # boolean property. For example, if operatorName is *closed* and the
         # property's name is *isClosed*, then queries like
-        # *closed:&lt;value&gt;* will show results only where the value of the
+        # *closed:&lt;value&gt;* show results only where the value of the
         # property named *isClosed* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any
         # String properties or text within the content field for the item.
         # The operator name can only contain lowercase letters (a-z).
@@ -435,7 +435,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # date property using the greater-than operator. For example, if
         # greaterThanOperatorName is *closedafter* and the property's name is
-        # *closeDate*, then queries like *closedafter:&lt;value&gt;* will
+        # *closeDate*, then queries like *closedafter:&lt;value&gt;*
         # show results only where the value of the property named *closeDate* is
         # later than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -447,7 +447,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # date property using the less-than operator. For example, if
         # lessThanOperatorName is *closedbefore* and the property's name is
-        # *closeDate*, then queries like *closedbefore:&lt;value&gt;* will
+        # *closeDate*, then queries like *closedbefore:&lt;value&gt;*
         # show results only where the value of the property named *closeDate* is
         # earlier than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -460,9 +460,9 @@ module Google
         # date property. For example, suppose an issue tracking schema object
         # has a property named *closeDate* that specifies an operator with an
         # operatorName of *closedon*. For searches on that data, queries like
-        # *closedon:&lt;value&gt;* will show results only where the value of the
+        # *closedon:&lt;value&gt;* show results only where the value of the
         # *closeDate* property matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any String
         # properties or text within the content field for the indexed datasource.
         # The operator name can only contain lowercase letters (a-z).
@@ -577,17 +577,17 @@ module Google
       end
       
       # A reference to a top-level property within the object that should be
-      # displayed in search results. The values of the chosen properties will be
+      # displayed in search results. The values of the chosen properties is
       # displayed in the search results along with the
-      # dislpay label
+      # display label
       # for that property if one is specified. If a display label is not specified,
-      # only the values will be shown.
+      # only the values is shown.
       class DisplayedProperty
         include Google::Apis::Core::Hashable
       
         # The name of the top-level property as defined in a property definition
         # for the object. If the name is not a defined property in the schema, an
-        # error will be given when attempting to update the schema.
+        # error is given when attempting to update the schema.
         # Corresponds to the JSON property `propertyName`
         # @return [String]
         attr_accessor :property_name
@@ -765,7 +765,7 @@ module Google
       # optional. Search operators let users restrict the query to specific fields
       # relevant to the type of item being searched. For example, if you provide no
       # operator for a *priority* enum property with possible values *p0* and *p1*,
-      # a query that contains the term *p0* will return items that have *p0* as the
+      # a query that contains the term *p0* returns items that have *p0* as the
       # value of the *priority* property, as well as any items that contain the
       # string *p0* in other fields. If you provide an operator name for the enum,
       # such as *priority*, then search users can use that operator to refine
@@ -777,9 +777,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # enum property. For example, if operatorName is *priority* and the
         # property's name is *priorityVal*, then queries like
-        # *priority:&lt;value&gt;* will show results only where the value of the
+        # *priority:&lt;value&gt;* show results only where the value of the
         # property named *priorityVal* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any String
         # properties or text within the content field for the item.
         # The operator name can only contain lowercase letters (a-z).
@@ -813,7 +813,7 @@ module Google
         # optional. Search operators let users restrict the query to specific fields
         # relevant to the type of item being searched. For example, if you provide no
         # operator for a *priority* enum property with possible values *p0* and *p1*,
-        # a query that contains the term *p0* will return items that have *p0* as the
+        # a query that contains the term *p0* returns items that have *p0* as the
         # value of the *priority* property, as well as any items that contain the
         # string *p0* in other fields. If you provide an operator name for the enum,
         # such as *priority*, then search users can use that operator to refine
@@ -1200,7 +1200,7 @@ module Google
         # updateTime
         # as the freshness indicator.
         # The maximum length is 256 characters.
-        # When a property is used to calculate fresheness, the value defaults
+        # When a property is used to calculate freshness, the value defaults
         # to 2 years from the current time.
         # Corresponds to the JSON property `freshnessProperty`
         # @return [String]
@@ -1411,9 +1411,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # html property. For example, if operatorName is *subject* and the
         # property's name is *subjectLine*, then queries like
-        # *subject:&lt;value&gt;* will show results only where the value of the
+        # *subject:&lt;value&gt;* show results only where the value of the
         # property named *subjectLine* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator return
         # all items where *&lt;value&gt;* matches the value of any
         # html properties or text within the content field for the item.
         # The operator name can only contain lowercase letters (a-z).
@@ -1554,7 +1554,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # integer property using the greater-than operator. For example, if
         # greaterThanOperatorName is *priorityabove* and the property's name is
-        # *priorityVal*, then queries like *priorityabove:&lt;value&gt;* will
+        # *priorityVal*, then queries like *priorityabove:&lt;value&gt;*
         # show results only where the value of the property named *priorityVal* is
         # greater than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -1566,7 +1566,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # integer property using the less-than operator. For example, if
         # lessThanOperatorName is *prioritybelow* and the property's name is
-        # *priorityVal*, then queries like *prioritybelow:&lt;value&gt;* will
+        # *priorityVal*, then queries like *prioritybelow:&lt;value&gt;*
         # show results only where the value of the property named *priorityVal* is
         # less than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -1578,9 +1578,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # integer property. For example, if operatorName is *priority* and the
         # property's name is *priorityVal*, then queries like
-        # *priority:&lt;value&gt;* will show results only where the value of the
+        # *priority:&lt;value&gt;* show results only where the value of the
         # property named *priorityVal* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any String
         # properties or text within the content field for the item.
         # The operator name can only contain lowercase letters (a-z).
@@ -2008,6 +2008,8 @@ module Google
       
         # Link to the source repository serving the data.  &#83;earch results apply
         # this link to the title.
+        # Whitespace or special characters may cause Cloud &#83;earch result links to
+        # trigger a redirect notice; to avoid this, encode the URL.
         # The maximum length is 2048 characters.
         # Corresponds to the JSON property `sourceRepositoryUrl`
         # @return [String]
@@ -2374,7 +2376,7 @@ module Google
       class Metaline
         include Google::Apis::Core::Hashable
       
-        # The list of displayed properties for the metaline. The maxiumum number of
+        # The list of displayed properties for the metaline. The maximum number of
         # properties is 5.
         # Corresponds to the JSON property `properties`
         # @return [Array<Google::Apis::CloudsearchV1::DisplayedProperty>]
@@ -2533,21 +2535,21 @@ module Google
       class ObjectDisplayOptions
         include Google::Apis::Core::Hashable
       
-        # Defines the properties that will be displayed in the metalines of the
-        # search results. The property values will be displayed in the order given
-        # here. If a property holds multiple values, all of the values will be
-        # diplayed before the next properties. For this reason, it is a good practice
-        # to specify singular properties before repeated properties in this list. All
-        # of the properties must set
+        # Defines the properties that are displayed in the metalines of the
+        # search results. The property values are displayed in the order given
+        # here. If a property holds multiple values, all of the values are
+        # displayed before the next properties. For this reason, it is a good
+        # practice to specify singular properties before repeated properties in this
+        # list. All of the properties must set
         # is_returnable
         # to true. The maximum number of metalines is 3.
         # Corresponds to the JSON property `metalines`
         # @return [Array<Google::Apis::CloudsearchV1::Metaline>]
         attr_accessor :metalines
       
-        # The user friendly label to display in the search result to inidicate the
-        # type of the item. This is OPTIONAL; if not given, an object label will not
-        # be displayed on the context line of the search results. The maximum length
+        # The user friendly label to display in the search result to indicate the
+        # type of the item. This is OPTIONAL; if not provided, an object label isn't
+        # displayed on the context line of the search results. The maximum length
         # is 32 characters.
         # Corresponds to the JSON property `objectDisplayLabel`
         # @return [String]
@@ -2983,7 +2985,7 @@ module Google
         # Indicates that multiple values are allowed for the property. For example, a
         # document only has one description but can have multiple comments. Cannot be
         # true for properties whose type is a boolean.
-        # If set to false, properties that contain more than one value will cause the
+        # If set to false, properties that contain more than one value cause the
         # indexing request for that item to be rejected.
         # Corresponds to the JSON property `isRepeatable`
         # @return [Boolean]
@@ -3087,14 +3089,14 @@ module Google
       class PropertyDisplayOptions
         include Google::Apis::Core::Hashable
       
-        # The user friendly label for the property that will be used if the property
-        # is specified to be displayed in ObjectDisplayOptions. If given, the display
-        # label will be shown in front of the property values when the property is
+        # The user friendly label for the property that is used if the property
+        # is specified to be displayed in ObjectDisplayOptions. If provided, the
+        # display label is shown in front of the property values when the property is
         # part of the object display options. For example, if the property value is
         # '1', the value by itself may not be useful context for the user. If the
-        # display name given was 'priority', then the user will see 'priority : 1' in
-        # the search results which provides clear conext to search users. This is
-        # OPTIONAL; if not given, only the property values will be displayed.
+        # display name given was 'priority', then the user sees 'priority : 1' in
+        # the search results which provides clear context to search users. This is
+        # OPTIONAL; if not given, only the property values are displayed.
         # The maximum length is 32 characters.
         # Corresponds to the JSON property `displayLabel`
         # @return [String]
@@ -4720,15 +4722,15 @@ module Google
       class TextOperatorOptions
         include Google::Apis::Core::Hashable
       
-        # If true, the text value will be tokenized as one atomic value in
+        # If true, the text value is tokenized as one atomic value in
         # operator searches and facet matches. For example, if the operator name is
         # "genre" and the value is "science-fiction" the query restrictions
-        # "genre:science" and "genre:fiction" will not match the item;
-        # "genre:science-fiction" will. Value matching is case-sensitive
+        # "genre:science" and "genre:fiction" doesn't match the item;
+        # "genre:science-fiction" does. Value matching is case-sensitive
         # and does not remove special characters.
-        # If false, the text will be tokenized. For example, if the value is
-        # "science-fiction" the queries "genre:science" and "genre:fiction" will
-        # match the item.
+        # If false, the text is tokenized. For example, if the value is
+        # "science-fiction" the queries "genre:science" and "genre:fiction"
+        # matches the item.
         # Corresponds to the JSON property `exactMatchWithOperator`
         # @return [Boolean]
         attr_accessor :exact_match_with_operator
@@ -4737,9 +4739,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # text property. For example, if operatorName is *subject* and the
         # property's name is *subjectLine*, then queries like
-        # *subject:&lt;value&gt;* will show results only where the value of the
+        # *subject:&lt;value&gt;* show results only where the value of the
         # property named *subjectLine* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any
         # text properties or text within the content field for the item.
         # The operator name can only contain lowercase letters (a-z).
@@ -4815,7 +4817,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # timestamp property using the greater-than operator. For example, if
         # greaterThanOperatorName is *closedafter* and the property's name is
-        # *closeDate*, then queries like *closedafter:&lt;value&gt;* will
+        # *closeDate*, then queries like *closedafter:&lt;value&gt;*
         # show results only where the value of the property named *closeDate* is
         # later than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -4827,7 +4829,7 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # timestamp property using the less-than operator. For example, if
         # lessThanOperatorName is *closedbefore* and the property's name is
-        # *closeDate*, then queries like *closedbefore:&lt;value&gt;* will
+        # *closeDate*, then queries like *closedbefore:&lt;value&gt;*
         # show results only where the value of the property named *closeDate* is
         # earlier than *&lt;value&gt;*.
         # The operator name can only contain lowercase letters (a-z).
@@ -4839,9 +4841,9 @@ module Google
         # Indicates the operator name required in the query in order to isolate the
         # timestamp property. For example, if operatorName is *closedon* and the
         # property's name is *closeDate*, then queries like
-        # *closedon:&lt;value&gt;* will show results only where the value of the
+        # *closedon:&lt;value&gt;* show results only where the value of the
         # property named *closeDate* matches *&lt;value&gt;*. By contrast, a
-        # search that uses the same *&lt;value&gt;* without an operator will return
+        # search that uses the same *&lt;value&gt;* without an operator returns
         # all items where *&lt;value&gt;* matches the value of any String
         # properties or text within the content field for the item. The operator
         # name can only contain lowercase letters (a-z). The maximum length is 32

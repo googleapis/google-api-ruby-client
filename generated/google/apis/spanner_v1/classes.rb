@@ -22,6 +22,121 @@ module Google
   module Apis
     module SpannerV1
       
+      # A backup of a Cloud Spanner database.
+      class Backup
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The backup will contain an externally consistent
+        # copy of the database at the timestamp specified by
+        # `create_time`. `create_time` is approximately the time the
+        # CreateBackup request is received.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Required for the CreateBackup operation.
+        # Name of the database from which this backup was
+        # created. This needs to be in the same instance as the backup.
+        # Values are of the form
+        # `projects/<project>/instances/<instance>/databases/<database>`.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # Required for the CreateBackup
+        # operation. The expiration time of the backup, with microseconds
+        # granularity that must be at least 6 hours and at most 366 days
+        # from the time the CreateBackup request is processed. Once the `expire_time`
+        # has passed, the backup is eligible to be automatically deleted by Cloud
+        # Spanner to free the resources used by the backup.
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
+        # Output only for the CreateBackup operation.
+        # Required for the UpdateBackup operation.
+        # A globally unique identifier for the backup which cannot be
+        # changed. Values are of the form
+        # `projects/<project>/instances/<instance>/backups/a-z*[a-z0-9]`
+        # The final segment of the name must be between 2 and 60 characters
+        # in length.
+        # The backup is stored in the location(s) specified in the instance
+        # configuration of the instance containing the backup, identified
+        # by the prefix of the backup name of the form
+        # `projects/<project>/instances/<instance>`.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The names of the restored databases that reference the backup.
+        # The database names are of
+        # the form `projects/<project>/instances/<instance>/databases/<database>`.
+        # Referencing databases may exist in different instances. The existence of
+        # any referencing database prevents the backup from being deleted. When a
+        # restored database from the backup enters the `READY` state, the reference
+        # to the backup is removed.
+        # Corresponds to the JSON property `referencingDatabases`
+        # @return [Array<String>]
+        attr_accessor :referencing_databases
+      
+        # Output only. Size of the backup in bytes.
+        # Corresponds to the JSON property `sizeBytes`
+        # @return [Fixnum]
+        attr_accessor :size_bytes
+      
+        # Output only. The current state of the backup.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @database = args[:database] if args.key?(:database)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
+          @name = args[:name] if args.key?(:name)
+          @referencing_databases = args[:referencing_databases] if args.key?(:referencing_databases)
+          @size_bytes = args[:size_bytes] if args.key?(:size_bytes)
+          @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # Information about a backup.
+      class BackupInfo
+        include Google::Apis::Core::Hashable
+      
+        # Name of the backup.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # The backup contains an externally consistent copy of `source_database` at
+        # the timestamp specified by `create_time`.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # Name of the database the backup was created from.
+        # Corresponds to the JSON property `sourceDatabase`
+        # @return [String]
+        attr_accessor :source_database
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @source_database = args[:source_database] if args.key?(:source_database)
+        end
+      end
+      
       # The request for BatchCreateSessions.
       class BatchCreateSessionsRequest
         include Google::Apis::Core::Hashable
@@ -696,6 +811,55 @@ module Google
       end
       
       # Metadata type for the operation returned by
+      # CreateBackup.
+      class CreateBackupMetadata
+        include Google::Apis::Core::Hashable
+      
+        # The time at which cancellation of this operation was received.
+        # Operations.CancelOperation
+        # starts asynchronous cancellation on a long-running operation. The server
+        # makes a best effort to cancel the operation, but success is not guaranteed.
+        # Clients can use
+        # Operations.GetOperation or
+        # other methods to check whether the cancellation succeeded or whether the
+        # operation completed despite cancellation. On successful cancellation,
+        # the operation is not deleted; instead, it becomes an operation with
+        # an Operation.error value with a google.rpc.Status.code of 1,
+        # corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # The name of the database the backup is created from.
+        # Corresponds to the JSON property `database`
+        # @return [String]
+        attr_accessor :database
+      
+        # The name of the backup being created.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Spanner long
+        # running operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @database = args[:database] if args.key?(:database)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
+        end
+      end
+      
+      # Metadata type for the operation returned by
       # CreateDatabase.
       class CreateDatabaseMetadata
         include Google::Apis::Core::Hashable
@@ -728,7 +892,7 @@ module Google
         # @return [String]
         attr_accessor :create_statement
       
-        # An optional list of DDL statements to run inside the newly created
+        # Optional. A list of DDL statements to run inside the newly created
         # database. Statements can create tables, indexes, etc. These
         # statements execute atomically with the creation of the database:
         # if there is an error in any statement, the database is not created.
@@ -839,6 +1003,11 @@ module Google
       class Database
         include Google::Apis::Core::Hashable
       
+        # Output only. If exists, the time at which the database creation started.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Required. The name of the database. Values are of the form
         # `projects/<project>/instances/<instance>/databases/<database>`,
         # where `<database>` is as specified in the `CREATE DATABASE`
@@ -847,6 +1016,11 @@ module Google
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Information about the database restore.
+        # Corresponds to the JSON property `restoreInfo`
+        # @return [Google::Apis::SpannerV1::RestoreInfo]
+        attr_accessor :restore_info
       
         # Output only. The current database state.
         # Corresponds to the JSON property `state`
@@ -859,7 +1033,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @name = args[:name] if args.key?(:name)
+          @restore_info = args[:restore_info] if args.key?(:restore_info)
           @state = args[:state] if args.key?(:state)
         end
       end
@@ -1538,6 +1714,102 @@ module Google
         end
       end
       
+      # The response for
+      # ListBackupOperations.
+      class ListBackupOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent
+        # ListBackupOperations
+        # call to fetch more of the matching metadata.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching backup long-running
+        # operations. Each operation's name will be
+        # prefixed by the backup's name and the operation's
+        # metadata will be of type
+        # CreateBackupMetadata. Operations returned include those that are
+        # pending or have completed/failed/canceled within the last 7 days.
+        # Operations returned are ordered by
+        # `operation.metadata.value.progress.start_time` in descending order starting
+        # from the most recently started operation.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpannerV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
+      # The response for ListBackups.
+      class ListBackupsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of matching backups. Backups returned are ordered by `create_time`
+        # in descending order, starting from the most recent `create_time`.
+        # Corresponds to the JSON property `backups`
+        # @return [Array<Google::Apis::SpannerV1::Backup>]
+        attr_accessor :backups
+      
+        # `next_page_token` can be sent in a subsequent
+        # ListBackups call to fetch more
+        # of the matching backups.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backups = args[:backups] if args.key?(:backups)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response for
+      # ListDatabaseOperations.
+      class ListDatabaseOperationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # `next_page_token` can be sent in a subsequent
+        # ListDatabaseOperations
+        # call to fetch more of the matching metadata.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of matching database long-running
+        # operations. Each operation's name will be
+        # prefixed by the database's name. The operation's
+        # metadata field type
+        # `metadata.type_url` describes the type of the metadata.
+        # Corresponds to the JSON property `operations`
+        # @return [Array<Google::Apis::SpannerV1::Operation>]
+        attr_accessor :operations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @operations = args[:operations] if args.key?(:operations)
+        end
+      end
+      
       # The response for ListDatabases.
       class ListDatabasesResponse
         include Google::Apis::Core::Hashable
@@ -1781,6 +2053,69 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @name = args[:name] if args.key?(:name)
           @response = args[:response] if args.key?(:response)
+        end
+      end
+      
+      # Encapsulates progress related information for a Cloud Spanner long
+      # running operation.
+      class OperationProgress
+        include Google::Apis::Core::Hashable
+      
+        # If set, the time at which this operation failed or was completed
+        # successfully.
+        # Corresponds to the JSON property `endTime`
+        # @return [String]
+        attr_accessor :end_time
+      
+        # Percent completion of the operation.
+        # Values are between 0 and 100 inclusive.
+        # Corresponds to the JSON property `progressPercent`
+        # @return [Fixnum]
+        attr_accessor :progress_percent
+      
+        # Time the request was received.
+        # Corresponds to the JSON property `startTime`
+        # @return [String]
+        attr_accessor :start_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_time = args[:end_time] if args.key?(:end_time)
+          @progress_percent = args[:progress_percent] if args.key?(:progress_percent)
+          @start_time = args[:start_time] if args.key?(:start_time)
+        end
+      end
+      
+      # Metadata type for the long-running operation used to track the progress
+      # of optimizations performed on a newly restored database. This long-running
+      # operation is automatically created by the system after the successful
+      # completion of a database restore, and cannot be cancelled.
+      class OptimizeRestoredDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Name of the restored database being optimized.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Encapsulates progress related information for a Cloud Spanner long
+        # running operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @progress = args[:progress] if args.key?(:progress)
         end
       end
       
@@ -2575,6 +2910,133 @@ module Google
           @default_leader_location = args[:default_leader_location] if args.key?(:default_leader_location)
           @location = args[:location] if args.key?(:location)
           @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # Metadata type for the long-running operation returned by
+      # RestoreDatabase.
+      class RestoreDatabaseMetadata
+        include Google::Apis::Core::Hashable
+      
+        # Information about a backup.
+        # Corresponds to the JSON property `backupInfo`
+        # @return [Google::Apis::SpannerV1::BackupInfo]
+        attr_accessor :backup_info
+      
+        # The time at which cancellation of this operation was received.
+        # Operations.CancelOperation
+        # starts asynchronous cancellation on a long-running operation. The server
+        # makes a best effort to cancel the operation, but success is not guaranteed.
+        # Clients can use
+        # Operations.GetOperation or
+        # other methods to check whether the cancellation succeeded or whether the
+        # operation completed despite cancellation. On successful cancellation,
+        # the operation is not deleted; instead, it becomes an operation with
+        # an Operation.error value with a
+        # google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+        # Corresponds to the JSON property `cancelTime`
+        # @return [String]
+        attr_accessor :cancel_time
+      
+        # Name of the database being created and restored to.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # If exists, the name of the long-running operation that will be used to
+        # track the post-restore optimization process to optimize the performance of
+        # the restored database, and remove the dependency on the restore source.
+        # The name is of the form
+        # `projects/<project>/instances/<instance>/databases/<database>/operations/<
+        # operation>`
+        # where the <database> is the name of database being created and restored to.
+        # The metadata type of the  long-running operation is
+        # OptimizeRestoredDatabaseMetadata. This long-running operation will be
+        # automatically created by the system after the RestoreDatabase long-running
+        # operation completes successfully. This operation will not be created if the
+        # restore was not successful.
+        # Corresponds to the JSON property `optimizeDatabaseOperationName`
+        # @return [String]
+        attr_accessor :optimize_database_operation_name
+      
+        # Encapsulates progress related information for a Cloud Spanner long
+        # running operation.
+        # Corresponds to the JSON property `progress`
+        # @return [Google::Apis::SpannerV1::OperationProgress]
+        attr_accessor :progress
+      
+        # The type of the restore source.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_info = args[:backup_info] if args.key?(:backup_info)
+          @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
+          @name = args[:name] if args.key?(:name)
+          @optimize_database_operation_name = args[:optimize_database_operation_name] if args.key?(:optimize_database_operation_name)
+          @progress = args[:progress] if args.key?(:progress)
+          @source_type = args[:source_type] if args.key?(:source_type)
+        end
+      end
+      
+      # The request for
+      # RestoreDatabase.
+      class RestoreDatabaseRequest
+        include Google::Apis::Core::Hashable
+      
+        # Name of the backup from which to restore.  Values are of the form
+        # `projects/<project>/instances/<instance>/backups/<backup>`.
+        # Corresponds to the JSON property `backup`
+        # @return [String]
+        attr_accessor :backup
+      
+        # Required. The id of the database to create and restore to. This
+        # database must not already exist. The `database_id` appended to
+        # `parent` forms the full database name of the form
+        # `projects/<project>/instances/<instance>/databases/<database_id>`.
+        # Corresponds to the JSON property `databaseId`
+        # @return [String]
+        attr_accessor :database_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup = args[:backup] if args.key?(:backup)
+          @database_id = args[:database_id] if args.key?(:database_id)
+        end
+      end
+      
+      # Information about the database restore.
+      class RestoreInfo
+        include Google::Apis::Core::Hashable
+      
+        # Information about a backup.
+        # Corresponds to the JSON property `backupInfo`
+        # @return [Google::Apis::SpannerV1::BackupInfo]
+        attr_accessor :backup_info
+      
+        # The type of the restore source.
+        # Corresponds to the JSON property `sourceType`
+        # @return [String]
+        attr_accessor :source_type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @backup_info = args[:backup_info] if args.key?(:backup_info)
+          @source_type = args[:source_type] if args.key?(:source_type)
         end
       end
       
