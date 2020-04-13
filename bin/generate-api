@@ -78,10 +78,10 @@ module Google
       def generate_from_discovery(preferred_only: false)
         say 'Fetching API list'
         apis = discovery.list_apis
-        blacklist = api_list_config["blacklist"] || []
+        exclude_apis = api_list_config["exclude"] || []
         apis.items.each do |api|
-          if blacklist.include? "#{api.name}.#{api.version}"
-            say "Ignoring blacklisted API #{api.name} #{api.version}"
+          if exclude_apis.include? "#{api.name}.#{api.version}"
+            say "Ignoring excluded API #{api.name} #{api.version}"
           elsif (preferred_only && !api.preferred?)
             say sprintf('Ignoring disoverable API %s', api.id)
           else
