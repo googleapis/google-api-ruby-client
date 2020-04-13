@@ -76,7 +76,7 @@ module Google
         def pick_name(alt_name)
           preferred_name = @names[key]
           if preferred_name && preferred_name == alt_name
-            logger.warn { sprintf("Unnecessary name override '%s': %s", key, alt_name) }
+            # logger.warn { sprintf("Unnecessary name override '%s': %s", key, alt_name) }
           elsif preferred_name.nil?
             preferred_name = @names[key] = alt_name
           end
