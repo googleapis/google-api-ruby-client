@@ -203,7 +203,7 @@ module Google
         #   The object ID of the page whose thumbnail to retrieve.
         # @param [String] thumbnail_properties_mime_type
         #   The optional mime type of the thumbnail image.
-        #   If you don't specify the mime type, the default mime type will be PNG.
+        #   If you don't specify the mime type, the mime type defaults to PNG.
         # @param [String] thumbnail_properties_thumbnail_size
         #   The optional thumbnail image size.
         #   If you don't specify the size, the server chooses a default size of the

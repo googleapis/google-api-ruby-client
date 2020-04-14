@@ -3349,16 +3349,21 @@ module Google
       class Probe
         include Google::Apis::Core::Hashable
       
+        # ExecAction describes a "run in container" action.
+        # Corresponds to the JSON property `exec`
+        # @return [Google::Apis::RunV1alpha1::ExecAction]
+        attr_accessor :exec
+      
         # Minimum consecutive failures for the probe to be considered failed after
         # having succeeded. Defaults to 3. Minimum value is 1. +optional
         # Corresponds to the JSON property `failureThreshold`
         # @return [Fixnum]
         attr_accessor :failure_threshold
       
-        # Handler defines a specific action that should be taken
-        # Corresponds to the JSON property `handler`
-        # @return [Google::Apis::RunV1alpha1::Handler]
-        attr_accessor :handler
+        # HTTPGetAction describes an action based on HTTP Get requests.
+        # Corresponds to the JSON property `httpGet`
+        # @return [Google::Apis::RunV1alpha1::HttpGetAction]
+        attr_accessor :http_get
       
         # Number of seconds after the container has started before liveness probes
         # are initiated. More info:
@@ -3383,6 +3388,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :success_threshold
       
+        # TCPSocketAction describes an action based on opening a socket
+        # Corresponds to the JSON property `tcpSocket`
+        # @return [Google::Apis::RunV1alpha1::TcpSocketAction]
+        attr_accessor :tcp_socket
+      
         # Number of seconds after which the probe times out.
         # Defaults to 1 second. Minimum value is 1.
         # More info:
@@ -3399,11 +3409,13 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @exec = args[:exec] if args.key?(:exec)
           @failure_threshold = args[:failure_threshold] if args.key?(:failure_threshold)
-          @handler = args[:handler] if args.key?(:handler)
+          @http_get = args[:http_get] if args.key?(:http_get)
           @initial_delay_seconds = args[:initial_delay_seconds] if args.key?(:initial_delay_seconds)
           @period_seconds = args[:period_seconds] if args.key?(:period_seconds)
           @success_threshold = args[:success_threshold] if args.key?(:success_threshold)
+          @tcp_socket = args[:tcp_socket] if args.key?(:tcp_socket)
           @timeout_seconds = args[:timeout_seconds] if args.key?(:timeout_seconds)
         end
       end

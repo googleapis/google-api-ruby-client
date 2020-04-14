@@ -2498,7 +2498,7 @@ module Google
         # properties of all placeholder shapes on pages that use that master.
         # - The master page properties define the common page properties inherited by
         # its layouts.
-        # - Any other shapes on the master slide will appear on all slides using that
+        # - Any other shapes on the master slide appear on all slides using that
         # master, regardless of their layout.
         # Corresponds to the JSON property `masters`
         # @return [Array<Google::Apis::SlidesV1::Page>]

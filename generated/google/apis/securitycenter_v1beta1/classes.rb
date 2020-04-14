@@ -410,10 +410,6 @@ module Google
       # notification, analysis, policy testing, and enforcement. For example, a
       # cross-site scripting (XSS) vulnerability in an App Engine application is a
       # finding.
-      # When adding a new field hidden behind a visibility label, ensure it is also
-      # hidden from Notifications:
-      # http://google3/java/com/google/cloud/security/riskdashboard/notification/
-      # actions/streaming/FindingTranslator.java?l=26
       class Finding
         include Google::Apis::Core::Hashable
       
@@ -563,10 +559,6 @@ module Google
         # notification, analysis, policy testing, and enforcement. For example, a
         # cross-site scripting (XSS) vulnerability in an App Engine application is a
         # finding.
-        # When adding a new field hidden behind a visibility label, ensure it is also
-        # hidden from Notifications:
-        # http://google3/java/com/google/cloud/security/riskdashboard/notification/
-        # actions/streaming/FindingTranslator.java?l=26
         # Corresponds to the JSON property `finding`
         # @return [Google::Apis::SecuritycenterV1beta1::Finding]
         attr_accessor :finding

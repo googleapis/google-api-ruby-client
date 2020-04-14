@@ -1419,12 +1419,16 @@ module Google
       class Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exec, as: 'exec', class: Google::Apis::RunV1alpha1::ExecAction, decorator: Google::Apis::RunV1alpha1::ExecAction::Representation
+      
           property :failure_threshold, as: 'failureThreshold'
-          property :handler, as: 'handler', class: Google::Apis::RunV1alpha1::Handler, decorator: Google::Apis::RunV1alpha1::Handler::Representation
+          property :http_get, as: 'httpGet', class: Google::Apis::RunV1alpha1::HttpGetAction, decorator: Google::Apis::RunV1alpha1::HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'
           property :period_seconds, as: 'periodSeconds'
           property :success_threshold, as: 'successThreshold'
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV1alpha1::TcpSocketAction, decorator: Google::Apis::RunV1alpha1::TcpSocketAction::Representation
+      
           property :timeout_seconds, as: 'timeoutSeconds'
         end
       end

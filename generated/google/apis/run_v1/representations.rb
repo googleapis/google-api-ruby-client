@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Handler
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class IntOrString
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -708,18 +702,6 @@ module Google
         end
       end
       
-      class Handler
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :exec, as: 'exec', class: Google::Apis::RunV1::ExecAction, decorator: Google::Apis::RunV1::ExecAction::Representation
-      
-          property :http_get, as: 'httpGet', class: Google::Apis::RunV1::HttpGetAction, decorator: Google::Apis::RunV1::HttpGetAction::Representation
-      
-          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV1::TcpSocketAction, decorator: Google::Apis::RunV1::TcpSocketAction::Representation
-      
-        end
-      end
-      
       class IntOrString
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -923,12 +905,16 @@ module Google
       class Probe
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :exec, as: 'exec', class: Google::Apis::RunV1::ExecAction, decorator: Google::Apis::RunV1::ExecAction::Representation
+      
           property :failure_threshold, as: 'failureThreshold'
-          property :handler, as: 'handler', class: Google::Apis::RunV1::Handler, decorator: Google::Apis::RunV1::Handler::Representation
+          property :http_get, as: 'httpGet', class: Google::Apis::RunV1::HttpGetAction, decorator: Google::Apis::RunV1::HttpGetAction::Representation
       
           property :initial_delay_seconds, as: 'initialDelaySeconds'
           property :period_seconds, as: 'periodSeconds'
           property :success_threshold, as: 'successThreshold'
+          property :tcp_socket, as: 'tcpSocket', class: Google::Apis::RunV1::TcpSocketAction, decorator: Google::Apis::RunV1::TcpSocketAction::Representation
+      
           property :timeout_seconds, as: 'timeoutSeconds'
         end
       end
