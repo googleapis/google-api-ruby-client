@@ -26,7 +26,7 @@ module Google
         output, _ = Open3.capture2('ver')
         output.sub(/\s*\[Version\s*/, '/').sub(']', '')
       elsif RUBY_PLATFORM =~ /darwin/i
-        output, _ = Open3.capture2('sw_vers -productVersion')
+        output, _ = Open3.capture2('sw_vers', '-productVersion')
         "Mac OS X/#{output}"
       elsif RUBY_PLATFORM == 'java'
         require 'java'
@@ -34,7 +34,7 @@ module Google
         version = java.lang.System.getProperty('os.version')
         "#{name}/#{version}"
       else
-        output, _ = Open3.capture2('uname -sr')
+        output, _ = Open3.capture2('uname', '-sr')
         output.sub(' ', '/')
       end.strip
     rescue
