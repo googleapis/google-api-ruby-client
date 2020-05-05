@@ -59,7 +59,7 @@ module Google
         Array(urls).each do |url|
           begin
             json = discovery.http(:get, url)
-          rescue Google::Apis::ClientError
+          rescue Google::Apis::Error
             warn sprintf('Failed request, skipping %s', url)
             next
           end
