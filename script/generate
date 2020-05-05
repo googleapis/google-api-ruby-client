@@ -7,7 +7,6 @@ DIR=$(dirname $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ))
 URLS=(https://content.googleapis.com/discovery/v1/apis/appsmarket/v2/rest \
       https://content.googleapis.com/discovery/v1/apis/youtubePartner/v1/rest \
       https://content.googleapis.com/discovery/v1/apis/compute/beta/rest \
-      https://developers.google.com/my-business/samples/mybusiness_google_rest_v3.json \
       https://monitoring.googleapis.com/\$discovery/rest?version=v3
 )
 
