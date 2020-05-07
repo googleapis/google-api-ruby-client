@@ -260,8 +260,6 @@ module Google
         # Unlocks this achievement for the currently authenticated player.
         # @param [String] achievement_id
         #   The ID of the achievement used by this method.
-        # @param [String] builtin_game_id
-        #   Override used only by built-in games in Play Games application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -281,12 +279,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unlock_achievement(achievement_id, builtin_game_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def unlock_achievement(achievement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'achievements/{achievementId}/unlock', options)
           command.response_representation = Google::Apis::GamesV1::AchievementUnlockResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementUnlockResponse
           command.params['achievementId'] = achievement_id unless achievement_id.nil?
-          command.query['builtinGameId'] = builtin_game_id unless builtin_game_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -295,8 +292,6 @@ module Google
         
         # Updates multiple achievements for the currently authenticated player.
         # @param [Google::Apis::GamesV1::AchievementUpdateMultipleRequest] achievement_update_multiple_request_object
-        # @param [String] builtin_game_id
-        #   Override used only by built-in games in Play Games application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -316,13 +311,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_multiple_achievements(achievement_update_multiple_request_object = nil, builtin_game_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def update_multiple_achievements(achievement_update_multiple_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'achievements/updateMultiple', options)
           command.request_representation = Google::Apis::GamesV1::AchievementUpdateMultipleRequest::Representation
           command.request_object = achievement_update_multiple_request_object
           command.response_representation = Google::Apis::GamesV1::AchievementUpdateMultipleResponse::Representation
           command.response_class = Google::Apis::GamesV1::AchievementUpdateMultipleResponse
-          command.query['builtinGameId'] = builtin_game_id unless builtin_game_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -371,8 +365,6 @@ module Google
         end
         
         # Indicate that the the currently authenticated user is playing your application.
-        # @param [String] builtin_game_id
-        #   Override used only by built-in games in Play Games application.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -392,9 +384,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def played_application(builtin_game_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def played_application(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:post, 'applications/played', options)
-          command.query['builtinGameId'] = builtin_game_id unless builtin_game_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?

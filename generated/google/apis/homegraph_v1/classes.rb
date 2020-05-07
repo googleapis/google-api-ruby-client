@@ -103,18 +103,19 @@ module Google
         attr_accessor :name
       
         # Indicates whether your smart home Action will report notifications
-        # to Google for this device via ReportStateAndNotification.
+        # to Google for this device via
+        # ReportStateAndNotification.
         # If your smart home Action enables users to control device notifications,
-        # you should update this field and call RequestSyncDevices.
+        # you should update this field and call
+        # RequestSyncDevices.
         # Corresponds to the JSON property `notificationSupportedByAgent`
         # @return [Boolean]
         attr_accessor :notification_supported_by_agent
         alias_method :notification_supported_by_agent?, :notification_supported_by_agent
       
         # Alternate IDs associated with this device.
-        # This is used to identify cloud synced devices enabled for
-        # [local
-        # execution](https://developers.google.com/assistant/smarthome/concepts/local).
+        # This is used to identify cloud synced devices enabled for [local
+        # fulfillment](https://developers.google.com/assistant/smarthome/concepts/local).
         # Corresponds to the JSON property `otherDeviceIds`
         # @return [Array<Google::Apis::HomegraphV1::AgentOtherDeviceId>]
         attr_accessor :other_device_ids
@@ -146,7 +147,8 @@ module Google
         attr_accessor :type
       
         # Indicates whether your smart home Action will report state of this device
-        # to Google via ReportStateAndNotification.
+        # to Google via
+        # ReportStateAndNotification.
         # Corresponds to the JSON property `willReportState`
         # @return [Boolean]
         attr_accessor :will_report_state

@@ -759,6 +759,7 @@ module Google
         # @param [String] name
         #   Name of the Item to start a resumable upload.
         #   Format: datasources/`source_id`/items/`item_id`.
+        #   The maximum length is 1536 bytes.
         # @param [Google::Apis::CloudsearchV1::StartUploadItemRequest] start_upload_item_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -982,7 +983,8 @@ module Google
         #   The suggest API does not use this parameter. Instead, suggest autocompletes
         #   only based on characters in the query.
         # @param [String] request_options_search_application_id
-        #   Id of the application created using SearchApplicationsService.
+        #   The ID generated when you create a search application using the
+        #   [admin console](https://support.google.com/a/answer/9043922).
         # @param [String] request_options_time_zone
         #   Current user's time zone id, such as "America/Los_Angeles" or
         #   "Australia/Sydney". These IDs are defined by

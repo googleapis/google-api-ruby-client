@@ -85,7 +85,7 @@ module Google
         # Gets the starting pageToken for listing future changes.
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
-        #   changes from that shared drive will be returned.
+        #   changes from that shared drive is returned.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -133,9 +133,9 @@ module Google
         #   be set to the value of 'nextPageToken' from the previous response or to the
         #   response from the getStartPageToken method.
         # @param [String] drive_id
-        #   The shared drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the shared drive; use the combined drive ID and
-        #   change ID as an identifier.
+        #   The shared drive from which changes are returned. If specified the change IDs
+        #   will be reflective of the shared drive; use the combined drive ID and change
+        #   ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -144,7 +144,7 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Deprecated - Whether both My Drive and shared drive items should be included
         #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Afterwards shared drive items are included in the results.
         # @param [Boolean] include_removed
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
@@ -215,9 +215,9 @@ module Google
         #   response from the getStartPageToken method.
         # @param [Google::Apis::DriveV3::Channel] channel_object
         # @param [String] drive_id
-        #   The shared drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the shared drive; use the combined drive ID and
-        #   change ID as an identifier.
+        #   The shared drive from which changes are returned. If specified the change IDs
+        #   will be reflective of the shared drive; use the combined drive ID and change
+        #   ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -226,7 +226,7 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Deprecated - Whether both My Drive and shared drive items should be included
         #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Afterwards shared drive items are included in the results.
         # @param [Boolean] include_removed
         #   Whether to include changes indicating that items have been removed from the
         #   list of changes, for example by deletion or loss of access.
@@ -787,8 +787,8 @@ module Google
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. Requests that specify more than one parent will fail.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. Requests that specify more than one parent fail.
         # @param [Boolean] ignore_default_visibility
         #   Whether to ignore the domain's default visibility settings for the created
         #   file. Domain administrators can choose to make all uploaded files visible to
@@ -849,8 +849,8 @@ module Google
         # @param [Google::Apis::DriveV3::File] file_object
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. Requests that specify more than one parent will fail.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. Requests that specify more than one parent fail.
         # @param [Boolean] ignore_default_visibility
         #   Whether to ignore the domain's default visibility settings for the created
         #   file. Domain administrators can choose to make all uploaded files visible to
@@ -1132,7 +1132,7 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Deprecated - Whether both My Drive and shared drive items should be included
         #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Afterwards shared drive items are included in the results.
         # @param [Boolean] include_team_drive_items
         #   Deprecated use includeItemsFromAllDrives instead.
         # @param [String] order_by
@@ -1213,12 +1213,11 @@ module Google
         #   A comma-separated list of parent IDs to add.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the item's owner makes a request to add a single parent, the
-        #   item will be removed from all current folders and placed in the requested
-        #   folder. Other requests that increase the number of parents will fail, except
-        #   when the canAddMyDriveParent file capability is true and a single parent is
-        #   being added.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the item's owner makes a request to add a single parent, the item is
+        #   removed from all current folders and placed in the requested folder. Other
+        #   requests that increase the number of parents fail, except when the
+        #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [Boolean] keep_revision_forever
         #   Whether to set the 'keepForever' field in the new head revision. This is only
         #   applicable to files with binary content in Google Drive. Only 200 revisions
@@ -1349,16 +1348,16 @@ module Google
         #   A plain text custom message to include in the notification email.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. See moveToNewOwnersRoot for details.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. See moveToNewOwnersRoot for details.
         # @param [Boolean] move_to_new_owners_root
-        #   This parameter will only take effect if the item is not in a shared drive and
-        #   the request is attempting to transfer the ownership of the item. When set to
-        #   true, the item will be moved to the new owner's My Drive root folder and all
-        #   prior parents removed. If set to false, when enforceSingleParent=true, parents
-        #   are not changed. If set to false, when enforceSingleParent=false, existing
-        #   parents are not changed; however, the file will be added to the new owner's My
-        #   Drive root folder, unless it is already in the new owner's My Drive.
+        #   This parameter only takes effect if the item is not in a shared drive and the
+        #   request is attempting to transfer the ownership of the item. When set to true,
+        #   the item is moved to the new owner's My Drive root folder and all prior
+        #   parents removed. If set to false, when enforceSingleParent=true, parents are
+        #   not changed. If set to false, when enforceSingleParent=false, existing parents
+        #   are not changed; however, the file will be added to the new owner's My Drive
+        #   root folder, unless it is already in the new owner's My Drive.
         # @param [Boolean] send_notification_email
         #   Whether to send a notification email when sharing to users or groups. This
         #   defaults to true for users and groups, and is not allowed for other requests.

@@ -458,10 +458,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Uploads the deobfuscation file of the specified APK. If a deobfuscation file
-        # already exists, it will be replaced.
+        # Uploads the deobfuscation file of the specified APK. If a deobfuscation or
+        # symbolication file already exists, it will be replaced. See https://developer.
+        # android.com/studio/build/shrink-code to learn more about deobfuscation files.
         # @param [String] package_name
-        #   Unique identifier of the Android app for which the deobfuscatiuon files are
+        #   Unique identifier of the Android app for which the deobfuscation files are
         #   being uploaded; for example, "com.spiffygame".
         # @param [String] edit_id
         #   Unique identifier for this edit.

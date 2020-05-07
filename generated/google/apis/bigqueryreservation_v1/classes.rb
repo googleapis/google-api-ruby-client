@@ -96,10 +96,10 @@ module Google
       end
       
       # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-      # (in the form of slots) with some committed period of usage. Monthly and
-      # annual commitments renew by default. Only flex commitments can be removed. In
-      # order to remove monthly or annual commitments, their plan needs to be changed
-      # to flex first.
+      # (in the form of slots) with some committed period of usage. Annual
+      # commitments renew by default. Commitments can be removed after their
+      # commitment end time passes. In order to remove annual commitment, its plan
+      # needs to be changed to monthly or flex first.
       # A capacity commitment resource exists as a child resource of the admin
       # project.
       class CapacityCommitment
@@ -511,10 +511,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-        # (in the form of slots) with some committed period of usage. Monthly and
-        # annual commitments renew by default. Only flex commitments can be removed. In
-        # order to remove monthly or annual commitments, their plan needs to be changed
-        # to flex first.
+        # (in the form of slots) with some committed period of usage. Annual
+        # commitments renew by default. Commitments can be removed after their
+        # commitment end time passes. In order to remove annual commitment, its plan
+        # needs to be changed to monthly or flex first.
         # A capacity commitment resource exists as a child resource of the admin
         # project.
         # Corresponds to the JSON property `first`
@@ -522,10 +522,10 @@ module Google
         attr_accessor :first
       
         # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
-        # (in the form of slots) with some committed period of usage. Monthly and
-        # annual commitments renew by default. Only flex commitments can be removed. In
-        # order to remove monthly or annual commitments, their plan needs to be changed
-        # to flex first.
+        # (in the form of slots) with some committed period of usage. Annual
+        # commitments renew by default. Commitments can be removed after their
+        # commitment end time passes. In order to remove annual commitment, its plan
+        # needs to be changed to monthly or flex first.
         # A capacity commitment resource exists as a child resource of the admin
         # project.
         # Corresponds to the JSON property `second`

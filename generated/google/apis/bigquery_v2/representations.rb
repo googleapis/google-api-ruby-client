@@ -160,6 +160,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConnectionProperty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CsvOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -767,8 +773,11 @@ module Google
       
           property :arima_fitting_metrics, as: 'arimaFittingMetrics', class: Google::Apis::BigqueryV2::ArimaFittingMetrics, decorator: Google::Apis::BigqueryV2::ArimaFittingMetrics::Representation
       
+          property :has_drift, as: 'hasDrift'
           property :non_seasonal_order, as: 'nonSeasonalOrder', class: Google::Apis::BigqueryV2::ArimaOrder, decorator: Google::Apis::BigqueryV2::ArimaOrder::Representation
       
+          collection :seasonal_periods, as: 'seasonalPeriods'
+          property :time_series_id, as: 'timeSeriesId'
         end
       end
       
@@ -956,6 +965,14 @@ module Google
           property :confidence_threshold, as: 'confidenceThreshold'
           collection :rows, as: 'rows', class: Google::Apis::BigqueryV2::Row, decorator: Google::Apis::BigqueryV2::Row::Representation
       
+        end
+      end
+      
+      class ConnectionProperty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key, as: 'key'
+          property :value, as: 'value'
         end
       end
       
@@ -1157,7 +1174,6 @@ module Google
       
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation
       
-          property :hive_partitioning_mode, as: 'hivePartitioningMode'
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
@@ -1320,7 +1336,6 @@ module Google
       
           property :encoding, as: 'encoding'
           property :field_delimiter, as: 'fieldDelimiter'
-          property :hive_partitioning_mode, as: 'hivePartitioningMode'
           property :hive_partitioning_options, as: 'hivePartitioningOptions', class: Google::Apis::BigqueryV2::HivePartitioningOptions, decorator: Google::Apis::BigqueryV2::HivePartitioningOptions::Representation
       
           property :ignore_unknown_values, as: 'ignoreUnknownValues'
@@ -1351,7 +1366,8 @@ module Google
           property :allow_large_results, as: 'allowLargeResults'
           property :clustering, as: 'clustering', class: Google::Apis::BigqueryV2::Clustering, decorator: Google::Apis::BigqueryV2::Clustering::Representation
       
-          collection :connection_properties, as: 'connectionProperties'
+          collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
+      
           property :create_disposition, as: 'createDisposition'
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
@@ -1730,7 +1746,8 @@ module Google
       class QueryRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :connection_properties, as: 'connectionProperties'
+          collection :connection_properties, as: 'connectionProperties', class: Google::Apis::BigqueryV2::ConnectionProperty, decorator: Google::Apis::BigqueryV2::ConnectionProperty::Representation
+      
           property :default_dataset, as: 'defaultDataset', class: Google::Apis::BigqueryV2::DatasetReference, decorator: Google::Apis::BigqueryV2::DatasetReference::Representation
       
           property :dry_run, as: 'dryRun'

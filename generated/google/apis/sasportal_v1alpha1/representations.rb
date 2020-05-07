@@ -315,6 +315,7 @@ module Google
           collection :move_list, as: 'moveList', class: Google::Apis::SasportalV1alpha1::SasPortalDpaMoveList, decorator: Google::Apis::SasportalV1alpha1::SasPortalDpaMoveList::Representation
       
           property :state, as: 'state'
+          collection :suspension_reason, as: 'suspensionReason'
         end
       end
       
@@ -380,6 +381,7 @@ module Google
           property :antenna_downtilt, as: 'antennaDowntilt'
           property :antenna_gain, as: 'antennaGain'
           property :antenna_model, as: 'antennaModel'
+          property :cpe_cbsd_indication, as: 'cpeCbsdIndication'
           property :eirp_capability, as: 'eirpCapability'
           property :height, as: 'height'
           property :height_type, as: 'heightType'

@@ -937,7 +937,6 @@ module Google
         # The FHIR specification version that this FHIR store supports natively. This
         # field is immutable after store creation. Requests are rejected if they
         # contain FHIR resources of a different version.
-        # An empty value is treated as STU3.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version

@@ -1813,6 +1813,31 @@ module Google
         end
       end
       
+      # Autoscale defines the autoscaling policy of a worker pool.
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale
+        include Google::Apis::Core::Hashable
+      
+        # The maximal number of workers. Must be equal to or greater than min_size.
+        # Corresponds to the JSON property `maxSize`
+        # @return [Fixnum]
+        attr_accessor :max_size
+      
+        # The minimal number of workers. Must be greater than 0.
+        # Corresponds to the JSON property `minSize`
+        # @return [Fixnum]
+        attr_accessor :min_size
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @max_size = args[:max_size] if args.key?(:max_size)
+          @min_size = args[:min_size] if args.key?(:min_size)
+        end
+      end
+      
       # The request used for `CreateInstance`.
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         include Google::Apis::Core::Hashable
@@ -2127,19 +2152,37 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         include Google::Apis::Core::Hashable
       
+        # Instance conceptually encapsulates all Remote Build Execution resources
+        # for remote builds.
+        # An instance consists of storage and compute resources (for example,
+        # `ContentAddressableStorage`, `ActionCache`, `WorkerPools`) used for
+        # running remote builds.
+        # All Remote Build Execution API calls are scoped to an instance.
+        # Corresponds to the JSON property `instance`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance]
+        attr_accessor :instance
+      
+        # Deprecated, use instance.logging_enabled instead.
         # Whether to enable Stackdriver logging for this instance.
         # Corresponds to the JSON property `loggingEnabled`
         # @return [Boolean]
         attr_accessor :logging_enabled
         alias_method :logging_enabled?, :logging_enabled
       
+        # Deprecated, use instance.Name instead.
         # Name of the instance to update.
         # Format: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The fields to update.
+        # The update mask applies to instance. For the `FieldMask` definition, see
+        # https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#
+        # fieldmask
+        # If an empty update_mask is provided, only the non-default valued field in
+        # the worker pool field will be updated. Note that in order to update a field
+        # to the default value (zero, false, empty string) an explicit update_mask
+        # must be provided.
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask
@@ -2150,6 +2193,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @instance = args[:instance] if args.key?(:instance)
           @logging_enabled = args[:logging_enabled] if args.key?(:logging_enabled)
           @name = args[:name] if args.key?(:name)
           @update_mask = args[:update_mask] if args.key?(:update_mask)
@@ -2281,6 +2325,16 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool
         include Google::Apis::Core::Hashable
       
+        # Autoscale defines the autoscaling policy of a worker pool.
+        # Corresponds to the JSON property `autoscale`
+        # @return [Google::Apis::RemotebuildexecutionV1alpha::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale]
+        attr_accessor :autoscale
+      
+        # Channel specifies the release channel of the pool.
+        # Corresponds to the JSON property `channel`
+        # @return [String]
+        attr_accessor :channel
+      
         # WorkerPool resource name formatted as:
         # `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.
         # name should not be populated when creating a worker pool since it is
@@ -2312,6 +2366,8 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @autoscale = args[:autoscale] if args.key?(:autoscale)
+          @channel = args[:channel] if args.key?(:channel)
           @name = args[:name] if args.key?(:name)
           @state = args[:state] if args.key?(:state)
           @worker_config = args[:worker_config] if args.key?(:worker_config)

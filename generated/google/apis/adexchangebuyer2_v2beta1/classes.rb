@@ -273,6 +273,12 @@ module Google
         # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
         attr_accessor :measurable_impressions
       
+        # A metric value, with an expected value and a variance; represents a count
+        # that may be either exact or estimated (i.e. when sampled).
+        # Corresponds to the JSON property `reachedQueries`
+        # @return [Google::Apis::Adexchangebuyer2V2beta1::MetricValue]
+        attr_accessor :reached_queries
+      
         # A response may include multiple rows, breaking down along various dimensions.
         # Encapsulates the values of all dimensions for a given row.
         # Corresponds to the JSON property `rowDimensions`
@@ -296,6 +302,7 @@ module Google
           @billed_impressions = args[:billed_impressions] if args.key?(:billed_impressions)
           @impressions_won = args[:impressions_won] if args.key?(:impressions_won)
           @measurable_impressions = args[:measurable_impressions] if args.key?(:measurable_impressions)
+          @reached_queries = args[:reached_queries] if args.key?(:reached_queries)
           @row_dimensions = args[:row_dimensions] if args.key?(:row_dimensions)
           @viewable_impressions = args[:viewable_impressions] if args.key?(:viewable_impressions)
         end
@@ -3456,7 +3463,8 @@ module Google
       
       # Note: this resource requires whitelisting for access. Please contact your
       # account manager for access to Marketplace resources.
-      # Represents a publisher profile in Marketplace.
+      # Represents a publisher profile
+      # (https://support.google.com/admanager/answer/6035806?hl=en) in Marketplace.
       # All fields are read only. All string fields are free-form text entered by the
       # publisher unless noted otherwise.
       class PublisherProfile
@@ -3497,6 +3505,18 @@ module Google
         # Corresponds to the JSON property `googlePlusUrl`
         # @return [String]
         attr_accessor :google_plus_url
+      
+        # Indicates if this profile is the parent profile of the seller. A parent
+        # profile represents all the inventory from the seller, as opposed to child
+        # profile that is created to brand a portion of inventory. One seller should
+        # have only one parent publisher profile, and can have multiple child
+        # profiles. Publisher profiles for the same seller will have same value of
+        # field google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller.
+        # See https://support.google.com/admanager/answer/6035806?hl=en for details.
+        # Corresponds to the JSON property `isParent`
+        # @return [Boolean]
+        attr_accessor :is_parent
+        alias_method :is_parent?, :is_parent
       
         # A Google public URL to the logo for this publisher profile. The logo is
         # stored as a PNG, JPG, or GIF image.
@@ -3560,6 +3580,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @domains = args[:domains] if args.key?(:domains)
           @google_plus_url = args[:google_plus_url] if args.key?(:google_plus_url)
+          @is_parent = args[:is_parent] if args.key?(:is_parent)
           @logo_url = args[:logo_url] if args.key?(:logo_url)
           @media_kit_url = args[:media_kit_url] if args.key?(:media_kit_url)
           @overview = args[:overview] if args.key?(:overview)

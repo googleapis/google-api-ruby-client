@@ -254,7 +254,7 @@ module Google
         #   An example name would be:
         #   `projects/123/services/serviceusage.googleapis.com` where `123` is the
         #   project number.
-        #   A single request can get a maximum of 20 services at a time.
+        #   A single request can get a maximum of 30 services at a time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

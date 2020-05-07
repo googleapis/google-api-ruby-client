@@ -2154,6 +2154,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves all the resources directly referenced by a patient, as well as
+        # all of the resources in the patient compartment.
+        # Implements the FHIR extended operation Patient-everything
+        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#
+        # everything),
+        # [STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#
+        # everything),
+        # [R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#
+        # everything)).
         # On success, the response body will contain a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.
@@ -2293,13 +2302,6 @@ module Google
         # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),
         # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)),
         # which creates a new resource with a server-assigned resource ID.
-        # Also supports the FHIR standard conditional create interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),
-        # specified by supplying an `If-None-Exist` header containing a FHIR search
-        # query. If no resources match this search query, the server processes the
-        # create operation as normal.
         # The request body must contain a JSON-encoded FHIR resource, and the request
         # headers must contain `Content-Type: application/fhir+json`.
         # On success, the response body will contain a JSON-encoded representation

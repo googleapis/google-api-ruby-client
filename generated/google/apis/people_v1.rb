@@ -25,13 +25,16 @@ module Google
     # @see https://developers.google.com/people/
     module PeopleV1
       VERSION = 'V1'
-      REVISION = '20200407'
+      REVISION = '20200427'
 
       # See, edit, download, and permanently delete your contacts
       AUTH_CONTACTS = 'https://www.googleapis.com/auth/contacts'
 
       # See and download your contacts
       AUTH_CONTACTS_READONLY = 'https://www.googleapis.com/auth/contacts.readonly'
+
+      # See and download your organization's GSuite directory
+      AUTH_DIRECTORY_READONLY = 'https://www.googleapis.com/auth/directory.readonly'
 
       # View your street addresses
       AUTH_USER_ADDRESSES_READ = 'https://www.googleapis.com/auth/user.addresses.read'
@@ -41,6 +44,9 @@ module Google
 
       # View your email addresses
       AUTH_USER_EMAILS_READ = 'https://www.googleapis.com/auth/user.emails.read'
+
+      # See your gender
+      AUTH_USER_GENDER_READ = 'https://www.googleapis.com/auth/user.gender.read'
 
       # See your education, work history and org info
       AUTH_USER_ORGANIZATION_READ = 'https://www.googleapis.com/auth/user.organization.read'

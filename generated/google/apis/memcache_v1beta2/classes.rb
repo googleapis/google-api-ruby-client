@@ -369,12 +369,12 @@ module Google
       class GoogleCloudMemcacheV1beta2OperationMetadata
         include Google::Apis::Core::Hashable
       
-        # API version used to start the operation.
+        # Output only. API version used to start the operation.
         # Corresponds to the JSON property `apiVersion`
         # @return [String]
         attr_accessor :api_version
       
-        # Identifies whether the user has requested cancellation
+        # Output only. Identifies whether the user has requested cancellation
         # of the operation. Operations that have successfully been cancelled
         # have Operation.error value with a google.rpc.Status.code of 1,
         # corresponding to `Code.CANCELLED`.
@@ -383,27 +383,27 @@ module Google
         attr_accessor :cancel_requested
         alias_method :cancel_requested?, :cancel_requested
       
-        # Time when the operation was created.
+        # Output only. Time when the operation was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
       
-        # Time when the operation finished running.
+        # Output only. Time when the operation finished running.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # Human-readable status of the operation, if any.
+        # Output only. Human-readable status of the operation, if any.
         # Corresponds to the JSON property `statusDetail`
         # @return [String]
         attr_accessor :status_detail
       
-        # Server-defined resource path for the target of the operation.
+        # Output only. Server-defined resource path for the target of the operation.
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
       
-        # Name of the verb executed by the operation.
+        # Output only. Name of the verb executed by the operation.
         # Corresponds to the JSON property `verb`
         # @return [String]
         attr_accessor :verb

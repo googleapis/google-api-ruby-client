@@ -826,6 +826,45 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Returns the list of all non-draft environments of the specified agent.
+        # @param [String] parent
+        #   Required. The agent to list all environments from.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By default
+        #   100 and
+        #   at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_agent_environments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/environments', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Deletes all active contexts in the specified session.
         # @param [String] parent
         #   Required. The name of the session to delete all contexts from. Format:
@@ -1554,7 +1593,7 @@ module Google
         
         # Updates the specified intent.
         # @param [String] name
-        #   The unique identifier of this intent.
+        #   Optional. The unique identifier of this intent.
         #   Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
         #   methods.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
@@ -1794,7 +1833,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
-        #   Required. The knoweldge base to create a document for.
+        #   The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] fields
@@ -1830,7 +1869,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The name of the document to delete.
+        #   Required. The name of the document to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`.
         # @param [String] fields
@@ -1938,7 +1977,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The document resource name.
+        #   Optional. The document resource name.
         #   The name must be empty when creating a document.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`.
@@ -1984,7 +2023,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The name of the document to reload.
+        #   Required. The name of the document to reload.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
@@ -2697,7 +2736,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
-        #   Required. The knoweldge base to create a document for.
+        #   The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] fields
@@ -2733,7 +2772,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The name of the document to delete.
+        #   Required. The name of the document to delete.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`.
         # @param [String] fields
@@ -2841,7 +2880,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The document resource name.
+        #   Optional. The document resource name.
         #   The name must be empty when creating a document.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`.
@@ -2887,7 +2926,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] name
-        #   The name of the document to reload.
+        #   Required. The name of the document to reload.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         #   ID>/documents/<Document ID>`
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ReloadDocumentRequest] google_cloud_dialogflow_v2beta1_reload_document_request_object
@@ -3610,6 +3649,45 @@ module Google
           command.response_representation = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation::Representation
           command.response_class = Google::Apis::DialogflowV2beta1::GoogleLongrunningOperation
           command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Returns the list of all non-draft environments of the specified agent.
+        # @param [String] parent
+        #   Required. The agent to list all environments from.
+        #   Format: `projects/<Project ID>/agent`.
+        # @param [Fixnum] page_size
+        #   Optional. The maximum number of items to return in a single page. By default
+        #   100 and
+        #   at most 1000.
+        # @param [String] page_token
+        #   Optional. The next_page_token value returned from a previous list request.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_project_location_agent_environments(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2beta1/{+parent}/environments', options)
+          command.response_representation = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse::Representation
+          command.response_class = Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
+          command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -4343,7 +4421,7 @@ module Google
         
         # Updates the specified intent.
         # @param [String] name
-        #   The unique identifier of this intent.
+        #   Optional. The unique identifier of this intent.
         #   Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
         #   methods.
         #   Format: `projects/<Project ID>/agent/intents/<Intent ID>`.

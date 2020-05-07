@@ -1028,7 +1028,8 @@ module Google
         # * description:y
         # Note: Query tokens need to have a minimum of 3 characters for substring
         # matching to work correctly. See [Data Catalog Search
-        # Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+        # Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+        # for more information.
         # Corresponds to the JSON property `query`
         # @return [String]
         attr_accessor :query
@@ -1079,6 +1080,44 @@ module Google
         # @return [Array<String>]
         attr_accessor :include_project_ids
       
+        # Optional. The list of locations to search within.
+        # 1. If empty, search will be performed in all locations;
+        # 2. If any of the locations are NOT in the valid locations list, error
+        # will be returned;
+        # 3. Otherwise, search only the given locations for matching results.
+        # Typical usage is to leave this field empty. When a location is
+        # unreachable as returned in the `SearchCatalogResponse.unreachable` field,
+        # users can repeat the search request with this parameter set to get
+        # additional information on the error.
+        # Valid locations:
+        # * asia-east1
+        # * asia-east2
+        # * asia-northeast1
+        # * asia-northeast2
+        # * asia-northeast3
+        # * asia-south1
+        # * asia-southeast1
+        # * australia-southeast1
+        # * eu
+        # * europe-north1
+        # * europe-west1
+        # * europe-west2
+        # * europe-west3
+        # * europe-west4
+        # * europe-west6
+        # * global
+        # * northamerica-northeast1
+        # * southamerica-east1
+        # * us
+        # * us-central1
+        # * us-east1
+        # * us-east4
+        # * us-west1
+        # * us-west2
+        # Corresponds to the JSON property `restrictedLocations`
+        # @return [Array<String>]
+        attr_accessor :restricted_locations
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1088,6 +1127,7 @@ module Google
           @include_gcp_public_datasets = args[:include_gcp_public_datasets] if args.key?(:include_gcp_public_datasets)
           @include_org_ids = args[:include_org_ids] if args.key?(:include_org_ids)
           @include_project_ids = args[:include_project_ids] if args.key?(:include_project_ids)
+          @restricted_locations = args[:restricted_locations] if args.key?(:restricted_locations)
         end
       end
       
@@ -1106,6 +1146,14 @@ module Google
         # @return [Array<Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogResult>]
         attr_accessor :results
       
+        # Unreachable locations. Search result does not include data from those
+        # locations. Users can get additional information on the error by repeating
+        # the search request with a more restrictive parameter -- setting the value
+        # for `SearchDataCatalogRequest.scope.include_locations`.
+        # Corresponds to the JSON property `unreachable`
+        # @return [Array<String>]
+        attr_accessor :unreachable
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1114,6 +1162,7 @@ module Google
         def update!(**args)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @results = args[:results] if args.key?(:results)
+          @unreachable = args[:unreachable] if args.key?(:unreachable)
         end
       end
       
@@ -1188,6 +1237,12 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Resource name of the policy tag.
+        # This field will be ignored when calling ImportTaxonomies.
+        # Corresponds to the JSON property `policyTag`
+        # @return [String]
+        attr_accessor :policy_tag
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1197,6 +1252,7 @@ module Google
           @child_policy_tags = args[:child_policy_tags] if args.key?(:child_policy_tags)
           @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @policy_tag = args[:policy_tag] if args.key?(:policy_tag)
         end
       end
       
@@ -1293,8 +1349,9 @@ module Google
       
       # Tags are used to attach custom metadata to Data Catalog resources. Tags
       # conform to the specifications within their tag template.
-      # See [Data Catalog IAM](/data-catalog/docs/concepts/iam) for information on
-      # the permissions needed to create or view tags.
+      # See [Data Catalog
+      # IAM](https://cloud.google.com/data-catalog/docs/concepts/iam) for information
+      # on the permissions needed to create or view tags.
       class GoogleCloudDatacatalogV1beta1Tag
         include Google::Apis::Core::Hashable
       
@@ -1433,10 +1490,13 @@ module Google
       
       # A tag template defines a tag, which can have one or more typed fields.
       # The template is used to create and attach the tag to GCP resources.
-      # [Tag template roles](/iam/docs/understanding-roles#data-catalog-roles)
-      # provide permissions to create, edit, and use the template (see, for example,
-      # the [TagTemplate User](/data-catalog/docs/how-to/template-user) role, which
-      # includes permission to use the tag template to tag resources.
+      # [Tag template
+      # roles](https://cloud.google.com/iam/docs/understanding-roles#data-catalog-
+      # roles)
+      # provide permissions to create, edit, and use the template. See, for example,
+      # the [TagTemplate
+      # User](https://cloud.google.com/data-catalog/docs/how-to/template-user) role,
+      # which includes permission to use the tag template to tag resources.
       class GoogleCloudDatacatalogV1beta1TagTemplate
         include Google::Apis::Core::Hashable
       

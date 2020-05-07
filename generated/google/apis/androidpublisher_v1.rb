@@ -25,10 +25,7 @@ module Google
     # @see https://developers.google.com/android-publisher
     module AndroidpublisherV1
       VERSION = 'V1'
-      REVISION = '20181009'
-
-      # View and manage your Google Play Developer account
-      AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'
+      REVISION = '20200428'
     end
   end
 end

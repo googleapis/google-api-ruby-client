@@ -59,7 +59,8 @@ module Google
         # result pages. Also note that results returned (and not returned) can vary
         # across repeated search queries.
         # See [Data Catalog Search
-        # Syntax](/data-catalog/docs/how-to/search-reference) for more information.
+        # Syntax](https://cloud.google.com/data-catalog/docs/how-to/search-reference)
+        # for more information.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogRequest] google_cloud_datacatalog_v1beta1_search_catalog_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -104,7 +105,7 @@ module Google
         # @param [String] sql_resource
         #   The SQL name of the entry. SQL names are case-sensitive.
         #   Examples:
-        #   * `cloud_pubsub.project_id.topic_id`
+        #   * `pubsub.project_id.topic_id`
         #   * ``pubsub.project_id.`topic.id.with.dots` ``
         #   * `bigquery.table.project_id.dataset_id.table_id`
         #   * `bigquery.dataset.project_id.dataset_id`
@@ -143,7 +144,8 @@ module Google
         # locations.
         # Users should enable the Data Catalog API in the project identified by
         # the `parent` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] parent
         #   Required. The name of the project this entry group is in. Example:
         #   * projects/`project_id`/locations/`location`
@@ -187,7 +189,8 @@ module Google
         # Deletes an EntryGroup. Only entry groups that do not contain entries can be
         # deleted. Users should enable the Data Catalog API in the project
         # identified by the `name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   Required. The name of the entry group. For example,
         #   `projects/`project_id`/locations/`location`/entryGroups/`entry_group_id``.
@@ -347,8 +350,9 @@ module Google
         
         # Updates an EntryGroup. The user should enable the Data Catalog API in the
         # project identified by the `entry_group.name` parameter (see [Data Catalog
-        # Resource Project] (/data-catalog/docs/concepts/resource-project) for more
-        # information).
+        # Resource Project]
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   The resource name of the entry group in URL format. Example:
         #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`
@@ -482,7 +486,8 @@ module Google
         # be created.
         # Users should enable the Data Catalog API in the project identified by
         # the `parent` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # A maximum of 100,000 entries may be created per entry group.
         # @param [String] parent
         #   Required. The name of the entry group this entry is in. Example:
@@ -527,7 +532,8 @@ module Google
         # method can be deleted.
         # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   Required. The name of the entry. Example:
         #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
@@ -687,7 +693,8 @@ module Google
         # Updates an existing entry.
         # Users should enable the Data Catalog API in the project identified by
         # the `entry.name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   The Data Catalog resource name of the entry in URL format. Example:
         #   * projects/`project_id`/locations/`location`/entryGroups/`entry_group_id`/
@@ -791,12 +798,12 @@ module Google
         
         # Creates a tag on an Entry.
         # Note: The project identified by the `parent` parameter for the
-        # [tag](/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.
-        # entries.tags/create#path-parameters)
+        # [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/
+        # projects.locations.entryGroups.entries.tags/create#path-parameters)
         # and the
         # [tag
-        # template](/data-catalog/docs/reference/rest/v1beta1/projects.locations.
-        # tagTemplates/create#path-parameters)
+        # template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/
+        # projects.locations.tagTemplates/create#path-parameters)
         # used to create the tag must be from the same organization.
         # @param [String] parent
         #   Required. The name of the resource to attach this tag to. Tags can be attached
@@ -955,12 +962,12 @@ module Google
         
         # Creates a tag on an Entry.
         # Note: The project identified by the `parent` parameter for the
-        # [tag](/data-catalog/docs/reference/rest/v1beta1/projects.locations.entryGroups.
-        # entries.tags/create#path-parameters)
+        # [tag](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/
+        # projects.locations.entryGroups.entries.tags/create#path-parameters)
         # and the
         # [tag
-        # template](/data-catalog/docs/reference/rest/v1beta1/projects.locations.
-        # tagTemplates/create#path-parameters)
+        # template](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/
+        # projects.locations.tagTemplates/create#path-parameters)
         # used to create the tag must be from the same organization.
         # @param [String] parent
         #   Required. The name of the resource to attach this tag to. Tags can be attached
@@ -1119,12 +1126,12 @@ module Google
         
         # Creates a tag template. The user should enable the Data Catalog API in
         # the project identified by the `parent` parameter (see [Data Catalog
-        # Resource Project](/data-catalog/docs/concepts/resource-project) for more
-        # information).
+        # Resource
+        # Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+        # for more information).
         # @param [String] parent
         #   Required. The name of the project and the template location
-        #   [region](/compute/docs/regions-zones/#available).
-        #   NOTE: Currently, only the `us-central1 region` is supported.
+        #   [region](https://cloud.google.com/data-catalog/docs/concepts/regions.
         #   Example:
         #   * projects/`project_id`/locations/us-central1
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplate] google_cloud_datacatalog_v1beta1_tag_template_object
@@ -1163,7 +1170,8 @@ module Google
         # Deletes a tag template and all tags using the template.
         # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   Required. The name of the tag template to delete. Example:
         #   * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`
@@ -1282,7 +1290,8 @@ module Google
         # and should be updated using their own create/update/delete methods.
         # Users should enable the Data Catalog API in the project identified by
         # the `tag_template.name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   The resource name of the tag template in URL format. Example:
         #   * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`
@@ -1417,12 +1426,11 @@ module Google
         # Creates a field in a tag template. The user should enable the Data Catalog
         # API in the project identified by the `parent` parameter (see
         # [Data Catalog Resource
-        # Project](/data-catalog/docs/concepts/resource-project) for more
-        # information).
+        # Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+        # for more information).
         # @param [String] parent
         #   Required. The name of the project and the template location
-        #   [region](/compute/docs/regions-zones/#available).
-        #   NOTE: Currently, only the `us-central1 region` is supported.
+        #   [region](https://cloud.google.com/data-catalog/docs/concepts/regions).
         #   Example:
         #   * projects/`project_id`/locations/us-central1/tagTemplates/`tag_template_id`
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1TagTemplateField] google_cloud_datacatalog_v1beta1_tag_template_field_object
@@ -1465,7 +1473,8 @@ module Google
         # Deletes a field in a tag template and all uses of that field.
         # Users should enable the Data Catalog API in the project identified by
         # the `name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   Required. The name of the tag template field to delete. Example:
         #   * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`/
@@ -1505,7 +1514,8 @@ module Google
         # Updates a field in a tag template. This method cannot be used to update the
         # field type. Users should enable the Data Catalog API in the project
         # identified by the `name` parameter (see [Data Catalog Resource Project]
-        # (/data-catalog/docs/concepts/resource-project) for more information).
+        # (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
+        # more information).
         # @param [String] name
         #   Required. The name of the tag template field. Example:
         #   * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`/
@@ -1555,8 +1565,9 @@ module Google
         
         # Renames a field in a tag template. The user should enable the Data Catalog
         # API in the project identified by the `name` parameter (see [Data Catalog
-        # Resource Project](/data-catalog/docs/concepts/resource-project) for more
-        # information).
+        # Resource
+        # Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+        # for more information).
         # @param [String] name
         #   Required. The name of the tag template. Example:
         #   * projects/`project_id`/locations/`location`/tagTemplates/`tag_template_id`/
@@ -1764,8 +1775,7 @@ module Google
         # This method provides a bulk taxonomy / policy tag creation using nested
         # proto structure.
         # @param [String] parent
-        #   Required. Resource name of project that the newly created taxonomies will
-        #   belong to.
+        #   Required. Resource name of project that the imported taxonomies will belong to.
         # @param [Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest] google_cloud_datacatalog_v1beta1_import_taxonomies_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.

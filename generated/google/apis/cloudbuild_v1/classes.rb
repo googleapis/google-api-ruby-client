@@ -1029,8 +1029,8 @@ module Google
         # @return [String]
         attr_accessor :branch
       
-        # Whether to block builds on a "/gcbrun" comment from a repository admin or
-        # collaborator.
+        # Configure builds to run only when a repository owner or collaborator
+        # comments `/gcbrun`.
         # Corresponds to the JSON property `commentControl`
         # @return [String]
         attr_accessor :comment_control

@@ -156,6 +156,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_token, as: 'accessToken'
+          collection :public_keys, as: 'publicKeys', class: Google::Apis::CloudshellV1alpha1::PublicKey, decorator: Google::Apis::CloudshellV1alpha1::PublicKey::Representation
+      
         end
       end
       

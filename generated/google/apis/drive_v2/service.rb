@@ -179,7 +179,7 @@ module Google
         # @param [String] change_id
         #   The ID of the change.
         # @param [String] drive_id
-        #   The shared drive from which the change will be returned.
+        #   The shared drive from which the change is returned.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -225,7 +225,7 @@ module Google
         # Gets the starting pageToken for listing future changes.
         # @param [String] drive_id
         #   The ID of the shared drive for which the starting pageToken for listing future
-        #   changes from that shared drive will be returned.
+        #   changes from that shared drive is returned.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -269,9 +269,9 @@ module Google
         
         # Lists the changes for a user or shared drive.
         # @param [String] drive_id
-        #   The shared drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the shared drive; use the combined drive ID and
-        #   change ID as an identifier.
+        #   The shared drive from which changes are returned. If specified the change IDs
+        #   will be reflective of the shared drive; use the combined drive ID and change
+        #   ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -283,12 +283,11 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Deprecated - Whether both My Drive and shared drive items should be included
         #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Afterwards shared drive items are included in the results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
-        #   shared files which have not been added to My Drive will be omitted from the
-        #   result.
+        #   shared files which have not been added to My Drive are omitted from the result.
         # @param [Boolean] include_team_drive_items
         #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
@@ -355,9 +354,9 @@ module Google
         # Subscribe to changes for a user.
         # @param [Google::Apis::DriveV2::Channel] channel_object
         # @param [String] drive_id
-        #   The shared drive from which changes will be returned. If specified the change
-        #   IDs will be reflective of the shared drive; use the combined drive ID and
-        #   change ID as an identifier.
+        #   The shared drive from which changes are returned. If specified the change IDs
+        #   will be reflective of the shared drive; use the combined drive ID and change
+        #   ID as an identifier.
         # @param [Boolean] include_corpus_removals
         #   Whether changes should include the file resource if the file is still
         #   accessible by the user at the time of the request, even when a file was
@@ -369,12 +368,11 @@ module Google
         # @param [Boolean] include_items_from_all_drives
         #   Deprecated - Whether both My Drive and shared drive items should be included
         #   in results. This parameter will only be effective until June 1, 2020.
-        #   Afterwards shared drive items will be included in the results.
+        #   Afterwards shared drive items are included in the results.
         # @param [Boolean] include_subscribed
         #   Whether to include changes outside the My Drive hierarchy in the result. When
         #   set to false, changes to files such as those in the Application Data folder or
-        #   shared files which have not been added to My Drive will be omitted from the
-        #   result.
+        #   shared files which have not been added to My Drive are omitted from the result.
         # @param [Boolean] include_team_drive_items
         #   Deprecated use includeItemsFromAllDrives instead.
         # @param [Fixnum] max_results
@@ -478,9 +476,9 @@ module Google
         #   The ID of the child.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the item's last parent is removed, the item will be placed
-        #   under its owner's root.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the item's last parent is removed, the item is placed under its
+        #   owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -553,12 +551,11 @@ module Google
         # @param [Google::Apis::DriveV2::ChildReference] child_reference_object
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the child's owner makes the request, the child will be
-        #   removed from all current folders and placed in the requested folder. Any other
-        #   requests that increase the number of the child's parents will fail, except
-        #   when the canAddMyDriveParent file capability is true and a single parent is
-        #   being added.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the child's owner makes the request, the child is removed from all
+        #   current folders and placed in the requested folder. Any other requests that
+        #   increase the number of the child's parents fail, except when the
+        #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -1156,8 +1153,8 @@ module Google
         #   Whether to convert this file to the corresponding Google Docs format.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. Requests that specify more than one parent will fail.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. Requests that specify more than one parent fail.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1436,8 +1433,8 @@ module Google
         #   Whether to convert this file to the corresponding Google Docs format.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. Requests that specify more than one parent will fail.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. Requests that specify more than one parent fail.
         # @param [Boolean] ocr
         #   Whether to attempt OCR on .jpg, .png, .gif, or .pdf uploads.
         # @param [String] ocr_language
@@ -1609,12 +1606,11 @@ module Google
         #   This parameter is deprecated and has no function.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the item's owner makes a request to add a single parent, the
-        #   item will be removed from all current folders and placed in the requested
-        #   folder. Other requests that increase the number of parents will fail, except
-        #   when the canAddMyDriveParent file capability is true and a single parent is
-        #   being added.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the item's owner makes a request to add a single parent, the item is
+        #   removed from all current folders and placed in the requested folder. Other
+        #   requests that increase the number of parents fail, except when the
+        #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [String] modified_date_behavior
         #   Determines the behavior in which modifiedDate is updated. This overrides
         #   setModifiedDate.
@@ -1835,12 +1831,11 @@ module Google
         #   This parameter is deprecated and has no function.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the item's owner makes a request to add a single parent, the
-        #   item will be removed from all current folders and placed in the requested
-        #   folder. Other requests that increase the number of parents will fail, except
-        #   when the canAddMyDriveParent file capability is true and a single parent is
-        #   being added.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the item's owner makes a request to add a single parent, the item is
+        #   removed from all current folders and placed in the requested folder. Other
+        #   requests that increase the number of parents fail, except when the
+        #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [String] modified_date_behavior
         #   Determines the behavior in which modifiedDate is updated. This overrides
         #   setModifiedDate.
@@ -2010,9 +2005,9 @@ module Google
         #   The ID of the parent.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the item's last parent is removed, the item will be placed
-        #   under its owner's root.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the item's last parent is removed, the item is placed under its
+        #   owner's root.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2085,12 +2080,11 @@ module Google
         # @param [Google::Apis::DriveV2::ParentReference] parent_reference_object
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. If the child's owner makes the request, the child will be
-        #   removed from all current folders and placed in the requested folder. Any other
-        #   requests that increase the number of the child's parents will fail, except
-        #   when the canAddMyDriveParent file capability is true and a single parent is
-        #   being added.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. If the child's owner makes the request, the child is removed from all
+        #   current folders and placed in the requested folder. Any other requests that
+        #   increase the number of the child's parents fail, except when the
+        #   canAddMyDriveParent file capability is true and a single parent is being added.
         # @param [Boolean] supports_all_drives
         #   Deprecated - Whether the requesting application supports both My Drives and
         #   shared drives. This parameter will only be effective until June 1, 2020.
@@ -2304,16 +2298,16 @@ module Google
         #   A plain text custom message to include in notification emails.
         # @param [Boolean] enforce_single_parent
         #   Set to true to opt in to API behavior that aims for all items to have exactly
-        #   one parent. This parameter will only take effect if the item is not in a
-        #   shared drive. See moveToNewOwnersRoot for details.
+        #   one parent. This parameter only takes effect if the item is not in a shared
+        #   drive. See moveToNewOwnersRoot for details.
         # @param [Boolean] move_to_new_owners_root
-        #   This parameter will only take effect if the item is not in a shared drive and
-        #   the request is attempting to transfer the ownership of the item. When set to
-        #   true, the item will be moved to the new owner's My Drive root folder and all
-        #   prior parents removed. If set to false, when enforceSingleParent=true, parents
-        #   are not changed. If set to false, when enforceSingleParent=false, existing
-        #   parents are not changed; however, the file will be added to the new owner's My
-        #   Drive root folder, unless it is already in the new owner's My Drive.
+        #   This parameter only takes effect if the item is not in a shared drive and the
+        #   request is attempting to transfer the ownership of the item. When set to true,
+        #   the item will be moved to the new owner's My Drive root folder and all prior
+        #   parents removed. If set to false, when enforceSingleParent=true, parents are
+        #   not changed. If set to false, when enforceSingleParent=false, existing parents
+        #   are not changed; however, the file will be added to the new owner's My Drive
+        #   root folder, unless it is already in the new owner's My Drive.
         # @param [Boolean] send_notification_emails
         #   Whether to send notification emails when sharing to users or groups. This
         #   parameter is ignored and an email is sent if the role is owner.

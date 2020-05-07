@@ -196,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -718,6 +724,14 @@ module Google
         end
       end
       
+      class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :max_size, :numeric_string => true, as: 'maxSize'
+          property :min_size, :numeric_string => true, as: 'minSize'
+        end
+      end
+      
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -810,6 +824,8 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :instance, as: 'instance', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance::Representation
+      
           property :logging_enabled, as: 'loggingEnabled'
           property :name, as: 'name'
           property :update_mask, as: 'updateMask'
@@ -844,6 +860,9 @@ module Google
       class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :autoscale, as: 'autoscale', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale::Representation
+      
+          property :channel, as: 'channel'
           property :name, as: 'name'
           property :state, as: 'state'
           property :worker_config, as: 'workerConfig', class: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig, decorator: Google::Apis::RemotebuildexecutionV1::GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig::Representation

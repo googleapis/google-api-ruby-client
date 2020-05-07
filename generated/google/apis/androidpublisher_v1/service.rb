@@ -47,88 +47,8 @@ module Google
         attr_accessor :user_ip
 
         def initialize
-          super('https://www.googleapis.com/', 'androidpublisher/v1/applications/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/androidpublisher/v1'
-        end
-        
-        # Cancels a user's subscription purchase. The subscription remains valid until
-        # its expiration time.
-        # @param [String] package_name
-        #   The package name of the application for which this subscription was purchased (
-        #   for example, 'com.some.thing').
-        # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
-        # @param [String] token
-        #   The token provided to the user's device when the subscription was purchased.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [void]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def cancel_purchase(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}/cancel', options)
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
-          command.params['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Checks whether a user's subscription purchase is valid and returns its expiry
-        # time.
-        # @param [String] package_name
-        #   The package name of the application for which this subscription was purchased (
-        #   for example, 'com.some.thing').
-        # @param [String] subscription_id
-        #   The purchased subscription ID (for example, 'monthly001').
-        # @param [String] token
-        #   The token provided to the user's device when the subscription was purchased.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::AndroidpublisherV1::SubscriptionPurchase] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::AndroidpublisherV1::SubscriptionPurchase]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_purchase(package_name, subscription_id, token, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, '{packageName}/subscriptions/{subscriptionId}/purchases/{token}', options)
-          command.response_representation = Google::Apis::AndroidpublisherV1::SubscriptionPurchase::Representation
-          command.response_class = Google::Apis::AndroidpublisherV1::SubscriptionPurchase
-          command.params['packageName'] = package_name unless package_name.nil?
-          command.params['subscriptionId'] = subscription_id unless subscription_id.nil?
-          command.params['token'] = token unless token.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
-          execute_or_queue_command(command, &block)
         end
 
         protected

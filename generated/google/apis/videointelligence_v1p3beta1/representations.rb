@@ -1007,6 +1007,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1ExplicitContentFrame::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1029,6 +1030,7 @@ module Google
       
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1LabelSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1LabelSegment::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1098,6 +1100,7 @@ module Google
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1VideoSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1VideoSegment::Representation
       
           property :track_id, :numeric_string => true, as: 'trackId'
+          property :version, as: 'version'
         end
       end
       
@@ -1135,6 +1138,7 @@ module Google
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1TextSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1TextSegment::Representation
       
           property :text, as: 'text'
+          property :version, as: 'version'
         end
       end
       
@@ -1298,6 +1302,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2ExplicitContentFrame::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1320,6 +1325,7 @@ module Google
       
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2LabelSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2LabelSegment::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1389,6 +1395,7 @@ module Google
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2VideoSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2VideoSegment::Representation
       
           property :track_id, :numeric_string => true, as: 'trackId'
+          property :version, as: 'version'
         end
       end
       
@@ -1426,6 +1433,7 @@ module Google
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2TextSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1beta2TextSegment::Representation
       
           property :text, as: 'text'
+          property :version, as: 'version'
         end
       end
       
@@ -1589,6 +1597,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1611,6 +1620,7 @@ module Google
       
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1LabelSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1LabelSegment::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1680,6 +1690,7 @@ module Google
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1VideoSegment::Representation
       
           property :track_id, :numeric_string => true, as: 'trackId'
+          property :version, as: 'version'
         end
       end
       
@@ -1717,6 +1728,7 @@ module Google
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1TextSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p1beta1TextSegment::Representation
       
           property :text, as: 'text'
+          property :version, as: 'version'
         end
       end
       
@@ -1880,6 +1892,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1902,6 +1915,7 @@ module Google
       
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1LabelSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1LabelSegment::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -1971,6 +1985,7 @@ module Google
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1VideoSegment::Representation
       
           property :track_id, :numeric_string => true, as: 'trackId'
+          property :version, as: 'version'
         end
       end
       
@@ -2008,6 +2023,7 @@ module Google
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1TextSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p2beta1TextSegment::Representation
       
           property :text, as: 'text'
+          property :version, as: 'version'
         end
       end
       
@@ -2165,6 +2181,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :celebrity_tracks, as: 'celebrityTracks', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2211,6 +2228,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :frames, as: 'frames', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2235,6 +2253,7 @@ module Google
           property :thumbnail, :base64 => true, as: 'thumbnail'
           collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2258,6 +2277,7 @@ module Google
       
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1LabelSegment::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2338,6 +2358,7 @@ module Google
           property :segment, as: 'segment', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1VideoSegment::Representation
       
           property :track_id, :numeric_string => true, as: 'trackId'
+          property :version, as: 'version'
         end
       end
       
@@ -2362,6 +2383,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :tracks, as: 'tracks', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1Track::Representation
       
+          property :version, as: 'version'
         end
       end
       
@@ -2463,6 +2485,7 @@ module Google
           collection :segments, as: 'segments', class: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1TextSegment, decorator: Google::Apis::VideointelligenceV1p3beta1::GoogleCloudVideointelligenceV1p3beta1TextSegment::Representation
       
           property :text, as: 'text'
+          property :version, as: 'version'
         end
       end
       

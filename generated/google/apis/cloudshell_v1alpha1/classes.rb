@@ -331,6 +331,11 @@ module Google
         # @return [String]
         attr_accessor :access_token
       
+        # Public keys that should be added to the environment before it is started.
+        # Corresponds to the JSON property `publicKeys`
+        # @return [Array<Google::Apis::CloudshellV1alpha1::PublicKey>]
+        attr_accessor :public_keys
+      
         def initialize(**args)
            update!(**args)
         end
@@ -338,6 +343,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @access_token = args[:access_token] if args.key?(:access_token)
+          @public_keys = args[:public_keys] if args.key?(:public_keys)
         end
       end
       

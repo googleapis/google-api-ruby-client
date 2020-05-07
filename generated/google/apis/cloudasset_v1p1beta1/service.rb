@@ -60,6 +60,7 @@ module Google
         #   * Organization number (such as "organizations/123")
         #   * Folder number(such as "folders/1234")
         #   * Project number (such as "projects/12345")
+        #   * Project id (such as "projects/abc")
         # @param [Fixnum] page_size
         #   Optional. The page size for search result pagination. Page size is capped at
         #   500 even
@@ -120,6 +121,7 @@ module Google
         #   * Organization number (such as "organizations/123")
         #   * Folder number(such as "folders/1234")
         #   * Project number (such as "projects/12345")
+        #   * Project id (such as "projects/abc")
         # @param [Array<String>, String] asset_types
         #   Optional. A list of asset types that this request searches for. If empty, it
         #   will

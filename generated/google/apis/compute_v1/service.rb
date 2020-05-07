@@ -1631,6 +1631,8 @@ module Google
         end
         
         # Gets the most recent health check results for this BackendService.
+        # Example request body:
+        # ` "group": "/zones/us-east1-b/instanceGroups/lb-backend-example" `
         # @param [String] project
         # @param [String] backend_service
         #   Name of the BackendService resource to which the queried instance belongs.
@@ -13486,7 +13488,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patch the node group.
+        # Updates the specified node group.
         # @param [String] project
         #   Project ID for this request.
         # @param [String] zone

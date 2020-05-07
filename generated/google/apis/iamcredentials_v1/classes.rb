@@ -199,7 +199,7 @@ module Google
         # @return [String]
         attr_accessor :key_id
       
-        # The signed blob.
+        # The signature for the blob. Does not include the original blob.
         # Corresponds to the JSON property `signedBlob`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -233,8 +233,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :delegates
       
-        # Required. The JWT payload to sign: a JSON object that contains a JWT Claims
-        # Set.
+        # Required. The JWT payload to sign. Must be a serialized JSON object that
+        # contains a
+        # JWT Claim Set. For example: ``"sub": "user@example.com", "iat": 313435``
+        # If the claim set contains an `exp` claim, it must be an integer timestamp
+        # that is not in the past and at most 12 hours in the future.
         # Corresponds to the JSON property `payload`
         # @return [String]
         attr_accessor :payload
@@ -259,7 +262,9 @@ module Google
         # @return [String]
         attr_accessor :key_id
       
-        # The signed JWT.
+        # The signed JWT. Contains the automatically generated header; the
+        # client-supplied payload; and the signature, which is generated using the
+        # key referenced by the `kid` field in the header.
         # Corresponds to the JSON property `signedJwt`
         # @return [String]
         attr_accessor :signed_jwt

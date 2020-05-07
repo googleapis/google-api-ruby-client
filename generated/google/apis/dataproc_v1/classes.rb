@@ -23,7 +23,8 @@ module Google
     module DataprocV1
       
       # Specifies the type and number of accelerator cards attached to the instances
-      # of an instance. See GPUs on Compute Engine.
+      # of an instance. See GPUs on Compute Engine (https://cloud.google.com/compute/
+      # docs/gpus/).
       class AcceleratorConfig
         include Google::Apis::Core::Hashable
       
@@ -33,13 +34,15 @@ module Google
         attr_accessor :accelerator_count
       
         # Full URL, partial URI, or short name of the accelerator type resource to
-        # expose to this instance. See Compute Engine AcceleratorTypes.Examples:
+        # expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.
+        # google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
         # https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/
         # acceleratorTypes/nvidia-tesla-k80
         # projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
         # nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone
-        # Placement feature, you must use the short name of the accelerator type
-        # resource, for example, nvidia-tesla-k80.
+        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
+        # clusters/auto-zone#using_auto_zone_placement) feature, you must use the short
+        # name of the accelerator type resource, for example, nvidia-tesla-k80.
         # Corresponds to the JSON property `acceleratorTypeUri`
         # @return [String]
         attr_accessor :accelerator_type_uri
@@ -400,7 +403,8 @@ module Google
         # Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your
         # cluster's staging bucket according to the Compute Engine zone where your
         # cluster is deployed, and then create and manage this project-level, per-
-        # location bucket (see Dataproc staging bucket).
+        # location bucket (see Dataproc staging bucket (https://cloud.google.com/
+        # dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         # Corresponds to the JSON property `configBucket`
         # @return [String]
         attr_accessor :config_bucket
@@ -902,8 +906,9 @@ module Google
         # Optional. The Compute Engine network to be used for machine communications.
         # Cannot be specified with subnetwork_uri. If neither network_uri nor
         # subnetwork_uri is specified, the "default" network of the project is used, if
-        # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
-        # information).A full URL, partial URI, or short name are valid. Examples:
+        # it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://
+        # cloud.google.com/compute/docs/subnetworks) for more information).A full URL,
+        # partial URI, or short name are valid. Examples:
         # https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/
         # default
         # projects/[project_id]/regions/global/default
@@ -917,9 +922,14 @@ module Google
         # @return [Google::Apis::DataprocV1::ReservationAffinity]
         attr_accessor :reservation_affinity
       
-        # Optional. The Dataproc service account (also see VM Data Plane identity) used
-        # by Dataproc cluster VM instances to access Google Cloud Platform services.If
-        # not specified, the Compute Engine default service account is used.
+        # Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/
+        # concepts/configuring-clusters/service-accounts#
+        # service_accounts_in_cloud_dataproc) (also see VM Data Plane identity (https://
+        # cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#
+        # vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances
+        # to access Google Cloud Platform services.If not specified, the Compute Engine
+        # default service account (https://cloud.google.com/compute/docs/access/service-
+        # accounts#default_service_account) is used.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -949,7 +959,8 @@ module Google
         # @return [String]
         attr_accessor :subnetwork_uri
       
-        # The Compute Engine tags to add to all instances (see Tagging instances).
+        # The Compute Engine tags to add to all instances (see Tagging instances (https:/
+        # /cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
         attr_accessor :tags
@@ -1010,7 +1021,9 @@ module Google
         # Optional. The policy format version to be returned.Valid values are 0, 1, and
         # 3. Requests specifying an invalid value will be rejected.Requests for policies
         # with any conditional bindings must specify version 3. Policies without any
-        # conditional bindings may specify any valid value or leave the field unset.
+        # conditional bindings may specify any valid value or leave the field unset.To
+        # learn which resources support conditions in their IAM policies, see the IAM
+        # documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1261,8 +1274,9 @@ module Google
         # machineTypes/n1-standard-2
         # projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
         # n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
-        # Placement feature, you must use the short name of the machine type resource,
-        # for example, n1-standard-2.
+        # Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-
+        # clusters/auto-zone#using_auto_zone_placement) feature, you must use the short
+        # name of the machine type resource, for example, n1-standard-2.
         # Corresponds to the JSON property `machineTypeUri`
         # @return [String]
         attr_accessor :machine_type_uri
@@ -1273,7 +1287,8 @@ module Google
         attr_accessor :managed_group_config
       
         # Optional. Specifies the minimum cpu platform for the Instance Group. See
-        # Dataproc&rarr;Minimum CPU Platform.
+        # Dataproc -&gt; Minimum CPU Platform (https://cloud.google.com/dataproc/docs/
+        # concepts/compute/dataproc-min-cpu).
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
         attr_accessor :min_cpu_platform
@@ -1417,8 +1432,9 @@ module Google
         attr_accessor :placement
       
         # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
-        # The Dataproc Presto Optional Component must be enabled when the cluster is
-        # created to submit a Presto job to the cluster.
+        # The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/
+        # concepts/components/presto) must be enabled when the cluster is created to
+        # submit a Presto job to the cluster.
         # Corresponds to the JSON property `prestoJob`
         # @return [Google::Apis::DataprocV1::PrestoJob]
         attr_accessor :presto_job
@@ -2173,8 +2189,9 @@ module Google
         attr_accessor :prerequisite_step_ids
       
         # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
-        # The Dataproc Presto Optional Component must be enabled when the cluster is
-        # created to submit a Presto job to the cluster.
+        # The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/
+        # concepts/components/presto) must be enabled when the cluster is created to
+        # submit a Presto job to the cluster.
         # Corresponds to the JSON property `prestoJob`
         # @return [Google::Apis::DataprocV1::PrestoJob]
         attr_accessor :presto_job
@@ -2333,10 +2350,13 @@ module Google
       # binding binds one or more members to a single role. Members can be user
       # accounts, service accounts, Google groups, and domains (such as G Suite). A
       # role is a named list of permissions; each role can be an IAM predefined role
-      # or a user-created custom role.Optionally, a binding can specify a condition,
-      # which is a logical expression that allows access to a resource only if the
-      # expression evaluates to true. A condition can add constraints based on
-      # attributes of the request, the resource, or both.JSON example:
+      # or a user-created custom role.For some types of Google Cloud resources, a
+      # binding can also specify a condition, which is a logical expression that
+      # allows access to a resource only if the expression evaluates to true. A
+      # condition can add constraints based on attributes of the request, the resource,
+      # or both. To learn which resources support conditions in their IAM policies,
+      # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
+      # resource-policies).JSON example:
       # `
       # "bindings": [
       # `
@@ -2350,7 +2370,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -2418,7 +2440,9 @@ module Google
         # allows you to overwrite a version 3 policy with a version 1 policy, and all of
         # the conditions in the version 3 policy are lost.If a policy does not include
         # any conditions, operations on that policy may specify any valid version or
-        # leave the field unset.
+        # leave the field unset.To learn which resources support conditions in their IAM
+        # policies, see the IAM documentation (https://cloud.google.com/iam/help/
+        # conditions/resource-policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2436,8 +2460,9 @@ module Google
       end
       
       # A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT:
-      # The Dataproc Presto Optional Component must be enabled when the cluster is
-      # created to submit a Presto job to the cluster.
+      # The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/
+      # concepts/components/presto) must be enabled when the cluster is created to
+      # submit a Presto job to the cluster.
       class PrestoJob
         include Google::Apis::Core::Hashable
       
@@ -2681,10 +2706,13 @@ module Google
         # binding binds one or more members to a single role. Members can be user
         # accounts, service accounts, Google groups, and domains (such as G Suite). A
         # role is a named list of permissions; each role can be an IAM predefined role
-        # or a user-created custom role.Optionally, a binding can specify a condition,
-        # which is a logical expression that allows access to a resource only if the
-        # expression evaluates to true. A condition can add constraints based on
-        # attributes of the request, the resource, or both.JSON example:
+        # or a user-created custom role.For some types of Google Cloud resources, a
+        # binding can also specify a condition, which is a logical expression that
+        # allows access to a resource only if the expression evaluates to true. A
+        # condition can add constraints based on attributes of the request, the resource,
+        # or both. To learn which resources support conditions in their IAM policies,
+        # see the IAM documentation (https://cloud.google.com/iam/help/conditions/
+        # resource-policies).JSON example:
         # `
         # "bindings": [
         # `
@@ -2698,7 +2726,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -2747,9 +2777,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The version of software inside the cluster. It must be one of the
-        # supported Dataproc Versions, such as "1.2" (including a subminor version, such
-        # as "1.2.29"), or the "preview" version. If unspecified, it defaults to the
-        # latest Debian version.
+        # supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/
+        # versioning/dataproc-versions#supported_cloud_dataproc_versions), such as "1.2"
+        # (including a subminor version, such as "1.2.29"), or the "preview" version (
+        # https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#
+        # other_versions). If unspecified, it defaults to the latest Debian version.
         # Corresponds to the JSON property `imageVersion`
         # @return [String]
         attr_accessor :image_version
@@ -2770,7 +2802,8 @@ module Google
         # mapred: mapred-site.xml
         # pig: pig.properties
         # spark: spark-defaults.conf
-        # yarn: yarn-site.xmlFor more information, see Cluster properties.
+        # yarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.
+        # google.com/dataproc/docs/concepts/cluster-properties).
         # Corresponds to the JSON property `properties`
         # @return [Hash<String,String>]
         attr_accessor :properties

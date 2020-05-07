@@ -354,6 +354,11 @@ module Google
         # @return [String]
         attr_accessor :state
       
+        # If the grant is suspended, the reason(s) for suspension.
+        # Corresponds to the JSON property `suspensionReason`
+        # @return [Array<String>]
+        attr_accessor :suspension_reason
+      
         def initialize(**args)
            update!(**args)
         end
@@ -366,6 +371,7 @@ module Google
           @max_eirp = args[:max_eirp] if args.key?(:max_eirp)
           @move_list = args[:move_list] if args.key?(:move_list)
           @state = args[:state] if args.key?(:state)
+          @suspension_reason = args[:suspension_reason] if args.key?(:suspension_reason)
         end
       end
       
@@ -577,6 +583,12 @@ module Google
         # @return [String]
         attr_accessor :antenna_model
       
+        # If present, this parameter specifies whether the CBSD is a CPE-CBSD or not.
+        # Corresponds to the JSON property `cpeCbsdIndication`
+        # @return [Boolean]
+        attr_accessor :cpe_cbsd_indication
+        alias_method :cpe_cbsd_indication?, :cpe_cbsd_indication
+      
         # This parameter is the maximum device EIRP in units of dBm/10MHz
         # and is an integer with a value between -127 and +47 (dBm/10 MHz)
         # inclusive. If not included, SAS interprets it as maximum
@@ -649,6 +661,7 @@ module Google
           @antenna_downtilt = args[:antenna_downtilt] if args.key?(:antenna_downtilt)
           @antenna_gain = args[:antenna_gain] if args.key?(:antenna_gain)
           @antenna_model = args[:antenna_model] if args.key?(:antenna_model)
+          @cpe_cbsd_indication = args[:cpe_cbsd_indication] if args.key?(:cpe_cbsd_indication)
           @eirp_capability = args[:eirp_capability] if args.key?(:eirp_capability)
           @height = args[:height] if args.key?(:height)
           @height_type = args[:height_type] if args.key?(:height_type)

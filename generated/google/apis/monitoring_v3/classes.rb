@@ -651,12 +651,6 @@ module Google
         # @return [Google::Apis::MonitoringV3::MetricThreshold]
         attr_accessor :condition_threshold
       
-        # A condition type that allows alert policies to be defined using Monitoring
-        # Query Language.
-        # Corresponds to the JSON property `conditionTimeSeriesQueryLanguage`
-        # @return [Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition]
-        attr_accessor :condition_time_series_query_language
-      
         # A short name or phrase used to identify the condition in dashboards,
         # notifications, and incidents. To avoid confusion, don't use the same display
         # name for multiple conditions in the same policy.
@@ -691,7 +685,6 @@ module Google
         def update!(**args)
           @condition_absent = args[:condition_absent] if args.key?(:condition_absent)
           @condition_threshold = args[:condition_threshold] if args.key?(:condition_threshold)
-          @condition_time_series_query_language = args[:condition_time_series_query_language] if args.key?(:condition_time_series_query_language)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
         end
@@ -1442,6 +1435,21 @@ module Google
         # @return [Google::Apis::MonitoringV3::BasicAuthentication]
         attr_accessor :auth_info
       
+        # The request body associated with the HTTP request. If content_type is
+        # URL_ENCODED, the body passed in must be URL-encoded. Users can provide a
+        # Content-Length header via the headers field or the API will do so. The maximum
+        # byte size is 1 megabyte. Note: As with all bytes fields JSON representations
+        # are base64 encoded.
+        # Corresponds to the JSON property `body`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :body
+      
+        # The content type to use for the check.
+        # Corresponds to the JSON property `contentType`
+        # @return [String]
+        attr_accessor :content_type
+      
         # The list of headers to send as part of the Uptime check request. If two
         # headers have the same key and different values, they should be entered as a
         # single header, with the value being a comma-separated list of all the desired
@@ -1479,6 +1487,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :port
       
+        # The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED
+        # then request_method defaults to GET.
+        # Corresponds to the JSON property `requestMethod`
+        # @return [String]
+        attr_accessor :request_method
+      
         # If true, use HTTPS instead of HTTP to run the check.
         # Corresponds to the JSON property `useSsl`
         # @return [Boolean]
@@ -1500,10 +1514,13 @@ module Google
         # Update properties of this object
         def update!(**args)
           @auth_info = args[:auth_info] if args.key?(:auth_info)
+          @body = args[:body] if args.key?(:body)
+          @content_type = args[:content_type] if args.key?(:content_type)
           @headers = args[:headers] if args.key?(:headers)
           @mask_headers = args[:mask_headers] if args.key?(:mask_headers)
           @path = args[:path] if args.key?(:path)
           @port = args[:port] if args.key?(:port)
+          @request_method = args[:request_method] if args.key?(:request_method)
           @use_ssl = args[:use_ssl] if args.key?(:use_ssl)
           @validate_ssl = args[:validate_ssl] if args.key?(:validate_ssl)
         end
@@ -2908,7 +2925,7 @@ module Google
         # For DELTA and CUMULATIVE metrics, the start time must be earlier  than the end
         # time.
         # In all cases, the start time of the next interval must be  at least a
-        # microsecond after the end time of the previous interval.  Because the interval
+        # millisecond after the end time of the previous interval.  Because the interval
         # is closed, if the start time of a new interval  is the same as the end time of
         # the previous interval, data written  at the new start time could overwrite
         # data written at the previous  end time.
@@ -2950,7 +2967,7 @@ module Google
         # For DELTA and CUMULATIVE metrics, the start time must be earlier  than the end
         # time.
         # In all cases, the start time of the next interval must be  at least a
-        # microsecond after the end time of the previous interval.  Because the interval
+        # millisecond after the end time of the previous interval.  Because the interval
         # is closed, if the start time of a new interval  is the same as the end time of
         # the previous interval, data written  at the new start time could overwrite
         # data written at the previous  end time.
@@ -3476,7 +3493,7 @@ module Google
       # For DELTA and CUMULATIVE metrics, the start time must be earlier  than the end
       # time.
       # In all cases, the start time of the next interval must be  at least a
-      # microsecond after the end time of the previous interval.  Because the interval
+      # millisecond after the end time of the previous interval.  Because the interval
       # is closed, if the start time of a new interval  is the same as the end time of
       # the previous interval, data written  at the new start time could overwrite
       # data written at the previous  end time.
@@ -3638,34 +3655,6 @@ module Google
         def update!(**args)
           @label_descriptors = args[:label_descriptors] if args.key?(:label_descriptors)
           @point_descriptors = args[:point_descriptors] if args.key?(:point_descriptors)
-        end
-      end
-      
-      # A condition type that allows alert policies to be defined using Monitoring
-      # Query Language.
-      class TimeSeriesQueryLanguageCondition
-        include Google::Apis::Core::Hashable
-      
-        # Monitoring Query Language query that generates time series data and describes
-        # a condition for alerting on that data.
-        # Corresponds to the JSON property `query`
-        # @return [String]
-        attr_accessor :query
-      
-        # A short explanation of what the query represents. For example:"Error ratio
-        # exceeds 15% for >5% of servers in >2 regions"
-        # Corresponds to the JSON property `summary`
-        # @return [String]
-        attr_accessor :summary
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @query = args[:query] if args.key?(:query)
-          @summary = args[:summary] if args.key?(:summary)
         end
       end
       

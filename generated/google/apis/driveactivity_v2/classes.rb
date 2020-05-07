@@ -1125,7 +1125,7 @@ module Google
         # parentheses.
         # Examples:
         # - <tt>detail.action_detail_case: RENAME</tt>
-        # - <tt>detail.action_detail_case:(CREATE UPLOAD)</tt>
+        # - <tt>detail.action_detail_case:(CREATE EDIT)</tt>
         # - <tt>-detail.action_detail_case:MOVE</tt>
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -1137,14 +1137,18 @@ module Google
         # @return [String]
         attr_accessor :item_name
       
-        # The requested number of activity to return. If not set, a default value
-        # will be used.
+        # The miminum number of activities desired in the response; the server will
+        # attempt to return at least this quanitity. The server may also return fewer
+        # activities if it has a partial response ready before the request times out.
+        # If not set, a default value is used.
         # Corresponds to the JSON property `pageSize`
         # @return [Fixnum]
         attr_accessor :page_size
       
-        # The next_page_token value returned from a previous QueryDriveActivity
-        # request, if any.
+        # The token identifying which page of results to return. Set this to the
+        # next_page_token value returned from a previous query to obtain the
+        # following page of results. If not set, the first page of results will be
+        # returned.
         # Corresponds to the JSON property `pageToken`
         # @return [String]
         attr_accessor :page_token

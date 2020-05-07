@@ -122,12 +122,12 @@ module Google
         
         # Creates an instance.
         # @param [String] parent
-        #   The instance's project and location, in the format
+        #   Required. The instance's project and location, in the format
         #   projects/`project_id`/locations/`location`. In Cloud Filestore,
         #   locations map to GCP zones, for example **us-west1-b**.
         # @param [Google::Apis::FileV1::Instance] instance_object
         # @param [String] instance_id
-        #   The name of the instance to create.
+        #   Required. The name of the instance to create.
         #   The name must be unique for the specified project and location.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -161,7 +161,7 @@ module Google
         
         # Deletes an instance.
         # @param [String] name
-        #   The instance resource name, in the format
+        #   Required. The instance resource name, in the format
         #   projects/`project_id`/locations/`location`/instances/`instance_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -192,7 +192,7 @@ module Google
         
         # Gets the details of a specific instance.
         # @param [String] name
-        #   The instance resource name, in the format
+        #   Required. The instance resource name, in the format
         #   projects/`project_id`/locations/`location`/instances/`instance_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -224,7 +224,7 @@ module Google
         # Lists all instances in a project for either a specified location
         # or for all locations.
         # @param [String] parent
-        #   The project and location for which to retrieve instance information,
+        #   Required. The project and location for which to retrieve instance information,
         #   in the format projects/`project_id`/locations/`location`. In Cloud
         #   Filestore, locations map to GCP zones, for example **us-west1-b**. To
         #   retrieve instance information for all locations, use "-" for the `location`

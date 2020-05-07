@@ -77,7 +77,7 @@ module Google
       class AddHeldAccountsRequest
         include Google::Apis::Core::Hashable
       
-        # Account ids to identify which accounts to add. Only account_ids or only
+        # Account IDs to identify which accounts to add. Only account_ids or only
         # emails should be specified, but not both.
         # Corresponds to the JSON property `accountIds`
         # @return [Array<String>]
@@ -1050,7 +1050,7 @@ module Google
       class MatterPermission
         include Google::Apis::Core::Hashable
       
-        # The account id, as provided by <a
+        # The account ID, as provided by <a
         # href="https://developers.google.com/admin-sdk/">Admin SDK</a>.
         # Corresponds to the JSON property `accountId`
         # @return [String]
@@ -1217,7 +1217,7 @@ module Google
       class RemoveHeldAccountsRequest
         include Google::Apis::Core::Hashable
       
-        # Account ids to identify HeldAccounts to remove.
+        # Account IDs to identify HeldAccounts to remove.
         # Corresponds to the JSON property `accountIds`
         # @return [Array<String>]
         attr_accessor :account_ids
@@ -1318,7 +1318,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Output only. The matter id of the associated matter.
+        # Output only. The matter ID of the associated matter.
         # The server does not look at this field during create and always uses matter
         # id in the URL.
         # Corresponds to the JSON property `matterId`
@@ -1353,7 +1353,7 @@ module Google
       class SharedDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Shared drive ids, as provided by <a
+        # List of Shared drive IDs, as provided by <a
         # href="https://developers.google.com/drive">Drive API</a>.
         # Corresponds to the JSON property `sharedDriveIds`
         # @return [Array<String>]
@@ -1412,7 +1412,7 @@ module Google
       class TeamDriveInfo
         include Google::Apis::Core::Hashable
       
-        # List of Team Drive ids, as provided by <a
+        # List of Team Drive IDs, as provided by <a
         # href="https://developers.google.com/drive">Drive API</a>.
         # Corresponds to the JSON property `teamDriveIds`
         # @return [Array<String>]

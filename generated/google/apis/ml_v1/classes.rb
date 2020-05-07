@@ -87,7 +87,7 @@ module Google
       class GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
         include Google::Apis::Core::Hashable
       
-        # True if measurement.elapsed_time is used as the x-axis of each
+        # If true, measurement.elapsed_time is used as the x-axis of each
         # Trials Decay Curve. Otherwise, Measurement.steps will be used as the
         # x-axis.
         # Corresponds to the JSON property `useElapsedTime`
@@ -113,10 +113,11 @@ module Google
       class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
         include Google::Apis::Core::Hashable
       
-        # True if median automated stopping rule applies on
-        # measurement.use_elapsed_time. it means that elapsed_time field of
-        # latest measurement of current trial is used to compute median objective
-        # value for each completed trials.
+        # If true, the median automated stopping rule applies to
+        # measurement.use_elapsed_time, which means the elapsed_time field of
+        # the current trial's
+        # latest measurement is used to compute the median objective
+        # value for each completed trial.
         # Corresponds to the JSON property `useElapsedTime`
         # @return [Boolean]
         attr_accessor :use_elapsed_time
@@ -443,7 +444,8 @@ module Google
         end
       end
       
-      # A message representing a parameter to be tuned.
+      # A message representing a parameter to be tuned. Contains the name of
+      # the parameter and the suggested value to use for this trial.
       class GoogleCloudMlV1TrialParameter
         include Google::Apis::Core::Hashable
       
@@ -513,7 +515,7 @@ module Google
       class GoogleCloudMlV1AddTrialMeasurementRequest
         include Google::Apis::Core::Hashable
       
-        # A message representing a Measurement.
+        # A message representing a measurement.
         # Corresponds to the JSON property `measurement`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
         attr_accessor :measurement
@@ -702,7 +704,7 @@ module Google
       class GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata
         include Google::Apis::Core::Hashable
       
-        # The time operation was submitted.
+        # The time at which the operation was submitted.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -712,7 +714,7 @@ module Google
         # @return [String]
         attr_accessor :study
       
-        # The Trial name.
+        # The trial name.
         # Corresponds to the JSON property `trial`
         # @return [String]
         attr_accessor :trial
@@ -748,7 +750,7 @@ module Google
       class GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse
         include Google::Apis::Core::Hashable
       
-        # The time operation processing completed.
+        # The time at which operation processing completed.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
@@ -759,7 +761,7 @@ module Google
         attr_accessor :should_stop
         alias_method :should_stop?, :should_stop
       
-        # The time operation was started.
+        # The time at which the operation was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -780,12 +782,12 @@ module Google
       class GoogleCloudMlV1CompleteTrialRequest
         include Google::Apis::Core::Hashable
       
-        # A message representing a Measurement.
+        # A message representing a measurement.
         # Corresponds to the JSON property `finalMeasurement`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
         attr_accessor :final_measurement
       
-        # Optional. A human readable reason why the Trial was infeasible. This should
+        # Optional. A human readable reason why the trial was infeasible. This should
         # only be provided if `trial_infeasible` is true.
         # Corresponds to the JSON property `infeasibleReason`
         # @return [String]
@@ -834,9 +836,11 @@ module Google
       class GoogleCloudMlV1EncryptionConfig
         include Google::Apis::Core::Hashable
       
-        # The Cloud KMS resource identifier of the customer managed encryption key
-        # used to protect a resource, such as a training job. Has the form:
-        # `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        # The Cloud KMS resource identifier of the customer-managed encryption key
+        # used to protect a resource, such as a training job. It has the following
+        # format:
+        # `projects/`PROJECT_ID`/locations/`REGION`/keyRings/`KEY_RING_NAME`/cryptoKeys/`
+        # KEY_NAME``
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -1341,7 +1345,7 @@ module Google
       class GoogleCloudMlV1ListStudiesResponse
         include Google::Apis::Core::Hashable
       
-        # The Studies associated with the project.
+        # The studies associated with the project.
         # Corresponds to the JSON property `studies`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Study>]
         attr_accessor :studies
@@ -1448,11 +1452,12 @@ module Google
         end
       end
       
-      # A message representing a Measurement.
+      # A message representing a measurement.
       class GoogleCloudMlV1Measurement
         include Google::Apis::Core::Hashable
       
-        # Time that the Trial has been running at the point of this Measurement.
+        # Output only. Time that the trial has been running at the point of
+        # this measurement.
         # Corresponds to the JSON property `elapsedTime`
         # @return [String]
         attr_accessor :elapsed_time
@@ -2110,7 +2115,7 @@ module Google
       class GoogleCloudMlV1Study
         include Google::Apis::Core::Hashable
       
-        # Output only. Time that the study was created.
+        # Output only. Time at which the study was created.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -2165,7 +2170,7 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AutomatedStoppingConfig]
         attr_accessor :automated_stopping_config
       
-        # 
+        # Metric specs for the study.
         # Corresponds to the JSON property `metrics`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1StudyConfigMetricSpec>]
         attr_accessor :metrics
@@ -2259,12 +2264,12 @@ module Google
       class GoogleCloudMlV1SuggestTrialsResponse
         include Google::Apis::Core::Hashable
       
-        # The time operation processing completed.
+        # The time at which operation processing completed.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # The time operation was started.
+        # The time at which the operation was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -2274,7 +2279,7 @@ module Google
         # @return [String]
         attr_accessor :study_state
       
-        # A list of Trials.
+        # A list of trials.
         # Corresponds to the JSON property `trials`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1Trial>]
         attr_accessor :trials
@@ -2300,12 +2305,11 @@ module Google
       class GoogleCloudMlV1TrainingInput
         include Google::Apis::Core::Hashable
       
-        # Optional. Arguments passed to the training.
-        # - If it is a python package training:
-        # It will be passed as command line argument to the program.
-        # - If it is a custom container training,
-        # It will be passed as an argument to the custom container
-        # image.
+        # Optional. Command-line arguments passed to the training application when it
+        # starts. If your job uses a custom container, then the arguments are passed
+        # to the container's <a class="external" target="_blank"
+        # href="https://docs.docker.com/engine/reference/builder/#entrypoint">
+        # `ENTRYPOINT`</a> command.
         # Corresponds to the JSON property `args`
         # @return [Array<String>]
         attr_accessor :args
@@ -2630,7 +2634,7 @@ module Google
         end
       end
       
-      # A message representing a Trial.
+      # A message representing a trial.
       class GoogleCloudMlV1Trial
         include Google::Apis::Core::Hashable
       
@@ -2639,17 +2643,17 @@ module Google
         # @return [String]
         attr_accessor :client_id
       
-        # Output only. Time the Trial's status changed to COMPLETED.
+        # Output only. Time at which the trial's status changed to COMPLETED.
         # Corresponds to the JSON property `endTime`
         # @return [String]
         attr_accessor :end_time
       
-        # A message representing a Measurement.
+        # A message representing a measurement.
         # Corresponds to the JSON property `finalMeasurement`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1Measurement]
         attr_accessor :final_measurement
       
-        # Output only. A human readable string describing why the Trial is
+        # Output only. A human readable string describing why the trial is
         # infeasible. This should only be set if trial_infeasible is true.
         # Corresponds to the JSON property `infeasibleReason`
         # @return [String]
@@ -2667,12 +2671,12 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # The parameters of the Trial.
+        # The parameters of the trial.
         # Corresponds to the JSON property `parameters`
         # @return [Array<Google::Apis::MlV1::GoogleCloudMlV1TrialParameter>]
         attr_accessor :parameters
       
-        # Output only. Time the Trial was started.
+        # Output only. Time at which the trial was started.
         # Corresponds to the JSON property `startTime`
         # @return [String]
         attr_accessor :start_time
@@ -2682,8 +2686,7 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # Output only. True if the parameters in this trial should not be attempted
-        # again.
+        # Output only. If true, the parameters in this trial are not attempted again.
         # Corresponds to the JSON property `trialInfeasible`
         # @return [Boolean]
         attr_accessor :trial_infeasible

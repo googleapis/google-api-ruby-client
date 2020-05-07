@@ -59,6 +59,12 @@ module Google
         # @return [String]
         attr_accessor :action
       
+        # The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value
+        # is meaningless when the breakpoint is not in CANARY_ACTIVE state.
+        # Corresponds to the JSON property `canaryExpireTime`
+        # @return [String]
+        attr_accessor :canary_expire_time
+      
         # Condition that triggers the breakpoint.
         # The condition is a compound boolean expression composed using expressions
         # in a programming language at the source location.
@@ -141,6 +147,11 @@ module Google
         # @return [Array<Google::Apis::ClouddebuggerV2::StackFrame>]
         attr_accessor :stack_frames
       
+        # The current state of the breakpoint.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
         # Represents a contextual status message.
         # The message can indicate an error or informational status, and refer to
         # specific parts of the containing object.
@@ -177,6 +188,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @action = args[:action] if args.key?(:action)
+          @canary_expire_time = args[:canary_expire_time] if args.key?(:canary_expire_time)
           @condition = args[:condition] if args.key?(:condition)
           @create_time = args[:create_time] if args.key?(:create_time)
           @evaluated_expressions = args[:evaluated_expressions] if args.key?(:evaluated_expressions)
@@ -189,6 +201,7 @@ module Google
           @log_level = args[:log_level] if args.key?(:log_level)
           @log_message_format = args[:log_message_format] if args.key?(:log_message_format)
           @stack_frames = args[:stack_frames] if args.key?(:stack_frames)
+          @state = args[:state] if args.key?(:state)
           @status = args[:status] if args.key?(:status)
           @user_email = args[:user_email] if args.key?(:user_email)
           @variable_table = args[:variable_table] if args.key?(:variable_table)
@@ -304,6 +317,11 @@ module Google
         # @return [String]
         attr_accessor :agent_version
       
+        # Used when setting breakpoint canary for this debuggee.
+        # Corresponds to the JSON property `canaryMode`
+        # @return [String]
+        attr_accessor :canary_mode
+      
         # Human readable description of the debuggee.
         # Including a human-readable project name, environment name and version
         # information is recommended.
@@ -380,6 +398,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @canary_mode = args[:canary_mode] if args.key?(:canary_mode)
           @description = args[:description] if args.key?(:description)
           @ext_source_contexts = args[:ext_source_contexts] if args.key?(:ext_source_contexts)
           @id = args[:id] if args.key?(:id)
@@ -703,6 +722,12 @@ module Google
       class RegisterDebuggeeResponse
         include Google::Apis::Core::Hashable
       
+        # A unique ID generated for the agent.
+        # Each RegisterDebuggee request will generate a new agent ID.
+        # Corresponds to the JSON property `agentId`
+        # @return [String]
+        attr_accessor :agent_id
+      
         # Represents the debugged application. The application may include one or more
         # replicated processes executing the same code. Each of these processes is
         # attached with a debugger agent, carrying out the debugging commands.
@@ -718,6 +743,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @agent_id = args[:agent_id] if args.key?(:agent_id)
           @debuggee = args[:debuggee] if args.key?(:debuggee)
         end
       end

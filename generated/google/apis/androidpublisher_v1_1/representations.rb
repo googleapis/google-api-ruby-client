@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class SubscriptionPurchase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class InappPurchase
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -44,16 +38,6 @@ module Google
           property :purchase_state, as: 'purchaseState'
           property :purchase_time, :numeric_string => true, as: 'purchaseTime'
           property :purchase_type, as: 'purchaseType'
-        end
-      end
-      
-      class SubscriptionPurchase
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_renewing, as: 'autoRenewing'
-          property :initiation_timestamp_msec, :numeric_string => true, as: 'initiationTimestampMsec'
-          property :kind, as: 'kind'
-          property :valid_until_timestamp_msec, :numeric_string => true, as: 'validUntilTimestampMsec'
         end
       end
     end

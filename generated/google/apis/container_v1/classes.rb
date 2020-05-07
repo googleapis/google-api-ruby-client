@@ -32,7 +32,7 @@ module Google
         attr_accessor :accelerator_count
       
         # The accelerator type resource name. List of supported accelerators
-        # [here](/compute/docs/gpus)
+        # [here](https://cloud.google.com/compute/docs/gpus)
         # Corresponds to the JSON property `acceleratorType`
         # @return [String]
         attr_accessor :accelerator_type
@@ -257,7 +257,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The name (project, location, operation id) of the operation to cancel.
-        # Specified in the format 'projects/*/locations/*/operations/*'.
+        # Specified in the format `projects/*/locations/*/operations/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -276,8 +276,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the operation resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # operation resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -419,8 +420,8 @@ module Google
         attr_accessor :current_node_count
       
         # [Output only] Deprecated, use
-        # [NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.
-        # clusters.nodePools)
+        # [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/
+        # rest/v1/projects.zones.clusters.nodePools)
         # instead. The current version of the node software components. If they are
         # currently at multiple versions because they're in the process of being
         # upgraded, this reflects the minimum version of all nodes.
@@ -525,16 +526,19 @@ module Google
         attr_accessor :legacy_abac
       
         # [Output only] The name of the Google Compute Engine
-        # [zone](/compute/docs/regions-zones/regions-zones#available) or
-        # [region](/compute/docs/regions-zones/regions-zones#available) in which
-        # the cluster resides.
+        # [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#
+        # available)
+        # or
+        # [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#
+        # available)
+        # in which the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
       
         # The list of Google Compute Engine
-        # [zones](/compute/docs/zones#available) in which the cluster's nodes
-        # should be located.
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster's nodes should be located.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -596,9 +600,10 @@ module Google
         attr_accessor :name
       
         # The name of the Google Compute Engine
-        # [network](/compute/docs/networks-and-firewalls#networks) to which the
-        # cluster is connected. If left unspecified, the `default` network
-        # will be used.
+        # [network](https://cloud.google.com/compute/docs/networks-and-firewalls#
+        # networks)
+        # to which the cluster is connected. If left unspecified, the `default`
+        # network will be used.
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -681,8 +686,8 @@ module Google
         attr_accessor :status_message
       
         # The name of the Google Compute Engine
-        # [subnetwork](/compute/docs/subnetworks) to which the
-        # cluster is connected.
+        # [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which
+        # the cluster is connected.
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -708,9 +713,8 @@ module Google
         attr_accessor :workload_identity_config
       
         # [Output only] The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field is deprecated, use location instead.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -781,8 +785,9 @@ module Google
       class ClusterAutoscaling
         include Google::Apis::Core::Hashable
       
-        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
-        # in which the NodePool's nodes can be created by NAP.
+        # The list of Google Compute Engine
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # NodePool's nodes can be created by NAP.
         # Corresponds to the JSON property `autoprovisioningLocations`
         # @return [Array<String>]
         attr_accessor :autoprovisioning_locations
@@ -861,10 +866,10 @@ module Google
         attr_accessor :desired_intra_node_visibility_config
       
         # The desired list of Google Compute Engine
-        # [zones](/compute/docs/zones#available) in which the cluster's nodes
-        # should be located. Changing the locations a cluster is in will result
-        # in nodes being either created or removed from the cluster, depending on
-        # whether locations are being added or removed.
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster's nodes should be located. Changing the locations a cluster is in
+        # will result in nodes being either created or removed from the cluster,
+        # depending on whether locations are being added or removed.
         # This list must always include the cluster's primary zone.
         # Corresponds to the JSON property `desiredLocations`
         # @return [Array<String>]
@@ -1004,7 +1009,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to complete IP
-        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
+        # rotation. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1017,9 +1022,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1069,7 +1074,7 @@ module Google
         attr_accessor :cluster
       
         # The parent (project and location) where the cluster will be created.
-        # Specified in the format 'projects/*/locations/*'.
+        # Specified in the format `projects/*/locations/*`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1082,9 +1087,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the parent field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the parent
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1124,7 +1129,7 @@ module Google
       
         # The parent (project, location, cluster id) where the node pool will be
         # created. Specified in the format
-        # 'projects/*/locations/*/clusters/*'.
+        # `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `parent`
         # @return [String]
         attr_accessor :parent
@@ -1137,9 +1142,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the parent field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the parent
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -1989,16 +1994,17 @@ module Google
         alias_method :enable_intra_node_visibility?, :enable_intra_node_visibility
       
         # Output only. The relative name of the Google Compute Engine
-        # network(/compute/docs/networks-and-firewalls#networks) to which
-        # the cluster is connected.
-        # Example: projects/my-project/global/networks/my-network
+        # network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)
+        # to which the cluster is connected. Example:
+        # projects/my-project/global/networks/my-network
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
       
         # Output only. The relative name of the Google Compute Engine
-        # [subnetwork](/compute/docs/vpc) to which the cluster is connected.
-        # Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
+        # [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the
+        # cluster is connected. Example:
+        # projects/my-project/regions/us-central1/subnetworks/my-subnet
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -2116,7 +2122,7 @@ module Google
         attr_accessor :local_ssd_count
       
         # The name of a Google Compute Engine [machine
-        # type](/compute/docs/machine-types) (e.g.
+        # type](https://cloud.google.com/compute/docs/machine-types) (e.g.
         # `n1-standard-1`).
         # If unspecified, the default machine type is
         # `n1-standard-1`.
@@ -2177,7 +2183,8 @@ module Google
         # persistent storage on your nodes.
         # * `https://www.googleapis.com/auth/devstorage.read_only` is required for
         # communicating with **gcr.io**
-        # (the [Google Container Registry](/container-registry/)).
+        # (the [Google Container
+        # Registry](https://cloud.google.com/container-registry/)).
         # If unspecified, no scopes are added, unless Cloud Logging or Cloud
         # Monitoring are enabled, in which case their required scopes will be added.
         # Corresponds to the JSON property `oauthScopes`
@@ -2192,8 +2199,9 @@ module Google
         attr_accessor :preemptible
         alias_method :preemptible?, :preemptible
       
-        # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
-        # the configuration of desired reservation which instances could take
+        # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
+        # reserving-zonal-resources)
+        # is the configuration of desired reservation which instances could take
         # capacity from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ContainerV1::ReservationAffinity]
@@ -2338,14 +2346,16 @@ module Google
         attr_accessor :initial_node_count
       
         # [Output only] The resource URLs of the [managed instance
-        # groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+        # groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-
+        # of-managed-instances)
         # associated with this node pool.
         # Corresponds to the JSON property `instanceGroupUrls`
         # @return [Array<String>]
         attr_accessor :instance_group_urls
       
-        # The list of Google Compute Engine [zones](/compute/docs/zones#available)
-        # in which the NodePool's nodes should be located.
+        # The list of Google Compute Engine
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # NodePool's nodes should be located.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
@@ -2536,9 +2546,12 @@ module Google
         attr_accessor :end_time
       
         # [Output only] The name of the Google Compute Engine
-        # [zone](/compute/docs/regions-zones/regions-zones#available) or
-        # [region](/compute/docs/regions-zones/regions-zones#available) in which
-        # the cluster resides.
+        # [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#
+        # available)
+        # or
+        # [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#
+        # available)
+        # in which the cluster resides.
         # Corresponds to the JSON property `location`
         # @return [String]
         attr_accessor :location
@@ -2590,9 +2603,8 @@ module Google
         attr_accessor :target_link
       
         # The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the operation
-        # is taking place.
-        # This field is deprecated, use location instead.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # operation is taking place. This field is deprecated, use location instead.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -2770,8 +2782,9 @@ module Google
         end
       end
       
-      # [ReservationAffinity](/compute/docs/instances/reserving-zonal-resources) is
-      # the configuration of desired reservation which instances could take
+      # [ReservationAffinity](https://cloud.google.com/compute/docs/instances/
+      # reserving-zonal-resources)
+      # is the configuration of desired reservation which instances could take
       # capacity from.
       class ReservationAffinity
         include Google::Apis::Core::Hashable
@@ -2884,7 +2897,7 @@ module Google
       
         # The name (project, location, cluster, node pool id) of the node poll to
         # rollback upgrade.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2903,9 +2916,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3003,7 +3016,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster) of the cluster to set addons.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3016,9 +3029,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3060,7 +3073,7 @@ module Google
         attr_accessor :label_fingerprint
       
         # The name (project, location, cluster id) of the cluster to set labels.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3078,9 +3091,9 @@ module Google
         attr_accessor :resource_labels
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3118,7 +3131,7 @@ module Google
         alias_method :enabled?, :enabled
       
         # The name (project, location, cluster id) of the cluster to set legacy abac.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3131,9 +3144,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3163,17 +3176,17 @@ module Google
         attr_accessor :cluster_id
       
         # Required. The desired list of Google Compute Engine
-        # [zones](/compute/docs/zones#available) in which the cluster's nodes
-        # should be located. Changing the locations a cluster is in will result
-        # in nodes being either created or removed from the cluster, depending on
-        # whether locations are being added or removed.
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster's nodes should be located. Changing the locations a cluster is in
+        # will result in nodes being either created or removed from the cluster,
+        # depending on whether locations are being added or removed.
         # This list must always include the cluster's primary zone.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
       
         # The name (project, location, cluster) of the cluster to set locations.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3186,9 +3199,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3231,7 +3244,7 @@ module Google
         attr_accessor :logging_service
       
         # The name (project, location, cluster) of the cluster to set logging.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3244,9 +3257,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3281,7 +3294,7 @@ module Google
       
         # The name (project, location, cluster id) of the cluster to set maintenance
         # policy.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3293,8 +3306,8 @@ module Google
         attr_accessor :project_id
       
         # Required. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3329,7 +3342,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster) of the cluster to set auth.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3349,9 +3362,9 @@ module Google
         attr_accessor :update
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3395,7 +3408,7 @@ module Google
         attr_accessor :monitoring_service
       
         # The name (project, location, cluster) of the cluster to set monitoring.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3408,9 +3421,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3440,7 +3453,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to set networking
-        # policy. Specified in the format 'projects/*/locations/*/clusters/*'.
+        # policy. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3459,9 +3472,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3498,7 +3511,7 @@ module Google
       
         # The name (project, location, cluster, node pool) of the node pool to set
         # autoscaler settings. Specified in the format
-        # 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3517,9 +3530,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3558,7 +3571,7 @@ module Google
       
         # The name (project, location, cluster, node pool id) of the node pool to set
         # management properties. Specified in the format
-        # 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3577,9 +3590,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3612,7 +3625,7 @@ module Google
       
         # The name (project, location, cluster, node pool id) of the node pool to set
         # size.
-        # Specified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3636,9 +3649,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3724,7 +3737,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster id) of the cluster to start IP
-        # rotation. Specified in the format 'projects/*/locations/*/clusters/*'.
+        # rotation. Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3743,9 +3756,9 @@ module Google
         alias_method :rotate_credentials?, :rotate_credentials
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3827,7 +3840,7 @@ module Google
         attr_accessor :cluster_id
       
         # The name (project, location, cluster) of the cluster to update.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3847,9 +3860,9 @@ module Google
         attr_accessor :update
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3891,7 +3904,7 @@ module Google
         attr_accessor :master_version
       
         # The name (project, location, cluster) of the cluster to update.
-        # Specified in the format 'projects/*/locations/*/clusters/*'.
+        # Specified in the format `projects/*/locations/*/clusters/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3904,9 +3917,9 @@ module Google
         attr_accessor :project_id
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone
@@ -3941,17 +3954,17 @@ module Google
         attr_accessor :image_type
       
         # The desired list of Google Compute Engine
-        # [zones](/compute/docs/zones#available) in which the node pool's nodes
-        # should be located. Changing the locations for a node pool will result
-        # in nodes being either created or removed from the node pool, depending
-        # on whether locations are being added or removed.
+        # [zones](https://cloud.google.com/compute/docs/zones#available) in which the
+        # node pool's nodes should be located. Changing the locations for a node pool
+        # will result in nodes being either created or removed from the node pool,
+        # depending on whether locations are being added or removed.
         # Corresponds to the JSON property `locations`
         # @return [Array<String>]
         attr_accessor :locations
       
         # The name (project, location, cluster, node pool) of the node pool to
         # update. Specified in the format
-        # 'projects/*/locations/*/clusters/*/nodePools/*'.
+        # `projects/*/locations/*/clusters/*/nodePools/*`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4011,9 +4024,9 @@ module Google
         attr_accessor :workload_metadata_config
       
         # Deprecated. The name of the Google Compute Engine
-        # [zone](/compute/docs/zones#available) in which the cluster
-        # resides.
-        # This field has been deprecated and replaced by the name field.
+        # [zone](https://cloud.google.com/compute/docs/zones#available) in which the
+        # cluster resides. This field has been deprecated and replaced by the name
+        # field.
         # Corresponds to the JSON property `zone`
         # @return [String]
         attr_accessor :zone

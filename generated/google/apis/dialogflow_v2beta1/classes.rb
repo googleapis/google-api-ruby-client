@@ -142,7 +142,7 @@ module Google
         # -   MapKey value: parameter name
         # -   MapValue type:
         # -   If parameter's entity type is a composite entity: map
-        # -   Else: string
+        # -   Else: string or number, depending on parameter value type
         # -   MapValue value:
         # -   If parameter's entity type is a composite entity:
         # map from composite entity property names to property values
@@ -322,6 +322,18 @@ module Google
         attr_accessor :name
       
         # The collection of parameters associated with the event.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string or number, depending on parameter value type
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -1829,6 +1841,18 @@ module Google
         attr_accessor :output_contexts
       
         # The collection of extracted parameters.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string or number, depending on parameter value type
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -2059,29 +2083,33 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2EventInput]
         attr_accessor :followup_event_input
       
-        # Optional. The collection of rich messages to present to the user. This
-        # value is passed directly to `QueryResult.fulfillment_messages`.
+        # Optional. The rich response messages intended for the end-user.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.fulfillment_messages sent to the integration or API caller.
         # Corresponds to the JSON property `fulfillmentMessages`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2IntentMessage>]
         attr_accessor :fulfillment_messages
       
-        # Optional. The text to be shown on the screen. This value is passed directly
-        # to `QueryResult.fulfillment_text`.
+        # Optional. The text response message intended for the end-user.
+        # It is recommended to use `fulfillment_messages.text.text[0]` instead.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.fulfillment_text sent to the integration or API caller.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text
       
-        # Optional. The collection of output contexts. This value is passed directly
-        # to `QueryResult.output_contexts`.
+        # Optional. The collection of output contexts that will overwrite currently
+        # active contexts for the session and reset their lifespans.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.output_contexts sent to the integration or API caller.
         # Corresponds to the JSON property `outputContexts`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2Context>]
         attr_accessor :output_contexts
       
         # Optional. This field can be used to pass custom data from your webhook to the
-        # API
-        # caller. Arbitrary JSON objects are supported.
+        # integration or API caller. Arbitrary JSON objects are supported.
         # When provided, Dialogflow uses this field to populate
-        # `QueryResult.webhook_payload` sent to the API caller.
+        # QueryResult.webhook_payload sent to the integration or API caller.
         # This field is also used by the
         # [Google Assistant
         # integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
@@ -2095,14 +2123,17 @@ module Google
       
         # Optional. Additional session entity types to replace or extend developer
         # entity types with. The entity synonyms apply to all languages and persist
-        # for the session of this query. Setting the session entity types inside
-        # webhook overwrites the session entity types that have been set through
-        # `DetectIntentRequest.query_params.session_entity_types`.
+        # for the session. Setting this data from a webhook overwrites
+        # the session entity types that have been set using `detectIntent`,
+        # `streamingDetectIntent` or SessionEntityType management methods.
         # Corresponds to the JSON property `sessionEntityTypes`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2SessionEntityType>]
         attr_accessor :session_entity_types
       
-        # Optional. This value is passed directly to `QueryResult.webhook_source`.
+        # Optional. A custom field used to identify the webhook source.
+        # Arbitrary strings are supported.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.webhook_source sent to the integration or API caller.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -2606,7 +2637,7 @@ module Google
         # -   MapKey value: parameter name
         # -   MapValue type:
         # -   If parameter's entity type is a composite entity: map
-        # -   Else: string
+        # -   Else: string or number, depending on parameter value type
         # -   MapValue value:
         # -   If parameter's entity type is a composite entity:
         # map from composite entity property names to property values
@@ -2784,17 +2815,40 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
+        # Optional. If true, we try to automatically reload the document every day
+        # (at a time picked by the system). If false or unspecified, we don't try
+        # to automatically reload the document.
+        # Currently you can only enable automatic reload for documents sourced from
+        # a public url, see `source` field for the source types.
+        # Reload status can be tracked in `latest_reload_status`. If a reload
+        # fails, we will keep the document unchanged.
+        # If a reload fails with internal errors, the system will try to reload the
+        # document on the next day.
+        # If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the
+        # system will not try to reload the document anymore. You need to manually
+        # reload the document successfully by calling `ReloadDocument` and clear the
+        # errors.
+        # Corresponds to the JSON property `enableAutoReload`
+        # @return [Boolean]
+        attr_accessor :enable_auto_reload
+        alias_method :enable_auto_reload?, :enable_auto_reload
+      
         # Required. The knowledge type of document content.
         # Corresponds to the JSON property `knowledgeTypes`
         # @return [Array<String>]
         attr_accessor :knowledge_types
+      
+        # The status of a reload attempt.
+        # Corresponds to the JSON property `latestReloadStatus`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DocumentReloadStatus]
+        attr_accessor :latest_reload_status
       
         # Required. The MIME type of this document.
         # Corresponds to the JSON property `mimeType`
         # @return [String]
         attr_accessor :mime_type
       
-        # The document resource name.
+        # Optional. The document resource name.
         # The name must be empty when creating a document.
         # Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base
         # ID>/documents/<Document ID>`.
@@ -2818,10 +2872,44 @@ module Google
           @content = args[:content] if args.key?(:content)
           @content_uri = args[:content_uri] if args.key?(:content_uri)
           @display_name = args[:display_name] if args.key?(:display_name)
+          @enable_auto_reload = args[:enable_auto_reload] if args.key?(:enable_auto_reload)
           @knowledge_types = args[:knowledge_types] if args.key?(:knowledge_types)
+          @latest_reload_status = args[:latest_reload_status] if args.key?(:latest_reload_status)
           @mime_type = args[:mime_type] if args.key?(:mime_type)
           @name = args[:name] if args.key?(:name)
           @raw_content = args[:raw_content] if args.key?(:raw_content)
+        end
+      end
+      
+      # The status of a reload attempt.
+      class GoogleCloudDialogflowV2beta1DocumentReloadStatus
+        include Google::Apis::Core::Hashable
+      
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+        # Corresponds to the JSON property `status`
+        # @return [Google::Apis::DialogflowV2beta1::GoogleRpcStatus]
+        attr_accessor :status
+      
+        # Output only. The time of a reload attempt.
+        # This reload may have been triggered automatically or manually and may
+        # not have succeeded.
+        # Corresponds to the JSON property `time`
+        # @return [String]
+        attr_accessor :time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @status = args[:status] if args.key?(:status)
+          @time = args[:time] if args.key?(:time)
         end
       end
       
@@ -2936,6 +3024,57 @@ module Google
         end
       end
       
+      # Represents an agent environment.
+      class GoogleCloudDialogflowV2beta1Environment
+        include Google::Apis::Core::Hashable
+      
+        # Optional. The agent version loaded into this environment.
+        # Format: `projects/<Project ID>/agent/versions/<Version ID>`.
+        # Corresponds to the JSON property `agentVersion`
+        # @return [String]
+        attr_accessor :agent_version
+      
+        # Optional. The developer-provided description for this environment.
+        # The maximum length is 500 characters. If exceeded, the request is rejected.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Output only. The unique identifier of this agent environment.
+        # Format: `projects/<Project ID>/agent/environments/<Environment ID>`.
+        # For Environment ID, "-" is reserved for 'draft' environment.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The state of this environment. This field is read-only, i.e., it
+        # cannot be
+        # set by create and update methods.
+        # Corresponds to the JSON property `state`
+        # @return [String]
+        attr_accessor :state
+      
+        # Output only. The last update time of this environment. This field is read-only,
+        # i.e., it
+        # cannot be set by create and update methods.
+        # Corresponds to the JSON property `updateTime`
+        # @return [String]
+        attr_accessor :update_time
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_version = args[:agent_version] if args.key?(:agent_version)
+          @description = args[:description] if args.key?(:description)
+          @name = args[:name] if args.key?(:name)
+          @state = args[:state] if args.key?(:state)
+          @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
       # Events allow for matching intents by event name instead of the natural
       # language input. For instance, input `<event: ` name: "welcome_event",
       # parameters: ` name: "Sam" ` `>` can trigger a personalized welcome response.
@@ -2958,6 +3097,18 @@ module Google
         attr_accessor :name
       
         # The collection of parameters associated with the event.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string or number, depending on parameter value type
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -3121,6 +3272,7 @@ module Google
         attr_accessor :request_headers
       
         # Required. The fulfillment URI for receiving POST requests.
+        # It must use https protocol.
         # Corresponds to the JSON property `uri`
         # @return [String]
         attr_accessor :uri
@@ -3344,7 +3496,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :events
       
-        # Read-only. Information about all followup intents that have this intent as
+        # Output only. Information about all followup intents that have this intent as
         # a direct or indirect parent. We populate this field only in the output.
         # Corresponds to the JSON property `followupIntentInfo`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>]
@@ -3394,7 +3546,7 @@ module Google
         attr_accessor :ml_enabled
         alias_method :ml_enabled?, :ml_enabled
       
-        # The unique identifier of this intent.
+        # Optional. The unique identifier of this intent.
         # Required for Intents.UpdateIntent and Intents.BatchUpdateIntents
         # methods.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
@@ -3416,7 +3568,7 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentParameter>]
         attr_accessor :parameters
       
-        # Read-only after creation. The unique identifier of the parent intent in the
+        # Optional. The unique identifier of the parent intent in the
         # chain of followup intents. You can set this field when creating an intent,
         # for example with CreateIntent or
         # BatchUpdateIntents, in order to make this
@@ -3427,7 +3579,7 @@ module Google
         # @return [String]
         attr_accessor :parent_followup_intent_name
       
-        # The priority of this intent. Higher numbers represent higher
+        # Optional. The priority of this intent. Higher numbers represent higher
         # priorities.
         # - If the supplied value is unspecified or 0, the service
         # translates the value to 500,000, which corresponds to the
@@ -3445,9 +3597,9 @@ module Google
         attr_accessor :reset_contexts
         alias_method :reset_contexts?, :reset_contexts
       
-        # Read-only. The unique identifier of the root intent in the chain of
+        # Output only. The unique identifier of the root intent in the chain of
         # followup intents. It identifies the correct followup intents chain for
-        # this intent. We populate this field only in the output.
+        # this intent.
         # Format: `projects/<Project ID>/agent/intents/<Intent ID>`.
         # Corresponds to the JSON property `rootFollowupIntentName`
         # @return [String]
@@ -5225,7 +5377,7 @@ module Google
       class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata
         include Google::Apis::Core::Hashable
       
-        # Required. The current state of this operation.
+        # Required. Output only. The current state of this operation.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -5340,6 +5492,33 @@ module Google
         # Update properties of this object
         def update!(**args)
           @entity_types = args[:entity_types] if args.key?(:entity_types)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # The response message for Environments.ListEnvironments.
+      class GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of agent environments. There will be a maximum number of items
+        # returned based on the page_size field in the request.
+        # Corresponds to the JSON property `environments`
+        # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Environment>]
+        attr_accessor :environments
+      
+        # Token to retrieve the next page of results, or empty if there are no
+        # more results in the list.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @environments = args[:environments] if args.key?(:environments)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
@@ -5728,6 +5907,18 @@ module Google
         attr_accessor :output_contexts
       
         # The collection of extracted parameters.
+        # Depending on your protocol or client library language, this is a
+        # map, associative array, symbol table, dictionary, or JSON object
+        # composed of a collection of (MapKey, MapValue) pairs:
+        # -   MapKey type: string
+        # -   MapKey value: parameter name
+        # -   MapValue type:
+        # -   If parameter's entity type is a composite entity: map
+        # -   Else: string or number, depending on parameter value type
+        # -   MapValue value:
+        # -   If parameter's entity type is a composite entity:
+        # map from composite entity property names to property values
+        # -   Else: parameter value
         # Corresponds to the JSON property `parameters`
         # @return [Hash<String,Object>]
         attr_accessor :parameters
@@ -6329,29 +6520,33 @@ module Google
         # @return [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1EventInput]
         attr_accessor :followup_event_input
       
-        # Optional. The collection of rich messages to present to the user. This
-        # value is passed directly to `QueryResult.fulfillment_messages`.
+        # Optional. The rich response messages intended for the end-user.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.fulfillment_messages sent to the integration or API caller.
         # Corresponds to the JSON property `fulfillmentMessages`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1IntentMessage>]
         attr_accessor :fulfillment_messages
       
-        # Optional. The text to be shown on the screen. This value is passed directly
-        # to `QueryResult.fulfillment_text`.
+        # Optional. The text response message intended for the end-user.
+        # It is recommended to use `fulfillment_messages.text.text[0]` instead.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.fulfillment_text sent to the integration or API caller.
         # Corresponds to the JSON property `fulfillmentText`
         # @return [String]
         attr_accessor :fulfillment_text
       
-        # Optional. The collection of output contexts. This value is passed directly
-        # to `QueryResult.output_contexts`.
+        # Optional. The collection of output contexts that will overwrite currently
+        # active contexts for the session and reset their lifespans.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.output_contexts sent to the integration or API caller.
         # Corresponds to the JSON property `outputContexts`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Context>]
         attr_accessor :output_contexts
       
         # Optional. This field can be used to pass custom data from your webhook to the
-        # API
-        # caller. Arbitrary JSON objects are supported.
+        # integration or API caller. Arbitrary JSON objects are supported.
         # When provided, Dialogflow uses this field to populate
-        # `QueryResult.webhook_payload` sent to the API caller.
+        # QueryResult.webhook_payload sent to the integration or API caller.
         # This field is also used by the
         # [Google Assistant
         # integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
@@ -6365,14 +6560,17 @@ module Google
       
         # Optional. Additional session entity types to replace or extend developer
         # entity types with. The entity synonyms apply to all languages and persist
-        # for the session of this query. Setting the session entity types inside
-        # webhook overwrites the session entity types that have been set through
-        # `DetectIntentRequest.query_params.session_entity_types`.
+        # for the session. Setting this data from a webhook overwrites
+        # the session entity types that have been set using `detectIntent`,
+        # `streamingDetectIntent` or SessionEntityType management methods.
         # Corresponds to the JSON property `sessionEntityTypes`
         # @return [Array<Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType>]
         attr_accessor :session_entity_types
       
-        # Optional. This value is passed directly to `QueryResult.webhook_source`.
+        # Optional. A custom field used to identify the webhook source.
+        # Arbitrary strings are supported.
+        # When provided, Dialogflow uses this field to populate
+        # QueryResult.webhook_source sent to the integration or API caller.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -6391,6 +6589,33 @@ module Google
           @payload = args[:payload] if args.key?(:payload)
           @session_entity_types = args[:session_entity_types] if args.key?(:session_entity_types)
           @source = args[:source] if args.key?(:source)
+        end
+      end
+      
+      # The response message for Agents.ExportAgent.
+      class GoogleCloudDialogflowV3alpha1ExportAgentResponse
+        include Google::Apis::Core::Hashable
+      
+        # Uncompressed raw byte content for agent.
+        # Corresponds to the JSON property `agentContent`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :agent_content
+      
+        # The URI to a file containing the exported agent. This field is populated
+        # only if `agent_uri` is specified in ExportAgentRequest.
+        # Corresponds to the JSON property `agentUri`
+        # @return [String]
+        attr_accessor :agent_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @agent_content = args[:agent_content] if args.key?(:agent_content)
+          @agent_uri = args[:agent_uri] if args.key?(:agent_uri)
         end
       end
       

@@ -815,6 +815,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :app_bundle_id, as: 'appBundleId'
+          property :test_special_entitlements, as: 'testSpecialEntitlements'
           property :tests_zip, as: 'testsZip', class: Google::Apis::TestingV1::FileReference, decorator: Google::Apis::TestingV1::FileReference::Representation
       
           property :xcode_version, as: 'xcodeVersion'

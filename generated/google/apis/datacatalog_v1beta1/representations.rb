@@ -570,6 +570,7 @@ module Google
           property :include_gcp_public_datasets, as: 'includeGcpPublicDatasets'
           collection :include_org_ids, as: 'includeOrgIds'
           collection :include_project_ids, as: 'includeProjectIds'
+          collection :restricted_locations, as: 'restrictedLocations'
         end
       end
       
@@ -579,6 +580,7 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :results, as: 'results', class: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogResult, decorator: Google::Apis::DatacatalogV1beta1::GoogleCloudDatacatalogV1beta1SearchCatalogResult::Representation
       
+          collection :unreachable, as: 'unreachable'
         end
       end
       
@@ -599,6 +601,7 @@ module Google
       
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          property :policy_tag, as: 'policyTag'
         end
       end
       

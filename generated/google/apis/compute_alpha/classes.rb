@@ -622,9 +622,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this Address resource. These can be later modified by the
-        # setLabels method. Each label key/value must comply with RFC1035. Label values
-        # may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -1144,6 +1144,12 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk>]
         attr_accessor :local_ssds
       
+        # An opaque location hint used to place the allocation close to other resources.
+        # This field is for use by internal tools that use the public API.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Compute Engine Long Term Release. When specified, VMs that have this policy
         # become long term release (internal: stable fleet) VMs.
         # For all VM shapes, this should result in fewer disruptions due to software
@@ -1175,6 +1181,7 @@ module Google
         def update!(**args)
           @guest_accelerators = args[:guest_accelerators] if args.key?(:guest_accelerators)
           @local_ssds = args[:local_ssds] if args.key?(:local_ssds)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @long_term_release = args[:long_term_release] if args.key?(:long_term_release)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
@@ -6998,9 +7005,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this ExternalVpnGateway resource. These can be later
-        # modified by the setLabels method. Each label key/value must comply with
-        # RFC1035. Label values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -7823,7 +7830,7 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this resource. These can be later modified by the setLabels
+        # Labels for this resource. These can only be added or modified by the setLabels
         # method. Each label key/value pair must comply with RFC1035. Label values may
         # be empty.
         # Corresponds to the JSON property `labels`
@@ -12310,7 +12317,10 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NamedPort>]
         attr_accessor :named_ports
       
-        # The URL of the network to which all instances in the instance group belong.
+        # [Output Only] The URL of the network to which all instances in the instance
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -12337,7 +12347,9 @@ module Google
         attr_accessor :size
       
         # [Output Only] The URL of the subnetwork to which all instances in the instance
-        # group belong.
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -15592,9 +15604,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this Interconnect resource. These can be later modified by
-        # the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -15838,9 +15850,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this InterconnectAttachment resource. These can be later
-        # modified by the setLabels method. Each label key/value must comply with
-        # RFC1035. Label values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -18312,6 +18324,12 @@ module Google
       class MachineType
         include Google::Apis::Core::Hashable
       
+        # [Output Only] A list of accelerator configurations assigned to this machine
+        # type.
+        # Corresponds to the JSON property `accelerators`
+        # @return [Array<Google::Apis::ComputeAlpha::MachineType::Accelerator>]
+        attr_accessor :accelerators
+      
         # [Output Only] Creation timestamp in RFC3339 text format.
         # Corresponds to the JSON property `creationTimestamp`
         # @return [String]
@@ -18394,6 +18412,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @accelerators = args[:accelerators] if args.key?(:accelerators)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @deprecated = args[:deprecated] if args.key?(:deprecated)
           @description = args[:description] if args.key?(:description)
@@ -18408,6 +18427,31 @@ module Google
           @self_link = args[:self_link] if args.key?(:self_link)
           @self_link_with_id = args[:self_link_with_id] if args.key?(:self_link_with_id)
           @zone = args[:zone] if args.key?(:zone)
+        end
+        
+        # 
+        class Accelerator
+          include Google::Apis::Core::Hashable
+        
+          # Number of accelerator cards exposed to the guest.
+          # Corresponds to the JSON property `guestAcceleratorCount`
+          # @return [Fixnum]
+          attr_accessor :guest_accelerator_count
+        
+          # The accelerator type resource name, not a full URL, e.g. 'nvidia-tesla-k80'.
+          # Corresponds to the JSON property `guestAcceleratorType`
+          # @return [String]
+          attr_accessor :guest_accelerator_type
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @guest_accelerator_count = args[:guest_accelerator_count] if args.key?(:guest_accelerator_count)
+            @guest_accelerator_type = args[:guest_accelerator_type] if args.key?(:guest_accelerator_type)
+          end
         end
       end
       
@@ -20811,6 +20855,13 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # An opaque location hint used to place the Node close to other resources. This
+        # field is for use by internal tools that use the public API. The location hint
+        # here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        # Corresponds to the JSON property `locationHint`
+        # @return [String]
+        attr_accessor :location_hint
+      
         # Specifies how to handle instances when a node in the group undergoes
         # maintenance.
         # Corresponds to the JSON property `maintenancePolicy`
@@ -20877,6 +20928,7 @@ module Google
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @location_hint = args[:location_hint] if args.key?(:location_hint)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
           @maintenance_window = args[:maintenance_window] if args.key?(:maintenance_window)
           @name = args[:name] if args.key?(:name)
@@ -29784,6 +29836,12 @@ module Google
         # @return [Array<String>]
         attr_accessor :drain_nat_ips
       
+        # 
+        # Corresponds to the JSON property `enableEndpointIndependentMapping`
+        # @return [Boolean]
+        attr_accessor :enable_endpoint_independent_mapping
+        alias_method :enable_endpoint_independent_mapping?, :enable_endpoint_independent_mapping
+      
         # Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         # Corresponds to the JSON property `icmpIdleTimeoutSec`
         # @return [Fixnum]
@@ -29823,6 +29881,11 @@ module Google
         # @return [Array<String>]
         attr_accessor :nat_ips
       
+        # A list of rules associated with this NAT.
+        # Corresponds to the JSON property `rules`
+        # @return [Array<Google::Apis::ComputeAlpha::RouterNatRule>]
+        attr_accessor :rules
+      
         # Specify the Nat option, which can take one of the following values:
         # - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are
         # allowed to Nat.
@@ -29851,6 +29914,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :tcp_established_idle_timeout_sec
       
+        # Timeout (in seconds) for TCP connections that are in TIME_WAIT state. Defaults
+        # to 120s if not set.
+        # Corresponds to the JSON property `tcpTimeWaitTimeoutSec`
+        # @return [Fixnum]
+        attr_accessor :tcp_time_wait_timeout_sec
+      
         # Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not
         # set.
         # Corresponds to the JSON property `tcpTransitoryIdleTimeoutSec`
@@ -29869,15 +29938,18 @@ module Google
         # Update properties of this object
         def update!(**args)
           @drain_nat_ips = args[:drain_nat_ips] if args.key?(:drain_nat_ips)
+          @enable_endpoint_independent_mapping = args[:enable_endpoint_independent_mapping] if args.key?(:enable_endpoint_independent_mapping)
           @icmp_idle_timeout_sec = args[:icmp_idle_timeout_sec] if args.key?(:icmp_idle_timeout_sec)
           @log_config = args[:log_config] if args.key?(:log_config)
           @min_ports_per_vm = args[:min_ports_per_vm] if args.key?(:min_ports_per_vm)
           @name = args[:name] if args.key?(:name)
           @nat_ip_allocate_option = args[:nat_ip_allocate_option] if args.key?(:nat_ip_allocate_option)
           @nat_ips = args[:nat_ips] if args.key?(:nat_ips)
+          @rules = args[:rules] if args.key?(:rules)
           @source_subnetwork_ip_ranges_to_nat = args[:source_subnetwork_ip_ranges_to_nat] if args.key?(:source_subnetwork_ip_ranges_to_nat)
           @subnetworks = args[:subnetworks] if args.key?(:subnetworks)
           @tcp_established_idle_timeout_sec = args[:tcp_established_idle_timeout_sec] if args.key?(:tcp_established_idle_timeout_sec)
+          @tcp_time_wait_timeout_sec = args[:tcp_time_wait_timeout_sec] if args.key?(:tcp_time_wait_timeout_sec)
           @tcp_transitory_idle_timeout_sec = args[:tcp_transitory_idle_timeout_sec] if args.key?(:tcp_transitory_idle_timeout_sec)
           @udp_idle_timeout_sec = args[:udp_idle_timeout_sec] if args.key?(:udp_idle_timeout_sec)
         end
@@ -29911,6 +29983,79 @@ module Google
         def update!(**args)
           @enable = args[:enable] if args.key?(:enable)
           @filter = args[:filter] if args.key?(:filter)
+        end
+      end
+      
+      # 
+      class RouterNatRule
+        include Google::Apis::Core::Hashable
+      
+        # The action to be enforced for traffic that matches this rule.
+        # Corresponds to the JSON property `action`
+        # @return [Google::Apis::ComputeAlpha::RouterNatRuleAction]
+        attr_accessor :action
+      
+        # An optional description of this rule.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # CEL expression that specifies the match condition that egress traffic from a
+        # VM is evaluated against. If it evaluates to true, the corresponding ?action?
+        # is enforced.
+        # The following examples are valid match expressions:
+        # "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/
+        # 16')"
+        # "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+        # Corresponds to the JSON property `match`
+        # @return [String]
+        attr_accessor :match
+      
+        # An integer indicating the priority of a rule in the list. The priority must be
+        # a positive value between 0 and 65000. The priority must be unique among rules
+        # within a NAT.
+        # Corresponds to the JSON property `priority`
+        # @return [Fixnum]
+        attr_accessor :priority
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @description = args[:description] if args.key?(:description)
+          @match = args[:match] if args.key?(:match)
+          @priority = args[:priority] if args.key?(:priority)
+        end
+      end
+      
+      # 
+      class RouterNatRuleAction
+        include Google::Apis::Core::Hashable
+      
+        # A list of URLs of the IP resources used for this NAT rule. These IP addresses
+        # must be valid static external IP addresses assigned to the project.
+        # Corresponds to the JSON property `sourceNatActiveIps`
+        # @return [Array<String>]
+        attr_accessor :source_nat_active_ips
+      
+        # A list of URLs of the IP resources to be drained. These IPs must be valid
+        # static external IPs that have been assigned to the NAT. These IPs should be
+        # used for updating/patching a NAT rule only.
+        # Corresponds to the JSON property `sourceNatDrainIps`
+        # @return [Array<String>]
+        attr_accessor :source_nat_drain_ips
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @source_nat_active_ips = args[:source_nat_active_ips] if args.key?(:source_nat_active_ips)
+          @source_nat_drain_ips = args[:source_nat_drain_ips] if args.key?(:source_nat_drain_ips)
         end
       end
       
@@ -30802,9 +30947,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this security policy resource. These can be later modified
-        # by the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -31571,6 +31716,246 @@ module Google
         def update!(**args)
           @email = args[:email] if args.key?(:email)
           @scopes = args[:scopes] if args.key?(:scopes)
+        end
+      end
+      
+      # Represents a ServiceAttachment resource.
+      # A service attachment represents a service that a producer has exposed. It
+      # encapsulates the load balancer which fronts the service runs and a list of NAT
+      # IP ranges that the producers uses to represent the consumers connecting to the
+      # service.
+      class ServiceAttachment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `connectionPreference`
+        # @return [String]
+        attr_accessor :connection_preference
+      
+        # An array of forwarding rules for all the consumers connected to this service
+        # attachment.
+        # Corresponds to the JSON property `consumerForwardingRules`
+        # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule>]
+        attr_accessor :consumer_forwarding_rules
+      
+        # [Output Only] Creation timestamp in RFC3339 text format.
+        # Corresponds to the JSON property `creationTimestamp`
+        # @return [String]
+        attr_accessor :creation_timestamp
+      
+        # An optional description of this resource. Provide this property when you
+        # create the resource.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # [Output Only] The unique identifier for the resource type. The server
+        # generates this identifier.
+        # Corresponds to the JSON property `id`
+        # @return [Fixnum]
+        attr_accessor :id
+      
+        # [Output Only] Type of the resource. Always compute#serviceAttachment for
+        # service attachments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Name of the resource. Provided by the client when the resource is created. The
+        # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        # name must be 1-63 characters long and match the regular expression `[a-z]([-a-
+        # z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
+        # and all following characters must be a dash, lowercase letter, or digit,
+        # except the last character, which cannot be a dash.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # An array of IP CIDR ranges where each range is the url of the address resource
+        # which represents the range provided by the service producer to use for NAT in
+        # this service attachment.
+        # Corresponds to the JSON property `natIpCidrRanges`
+        # @return [Array<String>]
+        attr_accessor :nat_ip_cidr_ranges
+      
+        # The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is
+        # serving the endpoint identified by this service attachment.
+        # Corresponds to the JSON property `producerForwardingRule`
+        # @return [String]
+        attr_accessor :producer_forwarding_rule
+      
+        # [Output Only] URL of the region where the service attachment resides. This
+        # field applies only to the region resource. You must specify this field as part
+        # of the HTTP request URL. It is not settable as a field in the request body.
+        # Corresponds to the JSON property `region`
+        # @return [String]
+        attr_accessor :region
+      
+        # [Output Only] Server-defined URL for the resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @connection_preference = args[:connection_preference] if args.key?(:connection_preference)
+          @consumer_forwarding_rules = args[:consumer_forwarding_rules] if args.key?(:consumer_forwarding_rules)
+          @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
+          @description = args[:description] if args.key?(:description)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @name = args[:name] if args.key?(:name)
+          @nat_ip_cidr_ranges = args[:nat_ip_cidr_ranges] if args.key?(:nat_ip_cidr_ranges)
+          @producer_forwarding_rule = args[:producer_forwarding_rule] if args.key?(:producer_forwarding_rule)
+          @region = args[:region] if args.key?(:region)
+          @self_link = args[:self_link] if args.key?(:self_link)
+        end
+      end
+      
+      # [Output Only] A consumer forwarding rule connected to this service attachment.
+      class ServiceAttachmentConsumerForwardingRule
+        include Google::Apis::Core::Hashable
+      
+        # The url of a consumer forwarding rule.
+        # Corresponds to the JSON property `forwardingRule`
+        # @return [String]
+        attr_accessor :forwarding_rule
+      
+        # The status of the forwarding rule.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @forwarding_rule = args[:forwarding_rule] if args.key?(:forwarding_rule)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # 
+      class ServiceAttachmentList
+        include Google::Apis::Core::Hashable
+      
+        # [Output Only] Unique identifier for the resource; defined by the server.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # A list of ServiceAttachment resources.
+        # Corresponds to the JSON property `items`
+        # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachment>]
+        attr_accessor :items
+      
+        # [Output Only] Type of the resource. Always compute#serviceAttachment for
+        # service attachments.
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # [Output Only] This token allows you to get the next page of results for list
+        # requests. If the number of results is larger than maxResults, use the
+        # nextPageToken as a value for the query parameter pageToken in the next list
+        # request. Subsequent list requests will have their own nextPageToken to
+        # continue paging through the results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # [Output Only] Server-defined URL for this resource.
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # [Output Only] Informational warning message.
+        # Corresponds to the JSON property `warning`
+        # @return [Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning]
+        attr_accessor :warning
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @id = args[:id] if args.key?(:id)
+          @items = args[:items] if args.key?(:items)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @warning = args[:warning] if args.key?(:warning)
+        end
+        
+        # [Output Only] Informational warning message.
+        class Warning
+          include Google::Apis::Core::Hashable
+        
+          # [Output Only] A warning code, if applicable. For example, Compute Engine
+          # returns NO_RESULTS_ON_PAGE if there are no results in the response.
+          # Corresponds to the JSON property `code`
+          # @return [String]
+          attr_accessor :code
+        
+          # [Output Only] Metadata about this warning in key: value format. For example:
+          # "data": [ ` "key": "scope", "value": "zones/us-east1-d" `
+          # Corresponds to the JSON property `data`
+          # @return [Array<Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Datum>]
+          attr_accessor :data
+        
+          # [Output Only] A human-readable description of the warning code.
+          # Corresponds to the JSON property `message`
+          # @return [String]
+          attr_accessor :message
+        
+          def initialize(**args)
+             update!(**args)
+          end
+        
+          # Update properties of this object
+          def update!(**args)
+            @code = args[:code] if args.key?(:code)
+            @data = args[:data] if args.key?(:data)
+            @message = args[:message] if args.key?(:message)
+          end
+          
+          # 
+          class Datum
+            include Google::Apis::Core::Hashable
+          
+            # [Output Only] A key that provides more detail on the warning being returned.
+            # For example, for warnings where there are no results in a list request for a
+            # particular zone, this key might be scope and the key value might be the zone
+            # name. Other examples might be a key indicating a deprecated resource and a
+            # suggested replacement, or a warning about invalid network settings (for
+            # example, if an instance attempts to perform IP forwarding but is not enabled
+            # for IP forwarding).
+            # Corresponds to the JSON property `key`
+            # @return [String]
+            attr_accessor :key
+          
+            # [Output Only] A warning data value corresponding to the key.
+            # Corresponds to the JSON property `value`
+            # @return [String]
+            attr_accessor :value
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @key = args[:key] if args.key?(:key)
+              @value = args[:value] if args.key?(:value)
+            end
+          end
         end
       end
       
@@ -36817,9 +37202,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this TargetVpnGateway resource. These can be later modified
-        # by the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -38619,9 +39004,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this VpnGateway resource. These can be later modified by
-        # the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -38652,7 +39037,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] A list of interfaces on this VPN gateway.
+        # A list of interfaces on this VPN gateway.
         # Corresponds to the JSON property `vpnInterfaces`
         # @return [Array<Google::Apis::ComputeAlpha::VpnGatewayVpnGatewayInterface>]
         attr_accessor :vpn_interfaces
@@ -39050,7 +39435,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The external IP address for this VPN gateway interface.
+        # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -39227,9 +39612,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this VpnTunnel. These can be later modified by the
-        # setLabels method. Each label key/value pair must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

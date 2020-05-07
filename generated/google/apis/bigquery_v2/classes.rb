@@ -174,17 +174,17 @@ module Google
       class ArimaFittingMetrics
         include Google::Apis::Core::Hashable
       
-        # AIC
+        # AIC.
         # Corresponds to the JSON property `aic`
         # @return [Float]
         attr_accessor :aic
       
-        # log-likelihood
+        # Log-likelihood.
         # Corresponds to the JSON property `logLikelihood`
         # @return [Float]
         attr_accessor :log_likelihood
       
-        # variance.
+        # Variance.
         # Corresponds to the JSON property `variance`
         # @return [Float]
         attr_accessor :variance
@@ -215,10 +215,28 @@ module Google
         # @return [Google::Apis::BigqueryV2::ArimaFittingMetrics]
         attr_accessor :arima_fitting_metrics
       
+        # Whether Arima model fitted with drift or not. It is always false
+        # when d is not 1.
+        # Corresponds to the JSON property `hasDrift`
+        # @return [Boolean]
+        attr_accessor :has_drift
+        alias_method :has_drift?, :has_drift
+      
         # Arima order, can be used for both non-seasonal and seasonal parts.
         # Corresponds to the JSON property `nonSeasonalOrder`
         # @return [Google::Apis::BigqueryV2::ArimaOrder]
         attr_accessor :non_seasonal_order
+      
+        # Seasonal periods. Repeated because multiple periods are supported
+        # for one time series.
+        # Corresponds to the JSON property `seasonalPeriods`
+        # @return [Array<String>]
+        attr_accessor :seasonal_periods
+      
+        # The id to indicate different time series.
+        # Corresponds to the JSON property `timeSeriesId`
+        # @return [String]
+        attr_accessor :time_series_id
       
         def initialize(**args)
            update!(**args)
@@ -228,7 +246,10 @@ module Google
         def update!(**args)
           @arima_coefficients = args[:arima_coefficients] if args.key?(:arima_coefficients)
           @arima_fitting_metrics = args[:arima_fitting_metrics] if args.key?(:arima_fitting_metrics)
+          @has_drift = args[:has_drift] if args.key?(:has_drift)
           @non_seasonal_order = args[:non_seasonal_order] if args.key?(:non_seasonal_order)
+          @seasonal_periods = args[:seasonal_periods] if args.key?(:seasonal_periods)
+          @time_series_id = args[:time_series_id] if args.key?(:time_series_id)
         end
       end
       
@@ -956,6 +977,31 @@ module Google
         def update!(**args)
           @confidence_threshold = args[:confidence_threshold] if args.key?(:confidence_threshold)
           @rows = args[:rows] if args.key?(:rows)
+        end
+      end
+      
+      # 
+      class ConnectionProperty
+        include Google::Apis::Core::Hashable
+      
+        # [Required] Name of the connection property to set.
+        # Corresponds to the JSON property `key`
+        # @return [String]
+        attr_accessor :key
+      
+        # [Required] Value of the connection property.
+        # Corresponds to the JSON property `value`
+        # @return [String]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key = args[:key] if args.key?(:key)
+          @value = args[:value] if args.key?(:value)
         end
       end
       
@@ -1819,12 +1865,6 @@ module Google
         # @return [Google::Apis::BigqueryV2::GoogleSheetsOptions]
         attr_accessor :google_sheets_options
       
-        # [Optional, Trusted Tester] Deprecated, do not use. Please set
-        # hivePartitioningOptions instead.
-        # Corresponds to the JSON property `hivePartitioningMode`
-        # @return [String]
-        attr_accessor :hive_partitioning_mode
-      
         # [Optional, Trusted Tester] Options to configure hive partitioning support.
         # Corresponds to the JSON property `hivePartitioningOptions`
         # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
@@ -1892,7 +1932,6 @@ module Google
           @compression = args[:compression] if args.key?(:compression)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
-          @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
@@ -2518,12 +2557,6 @@ module Google
         # @return [String]
         attr_accessor :field_delimiter
       
-        # [Optional, Trusted Tester] Deprecated, do not use. Please set
-        # hivePartitioningOptions instead.
-        # Corresponds to the JSON property `hivePartitioningMode`
-        # @return [String]
-        attr_accessor :hive_partitioning_mode
-      
         # [Optional, Trusted Tester] Options to configure hive partitioning support.
         # Corresponds to the JSON property `hivePartitioningOptions`
         # @return [Google::Apis::BigqueryV2::HivePartitioningOptions]
@@ -2684,7 +2717,6 @@ module Google
           @destination_table_properties = args[:destination_table_properties] if args.key?(:destination_table_properties)
           @encoding = args[:encoding] if args.key?(:encoding)
           @field_delimiter = args[:field_delimiter] if args.key?(:field_delimiter)
-          @hive_partitioning_mode = args[:hive_partitioning_mode] if args.key?(:hive_partitioning_mode)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
           @ignore_unknown_values = args[:ignore_unknown_values] if args.key?(:ignore_unknown_values)
           @max_bad_records = args[:max_bad_records] if args.key?(:max_bad_records)
@@ -2728,7 +2760,7 @@ module Google
       
         # Connection properties.
         # Corresponds to the JSON property `connectionProperties`
-        # @return [Array<Object>]
+        # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
         # [Optional] Specifies whether the job is allowed to create new tables. The
@@ -4186,7 +4218,7 @@ module Google
       
         # Connection properties.
         # Corresponds to the JSON property `connectionProperties`
-        # @return [Array<Object>]
+        # @return [Array<Google::Apis::BigqueryV2::ConnectionProperty>]
         attr_accessor :connection_properties
       
         # [Optional] Specifies the default datasetId and projectId to assume for any

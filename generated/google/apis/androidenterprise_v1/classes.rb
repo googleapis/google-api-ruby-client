@@ -1971,7 +1971,8 @@ module Google
         # @return [String]
         attr_accessor :product_availability_policy
       
-        # The list of product policies.
+        # The list of product policies. The productAvailabilityPolicy needs to be set to
+        # WHITELIST or ALL for the product policies to be applied.
         # Corresponds to the JSON property `productPolicy`
         # @return [Array<Google::Apis::AndroidenterpriseV1::ProductPolicy>]
         attr_accessor :product_policy

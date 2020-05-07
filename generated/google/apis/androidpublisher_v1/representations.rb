@@ -21,22 +21,6 @@ require 'google/apis/errors'
 module Google
   module Apis
     module AndroidpublisherV1
-      
-      class SubscriptionPurchase
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class SubscriptionPurchase
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_renewing, as: 'autoRenewing'
-          property :initiation_timestamp_msec, :numeric_string => true, as: 'initiationTimestampMsec'
-          property :kind, as: 'kind'
-          property :valid_until_timestamp_msec, :numeric_string => true, as: 'validUntilTimestampMsec'
-        end
-      end
     end
   end
 end

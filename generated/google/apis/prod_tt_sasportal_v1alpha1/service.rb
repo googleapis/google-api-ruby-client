@@ -318,6 +318,8 @@ module Google
         #   corresponds to serial_number of the device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response.
+        #   If empty or zero, all devices will be listed.
+        #   Must be in the range [0, 1000].
         # @param [String] page_token
         #   A pagination token returned from a previous call to ListDevices
         #   that indicates where this listing should continue from.
@@ -985,6 +987,8 @@ module Google
         #   corresponds to serial_number of the device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response.
+        #   If empty or zero, all devices will be listed.
+        #   Must be in the range [0, 1000].
         # @param [String] page_token
         #   A pagination token returned from a previous call to ListDevices
         #   that indicates where this listing should continue from.
@@ -1462,6 +1466,8 @@ module Google
         #   corresponds to serial_number of the device. The filter is case insensitive.
         # @param [Fixnum] page_size
         #   The maximum number of devices to return in the response.
+        #   If empty or zero, all devices will be listed.
+        #   Must be in the range [0, 1000].
         # @param [String] page_token
         #   A pagination token returned from a previous call to ListDevices
         #   that indicates where this listing should continue from.

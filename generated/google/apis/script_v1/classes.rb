@@ -211,10 +211,7 @@ module Google
       class ExecuteStreamResponse
         include Google::Apis::Core::Hashable
       
-        # The result of an execution
-        # Based on ScriptExecutionResult at:
-        # google3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%
-        # 20ScriptExecutionResult
+        # The result of an execution.
         # Corresponds to the JSON property `result`
         # @return [Google::Apis::ScriptV1::ScriptExecutionResult]
         attr_accessor :result
@@ -769,8 +766,6 @@ module Google
       end
       
       # `ListValue` is a wrapper around a repeated field of values.
-      # Based on LustValue at:
-      # google3/apps/maestro/api/struct.proto?q=message%5c%20ListValue
       class ListValue
         include Google::Apis::Core::Hashable
       
@@ -995,17 +990,12 @@ module Google
         end
       end
       
-      # The result of an execution
-      # Based on ScriptExecutionResult at:
-      # google3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%
-      # 20ScriptExecutionResult
+      # The result of an execution.
       class ScriptExecutionResult
         include Google::Apis::Core::Hashable
       
         # `Value` represents a dynamically typed value which is the outcome of an
-        # executed script
-        # Based on Value at:
-        # google3/apps/maestro/api/struct.proto?q=message%5c%20Value
+        # executed script.
         # Corresponds to the JSON property `returnValue`
         # @return [Google::Apis::ScriptV1::Value]
         attr_accessor :return_value
@@ -1084,8 +1074,6 @@ module Google
       
       # `Struct` represents a structured data value, consisting of fields which map
       # to dynamically typed values.
-      # Based on Struct at:
-      # google3/apps/maestro/api/struct.proto?q=message%5c%20Struct
       class Struct
         include Google::Apis::Core::Hashable
       
@@ -1124,9 +1112,7 @@ module Google
       end
       
       # `Value` represents a dynamically typed value which is the outcome of an
-      # executed script
-      # Based on Value at:
-      # google3/apps/maestro/api/struct.proto?q=message%5c%20Value
+      # executed script.
       class Value
         include Google::Apis::Core::Hashable
       
@@ -1148,8 +1134,6 @@ module Google
         attr_accessor :date_value
       
         # `ListValue` is a wrapper around a repeated field of values.
-        # Based on LustValue at:
-        # google3/apps/maestro/api/struct.proto?q=message%5c%20ListValue
         # Corresponds to the JSON property `listValue`
         # @return [Google::Apis::ScriptV1::ListValue]
         attr_accessor :list_value
@@ -1176,8 +1160,6 @@ module Google
       
         # `Struct` represents a structured data value, consisting of fields which map
         # to dynamically typed values.
-        # Based on Struct at:
-        # google3/apps/maestro/api/struct.proto?q=message%5c%20Struct
         # Corresponds to the JSON property `structValue`
         # @return [Google::Apis::ScriptV1::Struct]
         attr_accessor :struct_value

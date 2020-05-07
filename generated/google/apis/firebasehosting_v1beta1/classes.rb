@@ -102,45 +102,6 @@ module Google
         end
       end
       
-      # The request sent to CloneVersion.
-      class CloneVersionRequest
-        include Google::Apis::Core::Hashable
-      
-        # A representation of filter path.
-        # Corresponds to the JSON property `exclude`
-        # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
-        attr_accessor :exclude
-      
-        # If true, immediately finalize the version after cloning is complete.
-        # Corresponds to the JSON property `finalize`
-        # @return [Boolean]
-        attr_accessor :finalize
-        alias_method :finalize?, :finalize
-      
-        # A representation of filter path.
-        # Corresponds to the JSON property `include`
-        # @return [Google::Apis::FirebasehostingV1beta1::PathFilter]
-        attr_accessor :include
-      
-        # Required. The name of the version to be cloned, in the format:
-        # `sites/`site`/versions/`version``
-        # Corresponds to the JSON property `sourceVersion`
-        # @return [String]
-        attr_accessor :source_version
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @exclude = args[:exclude] if args.key?(:exclude)
-          @finalize = args[:finalize] if args.key?(:finalize)
-          @include = args[:include] if args.key?(:include)
-          @source_version = args[:source_version] if args.key?(:source_version)
-        end
-      end
-      
       # A configured rewrite that directs requests to a Cloud Run service. If the
       # Cloud Run service does not exist when setting or updating your Firebase
       # Hosting configuration, then the request fails. Any errors from the Cloud Run
@@ -533,25 +494,6 @@ module Google
         end
       end
       
-      # A representation of filter path.
-      class PathFilter
-        include Google::Apis::Core::Hashable
-      
-        # An array of regexes to filter by.
-        # Corresponds to the JSON property `regexes`
-        # @return [Array<String>]
-        attr_accessor :regexes
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @regexes = args[:regexes] if args.key?(:regexes)
-        end
-      end
-      
       # The request to populate a Version's Files.
       class PopulateVersionFilesRequest
         include Google::Apis::Core::Hashable
@@ -864,6 +806,13 @@ module Google
       class SiteConfig
         include Google::Apis::Core::Hashable
       
+        # Whether or not web requests made by site visitors are logged via Cloud
+        # Logging.
+        # Corresponds to the JSON property `cloudLoggingEnabled`
+        # @return [Boolean]
+        attr_accessor :cloud_logging_enabled
+        alias_method :cloud_logging_enabled?, :cloud_logging_enabled
+      
         # The number of FINALIZED versions that will be held for a site before
         # automatic deletion. When a new version is deployed, content for versions
         # in storage in excess of this number will be deleted, and will no longer be
@@ -879,6 +828,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @cloud_logging_enabled = args[:cloud_logging_enabled] if args.key?(:cloud_logging_enabled)
           @max_versions = args[:max_versions] if args.key?(:max_versions)
         end
       end

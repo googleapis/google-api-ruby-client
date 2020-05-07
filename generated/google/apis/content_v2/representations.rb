@@ -646,6 +646,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MinimumOrderValueTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MinimumOrderValueTableStoreCodeSetWithMov
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Order
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2760,6 +2772,23 @@ module Google
         end
       end
       
+      class MinimumOrderValueTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :store_code_set_with_movs, as: 'storeCodeSetWithMovs', class: Google::Apis::ContentV2::MinimumOrderValueTableStoreCodeSetWithMov, decorator: Google::Apis::ContentV2::MinimumOrderValueTableStoreCodeSetWithMov::Representation
+      
+        end
+      end
+      
+      class MinimumOrderValueTableStoreCodeSetWithMov
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :store_codes, as: 'storeCodes'
+          property :value, as: 'value', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+        end
+      end
+      
       class Order
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4397,6 +4426,8 @@ module Google
       
           property :eligibility, as: 'eligibility'
           property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2::Price, decorator: Google::Apis::ContentV2::Price::Representation
+      
+          property :minimum_order_value_table, as: 'minimumOrderValueTable', class: Google::Apis::ContentV2::MinimumOrderValueTable, decorator: Google::Apis::ContentV2::MinimumOrderValueTable::Representation
       
           property :name, as: 'name'
           property :pickup_service, as: 'pickupService', class: Google::Apis::ContentV2::PickupCarrierService, decorator: Google::Apis::ContentV2::PickupCarrierService::Representation

@@ -810,7 +810,7 @@ module Google
         # A job's retry interval starts at
         # min_backoff_duration, then doubles
         # `max_doublings` times, then increases linearly, and finally
-        # retries retries at intervals of
+        # retries at intervals of
         # max_backoff_duration up to
         # retry_count times.
         # For example, if min_backoff_duration is

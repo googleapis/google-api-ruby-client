@@ -145,7 +145,7 @@ module Google
         # @param [Fixnum] max_results
         #   The maximum number of resource configurations to return in the response,
         #   used for paging. For any response, the actual number of resources returned
-        #   may be less than the specified <code>maxResults</code>.
+        #   may be less than the specified `maxResults`.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields
@@ -350,7 +350,7 @@ module Google
         # @param [Fixnum] max_results
         #   The maximum number of resource configurations to return in the response,
         #   used for paging. For any response, the actual number of resources returned
-        #   may be less than the specified <code>maxResults</code>.
+        #   may be less than the specified `maxResults`.
         # @param [String] page_token
         #   The token returned by the previous request.
         # @param [String] fields

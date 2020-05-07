@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/data-catalog/docs/
     module DatacatalogV1beta1
       VERSION = 'V1beta1'
-      REVISION = '20200402'
+      REVISION = '20200430'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

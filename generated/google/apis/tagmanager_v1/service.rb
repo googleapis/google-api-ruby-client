@@ -45,7 +45,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch'
+          @batch_path = 'batch/tagmanager/v1'
         end
         
         # Gets a GTM Account.

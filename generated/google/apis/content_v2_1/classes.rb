@@ -29,8 +29,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of linked Ads accounts that are active or pending approval. To create a
-        # new link request, add a new link with status active to the list. It will
-        # remain in a pending state until approved or rejected either in the Ads
+        # new link request, add a new link with status `active` to the list. It will
+        # remain in a `pending` state until approved or rejected either in the Ads
         # interface or through the AdWords API. To delete an active link, or to cancel a
         # link request, remove it from the list.
         # Corresponds to the JSON property `adsLinks`
@@ -59,8 +59,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # account".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # account`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -87,10 +87,10 @@ module Google
         attr_accessor :website_url
       
         # List of linked YouTube channels that are active or pending approval. To create
-        # a new link request, add a new link with status active to the list. It will
-        # remain in a pending state until approved or rejected in the YT Creator Studio
-        # interface. To delete an active link, or to cancel a link request, remove it
-        # from the list.
+        # a new link request, add a new link with status `active` to the list. It will
+        # remain in a `pending` state until approved or rejected in the YT Creator
+        # Studio interface. To delete an active link, or to cancel a link request,
+        # remove it from the list.
         # Corresponds to the JSON property `youtubeChannelLinks`
         # @return [Array<Google::Apis::ContentV2_1::AccountYouTubeChannelLink>]
         attr_accessor :youtube_channel_links
@@ -170,17 +170,17 @@ module Google
         attr_accessor :ads_id
       
         # Status of the link between this Merchant Center account and the Ads account.
-        # Upon retrieval, it represents the actual status of the link and can be either
-        # active if it was approved in Google Ads or pending if it's pending approval.
+        # Upon retrieval, it represents the actual status of the link and can be either `
+        # active` if it was approved in Google Ads or `pending` if it's pending approval.
         # Upon insertion, it represents the intended status of the link. Re-uploading a
-        # link with status active when it's still pending or with status pending when it'
-        # s already active will have no effect: the status will remain unchanged. Re-
-        # uploading a link with deprecated status inactive is equivalent to not
+        # link with status `active` when it's still pending or with status `pending`
+        # when it's already active will have no effect: the status will remain unchanged.
+        # Re-uploading a link with deprecated status `inactive` is equivalent to not
         # submitting the link at all and will delete the link if it was active or cancel
         # the link request if it was pending.
         # Acceptable values are:
-        # - "active"
-        # - "pending"
+        # - "`active`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -262,6 +262,12 @@ module Google
       class AccountGoogleMyBusinessLink
         include Google::Apis::Core::Hashable
       
+        # The ID of the GMB account. If this is provided, then `gmbEmail` is ignored.
+        # The value of this field should match the `accountId` used by the GMB API.
+        # Corresponds to the JSON property `gmbAccountId`
+        # @return [String]
+        attr_accessor :gmb_account_id
+      
         # The GMB email address of which a specific account within a GMB account. A
         # sample account within a GMB account could be a business account with set of
         # locations, managed under the GMB account.
@@ -271,8 +277,8 @@ module Google
       
         # Status of the link between this Merchant Center account and the GMB account.
         # Acceptable values are:
-        # - "active"
-        # - "pending"
+        # - "`active`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -283,6 +289,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @gmb_account_id = args[:gmb_account_id] if args.key?(:gmb_account_id)
           @gmb_email = args[:gmb_email] if args.key?(:gmb_email)
           @status = args[:status] if args.key?(:status)
         end
@@ -329,8 +336,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::AccountStatusAccountLevelIssue>]
         attr_accessor :account_level_issues
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountStatus".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountStatus`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -392,9 +399,9 @@ module Google
       
         # Severity of the issue.
         # Acceptable values are:
-        # - "critical"
-        # - "error"
-        # - "suggestion"
+        # - "`critical`"
+        # - "`error`"
+        # - "`suggestion`"
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -487,8 +494,8 @@ module Google
       
         # The channel the data applies to.
         # Acceptable values are:
-        # - "local"
-        # - "online"
+        # - "`local`"
+        # - "`online`"
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -702,11 +709,11 @@ module Google
       
         # Status of the link between this Merchant Center account and the YouTube
         # channel. Upon retrieval, it represents the actual status of the link and can
-        # be either active if it was approved in YT Creator Studio or pending if it's
-        # pending approval. Upon insertion, it represents the intended status of the
-        # link. Re-uploading a link with status active when it's still pending or with
-        # status pending when it's already active will have no effect: the status will
-        # remain unchanged. Re-uploading a link with deprecated status inactive is
+        # be either `active` if it was approved in YT Creator Studio or `pending` if it'
+        # s pending approval. Upon insertion, it represents the intended status of the
+        # link. Re-uploading a link with status `active` when it's still pending or with
+        # status `pending` when it's already active will have no effect: the status will
+        # remain unchanged. Re-uploading a link with deprecated status `inactive` is
         # equivalent to not submitting the link at all and will delete the link if it
         # was active or cancel the link request if it was pending.
         # Corresponds to the JSON property `status`
@@ -804,7 +811,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::Account]
         attr_accessor :account
       
-        # The ID of the targeted account. Only defined if the method is not insert.
+        # The ID of the targeted account. Only defined if the method is not `insert`.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -815,13 +822,13 @@ module Google
         attr_accessor :batch_id
       
         # Whether the account should be deleted if the account has offers. Only
-        # applicable if the method is delete.
+        # applicable if the method is `delete`.
         # Corresponds to the JSON property `force`
         # @return [Boolean]
         attr_accessor :force
         alias_method :force?, :force
       
-        # Details about the link request.
+        # Details about the `link` request.
         # Corresponds to the JSON property `linkRequest`
         # @return [Google::Apis::ContentV2_1::AccountsCustomBatchRequestEntryLinkRequest]
         attr_accessor :link_request
@@ -833,17 +840,17 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "claimWebsite"
-        # - "delete"
-        # - "get"
-        # - "insert"
-        # - "link"
-        # - "update"
+        # - "`claimWebsite`"
+        # - "`delete`"
+        # - "`get`"
+        # - "`insert`"
+        # - "`link`"
+        # - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
-        # Only applicable if the method is claimwebsite. Indicates whether or not to
+        # Only applicable if the method is `claimwebsite`. Indicates whether or not to
         # take the claim from another account in case there is a conflict.
         # Corresponds to the JSON property `overwrite`
         # @return [Boolean]
@@ -871,20 +878,20 @@ module Google
       class AccountsCustomBatchRequestEntryLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Action to perform for this link. The "request" action is only available to
+        # Action to perform for this link. The `"request"` action is only available to
         # select merchants.
         # Acceptable values are:
-        # - "approve"
-        # - "remove"
-        # - "request"
+        # - "`approve`"
+        # - "`remove`"
+        # - "`request`"
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
         # Type of the link between the two accounts.
         # Acceptable values are:
-        # - "channelPartner"
-        # - "eCommercePlatform"
+        # - "`channelPartner`"
+        # - "`eCommercePlatform`"
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -959,8 +966,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accountsCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accountsCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -982,20 +989,20 @@ module Google
       class AccountsLinkRequest
         include Google::Apis::Core::Hashable
       
-        # Action to perform for this link. The "request" action is only available to
+        # Action to perform for this link. The `"request"` action is only available to
         # select merchants.
         # Acceptable values are:
-        # - "approve"
-        # - "remove"
-        # - "request"
+        # - "`approve`"
+        # - "`remove`"
+        # - "`request`"
         # Corresponds to the JSON property `action`
         # @return [String]
         attr_accessor :action
       
         # Type of the link between the two accounts.
         # Acceptable values are:
-        # - "channelPartner"
-        # - "eCommercePlatform"
+        # - "`channelPartner`"
+        # - "`eCommercePlatform`"
         # Corresponds to the JSON property `linkType`
         # @return [String]
         attr_accessor :link_type
@@ -1153,7 +1160,7 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
+        # - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1307,8 +1314,8 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
-        # - "update"
+        # - "`get`"
+        # - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -1372,8 +1379,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # accounttaxCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # accounttaxCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1472,21 +1479,22 @@ module Google
       class CarrierRate
         include Google::Apis::Core::Hashable
       
-        # Carrier service, such as "UPS" or "Fedex". The list of supported carriers can
-        # be retrieved via the getSupportedCarriers method. Required.
+        # Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers
+        # can be retrieved via the `getSupportedCarriers` method. Required.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
       
-        # Carrier service, such as "ground" or "2 days". The list of supported services
-        # for a carrier can be retrieved via the getSupportedCarriers method. Required.
+        # Carrier service, such as `"ground"` or `"2 days"`. The list of supported
+        # services for a carrier can be retrieved via the `getSupportedCarriers` method.
+        # Required.
         # Corresponds to the JSON property `carrierService`
         # @return [String]
         attr_accessor :carrier_service
       
-        # Additive shipping rate modifier. Can be negative. For example ` "value": "1", "
-        # currency" : "USD" ` adds $1 to the rate, ` "value": "-3", "currency" : "USD" `
-        # removes $3 from the rate. Optional.
+        # Additive shipping rate modifier. Can be negative. For example `` "value": "1",
+        # "currency" : "USD" `` adds $1 to the rate, `` "value": "-3", "currency" : "USD"
+        # `` removes $3 from the rate. Optional.
         # Corresponds to the JSON property `flatAdjustment`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :flat_adjustment
@@ -1502,7 +1510,7 @@ module Google
         attr_accessor :origin_postal_code
       
         # Multiplicative shipping rate modifier as a number in decimal notation. Can be
-        # negative. For example "5.4" increases the rate by 5.4%, "-3" decreases the
+        # negative. For example `"5.4"` increases the rate by 5.4%, `"-3"` decreases the
         # rate by 3%. Optional.
         # Corresponds to the JSON property `percentageAdjustment`
         # @return [String]
@@ -1532,12 +1540,12 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The name of the carrier (e.g., "UPS"). Always present.
+        # The name of the carrier (e.g., `"UPS"`). Always present.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # A list of supported services (e.g., "ground") for that carrier. Contains at
+        # A list of supported services (e.g., `"ground"`) for that carrier. Contains at
         # least one service.
         # Corresponds to the JSON property `services`
         # @return [Array<String>]
@@ -1599,20 +1607,20 @@ module Google
       
         # Code of the return reason.
         # Acceptable values are:
-        # - "betterPriceFound"
-        # - "changedMind"
-        # - "damagedOrDefectiveItem"
-        # - "didNotMatchDescription"
-        # - "doesNotFit"
-        # - "expiredItem"
-        # - "incorrectItemReceived"
-        # - "noLongerNeeded"
-        # - "notSpecified"
-        # - "orderedWrongItem"
-        # - "other"
-        # - "qualityNotExpected"
-        # - "receivedTooLate"
-        # - "undeliverable"
+        # - "`betterPriceFound`"
+        # - "`changedMind`"
+        # - "`damagedOrDefectiveItem`"
+        # - "`didNotMatchDescription`"
+        # - "`doesNotFit`"
+        # - "`expiredItem`"
+        # - "`incorrectItemReceived`"
+        # - "`noLongerNeeded`"
+        # - "`notSpecified`"
+        # - "`orderedWrongItem`"
+        # - "`other`"
+        # - "`qualityNotExpected`"
+        # - "`receivedTooLate`"
+        # - "`undeliverable`"
         # Corresponds to the JSON property `reasonCode`
         # @return [String]
         attr_accessor :reason_code
@@ -1675,9 +1683,9 @@ module Google
         # Required. The type of data feed. For product inventory feeds, only feeds for
         # local stores, not online stores, are supported.
         # Acceptable values are:
-        # - "local products"
-        # - "product inventory"
-        # - "products"
+        # - "`local products`"
+        # - "`product inventory`"
+        # - "`products`"
         # Corresponds to the JSON property `contentType`
         # @return [String]
         attr_accessor :content_type
@@ -1705,8 +1713,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeed".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeed`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1792,13 +1800,13 @@ module Google
       
         # The day of the week the feed file should be fetched.
         # Acceptable values are:
-        # - "monday"
-        # - "tuesday"
-        # - "wednesday"
-        # - "thursday"
-        # - "friday"
-        # - "saturday"
-        # - "sunday"
+        # - "`monday`"
+        # - "`tuesday`"
+        # - "`wednesday`"
+        # - "`thursday`"
+        # - "`friday`"
+        # - "`saturday`"
+        # - "`sunday`"
         # Corresponds to the JSON property `weekday`
         # @return [String]
         attr_accessor :weekday
@@ -1829,9 +1837,9 @@ module Google
         # If not specified, the delimiter will be auto-detected. Ignored for non-DSV
         # data feeds.
         # Acceptable values are:
-        # - "pipe"
-        # - "tab"
-        # - "tilde"
+        # - "`pipe`"
+        # - "`tab`"
+        # - "`tilde`"
         # Corresponds to the JSON property `columnDelimiter`
         # @return [String]
         attr_accessor :column_delimiter
@@ -1839,11 +1847,11 @@ module Google
         # Character encoding scheme of the data feed. If not specified, the encoding
         # will be auto-detected.
         # Acceptable values are:
-        # - "latin-1"
-        # - "utf-16be"
-        # - "utf-16le"
-        # - "utf-8"
-        # - "windows-1252"
+        # - "`latin-1`"
+        # - "`utf-16be`"
+        # - "`utf-16le`"
+        # - "`utf-8`"
+        # - "`windows-1252`"
         # Corresponds to the JSON property `fileEncoding`
         # @return [String]
         attr_accessor :file_encoding
@@ -1851,8 +1859,8 @@ module Google
         # Specifies how double quotes are interpreted. If not specified, the mode will
         # be auto-detected. Ignored for non-DSV data feeds.
         # Acceptable values are:
-        # - "normal character"
-        # - "value quoting"
+        # - "`normal character`"
+        # - "`value quoting`"
         # Corresponds to the JSON property `quotingMode`
         # @return [String]
         attr_accessor :quoting_mode
@@ -1900,8 +1908,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :items_valid
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # datafeedStatus".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # datafeedStatus`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -1918,12 +1926,12 @@ module Google
       
         # The processing status of the feed.
         # Acceptable values are:
-        # - ""failure": The feed could not be processed or all items had errors."
-        # - "in progress": The feed is being processed.
-        # - "none": The feed has not yet been processed. For example, a feed that has
+        # - "`"`failure`": The feed could not be processed or all items had errors.`"
+        # - "`in progress`": The feed is being processed.
+        # - "`none`": The feed has not yet been processed. For example, a feed that has
         # never been uploaded will have this processing status.
-        # - "success": The feed was processed successfully, though some items might have
-        # had errors.
+        # - "`success`": The feed was processed successfully, though some items might
+        # have had errors.
         # Corresponds to the JSON property `processingStatus`
         # @return [String]
         attr_accessor :processing_status
@@ -2038,7 +2046,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in excludedDestinations.
+        # unless provided in `excludedDestinations`.
         # List of supported destinations (if available to the account):
         # - DisplayAds
         # - Shopping
@@ -2049,7 +2057,7 @@ module Google
         attr_accessor :included_destinations
       
         # The two-letter ISO 639-1 language of the items in the feed. Must be a valid
-        # language for targets[].country.
+        # language for `targets[].country`.
         # Corresponds to the JSON property `language`
         # @return [String]
         attr_accessor :language
@@ -2112,11 +2120,11 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "delete"
-        # - "fetchNow"
-        # - "get"
-        # - "insert"
-        # - "update"
+        # - "`delete`"
+        # - "`fetchNow`"
+        # - "`get`"
+        # - "`insert`"
+        # - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -2298,7 +2306,7 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
+        # - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -2431,15 +2439,15 @@ module Google
         attr_accessor :holiday_cutoffs
       
         # Maximum number of business days spent before an order is shipped. 0 means same
-        # day shipped, 1 means next day shipped. Must be greater than or equal to
-        # minHandlingTimeInDays.
+        # day shipped, 1 means next day shipped. Must be greater than or equal to `
+        # minHandlingTimeInDays`.
         # Corresponds to the JSON property `maxHandlingTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_handling_time_in_days
       
         # Maximum number of business days that is spent in transit. 0 means same day
-        # delivery, 1 means next day delivery. Must be greater than or equal to
-        # minTransitTimeInDays.
+        # delivery, 1 means next day delivery. Must be greater than or equal to `
+        # minTransitTimeInDays`.
         # Corresponds to the JSON property `maxTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_transit_time_in_days
@@ -2451,8 +2459,8 @@ module Google
         attr_accessor :min_handling_time_in_days
       
         # Minimum number of business days that is spent in transit. 0 means same day
-        # delivery, 1 means next day delivery. Either `min,max`TransitTimeInDays or
-        # transitTimeTable must be set, but not both.
+        # delivery, 1 means next day delivery. Either ``min,max`TransitTimeInDays` or `
+        # transitTimeTable` must be set, but not both.
         # Corresponds to the JSON property `minTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :min_transit_time_in_days
@@ -2464,8 +2472,8 @@ module Google
         attr_accessor :transit_business_day_config
       
         # Transit time table, number of business days spent in transit based on row and
-        # column dimensions. Either `min,max`TransitTimeInDays or transitTimeTable can
-        # be set, but not both.
+        # column dimensions. Either ``min,max`TransitTimeInDays` or `transitTimeTable`
+        # can be set, but not both.
         # Corresponds to the JSON property `transitTimeTable`
         # @return [Google::Apis::ContentV2_1::TransitTable]
         attr_accessor :transit_time_table
@@ -2523,7 +2531,7 @@ module Google
       class Errors
         include Google::Apis::Core::Hashable
       
-        # The HTTP status of the first error in errors.
+        # The HTTP status of the first error in `errors`.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
@@ -2533,7 +2541,7 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::Error>]
         attr_accessor :errors
       
-        # The message of the first error in errors.
+        # The message of the first error in `errors`.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2554,7 +2562,7 @@ module Google
       class GmbAccounts
         include Google::Apis::Core::Hashable
       
-        # The ID of the account.
+        # The ID of the Merchant Center account.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -2612,8 +2620,8 @@ module Google
         end
       end
       
-      # A non-empty list of row or column headers for a table. Exactly one of prices,
-      # weights, numItems, postalCodeGroupNames, or location must be set.
+      # A non-empty list of row or column headers for a table. Exactly one of `prices`,
+      # `weights`, `numItems`, `postalCodeGroupNames`, or `location` must be set.
       class Headers
         include Google::Apis::Core::Hashable
       
@@ -2623,36 +2631,36 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::LocationIdSet>]
         attr_accessor :locations
       
-        # A list of inclusive number of items upper bounds. The last value can be "
-        # infinity". For example ["10", "50", "infinity"] represents the headers "<= 10
-        # items", " 50 items". Must be non-empty. Can only be set if all other fields
+        # A list of inclusive number of items upper bounds. The last value can be `"
+        # infinity"`. For example `["10", "50", "infinity"]` represents the headers "<=
+        # 10 items", " 50 items". Must be non-empty. Can only be set if all other fields
         # are not set.
         # Corresponds to the JSON property `numberOfItems`
         # @return [Array<String>]
         attr_accessor :number_of_items
       
-        # A list of postal group names. The last value can be "all other locations".
-        # Example: ["zone 1", "zone 2", "all other locations"]. The referred postal code
-        # groups must match the delivery country of the service. Must be non-empty. Can
-        # only be set if all other fields are not set.
+        # A list of postal group names. The last value can be `"all other locations"`.
+        # Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal
+        # code groups must match the delivery country of the service. Must be non-empty.
+        # Can only be set if all other fields are not set.
         # Corresponds to the JSON property `postalCodeGroupNames`
         # @return [Array<String>]
         attr_accessor :postal_code_group_names
       
-        # A list of inclusive order price upper bounds. The last price's value can be "
-        # infinity". For example [`"value": "10", "currency": "USD"`, `"value": "500", "
-        # currency": "USD"`, `"value": "infinity", "currency": "USD"`] represents the
+        # A list of inclusive order price upper bounds. The last price's value can be `"
+        # infinity"`. For example `[`"value": "10", "currency": "USD"`, `"value": "500",
+        # "currency": "USD"`, `"value": "infinity", "currency": "USD"`]` represents the
         # headers "<= $10", " $500". All prices within a service must have the same
         # currency. Must be non-empty. Can only be set if all other fields are not set.
         # Corresponds to the JSON property `prices`
         # @return [Array<Google::Apis::ContentV2_1::Price>]
         attr_accessor :prices
       
-        # A list of inclusive order weight upper bounds. The last weight's value can be "
-        # infinity". For example [`"value": "10", "unit": "kg"`, `"value": "50", "unit":
-        # "kg"`, `"value": "infinity", "unit": "kg"`] represents the headers "<= 10kg", "
-        # 50kg". All weights within a service must have the same unit. Must be non-
-        # empty. Can only be set if all other fields are not set.
+        # A list of inclusive order weight upper bounds. The last weight's value can be `
+        # "infinity"`. For example `[`"value": "10", "unit": "kg"`, `"value": "50", "
+        # unit": "kg"`, `"value": "infinity", "unit": "kg"`]` represents the headers "<=
+        # 10kg", " 50kg". All weights within a service must have the same unit. Must be
+        # non-empty. Can only be set if all other fields are not set.
         # Corresponds to the JSON property `weights`
         # @return [Array<Google::Apis::ContentV2_1::Weight>]
         attr_accessor :weights
@@ -2757,14 +2765,14 @@ module Google
       
         # The holiday type. Always present.
         # Acceptable values are:
-        # - "Christmas"
-        # - "Easter"
-        # - "Father's Day"
-        # - "Halloween"
-        # - "Independence Day (USA)"
-        # - "Mother's Day"
-        # - "Thanksgiving"
-        # - "Valentine's Day"
+        # - "`Christmas`"
+        # - "`Easter`"
+        # - "`Father's Day`"
+        # - "`Halloween`"
+        # - "`Independence Day (USA)`"
+        # - "`Mother's Day`"
+        # - "`Thanksgiving`"
+        # - "`Valentine's Day`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2845,7 +2853,7 @@ module Google
       
         # [required] Type of the additional charge.
         # Acceptable values are:
-        # - "shipping"
+        # - "`shipping`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -2867,9 +2875,9 @@ module Google
       
         # The status of the verification process for the About page.
         # Acceptable values are:
-        # - "active"
-        # - "inactive"
-        # - "pending"
+        # - "`active`"
+        # - "`inactive`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -2963,18 +2971,18 @@ module Google
       
         # The status of the verification contact.
         # Acceptable values are:
-        # - "active"
-        # - "inactive"
-        # - "pending"
+        # - "`active`"
+        # - "`inactive`"
+        # - "`pending`"
         # Corresponds to the JSON property `inventoryVerificationContactStatus`
         # @return [String]
         attr_accessor :inventory_verification_contact_status
       
         # The status of the inventory verification process.
         # Acceptable values are:
-        # - "active"
-        # - "inactive"
-        # - "pending"
+        # - "`active`"
+        # - "`inactive`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3003,9 +3011,9 @@ module Google
       
         # The status of the ?On display to order? feature.
         # Acceptable values are:
-        # - "active"
-        # - "inactive"
-        # - "pending"
+        # - "`active`"
+        # - "`inactive`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3062,8 +3070,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::LiaCountrySettings>]
         attr_accessor :country_settings
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liaSettings".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liaSettings`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3103,7 +3111,7 @@ module Google
       class LiasettingsCustomBatchRequestEntry
         include Google::Apis::Core::Hashable
       
-        # The ID of the account for which to get/update account shipping settings.
+        # The ID of the account for which to get/update account LIA settings.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -3148,12 +3156,12 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
-        # - "getAccessibleGmbAccounts"
-        # - "requestGmbAccess"
-        # - "requestInventoryVerification"
-        # - "setInventoryVerificationContact"
-        # - "update"
+        # - "`get`"
+        # - "`getAccessibleGmbAccounts`"
+        # - "`requestGmbAccess`"
+        # - "`requestInventoryVerification`"
+        # - "`setInventoryVerificationContact`"
+        # - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -3233,8 +3241,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::GmbAccounts]
         attr_accessor :gmb_accounts
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # liasettingsCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # liasettingsCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3269,7 +3277,7 @@ module Google
       class LiasettingsGetAccessibleGmbAccountsResponse
         include Google::Apis::Core::Hashable
       
-        # The ID of the account.
+        # The ID of the Merchant Center account.
         # Corresponds to the JSON property `accountId`
         # @return [Fixnum]
         attr_accessor :account_id
@@ -3441,18 +3449,18 @@ module Google
       
         # Service provided to or by the linked account.
         # Acceptable values are:
-        # - "shoppingActionsOrderManagement"
-        # - "shoppingActionsProductManagement"
-        # - "shoppingAdsProductManagement"
+        # - "`shoppingActionsOrderManagement`"
+        # - "`shoppingActionsProductManagement`"
+        # - "`shoppingAdsProductManagement`"
         # Corresponds to the JSON property `service`
         # @return [String]
         attr_accessor :service
       
         # Status of the link
         # Acceptable values are:
-        # - "active"
-        # - "inactive"
-        # - "pending"
+        # - "`active`"
+        # - "`inactive`"
+        # - "`pending`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -3508,20 +3516,20 @@ module Google
         # @return [String]
         attr_accessor :instore_product_location
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # localInventory".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # localInventory`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
         # Supported pickup method for this offer. Unless the value is "not supported",
-        # this field must be submitted together with pickupSla.
+        # this field must be submitted together with `pickupSla`.
         # Corresponds to the JSON property `pickupMethod`
         # @return [String]
         attr_accessor :pickup_method
       
         # Expected date that an order will be ready for pickup relative to the order
-        # date. Must be submitted together with pickupMethod.
+        # date. Must be submitted together with `pickupMethod`.
         # Corresponds to the JSON property `pickupSla`
         # @return [String]
         attr_accessor :pickup_sla
@@ -3536,7 +3544,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Sale price of the product. Mandatory if sale_price_effective_date is defined.
+        # Sale price of the product. Mandatory if `sale_price_effective_date` is defined.
         # Corresponds to the JSON property `salePrice`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :sale_price
@@ -3612,7 +3620,7 @@ module Google
       
         # Method of the batch request entry.
         # Acceptable values are:
-        # - "insert"
+        # - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -3676,8 +3684,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # localinventoryCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # localinventoryCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3777,6 +3785,11 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::MerchantOrderReturnItem>]
         attr_accessor :return_items
       
+        # Information about shipping costs.
+        # Corresponds to the JSON property `returnPricingInfo`
+        # @return [Google::Apis::ContentV2_1::ReturnPricingInfo]
+        attr_accessor :return_pricing_info
+      
         # Shipments of the return.
         # Corresponds to the JSON property `returnShipments`
         # @return [Array<Google::Apis::ContentV2_1::ReturnShipment>]
@@ -3793,6 +3806,7 @@ module Google
           @order_id = args[:order_id] if args.key?(:order_id)
           @order_return_id = args[:order_return_id] if args.key?(:order_return_id)
           @return_items = args[:return_items] if args.key?(:return_items)
+          @return_pricing_info = args[:return_pricing_info] if args.key?(:return_pricing_info)
           @return_shipments = args[:return_shipments] if args.key?(:return_shipments)
         end
       end
@@ -3812,6 +3826,11 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
+        # The reason that the merchant chose to reject an item return.
+        # Corresponds to the JSON property `merchantRejectionReason`
+        # @return [Google::Apis::ContentV2_1::MerchantRejectionReason]
+        attr_accessor :merchant_rejection_reason
+      
         # The reason that merchant chooses to accept a return item.
         # Corresponds to the JSON property `merchantReturnReason`
         # @return [Google::Apis::ContentV2_1::RefundReason]
@@ -3822,18 +3841,40 @@ module Google
         # @return [Google::Apis::ContentV2_1::OrderLineItemProduct]
         attr_accessor :product
       
+        # Maximum amount that can be refunded for this return item.
+        # Corresponds to the JSON property `refundableAmount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :refundable_amount
+      
+        # Unit level ID for the return item. Different units of the same product will
+        # have different IDs.
+        # Corresponds to the JSON property `returnItemId`
+        # @return [String]
+        attr_accessor :return_item_id
+      
         # IDs of the return shipments that this return item belongs to.
         # Corresponds to the JSON property `returnShipmentIds`
         # @return [Array<String>]
         attr_accessor :return_shipment_ids
       
+        # ID of the original shipment group. Provided for shipments with invoice support.
+        # Corresponds to the JSON property `shipmentGroupId`
+        # @return [String]
+        attr_accessor :shipment_group_id
+      
+        # ID of the shipment unit assigned by the merchant. Provided for shipments with
+        # invoice support.
+        # Corresponds to the JSON property `shipmentUnitId`
+        # @return [String]
+        attr_accessor :shipment_unit_id
+      
         # State of the item.
         # Acceptable values are:
-        # - "canceled"
-        # - "new"
-        # - "received"
-        # - "refunded"
-        # - "rejected"
+        # - "`canceled`"
+        # - "`new`"
+        # - "`received`"
+        # - "`refunded`"
+        # - "`rejected`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -3846,15 +3887,122 @@ module Google
         def update!(**args)
           @customer_return_reason = args[:customer_return_reason] if args.key?(:customer_return_reason)
           @item_id = args[:item_id] if args.key?(:item_id)
+          @merchant_rejection_reason = args[:merchant_rejection_reason] if args.key?(:merchant_rejection_reason)
           @merchant_return_reason = args[:merchant_return_reason] if args.key?(:merchant_return_reason)
           @product = args[:product] if args.key?(:product)
+          @refundable_amount = args[:refundable_amount] if args.key?(:refundable_amount)
+          @return_item_id = args[:return_item_id] if args.key?(:return_item_id)
           @return_shipment_ids = args[:return_shipment_ids] if args.key?(:return_shipment_ids)
+          @shipment_group_id = args[:shipment_group_id] if args.key?(:shipment_group_id)
+          @shipment_unit_id = args[:shipment_unit_id] if args.key?(:shipment_unit_id)
           @state = args[:state] if args.key?(:state)
         end
       end
       
+      # 
+      class MerchantRejectionReason
+        include Google::Apis::Core::Hashable
+      
+        # Description of the reason.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # Code of the rejection reason.
+        # Corresponds to the JSON property `reasonCode`
+        # @return [String]
+        attr_accessor :reason_code
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @description = args[:description] if args.key?(:description)
+          @reason_code = args[:reason_code] if args.key?(:reason_code)
+        end
+      end
+      
+      # 
+      class MinimumOrderValueTable
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `storeCodeSetWithMovs`
+        # @return [Array<Google::Apis::ContentV2_1::MinimumOrderValueTableStoreCodeSetWithMov>]
+        attr_accessor :store_code_set_with_movs
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @store_code_set_with_movs = args[:store_code_set_with_movs] if args.key?(:store_code_set_with_movs)
+        end
+      end
+      
+      # A list of store code sets sharing the same minimum order value. At least two
+      # sets are required and the last one must be empty, which signifies 'MOV for all
+      # other stores'. Each store code can only appear once across all the sets. All
+      # prices within a service must have the same currency.
+      class MinimumOrderValueTableStoreCodeSetWithMov
+        include Google::Apis::Core::Hashable
+      
+        # A list of unique store codes or empty for the catch all.
+        # Corresponds to the JSON property `storeCodes`
+        # @return [Array<String>]
+        attr_accessor :store_codes
+      
+        # The minimum order value for the given stores.
+        # Corresponds to the JSON property `value`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @store_codes = args[:store_codes] if args.key?(:store_codes)
+          @value = args[:value] if args.key?(:value)
+        end
+      end
+      
+      # 
+      class MonetaryAmount
+        include Google::Apis::Core::Hashable
+      
+        # The pre-tax or post-tax price depends on the location of the order. - For
+        # countries (e.g. US) where price attribute excludes tax, this field corresponds
+        # to the pre-tax value. - For coutries (e.g. France) where price attribute
+        # includes tax, this field corresponds to the post-tax value .
+        # Corresponds to the JSON property `priceAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :price_amount
+      
+        # Tax value, present only for countries where price attribute excludes tax (e.g.
+        # US). No tax is referenced as 0 value with the corresponding `currency`.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price_amount = args[:price_amount] if args.key?(:price_amount)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
       # Order. Production access (all methods) requires the order manager role.
-      # Sandbox access does not.
+      # Sandbox access does not. (== resource_for v2.orders ==) (== resource_for v2.1.
+      # orders ==)
       class Order
         include Google::Apis::Core::Hashable
       
@@ -3874,7 +4022,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::OrderCustomer]
         attr_accessor :customer
       
-        # Delivery details for shipments of type delivery.
+        # Delivery details for shipments of type `delivery`.
         # Corresponds to the JSON property `deliveryDetails`
         # @return [Google::Apis::ContentV2_1::OrderDeliveryDetails]
         attr_accessor :delivery_details
@@ -3884,8 +4032,8 @@ module Google
         # @return [String]
         attr_accessor :id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # order".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # order`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -3913,7 +4061,7 @@ module Google
         attr_accessor :net_price_amount
       
         # The net amount for the order (tax part). Note that in certain cases due to
-        # taxable base adjustment netTaxAmount might not match to a sum of tax field
+        # taxable base adjustment `netTaxAmount` might not match to a sum of tax field
         # across all lineItems and refunds.
         # Corresponds to the JSON property `netTaxAmount`
         # @return [Google::Apis::ContentV2_1::Price]
@@ -3921,15 +4069,15 @@ module Google
       
         # The status of the payment.
         # Acceptable values are:
-        # - "paymentCaptured"
-        # - "paymentRejected"
-        # - "paymentSecured"
-        # - "pendingAuthorization"
+        # - "`paymentCaptured`"
+        # - "`paymentRejected`"
+        # - "`paymentSecured`"
+        # - "`pendingAuthorization`"
         # Corresponds to the JSON property `paymentStatus`
         # @return [String]
         attr_accessor :payment_status
       
-        # Pickup details for shipments of type pickup.
+        # Pickup details for shipments of type `pickup`.
         # Corresponds to the JSON property `pickupDetails`
         # @return [Google::Apis::ContentV2_1::OrderPickupDetails]
         attr_accessor :pickup_details
@@ -3940,20 +4088,20 @@ module Google
         attr_accessor :placed_date
       
         # Promotions associated with the order.
-        # To determine which promotions apply to which products, check the Promotions[].
-        # appliedItems[].lineItemId field against the LineItems[].id field for each
+        # To determine which promotions apply to which products, check the `Promotions[].
+        # appliedItems[].lineItemId` field against the `LineItems[].id` field for each
         # promotion. If a promotion is applied to more than 1 offerId, divide the
         # discount value by the number of affected offers to determine how much discount
         # to apply to each offerId.
         # Examples:
         # - To calculate price paid by the customer for a single line item including the
-        # discount: For each promotion, subtract the LineItems[].adjustments[].
-        # priceAdjustment.value amount from the LineItems[].Price.value.
+        # discount: For each promotion, subtract the `LineItems[].adjustments[].
+        # priceAdjustment.value` amount from the `LineItems[].Price.value`.
         # - To calculate price paid by the customer for a single line item including the
-        # discount in case of multiple quantity: For each promotion, divide the
-        # LineItems[].adjustments[].priceAdjustment.value by the quantity of products
-        # then subtract the resulting value from the LineItems[].Product.Price.value for
-        # each quantity item.
+        # discount in case of multiple quantity: For each promotion, divide the `
+        # LineItems[].adjustments[].priceAdjustment.value` by the quantity of products
+        # then subtract the resulting value from the `LineItems[].Product.Price.value`
+        # for each quantity item.
         # Only 1 promotion can be applied to an offerId in a given order. To refund an
         # item which had a promotion applied to it, make sure to refund the amount after
         # first subtracting the promotion discount from the item price.
@@ -3984,23 +4132,23 @@ module Google
       
         # The status of the order.
         # Acceptable values are:
-        # - "canceled"
-        # - "delivered"
-        # - "inProgress"
-        # - "partiallyDelivered"
-        # - "partiallyReturned"
-        # - "partiallyShipped"
-        # - "pendingShipment"
-        # - "returned"
-        # - "shipped"
+        # - "`canceled`"
+        # - "`delivered`"
+        # - "`inProgress`"
+        # - "`partiallyDelivered`"
+        # - "`partiallyReturned`"
+        # - "`partiallyShipped`"
+        # - "`pendingShipment`"
+        # - "`returned`"
+        # - "`shipped`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
       
         # The party responsible for collecting and remitting taxes.
         # Acceptable values are:
-        # - "marketplaceFacilitator"
-        # - "merchant"
+        # - "`marketplaceFacilitator`"
+        # - "`merchant`"
         # Corresponds to the JSON property `taxCollector`
         # @return [String]
         attr_accessor :tax_collector
@@ -4110,12 +4258,12 @@ module Google
       
         # The actor that created the cancellation.
         # Acceptable values are:
-        # - "customer"
-        # - "googleBot"
-        # - "googleCustomerService"
-        # - "googlePayments"
-        # - "googleSabre"
-        # - "merchant"
+        # - "`customer`"
+        # - "`googleBot`"
+        # - "`googleCustomerService`"
+        # - "`googlePayments`"
+        # - "`googleSabre`"
+        # - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
         attr_accessor :actor
@@ -4134,34 +4282,34 @@ module Google
         # reason will lead to the removal of the product from Shopping Actions until you
         # make an update to that product. This will not affect your Shopping ads.
         # Acceptable values are:
-        # - "autoPostInternal"
-        # - "autoPostInvalidBillingAddress"
-        # - "autoPostNoInventory"
-        # - "autoPostPriceError"
-        # - "autoPostUndeliverableShippingAddress"
-        # - "couponAbuse"
-        # - "customerCanceled"
-        # - "customerInitiatedCancel"
-        # - "customerSupportRequested"
-        # - "failToPushOrderGoogleError"
-        # - "failToPushOrderMerchantError"
-        # - "failToPushOrderMerchantFulfillmentError"
-        # - "failToPushOrderToMerchant"
-        # - "failToPushOrderToMerchantOutOfStock"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "merchantDidNotShipOnTime"
-        # - "noInventory"
-        # - "orderTimeout"
-        # - "other"
-        # - "paymentAbuse"
-        # - "paymentDeclined"
-        # - "priceError"
-        # - "returnRefundAbuse"
-        # - "shippingPriceError"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
+        # - "`autoPostInternal`"
+        # - "`autoPostInvalidBillingAddress`"
+        # - "`autoPostNoInventory`"
+        # - "`autoPostPriceError`"
+        # - "`autoPostUndeliverableShippingAddress`"
+        # - "`couponAbuse`"
+        # - "`customerCanceled`"
+        # - "`customerInitiatedCancel`"
+        # - "`customerSupportRequested`"
+        # - "`failToPushOrderGoogleError`"
+        # - "`failToPushOrderMerchantError`"
+        # - "`failToPushOrderMerchantFulfillmentError`"
+        # - "`failToPushOrderToMerchant`"
+        # - "`failToPushOrderToMerchantOutOfStock`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`merchantDidNotShipOnTime`"
+        # - "`noInventory`"
+        # - "`orderTimeout`"
+        # - "`other`"
+        # - "`paymentAbuse`"
+        # - "`paymentDeclined`"
+        # - "`priceError`"
+        # - "`returnRefundAbuse`"
+        # - "`shippingPriceError`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -4195,8 +4343,9 @@ module Google
         attr_accessor :full_name
       
         # Email address for the merchant to send value-added tax or invoice
-        # documentation of the order. This documentation is made available to the
-        # customer.
+        # documentation of the order. Only the last document sent is made available to
+        # the customer. For more information, see  About automated VAT invoicing for
+        # Shopping Actions.
         # Corresponds to the JSON property `invoiceReceivingEmail`
         # @return [String]
         attr_accessor :invoice_receiving_email
@@ -4258,12 +4407,12 @@ module Google
       
         # Last known customer selection regarding marketing preferences. In certain
         # cases this selection might not be known, so this field would be empty. If a
-        # customer selected granted in their most recent order, they can be subscribed
-        # to marketing emails. Customers who have chosen denied must not be subscribed,
+        # customer selected `granted` in their most recent order, they can be subscribed
+        # to marketing emails. Customers who have chosen `denied` must not be subscribed,
         # or must be unsubscribed if already opted-in.
         # Acceptable values are:
-        # - "denied"
-        # - "granted"
+        # - "`denied`"
+        # - "`granted`"
         # Corresponds to the JSON property `explicitMarketingPreference`
         # @return [String]
         attr_accessor :explicit_marketing_preference
@@ -4275,8 +4424,8 @@ module Google
         attr_accessor :last_updated_timestamp
       
         # Email address that can be used for marketing purposes. The field may be empty
-        # even if explicitMarketingPreference is 'granted'. This happens when retrieving
-        # an old order from the customer who deleted their account.
+        # even if `explicitMarketingPreference` is 'granted'. This happens when
+        # retrieving an old order from the customer who deleted their account.
         # Corresponds to the JSON property `marketingEmailAddress`
         # @return [String]
         attr_accessor :marketing_email_address
@@ -4459,7 +4608,7 @@ module Google
       
         # Type of this adjustment.
         # Acceptable values are:
-        # - "promotion"
+        # - "`promotion`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4487,9 +4636,9 @@ module Google
       
         # Condition or state of the item.
         # Acceptable values are:
-        # - "new"
-        # - "refurbished"
-        # - "used"
+        # - "`new`"
+        # - "`refurbished`"
+        # - "`used`"
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
@@ -4686,11 +4835,11 @@ module Google
         # @return [String]
         attr_accessor :ship_by_date
       
-        # Type of shipment. Indicates whether deliveryDetails or pickupDetails is
+        # Type of shipment. Indicates whether `deliveryDetails` or `pickupDetails` is
         # applicable for this shipment.
         # Acceptable values are:
-        # - "delivery"
-        # - "pickup"
+        # - "`delivery`"
+        # - "`pickup`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4712,8 +4861,8 @@ module Google
       class OrderLineItemShippingDetailsMethod
         include Google::Apis::Core::Hashable
       
-        # The carrier for the shipping. Optional. See shipments[].carrier for a list of
-        # acceptable values.
+        # The carrier for the shipping. Optional. See `shipments[].carrier` for a list
+        # of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -4777,8 +4926,8 @@ module Google
       class OrderPickupDetails
         include Google::Apis::Core::Hashable
       
-        # Address of the pickup location where the shipment should be sent. Note that
-        # recipientName in the address is the name of the business at the pickup
+        # Address of the pickup location where the shipment should be sent. Note that `
+        # recipientName` in the address is the name of the business at the pickup
         # location.
         # Corresponds to the JSON property `address`
         # @return [Google::Apis::ContentV2_1::OrderAddress]
@@ -4841,8 +4990,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applicable_items
       
-        # Items which this promotion have been applied to. Do not provide for orders.
-        # createtestorder.
+        # Items which this promotion have been applied to. Do not provide for `orders.
+        # createtestorder`.
         # Corresponds to the JSON property `appliedItems`
         # @return [Array<Google::Apis::ContentV2_1::OrderPromotionItem>]
         attr_accessor :applied_items
@@ -4853,11 +5002,11 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Required. The party funding the promotion. Only merchant is supported for
-        # orders.createtestorder.
+        # Required. The party funding the promotion. Only `merchant` is supported for `
+        # orders.createtestorder`.
         # Acceptable values are:
-        # - "google"
-        # - "merchant"
+        # - "`google`"
+        # - "`merchant`"
         # Corresponds to the JSON property `funder`
         # @return [String]
         attr_accessor :funder
@@ -4875,7 +5024,7 @@ module Google
         attr_accessor :price_value
       
         # A short title of the promotion to be shown on the checkout page. Do not
-        # provide for orders.createtestorder.
+        # provide for `orders.createtestorder`.
         # Corresponds to the JSON property `shortTitle`
         # @return [String]
         attr_accessor :short_title
@@ -4886,29 +5035,29 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # Required. The category of the promotion. Only moneyOff is supported for orders.
-        # createtestorder.
+        # Required. The category of the promotion. Only `moneyOff` is supported for `
+        # orders.createtestorder`.
         # Acceptable values are:
-        # - "buyMGetMoneyOff"
-        # - "buyMGetNMoneyOff"
-        # - "buyMGetNPercentOff"
-        # - "buyMGetPercentOff"
-        # - "freeGift"
-        # - "freeGiftWithItemId"
-        # - "freeGiftWithValue"
-        # - "freeShippingOvernight"
-        # - "freeShippingStandard"
-        # - "freeShippingTwoDay"
-        # - "moneyOff"
-        # - "percentOff"
-        # - "rewardPoints"
-        # - "salePrice"
+        # - "`buyMGetMoneyOff`"
+        # - "`buyMGetNMoneyOff`"
+        # - "`buyMGetNPercentOff`"
+        # - "`buyMGetPercentOff`"
+        # - "`freeGift`"
+        # - "`freeGiftWithItemId`"
+        # - "`freeGiftWithValue`"
+        # - "`freeShippingOvernight`"
+        # - "`freeShippingStandard`"
+        # - "`freeShippingTwoDay`"
+        # - "`moneyOff`"
+        # - "`percentOff`"
+        # - "`rewardPoints`"
+        # - "`salePrice`"
         # Corresponds to the JSON property `subtype`
         # @return [String]
         attr_accessor :subtype
       
-        # Estimated discount applied to tax (if allowed by law). Do not provide for
-        # orders.createtestorder.
+        # Estimated discount applied to tax (if allowed by law). Do not provide for `
+        # orders.createtestorder`.
         # Corresponds to the JSON property `taxValue`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_value
@@ -4918,11 +5067,11 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Required. The scope of the promotion. Only product is supported for orders.
-        # createtestorder.
+        # Required. The scope of the promotion. Only `product` is supported for `orders.
+        # createtestorder`.
         # Acceptable values are:
-        # - "product"
-        # - "shipping"
+        # - "`product`"
+        # - "`shipping`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -4952,23 +5101,23 @@ module Google
       class OrderPromotionItem
         include Google::Apis::Core::Hashable
       
-        # The line item ID of a product. Do not provide for orders.createtestorder.
+        # The line item ID of a product. Do not provide for `orders.createtestorder`.
         # Corresponds to the JSON property `lineItemId`
         # @return [String]
         attr_accessor :line_item_id
       
-        # Required. Offer ID of a product. Only for orders.createtestorder.
+        # Required. Offer ID of a product. Only for `orders.createtestorder`.
         # Corresponds to the JSON property `offerId`
         # @return [String]
         attr_accessor :offer_id
       
-        # orders.createtestorder.
+        # `orders.createtestorder`.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
       
-        # The quantity of the associated product. Do not provide for orders.
-        # createtestorder.
+        # The quantity of the associated product. Do not provide for `orders.
+        # createtestorder`.
         # Corresponds to the JSON property `quantity`
         # @return [Fixnum]
         attr_accessor :quantity
@@ -4992,12 +5141,12 @@ module Google
       
         # The actor that created the refund.
         # Acceptable values are:
-        # - "customer"
-        # - "googleBot"
-        # - "googleCustomerService"
-        # - "googlePayments"
-        # - "googleSabre"
-        # - "merchant"
+        # - "`customer`"
+        # - "`googleBot`"
+        # - "`googleCustomerService`"
+        # - "`googlePayments`"
+        # - "`googleSabre`"
+        # - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
         attr_accessor :actor
@@ -5014,50 +5163,50 @@ module Google
       
         # The reason for the refund.
         # Acceptable values are:
-        # - "adjustment"
-        # - "autoPostInternal"
-        # - "autoPostInvalidBillingAddress"
-        # - "autoPostNoInventory"
-        # - "autoPostPriceError"
-        # - "autoPostUndeliverableShippingAddress"
-        # - "couponAbuse"
-        # - "courtesyAdjustment"
-        # - "customerCanceled"
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "customerSupportRequested"
-        # - "deliveredLateByCarrier"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "failToPushOrderGoogleError"
-        # - "failToPushOrderMerchantError"
-        # - "failToPushOrderMerchantFulfillmentError"
-        # - "failToPushOrderToMerchant"
-        # - "failToPushOrderToMerchantOutOfStock"
-        # - "feeAdjustment"
-        # - "invalidCoupon"
-        # - "lateShipmentCredit"
-        # - "malformedShippingAddress"
-        # - "merchantDidNotShipOnTime"
-        # - "noInventory"
-        # - "orderTimeout"
-        # - "other"
-        # - "paymentAbuse"
-        # - "paymentDeclined"
-        # - "priceAdjustment"
-        # - "priceError"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "promoReallocation"
-        # - "qualityNotAsExpected"
-        # - "returnRefundAbuse"
-        # - "shippingCostAdjustment"
-        # - "shippingPriceError"
-        # - "taxAdjustment"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`adjustment`"
+        # - "`autoPostInternal`"
+        # - "`autoPostInvalidBillingAddress`"
+        # - "`autoPostNoInventory`"
+        # - "`autoPostPriceError`"
+        # - "`autoPostUndeliverableShippingAddress`"
+        # - "`couponAbuse`"
+        # - "`courtesyAdjustment`"
+        # - "`customerCanceled`"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`customerSupportRequested`"
+        # - "`deliveredLateByCarrier`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`failToPushOrderGoogleError`"
+        # - "`failToPushOrderMerchantError`"
+        # - "`failToPushOrderMerchantFulfillmentError`"
+        # - "`failToPushOrderToMerchant`"
+        # - "`failToPushOrderToMerchantOutOfStock`"
+        # - "`feeAdjustment`"
+        # - "`invalidCoupon`"
+        # - "`lateShipmentCredit`"
+        # - "`malformedShippingAddress`"
+        # - "`merchantDidNotShipOnTime`"
+        # - "`noInventory`"
+        # - "`orderTimeout`"
+        # - "`other`"
+        # - "`paymentAbuse`"
+        # - "`paymentDeclined`"
+        # - "`priceAdjustment`"
+        # - "`priceError`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`promoReallocation`"
+        # - "`qualityNotAsExpected`"
+        # - "`returnRefundAbuse`"
+        # - "`shippingCostAdjustment`"
+        # - "`shippingPriceError`"
+        # - "`taxAdjustment`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5081,7 +5230,8 @@ module Google
         end
       end
       
-      # Order disbursement. All methods require the payment analyst role.
+      # Order disbursement. All methods require the payment analyst role. (==
+      # resource_for v2.orderreports ==) (== resource_for v2.1.orderreports ==)
       class OrderReportDisbursement
         include Google::Apis::Core::Hashable
       
@@ -5197,12 +5347,12 @@ module Google
       
         # The actor that created the refund.
         # Acceptable values are:
-        # - "customer"
-        # - "googleBot"
-        # - "googleCustomerService"
-        # - "googlePayments"
-        # - "googleSabre"
-        # - "merchant"
+        # - "`customer`"
+        # - "`googleBot`"
+        # - "`googleCustomerService`"
+        # - "`googlePayments`"
+        # - "`googleSabre`"
+        # - "`merchant`"
         # Corresponds to the JSON property `actor`
         # @return [String]
         attr_accessor :actor
@@ -5219,19 +5369,19 @@ module Google
       
         # The reason for the return.
         # Acceptable values are:
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "other"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "qualityNotAsExpected"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`other`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`qualityNotAsExpected`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5267,42 +5417,42 @@ module Google
         # carrier name or tracking URL, and there will be no automatic order status
         # updates.
         # Supported carriers for US are:
-        # - "ups" (United Parcel Service) automatic status updates
-        # - "usps" (United States Postal Service) automatic status updates
-        # - "fedex" (FedEx) automatic status updates
-        # - "dhl" (DHL eCommerce) automatic status updates (US only)
-        # - "ontrac" (OnTrac) automatic status updates
-        # - "dhl express" (DHL Express)
-        # - "deliv" (Deliv)
-        # - "dynamex" (TForce)
-        # - "lasership" (LaserShip)
-        # - "mpx" (Military Parcel Xpress)
-        # - "uds" (United Delivery Service)
-        # - "efw" (Estes Forwarding Worldwide)
-        # - "jd logistics" (JD Logistics)
-        # - "yunexpress" (YunExpress)
-        # - "china post" (China Post)
-        # - "china ems" (China Post Express Mail Service)
-        # - "singapore post" (Singapore Post)
-        # - "pos malaysia" (Pos Malaysia)
-        # - "postnl" (PostNL)
-        # - "ptt" (PTT Turkish Post)
-        # - "eub" (ePacket)
-        # - "chukou1" (Chukou1 Logistics)
+        # - "`ups`" (United Parcel Service) automatic status updates
+        # - "`usps`" (United States Postal Service) automatic status updates
+        # - "`fedex`" (FedEx) automatic status updates
+        # - "`dhl`" (DHL eCommerce) automatic status updates (US only)
+        # - "`ontrac`" (OnTrac) automatic status updates
+        # - "`dhl express`" (DHL Express)
+        # - "`deliv`" (Deliv)
+        # - "`dynamex`" (TForce)
+        # - "`lasership`" (LaserShip)
+        # - "`mpx`" (Military Parcel Xpress)
+        # - "`uds`" (United Delivery Service)
+        # - "`efw`" (Estes Forwarding Worldwide)
+        # - "`jd logistics`" (JD Logistics)
+        # - "`yunexpress`" (YunExpress)
+        # - "`china post`" (China Post)
+        # - "`china ems`" (China Post Express Mail Service)
+        # - "`singapore post`" (Singapore Post)
+        # - "`pos malaysia`" (Pos Malaysia)
+        # - "`postnl`" (PostNL)
+        # - "`ptt`" (PTT Turkish Post)
+        # - "`eub`" (ePacket)
+        # - "`chukou1`" (Chukou1 Logistics)
         # Supported carriers for FR are:
-        # - "la poste" (La Poste) automatic status updates
-        # - "colissimo" (Colissimo by La Poste) automatic status updates
-        # - "ups" (United Parcel Service) automatic status updates
-        # - "chronopost" (Chronopost by La Poste)
-        # - "gls" (General Logistics Systems France)
-        # - "dpd" (DPD Group by GeoPost)
-        # - "bpost" (Belgian Post Group)
-        # - "colis prive" (Colis Privé)
-        # - "boxtal" (Boxtal)
-        # - "geodis" (GEODIS)
-        # - "tnt" (TNT)
-        # - "db schenker" (DB Schenker)
-        # - "aramex" (Aramex)
+        # - "`la poste`" (La Poste) automatic status updates
+        # - "`colissimo`" (Colissimo by La Poste) automatic status updates
+        # - "`ups`" (United Parcel Service) automatic status updates
+        # - "`chronopost`" (Chronopost by La Poste)
+        # - "`gls`" (General Logistics Systems France)
+        # - "`dpd`" (DPD Group by GeoPost)
+        # - "`bpost`" (Belgian Post Group)
+        # - "`colis prive`" (Colis Privé)
+        # - "`boxtal`" (Boxtal)
+        # - "`geodis`" (GEODIS)
+        # - "`tnt`" (TNT)
+        # - "`db schenker`" (DB Schenker)
+        # - "`aramex`" (Aramex)
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -5313,7 +5463,7 @@ module Google
         attr_accessor :creation_date
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Present
-        # only if status is delivered
+        # only if `status` is `delivered`
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
@@ -5335,10 +5485,10 @@ module Google
       
         # The status of the shipment.
         # Acceptable values are:
-        # - "delivered"
-        # - "readyForPickup"
-        # - "shipped"
-        # - "undeliverable"
+        # - "`delivered`"
+        # - "`readyForPickup`"
+        # - "`shipped`"
+        # - "`undeliverable`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -5423,8 +5573,8 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # [required] ID of the shipment group. It is assigned by the merchant in the
-        # shipLineItems method and is used to group multiple line items that have the
+        # [required] ID of the shipment group. It is assigned by the merchant in the `
+        # shipLineItems` method and is used to group multiple line items that have the
         # same kind of shipping charges.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
@@ -5450,8 +5600,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5488,14 +5638,15 @@ module Google
         # @return [String]
         attr_accessor :operation_id
       
-        # Option to create a refund-only invoice. Exactly one of refundOnlyOption or
-        # returnOption must be provided.
+        # Option to create a refund-only invoice. Exactly one of `refundOnlyOption` or `
+        # returnOption` must be provided.
         # Corresponds to the JSON property `refundOnlyOption`
         # @return [Google::Apis::ContentV2_1::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption]
         attr_accessor :refund_only_option
       
         # Option to create an invoice for a refund and mark all items within the invoice
-        # as returned. Exactly one of refundOnlyOption or returnOption must be provided.
+        # as returned. Exactly one of `refundOnlyOption` or `returnOption` must be
+        # provided.
         # Corresponds to the JSON property `returnOption`
         # @return [Google::Apis::ContentV2_1::OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption]
         attr_accessor :return_option
@@ -5525,8 +5676,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5559,50 +5710,50 @@ module Google
       
         # [required] Reason for the refund.
         # Acceptable values are:
-        # - "adjustment"
-        # - "autoPostInternal"
-        # - "autoPostInvalidBillingAddress"
-        # - "autoPostNoInventory"
-        # - "autoPostPriceError"
-        # - "autoPostUndeliverableShippingAddress"
-        # - "couponAbuse"
-        # - "courtesyAdjustment"
-        # - "customerCanceled"
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "customerSupportRequested"
-        # - "deliveredLateByCarrier"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "failToPushOrderGoogleError"
-        # - "failToPushOrderMerchantError"
-        # - "failToPushOrderMerchantFulfillmentError"
-        # - "failToPushOrderToMerchant"
-        # - "failToPushOrderToMerchantOutOfStock"
-        # - "feeAdjustment"
-        # - "invalidCoupon"
-        # - "lateShipmentCredit"
-        # - "malformedShippingAddress"
-        # - "merchantDidNotShipOnTime"
-        # - "noInventory"
-        # - "orderTimeout"
-        # - "other"
-        # - "paymentAbuse"
-        # - "paymentDeclined"
-        # - "priceAdjustment"
-        # - "priceError"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "promoReallocation"
-        # - "qualityNotAsExpected"
-        # - "returnRefundAbuse"
-        # - "shippingCostAdjustment"
-        # - "shippingPriceError"
-        # - "taxAdjustment"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`adjustment`"
+        # - "`autoPostInternal`"
+        # - "`autoPostInvalidBillingAddress`"
+        # - "`autoPostNoInventory`"
+        # - "`autoPostPriceError`"
+        # - "`autoPostUndeliverableShippingAddress`"
+        # - "`couponAbuse`"
+        # - "`courtesyAdjustment`"
+        # - "`customerCanceled`"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`customerSupportRequested`"
+        # - "`deliveredLateByCarrier`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`failToPushOrderGoogleError`"
+        # - "`failToPushOrderMerchantError`"
+        # - "`failToPushOrderMerchantFulfillmentError`"
+        # - "`failToPushOrderToMerchant`"
+        # - "`failToPushOrderToMerchantOutOfStock`"
+        # - "`feeAdjustment`"
+        # - "`invalidCoupon`"
+        # - "`lateShipmentCredit`"
+        # - "`malformedShippingAddress`"
+        # - "`merchantDidNotShipOnTime`"
+        # - "`noInventory`"
+        # - "`orderTimeout`"
+        # - "`other`"
+        # - "`paymentAbuse`"
+        # - "`paymentDeclined`"
+        # - "`priceAdjustment`"
+        # - "`priceError`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`promoReallocation`"
+        # - "`qualityNotAsExpected`"
+        # - "`returnRefundAbuse`"
+        # - "`shippingCostAdjustment`"
+        # - "`shippingPriceError`"
+        # - "`taxAdjustment`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5629,19 +5780,19 @@ module Google
       
         # [required] Reason for the return.
         # Acceptable values are:
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "other"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "qualityNotAsExpected"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`other`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`qualityNotAsExpected`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5722,6 +5873,55 @@ module Google
       end
       
       # 
+      class OrderreturnsAcknowledgeRequest
+        include Google::Apis::Core::Hashable
+      
+        # [required] The ID of the operation, unique across all operations for a given
+        # order return.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+        end
+      end
+      
+      # 
+      class OrderreturnsAcknowledgeResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Acceptable values are:
+        # - "`duplicate`"
+        # - "`executed`"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreturnsAcknowledgeResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
       class OrderreturnsListResponse
         include Google::Apis::Core::Hashable
       
@@ -5754,6 +5954,196 @@ module Google
       end
       
       # 
+      class OrderreturnsPartialRefund
+        include Google::Apis::Core::Hashable
+      
+        # The pre-tax or post-tax amount to be refunded, depending on the location of
+        # the order.
+        # Corresponds to the JSON property `priceAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :price_amount
+      
+        # Tax amount to be refunded. Note: This has different meaning depending on the
+        # location of the order.
+        # Corresponds to the JSON property `taxAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :tax_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @price_amount = args[:price_amount] if args.key?(:price_amount)
+          @tax_amount = args[:tax_amount] if args.key?(:tax_amount)
+        end
+      end
+      
+      # 
+      class OrderreturnsProcessRequest
+        include Google::Apis::Core::Hashable
+      
+        # Option to charge the customer return shipping cost.
+        # Corresponds to the JSON property `fullChargeReturnShippingCost`
+        # @return [Boolean]
+        attr_accessor :full_charge_return_shipping_cost
+        alias_method :full_charge_return_shipping_cost?, :full_charge_return_shipping_cost
+      
+        # [required] The ID of the operation, unique across all operations for a given
+        # order return.
+        # Corresponds to the JSON property `operationId`
+        # @return [String]
+        attr_accessor :operation_id
+      
+        # Refunds for original shipping fee.
+        # Corresponds to the JSON property `refundShippingFee`
+        # @return [Google::Apis::ContentV2_1::OrderreturnsRefundOperation]
+        attr_accessor :refund_shipping_fee
+      
+        # The list of items to return.
+        # Corresponds to the JSON property `returnItems`
+        # @return [Array<Google::Apis::ContentV2_1::OrderreturnsReturnItem>]
+        attr_accessor :return_items
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_charge_return_shipping_cost = args[:full_charge_return_shipping_cost] if args.key?(:full_charge_return_shipping_cost)
+          @operation_id = args[:operation_id] if args.key?(:operation_id)
+          @refund_shipping_fee = args[:refund_shipping_fee] if args.key?(:refund_shipping_fee)
+          @return_items = args[:return_items] if args.key?(:return_items)
+        end
+      end
+      
+      # 
+      class OrderreturnsProcessResponse
+        include Google::Apis::Core::Hashable
+      
+        # The status of the execution.
+        # Acceptable values are:
+        # - "`duplicate`"
+        # - "`executed`"
+        # Corresponds to the JSON property `executionStatus`
+        # @return [String]
+        attr_accessor :execution_status
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # orderreturnsProcessResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @execution_status = args[:execution_status] if args.key?(:execution_status)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class OrderreturnsRefundOperation
+        include Google::Apis::Core::Hashable
+      
+        # If true, the item will be fully refunded.
+        # Corresponds to the JSON property `fullRefund`
+        # @return [Boolean]
+        attr_accessor :full_refund
+        alias_method :full_refund?, :full_refund
+      
+        # If this is set, the item will be partially refunded.
+        # Corresponds to the JSON property `partialRefund`
+        # @return [Google::Apis::ContentV2_1::OrderreturnsPartialRefund]
+        attr_accessor :partial_refund
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        # Code of the refund reason.
+        # Corresponds to the JSON property `returnRefundReason`
+        # @return [String]
+        attr_accessor :return_refund_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @full_refund = args[:full_refund] if args.key?(:full_refund)
+          @partial_refund = args[:partial_refund] if args.key?(:partial_refund)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+          @return_refund_reason = args[:return_refund_reason] if args.key?(:return_refund_reason)
+        end
+      end
+      
+      # 
+      class OrderreturnsRejectOperation
+        include Google::Apis::Core::Hashable
+      
+        # The reason for the return.
+        # Corresponds to the JSON property `reason`
+        # @return [String]
+        attr_accessor :reason
+      
+        # The explanation of the reason.
+        # Corresponds to the JSON property `reasonText`
+        # @return [String]
+        attr_accessor :reason_text
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @reason = args[:reason] if args.key?(:reason)
+          @reason_text = args[:reason_text] if args.key?(:reason_text)
+        end
+      end
+      
+      # 
+      class OrderreturnsReturnItem
+        include Google::Apis::Core::Hashable
+      
+        # Refunds the item.
+        # Corresponds to the JSON property `refund`
+        # @return [Google::Apis::ContentV2_1::OrderreturnsRefundOperation]
+        attr_accessor :refund
+      
+        # Rejects the item.
+        # Corresponds to the JSON property `reject`
+        # @return [Google::Apis::ContentV2_1::OrderreturnsRejectOperation]
+        attr_accessor :reject
+      
+        # Unit level ID for the return item. Different units of the same product will
+        # have different IDs.
+        # Corresponds to the JSON property `returnItemId`
+        # @return [String]
+        attr_accessor :return_item_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @refund = args[:refund] if args.key?(:refund)
+          @reject = args[:reject] if args.key?(:reject)
+          @return_item_id = args[:return_item_id] if args.key?(:return_item_id)
+        end
+      end
+      
+      # 
       class OrdersAcknowledgeRequest
         include Google::Apis::Core::Hashable
       
@@ -5778,8 +6168,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5848,16 +6238,16 @@ module Google
       
         # The reason for the cancellation.
         # Acceptable values are:
-        # - "customerInitiatedCancel"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "noInventory"
-        # - "other"
-        # - "priceError"
-        # - "shippingPriceError"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
+        # - "`customerInitiatedCancel`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`noInventory`"
+        # - "`other`"
+        # - "`priceError`"
+        # - "`shippingPriceError`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5888,8 +6278,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5922,16 +6312,16 @@ module Google
       
         # The reason for the cancellation.
         # Acceptable values are:
-        # - "customerInitiatedCancel"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "noInventory"
-        # - "other"
-        # - "priceError"
-        # - "shippingPriceError"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
+        # - "`customerInitiatedCancel`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`noInventory`"
+        # - "`other`"
+        # - "`priceError`"
+        # - "`shippingPriceError`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -5959,8 +6349,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -5988,9 +6378,9 @@ module Google
       
         # The reason for the cancellation.
         # Acceptable values are:
-        # - "changedMind"
-        # - "orderedWrongItem"
-        # - "other"
+        # - "`changedMind`"
+        # - "`orderedWrongItem`"
+        # - "`other`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6030,24 +6420,24 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The  CLDR territory code of the country of the test order to create. Affects
-        # the currency and addresses of orders created via template_name, or the
-        # addresses of orders created via test_order.
+        # the currency and addresses of orders created via `template_name`, or the
+        # addresses of orders created via `test_order`.
         # Acceptable values are:
-        # - "US"
-        # - "FR"  Defaults to US.
+        # - "`US`"
+        # - "`FR`"  Defaults to `US`.
         # Corresponds to the JSON property `country`
         # @return [String]
         attr_accessor :country
       
-        # The test order template to use. Specify as an alternative to testOrder as a
+        # The test order template to use. Specify as an alternative to `testOrder` as a
         # shortcut for retrieving a template and then creating an order using that
         # template.
         # Acceptable values are:
-        # - "template1"
-        # - "template1a"
-        # - "template1b"
-        # - "template2"
-        # - "template3"
+        # - "`template1`"
+        # - "`template1a`"
+        # - "`template1b`"
+        # - "`template2`"
+        # - "`template3`"
         # Corresponds to the JSON property `templateName`
         # @return [String]
         attr_accessor :template_name
@@ -6169,7 +6559,7 @@ module Google
       class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment. See shipments[].carrier in the  Orders
+        # The carrier handling the shipment. See `shipments[].carrier` in the  Orders
         # resource representation for a list of acceptable values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
@@ -6209,7 +6599,8 @@ module Google
         attr_accessor :kind
       
         # Order. Production access (all methods) requires the order manager role.
-        # Sandbox access does not.
+        # Sandbox access does not. (== resource_for v2.orders ==) (== resource_for v2.1.
+        # orders ==)
         # Corresponds to the JSON property `order`
         # @return [Google::Apis::ContentV2_1::Order]
         attr_accessor :order
@@ -6284,19 +6675,19 @@ module Google
       
         # The reason for the return.
         # Acceptable values are:
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "other"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "qualityNotAsExpected"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`other`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`qualityNotAsExpected`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6334,8 +6725,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6416,11 +6807,11 @@ module Google
       
         # The reason for the return.
         # Acceptable values are:
-        # - "damagedOrUsed"
-        # - "missingComponent"
-        # - "notEligible"
-        # - "other"
-        # - "outOfReturnWindow"
+        # - "`damagedOrUsed`"
+        # - "`missingComponent`"
+        # - "`notEligible`"
+        # - "`other`"
+        # - "`outOfReturnWindow`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6451,8 +6842,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6507,19 +6898,19 @@ module Google
       
         # The reason for the return.
         # Acceptable values are:
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "invalidCoupon"
-        # - "malformedShippingAddress"
-        # - "other"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "qualityNotAsExpected"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`invalidCoupon`"
+        # - "`malformedShippingAddress`"
+        # - "`other`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`qualityNotAsExpected`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reason`
         # @return [String]
         attr_accessor :reason
@@ -6558,8 +6949,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6626,8 +7017,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6694,8 +7085,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6774,8 +7165,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6828,8 +7219,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6855,14 +7246,15 @@ module Google
       class OrdersUpdateShipmentRequest
         include Google::Apis::Core::Hashable
       
-        # The carrier handling the shipment. Not updated if missing. See shipments[].
-        # carrier in the  Orders resource representation for a list of acceptable values.
+        # The carrier handling the shipment. Not updated if missing. See `shipments[].
+        # carrier` in the  Orders resource representation for a list of acceptable
+        # values.
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
       
         # Date on which the shipment has been delivered, in ISO 8601 format. Optional
-        # and can be provided only if status is delivered.
+        # and can be provided only if `status` is `delivered`.
         # Corresponds to the JSON property `deliveryDate`
         # @return [String]
         attr_accessor :delivery_date
@@ -6879,8 +7271,8 @@ module Google
       
         # New status for the shipment. Not updated if missing.
         # Acceptable values are:
-        # - "delivered"
-        # - "undeliverable"
+        # - "`delivered`"
+        # - "`undeliverable`"
         # Corresponds to the JSON property `status`
         # @return [String]
         attr_accessor :status
@@ -6911,8 +7303,8 @@ module Google
       
         # The status of the execution.
         # Acceptable values are:
-        # - "duplicate"
-        # - "executed"
+        # - "`duplicate`"
+        # - "`executed`"
         # Corresponds to the JSON property `executionStatus`
         # @return [String]
         attr_accessor :execution_status
@@ -6938,12 +7330,12 @@ module Google
       class PickupCarrierService
         include Google::Apis::Core::Hashable
       
-        # The name of the pickup carrier (e.g., "UPS"). Required.
+        # The name of the pickup carrier (e.g., `"UPS"`). Required.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
       
-        # The name of the pickup service (e.g., "Access point"). Required.
+        # The name of the pickup service (e.g., `"Access point"`). Required.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
@@ -6963,7 +7355,7 @@ module Google
       class PickupServicesPickupService
         include Google::Apis::Core::Hashable
       
-        # The name of the carrier (e.g., "UPS"). Always present.
+        # The name of the carrier (e.g., `"UPS"`). Always present.
         # Corresponds to the JSON property `carrierName`
         # @return [String]
         attr_accessor :carrier_name
@@ -6973,7 +7365,7 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # The name of the pickup service (e.g., "Access point"). Always present.
+        # The name of the pickup service (e.g., `"Access point"`). Always present.
         # Corresponds to the JSON property `serviceName`
         # @return [String]
         attr_accessor :service_name
@@ -7030,11 +7422,11 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "delete"
-        # - "get"
-        # - "insert"
-        # - "inventory"
-        # - "sale"
+        # - "`delete`"
+        # - "`get`"
+        # - "`insert`"
+        # - "`inventory`"
+        # - "`sale`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -7049,7 +7441,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::PosStore]
         attr_accessor :store
       
-        # The store code. Set this only if the method is delete or get.
+        # The store code. Set this only if the method is `delete` or `get`.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7121,8 +7513,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::PosInventory]
         attr_accessor :inventory
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7227,8 +7619,8 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posInventory".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posInventory`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7243,8 +7635,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7306,8 +7698,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7374,8 +7766,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :quantity
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7453,8 +7845,8 @@ module Google
         # @return [String]
         attr_accessor :item_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posSale".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posSale`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7475,8 +7867,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7545,8 +7937,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7620,8 +8012,8 @@ module Google
         # @return [String]
         attr_accessor :sale_id
       
-        # Required. The identifier of the merchant's store. Either a storeCode inserted
-        # via the API or the code of the store in Google My Business.
+        # Required. The identifier of the merchant's store. Either a `storeCode`
+        # inserted via the API or the code of the store in Google My Business.
         # Corresponds to the JSON property `storeCode`
         # @return [String]
         attr_accessor :store_code
@@ -7659,8 +8051,8 @@ module Google
       class PosStore
         include Google::Apis::Core::Hashable
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # posStore".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # posStore`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -7723,20 +8115,20 @@ module Google
       class PostalCodeRange
         include Google::Apis::Core::Hashable
       
-        # A postal code or a pattern of the form prefix* denoting the inclusive lower
-        # bound of the range defining the area. Examples values: "94108", "9410*", "9*".
-        # Required.
+        # A postal code or a pattern of the form `prefix*` denoting the inclusive lower
+        # bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"
+        # 9*"`. Required.
         # Corresponds to the JSON property `postalCodeRangeBegin`
         # @return [String]
         attr_accessor :postal_code_range_begin
       
-        # A postal code or a pattern of the form prefix* denoting the inclusive upper
-        # bound of the range defining the area. It must have the same length as
-        # postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then
-        # postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a
-        # pattern then postalCodeRangeEnd must be a pattern with the same prefix length.
-        # Optional: if not set, then the area is defined as being all the postal codes
-        # matching postalCodeRangeBegin.
+        # A postal code or a pattern of the form `prefix*` denoting the inclusive upper
+        # bound of the range defining the area. It must have the same length as `
+        # postalCodeRangeBegin`: if `postalCodeRangeBegin` is a postal code then `
+        # postalCodeRangeEnd` must be a postal code too; if `postalCodeRangeBegin` is a
+        # pattern then `postalCodeRangeEnd` must be a pattern with the same prefix
+        # length. Optional: if not set, then the area is defined as being all the postal
+        # codes matching `postalCodeRangeBegin`.
         # Corresponds to the JSON property `postalCodeRangeEnd`
         # @return [String]
         attr_accessor :postal_code_range_end
@@ -7777,6 +8169,11 @@ module Google
         end
       end
       
+      # Required product attributes are primarily defined by the products data
+      # specification. See the  Products Data Specification Help Center article for
+      # information.
+      # Some attributes are country-specific, so make sure you select the appropriate
+      # country in the drop-down selector at the top of the page.
       # Product data. After inserting, updating, or deleting a product, it may take
       # several minutes before changes take effect.
       class Product
@@ -7832,8 +8229,8 @@ module Google
       
         # Required. The item's channel (online or local).
         # Acceptable values are:
-        # - "local"
-        # - "online"
+        # - "`local`"
+        # - "`online`"
         # Corresponds to the JSON property `channel`
         # @return [String]
         attr_accessor :channel
@@ -7860,7 +8257,7 @@ module Google
       
         # A list of custom (merchant-provided) attributes. It can also be used for
         # submitting any attribute of the feed specification in its generic form (e.g., `
-        # "name": "size type", "value": "regular" `). This is useful for submitting
+        # ` "name": "size type", "value": "regular" ``). This is useful for submitting
         # attributes not explicitly exposed by the API, such as additional attributes
         # used for Shopping Actions.
         # Corresponds to the JSON property `customAttributes`
@@ -7934,9 +8331,9 @@ module Google
         attr_accessor :excluded_destinations
       
         # Date on which the item should expire, as specified upon insertion, in ISO 8601
-        # format. The actual expiration date in Google Shopping is exposed in
-        # productstatuses as googleExpirationDate and might be earlier if expirationDate
-        # is too far in the future.
+        # format. The actual expiration date in Google Shopping is exposed in `
+        # productstatuses` as `googleExpirationDate` and might be earlier if `
+        # expirationDate` is too far in the future.
         # Corresponds to the JSON property `expirationDate`
         # @return [String]
         attr_accessor :expiration_date
@@ -7957,7 +8354,7 @@ module Google
         attr_accessor :gtin
       
         # The REST ID of the product. Content API methods that operate on products take
-        # this as their productId parameter.
+        # this as their `productId` parameter.
         # The REST ID for a product is of the form channel:contentLanguage:targetCountry:
         # offerId.
         # Corresponds to the JSON property `id`
@@ -7979,7 +8376,7 @@ module Google
       
         # The list of destinations to include for this target (corresponds to checked
         # check boxes in Merchant Center). Default destinations are always included
-        # unless provided in excludedDestinations.
+        # unless provided in `excludedDestinations`.
         # Corresponds to the JSON property `includedDestinations`
         # @return [Array<String>]
         attr_accessor :included_destinations
@@ -8001,8 +8398,8 @@ module Google
         # @return [String]
         attr_accessor :item_group_id
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # product".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # product`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8145,17 +8542,17 @@ module Google
         attr_accessor :size_type
       
         # Size of the item. Only one value is allowed. For variants with different sizes,
-        # insert a separate product for each size with the same itemGroupId value (see
-        # size definition).
+        # insert a separate product for each size with the same `itemGroupId` value (
+        # see size definition).
         # Corresponds to the JSON property `sizes`
         # @return [Array<String>]
         attr_accessor :sizes
       
         # The source of the offer, i.e., how the offer was created.
         # Acceptable values are:
-        # - "api"
-        # - "crawl"
-        # - "feed"
+        # - "`api`"
+        # - "`crawl`"
+        # - "`feed`"
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -8446,8 +8843,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ProductStatusItemLevelIssue>]
         attr_accessor :item_level_issues
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productStatus".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productStatus`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -8719,21 +9116,26 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "delete"
-        # - "get"
-        # - "insert"
+        # - "`delete`"
+        # - "`get`"
+        # - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
       
+        # Required product attributes are primarily defined by the products data
+        # specification. See the  Products Data Specification Help Center article for
+        # information.
+        # Some attributes are country-specific, so make sure you select the appropriate
+        # country in the drop-down selector at the top of the page.
         # Product data. After inserting, updating, or deleting a product, it may take
         # several minutes before changes take effect.
         # Corresponds to the JSON property `product`
         # @return [Google::Apis::ContentV2_1::Product]
         attr_accessor :product
       
-        # The ID of the product to get or delete. Only defined if the method is get or
-        # delete.
+        # The ID of the product to get or delete. Only defined if the method is `get` or
+        # `delete`.
         # Corresponds to the JSON property `productId`
         # @return [String]
         attr_accessor :product_id
@@ -8793,12 +9195,17 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productsCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productsCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
+        # Required product attributes are primarily defined by the products data
+        # specification. See the  Products Data Specification Help Center article for
+        # information.
+        # Some attributes are country-specific, so make sure you select the appropriate
+        # country in the drop-down selector at the top of the page.
         # Product data. After inserting, updating, or deleting a product, it may take
         # several minutes before changes take effect.
         # Corresponds to the JSON property `product`
@@ -8897,7 +9304,7 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
+        # - "`get`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -8962,8 +9369,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # productstatusesCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # productstatusesCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9020,7 +9427,8 @@ module Google
       end
       
       # Settings for Pub/Sub notifications, all methods require that the caller is a
-      # direct user of the merchant center account.
+      # direct user of the merchant center account. (== resource_for v2.1.
+      # pubsubnotificationsettings ==)
       class PubsubNotificationSettings
         include Google::Apis::Core::Hashable
       
@@ -9029,13 +9437,15 @@ module Google
         # @return [String]
         attr_accessor :cloud_topic_name
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # pubsubNotificationSettings".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # pubsubNotificationSettings`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # List of event types. Supported event types: orderPendingShipment.
+        # List of event types.
+        # Acceptable values are:
+        # - "`orderPendingShipment`"
         # Corresponds to the JSON property `registeredEvents`
         # @return [Array<String>]
         attr_accessor :registered_events
@@ -9064,13 +9474,14 @@ module Google
         # @return [Array<String>]
         attr_accessor :applicable_shipping_labels
       
-        # A list of carrier rates that can be referred to by mainTable or singleValue.
+        # A list of carrier rates that can be referred to by `mainTable` or `singleValue`
+        # .
         # Corresponds to the JSON property `carrierRates`
         # @return [Array<Google::Apis::ContentV2_1::CarrierRate>]
         attr_accessor :carrier_rates
       
-        # A table defining the rate group, when singleValue is not expressive enough.
-        # Can only be set if singleValue is not set.
+        # A table defining the rate group, when `singleValue` is not expressive enough.
+        # Can only be set if `singleValue` is not set.
         # Corresponds to the JSON property `mainTable`
         # @return [Google::Apis::ContentV2_1::Table]
         attr_accessor :main_table
@@ -9082,14 +9493,14 @@ module Google
         attr_accessor :name
       
         # The single value of a rate group or the value of a rate group table's cell.
-        # Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
-        # subtableName must be set.
+        # Exactly one of `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`,
+        # `subtableName` must be set.
         # Corresponds to the JSON property `singleValue`
         # @return [Google::Apis::ContentV2_1::Value]
         attr_accessor :single_value
       
-        # A list of subtables referred to by mainTable. Can only be set if mainTable is
-        # set.
+        # A list of subtables referred to by `mainTable`. Can only be set if `mainTable`
+        # is set.
         # Corresponds to the JSON property `subtables`
         # @return [Array<Google::Apis::ContentV2_1::Table>]
         attr_accessor :subtables
@@ -9120,50 +9531,50 @@ module Google
       
         # Code of the refund reason.
         # Acceptable values are:
-        # - "adjustment"
-        # - "autoPostInternal"
-        # - "autoPostInvalidBillingAddress"
-        # - "autoPostNoInventory"
-        # - "autoPostPriceError"
-        # - "autoPostUndeliverableShippingAddress"
-        # - "couponAbuse"
-        # - "courtesyAdjustment"
-        # - "customerCanceled"
-        # - "customerDiscretionaryReturn"
-        # - "customerInitiatedMerchantCancel"
-        # - "customerSupportRequested"
-        # - "deliveredLateByCarrier"
-        # - "deliveredTooLate"
-        # - "expiredItem"
-        # - "failToPushOrderGoogleError"
-        # - "failToPushOrderMerchantError"
-        # - "failToPushOrderMerchantFulfillmentError"
-        # - "failToPushOrderToMerchant"
-        # - "failToPushOrderToMerchantOutOfStock"
-        # - "feeAdjustment"
-        # - "invalidCoupon"
-        # - "lateShipmentCredit"
-        # - "malformedShippingAddress"
-        # - "merchantDidNotShipOnTime"
-        # - "noInventory"
-        # - "orderTimeout"
-        # - "other"
-        # - "paymentAbuse"
-        # - "paymentDeclined"
-        # - "priceAdjustment"
-        # - "priceError"
-        # - "productArrivedDamaged"
-        # - "productNotAsDescribed"
-        # - "promoReallocation"
-        # - "qualityNotAsExpected"
-        # - "returnRefundAbuse"
-        # - "shippingCostAdjustment"
-        # - "shippingPriceError"
-        # - "taxAdjustment"
-        # - "taxError"
-        # - "undeliverableShippingAddress"
-        # - "unsupportedPoBoxAddress"
-        # - "wrongProductShipped"
+        # - "`adjustment`"
+        # - "`autoPostInternal`"
+        # - "`autoPostInvalidBillingAddress`"
+        # - "`autoPostNoInventory`"
+        # - "`autoPostPriceError`"
+        # - "`autoPostUndeliverableShippingAddress`"
+        # - "`couponAbuse`"
+        # - "`courtesyAdjustment`"
+        # - "`customerCanceled`"
+        # - "`customerDiscretionaryReturn`"
+        # - "`customerInitiatedMerchantCancel`"
+        # - "`customerSupportRequested`"
+        # - "`deliveredLateByCarrier`"
+        # - "`deliveredTooLate`"
+        # - "`expiredItem`"
+        # - "`failToPushOrderGoogleError`"
+        # - "`failToPushOrderMerchantError`"
+        # - "`failToPushOrderMerchantFulfillmentError`"
+        # - "`failToPushOrderToMerchant`"
+        # - "`failToPushOrderToMerchantOutOfStock`"
+        # - "`feeAdjustment`"
+        # - "`invalidCoupon`"
+        # - "`lateShipmentCredit`"
+        # - "`malformedShippingAddress`"
+        # - "`merchantDidNotShipOnTime`"
+        # - "`noInventory`"
+        # - "`orderTimeout`"
+        # - "`other`"
+        # - "`paymentAbuse`"
+        # - "`paymentDeclined`"
+        # - "`priceAdjustment`"
+        # - "`priceError`"
+        # - "`productArrivedDamaged`"
+        # - "`productNotAsDescribed`"
+        # - "`promoReallocation`"
+        # - "`qualityNotAsExpected`"
+        # - "`returnRefundAbuse`"
+        # - "`shippingCostAdjustment`"
+        # - "`shippingPriceError`"
+        # - "`taxAdjustment`"
+        # - "`taxError`"
+        # - "`undeliverableShippingAddress`"
+        # - "`unsupportedPoBoxAddress`"
+        # - "`wrongProductShipped`"
         # Corresponds to the JSON property `reasonCode`
         # @return [String]
         attr_accessor :reason_code
@@ -9211,7 +9622,7 @@ module Google
         # @return [String]
         attr_accessor :region_id
       
-        # The sale price of the product. Mandatory if sale_price_effective_date is
+        # The sale price of the product. Mandatory if `sale_price_effective_date` is
         # defined.
         # Corresponds to the JSON property `salePrice`
         # @return [Google::Apis::ContentV2_1::Price]
@@ -9274,7 +9685,7 @@ module Google
       
         # Method of the batch request entry.
         # Acceptable values are:
-        # - "insert"
+        # - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -9383,8 +9794,8 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnAddress".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnAddress`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9481,8 +9892,8 @@ module Google
         # @return [String]
         attr_accessor :country
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnPolicy".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnPolicy`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9564,10 +9975,10 @@ module Google
         # living things. A policy of less than 30 days can only be applied to those
         # items.
         # Acceptable values are:
-        # - "lastReturnDate"
-        # - "lifetimeReturns"
-        # - "noReturns"
-        # - "numberOfDaysAfterDelivery"
+        # - "`lastReturnDate`"
+        # - "`lifetimeReturns`"
+        # - "`noReturns`"
+        # - "`numberOfDaysAfterDelivery`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -9622,6 +10033,57 @@ module Google
       end
       
       # 
+      class ReturnPricingInfo
+        include Google::Apis::Core::Hashable
+      
+        # Default option for whether merchant should charge the customer for return
+        # shipping costs, based on customer selected return reason and merchant's return
+        # policy for the items being returned.
+        # Corresponds to the JSON property `chargeReturnShippingFee`
+        # @return [Boolean]
+        attr_accessor :charge_return_shipping_fee
+        alias_method :charge_return_shipping_fee?, :charge_return_shipping_fee
+      
+        # Maximum return shipping costs that may be charged to the customer depending on
+        # merchant's assessment of the return reason and the merchant's return policy
+        # for the items being returned.
+        # Corresponds to the JSON property `maxReturnShippingFee`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :max_return_shipping_fee
+      
+        # Total amount that can be refunded for the items in this return. It represents
+        # the total amount received by the merchant for the items, after applying
+        # merchant coupons.
+        # Corresponds to the JSON property `refundableItemsTotalAmount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :refundable_items_total_amount
+      
+        # Maximum amount that can be refunded for the original shipping fee.
+        # Corresponds to the JSON property `refundableShippingAmount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :refundable_shipping_amount
+      
+        # Total amount already refunded by the merchant. It includes all types of
+        # refunds (items, shipping, etc.) Not provided if no refund has been applied yet.
+        # Corresponds to the JSON property `totalRefundedAmount`
+        # @return [Google::Apis::ContentV2_1::MonetaryAmount]
+        attr_accessor :total_refunded_amount
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @charge_return_shipping_fee = args[:charge_return_shipping_fee] if args.key?(:charge_return_shipping_fee)
+          @max_return_shipping_fee = args[:max_return_shipping_fee] if args.key?(:max_return_shipping_fee)
+          @refundable_items_total_amount = args[:refundable_items_total_amount] if args.key?(:refundable_items_total_amount)
+          @refundable_shipping_amount = args[:refundable_shipping_amount] if args.key?(:refundable_shipping_amount)
+          @total_refunded_amount = args[:total_refunded_amount] if args.key?(:total_refunded_amount)
+        end
+      end
+      
+      # 
       class ReturnShipment
         include Google::Apis::Core::Hashable
       
@@ -9637,9 +10099,9 @@ module Google
       
         # Type of the return method.
         # Acceptable values are:
-        # - "byMail"
-        # - "contactCustomerSupport"
-        # - "returnless"
+        # - "`byMail`"
+        # - "`contactCustomerSupport`"
+        # - "`returnless`"
         # Corresponds to the JSON property `returnMethodType`
         # @return [String]
         attr_accessor :return_method_type
@@ -9662,10 +10124,10 @@ module Google
       
         # State of the shipment.
         # Acceptable values are:
-        # - "completed"
-        # - "new"
-        # - "shipped"
-        # - "undeliverable"
+        # - "`completed`"
+        # - "`new`"
+        # - "`shipped`"
+        # - "`undeliverable`"
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
@@ -9721,9 +10183,9 @@ module Google
       
         # Method of the batch request entry.
         # Acceptable values are:
-        # - "delete"
-        # - "get"
-        # - "insert"
+        # - "`delete`"
+        # - "`get`"
+        # - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -9733,7 +10195,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::ReturnAddress]
         attr_accessor :return_address
       
-        # The return address ID. Set this only if the method is delete or get.
+        # The return address ID. Set this only if the method is `delete` or `get`.
         # Corresponds to the JSON property `returnAddressId`
         # @return [String]
         attr_accessor :return_address_id
@@ -9792,8 +10254,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnaddressCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnaddressCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -9883,9 +10345,9 @@ module Google
       
         # Method of the batch request entry.
         # Acceptable values are:
-        # - "delete"
-        # - "get"
-        # - "insert"
+        # - "`delete`"
+        # - "`get`"
+        # - "`insert`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -9895,7 +10357,7 @@ module Google
         # @return [Google::Apis::ContentV2_1::ReturnPolicy]
         attr_accessor :return_policy
       
-        # The return policy ID. Set this only if the method is delete or get.
+        # The return policy ID. Set this only if the method is `delete` or `get`.
         # Corresponds to the JSON property `returnPolicyId`
         # @return [String]
         attr_accessor :return_policy_id
@@ -9954,8 +10416,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # returnpolicyCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # returnpolicyCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10008,8 +10470,8 @@ module Google
       class Row
         include Google::Apis::Core::Hashable
       
-        # The list of cells that constitute the row. Must have the same length as
-        # columnHeaders for two-dimensional tables, a length of 1 for one-dimensional
+        # The list of cells that constitute the row. Must have the same length as `
+        # columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional
         # tables. Required.
         # Corresponds to the JSON property `cells`
         # @return [Array<Google::Apis::ContentV2_1::Value>]
@@ -10054,19 +10516,25 @@ module Google
       
         # Eligibility for this service.
         # Acceptable values are:
-        # - "All scenarios"
-        # - "All scenarios except Shopping Actions"
-        # - "Shopping Actions"
+        # - "`All scenarios`"
+        # - "`All scenarios except Shopping Actions`"
+        # - "`Shopping Actions`"
         # Corresponds to the JSON property `eligibility`
         # @return [String]
         attr_accessor :eligibility
       
         # Minimum order value for this service. If set, indicates that customers will
         # have to spend at least this amount. All prices within a service must have the
-        # same currency.
+        # same currency. Cannot be set together with minimum_order_value_table.
         # Corresponds to the JSON property `minimumOrderValue`
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :minimum_order_value
+      
+        # Table of per store minimum order values for the pickup fulfillment type.
+        # Cannot be set together with minimum_order_value.
+        # Corresponds to the JSON property `minimumOrderValueTable`
+        # @return [Google::Apis::ContentV2_1::MinimumOrderValueTable]
+        attr_accessor :minimum_order_value_table
       
         # Free-form name of the service. Must be unique within target account. Required.
         # Corresponds to the JSON property `name`
@@ -10074,23 +10542,23 @@ module Google
         attr_accessor :name
       
         # The carrier-service pair delivering items to collection points. The list of
-        # supported pickup services can be retrieved via the getSupportedPickupServices
-        # method. Required if and only if the service delivery type is pickup.
+        # supported pickup services can be retrieved via the `getSupportedPickupServices`
+        # method. Required if and only if the service delivery type is `pickup`.
         # Corresponds to the JSON property `pickupService`
         # @return [Google::Apis::ContentV2_1::PickupCarrierService]
         attr_accessor :pickup_service
       
         # Shipping rate group definitions. Only the last one is allowed to have an empty
-        # applicableShippingLabels, which means "everything else". The other
-        # applicableShippingLabels must not overlap.
+        # `applicableShippingLabels`, which means "everything else". The other `
+        # applicableShippingLabels` must not overlap.
         # Corresponds to the JSON property `rateGroups`
         # @return [Array<Google::Apis::ContentV2_1::RateGroup>]
         attr_accessor :rate_groups
       
         # Type of locations this service ships orders to.
         # Acceptable values are:
-        # - "delivery"
-        # - "pickup"
+        # - "`delivery`"
+        # - "`pickup`"
         # Corresponds to the JSON property `shipmentType`
         # @return [String]
         attr_accessor :shipment_type
@@ -10107,10 +10575,416 @@ module Google
           @delivery_time = args[:delivery_time] if args.key?(:delivery_time)
           @eligibility = args[:eligibility] if args.key?(:eligibility)
           @minimum_order_value = args[:minimum_order_value] if args.key?(:minimum_order_value)
+          @minimum_order_value_table = args[:minimum_order_value_table] if args.key?(:minimum_order_value_table)
           @name = args[:name] if args.key?(:name)
           @pickup_service = args[:pickup_service] if args.key?(:pickup_service)
           @rate_groups = args[:rate_groups] if args.key?(:rate_groups)
           @shipment_type = args[:shipment_type] if args.key?(:shipment_type)
+        end
+      end
+      
+      # Settlement reports detail order-level and item-level credits and debits
+      # between you and Google.
+      class SettlementReport
+        include Google::Apis::Core::Hashable
+      
+        # The end date on which all transactions are included in the report, in ISO 8601
+        # format.
+        # Corresponds to the JSON property `endDate`
+        # @return [String]
+        attr_accessor :end_date
+      
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # settlementReport`"
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The residual amount from the previous invoice. This is set only if the
+        # previous invoices are not paid because of negative balance.
+        # Corresponds to the JSON property `previousBalance`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :previous_balance
+      
+        # The ID of the settlement report.
+        # Corresponds to the JSON property `settlementId`
+        # @return [String]
+        attr_accessor :settlement_id
+      
+        # The start date on which all transactions are included in the report, in ISO
+        # 8601 format.
+        # Corresponds to the JSON property `startDate`
+        # @return [String]
+        attr_accessor :start_date
+      
+        # The money due to the merchant.
+        # Corresponds to the JSON property `transferAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :transfer_amount
+      
+        # Date on which transfer for this payment was initiated by Google, in ISO 8601
+        # format.
+        # Corresponds to the JSON property `transferDate`
+        # @return [String]
+        attr_accessor :transfer_date
+      
+        # The list of bank identifiers used for the transfer. e.g. Trace ID for Federal
+        # Automated Clearing House (ACH). This may also be known as the Wire ID.
+        # Corresponds to the JSON property `transferIds`
+        # @return [Array<String>]
+        attr_accessor :transfer_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @end_date = args[:end_date] if args.key?(:end_date)
+          @kind = args[:kind] if args.key?(:kind)
+          @previous_balance = args[:previous_balance] if args.key?(:previous_balance)
+          @settlement_id = args[:settlement_id] if args.key?(:settlement_id)
+          @start_date = args[:start_date] if args.key?(:start_date)
+          @transfer_amount = args[:transfer_amount] if args.key?(:transfer_amount)
+          @transfer_date = args[:transfer_date] if args.key?(:transfer_date)
+          @transfer_ids = args[:transfer_ids] if args.key?(:transfer_ids)
+        end
+      end
+      
+      # Settlement transactions give a detailed breakdown of the  settlement report. (=
+      # = resource_for v2.1.settlementtransactions ==)
+      class SettlementTransaction
+        include Google::Apis::Core::Hashable
+      
+        # The amount for the transaction.
+        # Corresponds to the JSON property `amount`
+        # @return [Google::Apis::ContentV2_1::SettlementTransactionAmount]
+        attr_accessor :amount
+      
+        # Identifiers of the transaction.
+        # Corresponds to the JSON property `identifiers`
+        # @return [Google::Apis::ContentV2_1::SettlementTransactionIdentifiers]
+        attr_accessor :identifiers
+      
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # settlementTransaction`"
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # Details of the transaction.
+        # Corresponds to the JSON property `transaction`
+        # @return [Google::Apis::ContentV2_1::SettlementTransactionTransaction]
+        attr_accessor :transaction
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @amount = args[:amount] if args.key?(:amount)
+          @identifiers = args[:identifiers] if args.key?(:identifiers)
+          @kind = args[:kind] if args.key?(:kind)
+          @transaction = args[:transaction] if args.key?(:transaction)
+        end
+      end
+      
+      # 
+      class SettlementTransactionAmount
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `commission`
+        # @return [Google::Apis::ContentV2_1::SettlementTransactionAmountCommission]
+        attr_accessor :commission
+      
+        # The description of the event.
+        # Acceptable values are:
+        # - "`taxWithhold`"
+        # - "`principal`"
+        # - "`principalAdjustment`"
+        # - "`shippingFee`"
+        # - "`merchantRemittedSalesTax`"
+        # - "`googleRemittedSalesTax`"
+        # - "`merchantCoupon`"
+        # - "`merchantCouponTax`"
+        # - "`merchantRemittedDisposalTax`"
+        # - "`googleRemittedDisposalTax`"
+        # - "`merchantRemittedRedemptionFee`"
+        # - "`googleRemittedRedemptionFee`"
+        # - "`eeeEcoFee`"
+        # - "`furnitureEcoFee`"
+        # - "`copyPrivateFee`"
+        # - "`eeeEcoFeeCommission`"
+        # - "`furnitureEcoFeeCommission`"
+        # - "`copyPrivateFeeCommission`"
+        # - "`principalRefund`"
+        # - "`principalRefundTax`"
+        # - "`itemCommission`"
+        # - "`adjustmentCommission`"
+        # - "`shippingFeeCommission`"
+        # - "`commissionRefund`"
+        # - "`damaged`"
+        # - "`damagedOrDefectiveItem`"
+        # - "`expiredItem`"
+        # - "`faultyItem`"
+        # - "`incorrectItemReceived`"
+        # - "`itemMissing`"
+        # - "`qualityNotExpected`"
+        # - "`receivedTooLate`"
+        # - "`storePackageMissing`"
+        # - "`transitPackageMissing`"
+        # - "`unsuccessfulDeliveryUndeliverable`"
+        # - "`wrongChargeInStore`"
+        # - "`wrongItem`"
+        # - "`returns`"
+        # - "`undeliverable`"
+        # - "`refundFromMerchant`"
+        # - "`returnLabelShippingFee`"
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
+        # The amount that contributes to the line item price.
+        # Corresponds to the JSON property `transactionAmount`
+        # @return [Google::Apis::ContentV2_1::Price]
+        attr_accessor :transaction_amount
+      
+        # The type of the amount.
+        # Acceptable values are:
+        # - "`itemPrice`"
+        # - "`orderPrice`"
+        # - "`refund`"
+        # - "`earlyRefund`"
+        # - "`courtesyRefund`"
+        # - "`returnRefund`"
+        # - "`returnLabelShippingFeeAmount`"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @commission = args[:commission] if args.key?(:commission)
+          @description = args[:description] if args.key?(:description)
+          @transaction_amount = args[:transaction_amount] if args.key?(:transaction_amount)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class SettlementTransactionAmountCommission
+        include Google::Apis::Core::Hashable
+      
+        # The category of the commission.
+        # Acceptable values are:
+        # - "`animalsAndPetSupplies`"
+        # - "`dogCatFoodAndCatLitter`"
+        # - "`apparelAndAccessories`"
+        # - "`shoesHandbagsAndSunglasses`"
+        # - "`costumesAndAccessories`"
+        # - "`jewelry`"
+        # - "`watches`"
+        # - "`hobbiesArtsAndCrafts`"
+        # - "`homeAndGarden`"
+        # - "`entertainmentCollectibles`"
+        # - "`collectibleCoins`"
+        # - "`sportsCollectibles`"
+        # - "`sportingGoods`"
+        # - "`toysAndGames`"
+        # - "`musicalInstruments`"
+        # - "`giftCards`"
+        # - "`babyAndToddler`"
+        # - "`babyFoodWipesAndDiapers`"
+        # - "`businessAndIndustrial`"
+        # - "`camerasOpticsAndPhotography`"
+        # - "`consumerElectronics`"
+        # - "`electronicsAccessories`"
+        # - "`personalComputers`"
+        # - "`videoGameConsoles`"
+        # - "`foodAndGrocery`"
+        # - "`beverages`"
+        # - "`tobaccoProducts`"
+        # - "`furniture`"
+        # - "`hardware`"
+        # - "`buildingMaterials`"
+        # - "`tools`"
+        # - "`healthAndPersonalCare`"
+        # - "`beauty`"
+        # - "`householdSupplies`"
+        # - "`kitchenAndDining`"
+        # - "`majorAppliances`"
+        # - "`luggageAndBags`"
+        # - "`media`"
+        # - "`officeSupplies`"
+        # - "`softwareAndVideoGames`"
+        # - "`vehiclePartsAndAccessories`"
+        # - "`vehicleTiresAndWheels`"
+        # - "`vehicles`"
+        # - "`everythingElse`"
+        # Corresponds to the JSON property `category`
+        # @return [String]
+        attr_accessor :category
+      
+        # Rate of the commission in percentage.
+        # Corresponds to the JSON property `rate`
+        # @return [String]
+        attr_accessor :rate
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @category = args[:category] if args.key?(:category)
+          @rate = args[:rate] if args.key?(:rate)
+        end
+      end
+      
+      # 
+      class SettlementTransactionIdentifiers
+        include Google::Apis::Core::Hashable
+      
+        # The identifier of the adjustments, if it is available.
+        # Corresponds to the JSON property `adjustmentId`
+        # @return [String]
+        attr_accessor :adjustment_id
+      
+        # The merchant provided order ID.
+        # Corresponds to the JSON property `merchantOrderId`
+        # @return [String]
+        attr_accessor :merchant_order_id
+      
+        # The unique ID of the settlement transaction entry.
+        # Corresponds to the JSON property `settlementEntryId`
+        # @return [String]
+        attr_accessor :settlement_entry_id
+      
+        # The shipment ids for the item.
+        # Corresponds to the JSON property `shipmentIds`
+        # @return [Array<String>]
+        attr_accessor :shipment_ids
+      
+        # The Google transaction ID.
+        # Corresponds to the JSON property `transactionId`
+        # @return [String]
+        attr_accessor :transaction_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @adjustment_id = args[:adjustment_id] if args.key?(:adjustment_id)
+          @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
+          @settlement_entry_id = args[:settlement_entry_id] if args.key?(:settlement_entry_id)
+          @shipment_ids = args[:shipment_ids] if args.key?(:shipment_ids)
+          @transaction_id = args[:transaction_id] if args.key?(:transaction_id)
+        end
+      end
+      
+      # 
+      class SettlementTransactionTransaction
+        include Google::Apis::Core::Hashable
+      
+        # The time on which the event occurred in ISO 8601 format.
+        # Corresponds to the JSON property `postDate`
+        # @return [String]
+        attr_accessor :post_date
+      
+        # The type of the transaction that occurred.
+        # Acceptable values are:
+        # - "`order`"
+        # - "`reversal`"
+        # - "`orderRefund`"
+        # - "`reversalRefund`"
+        # - "`issueRelatedRefundAndReplacement`"
+        # - "`returnLabelShippingFeeTransaction`"
+        # - "`reversalIssueRelatedRefundAndReplacement`"
+        # - "`reversalReturnLabelShippingFeeTransaction`"
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @post_date = args[:post_date] if args.key?(:post_date)
+          @type = args[:type] if args.key?(:type)
+        end
+      end
+      
+      # 
+      class SettlementreportsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # settlementreportsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2_1::SettlementReport>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
+        end
+      end
+      
+      # 
+      class SettlementtransactionsListResponse
+        include Google::Apis::Core::Hashable
+      
+        # Identifies what kind of resource this is. Value: the fixed string "content#
+        # settlementtransactionsListResponse".
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The token for the retrieval of the next page of returns.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # 
+        # Corresponds to the JSON property `resources`
+        # @return [Array<Google::Apis::ContentV2_1::SettlementTransaction>]
+        attr_accessor :resources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @kind = args[:kind] if args.key?(:kind)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @resources = args[:resources] if args.key?(:resources)
         end
       end
       
@@ -10128,8 +11002,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::ShipmentInvoiceLineItemInvoice>]
         attr_accessor :line_item_invoices
       
-        # [required] ID of the shipment group. It is assigned by the merchant in the
-        # shipLineItems method and is used to group multiple line items that have the
+        # [required] ID of the shipment group. It is assigned by the merchant in the `
+        # shipLineItems` method and is used to group multiple line items that have the
         # same kind of shipping charges.
         # Corresponds to the JSON property `shipmentGroupId`
         # @return [String]
@@ -10194,36 +11068,36 @@ module Google
       
         # The shipping carrier that handles the package.
         # Acceptable values are:
-        # - "boxtal"
-        # - "bpost"
-        # - "chronopost"
-        # - "colisPrive"
-        # - "colissimo"
-        # - "cxt"
-        # - "deliv"
-        # - "dhl"
-        # - "dpd"
-        # - "dynamex"
-        # - "eCourier"
-        # - "easypost"
-        # - "efw"
-        # - "fedex"
-        # - "fedexSmartpost"
-        # - "geodis"
-        # - "gls"
-        # - "googleCourier"
-        # - "gsx"
-        # - "jdLogistics"
-        # - "laPoste"
-        # - "lasership"
-        # - "manual"
-        # - "mpx"
-        # - "onTrac"
-        # - "other"
-        # - "tnt"
-        # - "uds"
-        # - "ups"
-        # - "usps"
+        # - "`boxtal`"
+        # - "`bpost`"
+        # - "`chronopost`"
+        # - "`colisPrive`"
+        # - "`colissimo`"
+        # - "`cxt`"
+        # - "`deliv`"
+        # - "`dhl`"
+        # - "`dpd`"
+        # - "`dynamex`"
+        # - "`eCourier`"
+        # - "`easypost`"
+        # - "`efw`"
+        # - "`fedex`"
+        # - "`fedexSmartpost`"
+        # - "`geodis`"
+        # - "`gls`"
+        # - "`googleCourier`"
+        # - "`gsx`"
+        # - "`jdLogistics`"
+        # - "`laPoste`"
+        # - "`lasership`"
+        # - "`manual`"
+        # - "`mpx`"
+        # - "`onTrac`"
+        # - "`other`"
+        # - "`tnt`"
+        # - "`uds`"
+        # - "`ups`"
+        # - "`usps`"
         # Corresponds to the JSON property `carrier`
         # @return [String]
         attr_accessor :carrier
@@ -10255,7 +11129,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :account_id
       
-        # A list of postal code groups that can be referred to in services. Optional.
+        # A list of postal code groups that can be referred to in `services`. Optional.
         # Corresponds to the JSON property `postalCodeGroups`
         # @return [Array<Google::Apis::ContentV2_1::PostalCodeGroup>]
         attr_accessor :postal_code_groups
@@ -10317,8 +11191,8 @@ module Google
       
         # The method of the batch entry.
         # Acceptable values are:
-        # - "get"
-        # - "update"
+        # - "`get`"
+        # - "`update`"
         # Corresponds to the JSON property `method`
         # @return [String]
         attr_accessor :method_prop
@@ -10383,8 +11257,8 @@ module Google
         # @return [Google::Apis::ContentV2_1::Errors]
         attr_accessor :errors
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # shippingsettingsCustomBatchResponseEntry".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # shippingsettingsCustomBatchResponseEntry`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10522,8 +11396,8 @@ module Google
       class Table
         include Google::Apis::Core::Hashable
       
-        # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or location must be set.
+        # A non-empty list of row or column headers for a table. Exactly one of `prices`,
+        # `weights`, `numItems`, `postalCodeGroupNames`, or `location` must be set.
         # Corresponds to the JSON property `columnHeaders`
         # @return [Google::Apis::ContentV2_1::Headers]
         attr_accessor :column_headers
@@ -10533,14 +11407,14 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # A non-empty list of row or column headers for a table. Exactly one of prices,
-        # weights, numItems, postalCodeGroupNames, or location must be set.
+        # A non-empty list of row or column headers for a table. Exactly one of `prices`,
+        # `weights`, `numItems`, `postalCodeGroupNames`, or `location` must be set.
         # Corresponds to the JSON property `rowHeaders`
         # @return [Google::Apis::ContentV2_1::Headers]
         attr_accessor :row_headers
       
-        # The list of rows that constitute the table. Must have the same length as
-        # rowHeaders. Required.
+        # The list of rows that constitute the table. Must have the same length as `
+        # rowHeaders`. Required.
         # Corresponds to the JSON property `rows`
         # @return [Array<Google::Apis::ContentV2_1::Row>]
         attr_accessor :rows
@@ -10568,8 +11442,8 @@ module Google
         attr_accessor :enable_orderinvoices
         alias_method :enable_orderinvoices?, :enable_orderinvoices
       
-        # Identifies what kind of resource this is. Value: the fixed string "content#
-        # testOrder".
+        # Identifies what kind of resource this is. Value: the fixed string "`content#
+        # testOrder`"
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -10579,20 +11453,16 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::TestOrderLineItem>]
         attr_accessor :line_items
       
-        # Determines if test order must be pulled by merchant or pushed to merchant via
-        # push integration.
-        # Acceptable values are:
-        # - "checkoutIntegration"
-        # - "merchantPull"
+        # Restricted. Do not use.
         # Corresponds to the JSON property `notificationMode`
         # @return [String]
         attr_accessor :notification_mode
       
         # Required. The billing address.
         # Acceptable values are:
-        # - "dwight"
-        # - "jim"
-        # - "pam"
+        # - "`dwight`"
+        # - "`jim`"
+        # - "`pam`"
         # Corresponds to the JSON property `predefinedBillingAddress`
         # @return [String]
         attr_accessor :predefined_billing_address
@@ -10600,28 +11470,28 @@ module Google
         # Required. Identifier of one of the predefined delivery addresses for the
         # delivery.
         # Acceptable values are:
-        # - "dwight"
-        # - "jim"
-        # - "pam"
+        # - "`dwight`"
+        # - "`jim`"
+        # - "`pam`"
         # Corresponds to the JSON property `predefinedDeliveryAddress`
         # @return [String]
         attr_accessor :predefined_delivery_address
       
         # Required. Email address of the customer.
         # Acceptable values are:
-        # - "pog.dwight.schrute@gmail.com"
-        # - "pog.jim.halpert@gmail.com"
-        # - "penpog.pam.beesly@gmail.comding"
+        # - "`pog.dwight.schrute@gmail.com`"
+        # - "`pog.jim.halpert@gmail.com`"
+        # - "`penpog.pam.beesly@gmail.comding`"
         # Corresponds to the JSON property `predefinedEmail`
         # @return [String]
         attr_accessor :predefined_email
       
         # Identifier of one of the predefined pickup details. Required for orders
-        # containing line items with shipping type pickup.
+        # containing line items with shipping type `pickup`.
         # Acceptable values are:
-        # - "dwight"
-        # - "jim"
-        # - "pam"
+        # - "`dwight`"
+        # - "`jim`"
+        # - "`pam`"
         # Corresponds to the JSON property `predefinedPickupDetails`
         # @return [String]
         attr_accessor :predefined_pickup_details
@@ -10641,12 +11511,12 @@ module Google
       
         # Required. The requested shipping option.
         # Acceptable values are:
-        # - "economy"
-        # - "expedited"
-        # - "oneDay"
-        # - "sameDay"
-        # - "standard"
-        # - "twoDay"
+        # - "`economy`"
+        # - "`expedited`"
+        # - "`oneDay`"
+        # - "`sameDay`"
+        # - "`standard`"
+        # - "`twoDay`"
         # Corresponds to the JSON property `shippingOption`
         # @return [String]
         attr_accessor :shipping_option
@@ -10719,15 +11589,15 @@ module Google
       
         # Required. Condition or state of the item.
         # Acceptable values are:
-        # - "new"
+        # - "`new`"
         # Corresponds to the JSON property `condition`
         # @return [String]
         attr_accessor :condition
       
         # Required. The two-letter ISO 639-1 language code for the item.
         # Acceptable values are:
-        # - "en"
-        # - "fr"
+        # - "`en`"
+        # - "`fr`"
         # Corresponds to the JSON property `contentLanguage`
         # @return [String]
         attr_accessor :content_language
@@ -10810,9 +11680,9 @@ module Google
       class TransitTable
         include Google::Apis::Core::Hashable
       
-        # A list of postal group names. The last value can be "all other locations".
-        # Example: ["zone 1", "zone 2", "all other locations"]. The referred postal code
-        # groups must match the delivery country of the service.
+        # A list of postal group names. The last value can be `"all other locations"`.
+        # Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal
+        # code groups must match the delivery country of the service.
         # Corresponds to the JSON property `postalCodeGroupNames`
         # @return [Array<String>]
         attr_accessor :postal_code_group_names
@@ -10822,8 +11692,8 @@ module Google
         # @return [Array<Google::Apis::ContentV2_1::TransitTableTransitTimeRow>]
         attr_accessor :rows
       
-        # A list of transit time labels. The last value can be "all other labels".
-        # Example: ["food", "electronics", "all other labels"].
+        # A list of transit time labels. The last value can be `"all other labels"`.
+        # Example: `["food", "electronics", "all other labels"]`.
         # Corresponds to the JSON property `transitTimeLabels`
         # @return [Array<String>]
         attr_accessor :transit_time_labels
@@ -10863,7 +11733,7 @@ module Google
       class TransitTableTransitTimeRowTransitTimeValue
         include Google::Apis::Core::Hashable
       
-        # Must be greater than or equal to minTransitTimeInDays.
+        # Must be greater than or equal to `minTransitTimeInDays`.
         # Corresponds to the JSON property `maxTransitTimeInDays`
         # @return [Fixnum]
         attr_accessor :max_transit_time_in_days
@@ -10928,7 +11798,7 @@ module Google
       
         # [required] Type of the additional charge.
         # Acceptable values are:
-        # - "shipping"
+        # - "`shipping`"
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -10953,17 +11823,17 @@ module Google
         # @return [Google::Apis::ContentV2_1::Price]
         attr_accessor :tax_amount
       
-        # Optional name of the tax type. This should only be provided if taxType is
-        # otherFeeTax.
+        # Optional name of the tax type. This should only be provided if `taxType` is `
+        # otherFeeTax`.
         # Corresponds to the JSON property `taxName`
         # @return [String]
         attr_accessor :tax_name
       
         # [required] Type of the tax.
         # Acceptable values are:
-        # - "otherFee"
-        # - "otherFeeTax"
-        # - "sales"
+        # - "`otherFee`"
+        # - "`otherFeeTax`"
+        # - "`sales`"
         # Corresponds to the JSON property `taxType`
         # @return [String]
         attr_accessor :tax_type
@@ -10981,8 +11851,8 @@ module Google
       end
       
       # The single value of a rate group or the value of a rate group table's cell.
-      # Exactly one of noShipping, flatRate, pricePercentage, carrierRateName,
-      # subtableName must be set.
+      # Exactly one of `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`,
+      # `subtableName` must be set.
       class Value
         include Google::Apis::Core::Hashable
       
@@ -11004,8 +11874,8 @@ module Google
         attr_accessor :no_shipping
         alias_method :no_shipping?, :no_shipping
       
-        # A percentage of the price represented as a number in decimal notation (e.g., "
-        # 5.4"). Can only be set if all other fields are not set.
+        # A percentage of the price represented as a number in decimal notation (e.g., `"
+        # 5.4"`). Can only be set if all other fields are not set.
         # Corresponds to the JSON property `pricePercentage`
         # @return [String]
         attr_accessor :price_percentage
@@ -11036,8 +11906,8 @@ module Google
       
         # Required. The weight unit.
         # Acceptable values are:
-        # - "kg"
-        # - "lb"
+        # - "`kg`"
+        # - "`lb`"
         # Corresponds to the JSON property `unit`
         # @return [String]
         attr_accessor :unit

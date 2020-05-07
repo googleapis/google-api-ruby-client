@@ -122,13 +122,15 @@ module Google
         
         # Creates an instance.
         # @param [String] parent
-        #   The instance's project and location, in the format
+        #   Required. The instance's project and location, in the format
         #   projects/`project_id`/locations/`location`. In Cloud Filestore,
         #   locations map to GCP zones, for example **us-west1-b**.
         # @param [Google::Apis::FileV1beta1::Instance] instance_object
         # @param [String] instance_id
-        #   The name of the instance to create.
-        #   The name must be unique for the specified project and location.
+        #   Required. The ID of the instance to create.
+        #   The ID must be unique within the specified project and location.
+        #   This value must start with a lowercase letter followed by up to 62
+        #   lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -161,7 +163,7 @@ module Google
         
         # Deletes an instance.
         # @param [String] name
-        #   The instance resource name, in the format
+        #   Required. The instance resource name, in the format
         #   projects/`project_id`/locations/`location`/instances/`instance_id`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -192,7 +194,7 @@ module Google
         
         # Gets the details of a specific instance.
         # @param [String] name
-        #   The instance resource name, in the format
+        #   Required. The instance resource name, in the format
         #   projects/`project_id`/locations/`location`/instances/`instance_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -224,7 +226,7 @@ module Google
         # Lists all instances in a project for either a specified location
         # or for all locations.
         # @param [String] parent
-        #   The project and location for which to retrieve instance information,
+        #   Required. The project and location for which to retrieve instance information,
         #   in the format projects/`project_id`/locations/`location`. In Cloud
         #   Filestore, locations map to GCP zones, for example **us-west1-b**. To
         #   retrieve instance information for all locations, use "-" for the `location`
@@ -275,7 +277,8 @@ module Google
         #   projects/`project_id`/locations/`location_id`/instances/`instance_id`.
         # @param [Google::Apis::FileV1beta1::Instance] instance_object
         # @param [String] update_mask
-        #   Mask of fields to update.  At least one path must be supplied in this
+        #   Required. Mask of fields to update.  At least one path must be supplied in
+        #   this
         #   field.  The elements of the repeated paths field may only include these
         #   fields:
         #   * "description"

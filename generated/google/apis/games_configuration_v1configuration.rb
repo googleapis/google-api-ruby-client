@@ -26,7 +26,7 @@ module Google
     # @see https://developers.google.com/games/
     module GamesConfigurationV1configuration
       VERSION = 'V1configuration'
-      REVISION = '20200317'
+      REVISION = '20200416'
 
       # View and manage your Google Play Developer account
       AUTH_ANDROIDPUBLISHER = 'https://www.googleapis.com/auth/androidpublisher'

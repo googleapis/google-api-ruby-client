@@ -403,6 +403,9 @@ module Google
                 property :age, as: 'age'
                 property :created_before, as: 'createdBefore', type: Date
             
+                property :custom_time_before, as: 'customTimeBefore', type: DateTime
+            
+                property :days_since_custom_time, as: 'daysSinceCustomTime'
                 property :is_live, as: 'isLive'
                 property :matches_pattern, as: 'matchesPattern'
                 collection :matches_storage_class, as: 'matchesStorageClass'
@@ -628,6 +631,8 @@ module Google
           property :content_language, as: 'contentLanguage'
           property :content_type, as: 'contentType'
           property :crc32c, as: 'crc32c'
+          property :custom_time, as: 'customTime', type: DateTime
+      
           property :customer_encryption, as: 'customerEncryption', class: Google::Apis::StorageV1::Object::CustomerEncryption, decorator: Google::Apis::StorageV1::Object::CustomerEncryption::Representation
       
           property :etag, as: 'etag'

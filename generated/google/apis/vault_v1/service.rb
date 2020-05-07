@@ -350,7 +350,7 @@ module Google
         
         # Updates the specified matter.
         # This updates only the name and description of the matter, identified by
-        # matter id. Changes to any other fields are ignored.
+        # matter ID. Changes to any other fields are ignored.
         # Returns the default view of the matter.
         # @param [String] matter_id
         #   The matter ID.
@@ -890,7 +890,7 @@ module Google
         
         # Creates a saved query.
         # @param [String] matter_id
-        #   The matter id of the parent matter for which the saved query is to be
+        #   The matter ID of the parent matter for which the saved query is to be
         #   created.
         # @param [Google::Apis::VaultV1::SavedQuery] saved_query_object
         # @param [String] fields
@@ -924,10 +924,10 @@ module Google
         
         # Deletes a saved query by Id.
         # @param [String] matter_id
-        #   The matter id of the parent matter for which the saved query is to be
+        #   The matter ID of the parent matter for which the saved query is to be
         #   deleted.
         # @param [String] saved_query_id
-        #   Id of the saved query to be deleted.
+        #   ID of the saved query to be deleted.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -958,10 +958,10 @@ module Google
         
         # Retrieves a saved query by Id.
         # @param [String] matter_id
-        #   The matter id of the parent matter for which the saved query is to be
+        #   The matter ID of the parent matter for which the saved query is to be
         #   retrieved.
         # @param [String] saved_query_id
-        #   Id of the saved query to be retrieved.
+        #   ID of the saved query to be retrieved.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -993,7 +993,7 @@ module Google
         # Lists saved queries within a matter. An empty page token in
         # ListSavedQueriesResponse denotes no more saved queries to list.
         # @param [String] matter_id
-        #   The matter id of the parent matter for which the saved queries are to be
+        #   The matter ID of the parent matter for which the saved queries are to be
         #   retrieved.
         # @param [Fixnum] page_size
         #   The maximum number of saved queries to return.

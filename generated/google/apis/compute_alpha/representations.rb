@@ -2268,6 +2268,12 @@ module Google
       
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Accelerator
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -3922,6 +3928,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RouterNatRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RouterNatRuleAction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class RouterNatSubnetworkToNat
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4134,6 +4152,36 @@ module Google
       
       class ServiceAccount
         class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachment
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentConsumerForwardingRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ServiceAttachmentList
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Warning
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+          class Datum
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -5643,6 +5691,7 @@ module Google
       
           collection :local_ssds, as: 'localSsds', class: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk, decorator: Google::Apis::ComputeAlpha::AllocationSpecificSkuAllocationAllocatedInstancePropertiesReservedDisk::Representation
       
+          property :location_hint, as: 'locationHint'
           property :long_term_release, as: 'longTermRelease'
           property :machine_type, as: 'machineType'
           property :min_cpu_platform, as: 'minCpuPlatform'
@@ -9699,6 +9748,8 @@ module Google
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeAlpha::MachineType::Accelerator, decorator: Google::Apis::ComputeAlpha::MachineType::Accelerator::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeAlpha::DeprecationStatus, decorator: Google::Apis::ComputeAlpha::DeprecationStatus::Representation
       
@@ -9714,6 +9765,14 @@ module Google
           property :self_link, as: 'selfLink'
           property :self_link_with_id, as: 'selfLinkWithId'
           property :zone, as: 'zone'
+        end
+        
+        class Accelerator
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :guest_accelerator_count, as: 'guestAcceleratorCount'
+            property :guest_accelerator_type, as: 'guestAcceleratorType'
+          end
         end
       end
       
@@ -10329,6 +10388,7 @@ module Google
           property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :location_hint, as: 'locationHint'
           property :maintenance_policy, as: 'maintenancePolicy'
           property :maintenance_window, as: 'maintenanceWindow', class: Google::Apis::ComputeAlpha::NodeGroupMaintenanceWindow, decorator: Google::Apis::ComputeAlpha::NodeGroupMaintenanceWindow::Representation
       
@@ -12653,6 +12713,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :drain_nat_ips, as: 'drainNatIps'
+          property :enable_endpoint_independent_mapping, as: 'enableEndpointIndependentMapping'
           property :icmp_idle_timeout_sec, as: 'icmpIdleTimeoutSec'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeAlpha::RouterNatLogConfig, decorator: Google::Apis::ComputeAlpha::RouterNatLogConfig::Representation
       
@@ -12660,10 +12721,13 @@ module Google
           property :name, as: 'name'
           property :nat_ip_allocate_option, as: 'natIpAllocateOption'
           collection :nat_ips, as: 'natIps'
+          collection :rules, as: 'rules', class: Google::Apis::ComputeAlpha::RouterNatRule, decorator: Google::Apis::ComputeAlpha::RouterNatRule::Representation
+      
           property :source_subnetwork_ip_ranges_to_nat, as: 'sourceSubnetworkIpRangesToNat'
           collection :subnetworks, as: 'subnetworks', class: Google::Apis::ComputeAlpha::RouterNatSubnetworkToNat, decorator: Google::Apis::ComputeAlpha::RouterNatSubnetworkToNat::Representation
       
           property :tcp_established_idle_timeout_sec, as: 'tcpEstablishedIdleTimeoutSec'
+          property :tcp_time_wait_timeout_sec, as: 'tcpTimeWaitTimeoutSec'
           property :tcp_transitory_idle_timeout_sec, as: 'tcpTransitoryIdleTimeoutSec'
           property :udp_idle_timeout_sec, as: 'udpIdleTimeoutSec'
         end
@@ -12674,6 +12738,25 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :enable, as: 'enable'
           property :filter, as: 'filter'
+        end
+      end
+      
+      class RouterNatRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action', class: Google::Apis::ComputeAlpha::RouterNatRuleAction, decorator: Google::Apis::ComputeAlpha::RouterNatRuleAction::Representation
+      
+          property :description, as: 'description'
+          property :match, as: 'match'
+          property :priority, as: 'priority'
+        end
+      end
+      
+      class RouterNatRuleAction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :source_nat_active_ips, as: 'sourceNatActiveIps'
+          collection :source_nat_drain_ips, as: 'sourceNatDrainIps'
         end
       end
       
@@ -13084,6 +13167,64 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :email, as: 'email'
           collection :scopes, as: 'scopes'
+        end
+      end
+      
+      class ServiceAttachment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :connection_preference, as: 'connectionPreference'
+          collection :consumer_forwarding_rules, as: 'consumerForwardingRules', class: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentConsumerForwardingRule::Representation
+      
+          property :creation_timestamp, as: 'creationTimestamp'
+          property :description, as: 'description'
+          property :id, :numeric_string => true, as: 'id'
+          property :kind, as: 'kind'
+          property :name, as: 'name'
+          collection :nat_ip_cidr_ranges, as: 'natIpCidrRanges'
+          property :producer_forwarding_rule, as: 'producerForwardingRule'
+          property :region, as: 'region'
+          property :self_link, as: 'selfLink'
+        end
+      end
+      
+      class ServiceAttachmentConsumerForwardingRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :forwarding_rule, as: 'forwardingRule'
+          property :status, as: 'status'
+        end
+      end
+      
+      class ServiceAttachmentList
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :id, as: 'id'
+          collection :items, as: 'items', class: Google::Apis::ComputeAlpha::ServiceAttachment, decorator: Google::Apis::ComputeAlpha::ServiceAttachment::Representation
+      
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          property :self_link, as: 'selfLink'
+          property :warning, as: 'warning', class: Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Representation
+      
+        end
+        
+        class Warning
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :code, as: 'code'
+            collection :data, as: 'data', class: Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Datum, decorator: Google::Apis::ComputeAlpha::ServiceAttachmentList::Warning::Datum::Representation
+        
+            property :message, as: 'message'
+          end
+          
+          class Datum
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :key, as: 'key'
+              property :value, as: 'value'
+            end
+          end
         end
       end
       

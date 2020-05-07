@@ -196,6 +196,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :action, as: 'action'
+          property :canary_expire_time, as: 'canaryExpireTime'
           property :condition, as: 'condition'
           property :create_time, as: 'createTime'
           collection :evaluated_expressions, as: 'evaluatedExpressions', class: Google::Apis::ClouddebuggerV2::Variable, decorator: Google::Apis::ClouddebuggerV2::Variable::Representation
@@ -211,6 +212,7 @@ module Google
           property :log_message_format, as: 'logMessageFormat'
           collection :stack_frames, as: 'stackFrames', class: Google::Apis::ClouddebuggerV2::StackFrame, decorator: Google::Apis::ClouddebuggerV2::StackFrame::Representation
       
+          property :state, as: 'state'
           property :status, as: 'status', class: Google::Apis::ClouddebuggerV2::StatusMessage, decorator: Google::Apis::ClouddebuggerV2::StatusMessage::Representation
       
           property :user_email, as: 'userEmail'
@@ -253,6 +255,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :agent_version, as: 'agentVersion'
+          property :canary_mode, as: 'canaryMode'
           property :description, as: 'description'
           collection :ext_source_contexts, as: 'extSourceContexts', class: Google::Apis::ClouddebuggerV2::ExtendedSourceContext, decorator: Google::Apis::ClouddebuggerV2::ExtendedSourceContext::Representation
       
@@ -366,6 +369,7 @@ module Google
       class RegisterDebuggeeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_id, as: 'agentId'
           property :debuggee, as: 'debuggee', class: Google::Apis::ClouddebuggerV2::Debuggee, decorator: Google::Apis::ClouddebuggerV2::Debuggee::Representation
       
         end

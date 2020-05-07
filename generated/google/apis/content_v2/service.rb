@@ -85,13 +85,13 @@ module Google
         # Claims the website of a Merchant Center sub-account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account whose website is claimed.
         # @param [Boolean] overwrite
-        #   Only available to selected merchants. When set to True, this flag removes any
-        #   existing claim on the requested website by another account and replaces it
+        #   Only available to selected merchants. When set to `True`, this flag removes
+        #   any existing claim on the requested website by another account and replaces it
         #   with a claim from this account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -208,8 +208,8 @@ module Google
         # Retrieves a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [String] fields
@@ -287,8 +287,8 @@ module Google
         # accountId and linkedAccountId.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that should be linked.
         # @param [Google::Apis::ContentV2::AccountsLinkRequest] accounts_link_request_object
@@ -367,8 +367,8 @@ module Google
         # Updates a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Google::Apis::ContentV2::Account] account_object
@@ -446,8 +446,8 @@ module Google
         # returned for multi-client accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Array<String>, String] destinations
@@ -569,8 +569,8 @@ module Google
         # Retrieves the tax settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [String] fields
@@ -646,8 +646,8 @@ module Google
         # Updates the tax settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2::AccountTax] account_tax_object
@@ -1133,7 +1133,7 @@ module Google
         #   The ID of the account that contains the product. This account cannot be a
         #   multi-client account.
         # @param [String] store_code
-        #   The code of the store for which to update price and availability. Use online
+        #   The code of the store for which to update price and availability. Use `online`
         #   to update price and availability of an online product.
         # @param [String] product_id
         #   The REST ID of the product for which to update price and availability.
@@ -1217,8 +1217,8 @@ module Google
         # Retrieves the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get or update LIA settings.
         # @param [String] fields
@@ -1255,8 +1255,8 @@ module Google
         # Retrieves the list of accessible Google My Business accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to retrieve accessible Google My Business
         #   accounts.
@@ -1364,8 +1364,8 @@ module Google
         # Requests access to a specified Google My Business account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which GMB access is requested.
         # @param [String] gmb_email
@@ -1405,8 +1405,8 @@ module Google
         # Requests inventory validation for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -1447,8 +1447,8 @@ module Google
         # Sets the inventory verification contract for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -1498,8 +1498,8 @@ module Google
         # Sets the POS data provider for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to retrieve accessible Google My Business
         #   accounts.
@@ -1546,8 +1546,8 @@ module Google
         # Updates the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2::LiaSettings] lia_settings_object
@@ -1631,7 +1631,7 @@ module Google
         
         # Creates a refund invoice for one or more shipment groups, and triggers a
         # refund for orderinvoice enabled orders. This can only be used for line items
-        # that have previously been charged using createChargeInvoice. All amounts (
+        # that have previously been charged using `createChargeInvoice`. All amounts (
         # except for the summary) are incremental with respect to the previous invoice.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -1900,8 +1900,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sandbox only. Moves a test order from state "inProgress" to state "
-        # pendingShipment".
+        # Sandbox only. Moves a test order from state "`inProgress`" to state "`
+        # pendingShipment`".
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -2250,7 +2250,7 @@ module Google
         # @param [String] template_name
         #   The name of the template to retrieve.
         # @param [String] country
-        #   The country of the template to retrieve. Defaults to US.
+        #   The country of the template to retrieve. Defaults to `US`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2339,8 +2339,8 @@ module Google
         #   Obtains orders that match the acknowledgement status. When set to true,
         #   obtains orders that have been acknowledged. When false, obtains orders that
         #   have not been acknowledged.
-        #   We recommend using this filter set to false, in conjunction with the
-        #   acknowledge call, such that only un-acknowledged orders are returned.
+        #   We recommend using this filter set to `false`, in conjunction with the `
+        #   acknowledge` call, such that only un-acknowledged orders are returned.
         # @param [Fixnum] max_results
         #   The maximum number of orders to return in the response, used for paging. The
         #   default value is 25 orders per page, and the maximum allowed value is 250
@@ -2357,10 +2357,10 @@ module Google
         # @param [String] placed_date_start
         #   Obtains orders placed after this date (inclusively), in ISO 8601 format.
         # @param [Array<String>, String] statuses
-        #   Obtains orders that match any of the specified statuses. Please note that
-        #   active is a shortcut for pendingShipment and partiallyShipped, and completed
-        #   is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned,
-        #   returned, and canceled.
+        #   Obtains orders that match any of the specified statuses. Please note that `
+        #   active` is a shortcut for `pendingShipment` and `partiallyShipped`, and `
+        #   completed` is a shortcut for `shipped`, `partiallyDelivered`, `delivered`, `
+        #   partiallyReturned`, `returned`, and `canceled`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3423,8 +3423,8 @@ module Google
         # Retrieves the shipping settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [String] fields
@@ -3601,8 +3601,8 @@ module Google
         # Updates the shipping settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2::ShippingSettings] shipping_settings_object

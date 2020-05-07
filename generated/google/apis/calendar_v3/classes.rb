@@ -331,8 +331,8 @@ module Google
         # @return [String]
         attr_accessor :foreground_color
       
-        # Whether the calendar has been hidden from the list. Optional. The default is
-        # False.
+        # Whether the calendar has been hidden from the list. Optional. The attribute is
+        # only returned when the calendar is hidden, in which case the value is true.
         # Corresponds to the JSON property `hidden`
         # @return [Boolean]
         attr_accessor :hidden
@@ -630,7 +630,7 @@ module Google
         # @return [String]
         attr_accessor :conference_id
       
-        # The conference solution, such as Hangouts or Hangouts Meet.
+        # The conference solution, such as Hangouts or Google Meet.
         # Unset for a conference with a failed create request.
         # Either conferenceSolution and at least one entryPoint, or createRequest is
         # required.
@@ -841,7 +841,7 @@ module Google
       class CreateConferenceRequest
         include Google::Apis::Core::Hashable
       
-        # The conference solution, such as Hangouts or Hangouts Meet.
+        # The conference solution, such as Hangouts or Google Meet.
         # Corresponds to the JSON property `conferenceSolutionKey`
         # @return [Google::Apis::CalendarV3::ConferenceSolutionKey]
         attr_accessor :conference_solution_key
@@ -1064,7 +1064,7 @@ module Google
         # @return [String]
         attr_accessor :color_id
       
-        # The conference-related information, such as details of a Hangouts Meet
+        # The conference-related information, such as details of a Google Meet
         # conference. To create new conference details use the createRequest field. To
         # persist your changes, remember to set the conferenceDataVersion request
         # parameter to 1 for all event modification requests.

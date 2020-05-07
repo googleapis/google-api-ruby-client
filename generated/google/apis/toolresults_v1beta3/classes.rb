@@ -22,26 +22,49 @@ module Google
   module Apis
     module ToolresultsV1beta3
       
+      # Additional details for an ANR crash.
+      class Anr
+        include Google::Apis::Core::Hashable
+      
+        # A stacktrace.
+        # Corresponds to the JSON property `stackTrace`
+        # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
+        attr_accessor :stack_trace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+        end
+      end
+      
       # Android app information.
       class AndroidAppInfo
         include Google::Apis::Core::Hashable
       
-        # The name of the app. Optional
+        # The name of the app.
+        # Optional
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # The package name of the app. Required.
+        # The package name of the app.
+        # Required.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
       
-        # The internal version code of the app. Optional.
+        # The internal version code of the app.
+        # Optional.
         # Corresponds to the JSON property `versionCode`
         # @return [String]
         attr_accessor :version_code
       
-        # The version name of the app. Optional.
+        # The version name of the app.
+        # Optional.
         # Corresponds to the JSON property `versionName`
         # @return [String]
         attr_accessor :version_name
@@ -61,30 +84,35 @@ module Google
       
       # A test of an Android application that can control an Android component
       # independently of its normal lifecycle.
-      # See  for more information on types of Android tests.
+      # See <http://developer.android.com/tools/testing/testing_android.html> for
+      # more information on types of Android tests.
       class AndroidInstrumentationTest
         include Google::Apis::Core::Hashable
       
-        # The java package for the test to be executed. Required
+        # The java package for the test to be executed.
+        # Required
         # Corresponds to the JSON property `testPackageId`
         # @return [String]
         attr_accessor :test_package_id
       
-        # The InstrumentationTestRunner class. Required
+        # The InstrumentationTestRunner class.
+        # Required
         # Corresponds to the JSON property `testRunnerClass`
         # @return [String]
         attr_accessor :test_runner_class
       
-        # Each target must be fully qualified with the package name or class name, in
-        # one of these formats: - "package package_name" - "class package_name.
-        # class_name" - "class package_name.class_name#method_name"
+        # Each target must be fully qualified with the package name or class name,
+        # in one of these formats:
+        # - "package package_name"
+        # - "class package_name.class_name"
+        # - "class package_name.class_name#method_name"
         # If empty, all targets in the module will be run.
         # Corresponds to the JSON property `testTargets`
         # @return [Array<String>]
         attr_accessor :test_targets
       
-        # The flag indicates whether Android Test Orchestrator will be used to run test
-        # or not.
+        # The flag indicates whether Android Test Orchestrator will be used to run
+        # test or not.
         # Corresponds to the JSON property `useOrchestrator`
         # @return [Boolean]
         attr_accessor :use_orchestrator
@@ -103,32 +131,37 @@ module Google
         end
       end
       
-      # A test of an android application that explores the application on a virtual or
-      # physical Android device, finding culprits and crashes as it goes.
+      # A test of an android application that explores the application on a virtual
+      # or physical Android device, finding culprits and crashes as it goes.
       class AndroidRoboTest
         include Google::Apis::Core::Hashable
       
-        # The initial activity that should be used to start the app. Optional
+        # The initial activity that should be used to start the app.
+        # Optional
         # Corresponds to the JSON property `appInitialActivity`
         # @return [String]
         attr_accessor :app_initial_activity
       
-        # The java package for the bootstrap. Optional
+        # The java package for the bootstrap.
+        # Optional
         # Corresponds to the JSON property `bootstrapPackageId`
         # @return [String]
         attr_accessor :bootstrap_package_id
       
-        # The runner class for the bootstrap. Optional
+        # The runner class for the bootstrap.
+        # Optional
         # Corresponds to the JSON property `bootstrapRunnerClass`
         # @return [String]
         attr_accessor :bootstrap_runner_class
       
-        # The max depth of the traversal stack Robo can explore. Optional
+        # The max depth of the traversal stack Robo can explore.
+        # Optional
         # Corresponds to the JSON property `maxDepth`
         # @return [Fixnum]
         attr_accessor :max_depth
       
-        # The max number of steps/actions Robo can execute. Default is no limit (0).
+        # The max number of steps/actions Robo can execute.
+        # Default is no limit (0).
         # Optional
         # Corresponds to the JSON property `maxSteps`
         # @return [Fixnum]
@@ -159,47 +192,30 @@ module Google
       
         # A test of an Android application that can control an Android component
         # independently of its normal lifecycle.
-        # See  for more information on types of Android tests.
+        # See <http://developer.android.com/tools/testing/testing_android.html> for
+        # more information on types of Android tests.
         # Corresponds to the JSON property `androidInstrumentationTest`
         # @return [Google::Apis::ToolresultsV1beta3::AndroidInstrumentationTest]
         attr_accessor :android_instrumentation_test
       
-        # A test of an android application that explores the application on a virtual or
-        # physical Android device, finding culprits and crashes as it goes.
+        # A test of an android application that explores the application on a virtual
+        # or physical Android device, finding culprits and crashes as it goes.
         # Corresponds to the JSON property `androidRoboTest`
         # @return [Google::Apis::ToolresultsV1beta3::AndroidRoboTest]
         attr_accessor :android_robo_test
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # Test Loops are tests that can be launched by the app itself, determining
+        # when to run by listening for an intent. go/ftl-games-dd
+        # Corresponds to the JSON property `androidTestLoop`
+        # @return [Google::Apis::ToolresultsV1beta3::AndroidTestLoop]
+        attr_accessor :android_test_loop
+      
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `testTimeout`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :test_timeout
@@ -213,63 +229,113 @@ module Google
           @android_app_info = args[:android_app_info] if args.key?(:android_app_info)
           @android_instrumentation_test = args[:android_instrumentation_test] if args.key?(:android_instrumentation_test)
           @android_robo_test = args[:android_robo_test] if args.key?(:android_robo_test)
+          @android_test_loop = args[:android_test_loop] if args.key?(:android_test_loop)
           @test_timeout = args[:test_timeout] if args.key?(:test_timeout)
+        end
+      end
+      
+      # Test Loops are tests that can be launched by the app itself, determining
+      # when to run by listening for an intent. go/ftl-games-dd
+      class AndroidTestLoop
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
       # `Any` contains an arbitrary serialized protocol buffer message along with a
       # URL that describes the type of the serialized message.
-      # Protobuf library provides support to pack/unpack Any values in the form of
-      # utility functions or additional generated methods of the Any type.
+      # Protobuf library provides support to pack/unpack Any values in the form
+      # of utility functions or additional generated methods of the Any type.
       # Example 1: Pack and unpack a message in C++.
-      # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
+      # Foo foo = ...;
+      # Any any;
+      # any.PackFrom(foo);
+      # ...
+      # if (any.UnpackTo(&foo)) `
+      # ...
+      # `
       # Example 2: Pack and unpack a message in Java.
-      # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
-      # unpack(Foo.class); `
+      # Foo foo = ...;
+      # Any any = Any.pack(foo);
+      # ...
+      # if (any.is(Foo.class)) `
+      # foo = any.unpack(Foo.class);
+      # `
       # Example 3: Pack and unpack a message in Python.
-      # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
-      # Unpack(foo) ...
+      # foo = Foo(...)
+      # any = Any()
+      # any.Pack(foo)
+      # ...
+      # if any.Is(Foo.DESCRIPTOR):
+      # any.Unpack(foo)
+      # ...
       # Example 4: Pack and unpack a message in Go
-      # foo := &pb.Foo`...` any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo`` if
-      # err := ptypes.UnmarshalAny(any, foo); err != nil ` ... `
-      # The pack methods provided by protobuf library will by default use 'type.
-      # googleapis.com/full.type.name' as the type URL and the unpack methods only use
-      # the fully qualified type name after the last '/' in the type URL, for example "
-      # foo.bar.com/x/y.z" will yield type name "y.z".
-      # JSON ==== The JSON representation of an `Any` value uses the regular
-      # representation of the deserialized, embedded message, with an additional field
-      # `@type` which contains the type URL. Example:
-      # package google.profile; message Person ` string first_name = 1; string
-      # last_name = 2; `
-      # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
-      # lastName":  `
+      # foo := &pb.Foo`...`
+      # any, err := ptypes.MarshalAny(foo)
+      # ...
+      # foo := &pb.Foo``
+      # if err := ptypes.UnmarshalAny(any, foo); err != nil `
+      # ...
+      # `
+      # The pack methods provided by protobuf library will by default use
+      # 'type.googleapis.com/full.type.name' as the type URL and the unpack
+      # methods only use the fully qualified type name after the last '/'
+      # in the type URL, for example "foo.bar.com/x/y.z" will yield type
+      # name "y.z".
+      # # JSON
+      # The JSON representation of an `Any` value uses the regular
+      # representation of the deserialized, embedded message, with an
+      # additional field `@type` which contains the type URL. Example:
+      # package google.profile;
+      # message Person `
+      # string first_name = 1;
+      # string last_name = 2;
+      # `
+      # `
+      # "@type": "type.googleapis.com/google.profile.Person",
+      # "firstName": <string>,
+      # "lastName": <string>
+      # `
       # If the embedded message type is well-known and has a custom JSON
-      # representation, that representation will be embedded adding a field `value`
-      # which holds the custom JSON in addition to the `@type` field. Example (for
-      # message [google.protobuf.Duration][]):
-      # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
+      # representation, that representation will be embedded adding a field
+      # `value` which holds the custom JSON in addition to the `@type`
+      # field. Example (for message google.protobuf.Duration):
+      # `
+      # "@type": "type.googleapis.com/google.protobuf.Duration",
+      # "value": "1.212s"
+      # `
       class Any
         include Google::Apis::Core::Hashable
       
         # A URL/resource name that uniquely identifies the type of the serialized
-        # protocol buffer message. This string must contain at least one "/" character.
-        # The last segment of the URL's path must represent the fully qualified name of
-        # the type (as in `path/google.protobuf.Duration`). The name should be in a
-        # canonical form (e.g., leading "." is not accepted).
+        # protocol buffer message. This string must contain at least
+        # one "/" character. The last segment of the URL's path must represent
+        # the fully qualified name of the type (as in
+        # `path/google.protobuf.Duration`). The name should be in a canonical form
+        # (e.g., leading "." is not accepted).
         # In practice, teams usually precompile into the binary all types that they
-        # expect it to use in the context of Any. However, for URLs which use the scheme
-        # `http`, `https`, or no scheme, one can optionally set up a type server that
-        # maps type URLs to message definitions as follows:
-        # * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must
-        # yield a [google.protobuf.Type][] value in binary format, or produce an error. *
-        # Applications are allowed to cache lookup results based on the URL, or have
-        # them precompiled into a binary to avoid any lookup. Therefore, binary
-        # compatibility needs to be preserved on changes to types. (Use versioned type
-        # names to manage breaking changes.)
-        # Note: this functionality is not currently available in the official protobuf
-        # release, and it is not used for type URLs beginning with type.googleapis.com.
-        # Schemes other than `http`, `https` (or the empty scheme) might be used with
-        # implementation specific semantics.
+        # expect it to use in the context of Any. However, for URLs which use the
+        # scheme `http`, `https`, or no scheme, one can optionally set up a type
+        # server that maps type URLs to message definitions as follows:
+        # * If no scheme is provided, `https` is assumed.
+        # * An HTTP GET on the URL must yield a google.protobuf.Type
+        # value in binary format, or produce an error.
+        # * Applications are allowed to cache lookup results based on the
+        # URL, or have them precompiled into a binary to avoid any
+        # lookup. Therefore, binary compatibility needs to be preserved
+        # on changes to types. (Use versioned type names to manage
+        # breaking changes.)
+        # Note: this functionality is not currently available in the official
+        # protobuf release, and it is not used for type URLs beginning with
+        # type.googleapis.com.
+        # Schemes other than `http`, `https` (or the empty scheme) might be
+        # used with implementation specific semantics.
         # Corresponds to the JSON property `typeUrl`
         # @return [String]
         attr_accessor :type_url
@@ -295,70 +361,22 @@ module Google
       class AppStartTime
         include Google::Apis::Core::Hashable
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `fullyDrawnTime`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :fully_drawn_time
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `initialDisplayTime`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :initial_display_time
@@ -371,6 +389,19 @@ module Google
         def update!(**args)
           @fully_drawn_time = args[:fully_drawn_time] if args.key?(:fully_drawn_time)
           @initial_display_time = args[:initial_display_time] if args.key?(:initial_display_time)
+        end
+      end
+      
+      # A suggestion to use deep links for a Robo run.
+      class AvailableDeepLinks
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -405,8 +436,8 @@ module Google
         end
       end
       
-      # The request must provide up to a maximum of 5000 samples to be created; a
-      # larger sample size will cause an INVALID_ARGUMENT error
+      # The request must provide up to a maximum of 5000 samples to be
+      # created; a larger sample size will cause an INVALID_ARGUMENT error
       class BatchCreatePerfSamplesRequest
         include Google::Apis::Core::Hashable
       
@@ -444,6 +475,26 @@ module Google
         end
       end
       
+      # A warning that Robo encountered a screen that was mostly blank; this may
+      # indicate a problem with the app.
+      class BlankScreen
+        include Google::Apis::Core::Hashable
+      
+        # The screen id of the element
+        # Corresponds to the JSON property `screenId`
+        # @return [String]
+        attr_accessor :screen_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @screen_id = args[:screen_id] if args.key?(:screen_id)
+        end
+      end
+      
       # 
       class CpuInfo
         include Google::Apis::Core::Hashable
@@ -475,51 +526,47 @@ module Google
         end
       end
       
-      # A Duration represents a signed, fixed-length span of time represented as a
-      # count of seconds and fractions of seconds at nanosecond resolution. It is
-      # independent of any calendar and concepts like "day" or "month". It is related
-      # to Timestamp in that the difference between two Timestamp values is a Duration
-      # and it can be added or subtracted from a Timestamp. Range is approximately +-
-      # 10,000 years.
-      # # Examples
-      # Example 1: Compute Duration from two Timestamps in pseudo code.
-      # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-      # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-      # start.nanos;
-      # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-      # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-      # 1; duration.nanos += 1000000000; `
-      # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-      # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-      # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-      # duration.nanos;
-      # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-      # Example 3: Compute Duration from datetime.timedelta in Python.
-      # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-      # FromTimedelta(td)
-      # # JSON Mapping
-      # In JSON format, the Duration type is encoded as a string rather than an object,
-      # where the string ends in the suffix "s" (indicating seconds) and is preceded
-      # by the number of seconds, with nanoseconds expressed as fractional seconds.
-      # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-      # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-      # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-      # format as "3.000001s".
+      # Crash dialog was detected during the test execution
+      class CrashDialogError
+        include Google::Apis::Core::Hashable
+      
+        # The name of the package that caused the dialog.
+        # Corresponds to the JSON property `crashPackage`
+        # @return [String]
+        attr_accessor :crash_package
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @crash_package = args[:crash_package] if args.key?(:crash_package)
+        end
+      end
+      
+      # A Duration represents a signed, fixed-length span of time represented
+      # as a count of seconds and fractions of seconds at nanosecond
+      # resolution. It is independent of any calendar and concepts like "day"
+      # or "month". It is related to Timestamp in that the difference between
+      # two Timestamp values is a Duration and it can be added or subtracted
+      # from a Timestamp. Range is approximately +-10,000 years.
       class Duration
         include Google::Apis::Core::Hashable
       
-        # Signed fractions of a second at nanosecond resolution of the span of time.
-        # Durations less than one second are represented with a 0 `seconds` field and a
-        # positive or negative `nanos` field. For durations of one second or more, a non-
-        # zero value for the `nanos` field must be of the same sign as the `seconds`
-        # field. Must be from -999,999,999 to +999,999,999 inclusive.
+        # Signed fractions of a second at nanosecond resolution of the span
+        # of time. Durations less than one second are represented with a 0
+        # `seconds` field and a positive or negative `nanos` field. For durations
+        # of one second or more, a non-zero value for the `nanos` field must be
+        # of the same sign as the `seconds` field. Must be from -999,999,999
+        # to +999,999,999 inclusive.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,
-        # 000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/
-        # hr * 24 hr/day * 365.25 days/year * 10000 years
+        # Signed seconds of the span of time. Must be from -315,576,000,000
+        # to +315,576,000,000 inclusive. Note: these bounds are computed from:
+        # 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -535,138 +582,107 @@ module Google
         end
       end
       
+      # Additional details about encountered login screens.
+      class EncounteredLoginScreen
+        include Google::Apis::Core::Hashable
+      
+        # Number of encountered distinct login screens.
+        # Corresponds to the JSON property `distinctScreens`
+        # @return [Fixnum]
+        attr_accessor :distinct_screens
+      
+        # Subset of login screens.
+        # Corresponds to the JSON property `screenIds`
+        # @return [Array<String>]
+        attr_accessor :screen_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distinct_screens = args[:distinct_screens] if args.key?(:distinct_screens)
+          @screen_ids = args[:screen_ids] if args.key?(:screen_ids)
+        end
+      end
+      
+      # Additional details about encountered screens with elements that are not
+      # Android UI widgets.
+      class EncounteredNonAndroidUiWidgetScreen
+        include Google::Apis::Core::Hashable
+      
+        # Number of encountered distinct screens with non Android UI widgets.
+        # Corresponds to the JSON property `distinctScreens`
+        # @return [Fixnum]
+        attr_accessor :distinct_screens
+      
+        # Subset of screens which contain non Android UI widgets.
+        # Corresponds to the JSON property `screenIds`
+        # @return [Array<String>]
+        attr_accessor :screen_ids
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @distinct_screens = args[:distinct_screens] if args.key?(:distinct_screens)
+          @screen_ids = args[:screen_ids] if args.key?(:screen_ids)
+        end
+      end
+      
       # An Environment represents the set of test runs (Steps) from the parent
-      # Execution that are configured with the same set of dimensions (Model, Version,
-      # Locale, and Orientation). Multiple such runs occur particularly because of
-      # features like sharding (splitting up a test suite to run in parallel across
-      # devices) and reruns (running a test multiple times to check for different
-      # outcomes).
+      # Execution that are configured with the same set of dimensions (Model,
+      # Version, Locale, and Orientation). Multiple such runs occur particularly
+      # because of features like sharding (splitting up a test suite to run in
+      # parallel across devices) and reruns (running a test multiple times to check
+      # for different outcomes).
       class Environment
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
       
-        # Dimension values describing the environment. Dimension values always consist
-        # of "Model", "Version", "Locale", and "Orientation".
-        # - In response: always set - In create request: always set - In update request:
-        # never set
+        # Dimension values describing the environment. Dimension values always
+        # consist of "Model", "Version", "Locale", and "Orientation".
+        # - In response: always set
+        # - In create request: always set
+        # - In update request: never set
         # Corresponds to the JSON property `dimensionValue`
         # @return [Array<Google::Apis::ToolresultsV1beta3::EnvironmentDimensionValueEntry>]
         attr_accessor :dimension_value
       
-        # A short human-readable name to display in the UI. Maximum of 100 characters.
+        # A short human-readable name to display in the UI.
+        # Maximum of 100 characters.
         # For example: Nexus 5, API 27.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -759,131 +775,62 @@ module Google
       end
       
       # An Execution represents a collection of Steps. For instance, it could
-      # represent: - a mobile test executed across a range of device configurations -
-      # a jenkins job with a build step followed by a test step
+      # represent:
+      # - a mobile test executed across a range of device configurations
+      # - a jenkins job with a build step followed by a test step
       # The maximum size of an execution message is 1 MiB.
-      # An Execution can be updated until its state is set to COMPLETE at which point
-      # it becomes immutable.
+      # An Execution can be updated until its state is set to COMPLETE at which
+      # point it becomes immutable.
       class Execution
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
       
+        # The dimensions along which different steps in this execution may vary.
+        # This must remain fixed over the life of the execution.
+        # Returns INVALID_ARGUMENT if this field is set in an update request.
+        # Returns INVALID_ARGUMENT if the same name occurs in more than one
+        # dimension_definition.
+        # Returns INVALID_ARGUMENT if the size of the list is over 100.
+        # - In response: present if set by create
+        # - In create request: optional
+        # - In update request: never set
+        # Corresponds to the JSON property `dimensionDefinitions`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::MatrixDimensionDefinition>]
+        attr_accessor :dimension_definitions
+      
         # A unique identifier within a History for this Execution.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        # - In response always set - In create/update request: never set
+        # - In response always set
+        # - In create/update request: never set
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
@@ -900,20 +847,23 @@ module Google
       
         # The initial state is IN_PROGRESS.
         # The only legal state transitions is from IN_PROGRESS to COMPLETE.
-        # A PRECONDITION_FAILED will be returned if an invalid transition is requested.
+        # A PRECONDITION_FAILED will be returned if an invalid transition is
+        # requested.
         # The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be
         # returned if the state is set to COMPLETE multiple times.
         # If the state is set to COMPLETE, all the in-progress steps within the
-        # execution will be set as COMPLETE. If the outcome of the step is not set, the
-        # outcome will be set to INCONCLUSIVE.
-        # - In response always set - In create/update request: optional
+        # execution will be set as COMPLETE. If the outcome of the step is not set,
+        # the outcome will be set to INCONCLUSIVE.
+        # - In response always set
+        # - In create/update request: optional
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
         # TestExecution Matrix ID that the TestExecutionService uses.
-        # - In response: present if set by create - In create: optional - In update:
-        # never set
+        # - In response: present if set by create
+        # - In create: optional
+        # - In update: never set
         # Corresponds to the JSON property `testExecutionMatrixId`
         # @return [String]
         attr_accessor :test_execution_matrix_id
@@ -926,11 +876,25 @@ module Google
         def update!(**args)
           @completion_time = args[:completion_time] if args.key?(:completion_time)
           @creation_time = args[:creation_time] if args.key?(:creation_time)
+          @dimension_definitions = args[:dimension_definitions] if args.key?(:dimension_definitions)
           @execution_id = args[:execution_id] if args.key?(:execution_id)
           @outcome = args[:outcome] if args.key?(:outcome)
           @specification = args[:specification] if args.key?(:specification)
           @state = args[:state] if args.key?(:state)
           @test_execution_matrix_id = args[:test_execution_matrix_id] if args.key?(:test_execution_matrix_id)
+        end
+      end
+      
+      # Failed to install the APK.
+      class FailedToInstall
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -944,8 +908,8 @@ module Google
         attr_accessor :crashed
         alias_method :crashed?, :crashed
       
-        # If an app is not installed and thus no test can be run with the app. This
-        # might be caused by trying to run a test on an unsupported platform.
+        # If an app is not installed and thus no test can be run with the app.
+        # This might be caused by trying to run a test on an unsupported platform.
         # Corresponds to the JSON property `notInstalled`
         # @return [Boolean]
         attr_accessor :not_installed
@@ -963,7 +927,8 @@ module Google
         attr_accessor :timed_out
         alias_method :timed_out?, :timed_out
       
-        # If the robo was unable to crawl the app; perhaps because the app did not start.
+        # If the robo was unable to crawl the app; perhaps because the app did not
+        # start.
         # Corresponds to the JSON property `unableToCrawl`
         # @return [Boolean]
         attr_accessor :unable_to_crawl
@@ -983,16 +948,38 @@ module Google
         end
       end
       
+      # Additional details for a fatal exception.
+      class FatalException
+        include Google::Apis::Core::Hashable
+      
+        # A stacktrace.
+        # Corresponds to the JSON property `stackTrace`
+        # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
+        attr_accessor :stack_trace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+        end
+      end
+      
       # A reference to a file.
       class FileReference
         include Google::Apis::Core::Hashable
       
         # The URI of a file stored in Google Cloud Storage.
-        # For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in
-        # gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://
-        # mybucket/path/to/test.xml#1360383693690000
-        # An INVALID_ARGUMENT error will be returned if the URI format is not supported.
-        # - In response: always set - In create/update request: always set
+        # For example: http://storage.googleapis.com/mybucket/path/to/test.xml
+        # or in gsutil format: gs://mybucket/path/to/test.xml
+        # with version-specific info,
+        # gs://mybucket/path/to/test.xml#1360383693690000
+        # An INVALID_ARGUMENT error will be returned if the URI format is not
+        # supported.
+        # - In response: always set
+        # - In create/update request: always set
         # Corresponds to the JSON property `fileUri`
         # @return [String]
         attr_accessor :file_uri
@@ -1007,14 +994,16 @@ module Google
         end
       end
       
-      # Graphics statistics for the App. The information is collected from 'adb shell
-      # dumpsys graphicsstats'. For more info see: https://developer.android.com/
-      # training/testing/performance.html Statistics will only be present for API 23+.
+      # Graphics statistics for the App.
+      # The information is collected from 'adb shell dumpsys graphicsstats'.
+      # For more info see:
+      # https://developer.android.com/training/testing/performance.html
+      # Statistics will only be present for API 23+.
       class GraphicsStats
         include Google::Apis::Core::Hashable
       
-        # Histogram of frame render times. There should be 154 buckets ranging from [5ms,
-        # 6ms) to [4950ms, infinity)
+        # Histogram of frame render times. There should be 154 buckets ranging from
+        # [5ms, 6ms) to [4950ms, infinity)
         # Corresponds to the JSON property `buckets`
         # @return [Array<Google::Apis::ToolresultsV1beta3::GraphicsStatsBucket>]
         attr_accessor :buckets
@@ -1124,28 +1113,31 @@ module Google
       # start_timestamp_millis field (descending). It can be used to group all the
       # Executions of a continuous build.
       # Note that the ordering only operates on one-dimension. If a repository has
-      # multiple branches, it means that multiple histories will need to be used in
-      # order to order Executions per branch.
+      # multiple branches, it means that multiple histories will need to be
+      # used in order to order Executions per branch.
       class History
         include Google::Apis::Core::Hashable
       
-        # A short human-readable (plain text) name to display in the UI. Maximum of 100
-        # characters.
-        # - In response: present if set during create. - In create request: optional
+        # A short human-readable (plain text) name to display in the UI.
+        # Maximum of 100 characters.
+        # - In response: present if set during create.
+        # - In create request: optional
         # Corresponds to the JSON property `displayName`
         # @return [String]
         attr_accessor :display_name
       
         # A unique identifier within a project for this History.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        # - In response always set - In create request: never set
+        # - In response always set
+        # - In create request: never set
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
       
-        # A name to uniquely identify a history within a project. Maximum of 200
-        # characters.
-        # - In response always set - In create request: always set
+        # A name to uniquely identify a history within a project.
+        # Maximum of 200 characters.
+        # - In response always set
+        # - In create request: always set
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1166,12 +1158,12 @@ module Google
       class Image
         include Google::Apis::Core::Hashable
       
-        # The `Status` type defines a logical error model that is suitable for different
-        # programming environments, including REST APIs and RPC APIs. It is used by [
-        # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-        # data: error code, error message, and error details.
-        # You can find out more about this error model and how to work with it in the [
-        # API Design Guide](https://cloud.google.com/apis/design/errors).
+        # The `Status` type defines a logical error model that is suitable for
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
         # Corresponds to the JSON property `error`
         # @return [Google::Apis::ToolresultsV1beta3::Status]
         attr_accessor :error
@@ -1205,20 +1197,47 @@ module Google
         end
       end
       
+      # Additional details of in-app purchases encountered during the crawl.
+      class InAppPurchasesFound
+        include Google::Apis::Core::Hashable
+      
+        # The total number of in-app purchases flows explored: how many times the
+        # robo tries to buy a SKU.
+        # Corresponds to the JSON property `inAppPurchasesFlowsExplored`
+        # @return [Fixnum]
+        attr_accessor :in_app_purchases_flows_explored
+      
+        # The total number of in-app purchases flows started.
+        # Corresponds to the JSON property `inAppPurchasesFlowsStarted`
+        # @return [Fixnum]
+        attr_accessor :in_app_purchases_flows_started
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @in_app_purchases_flows_explored = args[:in_app_purchases_flows_explored] if args.key?(:in_app_purchases_flows_explored)
+          @in_app_purchases_flows_started = args[:in_app_purchases_flows_started] if args.key?(:in_app_purchases_flows_started)
+        end
+      end
+      
       # Details for an outcome with an INCONCLUSIVE outcome summary.
       class InconclusiveDetail
         include Google::Apis::Core::Hashable
       
         # If the end user aborted the test execution before a pass or fail could be
-        # determined. For example, the user pressed ctrl-c which sent a kill signal to
-        # the test runner while the test was running.
+        # determined.
+        # For example, the user pressed ctrl-c which sent a kill signal to the test
+        # runner while the test was running.
         # Corresponds to the JSON property `abortedByUser`
         # @return [Boolean]
         attr_accessor :aborted_by_user
         alias_method :aborted_by_user?, :aborted_by_user
       
-        # If results are being provided to the user in certain cases of infrastructure
-        # failures
+        # If results are being provided to the user in certain cases of
+        # infrastructure failures
         # Corresponds to the JSON property `hasErrorLogs`
         # @return [Boolean]
         attr_accessor :has_error_logs
@@ -1245,13 +1264,14 @@ module Google
         end
       end
       
-      # Step Id and outcome of each individual step that was run as a group with other
-      # steps with the same configuration.
+      # Step Id and outcome of each individual step that was run as a group with
+      # other steps with the same configuration.
       class IndividualOutcome
         include Google::Apis::Core::Hashable
       
-        # Unique int given to each step. Ranges from 0(inclusive) to total number of
-        # steps(exclusive). The primary step is 0.
+        # Unique int given to each step.
+        # Ranges from 0(inclusive) to total number of steps(exclusive).
+        # The primary step is 0.
         # Corresponds to the JSON property `multistepNumber`
         # @return [Fixnum]
         attr_accessor :multistep_number
@@ -1261,36 +1281,12 @@ module Google
         # @return [String]
         attr_accessor :outcome_summary
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `runDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :run_duration
@@ -1310,6 +1306,51 @@ module Google
           @outcome_summary = args[:outcome_summary] if args.key?(:outcome_summary)
           @run_duration = args[:run_duration] if args.key?(:run_duration)
           @step_id = args[:step_id] if args.key?(:step_id)
+        end
+      end
+      
+      # A warning that Robo did not crawl potentially important parts of the app.
+      class InsufficientCoverage
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Additional details for an iOS app crash.
+      class IosAppCrashed
+        include Google::Apis::Core::Hashable
+      
+        # A stacktrace.
+        # Corresponds to the JSON property `stackTrace`
+        # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
+        attr_accessor :stack_trace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+        end
+      end
+      
+      # Failed to find the launcher activity of an app.
+      class LauncherActivityNotFound
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1399,10 +1440,10 @@ module Google
       
         # A continuation token to resume the query at the next item.
         # Will only be set if there are more histories to fetch.
-        # Tokens are valid for up to one hour from the time of the first list request.
-        # For instance, if you make a list request at 1PM and use the token from this
-        # first request 10 minutes later, the token from this second response will only
-        # be valid for 50 minutes.
+        # Tokens are valid for up to one hour from the time of the first list
+        # request. For instance, if you make a list request at 1PM and use the token
+        # from this first request 10 minutes later, the token from this second
+        # response will only be valid for 50 minutes.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1442,8 +1483,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional, returned if result size exceeds the page size specified in the
-        # request (or the default page size, 500, if unspecified). It indicates the last
-        # sample timestamp to be used as page_token in subsequent request
+        # request (or the default page size, 500, if unspecified). It indicates the
+        # last sample timestamp to be used as page_token in subsequent request
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -1468,7 +1509,8 @@ module Google
       class ListScreenshotClustersResponse
         include Google::Apis::Core::Hashable
       
-        # The set of clusters associated with an execution Always set
+        # The set of clusters associated with an execution
+        # Always set
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::ToolresultsV1beta3::ScreenshotCluster>]
         attr_accessor :clusters
@@ -1487,17 +1529,19 @@ module Google
       class ListStepAccessibilityClustersResponse
         include Google::Apis::Core::Hashable
       
-        # A sequence of accessibility suggestions, grouped into clusters. Within the
-        # sequence, clusters that belong to the same SuggestionCategory should be
-        # adjacent. Within each category, clusters should be ordered by their
-        # SuggestionPriority (ERRORs first). The categories should be ordered by their
-        # highest priority cluster.
+        # A sequence of accessibility suggestions, grouped into clusters.
+        # Within the sequence, clusters that belong to the same SuggestionCategory
+        # should be adjacent.
+        # Within each category, clusters should be ordered by their
+        # SuggestionPriority (ERRORs first).
+        # The categories should be ordered by their highest priority cluster.
         # Corresponds to the JSON property `clusters`
         # @return [Array<Google::Apis::ToolresultsV1beta3::SuggestionClusterProto>]
         attr_accessor :clusters
       
-        # A full resource name of the step. For example, projects/my-project/histories/
-        # bh.1234567890abcdef/executions/ 1234567890123456789/steps/bs.1234567890abcdef
+        # A full resource name of the step.
+        # For example, projects/my-project/histories/bh.1234567890abcdef/executions/
+        # 1234567890123456789/steps/bs.1234567890abcdef
         # Always presents.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1527,11 +1571,14 @@ module Google
       
         # A list of image data.
         # Images are returned in a deterministic order; they are ordered by these
-        # factors, in order of importance: * First, by their associated test case.
-        # Images without a test case are considered greater than images with one. *
-        # Second, by their creation time. Images without a creation time are greater
-        # than images with one. * Third, by the order in which they were added to the
-        # step (by calls to CreateStep or UpdateStep).
+        # factors, in order of
+        # importance:
+        # * First, by their associated test case. Images without a test case are
+        # considered greater than images with one.
+        # * Second, by their creation time. Images without a creation time are
+        # greater than images with one.
+        # * Third, by the order in which they were added to the step (by calls to
+        # CreateStep or UpdateStep).
         # Corresponds to the JSON property `thumbnails`
         # @return [Array<Google::Apis::ToolresultsV1beta3::Image>]
         attr_accessor :thumbnails
@@ -1599,6 +1646,19 @@ module Google
         end
       end
       
+      # One dimension of the matrix of different runs of a step.
+      class MatrixDimensionDefinition
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
       # 
       class MemoryInfo
         include Google::Apis::Core::Hashable
@@ -1642,16 +1702,17 @@ module Google
         # @return [String]
         attr_accessor :state
       
-        # The combined and rolled-up result of each test suite that was run as part of
-        # this environment.
-        # Combining: When the test cases from a suite are run in different steps (
-        # sharding), the results are added back together in one overview. (e.g., if
-        # shard1 has 2 failures and shard2 has 1 failure than the overview failure_count
-        # = 3).
-        # Rollup: When test cases from the same suite are run multiple times (flaky),
-        # the results are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes,
-        # and both testcase2.run1 and testcase2.run2 fail then the overview flaky_count
-        # = 1 and failure_count = 1).
+        # The combined and rolled-up result of each test suite that was run as part
+        # of this environment.
+        # Combining:
+        # When the test cases from a suite are run in different steps (sharding),
+        # the results are added back together in one overview. (e.g., if shard1 has
+        # 2 failures and shard2 has 1 failure than the overview failure_count = 3).
+        # Rollup:
+        # When test cases from the same suite are run multiple times (flaky), the
+        # results are combined (e.g., if testcase1.run1 fails, testcase1.run2
+        # passes, and both testcase2.run1 and testcase2.run2 fail then the overview
+        # flaky_count = 1 and failure_count = 1).
         # Corresponds to the JSON property `testSuiteOverviews`
         # @return [Array<Google::Apis::ToolresultsV1beta3::TestSuiteOverview>]
         attr_accessor :test_suite_overviews
@@ -1672,8 +1733,9 @@ module Google
       class MultiStep
         include Google::Apis::Core::Hashable
       
-        # Unique int given to each step. Ranges from 0(inclusive) to total number of
-        # steps(exclusive). The primary step is 0.
+        # Unique int given to each step.
+        # Ranges from 0(inclusive) to total number of steps(exclusive).
+        # The primary step is 0.
         # Corresponds to the JSON property `multistepNumber`
         # @return [Fixnum]
         attr_accessor :multistep_number
@@ -1701,6 +1763,174 @@ module Google
         end
       end
       
+      # Additional details for a native crash.
+      class NativeCrash
+        include Google::Apis::Core::Hashable
+      
+        # A stacktrace.
+        # Corresponds to the JSON property `stackTrace`
+        # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
+        attr_accessor :stack_trace
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+        end
+      end
+      
+      # A non-sdk API and examples of it being called along with other metadata
+      # See
+      # https://developer.android.com/distribute/best-practices/develop/restrictions-
+      # non-sdk-interfaces
+      class NonSdkApi
+        include Google::Apis::Core::Hashable
+      
+        # The signature of the Non-SDK API
+        # Corresponds to the JSON property `apiSignature`
+        # @return [String]
+        attr_accessor :api_signature
+      
+        # Example stack traces of this API being called.
+        # Corresponds to the JSON property `exampleStackTraces`
+        # @return [Array<String>]
+        attr_accessor :example_stack_traces
+      
+        # Optional debugging insights for non-SDK API violations.
+        # Corresponds to the JSON property `insights`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::NonSdkApiInsight>]
+        attr_accessor :insights
+      
+        # The total number of times this API was observed to have been called.
+        # Corresponds to the JSON property `invocationCount`
+        # @return [Fixnum]
+        attr_accessor :invocation_count
+      
+        # Which list this API appears on
+        # Corresponds to the JSON property `list`
+        # @return [String]
+        attr_accessor :list
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_signature = args[:api_signature] if args.key?(:api_signature)
+          @example_stack_traces = args[:example_stack_traces] if args.key?(:example_stack_traces)
+          @insights = args[:insights] if args.key?(:insights)
+          @invocation_count = args[:invocation_count] if args.key?(:invocation_count)
+          @list = args[:list] if args.key?(:list)
+        end
+      end
+      
+      # Non-SDK API insights (to address debugging solutions).
+      class NonSdkApiInsight
+        include Google::Apis::Core::Hashable
+      
+        # Optional sample stack traces, for which this insight applies (there
+        # should be at least one).
+        # Corresponds to the JSON property `exampleTraceMessages`
+        # @return [Array<String>]
+        attr_accessor :example_trace_messages
+      
+        # A unique ID, to be used for determining the effectiveness of this
+        # particular insight in the context of a matcher. (required)
+        # Corresponds to the JSON property `matcherId`
+        # @return [String]
+        attr_accessor :matcher_id
+      
+        # This insight indicates that the hidden API usage originates from a
+        # Google-provided library. Users need not take any action.
+        # Corresponds to the JSON property `pendingGoogleUpdateInsight`
+        # @return [Google::Apis::ToolresultsV1beta3::PendingGoogleUpdateInsight]
+        attr_accessor :pending_google_update_insight
+      
+        # This insight is a recommendation to upgrade a given library to the specified
+        # version, in order to avoid dependencies on non-SDK APIs.
+        # Corresponds to the JSON property `upgradeInsight`
+        # @return [Google::Apis::ToolresultsV1beta3::UpgradeInsight]
+        attr_accessor :upgrade_insight
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @example_trace_messages = args[:example_trace_messages] if args.key?(:example_trace_messages)
+          @matcher_id = args[:matcher_id] if args.key?(:matcher_id)
+          @pending_google_update_insight = args[:pending_google_update_insight] if args.key?(:pending_google_update_insight)
+          @upgrade_insight = args[:upgrade_insight] if args.key?(:upgrade_insight)
+        end
+      end
+      
+      # Additional details for a non-sdk API usage violation.
+      class NonSdkApiUsageViolation
+        include Google::Apis::Core::Hashable
+      
+        # Signatures of a subset of those hidden API's.
+        # Corresponds to the JSON property `apiSignatures`
+        # @return [Array<String>]
+        attr_accessor :api_signatures
+      
+        # Total number of unique hidden API's accessed.
+        # Corresponds to the JSON property `uniqueApis`
+        # @return [Fixnum]
+        attr_accessor :unique_apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @api_signatures = args[:api_signatures] if args.key?(:api_signatures)
+          @unique_apis = args[:unique_apis] if args.key?(:unique_apis)
+        end
+      end
+      
+      # Contains a summary and examples of non-sdk API usage violations.
+      class NonSdkApiUsageViolationReport
+        include Google::Apis::Core::Hashable
+      
+        # Examples of the detected API usages.
+        # Corresponds to the JSON property `exampleApis`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::NonSdkApi>]
+        attr_accessor :example_apis
+      
+        # Minimum API level required for the application to run.
+        # Corresponds to the JSON property `minSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :min_sdk_version
+      
+        # Specifies the API Level on which the application is designed to run.
+        # Corresponds to the JSON property `targetSdkVersion`
+        # @return [Fixnum]
+        attr_accessor :target_sdk_version
+      
+        # Total number of unique Non-SDK API's accessed.
+        # Corresponds to the JSON property `uniqueApis`
+        # @return [Fixnum]
+        attr_accessor :unique_apis
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @example_apis = args[:example_apis] if args.key?(:example_apis)
+          @min_sdk_version = args[:min_sdk_version] if args.key?(:min_sdk_version)
+          @target_sdk_version = args[:target_sdk_version] if args.key?(:target_sdk_version)
+          @unique_apis = args[:unique_apis] if args.key?(:unique_apis)
+        end
+      end
+      
       # Interprets a result so that humans and machines can act on it.
       class Outcome
         include Google::Apis::Core::Hashable
@@ -1720,7 +1950,8 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::SkippedDetail]
         attr_accessor :skipped_detail
       
-        # Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+        # Details for an outcome with a SUCCESS outcome summary.
+        # LINT.IfChange
         # Corresponds to the JSON property `successDetail`
         # @return [Google::Apis::ToolresultsV1beta3::SuccessDetail]
         attr_accessor :success_detail
@@ -1742,6 +1973,52 @@ module Google
           @skipped_detail = args[:skipped_detail] if args.key?(:skipped_detail)
           @success_detail = args[:success_detail] if args.key?(:success_detail)
           @summary = args[:summary] if args.key?(:summary)
+        end
+      end
+      
+      # A warning that Robo encountered a screen that has overlapping clickable
+      # elements; this may indicate a potential UI issue.
+      class OverlappingUiElements
+        include Google::Apis::Core::Hashable
+      
+        # Resource names of the overlapping screen elements
+        # Corresponds to the JSON property `resourceName`
+        # @return [Array<String>]
+        attr_accessor :resource_name
+      
+        # The screen id of the elements
+        # Corresponds to the JSON property `screenId`
+        # @return [String]
+        attr_accessor :screen_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+          @screen_id = args[:screen_id] if args.key?(:screen_id)
+        end
+      end
+      
+      # This insight indicates that the hidden API usage originates from a
+      # Google-provided library. Users need not take any action.
+      class PendingGoogleUpdateInsight
+        include Google::Apis::Core::Hashable
+      
+        # The name of the Google-provided library with the non-SDK API dependency.
+        # Corresponds to the JSON property `nameOfGoogleLibrary`
+        # @return [String]
+        attr_accessor :name_of_google_library
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name_of_google_library = args[:name_of_google_library] if args.key?(:name_of_google_library)
         end
       end
       
@@ -1780,18 +2057,22 @@ module Google
         attr_accessor :app_start_time
       
         # A tool results execution ID.
+        # @OutputOnly
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
       
-        # Graphics statistics for the App. The information is collected from 'adb shell
-        # dumpsys graphicsstats'. For more info see: https://developer.android.com/
-        # training/testing/performance.html Statistics will only be present for API 23+.
+        # Graphics statistics for the App.
+        # The information is collected from 'adb shell dumpsys graphicsstats'.
+        # For more info see:
+        # https://developer.android.com/training/testing/performance.html
+        # Statistics will only be present for API 23+.
         # Corresponds to the JSON property `graphicsStats`
         # @return [Google::Apis::ToolresultsV1beta3::GraphicsStats]
         attr_accessor :graphics_stats
       
         # A tool results history ID.
+        # @OutputOnly
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
@@ -1807,11 +2088,13 @@ module Google
         attr_accessor :perf_metrics
       
         # The cloud project
+        # @OutputOnly
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
         # A tool results step ID.
+        # @OutputOnly
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -1838,58 +2121,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `sampleTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :sample_time
@@ -1920,26 +2161,31 @@ module Google
         attr_accessor :basic_perf_sample_series
       
         # A tool results execution ID.
+        # @OutputOnly
         # Corresponds to the JSON property `executionId`
         # @return [String]
         attr_accessor :execution_id
       
         # A tool results history ID.
+        # @OutputOnly
         # Corresponds to the JSON property `historyId`
         # @return [String]
         attr_accessor :history_id
       
         # The cloud project
+        # @OutputOnly
         # Corresponds to the JSON property `projectId`
         # @return [String]
         attr_accessor :project_id
       
         # A sample series id
+        # @OutputOnly
         # Corresponds to the JSON property `sampleSeriesId`
         # @return [String]
         attr_accessor :sample_series_id
       
         # A tool results step ID.
+        # @OutputOnly
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -1959,6 +2205,38 @@ module Google
         end
       end
       
+      # A notification that Robo signed in with Google.
+      class PerformedGoogleLogin
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A notification that Robo performed some monkey actions.
+      class PerformedMonkeyActions
+        include Google::Apis::Core::Hashable
+      
+        # The total number of monkey actions performed during the crawl.
+        # Corresponds to the JSON property `totalActions`
+        # @return [Fixnum]
+        attr_accessor :total_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @total_actions = args[:total_actions] if args.key?(:total_actions)
+        end
+      end
+      
       # Stores rollup test status of multiple steps that were run as a group and
       # outcome of each individual step.
       class PrimaryStep
@@ -1969,8 +2247,8 @@ module Google
         # @return [Array<Google::Apis::ToolresultsV1beta3::IndividualOutcome>]
         attr_accessor :individual_outcome
       
-        # Rollup test status of multiple steps that were run with the same configuration
-        # as a group.
+        # Rollup test status of multiple steps that were run with the same
+        # configuration as a group.
         # Corresponds to the JSON property `rollUp`
         # @return [String]
         attr_accessor :roll_up
@@ -1992,14 +2270,17 @@ module Google
       
         # The name of the Google Cloud Storage bucket to which results are written.
         # By default, this is unset.
-        # In update request: optional In response: optional
+        # In update request: optional
+        # In response: optional
         # Corresponds to the JSON property `defaultBucket`
         # @return [String]
         attr_accessor :default_bucket
       
         # The name of the project's settings.
-        # Always of the form: projects/`project-id`/settings
-        # In update request: never set In response: always set
+        # Always of the form:
+        # projects/`project-id`/settings
+        # In update request: never set
+        # In response: always set
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2040,22 +2321,26 @@ module Google
       class RegionProto
         include Google::Apis::Core::Hashable
       
-        # The height, in pixels. Always set.
+        # The height, in pixels.
+        # Always set.
         # Corresponds to the JSON property `heightPx`
         # @return [Fixnum]
         attr_accessor :height_px
       
-        # The left side of the rectangle, in pixels. Always set.
+        # The left side of the rectangle, in pixels.
+        # Always set.
         # Corresponds to the JSON property `leftPx`
         # @return [Fixnum]
         attr_accessor :left_px
       
-        # The top of the rectangle, in pixels. Always set.
+        # The top of the rectangle, in pixels.
+        # Always set.
         # Corresponds to the JSON property `topPx`
         # @return [Fixnum]
         attr_accessor :top_px
       
-        # The width, in pixels. Always set.
+        # The width, in pixels.
+        # Always set.
         # Corresponds to the JSON property `widthPx`
         # @return [Fixnum]
         attr_accessor :width_px
@@ -2098,18 +2383,44 @@ module Google
         end
       end
       
-      # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
-      # it's trivial for an attacker to forge serialized messages that don't fulfill
-      # the type's safety contract -- for example, it could contain attacker
-      # controlled script. A system which receives a SafeHtmlProto implicitly trusts
-      # the producer of the SafeHtmlProto. So, it's generally safe to return this
-      # message in RPC responses, but generally unsafe to accept it in RPC requests.
+      # Execution stats for a user-provided Robo script.
+      class RoboScriptExecution
+        include Google::Apis::Core::Hashable
+      
+        # The number of Robo script actions executed successfully.
+        # Corresponds to the JSON property `successfulActions`
+        # @return [Fixnum]
+        attr_accessor :successful_actions
+      
+        # The total number of actions in the Robo script.
+        # Corresponds to the JSON property `totalActions`
+        # @return [Fixnum]
+        attr_accessor :total_actions
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @successful_actions = args[:successful_actions] if args.key?(:successful_actions)
+          @total_actions = args[:total_actions] if args.key?(:total_actions)
+        end
+      end
+      
+      # IMPORTANT: It is unsafe to accept this message from an untrusted source,
+      # since it's trivial for an attacker to forge serialized messages that
+      # don't fulfill the type's safety contract -- for example, it could contain
+      # attacker controlled script. A system which receives a SafeHtmlProto
+      # implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe
+      # to return this message in RPC responses, but generally unsafe to accept it
+      # in RPC requests.
       class SafeHtmlProto
         include Google::Apis::Core::Hashable
       
-        # IMPORTANT: Never set or read this field, even from tests, it is private. See
-        # documentation at the top of .proto file for programming language packages with
-        # which to create or read this message.
+        # IMPORTANT: Never set or read this field, even from tests, it is private.
+        # See documentation at the top of .proto file for programming language
+        # packages with which to create or read this message.
         # Corresponds to the JSON property `privateDoNotAccessOrElseSafeHtmlWrappedValue`
         # @return [String]
         attr_accessor :private_do_not_access_or_else_safe_html_wrapped_value
@@ -2128,22 +2439,26 @@ module Google
       class Screen
         include Google::Apis::Core::Hashable
       
-        # File reference of the png file. Required.
+        # File reference of the png file.
+        # Required.
         # Corresponds to the JSON property `fileReference`
         # @return [String]
         attr_accessor :file_reference
       
-        # Locale of the device that the screenshot was taken on. Required.
+        # Locale of the device that the screenshot was taken on.
+        # Required.
         # Corresponds to the JSON property `locale`
         # @return [String]
         attr_accessor :locale
       
-        # Model of the device that the screenshot was taken on. Required.
+        # Model of the device that the screenshot was taken on.
+        # Required.
         # Corresponds to the JSON property `model`
         # @return [String]
         attr_accessor :model
       
-        # OS version of the device that the screenshot was taken on. Required.
+        # OS version of the device that the screenshot was taken on.
+        # Required.
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -2171,14 +2486,15 @@ module Google
         attr_accessor :activity
       
         # A unique identifier for the cluster.
+        # @OutputOnly
         # Corresponds to the JSON property `clusterId`
         # @return [String]
         attr_accessor :cluster_id
       
-        # A singular screen that represents the cluster as a whole. This screen will act
-        # as the "cover" of the entire cluster. When users look at the clusters, only
-        # the key screen from each cluster will be shown. Which screen is the key screen
-        # is determined by the ClusteringAlgorithm
+        # A singular screen that represents the cluster as a whole. This screen will
+        # act as the "cover" of the entire cluster. When users look at the clusters,
+        # only the key screen from each cluster will be shown. Which screen is the
+        # key screen is determined by the ClusteringAlgorithm
         # Corresponds to the JSON property `keyScreen`
         # @return [Google::Apis::ToolresultsV1beta3::Screen]
         attr_accessor :key_screen
@@ -2205,6 +2521,13 @@ module Google
       class ShardSummary
         include Google::Apis::Core::Hashable
       
+        # Summaries of the steps belonging to the shard.
+        # With flaky_test_attempts enabled from TestExecutionService, more than one
+        # run (Step) can present. And the runs will be sorted by multistep_number.
+        # Corresponds to the JSON property `runs`
+        # @return [Array<Google::Apis::ToolresultsV1beta3::StepSummary>]
+        attr_accessor :runs
+      
         # Merged test result for environment.
         # If the environment has only one step (no reruns or shards), then the merged
         # result is the same as the step result. If the environment has multiple shards
@@ -2220,6 +2543,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @runs = args[:runs] if args.key?(:runs)
           @shard_result = args[:shard_result] if args.key?(:shard_result)
         end
       end
@@ -2297,29 +2621,54 @@ module Google
         end
       end
       
-      # The `Status` type defines a logical error model that is suitable for different
-      # programming environments, including REST APIs and RPC APIs. It is used by [
-      # gRPC](https://github.com/grpc). Each `Status` message contains three pieces of
-      # data: error code, error message, and error details.
-      # You can find out more about this error model and how to work with it in the [
-      # API Design Guide](https://cloud.google.com/apis/design/errors).
+      # User provided intent failed to resolve to an activity.
+      class StartActivityNotFound
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `action`
+        # @return [String]
+        attr_accessor :action
+      
+        # 
+        # Corresponds to the JSON property `uri`
+        # @return [String]
+        attr_accessor :uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @action = args[:action] if args.key?(:action)
+          @uri = args[:uri] if args.key?(:uri)
+        end
+      end
+      
+      # The `Status` type defines a logical error model that is suitable for
+      # different programming environments, including REST APIs and RPC APIs. It is
+      # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+      # three pieces of data: error code, error message, and error details.
+      # You can find out more about this error model and how to work with it in the
+      # [API Design Guide](https://cloud.google.com/apis/design/errors).
       class Status
         include Google::Apis::Core::Hashable
       
-        # The status code, which should be an enum value of [google.rpc.Code][].
+        # The status code, which should be an enum value of google.rpc.Code.
         # Corresponds to the JSON property `code`
         # @return [Fixnum]
         attr_accessor :code
       
-        # A list of messages that carry the error details. There is a common set of
+        # A list of messages that carry the error details.  There is a common set of
         # message types for APIs to use.
         # Corresponds to the JSON property `details`
-        # @return [Array<Google::Apis::ToolresultsV1beta3::Any>]
+        # @return [Array<Hash<String,Object>>]
         attr_accessor :details
       
-        # A developer-facing error message, which should be in English. Any user-facing
-        # error message should be localized and sent in the [google.rpc.Status.details][]
-        # field, or localized by the client.
+        # A developer-facing error message, which should be in English. Any
+        # user-facing error message should be localized and sent in the
+        # google.rpc.Status.details field, or localized by the client.
         # Corresponds to the JSON property `message`
         # @return [String]
         attr_accessor :message
@@ -2336,221 +2685,121 @@ module Google
         end
       end
       
-      # A Step represents a single operation performed as part of Execution. A step
-      # can be used to represent the execution of a tool ( for example a test runner
-      # execution or an execution of a compiler).
-      # Steps can overlap (for instance two steps might have the same start time if
-      # some operations are done in parallel).
+      # A Step represents a single operation performed as part of
+      # Execution. A step can be used to represent the execution of a tool (
+      # for example a test runner execution or an execution of a compiler).
+      # Steps can overlap (for instance two steps might have the same
+      # start time if some operations are done in parallel).
       # Here is an example, let's consider that we have a continuous build is
-      # executing a test runner for each iteration. The workflow would look like: -
-      # user creates a Execution with id 1 - user creates an TestExecutionStep with id
-      # 100 for Execution 1 - user update TestExecutionStep with id 100 to add a raw
-      # xml log + the service parses the xml logs and returns a TestExecutionStep with
-      # updated TestResult(s). - user update the status of TestExecutionStep with id
-      # 100 to COMPLETE
-      # A Step can be updated until its state is set to COMPLETE at which points it
-      # becomes immutable.
+      # executing a test runner for each iteration. The workflow would look like:
+      # - user creates a Execution with id 1
+      # - user creates an TestExecutionStep with id 100 for Execution 1
+      # - user update TestExecutionStep with id 100 to add a raw xml log
+      # + the service parses the xml logs and returns a TestExecutionStep with
+      # updated TestResult(s).
+      # - user update the status of TestExecutionStep with id 100 to COMPLETE
+      # A Step can be updated until its state is set to COMPLETE at which
+      # points it becomes immutable.
       # Next tag: 27
       class Step
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `completionTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :completion_time
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
       
-        # A description of this tool For example: mvn clean package -D skipTests=true
-        # - In response: present if set by create/update request - In create/update
-        # request: optional
+        # A description of this tool
+        # For example: mvn clean package -D skipTests=true
+        # - In response: present if set by create/update request
+        # - In create/update request: optional
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `deviceUsageDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :device_usage_duration
       
-        # If the execution containing this step has any dimension_definition set, then
-        # this field allows the child to specify the values of the dimensions.
+        # If the execution containing this step has any dimension_definition set,
+        # then this field allows the child to specify the values of the dimensions.
         # The keys must exactly match the dimension_definition of the execution.
-        # For example, if the execution has `dimension_definition = ['attempt', 'device']
-        # ` then a step must define values for those dimensions, eg. `dimension_value = [
-        # 'attempt': '1', 'device': 'Nexus 6']`
-        # If a step does not participate in one dimension of the matrix, the value for
-        # that dimension should be empty string. For example, if one of the tests is
-        # executed by a runner which does not support retries, the step could have `
-        # dimension_value = ['attempt': '', 'device': 'Nexus 6']`
-        # If the step does not participate in any dimensions of the matrix, it may leave
-        # dimension_value unset.
-        # A PRECONDITION_FAILED will be returned if any of the keys do not exist in the
-        # dimension_definition of the execution.
+        # For example, if the execution has
+        # `dimension_definition = ['attempt', 'device']`
+        # then a step must define values for those dimensions, eg.
+        # `dimension_value = ['attempt': '1', 'device': 'Nexus 6']`
+        # If a step does not participate in one dimension of the matrix,
+        # the value for that dimension should be empty string.
+        # For example, if one of the tests is executed by a runner which
+        # does not support retries, the step could have
+        # `dimension_value = ['attempt': '', 'device': 'Nexus 6']`
+        # If the step does not participate in any dimensions of the matrix,
+        # it may leave dimension_value unset.
+        # A PRECONDITION_FAILED will be returned if any of the keys do not exist
+        # in the dimension_definition of the execution.
         # A PRECONDITION_FAILED will be returned if another step in this execution
         # already has the same name and dimension_value, but differs on other data
         # fields, for example, step field is different.
-        # A PRECONDITION_FAILED will be returned if dimension_value is set, and there is
-        # a dimension_definition in the execution which is not specified as one of the
-        # keys.
-        # - In response: present if set by create - In create request: optional - In
-        # update request: never set
+        # A PRECONDITION_FAILED will be returned if dimension_value is set, and
+        # there is a dimension_definition in the execution which is not specified
+        # as one of the keys.
+        # - In response: present if set by create
+        # - In create request: optional
+        # - In update request: never set
         # Corresponds to the JSON property `dimensionValue`
         # @return [Array<Google::Apis::ToolresultsV1beta3::StepDimensionValueEntry>]
         attr_accessor :dimension_value
       
-        # Whether any of the outputs of this step are images whose thumbnails can be
-        # fetched with ListThumbnails.
-        # - In response: always set - In create/update request: never set
+        # Whether any of the outputs of this step are images whose
+        # thumbnails can be fetched with ListThumbnails.
+        # - In response: always set
+        # - In create/update request: never set
         # Corresponds to the JSON property `hasImages`
         # @return [Boolean]
         attr_accessor :has_images
         alias_method :has_images?, :has_images
       
-        # Arbitrary user-supplied key/value pairs that are associated with the step.
-        # Users are responsible for managing the key namespace such that keys don't
-        # accidentally collide.
-        # An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or if
-        # the length of any of the keys or values exceeds 100 characters.
-        # - In response: always set - In create request: optional - In update request:
-        # optional; any new key/value pair will be added to the map, and any new value
-        # for an existing key will update that key's value
+        # Arbitrary user-supplied key/value pairs that are associated with the
+        # step.
+        # Users are responsible for managing the key namespace such that keys
+        # don't accidentally collide.
+        # An INVALID_ARGUMENT will be returned if the number of labels exceeds 100 or
+        # if the length of any of the keys or values exceeds 100 characters.
+        # - In response: always set
+        # - In create request: optional
+        # - In update request: optional; any new key/value pair will be added to the
+        # map, and any new value for an existing key will update that key's value
         # Corresponds to the JSON property `labels`
         # @return [Array<Google::Apis::ToolresultsV1beta3::StepLabelsEntry>]
         attr_accessor :labels
@@ -2560,15 +2809,17 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::MultiStep]
         attr_accessor :multi_step
       
-        # A short human-readable name to display in the UI. Maximum of 100 characters.
+        # A short human-readable name to display in the UI.
+        # Maximum of 100 characters.
         # For example: Clean build
-        # A PRECONDITION_FAILED will be returned upon creating a new step if it shares
-        # its name and dimension_value with an existing step. If two steps represent a
-        # similar action, but have different dimension values, they should share the
-        # same name. For instance, if the same set of tests is run on two different
-        # platforms, the two steps should have the same name.
-        # - In response: always set - In create request: always set - In update request:
-        # never set
+        # A PRECONDITION_FAILED will be returned upon creating a new step if it
+        # shares its name and dimension_value with an existing step. If two steps
+        # represent a similar action, but have different dimension values, they
+        # should share the same name. For instance, if the same set of tests is
+        # run on two different platforms, the two steps should have the same name.
+        # - In response: always set
+        # - In create request: always set
+        # - In update request: never set
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2578,54 +2829,34 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::Outcome]
         attr_accessor :outcome
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `runDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :run_duration
       
-        # The initial state is IN_PROGRESS. The only legal state transitions are *
-        # IN_PROGRESS -> COMPLETE
-        # A PRECONDITION_FAILED will be returned if an invalid transition is requested.
-        # It is valid to create Step with a state set to COMPLETE. The state can only be
-        # set to COMPLETE once. A PRECONDITION_FAILED will be returned if the state is
-        # set to COMPLETE multiple times.
-        # - In response: always set - In create/update request: optional
+        # The initial state is IN_PROGRESS.
+        # The only legal state transitions are
+        # * IN_PROGRESS -> COMPLETE
+        # A PRECONDITION_FAILED will be returned if an invalid transition is
+        # requested.
+        # It is valid to create Step with a state set to COMPLETE.
+        # The state can only be set to COMPLETE once. A PRECONDITION_FAILED will be
+        # returned if the state is set to COMPLETE multiple times.
+        # - In response: always set
+        # - In create/update request: optional
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state
       
         # A unique identifier within a Execution for this Step.
         # Returns INVALID_ARGUMENT if this field is set or overwritten by the caller.
-        # - In response: always set - In create/update request: never set
+        # - In response: always set
+        # - In create/update request: never set
         # Corresponds to the JSON property `stepId`
         # @return [String]
         attr_accessor :step_id
@@ -2639,8 +2870,8 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::TestExecutionStep]
         attr_accessor :test_execution_step
       
-        # Generic tool step to be used for binaries we do not explicitly support. For
-        # example: running cp to copy artifacts from one location to another.
+        # Generic tool step to be used for binaries we do not explicitly support.
+        # For example: running cp to copy artifacts from one location to another.
         # Corresponds to the JSON property `toolExecutionStep`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecutionStep]
         attr_accessor :tool_execution_step
@@ -2719,7 +2950,21 @@ module Google
         end
       end
       
-      # Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
+      # Lightweight summary of a step within this execution.
+      class StepSummary
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Details for an outcome with a SUCCESS outcome summary.
+      # LINT.IfChange
       class SuccessDetail
         include Google::Apis::Core::Hashable
       
@@ -2740,19 +2985,20 @@ module Google
       end
       
       # A set of similar suggestions that we suspect are closely related.
-      # This proto and most of the nested protos are branched from foxandcrown.
-      # prelaunchreport.service.SuggestionClusterProto, replacing PLR's dependencies
-      # with FTL's.
+      # This proto and most of the nested protos are branched from
+      # foxandcrown.prelaunchreport.service.SuggestionClusterProto, replacing PLR's
+      # dependencies with FTL's.
       class SuggestionClusterProto
         include Google::Apis::Core::Hashable
       
-        # Category in which these types of suggestions should appear. Always set.
+        # Category in which these types of suggestions should appear.
+        # Always set.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
       
-        # A sequence of suggestions. All of the suggestions within a cluster must have
-        # the same SuggestionPriority and belong to the same SuggestionCategory.
+        # A sequence of suggestions. All of the suggestions within a cluster must
+        # have the same SuggestionPriority and belong to the same SuggestionCategory.
         # Suggestions with the same screenshot URL should be adjacent.
         # Corresponds to the JSON property `suggestions`
         # @return [Array<Google::Apis::ToolresultsV1beta3::SuggestionProto>]
@@ -2773,30 +3019,32 @@ module Google
       class SuggestionProto
         include Google::Apis::Core::Hashable
       
-        # Reference to a help center article concerning this type of suggestion. Always
-        # set.
+        # Reference to a help center article concerning this type of suggestion.
+        # Always set.
         # Corresponds to the JSON property `helpUrl`
         # @return [String]
         attr_accessor :help_url
       
-        # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
-        # it's trivial for an attacker to forge serialized messages that don't fulfill
-        # the type's safety contract -- for example, it could contain attacker
-        # controlled script. A system which receives a SafeHtmlProto implicitly trusts
-        # the producer of the SafeHtmlProto. So, it's generally safe to return this
-        # message in RPC responses, but generally unsafe to accept it in RPC requests.
+        # IMPORTANT: It is unsafe to accept this message from an untrusted source,
+        # since it's trivial for an attacker to forge serialized messages that
+        # don't fulfill the type's safety contract -- for example, it could contain
+        # attacker controlled script. A system which receives a SafeHtmlProto
+        # implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe
+        # to return this message in RPC responses, but generally unsafe to accept it
+        # in RPC requests.
         # Corresponds to the JSON property `longMessage`
         # @return [Google::Apis::ToolresultsV1beta3::SafeHtmlProto]
         attr_accessor :long_message
       
-        # Relative importance of a suggestion. Always set.
+        # Relative importance of a suggestion.
+        # Always set.
         # Corresponds to the JSON property `priority`
         # @return [String]
         attr_accessor :priority
       
-        # A somewhat human readable identifier of the source view, if it does not have a
-        # resource_name. This is a path within the accessibility hierarchy, an element
-        # with resource name; similar to an XPath.
+        # A somewhat human readable identifier of the source view, if it does not
+        # have a resource_name. This is a path within the accessibility hierarchy,
+        # an element with resource name; similar to an XPath.
         # Corresponds to the JSON property `pseudoResourceId`
         # @return [String]
         attr_accessor :pseudo_resource_id
@@ -2806,33 +3054,37 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::RegionProto]
         attr_accessor :region
       
-        # Reference to a view element, identified by its resource name, if it has one.
+        # Reference to a view element, identified by its resource name, if it has
+        # one.
         # Corresponds to the JSON property `resourceName`
         # @return [String]
         attr_accessor :resource_name
       
-        # ID of the screen for the suggestion. It is used for getting the corresponding
-        # screenshot path. For example, screen_id "1" corresponds to "1.png" file in GCS.
+        # ID of the screen for the suggestion.
+        # It is used for getting the corresponding screenshot path. For example,
+        # screen_id "1" corresponds to "1.png" file in GCS.
         # Always set.
         # Corresponds to the JSON property `screenId`
         # @return [String]
         attr_accessor :screen_id
       
-        # Relative importance of a suggestion as compared with other suggestions that
-        # have the same priority and category. This is a meaningless value that can be
-        # used to order suggestions that are in the same category and have the same
-        # priority. The larger values have higher priority (i.e., are more important).
+        # Relative importance of a suggestion as compared with other suggestions
+        # that have the same priority and category.
+        # This is a meaningless value that can be used to order suggestions that are
+        # in the same category and have the same priority.
+        # The larger values have higher priority (i.e., are more important).
         # Optional.
         # Corresponds to the JSON property `secondaryPriority`
         # @return [Float]
         attr_accessor :secondary_priority
       
-        # IMPORTANT: It is unsafe to accept this message from an untrusted source, since
-        # it's trivial for an attacker to forge serialized messages that don't fulfill
-        # the type's safety contract -- for example, it could contain attacker
-        # controlled script. A system which receives a SafeHtmlProto implicitly trusts
-        # the producer of the SafeHtmlProto. So, it's generally safe to return this
-        # message in RPC responses, but generally unsafe to accept it in RPC requests.
+        # IMPORTANT: It is unsafe to accept this message from an untrusted source,
+        # since it's trivial for an attacker to forge serialized messages that
+        # don't fulfill the type's safety contract -- for example, it could contain
+        # attacker controlled script. A system which receives a SafeHtmlProto
+        # implicitly trusts the producer of the SafeHtmlProto. So, it's generally safe
+        # to return this message in RPC responses, but generally unsafe to accept it
+        # in RPC requests.
         # Corresponds to the JSON property `shortMessage`
         # @return [Google::Apis::ToolresultsV1beta3::SafeHtmlProto]
         attr_accessor :short_message
@@ -2866,93 +3118,27 @@ module Google
       class TestCase
         include Google::Apis::Core::Hashable
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `elapsedTime`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :elapsed_time
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `endTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :end_time
@@ -2964,66 +3150,24 @@ module Google
         attr_accessor :skipped_message
       
         # The stack trace details if the test case failed or encountered an error.
-        # The maximum size of the stack traces is 100KiB, beyond which the stack track
-        # will be truncated.
+        # The maximum size of the stack traces is 100KiB, beyond which the stack
+        # track will be truncated.
         # Zero if the test case passed.
         # Corresponds to the JSON property `stackTraces`
         # @return [Array<Google::Apis::ToolresultsV1beta3::StackTrace>]
         attr_accessor :stack_traces
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `startTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :start_time
@@ -3041,13 +3185,16 @@ module Google
       
         # A reference to a test case.
         # Test case references are canonically ordered lexicographically by these three
-        # factors: * First, by test_suite_name. * Second, by class_name. * Third, by
-        # name.
+        # factors:
+        # * First, by test_suite_name.
+        # * Second, by class_name.
+        # * Third, by name.
         # Corresponds to the JSON property `testCaseReference`
         # @return [Google::Apis::ToolresultsV1beta3::TestCaseReference]
         attr_accessor :test_case_reference
       
         # References to opaque files of any format output by the tool execution.
+        # @OutputOnly
         # Corresponds to the JSON property `toolOutputs`
         # @return [Array<Google::Apis::ToolresultsV1beta3::ToolOutputReference>]
         attr_accessor :tool_outputs
@@ -3072,8 +3219,10 @@ module Google
       
       # A reference to a test case.
       # Test case references are canonically ordered lexicographically by these three
-      # factors: * First, by test_suite_name. * Second, by class_name. * Third, by
-      # name.
+      # factors:
+      # * First, by test_suite_name.
+      # * Second, by class_name.
+      # * Third, by name.
       class TestCaseReference
         include Google::Apis::Core::Hashable
       
@@ -3114,20 +3263,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Issues observed during the test execution.
-        # For example, if the mobile app under test crashed during the test, the error
-        # message and the stack trace content can be recorded here to assist debugging.
-        # - In response: present if set by create or update - In create/update request:
-        # optional
+        # For example, if the mobile app under test crashed during the test,
+        # the error message and the stack trace content can be recorded here
+        # to assist debugging.
+        # - In response: present if set by create or update
+        # - In create/update request: optional
         # Corresponds to the JSON property `testIssues`
         # @return [Array<Google::Apis::ToolresultsV1beta3::TestIssue>]
         attr_accessor :test_issues
       
-        # List of test suite overview contents. This could be parsed from xUnit XML log
-        # by server, or uploaded directly by user. This references should only be called
-        # when test suites are fully parsed or uploaded.
+        # List of test suite overview contents. This could be parsed from xUnit XML
+        # log by server, or uploaded directly by user. This references should only be
+        # called when test suites are fully parsed or uploaded.
         # The maximum allowed number of test suite overviews per step is 1000.
-        # - In response: always set - In create request: optional - In update request:
-        # never (use publishXunitXmlFiles custom method instead)
+        # - In response: always set
+        # - In create request: optional
+        # - In update request: never (use publishXunitXmlFiles custom method instead)
         # Corresponds to the JSON property `testSuiteOverviews`
         # @return [Array<Google::Apis::ToolresultsV1beta3::TestSuiteOverview>]
         attr_accessor :test_suite_overviews
@@ -3137,8 +3288,8 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::TestTiming]
         attr_accessor :test_timing
       
-        # An execution of an arbitrary tool. It could be a test runner or a tool copying
-        # artifacts or deploying code.
+        # An execution of an arbitrary tool. It could be a test runner or a tool
+        # copying artifacts or deploying code.
         # Corresponds to the JSON property `toolExecution`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecution]
         attr_accessor :tool_execution
@@ -3160,17 +3311,20 @@ module Google
       class TestIssue
         include Google::Apis::Core::Hashable
       
-        # Category of issue. Required.
+        # Category of issue.
+        # Required.
         # Corresponds to the JSON property `category`
         # @return [String]
         attr_accessor :category
       
-        # A brief human-readable message describing the issue. Required.
+        # A brief human-readable message describing the issue.
+        # Required.
         # Corresponds to the JSON property `errorMessage`
         # @return [String]
         attr_accessor :error_message
       
-        # Severity of issue. Required.
+        # Severity of issue.
+        # Required.
         # Corresponds to the JSON property `severity`
         # @return [String]
         attr_accessor :severity
@@ -3180,42 +3334,74 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::StackTrace]
         attr_accessor :stack_trace
       
-        # Type of issue. Required.
+        # Type of issue.
+        # Required.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
       
         # `Any` contains an arbitrary serialized protocol buffer message along with a
         # URL that describes the type of the serialized message.
-        # Protobuf library provides support to pack/unpack Any values in the form of
-        # utility functions or additional generated methods of the Any type.
+        # Protobuf library provides support to pack/unpack Any values in the form
+        # of utility functions or additional generated methods of the Any type.
         # Example 1: Pack and unpack a message in C++.
-        # Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) ` ... `
+        # Foo foo = ...;
+        # Any any;
+        # any.PackFrom(foo);
+        # ...
+        # if (any.UnpackTo(&foo)) `
+        # ...
+        # `
         # Example 2: Pack and unpack a message in Java.
-        # Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) ` foo = any.
-        # unpack(Foo.class); `
+        # Foo foo = ...;
+        # Any any = Any.pack(foo);
+        # ...
+        # if (any.is(Foo.class)) `
+        # foo = any.unpack(Foo.class);
+        # `
         # Example 3: Pack and unpack a message in Python.
-        # foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.
-        # Unpack(foo) ...
+        # foo = Foo(...)
+        # any = Any()
+        # any.Pack(foo)
+        # ...
+        # if any.Is(Foo.DESCRIPTOR):
+        # any.Unpack(foo)
+        # ...
         # Example 4: Pack and unpack a message in Go
-        # foo := &pb.Foo`...` any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo`` if
-        # err := ptypes.UnmarshalAny(any, foo); err != nil ` ... `
-        # The pack methods provided by protobuf library will by default use 'type.
-        # googleapis.com/full.type.name' as the type URL and the unpack methods only use
-        # the fully qualified type name after the last '/' in the type URL, for example "
-        # foo.bar.com/x/y.z" will yield type name "y.z".
-        # JSON ==== The JSON representation of an `Any` value uses the regular
-        # representation of the deserialized, embedded message, with an additional field
-        # `@type` which contains the type URL. Example:
-        # package google.profile; message Person ` string first_name = 1; string
-        # last_name = 2; `
-        # ` "@type": "type.googleapis.com/google.profile.Person", "firstName": , "
-        # lastName":  `
+        # foo := &pb.Foo`...`
+        # any, err := ptypes.MarshalAny(foo)
+        # ...
+        # foo := &pb.Foo``
+        # if err := ptypes.UnmarshalAny(any, foo); err != nil `
+        # ...
+        # `
+        # The pack methods provided by protobuf library will by default use
+        # 'type.googleapis.com/full.type.name' as the type URL and the unpack
+        # methods only use the fully qualified type name after the last '/'
+        # in the type URL, for example "foo.bar.com/x/y.z" will yield type
+        # name "y.z".
+        # # JSON
+        # The JSON representation of an `Any` value uses the regular
+        # representation of the deserialized, embedded message, with an
+        # additional field `@type` which contains the type URL. Example:
+        # package google.profile;
+        # message Person `
+        # string first_name = 1;
+        # string last_name = 2;
+        # `
+        # `
+        # "@type": "type.googleapis.com/google.profile.Person",
+        # "firstName": <string>,
+        # "lastName": <string>
+        # `
         # If the embedded message type is well-known and has a custom JSON
-        # representation, that representation will be embedded adding a field `value`
-        # which holds the custom JSON in addition to the `@type` field. Example (for
-        # message [google.protobuf.Duration][]):
-        # ` "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" `
+        # representation, that representation will be embedded adding a field
+        # `value` which holds the custom JSON in addition to the `@type`
+        # field. Example (for message google.protobuf.Duration):
+        # `
+        # "@type": "type.googleapis.com/google.protobuf.Duration",
+        # "value": "1.212s"
+        # `
         # Corresponds to the JSON property `warning`
         # @return [Google::Apis::ToolresultsV1beta3::Any]
         attr_accessor :warning
@@ -3235,57 +3421,36 @@ module Google
         end
       end
       
-      # A summary of a test suite result either parsed from XML or uploaded directly
-      # by a user.
-      # Note: the API related comments are for StepService only. This message is also
-      # being used in ExecutionService in a read only mode for the corresponding step.
+      # A summary of a test suite result either parsed from XML or uploaded
+      # directly by a user.
+      # Note: the API related comments are for StepService only. This message is
+      # also being used in ExecutionService in a read only mode for the corresponding
+      # step.
       class TestSuiteOverview
         include Google::Apis::Core::Hashable
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `elapsedTime`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :elapsed_time
       
         # Number of test cases in error, typically set by the service by parsing the
         # xml_source.
-        # - In create/response: always set - In update request: never
+        # - In create/response: always set
+        # - In update request: never
         # Corresponds to the JSON property `errorCount`
         # @return [Fixnum]
         attr_accessor :error_count
       
         # Number of failed test cases, typically set by the service by parsing the
         # xml_source. May also be set by the user.
-        # - In create/response: always set - In update request: never
+        # - In create/response: always set
+        # - In update request: never
         # Corresponds to the JSON property `failureCount`
         # @return [Fixnum]
         attr_accessor :failure_count
@@ -3299,20 +3464,24 @@ module Google
         attr_accessor :flaky_count
       
         # The name of the test suite.
-        # - In create/response: always set - In update request: never
+        # - In create/response: always set
+        # - In update request: never
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
         # Number of test cases not run, typically set by the service by parsing the
         # xml_source.
-        # - In create/response: always set - In update request: never
+        # - In create/response: always set
+        # - In update request: never
         # Corresponds to the JSON property `skippedCount`
         # @return [Fixnum]
         attr_accessor :skipped_count
       
-        # Number of test cases, typically set by the service by parsing the xml_source.
-        # - In create/response: always set - In update request: never
+        # Number of test cases, typically set by the service by parsing the
+        # xml_source.
+        # - In create/response: always set
+        # - In update request: never
         # Corresponds to the JSON property `totalCount`
         # @return [Fixnum]
         attr_accessor :total_count
@@ -3343,36 +3512,12 @@ module Google
       class TestTiming
         include Google::Apis::Core::Hashable
       
-        # A Duration represents a signed, fixed-length span of time represented as a
-        # count of seconds and fractions of seconds at nanosecond resolution. It is
-        # independent of any calendar and concepts like "day" or "month". It is related
-        # to Timestamp in that the difference between two Timestamp values is a Duration
-        # and it can be added or subtracted from a Timestamp. Range is approximately +-
-        # 10,000 years.
-        # # Examples
-        # Example 1: Compute Duration from two Timestamps in pseudo code.
-        # Timestamp start = ...; Timestamp end = ...; Duration duration = ...;
-        # duration.seconds = end.seconds - start.seconds; duration.nanos = end.nanos -
-        # start.nanos;
-        # if (duration.seconds  0) ` duration.seconds += 1; duration.nanos -= 1000000000;
-        # ` else if (duration.seconds > 0 && duration.nanos < 0) ` duration.seconds -=
-        # 1; duration.nanos += 1000000000; `
-        # Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.
-        # Timestamp start = ...; Duration duration = ...; Timestamp end = ...;
-        # end.seconds = start.seconds + duration.seconds; end.nanos = start.nanos +
-        # duration.nanos;
-        # if (end.nanos = 1000000000) ` end.seconds += 1; end.nanos -= 1000000000; `
-        # Example 3: Compute Duration from datetime.timedelta in Python.
-        # td = datetime.timedelta(days=3, minutes=10) duration = Duration() duration.
-        # FromTimedelta(td)
-        # # JSON Mapping
-        # In JSON format, the Duration type is encoded as a string rather than an object,
-        # where the string ends in the suffix "s" (indicating seconds) and is preceded
-        # by the number of seconds, with nanoseconds expressed as fractional seconds.
-        # For example, 3 seconds with 0 nanoseconds should be encoded in JSON format as "
-        # 3s", while 3 seconds and 1 nanosecond should be expressed in JSON format as "3.
-        # 000000001s", and 3 seconds and 1 microsecond should be expressed in JSON
-        # format as "3.000001s".
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
         # Corresponds to the JSON property `testProcessDuration`
         # @return [Google::Apis::ToolresultsV1beta3::Duration]
         attr_accessor :test_process_duration
@@ -3399,7 +3544,8 @@ module Google
       
         # The thumbnail file itself.
         # That is, the bytes here are precisely the bytes that make up the thumbnail
-        # file; they can be served as an image as-is (with the appropriate content type.)
+        # file; they can be served as an image as-is (with the appropriate content
+        # type.)
         # Always set.
         # Corresponds to the JSON property `data`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
@@ -3432,70 +3578,30 @@ module Google
       end
       
       # A Timestamp represents a point in time independent of any time zone or local
-      # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-      # resolution. The count is relative to an epoch at UTC midnight on January 1,
-      # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-      # backwards to year one.
+      # calendar, encoded as a count of seconds and fractions of seconds at
+      # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+      # January 1, 1970, in the proleptic Gregorian calendar which extends the
+      # Gregorian calendar backwards to year one.
       # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-      # second table is needed for interpretation, using a [24-hour linear smear](
-      # https://developers.google.com/time/smear).
+      # second table is needed for interpretation, using a [24-hour linear
+      # smear](https://developers.google.com/time/smear).
       # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-      # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-      # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-      # # Examples
-      # Example 1: Compute Timestamp from POSIX `time()`.
-      # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-      # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-      # struct timeval tv; gettimeofday(&tv, NULL);
-      # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-      # tv_usec * 1000);
-      # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-      # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-      # dwHighDateTime) << 32) | ft.dwLowDateTime;
-      # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-      # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-      # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-      # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-      # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-      # long millis = System.currentTimeMillis();
-      # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-      # setNanos((int) ((millis % 1000) * 1000000)).build();
-      # Example 5: Compute Timestamp from current time in Python.
-      # timestamp = Timestamp() timestamp.GetCurrentTime()
-      # # JSON Mapping
-      # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-      # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-      # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-      # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-      # zero-padded to two digits each. The fractional seconds, which can go up to 9
-      # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-      # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-      # serializer should always use UTC (as indicated by "Z") when printing the
-      # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-      # other timezones (as indicated by an offset).
-      # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-      # January 15, 2017.
-      # In JavaScript, one can convert a Date object to this format using the standard
-      # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-      # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-      # datetime.datetime` object can be converted to this format using [`strftime`](
-      # https://docs.python.org/2/library/time.html#time.strftime) with the time
-      # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-      # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-      # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-      # formatter capable of generating timestamps in this format.
+      # restricting to that range, we ensure that we can convert to and from [RFC
+      # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
       class Timestamp
         include Google::Apis::Core::Hashable
       
-        # Non-negative fractions of a second at nanosecond resolution. Negative second
-        # values with fractions must still have non-negative nanos values that count
-        # forward in time. Must be from 0 to 999,999,999 inclusive.
+        # Non-negative fractions of a second at nanosecond resolution. Negative
+        # second values with fractions must still have non-negative nanos values
+        # that count forward in time. Must be from 0 to 999,999,999
+        # inclusive.
         # Corresponds to the JSON property `nanos`
         # @return [Fixnum]
         attr_accessor :nanos
       
-        # Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be
-        # from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive.
+        # Represents seconds of UTC time since Unix epoch
+        # 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+        # 9999-12-31T23:59:59Z inclusive.
         # Corresponds to the JSON property `seconds`
         # @return [Fixnum]
         attr_accessor :seconds
@@ -3511,15 +3617,16 @@ module Google
         end
       end
       
-      # An execution of an arbitrary tool. It could be a test runner or a tool copying
-      # artifacts or deploying code.
+      # An execution of an arbitrary tool. It could be a test runner or a tool
+      # copying artifacts or deploying code.
       class ToolExecution
         include Google::Apis::Core::Hashable
       
-        # The full tokenized command line including the program name (equivalent to argv
-        # in a C program).
-        # - In response: present if set by create request - In create request: optional -
-        # In update request: never set
+        # The full tokenized command line including the program name (equivalent to
+        # argv in a C program).
+        # - In response: present if set by create request
+        # - In create request: optional
+        # - In update request: never set
         # Corresponds to the JSON property `commandLineArguments`
         # @return [Array<String>]
         attr_accessor :command_line_arguments
@@ -3530,21 +3637,23 @@ module Google
         attr_accessor :exit_code
       
         # References to any plain text logs output the tool execution.
-        # This field can be set before the tool has exited in order to be able to have
-        # access to a live view of the logs while the tool is running.
+        # This field can be set before the tool has exited in order to be able to
+        # have access to a live view of the logs while the tool is running.
         # The maximum allowed number of tool logs per step is 1000.
-        # - In response: present if set by create/update request - In create request:
-        # optional - In update request: optional, any value provided will be appended to
-        # the existing list
+        # - In response: present if set by create/update request
+        # - In create request: optional
+        # - In update request: optional, any value provided will be appended to the
+        # existing list
         # Corresponds to the JSON property `toolLogs`
         # @return [Array<Google::Apis::ToolresultsV1beta3::FileReference>]
         attr_accessor :tool_logs
       
         # References to opaque files of any format output by the tool execution.
         # The maximum allowed number of tool outputs per step is 1000.
-        # - In response: present if set by create/update request - In create request:
-        # optional - In update request: optional, any value provided will be appended to
-        # the existing list
+        # - In response: present if set by create/update request
+        # - In create request: optional
+        # - In update request: optional, any value provided will be appended to the
+        # existing list
         # Corresponds to the JSON property `toolOutputs`
         # @return [Array<Google::Apis::ToolresultsV1beta3::ToolOutputReference>]
         attr_accessor :tool_outputs
@@ -3562,13 +3671,13 @@ module Google
         end
       end
       
-      # Generic tool step to be used for binaries we do not explicitly support. For
-      # example: running cp to copy artifacts from one location to another.
+      # Generic tool step to be used for binaries we do not explicitly support.
+      # For example: running cp to copy artifacts from one location to another.
       class ToolExecutionStep
         include Google::Apis::Core::Hashable
       
-        # An execution of an arbitrary tool. It could be a test runner or a tool copying
-        # artifacts or deploying code.
+        # An execution of an arbitrary tool. It could be a test runner or a tool
+        # copying artifacts or deploying code.
         # Corresponds to the JSON property `toolExecution`
         # @return [Google::Apis::ToolresultsV1beta3::ToolExecution]
         attr_accessor :tool_execution
@@ -3587,8 +3696,10 @@ module Google
       class ToolExitCode
         include Google::Apis::Core::Hashable
       
-        # Tool execution exit code. A value of 0 means that the execution was successful.
-        # - In response: always set - In create/update request: always set
+        # Tool execution exit code. A value of 0 means that the execution was
+        # successful.
+        # - In response: always set
+        # - In create/update request: always set
         # Corresponds to the JSON property `number`
         # @return [Fixnum]
         attr_accessor :number
@@ -3608,58 +3719,16 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A Timestamp represents a point in time independent of any time zone or local
-        # calendar, encoded as a count of seconds and fractions of seconds at nanosecond
-        # resolution. The count is relative to an epoch at UTC midnight on January 1,
-        # 1970, in the proleptic Gregorian calendar which extends the Gregorian calendar
-        # backwards to year one.
+        # calendar, encoded as a count of seconds and fractions of seconds at
+        # nanosecond resolution. The count is relative to an epoch at UTC midnight on
+        # January 1, 1970, in the proleptic Gregorian calendar which extends the
+        # Gregorian calendar backwards to year one.
         # All minutes are 60 seconds long. Leap seconds are "smeared" so that no leap
-        # second table is needed for interpretation, using a [24-hour linear smear](
-        # https://developers.google.com/time/smear).
+        # second table is needed for interpretation, using a [24-hour linear
+        # smear](https://developers.google.com/time/smear).
         # The range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By
-        # restricting to that range, we ensure that we can convert to and from [RFC 3339]
-        # (https://www.ietf.org/rfc/rfc3339.txt) date strings.
-        # # Examples
-        # Example 1: Compute Timestamp from POSIX `time()`.
-        # Timestamp timestamp; timestamp.set_seconds(time(NULL)); timestamp.set_nanos(0);
-        # Example 2: Compute Timestamp from POSIX `gettimeofday()`.
-        # struct timeval tv; gettimeofday(&tv, NULL);
-        # Timestamp timestamp; timestamp.set_seconds(tv.tv_sec); timestamp.set_nanos(tv.
-        # tv_usec * 1000);
-        # Example 3: Compute Timestamp from Win32 `GetSystemTimeAsFileTime()`.
-        # FILETIME ft; GetSystemTimeAsFileTime(&ft); UINT64 ticks = (((UINT64)ft.
-        # dwHighDateTime) << 32) | ft.dwLowDateTime;
-        # // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z // is
-        # 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z. Timestamp
-        # timestamp; timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
-        # timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
-        # Example 4: Compute Timestamp from Java `System.currentTimeMillis()`.
-        # long millis = System.currentTimeMillis();
-        # Timestamp timestamp = Timestamp.newBuilder().setSeconds(millis / 1000) .
-        # setNanos((int) ((millis % 1000) * 1000000)).build();
-        # Example 5: Compute Timestamp from current time in Python.
-        # timestamp = Timestamp() timestamp.GetCurrentTime()
-        # # JSON Mapping
-        # In JSON format, the Timestamp type is encoded as a string in the [RFC 3339](
-        # https://www.ietf.org/rfc/rfc3339.txt) format. That is, the format is "`year`-`
-        # month`-`day`T`hour`:`min`:`sec`[.`frac_sec`]Z" where `year` is always
-        # expressed using four digits while `month`, `day`, `hour`, `min`, and `sec` are
-        # zero-padded to two digits each. The fractional seconds, which can go up to 9
-        # digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix
-        # indicates the timezone ("UTC"); the timezone is required. A proto3 JSON
-        # serializer should always use UTC (as indicated by "Z") when printing the
-        # Timestamp type and a proto3 JSON parser should be able to accept both UTC and
-        # other timezones (as indicated by an offset).
-        # For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on
-        # January 15, 2017.
-        # In JavaScript, one can convert a Date object to this format using the standard
-        # [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-        # Reference/Global_Objects/Date/toISOString) method. In Python, a standard `
-        # datetime.datetime` object can be converted to this format using [`strftime`](
-        # https://docs.python.org/2/library/time.html#time.strftime) with the time
-        # format spec '%Y-%m-%dT%H:%M:%S.%fZ'. Likewise, in Java, one can use the Joda
-        # Time's [`ISODateTimeFormat.dateTime()`]( http://www.joda.org/joda-time/apidocs/
-        # org/joda/time/format/ISODateTimeFormat.html#dateTime%2D%2D ) to obtain a
-        # formatter capable of generating timestamps in this format.
+        # restricting to that range, we ensure that we can convert to and from [RFC
+        # 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.
         # Corresponds to the JSON property `creationTime`
         # @return [Google::Apis::ToolresultsV1beta3::Timestamp]
         attr_accessor :creation_time
@@ -3671,8 +3740,10 @@ module Google
       
         # A reference to a test case.
         # Test case references are canonically ordered lexicographically by these three
-        # factors: * First, by test_suite_name. * Second, by class_name. * Third, by
-        # name.
+        # factors:
+        # * First, by test_suite_name.
+        # * Second, by class_name.
+        # * Third, by name.
         # Corresponds to the JSON property `testCase`
         # @return [Google::Apis::ToolresultsV1beta3::TestCaseReference]
         attr_accessor :test_case
@@ -3686,6 +3757,135 @@ module Google
           @creation_time = args[:creation_time] if args.key?(:creation_time)
           @output = args[:output] if args.key?(:output)
           @test_case = args[:test_case] if args.key?(:test_case)
+        end
+      end
+      
+      # A warning that the screen hierarchy is deeper than the recommended threshold.
+      class UiElementTooDeep
+        include Google::Apis::Core::Hashable
+      
+        # The depth of the screen element
+        # Corresponds to the JSON property `depth`
+        # @return [Fixnum]
+        attr_accessor :depth
+      
+        # The screen id of the element
+        # Corresponds to the JSON property `screenId`
+        # @return [String]
+        attr_accessor :screen_id
+      
+        # The screen state id of the element
+        # Corresponds to the JSON property `screenStateId`
+        # @return [String]
+        attr_accessor :screen_state_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @depth = args[:depth] if args.key?(:depth)
+          @screen_id = args[:screen_id] if args.key?(:screen_id)
+          @screen_state_id = args[:screen_state_id] if args.key?(:screen_state_id)
+        end
+      end
+      
+      # Default unspecified warning.
+      class UnspecifiedWarning
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # Additional details of an unused robodirective.
+      class UnusedRoboDirective
+        include Google::Apis::Core::Hashable
+      
+        # The name of the resource that was unused.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # This insight is a recommendation to upgrade a given library to the specified
+      # version, in order to avoid dependencies on non-SDK APIs.
+      class UpgradeInsight
+        include Google::Apis::Core::Hashable
+      
+        # The name of the package to be upgraded.
+        # Corresponds to the JSON property `packageName`
+        # @return [String]
+        attr_accessor :package_name
+      
+        # The suggested version to upgrade to.
+        # Optional: In case we are not sure which version solves this problem
+        # Corresponds to the JSON property `upgradeToVersion`
+        # @return [String]
+        attr_accessor :upgrade_to_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @package_name = args[:package_name] if args.key?(:package_name)
+          @upgrade_to_version = args[:upgrade_to_version] if args.key?(:upgrade_to_version)
+        end
+      end
+      
+      # Additional details of a used Robo directive.
+      class UsedRoboDirective
+        include Google::Apis::Core::Hashable
+      
+        # The name of the resource that was used.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
+        end
+      end
+      
+      # Additional details of a used Robo directive with an ignore action.
+      # Note: This is a different scenario than unused directive.
+      class UsedRoboIgnoreDirective
+        include Google::Apis::Core::Hashable
+      
+        # The name of the resource that was ignored.
+        # Corresponds to the JSON property `resourceName`
+        # @return [String]
+        attr_accessor :resource_name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @resource_name = args[:resource_name] if args.key?(:resource_name)
         end
       end
     end

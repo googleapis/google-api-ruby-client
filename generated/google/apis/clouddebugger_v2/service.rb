@@ -98,6 +98,9 @@ module Google
         # setting those breakpoints again.
         # @param [String] debuggee_id
         #   Required. Identifies the debuggee.
+        # @param [String] agent_id
+        #   Identifies the agent.
+        #   This is the ID returned in the RegisterDebuggee response.
         # @param [Boolean] success_on_timeout
         #   If set to `true` (recommended), returns `google.rpc.Code.OK` status and
         #   sets the `wait_expired` response field to `true` when the server-selected
@@ -126,11 +129,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_controller_debuggee_breakpoints(debuggee_id, success_on_timeout: nil, wait_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_controller_debuggee_breakpoints(debuggee_id, agent_id: nil, success_on_timeout: nil, wait_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/controller/debuggees/{debuggeeId}/breakpoints', options)
           command.response_representation = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::ListActiveBreakpointsResponse
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
+          command.query['agentId'] = agent_id unless agent_id.nil?
           command.query['successOnTimeout'] = success_on_timeout unless success_on_timeout.nil?
           command.query['waitToken'] = wait_token unless wait_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -352,6 +356,8 @@ module Google
         # @param [String] debuggee_id
         #   Required. ID of the debuggee where the breakpoint is to be set.
         # @param [Google::Apis::ClouddebuggerV2::Breakpoint] breakpoint_object
+        # @param [String] canary_option
+        #   The canary option set by the user upon setting breakpoint.
         # @param [String] client_version
         #   Required. The client version making the call.
         #   Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
@@ -372,13 +378,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_debugger_debuggee_breakpoint(debuggee_id, breakpoint_object = nil, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def set_debugger_debuggee_breakpoint(debuggee_id, breakpoint_object = nil, canary_option: nil, client_version: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:post, 'v2/debugger/debuggees/{debuggeeId}/breakpoints/set', options)
           command.request_representation = Google::Apis::ClouddebuggerV2::Breakpoint::Representation
           command.request_object = breakpoint_object
           command.response_representation = Google::Apis::ClouddebuggerV2::SetBreakpointResponse::Representation
           command.response_class = Google::Apis::ClouddebuggerV2::SetBreakpointResponse
           command.params['debuggeeId'] = debuggee_id unless debuggee_id.nil?
+          command.query['canaryOption'] = canary_option unless canary_option.nil?
           command.query['clientVersion'] = client_version unless client_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

@@ -596,9 +596,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this Address resource. These can be later modified by the
-        # setLabels method. Each label key/value must comply with RFC1035. Label values
-        # may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -6330,9 +6330,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this ExternalVpnGateway resource. These can be later
-        # modified by the setLabels method. Each label key/value must comply with
-        # RFC1035. Label values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -7149,7 +7149,7 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this resource. These can be later modified by the setLabels
+        # Labels for this resource. These can only be added or modified by the setLabels
         # method. Each label key/value pair must comply with RFC1035. Label values may
         # be empty.
         # Corresponds to the JSON property `labels`
@@ -11129,7 +11129,10 @@ module Google
         # @return [Array<Google::Apis::ComputeBeta::NamedPort>]
         attr_accessor :named_ports
       
-        # The URL of the network to which all instances in the instance group belong.
+        # [Output Only] The URL of the network to which all instances in the instance
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -11151,7 +11154,9 @@ module Google
         attr_accessor :size
       
         # [Output Only] The URL of the subnetwork to which all instances in the instance
-        # group belong.
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -14317,9 +14322,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this Interconnect resource. These can be later modified by
-        # the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -14557,9 +14562,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this InterconnectAttachment resource. These can be later
-        # modified by the setLabels method. Each label key/value must comply with
-        # RFC1035. Label values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -27287,9 +27292,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this security policy resource. These can be later modified
-        # by the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -32742,9 +32747,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this TargetVpnGateway resource. These can be later modified
-        # by the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -34320,9 +34325,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this VpnGateway resource. These can be later modified by
-        # the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -34353,7 +34358,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] A list of interfaces on this VPN gateway.
+        # A list of interfaces on this VPN gateway.
         # Corresponds to the JSON property `vpnInterfaces`
         # @return [Array<Google::Apis::ComputeBeta::VpnGatewayVpnGatewayInterface>]
         attr_accessor :vpn_interfaces
@@ -34745,7 +34750,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The external IP address for this VPN gateway interface.
+        # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
@@ -34922,9 +34927,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this VpnTunnel. These can be later modified by the
-        # setLabels method. Each label key/value pair must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels

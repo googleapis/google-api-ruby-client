@@ -1707,7 +1707,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Access control list information for the item. For more information see
-        # https://developers.google.com/cloud-search/docs/guides/index-your-data#acls
+        # [Map ACLs](/cloud-search/docs/guides/acls).
         # Corresponds to the JSON property `acl`
         # @return [Google::Apis::CloudsearchV1::ItemAcl]
         attr_accessor :acl
@@ -1791,7 +1791,7 @@ module Google
       end
       
       # Access control list information for the item. For more information see
-      # https://developers.google.com/cloud-search/docs/guides/index-your-data#acls
+      # [Map ACLs](/cloud-search/docs/guides/acls).
       class ItemAcl
         include Google::Apis::Core::Hashable
       
@@ -3533,7 +3533,8 @@ module Google
         # @return [String]
         attr_accessor :language_code
       
-        # Id of the application created using SearchApplicationsService.
+        # The ID generated when you create a search application using the
+        # [admin console](https://support.google.com/a/answer/9043922).
         # Corresponds to the JSON property `searchApplicationId`
         # @return [String]
         attr_accessor :search_application_id
@@ -3875,7 +3876,8 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # IDs of the Long Running Operations (LROs) currently running for this
+        # Output only. IDs of the Long Running Operations (LROs) currently running for
+        # this
         # schema. Output only field.
         # Corresponds to the JSON property `operationIds`
         # @return [Array<String>]

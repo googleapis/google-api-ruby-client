@@ -213,7 +213,6 @@ module Google
       
           property :original_player_id, as: 'originalPlayerId'
           property :player_id, as: 'playerId'
-          property :player_stattus, as: 'playerStattus'
           property :profile_settings, as: 'profileSettings', class: Google::Apis::GamesManagementV1management::ProfileSettings, decorator: Google::Apis::GamesManagementV1management::ProfileSettings::Representation
       
           property :title, as: 'title'

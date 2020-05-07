@@ -628,6 +628,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MerchantRejectionReason
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MinimumOrderValueTable
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MinimumOrderValueTableStoreCodeSetWithMov
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class MonetaryAmount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Order
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -832,7 +856,55 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class OrderreturnsAcknowledgeRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsAcknowledgeResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class OrderreturnsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsPartialRefund
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsProcessRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsProcessResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsRefundOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsRejectOperation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OrderreturnsReturnItem
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1360,6 +1432,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ReturnPricingInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ReturnShipment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1433,6 +1511,54 @@ module Google
       end
       
       class Service
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementTransactionAmount
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementTransactionAmountCommission
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementTransactionIdentifiers
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementTransactionTransaction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementreportsListResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SettlementtransactionsListResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1646,6 +1772,7 @@ module Google
       class AccountGoogleMyBusinessLink
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :gmb_account_id, as: 'gmbAccountId'
           property :gmb_email, as: 'gmbEmail'
           property :status, as: 'status'
         end
@@ -2624,6 +2751,8 @@ module Google
           property :order_return_id, as: 'orderReturnId'
           collection :return_items, as: 'returnItems', class: Google::Apis::ContentV2_1::MerchantOrderReturnItem, decorator: Google::Apis::ContentV2_1::MerchantOrderReturnItem::Representation
       
+          property :return_pricing_info, as: 'returnPricingInfo', class: Google::Apis::ContentV2_1::ReturnPricingInfo, decorator: Google::Apis::ContentV2_1::ReturnPricingInfo::Representation
+      
           collection :return_shipments, as: 'returnShipments', class: Google::Apis::ContentV2_1::ReturnShipment, decorator: Google::Apis::ContentV2_1::ReturnShipment::Representation
       
         end
@@ -2635,12 +2764,54 @@ module Google
           property :customer_return_reason, as: 'customerReturnReason', class: Google::Apis::ContentV2_1::CustomerReturnReason, decorator: Google::Apis::ContentV2_1::CustomerReturnReason::Representation
       
           property :item_id, as: 'itemId'
+          property :merchant_rejection_reason, as: 'merchantRejectionReason', class: Google::Apis::ContentV2_1::MerchantRejectionReason, decorator: Google::Apis::ContentV2_1::MerchantRejectionReason::Representation
+      
           property :merchant_return_reason, as: 'merchantReturnReason', class: Google::Apis::ContentV2_1::RefundReason, decorator: Google::Apis::ContentV2_1::RefundReason::Representation
       
           property :product, as: 'product', class: Google::Apis::ContentV2_1::OrderLineItemProduct, decorator: Google::Apis::ContentV2_1::OrderLineItemProduct::Representation
       
+          property :refundable_amount, as: 'refundableAmount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :return_item_id, as: 'returnItemId'
           collection :return_shipment_ids, as: 'returnShipmentIds'
+          property :shipment_group_id, as: 'shipmentGroupId'
+          property :shipment_unit_id, as: 'shipmentUnitId'
           property :state, as: 'state'
+        end
+      end
+      
+      class MerchantRejectionReason
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :description, as: 'description'
+          property :reason_code, as: 'reasonCode'
+        end
+      end
+      
+      class MinimumOrderValueTable
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :store_code_set_with_movs, as: 'storeCodeSetWithMovs', class: Google::Apis::ContentV2_1::MinimumOrderValueTableStoreCodeSetWithMov, decorator: Google::Apis::ContentV2_1::MinimumOrderValueTableStoreCodeSetWithMov::Representation
+      
+        end
+      end
+      
+      class MinimumOrderValueTableStoreCodeSetWithMov
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :store_codes, as: 'storeCodes'
+          property :value, as: 'value', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+        end
+      end
+      
+      class MonetaryAmount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price_amount, as: 'priceAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
         end
       end
       
@@ -3075,6 +3246,21 @@ module Google
         end
       end
       
+      class OrderreturnsAcknowledgeRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :operation_id, as: 'operationId'
+        end
+      end
+      
+      class OrderreturnsAcknowledgeResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
       class OrderreturnsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -3082,6 +3268,66 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::MerchantOrderReturn, decorator: Google::Apis::ContentV2_1::MerchantOrderReturn::Representation
       
+        end
+      end
+      
+      class OrderreturnsPartialRefund
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :price_amount, as: 'priceAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :tax_amount, as: 'taxAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+        end
+      end
+      
+      class OrderreturnsProcessRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_charge_return_shipping_cost, as: 'fullChargeReturnShippingCost'
+          property :operation_id, as: 'operationId'
+          property :refund_shipping_fee, as: 'refundShippingFee', class: Google::Apis::ContentV2_1::OrderreturnsRefundOperation, decorator: Google::Apis::ContentV2_1::OrderreturnsRefundOperation::Representation
+      
+          collection :return_items, as: 'returnItems', class: Google::Apis::ContentV2_1::OrderreturnsReturnItem, decorator: Google::Apis::ContentV2_1::OrderreturnsReturnItem::Representation
+      
+        end
+      end
+      
+      class OrderreturnsProcessResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :execution_status, as: 'executionStatus'
+          property :kind, as: 'kind'
+        end
+      end
+      
+      class OrderreturnsRefundOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :full_refund, as: 'fullRefund'
+          property :partial_refund, as: 'partialRefund', class: Google::Apis::ContentV2_1::OrderreturnsPartialRefund, decorator: Google::Apis::ContentV2_1::OrderreturnsPartialRefund::Representation
+      
+          property :reason_text, as: 'reasonText'
+          property :return_refund_reason, as: 'returnRefundReason'
+        end
+      end
+      
+      class OrderreturnsRejectOperation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :reason, as: 'reason'
+          property :reason_text, as: 'reasonText'
+        end
+      end
+      
+      class OrderreturnsReturnItem
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :refund, as: 'refund', class: Google::Apis::ContentV2_1::OrderreturnsRefundOperation, decorator: Google::Apis::ContentV2_1::OrderreturnsRefundOperation::Representation
+      
+          property :reject, as: 'reject', class: Google::Apis::ContentV2_1::OrderreturnsRejectOperation, decorator: Google::Apis::ContentV2_1::OrderreturnsRejectOperation::Representation
+      
+          property :return_item_id, as: 'returnItemId'
         end
       end
       
@@ -4083,6 +4329,21 @@ module Google
         end
       end
       
+      class ReturnPricingInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :charge_return_shipping_fee, as: 'chargeReturnShippingFee'
+          property :max_return_shipping_fee, as: 'maxReturnShippingFee', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :refundable_items_total_amount, as: 'refundableItemsTotalAmount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :refundable_shipping_amount, as: 'refundableShippingAmount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+          property :total_refunded_amount, as: 'totalRefundedAmount', class: Google::Apis::ContentV2_1::MonetaryAmount, decorator: Google::Apis::ContentV2_1::MonetaryAmount::Representation
+      
+        end
+      end
+      
       class ReturnShipment
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -4217,12 +4478,102 @@ module Google
           property :eligibility, as: 'eligibility'
           property :minimum_order_value, as: 'minimumOrderValue', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
       
+          property :minimum_order_value_table, as: 'minimumOrderValueTable', class: Google::Apis::ContentV2_1::MinimumOrderValueTable, decorator: Google::Apis::ContentV2_1::MinimumOrderValueTable::Representation
+      
           property :name, as: 'name'
           property :pickup_service, as: 'pickupService', class: Google::Apis::ContentV2_1::PickupCarrierService, decorator: Google::Apis::ContentV2_1::PickupCarrierService::Representation
       
           collection :rate_groups, as: 'rateGroups', class: Google::Apis::ContentV2_1::RateGroup, decorator: Google::Apis::ContentV2_1::RateGroup::Representation
       
           property :shipment_type, as: 'shipmentType'
+        end
+      end
+      
+      class SettlementReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :end_date, as: 'endDate'
+          property :kind, as: 'kind'
+          property :previous_balance, as: 'previousBalance', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :settlement_id, as: 'settlementId'
+          property :start_date, as: 'startDate'
+          property :transfer_amount, as: 'transferAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :transfer_date, as: 'transferDate'
+          collection :transfer_ids, as: 'transferIds'
+        end
+      end
+      
+      class SettlementTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :amount, as: 'amount', class: Google::Apis::ContentV2_1::SettlementTransactionAmount, decorator: Google::Apis::ContentV2_1::SettlementTransactionAmount::Representation
+      
+          property :identifiers, as: 'identifiers', class: Google::Apis::ContentV2_1::SettlementTransactionIdentifiers, decorator: Google::Apis::ContentV2_1::SettlementTransactionIdentifiers::Representation
+      
+          property :kind, as: 'kind'
+          property :transaction, as: 'transaction', class: Google::Apis::ContentV2_1::SettlementTransactionTransaction, decorator: Google::Apis::ContentV2_1::SettlementTransactionTransaction::Representation
+      
+        end
+      end
+      
+      class SettlementTransactionAmount
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :commission, as: 'commission', class: Google::Apis::ContentV2_1::SettlementTransactionAmountCommission, decorator: Google::Apis::ContentV2_1::SettlementTransactionAmountCommission::Representation
+      
+          property :description, as: 'description'
+          property :transaction_amount, as: 'transactionAmount', class: Google::Apis::ContentV2_1::Price, decorator: Google::Apis::ContentV2_1::Price::Representation
+      
+          property :type, as: 'type'
+        end
+      end
+      
+      class SettlementTransactionAmountCommission
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :category, as: 'category'
+          property :rate, as: 'rate'
+        end
+      end
+      
+      class SettlementTransactionIdentifiers
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :adjustment_id, as: 'adjustmentId'
+          property :merchant_order_id, as: 'merchantOrderId'
+          property :settlement_entry_id, as: 'settlementEntryId'
+          collection :shipment_ids, as: 'shipmentIds'
+          property :transaction_id, as: 'transactionId'
+        end
+      end
+      
+      class SettlementTransactionTransaction
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :post_date, as: 'postDate'
+          property :type, as: 'type'
+        end
+      end
+      
+      class SettlementreportsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::SettlementReport, decorator: Google::Apis::ContentV2_1::SettlementReport::Representation
+      
+        end
+      end
+      
+      class SettlementtransactionsListResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :kind, as: 'kind'
+          property :next_page_token, as: 'nextPageToken'
+          collection :resources, as: 'resources', class: Google::Apis::ContentV2_1::SettlementTransaction, decorator: Google::Apis::ContentV2_1::SettlementTransaction::Representation
+      
         end
       end
       

@@ -34,6 +34,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ArtifactHashes
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ArtifactRule
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Attestation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +107,12 @@ module Google
       end
       
       class BuildSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ByProducts
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -167,6 +185,12 @@ module Google
       end
       
       class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Environment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -256,6 +280,24 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GrafeasV1beta1IntotoArtifact
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1beta1IntotoDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GrafeasV1beta1IntotoSignature
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GrafeasV1beta1PackageDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -280,6 +322,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InToto
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Installation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -293,6 +341,12 @@ module Google
       end
       
       class Layer
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Link
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -406,6 +460,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SigningKey
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Source
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -480,6 +540,20 @@ module Google
           property :checksum, as: 'checksum'
           property :id, as: 'id'
           collection :names, as: 'names'
+        end
+      end
+      
+      class ArtifactHashes
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :sha256, as: 'sha256'
+        end
+      end
+      
+      class ArtifactRule
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :artifact_rule, as: 'artifactRule'
         end
       end
       
@@ -590,6 +664,13 @@ module Google
           property :key_type, as: 'keyType'
           property :public_key, as: 'publicKey'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class ByProducts
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_values, as: 'customValues'
         end
       end
       
@@ -729,6 +810,13 @@ module Google
         end
       end
       
+      class Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :custom_values, as: 'customValues'
+        end
+      end
+      
       class Expr
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -852,6 +940,33 @@ module Google
         end
       end
       
+      class GrafeasV1beta1IntotoArtifact
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :hashes, as: 'hashes', class: Google::Apis::ContaineranalysisV1beta1::ArtifactHashes, decorator: Google::Apis::ContaineranalysisV1beta1::ArtifactHashes::Representation
+      
+          property :resource_uri, as: 'resourceUri'
+        end
+      end
+      
+      class GrafeasV1beta1IntotoDetails
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :signatures, as: 'signatures', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoSignature, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoSignature::Representation
+      
+          property :signed, as: 'signed', class: Google::Apis::ContaineranalysisV1beta1::Link, decorator: Google::Apis::ContaineranalysisV1beta1::Link::Representation
+      
+        end
+      end
+      
+      class GrafeasV1beta1IntotoSignature
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keyid, as: 'keyid'
+          property :sig, as: 'sig'
+        end
+      end
+      
       class GrafeasV1beta1PackageDetails
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -891,6 +1006,21 @@ module Google
         end
       end
       
+      class InToto
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :expected_command, as: 'expectedCommand'
+          collection :expected_materials, as: 'expectedMaterials', class: Google::Apis::ContaineranalysisV1beta1::ArtifactRule, decorator: Google::Apis::ContaineranalysisV1beta1::ArtifactRule::Representation
+      
+          collection :expected_products, as: 'expectedProducts', class: Google::Apis::ContaineranalysisV1beta1::ArtifactRule, decorator: Google::Apis::ContaineranalysisV1beta1::ArtifactRule::Representation
+      
+          collection :signing_keys, as: 'signingKeys', class: Google::Apis::ContaineranalysisV1beta1::SigningKey, decorator: Google::Apis::ContaineranalysisV1beta1::SigningKey::Representation
+      
+          property :step_name, as: 'stepName'
+          property :threshold, :numeric_string => true, as: 'threshold'
+        end
+      end
+      
       class Installation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -913,6 +1043,21 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :arguments, as: 'arguments'
           property :directive, as: 'directive'
+        end
+      end
+      
+      class Link
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :byproducts, as: 'byproducts', class: Google::Apis::ContaineranalysisV1beta1::ByProducts, decorator: Google::Apis::ContaineranalysisV1beta1::ByProducts::Representation
+      
+          collection :command, as: 'command'
+          property :environment, as: 'environment', class: Google::Apis::ContaineranalysisV1beta1::Environment, decorator: Google::Apis::ContaineranalysisV1beta1::Environment::Representation
+      
+          collection :materials, as: 'materials', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact::Representation
+      
+          collection :products, as: 'products', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact::Representation
+      
         end
       end
       
@@ -977,6 +1122,8 @@ module Google
           property :discovery, as: 'discovery', class: Google::Apis::ContaineranalysisV1beta1::Discovery, decorator: Google::Apis::ContaineranalysisV1beta1::Discovery::Representation
       
           property :expiration_time, as: 'expirationTime'
+          property :intoto, as: 'intoto', class: Google::Apis::ContaineranalysisV1beta1::InToto, decorator: Google::Apis::ContaineranalysisV1beta1::InToto::Representation
+      
           property :kind, as: 'kind'
           property :long_description, as: 'longDescription'
           property :name, as: 'name'
@@ -1007,6 +1154,8 @@ module Google
           property :discovered, as: 'discovered', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1DiscoveryDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1DiscoveryDetails::Representation
       
           property :installation, as: 'installation', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1PackageDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1PackageDetails::Representation
+      
+          property :intoto, as: 'intoto', class: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoDetails, decorator: Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoDetails::Representation
       
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -1118,6 +1267,16 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :public_key_id, as: 'publicKeyId'
           property :signature, :base64 => true, as: 'signature'
+        end
+      end
+      
+      class SigningKey
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :key_id, as: 'keyId'
+          property :key_scheme, as: 'keyScheme'
+          property :key_type, as: 'keyType'
+          property :public_key_value, as: 'publicKeyValue'
         end
       end
       

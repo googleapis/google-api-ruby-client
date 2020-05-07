@@ -86,10 +86,9 @@ module Google
         # The set of attributes. Each attribute's key can be up to 128 bytes
         # long. The value can be a string up to 256 bytes, a signed 64-bit integer,
         # or the Boolean values `true` and `false`. For example:
-        # "/instance_id": "my-instance"
-        # "/http/user_agent": ""
-        # "/http/request_bytes": 300
-        # "abc.com/myattribute": true
+        # "/instance_id": ` "string_value": ` "value": "my-instance" ` `
+        # "/http/request_bytes": ` "int_value": 300 `
+        # "abc.com/myattribute": ` "bool_value": false `
         # Corresponds to the JSON property `attributeMap`
         # @return [Hash<String,Google::Apis::CloudtraceV2::AttributeValue>]
         attr_accessor :attribute_map

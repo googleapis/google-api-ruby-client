@@ -729,6 +729,8 @@ module Google
       
           property :measurable_impressions, as: 'measurableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
       
+          property :reached_queries, as: 'reachedQueries', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
+      
           property :row_dimensions, as: 'rowDimensions', class: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions, decorator: Google::Apis::Adexchangebuyer2V2beta1::RowDimensions::Representation
       
           property :viewable_impressions, as: 'viewableImpressions', class: Google::Apis::Adexchangebuyer2V2beta1::MetricValue, decorator: Google::Apis::Adexchangebuyer2V2beta1::MetricValue::Representation
@@ -1585,6 +1587,7 @@ module Google
           property :display_name, as: 'displayName'
           collection :domains, as: 'domains'
           property :google_plus_url, as: 'googlePlusUrl'
+          property :is_parent, as: 'isParent'
           property :logo_url, as: 'logoUrl'
           property :media_kit_url, as: 'mediaKitUrl'
           property :overview, as: 'overview'

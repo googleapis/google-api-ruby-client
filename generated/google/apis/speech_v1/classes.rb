@@ -69,7 +69,8 @@ module Google
         # @return [String]
         attr_accessor :start_time
       
-        # The URI of the audio file being transcribed. Empty if the audio was sent
+        # Output only. The URI of the audio file being transcribed. Empty if the audio
+        # was sent
         # as byte content.
         # Corresponds to the JSON property `uri`
         # @return [String]

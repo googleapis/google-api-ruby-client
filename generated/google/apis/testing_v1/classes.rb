@@ -1425,6 +1425,14 @@ module Google
         # @return [String]
         attr_accessor :app_bundle_id
       
+        # The option to test special app entitlements. Setting this would re-sign the
+        # app having special entitlements with an explicit application-identifier.
+        # Currently supports testing aps-environment entitlement.
+        # Corresponds to the JSON property `testSpecialEntitlements`
+        # @return [Boolean]
+        attr_accessor :test_special_entitlements
+        alias_method :test_special_entitlements?, :test_special_entitlements
+      
         # A reference to a file, used for user inputs.
         # Corresponds to the JSON property `testsZip`
         # @return [Google::Apis::TestingV1::FileReference]
@@ -1449,6 +1457,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @app_bundle_id = args[:app_bundle_id] if args.key?(:app_bundle_id)
+          @test_special_entitlements = args[:test_special_entitlements] if args.key?(:test_special_entitlements)
           @tests_zip = args[:tests_zip] if args.key?(:tests_zip)
           @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
           @xctestrun = args[:xctestrun] if args.key?(:xctestrun)

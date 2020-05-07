@@ -85,13 +85,13 @@ module Google
         # Claims the website of a Merchant Center sub-account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account whose website is claimed.
         # @param [Boolean] overwrite
-        #   Only available to selected merchants. When set to True, this flag removes any
-        #   existing claim on the requested website by another account and replaces it
+        #   Only available to selected merchants. When set to `True`, this flag removes
+        #   any existing claim on the requested website by another account and replaces it
         #   with a claim from this account.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -200,8 +200,8 @@ module Google
         # Retrieves a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [String] fields
@@ -275,8 +275,8 @@ module Google
         # accountId and linkedAccountId.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that should be linked.
         # @param [Google::Apis::ContentV2_1::AccountsLinkRequest] accounts_link_request_object
@@ -355,8 +355,8 @@ module Google
         # Returns the list of accounts linked to your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to list links.
         # @param [Fixnum] max_results
@@ -399,8 +399,8 @@ module Google
         # Updates a Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Google::Apis::ContentV2_1::Account] account_object
@@ -474,8 +474,8 @@ module Google
         # returned for multi-client accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account.
         # @param [Array<String>, String] destinations
@@ -593,8 +593,8 @@ module Google
         # Retrieves the tax settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [String] fields
@@ -670,8 +670,8 @@ module Google
         # Updates the tax settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update account tax settings.
         # @param [Google::Apis::ContentV2_1::AccountTax] account_tax_object
@@ -1127,8 +1127,8 @@ module Google
         # Retrieves the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get or update LIA settings.
         # @param [String] fields
@@ -1165,8 +1165,8 @@ module Google
         # Retrieves the list of accessible Google My Business accounts.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to retrieve accessible Google My Business
         #   accounts.
@@ -1274,8 +1274,8 @@ module Google
         # Requests access to a specified Google My Business account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which GMB access is requested.
         # @param [String] gmb_email
@@ -1315,8 +1315,8 @@ module Google
         # Requests inventory validation for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -1357,8 +1357,8 @@ module Google
         # Sets the inventory verification contract for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -1408,8 +1408,8 @@ module Google
         # Sets the POS data provider for the specified country.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to retrieve accessible Google My Business
         #   accounts.
@@ -1456,8 +1456,8 @@ module Google
         # Updates the LIA settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get or update LIA settings.
         # @param [Google::Apis::ContentV2_1::LiaSettings] lia_settings_object
@@ -1610,7 +1610,7 @@ module Google
         
         # Creates a refund invoice for one or more shipment groups, and triggers a
         # refund for orderinvoice enabled orders. This can only be used for line items
-        # that have previously been charged using createChargeInvoice. All amounts (
+        # that have previously been charged using `createChargeInvoice`. All amounts (
         # except for the summary) are incremental with respect to the previous invoice.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -1749,6 +1749,46 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Acks an order return in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] return_id
+        #   The ID of the return.
+        # @param [Google::Apis::ContentV2_1::OrderreturnsAcknowledgeRequest] orderreturns_acknowledge_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::OrderreturnsAcknowledgeResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::OrderreturnsAcknowledgeResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def acknowledge_orderreturn(merchant_id, return_id, orderreturns_acknowledge_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/{returnId}/acknowledge', options)
+          command.request_representation = Google::Apis::ContentV2_1::OrderreturnsAcknowledgeRequest::Representation
+          command.request_object = orderreturns_acknowledge_request_object
+          command.response_representation = Google::Apis::ContentV2_1::OrderreturnsAcknowledgeResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::OrderreturnsAcknowledgeResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnId'] = return_id unless return_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves an order return from your Merchant Center account.
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
@@ -1790,12 +1830,26 @@ module Google
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
+        # @param [Boolean] acknowledged
+        #   Obtains order returns that match the acknowledgement status. When set to true,
+        #   obtains order returns that have been acknowledged. When false, obtains order
+        #   returns that have not been acknowledged. When not provided, obtains order
+        #   returns regardless of their acknowledgement status.
+        #   We recommend using this filter set to `false`, in conjunction with the `
+        #   acknowledge` call, such that only un-acknowledged order returns are returned.
         # @param [String] created_end_date
         #   Obtains order returns created before this date (inclusively), in ISO 8601
         #   format.
         # @param [String] created_start_date
         #   Obtains order returns created after this date (inclusively), in ISO 8601
         #   format.
+        # @param [Array<String>, String] google_order_ids
+        #   Obtains order returns with the specified order ids. If this parameter is
+        #   provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus,
+        #   shipmentState and acknowledged parameters must be not set.
+        #   Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the
+        #   obtained results will include all order returns that either match the
+        #   specified order id or the specified tracking number.
         # @param [Fixnum] max_results
         #   The maximum number of order returns to return in the response, used for paging.
         #   The default value is 25 returns per page, and the maximum allowed value is
@@ -1804,6 +1858,25 @@ module Google
         #   Return the results in the specified order.
         # @param [String] page_token
         #   The token returned by the previous request.
+        # @param [Array<String>, String] shipment_states
+        #   Obtains order returns that match any shipment state provided in this parameter.
+        #   When this parameter is not provided, order returns are obtained regardless of
+        #   their shipment states.
+        # @param [Array<String>, String] shipment_status
+        #   Obtains order returns that match any shipment status provided in this
+        #   parameter. When this parameter is not provided, order returns are obtained
+        #   regardless of their shipment statuses.
+        # @param [Array<String>, String] shipment_tracking_numbers
+        #   Obtains order returns with the specified tracking numbers. If this parameter
+        #   is provided, createdStartDate, createdEndDate, shipmentType, shipmentStatus,
+        #   shipmentState and acknowledged parameters must be not set.
+        #   Note: if googleOrderId and shipmentTrackingNumber parameters are provided, the
+        #   obtained results will include all order returns that either match the
+        #   specified order id or the specified tracking number.
+        # @param [Array<String>, String] shipment_types
+        #   Obtains order returns that match any shipment type provided in this parameter.
+        #   When this parameter is not provided, order returns are obtained regardless of
+        #   their shipment types.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1823,16 +1896,62 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_orderreturns(merchant_id, created_end_date: nil, created_start_date: nil, max_results: nil, order_by: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+        def list_orderreturns(merchant_id, acknowledged: nil, created_end_date: nil, created_start_date: nil, google_order_ids: nil, max_results: nil, order_by: nil, page_token: nil, shipment_states: nil, shipment_status: nil, shipment_tracking_numbers: nil, shipment_types: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
           command = make_simple_command(:get, '{merchantId}/orderreturns', options)
           command.response_representation = Google::Apis::ContentV2_1::OrderreturnsListResponse::Representation
           command.response_class = Google::Apis::ContentV2_1::OrderreturnsListResponse
           command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['acknowledged'] = acknowledged unless acknowledged.nil?
           command.query['createdEndDate'] = created_end_date unless created_end_date.nil?
           command.query['createdStartDate'] = created_start_date unless created_start_date.nil?
+          command.query['googleOrderIds'] = google_order_ids unless google_order_ids.nil?
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['shipmentStates'] = shipment_states unless shipment_states.nil?
+          command.query['shipmentStatus'] = shipment_status unless shipment_status.nil?
+          command.query['shipmentTrackingNumbers'] = shipment_tracking_numbers unless shipment_tracking_numbers.nil?
+          command.query['shipmentTypes'] = shipment_types unless shipment_types.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Processes return in your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The ID of the account that manages the order. This cannot be a multi-client
+        #   account.
+        # @param [String] return_id
+        #   The ID of the return.
+        # @param [Google::Apis::ContentV2_1::OrderreturnsProcessRequest] orderreturns_process_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::OrderreturnsProcessResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::OrderreturnsProcessResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def process_orderreturn(merchant_id, return_id, orderreturns_process_request_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:post, '{merchantId}/orderreturns/{returnId}/process', options)
+          command.request_representation = Google::Apis::ContentV2_1::OrderreturnsProcessRequest::Representation
+          command.request_object = orderreturns_process_request_object
+          command.response_representation = Google::Apis::ContentV2_1::OrderreturnsProcessResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::OrderreturnsProcessResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['returnId'] = return_id unless return_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           command.query['userIp'] = user_ip unless user_ip.nil?
@@ -1879,8 +1998,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sandbox only. Moves a test order from state "inProgress" to state "
-        # pendingShipment".
+        # Sandbox only. Moves a test order from state "`inProgress`" to state "`
+        # pendingShipment`".
         # @param [Fixnum] merchant_id
         #   The ID of the account that manages the order. This cannot be a multi-client
         #   account.
@@ -2196,7 +2315,7 @@ module Google
         # @param [String] template_name
         #   The name of the template to retrieve.
         # @param [String] country
-        #   The country of the template to retrieve. Defaults to US.
+        #   The country of the template to retrieve. Defaults to `US`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2285,8 +2404,8 @@ module Google
         #   Obtains orders that match the acknowledgement status. When set to true,
         #   obtains orders that have been acknowledged. When false, obtains orders that
         #   have not been acknowledged.
-        #   We recommend using this filter set to false, in conjunction with the
-        #   acknowledge call, such that only un-acknowledged orders are returned.
+        #   We recommend using this filter set to `false`, in conjunction with the `
+        #   acknowledge` call, such that only un-acknowledged orders are returned.
         # @param [Fixnum] max_results
         #   The maximum number of orders to return in the response, used for paging. The
         #   default value is 25 orders per page, and the maximum allowed value is 250
@@ -2303,10 +2422,10 @@ module Google
         # @param [String] placed_date_start
         #   Obtains orders placed after this date (inclusively), in ISO 8601 format.
         # @param [Array<String>, String] statuses
-        #   Obtains orders that match any of the specified statuses. Please note that
-        #   active is a shortcut for pendingShipment and partiallyShipped, and completed
-        #   is a shortcut for shipped, partiallyDelivered, delivered, partiallyReturned,
-        #   returned, and canceled.
+        #   Obtains orders that match any of the specified statuses. Please note that `
+        #   active` is a shortcut for `pendingShipment` and `partiallyShipped`, and `
+        #   completed` is a shortcut for `shipped`, `partiallyDelivered`, `delivered`, `
+        #   partiallyReturned`, `returned`, and `canceled`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3702,6 +3821,139 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Retrieves a settlement report from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The Merchant Center account of the settlement report.
+        # @param [String] settlement_id
+        #   The Google-provided ID of the settlement.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::SettlementReport] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::SettlementReport]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_settlementreport(merchant_id, settlement_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}', options)
+          command.response_representation = Google::Apis::ContentV2_1::SettlementReport::Representation
+          command.response_class = Google::Apis::ContentV2_1::SettlementReport
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['settlementId'] = settlement_id unless settlement_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of settlement reports from your Merchant Center account.
+        # @param [Fixnum] merchant_id
+        #   The Merchant Center account to list settlements for.
+        # @param [Fixnum] max_results
+        #   The maximum number of settlements to return in the response, used for paging.
+        #   The default value is 200 returns per page, and the maximum allowed value is
+        #   5000 returns per page.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [String] transfer_end_date
+        #   Obtains settlements which have transactions before this date (inclusively), in
+        #   ISO 8601 format.
+        # @param [String] transfer_start_date
+        #   Obtains settlements which have transactions after this date (inclusively), in
+        #   ISO 8601 format.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::SettlementreportsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::SettlementreportsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_settlementreports(merchant_id, max_results: nil, page_token: nil, transfer_end_date: nil, transfer_start_date: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/settlementreports', options)
+          command.response_representation = Google::Apis::ContentV2_1::SettlementreportsListResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::SettlementreportsListResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['transferEndDate'] = transfer_end_date unless transfer_end_date.nil?
+          command.query['transferStartDate'] = transfer_start_date unless transfer_start_date.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a list of transactions for the settlement.
+        # @param [Fixnum] merchant_id
+        #   The Merchant Center account to list transactions for.
+        # @param [String] settlement_id
+        #   The Google-provided ID of the settlement.
+        # @param [Fixnum] max_results
+        #   The maximum number of transactions to return in the response, used for paging.
+        #   The default value is 200 transactions per page, and the maximum allowed value
+        #   is 5000 transactions per page.
+        # @param [String] page_token
+        #   The token returned by the previous request.
+        # @param [Array<String>, String] transaction_ids
+        #   The list of transactions to return. If not set, all transactions will be
+        #   returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   An opaque string that represents a user for quota purposes. Must not exceed 40
+        #   characters.
+        # @param [String] user_ip
+        #   Deprecated. Please use quotaUser instead.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ContentV2_1::SettlementtransactionsListResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ContentV2_1::SettlementtransactionsListResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_settlementtransactions(merchant_id, settlement_id, max_results: nil, page_token: nil, transaction_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
+          command = make_simple_command(:get, '{merchantId}/settlementreports/{settlementId}/transactions', options)
+          command.response_representation = Google::Apis::ContentV2_1::SettlementtransactionsListResponse::Representation
+          command.response_class = Google::Apis::ContentV2_1::SettlementtransactionsListResponse
+          command.params['merchantId'] = merchant_id unless merchant_id.nil?
+          command.params['settlementId'] = settlement_id unless settlement_id.nil?
+          command.query['maxResults'] = max_results unless max_results.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['transactionIds'] = transaction_ids unless transaction_ids.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          command.query['userIp'] = user_ip unless user_ip.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Retrieves and updates the shipping settings of multiple accounts in a single
         # request.
         # @param [Google::Apis::ContentV2_1::ShippingsettingsCustomBatchRequest] shippingsettings_custom_batch_request_object
@@ -3739,8 +3991,8 @@ module Google
         # Retrieves the shipping settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [String] fields
@@ -3917,8 +4169,8 @@ module Google
         # Updates the shipping settings of the account.
         # @param [Fixnum] merchant_id
         #   The ID of the managing account. If this parameter is not the same as accountId,
-        #   then this account must be a multi-client account and accountId must be the ID
-        #   of a sub-account of this account.
+        #   then this account must be a multi-client account and `accountId` must be the
+        #   ID of a sub-account of this account.
         # @param [Fixnum] account_id
         #   The ID of the account for which to get/update shipping settings.
         # @param [Google::Apis::ContentV2_1::ShippingSettings] shipping_settings_object

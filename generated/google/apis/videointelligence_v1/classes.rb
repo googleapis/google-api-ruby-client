@@ -53,8 +53,8 @@ module Google
         attr_accessor :features
       
         # The video data bytes.
-        # If unset, the input video(s) should be specified via `input_uri`.
-        # If set, `input_uri` should be unset.
+        # If unset, the input video(s) should be specified via the `input_uri`.
+        # If set, `input_uri` must be unset.
         # Corresponds to the JSON property `inputContent`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
@@ -62,28 +62,29 @@ module Google
       
         # Input video location. Currently, only
         # [Cloud Storage](https://cloud.google.com/storage/) URIs are
-        # supported, which must be specified in the following format:
+        # supported. URIs must be specified in the following format:
         # `gs://bucket-id/object-id` (other URI formats return
         # google.rpc.Code.INVALID_ARGUMENT). For more information, see
         # [Request URIs](https://cloud.google.com/storage/docs/request-endpoints).
-        # A video URI may include wildcards in `object-id`, and thus identify
-        # multiple videos. Supported wildcards: '*' to match 0 or more characters;
+        # To identify multiple videos, a video URI may include wildcards in the
+        # `object-id`. Supported wildcards: '*' to match 0 or more characters;
         # '?' to match 1 character. If unset, the input video should be embedded
-        # in the request as `input_content`. If set, `input_content` should be unset.
+        # in the request as `input_content`. If set, `input_content` must be unset.
         # Corresponds to the JSON property `inputUri`
         # @return [String]
         attr_accessor :input_uri
       
         # Optional. Cloud region where annotation should take place. Supported cloud
-        # regions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region
-        # is specified, a region will be determined based on video file location.
+        # regions are: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no
+        # region is specified, the region will be determined based on video file
+        # location.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
       
         # Optional. Location where the output (in JSON format) should be stored.
         # Currently, only [Cloud Storage](https://cloud.google.com/storage/)
-        # URIs are supported, which must be specified in the following format:
+        # URIs are supported. These must be specified in the following format:
         # `gs://bucket-id/object-id` (other URI formats return
         # google.rpc.Code.INVALID_ARGUMENT). For more information, see
         # [Request URIs](https://cloud.google.com/storage/docs/request-endpoints).
@@ -141,7 +142,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # The name of the attribute, for example, glasses, dark_glasses, mouth_open.
         # A full list of supported type names will be provided in the document.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -175,7 +176,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # The name of this landmark, for example, left_hand, right_shoulder.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -203,7 +204,7 @@ module Google
       class GoogleCloudVideointelligenceV1Entity
         include Google::Apis::Core::Hashable
       
-        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Textual description, e.g., `Fixed-gear bicycle`.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -243,6 +244,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1ExplicitContentFrame>]
         attr_accessor :frames
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -250,6 +256,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frames = args[:frames] if args.key?(:frames)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -305,9 +312,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
-        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
-        # cases there might be more than one categories e.g. `Terrier` could also be
-        # a `pet`.
+        # For example, when the label is `Terrier`, the category is likely `dog`. And
+        # in some cases there might be more than one categories e.g., `Terrier` could
+        # also be a `pet`.
         # Corresponds to the JSON property `categoryEntities`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1Entity>]
         attr_accessor :category_entities
@@ -327,6 +334,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelSegment>]
         attr_accessor :segments
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -337,6 +349,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -348,7 +361,7 @@ module Google
         # frame-level detection. If not set, it is set to 0.4 by default. The valid
         # range for this threshold is [0.1, 0.9]. Any value set outside of this
         # range will be clipped.
-        # Note: for best results please follow the default threshold. We will update
+        # Note: For best results, follow the default threshold. We will update
         # the default threshold everytime when we release a new model.
         # Corresponds to the JSON property `frameConfidenceThreshold`
         # @return [Float]
@@ -368,19 +381,19 @@ module Google
         # @return [String]
         attr_accessor :model
       
-        # Whether the video has been shot from a stationary (i.e. non-moving) camera.
-        # When set to true, might improve detection accuracy for moving objects.
-        # Should be used with `SHOT_AND_FRAME_MODE` enabled.
+        # Whether the video has been shot from a stationary (i.e., non-moving)
+        # camera. When set to true, might improve detection accuracy for moving
+        # objects. Should be used with `SHOT_AND_FRAME_MODE` enabled.
         # Corresponds to the JSON property `stationaryCamera`
         # @return [Boolean]
         attr_accessor :stationary_camera
         alias_method :stationary_camera?, :stationary_camera
       
         # The confidence threshold we perform filtering on the labels from
-        # video-level and shot-level detections. If not set, it is set to 0.3 by
+        # video-level and shot-level detections. If not set, it's set to 0.3 by
         # default. The valid range for this threshold is [0.1, 0.9]. Any value set
         # outside of this range will be clipped.
-        # Note: for best results please follow the default threshold. We will update
+        # Note: For best results, follow the default threshold. We will update
         # the default threshold everytime when we release a new model.
         # Corresponds to the JSON property `videoConfidenceThreshold`
         # @return [Float]
@@ -620,6 +633,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :track_id
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -631,6 +649,7 @@ module Google
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
           @track_id = args[:track_id] if args.key?(:track_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -749,8 +768,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # Note: When `enable_speaker_diarization` is set to true, you will see all
+        # the words from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1WordInfo>]
         attr_accessor :words
@@ -831,7 +850,7 @@ module Google
         # the top alternative of the recognition result using a speaker_tag provided
         # in the WordInfo.
         # Note: When this is true, we send all the words from the beginning of the
-        # audio for the top alternative in every consecutive responses.
+        # audio for the top alternative in every consecutive response.
         # This is done in order to improve our speaker tags as our models learn to
         # identify the speakers in the conversation over time.
         # Corresponds to the JSON property `enableSpeakerDiarization`
@@ -913,6 +932,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -921,6 +945,7 @@ module Google
         def update!(**args)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1111,7 +1136,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies which feature is being tracked if the request contains more than
-        # one features.
+        # one feature.
         # Corresponds to the JSON property `feature`
         # @return [String]
         attr_accessor :feature
@@ -1206,13 +1231,13 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1VideoSegment]
         attr_accessor :segment
       
-        # Topical label annotations on video level or user specified segment level.
+        # Topical label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
-        # Presence label annotations on video level or user specified segment level.
+        # Presence label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label. Compared to the
         # existing topical `segment_label_annotations`, this field presents more
         # fine-grained, segment-level labels detected in video content and is made
@@ -1471,7 +1496,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # The name of the attribute, for example, glasses, dark_glasses, mouth_open.
         # A full list of supported type names will be provided in the document.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -1505,7 +1530,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # The name of this landmark, for example, left_hand, right_shoulder.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1533,7 +1558,7 @@ module Google
       class GoogleCloudVideointelligenceV1beta2Entity
         include Google::Apis::Core::Hashable
       
-        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Textual description, e.g., `Fixed-gear bicycle`.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1573,6 +1598,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2ExplicitContentFrame>]
         attr_accessor :frames
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1580,6 +1610,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frames = args[:frames] if args.key?(:frames)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1614,9 +1645,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
-        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
-        # cases there might be more than one categories e.g. `Terrier` could also be
-        # a `pet`.
+        # For example, when the label is `Terrier`, the category is likely `dog`. And
+        # in some cases there might be more than one categories e.g., `Terrier` could
+        # also be a `pet`.
         # Corresponds to the JSON property `categoryEntities`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2Entity>]
         attr_accessor :category_entities
@@ -1636,6 +1667,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelSegment>]
         attr_accessor :segments
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1646,6 +1682,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1869,6 +1906,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :track_id
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1880,6 +1922,7 @@ module Google
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
           @track_id = args[:track_id] if args.key?(:track_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -1931,8 +1974,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # Note: When `enable_speaker_diarization` is set to true, you will see all
+        # the words from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2WordInfo>]
         attr_accessor :words
@@ -1996,6 +2039,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2004,6 +2052,7 @@ module Google
         def update!(**args)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2164,7 +2213,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies which feature is being tracked if the request contains more than
-        # one features.
+        # one feature.
         # Corresponds to the JSON property `feature`
         # @return [String]
         attr_accessor :feature
@@ -2259,13 +2308,13 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2VideoSegment]
         attr_accessor :segment
       
-        # Topical label annotations on video level or user specified segment level.
+        # Topical label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1beta2LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
-        # Presence label annotations on video level or user specified segment level.
+        # Presence label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label. Compared to the
         # existing topical `segment_label_annotations`, this field presents more
         # fine-grained, segment-level labels detected in video content and is made
@@ -2467,7 +2516,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # The name of the attribute, for example, glasses, dark_glasses, mouth_open.
         # A full list of supported type names will be provided in the document.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -2501,7 +2550,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # The name of this landmark, for example, left_hand, right_shoulder.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -2529,7 +2578,7 @@ module Google
       class GoogleCloudVideointelligenceV1p1beta1Entity
         include Google::Apis::Core::Hashable
       
-        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Textual description, e.g., `Fixed-gear bicycle`.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -2569,6 +2618,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame>]
         attr_accessor :frames
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2576,6 +2630,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frames = args[:frames] if args.key?(:frames)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2610,9 +2665,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
-        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
-        # cases there might be more than one categories e.g. `Terrier` could also be
-        # a `pet`.
+        # For example, when the label is `Terrier`, the category is likely `dog`. And
+        # in some cases there might be more than one categories e.g., `Terrier` could
+        # also be a `pet`.
         # Corresponds to the JSON property `categoryEntities`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1Entity>]
         attr_accessor :category_entities
@@ -2632,6 +2687,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelSegment>]
         attr_accessor :segments
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2642,6 +2702,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2865,6 +2926,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :track_id
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2876,6 +2942,7 @@ module Google
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
           @track_id = args[:track_id] if args.key?(:track_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -2927,8 +2994,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # Note: When `enable_speaker_diarization` is set to true, you will see all
+        # the words from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1WordInfo>]
         attr_accessor :words
@@ -2992,6 +3059,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3000,6 +3072,7 @@ module Google
         def update!(**args)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3160,7 +3233,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies which feature is being tracked if the request contains more than
-        # one features.
+        # one feature.
         # Corresponds to the JSON property `feature`
         # @return [String]
         attr_accessor :feature
@@ -3255,13 +3328,13 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1VideoSegment]
         attr_accessor :segment
       
-        # Topical label annotations on video level or user specified segment level.
+        # Topical label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p1beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
-        # Presence label annotations on video level or user specified segment level.
+        # Presence label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label. Compared to the
         # existing topical `segment_label_annotations`, this field presents more
         # fine-grained, segment-level labels detected in video content and is made
@@ -3463,7 +3536,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # The name of the attribute, for example, glasses, dark_glasses, mouth_open.
         # A full list of supported type names will be provided in the document.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -3497,7 +3570,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # The name of this landmark, for example, left_hand, right_shoulder.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -3525,7 +3598,7 @@ module Google
       class GoogleCloudVideointelligenceV1p2beta1Entity
         include Google::Apis::Core::Hashable
       
-        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Textual description, e.g., `Fixed-gear bicycle`.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -3565,6 +3638,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame>]
         attr_accessor :frames
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3572,6 +3650,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frames = args[:frames] if args.key?(:frames)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3606,9 +3685,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
-        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
-        # cases there might be more than one categories e.g. `Terrier` could also be
-        # a `pet`.
+        # For example, when the label is `Terrier`, the category is likely `dog`. And
+        # in some cases there might be more than one categories e.g., `Terrier` could
+        # also be a `pet`.
         # Corresponds to the JSON property `categoryEntities`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1Entity>]
         attr_accessor :category_entities
@@ -3628,6 +3707,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelSegment>]
         attr_accessor :segments
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3638,6 +3722,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3861,6 +3946,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :track_id
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3872,6 +3962,7 @@ module Google
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
           @track_id = args[:track_id] if args.key?(:track_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -3923,8 +4014,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # Note: When `enable_speaker_diarization` is set to true, you will see all
+        # the words from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1WordInfo>]
         attr_accessor :words
@@ -3988,6 +4079,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -3996,6 +4092,7 @@ module Google
         def update!(**args)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4156,7 +4253,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies which feature is being tracked if the request contains more than
-        # one features.
+        # one feature.
         # Corresponds to the JSON property `feature`
         # @return [String]
         attr_accessor :feature
@@ -4251,13 +4348,13 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1VideoSegment]
         attr_accessor :segment
       
-        # Topical label annotations on video level or user specified segment level.
+        # Topical label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p2beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
-        # Presence label annotations on video level or user specified segment level.
+        # Presence label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label. Compared to the
         # existing topical `segment_label_annotations`, this field presents more
         # fine-grained, segment-level labels detected in video content and is made
@@ -4495,6 +4592,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1CelebrityTrack>]
         attr_accessor :celebrity_tracks
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4502,6 +4604,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @celebrity_tracks = args[:celebrity_tracks] if args.key?(:celebrity_tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4540,7 +4643,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.
+        # The name of the attribute, for example, glasses, dark_glasses, mouth_open.
         # A full list of supported type names will be provided in the document.
         # Corresponds to the JSON property `name`
         # @return [String]
@@ -4574,7 +4677,7 @@ module Google
         # @return [Float]
         attr_accessor :confidence
       
-        # The name of this landmark, i.e. left_hand, right_shoulder.
+        # The name of this landmark, for example, left_hand, right_shoulder.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4602,7 +4705,7 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1Entity
         include Google::Apis::Core::Hashable
       
-        # Textual description, e.g. `Fixed-gear bicycle`.
+        # Textual description, e.g., `Fixed-gear bicycle`.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -4642,6 +4745,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame>]
         attr_accessor :frames
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4649,6 +4757,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @frames = args[:frames] if args.key?(:frames)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4693,6 +4802,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track>]
         attr_accessor :tracks
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4701,6 +4815,7 @@ module Google
         def update!(**args)
           @thumbnail = args[:thumbnail] if args.key?(:thumbnail)
           @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4709,9 +4824,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Common categories for the detected entity.
-        # E.g. when the label is `Terrier` the category is likely `dog`. And in some
-        # cases there might be more than one categories e.g. `Terrier` could also be
-        # a `pet`.
+        # For example, when the label is `Terrier`, the category is likely `dog`. And
+        # in some cases there might be more than one categories e.g., `Terrier` could
+        # also be a `pet`.
         # Corresponds to the JSON property `categoryEntities`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Entity>]
         attr_accessor :category_entities
@@ -4731,6 +4846,11 @@ module Google
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelSegment>]
         attr_accessor :segments
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4741,6 +4861,7 @@ module Google
           @entity = args[:entity] if args.key?(:entity)
           @frames = args[:frames] if args.key?(:frames)
           @segments = args[:segments] if args.key?(:segments)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -4964,6 +5085,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :track_id
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -4975,6 +5101,7 @@ module Google
           @frames = args[:frames] if args.key?(:frames)
           @segment = args[:segment] if args.key?(:segment)
           @track_id = args[:track_id] if args.key?(:track_id)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -5010,10 +5137,15 @@ module Google
       class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation
         include Google::Apis::Core::Hashable
       
-        # The trackes that a person is detected.
+        # The detected tracks of a person.
         # Corresponds to the JSON property `tracks`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1Track>]
         attr_accessor :tracks
+      
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
       
         def initialize(**args)
            update!(**args)
@@ -5022,6 +5154,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @tracks = args[:tracks] if args.key?(:tracks)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -5070,8 +5203,8 @@ module Google
         attr_accessor :transcript
       
         # Output only. A list of word-specific information for each recognized word.
-        # Note: When `enable_speaker_diarization` is true, you will see all the words
-        # from the beginning of the audio.
+        # Note: When `enable_speaker_diarization` is set to true, you will see all
+        # the words from the beginning of the audio.
         # Corresponds to the JSON property `words`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1WordInfo>]
         attr_accessor :words
@@ -5131,10 +5264,10 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults]
         attr_accessor :annotation_results
       
-        # Cloud Storage URI that stores annotation results of one streaming session.
-        # It is a directory that can hold multiple files in JSON format.
-        # Example uri format:
-        # gs://bucket_id/object_id/cloud_project_name-session_id
+        # Google Cloud Storage(GCS) URI that stores annotation results of one
+        # streaming session in JSON format.
+        # It is the annotation_result_storage_directory
+        # from the request followed by '/cloud_project_number-session_id'.
         # Corresponds to the JSON property `annotationResultsUri`
         # @return [String]
         attr_accessor :annotation_results_uri
@@ -5217,6 +5350,11 @@ module Google
         # @return [String]
         attr_accessor :text
       
+        # Feature version.
+        # Corresponds to the JSON property `version`
+        # @return [String]
+        attr_accessor :version
+      
         def initialize(**args)
            update!(**args)
         end
@@ -5225,6 +5363,7 @@ module Google
         def update!(**args)
           @segments = args[:segments] if args.key?(:segments)
           @text = args[:text] if args.key?(:text)
+          @version = args[:version] if args.key?(:version)
         end
       end
       
@@ -5385,7 +5524,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies which feature is being tracked if the request contains more than
-        # one features.
+        # one feature.
         # Corresponds to the JSON property `feature`
         # @return [String]
         attr_accessor :feature
@@ -5495,13 +5634,13 @@ module Google
         # @return [Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1VideoSegment]
         attr_accessor :segment
       
-        # Topical label annotations on video level or user specified segment level.
+        # Topical label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label.
         # Corresponds to the JSON property `segmentLabelAnnotations`
         # @return [Array<Google::Apis::VideointelligenceV1::GoogleCloudVideointelligenceV1p3beta1LabelAnnotation>]
         attr_accessor :segment_label_annotations
       
-        # Presence label annotations on video level or user specified segment level.
+        # Presence label annotations on video level or user-specified segment level.
         # There is exactly one element for each unique label. Compared to the
         # existing topical `segment_label_annotations`, this field presents more
         # fine-grained, segment-level labels detected in video content and is made

@@ -499,6 +499,19 @@ module Google
               # @return [Date]
               attr_accessor :created_before
             
+              # A timestamp in RFC 3339 format. This condition is satisfied when the custom
+              # time on an object is before this timestamp.
+              # Corresponds to the JSON property `customTimeBefore`
+              # @return [DateTime]
+              attr_accessor :custom_time_before
+            
+              # Number of days elapsed since the user-specified timestamp set on an object.
+              # The condition is satisfied if the days elapsed is at least this number. If no
+              # custom timestamp is specified on an object, the condition does not apply.
+              # Corresponds to the JSON property `daysSinceCustomTime`
+              # @return [Fixnum]
+              attr_accessor :days_since_custom_time
+            
               # Relevant only for versioned objects. If the value is true, this condition
               # matches live objects; if the value is false, it matches archived objects.
               # Corresponds to the JSON property `isLive`
@@ -537,6 +550,8 @@ module Google
               def update!(**args)
                 @age = args[:age] if args.key?(:age)
                 @created_before = args[:created_before] if args.key?(:created_before)
+                @custom_time_before = args[:custom_time_before] if args.key?(:custom_time_before)
+                @days_since_custom_time = args[:days_since_custom_time] if args.key?(:days_since_custom_time)
                 @is_live = args[:is_live] if args.key?(:is_live)
                 @matches_pattern = args[:matches_pattern] if args.key?(:matches_pattern)
                 @matches_storage_class = args[:matches_storage_class] if args.key?(:matches_storage_class)
@@ -1364,6 +1379,11 @@ module Google
         # @return [String]
         attr_accessor :crc32c
       
+        # A timestamp in RFC 3339 format specified by the user for an object.
+        # Corresponds to the JSON property `customTime`
+        # @return [DateTime]
+        attr_accessor :custom_time
+      
         # Metadata of customer-supplied encryption key, if the object is encrypted by
         # such a key.
         # Corresponds to the JSON property `customerEncryption`
@@ -1519,6 +1539,7 @@ module Google
           @content_language = args[:content_language] if args.key?(:content_language)
           @content_type = args[:content_type] if args.key?(:content_type)
           @crc32c = args[:crc32c] if args.key?(:crc32c)
+          @custom_time = args[:custom_time] if args.key?(:custom_time)
           @customer_encryption = args[:customer_encryption] if args.key?(:customer_encryption)
           @etag = args[:etag] if args.key?(:etag)
           @event_based_hold = args[:event_based_hold] if args.key?(:event_based_hold)

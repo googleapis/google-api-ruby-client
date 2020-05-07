@@ -47,7 +47,7 @@ module Google
         attr_accessor :initial_state
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#achievementConfiguration</code>.
+        # string `gamesConfiguration#achievementConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -99,7 +99,7 @@ module Google
         attr_accessor :icon_url
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#achievementConfigurationDetail</code>.
+        # string `gamesConfiguration#achievementConfigurationDetail`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -144,8 +144,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string
-        # <code>gamesConfiguration#achievementConfigurationListResponse</code>.
+        # string `gamesConfiguration#achievementConfigurationListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -263,7 +262,7 @@ module Google
         attr_accessor :image_type
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#imageConfiguration</code>.
+        # string `gamesConfiguration#imageConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -306,7 +305,7 @@ module Google
         attr_accessor :id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#leaderboardConfiguration</code>.
+        # string `gamesConfiguration#leaderboardConfiguration`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -363,7 +362,7 @@ module Google
         attr_accessor :icon_url
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#leaderboardConfigurationDetail</code>.
+        # string `gamesConfiguration#leaderboardConfigurationDetail`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -408,7 +407,7 @@ module Google
       
         # Uniquely identifies the type of this resource. Value is always the fixed
         # string
-        # <code>gamesConfiguration#leaderboardConfigurationListResponse</code>.
+        # `gamesConfiguration#leaderboardConfigurationListResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -435,7 +434,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#localizedString</code>.
+        # string `gamesConfiguration#localizedString`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -467,7 +466,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string <code>gamesConfiguration#localizedStringBundle</code>.
+        # string `gamesConfiguration#localizedStringBundle`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

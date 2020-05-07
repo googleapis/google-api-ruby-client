@@ -84,6 +84,44 @@ module Google
         end
       end
       
+      # Defines a hash object for use in Materials and Products.
+      class ArtifactHashes
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `sha256`
+        # @return [String]
+        attr_accessor :sha256
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sha256 = args[:sha256] if args.key?(:sha256)
+        end
+      end
+      
+      # Defines an object to declare an in-toto artifact rule
+      class ArtifactRule
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `artifactRule`
+        # @return [Array<String>]
+        attr_accessor :artifact_rule
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @artifact_rule = args[:artifact_rule] if args.key?(:artifact_rule)
+        end
+      end
+      
       # Occurrence that represents a single "attestation". The authenticity of an
       # attestation can be verified using the attached signature. If the verifier
       # trusts the public key of the signer, then verifying the signature is
@@ -513,6 +551,26 @@ module Google
           @key_type = args[:key_type] if args.key?(:key_type)
           @public_key = args[:public_key] if args.key?(:public_key)
           @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # Defines an object for the byproducts field in in-toto links. The suggested
+      # fields are "stderr", "stdout", and "return-value".
+      class ByProducts
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customValues`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_values = args[:custom_values] if args.key?(:custom_values)
         end
       end
       
@@ -1045,6 +1103,26 @@ module Google
         end
       end
       
+      # Defines an object for the environment field in in-toto links. The suggested
+      # fields are "variables", "filesystem", and "workdir".
+      class Environment
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `customValues`
+        # @return [Hash<String,String>]
+        attr_accessor :custom_values
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @custom_values = args[:custom_values] if args.key?(:custom_values)
+        end
+      end
+      
       # Represents a textual expression in the Common Expression Language (CEL)
       # syntax. CEL is a C-like expression language. The syntax and semantics of CEL
       # are documented at https://github.com/google/cel-spec.
@@ -1311,6 +1389,9 @@ module Google
         # Requests for policies with any conditional bindings must specify version 3.
         # Policies without any conditional bindings may specify any valid value or
         # leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM
+        # documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # Corresponds to the JSON property `requestedPolicyVersion`
         # @return [Fixnum]
         attr_accessor :requested_policy_version
@@ -1471,6 +1552,83 @@ module Google
         end
       end
       
+      # 
+      class GrafeasV1beta1IntotoArtifact
+        include Google::Apis::Core::Hashable
+      
+        # Defines a hash object for use in Materials and Products.
+        # Corresponds to the JSON property `hashes`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ArtifactHashes]
+        attr_accessor :hashes
+      
+        # 
+        # Corresponds to the JSON property `resourceUri`
+        # @return [String]
+        attr_accessor :resource_uri
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @hashes = args[:hashes] if args.key?(:hashes)
+          @resource_uri = args[:resource_uri] if args.key?(:resource_uri)
+        end
+      end
+      
+      # This corresponds to a signed in-toto link - it is made up of one or more
+      # signatures and the in-toto link itself. This is used for occurrences of a
+      # Grafeas in-toto note.
+      class GrafeasV1beta1IntotoDetails
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `signatures`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoSignature>]
+        attr_accessor :signatures
+      
+        # This corresponds to an in-toto link.
+        # Corresponds to the JSON property `signed`
+        # @return [Google::Apis::ContaineranalysisV1beta1::Link]
+        attr_accessor :signed
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @signatures = args[:signatures] if args.key?(:signatures)
+          @signed = args[:signed] if args.key?(:signed)
+        end
+      end
+      
+      # A signature object consists of the KeyID used and the signature itself.
+      class GrafeasV1beta1IntotoSignature
+        include Google::Apis::Core::Hashable
+      
+        # 
+        # Corresponds to the JSON property `keyid`
+        # @return [String]
+        attr_accessor :keyid
+      
+        # 
+        # Corresponds to the JSON property `sig`
+        # @return [String]
+        attr_accessor :sig
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyid = args[:keyid] if args.key?(:keyid)
+          @sig = args[:sig] if args.key?(:sig)
+        end
+      end
+      
       # Details of a package occurrence.
       class GrafeasV1beta1PackageDetails
         include Google::Apis::Core::Hashable
@@ -1610,6 +1768,60 @@ module Google
         end
       end
       
+      # This contains the fields corresponding to the definition of a software supply
+      # chain step in an in-toto layout. This information goes into a Grafeas note.
+      class InToto
+        include Google::Apis::Core::Hashable
+      
+        # This field contains the expected command used to perform the step.
+        # Corresponds to the JSON property `expectedCommand`
+        # @return [Array<String>]
+        attr_accessor :expected_command
+      
+        # The following fields contain in-toto artifact rules identifying the
+        # artifacts that enter this supply chain step, and exit the supply chain
+        # step, i.e. materials and products of the step.
+        # Corresponds to the JSON property `expectedMaterials`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ArtifactRule>]
+        attr_accessor :expected_materials
+      
+        # 
+        # Corresponds to the JSON property `expectedProducts`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::ArtifactRule>]
+        attr_accessor :expected_products
+      
+        # This field contains the public keys that can be used to verify the
+        # signatures on the step metadata.
+        # Corresponds to the JSON property `signingKeys`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::SigningKey>]
+        attr_accessor :signing_keys
+      
+        # This field identifies the name of the step in the supply chain.
+        # Corresponds to the JSON property `stepName`
+        # @return [String]
+        attr_accessor :step_name
+      
+        # This field contains a value that indicates the minimum number of keys that
+        # need to be used to sign the step's in-toto link.
+        # Corresponds to the JSON property `threshold`
+        # @return [Fixnum]
+        attr_accessor :threshold
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @expected_command = args[:expected_command] if args.key?(:expected_command)
+          @expected_materials = args[:expected_materials] if args.key?(:expected_materials)
+          @expected_products = args[:expected_products] if args.key?(:expected_products)
+          @signing_keys = args[:signing_keys] if args.key?(:signing_keys)
+          @step_name = args[:step_name] if args.key?(:step_name)
+          @threshold = args[:threshold] if args.key?(:threshold)
+        end
+      end
+      
       # This represents how a particular software package may be installed on a
       # system.
       class Installation
@@ -1685,6 +1897,67 @@ module Google
         def update!(**args)
           @arguments = args[:arguments] if args.key?(:arguments)
           @directive = args[:directive] if args.key?(:directive)
+        end
+      end
+      
+      # This corresponds to an in-toto link.
+      class Link
+        include Google::Apis::Core::Hashable
+      
+        # Defines an object for the byproducts field in in-toto links. The suggested
+        # fields are "stderr", "stdout", and "return-value".
+        # Corresponds to the JSON property `byproducts`
+        # @return [Google::Apis::ContaineranalysisV1beta1::ByProducts]
+        attr_accessor :byproducts
+      
+        # This field contains the full command executed for the step. This can also
+        # be empty if links are generated for operations that aren't directly mapped
+        # to a specific command. Each term in the command is an independent string
+        # in the list. An example of a command in the in-toto metadata field is:
+        # "command": ["git", "clone", "https://github.com/in-toto/demo-project.git"]
+        # Corresponds to the JSON property `command`
+        # @return [Array<String>]
+        attr_accessor :command
+      
+        # Defines an object for the environment field in in-toto links. The suggested
+        # fields are "variables", "filesystem", and "workdir".
+        # Corresponds to the JSON property `environment`
+        # @return [Google::Apis::ContaineranalysisV1beta1::Environment]
+        attr_accessor :environment
+      
+        # Materials are the supply chain artifacts that go into the step and are used
+        # for the operation performed. The key of the map is the path of the artifact
+        # and the structure contains the recorded hash information. An example is:
+        # "materials": [
+        # `
+        # "resource_uri": "foo/bar",
+        # "hashes": `
+        # "sha256": "ebebf...",
+        # <OTHER HASH ALGORITHMS>: <HASH VALUE>
+        # `
+        # `
+        # ]
+        # Corresponds to the JSON property `materials`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact>]
+        attr_accessor :materials
+      
+        # Products are the supply chain artifacts generated as a result of the step.
+        # The structure is identical to that of materials.
+        # Corresponds to the JSON property `products`
+        # @return [Array<Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoArtifact>]
+        attr_accessor :products
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @byproducts = args[:byproducts] if args.key?(:byproducts)
+          @command = args[:command] if args.key?(:command)
+          @environment = args[:environment] if args.key?(:environment)
+          @materials = args[:materials] if args.key?(:materials)
+          @products = args[:products] if args.key?(:products)
         end
       end
       
@@ -1881,6 +2154,12 @@ module Google
         # @return [String]
         attr_accessor :expiration_time
       
+        # This contains the fields corresponding to the definition of a software supply
+        # chain step in an in-toto layout. This information goes into a Grafeas note.
+        # Corresponds to the JSON property `intoto`
+        # @return [Google::Apis::ContaineranalysisV1beta1::InToto]
+        attr_accessor :intoto
+      
         # Output only. The type of analysis. This field can be used as a filter in
         # list requests.
         # Corresponds to the JSON property `kind`
@@ -1944,6 +2223,7 @@ module Google
           @deployable = args[:deployable] if args.key?(:deployable)
           @discovery = args[:discovery] if args.key?(:discovery)
           @expiration_time = args[:expiration_time] if args.key?(:expiration_time)
+          @intoto = args[:intoto] if args.key?(:intoto)
           @kind = args[:kind] if args.key?(:kind)
           @long_description = args[:long_description] if args.key?(:long_description)
           @name = args[:name] if args.key?(:name)
@@ -1994,6 +2274,13 @@ module Google
         # Corresponds to the JSON property `installation`
         # @return [Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1PackageDetails]
         attr_accessor :installation
+      
+        # This corresponds to a signed in-toto link - it is made up of one or more
+        # signatures and the in-toto link itself. This is used for occurrences of a
+        # Grafeas in-toto note.
+        # Corresponds to the JSON property `intoto`
+        # @return [Google::Apis::ContaineranalysisV1beta1::GrafeasV1beta1IntotoDetails]
+        attr_accessor :intoto
       
         # Output only. This explicitly denotes which of the occurrence details are
         # specified. This field can be used as a filter in list requests.
@@ -2047,6 +2334,7 @@ module Google
           @derived_image = args[:derived_image] if args.key?(:derived_image)
           @discovered = args[:discovered] if args.key?(:discovered)
           @installation = args[:installation] if args.key?(:installation)
+          @intoto = args[:intoto] if args.key?(:intoto)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @note_name = args[:note_name] if args.key?(:note_name)
@@ -2183,10 +2471,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -2201,7 +2492,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -2274,6 +2567,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -2460,10 +2756,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -2478,7 +2777,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -2584,6 +2885,55 @@ module Google
         def update!(**args)
           @public_key_id = args[:public_key_id] if args.key?(:public_key_id)
           @signature = args[:signature] if args.key?(:signature)
+        end
+      end
+      
+      # This defines the format used to record keys used in the software supply
+      # chain. An in-toto link is attested using one or more keys defined in the
+      # in-toto layout. An example of this is:
+      # `
+      # "key_id": "776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...",
+      # "key_type": "rsa",
+      # "public_key_value": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0B...",
+      # "key_scheme": "rsassa-pss-sha256"
+      # `
+      # The format for in-toto's key definition can be found in section 4.2 of the
+      # in-toto specification.
+      class SigningKey
+        include Google::Apis::Core::Hashable
+      
+        # key_id is an identifier for the signing key.
+        # Corresponds to the JSON property `keyId`
+        # @return [String]
+        attr_accessor :key_id
+      
+        # This field contains the corresponding signature scheme.
+        # Eg: "rsassa-pss-sha256".
+        # Corresponds to the JSON property `keyScheme`
+        # @return [String]
+        attr_accessor :key_scheme
+      
+        # This field identifies the specific signing method. Eg: "rsa", "ed25519",
+        # and "ecdsa".
+        # Corresponds to the JSON property `keyType`
+        # @return [String]
+        attr_accessor :key_type
+      
+        # This field contains the actual public key.
+        # Corresponds to the JSON property `publicKeyValue`
+        # @return [String]
+        attr_accessor :public_key_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @key_id = args[:key_id] if args.key?(:key_id)
+          @key_scheme = args[:key_scheme] if args.key?(:key_scheme)
+          @key_type = args[:key_type] if args.key?(:key_type)
+          @public_key_value = args[:public_key_value] if args.key?(:public_key_value)
         end
       end
       

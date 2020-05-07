@@ -22,6 +22,12 @@ module Google
   module Apis
     module ToolresultsV1beta3
       
+      class Anr
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AndroidAppInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -46,6 +52,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AndroidTestLoop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Any
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -53,6 +65,12 @@ module Google
       end
       
       class AppStartTime
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AvailableDeepLinks
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -76,13 +94,37 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BlankScreen
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CpuInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CrashDialogError
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Duration
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncounteredLoginScreen
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class EncounteredNonAndroidUiWidgetScreen
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -106,7 +148,19 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class FailedToInstall
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FailureDetail
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class FatalException
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -142,6 +196,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class InAppPurchasesFound
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class InconclusiveDetail
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -149,6 +209,24 @@ module Google
       end
       
       class IndividualOutcome
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class InsufficientCoverage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosAppCrashed
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LauncherActivityNotFound
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -214,6 +292,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class MatrixDimensionDefinition
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MemoryInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -232,7 +316,49 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class NativeCrash
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonSdkApi
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonSdkApiInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonSdkApiUsageViolation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NonSdkApiUsageViolationReport
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Outcome
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class OverlappingUiElements
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PendingGoogleUpdateInsight
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -257,6 +383,18 @@ module Google
       end
       
       class PerfSampleSeries
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformedGoogleLogin
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class PerformedMonkeyActions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -287,6 +425,12 @@ module Google
       end
       
       class ResultsStorage
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RoboScriptExecution
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -334,6 +478,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class StartActivityNotFound
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -353,6 +503,12 @@ module Google
       end
       
       class StepLabelsEntry
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class StepSummary
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +604,50 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UiElementTooDeep
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnspecifiedWarning
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UnusedRoboDirective
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UpgradeInsight
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsedRoboDirective
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class UsedRoboIgnoreDirective
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Anr
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
+        end
+      end
+      
       class AndroidAppInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -488,8 +688,16 @@ module Google
       
           property :android_robo_test, as: 'androidRoboTest', class: Google::Apis::ToolresultsV1beta3::AndroidRoboTest, decorator: Google::Apis::ToolresultsV1beta3::AndroidRoboTest::Representation
       
+          property :android_test_loop, as: 'androidTestLoop', class: Google::Apis::ToolresultsV1beta3::AndroidTestLoop, decorator: Google::Apis::ToolresultsV1beta3::AndroidTestLoop::Representation
+      
           property :test_timeout, as: 'testTimeout', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
       
+        end
+      end
+      
+      class AndroidTestLoop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -508,6 +716,12 @@ module Google
       
           property :initial_display_time, as: 'initialDisplayTime', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
       
+        end
+      end
+      
+      class AvailableDeepLinks
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -536,6 +750,13 @@ module Google
         end
       end
       
+      class BlankScreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :screen_id, as: 'screenId'
+        end
+      end
+      
       class CpuInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -545,11 +766,34 @@ module Google
         end
       end
       
+      class CrashDialogError
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :crash_package, as: 'crashPackage'
+        end
+      end
+      
       class Duration
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :nanos, as: 'nanos'
           property :seconds, :numeric_string => true, as: 'seconds'
+        end
+      end
+      
+      class EncounteredLoginScreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distinct_screens, as: 'distinctScreens'
+          collection :screen_ids, as: 'screenIds'
+        end
+      end
+      
+      class EncounteredNonAndroidUiWidgetScreen
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :distinct_screens, as: 'distinctScreens'
+          collection :screen_ids, as: 'screenIds'
         end
       end
       
@@ -591,6 +835,8 @@ module Google
       
           property :creation_time, as: 'creationTime', class: Google::Apis::ToolresultsV1beta3::Timestamp, decorator: Google::Apis::ToolresultsV1beta3::Timestamp::Representation
       
+          collection :dimension_definitions, as: 'dimensionDefinitions', class: Google::Apis::ToolresultsV1beta3::MatrixDimensionDefinition, decorator: Google::Apis::ToolresultsV1beta3::MatrixDimensionDefinition::Representation
+      
           property :execution_id, as: 'executionId'
           property :outcome, as: 'outcome', class: Google::Apis::ToolresultsV1beta3::Outcome, decorator: Google::Apis::ToolresultsV1beta3::Outcome::Representation
       
@@ -598,6 +844,12 @@ module Google
       
           property :state, as: 'state'
           property :test_execution_matrix_id, as: 'testExecutionMatrixId'
+        end
+      end
+      
+      class FailedToInstall
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -609,6 +861,14 @@ module Google
           property :other_native_crash, as: 'otherNativeCrash'
           property :timed_out, as: 'timedOut'
           property :unable_to_crawl, as: 'unableToCrawl'
+        end
+      end
+      
+      class FatalException
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
         end
       end
       
@@ -668,6 +928,14 @@ module Google
         end
       end
       
+      class InAppPurchasesFound
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :in_app_purchases_flows_explored, as: 'inAppPurchasesFlowsExplored'
+          property :in_app_purchases_flows_started, as: 'inAppPurchasesFlowsStarted'
+        end
+      end
+      
       class InconclusiveDetail
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -685,6 +953,26 @@ module Google
           property :run_duration, as: 'runDuration', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
       
           property :step_id, as: 'stepId'
+        end
+      end
+      
+      class InsufficientCoverage
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IosAppCrashed
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
+        end
+      end
+      
+      class LauncherActivityNotFound
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -779,6 +1067,12 @@ module Google
         end
       end
       
+      class MatrixDimensionDefinition
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class MemoryInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -808,6 +1102,57 @@ module Google
         end
       end
       
+      class NativeCrash
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
+      
+        end
+      end
+      
+      class NonSdkApi
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :api_signature, as: 'apiSignature'
+          collection :example_stack_traces, as: 'exampleStackTraces'
+          collection :insights, as: 'insights', class: Google::Apis::ToolresultsV1beta3::NonSdkApiInsight, decorator: Google::Apis::ToolresultsV1beta3::NonSdkApiInsight::Representation
+      
+          property :invocation_count, as: 'invocationCount'
+          property :list, as: 'list'
+        end
+      end
+      
+      class NonSdkApiInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :example_trace_messages, as: 'exampleTraceMessages'
+          property :matcher_id, as: 'matcherId'
+          property :pending_google_update_insight, as: 'pendingGoogleUpdateInsight', class: Google::Apis::ToolresultsV1beta3::PendingGoogleUpdateInsight, decorator: Google::Apis::ToolresultsV1beta3::PendingGoogleUpdateInsight::Representation
+      
+          property :upgrade_insight, as: 'upgradeInsight', class: Google::Apis::ToolresultsV1beta3::UpgradeInsight, decorator: Google::Apis::ToolresultsV1beta3::UpgradeInsight::Representation
+      
+        end
+      end
+      
+      class NonSdkApiUsageViolation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :api_signatures, as: 'apiSignatures'
+          property :unique_apis, as: 'uniqueApis'
+        end
+      end
+      
+      class NonSdkApiUsageViolationReport
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :example_apis, as: 'exampleApis', class: Google::Apis::ToolresultsV1beta3::NonSdkApi, decorator: Google::Apis::ToolresultsV1beta3::NonSdkApi::Representation
+      
+          property :min_sdk_version, as: 'minSdkVersion'
+          property :target_sdk_version, as: 'targetSdkVersion'
+          property :unique_apis, as: 'uniqueApis'
+        end
+      end
+      
       class Outcome
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -820,6 +1165,21 @@ module Google
           property :success_detail, as: 'successDetail', class: Google::Apis::ToolresultsV1beta3::SuccessDetail, decorator: Google::Apis::ToolresultsV1beta3::SuccessDetail::Representation
       
           property :summary, as: 'summary'
+        end
+      end
+      
+      class OverlappingUiElements
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :resource_name, as: 'resourceName'
+          property :screen_id, as: 'screenId'
+        end
+      end
+      
+      class PendingGoogleUpdateInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name_of_google_library, as: 'nameOfGoogleLibrary'
         end
       end
       
@@ -872,6 +1232,19 @@ module Google
         end
       end
       
+      class PerformedGoogleLogin
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class PerformedMonkeyActions
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :total_actions, as: 'totalActions'
+        end
+      end
+      
       class PrimaryStep
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -917,6 +1290,14 @@ module Google
         end
       end
       
+      class RoboScriptExecution
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :successful_actions, as: 'successfulActions'
+          property :total_actions, as: 'totalActions'
+        end
+      end
+      
       class SafeHtmlProto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -949,6 +1330,8 @@ module Google
       class ShardSummary
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :runs, as: 'runs', class: Google::Apis::ToolresultsV1beta3::StepSummary, decorator: Google::Apis::ToolresultsV1beta3::StepSummary::Representation
+      
           property :shard_result, as: 'shardResult', class: Google::Apis::ToolresultsV1beta3::MergedResult, decorator: Google::Apis::ToolresultsV1beta3::MergedResult::Representation
       
         end
@@ -978,12 +1361,19 @@ module Google
         end
       end
       
+      class StartActivityNotFound
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :action, as: 'action'
+          property :uri, as: 'uri'
+        end
+      end
+      
       class Status
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :code, as: 'code'
-          collection :details, as: 'details', class: Google::Apis::ToolresultsV1beta3::Any, decorator: Google::Apis::ToolresultsV1beta3::Any::Representation
-      
+          collection :details, as: 'details'
           property :message, as: 'message'
         end
       end
@@ -1032,6 +1422,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
           property :value, as: 'value'
+        end
+      end
+      
+      class StepSummary
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
@@ -1207,6 +1603,50 @@ module Google
       
           property :test_case, as: 'testCase', class: Google::Apis::ToolresultsV1beta3::TestCaseReference, decorator: Google::Apis::ToolresultsV1beta3::TestCaseReference::Representation
       
+        end
+      end
+      
+      class UiElementTooDeep
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :depth, as: 'depth'
+          property :screen_id, as: 'screenId'
+          property :screen_state_id, as: 'screenStateId'
+        end
+      end
+      
+      class UnspecifiedWarning
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class UnusedRoboDirective
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class UpgradeInsight
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :package_name, as: 'packageName'
+          property :upgrade_to_version, as: 'upgradeToVersion'
+        end
+      end
+      
+      class UsedRoboDirective
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
+        end
+      end
+      
+      class UsedRoboIgnoreDirective
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :resource_name, as: 'resourceName'
         end
       end
     end

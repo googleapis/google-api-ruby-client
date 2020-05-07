@@ -418,6 +418,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1DocumentReloadStatus
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1EntityType
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -431,6 +437,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1EntityTypeEntity
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV2beta1Environment
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -826,6 +838,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class GoogleCloudDialogflowV2beta1ListIntentsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -971,6 +989,12 @@ module Google
       end
       
       class GoogleCloudDialogflowV2beta1WebhookResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ExportAgentResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1718,10 +1742,22 @@ module Google
           property :content, as: 'content'
           property :content_uri, as: 'contentUri'
           property :display_name, as: 'displayName'
+          property :enable_auto_reload, as: 'enableAutoReload'
           collection :knowledge_types, as: 'knowledgeTypes'
+          property :latest_reload_status, as: 'latestReloadStatus', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DocumentReloadStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1DocumentReloadStatus::Representation
+      
           property :mime_type, as: 'mimeType'
           property :name, as: 'name'
           property :raw_content, :base64 => true, as: 'rawContent'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1DocumentReloadStatus
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :status, as: 'status', class: Google::Apis::DialogflowV2beta1::GoogleRpcStatus, decorator: Google::Apis::DialogflowV2beta1::GoogleRpcStatus::Representation
+      
+          property :time, as: 'time'
         end
       end
       
@@ -1751,6 +1787,17 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :synonyms, as: 'synonyms'
           property :value, as: 'value'
+        end
+      end
+      
+      class GoogleCloudDialogflowV2beta1Environment
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_version, as: 'agentVersion'
+          property :description, as: 'description'
+          property :name, as: 'name'
+          property :state, as: 'state'
+          property :update_time, as: 'updateTime'
         end
       end
       
@@ -2414,6 +2461,15 @@ module Google
         end
       end
       
+      class GoogleCloudDialogflowV2beta1ListEnvironmentsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :environments, as: 'environments', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Environment, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Environment::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class GoogleCloudDialogflowV2beta1ListIntentsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2674,6 +2730,14 @@ module Google
           collection :session_entity_types, as: 'sessionEntityTypes', class: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType, decorator: Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1SessionEntityType::Representation
       
           property :source, as: 'source'
+        end
+      end
+      
+      class GoogleCloudDialogflowV3alpha1ExportAgentResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :agent_content, :base64 => true, as: 'agentContent'
+          property :agent_uri, as: 'agentUri'
         end
       end
       

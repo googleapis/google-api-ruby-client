@@ -544,12 +544,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class TimeSeriesQueryLanguageCondition
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class TimeSeriesRatio
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -752,8 +746,6 @@ module Google
       
           property :condition_threshold, as: 'conditionThreshold', class: Google::Apis::MonitoringV3::MetricThreshold, decorator: Google::Apis::MonitoringV3::MetricThreshold::Representation
       
-          property :condition_time_series_query_language, as: 'conditionTimeSeriesQueryLanguage', class: Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition, decorator: Google::Apis::MonitoringV3::TimeSeriesQueryLanguageCondition::Representation
-      
           property :display_name, as: 'displayName'
           property :name, as: 'name'
         end
@@ -948,10 +940,13 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_info, as: 'authInfo', class: Google::Apis::MonitoringV3::BasicAuthentication, decorator: Google::Apis::MonitoringV3::BasicAuthentication::Representation
       
+          property :body, :base64 => true, as: 'body'
+          property :content_type, as: 'contentType'
           hash :headers, as: 'headers'
           property :mask_headers, as: 'maskHeaders'
           property :path, as: 'path'
           property :port, as: 'port'
+          property :request_method, as: 'requestMethod'
           property :use_ssl, as: 'useSsl'
           property :validate_ssl, as: 'validateSsl'
         end
@@ -1478,14 +1473,6 @@ module Google
       
           collection :point_descriptors, as: 'pointDescriptors', class: Google::Apis::MonitoringV3::ValueDescriptor, decorator: Google::Apis::MonitoringV3::ValueDescriptor::Representation
       
-        end
-      end
-      
-      class TimeSeriesQueryLanguageCondition
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :query, as: 'query'
-          property :summary, as: 'summary'
         end
       end
       

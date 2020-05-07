@@ -3514,6 +3514,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class SslCertificateManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class SslCertificatesScopedList
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8552,7 +8564,9 @@ module Google
           property :auto_create_routes, as: 'autoCreateRoutes'
           property :exchange_subnet_routes, as: 'exchangeSubnetRoutes'
           property :export_custom_routes, as: 'exportCustomRoutes'
+          property :export_subnet_routes_with_public_ip, as: 'exportSubnetRoutesWithPublicIp'
           property :import_custom_routes, as: 'importCustomRoutes'
+          property :import_subnet_routes_with_public_ip, as: 'importSubnetRoutesWithPublicIp'
           property :name, as: 'name'
           property :network, as: 'network'
           property :state, as: 'state'
@@ -10826,12 +10840,19 @@ module Google
           property :certificate, as: 'certificate'
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :expire_time, as: 'expireTime'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
+          property :managed, as: 'managed', class: Google::Apis::ComputeV1::SslCertificateManagedSslCertificate, decorator: Google::Apis::ComputeV1::SslCertificateManagedSslCertificate::Representation
+      
           property :name, as: 'name'
           property :private_key, as: 'privateKey'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_managed, as: 'selfManaged', class: Google::Apis::ComputeV1::SslCertificateSelfManagedSslCertificate, decorator: Google::Apis::ComputeV1::SslCertificateSelfManagedSslCertificate::Representation
+      
+          collection :subject_alternative_names, as: 'subjectAlternativeNames'
+          property :type, as: 'type'
         end
       end
       
@@ -10896,6 +10917,23 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class SslCertificateManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          hash :domain_status, as: 'domainStatus'
+          collection :domains, as: 'domains'
+          property :status, as: 'status'
+        end
+      end
+      
+      class SslCertificateSelfManagedSslCertificate
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate, as: 'certificate'
+          property :private_key, as: 'privateKey'
         end
       end
       

@@ -370,11 +370,6 @@ module Google
         # @return [String]
         attr_accessor :player_id
       
-        # 
-        # Corresponds to the JSON property `playerStattus`
-        # @return [String]
-        attr_accessor :player_stattus
-      
         # This is a JSON template for profile settings
         # Corresponds to the JSON property `profileSettings`
         # @return [Google::Apis::GamesManagementV1management::ProfileSettings]
@@ -402,7 +397,6 @@ module Google
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
-          @player_stattus = args[:player_stattus] if args.key?(:player_stattus)
           @profile_settings = args[:profile_settings] if args.key?(:profile_settings)
           @title = args[:title] if args.key?(:title)
         end

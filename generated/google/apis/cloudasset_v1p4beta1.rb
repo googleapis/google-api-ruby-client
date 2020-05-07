@@ -12,20 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/osconfig_v1beta/service.rb'
-require 'google/apis/osconfig_v1beta/classes.rb'
-require 'google/apis/osconfig_v1beta/representations.rb'
+require 'google/apis/cloudasset_v1p4beta1/service.rb'
+require 'google/apis/cloudasset_v1p4beta1/classes.rb'
+require 'google/apis/cloudasset_v1p4beta1/representations.rb'
 
 module Google
   module Apis
-    # Cloud OS Config API
+    # Cloud Asset API
     #
-    # OS management tools that can be used for patch management, patch compliance,
-    # and configuration management on VM instances.
+    # The cloud asset API manages the history and inventory of cloud resources.
     #
-    # @see https://cloud.google.com/
-    module OsconfigV1beta
-      VERSION = 'V1beta'
+    # @see https://cloud.google.com/asset-inventory/docs/quickstart
+    module CloudassetV1p4beta1
+      VERSION = 'V1p4beta1'
       REVISION = '20200403'
 
       # View and manage your data across Google Cloud Platform services

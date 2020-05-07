@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/debugger
     module ClouddebuggerV2
       VERSION = 'V2'
-      REVISION = '20200313'
+      REVISION = '20200410'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

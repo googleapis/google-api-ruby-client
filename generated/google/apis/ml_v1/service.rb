@@ -744,8 +744,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a measurement of the objective metrics to a Trial. This measurement
-        # is assumed to have been taken before the Trial is complete.
+        # Adds a measurement of the objective metrics to a trial. This measurement
+        # is assumed to have been taken before the trial is complete.
         # @param [String] name
         #   Required. The trial name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1AddTrialMeasurementRequest] google_cloud_ml_v1__add_trial_measurement_request_object
@@ -778,7 +778,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Checks whether a trial should stop or not.
+        # Checks  whether a trial should stop or not. Returns a
+        # long-running operation. When the operation is successful,
+        # it will contain a
+        # CheckTrialEarlyStoppingStateResponse.
         # @param [String] name
         #   Required. The trial name.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest] google_cloud_ml_v1__check_trial_early_stopping_state_request_object
@@ -811,9 +814,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Marks a Trial as complete.
+        # Marks a trial as complete.
         # @param [String] name
-        #   Required. The trial name.
+        #   Required. The trial name.metat
         # @param [Google::Apis::MlV1::GoogleCloudMlV1CompleteTrialRequest] google_cloud_ml_v1__complete_trial_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -844,7 +847,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Adds a user provided trial to a Study.
+        # Adds a user provided trial to a study.
         # @param [String] parent
         #   Required. The name of the study that the trial belongs to.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1Trial] google_cloud_ml_v1__trial_object
@@ -877,7 +880,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a Trial.
+        # Deletes a trial.
         # @param [String] name
         #   Required. The trial name.
         # @param [String] fields
@@ -907,7 +910,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets a Trial.
+        # Gets a trial.
         # @param [String] name
         #   Required. The trial name.
         # @param [String] fields
@@ -937,7 +940,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists the trials associated with a Study.
+        # Lists the trials associated with a study.
         # @param [String] parent
         #   Required. The name of the study that the trial belongs to.
         # @param [String] fields
@@ -1000,8 +1003,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Returns a long-running operation associated with the generation of trial
-        # suggestions.
+        # Adds one or more trials to a study, with parameter values
+        # suggested by AI Platform Optimizer. Returns a long-running
+        # operation associated with the generation of trial suggestions.
+        # When this long-running operation succeeds, it will contain
+        # a SuggestTrialsResponse.
         # @param [String] parent
         #   Required. The name of the study that the trial belongs to.
         # @param [Google::Apis::MlV1::GoogleCloudMlV1SuggestTrialsRequest] google_cloud_ml_v1__suggest_trials_request_object

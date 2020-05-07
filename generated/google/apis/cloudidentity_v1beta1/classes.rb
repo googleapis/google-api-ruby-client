@@ -26,62 +26,11 @@ module Google
       class AndroidAttributes
         include Google::Apis::Core::Hashable
       
-        # Baseband version of Android device.
-        # Corresponds to the JSON property `basebandVersion`
-        # @return [String]
-        attr_accessor :baseband_version
-      
-        # Device bootloader version. Example: 0.6.7.
-        # Corresponds to the JSON property `bootloaderVersion`
-        # @return [String]
-        attr_accessor :bootloader_version
-      
-        # Build number of Android device.
-        # Corresponds to the JSON property `buildNumber`
-        # @return [String]
-        attr_accessor :build_number
-      
-        # Whether developer options is enabled on device.
-        # Corresponds to the JSON property `enabledDeveloperOptions`
-        # @return [Boolean]
-        attr_accessor :enabled_developer_options
-        alias_method :enabled_developer_options?, :enabled_developer_options
-      
         # Whether applications from unknown sources can be installed on device.
         # Corresponds to the JSON property `enabledUnknownSources`
         # @return [Boolean]
         attr_accessor :enabled_unknown_sources
         alias_method :enabled_unknown_sources?, :enabled_unknown_sources
-      
-        # Whether adb (USB debugging) is enabled on device.
-        # Corresponds to the JSON property `enabledUsbDebugging`
-        # @return [Boolean]
-        attr_accessor :enabled_usb_debugging
-        alias_method :enabled_usb_debugging?, :enabled_usb_debugging
-      
-        # Device encryption state.
-        # Corresponds to the JSON property `encryptionState`
-        # @return [String]
-        attr_accessor :encryption_state
-      
-        # Device hardware. Example: Sprout.
-        # Corresponds to the JSON property `hardware`
-        # @return [String]
-        attr_accessor :hardware
-      
-        # Kernel version of Android device.
-        # Corresponds to the JSON property `kernelVersion`
-        # @return [String]
-        attr_accessor :kernel_version
-      
-        # Domain name for Google accounts on device. Type for other accounts on
-        # device. Will only be populated if |ownership_privilege| is
-        # |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in
-        # to the device policy app if that account's domain has only one account.
-        # Examples: "com.example", "xyz.com".
-        # Corresponds to the JSON property `otherAccounts`
-        # @return [Array<String>]
-        attr_accessor :other_accounts
       
         # Whether this account is on an owner/primary profile.
         # For phones, only true for owner profiles. Android 4+ devices
@@ -95,11 +44,6 @@ module Google
         # Corresponds to the JSON property `ownershipPrivilege`
         # @return [String]
         attr_accessor :ownership_privilege
-      
-        # OS security patch update time on device.
-        # Corresponds to the JSON property `securityPatchTime`
-        # @return [String]
-        attr_accessor :security_patch_time
       
         # Whether device supports Android work profiles. If false, this service
         # will not block access to corp data even if an administrator turns on the
@@ -115,19 +59,9 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
-          @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
-          @build_number = args[:build_number] if args.key?(:build_number)
-          @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
           @enabled_unknown_sources = args[:enabled_unknown_sources] if args.key?(:enabled_unknown_sources)
-          @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
-          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
-          @hardware = args[:hardware] if args.key?(:hardware)
-          @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
-          @other_accounts = args[:other_accounts] if args.key?(:other_accounts)
           @owner_profile_account = args[:owner_profile_account] if args.key?(:owner_profile_account)
           @ownership_privilege = args[:ownership_privilege] if args.key?(:ownership_privilege)
-          @security_patch_time = args[:security_patch_time] if args.key?(:security_patch_time)
           @supports_work_profile = args[:supports_work_profile] if args.key?(:supports_work_profile)
         end
       end
@@ -209,6 +143,132 @@ module Google
         end
       end
       
+      # Resource representing ClientState and supports updates from API users
+      class ClientState
+        include Google::Apis::Core::Hashable
+      
+        # The caller can specify asset tags for this resource
+        # Corresponds to the JSON property `assetTags`
+        # @return [Array<String>]
+        attr_accessor :asset_tags
+      
+        # The compliance state of the resource as specified by the API client.
+        # Corresponds to the JSON property `complianceState`
+        # @return [String]
+        attr_accessor :compliance_state
+      
+        # Output only. The time the client state data was created.
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
+        # This field may be used to store a unique identifier for the API resource
+        # within which these CustomAttributes are a field.
+        # Corresponds to the JSON property `customId`
+        # @return [String]
+        attr_accessor :custom_id
+      
+        # The token that needs to be passed back for
+        # concurrency control in updates. Token needs to be passed back
+        # in UpdateRequest
+        # Corresponds to the JSON property `etag`
+        # @return [String]
+        attr_accessor :etag
+      
+        # The Health score of the resource
+        # Corresponds to the JSON property `healthScore`
+        # @return [String]
+        attr_accessor :health_score
+      
+        # The map of key-value attributes stored by callers specific to a
+        # device. The total serialized length of this map may not exceed 10KB. No
+        # limit is placed on the number of attributes in a map.
+        # Corresponds to the JSON property `keyValuePairs`
+        # @return [Hash<String,Google::Apis::CloudidentityV1beta1::CustomAttributeValue>]
+        attr_accessor :key_value_pairs
+      
+        # Output only. The time the client state data was last updated.
+        # Corresponds to the JSON property `lastUpdateTime`
+        # @return [String]
+        attr_accessor :last_update_time
+      
+        # The management state of the resource as specified by the API client.
+        # Corresponds to the JSON property `managed`
+        # @return [String]
+        attr_accessor :managed
+      
+        # Output only. [Resource name](https://cloud.google.com/apis/design/
+        # resource_names) of
+        # the ClientState in format:
+        # `devices/`device_id`/deviceUsers/`device_user_id`/clientState/`partner_id``,
+        # where partner_id corresponds to the partner storing the data.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Output only. The owner of the ClientState
+        # Corresponds to the JSON property `ownerType`
+        # @return [String]
+        attr_accessor :owner_type
+      
+        # A descriptive cause of the health score.
+        # Corresponds to the JSON property `scoreReason`
+        # @return [String]
+        attr_accessor :score_reason
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @asset_tags = args[:asset_tags] if args.key?(:asset_tags)
+          @compliance_state = args[:compliance_state] if args.key?(:compliance_state)
+          @create_time = args[:create_time] if args.key?(:create_time)
+          @custom_id = args[:custom_id] if args.key?(:custom_id)
+          @etag = args[:etag] if args.key?(:etag)
+          @health_score = args[:health_score] if args.key?(:health_score)
+          @key_value_pairs = args[:key_value_pairs] if args.key?(:key_value_pairs)
+          @last_update_time = args[:last_update_time] if args.key?(:last_update_time)
+          @managed = args[:managed] if args.key?(:managed)
+          @name = args[:name] if args.key?(:name)
+          @owner_type = args[:owner_type] if args.key?(:owner_type)
+          @score_reason = args[:score_reason] if args.key?(:score_reason)
+        end
+      end
+      
+      # Additional custom attribute values may be one of these types
+      class CustomAttributeValue
+        include Google::Apis::Core::Hashable
+      
+        # Represents a boolean value.
+        # Corresponds to the JSON property `boolValue`
+        # @return [Boolean]
+        attr_accessor :bool_value
+        alias_method :bool_value?, :bool_value
+      
+        # Represents a double value.
+        # Corresponds to the JSON property `numberValue`
+        # @return [Float]
+        attr_accessor :number_value
+      
+        # Represents a string value.
+        # Corresponds to the JSON property `stringValue`
+        # @return [String]
+        attr_accessor :string_value
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bool_value = args[:bool_value] if args.key?(:bool_value)
+          @number_value = args[:number_value] if args.key?(:number_value)
+          @string_value = args[:string_value] if args.key?(:string_value)
+        end
+      end
+      
       # Represents a Device known to Google Cloud, independent of the device
       # ownership, type, and whether it is assigned or in use by a user.
       class Device
@@ -224,10 +284,25 @@ module Google
         # @return [String]
         attr_accessor :asset_tag
       
+        # Output only. Baseband version of the device.
+        # Corresponds to the JSON property `basebandVersion`
+        # @return [String]
+        attr_accessor :baseband_version
+      
+        # Output only. Device bootloader version. Example: 0.6.7.
+        # Corresponds to the JSON property `bootloaderVersion`
+        # @return [String]
+        attr_accessor :bootloader_version
+      
         # Output only. Device brand. Example: Samsung.
         # Corresponds to the JSON property `brand`
         # @return [String]
         attr_accessor :brand
+      
+        # Output only. Build number of the device.
+        # Corresponds to the JSON property `buildNumber`
+        # @return [String]
+        attr_accessor :build_number
       
         # Output only. Represents whether the Device is compromised.
         # Corresponds to the JSON property `compromisedState`
@@ -246,10 +321,32 @@ module Google
         # @return [String]
         attr_accessor :device_type
       
+        # Output only. Whether developer options is enabled on device.
+        # Corresponds to the JSON property `enabledDeveloperOptions`
+        # @return [Boolean]
+        attr_accessor :enabled_developer_options
+        alias_method :enabled_developer_options?, :enabled_developer_options
+      
+        # Output only. Whether USB debugging is enabled on device.
+        # Corresponds to the JSON property `enabledUsbDebugging`
+        # @return [Boolean]
+        attr_accessor :enabled_usb_debugging
+        alias_method :enabled_usb_debugging?, :enabled_usb_debugging
+      
+        # Output only. Device encryption state.
+        # Corresponds to the JSON property `encryptionState`
+        # @return [String]
+        attr_accessor :encryption_state
+      
         # Output only. IMEI number of device if GSM device; empty otherwise.
         # Corresponds to the JSON property `imei`
         # @return [String]
         attr_accessor :imei
+      
+        # Output only. Kernel version of the device.
+        # Corresponds to the JSON property `kernelVersion`
+        # @return [String]
+        attr_accessor :kernel_version
       
         # Most recent time when device synced with this service.
         # Corresponds to the JSON property `lastSyncTime`
@@ -294,6 +391,16 @@ module Google
         # @return [String]
         attr_accessor :os_version
       
+        # Output only. Domain name for Google accounts on device. Type for other
+        # accounts on
+        # device. On Android, will only be populated if |ownership_privilege| is
+        # |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in
+        # to the device policy app if that account's domain has only one account.
+        # Examples: "com.example", "xyz.com".
+        # Corresponds to the JSON property `otherAccounts`
+        # @return [Array<String>]
+        attr_accessor :other_accounts
+      
         # Whether the device is owned by the company or an individual
         # Corresponds to the JSON property `ownerType`
         # @return [String]
@@ -303,6 +410,11 @@ module Google
         # Corresponds to the JSON property `releaseVersion`
         # @return [String]
         attr_accessor :release_version
+      
+        # Output only. OS security patch update time on device.
+        # Corresponds to the JSON property `securityPatchTime`
+        # @return [String]
+        attr_accessor :security_patch_time
       
         # Serial Number of device. Example: HT82V1A01076.
         # Corresponds to the JSON property `serialNumber`
@@ -322,11 +434,18 @@ module Google
         def update!(**args)
           @android_specific_attributes = args[:android_specific_attributes] if args.key?(:android_specific_attributes)
           @asset_tag = args[:asset_tag] if args.key?(:asset_tag)
+          @baseband_version = args[:baseband_version] if args.key?(:baseband_version)
+          @bootloader_version = args[:bootloader_version] if args.key?(:bootloader_version)
           @brand = args[:brand] if args.key?(:brand)
+          @build_number = args[:build_number] if args.key?(:build_number)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
           @create_time = args[:create_time] if args.key?(:create_time)
           @device_type = args[:device_type] if args.key?(:device_type)
+          @enabled_developer_options = args[:enabled_developer_options] if args.key?(:enabled_developer_options)
+          @enabled_usb_debugging = args[:enabled_usb_debugging] if args.key?(:enabled_usb_debugging)
+          @encryption_state = args[:encryption_state] if args.key?(:encryption_state)
           @imei = args[:imei] if args.key?(:imei)
+          @kernel_version = args[:kernel_version] if args.key?(:kernel_version)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)
           @management_state = args[:management_state] if args.key?(:management_state)
           @manufacturer = args[:manufacturer] if args.key?(:manufacturer)
@@ -335,8 +454,10 @@ module Google
           @name = args[:name] if args.key?(:name)
           @network_operator = args[:network_operator] if args.key?(:network_operator)
           @os_version = args[:os_version] if args.key?(:os_version)
+          @other_accounts = args[:other_accounts] if args.key?(:other_accounts)
           @owner_type = args[:owner_type] if args.key?(:owner_type)
           @release_version = args[:release_version] if args.key?(:release_version)
+          @security_patch_time = args[:security_patch_time] if args.key?(:security_patch_time)
           @serial_number = args[:serial_number] if args.key?(:serial_number)
           @wifi_mac_addresses = args[:wifi_mac_addresses] if args.key?(:wifi_mac_addresses)
         end
@@ -611,6 +732,33 @@ module Google
           @name = args[:name] if args.key?(:name)
           @parent = args[:parent] if args.key?(:parent)
           @update_time = args[:update_time] if args.key?(:update_time)
+        end
+      end
+      
+      # Response message that is returned in LRO result of ListClientStates
+      # Operation.
+      class ListClientStatesResponse
+        include Google::Apis::Core::Hashable
+      
+        # Client states meeting the list restrictions.
+        # Corresponds to the JSON property `clientStates`
+        # @return [Array<Google::Apis::CloudidentityV1beta1::ClientState>]
+        attr_accessor :client_states
+      
+        # Token to retrieve the next page of results. Empty if there are no more
+        # results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @client_states = args[:client_states] if args.key?(:client_states)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

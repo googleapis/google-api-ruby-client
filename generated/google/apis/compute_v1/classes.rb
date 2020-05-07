@@ -5911,9 +5911,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this ExternalVpnGateway resource. These can be later
-        # modified by the setLabels method. Each label key/value must comply with
-        # RFC1035. Label values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -10307,7 +10307,10 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NamedPort>]
         attr_accessor :named_ports
       
-        # The URL of the network to which all instances in the instance group belong.
+        # [Output Only] The URL of the network to which all instances in the instance
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `network`
         # @return [String]
         attr_accessor :network
@@ -10329,7 +10332,9 @@ module Google
         attr_accessor :size
       
         # [Output Only] The URL of the subnetwork to which all instances in the instance
-        # group belong.
+        # group belong. If your instance has multiple network interfaces, then the
+        # network and subnetwork fields only refer to the network and subnet used by
+        # your primary interface (nic0).
         # Corresponds to the JSON property `subnetwork`
         # @return [String]
         attr_accessor :subnetwork
@@ -16815,11 +16820,29 @@ module Google
         attr_accessor :export_custom_routes
         alias_method :export_custom_routes?, :export_custom_routes
       
+        # Whether subnet routes with public IP range are exported. The default value is
+        # true, all subnet routes are exported. The IPv4 special-use ranges (https://en.
+        # wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and
+        # are not controlled by this field.
+        # Corresponds to the JSON property `exportSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :export_subnet_routes_with_public_ip
+        alias_method :export_subnet_routes_with_public_ip?, :export_subnet_routes_with_public_ip
+      
         # Whether to import the custom routes from peer network.
         # Corresponds to the JSON property `importCustomRoutes`
         # @return [Boolean]
         attr_accessor :import_custom_routes
         alias_method :import_custom_routes?, :import_custom_routes
+      
+        # Whether subnet routes with public IP range are imported. The default value is
+        # false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#
+        # Special_addresses) are always imported from peers and are not controlled by
+        # this field.
+        # Corresponds to the JSON property `importSubnetRoutesWithPublicIp`
+        # @return [Boolean]
+        attr_accessor :import_subnet_routes_with_public_ip
+        alias_method :import_subnet_routes_with_public_ip?, :import_subnet_routes_with_public_ip
       
         # Name of this peering. Provided by the client when the peering is created. The
         # name must comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -16859,7 +16882,9 @@ module Google
           @auto_create_routes = args[:auto_create_routes] if args.key?(:auto_create_routes)
           @exchange_subnet_routes = args[:exchange_subnet_routes] if args.key?(:exchange_subnet_routes)
           @export_custom_routes = args[:export_custom_routes] if args.key?(:export_custom_routes)
+          @export_subnet_routes_with_public_ip = args[:export_subnet_routes_with_public_ip] if args.key?(:export_subnet_routes_with_public_ip)
           @import_custom_routes = args[:import_custom_routes] if args.key?(:import_custom_routes)
+          @import_subnet_routes_with_public_ip = args[:import_subnet_routes_with_public_ip] if args.key?(:import_subnet_routes_with_public_ip)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @state = args[:state] if args.key?(:state)
@@ -25628,6 +25653,11 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # [Output Only] Expire time of the certificate. RFC3339
+        # Corresponds to the JSON property `expireTime`
+        # @return [String]
+        attr_accessor :expire_time
+      
         # [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
         # Corresponds to the JSON property `id`
@@ -25639,6 +25669,11 @@ module Google
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
+      
+        # Configuration and status of a managed SSL certificate.
+        # Corresponds to the JSON property `managed`
+        # @return [Google::Apis::ComputeV1::SslCertificateManagedSslCertificate]
+        attr_accessor :managed
       
         # Name of the resource. Provided by the client when the resource is created. The
         # name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -25667,6 +25702,24 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
+        # Configuration and status of a self-managed SSL certificate.
+        # Corresponds to the JSON property `selfManaged`
+        # @return [Google::Apis::ComputeV1::SslCertificateSelfManagedSslCertificate]
+        attr_accessor :self_managed
+      
+        # [Output Only] Domains associated with the certificate via Subject Alternative
+        # Name.
+        # Corresponds to the JSON property `subjectAlternativeNames`
+        # @return [Array<String>]
+        attr_accessor :subject_alternative_names
+      
+        # (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "
+        # MANAGED". If not specified, the certificate is self-managed and the fields
+        # certificate and private_key are used.
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
         def initialize(**args)
            update!(**args)
         end
@@ -25676,12 +25729,17 @@ module Google
           @certificate = args[:certificate] if args.key?(:certificate)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @expire_time = args[:expire_time] if args.key?(:expire_time)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
+          @managed = args[:managed] if args.key?(:managed)
           @name = args[:name] if args.key?(:name)
           @private_key = args[:private_key] if args.key?(:private_key)
           @region = args[:region] if args.key?(:region)
           @self_link = args[:self_link] if args.key?(:self_link)
+          @self_managed = args[:self_managed] if args.key?(:self_managed)
+          @subject_alternative_names = args[:subject_alternative_names] if args.key?(:subject_alternative_names)
+          @type = args[:type] if args.key?(:type)
         end
       end
       
@@ -25917,6 +25975,67 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # Configuration and status of a managed SSL certificate.
+      class SslCertificateManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # [Output only] Detailed statuses of the domains specified for managed
+        # certificate resource.
+        # Corresponds to the JSON property `domainStatus`
+        # @return [Hash<String,String>]
+        attr_accessor :domain_status
+      
+        # The domains for which a managed SSL certificate will be generated. Currently
+        # only single-domain certs are supported.
+        # Corresponds to the JSON property `domains`
+        # @return [Array<String>]
+        attr_accessor :domains
+      
+        # [Output only] Status of the managed certificate resource.
+        # Corresponds to the JSON property `status`
+        # @return [String]
+        attr_accessor :status
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @domain_status = args[:domain_status] if args.key?(:domain_status)
+          @domains = args[:domains] if args.key?(:domains)
+          @status = args[:status] if args.key?(:status)
+        end
+      end
+      
+      # Configuration and status of a self-managed SSL certificate.
+      class SslCertificateSelfManagedSslCertificate
+        include Google::Apis::Core::Hashable
+      
+        # A local certificate file. The certificate must be in PEM format. The
+        # certificate chain must be no greater than 5 certs long. The chain must include
+        # at least one intermediate cert.
+        # Corresponds to the JSON property `certificate`
+        # @return [String]
+        attr_accessor :certificate
+      
+        # A write-only private key in PEM format. Only insert requests will include this
+        # field.
+        # Corresponds to the JSON property `privateKey`
+        # @return [String]
+        attr_accessor :private_key
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate = args[:certificate] if args.key?(:certificate)
+          @private_key = args[:private_key] if args.key?(:private_key)
         end
       end
       
@@ -30987,9 +31106,9 @@ module Google
         # @return [String]
         attr_accessor :label_fingerprint
       
-        # Labels to apply to this VpnGateway resource. These can be later modified by
-        # the setLabels method. Each label key/value must comply with RFC1035. Label
-        # values may be empty.
+        # Labels for this resource. These can only be added or modified by the setLabels
+        # method. Each label key/value pair must comply with RFC1035. Label values may
+        # be empty.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
@@ -31020,7 +31139,7 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # [Output Only] A list of interfaces on this VPN gateway.
+        # A list of interfaces on this VPN gateway.
         # Corresponds to the JSON property `vpnInterfaces`
         # @return [Array<Google::Apis::ComputeV1::VpnGatewayVpnGatewayInterface>]
         attr_accessor :vpn_interfaces
@@ -31412,7 +31531,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :id
       
-        # The external IP address for this VPN gateway interface.
+        # [Output Only] The external IP address for this VPN gateway interface.
         # Corresponds to the JSON property `ipAddress`
         # @return [String]
         attr_accessor :ip_address
