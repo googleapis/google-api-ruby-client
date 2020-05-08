@@ -12,27 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/clouddebugger_v2/service.rb'
-require 'google/apis/clouddebugger_v2/classes.rb'
-require 'google/apis/clouddebugger_v2/representations.rb'
+require 'google/apis/osconfig_v1beta/service.rb'
+require 'google/apis/osconfig_v1beta/classes.rb'
+require 'google/apis/osconfig_v1beta/representations.rb'
 
 module Google
   module Apis
-    # Cloud Debugger API
+    # Cloud OS Config API
     #
-    # Examines the call stack and variables of a running application without
-    # stopping or slowing it down.
+    # OS management tools that can be used for patch management, patch compliance,
+    # and configuration management on VM instances.
     #
-    # @see https://cloud.google.com/debugger
-    module ClouddebuggerV2
-      VERSION = 'V2'
-      REVISION = '20200501'
+    # @see https://cloud.google.com/
+    module OsconfigV1beta
+      VERSION = 'V1beta'
+      REVISION = '20200403'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Use Stackdriver Debugger
-      AUTH_CLOUD_DEBUGGER = 'https://www.googleapis.com/auth/cloud_debugger'
     end
   end
 end

@@ -44,7 +44,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch'
+          @batch_path = 'batch/toolresults/v1beta3'
         end
         
         # Retrieves a single screenshot cluster by its ID

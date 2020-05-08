@@ -561,10 +561,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -579,7 +582,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -652,6 +657,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -849,7 +857,7 @@ module Google
         attr_accessor :oidc_token
       
         # A URL locating the endpoint to which messages should be pushed.
-        # For example, a Webhook endpoint might use "https://example.com/push".
+        # For example, a Webhook endpoint might use `https://example.com/push`.
         # Corresponds to the JSON property `pushEndpoint`
         # @return [String]
         attr_accessor :push_endpoint
@@ -977,10 +985,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -995,7 +1006,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -1131,6 +1144,17 @@ module Google
         # @return [Google::Apis::PubsubV1::ExpirationPolicy]
         attr_accessor :expiration_policy
       
+        # An expression written in the Cloud Pub/Sub filter language. If non-empty,
+        # then only `PubsubMessage`s whose `attributes` field matches the filter are
+        # delivered on this subscription. If empty, then no messages are filtered
+        # out.
+        # <b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This
+        # API might be changed in backward-incompatible ways and is not recommended
+        # for production use. It is not subject to any SLA or deprecation policy.
+        # Corresponds to the JSON property `filter`
+        # @return [String]
+        attr_accessor :filter
+      
         # See <a href="https://cloud.google.com/pubsub/docs/labels"> Creating and
         # managing labels</a>.
         # Corresponds to the JSON property `labels`
@@ -1192,6 +1216,7 @@ module Google
           @ack_deadline_seconds = args[:ack_deadline_seconds] if args.key?(:ack_deadline_seconds)
           @dead_letter_policy = args[:dead_letter_policy] if args.key?(:dead_letter_policy)
           @expiration_policy = args[:expiration_policy] if args.key?(:expiration_policy)
+          @filter = args[:filter] if args.key?(:filter)
           @labels = args[:labels] if args.key?(:labels)
           @message_retention_duration = args[:message_retention_duration] if args.key?(:message_retention_duration)
           @name = args[:name] if args.key?(:name)

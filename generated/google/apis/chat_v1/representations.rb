@@ -408,6 +408,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :name, as: 'name'
+          property :single_user_bot_dm, as: 'singleUserBotDm'
+          property :threaded, as: 'threaded'
           property :type, as: 'type'
         end
       end

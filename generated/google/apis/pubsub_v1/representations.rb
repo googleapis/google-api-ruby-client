@@ -473,6 +473,7 @@ module Google
       
           property :expiration_policy, as: 'expirationPolicy', class: Google::Apis::PubsubV1::ExpirationPolicy, decorator: Google::Apis::PubsubV1::ExpirationPolicy::Representation
       
+          property :filter, as: 'filter'
           hash :labels, as: 'labels'
           property :message_retention_duration, as: 'messageRetentionDuration'
           property :name, as: 'name'

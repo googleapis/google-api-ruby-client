@@ -797,7 +797,20 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # Whether the space is a DM between a bot and a single human.
+        # Corresponds to the JSON property `singleUserBotDm`
+        # @return [Boolean]
+        attr_accessor :single_user_bot_dm
+        alias_method :single_user_bot_dm?, :single_user_bot_dm
+      
+        # Whether the messages are threaded in this space.
+        # Corresponds to the JSON property `threaded`
+        # @return [Boolean]
+        attr_accessor :threaded
+        alias_method :threaded?, :threaded
+      
         # Output only. The type of a space.
+        # This is deprecated. Use `single_user_bot_dm` instead.
         # Corresponds to the JSON property `type`
         # @return [String]
         attr_accessor :type
@@ -810,6 +823,8 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @name = args[:name] if args.key?(:name)
+          @single_user_bot_dm = args[:single_user_bot_dm] if args.key?(:single_user_bot_dm)
+          @threaded = args[:threaded] if args.key?(:threaded)
           @type = args[:type] if args.key?(:type)
         end
       end
