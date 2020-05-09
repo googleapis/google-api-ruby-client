@@ -46,12 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class AnnotationData
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class Annotations
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,12 +82,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class BooksSubscriptionReleaseInfo
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class RateRecommendedVolumeResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -125,6 +113,12 @@ module Google
       end
       
       class ConcurrentAccessRestriction
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DictionaryAnnotationdata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -268,6 +262,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Empty
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class FamilyInfo
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -276,6 +276,12 @@ module Google
         
           include Google::Apis::Core::JsonObjectSupport
         end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class GeoAnnotationdata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -291,12 +297,6 @@ module Google
         
         class Geo
           class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-          class Boundary
-            class Representation < Google::Apis::Core::JsonRepresentation; end
-          
-            include Google::Apis::Core::JsonObjectSupport
-          end
           
           class Viewport
             class Representation < Google::Apis::Core::JsonRepresentation; end
@@ -376,7 +376,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class RequestAccess
+      class RequestAccessData
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -408,6 +408,18 @@ module Google
           
           class SeriesSubscriptionReleaseInfo
             class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+            class CurrentReleaseInfo
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
+            
+            class NextReleaseInfo
+              class Representation < Google::Apis::Core::JsonRepresentation; end
+            
+              include Google::Apis::Core::JsonObjectSupport
+            end
           
             include Google::Apis::Core::JsonObjectSupport
           end
@@ -615,6 +627,12 @@ module Google
           
             include Google::Apis::Core::JsonObjectSupport
           end
+          
+          class ReadingModes
+            class Representation < Google::Apis::Core::JsonRepresentation; end
+          
+            include Google::Apis::Core::JsonObjectSupport
+          end
         
           include Google::Apis::Core::JsonObjectSupport
         end
@@ -677,8 +695,7 @@ module Google
           property :before_selected_text, as: 'beforeSelectedText'
           property :client_version_ranges, as: 'clientVersionRanges', class: Google::Apis::BooksV1::Annotation::ClientVersionRanges, decorator: Google::Apis::BooksV1::Annotation::ClientVersionRanges::Representation
       
-          property :created, as: 'created', type: DateTime
-      
+          property :created, as: 'created'
           property :current_version_ranges, as: 'currentVersionRanges', class: Google::Apis::BooksV1::Annotation::CurrentVersionRanges, decorator: Google::Apis::BooksV1::Annotation::CurrentVersionRanges::Representation
       
           property :data, as: 'data'
@@ -692,8 +709,7 @@ module Google
           collection :page_ids, as: 'pageIds'
           property :selected_text, as: 'selectedText'
           property :self_link, as: 'selfLink'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :volume_id, as: 'volumeId'
         end
         
@@ -737,22 +753,6 @@ module Google
         end
       end
       
-      class AnnotationData
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :annotation_type, as: 'annotationType'
-          property :data, as: 'data'
-          property :encoded_data, :base64 => true, as: 'encoded_data'
-          property :id, as: 'id'
-          property :kind, as: 'kind'
-          property :layer_id, as: 'layerId'
-          property :self_link, as: 'selfLink'
-          property :updated, as: 'updated', type: DateTime
-      
-          property :volume_id, as: 'volumeId'
-        end
-      end
-      
       class Annotations
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -779,8 +779,7 @@ module Google
             property :layer_id, as: 'layerId'
             property :limit_type, as: 'limitType'
             property :remaining_character_count, as: 'remainingCharacterCount'
-            property :updated, as: 'updated', type: DateTime
-        
+            property :updated, as: 'updated'
           end
         end
       end
@@ -788,7 +787,7 @@ module Google
       class AnnotationsData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          collection :items, as: 'items', class: Google::Apis::BooksV1::AnnotationData, decorator: Google::Apis::BooksV1::AnnotationData::Representation
+          collection :items, as: 'items', class: Google::Apis::BooksV1::GeoAnnotationdata, decorator: Google::Apis::BooksV1::GeoAnnotationdata::Representation
       
           property :kind, as: 'kind'
           property :next_page_token, as: 'nextPageToken'
@@ -816,16 +815,6 @@ module Google
         end
       end
       
-      class BooksSubscriptionReleaseInfo
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :amount_in_micros, :numeric_string => true, as: 'amountInMicros'
-          property :currency_code, as: 'currencyCode'
-          property :release_number, as: 'releaseNumber'
-          property :release_timestamp_us, :numeric_string => true, as: 'releaseTimestampUs'
-        end
-      end
-      
       class RateRecommendedVolumeResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -837,18 +826,15 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access, as: 'access'
-          property :created, as: 'created', type: DateTime
-      
+          property :created, as: 'created'
           property :description, as: 'description'
           property :id, as: 'id'
           property :kind, as: 'kind'
           property :self_link, as: 'selfLink'
           property :title, as: 'title'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :volume_count, as: 'volumeCount'
-          property :volumes_last_updated, as: 'volumesLastUpdated', type: DateTime
-      
+          property :volumes_last_updated, as: 'volumesLastUpdated'
         end
       end
       
@@ -892,6 +878,22 @@ module Google
           property :signature, as: 'signature'
           property :source, as: 'source'
           property :time_window_seconds, as: 'timeWindowSeconds'
+          property :volume_id, as: 'volumeId'
+        end
+      end
+      
+      class DictionaryAnnotationdata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_type, as: 'annotationType'
+          property :data, as: 'data', class: Google::Apis::BooksV1::DictLayerData, decorator: Google::Apis::BooksV1::DictLayerData::Representation
+      
+          property :encoded_data, :base64 => true, as: 'encodedData'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :layer_id, as: 'layerId'
+          property :self_link, as: 'selfLink'
+          property :updated, as: 'updated'
           property :volume_id, as: 'volumeId'
         end
       end
@@ -1128,6 +1130,12 @@ module Google
         end
       end
       
+      class Empty
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class FamilyInfo
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1145,6 +1153,22 @@ module Google
             property :is_in_family, as: 'isInFamily'
             property :role, as: 'role'
           end
+        end
+      end
+      
+      class GeoAnnotationdata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :annotation_type, as: 'annotationType'
+          property :data, as: 'data', class: Google::Apis::BooksV1::GeoLayerData, decorator: Google::Apis::BooksV1::GeoLayerData::Representation
+      
+          property :encoded_data, :base64 => true, as: 'encodedData'
+          property :id, as: 'id'
+          property :kind, as: 'kind'
+          property :layer_id, as: 'layerId'
+          property :self_link, as: 'selfLink'
+          property :updated, as: 'updated'
+          property :volume_id, as: 'volumeId'
         end
       end
       
@@ -1172,12 +1196,7 @@ module Google
         class Geo
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            collection :boundary, as: 'boundary', :class => Array do
-          include Representable::JSON::Collection
-          items class: Google::Apis::BooksV1::GeoLayerData::Geo::Boundary, decorator: Google::Apis::BooksV1::GeoLayerData::Geo::Boundary::Representation
-        
-        end
-        
+            collection :boundary, as: 'boundary'
             property :cache_policy, as: 'cachePolicy'
             property :country_code, as: 'countryCode'
             property :latitude, as: 'latitude'
@@ -1186,14 +1205,6 @@ module Google
             property :viewport, as: 'viewport', class: Google::Apis::BooksV1::GeoLayerData::Geo::Viewport, decorator: Google::Apis::BooksV1::GeoLayerData::Geo::Viewport::Representation
         
             property :zoom, as: 'zoom'
-          end
-          
-          class Boundary
-            # @private
-            class Representation < Google::Apis::Core::JsonRepresentation
-              property :latitude, as: 'latitude'
-              property :longitude, as: 'longitude'
-            end
           end
           
           class Viewport
@@ -1247,8 +1258,7 @@ module Google
           property :kind, as: 'kind'
           property :layer_id, as: 'layerId'
           property :self_link, as: 'selfLink'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :volume_annotations_version, as: 'volumeAnnotationsVersion'
           property :volume_id, as: 'volumeId'
         end
@@ -1336,13 +1346,12 @@ module Google
           property :gb_text_position, as: 'gbTextPosition'
           property :kind, as: 'kind'
           property :pdf_position, as: 'pdfPosition'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :volume_id, as: 'volumeId'
         end
       end
       
-      class RequestAccess
+      class RequestAccessData
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :concurrent_access, as: 'concurrentAccess', class: Google::Apis::BooksV1::ConcurrentAccessRestriction, decorator: Google::Apis::BooksV1::ConcurrentAccessRestriction::Representation
@@ -1414,12 +1423,32 @@ module Google
           class SeriesSubscriptionReleaseInfo
             # @private
             class Representation < Google::Apis::Core::JsonRepresentation
-              property :cancellation_timestamp_us, :numeric_string => true, as: 'cancellationTimestampUs'
-              property :current_release_info, as: 'currentReleaseInfo', class: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo, decorator: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo::Representation
+              property :cancel_time, as: 'cancelTime'
+              property :current_release_info, as: 'currentReleaseInfo', class: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::CurrentReleaseInfo, decorator: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::CurrentReleaseInfo::Representation
           
-              property :next_release_info, as: 'nextReleaseInfo', class: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo, decorator: Google::Apis::BooksV1::BooksSubscriptionReleaseInfo::Representation
+              property :next_release_info, as: 'nextReleaseInfo', class: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::NextReleaseInfo, decorator: Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::NextReleaseInfo::Representation
           
               property :series_subscription_type, as: 'seriesSubscriptionType'
+            end
+            
+            class CurrentReleaseInfo
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :amount_in_micros, as: 'amountInMicros'
+                property :currency_code, as: 'currencyCode'
+                property :release_number, as: 'releaseNumber'
+                property :release_time, as: 'releaseTime'
+              end
+            end
+            
+            class NextReleaseInfo
+              # @private
+              class Representation < Google::Apis::Core::JsonRepresentation
+                property :amount_in_micros, as: 'amountInMicros'
+                property :currency_code, as: 'currencyCode'
+                property :release_number, as: 'releaseNumber'
+                property :release_time, as: 'releaseTime'
+              end
             end
           end
         end
@@ -1602,8 +1631,7 @@ module Google
         
             collection :offers, as: 'offers', class: Google::Apis::BooksV1::Volume::SaleInfo::Offer, decorator: Google::Apis::BooksV1::Volume::SaleInfo::Offer::Representation
         
-            property :on_sale_date, as: 'onSaleDate', type: DateTime
-        
+            property :on_sale_date, as: 'onSaleDate'
             property :retail_price, as: 'retailPrice', class: Google::Apis::BooksV1::Volume::SaleInfo::RetailPrice, decorator: Google::Apis::BooksV1::Volume::SaleInfo::RetailPrice::Representation
         
             property :saleability, as: 'saleability'
@@ -1674,8 +1702,7 @@ module Google
         class UserInfo
           # @private
           class Representation < Google::Apis::Core::JsonRepresentation
-            property :acquired_time, as: 'acquiredTime', type: DateTime
-        
+            property :acquired_time, as: 'acquiredTime'
             property :acquisition_type, as: 'acquisitionType'
             property :copy, as: 'copy', class: Google::Apis::BooksV1::Volume::UserInfo::Copy, decorator: Google::Apis::BooksV1::Volume::UserInfo::Copy::Representation
         
@@ -1697,8 +1724,7 @@ module Google
             property :rental_state, as: 'rentalState'
             property :review, as: 'review', class: Google::Apis::BooksV1::Review, decorator: Google::Apis::BooksV1::Review::Representation
         
-            property :updated, as: 'updated', type: DateTime
-        
+            property :updated, as: 'updated'
             property :user_uploaded_volume_info, as: 'userUploadedVolumeInfo', class: Google::Apis::BooksV1::Volume::UserInfo::UserUploadedVolumeInfo, decorator: Google::Apis::BooksV1::Volume::UserInfo::UserUploadedVolumeInfo::Representation
         
           end
@@ -1709,8 +1735,7 @@ module Google
               property :allowed_character_count, as: 'allowedCharacterCount'
               property :limit_type, as: 'limitType'
               property :remaining_character_count, as: 'remainingCharacterCount'
-              property :updated, as: 'updated', type: DateTime
-          
+              property :updated, as: 'updated'
             end
           end
           
@@ -1769,7 +1794,8 @@ module Google
             property :published_date, as: 'publishedDate'
             property :publisher, as: 'publisher'
             property :ratings_count, as: 'ratingsCount'
-            property :reading_modes, as: 'readingModes'
+            property :reading_modes, as: 'readingModes', class: Google::Apis::BooksV1::Volume::VolumeInfo::ReadingModes, decorator: Google::Apis::BooksV1::Volume::VolumeInfo::ReadingModes::Representation
+        
             property :sample_page_count, as: 'samplePageCount'
             property :series_info, as: 'seriesInfo', class: Google::Apis::BooksV1::Volumeseriesinfo, decorator: Google::Apis::BooksV1::Volumeseriesinfo::Representation
         
@@ -1815,6 +1841,14 @@ module Google
               property :image_bubble_version, as: 'imageBubbleVersion'
             end
           end
+          
+          class ReadingModes
+            # @private
+            class Representation < Google::Apis::Core::JsonRepresentation
+              property :image, as: 'image'
+              property :text, as: 'text'
+            end
+          end
         end
       end
       
@@ -1844,8 +1878,7 @@ module Google
           collection :page_ids, as: 'pageIds'
           property :selected_text, as: 'selectedText'
           property :self_link, as: 'selfLink'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
           property :volume_id, as: 'volumeId'
         end
         

@@ -22,7 +22,7 @@ module Google
     module BooksV1
       # Books API
       #
-      # Searches for books and manages your Google Books library.
+      # The Google Books API allows clients to access the Google Books repository.
       #
       # @example
       #    require 'google/apis/books_v1'
@@ -30,7 +30,7 @@ module Google
       #    Books = Google::Apis::BooksV1 # Alias the module
       #    service = Books::BooksService.new
       #
-      # @see https://developers.google.com/books/docs/v1/getting_started
+      # @see https://code.google.com/apis/books/docs/v1/getting_started.html
       class BooksService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -38,17 +38,13 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'books/v1/')
-          @batch_path = 'batch/books/v1'
+          super('https://books.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
         # Retrieves metadata for a specific bookshelf for the specified user.
@@ -61,10 +57,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -77,8 +71,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_bookshelf(user_id, shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/bookshelves/{shelf}', options)
+        def get_bookshelf(user_id, shelf, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/users/{userId}/bookshelves/{shelf}', options)
           command.response_representation = Google::Apis::BooksV1::Bookshelf::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelf
           command.params['userId'] = user_id unless user_id.nil?
@@ -86,7 +80,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -98,10 +91,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -114,15 +105,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bookshelves(user_id, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/bookshelves', options)
+        def list_bookshelves(user_id, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/users/{userId}/bookshelves', options)
           command.response_representation = Google::Apis::BooksV1::Bookshelves::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelves
           command.params['userId'] = user_id unless user_id.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -142,10 +132,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -158,8 +146,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_bookshelf_volumes(user_id, shelf, max_results: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/{userId}/bookshelves/{shelf}/volumes', options)
+        def list_bookshelf_volumes(user_id, shelf, max_results: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/users/{userId}/bookshelves/{shelf}/volumes', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['userId'] = user_id unless user_id.nil?
@@ -170,11 +158,10 @@ module Google
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Add a user-upload volume and triggers processing.
         # @param [String] drive_document_id
         #   A drive document id. The upload_client_token must not be set.
         # @param [String] mime_type
@@ -182,13 +169,12 @@ module Google
         # @param [String] name
         #   The document name. It can be set only if the drive_document_id is set.
         # @param [String] upload_client_token
+        #   Scotty upload token.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -201,8 +187,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_book(drive_document_id: nil, mime_type: nil, name: nil, upload_client_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'cloudloading/addBook', options)
+        def add_book(drive_document_id: nil, mime_type: nil, name: nil, upload_client_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/cloudloading/addBook', options)
           command.response_representation = Google::Apis::BooksV1::LoadingResource::Representation
           command.response_class = Google::Apis::BooksV1::LoadingResource
           command.query['drive_document_id'] = drive_document_id unless drive_document_id.nil?
@@ -211,7 +197,6 @@ module Google
           command.query['upload_client_token'] = upload_client_token unless upload_client_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -221,40 +206,37 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_book(volume_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'cloudloading/deleteBook', options)
+        def delete_book(volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/cloudloading/deleteBook', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Updates a user-upload volume.
         # @param [Google::Apis::BooksV1::LoadingResource] loading_resource_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -267,15 +249,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_book(loading_resource_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'cloudloading/updateBook', options)
+        def update_book(loading_resource_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/cloudloading/updateBook', options)
           command.request_representation = Google::Apis::BooksV1::LoadingResource::Representation
           command.request_object = loading_resource_object
           command.response_representation = Google::Apis::BooksV1::LoadingResource::Representation
           command.response_class = Google::Apis::BooksV1::LoadingResource
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -285,10 +266,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -301,14 +280,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_offline_metadata_dictionary(cpksver, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'dictionary/listOfflineMetadata', options)
+        def list_offline_metadata_dictionary(cpksver: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/dictionary/listOfflineMetadata', options)
           command.response_representation = Google::Apis::BooksV1::Metadata::Representation
           command.response_class = Google::Apis::BooksV1::Metadata
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -318,10 +296,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -334,14 +310,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_familysharing_family_info(source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'familysharing/getFamilyInfo', options)
+        def get_familysharing_family_info(source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/familysharing/getFamilyInfo', options)
           command.response_representation = Google::Apis::BooksV1::FamilyInfo::Representation
           command.response_class = Google::Apis::BooksV1::FamilyInfo
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -356,35 +331,34 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def share_familysharing(doc_id: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'familysharing/share', options)
+        def share_familysharing(doc_id: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/familysharing/share', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.query['docId'] = doc_id unless doc_id.nil?
           command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Initiates revoking content that has already been shared with the user's family.
-        # Empty response indicates success.
+        # Initiates revoking content that has already been shared with the user's
+        # family. Empty response indicates success.
         # @param [String] doc_id
         #   The docid to unshare.
         # @param [String] source
@@ -394,30 +368,29 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def unshare_familysharing(doc_id: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'familysharing/unshare', options)
+        def unshare_familysharing(doc_id: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/familysharing/unshare', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.query['docId'] = doc_id unless doc_id.nil?
           command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -433,10 +406,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -449,8 +420,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_layer(volume_id, summary_id, content_version: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layersummary/{summaryId}', options)
+        def get_layer(volume_id, summary_id, content_version: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layersummary/{summaryId}', options)
           command.response_representation = Google::Apis::BooksV1::LayerSummary::Representation
           command.response_class = Google::Apis::BooksV1::LayerSummary
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -459,7 +430,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -477,10 +447,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -493,8 +461,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_layers(volume_id, content_version: nil, max_results: nil, page_token: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layersummary', options)
+        def list_layers(volume_id, content_version: nil, max_results: nil, page_token: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layersummary', options)
           command.response_representation = Google::Apis::BooksV1::LayerSummaries::Representation
           command.response_class = Google::Apis::BooksV1::LayerSummaries
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -504,7 +472,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -515,16 +482,16 @@ module Google
         #   The ID for the layer to get the annotations.
         # @param [String] annotation_data_id
         #   The ID of the annotation data to retrieve.
-        # @param [String] content_version
-        #   The content version for the volume you are trying to retrieve.
         # @param [Boolean] allow_web_definitions
         #   For the dictionary layer. Whether or not to allow web definitions.
+        # @param [String] content_version
+        #   The content version for the volume you are trying to retrieve.
         # @param [Fixnum] h
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
-        #   code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
+        #   country code. Ex: 'en_US'.
         # @param [Fixnum] scale
         #   The requested scale for the image.
         # @param [String] source
@@ -535,26 +502,24 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::AnnotationData] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::DictionaryAnnotationdata] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::AnnotationData]
+        # @return [Google::Apis::BooksV1::DictionaryAnnotationdata]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_layer_annotation_data(volume_id, layer_id, annotation_data_id, content_version, allow_web_definitions: nil, h: nil, locale: nil, scale: nil, source: nil, w: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}', options)
-          command.response_representation = Google::Apis::BooksV1::AnnotationData::Representation
-          command.response_class = Google::Apis::BooksV1::AnnotationData
+        def get_layer_annotation_data(volume_id, layer_id, annotation_data_id, allow_web_definitions: nil, content_version: nil, h: nil, locale: nil, scale: nil, source: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}', options)
+          command.response_representation = Google::Apis::BooksV1::DictionaryAnnotationdata::Representation
+          command.response_class = Google::Apis::BooksV1::DictionaryAnnotationdata
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.params['layerId'] = layer_id unless layer_id.nil?
           command.params['annotationDataId'] = annotation_data_id unless annotation_data_id.nil?
@@ -567,7 +532,6 @@ module Google
           command.query['w'] = w unless w.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -576,17 +540,17 @@ module Google
         #   The volume to retrieve annotation data for.
         # @param [String] layer_id
         #   The ID for the layer to get the annotation data.
+        # @param [Array<String>, String] annotation_data_id
+        #   The list of Annotation Data Ids to retrieve. Pagination is ignored if this
+        #   is set.
         # @param [String] content_version
         #   The content version for the requested volume.
-        # @param [Array<String>, String] annotation_data_id
-        #   The list of Annotation Data Ids to retrieve. Pagination is ignored if this is
-        #   set.
         # @param [Fixnum] h
         #   The requested pixel height for any images. If height is provided width must
         #   also be provided.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
-        #   code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
+        #   country code. Ex: 'en_US'.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
         # @param [String] page_token
@@ -596,21 +560,19 @@ module Google
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
-        #   exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
+        #   (exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
-        #   inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp
+        #   (inclusive).
         # @param [Fixnum] w
         #   The requested pixel width for any images. If width is provided height must
         #   also be provided.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -623,8 +585,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_layer_annotation_data(volume_id, layer_id, content_version, annotation_data_id: nil, h: nil, locale: nil, max_results: nil, page_token: nil, scale: nil, source: nil, updated_max: nil, updated_min: nil, w: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layers/{layerId}/data', options)
+        def list_layer_annotation_data(volume_id, layer_id, annotation_data_id: nil, content_version: nil, h: nil, locale: nil, max_results: nil, page_token: nil, scale: nil, source: nil, updated_max: nil, updated_min: nil, w: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}/data', options)
           command.response_representation = Google::Apis::BooksV1::AnnotationsData::Representation
           command.response_class = Google::Apis::BooksV1::AnnotationsData
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -642,7 +604,6 @@ module Google
           command.query['w'] = w unless w.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -654,17 +615,15 @@ module Google
         # @param [String] annotation_id
         #   The ID of the volume annotation to retrieve.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
-        #   code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
+        #   country code. Ex: 'en_US'.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -677,8 +636,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_layer_volume_annotation(volume_id, layer_id, annotation_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}', options)
+        def get_layer_volume_annotation(volume_id, layer_id, annotation_id, locale: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}', options)
           command.response_representation = Google::Apis::BooksV1::VolumeAnnotation::Representation
           command.response_class = Google::Apis::BooksV1::VolumeAnnotation
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -688,7 +647,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -704,15 +662,15 @@ module Google
         # @param [String] end_position
         #   The end position to end retrieving data from.
         # @param [String] locale
-        #   The locale information for the data. ISO-639-1 language and ISO-3166-1 country
-        #   code. Ex: 'en_US'.
+        #   The locale information for the data. ISO-639-1 language and ISO-3166-1
+        #   country code. Ex: 'en_US'.
         # @param [Fixnum] max_results
         #   Maximum number of results to return
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
         # @param [Boolean] show_deleted
-        #   Set to true to return deleted annotations. updatedMin must be in the request
-        #   to use this. Defaults to false.
+        #   Set to true to return deleted annotations. updatedMin must be in the
+        #   request to use this. Defaults to false.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] start_offset
@@ -720,20 +678,18 @@ module Google
         # @param [String] start_position
         #   The start position to start retrieving data from.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
-        #   exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
+        #   (exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
-        #   inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp
+        #   (inclusive).
         # @param [String] volume_annotations_version
         #   The version of the volume annotations that you are requesting.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -746,8 +702,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_layer_volume_annotations(volume_id, layer_id, content_version, end_offset: nil, end_position: nil, locale: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, start_offset: nil, start_position: nil, updated_max: nil, updated_min: nil, volume_annotations_version: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/layers/{layerId}', options)
+        def list_layer_volume_annotations(volume_id, layer_id, content_version: nil, end_offset: nil, end_position: nil, locale: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, start_offset: nil, start_position: nil, updated_max: nil, updated_min: nil, volume_annotations_version: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/layers/{layerId}', options)
           command.response_representation = Google::Apis::BooksV1::Volumeannotations::Representation
           command.response_class = Google::Apis::BooksV1::Volumeannotations
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -767,18 +723,17 @@ module Google
           command.query['volumeAnnotationsVersion'] = volume_annotations_version unless volume_annotations_version.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Gets the current settings for the user.
+        # @param [String] country
+        #   Unused. Added only to workaround TEX mandatory request template requirement
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -791,32 +746,30 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_settings(fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'myconfig/getUserSettings', options)
+        def get_user_settings(country: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/myconfig/getUserSettings', options)
           command.response_representation = Google::Apis::BooksV1::UserSettings::Representation
           command.response_class = Google::Apis::BooksV1::UserSettings
+          command.query['country'] = country unless country.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Release downloaded content access restriction.
-        # @param [Array<String>, String] volume_ids
-        #   The volume(s) to release restrictions for.
         # @param [String] cpksver
         #   The device/version ID from which to release the restriction.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [Array<String>, String] volume_ids
+        #   The volume(s) to release restrictions for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -829,8 +782,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def release_download_access(volume_ids, cpksver, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'myconfig/releaseDownloadAccess', options)
+        def release_download_access(cpksver: nil, locale: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/myconfig/releaseDownloadAccess', options)
           command.response_representation = Google::Apis::BooksV1::DownloadAccesses::Representation
           command.response_class = Google::Apis::BooksV1::DownloadAccesses
           command.query['cpksver'] = cpksver unless cpksver.nil?
@@ -839,46 +792,44 @@ module Google
           command.query['volumeIds'] = volume_ids unless volume_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Request concurrent and download access restrictions.
+        # @param [String] cpksver
+        #   The device/version ID from which to request the restrictions.
+        # @param [String] license_types
+        #   The type of access license to request. If not specified, the default is
+        #   BOTH.
+        # @param [String] locale
+        #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+        # @param [String] nonce
+        #   The client nonce value.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] volume_id
         #   The volume to request concurrent/download restrictions for.
-        # @param [String] nonce
-        #   The client nonce value.
-        # @param [String] cpksver
-        #   The device/version ID from which to request the restrictions.
-        # @param [String] license_types
-        #   The type of access license to request. If not specified, the default is BOTH.
-        # @param [String] locale
-        #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::BooksV1::RequestAccess] parsed result object
+        # @yieldparam result [Google::Apis::BooksV1::RequestAccessData] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [Google::Apis::BooksV1::RequestAccess]
+        # @return [Google::Apis::BooksV1::RequestAccessData]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def request_access(source, volume_id, nonce, cpksver, license_types: nil, locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'myconfig/requestAccess', options)
-          command.response_representation = Google::Apis::BooksV1::RequestAccess::Representation
-          command.response_class = Google::Apis::BooksV1::RequestAccess
+        def request_access(cpksver: nil, license_types: nil, locale: nil, nonce: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/myconfig/requestAccess', options)
+          command.response_representation = Google::Apis::BooksV1::RequestAccessData::Representation
+          command.response_class = Google::Apis::BooksV1::RequestAccessData
           command.query['cpksver'] = cpksver unless cpksver.nil?
           command.query['licenseTypes'] = license_types unless license_types.nil?
           command.query['locale'] = locale unless locale.nil?
@@ -887,15 +838,11 @@ module Google
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Request downloaded content access for specified volumes on the My eBooks shelf.
-        # @param [String] source
-        #   String to identify the originator of this request.
-        # @param [String] nonce
-        #   The client nonce value.
+        # Request downloaded content access for specified volumes on the My eBooks
+        # shelf.
         # @param [String] cpksver
         #   The device/version ID from which to release the restriction.
         # @param [Array<String>, String] features
@@ -904,17 +851,19 @@ module Google
         #   Set to true to include non-comics series. Defaults to false.
         # @param [String] locale
         #   ISO-639-1, ISO-3166-1 codes for message localization, i.e. en_US.
+        # @param [String] nonce
+        #   The client nonce value.
         # @param [Boolean] show_preorders
         #   Set to true to show pre-ordered books. Defaults to false.
+        # @param [String] source
+        #   String to identify the originator of this request.
         # @param [Array<String>, String] volume_ids
         #   The volume(s) to request download restrictions for.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -927,8 +876,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def sync_volume_licenses(source, nonce, cpksver, features: nil, include_non_comics_series: nil, locale: nil, show_preorders: nil, volume_ids: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'myconfig/syncVolumeLicenses', options)
+        def sync_volume_licenses(cpksver: nil, features: nil, include_non_comics_series: nil, locale: nil, nonce: nil, show_preorders: nil, source: nil, volume_ids: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/myconfig/syncVolumeLicenses', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['cpksver'] = cpksver unless cpksver.nil?
@@ -941,21 +890,18 @@ module Google
           command.query['volumeIds'] = volume_ids unless volume_ids.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Sets the settings for the user. If a sub-object is specified, it will
-        # overwrite the existing sub-object stored in the server. Unspecified sub-
-        # objects will retain the existing value.
+        # overwrite the existing sub-object stored in the server. Unspecified
+        # sub-objects will retain the existing value.
         # @param [Google::Apis::BooksV1::UserSettings] user_settings_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -968,15 +914,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_user_settings(user_settings_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'myconfig/updateUserSettings', options)
+        def update_user_settings(user_settings_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/myconfig/updateUserSettings', options)
           command.request_representation = Google::Apis::BooksV1::UserSettings::Representation
           command.request_object = user_settings_object
           command.response_representation = Google::Apis::BooksV1::UserSettings::Representation
           command.response_class = Google::Apis::BooksV1::UserSettings
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -988,29 +933,28 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_my_library_annotation(annotation_id, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'mylibrary/annotations/{annotationId}', options)
+        def delete_my_library_annotation(annotation_id, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'books/v1/mylibrary/annotations/{annotationId}', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['annotationId'] = annotation_id unless annotation_id.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1028,10 +972,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1044,8 +986,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_my_library_annotation(annotation_object = nil, annotation_id: nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/annotations', options)
+        def insert_my_library_annotation(annotation_object = nil, annotation_id: nil, country: nil, show_only_summary_in_response: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/annotations', options)
           command.request_representation = Google::Apis::BooksV1::Annotation::Representation
           command.request_object = annotation_object
           command.response_representation = Google::Apis::BooksV1::Annotation::Representation
@@ -1056,7 +998,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1072,25 +1013,23 @@ module Google
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
         # @param [Boolean] show_deleted
-        #   Set to true to return deleted annotations. updatedMin must be in the request
-        #   to use this. Defaults to false.
+        #   Set to true to return deleted annotations. updatedMin must be in the
+        #   request to use this. Defaults to false.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] updated_max
-        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp (
-        #   exclusive).
+        #   RFC 3339 timestamp to restrict to items updated prior to this timestamp
+        #   (exclusive).
         # @param [String] updated_min
-        #   RFC 3339 timestamp to restrict to items updated since this timestamp (
-        #   inclusive).
+        #   RFC 3339 timestamp to restrict to items updated since this timestamp
+        #   (inclusive).
         # @param [String] volume_id
         #   The volume to restrict annotations to.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1103,8 +1042,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_my_library_annotations(content_version: nil, layer_id: nil, layer_ids: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, updated_max: nil, updated_min: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'mylibrary/annotations', options)
+        def list_my_library_annotations(content_version: nil, layer_id: nil, layer_ids: nil, max_results: nil, page_token: nil, show_deleted: nil, source: nil, updated_max: nil, updated_min: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/mylibrary/annotations', options)
           command.response_representation = Google::Apis::BooksV1::Annotations::Representation
           command.response_class = Google::Apis::BooksV1::Annotations
           command.query['contentVersion'] = content_version unless content_version.nil?
@@ -1119,7 +1058,6 @@ module Google
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1131,10 +1069,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1147,15 +1083,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def summarize_my_library_annotation(layer_ids, volume_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/annotations/summary', options)
+        def summarize_my_library_annotation(layer_ids: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/annotations/summary', options)
           command.response_representation = Google::Apis::BooksV1::AnnotationsSummary::Representation
           command.response_class = Google::Apis::BooksV1::AnnotationsSummary
           command.query['layerIds'] = layer_ids unless layer_ids.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1168,10 +1103,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1184,8 +1117,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_my_library_annotation(annotation_id, annotation_object = nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'mylibrary/annotations/{annotationId}', options)
+        def update_my_library_annotation(annotation_id, annotation_object = nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'books/v1/mylibrary/annotations/{annotationId}', options)
           command.request_representation = Google::Apis::BooksV1::Annotation::Representation
           command.request_object = annotation_object
           command.response_representation = Google::Apis::BooksV1::Annotation::Representation
@@ -1194,47 +1127,45 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Adds a volume to a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf to which to add a volume.
-        # @param [String] volume_id
-        #   ID of volume to add.
         # @param [String] reason
         #   The reason for which the book is added to the library.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [String] volume_id
+        #   ID of volume to add.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def add_my_library_volume(shelf, volume_id, reason: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/bookshelves/{shelf}/addVolume', options)
+        def add_my_library_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/addVolume', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['reason'] = reason unless reason.nil?
           command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1246,29 +1177,28 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clear_my_library_volumes(shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/bookshelves/{shelf}/clearVolumes', options)
+        def clear_my_library_volumes(shelf, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/clearVolumes', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1281,10 +1211,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1297,15 +1225,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_my_library_bookshelf(shelf, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'mylibrary/bookshelves/{shelf}', options)
+        def get_my_library_bookshelf(shelf, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/mylibrary/bookshelves/{shelf}', options)
           command.response_representation = Google::Apis::BooksV1::Bookshelf::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelf
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1315,10 +1242,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1331,95 +1256,92 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_my_library_bookshelves(source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'mylibrary/bookshelves', options)
+        def list_my_library_bookshelves(source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/mylibrary/bookshelves', options)
           command.response_representation = Google::Apis::BooksV1::Bookshelves::Representation
           command.response_class = Google::Apis::BooksV1::Bookshelves
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Moves a volume within a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf with the volume.
+        # @param [String] source
+        #   String to identify the originator of this request.
         # @param [String] volume_id
         #   ID of volume to move.
         # @param [Fixnum] volume_position
-        #   Position on shelf to move the item (0 puts the item before the current first
-        #   item, 1 puts it between the first and the second and so on.)
-        # @param [String] source
-        #   String to identify the originator of this request.
+        #   Position on shelf to move the item (0 puts the item before the current
+        #   first item, 1 puts it between the first and the second and so on.)
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_my_library_volume(shelf, volume_id, volume_position, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/bookshelves/{shelf}/moveVolume', options)
+        def move_my_library_volume(shelf, source: nil, volume_id: nil, volume_position: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/moveVolume', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['volumePosition'] = volume_position unless volume_position.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Removes a volume from a bookshelf.
         # @param [String] shelf
         #   ID of bookshelf from which to remove a volume.
-        # @param [String] volume_id
-        #   ID of volume to remove.
         # @param [String] reason
         #   The reason for which the book is removed from the library.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [String] volume_id
+        #   ID of volume to remove.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def remove_my_library_volume(shelf, volume_id, reason: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/bookshelves/{shelf}/removeVolume', options)
+        def remove_my_library_volume(shelf, reason: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/bookshelves/{shelf}/removeVolume', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['shelf'] = shelf unless shelf.nil?
           command.query['reason'] = reason unless reason.nil?
           command.query['source'] = source unless source.nil?
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1443,10 +1365,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1459,8 +1379,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_my_library_volumes(shelf, country: nil, max_results: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'mylibrary/bookshelves/{shelf}/volumes', options)
+        def list_my_library_volumes(shelf, country: nil, max_results: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/mylibrary/bookshelves/{shelf}/volumes', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['shelf'] = shelf unless shelf.nil?
@@ -1473,7 +1393,6 @@ module Google
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1487,10 +1406,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1503,8 +1420,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_my_library_reading_position(volume_id, content_version: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'mylibrary/readingpositions/{volumeId}', options)
+        def get_my_library_reading_position(volume_id, content_version: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/mylibrary/readingpositions/{volumeId}', options)
           command.response_representation = Google::Apis::BooksV1::ReadingPosition::Representation
           command.response_class = Google::Apis::BooksV1::ReadingPosition
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -1512,46 +1429,45 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Sets my reading position information for a volume.
         # @param [String] volume_id
         #   ID of volume for which to update the reading position.
-        # @param [String] timestamp
-        #   RFC 3339 UTC format timestamp associated with this reading position.
-        # @param [String] position
-        #   Position string for the new volume reading position.
         # @param [String] action
         #   Action that caused this reading position to be set.
         # @param [String] content_version
         #   Volume content version for which this reading position applies.
         # @param [String] device_cookie
         #   Random persistent device cookie optional on set position.
+        # @param [String] position
+        #   Position string for the new volume reading position.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [String] timestamp
+        #   RFC 3339 UTC format timestamp associated with this reading position.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def set_my_library_reading_position(volume_id, timestamp, position, action: nil, content_version: nil, device_cookie: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'mylibrary/readingpositions/{volumeId}/setPosition', options)
+        def set_my_library_reading_position(volume_id, action: nil, content_version: nil, device_cookie: nil, position: nil, source: nil, timestamp: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/mylibrary/readingpositions/{volumeId}/setPosition', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.params['volumeId'] = volume_id unless volume_id.nil?
           command.query['action'] = action unless action.nil?
           command.query['contentVersion'] = content_version unless content_version.nil?
@@ -1561,25 +1477,22 @@ module Google
           command.query['timestamp'] = timestamp unless timestamp.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Returns notification details for a given notification id.
-        # @param [String] notification_id
-        #   String to identify the notification.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating notification title and body.
+        # @param [String] notification_id
+        #   String to identify the notification.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1592,8 +1505,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_notification(notification_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'notification/get', options)
+        def get_notification(locale: nil, notification_id: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/notification/get', options)
           command.response_representation = Google::Apis::BooksV1::Notification::Representation
           command.response_class = Google::Apis::BooksV1::Notification
           command.query['locale'] = locale unless locale.nil?
@@ -1601,7 +1514,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1611,10 +1523,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1627,14 +1537,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_onboarding_categories(locale: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'onboarding/listCategories', options)
+        def list_onboarding_categories(locale: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/onboarding/listCategories', options)
           command.response_representation = Google::Apis::BooksV1::Category::Representation
           command.response_class = Google::Apis::BooksV1::Category
           command.query['locale'] = locale unless locale.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1644,8 +1553,8 @@ module Google
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Default is en-US if unset.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned volumes. Books with a higher
-        #   maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned volumes. Books with a
+        #   higher maturity rating are filtered out.
         # @param [Fixnum] page_size
         #   Number of maximum results per page to be included in the response.
         # @param [String] page_token
@@ -1653,10 +1562,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1669,8 +1576,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_onboarding_category_volumes(category_id: nil, locale: nil, max_allowed_maturity_rating: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'onboarding/listCategoryVolumes', options)
+        def list_onboarding_category_volumes(category_id: nil, locale: nil, max_allowed_maturity_rating: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/onboarding/listCategoryVolumes', options)
           command.response_representation = Google::Apis::BooksV1::Volume2::Representation
           command.response_class = Google::Apis::BooksV1::Volume2
           command.query['categoryId'] = category_id unless category_id.nil?
@@ -1680,7 +1587,6 @@ module Google
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1689,17 +1595,15 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with a
-        #   higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with
+        #   a higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1712,8 +1616,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'personalizedstream/get', options)
+        def get_personalizedstream(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/personalizedstream/get', options)
           command.response_representation = Google::Apis::BooksV1::Discoveryclusters::Representation
           command.response_class = Google::Apis::BooksV1::Discoveryclusters
           command.query['locale'] = locale unless locale.nil?
@@ -1721,11 +1625,10 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Accepts the promo offer.
         # @param [String] android_id
         #   device android_id
         # @param [String] device
@@ -1744,24 +1647,24 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def accept_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, offer_id: nil, product: nil, serial: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'promooffer/accept', options)
+        def accept_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, offer_id: nil, product: nil, serial: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/promooffer/accept', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.query['androidId'] = android_id unless android_id.nil?
           command.query['device'] = device unless device.nil?
           command.query['manufacturer'] = manufacturer unless manufacturer.nil?
@@ -1772,11 +1675,10 @@ module Google
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Marks the promo offer as dismissed.
         # @param [String] android_id
         #   device android_id
         # @param [String] device
@@ -1794,24 +1696,24 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
         # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [NilClass] No result returned for this method
+        # @yieldparam result [Google::Apis::BooksV1::Empty] parsed result object
         # @yieldparam err [StandardError] error object if request failed
         #
-        # @return [void]
+        # @return [Google::Apis::BooksV1::Empty]
         #
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def dismiss_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, offer_id: nil, product: nil, serial: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'promooffer/dismiss', options)
+        def dismiss_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, offer_id: nil, product: nil, serial: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/promooffer/dismiss', options)
+          command.response_representation = Google::Apis::BooksV1::Empty::Representation
+          command.response_class = Google::Apis::BooksV1::Empty
           command.query['androidId'] = android_id unless android_id.nil?
           command.query['device'] = device unless device.nil?
           command.query['manufacturer'] = manufacturer unless manufacturer.nil?
@@ -1821,7 +1723,6 @@ module Google
           command.query['serial'] = serial unless serial.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1841,10 +1742,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1857,8 +1756,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, product: nil, serial: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'promooffer/get', options)
+        def get_promo_offer(android_id: nil, device: nil, manufacturer: nil, model: nil, product: nil, serial: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/promooffer/get', options)
           command.response_representation = Google::Apis::BooksV1::Offers::Representation
           command.response_class = Google::Apis::BooksV1::Offers
           command.query['androidId'] = android_id unless android_id.nil?
@@ -1869,7 +1768,6 @@ module Google
           command.query['serial'] = serial unless serial.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1879,10 +1777,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1895,31 +1791,28 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_series(series_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'series/get', options)
+        def get_series(series_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/series/get', options)
           command.response_representation = Google::Apis::BooksV1::Series::Representation
           command.response_class = Google::Apis::BooksV1::Series
           command.query['series_id'] = series_id unless series_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Returns Series membership data given the series id.
-        # @param [String] series_id
-        #   String that identifies the series
         # @param [Fixnum] page_size
         #   Number of maximum results per page to be included in the response.
         # @param [String] page_token
         #   The value of the nextToken from the previous page.
+        # @param [String] series_id
+        #   String that identifies the series
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1932,8 +1825,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_series_membership(series_id, page_size: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'series/membership/get', options)
+        def get_series_membership(page_size: nil, page_token: nil, series_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/series/membership/get', options)
           command.response_representation = Google::Apis::BooksV1::SeriesMembership::Representation
           command.response_class = Google::Apis::BooksV1::SeriesMembership
           command.query['page_size'] = page_size unless page_size.nil?
@@ -1941,7 +1834,6 @@ module Google
           command.query['series_id'] = series_id unless series_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -1957,15 +1849,13 @@ module Google
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
         # @param [String] source
-        #   String to identify the originator of this request.
+        #   string  to identify the originator of this request.
         # @param [Boolean] user_library_consistent_read
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -1978,8 +1868,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_volume(volume_id, country: nil, include_non_comics_series: nil, partner: nil, projection: nil, source: nil, user_library_consistent_read: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}', options)
+        def get_volume(volume_id, country: nil, include_non_comics_series: nil, partner: nil, projection: nil, source: nil, user_library_consistent_read: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}', options)
           command.response_representation = Google::Apis::BooksV1::Volume::Representation
           command.response_class = Google::Apis::BooksV1::Volume
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -1991,13 +1881,10 @@ module Google
           command.query['user_library_consistent_read'] = user_library_consistent_read unless user_library_consistent_read.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Performs a book search.
-        # @param [String] q
-        #   Full-text search query string.
         # @param [String] download
         #   Restrict to volumes by download availability.
         # @param [String] filter
@@ -2007,8 +1894,8 @@ module Google
         # @param [String] library_restrict
         #   Restrict search to this user's library.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with a
-        #   higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with
+        #   a higher maturity rating are filtered out.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] order_by
@@ -2019,6 +1906,8 @@ module Google
         #   Restrict to books or magazines.
         # @param [String] projection
         #   Restrict information returned to a set of selected fields.
+        # @param [String] q
+        #   Full-text search query string.
         # @param [Boolean] show_preorders
         #   Set to true to show books available for preorder. Defaults to false.
         # @param [String] source
@@ -2028,10 +1917,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2044,8 +1931,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_volumes(q, download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_allowed_maturity_rating: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes', options)
+        def list_volumes(download: nil, filter: nil, lang_restrict: nil, library_restrict: nil, max_allowed_maturity_rating: nil, max_results: nil, order_by: nil, partner: nil, print_type: nil, projection: nil, q: nil, show_preorders: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['download'] = download unless download.nil?
@@ -2064,7 +1951,6 @@ module Google
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2077,17 +1963,15 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with a
-        #   higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with
+        #   a higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2100,8 +1984,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_associated_volumes(volume_id, association: nil, locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/{volumeId}/associated', options)
+        def list_associated_volumes(volume_id, association: nil, locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/{volumeId}/associated', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.params['volumeId'] = volume_id unless volume_id.nil?
@@ -2111,7 +1995,6 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2126,8 +2009,8 @@ module Google
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [Array<String>, String] processing_state
-        #   The processing state of the user uploaded volumes to be returned. Applicable
-        #   only if the UPLOADED is specified in the acquireMethod.
+        #   The processing state of the user uploaded volumes to be returned.
+        #   Applicable only if the UPLOADED is specified in the acquireMethod.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [Fixnum] start_index
@@ -2135,10 +2018,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2151,8 +2032,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_my_books(acquire_method: nil, country: nil, locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/mybooks', options)
+        def list_my_books(acquire_method: nil, country: nil, locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/mybooks', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['acquireMethod'] = acquire_method unless acquire_method.nil?
@@ -2164,7 +2045,6 @@ module Google
           command.query['startIndex'] = start_index unless start_index.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2173,17 +2053,15 @@ module Google
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
         # @param [String] max_allowed_maturity_rating
-        #   The maximum allowed maturity rating of returned recommendations. Books with a
-        #   higher maturity rating are filtered out.
+        #   The maximum allowed maturity rating of returned recommendations. Books with
+        #   a higher maturity rating are filtered out.
         # @param [String] source
         #   String to identify the originator of this request.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2196,8 +2074,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_recommended_volumes(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/recommended', options)
+        def list_recommended_volumes(locale: nil, max_allowed_maturity_rating: nil, source: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/recommended', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['locale'] = locale unless locale.nil?
@@ -2205,27 +2083,24 @@ module Google
           command.query['source'] = source unless source.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Rate a recommended book for the current user.
-        # @param [String] rating
-        #   Rating to be given to the volume.
-        # @param [String] volume_id
-        #   ID of the source volume.
         # @param [String] locale
         #   ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'. Used for
         #   generating recommendations.
+        # @param [String] rating
+        #   Rating to be given to the volume.
         # @param [String] source
         #   String to identify the originator of this request.
+        # @param [String] volume_id
+        #   ID of the source volume.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2238,8 +2113,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def rate_recommended_volume(rating, volume_id, locale: nil, source: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'volumes/recommended/rate', options)
+        def rate_recommended_volume(locale: nil, rating: nil, source: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'books/v1/volumes/recommended/rate', options)
           command.response_representation = Google::Apis::BooksV1::RateRecommendedVolumeResponse::Representation
           command.response_class = Google::Apis::BooksV1::RateRecommendedVolumeResponse
           command.query['locale'] = locale unless locale.nil?
@@ -2248,7 +2123,6 @@ module Google
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -2270,10 +2144,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -2286,8 +2158,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_user_uploaded_volumes(locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, volume_id: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'volumes/useruploaded', options)
+        def list_user_uploaded_volumes(locale: nil, max_results: nil, processing_state: nil, source: nil, start_index: nil, volume_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'books/v1/volumes/useruploaded', options)
           command.response_representation = Google::Apis::BooksV1::Volumes::Representation
           command.response_class = Google::Apis::BooksV1::Volumes
           command.query['locale'] = locale unless locale.nil?
@@ -2298,7 +2170,6 @@ module Google
           command.query['volumeId'] = volume_id unless volume_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -2307,7 +2178,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

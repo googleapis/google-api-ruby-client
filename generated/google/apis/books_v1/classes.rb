@@ -26,14 +26,14 @@ module Google
       class Annotation
         include Google::Apis::Core::Hashable
       
-        # Anchor text after excerpt. For requests, if the user bookmarked a screen that
-        # has no flowing text on it, then this field should be empty.
+        # Anchor text after excerpt. For requests, if the user bookmarked a screen
+        # that has no flowing text on it, then this field should be empty.
         # Corresponds to the JSON property `afterSelectedText`
         # @return [String]
         attr_accessor :after_selected_text
       
-        # Anchor text before excerpt. For requests, if the user bookmarked a screen that
-        # has no flowing text on it, then this field should be empty.
+        # Anchor text before excerpt. For requests, if the user bookmarked a screen
+        # that has no flowing text on it, then this field should be empty.
         # Corresponds to the JSON property `beforeSelectedText`
         # @return [String]
         attr_accessor :before_selected_text
@@ -45,7 +45,7 @@ module Google
       
         # Timestamp for the created time of this annotation.
         # Corresponds to the JSON property `created`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :created
       
         # Selection ranges for the most recent content version.
@@ -106,7 +106,7 @@ module Google
       
         # Timestamp for the last time this annotation was modified.
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # The volume that this annotation belongs to.
@@ -229,7 +229,8 @@ module Google
         class LayerSummary
           include Google::Apis::Core::Hashable
         
-          # Maximum allowed characters on this layer, especially for the "copy" layer.
+          # Maximum allowed characters on this layer, especially for the "copy"
+          # layer.
           # Corresponds to the JSON property `allowedCharacterCount`
           # @return [Fixnum]
           attr_accessor :allowed_character_count
@@ -240,7 +241,8 @@ module Google
           # @return [String]
           attr_accessor :limit_type
         
-          # Remaining allowed characters on this layer, especially for the "copy" layer.
+          # Remaining allowed characters on this layer, especially for the "copy"
+          # layer.
           # Corresponds to the JSON property `remainingCharacterCount`
           # @return [Fixnum]
           attr_accessor :remaining_character_count
@@ -259,75 +261,6 @@ module Google
       end
       
       # 
-      class AnnotationData
-        include Google::Apis::Core::Hashable
-      
-        # The type of annotation this data is for.
-        # Corresponds to the JSON property `annotationType`
-        # @return [String]
-        attr_accessor :annotation_type
-      
-        # 
-        # Corresponds to the JSON property `data`
-        # @return [Object]
-        attr_accessor :data
-      
-        # Base64 encoded data for this annotation data.
-        # Corresponds to the JSON property `encoded_data`
-        # NOTE: Values are automatically base64 encoded/decoded in the client library.
-        # @return [String]
-        attr_accessor :encoded_data
-      
-        # Unique id for this annotation data.
-        # Corresponds to the JSON property `id`
-        # @return [String]
-        attr_accessor :id
-      
-        # Resource Type
-        # Corresponds to the JSON property `kind`
-        # @return [String]
-        attr_accessor :kind
-      
-        # The Layer id for this data. *
-        # Corresponds to the JSON property `layerId`
-        # @return [String]
-        attr_accessor :layer_id
-      
-        # URL for this resource. *
-        # Corresponds to the JSON property `selfLink`
-        # @return [String]
-        attr_accessor :self_link
-      
-        # Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
-        # format).
-        # Corresponds to the JSON property `updated`
-        # @return [DateTime]
-        attr_accessor :updated
-      
-        # The volume id for this data. *
-        # Corresponds to the JSON property `volumeId`
-        # @return [String]
-        attr_accessor :volume_id
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @annotation_type = args[:annotation_type] if args.key?(:annotation_type)
-          @data = args[:data] if args.key?(:data)
-          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
-          @id = args[:id] if args.key?(:id)
-          @kind = args[:kind] if args.key?(:kind)
-          @layer_id = args[:layer_id] if args.key?(:layer_id)
-          @self_link = args[:self_link] if args.key?(:self_link)
-          @updated = args[:updated] if args.key?(:updated)
-          @volume_id = args[:volume_id] if args.key?(:volume_id)
-        end
-      end
-      
-      # 
       class Annotations
         include Google::Apis::Core::Hashable
       
@@ -341,8 +274,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token to pass in for pagination for the next page. This will not be present if
-        # this request does not have more results.
+        # Token to pass in for pagination for the next page. This will not be present
+        # if this request does not have more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -416,7 +349,7 @@ module Google
         
           # 
           # Corresponds to the JSON property `updated`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :updated
         
           def initialize(**args)
@@ -440,7 +373,7 @@ module Google
       
         # A list of Annotation Data.
         # Corresponds to the JSON property `items`
-        # @return [Array<Google::Apis::BooksV1::AnnotationData>]
+        # @return [Array<Google::Apis::BooksV1::GeoAnnotationdata>]
         attr_accessor :items
       
         # Resource type
@@ -448,8 +381,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token to pass in for pagination for the next page. This will not be present if
-        # this request does not have more results.
+        # Token to pass in for pagination for the next page. This will not be present
+        # if this request does not have more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -547,43 +480,6 @@ module Google
       end
       
       # 
-      class BooksSubscriptionReleaseInfo
-        include Google::Apis::Core::Hashable
-      
-        # Amount in micros of the specified currency code.
-        # Corresponds to the JSON property `amountInMicros`
-        # @return [Fixnum]
-        attr_accessor :amount_in_micros
-      
-        # Currency code of the amount.
-        # Corresponds to the JSON property `currencyCode`
-        # @return [String]
-        attr_accessor :currency_code
-      
-        # The release number of this issue/volume/book.
-        # Corresponds to the JSON property `releaseNumber`
-        # @return [String]
-        attr_accessor :release_number
-      
-        # The release date.
-        # Corresponds to the JSON property `releaseTimestampUs`
-        # @return [Fixnum]
-        attr_accessor :release_timestamp_us
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @amount_in_micros = args[:amount_in_micros] if args.key?(:amount_in_micros)
-          @currency_code = args[:currency_code] if args.key?(:currency_code)
-          @release_number = args[:release_number] if args.key?(:release_number)
-          @release_timestamp_us = args[:release_timestamp_us] if args.key?(:release_timestamp_us)
-        end
-      end
-      
-      # 
       class RateRecommendedVolumeResponse
         include Google::Apis::Core::Hashable
       
@@ -614,7 +510,7 @@ module Google
         # Created time for this bookshelf (formatted UTC timestamp with millisecond
         # resolution).
         # Corresponds to the JSON property `created`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :created
       
         # Description of this bookshelf.
@@ -642,10 +538,10 @@ module Google
         # @return [String]
         attr_accessor :title
       
-        # Last modified time of this bookshelf (formatted UTC timestamp with millisecond
-        # resolution).
+        # Last modified time of this bookshelf (formatted UTC timestamp with
+        # millisecond resolution).
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # Number of volumes in this bookshelf.
@@ -656,7 +552,7 @@ module Google
         # Last time a volume was added or removed from this bookshelf (formatted UTC
         # timestamp with millisecond resolution).
         # Corresponds to the JSON property `volumesLastUpdated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :volumes_last_updated
       
         def initialize(**args)
@@ -805,8 +701,8 @@ module Google
         # @return [String]
         attr_accessor :signature
       
-        # Client app identifier for verification. Download access and client-validation
-        # only.
+        # Client app identifier for verification. Download access and
+        # client-validation only.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -837,6 +733,77 @@ module Google
           @signature = args[:signature] if args.key?(:signature)
           @source = args[:source] if args.key?(:source)
           @time_window_seconds = args[:time_window_seconds] if args.key?(:time_window_seconds)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
+      # 
+      class DictionaryAnnotationdata
+        include Google::Apis::Core::Hashable
+      
+        # The type of annotation this data is for.
+        # Corresponds to the JSON property `annotationType`
+        # @return [String]
+        attr_accessor :annotation_type
+      
+        # JSON encoded data for this dictionary annotation data.
+        # Emitted with name 'data' in JSON output. Either this or geo_data will
+        # be populated.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::BooksV1::DictLayerData]
+        attr_accessor :data
+      
+        # Base64 encoded data for this annotation data.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # Unique id for this annotation data.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Resource Type
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The Layer id for this data. *
+        # Corresponds to the JSON property `layerId`
+        # @return [String]
+        attr_accessor :layer_id
+      
+        # URL for this resource. *
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
+        # format).
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        # The volume id for this data. *
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_type = args[:annotation_type] if args.key?(:annotation_type)
+          @data = args[:data] if args.key?(:data)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @layer_id = args[:layer_id] if args.key?(:layer_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @updated = args[:updated] if args.key?(:updated)
           @volume_id = args[:volume_id] if args.key?(:volume_id)
         end
       end
@@ -875,8 +842,8 @@ module Google
         class Common
           include Google::Apis::Core::Hashable
         
-          # The display title and localized canonical name to use when searching for this
-          # entity on Google search.
+          # The display title and localized canonical name to use when searching for
+          # this entity on Google search.
           # Corresponds to the JSON property `title`
           # @return [String]
           attr_accessor :title
@@ -959,8 +926,8 @@ module Google
             # @return [Array<Google::Apis::BooksV1::DictLayerData::Dict::Word::Sense>]
             attr_accessor :senses
           
-            # The words with different meanings but not related words, e.g. "go" (game) and "
-            # go" (verb).
+            # The words with different meanings but not related words, e.g. "go"
+            # (game) and "go" (verb).
             # Corresponds to the JSON property `source`
             # @return [Google::Apis::BooksV1::DictLayerData::Dict::Word::Source]
             attr_accessor :source
@@ -1313,8 +1280,8 @@ module Google
               end
             end
             
-            # The words with different meanings but not related words, e.g. "go" (game) and "
-            # go" (verb).
+            # The words with different meanings but not related words, e.g. "go"
+            # (game) and "go" (verb).
             class Source
               include Google::Apis::Core::Hashable
             
@@ -1481,8 +1448,8 @@ module Google
         attr_accessor :device_allowed
         alias_method :device_allowed?, :device_allowed
       
-        # If restricted, the number of content download licenses already acquired (
-        # including the requesting client, if licensed).
+        # If restricted, the number of content download licenses already acquired
+        # (including the requesting client, if licensed).
         # Corresponds to the JSON property `downloadsAcquired`
         # @return [Fixnum]
         attr_accessor :downloads_acquired
@@ -1498,7 +1465,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # If restricted, the maximum number of content download licenses for this volume.
+        # If restricted, the maximum number of content download licenses for this
+        # volume.
         # Corresponds to the JSON property `maxDownloadDevices`
         # @return [Fixnum]
         attr_accessor :max_download_devices
@@ -1513,8 +1481,8 @@ module Google
         # @return [String]
         attr_accessor :nonce
       
-        # Error/warning reason code. Additional codes may be added in the future. 0 OK
-        # 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
+        # Error/warning reason code.  Additional codes may be added in the future. 0
+        # OK 100   ACCESS_DENIED_PUBLISHER_LIMIT 101   ACCESS_DENIED_LIMIT 200
         # WARNING_USED_LAST_ACCESS
         # Corresponds to the JSON property `reasonCode`
         # @return [String]
@@ -1531,8 +1499,8 @@ module Google
         # @return [String]
         attr_accessor :signature
       
-        # Client app identifier for verification. Download access and client-validation
-        # only.
+        # Client app identifier for verification. Download access and
+        # client-validation only.
         # Corresponds to the JSON property `source`
         # @return [String]
         attr_accessor :source
@@ -1585,6 +1553,25 @@ module Google
         def update!(**args)
           @download_access_list = args[:download_access_list] if args.key?(:download_access_list)
           @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # A generic empty message that you can re-use to avoid defining duplicated
+      # empty messages in your APIs. A typical example is to use it as the request
+      # or the response type of an API method. For instance:
+      # service Foo `
+      # rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+      # `
+      # The JSON representation for `Empty` is empty JSON object ````.
+      class Empty
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       
@@ -1658,6 +1645,77 @@ module Google
       end
       
       # 
+      class GeoAnnotationdata
+        include Google::Apis::Core::Hashable
+      
+        # The type of annotation this data is for.
+        # Corresponds to the JSON property `annotationType`
+        # @return [String]
+        attr_accessor :annotation_type
+      
+        # JSON encoded data for this geo annotation data.
+        # Emitted with name 'data' in JSON output. Either this or dict_data will
+        # be populated.
+        # Corresponds to the JSON property `data`
+        # @return [Google::Apis::BooksV1::GeoLayerData]
+        attr_accessor :data
+      
+        # Base64 encoded data for this annotation data.
+        # Corresponds to the JSON property `encodedData`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :encoded_data
+      
+        # Unique id for this annotation data.
+        # Corresponds to the JSON property `id`
+        # @return [String]
+        attr_accessor :id
+      
+        # Resource Type
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The Layer id for this data. *
+        # Corresponds to the JSON property `layerId`
+        # @return [String]
+        attr_accessor :layer_id
+      
+        # URL for this resource. *
+        # Corresponds to the JSON property `selfLink`
+        # @return [String]
+        attr_accessor :self_link
+      
+        # Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
+        # format).
+        # Corresponds to the JSON property `updated`
+        # @return [String]
+        attr_accessor :updated
+      
+        # The volume id for this data. *
+        # Corresponds to the JSON property `volumeId`
+        # @return [String]
+        attr_accessor :volume_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @annotation_type = args[:annotation_type] if args.key?(:annotation_type)
+          @data = args[:data] if args.key?(:data)
+          @encoded_data = args[:encoded_data] if args.key?(:encoded_data)
+          @id = args[:id] if args.key?(:id)
+          @kind = args[:kind] if args.key?(:kind)
+          @layer_id = args[:layer_id] if args.key?(:layer_id)
+          @self_link = args[:self_link] if args.key?(:self_link)
+          @updated = args[:updated] if args.key?(:updated)
+          @volume_id = args[:volume_id] if args.key?(:volume_id)
+        end
+      end
+      
+      # 
       class GeoLayerData
         include Google::Apis::Core::Hashable
       
@@ -1711,8 +1769,8 @@ module Google
           # @return [String]
           attr_accessor :snippet_url
         
-          # The display title and localized canonical name to use when searching for this
-          # entity on Google search.
+          # The display title and localized canonical name to use when searching for
+          # this entity on Google search.
           # Corresponds to the JSON property `title`
           # @return [String]
           attr_accessor :title
@@ -1735,13 +1793,14 @@ module Google
         class Geo
           include Google::Apis::Core::Hashable
         
-          # The boundary of the location as a set of loops containing pairs of latitude,
-          # longitude coordinates.
+          # The boundary of the location as a set of loops containing pairs of
+          # latitude, longitude coordinates.
           # Corresponds to the JSON property `boundary`
-          # @return [Array<Array<Google::Apis::BooksV1::GeoLayerData::Geo::Boundary>>]
+          # @return [Array<String>]
           attr_accessor :boundary
         
-          # The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
+          # The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED,
+          # NEVER
           # Corresponds to the JSON property `cachePolicy`
           # @return [String]
           attr_accessor :cache_policy
@@ -1761,8 +1820,8 @@ module Google
           # @return [Float]
           attr_accessor :longitude
         
-          # The type of map that should be used for this location. EX: HYBRID, ROADMAP,
-          # SATELLITE, TERRAIN
+          # The type of map that should be used for this location. EX: HYBRID,
+          # ROADMAP, SATELLITE, TERRAIN
           # Corresponds to the JSON property `mapType`
           # @return [String]
           attr_accessor :map_type
@@ -1775,8 +1834,8 @@ module Google
         
           # The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
           # level, in which the entire world can be seen on one map) to 21+ (down to
-          # individual buildings). See: https://developers.google.com/maps/documentation/
-          # staticmaps/#Zoomlevels
+          # individual buildings). See: https:
+          # //developers.google.com/maps/documentation/staticmaps/#Zoomlevels
           # Corresponds to the JSON property `zoom`
           # @return [Fixnum]
           attr_accessor :zoom
@@ -1795,31 +1854,6 @@ module Google
             @map_type = args[:map_type] if args.key?(:map_type)
             @viewport = args[:viewport] if args.key?(:viewport)
             @zoom = args[:zoom] if args.key?(:zoom)
-          end
-          
-          # 
-          class Boundary
-            include Google::Apis::Core::Hashable
-          
-            # 
-            # Corresponds to the JSON property `latitude`
-            # @return [Fixnum]
-            attr_accessor :latitude
-          
-            # 
-            # Corresponds to the JSON property `longitude`
-            # @return [Fixnum]
-            attr_accessor :longitude
-          
-            def initialize(**args)
-               update!(**args)
-            end
-          
-            # Update properties of this object
-            def update!(**args)
-              @latitude = args[:latitude] if args.key?(:latitude)
-              @longitude = args[:longitude] if args.key?(:longitude)
-            end
           end
           
           # The viewport for showing this location. This is a latitude, longitude
@@ -1985,15 +2019,15 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Timestamp for the last time an item in this layer was updated. (RFC 3339 UTC
-        # date-time format).
+        # Timestamp for the last time an item in this layer was updated. (RFC 3339
+        # UTC date-time format).
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
-        # The current version of this layer's volume annotations. Note that this version
-        # applies only to the data in the books.layers.volumeAnnotations.* responses.
-        # The actual annotation data is versioned separately.
+        # The current version of this layer's volume annotations. Note that this
+        # version applies only to the data in the books.layers.volumeAnnotations.*
+        # responses. The actual annotation data is versioned separately.
         # Corresponds to the JSON property `volumeAnnotationsVersion`
         # @return [String]
         attr_accessor :volume_annotations_version
@@ -2345,10 +2379,10 @@ module Google
         # @return [String]
         attr_accessor :pdf_position
       
-        # Timestamp when this reading position was last updated (formatted UTC timestamp
-        # with millisecond resolution).
+        # Timestamp when this reading position was last updated (formatted UTC
+        # timestamp with millisecond resolution).
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # Volume id associated with this reading position.
@@ -2373,7 +2407,7 @@ module Google
       end
       
       # 
-      class RequestAccess
+      class RequestAccessData
         include Google::Apis::Core::Hashable
       
         # A concurrent access response.
@@ -2432,14 +2466,14 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Star rating for this review. Possible values are ONE, TWO, THREE, FOUR, FIVE
-        # or NOT_RATED.
+        # Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,
+        # FIVE or NOT_RATED.
         # Corresponds to the JSON property `rating`
         # @return [String]
         attr_accessor :rating
       
-        # Information regarding the source of this review, when the review is not from a
-        # Google Books user.
+        # Information regarding the source of this review, when the review is not
+        # from a Google Books user.
         # Corresponds to the JSON property `source`
         # @return [Google::Apis::BooksV1::Review::Source]
         attr_accessor :source
@@ -2497,8 +2531,8 @@ module Google
           end
         end
         
-        # Information regarding the source of this review, when the review is not from a
-        # Google Books user.
+        # Information regarding the source of this review, when the review is not
+        # from a Google Books user.
         class Source
           include Google::Apis::Core::Hashable
         
@@ -2632,22 +2666,22 @@ module Google
           class SeriesSubscriptionReleaseInfo
             include Google::Apis::Core::Hashable
           
-            # Cancellation date of the series subscription (or when it ends).
-            # Corresponds to the JSON property `cancellationTimestampUs`
-            # @return [Fixnum]
-            attr_accessor :cancellation_timestamp_us
+            # 
+            # Corresponds to the JSON property `cancelTime`
+            # @return [String]
+            attr_accessor :cancel_time
           
-            # Release information for the last release.
+            # 
             # Corresponds to the JSON property `currentReleaseInfo`
-            # @return [Google::Apis::BooksV1::BooksSubscriptionReleaseInfo]
+            # @return [Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::CurrentReleaseInfo]
             attr_accessor :current_release_info
           
-            # Release information for the next release.
+            # 
             # Corresponds to the JSON property `nextReleaseInfo`
-            # @return [Google::Apis::BooksV1::BooksSubscriptionReleaseInfo]
+            # @return [Google::Apis::BooksV1::Series::Series::SeriesSubscriptionReleaseInfo::NextReleaseInfo]
             attr_accessor :next_release_info
           
-            # series subscription type.
+            # 
             # Corresponds to the JSON property `seriesSubscriptionType`
             # @return [String]
             attr_accessor :series_subscription_type
@@ -2658,10 +2692,84 @@ module Google
           
             # Update properties of this object
             def update!(**args)
-              @cancellation_timestamp_us = args[:cancellation_timestamp_us] if args.key?(:cancellation_timestamp_us)
+              @cancel_time = args[:cancel_time] if args.key?(:cancel_time)
               @current_release_info = args[:current_release_info] if args.key?(:current_release_info)
               @next_release_info = args[:next_release_info] if args.key?(:next_release_info)
               @series_subscription_type = args[:series_subscription_type] if args.key?(:series_subscription_type)
+            end
+            
+            # 
+            class CurrentReleaseInfo
+              include Google::Apis::Core::Hashable
+            
+              # 
+              # Corresponds to the JSON property `amountInMicros`
+              # @return [Float]
+              attr_accessor :amount_in_micros
+            
+              # 
+              # Corresponds to the JSON property `currencyCode`
+              # @return [String]
+              attr_accessor :currency_code
+            
+              # 
+              # Corresponds to the JSON property `releaseNumber`
+              # @return [String]
+              attr_accessor :release_number
+            
+              # 
+              # Corresponds to the JSON property `releaseTime`
+              # @return [String]
+              attr_accessor :release_time
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @amount_in_micros = args[:amount_in_micros] if args.key?(:amount_in_micros)
+                @currency_code = args[:currency_code] if args.key?(:currency_code)
+                @release_number = args[:release_number] if args.key?(:release_number)
+                @release_time = args[:release_time] if args.key?(:release_time)
+              end
+            end
+            
+            # 
+            class NextReleaseInfo
+              include Google::Apis::Core::Hashable
+            
+              # 
+              # Corresponds to the JSON property `amountInMicros`
+              # @return [Float]
+              attr_accessor :amount_in_micros
+            
+              # 
+              # Corresponds to the JSON property `currencyCode`
+              # @return [String]
+              attr_accessor :currency_code
+            
+              # 
+              # Corresponds to the JSON property `releaseNumber`
+              # @return [String]
+              attr_accessor :release_number
+            
+              # 
+              # Corresponds to the JSON property `releaseTime`
+              # @return [String]
+              attr_accessor :release_time
+            
+              def initialize(**args)
+                 update!(**args)
+              end
+            
+              # Update properties of this object
+              def update!(**args)
+                @amount_in_micros = args[:amount_in_micros] if args.key?(:amount_in_micros)
+                @currency_code = args[:currency_code] if args.key?(:currency_code)
+                @release_number = args[:release_number] if args.key?(:release_number)
+                @release_time = args[:release_time] if args.key?(:release_time)
+              end
             end
           end
         end
@@ -2931,8 +3039,9 @@ module Google
         attr_accessor :recommended_info
       
         # Any information about a volume related to the eBookstore and/or
-        # purchaseability. This information can depend on the country where the request
-        # originates from (i.e. books may not be for sale in certain countries).
+        # purchaseability. This information can depend on the country where the
+        # request originates from (i.e. books may not be for sale in certain
+        # countries).
         # Corresponds to the JSON property `saleInfo`
         # @return [Google::Apis::BooksV1::Volume::SaleInfo]
         attr_accessor :sale_info
@@ -2983,15 +3092,15 @@ module Google
         class AccessInfo
           include Google::Apis::Core::Hashable
         
-          # Combines the access and viewability of this volume into a single status field
-          # for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN, SAMPLE or
-          # NONE. (In LITE projection.)
+          # Combines the access and viewability of this volume into a single status
+          # field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN,
+          # SAMPLE or NONE. (In LITE projection.)
           # Corresponds to the JSON property `accessViewStatus`
           # @return [String]
           attr_accessor :access_view_status
         
-          # The two-letter ISO_3166-1 country code for which this access information is
-          # valid. (In LITE projection.)
+          # The two-letter ISO_3166-1 country code for which this access information
+          # is valid. (In LITE projection.)
           # Corresponds to the JSON property `country`
           # @return [String]
           attr_accessor :country
@@ -3007,8 +3116,8 @@ module Google
           # @return [String]
           attr_accessor :drive_imported_content_link
         
-          # Whether this volume can be embedded in a viewport using the Embedded Viewer
-          # API.
+          # Whether this volume can be embedded in a viewport using the Embedded
+          # Viewer API.
           # Corresponds to the JSON property `embeddable`
           # @return [Boolean]
           attr_accessor :embeddable
@@ -3044,29 +3153,30 @@ module Google
           attr_accessor :quote_sharing_allowed
           alias_method :quote_sharing_allowed?, :quote_sharing_allowed
         
-          # Whether text-to-speech is permitted for this volume. Values can be ALLOWED,
-          # ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
+          # Whether text-to-speech is permitted for this volume. Values can be
+          # ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
           # Corresponds to the JSON property `textToSpeechPermission`
           # @return [String]
           attr_accessor :text_to_speech_permission
         
-          # For ordered but not yet processed orders, we give a URL that can be used to go
-          # to the appropriate Google Wallet page.
+          # For ordered but not yet processed orders, we give a URL that can be used
+          # to go to the appropriate Google Wallet page.
           # Corresponds to the JSON property `viewOrderUrl`
           # @return [String]
           attr_accessor :view_order_url
         
-          # The read access of a volume. Possible values are PARTIAL, ALL_PAGES, NO_PAGES
-          # or UNKNOWN. This value depends on the country listed above. A value of PARTIAL
-          # means that the publisher has allowed some portion of the volume to be viewed
-          # publicly, without purchase. This can apply to eBooks as well as non-eBooks.
-          # Public domain books will always have a value of ALL_PAGES.
+          # The read access of a volume. Possible values are PARTIAL, ALL_PAGES,
+          # NO_PAGES or UNKNOWN. This value depends on the country listed above. A
+          # value of PARTIAL means that the publisher has allowed some portion of the
+          # volume to be viewed publicly, without purchase. This can apply to eBooks
+          # as well as non-eBooks. Public domain books will always have a value of
+          # ALL_PAGES.
           # Corresponds to the JSON property `viewability`
           # @return [String]
           attr_accessor :viewability
         
-          # URL to read this volume on the Google Books site. Link will not allow users to
-          # read non-viewable volumes.
+          # URL to read this volume on the Google Books site. Link will not allow
+          # users to read non-viewable volumes.
           # Corresponds to the JSON property `webReaderLink`
           # @return [String]
           attr_accessor :web_reader_link
@@ -3107,8 +3217,8 @@ module Google
             # @return [String]
             attr_accessor :download_link
           
-            # Is a flowing text epub available either as public domain or for purchase. (In
-            # LITE projection.)
+            # Is a flowing text epub available either as public domain or for
+            # purchase. (In LITE projection.)
             # Corresponds to the JSON property `isAvailable`
             # @return [Boolean]
             attr_accessor :is_available
@@ -3140,8 +3250,8 @@ module Google
             # @return [String]
             attr_accessor :download_link
           
-            # Is a scanned image pdf available either as public domain or for purchase. (In
-            # LITE projection.)
+            # Is a scanned image pdf available either as public domain or for
+            # purchase. (In LITE projection.)
             # Corresponds to the JSON property `isAvailable`
             # @return [Boolean]
             attr_accessor :is_available
@@ -3187,9 +3297,10 @@ module Google
             # @return [String]
             attr_accessor :layer_id
           
-            # The current version of this layer's volume annotations. Note that this version
-            # applies only to the data in the books.layers.volumeAnnotations.* responses.
-            # The actual annotation data is versioned separately.
+            # The current version of this layer's volume annotations. Note that this
+            # version applies only to the data in the
+            # books.layers.volumeAnnotations.* responses. The actual annotation data
+            # is versioned separately.
             # Corresponds to the JSON property `volumeAnnotationsVersion`
             # @return [String]
             attr_accessor :volume_annotations_version
@@ -3226,12 +3337,14 @@ module Google
         end
         
         # Any information about a volume related to the eBookstore and/or
-        # purchaseability. This information can depend on the country where the request
-        # originates from (i.e. books may not be for sale in certain countries).
+        # purchaseability. This information can depend on the country where the
+        # request originates from (i.e. books may not be for sale in certain
+        # countries).
         class SaleInfo
           include Google::Apis::Core::Hashable
         
-          # URL to purchase this volume on the Google Books site. (In LITE projection)
+          # URL to purchase this volume on the Google Books site. (In LITE
+          # projection)
           # Corresponds to the JSON property `buyLink`
           # @return [String]
           attr_accessor :buy_link
@@ -3242,7 +3355,8 @@ module Google
           # @return [String]
           attr_accessor :country
         
-          # Whether or not this volume is an eBook (can be added to the My eBooks shelf).
+          # Whether or not this volume is an eBook (can be added to the My eBooks
+          # shelf).
           # Corresponds to the JSON property `isEbook`
           # @return [Boolean]
           attr_accessor :is_ebook
@@ -3260,19 +3374,20 @@ module Google
         
           # The date on which this book is available for sale.
           # Corresponds to the JSON property `onSaleDate`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :on_sale_date
         
-          # The actual selling price of the book. This is the same as the suggested retail
-          # or list price unless there are offers or discounts on this volume. (In LITE
-          # projection.)
+          # The actual selling price of the book. This is the same as the suggested
+          # retail or list price unless there are offers or discounts on this volume.
+          # (In LITE projection.)
           # Corresponds to the JSON property `retailPrice`
           # @return [Google::Apis::BooksV1::Volume::SaleInfo::RetailPrice]
           attr_accessor :retail_price
         
           # Whether or not this book is available for sale or offered for free in the
-          # Google eBookstore for the country listed above. Possible values are FOR_SALE,
-          # FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or FOR_PREORDER.
+          # Google eBookstore for the country listed above. Possible values are
+          # FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or
+          # FOR_PREORDER.
           # Corresponds to the JSON property `saleability`
           # @return [String]
           attr_accessor :saleability
@@ -3437,9 +3552,9 @@ module Google
             end
           end
           
-          # The actual selling price of the book. This is the same as the suggested retail
-          # or list price unless there are offers or discounts on this volume. (In LITE
-          # projection.)
+          # The actual selling price of the book. This is the same as the suggested
+          # retail or list price unless there are offers or discounts on this volume.
+          # (In LITE projection.)
           class RetailPrice
             include Google::Apis::Core::Hashable
           
@@ -3489,11 +3604,11 @@ module Google
         class UserInfo
           include Google::Apis::Core::Hashable
         
-          # Timestamp when this volume was acquired by the user. (RFC 3339 UTC date-time
-          # format) Acquiring includes purchase, user upload, receiving family sharing,
-          # etc.
+          # Timestamp when this volume was acquired by the user. (RFC 3339 UTC
+          # date-time format) Acquiring includes purchase, user upload, receiving
+          # family sharing, etc.
           # Corresponds to the JSON property `acquiredTime`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :acquired_time
         
           # How this volume was acquired.
@@ -3546,15 +3661,15 @@ module Google
           attr_accessor :is_in_my_books
           alias_method :is_in_my_books?, :is_in_my_books
         
-          # Whether or not this volume was pre-ordered by the authenticated user making
-          # the request. (In LITE projection.)
+          # Whether or not this volume was pre-ordered by the authenticated user
+          # making the request. (In LITE projection.)
           # Corresponds to the JSON property `isPreordered`
           # @return [Boolean]
           attr_accessor :is_preordered
           alias_method :is_preordered?, :is_preordered
         
-          # Whether or not this volume was purchased by the authenticated user making the
-          # request. (In LITE projection.)
+          # Whether or not this volume was purchased by the authenticated user making
+          # the request. (In LITE projection.)
           # Corresponds to the JSON property `isPurchased`
           # @return [Boolean]
           attr_accessor :is_purchased
@@ -3566,8 +3681,8 @@ module Google
           attr_accessor :is_uploaded
           alias_method :is_uploaded?, :is_uploaded
         
-          # The user's current reading position in the volume, if one is available. (In
-          # LITE projection.)
+          # The user's current reading position in the volume, if one is available.
+          # (In LITE projection.)
           # Corresponds to the JSON property `readingPosition`
           # @return [Google::Apis::BooksV1::ReadingPosition]
           attr_accessor :reading_position
@@ -3588,10 +3703,10 @@ module Google
           attr_accessor :review
         
           # Timestamp when this volume was last modified by a user action, such as a
-          # reading position update, volume purchase or writing a review. (RFC 3339 UTC
-          # date-time format).
+          # reading position update, volume purchase or writing a review. (RFC 3339
+          # UTC date-time format).
           # Corresponds to the JSON property `updated`
-          # @return [DateTime]
+          # @return [String]
           attr_accessor :updated
         
           # 
@@ -3647,7 +3762,7 @@ module Google
           
             # 
             # Corresponds to the JSON property `updated`
-            # @return [DateTime]
+            # @return [String]
             attr_accessor :updated
           
             def initialize(**args)
@@ -3672,16 +3787,16 @@ module Google
             # @return [String]
             attr_accessor :family_role
           
-            # Whether or not this volume can be shared with the family by the user. This
-            # includes sharing eligibility of both the volume and the user. If the value is
-            # true, the user can initiate a family sharing action.
+            # Whether or not this volume can be shared with the family by the user.
+            # This includes sharing eligibility of both the volume and the user. If
+            # the value is true, the user can initiate a family sharing action.
             # Corresponds to the JSON property `isSharingAllowed`
             # @return [Boolean]
             attr_accessor :is_sharing_allowed
             alias_method :is_sharing_allowed?, :is_sharing_allowed
           
-            # Whether or not sharing this volume is temporarily disabled due to issues with
-            # the Family Wallet.
+            # Whether or not sharing this volume is temporarily disabled due to
+            # issues with the Family Wallet.
             # Corresponds to the JSON property `isSharingDisabledByFop`
             # @return [Boolean]
             attr_accessor :is_sharing_disabled_by_fop
@@ -3754,7 +3869,8 @@ module Google
           attr_accessor :allow_anon_logging
           alias_method :allow_anon_logging?, :allow_anon_logging
         
-          # The names of the authors and/or editors for this volume. (In LITE projection)
+          # The names of the authors and/or editors for this volume. (In LITE
+          # projection)
           # Corresponds to the JSON property `authors`
           # @return [Array<String>]
           attr_accessor :authors
@@ -3780,15 +3896,15 @@ module Google
           attr_accessor :comics_content
           alias_method :comics_content?, :comics_content
         
-          # An identifier for the version of the volume content (text & images). (In LITE
-          # projection)
+          # An identifier for the version of the volume content (text & images). (In
+          # LITE projection)
           # Corresponds to the JSON property `contentVersion`
           # @return [String]
           attr_accessor :content_version
         
-          # A synopsis of the volume. The text of the description is formatted in HTML and
-          # includes simple formatting elements, such as b, i, and br tags. (In LITE
-          # projection.)
+          # A synopsis of the volume. The text of the description is formatted in
+          # HTML and includes simple formatting elements, such as b, i, and br tags.
+          # (In LITE projection.)
           # Corresponds to the JSON property `description`
           # @return [String]
           attr_accessor :description
@@ -3809,20 +3925,20 @@ module Google
           # @return [Array<Google::Apis::BooksV1::Volume::VolumeInfo::IndustryIdentifier>]
           attr_accessor :industry_identifiers
         
-          # URL to view information about this volume on the Google Books site. (In LITE
-          # projection)
+          # URL to view information about this volume on the Google Books site. (In
+          # LITE projection)
           # Corresponds to the JSON property `infoLink`
           # @return [String]
           attr_accessor :info_link
         
-          # Best language for this volume (based on content). It is the two-letter ISO 639-
-          # 1 code such as 'fr', 'en', etc.
+          # Best language for this volume (based on content). It is the two-letter
+          # ISO 639-1 code such as 'fr', 'en', etc.
           # Corresponds to the JSON property `language`
           # @return [String]
           attr_accessor :language
         
-          # The main category to which this volume belongs. It will be the category from
-          # the categories list returned below that has the highest weight.
+          # The main category to which this volume belongs. It will be the category
+          # from the categories list returned below that has the highest weight.
           # Corresponds to the JSON property `mainCategory`
           # @return [String]
           attr_accessor :main_category
@@ -3874,7 +3990,7 @@ module Google
         
           # The reading modes available for this volume.
           # Corresponds to the JSON property `readingModes`
-          # @return [Object]
+          # @return [Google::Apis::BooksV1::Volume::VolumeInfo::ReadingModes]
           attr_accessor :reading_modes
         
           # Total number of sample pages as per publisher metadata.
@@ -3969,7 +4085,8 @@ module Google
           class ImageLinks
             include Google::Apis::Core::Hashable
           
-            # Image link for extra large size (width of ~1280 pixels). (In LITE projection)
+            # Image link for extra large size (width of ~1280 pixels). (In LITE
+            # projection)
             # Corresponds to the JSON property `extraLarge`
             # @return [String]
             attr_accessor :extra_large
@@ -3989,12 +4106,14 @@ module Google
             # @return [String]
             attr_accessor :small
           
-            # Image link for small thumbnail size (width of ~80 pixels). (In LITE projection)
+            # Image link for small thumbnail size (width of ~80 pixels). (In LITE
+            # projection)
             # Corresponds to the JSON property `smallThumbnail`
             # @return [String]
             attr_accessor :small_thumbnail
           
-            # Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
+            # Image link for thumbnail size (width of ~128 pixels). (In LITE
+            # projection)
             # Corresponds to the JSON property `thumbnail`
             # @return [String]
             attr_accessor :thumbnail
@@ -4075,6 +4194,33 @@ module Google
               @contains_image_bubbles = args[:contains_image_bubbles] if args.key?(:contains_image_bubbles)
               @epub_bubble_version = args[:epub_bubble_version] if args.key?(:epub_bubble_version)
               @image_bubble_version = args[:image_bubble_version] if args.key?(:image_bubble_version)
+            end
+          end
+          
+          # The reading modes available for this volume.
+          class ReadingModes
+            include Google::Apis::Core::Hashable
+          
+            # 
+            # Corresponds to the JSON property `image`
+            # @return [Boolean]
+            attr_accessor :image
+            alias_method :image?, :image
+          
+            # 
+            # Corresponds to the JSON property `text`
+            # @return [Boolean]
+            attr_accessor :text
+            alias_method :text?, :text
+          
+            def initialize(**args)
+               update!(**args)
+            end
+          
+            # Update properties of this object
+            def update!(**args)
+              @image = args[:image] if args.key?(:image)
+              @text = args[:text] if args.key?(:text)
             end
           end
         end
@@ -4176,10 +4322,10 @@ module Google
         # @return [String]
         attr_accessor :self_link
       
-        # Timestamp for the last time this anntoation was updated. (RFC 3339 UTC date-
-        # time format).
+        # Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
+        # date-time format).
         # Corresponds to the JSON property `updated`
-        # @return [DateTime]
+        # @return [String]
         attr_accessor :updated
       
         # The Volume this annotation is for.
@@ -4261,8 +4407,8 @@ module Google
         # @return [String]
         attr_accessor :kind
       
-        # Token to pass in for pagination for the next page. This will not be present if
-        # this request does not have more results.
+        # Token to pass in for pagination for the next page. This will not be present
+        # if this request does not have more results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -4272,10 +4418,10 @@ module Google
         # @return [Fixnum]
         attr_accessor :total_items
       
-        # The version string for all of the volume annotations in this layer (not just
-        # the ones in this response). Note: the version string doesn't apply to the
-        # annotation data, just the information in this response (e.g. the location of
-        # annotations in the book).
+        # The version string for all of the volume annotations in this layer (not
+        # just the ones in this response). Note: the version string
+        # doesn't apply to the annotation data, just the information in this response
+        # (e.g. the location of annotations in the book).
         # Corresponds to the JSON property `version`
         # @return [String]
         attr_accessor :version
@@ -4330,8 +4476,8 @@ module Google
       class Volumeseriesinfo
         include Google::Apis::Core::Hashable
       
-        # The display number string. This should be used only for display purposes and
-        # the actual sequence should be inferred from the below orderNumber.
+        # The display number string. This should be used only for display purposes
+        # and the actual sequence should be inferred from the below orderNumber.
         # Corresponds to the JSON property `bookDisplayNumber`
         # @return [String]
         attr_accessor :book_display_number
@@ -4377,8 +4523,8 @@ module Google
           # @return [Fixnum]
           attr_accessor :order_number
         
-          # The book type in the context of series. Examples - Single Issue, Collection
-          # Edition, etc.
+          # The book type in the context of series. Examples - Single Issue,
+          # Collection Edition, etc.
           # Corresponds to the JSON property `seriesBookType`
           # @return [String]
           attr_accessor :series_book_type
