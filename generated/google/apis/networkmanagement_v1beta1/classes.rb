@@ -290,7 +290,7 @@ module Google
         attr_accessor :labels
       
         # Required. Unique name of the resource using the form:
-        # `projects/`project_id`/tests/`test_id``
+        # `projects/`project_id`/locations/global/connectivityTests/`test``
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -1135,7 +1135,7 @@ module Google
         attr_accessor :status_detail
       
         # Target of the operation - for example
-        # projects/project-1/connectivityTests/test-1
+        # projects/project-1/locations/global/connectivityTests/test-1
         # Corresponds to the JSON property `target`
         # @return [String]
         attr_accessor :target
@@ -1168,10 +1168,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -1186,7 +1189,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -1264,6 +1269,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1419,10 +1427,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -1437,7 +1448,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -1475,8 +1488,7 @@ module Google
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
         # the fields in the mask will be modified. If no mask is provided, the
         # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
+        # `paths: "bindings, etag"`
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask

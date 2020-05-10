@@ -173,7 +173,7 @@ module Google
         # Deletes a specific `ConnectivityTest`.
         # @param [String] name
         #   Required. Connectivity Test resource name using the form:
-        #   `projects/`project_id`/connectivityTests/`test_id``
+        #   `projects/`project_id`/locations/global/connectivityTests/`test_id``
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -245,6 +245,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -288,7 +291,7 @@ module Google
         #   field, or a synthetic field. Field names can be camelCase or snake_case.
         #   Examples:
         #   - Filter by name:
-        #   name = "projects/proj-1/connectivityTests/test-1
+        #   name = "projects/proj-1/locations/global/connectivityTests/test-1
         #   - Filter by labels:
         #   - Resources that have a key called `foo`
         #   labels.foo:*
@@ -345,7 +348,7 @@ module Google
         # in `ConnectivityTest` for for more details.
         # @param [String] name
         #   Required. Unique name of the resource using the form:
-        #   `projects/`project_id`/tests/`test_id``
+        #   `projects/`project_id`/locations/global/connectivityTests/`test``
         # @param [Google::Apis::NetworkmanagementV1beta1::ConnectivityTest] connectivity_test_object
         # @param [String] update_mask
         #   Required. Mask of fields to update. At least one path must be supplied in
@@ -392,7 +395,7 @@ module Google
         # the reachability result returns a value of `UNKNOWN`.
         # @param [String] name
         #   Required. Connectivity Test resource name using the form:
-        #   `projects/`project_id`/connectivityTests/`test_id``
+        #   `projects/`project_id`/locations/global/connectivityTests/`test_id``
         # @param [Google::Apis::NetworkmanagementV1beta1::RerunConnectivityTestRequest] rerun_connectivity_test_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -425,7 +428,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
-        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
+        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -461,7 +464,7 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # permissions, not a `NOT_FOUND` error.
         # Note: This operation is designed to be used for building permission-aware
         # UIs and command-line tools, not for authorization checking. This operation
         # may "fail open" without warning.

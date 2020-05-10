@@ -768,7 +768,7 @@ module Google
         
         # Lists log entries. Use this method to retrieve log entries that originated
         # from a project/folder/organization/billing account. For ways to export log
-        # entries, see Exporting Logs.
+        # entries, see Exporting Logs (https://cloud.google.com/logging/docs/export).
         # @param [Google::Apis::LoggingV2::ListLogEntriesRequest] list_log_entries_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2012,7 +2012,8 @@ module Google
         # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
         # Logs Router can currently only be configured for GCP organizations. Once
         # configured, it applies to all projects and folders in the GCP organization.See
-        # Enabling CMEK for Logs Router for more information.
+        # Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/
+        # managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings.
         #   "projects/[PROJECT_ID]/cmekSettings"
@@ -2055,7 +2056,8 @@ module Google
         # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
         # associated service account does not have the required roles/cloudkms.
         # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Logs Router for more information.
+        # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update.
         #   "projects/[PROJECT_ID]/cmekSettings"
@@ -3943,7 +3945,8 @@ module Google
         # Gets the Logs Router CMEK settings for the given resource.Note: CMEK for the
         # Logs Router can currently only be configured for GCP organizations. Once
         # configured, it applies to all projects and folders in the GCP organization.See
-        # Enabling CMEK for Logs Router for more information.
+        # Enabling CMEK for Logs Router (https://cloud.google.com/logging/docs/routing/
+        # managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource for which to retrieve CMEK settings.
         #   "projects/[PROJECT_ID]/cmekSettings"
@@ -3986,7 +3989,8 @@ module Google
         # UpdateCmekSettings will fail if 1) kms_key_name is invalid, or 2) the
         # associated service account does not have the required roles/cloudkms.
         # cryptoKeyEncrypterDecrypter role assigned for the key, or 3) access to the key
-        # is disabled.See Enabling CMEK for Logs Router for more information.
+        # is disabled.See Enabling CMEK for Logs Router (https://cloud.google.com/
+        # logging/docs/routing/managed-encryption) for more information.
         # @param [String] name
         #   Required. The resource name for the CMEK settings to update.
         #   "projects/[PROJECT_ID]/cmekSettings"

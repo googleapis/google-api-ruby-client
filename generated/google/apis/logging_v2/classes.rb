@@ -26,11 +26,12 @@ module Google
       class BigQueryOptions
         include Google::Apis::Core::Hashable
       
-        # Optional. Whether to use BigQuery's partition tables. By default, Logging
-        # creates dated tables based on the log entries' timestamps, e.g.
-        # syslog_20170523. With partitioned tables the date suffix is no longer present
-        # and special query syntax has to be used instead. In both cases, tables are
-        # sharded based on UTC timezone.
+        # Optional. Whether to use BigQuery's partition tables (https://cloud.google.com/
+        # bigquery/docs/partitioned-tables). By default, Logging creates dated tables
+        # based on the log entries' timestamps, e.g. syslog_20170523. With partitioned
+        # tables the date suffix is no longer present and special query syntax (https://
+        # cloud.google.com/bigquery/docs/querying-partitioned-tables) has to be used
+        # instead. In both cases, tables are sharded based on UTC timezone.
         # Corresponds to the JSON property `usePartitionedTables`
         # @return [Boolean]
         attr_accessor :use_partitioned_tables
@@ -119,7 +120,8 @@ module Google
       # a project, folder, organization, billing account, or flexible resource.Note:
       # CMEK for the Logs Router can currently only be configured for GCP
       # organizations. Once configured, it applies to all projects and folders in the
-      # GCP organization.See Enabling CMEK for Logs Router for more information.
+      # GCP organization.See Enabling CMEK for Logs Router (https://cloud.google.com/
+      # logging/docs/routing/managed-encryption) for more information.
       class CmekSettings
         include Google::Apis::Core::Hashable
       
@@ -135,7 +137,8 @@ module Google
         # operations will be completed using the key that was used at the time of
         # encryption unless access to that key has been revoked.To disable CMEK for the
         # Logs Router, set this field to an empty string.See Enabling CMEK for Logs
-        # Router for more information.
+        # Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+        # more information.
         # Corresponds to the JSON property `kmsKeyName`
         # @return [String]
         attr_accessor :kms_key_name
@@ -150,7 +153,8 @@ module Google
         # assign the role roles/cloudkms.cryptoKeyEncrypterDecrypter to the service
         # account that the Logs Router will use to access your Cloud KMS key. Use
         # GetCmekSettings to obtain the service account ID.See Enabling CMEK for Logs
-        # Router for more information.
+        # Router (https://cloud.google.com/logging/docs/routing/managed-encryption) for
+        # more information.
         # Corresponds to the JSON property `serviceAccountId`
         # @return [String]
         attr_accessor :service_account_id
@@ -491,10 +495,11 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. A filter that chooses which log entries to return. See Advanced Logs
-        # Queries. Only log entries that match the filter are returned. An empty filter
-        # matches all log entries in the resources listed in resource_names. Referencing
-        # a parent resource that is not listed in resource_names will cause the filter
-        # to return no results. The maximum length of the filter is 20000 characters.
+        # Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only
+        # log entries that match the filter are returned. An empty filter matches all
+        # log entries in the resources listed in resource_names. Referencing a parent
+        # resource that is not listed in resource_names will cause the filter to return
+        # no results. The maximum length of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -887,9 +892,10 @@ module Google
         # If this field is omitted in a new log entry, then Logging assigns it the
         # current time. Timestamps have nanosecond accuracy, but trailing zeros in the
         # fractional seconds might be omitted when the timestamp is displayed.Incoming
-        # log entries must have timestamps that don't exceed the logs retention period
-        # in the past, and that don't exceed 24 hours in the future. Log entries outside
-        # those time boundaries aren't ingested by Logging.
+        # log entries must have timestamps that don't exceed the logs retention period (
+        # https://cloud.google.com/logging/quotas#logs_retention_periods) in the past,
+        # and that don't exceed 24 hours in the future. Log entries outside those time
+        # boundaries aren't ingested by Logging.
         # Corresponds to the JSON property `timestamp`
         # @return [String]
         attr_accessor :timestamp
@@ -1048,11 +1054,13 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Required. An advanced logs filter that matches the log entries to be excluded.
-        # By using the sample function, you can exclude less than 100% of the matching
-        # log entries. For example, the following query matches 99% of low-severity log
-        # entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<
-        # ERROR sample(insertId, 0.99)"
+        # Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/
+        # advanced-queries) that matches the log entries to be excluded. By using the
+        # sample function (https://cloud.google.com/logging/docs/view/advanced-queries#
+        # sample), you can exclude less than 100% of the matching log entries. For
+        # example, the following query matches 99% of low-severity log entries from
+        # Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(
+        # insertId, 0.99)"
         # Corresponds to the JSON property `filter`
         # @return [String]
         attr_accessor :filter
@@ -1160,7 +1168,8 @@ module Google
         # @return [String]
         attr_accessor :description
       
-        # Required. An advanced logs filter which is used to match log entries. Example:
+        # Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/
+        # advanced_filters) which is used to match log entries. Example:
         # "resource.type=gae_app AND severity>=ERROR"
         # The maximum length of the filter is 20000 characters.
         # Corresponds to the JSON property `filter`
@@ -1280,7 +1289,8 @@ module Google
         # "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
         # The sink's writer_identity, set when the sink is created, must have permission
         # to write to the destination or else the log entries are not exported. For more
-        # information, see Exporting Logs with Sinks.
+        # information, see Exporting Logs with Sinks (https://cloud.google.com/logging/
+        # docs/api/tasks/exporting-logs).
         # Corresponds to the JSON property `destination`
         # @return [String]
         attr_accessor :destination
@@ -1292,9 +1302,9 @@ module Google
         attr_accessor :disabled
         alias_method :disabled?, :disabled
       
-        # Optional. An advanced logs filter. The only exported log entries are those
-        # that are in the resource owning the sink and that match the filter. For
-        # example:
+        # Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/
+        # advanced-queries). The only exported log entries are those that are in the
+        # resource owning the sink and that match the filter. For example:
         # logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         # Corresponds to the JSON property `filter`
         # @return [String]
@@ -1326,8 +1336,7 @@ module Google
         # @return [String]
         attr_accessor :name
       
-        # Deprecated. The log entry format to use for this sink's exported log entries.
-        # The v2 format is used by default and cannot be changed.
+        # Deprecated. This field is unused.
         # Corresponds to the JSON property `outputVersionFormat`
         # @return [String]
         attr_accessor :output_version_format
@@ -1343,7 +1352,9 @@ module Google
         # field is set by sinks.create and sinks.update based on the value of
         # unique_writer_identity in those methods.Until you grant this identity write-
         # access to the destination, log entry exports from this sink will fail. For
-        # more information, see Granting Access for a Resource. Consult the destination
+        # more information, see Granting Access for a Resource (https://cloud.google.com/
+        # iam/docs/granting-roles-to-service-accounts#
+        # granting_access_to_a_service_account_for_a_resource). Consult the destination
         # service's documentation to determine the appropriate IAM roles to assign to
         # the identity.
         # Corresponds to the JSON property `writerIdentity`
@@ -2035,10 +2046,12 @@ module Google
         # respectively. The supplied values are chosen so that, among the log entries
         # that did not supply their own values, the entries earlier in the list will
         # sort before the entries later in the list. See the entries.list method.Log
-        # entries with timestamps that are more than the logs retention period in the
-        # past or more than 24 hours in the future will not be available when calling
-        # entries.list. However, those log entries can still be exported with LogSinks.
-        # To improve throughput and to avoid exceeding the quota limit for calls to
+        # entries with timestamps that are more than the logs retention period (https://
+        # cloud.google.com/logging/quota-policy) in the past or more than 24 hours in
+        # the future will not be available when calling entries.list. However, those log
+        # entries can still be exported with LogSinks (https://cloud.google.com/logging/
+        # docs/api/tasks/exporting-logs).To improve throughput and to avoid exceeding
+        # the quota limit (https://cloud.google.com/logging/quota-policy) for calls to
         # entries.write, you should try to include several log entries in this list,
         # rather than calling this method for each individual log entry.
         # Corresponds to the JSON property `entries`
