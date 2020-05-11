@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'open3'
+
 module Google
   module Apis
     # Client library version
@@ -21,16 +23,19 @@ module Google
     # @private
     OS_VERSION = begin
       if RUBY_PLATFORM =~ /mswin|win32|mingw|bccwin|cygwin/
-        `ver`.sub(/\s*\[Version\s*/, '/').sub(']', '')
+        output, _ = Open3.capture2('ver')
+        output.sub(/\s*\[Version\s*/, '/').sub(']', '')
       elsif RUBY_PLATFORM =~ /darwin/i
-        "Mac OS X/#{`sw_vers -productVersion`}"
+        output, _ = Open3.capture2('sw_vers', '-productVersion')
+        "Mac OS X/#{output}"
       elsif RUBY_PLATFORM == 'java'
         require 'java'
         name = java.lang.System.getProperty('os.name')
         version = java.lang.System.getProperty('os.version')
         "#{name}/#{version}"
       else
-        `uname -sr`.sub(' ', '/')
+        output, _ = Open3.capture2('uname', '-sr')
+        output.sub(' ', '/')
       end.strip
     rescue
       RUBY_PLATFORM
