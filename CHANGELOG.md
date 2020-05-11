@@ -1,3 +1,25 @@
+# 0.39.1
+* Backwards compatible changes:
+  * Added `osconfig_v1beta`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryconnection_v1beta1`
+  * Updated `books_v1`
+  * Updated `chat_v1`
+  * Updated `clouddebugger_v2`
+  * Updated `cloudfunctions_v1`
+  * Updated `cloudtasks_v2`
+  * Updated `cloudtasks_v2beta2`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `logging_v2`
+  * Updated `monitoring_v3`
+  * Updated `networkmanagement_v1beta1`
+  * Updated `pubsub_v1`
+  * Updated `pubsub_v1beta2`
+  * Updated `servicedirectory_v1beta1`
+  * Updated `servicemanagement_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `vault_v1`
+
 # 0.39.0
 * Breaking changes:
   * Deleted `commentanalyzer_v1alpha1`
