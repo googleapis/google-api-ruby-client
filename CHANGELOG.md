@@ -1,3 +1,7 @@
+# 0.39.2
+* Backwards compatible changes:
+  * Updated `apigee_v1`
+
 # 0.39.1
 * Backwards compatible changes:
   * Added `osconfig_v1beta`
