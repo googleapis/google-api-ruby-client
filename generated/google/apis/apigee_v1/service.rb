@@ -1259,466 +1259,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates an app for a company. Note that you must first create a profile
-        # for the company in your organization before you can register apps that
-        # are associated with the company.
-        # @param [String] parent
-        #   Name of org that the company will be created in
-        #   ``parent=organizations/*``
-        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] google_cloud_apigee_v1_company_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_company(parent, google_cloud_apigee_v1_company_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/companies', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.request_object = google_cloud_apigee_v1_company_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes an existing company.
-        # @param [String] name
-        #   The company resource name
-        #   `organizations/`org`/companies/`company``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_company(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List details for a company.
-        # @param [String] name
-        #   The company resource name
-        #   `organizations/`org`/companies/`company``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_company(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List all companies in an organization, and optionally returns an
-        # expanded list of companies, displaying a full profile for each company in
-        # the organization.
-        # @param [String] parent
-        #   The parent organization name
-        #   `organizations/`org``
-        # @param [Fixnum] count
-        #   Limits the list to the number you specify. The limit is 100.
-        # @param [Boolean] expand
-        #   Set expand to true to return a full profile for each company.
-        # @param [Boolean] include_developers
-        #   Optional. include developers in the response.
-        # @param [String] start_key
-        #   To filter the keys that are returned, enter the email of a developer
-        #   that the list will start with.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompaniesResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompaniesResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_companies(parent, count: nil, expand: nil, include_developers: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/companies', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompaniesResponse::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompaniesResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['count'] = count unless count.nil?
-          command.query['expand'] = expand unless expand.nil?
-          command.query['includeDevelopers'] = include_developers unless include_developers.nil?
-          command.query['startKey'] = start_key unless start_key.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing company.
-        # Send the complete company record as a payload with any changes you want to
-        # make. Note that to change the status of the Company you use Set the Status
-        # of a Company. The attributes in the sample payload below apply to company
-        # configuration in monetization. For non-monetized companies, you need send
-        # only displayName.
-        # @param [String] name
-        #   Name of the company to be updated.
-        #   ``name=organizations/*/companies/*``
-        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] google_cloud_apigee_v1_company_object
-        # @param [String] action
-        #   Specify the status as active or inactive.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_company(name, google_cloud_apigee_v1_company_object = nil, action: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.request_object = google_cloud_apigee_v1_company_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company
-          command.params['name'] = name unless name.nil?
-          command.query['action'] = action unless action.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Creates an app for a company.
-        # @param [String] parent
-        #   Resource path of the parent: `organizations/`org`/companies/`company_name``
-        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] google_cloud_apigee_v1_company_app_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_company_app(parent, google_cloud_apigee_v1_company_app_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+parent}/apps', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.request_object = google_cloud_apigee_v1_company_app_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp
-          command.params['parent'] = parent unless parent.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a company app.
-        # @param [String] name
-        #   name of the app resource:
-        #   `organizations/`org`/companies/`company_name`/apps/`app_name``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_company_app(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets the profile of a specific company app.
-        # @param [String] name
-        #   name of the app resource:
-        #   `organizations/`org`/companies/`company_name`/apps/`app_name``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_company_app(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # List company apps in an organization. You can optionally expand the
-        # response to include the profile for each app.
-        # @param [String] parent
-        #   The name of a company resource:
-        #   `organizations/`org`/companies/`company_name``
-        # @param [Fixnum] count
-        #   Limits the list to the number you specify. The limit is 100.
-        # @param [Boolean] expand
-        #   Set expand to true to return a full profile
-        # @param [String] start_key
-        #   Lets you return a list of app starting with a specific app name in the
-        #   list.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompanyAppsResponse] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompanyAppsResponse]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_company_apps(parent, count: nil, expand: nil, start_key: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+parent}/apps', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompanyAppsResponse::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListCompanyAppsResponse
-          command.params['parent'] = parent unless parent.nil?
-          command.query['count'] = count unless count.nil?
-          command.query['expand'] = expand unless expand.nil?
-          command.query['startKey'] = start_key unless start_key.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing company app.
-        # @param [String] name
-        #   Resource path of the app:
-        #   `organizations/`org`/companies/`company_name`/apps/`app_name``
-        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] google_cloud_apigee_v1_company_app_object
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_company_app(name, google_cloud_apigee_v1_company_app_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:put, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.request_object = google_cloud_apigee_v1_company_app_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Deletes a key for a company app and removes all API products associated
-        # with the app. The key can no longer be used to access any APIs.
-        # @param [String] name
-        #   Resource name of a company app key
-        #   `organizations/`org`/companies/`company`/apps/`app`/keys/`key``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_organization_company_app_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Gets information about the consumer key issued to a specific company app.
-        # @param [String] name
-        #   Resource name of a company app key
-        #   `organizations/`org`/companies/`company`/apps/`app`/keys/`key``
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_company_app_key(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # Updates an existing company app key to add additional API products or
-        # attributes. Note that only a single API product can be resolved per app
-        # key at runtime. API products are resolved by name, in alphabetical order.
-        # The first API product found in the list will be returned.
-        # @param [String] name
-        #   Resource name of a company app key
-        #   `organizations/`org`/companies/`company`/apps/`app`/keys/`key``
-        # @param [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey] google_cloud_apigee_v1_company_app_key_object
-        # @param [String] action
-        #   Set action to approve or revoke.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_organization_company_app_key_company_app_key(name, google_cloud_apigee_v1_company_app_key_object = nil, action: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v1/{+name}', options)
-          command.request_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey::Representation
-          command.request_object = google_cloud_apigee_v1_company_app_key_object
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyAppKey
-          command.params['name'] = name unless name.nil?
-          command.query['action'] = action unless action.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Lists all deployments of API proxies or shared flows.
         # @param [String] parent
         #   Required. Name of the organization for which to return deployment information
@@ -3129,51 +2669,6 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Get Google Cloud Storage (GCS) signed url for specific organization and
-        # environment. Collection agent uses this signed url to upload data
-        # to GCS bucket.
-        # @param [String] name
-        #   Required. The parent organization and environment names. Must be of the
-        #   form `organizations/`org`/environments/`env`/datalocation`.
-        # @param [String] content_type
-        #   Content-Type for uploaded file.
-        # @param [String] dataset
-        #   Required. Dataset could be one of `api`, `mint`, `trace` and `event`
-        # @param [String] relative_file_path
-        #   Required. Relative path to the GCS bucket
-        # @param [String] repo
-        #   Required. Repository name
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataLocation] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataLocation]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_environment_datalocation(name, content_type: nil, dataset: nil, relative_file_path: nil, repo: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataLocation::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DataLocation
-          command.params['name'] = name unless name.nil?
-          command.query['contentType'] = content_type unless content_type.nil?
-          command.query['dataset'] = dataset unless dataset.nil?
-          command.query['relativeFilePath'] = relative_file_path unless relative_file_path.nil?
-          command.query['repo'] = repo unless repo.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
         # Gets the debug mask singleton resource for an environment.
         # @param [String] name
         #   Required. Name of the debug mask. Use the following structure in your request:
@@ -3253,6 +2748,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3747,6 +3245,39 @@ module Google
           command = make_simple_command(:delete, 'v1/{+name}/data', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleProtobufEmpty::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleProtobufEmpty
+          command.params['name'] = name unless name.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Retrieves a debug session.
+        # @param [String] name
+        #   Required. The name of the debug session to retrieve.
+        #   Must be of the form:
+        #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
+        #   `revision`/debugsessions/`session``.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_organization_environment_api_revision_debugsession(name, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/{+name}', options)
+          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession::Representation
+          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1DebugSession
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
@@ -4597,37 +4128,6 @@ module Google
           command = make_simple_command(:get, 'v1/{+name}', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleApiHttpBody::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleApiHttpBody
-          command.params['name'] = name unless name.nil?
-          command.query['fields'] = fields unless fields.nil?
-          command.query['quotaUser'] = quota_user unless quota_user.nil?
-          execute_or_queue_command(command, &block)
-        end
-        
-        # 
-        # @param [String] name
-        #   Required. Name of the asynchronous query result view to get. Must be of the
-        #   form `organizations/`org`/environments/`env`/queries/`queryId`/resultView`.
-        # @param [String] fields
-        #   Selector specifying which fields to include in a partial response.
-        # @param [String] quota_user
-        #   Available to use for quota purposes for server-side applications. Can be any
-        #   arbitrary string assigned to a user, but should not exceed 40 characters.
-        # @param [Google::Apis::RequestOptions] options
-        #   Request-specific options
-        #
-        # @yield [result, err] Result & error if block supplied
-        # @yieldparam result [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView] parsed result object
-        # @yieldparam err [StandardError] error object if request failed
-        #
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView]
-        #
-        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
-        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
-        # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_organization_environment_query_result_view(name, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v1/{+name}', options)
-          command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView::Representation
-          command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQueryResultView
           command.params['name'] = name unless name.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?

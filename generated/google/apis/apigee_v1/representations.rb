@@ -106,12 +106,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1AsyncQueryResultView
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudApigeeV1Attribute
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -142,24 +136,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GoogleCloudApigeeV1Company
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1CompanyApp
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1CompanyAppKey
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GoogleCloudApigeeV1ConfigVersion
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -179,12 +155,6 @@ module Google
       end
       
       class GoogleCloudApigeeV1CustomReportMetric
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1DataLocation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -329,18 +299,6 @@ module Google
       end
       
       class GoogleCloudApigeeV1ListAsyncQueriesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ListCompaniesResponse
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
-      class GoogleCloudApigeeV1ListCompanyAppsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -885,18 +843,6 @@ module Google
         end
       end
       
-      class GoogleCloudApigeeV1AsyncQueryResultView
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :code, as: 'code'
-          property :error, as: 'error'
-          property :metadata, as: 'metadata', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata::Representation
-      
-          collection :rows, as: 'rows'
-          property :state, as: 'state'
-        end
-      end
-      
       class GoogleCloudApigeeV1Attribute
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -943,57 +889,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :match_wild_cards, as: 'matchWildCards'
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleCloudApigeeV1Company
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :apps, as: 'apps'
-          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
-      
-          property :created_at, :numeric_string => true, as: 'createdAt'
-          property :display_name, as: 'displayName'
-          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
-          property :name, as: 'name'
-          property :organization, as: 'organization'
-          property :status, as: 'status'
-        end
-      end
-      
-      class GoogleCloudApigeeV1CompanyApp
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :api_products, as: 'apiProducts'
-          property :app_family, as: 'appFamily'
-          property :app_id, as: 'appId'
-          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
-      
-          property :callback_url, as: 'callbackUrl'
-          property :company_name, as: 'companyName'
-          property :created_at, :numeric_string => true, as: 'createdAt'
-          collection :credentials, as: 'credentials', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential::Representation
-      
-          property :key_expires_in, :numeric_string => true, as: 'keyExpiresIn'
-          property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'
-          property :name, as: 'name'
-          collection :scopes, as: 'scopes'
-          property :status, as: 'status'
-        end
-      end
-      
-      class GoogleCloudApigeeV1CompanyAppKey
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :api_products, as: 'apiProducts'
-          collection :attributes, as: 'attributes', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute::Representation
-      
-          property :consumer_key, as: 'consumerKey'
-          property :consumer_secret, as: 'consumerSecret'
-          property :expires_at, :numeric_string => true, as: 'expiresAt'
-          property :issued_at, :numeric_string => true, as: 'issuedAt'
-          collection :scopes, as: 'scopes'
-          property :status, as: 'status'
         end
       end
       
@@ -1056,13 +951,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :function, as: 'function'
           property :name, as: 'name'
-        end
-      end
-      
-      class GoogleCloudApigeeV1DataLocation
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :url, as: 'url'
         end
       end
       
@@ -1332,22 +1220,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :queries, as: 'queries', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1AsyncQuery::Representation
-      
-        end
-      end
-      
-      class GoogleCloudApigeeV1ListCompaniesResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :company, as: 'company', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company::Representation
-      
-        end
-      end
-      
-      class GoogleCloudApigeeV1ListCompanyAppsResponse
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          collection :app, as: 'app', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp::Representation
       
         end
       end

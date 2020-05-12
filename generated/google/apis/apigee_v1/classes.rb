@@ -905,51 +905,6 @@ module Google
         end
       end
       
-      # 
-      class GoogleCloudApigeeV1AsyncQueryResultView
-        include Google::Apis::Core::Hashable
-      
-        # Error code when there is a failure.
-        # Corresponds to the JSON property `code`
-        # @return [Fixnum]
-        attr_accessor :code
-      
-        # Error message when there is a failure.
-        # Corresponds to the JSON property `error`
-        # @return [String]
-        attr_accessor :error
-      
-        # Metadata contains information like metrics, dimenstions etc
-        # of the AsyncQuery
-        # Corresponds to the JSON property `metadata`
-        # @return [Google::Apis::ApigeeV1::GoogleCloudApigeeV1QueryMetadata]
-        attr_accessor :metadata
-      
-        # Rows of query result. Each row is a JSON object.
-        # Example: `sum(message_count): 1, developer_app: "(not set)",…`
-        # Corresponds to the JSON property `rows`
-        # @return [Array<Object>]
-        attr_accessor :rows
-      
-        # State of retrieving ResultView.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @code = args[:code] if args.key?(:code)
-          @error = args[:error] if args.key?(:error)
-          @metadata = args[:metadata] if args.key?(:metadata)
-          @rows = args[:rows] if args.key?(:rows)
-          @state = args[:state] if args.key?(:state)
-        end
-      end
-      
       # Key-value pair to store extra metadata.
       class GoogleCloudApigeeV1Attribute
         include Google::Apis::Core::Hashable
@@ -1117,234 +1072,6 @@ module Google
         def update!(**args)
           @match_wild_cards = args[:match_wild_cards] if args.key?(:match_wild_cards)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1Company
-        include Google::Apis::Core::Hashable
-      
-        # 
-        # Corresponds to the JSON property `apps`
-        # @return [Array<String>]
-        attr_accessor :apps
-      
-        # A list of attributes
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
-        attr_accessor :attributes
-      
-        # Output only. Created time as milliseconds since epoch.
-        # json key: createdAt
-        # Corresponds to the JSON property `createdAt`
-        # @return [Fixnum]
-        attr_accessor :created_at
-      
-        # company name displayed in the UI
-        # Corresponds to the JSON property `displayName`
-        # @return [String]
-        attr_accessor :display_name
-      
-        # Output only. Modified time as milliseconds since epoch.
-        # json key: lastModifiedAt
-        # Corresponds to the JSON property `lastModifiedAt`
-        # @return [Fixnum]
-        attr_accessor :last_modified_at
-      
-        # Name of the company. Characters you can use in the name are restricted to:
-        # A-Z0-9._\-$ %.
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # the org that the company is created
-        # Corresponds to the JSON property `organization`
-        # @return [String]
-        attr_accessor :organization
-      
-        # The status of the company
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @apps = args[:apps] if args.key?(:apps)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @created_at = args[:created_at] if args.key?(:created_at)
-          @display_name = args[:display_name] if args.key?(:display_name)
-          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
-          @name = args[:name] if args.key?(:name)
-          @organization = args[:organization] if args.key?(:organization)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1CompanyApp
-        include Google::Apis::Core::Hashable
-      
-        # Any API Products the app consumes
-        # Corresponds to the JSON property `apiProducts`
-        # @return [Array<String>]
-        attr_accessor :api_products
-      
-        # 
-        # Corresponds to the JSON property `appFamily`
-        # @return [String]
-        attr_accessor :app_family
-      
-        # The id of the app.
-        # Corresponds to the JSON property `appId`
-        # @return [String]
-        attr_accessor :app_id
-      
-        # A list of attributes.
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
-        attr_accessor :attributes
-      
-        # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
-        # authorization codes back to apps.
-        # Corresponds to the JSON property `callbackUrl`
-        # @return [String]
-        attr_accessor :callback_url
-      
-        # The name of the company owns the app
-        # Corresponds to the JSON property `companyName`
-        # @return [String]
-        attr_accessor :company_name
-      
-        # Output only. created time of this environment as milliseconds since epoch.
-        # JSON key: createdAt
-        # Corresponds to the JSON property `createdAt`
-        # @return [Fixnum]
-        attr_accessor :created_at
-      
-        # Output only. A set of credentials for the app
-        # credentials are key/secret pairs
-        # Corresponds to the JSON property `credentials`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Credential>]
-        attr_accessor :credentials
-      
-        # A setting, in milliseconds, for the lifetime of the consumer key that will
-        # be generated for the developer app. The default value, -1, indicates an
-        # infinite validity period. Once set, the expiration can't be updated.
-        # json key: keyExpiresIn
-        # Corresponds to the JSON property `keyExpiresIn`
-        # @return [Fixnum]
-        attr_accessor :key_expires_in
-      
-        # Output only. Modified time as milliseconds since epoch.
-        # json key: lastModifiedAt
-        # Corresponds to the JSON property `lastModifiedAt`
-        # @return [Fixnum]
-        attr_accessor :last_modified_at
-      
-        # The resoure id of the app.
-        # JSON key: name
-        # Corresponds to the JSON property `name`
-        # @return [String]
-        attr_accessor :name
-      
-        # The scopes to apply to the app. The specified scope names must already
-        # exist on the API product that you associate with the app.
-        # Corresponds to the JSON property `scopes`
-        # @return [Array<String>]
-        attr_accessor :scopes
-      
-        # The status of the credential.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_products = args[:api_products] if args.key?(:api_products)
-          @app_family = args[:app_family] if args.key?(:app_family)
-          @app_id = args[:app_id] if args.key?(:app_id)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @callback_url = args[:callback_url] if args.key?(:callback_url)
-          @company_name = args[:company_name] if args.key?(:company_name)
-          @created_at = args[:created_at] if args.key?(:created_at)
-          @credentials = args[:credentials] if args.key?(:credentials)
-          @key_expires_in = args[:key_expires_in] if args.key?(:key_expires_in)
-          @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
-          @name = args[:name] if args.key?(:name)
-          @scopes = args[:scopes] if args.key?(:scopes)
-          @status = args[:status] if args.key?(:status)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1CompanyAppKey
-        include Google::Apis::Core::Hashable
-      
-        # A list of api products this credential can be used for.
-        # Corresponds to the JSON property `apiProducts`
-        # @return [Array<Object>]
-        attr_accessor :api_products
-      
-        # A list of attributes tied to the credential.
-        # Corresponds to the JSON property `attributes`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Attribute>]
-        attr_accessor :attributes
-      
-        # The consumer key.
-        # Corresponds to the JSON property `consumerKey`
-        # @return [String]
-        attr_accessor :consumer_key
-      
-        # The secret key.
-        # Corresponds to the JSON property `consumerSecret`
-        # @return [String]
-        attr_accessor :consumer_secret
-      
-        # Unix time when the app was created
-        # json key: expiresAt
-        # Corresponds to the JSON property `expiresAt`
-        # @return [Fixnum]
-        attr_accessor :expires_at
-      
-        # Unix time when the app was issued
-        # json key: issuedAt
-        # Corresponds to the JSON property `issuedAt`
-        # @return [Fixnum]
-        attr_accessor :issued_at
-      
-        # The scopes to apply to the app. The specified scope names must already
-        # exist on the API product that you associate with the app.
-        # Corresponds to the JSON property `scopes`
-        # @return [Array<String>]
-        attr_accessor :scopes
-      
-        # The status of the credential.
-        # Corresponds to the JSON property `status`
-        # @return [String]
-        attr_accessor :status
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @api_products = args[:api_products] if args.key?(:api_products)
-          @attributes = args[:attributes] if args.key?(:attributes)
-          @consumer_key = args[:consumer_key] if args.key?(:consumer_key)
-          @consumer_secret = args[:consumer_secret] if args.key?(:consumer_secret)
-          @expires_at = args[:expires_at] if args.key?(:expires_at)
-          @issued_at = args[:issued_at] if args.key?(:issued_at)
-          @scopes = args[:scopes] if args.key?(:scopes)
-          @status = args[:status] if args.key?(:status)
         end
       end
       
@@ -1611,27 +1338,6 @@ module Google
         def update!(**args)
           @function = args[:function] if args.key?(:function)
           @name = args[:name] if args.key?(:name)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1DataLocation
-        include Google::Apis::Core::Hashable
-      
-        # GCS signed url. Signed URLs provide a way to give time-limited
-        # read or write access to anyone in possession of the URL, regardless of
-        # whether they have a Google account.
-        # Corresponds to the JSON property `url`
-        # @return [String]
-        attr_accessor :url
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @url = args[:url] if args.key?(:url)
         end
       end
       
@@ -2651,44 +2357,6 @@ module Google
         end
       end
       
-      # 
-      class GoogleCloudApigeeV1ListCompaniesResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of company.
-        # Corresponds to the JSON property `company`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1Company>]
-        attr_accessor :company
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @company = args[:company] if args.key?(:company)
-        end
-      end
-      
-      # 
-      class GoogleCloudApigeeV1ListCompanyAppsResponse
-        include Google::Apis::Core::Hashable
-      
-        # A list of apps for a company.
-        # Corresponds to the JSON property `app`
-        # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1CompanyApp>]
-        attr_accessor :app
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @app = args[:app] if args.key?(:app)
-        end
-      end
-      
       # This message encapsulates a list of custom report definitions
       class GoogleCloudApigeeV1ListCustomReportsResponse
         include Google::Apis::Core::Hashable
@@ -3098,7 +2766,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :last_modified_at
       
-        # Required. Name of the Apigee organization.
+        # Output only. Name of the Apigee organization.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -4753,10 +4421,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -4771,7 +4442,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -4849,6 +4522,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -4877,10 +4553,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -4895,7 +4574,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
