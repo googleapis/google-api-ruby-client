@@ -351,7 +351,7 @@ module Google
         # Updating a software recipe
         # If a recipe is assigned to an instance and there is a recipe with the same
         # name but a lower version already installed and the assigned state
-        # of the recipe is `INSTALLED_KEEP_UPDATED`, then the recipe is updated to
+        # of the recipe is `UPDATED`, then the recipe is updated to
         # the new version.
         # Script Working Directories
         # Each script or execution step is run in its own temporary directory which
@@ -844,8 +844,7 @@ module Google
       end
       
       # Sets the time for a one time patch deployment. Timestamp is in
-      # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-      # text format.
+      # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
       class OneTimeSchedule
         include Google::Apis::Core::Hashable
       
@@ -1034,13 +1033,13 @@ module Google
       # complete a patch. These configurations include instance filter, package
       # repository settings, and a schedule. For more information about creating and
       # managing patch deployments, see [Scheduling patch
-      # jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
+      # jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-
+      # jobs).
       class PatchDeployment
         include Google::Apis::Core::Hashable
       
         # Output only. Time the patch deployment was created. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -1066,9 +1065,8 @@ module Google
         attr_accessor :instance_filter
       
         # Output only. The last time a patch job was started by this deployment.
-        # Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+        # format.
         # Corresponds to the JSON property `lastExecuteTime`
         # @return [String]
         attr_accessor :last_execute_time
@@ -1082,8 +1080,7 @@ module Google
         attr_accessor :name
       
         # Sets the time for a one time patch deployment. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `oneTimeSchedule`
         # @return [Google::Apis::OsconfigV1beta::OneTimeSchedule]
         attr_accessor :one_time_schedule
@@ -1100,8 +1097,7 @@ module Google
         attr_accessor :recurring_schedule
       
         # Output only. Time the patch deployment was last updated. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -1207,7 +1203,9 @@ module Google
       # Instances details are not included in the job. To paginate through instance
       # details, use ListPatchJobInstanceDetails.
       # For more information about patch jobs, see
-      # [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
+      # [Creating patch
+      # jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
+      # job).
       class PatchJob
         include Google::Apis::Core::Hashable
       
@@ -1321,8 +1319,8 @@ module Google
       # Patch details for a VM instance. For more information about reviewing VM
       # instance details, see
       # [Listing all VM instance details for a specific patch
-      # job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details)
-      # .
+      # job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-
+      # jobs#list-instance-details).
       class PatchJobInstanceDetails
         include Google::Apis::Core::Hashable
       
@@ -1560,7 +1558,7 @@ module Google
       # Updating a software recipe
       # If a recipe is assigned to an instance and there is a recipe with the same
       # name but a lower version already installed and the assigned state
-      # of the recipe is `INSTALLED_KEEP_UPDATED`, then the recipe is updated to
+      # of the recipe is `UPDATED`, then the recipe is updated to
       # the new version.
       # Script Working Directories
       # Each script or execution step is run in its own temporary directory which
@@ -1577,9 +1575,8 @@ module Google
         # recipe.
         # INSTALLED: The software recipe is installed on the instance but
         # won't be updated to new versions.
-        # INSTALLED_KEEP_UPDATED: The software recipe is installed on the
-        # instance. The recipe is updated to a higher
-        # version, if a higher version of the recipe is
+        # UPDATED: The software recipe is installed on the instance. The recipe is
+        # updated to a higher version, if a higher version of the recipe is
         # assigned to this instance.
         # REMOVE: Remove is unsupported for software recipes and attempts to
         # create or update a recipe to the REMOVE state is rejected.

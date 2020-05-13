@@ -125,7 +125,7 @@ module Google
         # @return [Array<Fixnum>]
         attr_accessor :allowed_success_codes
       
-        # Google Cloud Storage object representation.
+        # Cloud Storage object representation.
         # Corresponds to the JSON property `gcsObject`
         # @return [Google::Apis::OsconfigV1::GcsObject]
         attr_accessor :gcs_object
@@ -156,7 +156,7 @@ module Google
         end
       end
       
-      # A request message to initiate patching across Google Compute Engine
+      # A request message to initiate patching across Compute Engine
       # instances.
       class ExecutePatchJobRequest
         include Google::Apis::Core::Hashable
@@ -214,23 +214,22 @@ module Google
         end
       end
       
-      # Google Cloud Storage object representation.
+      # Cloud Storage object representation.
       class GcsObject
         include Google::Apis::Core::Hashable
       
-        # Required. Bucket of the Google Cloud Storage object.
+        # Required. Bucket of the Cloud Storage object.
         # Corresponds to the JSON property `bucket`
         # @return [String]
         attr_accessor :bucket
       
-        # Required. Generation number of the Google Cloud Storage object. This is used
-        # to
+        # Required. Generation number of the Cloud Storage object. This is used to
         # ensure that the ExecStep specified by this PatchJob does not change.
         # Corresponds to the JSON property `generationNumber`
         # @return [Fixnum]
         attr_accessor :generation_number
       
-        # Required. Name of the Google Cloud Storage object.
+        # Required. Name of the Cloud Storage object.
         # Corresponds to the JSON property `object`
         # @return [String]
         attr_accessor :object
@@ -366,8 +365,7 @@ module Google
       end
       
       # Sets the time for a one time patch deployment. Timestamp is in
-      # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-      # text format.
+      # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
       class OneTimeSchedule
         include Google::Apis::Core::Hashable
       
@@ -456,13 +454,13 @@ module Google
       # complete a patch. These configurations include instance filter, package
       # repository settings, and a schedule. For more information about creating and
       # managing patch deployments, see [Scheduling patch
-      # jobs](/compute/docs/os-patch-management/schedule-patch-jobs).
+      # jobs](https://cloud.google.com/compute/docs/os-patch-management/schedule-patch-
+      # jobs).
       class PatchDeployment
         include Google::Apis::Core::Hashable
       
         # Output only. Time the patch deployment was created. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `createTime`
         # @return [String]
         attr_accessor :create_time
@@ -488,9 +486,8 @@ module Google
         attr_accessor :instance_filter
       
         # Output only. The last time a patch job was started by this deployment.
-        # Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text
+        # format.
         # Corresponds to the JSON property `lastExecuteTime`
         # @return [String]
         attr_accessor :last_execute_time
@@ -504,8 +501,7 @@ module Google
         attr_accessor :name
       
         # Sets the time for a one time patch deployment. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `oneTimeSchedule`
         # @return [Google::Apis::OsconfigV1::OneTimeSchedule]
         attr_accessor :one_time_schedule
@@ -522,8 +518,7 @@ module Google
         attr_accessor :recurring_schedule
       
         # Output only. Time the patch deployment was last updated. Timestamp is in
-        # <a href="https://www.ietf.org/rfc/rfc3339.txt" target="_blank">RFC3339</a>
-        # text format.
+        # [RFC3339]("https://www.ietf.org/rfc/rfc3339.txt) text format.
         # Corresponds to the JSON property `updateTime`
         # @return [String]
         attr_accessor :update_time
@@ -561,8 +556,8 @@ module Google
         attr_accessor :all
         alias_method :all?, :all
       
-        # Targets VM instances matching at least one of these label sets. This allows
-        # targeting of disparate groups, for example "env=prod or env=staging".
+        # Targets VM instances matching ANY of these GroupLabels. This allows
+        # targeting of disparate groups of VM instances.
         # Corresponds to the JSON property `groupLabels`
         # @return [Array<Google::Apis::OsconfigV1::PatchInstanceFilterGroupLabel>]
         attr_accessor :group_labels
@@ -603,12 +598,17 @@ module Google
         end
       end
       
-      # Represents a group of VMs that can be identified as having all these
-      # labels, for example "env=prod and app=web".
+      # Targets a group of VM instances by using their [assigned
+      # labels](https://cloud.google.com/compute/docs/labeling-resources). Labels
+      # are key-value pairs. A `GroupLabel` is a combination of labels
+      # that is used to target VMs for a patch job.
+      # For example, a patch job can target VMs that have the following
+      # `GroupLabel`: ``"env":"test", "app":"web"``. This means that the patch job
+      # is applied to VMs that have both the labels `env=test` and `app=web`.
       class PatchInstanceFilterGroupLabel
         include Google::Apis::Core::Hashable
       
-        # Google Compute Engine instance labels that must be present for a VM
+        # Compute Engine instance labels that must be present for a VM
         # instance to be targeted by this filter.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
@@ -629,7 +629,9 @@ module Google
       # Instances details are not included in the job. To paginate through instance
       # details, use ListPatchJobInstanceDetails.
       # For more information about patch jobs, see
-      # [Creating patch jobs](/compute/docs/os-patch-management/create-patch-job).
+      # [Creating patch
+      # jobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-
+      # job).
       class PatchJob
         include Google::Apis::Core::Hashable
       
@@ -743,8 +745,8 @@ module Google
       # Patch details for a VM instance. For more information about reviewing VM
       # instance details, see
       # [Listing all VM instance details for a specific patch
-      # job](/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details)
-      # .
+      # job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-
+      # jobs#list-instance-details).
       class PatchJobInstanceDetails
         include Google::Apis::Core::Hashable
       

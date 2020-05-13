@@ -198,6 +198,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :access_denied_page_settings, as: 'accessDeniedPageSettings', class: Google::Apis::IapV1::AccessDeniedPageSettings, decorator: Google::Apis::IapV1::AccessDeniedPageSettings::Representation
       
+          property :cookie_domain, as: 'cookieDomain'
           property :csm_settings, as: 'csmSettings', class: Google::Apis::IapV1::CsmSettings, decorator: Google::Apis::IapV1::CsmSettings::Representation
       
         end

@@ -26,7 +26,7 @@ module Google
     # @see https://cloud.google.com/shell/docs/
     module CloudshellV1
       VERSION = 'V1'
-      REVISION = '20200411'
+      REVISION = '20200512'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

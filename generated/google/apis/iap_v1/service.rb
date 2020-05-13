@@ -156,7 +156,7 @@ module Google
         #   Required. Path to create the client in.
         #   In the following format:
         #   projects/`project_number/id`/brands/`brand`.
-        #   The project must belong to a GSuite account.
+        #   The project must belong to a G Suite account.
         # @param [Google::Apis::IapV1::IdentityAwareProxyClient] identity_aware_proxy_client_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
