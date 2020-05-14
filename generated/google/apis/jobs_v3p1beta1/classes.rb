@@ -808,10 +808,8 @@ module Google
       class CustomAttribute
         include Google::Apis::Core::Hashable
       
-        # Optional. If the `filterable` flag is true, the custom field values may be
-        # used for
-        # custom attribute filters JobQuery.custom_attribute_filter.
-        # If false, these values may not be used for custom attribute filters.
+        # Optional. If the `filterable` flag is true, custom field values are searchable.
+        # If false, values are not searchable.
         # Default is false.
         # Corresponds to the JSON property `filterable`
         # @return [Boolean]

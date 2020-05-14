@@ -46,12 +46,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class GamesPlayedResource
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class GamesPlayerExperienceInfoResource
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -147,14 +141,6 @@ module Google
         end
       end
       
-      class GamesPlayedResource
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :auto_matched, as: 'autoMatched'
-          property :time_millis, :numeric_string => true, as: 'timeMillis'
-        end
-      end
-      
       class GamesPlayerExperienceInfoResource
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -205,10 +191,7 @@ module Google
           property :display_name, as: 'displayName'
           property :experience_info, as: 'experienceInfo', class: Google::Apis::GamesManagementV1management::GamesPlayerExperienceInfoResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayerExperienceInfoResource::Representation
       
-          property :friend_status, as: 'friendStatus'
           property :kind, as: 'kind'
-          property :last_played_with, as: 'lastPlayedWith', class: Google::Apis::GamesManagementV1management::GamesPlayedResource, decorator: Google::Apis::GamesManagementV1management::GamesPlayedResource::Representation
-      
           property :name, as: 'name', class: Google::Apis::GamesManagementV1management::Player::Name, decorator: Google::Apis::GamesManagementV1management::Player::Name::Representation
       
           property :original_player_id, as: 'originalPlayerId'

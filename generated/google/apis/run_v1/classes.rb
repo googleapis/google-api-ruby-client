@@ -1250,40 +1250,6 @@ module Google
         end
       end
       
-      # IntOrString is a type that can hold an int32 or a string.  When used in
-      # JSON or YAML marshalling and unmarshalling, it produces or consumes the
-      # inner type.  This allows you to have, for example, a JSON field that can
-      # accept a name or number.
-      class IntOrString
-        include Google::Apis::Core::Hashable
-      
-        # The int value.
-        # Corresponds to the JSON property `intVal`
-        # @return [Fixnum]
-        attr_accessor :int_val
-      
-        # The string value.
-        # Corresponds to the JSON property `strVal`
-        # @return [String]
-        attr_accessor :str_val
-      
-        # The type of the value.
-        # Corresponds to the JSON property `type`
-        # @return [Fixnum]
-        attr_accessor :type
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @int_val = args[:int_val] if args.key?(:int_val)
-          @str_val = args[:str_val] if args.key?(:str_val)
-          @type = args[:type] if args.key?(:type)
-        end
-      end
-      
       # Cloud Run fully managed: not supported
       # Cloud Run for Anthos: supported
       # Maps a string key to a path within a volume.
@@ -2101,10 +2067,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -2119,7 +2088,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -2197,6 +2168,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -3122,10 +3096,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -3140,7 +3117,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -3388,12 +3367,15 @@ module Google
         # @return [String]
         attr_accessor :host
       
-        # IntOrString is a type that can hold an int32 or a string.  When used in
-        # JSON or YAML marshalling and unmarshalling, it produces or consumes the
-        # inner type.  This allows you to have, for example, a JSON field that can
-        # accept a name or number.
+        # Cloud Run fully managed: not supported
+        # Cloud Run for Anthos: supported
+        # Number or name of the port to access on the container.
+        # Number must be in the range 1 to 65535.
+        # Name must be an IANA_SVC_NAME.
+        # This field is currently limited to integer types only because of proto's
+        # inability to properly support the IntOrString golang type.
         # Corresponds to the JSON property `port`
-        # @return [Google::Apis::RunV1::IntOrString]
+        # @return [Fixnum]
         attr_accessor :port
       
         def initialize(**args)

@@ -471,6 +471,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :auth_domain, as: 'authDomain'
           property :code_bucket, as: 'codeBucket'
+          property :database_type, as: 'databaseType'
           property :default_bucket, as: 'defaultBucket'
           property :default_cookie_expiration, as: 'defaultCookieExpiration'
           property :default_hostname, as: 'defaultHostname'

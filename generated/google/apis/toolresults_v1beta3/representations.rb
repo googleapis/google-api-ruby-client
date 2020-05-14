@@ -226,6 +226,36 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class IosAppInfo
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosRoboTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosTestLoop
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class IosXcTest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LauncherActivityNotFound
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -912,6 +942,7 @@ module Google
           property :display_name, as: 'displayName'
           property :history_id, as: 'historyId'
           property :name, as: 'name'
+          property :test_platform, as: 'testPlatform'
         end
       end
       
@@ -967,6 +998,50 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :stack_trace, as: 'stackTrace', class: Google::Apis::ToolresultsV1beta3::StackTrace, decorator: Google::Apis::ToolresultsV1beta3::StackTrace::Representation
       
+        end
+      end
+      
+      class IosAppInfo
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+        end
+      end
+      
+      class IosRoboTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class IosTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :ios_app_info, as: 'iosAppInfo', class: Google::Apis::ToolresultsV1beta3::IosAppInfo, decorator: Google::Apis::ToolresultsV1beta3::IosAppInfo::Representation
+      
+          property :ios_robo_test, as: 'iosRoboTest', class: Google::Apis::ToolresultsV1beta3::IosRoboTest, decorator: Google::Apis::ToolresultsV1beta3::IosRoboTest::Representation
+      
+          property :ios_test_loop, as: 'iosTestLoop', class: Google::Apis::ToolresultsV1beta3::IosTestLoop, decorator: Google::Apis::ToolresultsV1beta3::IosTestLoop::Representation
+      
+          property :ios_xc_test, as: 'iosXcTest', class: Google::Apis::ToolresultsV1beta3::IosXcTest, decorator: Google::Apis::ToolresultsV1beta3::IosXcTest::Representation
+      
+          property :test_timeout, as: 'testTimeout', class: Google::Apis::ToolresultsV1beta3::Duration, decorator: Google::Apis::ToolresultsV1beta3::Duration::Representation
+      
+        end
+      end
+      
+      class IosTestLoop
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+        end
+      end
+      
+      class IosXcTest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :bundle_id, as: 'bundleId'
+          property :xcode_version, as: 'xcodeVersion'
         end
       end
       
@@ -1350,6 +1425,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_test, as: 'androidTest', class: Google::Apis::ToolresultsV1beta3::AndroidTest, decorator: Google::Apis::ToolresultsV1beta3::AndroidTest::Representation
+      
+          property :ios_test, as: 'iosTest', class: Google::Apis::ToolresultsV1beta3::IosTest, decorator: Google::Apis::ToolresultsV1beta3::IosTest::Representation
       
         end
       end

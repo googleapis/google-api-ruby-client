@@ -431,7 +431,7 @@ module Google
         end
       end
       
-      # The Game Server Cluster changes made by the Game Server Deployment.
+      # The game server cluster changes made by the game server deployment.
       class DeployedClusterState
         include Google::Apis::Core::Hashable
       
@@ -441,7 +441,7 @@ module Google
         attr_accessor :cluster
       
         # The details about the Agones fleets and autoscalers created in the
-        # Game Server Cluster.
+        # game server cluster.
         # Corresponds to the JSON property `fleetDetails`
         # @return [Array<Google::Apis::GameservicesV1beta::DeployedFleetDetails>]
         attr_accessor :fleet_details
@@ -690,12 +690,12 @@ module Google
       class FetchDeploymentStateResponse
         include Google::Apis::Core::Hashable
       
-        # The state of the Game Server Deployment in each Game Server Cluster.
+        # The state of the game server deployment in each game server cluster.
         # Corresponds to the JSON property `clusterState`
         # @return [Array<Google::Apis::GameservicesV1beta::DeployedClusterState>]
         attr_accessor :cluster_state
       
-        # List of Locations that could not be reached.
+        # List of locations that could not be reached.
         # Corresponds to the JSON property `unavailable`
         # @return [Array<String>]
         attr_accessor :unavailable
@@ -737,11 +737,11 @@ module Google
         end
       end
       
-      # A Game Server Cluster resource.
+      # A game server cluster resource.
       class GameServerCluster
         include Google::Apis::Core::Hashable
       
-        # The Game Server Cluster connection information.
+        # The game server cluster connection information.
         # Corresponds to the JSON property `connectionInfo`
         # @return [Google::Apis::GameservicesV1beta::GameServerClusterConnectionInfo]
         attr_accessor :connection_info
@@ -761,13 +761,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The labels associated with this Game Server Cluster. Each label is a
+        # The labels associated with this game server cluster. Each label is a
         # key-value pair.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # Required. The resource name of the Game Server Cluster. Uses the form:
+        # Required. The resource name of the game server cluster. Uses the form:
         # `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         # cluster``.
         # For example,
@@ -798,7 +798,7 @@ module Google
         end
       end
       
-      # The Game Server Cluster connection information.
+      # The game server cluster connection information.
       class GameServerClusterConnectionInfo
         include Google::Apis::Core::Hashable
       
@@ -807,7 +807,7 @@ module Google
         # @return [Google::Apis::GameservicesV1beta::GkeClusterReference]
         attr_accessor :gke_cluster_reference
       
-        # Namespace designated on the Game Server Cluster where the Agones game
+        # Namespace designated on the game server cluster where the Agones game
         # server instances will be created. Existence of the namespace will be
         # validated during creation.
         # Corresponds to the JSON property `namespace`
@@ -825,7 +825,7 @@ module Google
         end
       end
       
-      # A Game Server Config resource.
+      # A game server config resource.
       class GameServerConfig
         include Google::Apis::Core::Hashable
       
@@ -834,7 +834,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The description of the Game Server Config.
+        # The description of the game server config.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -845,13 +845,13 @@ module Google
         # @return [Array<Google::Apis::GameservicesV1beta::FleetConfig>]
         attr_accessor :fleet_configs
       
-        # The labels associated with this Game Server Config. Each label is a
+        # The labels associated with this game server config. Each label is a
         # key-value pair.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the Game Server Config. Uses the form:
+        # The resource name of the game server config. Uses the form:
         # `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         # configs/`config``.
         # For example,
@@ -887,7 +887,7 @@ module Google
         end
       end
       
-      # A Game Server Config override.
+      # A game server config override.
       class GameServerConfigOverride
         include Google::Apis::Core::Hashable
       
@@ -896,7 +896,7 @@ module Google
         # @return [String]
         attr_accessor :config_version
       
-        # The Realm selector, used to match Realm resources.
+        # The realm selector, used to match realm resources.
         # Corresponds to the JSON property `realmsSelector`
         # @return [Google::Apis::GameservicesV1beta::RealmSelector]
         attr_accessor :realms_selector
@@ -912,7 +912,7 @@ module Google
         end
       end
       
-      # A Game Server Deployment resource.
+      # A game server deployment resource.
       class GameServerDeployment
         include Google::Apis::Core::Hashable
       
@@ -921,7 +921,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Human readable description of the Game Server Deployment.
+        # Human readable description of the game server delpoyment.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -931,13 +931,13 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The labels associated with this Game Server Deployment. Each label is a
+        # The labels associated with this game server deployment. Each label is a
         # key-value pair.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the Game Server Deployment. Uses the form:
+        # The resource name of the game server deployment. Uses the form:
         # `projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         # For example,
         # `projects/my-project/locations/`location`/gameServerDeployments/my-deployment`.
@@ -965,7 +965,7 @@ module Google
         end
       end
       
-      # The Game Server Deployment Rollout which represents the desired rollout
+      # The game server deployment rollout which represents the desired rollout
       # state.
       class GameServerDeploymentRollout
         include Google::Apis::Core::Hashable
@@ -975,8 +975,8 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # The default Game Server Config is applied to all Realms unless overridden
-        # in the Rollout. For example,
+        # The default game server config is applied to all realms unless overridden
+        # in the rollout. For example,
         # `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-
         # config`.
         # Corresponds to the JSON property `defaultGameServerConfig`
@@ -988,14 +988,14 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # Contains the Game Server Config Rollout overrides. Overrides are processed
-        # in the order they are listed. Once a match is found for a Realm, the rest
+        # Contains the game server config rollout overrides. Overrides are processed
+        # in the order they are listed. Once a match is found for a realm, the rest
         # of the list is not processed.
         # Corresponds to the JSON property `gameServerConfigOverrides`
         # @return [Array<Google::Apis::GameservicesV1beta::GameServerConfigOverride>]
         attr_accessor :game_server_config_overrides
       
-        # The resource name of the Game Server Deployment Rollout. Uses the form:
+        # The resource name of the game server deployment rollout. Uses the form:
         # `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         # rollout`.
         # For example,
@@ -1074,7 +1074,7 @@ module Google
       class ListGameServerClustersResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Game Server Clusters.
+        # The list of game server clusters.
         # Corresponds to the JSON property `gameServerClusters`
         # @return [Array<Google::Apis::GameservicesV1beta::GameServerCluster>]
         attr_accessor :game_server_clusters
@@ -1085,7 +1085,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Locations that could not be reached.
+        # List of locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1106,7 +1106,7 @@ module Google
       class ListGameServerConfigsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Game Server Configs.
+        # The list of game server configs.
         # Corresponds to the JSON property `gameServerConfigs`
         # @return [Array<Google::Apis::GameservicesV1beta::GameServerConfig>]
         attr_accessor :game_server_configs
@@ -1117,7 +1117,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Locations that could not be reached.
+        # List of locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1138,7 +1138,7 @@ module Google
       class ListGameServerDeploymentsResponse
         include Google::Apis::Core::Hashable
       
-        # The list of Game Server Delpoyments.
+        # The list of game server deployments.
         # Corresponds to the JSON property `gameServerDeployments`
         # @return [Array<Google::Apis::GameservicesV1beta::GameServerDeployment>]
         attr_accessor :game_server_deployments
@@ -1149,7 +1149,7 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # List of Locations that could not be reached.
+        # List of locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1226,12 +1226,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
-        # The list of Realms.
+        # The list of realms.
         # Corresponds to the JSON property `realms`
         # @return [Array<Google::Apis::GameservicesV1beta::Realm>]
         attr_accessor :realms
       
-        # List of Locations that could not be reached.
+        # List of locations that could not be reached.
         # Corresponds to the JSON property `unreachable`
         # @return [Array<String>]
         attr_accessor :unreachable
@@ -1425,7 +1425,7 @@ module Google
         # @return [String]
         attr_accessor :end_time
       
-        # Output only. Operation status for gameservices API operations. Operation
+        # Output only. Operation status for Game Services API operations. Operation
         # status is in
         # the form of key-value pairs where keys are resource IDs and the values show
         # the status of the operation. In case of failures, the value includes an
@@ -1520,10 +1520,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -1538,7 +1541,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -1635,6 +1640,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -1711,7 +1719,7 @@ module Google
       class PreviewGameServerDeploymentRolloutResponse
         include Google::Apis::Core::Hashable
       
-        # ETag of the Game Server Deployment.
+        # ETag of the game server deployment.
         # Corresponds to the JSON property `etag`
         # @return [String]
         attr_accessor :etag
@@ -1788,7 +1796,7 @@ module Google
         end
       end
       
-      # A Realm resource.
+      # A realm resource.
       class Realm
         include Google::Apis::Core::Hashable
       
@@ -1797,7 +1805,7 @@ module Google
         # @return [String]
         attr_accessor :create_time
       
-        # Human readable description of the Realm.
+        # Human readable description of the realm.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
@@ -1807,19 +1815,19 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # The labels associated with this Realm. Each label is a key-value pair.
+        # The labels associated with this realm. Each label is a key-value pair.
         # Corresponds to the JSON property `labels`
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The resource name of the Realm. Uses the form:
+        # The resource name of the realm. Uses the form:
         # `projects/`project`/locations/`location`/realms/`realm``. For
         # example, `projects/my-project/locations/`location`/realms/my-realm`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Required. Time zone where all policies targeting this Realm are evaluated. The
+        # Required. Time zone where all policies targeting this realm are evaluated. The
         # value
         # of this field must be from the IANA time zone database:
         # https://www.iana.org/time-zones.
@@ -1848,11 +1856,11 @@ module Google
         end
       end
       
-      # The Realm selector, used to match Realm resources.
+      # The realm selector, used to match realm resources.
       class RealmSelector
         include Google::Apis::Core::Hashable
       
-        # List of Realms to match.
+        # List of realms to match.
         # Corresponds to the JSON property `realms`
         # @return [Array<String>]
         attr_accessor :realms
@@ -1950,8 +1958,8 @@ module Google
         # @return [Array<Google::Apis::GameservicesV1beta::Schedule>]
         attr_accessor :schedules
       
-        # Labels used to identify the Game Server Clusters to which this Agones
-        # scaling config applies. A Game Server Cluster is subject to this Agones
+        # Labels used to identify the game server clusters to which this Agones
+        # scaling config applies. A game server cluster is subject to this Agones
         # scaling config if its labels match any of the selector entries.
         # Corresponds to the JSON property `selectors`
         # @return [Array<Google::Apis::GameservicesV1beta::LabelSelector>]
@@ -1988,7 +1996,7 @@ module Google
       
         # The cron definition of the scheduled event. See
         # https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as
-        # defined by the Realm.
+        # defined by the realm.
         # Corresponds to the JSON property `cronSpec`
         # @return [String]
         attr_accessor :cron_spec
@@ -2027,10 +2035,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -2045,7 +2056,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -2103,7 +2116,7 @@ module Google
       class SpecSource
         include Google::Apis::Core::Hashable
       
-        # The Game Server Config resource. Uses the form:
+        # The game server config resource. Uses the form:
         # `projects/`project`/locations/`location`/gameServerDeployments/`deployment_id`/
         # configs/`config_id``.
         # Corresponds to the JSON property `gameServerConfigName`
@@ -2170,19 +2183,19 @@ module Google
       class TargetDetails
         include Google::Apis::Core::Hashable
       
-        # Agones fleet details for Game Server Clusters and Game Server Deployments.
+        # Agones fleet details for game server clusters and game server deployments.
         # Corresponds to the JSON property `fleetDetails`
         # @return [Array<Google::Apis::GameservicesV1beta::TargetFleetDetails>]
         attr_accessor :fleet_details
       
-        # The Game Server Cluster name. Uses the form:
+        # The game server cluster name. Uses the form:
         # `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         # cluster``.
         # Corresponds to the JSON property `gameServerClusterName`
         # @return [String]
         attr_accessor :game_server_cluster_name
       
-        # The Game Server Deployment name. Uses the form:
+        # The game server deployment name. Uses the form:
         # `projects/`project`/locations/`location`/gameServerDeployments/`deployment_id``
         # .
         # Corresponds to the JSON property `gameServerDeploymentName`

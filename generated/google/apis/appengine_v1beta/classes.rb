@@ -104,6 +104,12 @@ module Google
         # @return [String]
         attr_accessor :code_bucket
       
+        # The type of the Cloud Firestore or Cloud Datastore database associated with
+        # this application.
+        # Corresponds to the JSON property `databaseType`
+        # @return [String]
+        attr_accessor :database_type
+      
         # Google Cloud Storage bucket that can be used by this application to store
         # content.@OutputOnly
         # Corresponds to the JSON property `defaultBucket`
@@ -178,6 +184,7 @@ module Google
         def update!(**args)
           @auth_domain = args[:auth_domain] if args.key?(:auth_domain)
           @code_bucket = args[:code_bucket] if args.key?(:code_bucket)
+          @database_type = args[:database_type] if args.key?(:database_type)
           @default_bucket = args[:default_bucket] if args.key?(:default_bucket)
           @default_cookie_expiration = args[:default_cookie_expiration] if args.key?(:default_cookie_expiration)
           @default_hostname = args[:default_hostname] if args.key?(:default_hostname)

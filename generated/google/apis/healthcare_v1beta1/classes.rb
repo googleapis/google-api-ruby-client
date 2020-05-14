@@ -1658,7 +1658,7 @@ module Google
         # @return [String]
         attr_accessor :filter
       
-        # The [Cloud Pubsub](https://cloud.google.com/pubsub/docs/) topic that
+        # The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
         # notifications of changes are published on. Supplied by the client. The
         # notification is a `PubsubMessage` with the following fields:
         # *  `PubsubMessage.Data` contains the resource name.
@@ -1668,12 +1668,12 @@ module Google
         # published.
         # Note that notifications are only sent if the topic is non-empty. [Topic
         # names](https://cloud.google.com/pubsub/docs/overview#names) must be
-        # scoped to a project. cloud-healthcare@system.gserviceaccount.com must
-        # have publisher permissions on the given Pubsub topic. Not having adequate
+        # scoped to a project. Cloud Healthcare API service account must have
+        # publisher permissions on the given Pub/Sub topic. Not having adequate
         # permissions causes the calls that send notifications to fail.
         # If a notification cannot be published to Cloud Pub/Sub, errors will be
-        # logged to Stackdriver (see [Viewing logs](/healthcare/docs/how-
-        # tos/stackdriver-logging)).
+        # logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
+        # tos/logging)).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -2371,12 +2371,12 @@ module Google
         # Notifications are only sent if the topic is
         # non-empty. [Topic
         # names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
-        # to a project. cloud-healthcare@system.gserviceaccount.com must have
-        # publisher permissions on the given Cloud Pub/Sub topic. Not having adequate
+        # to a project. Cloud Healthcare API service account must have publisher
+        # permissions on the given Cloud Pub/Sub topic. Not having adequate
         # permissions causes the calls that send notifications to fail.
         # If a notification can't be published to Cloud Pub/Sub, errors are logged to
-        # Stackdriver (see [Viewing
-        # logs](/healthcare/docs/how-tos/stackdriver-logging)). If the number of
+        # Cloud Logging (see [Viewing
+        # logs](/healthcare/docs/how-tos/logging)). If the number of
         # errors exceeds a certain rate, some aren't submitted.
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
@@ -2489,7 +2489,7 @@ module Google
       
         # A link to audit and error logs in the log viewer. Error logs are generated
         # only by some operations, listed at
-        # https://cloud.google.com/healthcare/docs/how-tos/stackdriver-logging.
+        # [Viewing logs](/healthcare/docs/how-tos/logging).
         # Corresponds to the JSON property `logsUrl`
         # @return [String]
         attr_accessor :logs_url
@@ -2596,10 +2596,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -2614,7 +2617,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -2692,6 +2697,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -3050,10 +3058,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -3068,7 +3079,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -3106,8 +3119,7 @@ module Google
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
         # the fields in the mask will be modified. If no mask is provided, the
         # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
+        # `paths: "bindings, etag"`
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask

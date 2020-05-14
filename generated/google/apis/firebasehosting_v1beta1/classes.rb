@@ -352,7 +352,7 @@ module Google
         end
       end
       
-      # The response when listing Releases.
+      # 
       class ListReleasesResponse
         include Google::Apis::Core::Hashable
       
@@ -380,7 +380,7 @@ module Google
         end
       end
       
-      # The response when listing a Version's Files..
+      # 
       class ListVersionFilesResponse
         include Google::Apis::Core::Hashable
       
@@ -405,7 +405,7 @@ module Google
         end
       end
       
-      # The response when listing Versions.
+      # 
       class ListVersionsResponse
         include Google::Apis::Core::Hashable
       
@@ -516,7 +516,7 @@ module Google
         end
       end
       
-      # The response to a PopulateVersionFilesRequest.
+      # 
       class PopulateVersionFilesResponse
         include Google::Apis::Core::Hashable
       

@@ -18,14 +18,16 @@ require 'google/apis/games_management_v1management/representations.rb'
 
 module Google
   module Apis
-    # Google Play Game Services Management API
+    # Google Play Game Management
     #
-    # The Management API for Google Play Game Services.
+    # The Google Play Game Management API allows developers to manage resources from
+    # the Google
+    # Play Game service.
     #
-    # @see https://developers.google.com/games/services
+    # @see https://developers.google.com/games/
     module GamesManagementV1management
       VERSION = 'V1management'
-      REVISION = '20200416'
+      REVISION = '20200504'
 
       # Create, edit, and delete your Google Play Games activity
       AUTH_GAMES = 'https://www.googleapis.com/auth/games'

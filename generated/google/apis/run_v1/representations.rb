@@ -166,12 +166,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class IntOrString
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class KeyToPath
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -702,15 +696,6 @@ module Google
         end
       end
       
-      class IntOrString
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :int_val, as: 'intVal'
-          property :str_val, as: 'strVal'
-          property :type, as: 'type'
-        end
-      end
-      
       class KeyToPath
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1160,8 +1145,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :host, as: 'host'
-          property :port, as: 'port', class: Google::Apis::RunV1::IntOrString, decorator: Google::Apis::RunV1::IntOrString::Representation
-      
+          property :port, as: 'port'
         end
       end
       

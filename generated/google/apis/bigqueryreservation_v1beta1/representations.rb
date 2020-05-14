@@ -28,12 +28,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class Autoscale
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class BiReservation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -128,14 +122,6 @@ module Google
         end
       end
       
-      class Autoscale
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :current_slots, :numeric_string => true, as: 'currentSlots'
-          property :max_slots, :numeric_string => true, as: 'maxSlots'
-        end
-      end
-      
       class BiReservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -216,8 +202,6 @@ module Google
       class Reservation
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :autoscale, as: 'autoscale', class: Google::Apis::BigqueryreservationV1beta1::Autoscale, decorator: Google::Apis::BigqueryreservationV1beta1::Autoscale::Representation
-      
           property :ignore_idle_slots, as: 'ignoreIdleSlots'
           property :name, as: 'name'
           property :slot_capacity, :numeric_string => true, as: 'slotCapacity'

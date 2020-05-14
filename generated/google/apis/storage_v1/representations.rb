@@ -406,9 +406,12 @@ module Google
                 property :custom_time_before, as: 'customTimeBefore', type: DateTime
             
                 property :days_since_custom_time, as: 'daysSinceCustomTime'
+                property :days_since_noncurrent_time, as: 'daysSinceNoncurrentTime'
                 property :is_live, as: 'isLive'
                 property :matches_pattern, as: 'matchesPattern'
                 collection :matches_storage_class, as: 'matchesStorageClass'
+                property :noncurrent_time_before, as: 'noncurrentTimeBefore', type: DateTime
+            
                 property :num_newer_versions, as: 'numNewerVersions'
               end
             end

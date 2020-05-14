@@ -368,7 +368,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :tags
       
-        # URL of a thumbnail image of the device.
+        # URL of a thumbnail image (photo) of the device.
+        # e.g. https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...
         # Corresponds to the JSON property `thumbnailUrl`
         # @return [String]
         attr_accessor :thumbnail_url
@@ -1209,7 +1210,7 @@ module Google
       end
       
       # A description of an iOS device tests may be run on.
-      # Next tag: 12
+      # Next tag: 13
       class IosModel
         include Google::Apis::Core::Hashable
       

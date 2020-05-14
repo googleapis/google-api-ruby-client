@@ -120,13 +120,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Game Server Deployment in a given project and Location.
+        # Creates a new game server deployment in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location``.
         # @param [Google::Apis::GameservicesV1beta::GameServerDeployment] game_server_deployment_object
         # @param [String] deployment_id
-        #   Required. The ID of the Game Server Deployment resource to be created.
+        #   Required. The ID of the game server delpoyment resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -157,9 +157,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Game Server Deployment.
+        # Deletes a single game server deployment.
         # @param [String] name
-        #   Required. The name of the Game Server Deployment to delete. Uses the form:
+        #   Required. The name of the game server delpoyment to delete. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -188,11 +188,11 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Retrieves information about the current state of the Game Server
-        # Ddeployment. Gathers all the Agones fleets and Agones autoscalers,
-        # including fleets running an older version of the Game Server Deployment.
+        # Retrieves information about the current state of the game server
+        # deployment. Gathers all the Agones fleets and Agones autoscalers,
+        # including fleets running an older version of the game server deployment.
         # @param [String] name
-        #   Required. The name of the Game Server Deployment. Uses the form:
+        #   Required. The name of the game server delpoyment. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         # @param [Google::Apis::GameservicesV1beta::FetchDeploymentStateRequest] fetch_deployment_state_request_object
         # @param [String] fields
@@ -224,9 +224,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Game Server Deployment.
+        # Gets details of a single game server deployment.
         # @param [String] name
-        #   Required. The name of the Game Server Deployment to retrieve. Uses the form:
+        #   Required. The name of the game server delpoyment to retrieve. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -268,6 +268,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -296,9 +299,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details a single Game Server Deployment Rollout.
+        # Gets details a single game server deployment rollout.
         # @param [String] name
-        #   Required. The name of the Game Server Deployment to retrieve. Uses the form:
+        #   Required. The name of the game server delpoyment to retrieve. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   rollout`.
         # @param [String] fields
@@ -328,7 +331,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Game Server Deployments in a given project and Location.
+        # Lists game server deployments in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location``.
@@ -338,8 +341,8 @@ module Google
         #   Optional. Specifies the ordering of results following syntax at
         #   https://cloud.google.com/apis/design/design_patterns#sorting_order.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return.  If unspecified, server
-        #   will pick an appropriate default. Server may return fewer items than
+        #   Optional. The maximum number of items to return.  If unspecified, the server
+        #   will pick an appropriate default. The server may return fewer items than
         #   requested. A caller should only rely on response's
         #   next_page_token to
         #   determine if there are more GameServerDeployments left to be queried.
@@ -377,9 +380,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a Game Server Deployment.
+        # Patches a game server deployment.
         # @param [String] name
-        #   The resource name of the Game Server Deployment. Uses the form:
+        #   The resource name of the game server deployment. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment``.
         #   For example,
         #   `projects/my-project/locations/`location`/gameServerDeployments/my-deployment`.
@@ -420,10 +423,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Previews the Game Server Deployment Rollout. This API does not mutate the
-        # Rollout resource.
+        # Previews the game server deployment rollout. This API does not mutate the
+        # rollout resource.
         # @param [String] name
-        #   The resource name of the Game Server Deployment Rollout. Uses the form:
+        #   The resource name of the game server deployment rollout. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   rollout`.
         #   For example,
@@ -433,7 +436,7 @@ module Google
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview. Defaults to the
         #   immediately
-        #   after the proposed Rollout completes.
+        #   after the proposed rollout completes.
         # @param [String] update_mask
         #   Optional. Mask of fields to update. At least one path must be supplied in
         #   this field. For the `FieldMask` definition, see
@@ -546,14 +549,14 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a single Game Server Deployment Rollout.
+        # Patches a single game server deployment rollout.
         # The method will not return an error if the update does not affect any
         # existing realms. For example - if the default_game_server_config is changed
         # but all existing realms use the override, that is valid. Similarly, if a
         # non existing realm is explicitly called out in game_server_config_overrides
         # field, that will also not result in an error.
         # @param [String] name
-        #   The resource name of the Game Server Deployment Rollout. Uses the form:
+        #   The resource name of the game server deployment rollout. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   rollout`.
         #   For example,
@@ -596,15 +599,15 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Game Server Config in a given project, Location, and Game
-        # Server Deployment. Game Server Configs are immutable, and are not applied
-        # until referenced in the Game Server Deployment Rollout resource.
+        # Creates a new game server config in a given project, location, and game
+        # server deployment. Game server configs are immutable, and are not applied
+        # until referenced in the game server deployment rollout resource.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/`.
         # @param [Google::Apis::GameservicesV1beta::GameServerConfig] game_server_config_object
         # @param [String] config_id
-        #   Required. The ID of the Game Server Config resource to be created.
+        #   Required. The ID of the game server config resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -635,10 +638,10 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Game Server Config. The deletion will fail if the Game
-        # Server Config is referenced in a Game Server Deployment Rollout.
+        # Deletes a single game server config. The deletion will fail if the game
+        # server config is referenced in a game server deployment rollout.
         # @param [String] name
-        #   Required. The name of the Game Server Config to delete. Uses the form:
+        #   Required. The name of the game server config to delete. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   configs/`config``.
         # @param [String] fields
@@ -668,9 +671,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Game Server Config.
+        # Gets details of a single game server config.
         # @param [String] name
-        #   Required. The name of the Game Server Config to retrieve. Uses the form:
+        #   Required. The name of the game server config to retrieve. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
         #   configs/`config``.
         # @param [String] fields
@@ -700,8 +703,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Game Server Configs in a given project, Location, and Game Server
-        # Deployment.
+        # Lists game server configs in a given project, location, and game server
+        # deployment.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerDeployments/`deployment`/
@@ -718,7 +721,7 @@ module Google
         #   next_page_token to
         #   determine if there are more GameServerConfigs left to be queried.
         # @param [String] page_token
-        #   Optional. The next_page_token value returned from a previous List request, if
+        #   Optional. The next_page_token value returned from a previous list request, if
         #   any.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -905,13 +908,13 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new Realm in a given project and Location.
+        # Creates a new realm in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location``.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
         # @param [String] realm_id
-        #   Required. The ID of the Realm resource to be created.
+        #   Required. The ID of the realm resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -942,9 +945,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes a single Realm.
+        # Deletes a single realm.
         # @param [String] name
-        #   Required. The name of the Realm to delete. Uses the form:
+        #   Required. The name of the realm to delete. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -973,9 +976,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets details of a single Realm.
+        # Gets details of a single realm.
         # @param [String] name
-        #   Required. The name of the Realm to retrieve. Uses the form:
+        #   Required. The name of the realm to retrieve. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1004,7 +1007,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Realms in a given project and Location.
+        # Lists realms in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   `projects/`project`/locations/`location``.
@@ -1018,7 +1021,7 @@ module Google
         #   will pick an appropriate default. Server may return fewer items than
         #   requested. A caller should only rely on response's
         #   next_page_token to
-        #   determine if there are more Realms left to be queried.
+        #   determine if there are more realms left to be queried.
         # @param [String] page_token
         #   Optional. The next_page_token value returned from a previous List request,
         #   if any.
@@ -1053,9 +1056,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Patches a single Realm.
+        # Patches a single realm.
         # @param [String] name
-        #   The resource name of the Realm. Uses the form:
+        #   The resource name of the realm. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm``. For
         #   example, `projects/my-project/locations/`location`/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
@@ -1095,9 +1098,9 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Previews patches to a single Realm.
+        # Previews patches to a single realm.
         # @param [String] name
-        #   The resource name of the Realm. Uses the form:
+        #   The resource name of the realm. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm``. For
         #   example, `projects/my-project/locations/`location`/realms/my-realm`.
         # @param [Google::Apis::GameservicesV1beta::Realm] realm_object
@@ -1146,7 +1149,7 @@ module Google
         #   `projects/`project`/locations/`location`/realms/`realm-id``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
-        #   Required. The ID of the Game Server Cluster resource to be created.
+        #   Required. The ID of the game server cluster resource to be created.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1179,7 +1182,7 @@ module Google
         
         # Deletes a single game server cluster.
         # @param [String] name
-        #   Required. The name of the Game Server Cluster to delete. Uses the form:
+        #   Required. The name of the game server cluster to delete. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -1210,7 +1213,7 @@ module Google
         
         # Gets details of a single game server cluster.
         # @param [String] name
-        #   Required. The name of the Game Server Cluster to retrieve. Uses the form:
+        #   Required. The name of the game server cluster to retrieve. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm-id`/gameServerClusters/`
         #   cluster``.
         # @param [String] fields
@@ -1240,7 +1243,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Lists Game Server Clusters in a given project and location.
+        # Lists game server clusters in a given project and location.
         # @param [String] parent
         #   Required. The parent resource name. Uses the form:
         #   "projects/`project`/locations/`location`/realms/`realm`".
@@ -1250,8 +1253,8 @@ module Google
         #   Optional. Specifies the ordering of results following syntax at
         #   https://cloud.google.com/apis/design/design_patterns#sorting_order.
         # @param [Fixnum] page_size
-        #   Optional. The maximum number of items to return.  If unspecified, server
-        #   will pick an appropriate default. Server may return fewer items than
+        #   Optional. The maximum number of items to return.  If unspecified, the server
+        #   will pick an appropriate default. The server may return fewer items than
         #   requested. A caller should only rely on response's
         #   next_page_token to
         #   determine if there are more GameServerClusters left to be queried.
@@ -1291,7 +1294,7 @@ module Google
         
         # Patches a single game server cluster.
         # @param [String] name
-        #   Required. The resource name of the Game Server Cluster. Uses the form:
+        #   Required. The resource name of the game server cluster. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         #   cluster``.
         #   For example,
@@ -1341,7 +1344,7 @@ module Google
         #   `projects/`project`/locations/`location`/realms/`realm``.
         # @param [Google::Apis::GameservicesV1beta::GameServerCluster] game_server_cluster_object
         # @param [String] game_server_cluster_id
-        #   Required. The ID of the Game Server Cluster resource to be created.
+        #   Required. The ID of the game server cluster resource to be created.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
         # @param [String] fields
@@ -1377,7 +1380,7 @@ module Google
         
         # Previews deletion of a single game server cluster.
         # @param [String] name
-        #   Required. The name of the Game Server Cluster to delete. Uses the form:
+        #   Required. The name of the game server cluster to delete. Uses the form:
         #   `projects/`project`/locations/`location`/gameServerClusters/`cluster``.
         # @param [String] preview_time
         #   Optional. The target timestamp to compute the preview.
@@ -1411,7 +1414,7 @@ module Google
         
         # Previews updating a GameServerCluster.
         # @param [String] name
-        #   Required. The resource name of the Game Server Cluster. Uses the form:
+        #   Required. The resource name of the game server cluster. Uses the form:
         #   `projects/`project`/locations/`location`/realms/`realm`/gameServerClusters/`
         #   cluster``.
         #   For example,

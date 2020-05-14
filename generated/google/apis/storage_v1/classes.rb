@@ -512,6 +512,15 @@ module Google
               # @return [Fixnum]
               attr_accessor :days_since_custom_time
             
+              # Number of days elapsed since the noncurrent timestamp of an object. The
+              # condition is satisfied if the days elapsed is at least this number. This
+              # condition is relevant only for versioned objects. The value of the field must
+              # be a nonnegative integer. If it's zero, the object version will become
+              # eligible for Lifecycle action as soon as it becomes noncurrent.
+              # Corresponds to the JSON property `daysSinceNoncurrentTime`
+              # @return [Fixnum]
+              attr_accessor :days_since_noncurrent_time
+            
               # Relevant only for versioned objects. If the value is true, this condition
               # matches live objects; if the value is false, it matches archived objects.
               # Corresponds to the JSON property `isLive`
@@ -535,6 +544,13 @@ module Google
               # @return [Array<String>]
               attr_accessor :matches_storage_class
             
+              # A timestamp in RFC 3339 format. This condition is satisfied when the
+              # noncurrent time on an object is before this timestamp. This condition is
+              # relevant only for versioned objects.
+              # Corresponds to the JSON property `noncurrentTimeBefore`
+              # @return [DateTime]
+              attr_accessor :noncurrent_time_before
+            
               # Relevant only for versioned objects. If the value is N, this condition is
               # satisfied when there are at least N versions (including the live version)
               # newer than this version of the object.
@@ -552,9 +568,11 @@ module Google
                 @created_before = args[:created_before] if args.key?(:created_before)
                 @custom_time_before = args[:custom_time_before] if args.key?(:custom_time_before)
                 @days_since_custom_time = args[:days_since_custom_time] if args.key?(:days_since_custom_time)
+                @days_since_noncurrent_time = args[:days_since_noncurrent_time] if args.key?(:days_since_noncurrent_time)
                 @is_live = args[:is_live] if args.key?(:is_live)
                 @matches_pattern = args[:matches_pattern] if args.key?(:matches_pattern)
                 @matches_storage_class = args[:matches_storage_class] if args.key?(:matches_storage_class)
+                @noncurrent_time_before = args[:noncurrent_time_before] if args.key?(:noncurrent_time_before)
                 @num_newer_versions = args[:num_newer_versions] if args.key?(:num_newer_versions)
               end
             end

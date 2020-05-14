@@ -22,12 +22,12 @@ module Google
   module Apis
     module GamesManagementV1management
       
-      # This is a JSON template for achievement reset all response.
+      # Achievement reset all response.
       class AchievementResetAllResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#achievementResetAllResponse.
+        # string `gamesManagement#achievementResetAllResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -48,7 +48,7 @@ module Google
         end
       end
       
-      # This is a JSON template for multiple achievements reset all request.
+      # 
       class AchievementResetMultipleForAllRequest
         include Google::Apis::Core::Hashable
       
@@ -58,7 +58,7 @@ module Google
         attr_accessor :achievement_ids
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#achievementResetMultipleForAllRequest.
+        # string `gamesManagement#achievementResetMultipleForAllRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -74,16 +74,15 @@ module Google
         end
       end
       
-      # This is a JSON template for an achievement reset response.
+      # An achievement reset response.
       class AchievementResetResponse
         include Google::Apis::Core::Hashable
       
-        # The current state of the achievement. This is the same as the initial state of
-        # the achievement.
-        # Possible values are:
-        # - "HIDDEN"- Achievement is hidden.
-        # - "REVEALED" - Achievement is revealed.
-        # - "UNLOCKED" - Achievement is unlocked.
+        # The current state of the achievement.  This is the same as the initial
+        # state of the achievement. <br/>Possible values are: <ul>
+        # <li>"`HIDDEN`"- Achievement is hidden.</li>
+        # <li>"`REVEALED`" - Achievement is revealed.</li>
+        # <li>"`UNLOCKED`" - Achievement is unlocked.</li> </ul>
         # Corresponds to the JSON property `currentState`
         # @return [String]
         attr_accessor :current_state
@@ -94,7 +93,7 @@ module Google
         attr_accessor :definition_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#achievementResetResponse.
+        # string `gamesManagement#achievementResetResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -118,7 +117,7 @@ module Google
         end
       end
       
-      # This is a JSON template for multiple events reset all request.
+      # Multiple events reset all request.
       class EventsResetMultipleForAllRequest
         include Google::Apis::Core::Hashable
       
@@ -128,7 +127,7 @@ module Google
         attr_accessor :event_ids
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#eventsResetMultipleForAllRequest.
+        # string `gamesManagement#eventsResetMultipleForAllRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -144,35 +143,7 @@ module Google
         end
       end
       
-      # This is a JSON template for metadata about a player playing a game with the
-      # currently authenticated user.
-      class GamesPlayedResource
-        include Google::Apis::Core::Hashable
-      
-        # True if the player was auto-matched with the currently authenticated user.
-        # Corresponds to the JSON property `autoMatched`
-        # @return [Boolean]
-        attr_accessor :auto_matched
-        alias_method :auto_matched?, :auto_matched
-      
-        # The last time the player played the game in milliseconds since the epoch in
-        # UTC.
-        # Corresponds to the JSON property `timeMillis`
-        # @return [Fixnum]
-        attr_accessor :time_millis
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @auto_matched = args[:auto_matched] if args.key?(:auto_matched)
-          @time_millis = args[:time_millis] if args.key?(:time_millis)
-        end
-      end
-      
-      # This is a JSON template for 1P/3P metadata about the player's experience.
+      # 1P/3P metadata about the player's experience.
       class GamesPlayerExperienceInfoResource
         include Google::Apis::Core::Hashable
       
@@ -181,17 +152,18 @@ module Google
         # @return [Fixnum]
         attr_accessor :current_experience_points
       
-        # This is a JSON template for 1P/3P metadata about a user's level.
+        # 1P/3P metadata about a user's level.
         # Corresponds to the JSON property `currentLevel`
         # @return [Google::Apis::GamesManagementV1management::GamesPlayerLevelResource]
         attr_accessor :current_level
       
-        # The timestamp when the player was leveled up, in millis since Unix epoch UTC.
+        # The timestamp when the player was leveled up, in millis since Unix epoch
+        # UTC.
         # Corresponds to the JSON property `lastLevelUpTimestampMillis`
         # @return [Fixnum]
         attr_accessor :last_level_up_timestamp_millis
       
-        # This is a JSON template for 1P/3P metadata about a user's level.
+        # 1P/3P metadata about a user's level.
         # Corresponds to the JSON property `nextLevel`
         # @return [Google::Apis::GamesManagementV1management::GamesPlayerLevelResource]
         attr_accessor :next_level
@@ -209,7 +181,7 @@ module Google
         end
       end
       
-      # This is a JSON template for 1P/3P metadata about a user's level.
+      # 1P/3P metadata about a user's level.
       class GamesPlayerLevelResource
         include Google::Apis::Core::Hashable
       
@@ -240,22 +212,23 @@ module Google
         end
       end
       
-      # This is a JSON template for the HiddenPlayer resource.
+      # The HiddenPlayer resource.
       class HiddenPlayer
         include Google::Apis::Core::Hashable
       
-        # The time this player was hidden.
+        # Output only. The time this player was hidden.
         # Corresponds to the JSON property `hiddenTimeMillis`
         # @return [Fixnum]
         attr_accessor :hidden_time_millis
       
-        # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#hiddenPlayer.
+        # Output only. Uniquely identifies the type of this resource. Value is always
+        # the fixed
+        # string `gamesManagement#hiddenPlayer`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # This is a JSON template for a Player resource.
+        # A Player resource.
         # Corresponds to the JSON property `player`
         # @return [Google::Apis::GamesManagementV1management::Player]
         attr_accessor :player
@@ -272,7 +245,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of hidden players.
+      # A list of hidden players.
       class HiddenPlayerList
         include Google::Apis::Core::Hashable
       
@@ -282,7 +255,7 @@ module Google
         attr_accessor :items
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#hiddenPlayerList.
+        # string `gamesManagement#hiddenPlayerList`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -304,7 +277,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a Player resource.
+      # A Player resource.
       class Player
         include Google::Apis::Core::Hashable
       
@@ -328,28 +301,16 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # This is a JSON template for 1P/3P metadata about the player's experience.
+        # 1P/3P metadata about the player's experience.
         # Corresponds to the JSON property `experienceInfo`
         # @return [Google::Apis::GamesManagementV1management::GamesPlayerExperienceInfoResource]
         attr_accessor :experience_info
       
-        # The friend status of the given player, relative to the requester. This is
-        # unset if the player is not sharing their friends list with the game.
-        # Corresponds to the JSON property `friendStatus`
-        # @return [String]
-        attr_accessor :friend_status
-      
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#player.
+        # string `gamesManagement#player`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
-      
-        # This is a JSON template for metadata about a player playing a game with the
-        # currently authenticated user.
-        # Corresponds to the JSON property `lastPlayedWith`
-        # @return [Google::Apis::GamesManagementV1management::GamesPlayedResource]
-        attr_accessor :last_played_with
       
         # An object representation of the individual components of the player's name.
         # For some players, these fields may not be present.
@@ -358,9 +319,9 @@ module Google
         attr_accessor :name
       
         # The player ID that was used for this player the first time they signed into
-        # the game in question. This is only populated for calls to player.get for the
-        # requesting player, only if the player ID has subsequently changed, and only to
-        # clients that support remapping player IDs.
+        # the game in question. This is only populated for calls to player.get for
+        # the requesting player, only if the player ID has subsequently changed, and
+        # only to clients that support remapping player IDs.
         # Corresponds to the JSON property `originalPlayerId`
         # @return [String]
         attr_accessor :original_player_id
@@ -370,7 +331,7 @@ module Google
         # @return [String]
         attr_accessor :player_id
       
-        # This is a JSON template for profile settings
+        # Profile settings
         # Corresponds to the JSON property `profileSettings`
         # @return [Google::Apis::GamesManagementV1management::ProfileSettings]
         attr_accessor :profile_settings
@@ -391,9 +352,7 @@ module Google
           @banner_url_portrait = args[:banner_url_portrait] if args.key?(:banner_url_portrait)
           @display_name = args[:display_name] if args.key?(:display_name)
           @experience_info = args[:experience_info] if args.key?(:experience_info)
-          @friend_status = args[:friend_status] if args.key?(:friend_status)
           @kind = args[:kind] if args.key?(:kind)
-          @last_played_with = args[:last_played_with] if args.key?(:last_played_with)
           @name = args[:name] if args.key?(:name)
           @original_player_id = args[:original_player_id] if args.key?(:original_player_id)
           @player_id = args[:player_id] if args.key?(:player_id)
@@ -406,12 +365,14 @@ module Google
         class Name
           include Google::Apis::Core::Hashable
         
-          # The family name of this player. In some places, this is known as the last name.
+          # The family name of this player. In some places, this is known as the last
+          # name.
           # Corresponds to the JSON property `familyName`
           # @return [String]
           attr_accessor :family_name
         
-          # The given name of this player. In some places, this is known as the first name.
+          # The given name of this player. In some places, this is known as the first
+          # name.
           # Corresponds to the JSON property `givenName`
           # @return [String]
           attr_accessor :given_name
@@ -428,12 +389,12 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of leaderboard reset resources.
+      # A list of leaderboard reset resources.
       class PlayerScoreResetAllResponse
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#playerScoreResetResponse.
+        # string `gamesManagement#playerScoreResetAllResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -454,7 +415,7 @@ module Google
         end
       end
       
-      # This is a JSON template for a list of reset leaderboard entry resources.
+      # A list of reset leaderboard entry resources.
       class PlayerScoreResetResponse
         include Google::Apis::Core::Hashable
       
@@ -464,16 +425,15 @@ module Google
         attr_accessor :definition_id
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#playerScoreResetResponse.
+        # string `gamesManagement#playerScoreResetResponse`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
       
-        # The time spans of the updated score.
-        # Possible values are:
-        # - "ALL_TIME" - The score is an all-time score.
-        # - "WEEKLY" - The score is a weekly score.
-        # - "DAILY" - The score is a daily score.
+        # The time spans of the updated score. <br/>Possible values are: <ul>
+        # <li>"`ALL_TIME`" - The score is an all-time score.</li>
+        # <li>"`WEEKLY`" - The score is a weekly score.</li>
+        # <li>"`DAILY`" - The score is a daily score.</li> </ul>
         # Corresponds to the JSON property `resetScoreTimeSpans`
         # @return [Array<String>]
         attr_accessor :reset_score_time_spans
@@ -490,12 +450,12 @@ module Google
         end
       end
       
-      # This is a JSON template for profile settings
+      # Profile settings
       class ProfileSettings
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#profileSettings.
+        # string `gamesManagement#profileSettings`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind
@@ -517,12 +477,12 @@ module Google
         end
       end
       
-      # This is a JSON template for multiple scores reset all request.
+      # 
       class ScoresResetMultipleForAllRequest
         include Google::Apis::Core::Hashable
       
         # Uniquely identifies the type of this resource. Value is always the fixed
-        # string gamesManagement#scoresResetMultipleForAllRequest.
+        # string `gamesManagement#scoresResetMultipleForAllRequest`.
         # Corresponds to the JSON property `kind`
         # @return [String]
         attr_accessor :kind

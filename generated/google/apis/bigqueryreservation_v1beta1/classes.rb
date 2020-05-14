@@ -62,40 +62,6 @@ module Google
         end
       end
       
-      # Auto scaling settings and current situation.
-      # System will create a dedicated FLEX capacity commitment to hold the slots
-      # for auto-scale. Users won't be able to manage it,to avoid conflicts.
-      # Scale-up will happen, if there are always pending tasks for the past 10
-      # minutes.
-      # Scale-down will happen, if the system knows that scale-up won't be
-      # triggered again.
-      # Note this is an alpha feature.
-      class Autoscale
-        include Google::Apis::Core::Hashable
-      
-        # Output only. The slot capacity added to this reservation when autoscale
-        # happens. Will
-        # be between [0, max_slots].
-        # Corresponds to the JSON property `currentSlots`
-        # @return [Fixnum]
-        attr_accessor :current_slots
-      
-        # Number of slots to be scaled when needed.
-        # Corresponds to the JSON property `maxSlots`
-        # @return [Fixnum]
-        attr_accessor :max_slots
-      
-        def initialize(**args)
-           update!(**args)
-        end
-      
-        # Update properties of this object
-        def update!(**args)
-          @current_slots = args[:current_slots] if args.key?(:current_slots)
-          @max_slots = args[:max_slots] if args.key?(:max_slots)
-        end
-      end
-      
       # Represents a BI Reservation.
       class BiReservation
         include Google::Apis::Core::Hashable
@@ -368,18 +334,6 @@ module Google
       class Reservation
         include Google::Apis::Core::Hashable
       
-        # Auto scaling settings and current situation.
-        # System will create a dedicated FLEX capacity commitment to hold the slots
-        # for auto-scale. Users won't be able to manage it,to avoid conflicts.
-        # Scale-up will happen, if there are always pending tasks for the past 10
-        # minutes.
-        # Scale-down will happen, if the system knows that scale-up won't be
-        # triggered again.
-        # Note this is an alpha feature.
-        # Corresponds to the JSON property `autoscale`
-        # @return [Google::Apis::BigqueryreservationV1beta1::Autoscale]
-        attr_accessor :autoscale
-      
         # If false, any query using this reservation will use idle slots from other
         # reservations within the same admin project. If true, a query using this
         # reservation will execute with the slot capacity specified above at most.
@@ -412,7 +366,6 @@ module Google
       
         # Update properties of this object
         def update!(**args)
-          @autoscale = args[:autoscale] if args.key?(:autoscale)
           @ignore_idle_slots = args[:ignore_idle_slots] if args.key?(:ignore_idle_slots)
           @name = args[:name] if args.key?(:name)
           @slot_capacity = args[:slot_capacity] if args.key?(:slot_capacity)

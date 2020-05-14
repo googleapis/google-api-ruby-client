@@ -205,7 +205,7 @@ module Google
         attr_accessor :android_robo_test
       
         # Test Loops are tests that can be launched by the app itself, determining
-        # when to run by listening for an intent. go/ftl-games-dd
+        # when to run by listening for an intent.
         # Corresponds to the JSON property `androidTestLoop`
         # @return [Google::Apis::ToolresultsV1beta3::AndroidTestLoop]
         attr_accessor :android_test_loop
@@ -235,7 +235,7 @@ module Google
       end
       
       # Test Loops are tests that can be launched by the app itself, determining
-      # when to run by listening for an intent. go/ftl-games-dd
+      # when to run by listening for an intent.
       class AndroidTestLoop
         include Google::Apis::Core::Hashable
       
@@ -1142,6 +1142,13 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The platform of the test history.
+        # - In response: always set. Returns the platform of the last execution if
+        # unknown.
+        # Corresponds to the JSON property `testPlatform`
+        # @return [String]
+        attr_accessor :test_platform
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1151,6 +1158,7 @@ module Google
           @display_name = args[:display_name] if args.key?(:display_name)
           @history_id = args[:history_id] if args.key?(:history_id)
           @name = args[:name] if args.key?(:name)
+          @test_platform = args[:test_platform] if args.key?(:test_platform)
         end
       end
       
@@ -1338,6 +1346,131 @@ module Google
         # Update properties of this object
         def update!(**args)
           @stack_trace = args[:stack_trace] if args.key?(:stack_trace)
+        end
+      end
+      
+      # iOS app information
+      class IosAppInfo
+        include Google::Apis::Core::Hashable
+      
+        # The name of the app.
+        # Required
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # A Robo test for an iOS application.
+      class IosRoboTest
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+        end
+      end
+      
+      # A iOS mobile test specification
+      class IosTest
+        include Google::Apis::Core::Hashable
+      
+        # iOS app information
+        # Corresponds to the JSON property `iosAppInfo`
+        # @return [Google::Apis::ToolresultsV1beta3::IosAppInfo]
+        attr_accessor :ios_app_info
+      
+        # A Robo test for an iOS application.
+        # Corresponds to the JSON property `iosRoboTest`
+        # @return [Google::Apis::ToolresultsV1beta3::IosRoboTest]
+        attr_accessor :ios_robo_test
+      
+        # A game loop test of an iOS application.
+        # Corresponds to the JSON property `iosTestLoop`
+        # @return [Google::Apis::ToolresultsV1beta3::IosTestLoop]
+        attr_accessor :ios_test_loop
+      
+        # A test of an iOS application that uses the XCTest framework.
+        # Corresponds to the JSON property `iosXcTest`
+        # @return [Google::Apis::ToolresultsV1beta3::IosXcTest]
+        attr_accessor :ios_xc_test
+      
+        # A Duration represents a signed, fixed-length span of time represented
+        # as a count of seconds and fractions of seconds at nanosecond
+        # resolution. It is independent of any calendar and concepts like "day"
+        # or "month". It is related to Timestamp in that the difference between
+        # two Timestamp values is a Duration and it can be added or subtracted
+        # from a Timestamp. Range is approximately +-10,000 years.
+        # Corresponds to the JSON property `testTimeout`
+        # @return [Google::Apis::ToolresultsV1beta3::Duration]
+        attr_accessor :test_timeout
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @ios_app_info = args[:ios_app_info] if args.key?(:ios_app_info)
+          @ios_robo_test = args[:ios_robo_test] if args.key?(:ios_robo_test)
+          @ios_test_loop = args[:ios_test_loop] if args.key?(:ios_test_loop)
+          @ios_xc_test = args[:ios_xc_test] if args.key?(:ios_xc_test)
+          @test_timeout = args[:test_timeout] if args.key?(:test_timeout)
+        end
+      end
+      
+      # A game loop test of an iOS application.
+      class IosTestLoop
+        include Google::Apis::Core::Hashable
+      
+        # Bundle ID of the app.
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+        end
+      end
+      
+      # A test of an iOS application that uses the XCTest framework.
+      class IosXcTest
+        include Google::Apis::Core::Hashable
+      
+        # Bundle ID of the app.
+        # Corresponds to the JSON property `bundleId`
+        # @return [String]
+        attr_accessor :bundle_id
+      
+        # Xcode version that the test was run with.
+        # Corresponds to the JSON property `xcodeVersion`
+        # @return [String]
+        attr_accessor :xcode_version
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @bundle_id = args[:bundle_id] if args.key?(:bundle_id)
+          @xcode_version = args[:xcode_version] if args.key?(:xcode_version)
         end
       end
       
@@ -2591,6 +2724,11 @@ module Google
         # @return [Google::Apis::ToolresultsV1beta3::AndroidTest]
         attr_accessor :android_test
       
+        # A iOS mobile test specification
+        # Corresponds to the JSON property `iosTest`
+        # @return [Google::Apis::ToolresultsV1beta3::IosTest]
+        attr_accessor :ios_test
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2598,6 +2736,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @android_test = args[:android_test] if args.key?(:android_test)
+          @ios_test = args[:ios_test] if args.key?(:ios_test)
         end
       end
       
