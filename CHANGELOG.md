@@ -1,3 +1,39 @@
+# 0.39.3
+* Backwards compatible changes:
+  * Updated `appengine_v1`
+  * Updated `appengine_v1beta`
+  * Updated `bigqueryreservation_v1`
+  * Updated `bigqueryreservation_v1alpha2`
+  * Updated `bigqueryreservation_v1beta1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudresourcemanager_v1`
+  * Updated `cloudresourcemanager_v1beta1`
+  * Updated `cloudresourcemanager_v2`
+  * Updated `cloudresourcemanager_v2beta1`
+  * Updated `cloudshell_v1`
+  * Updated `cloudshell_v1alpha1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `firebasehosting_v1beta1`
+  * Updated `games_management_v1management`
+  * Updated `gameservices_v1beta`
+  * Updated `gmail_v1`
+  * Updated `healthcare_v1`
+  * Updated `healthcare_v1beta1`
+  * Updated `iap_v1`
+  * Updated `iap_v1beta1`
+  * Updated `jobs_v3p1beta1`
+  * Updated `osconfig_v1`
+  * Updated `osconfig_v1beta`
+  * Updated `run_v1`
+  * Updated `run_v1alpha1`
+  * Updated `sheets_v4`
+  * Updated `spanner_v1`
+  * Updated `storage_v1`
+  * Updated `testing_v1`
+  * Updated `toolresults_v1beta3`
+  * Updated `youtube_partner_v1`
+
 # 0.39.2
 * Backwards compatible changes:
   * Updated `apigee_v1`
