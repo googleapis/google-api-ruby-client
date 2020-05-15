@@ -679,7 +679,7 @@ module Google
         # @param [Fixnum] page_size
         #   Optional. The number of connections to include in the response. Valid values
         #   are
-        #   between 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.
+        #   between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
         # @param [String] page_token
         #   Optional. A page token, received from a previous `ListConnections` call.
         #   Provide this to retrieve the subsequent page.

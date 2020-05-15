@@ -974,10 +974,12 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # Percent of results that match the bucket value. This value is between
-        # (0-100]. Percentages are returned for all searches, but are an estimate.
-        # Because percentages are always returned, you should render percentages
-        # instead of counts.
+        # Percent of results that match the bucket value. The returned value is
+        # between (0-100], and is rounded down to an integer if fractional. If the
+        # value is not explicitly returned, it represents a percentage value that
+        # rounds to 0. Percentages are returned for all searches, but are an
+        # estimate. Because percentages are always returned, you should render
+        # percentages instead of counts.
         # Corresponds to the JSON property `percentage`
         # @return [Fixnum]
         attr_accessor :percentage
@@ -2550,7 +2552,7 @@ module Google
         # The user friendly label to display in the search result to indicate the
         # type of the item. This is OPTIONAL; if not provided, an object label isn't
         # displayed on the context line of the search results. The maximum length
-        # is 32 characters.
+        # is 64 characters.
         # Corresponds to the JSON property `objectDisplayLabel`
         # @return [String]
         attr_accessor :object_display_label
@@ -3097,7 +3099,7 @@ module Google
         # display name given was 'priority', then the user sees 'priority : 1' in
         # the search results which provides clear context to search users. This is
         # OPTIONAL; if not given, only the property values are displayed.
-        # The maximum length is 32 characters.
+        # The maximum length is 64 characters.
         # Corresponds to the JSON property `displayLabel`
         # @return [String]
         attr_accessor :display_label

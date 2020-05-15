@@ -1341,7 +1341,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Queries time series using the time series query language. This method does not
+        # Queries time series using Monitoring Query Language. This method does not
         # require a Workspace.
         # @param [String] name
         #   Required. The project on which to execute the request. The format is:
