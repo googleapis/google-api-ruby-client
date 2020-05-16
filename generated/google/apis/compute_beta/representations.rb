@@ -544,6 +544,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ConfidentialInstanceConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ConnectionDraining
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -2082,6 +2088,12 @@ module Google
       
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+        class Accelerator
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
       
         include Google::Apis::Core::JsonObjectSupport
       end
@@ -2279,6 +2291,12 @@ module Google
       end
       
       class NetworkEndpointGroupsListEndpointsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -5910,6 +5928,13 @@ module Google
         end
       end
       
+      class ConfidentialInstanceConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :enable_confidential_compute, as: 'enableConfidentialCompute'
+        end
+      end
+      
       class ConnectionDraining
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -8056,6 +8081,8 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :can_ip_forward, as: 'canIpForward'
+          property :confidential_instance_config, as: 'confidentialInstanceConfig', class: Google::Apis::ComputeBeta::ConfidentialInstanceConfig, decorator: Google::Apis::ComputeBeta::ConfidentialInstanceConfig::Representation
+      
           property :description, as: 'description'
           collection :disks, as: 'disks', class: Google::Apis::ComputeBeta::AttachedDisk, decorator: Google::Apis::ComputeBeta::AttachedDisk::Representation
       
@@ -8814,6 +8841,8 @@ module Google
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeBeta::MachineType::Accelerator, decorator: Google::Apis::ComputeBeta::MachineType::Accelerator::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeBeta::DeprecationStatus, decorator: Google::Apis::ComputeBeta::DeprecationStatus::Representation
       
@@ -8828,6 +8857,14 @@ module Google
           property :name, as: 'name'
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
+        end
+        
+        class Accelerator
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :guest_accelerator_count, as: 'guestAcceleratorCount'
+            property :guest_accelerator_type, as: 'guestAcceleratorType'
+          end
         end
       end
       
@@ -9172,7 +9209,17 @@ module Google
       class NetworkEndpointGroupsListEndpointsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :endpoint_filters, as: 'endpointFilters', class: Google::Apis::ComputeBeta::NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter, decorator: Google::Apis::ComputeBeta::NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter::Representation
+      
           property :health_status, as: 'healthStatus'
+        end
+      end
+      
+      class NetworkEndpointGroupsListEndpointsRequestNetworkEndpointFilter
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :network_endpoint, as: 'networkEndpoint', class: Google::Apis::ComputeBeta::NetworkEndpoint, decorator: Google::Apis::ComputeBeta::NetworkEndpoint::Representation
+      
         end
       end
       

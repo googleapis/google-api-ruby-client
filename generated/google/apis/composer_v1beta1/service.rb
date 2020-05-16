@@ -283,6 +283,11 @@ module Google
         #   </td>
         #   </tr>
         #   <tr>
+        #   <td>config.webServerNetworkAccessControl</td>
+        #   <td>Replace the environment's current WebServerNetworkAccessControl.
+        #   </td>
+        #   </tr>
+        #   <tr>
         #   <td>config.softwareConfig.airflowConfigOverrides</td>
         #   <td>Replace all Apache Airflow config overrides. If a replacement config
         #   overrides map is not included in `environment`, all config overrides

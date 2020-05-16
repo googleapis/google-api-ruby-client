@@ -1921,6 +1921,12 @@ module Google
       class MachineType
         class Representation < Google::Apis::Core::JsonRepresentation; end
         
+        class Accelerator
+          class Representation < Google::Apis::Core::JsonRepresentation; end
+        
+          include Google::Apis::Core::JsonObjectSupport
+        end
+        
         class ScratchDisk
           class Representation < Google::Apis::Core::JsonRepresentation; end
         
@@ -8087,6 +8093,8 @@ module Google
       class MachineType
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :accelerators, as: 'accelerators', class: Google::Apis::ComputeV1::MachineType::Accelerator, decorator: Google::Apis::ComputeV1::MachineType::Accelerator::Representation
+      
           property :creation_timestamp, as: 'creationTimestamp'
           property :deprecated, as: 'deprecated', class: Google::Apis::ComputeV1::DeprecationStatus, decorator: Google::Apis::ComputeV1::DeprecationStatus::Representation
       
@@ -8104,6 +8112,14 @@ module Google
       
           property :self_link, as: 'selfLink'
           property :zone, as: 'zone'
+        end
+        
+        class Accelerator
+          # @private
+          class Representation < Google::Apis::Core::JsonRepresentation
+            property :guest_accelerator_count, as: 'guestAcceleratorCount'
+            property :guest_accelerator_type, as: 'guestAcceleratorType'
+          end
         end
         
         class ScratchDisk

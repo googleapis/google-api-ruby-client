@@ -1150,8 +1150,9 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
-        # Compute Engine Long Term Release. When specified, VMs that have this policy
-        # become long term release (internal: stable fleet) VMs.
+        # DEPRECATED, please use maintenance_freeze_duration_hours. TODO(b/154158138):
+        # Remove this field. Compute Engine Long Term Release. When specified, VMs that
+        # have this policy become long term release (internal: stable fleet) VMs.
         # For all VM shapes, this should result in fewer disruptions due to software
         # updates and greater predictability via 1 week extended notifications.
         # For GPU VMs, this should also result in an 2 week uptime guarantee. See go/
@@ -3182,7 +3183,7 @@ module Google
         # and the backends are instance groups. The named port must be defined on each
         # backend instance group. This parameter has no meaning if the backends are NEGs.
         # Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-        # Load Blaancing).
+        # Load Balancing).
         # Corresponds to the JSON property `portName`
         # @return [String]
         attr_accessor :port_name
@@ -5191,13 +5192,15 @@ module Google
         # Specifies the regualar expression patterns that match allowed origins. For
         # regular expression grammar please see en.cppreference.com/w/cpp/regex/
         # ecmascript
-        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # An origin is allowed if it matches either an item in allowOrigins or an item
+        # in allowOriginRegexes.
         # Corresponds to the JSON property `allowOriginRegexes`
         # @return [Array<String>]
         attr_accessor :allow_origin_regexes
       
         # Specifies the list of origins that will be allowed to do CORS requests.
-        # An origin is allowed if it matches either allow_origins or allow_origin_regex.
+        # An origin is allowed if it matches either an item in allowOrigins or an item
+        # in allowOriginRegexes.
         # Corresponds to the JSON property `allowOrigins`
         # @return [Array<String>]
         attr_accessor :allow_origins
@@ -6955,12 +6958,15 @@ module Google
         end
       end
       
+      # Represents an external VPN gateway.
       # External VPN gateway is the on-premises VPN gateway(s) or another cloud
-      # provider's VPN gateway that connects to your Google Cloud VPN gateway. To
-      # create a highly available VPN from Google Cloud to your on-premises side or
-      # another Cloud provider's VPN gateway, you must create a external VPN gateway
-      # resource in GCP, which provides the information to GCP about your external VPN
-      # gateway.
+      # provider's VPN gateway that connects to your Google Cloud VPN gateway.
+      # To create a highly available VPN from Google Cloud Platform to your VPN
+      # gateway or another cloud provider's VPN gateway, you must create a external
+      # VPN gateway resource with information about the other gateway.
+      # For more information about using external VPN gateways, see  Creating an HA
+      # VPN gateway and tunnel pair to a peer VPN. (== resource_for `$api_version`.
+      # externalVpnGateways ==)
       class ExternalVpnGateway
         include Google::Apis::Core::Hashable
       
@@ -7216,7 +7222,7 @@ module Google
         # @return [String]
         attr_accessor :content
       
-        # 
+        # The file type of source file.
         # Corresponds to the JSON property `fileType`
         # @return [String]
         attr_accessor :file_type
@@ -8536,16 +8542,18 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the request,
-        # the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a `
+        # condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the [IAM documentation]
+        # (https://cloud.google.com/iam/help/conditions/resource-policies).
         # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
-        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
         # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
         # **YAML example:**
@@ -9263,9 +9271,8 @@ module Google
         end
       end
       
-      # A HealthCheckService defines a set of backends on which to perform periodic
-      # health checks and an endpoint to which to send notification of changes in the
-      # health status of the backends.
+      # Represents a Health-Check as a Service resource.
+      # (== resource_for `$api_version`.regionHealthCheckServices ==)
       class HealthCheckService
         include Google::Apis::Core::Hashable
       
@@ -11988,7 +11995,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 10
+        # Sets the scheduling options for an Instance. NextID: 11
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -14789,7 +14796,7 @@ module Google
         # @return [Array<String>]
         attr_accessor :resource_policies
       
-        # Sets the scheduling options for an Instance. NextID: 10
+        # Sets the scheduling options for an Instance. NextID: 11
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -18054,10 +18061,7 @@ module Google
       class LogConfigDataAccessOptions
         include Google::Apis::Core::Hashable
       
-        # Whether Gin logging should happen in a fail-closed manner at the caller. This
-        # is currently supported in the LocalIAM implementation, Stubby C++, and Stubby
-        # Java. For Apps Framework, see go/af-audit-logging#failclosed. TODO(b/77591626):
-        # Add support for Stubby Go. TODO(b/129671387): Add support for Scaffolding.
+        # 
         # Corresponds to the JSON property `logMode`
         # @return [String]
         attr_accessor :log_mode
@@ -19417,8 +19421,11 @@ module Google
       end
       
       # Represents a collection of network endpoints.
-      # For more information read Network endpoint groups overview. (== resource_for `$
-      # api_version`.networkEndpointGroups ==) Next ID: 21
+      # A network endpoint group (NEG) defines how a set of endpoints should be
+      # reached, whether they are reachable, and where they are located. For more
+      # information about using NEGs, see  Setting up internet NEGs or  Setting up
+      # zonal NEGs. (== resource_for `$api_version`.networkEndpointGroups ==) (==
+      # resource_for `$api_version`.globalNetworkEndpointGroups ==)
       class NetworkEndpointGroup
         include Google::Apis::Core::Hashable
       
@@ -20038,7 +20045,7 @@ module Google
         attr_accessor :endpoint_filters
       
         # Optional query parameter for showing the health status of each network
-        # endpoint. Valid options are SKIP or SHOW. If you don't specifiy this parameter,
+        # endpoint. Valid options are SKIP or SHOW. If you don't specify this parameter,
         # the health status of network endpoints will not be provided.
         # Corresponds to the JSON property `healthStatus`
         # @return [String]
@@ -22510,8 +22517,12 @@ module Google
         end
       end
       
+      # Represents a notification endpoint.
       # A notification endpoint resource defines an endpoint to receive notifications
       # when there are status changes detected by the associated health check service.
+      # For more information, see  Health checks overview. (== resource_for `$
+      # api_version`.notificationEndpoint ==) (== resource_for `$api_version`.
+      # regionNotificationEndpoints ==)
       class NotificationEndpoint
         include Google::Apis::Core::Hashable
       
@@ -23607,7 +23618,12 @@ module Google
         end
       end
       
-      # Represents a PacketMirroring resource.
+      # Represents a Packet Mirroring resource.
+      # Packet Mirroring clones the traffic of specified instances in your Virtual
+      # Private Cloud (VPC) network and forwards it to a collector destination, such
+      # as an instance group of an internal TCP/UDP load balancer, for analysis or
+      # examination. For more information about setting up Packet Mirroring, see Using
+      # Packet Mirroring. (== resource_for `$api_version`.packetMirrorings ==)
       class PacketMirroring
         include Google::Apis::Core::Hashable
       
@@ -24539,16 +24555,18 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the request,
-      # the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a `
+      # condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the [IAM documentation]
+      # (https://cloud.google.com/iam/help/conditions/resource-policies).
       # **JSON example:**
       # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
       # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
       # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-      # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
-      # "condition": ` "title": "expirable access", "description": "Does not grant
+      # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+      # ], "condition": ` "title": "expirable access", "description": "Does not grant
       # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
       # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
       # **YAML example:**
@@ -24623,6 +24641,9 @@ module Google
         # conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the [
+        # IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -27313,16 +27334,18 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the request,
-        # the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a `
+        # condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the [IAM documentation]
+        # (https://cloud.google.com/iam/help/conditions/resource-policies).
         # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
-        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
         # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
         # **YAML example:**
@@ -30669,7 +30692,7 @@ module Google
         end
       end
       
-      # Sets the scheduling options for an Instance. NextID: 10
+      # Sets the scheduling options for an Instance. NextID: 11
       class Scheduling
         include Google::Apis::Core::Hashable
       
@@ -30698,8 +30721,9 @@ module Google
         # @return [String]
         attr_accessor :location_hint
       
-        # Compute Engine Long Term Release. When specified, VMs that have this policy
-        # become long term release (internal: stable fleet) VMs.
+        # DEPRECATED, please use maintenance_freeze_duration_hours. TODO(b/154158138):
+        # Remove this field. Compute Engine Long Term Release. When specified, VMs that
+        # have this policy become long term release (internal: stable fleet) VMs.
         # For all VM shapes, this should result in fewer disruptions due to software
         # updates and greater predictability via 1 week extended notifications.
         # For GPU VMs, this should also result in an 2 week uptime guarantee. See go/
@@ -31963,19 +31987,20 @@ module Google
       class ShieldedInstanceConfig
         include Google::Apis::Core::Hashable
       
-        # Defines whether the instance has integrity monitoring enabled.
+        # Defines whether the instance has integrity monitoring enabled. Enabled by
+        # default.
         # Corresponds to the JSON property `enableIntegrityMonitoring`
         # @return [Boolean]
         attr_accessor :enable_integrity_monitoring
         alias_method :enable_integrity_monitoring?, :enable_integrity_monitoring
       
-        # Defines whether the instance has Secure Boot enabled.
+        # Defines whether the instance has Secure Boot enabled. Disabled by default.
         # Corresponds to the JSON property `enableSecureBoot`
         # @return [Boolean]
         attr_accessor :enable_secure_boot
         alias_method :enable_secure_boot?, :enable_secure_boot
       
-        # Defines whether the instance has the vTPM enabled.
+        # Defines whether the instance has the vTPM enabled. Enabled by default.
         # Corresponds to the JSON property `enableVtpm`
         # @return [Boolean]
         attr_accessor :enable_vtpm
@@ -32639,7 +32664,7 @@ module Google
         # @return [Array<Google::Apis::ComputeAlpha::NetworkInterface>]
         attr_accessor :network_interfaces
       
-        # Sets the scheduling options for an Instance. NextID: 10
+        # Sets the scheduling options for an Instance. NextID: 11
         # Corresponds to the JSON property `scheduling`
         # @return [Google::Apis::ComputeAlpha::Scheduling]
         attr_accessor :scheduling
@@ -33655,7 +33680,8 @@ module Google
       
         # Whether to enable flow logging for this subnetwork. If this field is not
         # explicitly set, it will not appear in get listings. If not set the default
-        # behavior is to disable flow logging.
+        # behavior is to disable flow logging. This field isn't supported with the
+        # purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         # Corresponds to the JSON property `enableFlowLogs`
         # @return [Boolean]
         attr_accessor :enable_flow_logs
@@ -33781,7 +33807,8 @@ module Google
         # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
         # INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for
         # Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to
-        # PRIVATE_RFC_1918.
+        # PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose
+        # field set to INTERNAL_HTTPS_LOAD_BALANCER.
         # Corresponds to the JSON property `purpose`
         # @return [String]
         attr_accessor :purpose
@@ -34448,6 +34475,17 @@ module Google
         # @return [String]
         attr_accessor :description
       
+        # Fingerprint of this resource. A hash of the contents stored in this object.
+        # This field is used in optimistic locking. This field will be ignored when
+        # inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in
+        # order to patch/update the TargetGrpcProxy; otherwise, the request will fail
+        # with error 412 conditionNotMet. To see the latest fingerprint, make a get()
+        # request to retrieve the TargetGrpcProxy.
+        # Corresponds to the JSON property `fingerprint`
+        # NOTE: Values are automatically base64 encoded/decoded in the client library.
+        # @return [String]
+        attr_accessor :fingerprint
+      
         # [Output Only] The unique identifier for the resource type. The server
         # generates this identifier.
         # Corresponds to the JSON property `id`
@@ -34508,6 +34546,7 @@ module Google
         def update!(**args)
           @creation_timestamp = args[:creation_timestamp] if args.key?(:creation_timestamp)
           @description = args[:description] if args.key?(:description)
+          @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
           @id = args[:id] if args.key?(:id)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
@@ -35169,6 +35208,25 @@ module Google
               @value = args[:value] if args.key?(:value)
             end
           end
+        end
+      end
+      
+      # 
+      class TargetHttpsProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetHttpsProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
         end
       end
       
@@ -36664,6 +36722,25 @@ module Google
         # Update properties of this object
         def update!(**args)
           @service = args[:service] if args.key?(:service)
+        end
+      end
+      
+      # 
+      class TargetSslProxiesSetCertificateMapRequest
+        include Google::Apis::Core::Hashable
+      
+        # URL of the Certificate Map to associate with this TargetSslProxy.
+        # Corresponds to the JSON property `certificateMap`
+        # @return [String]
+        attr_accessor :certificate_map
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @certificate_map = args[:certificate_map] if args.key?(:certificate_map)
         end
       end
       
@@ -38966,7 +39043,12 @@ module Google
         end
       end
       
-      # Represents a VPN gateway resource. Next ID: 13
+      # Represents a HA VPN gateway.
+      # HA VPN is a high-availability (HA) Cloud VPN solution that lets you securely
+      # connect your on-premises network to your Google Cloud Virtual Private Cloud
+      # network through an IPsec VPN connection in a single region. For more
+      # information about Cloud HA VPN solutions, see  Cloud VPN topologies . (==
+      # resource_for `$api_version`.vpnGateways ==)
       class VpnGateway
         include Google::Apis::Core::Hashable
       
@@ -40601,16 +40683,18 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the request,
-        # the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a `
+        # condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the [IAM documentation]
+        # (https://cloud.google.com/iam/help/conditions/resource-policies).
         # **JSON example:**
         # ` "bindings": [ ` "role": "roles/resourcemanager.organizationAdmin", "members":
         # [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "
         # serviceAccount:my-project-id@appspot.gserviceaccount.com" ] `, ` "role": "
-        # roles/resourcemanager.organizationViewer", "members": ["user:eve@example.com"],
-        # "condition": ` "title": "expirable access", "description": "Does not grant
+        # roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com"
+        # ], "condition": ` "title": "expirable access", "description": "Does not grant
         # access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:
         # 00:00.000Z')", ` ` ], "etag": "BwWWja0YfJA=", "version": 3 `
         # **YAML example:**

@@ -906,13 +906,13 @@ module Google
       # There are two feature attribution methods supported for TensorFlow models:
       # integrated gradients and sampled Shapley.
       # [Learn more about feature
-      # attributions.](/ml-engine/docs/ai-explanations/overview)
+      # attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
       class GoogleCloudMlV1ExplanationConfig
         include Google::Apis::Core::Hashable
       
         # Attributes credit by computing the Aumann-Shapley value taking advantage
         # of the model's fully differentiable structure. Refer to this paper for
-        # more details: http://proceedings.mlr.press/v70/sundararajan17a.html
+        # more details: https://arxiv.org/abs/1703.01365
         # Corresponds to the JSON property `integratedGradientsAttribution`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1IntegratedGradientsAttribution]
         attr_accessor :integrated_gradients_attribution
@@ -1142,7 +1142,7 @@ module Google
       
       # Attributes credit by computing the Aumann-Shapley value taking advantage
       # of the model's fully differentiable structure. Refer to this paper for
-      # more details: http://proceedings.mlr.press/v70/sundararajan17a.html
+      # more details: https://arxiv.org/abs/1703.01365
       class GoogleCloudMlV1IntegratedGradientsAttribution
         include Google::Apis::Core::Hashable
       
@@ -1937,6 +1937,38 @@ module Google
         # @return [Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig]
         attr_accessor :accelerator_config
       
+        # Arguments to the entrypoint command.
+        # The following rules apply for container_command and container_args:
+        # - If you do not supply command or args:
+        # The defaults defined in the Docker image are used.
+        # - If you supply a command but no args:
+        # The default EntryPoint and the default Cmd defined in the Docker image
+        # are ignored. Your command is run without any arguments.
+        # - If you supply only args:
+        # The default Entrypoint defined in the Docker image is run with the args
+        # that you supplied.
+        # - If you supply a command and args:
+        # The default Entrypoint and the default Cmd defined in the Docker image
+        # are ignored. Your command is run with your args.
+        # It cannot be set if custom container image is
+        # not provided.
+        # Note that this field and [TrainingInput.args] are mutually exclusive, i.e.,
+        # both cannot be set at the same time.
+        # Corresponds to the JSON property `containerArgs`
+        # @return [Array<String>]
+        attr_accessor :container_args
+      
+        # The command with which the replica's custom container is run.
+        # If provided, it will override default ENTRYPOINT of the docker image.
+        # If not provided, the docker image's ENTRYPOINT is used.
+        # It cannot be set if custom container image is
+        # not provided.
+        # Note that this field and [TrainingInput.args] are mutually exclusive, i.e.,
+        # both cannot be set at the same time.
+        # Corresponds to the JSON property `containerCommand`
+        # @return [Array<String>]
+        attr_accessor :container_command
+      
         # The Docker image to run on the replica. This image must be in Container
         # Registry. Learn more about [configuring custom
         # containers](/ai-platform/training/docs/distributed-training-containers).
@@ -1969,6 +2001,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @accelerator_config = args[:accelerator_config] if args.key?(:accelerator_config)
+          @container_args = args[:container_args] if args.key?(:container_args)
+          @container_command = args[:container_command] if args.key?(:container_command)
           @image_uri = args[:image_uri] if args.key?(:image_uri)
           @tpu_tf_version = args[:tpu_tf_version] if args.key?(:tpu_tf_version)
         end
@@ -2052,8 +2086,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Optional. The maximum job running time, expressed in seconds. The field can
-        # contain up to nine fractional digits, terminated by `s`. By default there
-        # is no limit to the running time.
+        # contain up to nine fractional digits, terminated by `s`. If not specified,
+        # this field defaults to `604800s` (seven days).
         # If the training job is still running after this duration, AI Platform
         # Training cancels it.
         # For example, if you want to ensure your job runs for no more than 2 hours,
@@ -2075,6 +2109,11 @@ module Google
         # @return [String]
         attr_accessor :max_running_time
       
+        # 
+        # Corresponds to the JSON property `maxWaitTime`
+        # @return [String]
+        attr_accessor :max_wait_time
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2082,6 +2121,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @max_running_time = args[:max_running_time] if args.key?(:max_running_time)
+          @max_wait_time = args[:max_wait_time] if args.key?(:max_wait_time)
         end
       end
       
@@ -2415,6 +2455,19 @@ module Google
         # @return [String]
         attr_accessor :master_type
       
+        # Optional. The full name of the Google Compute Engine
+        # [network](/compute/docs/networks-and-firewalls#networks) to which the Job
+        # is peered. For example, projects/12345/global/networks/myVPC. Format is of
+        # the form projects/`project`/global/networks/`network`. Where `project` is a
+        # project number, as in '12345', and `network` is network name.".
+        # Private services access must already be configured for the network. If left
+        # unspecified, the Job is not peered with any network. Learn more -
+        # Connecting Job to user network over private
+        # IP.
+        # Corresponds to the JSON property `network`
+        # @return [String]
+        attr_accessor :network
+      
         # Required. The Google Cloud Storage location of the packages with
         # the training program and any additional dependencies.
         # The maximum number of package URIs is 100.
@@ -2554,6 +2607,7 @@ module Google
           @job_dir = args[:job_dir] if args.key?(:job_dir)
           @master_config = args[:master_config] if args.key?(:master_config)
           @master_type = args[:master_type] if args.key?(:master_type)
+          @network = args[:network] if args.key?(:network)
           @package_uris = args[:package_uris] if args.key?(:package_uris)
           @parameter_server_config = args[:parameter_server_config] if args.key?(:parameter_server_config)
           @parameter_server_count = args[:parameter_server_count] if args.key?(:parameter_server_count)
@@ -2779,7 +2833,7 @@ module Google
         # There are two feature attribution methods supported for TensorFlow models:
         # integrated gradients and sampled Shapley.
         # [Learn more about feature
-        # attributions.](/ml-engine/docs/ai-explanations/overview)
+        # attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
         # Corresponds to the JSON property `explanationConfig`
         # @return [Google::Apis::MlV1::GoogleCloudMlV1ExplanationConfig]
         attr_accessor :explanation_config
@@ -3233,10 +3287,13 @@ module Google
       # Google groups, and domains (such as G Suite). A `role` is a named list of
       # permissions; each `role` can be an IAM predefined role or a user-created
       # custom role.
-      # Optionally, a `binding` can specify a `condition`, which is a logical
-      # expression that allows access to a resource only if the expression evaluates
-      # to `true`. A condition can add constraints based on attributes of the
-      # request, the resource, or both.
+      # For some types of Google Cloud resources, a `binding` can also specify a
+      # `condition`, which is a logical expression that allows access to a resource
+      # only if the expression evaluates to `true`. A condition can add constraints
+      # based on attributes of the request, the resource, or both. To learn which
+      # resources support conditions in their IAM policies, see the
+      # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+      # policies).
       # **JSON example:**
       # `
       # "bindings": [
@@ -3251,7 +3308,9 @@ module Google
       # `,
       # `
       # "role": "roles/resourcemanager.organizationViewer",
-      # "members": ["user:eve@example.com"],
+      # "members": [
+      # "user:eve@example.com"
+      # ],
       # "condition": `
       # "title": "expirable access",
       # "description": "Does not grant access after Sep 2020",
@@ -3329,6 +3388,9 @@ module Google
         # the conditions in the version `3` policy are lost.
         # If a policy does not include any conditions, operations on that policy may
         # specify any valid version or leave the field unset.
+        # To learn which resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # Corresponds to the JSON property `version`
         # @return [Fixnum]
         attr_accessor :version
@@ -3357,10 +3419,13 @@ module Google
         # Google groups, and domains (such as G Suite). A `role` is a named list of
         # permissions; each `role` can be an IAM predefined role or a user-created
         # custom role.
-        # Optionally, a `binding` can specify a `condition`, which is a logical
-        # expression that allows access to a resource only if the expression evaluates
-        # to `true`. A condition can add constraints based on attributes of the
-        # request, the resource, or both.
+        # For some types of Google Cloud resources, a `binding` can also specify a
+        # `condition`, which is a logical expression that allows access to a resource
+        # only if the expression evaluates to `true`. A condition can add constraints
+        # based on attributes of the request, the resource, or both. To learn which
+        # resources support conditions in their IAM policies, see the
+        # [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+        # policies).
         # **JSON example:**
         # `
         # "bindings": [
@@ -3375,7 +3440,9 @@ module Google
         # `,
         # `
         # "role": "roles/resourcemanager.organizationViewer",
-        # "members": ["user:eve@example.com"],
+        # "members": [
+        # "user:eve@example.com"
+        # ],
         # "condition": `
         # "title": "expirable access",
         # "description": "Does not grant access after Sep 2020",
@@ -3413,8 +3480,7 @@ module Google
         # OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
         # the fields in the mask will be modified. If no mask is provided, the
         # following default mask is used:
-        # paths: "bindings, etag"
-        # This field is only used by Cloud IAM.
+        # `paths: "bindings, etag"`
         # Corresponds to the JSON property `updateMask`
         # @return [String]
         attr_accessor :update_mask

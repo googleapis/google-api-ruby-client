@@ -984,6 +984,8 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :accelerator_config, as: 'acceleratorConfig', class: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1AcceleratorConfig::Representation
       
+          collection :container_args, as: 'containerArgs'
+          collection :container_command, as: 'containerCommand'
           property :image_uri, as: 'imageUri'
           property :tpu_tf_version, as: 'tpuTfVersion'
         end
@@ -1008,6 +1010,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :max_running_time, as: 'maxRunningTime'
+          property :max_wait_time, as: 'maxWaitTime'
         end
       end
       
@@ -1093,6 +1096,7 @@ module Google
           property :master_config, as: 'masterConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       
           property :master_type, as: 'masterType'
+          property :network, as: 'network'
           collection :package_uris, as: 'packageUris'
           property :parameter_server_config, as: 'parameterServerConfig', class: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig, decorator: Google::Apis::MlV1::GoogleCloudMlV1ReplicaConfig::Representation
       

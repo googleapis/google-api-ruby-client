@@ -883,7 +883,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Table or Backup resource.
+        # Gets the access control policy for a Table resource.
         # Returns an empty policy if the resource exists but does not have a policy
         # set.
         # @param [String] resource
@@ -919,7 +919,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Table or Backup resource.
+        # Sets the access control policy on a Table resource.
         # Replaces any existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
@@ -1205,7 +1205,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Gets the access control policy for a Table or Backup resource.
+        # Gets the access control policy for a Table resource.
         # Returns an empty policy if the resource exists but does not have a policy
         # set.
         # @param [String] resource
@@ -1326,7 +1326,7 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Sets the access control policy on a Table or Backup resource.
+        # Sets the access control policy on a Table resource.
         # Replaces any existing policy.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.

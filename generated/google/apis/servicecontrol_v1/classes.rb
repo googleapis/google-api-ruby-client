@@ -536,9 +536,9 @@ module Google
       
         # Subject to whom this error applies. See the specific code enum for more
         # details on this field. For example:
-        # - “project:<project-id or project-number>”
-        # - “folder:<folder-id>”
-        # - “organization:<organization-id>”
+        # - "project:<project-id or project-number>"
+        # - "folder:<folder-id>"
+        # - "organization:<organization-id>"
         # Corresponds to the JSON property `subject`
         # @return [String]
         attr_accessor :subject

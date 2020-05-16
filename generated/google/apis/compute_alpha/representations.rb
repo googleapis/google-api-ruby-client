@@ -4618,6 +4618,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class TargetHttpsProxiesSetCertificateMapRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class TargetHttpsProxiesSetQuicOverrideRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -4829,6 +4835,12 @@ module Google
       end
       
       class TargetSslProxiesSetBackendServiceRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class TargetSslProxiesSetCertificateMapRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -13842,6 +13854,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :creation_timestamp, as: 'creationTimestamp'
           property :description, as: 'description'
+          property :fingerprint, :base64 => true, as: 'fingerprint'
           property :id, :numeric_string => true, as: 'id'
           property :kind, as: 'kind'
           property :name, as: 'name'
@@ -14019,6 +14032,13 @@ module Google
               property :value, as: 'value'
             end
           end
+        end
+      end
+      
+      class TargetHttpsProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
         end
       end
       
@@ -14397,6 +14417,13 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :service, as: 'service'
+        end
+      end
+      
+      class TargetSslProxiesSetCertificateMapRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :certificate_map, as: 'certificateMap'
         end
       end
       

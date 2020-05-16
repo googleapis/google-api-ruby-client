@@ -48,8 +48,7 @@ module Google
         end
         
         # Performs explanation on the data in the request.
-        # AI Platform implements a custom `explain` verb on top of an HTTP POST
-        # method.
+        # <div>`% dynamic include "/ai-platform/includes/___explain-request" %`</div>
         # @param [String] name
         #   Required. The resource name of a model or a version.
         #   Authorization: requires the `predict` permission on the specified resource.
@@ -260,6 +259,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -397,7 +399,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
-        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
+        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -433,7 +435,7 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # permissions, not a `NOT_FOUND` error.
         # Note: This operation is designed to be used for building permission-aware
         # UIs and command-line tools, not for authorization checking. This operation
         # may "fail open" without warning.
@@ -1154,6 +1156,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -1282,7 +1287,7 @@ module Google
         
         # Sets the access control policy on the specified resource. Replaces any
         # existing policy.
-        # Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED
+        # Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
         # @param [String] resource
         #   REQUIRED: The resource for which the policy is being specified.
         #   See the operation documentation for the appropriate value for this field.
@@ -1318,7 +1323,7 @@ module Google
         
         # Returns permissions that a caller has on the specified resource.
         # If the resource does not exist, this will return an empty set of
-        # permissions, not a NOT_FOUND error.
+        # permissions, not a `NOT_FOUND` error.
         # Note: This operation is designed to be used for building permission-aware
         # UIs and command-line tools, not for authorization checking. This operation
         # may "fail open" without warning.
