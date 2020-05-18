@@ -1,3 +1,28 @@
+# 0.39.4
+* Backwards compatible changes:
+  * Updated `bigtableadmin_v1`
+  * Updated `bigtableadmin_v2`
+  * Updated `cloudsearch_v1`
+  * Updated `composer_v1beta1`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `datacatalog_v1beta1`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `file_v1`
+  * Updated `file_v1beta1`
+  * Updated `firebase_v1beta1`
+  * Updated `jobs_v3`
+  * Updated `memcache_v1beta2`
+  * Updated `ml_v1`
+  * Updated `monitoring_v3`
+  * Updated `people_v1`
+  * Updated `pubsub_v1`
+  * Updated `secretmanager_v1`
+  * Updated `secretmanager_v1beta1`
+  * Updated `servicecontrol_v1`
+
 # 0.39.3
 * Backwards compatible changes:
   * Updated `appengine_v1`
