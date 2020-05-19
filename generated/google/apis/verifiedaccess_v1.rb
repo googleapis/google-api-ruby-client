@@ -18,15 +18,15 @@ require 'google/apis/verifiedaccess_v1/representations.rb'
 
 module Google
   module Apis
-    # Verified Access API
+    # Chrome Verified Access API
     #
     # API for Verified Access chrome extension to provide credential verification
     # for chrome devices connecting to an enterprise network
     #
-    # @see https://www.google.com/work/chrome/
+    # @see https://developers.google.com/chrome/verified-access
     module VerifiedaccessV1
       VERSION = 'V1'
-      REVISION = '20190718'
+      REVISION = '20200512'
 
       # Verify your enterprise credentials
       AUTH_VERIFIEDACCESS = 'https://www.googleapis.com/auth/verifiedaccess'

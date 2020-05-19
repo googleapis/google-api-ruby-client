@@ -161,7 +161,8 @@ module Google
       
         # The type of the Finding.
         # Detailed and up-to-date information on findings can be found here:
-        # https://cloud.google.com/security-scanner/docs/scan-result-details
+        # https://cloud.google.com/security-command-center/docs/how-to-remediate-web-
+        # security-scanner
         # Corresponds to the JSON property `findingType`
         # @return [String]
         attr_accessor :finding_type
@@ -573,8 +574,9 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1beta::Authentication]
         attr_accessor :authentication
       
-        # The blacklist URL patterns as described in
-        # https://cloud.google.com/security-scanner/docs/excluded-urls
+        # The excluded URL patterns as described in
+        # https://cloud.google.com/security-command-center/docs/how-to-use-web-security-
+        # scanner#excluding_urls
         # Corresponds to the JSON property `blacklistPatterns`
         # @return [Array<String>]
         attr_accessor :blacklist_patterns
@@ -584,7 +586,7 @@ module Google
         # @return [String]
         attr_accessor :display_name
       
-        # Controls export of scan configurations and results to Cloud Security
+        # Controls export of scan configurations and results to Security
         # Command Center.
         # Corresponds to the JSON property `exportToSecurityCommandCenter`
         # @return [String]
@@ -596,7 +598,7 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1beta::ScanRun]
         attr_accessor :latest_run
       
-        # Whether the scan config is managed by Cloud Web Security Scanner, output
+        # Whether the scan config is managed by Web Security Scanner, output
         # only.
         # Corresponds to the JSON property `managedScan`
         # @return [Boolean]
@@ -640,8 +642,8 @@ module Google
         attr_accessor :static_ip_scan
         alias_method :static_ip_scan?, :static_ip_scan
       
-        # Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be
-        # used as a default.
+        # Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE
+        # will be used as a default.
         # Corresponds to the JSON property `targetPlatforms`
         # @return [Array<String>]
         attr_accessor :target_platforms

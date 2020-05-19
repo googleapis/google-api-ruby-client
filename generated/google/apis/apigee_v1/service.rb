@@ -3291,6 +3291,12 @@ module Google
         #   to list debug sessions. Must be of the form:
         #   `organizations/`organization`/environments/`environment`/apis/`api`/revisions/
         #   `revision``.
+        # @param [Fixnum] page_size
+        #   Maximum number of debug sessions to return. The page size defaults
+        #   to 25.
+        # @param [String] page_token
+        #   Page token, returned from a previous ListDebugSessions call, that you
+        #   can use to retrieve the next page.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -3308,11 +3314,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_environment_api_revision_debugsessions(parent, fields: nil, quota_user: nil, options: nil, &block)
+        def list_organization_environment_api_revision_debugsessions(parent, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v1/{+parent}/debugsessions', options)
           command.response_representation = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDebugSessionsResponse::Representation
           command.response_class = Google::Apis::ApigeeV1::GoogleCloudApigeeV1ListDebugSessionsResponse
           command.params['parent'] = parent unless parent.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)

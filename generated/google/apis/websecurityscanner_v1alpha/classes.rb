@@ -488,8 +488,9 @@ module Google
         # @return [Google::Apis::WebsecurityscannerV1alpha::Authentication]
         attr_accessor :authentication
       
-        # The blacklist URL patterns as described in
-        # https://cloud.google.com/security-scanner/docs/excluded-urls
+        # The excluded URL patterns as described in
+        # https://cloud.google.com/security-command-center/docs/how-to-use-web-security-
+        # scanner#excluding_urls
         # Corresponds to the JSON property `blacklistPatterns`
         # @return [Array<String>]
         attr_accessor :blacklist_patterns
@@ -529,8 +530,8 @@ module Google
         # @return [Array<String>]
         attr_accessor :starting_urls
       
-        # Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be
-        # used as a default.
+        # Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE
+        # will be used as a default.
         # Corresponds to the JSON property `targetPlatforms`
         # @return [Array<String>]
         attr_accessor :target_platforms

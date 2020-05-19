@@ -1235,6 +1235,7 @@ module Google
       class GoogleCloudApigeeV1ListDebugSessionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
           collection :sessions, as: 'sessions', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Session, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1Session::Representation
       
         end

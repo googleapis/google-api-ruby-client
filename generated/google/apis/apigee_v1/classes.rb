@@ -2380,6 +2380,12 @@ module Google
       class GoogleCloudApigeeV1ListDebugSessionsResponse
         include Google::Apis::Core::Hashable
       
+        # Page token that you can include in a ListDebugSessionsRequest to
+        # retrieve the next page. If omitted, no subsequent pages exist.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
         # Session info that includes debug session ID and the first transaction
         # creation timestamp.
         # Corresponds to the JSON property `sessions`
@@ -2392,6 +2398,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @sessions = args[:sessions] if args.key?(:sessions)
         end
       end

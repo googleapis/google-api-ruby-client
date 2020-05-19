@@ -30,7 +30,7 @@ module Google
       #    Websecurityscanner = Google::Apis::WebsecurityscannerV1alpha # Alias the module
       #    service = Websecurityscanner::WebSecurityScannerService.new
       #
-      # @see https://cloud.google.com/security-scanner/
+      # @see https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/
       class WebSecurityScannerService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,

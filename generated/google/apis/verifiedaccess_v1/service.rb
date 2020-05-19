@@ -20,7 +20,7 @@ require 'google/apis/errors'
 module Google
   module Apis
     module VerifiedaccessV1
-      # Verified Access API
+      # Chrome Verified Access API
       #
       # API for Verified Access chrome extension to provide credential verification
       #  for chrome devices connecting to an enterprise network
@@ -31,7 +31,7 @@ module Google
       #    Verifiedaccess = Google::Apis::VerifiedaccessV1 # Alias the module
       #    service = Verifiedaccess::VerifiedaccessService.new
       #
-      # @see https://www.google.com/work/chrome/
+      # @see https://developers.google.com/chrome/verified-access
       class VerifiedaccessService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
