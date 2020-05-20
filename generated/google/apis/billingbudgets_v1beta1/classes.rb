@@ -190,6 +190,15 @@ module Google
         # @return [String]
         attr_accessor :credit_types_treatment
       
+        # Optional. A single label and value pair specifying that usage from only this
+        # set of
+        # labeled resources should be included in the budget. Multiple entries or
+        # multiple values per entry are not allowed. If omitted, the report will
+        # include all labeled and unlabeled usage.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,Array<Object>>]
+        attr_accessor :labels
+      
         # Optional. A set of projects of the form `projects/`project``,
         # specifying that usage from only this set of projects should be
         # included in the budget. If omitted, the report will include all usage for
@@ -209,6 +218,16 @@ module Google
         # @return [Array<String>]
         attr_accessor :services
       
+        # Optional. A set of subaccounts of the form `billingAccounts/`account_id``,
+        # specifying
+        # that usage from only this set of subaccounts should be included in the
+        # budget. If a subaccount is set to the name of the master account, usage
+        # from the master account will be included. If omitted, the report will
+        # include usage from the master account and all subaccounts, if they exist.
+        # Corresponds to the JSON property `subaccounts`
+        # @return [Array<String>]
+        attr_accessor :subaccounts
+      
         def initialize(**args)
            update!(**args)
         end
@@ -216,8 +235,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @credit_types_treatment = args[:credit_types_treatment] if args.key?(:credit_types_treatment)
+          @labels = args[:labels] if args.key?(:labels)
           @projects = args[:projects] if args.key?(:projects)
           @services = args[:services] if args.key?(:services)
+          @subaccounts = args[:subaccounts] if args.key?(:subaccounts)
         end
       end
       

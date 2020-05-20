@@ -189,8 +189,10 @@ module Google
           property :asset_type, as: 'assetType'
           property :description, as: 'description'
           property :display_name, as: 'displayName'
+          hash :labels, as: 'labels'
           property :location, as: 'location'
           property :name, as: 'name'
+          collection :network_tags, as: 'networkTags'
           property :project, as: 'project'
         end
       end

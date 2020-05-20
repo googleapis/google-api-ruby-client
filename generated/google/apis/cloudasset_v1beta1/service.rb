@@ -50,7 +50,10 @@ module Google
         # Exports assets with time and resource types to a given Cloud Storage
         # location. The output format is newline-delimited JSON.
         # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export.
+        # to keep track of the export. We recommend intervals of at least 2 seconds
+        # with exponential retry to poll the export operation result. For
+        # regular-size resource parent, the export operation usually finishes within
+        # 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
         #   organization number (such as "organizations/123"), a project ID (such as
@@ -179,7 +182,10 @@ module Google
         # Exports assets with time and resource types to a given Cloud Storage
         # location. The output format is newline-delimited JSON.
         # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export.
+        # to keep track of the export. We recommend intervals of at least 2 seconds
+        # with exponential retry to poll the export operation result. For
+        # regular-size resource parent, the export operation usually finishes within
+        # 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
         #   organization number (such as "organizations/123"), a project ID (such as
@@ -308,7 +314,10 @@ module Google
         # Exports assets with time and resource types to a given Cloud Storage
         # location. The output format is newline-delimited JSON.
         # This API implements the google.longrunning.Operation API allowing you
-        # to keep track of the export.
+        # to keep track of the export. We recommend intervals of at least 2 seconds
+        # with exponential retry to poll the export operation result. For
+        # regular-size resource parent, the export operation usually finishes within
+        # 5 minutes.
         # @param [String] parent
         #   Required. The relative name of the root asset. This can only be an
         #   organization number (such as "organizations/123"), a project ID (such as

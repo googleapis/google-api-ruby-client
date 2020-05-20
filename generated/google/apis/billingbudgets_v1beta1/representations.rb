@@ -135,8 +135,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :credit_types_treatment, as: 'creditTypesTreatment'
+          hash :labels, as: 'labels', :class => Array do
+        include Representable::JSON::Collection
+        items
+      end
+      
           collection :projects, as: 'projects'
           collection :services, as: 'services'
+          collection :subaccounts, as: 'subaccounts'
         end
       end
       

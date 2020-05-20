@@ -472,6 +472,11 @@ module Google
         # @return [String]
         attr_accessor :compromised_state
       
+        # When the user first signed in to the device
+        # Corresponds to the JSON property `createTime`
+        # @return [String]
+        attr_accessor :create_time
+      
         # Output only. Most recent time when user registered with this service.
         # Corresponds to the JSON property `firstSyncTime`
         # @return [String]
@@ -522,6 +527,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @compromised_state = args[:compromised_state] if args.key?(:compromised_state)
+          @create_time = args[:create_time] if args.key?(:create_time)
           @first_sync_time = args[:first_sync_time] if args.key?(:first_sync_time)
           @language_code = args[:language_code] if args.key?(:language_code)
           @last_sync_time = args[:last_sync_time] if args.key?(:last_sync_time)

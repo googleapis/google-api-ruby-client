@@ -2303,6 +2303,11 @@ module Google
         attr_accessor :reserved
         alias_method :reserved?, :reserved
       
+        # Output only. The name of the image used by each VM.
+        # Corresponds to the JSON property `vmImage`
+        # @return [String]
+        attr_accessor :vm_image
+      
         def initialize(**args)
            update!(**args)
         end
@@ -2318,6 +2323,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_access = args[:network_access] if args.key?(:network_access)
           @reserved = args[:reserved] if args.key?(:reserved)
+          @vm_image = args[:vm_image] if args.key?(:vm_image)
         end
       end
       

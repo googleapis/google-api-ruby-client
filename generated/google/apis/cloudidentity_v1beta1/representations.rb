@@ -329,6 +329,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :compromised_state, as: 'compromisedState'
+          property :create_time, as: 'createTime'
           property :first_sync_time, as: 'firstSyncTime'
           property :language_code, as: 'languageCode'
           property :last_sync_time, as: 'lastSyncTime'

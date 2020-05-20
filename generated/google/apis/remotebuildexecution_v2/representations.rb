@@ -1142,6 +1142,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           property :network_access, as: 'networkAccess'
           property :reserved, as: 'reserved'
+          property :vm_image, as: 'vmImage'
         end
       end
       

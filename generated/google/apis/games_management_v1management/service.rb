@@ -46,7 +46,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch'
+          @batch_path = 'batch/games/v1management'
         end
         
         # Resets the achievement with the given ID for the currently authenticated

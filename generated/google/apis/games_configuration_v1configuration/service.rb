@@ -45,7 +45,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch'
+          @batch_path = 'batch/games/v1configuration'
         end
         
         # Delete the achievement configuration with the given ID.
