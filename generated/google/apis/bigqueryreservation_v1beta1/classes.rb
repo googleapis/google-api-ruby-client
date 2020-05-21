@@ -28,7 +28,7 @@ module Google
         include Google::Apis::Core::Hashable
       
         # The resource which will use the reservation. E.g.
-        # projects/myproject, folders/123, organizations/456.
+        # `projects/myproject`, `folders/123`, or `organizations/456`.
         # Corresponds to the JSON property `assignee`
         # @return [String]
         attr_accessor :assignee
@@ -39,7 +39,7 @@ module Google
         attr_accessor :job_type
       
         # Output only. Name of the resource. E.g.:
-        # projects/myproject/locations/US/reservations/team1-prod/assignments/123.
+        # `projects/myproject/locations/US/reservations/team1-prod/assignments/123`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -98,8 +98,9 @@ module Google
       # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
       # (in the form of slots) with some committed period of usage. Annual
       # commitments renew by default. Commitments can be removed after their
-      # commitment end time passes. In order to remove annual commitment, its plan
-      # needs to be changed to monthly or flex first.
+      # commitment end time passes.
+      # In order to remove annual commitment, its plan needs to be changed
+      # to monthly or flex first.
       # A capacity commitment resource exists as a child resource of the admin
       # project.
       class CapacityCommitment
@@ -123,7 +124,7 @@ module Google
         attr_accessor :failure_status
       
         # Output only. The resource name of the capacity commitment, e.g.,
-        # projects/myproject/locations/US/capacityCommitments/123
+        # `projects/myproject/locations/US/capacityCommitments/123`
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -307,15 +308,16 @@ module Google
       
       # The request for
       # ReservationService.MoveAssignment.
-      # Note: "bigquery.reservationAssignments.create" permission is required on the
-      # destination_id. Note: "bigquery.reservationAssignments.create" and
-      # "bigquery.reservationAssignments.delete" permission is required on the
+      # **Note**: "bigquery.reservationAssignments.create" permission is required on
+      # the destination_id.
+      # **Note**: "bigquery.reservationAssignments.create" and
+      # "bigquery.reservationAssignments.delete" permission are required on the
       # related assignee.
       class MoveAssignmentRequest
         include Google::Apis::Core::Hashable
       
         # The new reservation ID, e.g.:
-        # projects/myotherproject/locations/US/reservations/team2-prod
+        # `projects/myotherproject/locations/US/reservations/team2-prod`
         # Corresponds to the JSON property `destinationId`
         # @return [String]
         attr_accessor :destination_id
@@ -343,7 +345,7 @@ module Google
         alias_method :ignore_idle_slots?, :ignore_idle_slots
       
         # The resource name of the reservation, e.g.,
-        # "projects/*/locations/*/reservations/team1-prod".
+        # `projects/*/locations/*/reservations/team1-prod`.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -424,8 +426,9 @@ module Google
         # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
         # (in the form of slots) with some committed period of usage. Annual
         # commitments renew by default. Commitments can be removed after their
-        # commitment end time passes. In order to remove annual commitment, its plan
-        # needs to be changed to monthly or flex first.
+        # commitment end time passes.
+        # In order to remove annual commitment, its plan needs to be changed
+        # to monthly or flex first.
         # A capacity commitment resource exists as a child resource of the admin
         # project.
         # Corresponds to the JSON property `first`
@@ -435,8 +438,9 @@ module Google
         # Capacity commitment is a way to purchase compute capacity for BigQuery jobs
         # (in the form of slots) with some committed period of usage. Annual
         # commitments renew by default. Commitments can be removed after their
-        # commitment end time passes. In order to remove annual commitment, its plan
-        # needs to be changed to monthly or flex first.
+        # commitment end time passes.
+        # In order to remove annual commitment, its plan needs to be changed
+        # to monthly or flex first.
         # A capacity commitment resource exists as a child resource of the admin
         # project.
         # Corresponds to the JSON property `second`

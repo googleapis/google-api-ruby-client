@@ -1833,7 +1833,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
-        #   The knoweldge base to create a document for.
+        #   Required. The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] fields
@@ -2736,7 +2736,7 @@ module Google
         # Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
         # only use `projects.knowledgeBases.documents`.
         # @param [String] parent
-        #   The knoweldge base to create a document for.
+        #   Required. The knoweldge base to create a document for.
         #   Format: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`.
         # @param [Google::Apis::DialogflowV2beta1::GoogleCloudDialogflowV2beta1Document] google_cloud_dialogflow_v2beta1_document_object
         # @param [String] fields

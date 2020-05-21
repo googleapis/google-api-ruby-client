@@ -60,8 +60,9 @@ module Google
         #   names. If omitted, or if localized strings are not available,
         #   en-US strings will be returned.
         # @param [String] location_id
-        #   The geographic location to list info types. Reserved for future
-        #   extensions.
+        #   Deprecated. This field has no effect.
+        # @param [String] parent
+        #   The parent resource name, for example locations/`location_id`.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -79,13 +80,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_info_types(filter: nil, language_code: nil, location_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+        def list_info_types(filter: nil, language_code: nil, location_id: nil, parent: nil, fields: nil, quota_user: nil, options: nil, &block)
           command = make_simple_command(:get, 'v2/infoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
           command.query['filter'] = filter unless filter.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
           command.query['locationId'] = location_id unless location_id.nil?
+          command.query['parent'] = parent unless parent.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -94,9 +96,8 @@ module Google
         # Returns a list of the sensitive information types that the DLP API
         # supports. See https://cloud.google.com/dlp/docs/infotypes-reference to
         # learn more.
-        # @param [String] location_id
-        #   The geographic location to list info types. Reserved for future
-        #   extensions.
+        # @param [String] parent
+        #   The parent resource name, for example locations/`location_id`.
         # @param [String] filter
         #   filter to only return infoTypes supported by certain parts of the
         #   API. Defaults to supported_by=INSPECT.
@@ -104,6 +105,8 @@ module Google
         #   BCP-47 language code for localized infoType friendly
         #   names. If omitted, or if localized strings are not available,
         #   en-US strings will be returned.
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -121,13 +124,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_location_info_types(location_id, filter: nil, language_code: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/locations/{locationId}/infoTypes', options)
+        def list_location_info_types(parent, filter: nil, language_code: nil, location_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/infoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInfoTypesResponse
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.params['parent'] = parent unless parent.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['languageCode'] = language_code unless language_code.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -247,8 +251,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where deidentifications templates will be retrieved
-        #   from. Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -445,8 +448,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where inspection templates will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -538,9 +540,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the deidentification template. Reserved
-        #   for future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -559,14 +558,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_location_deidentify_template(parent, location_id, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/deidentifyTemplates', options)
+        def create_organization_location_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -649,8 +647,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where deidentifications templates will be retrieved
-        #   from. Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -685,12 +682,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_deidentify_templates(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/deidentifyTemplates', options)
+        def list_organization_location_deidentify_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -743,9 +740,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the inspection template. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -764,14 +758,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_location_inspect_template(parent, location_id, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/inspectTemplates', options)
+        def create_organization_location_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -851,8 +844,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where inspection templates will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -887,12 +879,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_inspect_templates(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/inspectTemplates', options)
+        def list_organization_location_inspect_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -943,9 +935,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the stored infoType. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -964,14 +953,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_organization_location_stored_info_type(parent, location_id, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/storedInfoTypes', options)
+        def create_organization_location_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -1053,8 +1041,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where stored infoTypes will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -1090,12 +1077,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_organization_location_stored_info_types(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/storedInfoTypes', options)
+        def list_organization_location_stored_info_types(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -1254,8 +1241,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where stored infoTypes will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -1572,8 +1558,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where deidentifications templates will be retrieved
-        #   from. Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -1831,8 +1816,7 @@ module Google
         #   * end_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
         # @param [String] location_id
-        #   The geographic location where jobs will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -2032,8 +2016,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where inspection templates will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -2277,8 +2260,7 @@ module Google
         #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
         # @param [String] location_id
-        #   The geographic location where job triggers will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of triggeredJob fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -2374,9 +2356,6 @@ module Google
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location to process de-identification. Reserved for future
-        #   extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest] google_privacy_dlp_v2_deidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2395,14 +2374,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def deidentify_project_location_content(parent, location_id, google_privacy_dlp_v2_deidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/content:deidentify', options)
+        def deidentify_project_location_content(parent, google_privacy_dlp_v2_deidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/content:deidentify', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_deidentify_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyContentResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2417,11 +2395,6 @@ module Google
         # and https://cloud.google.com/dlp/docs/inspecting-text,
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location to process content inspection. Reserved for future
-        #   extensions.
-        #   When inspecting images location is restricted to 'global', 'us', 'asia',
-        #   and 'europe'.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest] google_privacy_dlp_v2_inspect_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2440,14 +2413,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def inspect_project_location_content(parent, location_id, google_privacy_dlp_v2_inspect_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/content:inspect', options)
+        def inspect_project_location_content(parent, google_privacy_dlp_v2_inspect_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/content:inspect', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_inspect_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectContentResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2460,9 +2432,6 @@ module Google
         # to learn more.
         # @param [String] parent
         #   Required. The parent resource name.
-        # @param [String] location_id
-        #   The geographic location to process content reidentification.  Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest] google_privacy_dlp_v2_reidentify_content_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2481,14 +2450,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def reidentify_project_location_content(parent, location_id, google_privacy_dlp_v2_reidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/content:reidentify', options)
+        def reidentify_project_location_content(parent, google_privacy_dlp_v2_reidentify_content_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/content:reidentify', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentRequest::Representation
           command.request_object = google_privacy_dlp_v2_reidentify_content_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ReidentifyContentResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2501,9 +2469,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the deidentification template. Reserved
-        #   for future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest] google_privacy_dlp_v2_create_deidentify_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2522,14 +2487,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_deidentify_template(parent, location_id, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/deidentifyTemplates', options)
+        def create_project_location_deidentify_template(parent, google_privacy_dlp_v2_create_deidentify_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/deidentifyTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDeidentifyTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_deidentify_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2612,8 +2576,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where deidentifications templates will be retrieved
-        #   from. Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -2648,12 +2611,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_deidentify_templates(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/deidentifyTemplates', options)
+        def list_project_location_deidentify_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/deidentifyTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDeidentifyTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -2745,9 +2708,6 @@ module Google
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location to store and process the job. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest] google_privacy_dlp_v2_create_dlp_job_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2766,14 +2726,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_dlp_job(parent, location_id, google_privacy_dlp_v2_create_dlp_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/dlpJobs', options)
+        def create_project_location_dlp_job(parent, google_privacy_dlp_v2_create_dlp_job_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/dlpJobs', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateDlpJobRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_dlp_job_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2DlpJob
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -2926,9 +2885,6 @@ module Google
         # https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location where jobs will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -2953,6 +2909,8 @@ module Google
         #   * inspected_storage = cloud_storage AND (state = done OR state = canceled)
         #   * end_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -2987,13 +2945,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_dlp_jobs(parent, location_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/dlpJobs', options)
+        def list_project_location_dlp_jobs(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, type: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/dlpJobs', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListDlpJobsResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3012,10 +2970,6 @@ module Google
         # be all types, but may change over time as detectors are updated.
         # @param [String] parent
         #   The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location to process the request. Reserved for future
-        #   extensions.
-        #   Location is restricted to 'global', 'us', 'asia', and 'europe'.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest] google_privacy_dlp_v2_redact_image_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3034,14 +2988,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def redact_project_location_image(parent, location_id, google_privacy_dlp_v2_redact_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/image:redact', options)
+        def redact_project_location_image(parent, google_privacy_dlp_v2_redact_image_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/image:redact', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageRequest::Representation
           command.request_object = google_privacy_dlp_v2_redact_image_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2RedactImageResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3053,9 +3006,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the inspection template. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest] google_privacy_dlp_v2_create_inspect_template_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3074,14 +3024,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_inspect_template(parent, location_id, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/inspectTemplates', options)
+        def create_project_location_inspect_template(parent, google_privacy_dlp_v2_create_inspect_template_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/inspectTemplates', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateInspectTemplateRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_inspect_template_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3161,8 +3110,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where inspection templates will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -3197,12 +3145,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_inspect_templates(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/inspectTemplates', options)
+        def list_project_location_inspect_templates(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/inspectTemplates', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListInspectTemplatesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3287,9 +3235,6 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id.
-        # @param [String] location_id
-        #   The geographic location to store the job trigger. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest] google_privacy_dlp_v2_create_job_trigger_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3308,14 +3253,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_job_trigger(parent, location_id, google_privacy_dlp_v2_create_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/jobTriggers', options)
+        def create_project_location_job_trigger(parent, google_privacy_dlp_v2_create_job_trigger_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/jobTriggers', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateJobTriggerRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_job_trigger_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3429,9 +3373,6 @@ module Google
         # See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
         # @param [String] parent
         #   Required. The parent resource name, for example `projects/my-project-id`.
-        # @param [String] location_id
-        #   The geographic location where job triggers will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
         # @param [String] filter
         #   Allows filtering.
         #   Supported syntax:
@@ -3452,6 +3393,8 @@ module Google
         #   * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
         #   * last_run_time > \"2017-12-12T00:00:00+00:00\"
         #   The length of this field should be no more than 500 characters.
+        # @param [String] location_id
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of triggeredJob fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -3488,13 +3431,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_job_triggers(parent, location_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/jobTriggers', options)
+        def list_project_location_job_triggers(parent, filter: nil, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/jobTriggers', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListJobTriggersResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['filter'] = filter unless filter.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3544,9 +3487,6 @@ module Google
         # @param [String] parent
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
-        # @param [String] location_id
-        #   The geographic location to store the stored infoType. Reserved for
-        #   future extensions.
         # @param [Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest] google_privacy_dlp_v2_create_stored_info_type_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -3565,14 +3505,13 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def create_project_location_stored_info_type(parent, location_id, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:post, 'v2/{+parent}/locations/{locationId}/storedInfoTypes', options)
+        def create_project_location_stored_info_type(parent, google_privacy_dlp_v2_create_stored_info_type_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v2/{+parent}/storedInfoTypes', options)
           command.request_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2CreateStoredInfoTypeRequest::Representation
           command.request_object = google_privacy_dlp_v2_create_stored_info_type_request_object
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoType
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
           execute_or_queue_command(command, &block)
@@ -3654,8 +3593,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where stored infoTypes will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,
@@ -3691,12 +3629,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_project_location_stored_info_types(parent, location_id, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
-          command = make_simple_command(:get, 'v2/{+parent}/locations/{locationId}/storedInfoTypes', options)
+        def list_project_location_stored_info_types(parent, location_id: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v2/{+parent}/storedInfoTypes', options)
           command.response_representation = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse::Representation
           command.response_class = Google::Apis::DlpV2::GooglePrivacyDlpV2ListStoredInfoTypesResponse
           command.params['parent'] = parent unless parent.nil?
-          command.params['locationId'] = location_id unless location_id.nil?
+          command.query['locationId'] = location_id unless location_id.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
@@ -3855,8 +3793,7 @@ module Google
         #   Required. The parent resource name, for example projects/my-project-id or
         #   organizations/my-org-id.
         # @param [String] location_id
-        #   The geographic location where stored infoTypes will be retrieved from.
-        #   Use `-` for all locations. Reserved for future extensions.
+        #   Deprecated. This field has no effect.
         # @param [String] order_by
         #   Comma separated list of fields to order by,
         #   followed by `asc` or `desc` postfix. This list is case-insensitive,

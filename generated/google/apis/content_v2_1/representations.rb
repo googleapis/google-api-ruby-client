@@ -4543,6 +4543,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :adjustment_id, as: 'adjustmentId'
           property :merchant_order_id, as: 'merchantOrderId'
+          property :order_item_id, as: 'orderItemId'
           property :settlement_entry_id, as: 'settlementEntryId'
           collection :shipment_ids, as: 'shipmentIds'
           property :transaction_id, as: 'transactionId'

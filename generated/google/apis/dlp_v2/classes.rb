@@ -1155,8 +1155,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2DeidentifyTemplate]
         attr_accessor :deidentify_template
       
-        # The geographic location to store the deidentification template. Reserved
-        # for future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1200,8 +1199,7 @@ module Google
         # @return [String]
         attr_accessor :job_id
       
-        # The geographic location to store and process the job. Reserved for
-        # future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1237,8 +1235,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectTemplate]
         attr_accessor :inspect_template
       
-        # The geographic location to store the inspection template. Reserved for
-        # future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1273,8 +1270,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2JobTrigger]
         attr_accessor :job_trigger
       
-        # The geographic location to store the job trigger. Reserved for
-        # future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1310,8 +1306,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2StoredInfoTypeConfig]
         attr_accessor :config
       
-        # The geographic location to store the stored infoType. Reserved for
-        # future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -1835,8 +1830,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
-        # The geographic location to process de-identification. Reserved for future
-        # extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -3314,10 +3308,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
-        # The geographic location to process content inspection. Reserved for future
-        # extensions.
-        # When inspecting images location is restricted to 'global', 'us', 'asia',
-        # and 'europe'.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -5262,9 +5253,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2InspectConfig]
         attr_accessor :inspect_config
       
-        # The geographic location to process the request. Reserved for future
-        # extensions.
-        # Location is restricted to 'global', 'us', 'asia', and 'europe'.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id
@@ -5370,8 +5359,7 @@ module Google
         # @return [Google::Apis::DlpV2::GooglePrivacyDlpV2ContentItem]
         attr_accessor :item
       
-        # The geographic location to process content reidentification.  Reserved for
-        # future extensions.
+        # Deprecated. This field has no effect.
         # Corresponds to the JSON property `locationId`
         # @return [String]
         attr_accessor :location_id

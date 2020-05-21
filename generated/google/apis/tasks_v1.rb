@@ -20,12 +20,12 @@ module Google
   module Apis
     # Tasks API
     #
-    # Manages your tasks and task lists.
+    # The Google Tasks API lets you manage your tasks and task lists.
     #
-    # @see https://developers.google.com/google-apps/tasks/firstapp
+    # @see 
     module TasksV1
       VERSION = 'V1'
-      REVISION = '20200129'
+      REVISION = '20200516'
 
       # Create, edit, organize, and delete all your tasks
       AUTH_TASKS = 'https://www.googleapis.com/auth/tasks'

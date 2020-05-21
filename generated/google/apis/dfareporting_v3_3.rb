@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/doubleclick-advertisers/
     module DfareportingV3_3
       VERSION = 'V3_3'
-      REVISION = '20200326'
+      REVISION = '20200514'
 
       # Manage DoubleClick Digital Marketing conversions
       AUTH_DDMCONVERSIONS = 'https://www.googleapis.com/auth/ddmconversions'

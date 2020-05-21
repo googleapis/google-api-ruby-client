@@ -530,6 +530,193 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Service producers can use this method to add DNS record sets to private DNS
+        # zones in the shared producer host project.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's
+        #   organization. For Google services that support this functionality, this
+        #   value is `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1::AddDnsRecordSetRequest] add_dns_record_set_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_dns_record_set(parent, add_dns_record_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsRecordSets:add', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::AddDnsRecordSetRequest::Representation
+          command.request_object = add_dns_record_set_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to remove DNS record sets from
+        # private DNS zones in the shared producer host project.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's
+        #   organization. For Google services that support this functionality, this
+        #   value is `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1::RemoveDnsRecordSetRequest] remove_dns_record_set_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_dns_record_set(parent, remove_dns_record_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsRecordSets:remove', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::RemoveDnsRecordSetRequest::Representation
+          command.request_object = remove_dns_record_set_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to update DNS record sets from
+        # private DNS zones in the shared producer host project.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's
+        #   organization. For Google services that support this functionality, this
+        #   value is `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1::UpdateDnsRecordSetRequest] update_dns_record_set_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def update_dns_record_set(parent, update_dns_record_set_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsRecordSets:update', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::UpdateDnsRecordSetRequest::Representation
+          command.request_object = update_dns_record_set_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to add private DNS zones in the
+        # shared producer host project and matching peering zones in the consumer
+        # project.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's
+        #   organization. For Google services that support this functionality, this
+        #   value is `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1::AddDnsZoneRequest] add_dns_zone_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def add_dns_zone(parent, add_dns_zone_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsZones:add', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::AddDnsZoneRequest::Representation
+          command.request_object = add_dns_zone_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Service producers can use this method to remove private DNS zones in the
+        # shared producer host project and matching peering zones in the consumer
+        # project.
+        # @param [String] parent
+        #   Required. The service that is managing peering connectivity for a service
+        #   producer's
+        #   organization. For Google services that support this functionality, this
+        #   value is `services/servicenetworking.googleapis.com`.
+        # @param [Google::Apis::ServicenetworkingV1::RemoveDnsZoneRequest] remove_dns_zone_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::ServicenetworkingV1::Operation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::ServicenetworkingV1::Operation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def remove_dns_zone(parent, remove_dns_zone_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/{+parent}/dnsZones:remove', options)
+          command.request_representation = Google::Apis::ServicenetworkingV1::RemoveDnsZoneRequest::Representation
+          command.request_object = remove_dns_zone_request_object
+          command.response_representation = Google::Apis::ServicenetworkingV1::Operation::Representation
+          command.response_class = Google::Apis::ServicenetworkingV1::Operation
+          command.params['parent'] = parent unless parent.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Service producers can use this method to add roles in the shared VPC host
         # project. Each role is bound to the provided member. Each role must be
         # selected from within a whitelisted set of roles. Each role is applied at

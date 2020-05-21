@@ -7254,9 +7254,9 @@ module Google
         
         # Lists files for a report.
         # @param [Fixnum] profile_id
-        #   The DFA user profile ID.
+        #   The DFA profile ID.
         # @param [Fixnum] report_id
-        #   The ID of the report.
+        #   The ID of the parent report.
         # @param [Fixnum] max_results
         #   Maximum number of results to return.
         # @param [String] page_token

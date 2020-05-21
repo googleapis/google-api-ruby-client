@@ -5713,7 +5713,7 @@ module Google
         end
       end
       
-      # 
+      # List of files for a report.
       class FileList
         include Google::Apis::Core::Hashable
       
@@ -5722,7 +5722,7 @@ module Google
         # @return [String]
         attr_accessor :etag
       
-        # 
+        # The files returned in this response.
         # Corresponds to the JSON property `items`
         # @return [Array<Google::Apis::DfareportingV3_3::File>]
         attr_accessor :items

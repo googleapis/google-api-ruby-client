@@ -22,6 +22,24 @@ module Google
   module Apis
     module ServicenetworkingV1beta
       
+      class AddDnsRecordSetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDnsZoneMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDnsZoneResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AddRolesMetadata
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -131,6 +149,18 @@ module Google
       end
       
       class CustomHttpPattern
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsRecordSet
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class DnsZone
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -322,6 +352,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class RemoveDnsRecordSetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveDnsRecordSetResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveDnsZoneMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class RemoveDnsZoneResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Route
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -394,6 +448,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class UpdateDnsRecordSetMetadata
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Usage
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -404,6 +464,28 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AddDnsRecordSetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddDnsZoneMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class AddDnsZoneResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :consumer_peering_zone, as: 'consumerPeeringZone', class: Google::Apis::ServicenetworkingV1beta::DnsZone, decorator: Google::Apis::ServicenetworkingV1beta::DnsZone::Representation
+      
+          property :producer_private_zone, as: 'producerPrivateZone', class: Google::Apis::ServicenetworkingV1beta::DnsZone, decorator: Google::Apis::ServicenetworkingV1beta::DnsZone::Representation
+      
+        end
       end
       
       class AddRolesMetadata
@@ -591,6 +673,24 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :kind, as: 'kind'
           property :path, as: 'path'
+        end
+      end
+      
+      class DnsRecordSet
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :data, as: 'data'
+          property :domain, as: 'domain'
+          property :ttl, as: 'ttl'
+          property :type, as: 'type'
+        end
+      end
+      
+      class DnsZone
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :dns_suffix, as: 'dnsSuffix'
+          property :name, as: 'name'
         end
       end
       
@@ -930,6 +1030,30 @@ module Google
         end
       end
       
+      class RemoveDnsRecordSetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveDnsRecordSetResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveDnsZoneMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
+      class RemoveDnsZoneResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Route
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1083,6 +1207,12 @@ module Google
           property :source_context, as: 'sourceContext', class: Google::Apis::ServicenetworkingV1beta::SourceContext, decorator: Google::Apis::ServicenetworkingV1beta::SourceContext::Representation
       
           property :syntax, as: 'syntax'
+        end
+      end
+      
+      class UpdateDnsRecordSetMetadata
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       

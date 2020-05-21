@@ -10861,6 +10861,11 @@ module Google
         # @return [String]
         attr_accessor :merchant_order_id
       
+        # The identifier of the item.
+        # Corresponds to the JSON property `orderItemId`
+        # @return [String]
+        attr_accessor :order_item_id
+      
         # The unique ID of the settlement transaction entry.
         # Corresponds to the JSON property `settlementEntryId`
         # @return [String]
@@ -10884,6 +10889,7 @@ module Google
         def update!(**args)
           @adjustment_id = args[:adjustment_id] if args.key?(:adjustment_id)
           @merchant_order_id = args[:merchant_order_id] if args.key?(:merchant_order_id)
+          @order_item_id = args[:order_item_id] if args.key?(:order_item_id)
           @settlement_entry_id = args[:settlement_entry_id] if args.key?(:settlement_entry_id)
           @shipment_ids = args[:shipment_ids] if args.key?(:shipment_ids)
           @transaction_id = args[:transaction_id] if args.key?(:transaction_id)

@@ -22,7 +22,7 @@ module Google
     module TasksV1
       # Tasks API
       #
-      # Manages your tasks and task lists.
+      # The Google Tasks API lets you manage your tasks and task lists.
       #
       # @example
       #    require 'google/apis/tasks_v1'
@@ -30,7 +30,7 @@ module Google
       #    Tasks = Google::Apis::TasksV1 # Alias the module
       #    service = Tasks::TasksService.new
       #
-      # @see https://developers.google.com/google-apps/tasks/firstapp
+      # @see 
       class TasksService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
@@ -38,16 +38,12 @@ module Google
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'tasks/v1/')
+          super('https://www.googleapis.com/', '')
           @batch_path = 'batch/tasks/v1'
         end
         
@@ -57,10 +53,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -73,12 +67,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_tasklist(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'users/@me/lists/{tasklist}', options)
+        def delete_tasklist(tasklist, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tasks/v1/users/@me/lists/{tasklist}', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -88,10 +81,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -104,28 +95,23 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_tasklist(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/@me/lists/{tasklist}', options)
+        def get_tasklist(tasklist, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tasks/v1/users/@me/lists/{tasklist}', options)
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Creates a new task list and adds it to the authenticated user's task lists.
-        # Fails with HTTP code 403 or 429 after reaching the storage limit of 2,000
-        # lists.
         # @param [Google::Apis::TasksV1::TaskList] task_list_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -138,31 +124,28 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_tasklist(task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'users/@me/lists', options)
+        def insert_tasklist(task_list_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tasks/v1/users/@me/lists', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
           command.response_class = Google::Apis::TasksV1::TaskList
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
         # Returns all the authenticated user's task lists.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is 20
-        #   (max allowed: 100).
+        #   Maximum number of task lists returned on one page. Optional. The default is
+        #   20 (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -175,15 +158,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tasklists(max_results: nil, page_token: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'users/@me/lists', options)
+        def list_tasklists(max_results: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tasks/v1/users/@me/lists', options)
           command.response_representation = Google::Apis::TasksV1::TaskLists::Representation
           command.response_class = Google::Apis::TasksV1::TaskLists
           command.query['maxResults'] = max_results unless max_results.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -195,10 +177,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -211,8 +191,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'users/@me/lists/{tasklist}', options)
+        def patch_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'tasks/v1/users/@me/lists/{tasklist}', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
@@ -220,7 +200,6 @@ module Google
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -231,10 +210,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -247,8 +224,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'users/@me/lists/{tasklist}', options)
+        def update_tasklist(tasklist, task_list_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tasks/v1/users/@me/lists/{tasklist}', options)
           command.request_representation = Google::Apis::TasksV1::TaskList::Representation
           command.request_object = task_list_object
           command.response_representation = Google::Apis::TasksV1::TaskList::Representation
@@ -256,7 +233,6 @@ module Google
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -268,10 +244,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -284,12 +258,11 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def clear_task(tasklist, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lists/{tasklist}/clear', options)
+        def clear_task(tasklist, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tasks/v1/lists/{tasklist}/clear', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -301,10 +274,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -317,13 +288,12 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def delete_task(tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:delete, 'lists/{tasklist}/tasks/{task}', options)
+        def delete_task(tasklist, task, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'tasks/v1/lists/{tasklist}/tasks/{task}', options)
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -335,10 +305,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -351,20 +319,18 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_task(tasklist, task, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'lists/{tasklist}/tasks/{task}', options)
+        def get_task(tasklist, task, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tasks/v1/lists/{tasklist}/tasks/{task}', options)
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
           command.params['task'] = task unless task.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # Creates a new task on the specified task list. Fails with HTTP code 403 or 429
-        # after reaching the storage limit of 100,000 tasks per account.
+        # Creates a new task on the specified task list.
         # @param [String] tasklist
         #   Task list identifier.
         # @param [Google::Apis::TasksV1::Task] task_object
@@ -372,15 +338,13 @@ module Google
         #   Parent task identifier. If the task is created at the top level, this
         #   parameter is omitted. Optional.
         # @param [String] previous
-        #   Previous sibling task identifier. If the task is created at the first position
-        #   among its siblings, this parameter is omitted. Optional.
+        #   Previous sibling task identifier. If the task is created at the first
+        #   position among its siblings, this parameter is omitted. Optional.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -393,8 +357,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def insert_task(tasklist, task_object = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lists/{tasklist}/tasks', options)
+        def insert_task(tasklist, task_object = nil, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tasks/v1/lists/{tasklist}/tasks', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
@@ -404,7 +368,6 @@ module Google
           command.query['previous'] = previous unless previous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -412,11 +375,11 @@ module Google
         # @param [String] tasklist
         #   Task list identifier.
         # @param [String] completed_max
-        #   Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter
-        #   by. Optional. The default is not to filter by completion date.
+        #   Upper bound for a task's completion date (as a RFC 3339 timestamp) to
+        #   filter by. Optional. The default is not to filter by completion date.
         # @param [String] completed_min
-        #   Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter
-        #   by. Optional. The default is not to filter by completion date.
+        #   Lower bound for a task's completion date (as a RFC 3339 timestamp) to
+        #   filter by. Optional. The default is not to filter by completion date.
         # @param [String] due_max
         #   Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
@@ -424,29 +387,28 @@ module Google
         #   Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by.
         #   Optional. The default is not to filter by due date.
         # @param [Fixnum] max_results
-        #   Maximum number of task lists returned on one page. Optional. The default is 20
-        #   (max allowed: 100).
+        #   Maximum number of task lists returned on one page. Optional. The default is
+        #   20 (max allowed: 100).
         # @param [String] page_token
         #   Token specifying the result page to return. Optional.
         # @param [Boolean] show_completed
-        #   Flag indicating whether completed tasks are returned in the result. Optional.
-        #   The default is True.
+        #   Flag indicating whether completed tasks are returned in the result.
+        #   Optional. The default is True.
         # @param [Boolean] show_deleted
         #   Flag indicating whether deleted tasks are returned in the result. Optional.
         #   The default is False.
         # @param [Boolean] show_hidden
-        #   Flag indicating whether hidden tasks are returned in the result. Optional. The
-        #   default is False.
+        #   Flag indicating whether hidden tasks are returned in the result. Optional.
+        #   The default is False.
         # @param [String] updated_min
-        #   Lower bound for a task's last modification time (as a RFC 3339 timestamp) to
-        #   filter by. Optional. The default is not to filter by last modification time.
+        #   Lower bound for a task's last modification time (as a RFC 3339 timestamp)
+        #   to filter by. Optional. The default is not to filter by last modification
+        #   time.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -459,8 +421,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'lists/{tasklist}/tasks', options)
+        def list_tasks(tasklist, completed_max: nil, completed_min: nil, due_max: nil, due_min: nil, max_results: nil, page_token: nil, show_completed: nil, show_deleted: nil, show_hidden: nil, updated_min: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'tasks/v1/lists/{tasklist}/tasks', options)
           command.response_representation = Google::Apis::TasksV1::Tasks::Representation
           command.response_class = Google::Apis::TasksV1::Tasks
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -476,7 +438,6 @@ module Google
           command.query['updatedMin'] = updated_min unless updated_min.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -496,10 +457,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -512,8 +471,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def move_task(tasklist, task, parent: nil, previous: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:post, 'lists/{tasklist}/tasks/{task}/move', options)
+        def move_task(tasklist, task, parent: nil, previous: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'tasks/v1/lists/{tasklist}/tasks/{task}/move', options)
           command.response_representation = Google::Apis::TasksV1::Task::Representation
           command.response_class = Google::Apis::TasksV1::Task
           command.params['tasklist'] = tasklist unless tasklist.nil?
@@ -522,7 +481,6 @@ module Google
           command.query['previous'] = previous unless previous.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -535,10 +493,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -551,8 +507,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def patch_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:patch, 'lists/{tasklist}/tasks/{task}', options)
+        def patch_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'tasks/v1/lists/{tasklist}/tasks/{task}', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
@@ -561,7 +517,6 @@ module Google
           command.params['task'] = task unless task.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
@@ -574,10 +529,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -590,8 +543,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def update_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:put, 'lists/{tasklist}/tasks/{task}', options)
+        def update_task(tasklist, task, task_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:put, 'tasks/v1/lists/{tasklist}/tasks/{task}', options)
           command.request_representation = Google::Apis::TasksV1::Task::Representation
           command.request_object = task_object
           command.response_representation = Google::Apis::TasksV1::Task::Representation
@@ -600,7 +553,6 @@ module Google
           command.params['task'] = task unless task.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -609,7 +561,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

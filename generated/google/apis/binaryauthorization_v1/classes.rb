@@ -540,7 +540,8 @@ module Google
         # @return [Array<Google::Apis::BinaryauthorizationV1::AdmissionWhitelistPattern>]
         attr_accessor :admission_whitelist_patterns
       
-        # Optional. Per-cluster admission rules. Cluster spec format:
+        # Optional. LINT.IfChange(cluster_regex)
+        # Per-cluster admission rules. Cluster spec format:
         # `location.clusterId`. There can be at most one admission rule per cluster
         # spec.
         # A `location` is either a compute zone (e.g. us-central1-a) or a region
@@ -548,6 +549,8 @@ module Google
         # For `clusterId` syntax restrictions see
         # https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.
         # clusters.
+        # LINT.ThenChange(//depot/google3/cloud/console/web/binary_authorization/api/
+        # models/admission_rule_type.ts:cluster_regex)
         # Corresponds to the JSON property `clusterAdmissionRules`
         # @return [Hash<String,Google::Apis::BinaryauthorizationV1::AdmissionRule>]
         attr_accessor :cluster_admission_rules

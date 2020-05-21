@@ -179,7 +179,7 @@ module Google
         #   Required. The resource name of the admin project(containing project and
         #   location),
         #   e.g.:
-        #   "projects/myproject/locations/US".
+        #   `projects/myproject/locations/US`.
         # @param [Fixnum] page_size
         #   The maximum number of items to return per page.
         # @param [String] page_token
@@ -266,7 +266,7 @@ module Google
         # Creates a new capacity commitment resource.
         # @param [String] parent
         #   Required. Resource name of the parent reservation. E.g.,
-        #   projects/myproject/locations/US
+        #   `projects/myproject/locations/US`
         # @param [Google::Apis::BigqueryreservationV1::CapacityCommitment] capacity_commitment_object
         # @param [Boolean] enforce_single_admin_project_per_org
         #   If true, fail the request if another project in the organization has a
@@ -306,7 +306,7 @@ module Google
         # `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] name
         #   Required. Resource name of the capacity commitment to delete. E.g.,
-        #   projects/myproject/locations/US/capacityCommitments/123
+        #   `projects/myproject/locations/US/capacityCommitments/123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -337,7 +337,7 @@ module Google
         # Returns information about the capacity commitment.
         # @param [String] name
         #   Required. Resource name of the capacity commitment to retrieve. E.g.,
-        #   projects/myproject/locations/US/capacityCommitments/123
+        #   `projects/myproject/locations/US/capacityCommitments/123`
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -368,7 +368,7 @@ module Google
         # Lists all the capacity commitments for the admin project.
         # @param [String] parent
         #   Required. Resource name of the parent reservation. E.g.,
-        #   projects/myproject/locations/US
+        #   `projects/myproject/locations/US`
         # @param [Fixnum] page_size
         #   The maximum number of items to return.
         # @param [String] page_token
@@ -409,7 +409,7 @@ module Google
         # with the error code `google.rpc.Code.FAILED_PRECONDITION`.
         # @param [String] parent
         #   Parent resource that identifies admin project and location e.g.,
-        #   projects/myproject/locations/us
+        #   `projects/myproject/locations/us`
         # @param [Google::Apis::BigqueryreservationV1::MergeCapacityCommitmentsRequest] merge_capacity_commitments_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -489,7 +489,7 @@ module Google
         # you would change the plan of the first one to `FLEX` and then delete it.
         # @param [String] name
         #   Required. The resource name e.g.,:
-        #   projects/myproject/locations/US/capacityCommitments/123
+        #   `projects/myproject/locations/US/capacityCommitments/123`
         # @param [Google::Apis::BigqueryreservationV1::SplitCapacityCommitmentRequest] split_capacity_commitment_request_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -625,7 +625,7 @@ module Google
         # Lists all the reservations for the project in the specified location.
         # @param [String] parent
         #   Required. The parent resource name containing project and location, e.g.:
-        #   "projects/myproject/locations/US"
+        #   `projects/myproject/locations/US`
         # @param [Fixnum] page_size
         #   The maximum number of items to return per page.
         # @param [String] page_token

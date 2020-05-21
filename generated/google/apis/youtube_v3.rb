@@ -18,15 +18,15 @@ require 'google/apis/youtube_v3/representations.rb'
 
 module Google
   module Apis
-    # YouTube Data API
+    # YouTube Data API v3
     #
-    # Supports core YouTube features, such as uploading videos, creating and
-    # managing playlists, searching for content, and much more.
+    # The YouTube Data API v3 is an API that provides access to YouTube data, such
+    # as videos, playlists, and channels.
     #
-    # @see https://developers.google.com/youtube/v3
+    # @see https://developers.google.com/youtube/
     module YoutubeV3
       VERSION = 'V3'
-      REVISION = '20200423'
+      REVISION = '20200518'
 
       # Manage your YouTube account
       AUTH_YOUTUBE = 'https://www.googleapis.com/auth/youtube'

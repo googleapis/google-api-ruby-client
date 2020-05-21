@@ -55,11 +55,9 @@ module Google
       class Task
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :completed, as: 'completed', type: DateTime
-      
+          property :completed, as: 'completed'
           property :deleted, as: 'deleted'
-          property :due, as: 'due', type: DateTime
-      
+          property :due, as: 'due'
           property :etag, as: 'etag'
           property :hidden, as: 'hidden'
           property :id, as: 'id'
@@ -72,8 +70,7 @@ module Google
           property :self_link, as: 'selfLink'
           property :status, as: 'status'
           property :title, as: 'title'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
         end
         
         class Link
@@ -94,8 +91,7 @@ module Google
           property :kind, as: 'kind'
           property :self_link, as: 'selfLink'
           property :title, as: 'title'
-          property :updated, as: 'updated', type: DateTime
-      
+          property :updated, as: 'updated'
         end
       end
       
