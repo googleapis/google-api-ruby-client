@@ -2117,6 +2117,11 @@ module Google
         # @return [String]
         attr_accessor :compression
       
+        # [Optional, Trusted Tester] Connection for external data source.
+        # Corresponds to the JSON property `connectionId`
+        # @return [String]
+        attr_accessor :connection_id
+      
         # Additional properties to set if sourceFormat is set to CSV.
         # Corresponds to the JSON property `csvOptions`
         # @return [Google::Apis::BigqueryV2::CsvOptions]
@@ -2192,6 +2197,7 @@ module Google
           @autodetect = args[:autodetect] if args.key?(:autodetect)
           @bigtable_options = args[:bigtable_options] if args.key?(:bigtable_options)
           @compression = args[:compression] if args.key?(:compression)
+          @connection_id = args[:connection_id] if args.key?(:connection_id)
           @csv_options = args[:csv_options] if args.key?(:csv_options)
           @google_sheets_options = args[:google_sheets_options] if args.key?(:google_sheets_options)
           @hive_partitioning_options = args[:hive_partitioning_options] if args.key?(:hive_partitioning_options)
@@ -6675,7 +6681,12 @@ module Google
         end
       end
       
-      # 
+      # This is used for defining User Defined Function (UDF) resources only when
+      # using legacy SQL. Users of Standard SQL should leverage either DDL (e.g.
+      # CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources.
+      # For additional information on migrating, see: https://cloud.google.com/
+      # bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#
+      # differences_in_user-defined_javascript_functions
       class UserDefinedFunctionResource
         include Google::Apis::Core::Hashable
       

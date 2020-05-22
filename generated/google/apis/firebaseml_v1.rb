@@ -12,21 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/pagespeedonline_v1/service.rb'
-require 'google/apis/pagespeedonline_v1/classes.rb'
-require 'google/apis/pagespeedonline_v1/representations.rb'
+require 'google/apis/firebaseml_v1/service.rb'
+require 'google/apis/firebaseml_v1/classes.rb'
+require 'google/apis/firebaseml_v1/representations.rb'
 
 module Google
   module Apis
-    # PageSpeed Insights API
+    # Firebase ML API
     #
-    # Analyzes the performance of a web page and provides tailored suggestions to
-    # make that page faster.
+    # Access custom machine learning models hosted via Firebase ML.
     #
-    # @see https://developers.google.com/speed/docs/insights/v1/getting_started
-    module PagespeedonlineV1
+    # @see https://firebase.google.com
+    module FirebasemlV1
       VERSION = 'V1'
-      REVISION = '20180606'
+      REVISION = '20200519'
+
+      # View and manage your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
     end
   end
 end

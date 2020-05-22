@@ -1267,6 +1267,7 @@ module Google
           property :bigtable_options, as: 'bigtableOptions', class: Google::Apis::BigqueryV2::BigtableOptions, decorator: Google::Apis::BigqueryV2::BigtableOptions::Representation
       
           property :compression, as: 'compression'
+          property :connection_id, as: 'connectionId'
           property :csv_options, as: 'csvOptions', class: Google::Apis::BigqueryV2::CsvOptions, decorator: Google::Apis::BigqueryV2::CsvOptions::Representation
       
           property :google_sheets_options, as: 'googleSheetsOptions', class: Google::Apis::BigqueryV2::GoogleSheetsOptions, decorator: Google::Apis::BigqueryV2::GoogleSheetsOptions::Representation

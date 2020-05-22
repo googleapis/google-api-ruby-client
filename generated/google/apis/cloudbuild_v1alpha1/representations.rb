@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CancelOperationRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class Empty
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -88,6 +94,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListOperationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListWorkerPoolsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -95,6 +107,12 @@ module Google
       end
       
       class Network
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Operation
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -125,6 +143,12 @@ module Google
       end
       
       class SourceProvenance
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Status
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -283,6 +307,12 @@ module Google
         end
       end
       
+      class CancelOperationRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+        end
+      end
+      
       class Empty
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -305,6 +335,15 @@ module Google
         end
       end
       
+      class ListOperationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :operations, as: 'operations', class: Google::Apis::CloudbuildV1alpha1::Operation, decorator: Google::Apis::CloudbuildV1alpha1::Operation::Representation
+      
+        end
+      end
+      
       class ListWorkerPoolsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -319,6 +358,18 @@ module Google
           property :network, as: 'network'
           property :project_id, as: 'projectId'
           property :subnetwork, as: 'subnetwork'
+        end
+      end
+      
+      class Operation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :done, as: 'done'
+          property :error, as: 'error', class: Google::Apis::CloudbuildV1alpha1::Status, decorator: Google::Apis::CloudbuildV1alpha1::Status::Representation
+      
+          hash :metadata, as: 'metadata'
+          property :name, as: 'name'
+          hash :response, as: 'response'
         end
       end
       
@@ -377,6 +428,15 @@ module Google
       
           property :resolved_storage_source, as: 'resolvedStorageSource', class: Google::Apis::CloudbuildV1alpha1::StorageSource, decorator: Google::Apis::CloudbuildV1alpha1::StorageSource::Representation
       
+        end
+      end
+      
+      class Status
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :code, as: 'code'
+          collection :details, as: 'details'
+          property :message, as: 'message'
         end
       end
       

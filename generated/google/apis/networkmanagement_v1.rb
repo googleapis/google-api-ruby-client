@@ -12,20 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/iamcredentials_v1/service.rb'
-require 'google/apis/iamcredentials_v1/classes.rb'
-require 'google/apis/iamcredentials_v1/representations.rb'
+require 'google/apis/networkmanagement_v1/service.rb'
+require 'google/apis/networkmanagement_v1/classes.rb'
+require 'google/apis/networkmanagement_v1/representations.rb'
 
 module Google
   module Apis
-    # IAM Service Account Credentials API
+    # Network Management API
     #
-    # Creates short-lived, limited-privilege credentials for IAM service accounts.
+    # The Network Management API provides a collection of network performance
+    # monitoring and diagnostic capabilities.
     #
-    # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
-    module IamcredentialsV1
+    # @see https://cloud.google.com/
+    module NetworkmanagementV1
       VERSION = 'V1'
-      REVISION = '20200515'
+      REVISION = '20200505'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

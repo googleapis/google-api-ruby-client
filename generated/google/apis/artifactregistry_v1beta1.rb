@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/iamcredentials_v1/service.rb'
-require 'google/apis/iamcredentials_v1/classes.rb'
-require 'google/apis/iamcredentials_v1/representations.rb'
+require 'google/apis/artifactregistry_v1beta1/service.rb'
+require 'google/apis/artifactregistry_v1beta1/classes.rb'
+require 'google/apis/artifactregistry_v1beta1/representations.rb'
 
 module Google
   module Apis
-    # IAM Service Account Credentials API
+    # Artifact Registry API
     #
-    # Creates short-lived, limited-privilege credentials for IAM service accounts.
+    # Store and manage build artifacts in a scalable and integrated service built on
+    # Google infrastructure.
     #
-    # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
-    module IamcredentialsV1
-      VERSION = 'V1'
-      REVISION = '20200515'
+    # @see https://cloud.google.com/artifacts/docs/
+    module ArtifactregistryV1beta1
+      VERSION = 'V1beta1'
+      REVISION = '20200508'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View your data across Google Cloud Platform services
+      AUTH_CLOUD_PLATFORM_READ_ONLY = 'https://www.googleapis.com/auth/cloud-platform.read-only'
     end
   end
 end

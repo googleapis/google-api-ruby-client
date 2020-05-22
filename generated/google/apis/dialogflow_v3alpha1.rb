@@ -12,23 +12,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/iamcredentials_v1/service.rb'
-require 'google/apis/iamcredentials_v1/classes.rb'
-require 'google/apis/iamcredentials_v1/representations.rb'
+require 'google/apis/dialogflow_v3alpha1/service.rb'
+require 'google/apis/dialogflow_v3alpha1/classes.rb'
+require 'google/apis/dialogflow_v3alpha1/representations.rb'
 
 module Google
   module Apis
-    # IAM Service Account Credentials API
+    # Dialogflow API
     #
-    # Creates short-lived, limited-privilege credentials for IAM service accounts.
+    # Builds conversational interfaces (for example, chatbots, and voice-powered
+    # apps and devices).
     #
-    # @see https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
-    module IamcredentialsV1
-      VERSION = 'V1'
-      REVISION = '20200515'
+    # @see https://cloud.google.com/dialogflow/
+    module DialogflowV3alpha1
+      VERSION = 'V3alpha1'
+      REVISION = '20200518'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+
+      # View, manage and query your Dialogflow agents
+      AUTH_DIALOGFLOW = 'https://www.googleapis.com/auth/dialogflow'
     end
   end
 end
