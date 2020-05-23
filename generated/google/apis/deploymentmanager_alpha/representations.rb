@@ -118,7 +118,7 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class DeploymentOutputsEntry
+      class DeploymentOutputEntry
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -197,6 +197,12 @@ module Google
       end
       
       class LogConfigCounterOptions
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class LogConfigCounterOptionsCustomField
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -459,6 +465,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -541,7 +548,6 @@ module Google
           property :op, as: 'op'
           property :svc, as: 'svc'
           property :sys, as: 'sys'
-          property :value, as: 'value'
           collection :values, as: 'values'
         end
       end
@@ -592,7 +598,7 @@ module Google
           property :name, as: 'name'
           property :operation, as: 'operation', class: Google::Apis::DeploymentmanagerAlpha::Operation, decorator: Google::Apis::DeploymentmanagerAlpha::Operation::Representation
       
-          collection :outputs, as: 'outputs', class: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry, decorator: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputsEntry::Representation
+          collection :outputs, as: 'outputs', class: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputEntry, decorator: Google::Apis::DeploymentmanagerAlpha::DeploymentOutputEntry::Representation
       
           property :self_link, as: 'selfLink'
           property :target, as: 'target', class: Google::Apis::DeploymentmanagerAlpha::TargetConfiguration, decorator: Google::Apis::DeploymentmanagerAlpha::TargetConfiguration::Representation
@@ -611,7 +617,7 @@ module Google
         end
       end
       
-      class DeploymentOutputsEntry
+      class DeploymentOutputEntry
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key'
@@ -733,8 +739,18 @@ module Google
       class LogConfigCounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_fields, as: 'customFields', class: Google::Apis::DeploymentmanagerAlpha::LogConfigCounterOptionsCustomField, decorator: Google::Apis::DeploymentmanagerAlpha::LogConfigCounterOptionsCustomField::Representation
+      
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigCounterOptionsCustomField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       
@@ -800,6 +816,7 @@ module Google
           property :progress, as: 'progress'
           property :region, as: 'region'
           property :self_link, as: 'selfLink'
+          property :self_link_with_id, as: 'selfLinkWithId'
           property :start_time, as: 'startTime'
           property :status, as: 'status'
           property :status_message, as: 'statusMessage'
@@ -1121,6 +1138,7 @@ module Google
       
           property :credential, as: 'credential', class: Google::Apis::DeploymentmanagerAlpha::Credential, decorator: Google::Apis::DeploymentmanagerAlpha::Credential::Representation
       
+          collection :custom_certificate_authority_roots, as: 'customCertificateAuthorityRoots'
           property :description, as: 'description'
           property :descriptor_url, as: 'descriptorUrl'
           property :id, :numeric_string => true, as: 'id'

@@ -136,6 +136,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class LogConfigCounterOptionsCustomField
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class LogConfigDataAccessOptions
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -306,6 +312,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :exempted_members, as: 'exemptedMembers'
+          property :ignore_child_exemptions, as: 'ignoreChildExemptions'
           property :log_type, as: 'logType'
         end
       end
@@ -334,7 +341,6 @@ module Google
           property :op, as: 'op'
           property :svc, as: 'svc'
           property :sys, as: 'sys'
-          property :value, as: 'value'
           collection :values, as: 'values'
         end
       end
@@ -470,8 +476,18 @@ module Google
       class LogConfigCounterOptions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :custom_fields, as: 'customFields', class: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptionsCustomField, decorator: Google::Apis::DeploymentmanagerV2::LogConfigCounterOptionsCustomField::Representation
+      
           property :field, as: 'field'
           property :metric, as: 'metric'
+        end
+      end
+      
+      class LogConfigCounterOptionsCustomField
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :value, as: 'value'
         end
       end
       

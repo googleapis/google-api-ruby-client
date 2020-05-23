@@ -1008,6 +1008,12 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::DatabaseEncryption]
         attr_accessor :desired_database_encryption
       
+        # DefaultSnatStatus contains the desired state of whether default sNAT should
+        # be disabled on the cluster.
+        # Corresponds to the JSON property `desiredDefaultSnatStatus`
+        # @return [Google::Apis::ContainerV1beta1::DefaultSnatStatus]
+        attr_accessor :desired_default_snat_status
+      
         # The desired image type for the node pool.
         # NOTE: Set the "desired_node_pool" field as well.
         # Corresponds to the JSON property `desiredImageType`
@@ -1164,6 +1170,7 @@ module Google
           @desired_cluster_autoscaling = args[:desired_cluster_autoscaling] if args.key?(:desired_cluster_autoscaling)
           @desired_cluster_telemetry = args[:desired_cluster_telemetry] if args.key?(:desired_cluster_telemetry)
           @desired_database_encryption = args[:desired_database_encryption] if args.key?(:desired_database_encryption)
+          @desired_default_snat_status = args[:desired_default_snat_status] if args.key?(:desired_default_snat_status)
           @desired_image_type = args[:desired_image_type] if args.key?(:desired_image_type)
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
@@ -1420,6 +1427,27 @@ module Google
         def update!(**args)
           @key_name = args[:key_name] if args.key?(:key_name)
           @state = args[:state] if args.key?(:state)
+        end
+      end
+      
+      # DefaultSnatStatus contains the desired state of whether default sNAT should
+      # be disabled on the cluster.
+      class DefaultSnatStatus
+        include Google::Apis::Core::Hashable
+      
+        # Disables cluster default sNAT rules.
+        # Corresponds to the JSON property `disabled`
+        # @return [Boolean]
+        attr_accessor :disabled
+        alias_method :disabled?, :disabled
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @disabled = args[:disabled] if args.key?(:disabled)
         end
       end
       
@@ -2371,6 +2399,12 @@ module Google
       class NetworkConfig
         include Google::Apis::Core::Hashable
       
+        # DefaultSnatStatus contains the desired state of whether default sNAT should
+        # be disabled on the cluster.
+        # Corresponds to the JSON property `defaultSnatStatus`
+        # @return [Google::Apis::ContainerV1beta1::DefaultSnatStatus]
+        attr_accessor :default_snat_status
+      
         # Whether Intra-node visibility is enabled for this cluster.
         # This makes same node pod to pod traffic visible for VPC network.
         # Corresponds to the JSON property `enableIntraNodeVisibility`
@@ -2400,6 +2434,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @default_snat_status = args[:default_snat_status] if args.key?(:default_snat_status)
           @enable_intra_node_visibility = args[:enable_intra_node_visibility] if args.key?(:enable_intra_node_visibility)
           @network = args[:network] if args.key?(:network)
           @subnetwork = args[:subnetwork] if args.key?(:subnetwork)
