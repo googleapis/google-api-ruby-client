@@ -52,12 +52,9 @@ module Google
         #
         # @return [void]
         def prepare!
-          set_xgac
-          if options&.authorization.respond_to? :quota_project_id
-            quota_project_id = options.authorization.quota_project_id
-            header['X-Goog-User-Project'] = quota_project_id if quota_project_id
-          end
-          if options && options.api_format_version
+          set_api_client_header
+          set_user_project_header
+          if options&.api_format_version
             header['X-Goog-Api-Format-Version'] = options.api_format_version.to_s
           end
           query[FIELDS_PARAM] = normalize_fields_param(query[FIELDS_PARAM]) if query.key?(FIELDS_PARAM)
@@ -130,7 +127,7 @@ module Google
 
         private
 
-        def set_xgac
+        def set_api_client_header
           old_xgac = header
             .find_all { |k, v| k.downcase == 'x-goog-api-client' }
             .map { |(a, b)| b }
@@ -142,6 +139,14 @@ module Google
           xgac = old_xgac.empty? ? xgac : "#{old_xgac} #{xgac}"
           header.delete_if { |k, v| k.downcase == 'x-goog-api-client' }
           header['X-Goog-Api-Client'] = xgac
+        end
+
+        def set_user_project_header
+          quota_project_id = options.quota_project
+          if !quota_project_id && options&.authorization.respond_to?(:quota_project_id)
+            quota_project_id = options.authorization.quota_project_id
+          end
+          header['X-Goog-User-Project'] = quota_project_id if quota_project_id
         end
 
         # Attempt to parse a JSON error message

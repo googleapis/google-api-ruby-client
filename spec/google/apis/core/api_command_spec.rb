@@ -71,10 +71,17 @@ RSpec.describe Google::Apis::Core::ApiCommand do
       expect(command.header['X-Goog-User-Project']).to be_nil
     end
 
-    it 'should set the X-Goog-User-Project to a given quota_project' do
+    it 'should set the X-Goog-User-Project to the credentials quota_project' do
       command.options.authorization = OpenStruct.new quota_project_id: "b_project_id"
       command.prepare!
       expect(command.header['X-Goog-User-Project']).to eql "b_project_id"
+    end
+
+    it 'should set the X-Goog-User-Project to a custom quota_project in preference to credentials' do
+      command.options.authorization = OpenStruct.new quota_project_id: "b_project_id"
+      command.options.quota_project = "c_project_id"
+      command.prepare!
+      expect(command.header['X-Goog-User-Project']).to eql "c_project_id"
     end
   end
 
