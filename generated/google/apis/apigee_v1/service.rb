@@ -2101,12 +2101,13 @@ module Google
         # particularly useful if you want to migrate existing consumer keys and
         # secrets to Apigee hybrid from another system.
         # Consumer keys and secrets can contain letters, numbers, underscores, and
-        # hyphens. No other special characters are allowed.
-        # **Note**: To avoid service disruptions, a consumer key and secret
-        # should not exceed 2 KBs each.
-        # After creating the consumer key and secret, associate the key with
-        # an API product using the
-        # UpdateDeveloperAppKey API.
+        # hyphens. No other special characters are allowed. To avoid service
+        # disruptions, a consumer key and secret should not exceed 2 KBs each.
+        # **Note**: When creating the consumer key and secret, an association to
+        # API products will not be made. Therefore, you should not specify the
+        # associated API products in your request. Instead, use the
+        # UpdateDeveloperAppKey API to
+        # make the association after the consumer key and secret are created.
         # If a consumer key and secret already exist, you can keep them or
         # delete them using the
         # DeleteDeveloperAppKey API.
@@ -2385,12 +2386,13 @@ module Google
         # particularly useful if you want to migrate existing consumer keys and
         # secrets to Apigee hybrid from another system.
         # Consumer keys and secrets can contain letters, numbers, underscores, and
-        # hyphens. No other special characters are allowed.
-        # **Note**: To avoid service disruptions, a consumer key and secret
-        # should not exceed 2 KBs each.
-        # After creating the consumer key and secret, associate the key with
-        # an API product using the
-        # UpdateDeveloperAppKey API.
+        # hyphens. No other special characters are allowed. To avoid service
+        # disruptions, a consumer key and secret should not exceed 2 KBs each.
+        # **Note**: When creating the consumer key and secret, an association to
+        # API products will not be made. Therefore, you should not specify the
+        # associated API products in your request. Instead, use the
+        # UpdateDeveloperAppKey API to
+        # make the association after the consumer key and secret are created.
         # If a consumer key and secret already exist, you can keep them or
         # delete them using the
         # DeleteDeveloperAppKey API.
@@ -2575,7 +2577,7 @@ module Google
         # @param [String] name
         #   Optional. Name of the environment. Alternatively, the name may
         #   be specified in the request body in the
-        #   environment_id field.
+        #   name field.
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

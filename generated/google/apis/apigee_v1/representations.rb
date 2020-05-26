@@ -1017,6 +1017,8 @@ module Google
           property :base_path, as: 'basePath'
           property :location, as: 'location'
           property :name, as: 'name'
+          property :proxy_uid, as: 'proxyUid'
+          property :uid, as: 'uid'
         end
       end
       
@@ -1128,9 +1130,11 @@ module Google
       
           collection :resources, as: 'resources', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceConfig::Representation
       
+          property :revision_id, :numeric_string => true, as: 'revisionId'
           property :sequence_number, :numeric_string => true, as: 'sequenceNumber'
           collection :targets, as: 'targets', class: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig, decorator: Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig::Representation
       
+          property :uid, as: 'uid'
         end
       end
       
@@ -1590,6 +1594,7 @@ module Google
       
           property :context_info, as: 'contextInfo'
           property :created_at, :numeric_string => true, as: 'createdAt'
+          property :description, as: 'description'
           property :display_name, as: 'displayName'
           hash :entity_meta_data_as_properties, as: 'entityMetaDataAsProperties'
           property :last_modified_at, :numeric_string => true, as: 'lastModifiedAt'

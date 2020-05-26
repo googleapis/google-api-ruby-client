@@ -1596,6 +1596,17 @@ module Google
         # @return [String]
         attr_accessor :name
       
+        # The uid of the proxy revision.
+        # Corresponds to the JSON property `proxyUid`
+        # @return [String]
+        attr_accessor :proxy_uid
+      
+        # A unique id that will only change if the deployment is deleted and
+        # recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1606,6 +1617,8 @@ module Google
           @base_path = args[:base_path] if args.key?(:base_path)
           @location = args[:location] if args.key?(:location)
           @name = args[:name] if args.key?(:name)
+          @proxy_uid = args[:proxy_uid] if args.key?(:proxy_uid)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -1816,6 +1829,10 @@ module Google
         include Google::Apis::Core::Hashable
       
         # List of API products for which the credential can be used.
+        # **Note**: Do not specify the list of API products when creating a consumer
+        # key and secret for a developer app. Instead, use the
+        # UpdateDeveloperAppKey API to
+        # make the association after the consumer key and secret are created.
         # Corresponds to the JSON property `apiProducts`
         # @return [Array<Object>]
         attr_accessor :api_products
@@ -2044,10 +2061,14 @@ module Google
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1ResourceConfig>]
         attr_accessor :resources
       
-        # A sequence number that defines an ordering on environment configs. No two
-        # configs under an environment will ever have the same sequence number.
-        # A higher sequence number means that the config was deployed more
-        # recently than one with a lower sequence number.
+        # Revision id that defines the ordering on the environment config.
+        # The higher the revision, the more recently the configuration
+        # was deployed.
+        # Corresponds to the JSON property `revisionId`
+        # @return [Fixnum]
+        attr_accessor :revision_id
+      
+        # DEPRECATED: use revision_id
         # Corresponds to the JSON property `sequenceNumber`
         # @return [Fixnum]
         attr_accessor :sequence_number
@@ -2057,6 +2078,12 @@ module Google
         # Corresponds to the JSON property `targets`
         # @return [Array<Google::Apis::ApigeeV1::GoogleCloudApigeeV1TargetServerConfig>]
         attr_accessor :targets
+      
+        # A unique id for the environment config that will only change if the
+        # environment is deleted and recreated.
+        # Corresponds to the JSON property `uid`
+        # @return [String]
+        attr_accessor :uid
       
         def initialize(**args)
            update!(**args)
@@ -2075,8 +2102,10 @@ module Google
           @pubsub_topic = args[:pubsub_topic] if args.key?(:pubsub_topic)
           @resource_references = args[:resource_references] if args.key?(:resource_references)
           @resources = args[:resources] if args.key?(:resources)
+          @revision_id = args[:revision_id] if args.key?(:revision_id)
           @sequence_number = args[:sequence_number] if args.key?(:sequence_number)
           @targets = args[:targets] if args.key?(:targets)
+          @uid = args[:uid] if args.key?(:uid)
         end
       end
       
@@ -3693,6 +3722,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :created_at
       
+        # Description of the shared flow revision.
+        # Corresponds to the JSON property `description`
+        # @return [String]
+        attr_accessor :description
+      
         # The human readable name of this shared flow.
         # Corresponds to the JSON property `displayName`
         # @return [String]
@@ -3754,6 +3788,7 @@ module Google
           @configuration_version = args[:configuration_version] if args.key?(:configuration_version)
           @context_info = args[:context_info] if args.key?(:context_info)
           @created_at = args[:created_at] if args.key?(:created_at)
+          @description = args[:description] if args.key?(:description)
           @display_name = args[:display_name] if args.key?(:display_name)
           @entity_meta_data_as_properties = args[:entity_meta_data_as_properties] if args.key?(:entity_meta_data_as_properties)
           @last_modified_at = args[:last_modified_at] if args.key?(:last_modified_at)
