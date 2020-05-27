@@ -899,6 +899,10 @@ module Google
         # Disabling a service account that is bound to VMs, Apps, Functions, or
         # other jobs will cause those jobs to lose access to resources if they are
         # using the disabled service account.
+        # Previously issued Access tokens for a service account will be rejected
+        # while the service account is disabled but will start working again if the
+        # account is re-enabled. Issuance of new tokens will fail while the account
+        # is disabled.
         # To improve reliability of your services and avoid unexpected outages, it
         # is recommended to first disable a service account rather than delete it.
         # After disabling the service account, wait at least 24 hours to verify there
@@ -1041,6 +1045,9 @@ module Google
         #   Requests for policies with any conditional bindings must specify version 3.
         #   Policies without any conditional bindings may specify any valid value or
         #   leave the field unset.
+        #   To learn which resources support conditions in their IAM policies, see the
+        #   [IAM
+        #   documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user

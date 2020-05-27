@@ -36,7 +36,8 @@ module Google
         # @return [Array<Google::Apis::FitnessV1::Dataset>]
         attr_accessor :dataset
       
-        # The end time for the aggregated data, in milliseconds since epoch, inclusive.
+        # The end time for the aggregated data, in milliseconds since epoch,
+        # inclusive.
         # Corresponds to the JSON property `endTimeMillis`
         # @return [Fixnum]
         attr_accessor :end_time_millis
@@ -47,7 +48,8 @@ module Google
         # @return [Google::Apis::FitnessV1::Session]
         attr_accessor :session
       
-        # The start time for the aggregated data, in milliseconds since epoch, inclusive.
+        # The start time for the aggregated data, in milliseconds since epoch,
+        # inclusive.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [Fixnum]
         attr_accessor :start_time_millis
@@ -78,21 +80,22 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A data source ID to aggregate. Only data from the specified data source ID
-        # will be included in the aggregation. If specified, this data source must exist;
-        # the OAuth scopes in the supplied credentials must grant read access to this
-        # data type. The dataset in the response will have the same data source ID. Note:
-        # Data can be aggregated by either the dataTypeName or the dataSourceId, not
-        # both.
+        # will be included in the aggregation. If specified, this data source must
+        # exist; the OAuth scopes in the supplied credentials must grant read access
+        # to this data type. The dataset in the response will have the same data
+        # source ID. Note: Data can be aggregated by either the dataTypeName or the
+        # dataSourceId, not both.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
         # The data type to aggregate. All data sources providing this data type will
-        # contribute data to the aggregation. The response will contain a single dataset
-        # for this data type name. The dataset will have a data source ID of derived::
-        # com.google.android.gms:aggregated. If the user has no data for this data type,
-        # an empty data set will be returned. Note: Data can be aggregated by either the
-        # dataTypeName or the dataSourceId, not both.
+        # contribute data to the aggregation. The response will contain a single
+        # dataset for this data type name. The dataset will have a data source ID of
+        # derived:<output data type name>:com.google.android.gms:aggregated.
+        # If the user has no data for this data type, an empty data set will be
+        # returned. Note: Data can be aggregated by either the dataTypeName or the
+        # dataSourceId, not both.
         # Corresponds to the JSON property `dataTypeName`
         # @return [String]
         attr_accessor :data_type_name
@@ -112,27 +115,28 @@ module Google
       class AggregateRequest
         include Google::Apis::Core::Hashable
       
-        # The specification of data to be aggregated. At least one aggregateBy spec must
-        # be provided. All data that is specified will be aggregated using the same
-        # bucketing criteria. There will be one dataset in the response for every
-        # aggregateBy spec.
+        # The specification of data to be aggregated. At least one aggregateBy spec
+        # must be provided. All data that is specified will be aggregated using the
+        # same bucketing criteria. There will be one dataset in the response for
+        # every aggregateBy spec.
         # Corresponds to the JSON property `aggregateBy`
         # @return [Array<Google::Apis::FitnessV1::AggregateBy>]
         attr_accessor :aggregate_by
       
         # Specifies that data be aggregated each activity segment recored for a user.
         # Similar to bucketByActivitySegment, but bucketing is done for each activity
-        # segment rather than all segments of the same type. Mutually exclusive of other
-        # bucketing specifications.
+        # segment rather than all segments of the same type. Mutually exclusive of
+        # other bucketing specifications.
         # Corresponds to the JSON property `bucketByActivitySegment`
         # @return [Google::Apis::FitnessV1::BucketByActivity]
         attr_accessor :bucket_by_activity_segment
       
-        # Specifies that data be aggregated by the type of activity being performed when
-        # the data was recorded. All data that was recorded during a certain activity
-        # type (for the given time range) will be aggregated into the same bucket. Data
-        # that was recorded while the user was not active will not be included in the
-        # response. Mutually exclusive of other bucketing specifications.
+        # Specifies that data be aggregated by the type of activity being performed
+        # when the data was recorded. All data that was recorded during a certain
+        # activity type (for the given time range) will be aggregated into the same
+        # bucket. Data that was recorded while the user was not active will not be
+        # included in the response. Mutually exclusive of other bucketing
+        # specifications.
         # Corresponds to the JSON property `bucketByActivityType`
         # @return [Google::Apis::FitnessV1::BucketByActivity]
         attr_accessor :bucket_by_activity_type
@@ -150,8 +154,9 @@ module Google
         # @return [Google::Apis::FitnessV1::BucketByTime]
         attr_accessor :bucket_by_time
       
-        # The end of a window of time. Data that intersects with this time window will
-        # be aggregated. The time is in milliseconds since epoch, inclusive.
+        # The end of a window of time. Data that intersects with this time
+        # window will be aggregated. The time is in milliseconds since epoch,
+        # inclusive.
         # Corresponds to the JSON property `endTimeMillis`
         # @return [Fixnum]
         attr_accessor :end_time_millis
@@ -161,8 +166,9 @@ module Google
         # @return [Array<String>]
         attr_accessor :filtered_data_quality_standard
       
-        # The start of a window of time. Data that intersects with this time window will
-        # be aggregated. The time is in milliseconds since epoch, inclusive.
+        # The start of a window of time. Data that intersects with this time
+        # window will be aggregated. The time is in milliseconds since epoch,
+        # inclusive.
         # Corresponds to the JSON property `startTimeMillis`
         # @return [Fixnum]
         attr_accessor :start_time_millis
@@ -212,18 +218,18 @@ module Google
         # @return [String]
         attr_accessor :details_url
       
-        # The name of this application. This is required for REST clients, but we do not
-        # enforce uniqueness of this name. It is provided as a matter of convenience for
-        # other developers who would like to identify which REST created an Application
-        # or Data Source.
+        # The name of this application. This is required for REST clients, but we
+        # do not enforce uniqueness of this name. It is provided as a matter of
+        # convenience for other developers who would like to identify which REST
+        # created an Application or Data Source.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
       
-        # Package name for this application. This is used as a unique identifier when
-        # created by Android applications, but cannot be specified by REST clients. REST
-        # clients will have their developer project number reflected into the Data
-        # Source data stream IDs, instead of the packageName.
+        # Package name for this application. This is used as a unique
+        # identifier when created by Android applications, but cannot be specified
+        # by REST clients. REST clients will have their developer project number
+        # reflected into the Data Source data stream IDs, instead of the packageName.
         # Corresponds to the JSON property `packageName`
         # @return [String]
         attr_accessor :package_name
@@ -251,14 +257,15 @@ module Google
       class BucketByActivity
         include Google::Apis::Core::Hashable
       
-        # The default activity stream will be used if a specific activityDataSourceId is
-        # not specified.
+        # The default activity stream will be used if a specific activityDataSourceId
+        # is not specified.
         # Corresponds to the JSON property `activityDataSourceId`
         # @return [String]
         attr_accessor :activity_data_source_id
       
         # Specifies that only activity segments of duration longer than
-        # minDurationMillis are considered and used as a container for aggregated data.
+        # minDurationMillis are considered and used as a container for aggregated
+        # data.
         # Corresponds to the JSON property `minDurationMillis`
         # @return [Fixnum]
         attr_accessor :min_duration_millis
@@ -299,8 +306,8 @@ module Google
         include Google::Apis::Core::Hashable
       
         # Specifies that result buckets aggregate data by exactly durationMillis time
-        # frames. Time frames that contain no data will be included in the response with
-        # an empty dataset.
+        # frames. Time frames that contain no data will be included in the response
+        # with an empty dataset.
         # Corresponds to the JSON property `durationMillis`
         # @return [Fixnum]
         attr_accessor :duration_millis
@@ -352,14 +359,14 @@ module Google
         end
       end
       
-      # Represents a single data point, generated by a particular data source. A data
-      # point holds a value for each field, an end timestamp and an optional start
-      # time. The exact semantics of each of these attributes are specified in the
-      # documentation for the particular data type.
+      # Represents a single data point, generated by a particular data source.  A
+      # data point holds a value for each field, an end timestamp and an optional
+      # start time.  The exact semantics of each of these attributes are specified in
+      # the documentation for the particular data type.
       # A data point can represent an instantaneous measurement, reading or input
-      # observation, as well as averages or aggregates over a time interval. Check the
-      # data type documentation to determine which is the case for a particular data
-      # type.
+      # observation, as well as averages or aggregates over a time interval.  Check
+      # the data type documentation to determine which is the case for a particular
+      # data type.
       # Data points always contain one value for each field of the data type.
       class DataPoint
         include Google::Apis::Core::Hashable
@@ -374,25 +381,25 @@ module Google
         # @return [String]
         attr_accessor :data_type_name
       
-        # The end time of the interval represented by this data point, in nanoseconds
-        # since epoch.
+        # The end time of the interval represented by this data point, in
+        # nanoseconds since epoch.
         # Corresponds to the JSON property `endTimeNanos`
         # @return [Fixnum]
         attr_accessor :end_time_nanos
       
-        # Indicates the last time this data point was modified. Useful only in contexts
-        # where we are listing the data changes, rather than representing the current
-        # state of the data.
+        # Indicates the last time this data point was modified. Useful only in
+        # contexts where we are listing the data changes, rather than representing
+        # the current state of the data.
         # Corresponds to the JSON property `modifiedTimeMillis`
         # @return [Fixnum]
         attr_accessor :modified_time_millis
       
-        # If the data point is contained in a dataset for a derived data source, this
-        # field will be populated with the data source stream ID that created the data
-        # point originally.
+        # If the data point is contained in a dataset for a derived data source,
+        # this field will be populated with the data source stream ID that created
+        # the data point originally.
         # WARNING: do not rely on this field for anything other than debugging. The
-        # value of this field, if it is set at all, is an implementation detail and is
-        # not guaranteed to remain consistent.
+        # value of this field, if it is set at all, is an implementation detail and
+        # is not guaranteed to remain consistent.
         # Corresponds to the JSON property `originDataSourceId`
         # @return [String]
         attr_accessor :origin_data_source_id
@@ -402,17 +409,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :raw_timestamp_nanos
       
-        # The start time of the interval represented by this data point, in nanoseconds
-        # since epoch.
+        # The start time of the interval represented by this data point, in
+        # nanoseconds since epoch.
         # Corresponds to the JSON property `startTimeNanos`
         # @return [Fixnum]
         attr_accessor :start_time_nanos
       
         # Values of each data type field for the data point. It is expected that each
-        # value corresponding to a data type field will occur in the same order that the
-        # field is listed with in the data type specified in a data source.
-        # Only one of integer and floating point fields will be populated, depending on
-        # the format enum value within data source's type field.
+        # value corresponding to a data type field will occur in the same order that
+        # the field is listed with in the data type specified in a data source.
+        # Only one of integer and floating point fields will be populated, depending
+        # on the format enum value within data source's type field.
         # Corresponds to the JSON property `value`
         # @return [Array<Google::Apis::FitnessV1::Value>]
         attr_accessor :value
@@ -434,11 +441,12 @@ module Google
         end
       end
       
-      # Definition of a unique source of sensor data. Data sources can expose raw data
-      # coming from hardware sensors on local or companion devices. They can also
-      # expose derived data, created by transforming or merging other data sources.
-      # Multiple data sources can exist for the same data type. Every data point
-      # inserted into or read from this service has an associated data source.
+      # Definition of a unique source of sensor data.  Data sources can expose raw
+      # data coming from hardware sensors on local or companion devices. They can
+      # also expose derived data, created by transforming or merging other data
+      # sources. Multiple data sources can exist for the same data type. Every data
+      # point inserted into or read from this service has an associated data
+      # source.
       # The data source contains enough information to uniquely identify its data,
       # including the hardware device and the application that collected and/or
       # transformed the data. It also holds useful metadata, such as the hardware and
@@ -450,7 +458,7 @@ module Google
       class DataSource
         include Google::Apis::Core::Hashable
       
-        # 
+        # Information about an application which feeds sensor data into the platform.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application
@@ -463,46 +471,53 @@ module Google
         attr_accessor :data_quality_standard
       
         # A unique identifier for the data stream produced by this data source. The
-        # identifier includes:
-        # 
-        # - The physical device's manufacturer, model, and serial number (UID).
-        # - The application's package name or name. Package name is used when the data
-        # source was created by an Android application. The developer project number is
-        # used when the data source was created by a REST client.
-        # - The data source's type.
-        # - The data source's stream name.  Note that not all attributes of the data
-        # source are used as part of the stream identifier. In particular, the version
-        # of the hardware/the application isn't used. This allows us to preserve the
-        # same stream through version updates. This also means that two DataSource
-        # objects may represent the same data stream even if they're not equal.
-        # The exact format of the data stream ID created by an Android application is:
-        # type:dataType.name:application.packageName:device.manufacturer:device.model:
-        # device.uid:dataStreamName
-        # The exact format of the data stream ID created by a REST client is: type:
-        # dataType.name:developer project number:device.manufacturer:device.model:device.
-        # uid:dataStreamName
+        # identifier includes:<br/><br/>
+        # <ul>
+        # <li>The physical device's manufacturer, model, and serial number
+        # (UID).</li>
+        # <li>The application's package name or name. Package name is used when the
+        # data source was created by an Android application. The developer project
+        # number is used when the data source was created by a REST client.</li>
+        # <li>The data source's type.</li>
+        # <li>The data source's stream name.</li>
+        # </ul>
+        # Note that not all attributes of the data source are used as part of the
+        # stream identifier. In particular, the version of the hardware/the
+        # application isn't used. This allows us to preserve the same stream through
+        # version updates. This also means that two DataSource objects may represent
+        # the same data stream even if they're not equal.
+        # The exact format of the data stream ID created by an Android application
+        # is:
+        # <var>type:dataType.name<wbr/>:application.packageName<wbr/>:device.
+        # manufacturer<wbr/>:device.model<wbr/>:device.uid<wbr/>:dataStreamName</var>
+        # The exact format of the data stream ID created by a REST client is:
+        # <var>type:dataType.name<wbr/>:developer project
+        # number<wbr/>:device.manufacturer<wbr/>:device.model:device.uid<wbr/>:
+        # dataStreamName</var>
         # When any of the optional fields that make up the data stream ID are absent,
-        # they will be omitted from the data stream ID. The minimum viable data stream
-        # ID would be: type:dataType.name:developer project number
-        # Finally, the developer project number and device UID are obfuscated when read
-        # by any REST or Android client that did not create the data source. Only the
-        # data source creator will see the developer project number in clear and normal
-        # form. This means a client will see a different set of data_stream_ids than
-        # another client with different credentials.
+        # they will be omitted from the data stream ID. The minimum viable data
+        # stream ID would be:
+        # type:dataType.name:developer project number
+        # Finally, the developer project number and device UID are obfuscated when
+        # read by any REST or Android client that did not create the data source.
+        # Only the data source creator will see the developer project number in clear
+        # and normal form. This means a client will see a different set of
+        # data_stream_ids than another client with different credentials.
         # Corresponds to the JSON property `dataStreamId`
         # @return [String]
         attr_accessor :data_stream_id
       
-        # The stream name uniquely identifies this particular data source among other
-        # data sources of the same type from the same underlying producer. Setting the
-        # stream name is optional, but should be done whenever an application exposes
-        # two streams for the same data type, or when a device has two equivalent
-        # sensors.
+        # The stream name uniquely identifies this particular data source among
+        # other data sources of the same type from the same underlying producer.
+        # Setting the stream name is optional, but should be done whenever an
+        # application exposes two streams for the same data type, or when a device
+        # has two equivalent sensors.
         # Corresponds to the JSON property `dataStreamName`
         # @return [String]
         attr_accessor :data_stream_name
       
-        # 
+        # The data type defines the schema for a stream of data being collected by,
+        # inserted into, or queried from the Fitness API.
         # Corresponds to the JSON property `dataType`
         # @return [Google::Apis::FitnessV1::DataType]
         attr_accessor :data_type
@@ -510,14 +525,17 @@ module Google
         # Representation of an integrated device (such as a phone or a wearable) that
         # can hold sensors. Each sensor is exposed as a data source.
         # The main purpose of the device information contained in this class is to
-        # identify the hardware of a particular data source. This can be useful in
+        # identify the hardware of a particular data source.  This can be useful in
         # different ways, including:
-        # - Distinguishing two similar sensors on different devices (the step counter on
-        # two nexus 5 phones, for instance)
-        # - Display the source of data to the user (by using the device make / model)
-        # - Treat data differently depending on sensor type (accelerometers on a watch
-        # may give different patterns than those on a phone)
-        # - Build different analysis models for each device/version.
+        # <ul>
+        # <li>Distinguishing two similar sensors on different devices (the step
+        # counter on two nexus 5 phones, for instance)
+        # <li>Display the source of data to the user (by using the device make /
+        # model)
+        # <li>Treat data differently depending on sensor type (accelerometers on a
+        # watch may give different patterns than those on a phone)
+        # <li>Build different analysis models for each device/version.
+        # </ul>
         # Corresponds to the JSON property `device`
         # @return [Google::Apis::FitnessV1::Device]
         attr_accessor :device
@@ -559,8 +577,8 @@ module Google
         # @return [Array<Google::Apis::FitnessV1::DataTypeField>]
         attr_accessor :field
       
-        # Each data type has a unique, namespaced, name. All data types in the com.
-        # google namespace are shared as part of the platform.
+        # Each data type has a unique, namespaced, name. All data types in the
+        # com.google namespace are shared as part of the platform.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -590,8 +608,8 @@ module Google
         # @return [String]
         attr_accessor :format
       
-        # Defines the name and format of data. Unlike data type names, field names are
-        # not namespaced, and only need to be unique within the data type.
+        # Defines the name and format of data. Unlike data type names, field names
+        # are not namespaced, and only need to be unique within the data type.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
@@ -614,43 +632,44 @@ module Google
         end
       end
       
-      # A dataset represents a projection container for data points. They do not carry
-      # any info of their own. Datasets represent a set of data points from a
+      # A dataset represents a projection container for data points. They do not
+      # carry any info of their own. Datasets represent a set of data points from a
       # particular data source. A data point can be found in more than one dataset.
       class Dataset
         include Google::Apis::Core::Hashable
       
-        # The data stream ID of the data source that created the points in this dataset.
+        # The data stream ID of the data source that created the points in this
+        # dataset.
         # Corresponds to the JSON property `dataSourceId`
         # @return [String]
         attr_accessor :data_source_id
       
         # The largest end time of all data points in this possibly partial
-        # representation of the dataset. Time is in nanoseconds from epoch. This should
-        # also match the second part of the dataset identifier.
+        # representation of the dataset. Time is in nanoseconds from epoch. This
+        # should also match the second part of the dataset identifier.
         # Corresponds to the JSON property `maxEndTimeNs`
         # @return [Fixnum]
         attr_accessor :max_end_time_ns
       
         # The smallest start time of all data points in this possibly partial
-        # representation of the dataset. Time is in nanoseconds from epoch. This should
-        # also match the first part of the dataset identifier.
+        # representation of the dataset. Time is in nanoseconds from epoch. This
+        # should also match the first part of the dataset identifier.
         # Corresponds to the JSON property `minStartTimeNs`
         # @return [Fixnum]
         attr_accessor :min_start_time_ns
       
-        # This token will be set when a dataset is received in response to a GET request
-        # and the dataset is too large to be included in a single response. Provide this
-        # value in a subsequent GET request to return the next page of data points
-        # within this dataset.
+        # This token will be set when a dataset is received in response to a GET
+        # request and the dataset is too large to be included in a single response.
+        # Provide this value in a subsequent GET request to return the next page of
+        # data points within this dataset.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
         # A partial list of data points contained in the dataset, ordered by largest
-        # endTimeNanos first. This list is considered complete when retrieving a small
-        # dataset and partial when patching a dataset or retrieving a dataset that is
-        # too large to include in a single response.
+        # endTimeNanos first. This list is considered complete when retrieving a
+        # small dataset and partial when patching a dataset or retrieving a dataset
+        # that is too large to include in a single response.
         # Corresponds to the JSON property `point`
         # @return [Array<Google::Apis::FitnessV1::DataPoint>]
         attr_accessor :point
@@ -672,14 +691,17 @@ module Google
       # Representation of an integrated device (such as a phone or a wearable) that
       # can hold sensors. Each sensor is exposed as a data source.
       # The main purpose of the device information contained in this class is to
-      # identify the hardware of a particular data source. This can be useful in
+      # identify the hardware of a particular data source.  This can be useful in
       # different ways, including:
-      # - Distinguishing two similar sensors on different devices (the step counter on
-      # two nexus 5 phones, for instance)
-      # - Display the source of data to the user (by using the device make / model)
-      # - Treat data differently depending on sensor type (accelerometers on a watch
-      # may give different patterns than those on a phone)
-      # - Build different analysis models for each device/version.
+      # <ul>
+      # <li>Distinguishing two similar sensors on different devices (the step
+      # counter on two nexus 5 phones, for instance)
+      # <li>Display the source of data to the user (by using the device make /
+      # model)
+      # <li>Treat data differently depending on sensor type (accelerometers on a
+      # watch may give different patterns than those on a phone)
+      # <li>Build different analysis models for each device/version.
+      # </ul>
       class Device
         include Google::Apis::Core::Hashable
       
@@ -699,9 +721,9 @@ module Google
         attr_accessor :type
       
         # The serial number or other unique ID for the hardware. This field is
-        # obfuscated when read by any REST or Android client that did not create the
-        # data source. Only the data source creator will see the uid field in clear and
-        # normal form.
+        # obfuscated when read by any REST or Android client that did not create
+        # the data source. Only the data source creator will see the uid field in
+        # clear and normal form.
         # The obfuscation preserves equality; that is, given two IDs, if id1 == id2,
         # obfuscated(id1) == obfuscated(id2).
         # Corresponds to the JSON property `uid`
@@ -748,7 +770,8 @@ module Google
         attr_accessor :inserted_data_point
       
         # The continuation token, which is used to page through large result sets.
-        # Provide this value in a subsequent request to return the next page of results.
+        # Provide this value in a subsequent request to return the next page of
+        # results.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
@@ -789,26 +812,29 @@ module Google
       class ListSessionsResponse
         include Google::Apis::Core::Hashable
       
-        # If includeDeleted is set to true in the request, this list will contain
-        # sessions deleted with original end times that are within the startTime and
-        # endTime frame.
+        # If <code>includeDeleted</code> is set to true in the request, and
+        # <var>startTime</var> and <var>endTime</var> are omitted, this will include
+        # sessions which were deleted since the last sync.
         # Corresponds to the JSON property `deletedSession`
         # @return [Array<Google::Apis::FitnessV1::Session>]
         attr_accessor :deleted_session
       
-        # Flag to indicate server has more data to transfer
+        # Flag to indicate server has more data to transfer.
+        # DO NOT USE THIS FIELD. It is never populated in responses from the server.
         # Corresponds to the JSON property `hasMoreData`
         # @return [Boolean]
         attr_accessor :has_more_data
         alias_method :has_more_data?, :has_more_data
       
-        # The continuation token, which is used to page through large result sets.
-        # Provide this value in a subsequent request to return the next page of results.
+        # The sync token which is used to sync further changes. This will only be
+        # provided if both <var>startTime</var> and <var>endTime</var> are omitted
+        # from the request.
         # Corresponds to the JSON property `nextPageToken`
         # @return [String]
         attr_accessor :next_page_token
       
-        # Sessions with an end time that is between startTime and endTime of the request.
+        # Sessions with an end time that is between <var>startTime</var> and
+        # <var>endTime</var> of the request.
         # Corresponds to the JSON property `session`
         # @return [Array<Google::Apis::FitnessV1::Session>]
         attr_accessor :session
@@ -851,11 +877,12 @@ module Google
       class Session
         include Google::Apis::Core::Hashable
       
-        # Session active time. While start_time_millis and end_time_millis define the
-        # full session time, the active time can be shorter and specified by
-        # active_time_millis. If the inactive time during the session is known, it
-        # should also be inserted via a com.google.activity.segment data point with a
-        # STILL activity value
+        # Session active time. While start_time_millis and end_time_millis define
+        # the full session time, the active time can be shorter and specified by
+        # active_time_millis.
+        # If the inactive time during the session is known, it should also be
+        # inserted via a com.google.activity.segment data point with a STILL
+        # activity value
         # Corresponds to the JSON property `activeTimeMillis`
         # @return [Fixnum]
         attr_accessor :active_time_millis
@@ -865,7 +892,7 @@ module Google
         # @return [Fixnum]
         attr_accessor :activity_type
       
-        # 
+        # The application that created the session.
         # Corresponds to the JSON property `application`
         # @return [Google::Apis::FitnessV1::Application]
         attr_accessor :application
@@ -880,8 +907,8 @@ module Google
         # @return [Fixnum]
         attr_accessor :end_time_millis
       
-        # A client-generated identifier that is unique across all sessions owned by this
-        # particular user.
+        # A client-generated identifier that is unique across all sessions owned by
+        # this particular user.
         # Corresponds to the JSON property `id`
         # @return [String]
         attr_accessor :id
@@ -935,17 +962,17 @@ module Google
         # @return [Fixnum]
         attr_accessor :int_val
       
-        # Map value. The valid key space and units for the corresponding value of each
-        # entry should be documented as part of the data type definition. Keys should be
-        # kept small whenever possible. Data streams with large keys and high data
-        # frequency may be down sampled.
+        # Map value.  The valid key space and units for the corresponding value
+        # of each entry should be documented as part of the data type definition.
+        # Keys should be kept small whenever possible. Data streams with large keys
+        # and high data frequency may be down sampled.
         # Corresponds to the JSON property `mapVal`
         # @return [Array<Google::Apis::FitnessV1::ValueMapValEntry>]
         attr_accessor :map_val
       
-        # String value. When this is set, other values must not be set. Strings should
-        # be kept small whenever possible. Data streams with large string values and
-        # high data frequency may be down sampled.
+        # String value.  When this is set, other values must not be set.
+        # Strings should be kept small whenever possible.  Data streams with large
+        # string values and high data frequency may be down sampled.
         # Corresponds to the JSON property `stringVal`
         # @return [String]
         attr_accessor :string_val

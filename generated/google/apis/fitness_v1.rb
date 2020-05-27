@@ -18,14 +18,14 @@ require 'google/apis/fitness_v1/representations.rb'
 
 module Google
   module Apis
-    # Fitness
+    # Fitness API
     #
-    # Stores and accesses user data in the fitness store from apps on any platform.
+    # The Fitness API for managing users' fitness tracking data.
     #
-    # @see https://developers.google.com/fit/rest/
+    # @see https://developers.google.com/fit/rest/v1/get-started
     module FitnessV1
       VERSION = 'V1'
-      REVISION = '20200220'
+      REVISION = '20200522'
 
       # Use Google Fit to see and store your physical activity data
       AUTH_FITNESS_ACTIVITY_READ = 'https://www.googleapis.com/auth/fitness.activity.read'

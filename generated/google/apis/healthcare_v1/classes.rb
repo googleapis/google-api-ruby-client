@@ -258,8 +258,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1::Message]
         attr_accessor :message
@@ -729,9 +730,9 @@ module Google
       end
       
       # Response when all resources export successfully.
-      # This structure will be included in the
+      # This structure is included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes successfully.
+      # outcome after the operation finishes successfully.
       class ExportResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -977,6 +978,8 @@ module Google
         # Supported types are: AdministrativeGenderCode, Code, Date, DateTime,
         # Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid,
         # Xhtml.
+        # Base64Binary is also supported, but may only be kept as-is or have all
+        # the content removed.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -1153,7 +1156,7 @@ module Google
         # @return [String]
         attr_accessor :dataset_uri
       
-        # If this flag is `TRUE`, all tables will be deleted from the dataset before
+        # If this flag is `TRUE`, all tables are deleted from the dataset before
         # the new exported tables are written. If the flag is not set and the
         # destination dataset contains tables, the export call returns an error.
         # Corresponds to the JSON property `force`
@@ -1183,9 +1186,9 @@ module Google
       class GoogleCloudHealthcareV1FhirGcsDestination
         include Google::Apis::Core::Hashable
       
-        # URI for a Cloud Storage directory where result files should be written (in
-        # the format `gs://`bucket-id`/`path/to/destination/dir``). If there is no
-        # trailing slash, the service will append one when composing the object path.
+        # URI for a Cloud Storage directory where result files should be written, in
+        # the format of `gs://`bucket-id`/`path/to/destination/dir``. If there is no
+        # trailing slash, the service appends one when composing the object path.
         # The user is responsible for creating the Cloud Storage bucket referenced in
         # `uri_prefix`.
         # Corresponds to the JSON property `uriPrefix`
@@ -1243,7 +1246,7 @@ module Google
         # Restricts notifications sent for messages matching a filter. If this is
         # empty, all messages are matched. Syntax:
         # https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-        # Fields/functions available for filtering are:
+        # The following fields and functions are available for filtering:
         # *  `message_type`, from the MSH-9.1 field. For example,
         # `NOT message_type = "ADT"`.
         # *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
@@ -1267,21 +1270,24 @@ module Google
         attr_accessor :filter
       
         # The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
-        # notifications of changes are published on. Supplied by the client. The
-        # notification is a `PubsubMessage` with the following fields:
+        # notifications of changes are published on. Supplied by the client.
+        # The notification is a `PubsubMessage` with the following fields:
         # *  `PubsubMessage.Data` contains the resource name.
-        # *  `PubsubMessage.MessageId` is the ID of this notification. It is
+        # *  `PubsubMessage.MessageId` is the ID of this notification. It's
         # guaranteed to be unique within the topic.
-        # *  `PubsubMessage.PublishTime` is the time at which the message was
+        # *  `PubsubMessage.PublishTime` is the time when the message was
         # published.
         # Note that notifications are only sent if the topic is non-empty. [Topic
         # names](https://cloud.google.com/pubsub/docs/overview#names) must be
-        # scoped to a project. Cloud Healthcare API service account must have
+        # scoped to a project.
+        # The Cloud Healthcare API service account,
+        # service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com,
+        # must have
         # publisher permissions on the given Pub/Sub topic. Not having adequate
         # permissions causes the calls that send notifications to fail.
-        # If a notification cannot be published to Cloud Pub/Sub, errors will be
-        # logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
-        # tos/logging)).
+        # If a notification cannot be published to Cloud Pub/Sub, errors are
+        # logged to Cloud Logging. For more information, see
+        # [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging)).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -1334,7 +1340,7 @@ module Google
         # @return [Google::Apis::HealthcareV1::ParserConfig]
         attr_accessor :parser_config
       
-        # Determines whether duplicate messages should be rejected. A duplicate
+        # Determines whether to reject duplicate messages. A duplicate
         # message is a message with the same raw bytes as a message that has already
         # been ingested/created in this HL7v2 store.
         # The default value is false, meaning that the store accepts the duplicate
@@ -1506,9 +1512,9 @@ module Google
       end
       
       # Final response of importing resources.
-      # This structure will be included in the
+      # This structure is included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes successfully.
+      # outcome after the operation finishes successfully.
       class ImportResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1587,8 +1593,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1::Message]
         attr_accessor :message
@@ -1615,8 +1622,9 @@ module Google
         attr_accessor :hl7_ack
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1::Message]
         attr_accessor :message
@@ -1794,8 +1802,9 @@ module Google
       end
       
       # A complete HL7v2 message.
-      # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-      # on the standard.
+      # See [Introduction to HL7 Standards]
+      # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+      # details on the standard.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -2533,7 +2542,7 @@ module Google
         end
       end
       
-      # This structure contains configuration for streaming FHIR export.
+      # Contains configuration for streaming FHIR export.
       class StreamConfig
         include Google::Apis::Core::Hashable
       

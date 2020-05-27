@@ -947,7 +947,8 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -985,7 +986,8 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1022,7 +1024,8 @@ module Google
         end
         
         # SearchForStudies returns a list of matching studies. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1095,7 +1098,9 @@ module Google
         
         # StoreInstances stores DICOM instances associated with study instance unique
         # identifiers (SUID). See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
+        # [Store
+        # Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.
+        # html#sect_10.5).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1208,7 +1213,8 @@ module Google
         
         # RetrieveStudyMetadata returns instance associated with the given study
         # presented as metadata with the bulk data removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1245,7 +1251,8 @@ module Google
         end
         
         # RetrieveStudy returns all instances within the given study. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1282,7 +1289,8 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1320,7 +1328,8 @@ module Google
         end
         
         # SearchForSeries returns a list of matching series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1358,7 +1367,9 @@ module Google
         
         # StoreInstances stores DICOM instances associated with study instance unique
         # identifiers (SUID). See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.
+        # [Store
+        # Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.
+        # html#sect_10.5).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1437,7 +1448,8 @@ module Google
         
         # RetrieveSeriesMetadata returns instance associated with the given study and
         # series, presented as metadata with the bulk data removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1474,7 +1486,8 @@ module Google
         end
         
         # RetrieveSeries returns all instances within the given study and series. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1511,7 +1524,8 @@ module Google
         end
         
         # SearchForInstances returns a list of matching instances. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1588,7 +1602,8 @@ module Google
         
         # RetrieveInstance returns instance associated with the given study, series,
         # and SOP Instance UID. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1627,7 +1642,8 @@ module Google
         # RetrieveInstanceMetadata returns instance associated with the given study,
         # series, and SOP Instance UID presented as metadata with the bulk data
         # removed. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1665,7 +1681,8 @@ module Google
         
         # RetrieveRenderedInstance returns instance associated with the given study,
         # series, and SOP Instance UID in an acceptable Rendered Media Type. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1703,7 +1720,8 @@ module Google
         
         # RetrieveFrames returns instances associated with the given study, series,
         # SOP Instance UID and frame numbers. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1743,7 +1761,8 @@ module Google
         # RetrieveRenderedFrames returns instances associated with the given study,
         # series, SOP Instance UID and frame numbers in an acceptable Rendered Media
         # Type. See
-        # http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.
+        # [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/
+        # part18.html#sect_10.4).
         # @param [String] parent
         #   The name of the DICOM store that is being accessed. For example,
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
@@ -1906,8 +1925,7 @@ module Google
         # The metadata field type for this
         # operation is OperationMetadata.
         # @param [String] name
-        #   The name of the FHIR store to export resource from. The name should be in
-        #   the format of
+        #   The name of the FHIR store to export resource from, in the format of
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ExportResourcesRequest] export_resources_request_object
@@ -2021,8 +2039,8 @@ module Google
         # an empty FHIR store that is not being used by other clients. In cases
         # where this method is not appropriate, consider using ExecuteBundle to
         # load data.
-        # Every resource in the input must contain a client-supplied ID, and will be
-        # stored using that ID regardless of the
+        # Every resource in the input must contain a client-supplied ID. Each
+        # resource is stored using the supplied ID regardless of the
         # enable_update_create setting on the FHIR
         # store.
         # The import process does not enforce referential integrity, regardless of
@@ -2044,10 +2062,10 @@ module Google
         # more than once.
         # The import operation is idempotent unless the input data contains multiple
         # valid resources with the same ID but different contents. In that case,
-        # after the import completes, the store will contain exactly one resource
+        # after the import completes, the store contains exactly one resource
         # with that ID but there is no ordering guarantee on which version of the
         # contents it will have. The operation result counters do not count
-        # duplicate IDs as an error and will count one success for each resource in
+        # duplicate IDs as an error and count one success for each resource in
         # the input, which might result in a success count larger than the number
         # of resources in the FHIR store. This often occurs when importing data
         # organized in bundles produced by Patient-everything
@@ -2079,8 +2097,7 @@ module Google
         # The metadata field type for this
         # operation is OperationMetadata.
         # @param [String] name
-        #   The name of the FHIR store to import FHIR resources to. The name should be
-        #   in the format of
+        #   The name of the FHIR store to import FHIR resources to, in the format of
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   fhirStores/`fhir_store_id``.
         # @param [Google::Apis::HealthcareV1beta1::ImportResourcesRequest] import_resources_request_object
@@ -2388,9 +2405,9 @@ module Google
         # search criteria specified as query parameters, grouped by
         # `Observation.code`, sorted from most recent to oldest.
         # Implements the FHIR extended operation Observation-lastn
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/observation-operations.
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/observation-operations.
         # html#lastn),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/observation-operations.html#
+        # [R4](https://hl7.org/implement/standards/fhir/R4/observation-operations.html#
         # lastn)).
         # DSTU2 doesn't define the Observation-lastn method, but the server supports
         # it the same way it supports STU3.
@@ -2408,10 +2425,10 @@ module Google
         # grouping and limiting the results with `max`. To stay within the limit,
         # constrain these searches using Observation search parameters such as
         # `_lastUpdated` or `date`.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -2446,16 +2463,16 @@ module Google
         
         # Retrieves a Patient resource and resources related to that patient.
         # Implements the FHIR extended operation Patient-everything
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/patient-operations.
+        # html#everything),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/patient-operations.html#
         # everything),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#
-        # everything),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#
+        # [R4](https://hl7.org/implement/standards/fhir/R4/patient-operations.html#
         # everything)).
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # operation.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -2465,9 +2482,9 @@ module Google
         # * Resources directly referencing the patient resource that meet the
         # inclusion criteria. The inclusion criteria are based on the membership
         # rules in the patient compartment definition
-        # ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-patient.html),
+        # ([DSTU2](https://hl7.org/fhir/DSTU2/compartment-patient.html),
         # [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),
-        # [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
+        # [R4](https://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which
         # details the eligible resource types and referencing search parameters.
         # @param [String] name
         #   Name of the `Patient` resource for which the information is required.
@@ -2475,8 +2492,8 @@ module Google
         #   Maximum number of resources in a page. Defaults to 100.
         # @param [String] _page_token
         #   Used to retrieve the next or previous page of results
-        #   when using pagination. Value should be set to the value of page_token set
-        #   in next or previous page links' urls. Next and previous page are returned
+        #   when using pagination. Value should be set to the value of `page_token` set
+        #   in next or previous page links' URLs. Next and previous page are returned
         #   in the response bundle's links field, where `link.relation` is "previous"
         #   or "next".
         #   Omit `page_token` if no previous request has been made.
@@ -2551,20 +2568,21 @@ module Google
         end
         
         # Gets the FHIR capability statement
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/capabilitystatement.html),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/capabilitystatement.html)),
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/capabilitystatement.html)
+        # ,
+        # [R4](https://hl7.org/implement/standards/fhir/R4/capabilitystatement.html)),
         # or the [conformance
-        # statement](http://hl7.org/implement/standards/fhir/DSTU2/conformance.html)
+        # statement](https://hl7.org/implement/standards/fhir/DSTU2/conformance.html)
         # in the DSTU2 case for the store, which contains a description of
         # functionality supported by the server.
         # Implements the FHIR standard capabilities interaction
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#capabilities),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#capabilities)),
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#capabilities),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#capabilities)),
         # or the [conformance
-        # interaction](http://hl7.org/implement/standards/fhir/DSTU2/http.html#
+        # interaction](https://hl7.org/implement/standards/fhir/DSTU2/http.html#
         # conformance)
         # in the DSTU2 case.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of a `CapabilityStatement` resource.
         # @param [String] name
         #   Name of the FHIR store to retrieve the capabilities for.
@@ -2597,15 +2615,15 @@ module Google
         
         # Deletes FHIR resources that match a search query.
         # Implements the FHIR standard conditional delete interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.12.1),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#3.1.0.7.1)).
-        # If multiple resources match, all of them will be deleted.
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.12.1),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#3.1.0.7.1)).
+        # If multiple resources match, all matching resources are deleted.
         # Search terms are provided as query parameters following the same pattern as
         # the search method.
         # Note: Unless resource versioning is disabled by setting the
         # disable_resource_versioning flag
-        # on the FHIR store, the deleted resources will be moved to a history
+        # on the FHIR store, the deleted resources are moved to a history
         # repository that can still be retrieved through vread
         # and related methods, unless they are removed by the
         # purge method.
@@ -2616,9 +2634,9 @@ module Google
         # @param [String] type
         #   The FHIR resource type to delete, such as Patient or Observation. For a
         #   complete list, see the FHIR Resource Index
-        #   ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        #   [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-        #   [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+        #   ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        #   [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
@@ -2651,19 +2669,19 @@ module Google
         # parameters, updates part of that resource by applying the operations
         # specified in a [JSON Patch](http://jsonpatch.com/) document.
         # Implements the FHIR standard conditional patch interaction
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#patch),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)).
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#patch),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#patch)).
         # DSTU2 doesn't define a conditional patch method, but the server supports it
         # in the same way it supports STU3.
         # Search terms are provided as query parameters following the same pattern as
         # the search method.
-        # If the search criteria identify more than one match, the request will
-        # return a `412 Precondition Failed` error.
+        # If the search criteria identify more than one match, the request
+        # returns a `412 Precondition Failed` error.
         # The request body must contain a JSON Patch document, and the request
         # headers must contain `Content-Type: application/json-patch+json`.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the updated resource, including the server-assigned version ID.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -2675,9 +2693,9 @@ module Google
         # @param [String] type
         #   The FHIR resource type to update, such as Patient or Observation. For a
         #   complete list, see the FHIR Resource Index
-        #   ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        #   [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-        #   [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+        #   ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        #   [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
@@ -2712,25 +2730,25 @@ module Google
         # If a resource is found based on the search criteria specified in the query
         # parameters, updates the entire contents of that resource.
         # Implements the FHIR standard conditional update interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.10.2),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#cond-update),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#cond-update)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.10.2),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#cond-update),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#cond-update)).
         # Search terms are provided as query parameters following the same pattern as
         # the search method.
-        # If the search criteria identify more than one match, the request will
-        # return a `412 Precondition Failed` error.
+        # If the search criteria identify more than one match, the request
+        # returns a `412 Precondition Failed` error.
         # If the search criteria identify zero matches, and the supplied resource
         # body contains an `id`, and the FHIR store has
         # enable_update_create set, creates the
         # resource with the client-specified ID. If the search criteria identify zero
         # matches, and the supplied resource body does not contain an `id`, the
-        # resource will be created with a server-assigned ID as per the
+        # resource is created with a server-assigned ID as per the
         # create method.
         # The request body must contain a JSON-encoded FHIR resource, and the request
         # headers must contain `Content-Type: application/fhir+json`.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the updated resource, including the server-assigned version ID.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -2741,9 +2759,9 @@ module Google
         # @param [String] type
         #   The FHIR resource type to update, such as Patient or Observation. For a
         #   complete list, see the FHIR Resource Index
-        #   ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        #   [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-        #   [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+        #   ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        #   [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         #   Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
@@ -2778,23 +2796,23 @@ module Google
         
         # Creates a FHIR resource.
         # Implements the FHIR standard create interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)),
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#create),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#create),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#create)),
         # which creates a new resource with a server-assigned resource ID.
         # Also supports the FHIR standard conditional create interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),
         # specified by supplying an `If-None-Exist` header containing a FHIR search
         # query. If no resources match this search query, the server processes the
         # create operation as normal.
         # The request body must contain a JSON-encoded FHIR resource, and the request
         # headers must contain `Content-Type: application/fhir+json`.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the resource as it was created on the server, including the
         # server-assigned resource ID and version ID.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -2803,9 +2821,9 @@ module Google
         # @param [String] type
         #   The FHIR resource type to create, such as Patient or Observation. For a
         #   complete list, see the FHIR Resource Index
-        #   ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        #   [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-        #   [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+        #   ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        #   [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        #   [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         #   Must match the resource type in the provided content.
         # @param [Google::Apis::HealthcareV1beta1::HttpBody] http_body_object
         # @param [String] fields
@@ -2840,12 +2858,12 @@ module Google
         
         # Deletes a FHIR resource.
         # Implements the FHIR standard delete interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#delete),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#delete),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#delete)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#delete),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#delete),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#delete)).
         # Note: Unless resource versioning is disabled by setting the
         # disable_resource_versioning flag
-        # on the FHIR store, the deleted resources will be moved to a history
+        # on the FHIR store, the deleted resources are moved to a history
         # repository that can still be retrieved through vread
         # and related methods, unless they are removed by the
         # purge method.
@@ -2880,26 +2898,26 @@ module Google
         
         # Executes all the requests in the given Bundle.
         # Implements the FHIR standard batch/transaction interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#transaction),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#transaction)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#transaction),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#transaction)).
         # Supports all interactions within a bundle, except search. This method
         # accepts Bundles of type `batch` and `transaction`, processing them
         # according to the batch processing rules
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#brules))
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#brules))
         # and transaction processing rules
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#trules)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#trules)).
         # The request body must contain a JSON-encoded FHIR `Bundle` resource, and
         # the request headers must contain `Content-Type: application/fhir+json`.
-        # For a batch bundle or a successful transaction the response body will
-        # contain a JSON-encoded representation of a `Bundle` resource of type
+        # For a batch bundle or a successful transaction the response body
+        # contains a JSON-encoded representation of a `Bundle` resource of type
         # `batch-response` or `transaction-response` containing one entry for each
         # entry in the request, with the outcome of processing the entry. In the
-        # case of an error for a transaction bundle, the response body will contain
+        # case of an error for a transaction bundle, the response body contains
         # a JSON-encoded `OperationOutcome` resource describing the reason for the
         # error. If the request cannot be mapped to a valid API method on a FHIR
         # store, a generic GCP error might be returned instead.
@@ -2944,13 +2962,13 @@ module Google
         # Lists all the versions of a resource (including the current version and
         # deleted versions) from the FHIR store.
         # Implements the per-resource form of the FHIR standard history interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#history),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#history),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#history)).
-        # On success, the response body will contain a JSON-encoded representation
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#history),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#history),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#history)).
+        # On success, the response body contains a JSON-encoded representation
         # of a `Bundle` resource of type `history`, containing the version history
         # sorted from most recent to oldest versions.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3014,15 +3032,15 @@ module Google
         # Updates part of an existing resource by applying the operations specified
         # in a [JSON Patch](http://jsonpatch.com/) document.
         # Implements the FHIR standard patch interaction
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#patch),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)).
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#patch),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#patch)).
         # DSTU2 doesn't define a patch method, but the server supports it in the same
         # way it supports STU3.
         # The request body must contain a JSON Patch document, and the request
         # headers must contain `Content-Type: application/json-patch+json`.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the updated resource, including the server-assigned version ID.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3060,18 +3078,18 @@ module Google
         
         # Gets the contents of a FHIR resource.
         # Implements the FHIR standard read interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#read),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#read),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#read)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#read),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#read),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#read)).
         # Also supports the FHIR standard conditional read interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#cread),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#cread),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#cread))
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#cread),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#cread),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#cread))
         # specified by supplying an `If-Modified-Since` header with a date/time value
         # or an `If-None-Match` header with an ETag value.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the resource.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3107,13 +3125,13 @@ module Google
         # Searches for resources in the given FHIR store according to criteria
         # specified as query parameters.
         # Implements the FHIR standard search interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#search),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#search))
         # using the search semantics described in the FHIR Search specification
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/search.html)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/search.html),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/search.html),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/search.html)).
         # Supports three methods of search defined by the specification:
         # *  `GET [base]?[parameters]` to search across all resources.
         # *  `GET [base]/[type]?[parameters]` to search resources of a specified
@@ -3122,10 +3140,10 @@ module Google
         # the same semantics as the `GET` method.
         # The `GET` methods do not support compartment searches. The `POST` method
         # does not support `application/x-www-form-urlencoded` search parameters.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of a `Bundle` resource of type `searchset`, containing the results of the
         # search.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3134,10 +3152,10 @@ module Google
         # are supported on each FHIR resource. A list of all search parameters
         # defined by the specification can be found in the FHIR Search Parameter
         # Registry
-        # ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.
+        # ([STU3](https://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.
         # html),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html))
-        # .
+        # [R4](https://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)
+        # ).
         # FHIR search parameters for DSTU2 can be found on each resource's definition
         # page.
         # Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,
@@ -3146,7 +3164,7 @@ module Google
         # `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.
         # The maximum number of search results returned defaults to 100, which can
         # be overridden by the `_count` parameter up to a maximum limit of 1000. If
-        # there are additional results, the returned `Bundle` will contain
+        # there are additional results, the returned `Bundle` contains
         # pagination links.
         # Resources with a total size larger than 5MB or a field count larger than
         # 50,000 might not be fully searchable as the server might trim its generated
@@ -3188,9 +3206,9 @@ module Google
         
         # Updates the entire contents of a resource.
         # Implements the FHIR standard update interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#update),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#update),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#update),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#update),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#update)).
         # If the specified resource does
         # not exist and the FHIR store has
         # enable_update_create set, creates the
@@ -3199,9 +3217,9 @@ module Google
         # headers must contain `Content-Type: application/fhir+json`. The resource
         # must contain an `id` element having an identical value to the ID in the
         # REST path of the request.
-        # On success, the response body will contain a JSON-encoded representation
+        # On success, the response body contains a JSON-encoded representation
         # of the updated resource, including the server-assigned version ID.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3240,12 +3258,12 @@ module Google
         # Gets the contents of a version (current or historical) of a FHIR resource
         # by version ID.
         # Implements the FHIR standard vread interaction
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#vread),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#vread),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/http.html#vread)).
-        # On success, the response body will contain a JSON-encoded representation
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/http.html#vread),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/http.html#vread),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/http.html#vread)).
+        # On success, the response body contains a JSON-encoded representation
         # of the resource.
-        # Errors generated by the FHIR store will contain a JSON-encoded
+        # Errors generated by the FHIR store contain a JSON-encoded
         # `OperationOutcome` resource describing the reason for the error. If the
         # request cannot be mapped to a valid API method on a FHIR store, a generic
         # GCP error might be returned instead.
@@ -3315,8 +3333,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
-        # Deletes the specified HL7v2 store and removes all messages that are
-        # contained within it.
+        # Deletes the specified HL7v2 store and removes all messages that it
+        # contains.
         # @param [String] name
         #   The resource name of the HL7v2 store to delete.
         # @param [String] fields
@@ -3723,7 +3741,7 @@ module Google
         # @param [String] filter
         #   Restricts messages returned to those matching a filter. Syntax:
         #   https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-        #   Fields/functions available for filtering are:
+        #   The following fields and functions are available for filtering:
         #   *  `message_type`, from the MSH-9.1 field. For example,
         #   `NOT message_type = "ADT"`.
         #   *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
@@ -3790,7 +3808,7 @@ module Google
         
         # Update the message.
         # The contents of the message in Message.data and data extracted from
-        # the contents such as Message.create_time cannot be altered. Only the
+        # the contents such as Message.create_time can't be altered. Only the
         # Message.labels field is allowed to be updated. The labels in the
         # request are merged with the existing set of labels. Existing labels with
         # the same keys are updated.

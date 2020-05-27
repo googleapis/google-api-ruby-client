@@ -476,6 +476,9 @@ module Google
         attr_accessor :event_id
       
         # Token to maintain state in the follow up notification response.
+        # Deprecated. See the [notifications
+        # guide](https://developers.google.com/assistant/smarthome/develop/notifications)
+        # for details on implementing follow up notifications.
         # Corresponds to the JSON property `followUpToken`
         # @return [String]
         attr_accessor :follow_up_token

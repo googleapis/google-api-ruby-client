@@ -258,8 +258,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1beta1::Message]
         attr_accessor :message
@@ -276,8 +277,8 @@ module Google
       
       # Pseudonymization method that generates surrogates via cryptographic hashing.
       # Uses SHA-256.
-      # Outputs a base64-encoded representation of the hashed output
-      # (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+      # Outputs a base64-encoded representation of the hashed output.
+      # For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
       class CryptoHashConfig
         include Google::Apis::Core::Hashable
       
@@ -1111,14 +1112,14 @@ module Google
         # can be matched by "Patient.Address.String". Path also supports partial
         # matching. For example, "Patient.Address.city" can be matched by
         # "Address.city" (Patient omitted). Partial matching and type matching
-        # can be combined, for example "Patient.Address.city" can be matched by
+        # can be combined. For example, "Patient.Address.city" can be matched by
         # "Address.String". For "choice" types (those defined in the FHIR spec
         # with the form: field[x]), use two separate components. For example,
         # "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types
         # are: AdministrativeGenderCode, Code, Date, DateTime, Decimal,
         # HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
-        # The sub-type for HumanName(for example HumanName.given,
-        # HumanName.family) can be omitted.
+        # The sub-type for HumanName, such as HumanName.given or
+        # HumanName.family, can be omitted.
         # Corresponds to the JSON property `paths`
         # @return [Array<String>]
         attr_accessor :paths
@@ -1385,9 +1386,9 @@ module Google
       end
       
       # Response when all resources export successfully.
-      # This structure will be included in the
+      # This structure is included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes successfully.
+      # outcome after the operation finishes successfully.
       class GoogleCloudHealthcareV1beta1FhirRestExportResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1421,7 +1422,7 @@ module Google
       
         # URI for a Cloud Storage directory where result files should be written (in
         # the format `gs://`bucket-id`/`path/to/destination/dir``). If there is no
-        # trailing slash, the service will append one when composing the object path.
+        # trailing slash, the service appends one when composing the object path.
         # The user is responsible for creating the Cloud Storage bucket referenced in
         # `uri_prefix`.
         # Corresponds to the JSON property `uriPrefix`
@@ -1472,10 +1473,10 @@ module Google
       end
       
       # Error response of importing resources.
-      # This structure will be included in the
+      # This structure is included in the
       # error
-      # details to describe the detailed error. It will
-      # only be included when the operation finishes with some failure.
+      # details to describe the detailed error
+      # after the operation finishes with some failure.
       class GoogleCloudHealthcareV1beta1FhirRestImportResourcesErrorDetails
         include Google::Apis::Core::Hashable
       
@@ -1517,9 +1518,9 @@ module Google
       end
       
       # Final response of importing resources.
-      # This structure will be included in the
+      # This structure is included in the
       # response to describe the detailed
-      # outcome. It will only be included when the operation finishes successfully.
+      # outcome after the operation finishes successfully.
       class GoogleCloudHealthcareV1beta1FhirRestImportResourcesResponse
         include Google::Apis::Core::Hashable
       
@@ -1635,7 +1636,7 @@ module Google
         # Restricts notifications sent for messages matching a filter. If this is
         # empty, all messages are matched. Syntax:
         # https://cloud.google.com/appengine/docs/standard/python/search/query_strings
-        # Fields/functions available for filtering are:
+        # The following fields and functions are available for filtering:
         # *  `message_type`, from the MSH-9.1 field. For example,
         # `NOT message_type = "ADT"`.
         # *  `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in
@@ -1664,16 +1665,16 @@ module Google
         # *  `PubsubMessage.Data` contains the resource name.
         # *  `PubsubMessage.MessageId` is the ID of this notification. It is
         # guaranteed to be unique within the topic.
-        # *  `PubsubMessage.PublishTime` is the time at which the message was
+        # *  `PubsubMessage.PublishTime` is the time when the message was
         # published.
         # Note that notifications are only sent if the topic is non-empty. [Topic
         # names](https://cloud.google.com/pubsub/docs/overview#names) must be
         # scoped to a project. Cloud Healthcare API service account must have
         # publisher permissions on the given Pub/Sub topic. Not having adequate
         # permissions causes the calls that send notifications to fail.
-        # If a notification cannot be published to Cloud Pub/Sub, errors will be
-        # logged to Cloud Logging (see [Viewing logs](/healthcare/docs/how-
-        # tos/logging)).
+        # If a notification can't be published to Cloud Pub/Sub, errors are
+        # logged to Cloud Logging. For more information, see
+        # [Viewing error logs in Cloud Logging](/healthcare/docs/how-tos/logging).
         # Corresponds to the JSON property `pubsubTopic`
         # @return [String]
         attr_accessor :pubsub_topic
@@ -1731,7 +1732,7 @@ module Google
         # @return [Google::Apis::HealthcareV1beta1::ParserConfig]
         attr_accessor :parser_config
       
-        # Determines whether duplicate messages should be rejected. A duplicate
+        # Determines whether to reject duplicate messages. A duplicate
         # message is a message with the same raw bytes as a message that has already
         # been ingested/created in this HL7v2 store.
         # The default value is false, meaning that the store accepts the duplicate
@@ -1936,8 +1937,8 @@ module Google
       
         # Pseudonymization method that generates surrogates via cryptographic hashing.
         # Uses SHA-256.
-        # Outputs a base64-encoded representation of the hashed output
-        # (for example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`).
+        # Outputs a base64-encoded representation of the hashed output.
+        # For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
         # Corresponds to the JSON property `cryptoHashConfig`
         # @return [Google::Apis::HealthcareV1beta1::CryptoHashConfig]
         attr_accessor :crypto_hash_config
@@ -1991,8 +1992,9 @@ module Google
         include Google::Apis::Core::Hashable
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1beta1::Message]
         attr_accessor :message
@@ -2019,8 +2021,9 @@ module Google
         attr_accessor :hl7_ack
       
         # A complete HL7v2 message.
-        # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-        # on the standard.
+        # See [Introduction to HL7 Standards]
+        # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+        # details on the standard.
         # Corresponds to the JSON property `message`
         # @return [Google::Apis::HealthcareV1beta1::Message]
         attr_accessor :message
@@ -2270,8 +2273,9 @@ module Google
       end
       
       # A complete HL7v2 message.
-      # See http://www.hl7.org/implement/standards/index.cfm?ref=common for details
-      # on the standard.
+      # See [Introduction to HL7 Standards]
+      # (https://www.hl7.org/implement/standards/index.cfm?ref=common) for
+      # details on the standard.
       class Message
         include Google::Apis::Core::Hashable
       
@@ -2987,9 +2991,9 @@ module Google
       
         # The FHIR resource type to search, such as Patient or Observation. For a
         # complete list, see the FHIR Resource Index
-        # ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
-        # [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
-        # [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+        # ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        # [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+        # [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         # Corresponds to the JSON property `resourceType`
         # @return [String]
         attr_accessor :resource_type
@@ -3174,7 +3178,7 @@ module Google
         end
       end
       
-      # This structure contains configuration for streaming FHIR export.
+      # Contains configuration for streaming FHIR export.
       class StreamConfig
         include Google::Apis::Core::Hashable
       
@@ -3210,7 +3214,7 @@ module Google
         # Tags to be filtered. Tags must be DICOM Data Elements, File Meta
         # Elements, or Directory Structuring Elements, as defined at:
         # http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,.
-        # They may be provided by "Keyword" or "Tag". For example "PatientID",
+        # They may be provided by "Keyword" or "Tag". For example, "PatientID",
         # "00100010".
         # Corresponds to the JSON property `tags`
         # @return [Array<String>]
