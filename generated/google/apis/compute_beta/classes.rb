@@ -10907,7 +10907,7 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
         # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]

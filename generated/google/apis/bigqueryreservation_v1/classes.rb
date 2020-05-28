@@ -317,6 +317,8 @@ module Google
         # Ids of capacity commitments to merge.
         # These capacity commitments must exist under admin project and location
         # specified in the parent.
+        # ID is the last portion of capacity commitment name e.g., 'abc' for
+        # projects/myproject/locations/US/capacityCommitments/abc
         # Corresponds to the JSON property `capacityCommitmentIds`
         # @return [Array<String>]
         attr_accessor :capacity_commitment_ids

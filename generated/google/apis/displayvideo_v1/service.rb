@@ -48,6 +48,109 @@ module Google
           @batch_path = 'batch'
         end
         
+        # Bulk edits targeting options under a single advertiser.
+        # The operation will delete the assigned targeting options provided in
+        # BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and
+        # then create the assigned targeting options provided in
+        # BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsRequest] bulk_edit_advertiser_assigned_targeting_options_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_advertiser_assigned_targeting_options(advertiser_id, bulk_edit_advertiser_assigned_targeting_options_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}:bulkEditAdvertiserAssignedTargetingOptions', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsRequest::Representation
+          command.request_object = bulk_edit_advertiser_assigned_targeting_options_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditAdvertiserAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists assigned targeting options of an advertiser across targeting types.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser the line item belongs to.
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties.
+        #   Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions.
+        #   * Restrictions can be combined by the logical operator `OR`..
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `EQUALS (=)`.
+        #   * Supported fields:
+        #   - `targetingType`
+        #   Examples:
+        #   * targetingType with value TARGETING_TYPE_CHANNEL
+        #   `targetingType="TARGETING_TYPE_CHANNEL"`
+        #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `targetingType` (default)
+        #   The default sorting order is ascending. To specify descending order for
+        #   a field, a suffix "desc" should be added to the field name. Example:
+        #   `targetingType desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size.
+        #   The size must be an integer between `1` and `5000`. If unspecified,
+        #   the default is '5000'. Returns error code `INVALID_ARGUMENT` if an invalid
+        #   value is specified.
+        # @param [String] page_token
+        #   A token that lets the client fetch the next page of results.
+        #   Typically, this is the value of
+        #   next_page_token
+        #   returned from the previous call to
+        #   `BulkListAdvertiserAssignedTargetingOptions` method.
+        #   If not specified, the first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkListAdvertiserAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkListAdvertiserAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_advertiser_list_advertiser_assigned_targeting_options(advertiser_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}:bulkListAdvertiserAssignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkListAdvertiserAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkListAdvertiserAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new advertiser.
         # Returns the newly created advertiser if successful.
         # This method can take up to 180 seconds to complete.
@@ -1787,6 +1890,183 @@ module Google
           command.response_representation = Google::Apis::DisplayvideoV1::ListNegativeKeywordListsResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV1::ListNegativeKeywordListsResponse
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Assigns a targeting option to an advertiser.
+        # Returns the assigned targeting option if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option.
+        # @param [Google::Apis::DisplayvideoV1::AssignedTargetingOption] assigned_targeting_option_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_targeting_type_assigned_targeting_option(advertiser_id, targeting_type, assigned_targeting_option_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.request_object = assigned_targeting_option_object
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedTargetingOption
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an assigned targeting option from an advertiser.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option.
+        # @param [String] assigned_targeting_option_id
+        #   Required. The ID of the assigned targeting option to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_targeting_type_assigned_targeting_option(advertiser_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Gets a single targeting option assigned to an advertiser.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of this assigned targeting option.
+        # @param [String] assigned_targeting_option_id
+        #   Required. An identifier unique to the targeting type in this advertiser that
+        #   identifies the assigned targeting option being requested.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedTargetingOption] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedTargetingOption]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def get_advertiser_targeting_type_assigned_targeting_option(advertiser_id, targeting_type, assigned_targeting_option_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedTargetingOption
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.params['assignedTargetingOptionId'] = assigned_targeting_option_id unless assigned_targeting_option_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists the targeting options assigned to an advertiser.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the advertiser.
+        # @param [String] targeting_type
+        #   Required. Identifies the type of assigned targeting options to list.
+        # @param [String] filter
+        #   Allows filtering by assigned targeting option properties.
+        #   Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions.
+        #   * Restrictions can be combined by the logical operator `OR`.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `EQUALS (=)`.
+        #   * Supported fields:
+        #   - `assignedTargetingOptionId`
+        #   Examples:
+        #   * AssignedTargetingOption with ID 123456
+        #   `assignedTargetingOptionId="123456"`
+        #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `assignedTargetingOptionId` (default)
+        #   The default sorting order is ascending. To specify descending order for
+        #   a field, a suffix "desc" should be added to the field name. Example:
+        #   `assignedTargetingOptionId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token
+        #   returned from the previous call to `ListAdvertiserAssignedTargetingOptions`
+        #   method. If not specified, the first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListAdvertiserAssignedTargetingOptionsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListAdvertiserAssignedTargetingOptionsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_targeting_type_assigned_targeting_options(advertiser_id, targeting_type, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListAdvertiserAssignedTargetingOptionsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListAdvertiserAssignedTargetingOptionsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['targetingType'] = targeting_type unless targeting_type.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?

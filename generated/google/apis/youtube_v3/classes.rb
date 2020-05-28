@@ -609,7 +609,7 @@ module Google
       
         # The date and time that the video was uploaded. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -800,7 +800,7 @@ module Google
       
         # The date and time when the caption track was last updated. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `lastUpdated`
         # @return [String]
         attr_accessor :last_updated
@@ -1200,7 +1200,7 @@ module Google
         # The date and time of when the channel was linked to the content owner.
         # The value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO
         # 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `timeLinked`
         # @return [String]
         attr_accessor :time_linked
@@ -1769,7 +1769,7 @@ module Google
       
         # The date and time that the channel was created. The value is specified in
         # < a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -2078,7 +2078,7 @@ module Google
       
         # The date and time when the comment was orignally published. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -2100,7 +2100,7 @@ module Google
       
         # The date and time when was last updated . The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `updatedAt`
         # @return [String]
         attr_accessor :updated_at
@@ -3945,7 +3945,7 @@ module Google
         # The date and time that the broadcast actually ended. This information is
         # only available once the broadcast's state is <code>complete</code>. The
         # value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `actualEndTime`
         # @return [String]
         attr_accessor :actual_end_time
@@ -3953,7 +3953,7 @@ module Google
         # The date and time that the broadcast actually started. This information is
         # only available once the broadcast's state is <code>live</code>. The
         # value is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `actualStartTime`
         # @return [String]
         attr_accessor :actual_start_time
@@ -3988,21 +3988,21 @@ module Google
         # The date and time that the broadcast was added to YouTube's live broadcast
         # schedule. The value is specified in
         # <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
       
         # The date and time that the broadcast is scheduled to end. The value
         # is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `scheduledEndTime`
         # @return [String]
         attr_accessor :scheduled_end_time
       
         # The date and time that the broadcast is scheduled to start. The value
         # is specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `scheduledStartTime`
         # @return [String]
         attr_accessor :scheduled_start_time
@@ -4403,7 +4403,7 @@ module Google
       
         # The date and time when the underlying stream went offline. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `offlineAt`
         # @return [String]
         attr_accessor :offline_at
@@ -4520,7 +4520,7 @@ module Google
       
         # The date and time when the message was orignally published. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -5116,7 +5116,7 @@ module Google
       
         # The date and time that the stream was created. The value is specified in
         # <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -5866,7 +5866,7 @@ module Google
       
         # The date and time that the video was published to YouTube. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `videoPublishedAt`
         # @return [String]
         attr_accessor :video_published_at
@@ -5994,7 +5994,7 @@ module Google
       
         # The date and time that the item was added to the playlist. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -6199,7 +6199,7 @@ module Google
       
         # The date and time that the playlist was created. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -6559,7 +6559,7 @@ module Google
         # The creation date and time of the resource that the search result
         # identifies. The value is specified in <a
         # href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -6909,7 +6909,7 @@ module Google
       
         # The date and time that the subscription was created. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -7108,7 +7108,7 @@ module Google
       
         # The date and time when the event occurred. The value is
         # specified in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `createdAt`
         # @return [String]
         attr_accessor :created_at
@@ -8224,7 +8224,7 @@ module Google
       
         # The time that the broadcast actually ended. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format. This value will not be
+        # format. This value will not be
         # available until the broadcast is over.
         # Corresponds to the JSON property `actualEndTime`
         # @return [String]
@@ -8232,7 +8232,7 @@ module Google
       
         # The time that the broadcast actually started. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format. This value will not be
+        # format. This value will not be
         # available until the broadcast begins.
         # Corresponds to the JSON property `actualStartTime`
         # @return [String]
@@ -8251,7 +8251,7 @@ module Google
       
         # The time that the broadcast is scheduled to end. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format. If the value is empty or
+        # format. If the value is empty or
         # the property is not present, then the broadcast is scheduled to continue
         # indefinitely.
         # Corresponds to the JSON property `scheduledEndTime`
@@ -8260,7 +8260,7 @@ module Google
       
         # The time that the broadcast is scheduled to begin. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `scheduledStartTime`
         # @return [String]
         attr_accessor :scheduled_start_time
@@ -8650,7 +8650,7 @@ module Google
       
         # The date and time that the video was uploaded. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishedAt`
         # @return [String]
         attr_accessor :published_at
@@ -8787,7 +8787,7 @@ module Google
         # The date and time when the video is scheduled to publish. It can be set
         # only if the privacy status of the video is private. The value is specified
         # in <a href="//www.w3.org/TR/NOTE-datetime">ISO 8601</a>
-        # (<code>YYYY-MM-DDThh:mm:ss.sZ</code>) format.
+        # format.
         # Corresponds to the JSON property `publishAt`
         # @return [String]
         attr_accessor :publish_at

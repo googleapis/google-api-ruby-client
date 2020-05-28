@@ -162,6 +162,11 @@ module Google
         # @return [Fixnum]
         attr_accessor :partner_id
       
+        # Targeting settings related to ad serving of an advertiser.
+        # Corresponds to the JSON property `servingConfig`
+        # @return [Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig]
+        attr_accessor :serving_config
+      
         # Output only. The timestamp when the advertiser was last updated. Assigned by
         # the system.
         # Corresponds to the JSON property `updateTime`
@@ -184,6 +189,7 @@ module Google
           @integration_details = args[:integration_details] if args.key?(:integration_details)
           @name = args[:name] if args.key?(:name)
           @partner_id = args[:partner_id] if args.key?(:partner_id)
+          @serving_config = args[:serving_config] if args.key?(:serving_config)
           @update_time = args[:update_time] if args.key?(:update_time)
         end
       end
@@ -391,6 +397,27 @@ module Google
         def update!(**args)
           @override_partner_sdf_config = args[:override_partner_sdf_config] if args.key?(:override_partner_sdf_config)
           @sdf_config = args[:sdf_config] if args.key?(:sdf_config)
+        end
+      end
+      
+      # Targeting settings related to ad serving of an advertiser.
+      class AdvertiserTargetingConfig
+        include Google::Apis::Core::Hashable
+      
+        # Whether or not connected TV devices are exempt from viewability targeting
+        # for all video line items under the advertiser.
+        # Corresponds to the JSON property `exemptTvFromViewabilityTargeting`
+        # @return [Boolean]
+        attr_accessor :exempt_tv_from_viewability_targeting
+        alias_method :exempt_tv_from_viewability_targeting?, :exempt_tv_from_viewability_targeting
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @exempt_tv_from_viewability_targeting = args[:exempt_tv_from_viewability_targeting] if args.key?(:exempt_tv_from_viewability_targeting)
         end
       end
       
@@ -1240,6 +1267,54 @@ module Google
       end
       
       # Request message for
+      # BulkEditAdvertiserAssignedTargetingOptions.
+      class BulkEditAdvertiserAssignedTargetingOptionsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The assigned targeting options to create in batch, specified as a list of
+        # `CreateAssignedTargetingOptionsRequest`.
+        # Corresponds to the JSON property `createRequests`
+        # @return [Array<Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest>]
+        attr_accessor :create_requests
+      
+        # The assigned targeting options to delete in batch, specified as a list of
+        # `DeleteAssignedTargetingOptionsRequest`.
+        # Corresponds to the JSON property `deleteRequests`
+        # @return [Array<Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest>]
+        attr_accessor :delete_requests
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @create_requests = args[:create_requests] if args.key?(:create_requests)
+          @delete_requests = args[:delete_requests] if args.key?(:delete_requests)
+        end
+      end
+      
+      # 
+      class BulkEditAdvertiserAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `createdAssignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :created_assigned_targeting_options
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_assigned_targeting_options = args[:created_assigned_targeting_options] if args.key?(:created_assigned_targeting_options)
+        end
+      end
+      
+      # Request message for
       # BulkEditLineItemAssignedTargetingOptions.
       class BulkEditLineItemAssignedTargetingOptionsRequest
         include Google::Apis::Core::Hashable
@@ -1284,6 +1359,39 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created_assigned_targeting_options = args[:created_assigned_targeting_options] if args.key?(:created_assigned_targeting_options)
+        end
+      end
+      
+      # 
+      class BulkListAdvertiserAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be
+        # specified as the
+        # pageToken
+        # in a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to
+        # fetch the next page of results. This token will be absent if there are no
+        # more
+        # assigned_targeting_options
+        # to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       
@@ -4938,6 +5046,39 @@ module Google
         def update!(**args)
           @date_range = args[:date_range] if args.key?(:date_range)
           @flight_date_type = args[:flight_date_type] if args.key?(:flight_date_type)
+        end
+      end
+      
+      # Response message for
+      # ListAdvertiserAssignedTargetingOptions.
+      class ListAdvertiserAssignedTargetingOptionsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned targeting options.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedTargetingOptions`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedTargetingOption>]
+        attr_accessor :assigned_targeting_options
+      
+        # A token identifying the next page of results. This value should be
+        # specified as the
+        # pageToken in a
+        # subsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the
+        # next page of results. This token will be absent if there are no more
+        # assigned_targeting_options
+        # to return.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_targeting_options = args[:assigned_targeting_options] if args.key?(:assigned_targeting_options)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
         end
       end
       

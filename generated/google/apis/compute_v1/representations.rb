@@ -6833,6 +6833,7 @@ module Google
           property :name, as: 'name'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -7440,6 +7441,7 @@ module Google
           property :min_cpu_platform, as: 'minCpuPlatform'
           collection :network_interfaces, as: 'networkInterfaces', class: Google::Apis::ComputeV1::NetworkInterface, decorator: Google::Apis::ComputeV1::NetworkInterface::Representation
       
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :reservation_affinity, as: 'reservationAffinity', class: Google::Apis::ComputeV1::ReservationAffinity, decorator: Google::Apis::ComputeV1::ReservationAffinity::Representation
       
           collection :resource_policies, as: 'resourcePolicies'
@@ -8534,6 +8536,7 @@ module Google
           collection :alias_ip_ranges, as: 'aliasIpRanges', class: Google::Apis::ComputeV1::AliasIpRange, decorator: Google::Apis::ComputeV1::AliasIpRange::Representation
       
           property :fingerprint, :base64 => true, as: 'fingerprint'
+          property :ipv6_address, as: 'ipv6Address'
           property :kind, as: 'kind'
           property :name, as: 'name'
           property :network, as: 'network'
@@ -11074,12 +11077,14 @@ module Google
           property :gateway_address, as: 'gatewayAddress'
           property :id, :numeric_string => true, as: 'id'
           property :ip_cidr_range, as: 'ipCidrRange'
+          property :ipv6_cidr_range, as: 'ipv6CidrRange'
           property :kind, as: 'kind'
           property :log_config, as: 'logConfig', class: Google::Apis::ComputeV1::SubnetworkLogConfig, decorator: Google::Apis::ComputeV1::SubnetworkLogConfig::Representation
       
           property :name, as: 'name'
           property :network, as: 'network'
           property :private_ip_google_access, as: 'privateIpGoogleAccess'
+          property :private_ipv6_google_access, as: 'privateIpv6GoogleAccess'
           property :purpose, as: 'purpose'
           property :region, as: 'region'
           property :role, as: 'role'

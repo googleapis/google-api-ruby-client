@@ -70,6 +70,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AdvertiserTargetingConfig
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AgeRangeAssignedTargetingOptionDetails
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -160,6 +166,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkEditAdvertiserAssignedTargetingOptionsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAdvertiserAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +185,12 @@ module Google
       end
       
       class BulkEditLineItemAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkListAdvertiserAssignedTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -712,6 +736,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAdvertiserAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListAdvertisersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -1138,6 +1168,8 @@ module Google
       
           property :name, as: 'name'
           property :partner_id, :numeric_string => true, as: 'partnerId'
+          property :serving_config, as: 'servingConfig', class: Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig, decorator: Google::Apis::DisplayvideoV1::AdvertiserTargetingConfig::Representation
+      
           property :update_time, as: 'updateTime'
         end
       end
@@ -1185,6 +1217,13 @@ module Google
           property :override_partner_sdf_config, as: 'overridePartnerSdfConfig'
           property :sdf_config, as: 'sdfConfig', class: Google::Apis::DisplayvideoV1::SdfConfig, decorator: Google::Apis::DisplayvideoV1::SdfConfig::Representation
       
+        end
+      end
+      
+      class AdvertiserTargetingConfig
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :exempt_tv_from_viewability_targeting, as: 'exemptTvFromViewabilityTargeting'
         end
       end
       
@@ -1398,6 +1437,24 @@ module Google
         end
       end
       
+      class BulkEditAdvertiserAssignedTargetingOptionsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :create_requests, as: 'createRequests', class: Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV1::CreateAssignedTargetingOptionsRequest::Representation
+      
+          collection :delete_requests, as: 'deleteRequests', class: Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest, decorator: Google::Apis::DisplayvideoV1::DeleteAssignedTargetingOptionsRequest::Representation
+      
+        end
+      end
+      
+      class BulkEditAdvertiserAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_assigned_targeting_options, as: 'createdAssignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+        end
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1413,6 +1470,15 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :created_assigned_targeting_options, as: 'createdAssignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
       
+        end
+      end
+      
+      class BulkListAdvertiserAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       
@@ -2325,6 +2391,15 @@ module Google
           property :date_range, as: 'dateRange', class: Google::Apis::DisplayvideoV1::DateRange, decorator: Google::Apis::DisplayvideoV1::DateRange::Representation
       
           property :flight_date_type, as: 'flightDateType'
+        end
+      end
+      
+      class ListAdvertiserAssignedTargetingOptionsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_targeting_options, as: 'assignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
         end
       end
       

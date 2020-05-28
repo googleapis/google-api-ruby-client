@@ -10024,6 +10024,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # The private IPv6 google access type for the VM. If not specified, use
+        # INHERIT_FROM_SUBNETWORK as default.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
@@ -10072,7 +10078,7 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
         # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -10120,6 +10126,7 @@ module Google
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @name = args[:name] if args.key?(:name)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -12359,6 +12366,12 @@ module Google
         # @return [Array<Google::Apis::ComputeV1::NetworkInterface>]
         attr_accessor :network_interfaces
       
+        # The private IPv6 google access type for the VM. If not specified, use
+        # INHERIT_FROM_SUBNETWORK as default.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
+      
         # Specifies the reservations that this instance can consume from.
         # Corresponds to the JSON property `reservationAffinity`
         # @return [Google::Apis::ComputeV1::ReservationAffinity]
@@ -12407,6 +12420,7 @@ module Google
           @metadata = args[:metadata] if args.key?(:metadata)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
           @network_interfaces = args[:network_interfaces] if args.key?(:network_interfaces)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @reservation_affinity = args[:reservation_affinity] if args.key?(:reservation_affinity)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
           @scheduling = args[:scheduling] if args.key?(:scheduling)
@@ -16647,6 +16661,11 @@ module Google
         # @return [String]
         attr_accessor :fingerprint
       
+        # [Output Only] An IPv6 internal network address for this network interface.
+        # Corresponds to the JSON property `ipv6Address`
+        # @return [String]
+        attr_accessor :ipv6_address
+      
         # [Output Only] Type of the resource. Always compute#networkInterface for
         # network interfaces.
         # Corresponds to the JSON property `kind`
@@ -16702,6 +16721,7 @@ module Google
           @access_configs = args[:access_configs] if args.key?(:access_configs)
           @alias_ip_ranges = args[:alias_ip_ranges] if args.key?(:alias_ip_ranges)
           @fingerprint = args[:fingerprint] if args.key?(:fingerprint)
+          @ipv6_address = args[:ipv6_address] if args.key?(:ipv6_address)
           @kind = args[:kind] if args.key?(:kind)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
@@ -26571,6 +26591,12 @@ module Google
         # @return [String]
         attr_accessor :ip_cidr_range
       
+        # [Output Only] The range of internal IPv6 addresses that are owned by this
+        # subnetwork.
+        # Corresponds to the JSON property `ipv6CidrRange`
+        # @return [String]
+        attr_accessor :ipv6_cidr_range
+      
         # [Output Only] Type of the resource. Always compute#subnetwork for Subnetwork
         # resources.
         # Corresponds to the JSON property `kind`
@@ -26607,6 +26633,14 @@ module Google
         # @return [Boolean]
         attr_accessor :private_ip_google_access
         alias_method :private_ip_google_access?, :private_ip_google_access
+      
+        # The private IPv6 google access type for the VMs in this subnet. This is an
+        # expanded field of enablePrivateV6Access. If both fields are set,
+        # privateIpv6GoogleAccess will take priority.
+        # This field can be both set at resource creation time and updated using patch.
+        # Corresponds to the JSON property `privateIpv6GoogleAccess`
+        # @return [String]
+        attr_accessor :private_ipv6_google_access
       
         # The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
         # INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to
@@ -26670,11 +26704,13 @@ module Google
           @gateway_address = args[:gateway_address] if args.key?(:gateway_address)
           @id = args[:id] if args.key?(:id)
           @ip_cidr_range = args[:ip_cidr_range] if args.key?(:ip_cidr_range)
+          @ipv6_cidr_range = args[:ipv6_cidr_range] if args.key?(:ipv6_cidr_range)
           @kind = args[:kind] if args.key?(:kind)
           @log_config = args[:log_config] if args.key?(:log_config)
           @name = args[:name] if args.key?(:name)
           @network = args[:network] if args.key?(:network)
           @private_ip_google_access = args[:private_ip_google_access] if args.key?(:private_ip_google_access)
+          @private_ipv6_google_access = args[:private_ipv6_google_access] if args.key?(:private_ipv6_google_access)
           @purpose = args[:purpose] if args.key?(:purpose)
           @region = args[:region] if args.key?(:region)
           @role = args[:role] if args.key?(:role)

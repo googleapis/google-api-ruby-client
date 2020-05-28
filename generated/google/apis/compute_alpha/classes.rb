@@ -1169,6 +1169,12 @@ module Google
         # @return [String]
         attr_accessor :machine_type
       
+        # Specifies the number of hours after reservation creation where instances using
+        # the reservation won't be scheduled for maintenance.
+        # Corresponds to the JSON property `maintenanceFreezeDurationHours`
+        # @return [Fixnum]
+        attr_accessor :maintenance_freeze_duration_hours
+      
         # Minimum cpu platform the reservation.
         # Corresponds to the JSON property `minCpuPlatform`
         # @return [String]
@@ -1185,6 +1191,7 @@ module Google
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @long_term_release = args[:long_term_release] if args.key?(:long_term_release)
           @machine_type = args[:machine_type] if args.key?(:machine_type)
+          @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @min_cpu_platform = args[:min_cpu_platform] if args.key?(:min_cpu_platform)
         end
       end
@@ -1425,6 +1432,13 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
+        # Indicates whether or not the disk can be read/write attached to more than one
+        # instance.
+        # Corresponds to the JSON property `multiWriter`
+        # @return [Boolean]
+        attr_accessor :multi_writer
+        alias_method :multi_writer?, :multi_writer
+      
         # Specifies which action to take on instance update with this disk. Default is
         # to use the existing disk.
         # Corresponds to the JSON property `onUpdateAction`
@@ -1498,6 +1512,7 @@ module Google
           @disk_type = args[:disk_type] if args.key?(:disk_type)
           @guest_os_features = args[:guest_os_features] if args.key?(:guest_os_features)
           @labels = args[:labels] if args.key?(:labels)
+          @multi_writer = args[:multi_writer] if args.key?(:multi_writer)
           @on_update_action = args[:on_update_action] if args.key?(:on_update_action)
           @replica_zones = args[:replica_zones] if args.key?(:replica_zones)
           @resource_policies = args[:resource_policies] if args.key?(:resource_policies)
@@ -4231,11 +4246,6 @@ module Google
         # @return [Fixnum]
         attr_accessor :count
       
-        # List of zones to exclude for regional requests.
-        # Corresponds to the JSON property `excludedZones`
-        # @return [Array<String>]
-        attr_accessor :excluded_zones
-      
         # Represents an Instance resource.
         # An instance is a virtual machine that is hosted on Google Cloud Platform. For
         # more information, read Virtual Machine Instances. (== resource_for `$
@@ -4274,7 +4284,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @count = args[:count] if args.key?(:count)
-          @excluded_zones = args[:excluded_zones] if args.key?(:excluded_zones)
           @instance = args[:instance] if args.key?(:instance)
           @min_count = args[:min_count] if args.key?(:min_count)
           @predefined_names = args[:predefined_names] if args.key?(:predefined_names)
@@ -12059,7 +12068,7 @@ module Google
         alias_method :start_restricted?, :start_restricted
       
         # [Output Only] The status of the instance. One of the following values:
-        # PROVISIONING, STAGING, RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and
+        # PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, and
         # TERMINATED.
         # Corresponds to the JSON property `status`
         # @return [String]
@@ -30733,6 +30742,12 @@ module Google
         attr_accessor :long_term_release
         alias_method :long_term_release?, :long_term_release
       
+        # Specifies the number of hours after instance creation where the instance won't
+        # be scheduled for maintenance.
+        # Corresponds to the JSON property `maintenanceFreezeDurationHours`
+        # @return [Fixnum]
+        attr_accessor :maintenance_freeze_duration_hours
+      
         # The minimum number of virtual CPUs this instance will consume when running on
         # a sole-tenant node.
         # Corresponds to the JSON property `minNodeCpus`
@@ -30771,6 +30786,7 @@ module Google
           @latency_tolerant = args[:latency_tolerant] if args.key?(:latency_tolerant)
           @location_hint = args[:location_hint] if args.key?(:location_hint)
           @long_term_release = args[:long_term_release] if args.key?(:long_term_release)
+          @maintenance_freeze_duration_hours = args[:maintenance_freeze_duration_hours] if args.key?(:maintenance_freeze_duration_hours)
           @min_node_cpus = args[:min_node_cpus] if args.key?(:min_node_cpus)
           @node_affinities = args[:node_affinities] if args.key?(:node_affinities)
           @on_host_maintenance = args[:on_host_maintenance] if args.key?(:on_host_maintenance)

@@ -5706,6 +5706,7 @@ module Google
           property :location_hint, as: 'locationHint'
           property :long_term_release, as: 'longTermRelease'
           property :machine_type, as: 'machineType'
+          property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :min_cpu_platform, as: 'minCpuPlatform'
         end
       end
@@ -5756,6 +5757,7 @@ module Google
           collection :guest_os_features, as: 'guestOsFeatures', class: Google::Apis::ComputeAlpha::GuestOsFeature, decorator: Google::Apis::ComputeAlpha::GuestOsFeature::Representation
       
           hash :labels, as: 'labels'
+          property :multi_writer, as: 'multiWriter'
           property :on_update_action, as: 'onUpdateAction'
           collection :replica_zones, as: 'replicaZones'
           collection :resource_policies, as: 'resourcePolicies'
@@ -6375,7 +6377,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :count, :numeric_string => true, as: 'count'
-          collection :excluded_zones, as: 'excludedZones'
           property :instance, as: 'instance', class: Google::Apis::ComputeAlpha::Instance, decorator: Google::Apis::ComputeAlpha::Instance::Representation
       
           property :min_count, :numeric_string => true, as: 'minCount'
@@ -12932,6 +12933,7 @@ module Google
           property :latency_tolerant, as: 'latencyTolerant'
           property :location_hint, as: 'locationHint'
           property :long_term_release, as: 'longTermRelease'
+          property :maintenance_freeze_duration_hours, as: 'maintenanceFreezeDurationHours'
           property :min_node_cpus, as: 'minNodeCpus'
           collection :node_affinities, as: 'nodeAffinities', class: Google::Apis::ComputeAlpha::SchedulingNodeAffinity, decorator: Google::Apis::ComputeAlpha::SchedulingNodeAffinity::Representation
       
