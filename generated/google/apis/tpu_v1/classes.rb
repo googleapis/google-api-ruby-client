@@ -362,7 +362,7 @@ module Google
         # @return [String]
         attr_accessor :port
       
-        # 
+        # Sets the scheduling options for this node.
         # Corresponds to the JSON property `schedulingConfig`
         # @return [Google::Apis::TpuV1::SchedulingConfig]
         attr_accessor :scheduling_config
@@ -554,11 +554,11 @@ module Google
         end
       end
       
-      # 
+      # Sets the scheduling options for this node.
       class SchedulingConfig
         include Google::Apis::Core::Hashable
       
-        # 
+        # Defines whether the node is preemptible.
         # Corresponds to the JSON property `preemptible`
         # @return [Boolean]
         attr_accessor :preemptible

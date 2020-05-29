@@ -4684,6 +4684,15 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # The labels associated with this job. You can use these to organize and group
+        # your jobs. Label keys and values can be no longer than 63 characters, can only
+        # contain lowercase letters, numeric characters, underscores and dashes.
+        # International characters are allowed. Label values are optional. Label keys
+        # must start with a letter and each label in the list must have a different key.
+        # Corresponds to the JSON property `labels`
+        # @return [Hash<String,String>]
+        attr_accessor :labels
+      
         # The geographic location where the job should run. See details at https://cloud.
         # google.com/bigquery/docs/locations#specifying_your_location.
         # Corresponds to the JSON property `location`
@@ -4698,6 +4707,13 @@ module Google
         # Corresponds to the JSON property `maxResults`
         # @return [Fixnum]
         attr_accessor :max_results
+      
+        # [Optional] Limits the bytes billed for this job. Queries that will have bytes
+        # billed beyond this limit will fail (without incurring a charge). If
+        # unspecified, this will be set to your project default.
+        # Corresponds to the JSON property `maximumBytesBilled`
+        # @return [Fixnum]
+        attr_accessor :maximum_bytes_billed
       
         # Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or
         # to NAMED to use named (@myparam) query parameters in this query.
@@ -4722,6 +4738,21 @@ module Google
         # Corresponds to the JSON property `queryParameters`
         # @return [Array<Google::Apis::BigqueryV2::QueryParameter>]
         attr_accessor :query_parameters
+      
+        # A unique user provided identifier to ensure idempotent behavior for queries.
+        # Note that this is different from the job_id. It has the following properties:
+        # 1. It is case-sensitive, limited to up to 36 ASCII characters. A UUID is
+        # recommended. 2. Read only queries can ignore this token since they are
+        # nullipotent by definition. 3. When a duplicate mutating query request is
+        # detected (i.e. having the same request_id as an earlier query), it returns: a.
+        # the results of the mutation if it completes successfully within the timeout. b.
+        # the running operation if it is still in progress at the end of the timeout. 4.
+        # Its lifetime is limited to 15 minutes. In other words, if two requests are
+        # sent with the same request_id, but more than 15 minutes apart, idempotency is
+        # not guaranteed.
+        # Corresponds to the JSON property `requestId`
+        # @return [String]
+        attr_accessor :request_id
       
         # [Optional] How long to wait for the query to complete, in milliseconds, before
         # the request times out and returns. Note that this is only a timeout for the
@@ -4761,12 +4792,15 @@ module Google
           @default_dataset = args[:default_dataset] if args.key?(:default_dataset)
           @dry_run = args[:dry_run] if args.key?(:dry_run)
           @kind = args[:kind] if args.key?(:kind)
+          @labels = args[:labels] if args.key?(:labels)
           @location = args[:location] if args.key?(:location)
           @max_results = args[:max_results] if args.key?(:max_results)
+          @maximum_bytes_billed = args[:maximum_bytes_billed] if args.key?(:maximum_bytes_billed)
           @parameter_mode = args[:parameter_mode] if args.key?(:parameter_mode)
           @preserve_nulls = args[:preserve_nulls] if args.key?(:preserve_nulls)
           @query = args[:query] if args.key?(:query)
           @query_parameters = args[:query_parameters] if args.key?(:query_parameters)
+          @request_id = args[:request_id] if args.key?(:request_id)
           @timeout_ms = args[:timeout_ms] if args.key?(:timeout_ms)
           @use_legacy_sql = args[:use_legacy_sql] if args.key?(:use_legacy_sql)
           @use_query_cache = args[:use_query_cache] if args.key?(:use_query_cache)

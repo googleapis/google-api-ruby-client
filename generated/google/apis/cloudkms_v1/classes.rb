@@ -33,6 +33,25 @@ module Google
         # @return [String]
         attr_accessor :ciphertext
       
+        # Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.
+        # ciphertext.
+        # If specified, KeyManagementService will verify the integrity of the
+        # received AsymmetricDecryptRequest.ciphertext using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to
+        # AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a
+        # limited number of retries. A persistent mismatch may indicate an issue in
+        # your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -40,6 +59,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
         end
       end
       
@@ -53,6 +73,36 @@ module Google
         # @return [String]
         attr_accessor :plaintext
       
+        # Integrity verification field. A CRC32C checksum of the returned
+        # AsymmetricDecryptResponse.plaintext. An integrity check of
+        # AsymmetricDecryptResponse.plaintext can be performed by computing the
+        # CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing
+        # your results to this field. Discard the response in case of non-matching
+        # checksum values, and perform a limited number of retries. A persistent
+        # mismatch may indicate an issue in your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `plaintextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :plaintext_crc32c
+      
+        # Integrity verification field. A flag indicating whether
+        # AsymmetricDecryptRequest.ciphertext_crc32c was received by
+        # KeyManagementService and used for the integrity verification of the
+        # ciphertext. A false value of this
+        # field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c
+        # was left unset or that it was not delivered to KeyManagementService. If
+        # you've set AsymmetricDecryptRequest.ciphertext_crc32c but this field is
+        # still false, discard the response and perform a limited number of retries.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `verifiedCiphertextCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_ciphertext_crc32c
+        alias_method :verified_ciphertext_crc32c?, :verified_ciphertext_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -60,6 +110,8 @@ module Google
         # Update properties of this object
         def update!(**args)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
+          @verified_ciphertext_crc32c = args[:verified_ciphertext_crc32c] if args.key?(:verified_ciphertext_crc32c)
         end
       end
       
@@ -72,6 +124,24 @@ module Google
         # @return [Google::Apis::CloudkmsV1::Digest]
         attr_accessor :digest
       
+        # Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If
+        # specified, KeyManagementService will verify the integrity of the
+        # received AsymmetricSignRequest.digest using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(AsymmetricSignRequest.digest) is equal to
+        # AsymmetricSignRequest.digest_crc32c, and if so, perform a limited
+        # number of retries. A persistent mismatch may indicate an issue in your
+        # computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `digestCrc32c`
+        # @return [Fixnum]
+        attr_accessor :digest_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -79,6 +149,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @digest = args[:digest] if args.key?(:digest)
+          @digest_crc32c = args[:digest_crc32c] if args.key?(:digest_crc32c)
         end
       end
       
@@ -86,11 +157,48 @@ module Google
       class AsymmetricSignResponse
         include Google::Apis::Core::Hashable
       
+        # The resource name of the CryptoKeyVersion used for signing. Check
+        # this field to verify that the intended resource was used for signing.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The created signature.
         # Corresponds to the JSON property `signature`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :signature
+      
+        # Integrity verification field. A CRC32C checksum of the returned
+        # AsymmetricSignResponse.signature. An integrity check of
+        # AsymmetricSignResponse.signature can be performed by computing the
+        # CRC32C checksum of AsymmetricSignResponse.signature and comparing your
+        # results to this field. Discard the response in case of non-matching
+        # checksum values, and perform a limited number of retries. A persistent
+        # mismatch may indicate an issue in your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `signatureCrc32c`
+        # @return [Fixnum]
+        attr_accessor :signature_crc32c
+      
+        # Integrity verification field. A flag indicating whether
+        # AsymmetricSignRequest.digest_crc32c was received by
+        # KeyManagementService and used for the integrity verification of the
+        # digest. A false value of this field
+        # indicates either that AsymmetricSignRequest.digest_crc32c was left
+        # unset or that it was not delivered to KeyManagementService. If you've
+        # set AsymmetricSignRequest.digest_crc32c but this field is still false,
+        # discard the response and perform a limited number of retries.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `verifiedDigestCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_digest_crc32c
+        alias_method :verified_digest_crc32c?, :verified_digest_crc32c
       
         def initialize(**args)
            update!(**args)
@@ -98,7 +206,10 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @name = args[:name] if args.key?(:name)
           @signature = args[:signature] if args.key?(:signature)
+          @signature_crc32c = args[:signature_crc32c] if args.key?(:signature_crc32c)
+          @verified_digest_crc32c = args[:verified_digest_crc32c] if args.key?(:verified_digest_crc32c)
         end
       end
       
@@ -551,12 +662,49 @@ module Google
         # @return [String]
         attr_accessor :additional_authenticated_data
       
+        # Optional. An optional CRC32C checksum of the
+        # DecryptRequest.additional_authenticated_data. If specified,
+        # KeyManagementService will verify the integrity of the received
+        # DecryptRequest.additional_authenticated_data using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(DecryptRequest.additional_authenticated_data) is equal to
+        # DecryptRequest.additional_authenticated_data_crc32c, and if so, perform
+        # a limited number of retries. A persistent mismatch may indicate an issue in
+        # your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :additional_authenticated_data_crc32c
+      
         # Required. The encrypted data originally returned in
         # EncryptResponse.ciphertext.
         # Corresponds to the JSON property `ciphertext`
         # NOTE: Values are automatically base64 encoded/decoded in the client library.
         # @return [String]
         attr_accessor :ciphertext
+      
+        # Optional. An optional CRC32C checksum of the DecryptRequest.ciphertext. If
+        # specified, KeyManagementService will verify the integrity of the
+        # received DecryptRequest.ciphertext using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(DecryptRequest.ciphertext) is equal to
+        # DecryptRequest.ciphertext_crc32c, and if so, perform a limited number
+        # of retries. A persistent mismatch may indicate an issue in your computation
+        # of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
       
         def initialize(**args)
            update!(**args)
@@ -565,7 +713,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
+          @additional_authenticated_data_crc32c = args[:additional_authenticated_data_crc32c] if args.key?(:additional_authenticated_data_crc32c)
           @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
         end
       end
       
@@ -579,6 +729,24 @@ module Google
         # @return [String]
         attr_accessor :plaintext
       
+        # Integrity verification field. A CRC32C checksum of the returned
+        # DecryptResponse.plaintext. An integrity check of
+        # DecryptResponse.plaintext can be performed by computing the CRC32C
+        # checksum of DecryptResponse.plaintext and comparing your results to
+        # this field. Discard the response in case of non-matching checksum values,
+        # and perform a limited number of retries. A persistent mismatch may indicate
+        # an issue in your computation of the CRC32C checksum. Note: receiving this
+        # response message indicates that KeyManagementService is able to
+        # successfully decrypt the ciphertext.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `plaintextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :plaintext_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -586,6 +754,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
         end
       end
       
@@ -654,6 +823,25 @@ module Google
         # @return [String]
         attr_accessor :additional_authenticated_data
       
+        # Optional. An optional CRC32C checksum of the
+        # EncryptRequest.additional_authenticated_data. If specified,
+        # KeyManagementService will verify the integrity of the received
+        # EncryptRequest.additional_authenticated_data using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(EncryptRequest.additional_authenticated_data) is equal to
+        # EncryptRequest.additional_authenticated_data_crc32c, and if so, perform
+        # a limited number of retries. A persistent mismatch may indicate an issue in
+        # your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `additionalAuthenticatedDataCrc32c`
+        # @return [Fixnum]
+        attr_accessor :additional_authenticated_data_crc32c
+      
         # Required. The data to encrypt. Must be no larger than 64KiB.
         # The maximum size depends on the key version's
         # protection_level. For
@@ -666,6 +854,24 @@ module Google
         # @return [String]
         attr_accessor :plaintext
       
+        # Optional. An optional CRC32C checksum of the EncryptRequest.plaintext. If
+        # specified, KeyManagementService will verify the integrity of the
+        # received EncryptRequest.plaintext using this checksum.
+        # KeyManagementService will report an error if the checksum verification
+        # fails. If you receive a checksum error, your client should verify that
+        # CRC32C(EncryptRequest.plaintext) is equal to
+        # EncryptRequest.plaintext_crc32c, and if so, perform a limited number of
+        # retries. A persistent mismatch may indicate an issue in your computation of
+        # the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `plaintextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :plaintext_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -673,7 +879,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @additional_authenticated_data = args[:additional_authenticated_data] if args.key?(:additional_authenticated_data)
+          @additional_authenticated_data_crc32c = args[:additional_authenticated_data_crc32c] if args.key?(:additional_authenticated_data_crc32c)
           @plaintext = args[:plaintext] if args.key?(:plaintext)
+          @plaintext_crc32c = args[:plaintext_crc32c] if args.key?(:plaintext_crc32c)
         end
       end
       
@@ -687,11 +895,56 @@ module Google
         # @return [String]
         attr_accessor :ciphertext
       
+        # Integrity verification field. A CRC32C checksum of the returned
+        # EncryptResponse.ciphertext. An integrity check of
+        # EncryptResponse.ciphertext can be performed by computing the CRC32C
+        # checksum of EncryptResponse.ciphertext and comparing your results to
+        # this field. Discard the response in case of non-matching checksum values,
+        # and perform a limited number of retries. A persistent mismatch may indicate
+        # an issue in your computation of the CRC32C checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `ciphertextCrc32c`
+        # @return [Fixnum]
+        attr_accessor :ciphertext_crc32c
+      
         # The resource name of the CryptoKeyVersion used in encryption. Check
         # this field to verify that the intended resource was used for encryption.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name
+      
+        # Integrity verification field. A flag indicating whether
+        # EncryptRequest.additional_authenticated_data_crc32c was received by
+        # KeyManagementService and used for the integrity verification of the
+        # AAD. A false value of this
+        # field indicates either that
+        # EncryptRequest.additional_authenticated_data_crc32c was left unset or
+        # that it was not delivered to KeyManagementService. If you've set
+        # EncryptRequest.additional_authenticated_data_crc32c but this field is
+        # still false, discard the response and perform a limited number of retries.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `verifiedAdditionalAuthenticatedDataCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_additional_authenticated_data_crc32c
+        alias_method :verified_additional_authenticated_data_crc32c?, :verified_additional_authenticated_data_crc32c
+      
+        # Integrity verification field. A flag indicating whether
+        # EncryptRequest.plaintext_crc32c was received by
+        # KeyManagementService and used for the integrity verification of the
+        # plaintext. A false value of this field
+        # indicates either that EncryptRequest.plaintext_crc32c was left unset or
+        # that it was not delivered to KeyManagementService. If you've set
+        # EncryptRequest.plaintext_crc32c but this field is still false, discard
+        # the response and perform a limited number of retries.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `verifiedPlaintextCrc32c`
+        # @return [Boolean]
+        attr_accessor :verified_plaintext_crc32c
+        alias_method :verified_plaintext_crc32c?, :verified_plaintext_crc32c
       
         def initialize(**args)
            update!(**args)
@@ -700,7 +953,10 @@ module Google
         # Update properties of this object
         def update!(**args)
           @ciphertext = args[:ciphertext] if args.key?(:ciphertext)
+          @ciphertext_crc32c = args[:ciphertext_crc32c] if args.key?(:ciphertext_crc32c)
           @name = args[:name] if args.key?(:name)
+          @verified_additional_authenticated_data_crc32c = args[:verified_additional_authenticated_data_crc32c] if args.key?(:verified_additional_authenticated_data_crc32c)
+          @verified_plaintext_crc32c = args[:verified_plaintext_crc32c] if args.key?(:verified_plaintext_crc32c)
         end
       end
       
@@ -1376,6 +1632,13 @@ module Google
         # @return [String]
         attr_accessor :algorithm
       
+        # The name of the CryptoKeyVersion public key.
+        # Provided here for verification.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
         # The public key, encoded in PEM format. For more information, see the
         # [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for
         # [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
@@ -1385,6 +1648,22 @@ module Google
         # @return [String]
         attr_accessor :pem
       
+        # Integrity verification field. A CRC32C checksum of the returned
+        # PublicKey.pem. An integrity check of PublicKey.pem can be performed
+        # by computing the CRC32C checksum of PublicKey.pem and
+        # comparing your results to this field. Discard the response in case of
+        # non-matching checksum values, and perform a limited number of retries. A
+        # persistent mismatch may indicate an issue in your computation of the CRC32C
+        # checksum.
+        # Note: This field is defined as int64 for reasons of compatibility across
+        # different languages. However, it is a non-negative integer, which will
+        # never exceed 2^32-1, and can be safely downconverted to uint32 in languages
+        # that support this type.
+        # NOTE: This field is in Beta.
+        # Corresponds to the JSON property `pemCrc32c`
+        # @return [Fixnum]
+        attr_accessor :pem_crc32c
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1392,7 +1671,9 @@ module Google
         # Update properties of this object
         def update!(**args)
           @algorithm = args[:algorithm] if args.key?(:algorithm)
+          @name = args[:name] if args.key?(:name)
           @pem = args[:pem] if args.key?(:pem)
+          @pem_crc32c = args[:pem_crc32c] if args.key?(:pem_crc32c)
         end
       end
       

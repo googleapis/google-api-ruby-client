@@ -2428,6 +2428,13 @@ module Google
         # @return [String]
         attr_accessor :js_tracker_url
       
+        # Output only. The IDs of the line items this creative associated with.
+        # To associate a creative to a line item, use
+        # LineItem.creative_ids instead.
+        # Corresponds to the JSON property `lineItemIds`
+        # @return [Array<Fixnum>]
+        attr_accessor :line_item_ids
+      
         # Output only. Media duration of the creative.
         # Applicable when creative_type
         # is one of:
@@ -2664,6 +2671,7 @@ module Google
           @ias_campaign_monitoring = args[:ias_campaign_monitoring] if args.key?(:ias_campaign_monitoring)
           @integration_code = args[:integration_code] if args.key?(:integration_code)
           @js_tracker_url = args[:js_tracker_url] if args.key?(:js_tracker_url)
+          @line_item_ids = args[:line_item_ids] if args.key?(:line_item_ids)
           @media_duration = args[:media_duration] if args.key?(:media_duration)
           @name = args[:name] if args.key?(:name)
           @notes = args[:notes] if args.key?(:notes)

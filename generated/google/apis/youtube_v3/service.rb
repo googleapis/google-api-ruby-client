@@ -45,7 +45,7 @@ module Google
 
         def initialize
           super('https://www.googleapis.com/', '')
-          @batch_path = 'batch/youtube/v3'
+          @batch_path = 'batch/youtube'
         end
         
         # Retrieves a list of resources, possibly filtered.

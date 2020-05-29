@@ -1877,13 +1877,16 @@ module Google
       
           property :dry_run, as: 'dryRun'
           property :kind, as: 'kind'
+          hash :labels, as: 'labels'
           property :location, as: 'location'
           property :max_results, as: 'maxResults'
+          property :maximum_bytes_billed, :numeric_string => true, as: 'maximumBytesBilled'
           property :parameter_mode, as: 'parameterMode'
           property :preserve_nulls, as: 'preserveNulls'
           property :query, as: 'query'
           collection :query_parameters, as: 'queryParameters', class: Google::Apis::BigqueryV2::QueryParameter, decorator: Google::Apis::BigqueryV2::QueryParameter::Representation
       
+          property :request_id, as: 'requestId'
           property :timeout_ms, as: 'timeoutMs'
           property :use_legacy_sql, as: 'useLegacySql'
           property :use_query_cache, as: 'useQueryCache'

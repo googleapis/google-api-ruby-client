@@ -1743,6 +1743,7 @@ module Google
           property :ias_campaign_monitoring, as: 'iasCampaignMonitoring'
           property :integration_code, as: 'integrationCode'
           property :js_tracker_url, as: 'jsTrackerUrl'
+          collection :line_item_ids, as: 'lineItemIds'
           property :media_duration, as: 'mediaDuration'
           property :name, as: 'name'
           property :notes, as: 'notes'

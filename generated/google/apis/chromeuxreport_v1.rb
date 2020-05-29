@@ -12,23 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/tpu_v1alpha1/service.rb'
-require 'google/apis/tpu_v1alpha1/classes.rb'
-require 'google/apis/tpu_v1alpha1/representations.rb'
+require 'google/apis/chromeuxreport_v1/service.rb'
+require 'google/apis/chromeuxreport_v1/classes.rb'
+require 'google/apis/chromeuxreport_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud TPU API
+    # Chrome UX Report API
     #
-    # TPU API provides customers with access to Google TPU technology.
+    # The Chrome UX Report API lets you view real user experience data for millions
+    # of websites.
     #
-    # @see https://cloud.google.com/tpu/
-    module TpuV1alpha1
-      VERSION = 'V1alpha1'
-      REVISION = '20200527'
-
-      # View and manage your data across Google Cloud Platform services
-      AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
+    # @see https://developers.google.com/web/tools/chrome-user-experience-report/api/reference
+    module ChromeuxreportV1
+      VERSION = 'V1'
+      REVISION = '20200528'
     end
   end
 end
