@@ -1004,6 +1004,7 @@ module Google
           collection :alert_policies, as: 'alertPolicies', class: Google::Apis::MonitoringV3::AlertPolicy, decorator: Google::Apis::MonitoringV3::AlertPolicy::Representation
       
           property :next_page_token, as: 'nextPageToken'
+          property :total_size, as: 'totalSize'
         end
       end
       

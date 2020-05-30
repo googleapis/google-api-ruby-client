@@ -1725,6 +1725,12 @@ module Google
         # @return [String]
         attr_accessor :next_page_token
       
+        # The total number of alert policies in all pages. This number is only an
+        # estimate, and may change in subsequent pages. https://aip.dev/158
+        # Corresponds to the JSON property `totalSize`
+        # @return [Fixnum]
+        attr_accessor :total_size
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1733,6 +1739,7 @@ module Google
         def update!(**args)
           @alert_policies = args[:alert_policies] if args.key?(:alert_policies)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @total_size = args[:total_size] if args.key?(:total_size)
         end
       end
       

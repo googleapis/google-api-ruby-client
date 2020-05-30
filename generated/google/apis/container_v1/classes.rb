@@ -165,14 +165,12 @@ module Google
         # @return [Google::Apis::ContainerV1::NodeManagement]
         attr_accessor :management
       
-        # Scopes that are used by NAP when creating node pools. If oauth_scopes are
-        # specified, service_account should be empty.
+        # Scopes that are used by NAP when creating node pools.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
-        # The Google Cloud Platform Service Account to be used by the node VMs. If
-        # service_account is specified, scopes should be empty.
+        # The Google Cloud Platform Service Account to be used by the node VMs.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
