@@ -209,14 +209,12 @@ module Google
         # @return [String]
         attr_accessor :min_cpu_platform
       
-        # Scopes that are used by NAP when creating node pools. If oauth_scopes are
-        # specified, service_account should be empty.
+        # Scopes that are used by NAP when creating node pools.
         # Corresponds to the JSON property `oauthScopes`
         # @return [Array<String>]
         attr_accessor :oauth_scopes
       
-        # The Google Cloud Platform Service Account to be used by the node VMs. If
-        # service_account is specified, scopes should be empty.
+        # The Google Cloud Platform Service Account to be used by the node VMs.
         # Corresponds to the JSON property `serviceAccount`
         # @return [String]
         attr_accessor :service_account
@@ -638,6 +636,11 @@ module Google
         # @return [Google::Apis::ContainerV1beta1::MaintenancePolicy]
         attr_accessor :maintenance_policy
       
+        # Master is the configuration for components on master.
+        # Corresponds to the JSON property `master`
+        # @return [Google::Apis::ContainerV1beta1::Master]
+        attr_accessor :master
+      
         # The authentication information for accessing the master endpoint.
         # Authentication can be done using HTTP basic auth or using client
         # certificates.
@@ -872,6 +875,7 @@ module Google
           @locations = args[:locations] if args.key?(:locations)
           @logging_service = args[:logging_service] if args.key?(:logging_service)
           @maintenance_policy = args[:maintenance_policy] if args.key?(:maintenance_policy)
+          @master = args[:master] if args.key?(:master)
           @master_auth = args[:master_auth] if args.key?(:master_auth)
           @master_authorized_networks_config = args[:master_authorized_networks_config] if args.key?(:master_authorized_networks_config)
           @master_ipv4_cidr_block = args[:master_ipv4_cidr_block] if args.key?(:master_ipv4_cidr_block)
@@ -1049,6 +1053,11 @@ module Google
         # @return [String]
         attr_accessor :desired_logging_service
       
+        # Master is the configuration for components on master.
+        # Corresponds to the JSON property `desiredMaster`
+        # @return [Google::Apis::ContainerV1beta1::Master]
+        attr_accessor :desired_master
+      
         # Configuration options for the master authorized networks feature. Enabled
         # master authorized networks will disallow all external traffic to access
         # Kubernetes master through HTTPS except traffic from the given CIDR blocks,
@@ -1175,6 +1184,7 @@ module Google
           @desired_intra_node_visibility_config = args[:desired_intra_node_visibility_config] if args.key?(:desired_intra_node_visibility_config)
           @desired_locations = args[:desired_locations] if args.key?(:desired_locations)
           @desired_logging_service = args[:desired_logging_service] if args.key?(:desired_logging_service)
+          @desired_master = args[:desired_master] if args.key?(:desired_master)
           @desired_master_authorized_networks_config = args[:desired_master_authorized_networks_config] if args.key?(:desired_master_authorized_networks_config)
           @desired_master_version = args[:desired_master_version] if args.key?(:desired_master_version)
           @desired_monitoring_service = args[:desired_monitoring_service] if args.key?(:desired_monitoring_service)
@@ -2248,6 +2258,19 @@ module Google
           @daily_maintenance_window = args[:daily_maintenance_window] if args.key?(:daily_maintenance_window)
           @maintenance_exclusions = args[:maintenance_exclusions] if args.key?(:maintenance_exclusions)
           @recurring_window = args[:recurring_window] if args.key?(:recurring_window)
+        end
+      end
+      
+      # Master is the configuration for components on master.
+      class Master
+        include Google::Apis::Core::Hashable
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
         end
       end
       

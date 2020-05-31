@@ -304,6 +304,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class Master
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class MasterAuth
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -781,6 +787,8 @@ module Google
           property :logging_service, as: 'loggingService'
           property :maintenance_policy, as: 'maintenancePolicy', class: Google::Apis::ContainerV1beta1::MaintenancePolicy, decorator: Google::Apis::ContainerV1beta1::MaintenancePolicy::Representation
       
+          property :master, as: 'master', class: Google::Apis::ContainerV1beta1::Master, decorator: Google::Apis::ContainerV1beta1::Master::Representation
+      
           property :master_auth, as: 'masterAuth', class: Google::Apis::ContainerV1beta1::MasterAuth, decorator: Google::Apis::ContainerV1beta1::MasterAuth::Representation
       
           property :master_authorized_networks_config, as: 'masterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
@@ -866,6 +874,8 @@ module Google
       
           collection :desired_locations, as: 'desiredLocations'
           property :desired_logging_service, as: 'desiredLoggingService'
+          property :desired_master, as: 'desiredMaster', class: Google::Apis::ContainerV1beta1::Master, decorator: Google::Apis::ContainerV1beta1::Master::Representation
+      
           property :desired_master_authorized_networks_config, as: 'desiredMasterAuthorizedNetworksConfig', class: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig, decorator: Google::Apis::ContainerV1beta1::MasterAuthorizedNetworksConfig::Representation
       
           property :desired_master_version, as: 'desiredMasterVersion'
@@ -1173,6 +1183,12 @@ module Google
       
           property :recurring_window, as: 'recurringWindow', class: Google::Apis::ContainerV1beta1::RecurringTimeWindow, decorator: Google::Apis::ContainerV1beta1::RecurringTimeWindow::Representation
       
+        end
+      end
+      
+      class Master
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
         end
       end
       
