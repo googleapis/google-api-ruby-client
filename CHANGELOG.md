@@ -1,3 +1,37 @@
+# 0.40.0
+* Breaking changes:
+  * Deleted `pagespeedonline_v4`
+* Backwards compatible changes:
+  * Updated `apigee_v1`
+  * Updated `bigquery_v2`
+  * Updated `bigqueryreservation_v1`
+  * Updated `bigqueryreservation_v1beta1`
+  * Updated `billingbudgets_v1beta1`
+  * Updated `cloudiot_v1`
+  * Updated `cloudkms_v1`
+  * Updated `cloudtasks_v2`
+  * Updated `cloudtasks_v2beta3`
+  * Updated `compute_alpha`
+  * Updated `compute_beta`
+  * Updated `compute_v1`
+  * Updated `container_v1`
+  * Updated `container_v1beta1`
+  * Updated `dataflow_v1b3`
+  * Updated `dialogflow_v2`
+  * Updated `dialogflow_v2beta1`
+  * Updated `dialogflow_v3alpha1`
+  * Updated `displayvideo_v1`
+  * Updated `fitness_v1`
+  * Updated `healthcare_v1`
+  * Updated `healthcare_v1beta1`
+  * Updated `homegraph_v1`
+  * Updated `iam_v1`
+  * Updated `monitoring_v3`
+  * Updated `spanner_v1`
+  * Updated `tpu_v1`
+  * Updated `tpu_v1alpha1`
+  * Updated `youtube_v3`
+
 # 0.39.5
 * Backwards compatible changes:
   * Added `artifactregistry_v1beta1`
