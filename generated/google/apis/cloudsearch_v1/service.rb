@@ -1274,7 +1274,7 @@ module Google
         # **Note:** This API requires an admin account to execute.
         # @param [String] name
         #   Name of the search application.
-        #   <br />Format: applications/`application_id`.
+        #   <br />Format: searchapplications/`application_id`.
         # @param [Boolean] debug_options_enable_debugging
         #   If you are asked by Google to help with debugging, set this field.
         #   Otherwise, ignore this field.

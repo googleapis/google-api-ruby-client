@@ -632,6 +632,77 @@ module Google
         end
       end
       
+      # An assignment between a targetable inventory source and an inventory source
+      # group.
+      class AssignedInventorySource
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique ID of the assigned inventory source. The ID is only
+        # unique within a given inventory source group. It may be reused in other
+        # contexts.
+        # Corresponds to the JSON property `assignedInventorySourceId`
+        # @return [Fixnum]
+        attr_accessor :assigned_inventory_source_id
+      
+        # Required. The ID of the inventory source entity being targeted.
+        # Corresponds to the JSON property `inventorySourceId`
+        # @return [String]
+        attr_accessor :inventory_source_id
+      
+        # Output only. The resource name of the assigned inventory source.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_inventory_source_id = args[:assigned_inventory_source_id] if args.key?(:assigned_inventory_source_id)
+          @inventory_source_id = args[:inventory_source_id] if args.key?(:inventory_source_id)
+          @name = args[:name] if args.key?(:name)
+        end
+      end
+      
+      # An assignment between a location list and a relevant targeting option.
+      # Currently, geo region targeting options are the only supported option for
+      # assignment.
+      class AssignedLocation
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The unique ID of the assigned location. The ID is only unique
+        # within a
+        # location list. It may be reused in other contexts.
+        # Corresponds to the JSON property `assignedLocationId`
+        # @return [Fixnum]
+        attr_accessor :assigned_location_id
+      
+        # Output only. The resource name of the assigned location.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The ID of the targeting option assigned to the location list. Must
+        # be of
+        # type TARGETING_TYPE_GEO_REGION.
+        # Corresponds to the JSON property `targetingOptionId`
+        # @return [String]
+        attr_accessor :targeting_option_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_location_id = args[:assigned_location_id] if args.key?(:assigned_location_id)
+          @name = args[:name] if args.key?(:name)
+          @targeting_option_id = args[:targeting_option_id] if args.key?(:targeting_option_id)
+        end
+      end
+      
       # A single assigned targeting option, which defines the state of a targeting
       # option for an entity with targeting settings, such as a Line Item or
       # Insertion Order.
@@ -1314,6 +1385,116 @@ module Google
         end
       end
       
+      # Request message for AssignedInventorySourceService.BulkEdit.
+      class BulkEditAssignedInventorySourcesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the advertiser that owns the parent inventory source group.
+        # The parent partner does not have access to these assigned inventory
+        # sources.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # The assigned inventory sources to create in bulk, specified as a list of
+        # AssignedInventorySources.
+        # Corresponds to the JSON property `createdAssignedInventorySources`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedInventorySource>]
+        attr_accessor :created_assigned_inventory_sources
+      
+        # The IDs of the assigned inventory sources to delete in bulk, specified as a
+        # list of
+        # assigned_inventory_source_ids.
+        # Corresponds to the JSON property `deletedAssignedInventorySources`
+        # @return [Array<Fixnum>]
+        attr_accessor :deleted_assigned_inventory_sources
+      
+        # The ID of the partner that owns the inventory source group.
+        # Only this partner has write access to these assigned inventory sources.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @created_assigned_inventory_sources = args[:created_assigned_inventory_sources] if args.key?(:created_assigned_inventory_sources)
+          @deleted_assigned_inventory_sources = args[:deleted_assigned_inventory_sources] if args.key?(:deleted_assigned_inventory_sources)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+        end
+      end
+      
+      # Response message for AssignedInventorySourceService.BulkEdit.
+      class BulkEditAssignedInventorySourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned inventory sources that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedInventorySources`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedInventorySource>]
+        attr_accessor :assigned_inventory_sources
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_inventory_sources = args[:assigned_inventory_sources] if args.key?(:assigned_inventory_sources)
+        end
+      end
+      
+      # Request message for AssignedLocationService.BulkEditAssignedLocations.
+      class BulkEditAssignedLocationsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The assigned locations to create in bulk, specified as a list of
+        # AssignedLocations.
+        # Corresponds to the JSON property `createdAssignedLocations`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedLocation>]
+        attr_accessor :created_assigned_locations
+      
+        # The IDs of the assigned locations to delete in bulk, specified as a list of
+        # assigned_location_ids.
+        # Corresponds to the JSON property `deletedAssignedLocations`
+        # @return [Array<Fixnum>]
+        attr_accessor :deleted_assigned_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_assigned_locations = args[:created_assigned_locations] if args.key?(:created_assigned_locations)
+          @deleted_assigned_locations = args[:deleted_assigned_locations] if args.key?(:deleted_assigned_locations)
+        end
+      end
+      
+      # Response message for AssignedLocationService.BulkEditAssignedLocations.
+      class BulkEditAssignedLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned locations that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedLocations`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedLocation>]
+        attr_accessor :assigned_locations
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_locations = args[:assigned_locations] if args.key?(:assigned_locations)
+        end
+      end
+      
       # Request message for
       # BulkEditLineItemAssignedTargetingOptions.
       class BulkEditLineItemAssignedTargetingOptionsRequest
@@ -1359,6 +1540,111 @@ module Google
         # Update properties of this object
         def update!(**args)
           @created_assigned_targeting_options = args[:created_assigned_targeting_options] if args.key?(:created_assigned_targeting_options)
+        end
+      end
+      
+      # Request message for NegativeKeywordService.BulkEditNegativeKeywords.
+      class BulkEditNegativeKeywordsRequest
+        include Google::Apis::Core::Hashable
+      
+        # The negative keywords to create in batch, specified as a list of
+        # NegativeKeywords.
+        # Corresponds to the JSON property `createdNegativeKeywords`
+        # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
+        attr_accessor :created_negative_keywords
+      
+        # The negative keywords to delete in batch, specified as a list of
+        # keyword_values.
+        # Corresponds to the JSON property `deletedNegativeKeywords`
+        # @return [Array<String>]
+        attr_accessor :deleted_negative_keywords
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @created_negative_keywords = args[:created_negative_keywords] if args.key?(:created_negative_keywords)
+          @deleted_negative_keywords = args[:deleted_negative_keywords] if args.key?(:deleted_negative_keywords)
+        end
+      end
+      
+      # Response message for NegativeKeywordService.BulkEditNegativeKeywords.
+      class BulkEditNegativeKeywordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of negative keywords that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `negativeKeywords`
+        # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
+        attr_accessor :negative_keywords
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @negative_keywords = args[:negative_keywords] if args.key?(:negative_keywords)
+        end
+      end
+      
+      # Request message for SiteService.BulkEditSites.
+      class BulkEditSitesRequest
+        include Google::Apis::Core::Hashable
+      
+        # The ID of the advertiser that owns the parent channel.
+        # Corresponds to the JSON property `advertiserId`
+        # @return [Fixnum]
+        attr_accessor :advertiser_id
+      
+        # The sites to create in batch, specified as a list of Sites.
+        # Corresponds to the JSON property `createdSites`
+        # @return [Array<Google::Apis::DisplayvideoV1::Site>]
+        attr_accessor :created_sites
+      
+        # The sites to delete in batch, specified as a list of site
+        # url_or_app_ids.
+        # Corresponds to the JSON property `deletedSites`
+        # @return [Array<String>]
+        attr_accessor :deleted_sites
+      
+        # The ID of the partner that owns the parent channel.
+        # Corresponds to the JSON property `partnerId`
+        # @return [Fixnum]
+        attr_accessor :partner_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @advertiser_id = args[:advertiser_id] if args.key?(:advertiser_id)
+          @created_sites = args[:created_sites] if args.key?(:created_sites)
+          @deleted_sites = args[:deleted_sites] if args.key?(:deleted_sites)
+          @partner_id = args[:partner_id] if args.key?(:partner_id)
+        end
+      end
+      
+      # Response message for SiteService.BulkEditSites.
+      class BulkEditSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of sites that have been successfully created.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<Google::Apis::DisplayvideoV1::Site>]
+        attr_accessor :sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @sites = args[:sites] if args.key?(:sites)
         end
       end
       
@@ -5120,6 +5406,68 @@ module Google
         end
       end
       
+      # Response message for
+      # AssignedInventorySourceService.ListAssignedInventorySources.
+      class ListAssignedInventorySourcesResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned inventory sources.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedInventorySources`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedInventorySource>]
+        attr_accessor :assigned_inventory_sources
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # page_token field
+        # in the subsequent call to `ListAssignedInventorySources` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_inventory_sources = args[:assigned_inventory_sources] if args.key?(:assigned_inventory_sources)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for
+      # AssignedLocationService.ListAssignedLocations.
+      class ListAssignedLocationsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of assigned locations.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `assignedLocations`
+        # @return [Array<Google::Apis::DisplayvideoV1::AssignedLocation>]
+        attr_accessor :assigned_locations
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the
+        # page_token field
+        # in the subsequent call to `ListAssignedLocations` method to
+        # retrieve the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_locations = args[:assigned_locations] if args.key?(:assigned_locations)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
       # 
       class ListCampaignsResponse
         include Google::Apis::Core::Hashable
@@ -5541,6 +5889,64 @@ module Google
         end
       end
       
+      # Response message for NegativeKeywordService.ListNegativeKeywords.
+      class ListNegativeKeywordsResponse
+        include Google::Apis::Core::Hashable
+      
+        # The list of negative keywords.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `negativeKeywords`
+        # @return [Array<Google::Apis::DisplayvideoV1::NegativeKeyword>]
+        attr_accessor :negative_keywords
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the page_token
+        # field in the subsequent call to `ListNegativeKeywords` method to retrieve
+        # the next page of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @negative_keywords = args[:negative_keywords] if args.key?(:negative_keywords)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+        end
+      end
+      
+      # Response message for SiteService.ListSites.
+      class ListSitesResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token to retrieve the next page of results.
+        # Pass this value in the page_token field
+        # in the subsequent call to `ListSites` method to retrieve the next page
+        # of results.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # The list of sites.
+        # This list will be absent if empty.
+        # Corresponds to the JSON property `sites`
+        # @return [Array<Google::Apis::DisplayvideoV1::Site>]
+        attr_accessor :sites
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @sites = args[:sites] if args.key?(:sites)
+        end
+      end
+      
       # Response message for
       # ListTargetingOptions.
       class ListTargetingOptionsResponse
@@ -5712,6 +6118,37 @@ module Google
           @currency_code = args[:currency_code] if args.key?(:currency_code)
           @nanos = args[:nanos] if args.key?(:nanos)
           @units = args[:units] if args.key?(:units)
+        end
+      end
+      
+      # A negatively targeted keyword that belongs to a negative keyword list.
+      class NegativeKeyword
+        include Google::Apis::Core::Hashable
+      
+        # Required. Immutable. The negatively targeted keyword, for example `car
+        # insurance`.
+        # Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number
+        # of characters is 80. Maximum number of words is 10.
+        # Valid characters are restricted to ASCII characters only. The only
+        # URL-escaping permitted is for representing whitespace between words.
+        # Leading or trailing whitespace is ignored.
+        # Corresponds to the JSON property `keywordValue`
+        # @return [String]
+        attr_accessor :keyword_value
+      
+        # Output only. The resource name of the negative keyword.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @keyword_value = args[:keyword_value] if args.key?(:keyword_value)
+          @name = args[:name] if args.key?(:name)
         end
       end
       
@@ -6700,6 +7137,32 @@ module Google
         # Update properties of this object
         def update!(**args)
           @sensitive_category = args[:sensitive_category] if args.key?(:sensitive_category)
+        end
+      end
+      
+      # A single site. Sites are apps or websites belonging to a channel.
+      class Site
+        include Google::Apis::Core::Hashable
+      
+        # Output only. The resource name of the site.
+        # Corresponds to the JSON property `name`
+        # @return [String]
+        attr_accessor :name
+      
+        # Required. The URL or app ID of the site.
+        # Must be UTF-8 encoded with a maximum length of 240 bytes.
+        # Corresponds to the JSON property `urlOrAppId`
+        # @return [String]
+        attr_accessor :url_or_app_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @name = args[:name] if args.key?(:name)
+          @url_or_app_id = args[:url_or_app_id] if args.key?(:url_or_app_id)
         end
       end
       

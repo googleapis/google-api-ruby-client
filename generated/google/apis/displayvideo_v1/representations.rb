@@ -118,6 +118,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class AssignedInventorySource
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class AssignedLocation
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class AssignedTargetingOption
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -178,6 +190,30 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class BulkEditAssignedInventorySourcesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAssignedInventorySourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAssignedLocationsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditAssignedLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -185,6 +221,30 @@ module Google
       end
       
       class BulkEditLineItemAssignedTargetingOptionsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditNegativeKeywordsRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditNegativeKeywordsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditSitesRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class BulkEditSitesResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -748,6 +808,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListAssignedInventorySourcesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListAssignedLocationsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListCampaignsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -832,6 +904,18 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class ListNegativeKeywordsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListSitesResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class ListTargetingOptionsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -857,6 +941,12 @@ module Google
       end
       
       class Money
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class NegativeKeyword
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1013,6 +1103,12 @@ module Google
       end
       
       class SensitiveCategoryTargetingOptionDetails
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class Site
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -1284,6 +1380,24 @@ module Google
         end
       end
       
+      class AssignedInventorySource
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assigned_inventory_source_id, :numeric_string => true, as: 'assignedInventorySourceId'
+          property :inventory_source_id, as: 'inventorySourceId'
+          property :name, as: 'name'
+        end
+      end
+      
+      class AssignedLocation
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :assigned_location_id, :numeric_string => true, as: 'assignedLocationId'
+          property :name, as: 'name'
+          property :targeting_option_id, as: 'targetingOptionId'
+        end
+      end
+      
       class AssignedTargetingOption
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1455,6 +1569,42 @@ module Google
         end
       end
       
+      class BulkEditAssignedInventorySourcesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          collection :created_assigned_inventory_sources, as: 'createdAssignedInventorySources', class: Google::Apis::DisplayvideoV1::AssignedInventorySource, decorator: Google::Apis::DisplayvideoV1::AssignedInventorySource::Representation
+      
+          collection :deleted_assigned_inventory_sources, as: 'deletedAssignedInventorySources'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+        end
+      end
+      
+      class BulkEditAssignedInventorySourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_inventory_sources, as: 'assignedInventorySources', class: Google::Apis::DisplayvideoV1::AssignedInventorySource, decorator: Google::Apis::DisplayvideoV1::AssignedInventorySource::Representation
+      
+        end
+      end
+      
+      class BulkEditAssignedLocationsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_assigned_locations, as: 'createdAssignedLocations', class: Google::Apis::DisplayvideoV1::AssignedLocation, decorator: Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+      
+          collection :deleted_assigned_locations, as: 'deletedAssignedLocations'
+        end
+      end
+      
+      class BulkEditAssignedLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_locations, as: 'assignedLocations', class: Google::Apis::DisplayvideoV1::AssignedLocation, decorator: Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+      
+        end
+      end
+      
       class BulkEditLineItemAssignedTargetingOptionsRequest
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -1469,6 +1619,42 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :created_assigned_targeting_options, as: 'createdAssignedTargetingOptions', class: Google::Apis::DisplayvideoV1::AssignedTargetingOption, decorator: Google::Apis::DisplayvideoV1::AssignedTargetingOption::Representation
+      
+        end
+      end
+      
+      class BulkEditNegativeKeywordsRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :created_negative_keywords, as: 'createdNegativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+          collection :deleted_negative_keywords, as: 'deletedNegativeKeywords'
+        end
+      end
+      
+      class BulkEditNegativeKeywordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :negative_keywords, as: 'negativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+        end
+      end
+      
+      class BulkEditSitesRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :advertiser_id, :numeric_string => true, as: 'advertiserId'
+          collection :created_sites, as: 'createdSites', class: Google::Apis::DisplayvideoV1::Site, decorator: Google::Apis::DisplayvideoV1::Site::Representation
+      
+          collection :deleted_sites, as: 'deletedSites'
+          property :partner_id, :numeric_string => true, as: 'partnerId'
+        end
+      end
+      
+      class BulkEditSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :sites, as: 'sites', class: Google::Apis::DisplayvideoV1::Site, decorator: Google::Apis::DisplayvideoV1::Site::Representation
       
         end
       end
@@ -2413,6 +2599,24 @@ module Google
         end
       end
       
+      class ListAssignedInventorySourcesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_inventory_sources, as: 'assignedInventorySources', class: Google::Apis::DisplayvideoV1::AssignedInventorySource, decorator: Google::Apis::DisplayvideoV1::AssignedInventorySource::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListAssignedLocationsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :assigned_locations, as: 'assignedLocations', class: Google::Apis::DisplayvideoV1::AssignedLocation, decorator: Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
       class ListCampaignsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2539,6 +2743,24 @@ module Google
         end
       end
       
+      class ListNegativeKeywordsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          collection :negative_keywords, as: 'negativeKeywords', class: Google::Apis::DisplayvideoV1::NegativeKeyword, decorator: Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+      
+          property :next_page_token, as: 'nextPageToken'
+        end
+      end
+      
+      class ListSitesResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          collection :sites, as: 'sites', class: Google::Apis::DisplayvideoV1::Site, decorator: Google::Apis::DisplayvideoV1::Site::Representation
+      
+        end
+      end
+      
       class ListTargetingOptionsResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -2581,6 +2803,14 @@ module Google
           property :currency_code, as: 'currencyCode'
           property :nanos, as: 'nanos'
           property :units, :numeric_string => true, as: 'units'
+        end
+      end
+      
+      class NegativeKeyword
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :keyword_value, as: 'keywordValue'
+          property :name, as: 'name'
         end
       end
       
@@ -2816,6 +3046,14 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :sensitive_category, as: 'sensitiveCategory'
+        end
+      end
+      
+      class Site
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :name, as: 'name'
+          property :url_or_app_id, as: 'urlOrAppId'
         end
       end
       

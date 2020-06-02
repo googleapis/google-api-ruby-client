@@ -3207,8 +3207,7 @@ module Google
         # @return [Hash<String,String>]
         attr_accessor :labels
       
-        # The name of the session. This is always system-assigned; values provided
-        # when creating a session are ignored.
+        # Output only. The name of the session. This is always system-assigned.
         # Corresponds to the JSON property `name`
         # @return [String]
         attr_accessor :name

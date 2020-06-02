@@ -614,6 +614,7 @@ module Google
           property :observed_generation, as: 'observedGeneration'
           collection :resource_records, as: 'resourceRecords', class: Google::Apis::RunV1::ResourceRecord, decorator: Google::Apis::RunV1::ResourceRecord::Representation
       
+          property :url, as: 'url'
         end
       end
       

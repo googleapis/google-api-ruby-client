@@ -20,12 +20,12 @@ module Google
   module Apis
     # Google Play EMM API
     #
-    # Manages the deployment of apps to Android for Work users.
+    # Manages the deployment of apps to Android Enterprise devices.
     #
     # @see https://developers.google.com/android/work/play/emm-api
     module AndroidenterpriseV1
       VERSION = 'V1'
-      REVISION = '20200427'
+      REVISION = '20200528'
 
       # Manage corporate Android devices
       AUTH_ANDROIDENTERPRISE = 'https://www.googleapis.com/auth/androidenterprise'

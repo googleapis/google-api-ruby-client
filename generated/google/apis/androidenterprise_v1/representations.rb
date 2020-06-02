@@ -490,12 +490,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
-      class UserToken
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-      
-        include Google::Apis::Core::JsonObjectSupport
-      end
-      
       class ListUsersResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -536,7 +530,6 @@ module Google
       class AdministratorWebToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :token, as: 'token'
         end
       end
@@ -544,7 +537,6 @@ module Google
       class AdministratorWebTokenSpec
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :managed_configurations, as: 'managedConfigurations', class: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations, decorator: Google::Apis::AndroidenterpriseV1::AdministratorWebTokenSpecManagedConfigurations::Representation
       
           property :parent, as: 'parent'
@@ -670,14 +662,12 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :approval_url, as: 'approvalUrl'
-          property :kind, as: 'kind'
         end
       end
       
       class AuthenticationToken
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :token, as: 'token'
         end
       end
@@ -705,7 +695,6 @@ module Google
       class ConfigurationVariables
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :mcm_id, as: 'mcmId'
           collection :variable_set, as: 'variableSet', class: Google::Apis::AndroidenterpriseV1::VariableSet, decorator: Google::Apis::AndroidenterpriseV1::VariableSet::Representation
       
@@ -716,7 +705,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :android_id, as: 'androidId'
-          property :kind, as: 'kind'
           property :management_type, as: 'managementType'
           property :policy, as: 'policy', class: Google::Apis::AndroidenterpriseV1::Policy, decorator: Google::Apis::AndroidenterpriseV1::Policy::Representation
       
@@ -748,7 +736,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_state, as: 'accountState'
-          property :kind, as: 'kind'
         end
       end
       
@@ -757,7 +744,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :device, as: 'device', class: Google::Apis::AndroidenterpriseV1::Device, decorator: Google::Apis::AndroidenterpriseV1::Device::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
@@ -767,7 +753,6 @@ module Google
           collection :administrator, as: 'administrator', class: Google::Apis::AndroidenterpriseV1::Administrator, decorator: Google::Apis::AndroidenterpriseV1::Administrator::Representation
       
           property :id, as: 'id'
-          property :kind, as: 'kind'
           property :name, as: 'name'
           property :primary_domain, as: 'primaryDomain'
         end
@@ -777,7 +762,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :account_email, as: 'accountEmail'
-          property :kind, as: 'kind'
         end
       end
       
@@ -786,7 +770,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :enterprise, as: 'enterprise', class: Google::Apis::AndroidenterpriseV1::Enterprise, decorator: Google::Apis::AndroidenterpriseV1::Enterprise::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
@@ -801,7 +784,6 @@ module Google
       class Entitlement
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :product_id, as: 'productId'
           property :reason, as: 'reason'
         end
@@ -812,7 +794,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :entitlement, as: 'entitlement', class: Google::Apis::AndroidenterpriseV1::Entitlement, decorator: Google::Apis::AndroidenterpriseV1::Entitlement::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
@@ -821,7 +802,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :acquisition_kind, as: 'acquisitionKind'
           property :approval, as: 'approval'
-          property :kind, as: 'kind'
           property :num_provisioned, as: 'numProvisioned'
           property :num_purchased, as: 'numPurchased'
           property :permissions, as: 'permissions'
@@ -832,7 +812,6 @@ module Google
       class ListGroupLicenseUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
       
         end
@@ -843,7 +822,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :group_license, as: 'groupLicense', class: Google::Apis::AndroidenterpriseV1::GroupLicense, decorator: Google::Apis::AndroidenterpriseV1::GroupLicense::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
@@ -851,7 +829,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :install_state, as: 'installState'
-          property :kind, as: 'kind'
           property :product_id, as: 'productId'
           property :version_code, as: 'versionCode'
         end
@@ -873,7 +850,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :install, as: 'install', class: Google::Apis::AndroidenterpriseV1::Install, decorator: Google::Apis::AndroidenterpriseV1::Install::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
@@ -919,7 +895,6 @@ module Google
       class ManagedConfigurationsForDeviceListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :managed_configuration_for_device, as: 'managedConfigurationForDevice', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
       
         end
@@ -928,7 +903,6 @@ module Google
       class ManagedConfigurationsForUserListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :managed_configuration_for_user, as: 'managedConfigurationForUser', class: Google::Apis::AndroidenterpriseV1::ManagedConfiguration, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfiguration::Representation
       
         end
@@ -937,7 +911,6 @@ module Google
       class ManagedConfigurationsSettings
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
           property :mcm_id, as: 'mcmId'
           property :name, as: 'name'
@@ -947,7 +920,6 @@ module Google
       class ManagedConfigurationsSettingsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :managed_configurations_settings, as: 'managedConfigurationsSettings', class: Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings, decorator: Google::Apis::AndroidenterpriseV1::ManagedConfigurationsSettings::Representation
       
         end
@@ -1023,7 +995,6 @@ module Google
       class NotificationSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :notification, as: 'notification', class: Google::Apis::AndroidenterpriseV1::Notification, decorator: Google::Apis::AndroidenterpriseV1::Notification::Representation
       
           property :notification_set_id, as: 'notificationSetId'
@@ -1043,7 +1014,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :description, as: 'description'
-          property :kind, as: 'kind'
           property :name, as: 'name'
           property :permission_id, as: 'permissionId'
         end
@@ -1079,7 +1049,6 @@ module Google
           property :distribution_channel, as: 'distributionChannel'
           collection :features, as: 'features'
           property :icon_url, as: 'iconUrl'
-          property :kind, as: 'kind'
           property :last_updated_timestamp_millis, :numeric_string => true, as: 'lastUpdatedTimestampMillis'
           property :min_android_sdk_version, as: 'minAndroidSdkVersion'
           collection :permissions, as: 'permissions', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
@@ -1124,7 +1093,6 @@ module Google
       class ProductPermissions
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :permission, as: 'permission', class: Google::Apis::AndroidenterpriseV1::ProductPermission, decorator: Google::Apis::AndroidenterpriseV1::ProductPermission::Representation
       
           property :product_id, as: 'productId'
@@ -1147,7 +1115,6 @@ module Google
       class ProductSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :product_id, as: 'productId'
           property :product_set_behavior, as: 'productSetBehavior'
           collection :product_visibility, as: 'productVisibility', class: Google::Apis::AndroidenterpriseV1::ProductVisibility, decorator: Google::Apis::AndroidenterpriseV1::ProductVisibility::Representation
@@ -1191,7 +1158,6 @@ module Google
       class ProductsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :page_info, as: 'pageInfo', class: Google::Apis::AndroidenterpriseV1::PageInfo, decorator: Google::Apis::AndroidenterpriseV1::PageInfo::Representation
       
           collection :product, as: 'product', class: Google::Apis::AndroidenterpriseV1::Product, decorator: Google::Apis::AndroidenterpriseV1::Product::Representation
@@ -1206,7 +1172,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :key, as: 'key', class: Google::Apis::AndroidenterpriseV1::ServiceAccountKey, decorator: Google::Apis::AndroidenterpriseV1::ServiceAccountKey::Representation
       
-          property :kind, as: 'kind'
           property :name, as: 'name'
         end
       end
@@ -1216,7 +1181,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :data, as: 'data'
           property :id, as: 'id'
-          property :kind, as: 'kind'
           property :public_data, as: 'publicData'
           property :type, as: 'type'
         end
@@ -1243,7 +1207,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-          property :kind, as: 'kind'
           collection :name, as: 'name', class: Google::Apis::AndroidenterpriseV1::LocalizedText, decorator: Google::Apis::AndroidenterpriseV1::LocalizedText::Representation
       
           property :order_in_page, as: 'orderInPage'
@@ -1255,7 +1218,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :homepage_id, as: 'homepageId'
-          property :kind, as: 'kind'
           property :store_layout_type, as: 'storeLayoutType'
         end
       end
@@ -1265,14 +1227,12 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :cluster, as: 'cluster', class: Google::Apis::AndroidenterpriseV1::StoreCluster, decorator: Google::Apis::AndroidenterpriseV1::StoreCluster::Representation
       
-          property :kind, as: 'kind'
         end
       end
       
       class StoreLayoutPagesListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :page, as: 'page', class: Google::Apis::AndroidenterpriseV1::StorePage, decorator: Google::Apis::AndroidenterpriseV1::StorePage::Representation
       
         end
@@ -1282,7 +1242,6 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :id, as: 'id'
-          property :kind, as: 'kind'
           collection :link, as: 'link'
           collection :name, as: 'name', class: Google::Apis::AndroidenterpriseV1::LocalizedText, decorator: Google::Apis::AndroidenterpriseV1::LocalizedText::Representation
       
@@ -1312,25 +1271,14 @@ module Google
           property :account_type, as: 'accountType'
           property :display_name, as: 'displayName'
           property :id, as: 'id'
-          property :kind, as: 'kind'
           property :management_type, as: 'managementType'
           property :primary_email, as: 'primaryEmail'
-        end
-      end
-      
-      class UserToken
-        # @private
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
-          property :token, as: 'token'
-          property :user_id, as: 'userId'
         end
       end
       
       class ListUsersResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :user, as: 'user', class: Google::Apis::AndroidenterpriseV1::User, decorator: Google::Apis::AndroidenterpriseV1::User::Representation
       
         end
@@ -1339,7 +1287,6 @@ module Google
       class VariableSet
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           property :placeholder, as: 'placeholder'
           property :user_value, as: 'userValue'
         end
@@ -1369,7 +1316,6 @@ module Google
       class WebAppsListResponse
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
-          property :kind, as: 'kind'
           collection :web_app, as: 'webApp', class: Google::Apis::AndroidenterpriseV1::WebApp, decorator: Google::Apis::AndroidenterpriseV1::WebApp::Representation
       
         end

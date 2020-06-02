@@ -719,6 +719,234 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a channel. Returns the updated channel if successful.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the created channel.
+        # @param [Fixnum] channel_id
+        #   Output only. The unique ID of the channel. Assigned by the system.
+        # @param [Google::Apis::DisplayvideoV1::Channel] channel_object
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the created channel.
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_channel(advertiser_id, channel_id, channel_object = nil, partner_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/advertisers/{+advertiserId}/channels/{channelId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Channel
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits sites under a single channel.
+        # The operation will delete the sites provided in
+        # BulkEditSitesRequest.deleted_sites and then create the sites
+        # provided in BulkEditSitesRequest.created_sites.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the sites belong.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditSitesRequest] bulk_edit_sites_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_advertiser_channel_site_edit(advertiser_id, channel_id, bulk_edit_sites_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditSitesRequest::Representation
+          command.request_object = bulk_edit_sites_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditSitesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditSitesResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a site in a channel.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel in which the site will be created.
+        # @param [Google::Apis::DisplayvideoV1::Site] site_object
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Site] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Site]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_channel_site(advertiser_id, channel_id, site_object = nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/channels/{+channelId}/sites', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Site::Representation
+          command.request_object = site_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Site::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Site
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a site from a channel.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the site belongs.
+        # @param [String] url_or_app_id
+        #   Required. The URL or app ID of the site to delete.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_channel_site(advertiser_id, channel_id, url_or_app_id, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.params['urlOrAppId'] = url_or_app_id unless url_or_app_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists sites in a channel.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the requested sites belong.
+        # @param [String] filter
+        #   Allows filtering by site fields.
+        #   Supported syntax:
+        #   * Filter expressions for site currently can only contain at most one
+        #   * restriction.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `CONTAINS (:)`.
+        #   * Supported fields:
+        #   - `urlOrAppId`
+        #   Examples:
+        #   * All sites for which the URL or app ID contains "google":
+        #   `urlOrAppId : "google"`
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `urlOrAppId` (default)
+        #   The default sorting order is ascending. To specify descending order for a
+        #   field, a suffix " desc" should be added to the field name. Example:
+        #   `urlOrAppId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token returned from the
+        #   previous call to `ListSites` method. If not specified, the first page
+        #   of results will be returned.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_channel_sites(advertiser_id, channel_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/channels/{+channelId}/sites', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListSitesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListSitesResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Creates a new creative.
         # Returns the newly created creative if successful.
         # @param [Fixnum] advertiser_id
@@ -1715,6 +1943,40 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new location list. Returns the newly created location list if
+        # successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location list belongs.
+        # @param [Google::Apis::DisplayvideoV1::LocationList] location_list_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::LocationList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::LocationList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_location_list(advertiser_id, location_list_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/locationLists', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::LocationList::Representation
+          command.request_object = location_list_object
+          command.response_representation = Google::Apis::DisplayvideoV1::LocationList::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::LocationList
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a location list.
         # @param [Fixnum] advertiser_id
         #   Required. The ID of the DV360 advertiser to which the fetched location list
@@ -1817,6 +2079,293 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Updates a location list. Returns the updated location list if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location lists belongs.
+        # @param [Fixnum] location_list_id
+        #   Output only. The unique ID of the location list. Assigned by the system.
+        # @param [Google::Apis::DisplayvideoV1::LocationList] location_list_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::LocationList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::LocationList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_location_list(advertiser_id, location_list_id, location_list_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/advertisers/{+advertiserId}/locationLists/{locationListId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::LocationList::Representation
+          command.request_object = location_list_object
+          command.response_representation = Google::Apis::DisplayvideoV1::LocationList::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::LocationList
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['locationListId'] = location_list_id unless location_list_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits multiple assignments between locations and a single location
+        # list.
+        # The operation will delete the assigned locations provided in
+        # BulkEditAssignedLocationsRequest.deleted_assigned_locations and then
+        # create the assigned locations provided in
+        # BulkEditAssignedLocationsRequest.created_assigned_locations.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location list belongs.
+        # @param [Fixnum] location_list_id
+        #   Required. The ID of the location list to which these assignments are assigned.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsRequest] bulk_edit_assigned_locations_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_assigned_locations(advertiser_id, location_list_id, bulk_edit_assigned_locations_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsRequest::Representation
+          command.request_object = bulk_edit_assigned_locations_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditAssignedLocationsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['locationListId'] = location_list_id unless location_list_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an assignment between a location and a location list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location list belongs.
+        # @param [Fixnum] location_list_id
+        #   Required. The ID of the location list for which the assignment will be created.
+        # @param [Google::Apis::DisplayvideoV1::AssignedLocation] assigned_location_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedLocation] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedLocation]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_location_list_assigned_location(advertiser_id, location_list_id, assigned_location_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+          command.request_object = assigned_location_object
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedLocation::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedLocation
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['locationListId'] = location_list_id unless location_list_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the assignment between a location and a location list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location list belongs.
+        # @param [Fixnum] location_list_id
+        #   Required. The ID of the location list to which this assignment is assigned.
+        # @param [Fixnum] assigned_location_id
+        #   Required. The ID of the assigned location to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_location_list_assigned_location(advertiser_id, location_list_id, assigned_location_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['locationListId'] = location_list_id unless location_list_id.nil?
+          command.params['assignedLocationId'] = assigned_location_id unless assigned_location_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists locations assigned to a location list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the location list belongs.
+        # @param [Fixnum] location_list_id
+        #   Required. The ID of the location list to which these assignments are assigned.
+        # @param [String] filter
+        #   Allows filtering by location list assignment fields.
+        #   Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions.
+        #   * Restrictions can be combined by the logical operator `OR`.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `EQUALS (=)`.
+        #   * Supported fields:
+        #   - `assignedLocationId`
+        #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `assignedLocationId` (default)
+        #   The default sorting order is ascending. To specify descending order for a
+        #   field, a suffix " desc" should be added to the field name. Example:
+        #   `assignedLocationId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token
+        #   returned from the previous call to `ListAssignedLocations`
+        #   method. If not specified, the first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListAssignedLocationsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListAssignedLocationsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_location_list_assigned_locations(advertiser_id, location_list_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListAssignedLocationsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListAssignedLocationsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['locationListId'] = location_list_id unless location_list_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a new negative keyword list. Returns the newly created negative
+        # keyword list if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the negative keyword list
+        #   will
+        #   belong.
+        # @param [Google::Apis::DisplayvideoV1::NegativeKeywordList] negative_keyword_list_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::NegativeKeywordList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::NegativeKeywordList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_negative_keyword_list(advertiser_id, negative_keyword_list_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{+advertiserId}/negativeKeywordLists', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::NegativeKeywordList::Representation
+          command.request_object = negative_keyword_list_object
+          command.response_representation = Google::Apis::DisplayvideoV1::NegativeKeywordList::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::NegativeKeywordList
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a negative keyword list given an advertiser ID and a negative
+        # keyword list ID.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the negative keyword list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Required. The ID of the negative keyword list to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_negative_keyword_list(advertiser_id, negative_keyword_list_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets a negative keyword list given an advertiser ID and a negative keyword
         # list ID.
         # @param [Fixnum] advertiser_id
@@ -1890,6 +2439,245 @@ module Google
           command.response_representation = Google::Apis::DisplayvideoV1::ListNegativeKeywordListsResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV1::ListNegativeKeywordListsResponse
           command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a negative keyword list. Returns the updated negative keyword list
+        # if successful.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the negative keyword list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Output only. The unique ID of the negative keyword list. Assigned by the
+        #   system.
+        # @param [Google::Apis::DisplayvideoV1::NegativeKeywordList] negative_keyword_list_object
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::NegativeKeywordList] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::NegativeKeywordList]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_advertiser_negative_keyword_list(advertiser_id, negative_keyword_list_id, negative_keyword_list_object = nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::NegativeKeywordList::Representation
+          command.request_object = negative_keyword_list_object
+          command.response_representation = Google::Apis::DisplayvideoV1::NegativeKeywordList::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::NegativeKeywordList
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits negative keywords in a single negative keyword list.
+        # The operation will delete the negative keywords provided in
+        # BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then
+        # create the negative keywords provided in
+        # BulkEditNegativeKeywordsRequest.created_negative_keywords.
+        # This operation is guaranteed to be atomic and will never result in a
+        # partial success or partial failure.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the parent negative keyword
+        #   list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Required. The ID of the parent negative keyword list to which the negative
+        #   keywords
+        #   belong.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsRequest] bulk_edit_negative_keywords_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_negative_keywords(advertiser_id, negative_keyword_list_id, bulk_edit_negative_keywords_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsRequest::Representation
+          command.request_object = bulk_edit_negative_keywords_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditNegativeKeywordsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a negative keyword in a negative keyword list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the parent negative keyword
+        #   list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Required. The ID of the parent negative keyword list in which the negative
+        #   keyword
+        #   will be created.
+        # @param [Google::Apis::DisplayvideoV1::NegativeKeyword] negative_keyword_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::NegativeKeyword] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::NegativeKeyword]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_advertiser_negative_keyword_list_negative_keyword(advertiser_id, negative_keyword_list_id, negative_keyword_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+          command.request_object = negative_keyword_object
+          command.response_representation = Google::Apis::DisplayvideoV1::NegativeKeyword::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::NegativeKeyword
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a negative keyword from a negative keyword list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the parent negative keyword
+        #   list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Required. The ID of the parent negative keyword list to which the negative
+        #   keyword
+        #   belongs.
+        # @param [String] keyword_value
+        #   Required. The keyword value of the negative keyword to delete.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_advertiser_negative_keyword_list_negative_keyword(advertiser_id, negative_keyword_list_id, keyword_value, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.params['keywordValue'] = keyword_value unless keyword_value.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists negative keywords in a negative keyword list.
+        # @param [Fixnum] advertiser_id
+        #   Required. The ID of the DV360 advertiser to which the parent negative keyword
+        #   list
+        #   belongs.
+        # @param [Fixnum] negative_keyword_list_id
+        #   Required. The ID of the parent negative keyword list to which the requested
+        #   negative
+        #   keywords belong.
+        # @param [String] filter
+        #   Allows filtering by negative keyword fields.
+        #   Supported syntax:
+        #   * Filter expressions for negative keyword currently can only contain at
+        #   most one
+        #   * restriction.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `CONTAINS (:)`.
+        #   * Supported fields:
+        #   - `keywordValue`
+        #   Examples:
+        #   * All negative keywords for which the keyword value contains "google":
+        #   `keywordValue : "google"`
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `keywordValue` (default)
+        #   The default sorting order is ascending. To specify descending order for a
+        #   field, a suffix " desc" should be added to the field name. Example:
+        #   `keywordValue desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token returned
+        #   from the previous call to `ListNegativeKeywords` method. If not specified,
+        #   the first page of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListNegativeKeywordsResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListNegativeKeywordsResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_advertiser_negative_keyword_list_negative_keywords(advertiser_id, negative_keyword_list_id, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListNegativeKeywordsResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListNegativeKeywordsResponse
+          command.params['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.params['negativeKeywordListId'] = negative_keyword_list_id unless negative_keyword_list_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
           command.query['pageSize'] = page_size unless page_size.nil?
           command.query['pageToken'] = page_token unless page_token.nil?
           command.query['fields'] = fields unless fields.nil?
@@ -2573,6 +3361,85 @@ module Google
           execute_or_queue_command(command, &block)
         end
         
+        # Creates a new inventory source group. Returns the newly created inventory
+        # source group if successful.
+        # @param [Google::Apis::DisplayvideoV1::InventorySourceGroup] inventory_source_group_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the inventory source group.
+        #   The parent partner will not have access to this group.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the inventory source group.
+        #   Only this partner will have write access to this group. Only advertisers
+        #   to which this group is explicitly shared will have read access to this
+        #   group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::InventorySourceGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::InventorySourceGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_inventory_source_group(inventory_source_group_object = nil, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/inventorySourceGroups', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::InventorySourceGroup::Representation
+          command.request_object = inventory_source_group_object
+          command.response_representation = Google::Apis::DisplayvideoV1::InventorySourceGroup::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::InventorySourceGroup
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes an inventory source group.
+        # @param [Fixnum] inventory_source_group_id
+        #   Required. The ID of the inventory source group to delete.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the inventory source group.
+        #   The parent partner does not have access to this group.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the inventory source group.
+        #   Only this partner has write access to this group.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_inventory_source_group(inventory_source_group_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/inventorySourceGroups/{+inventorySourceGroupId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
         # Gets an inventory source group.
         # @param [Fixnum] inventory_source_group_id
         #   Required. The ID of the inventory source group to fetch.
@@ -2670,6 +3537,253 @@ module Google
           command = make_simple_command(:get, 'v1/inventorySourceGroups', options)
           command.response_representation = Google::Apis::DisplayvideoV1::ListInventorySourceGroupsResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV1::ListInventorySourceGroupsResponse
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates an inventory source group. Returns the updated inventory source
+        # group if successful.
+        # @param [Fixnum] inventory_source_group_id
+        #   Output only. The unique ID of the inventory source group. Assigned by the
+        #   system.
+        # @param [Google::Apis::DisplayvideoV1::InventorySourceGroup] inventory_source_group_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the inventory source group.
+        #   The parent partner does not have access to this group.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the inventory source group.
+        #   Only this partner has write access to this group.
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::InventorySourceGroup] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::InventorySourceGroup]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_inventory_source_group(inventory_source_group_id, inventory_source_group_object = nil, advertiser_id: nil, partner_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/inventorySourceGroups/{inventorySourceGroupId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::InventorySourceGroup::Representation
+          command.request_object = inventory_source_group_object
+          command.response_representation = Google::Apis::DisplayvideoV1::InventorySourceGroup::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::InventorySourceGroup
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits multiple assignments between inventory sources and a single
+        # inventory source group.
+        # The operation will delete the assigned inventory sources provided in
+        # BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources
+        # and then create the assigned inventory sources provided in
+        # BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.
+        # @param [Fixnum] inventory_source_group_id
+        #   Required. The ID of the inventory source group to which the assignments are
+        #   assigned.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesRequest] bulk_edit_assigned_inventory_sources_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_edit_assigned_inventory_sources(inventory_source_group_id, bulk_edit_assigned_inventory_sources_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesRequest::Representation
+          command.request_object = bulk_edit_assigned_inventory_sources_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditAssignedInventorySourcesResponse
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates an assignment between an inventory source and an inventory source
+        # group.
+        # @param [Fixnum] inventory_source_group_id
+        #   Required. The ID of the inventory source group to which the assignment will be
+        #   assigned.
+        # @param [Google::Apis::DisplayvideoV1::AssignedInventorySource] assigned_inventory_source_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent inventory source group.
+        #   The parent partner will not have access to this assigned inventory
+        #   source.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent inventory source group.
+        #   Only this partner will have write access to this assigned inventory
+        #   source.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::AssignedInventorySource] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::AssignedInventorySource]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_inventory_source_group_assigned_inventory_source(inventory_source_group_id, assigned_inventory_source_object = nil, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::AssignedInventorySource::Representation
+          command.request_object = assigned_inventory_source_object
+          command.response_representation = Google::Apis::DisplayvideoV1::AssignedInventorySource::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::AssignedInventorySource
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes the assignment between an inventory source and an inventory source
+        # group.
+        # @param [Fixnum] inventory_source_group_id
+        #   Required. The ID of the inventory source group to which this assignment is
+        #   assigned.
+        # @param [Fixnum] assigned_inventory_source_id
+        #   Required. The ID of the assigned inventory source to delete.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent inventory source group.
+        #   The parent partner does not have access to this assigned inventory
+        #   source.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent inventory source group.
+        #   Only this partner has write access to this assigned inventory source.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_inventory_source_group_assigned_inventory_source(inventory_source_group_id, assigned_inventory_source_id, advertiser_id: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
+          command.params['assignedInventorySourceId'] = assigned_inventory_source_id unless assigned_inventory_source_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['partnerId'] = partner_id unless partner_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists inventory sources assigned to an inventory source group.
+        # @param [Fixnum] inventory_source_group_id
+        #   Required. The ID of the inventory source group to which these assignments are
+        #   assigned.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that has access to the assignment.
+        #   If the parent inventory source group is partner-owned, only advertisers
+        #   to which the parent group is explicitly shared can access the assigned
+        #   inventory source.
+        # @param [String] filter
+        #   Allows filtering by assigned inventory source fields.
+        #   Supported syntax:
+        #   * Filter expressions are made up of one or more restrictions.
+        #   * Restrictions can be combined by the logical operator `OR`.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `EQUALS (=)`.
+        #   * Supported fields:
+        #   - `assignedInventorySourceId`
+        #   The length of this field should be no more than 500 characters.
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `assignedInventorySourceId` (default)
+        #   The default sorting order is ascending. To specify descending order for a
+        #   field, a suffix " desc" should be added to the field name. Example:
+        #   `assignedInventorySourceId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token
+        #   returned from the previous call to `ListAssignedInventorySources`
+        #   method. If not specified, the first page of results will be returned.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that has access to the assignment.
+        #   If the parent inventory source group is advertiser-owned, the assignment
+        #   cannot be accessed via a partner.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListAssignedInventorySourcesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListAssignedInventorySourcesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_inventory_source_group_assigned_inventory_sources(inventory_source_group_id, advertiser_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, partner_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListAssignedInventorySourcesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListAssignedInventorySourcesResponse
+          command.params['inventorySourceGroupId'] = inventory_source_group_id unless inventory_source_group_id.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?
@@ -2929,6 +4043,234 @@ module Google
           command.response_representation = Google::Apis::DisplayvideoV1::ListChannelsResponse::Representation
           command.response_class = Google::Apis::DisplayvideoV1::ListChannelsResponse
           command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['filter'] = filter unless filter.nil?
+          command.query['orderBy'] = order_by unless order_by.nil?
+          command.query['pageSize'] = page_size unless page_size.nil?
+          command.query['pageToken'] = page_token unless page_token.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Updates a channel. Returns the updated channel if successful.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the created channel.
+        # @param [Fixnum] channel_id
+        #   Output only. The unique ID of the channel. Assigned by the system.
+        # @param [Google::Apis::DisplayvideoV1::Channel] channel_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the created channel.
+        # @param [String] update_mask
+        #   Required. The mask to control which fields to update.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Channel] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Channel]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def patch_partner_channel(partner_id, channel_id, channel_object = nil, advertiser_id: nil, update_mask: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:patch, 'v1/partners/{+partnerId}/channels/{channelId}', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.request_object = channel_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Channel::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Channel
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['updateMask'] = update_mask unless update_mask.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Bulk edits sites under a single channel.
+        # The operation will delete the sites provided in
+        # BulkEditSitesRequest.deleted_sites and then create the sites
+        # provided in BulkEditSitesRequest.created_sites.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the sites belong.
+        # @param [Google::Apis::DisplayvideoV1::BulkEditSitesRequest] bulk_edit_sites_request_object
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::BulkEditSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::BulkEditSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def bulk_partner_channel_site_edit(partner_id, channel_id, bulk_edit_sites_request_object = nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::BulkEditSitesRequest::Representation
+          command.request_object = bulk_edit_sites_request_object
+          command.response_representation = Google::Apis::DisplayvideoV1::BulkEditSitesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::BulkEditSitesResponse
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Creates a site in a channel.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel in which the site will be created.
+        # @param [Google::Apis::DisplayvideoV1::Site] site_object
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Site] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Site]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def create_partner_channel_site(partner_id, channel_id, site_object = nil, advertiser_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:post, 'v1/partners/{partnerId}/channels/{+channelId}/sites', options)
+          command.request_representation = Google::Apis::DisplayvideoV1::Site::Representation
+          command.request_object = site_object
+          command.response_representation = Google::Apis::DisplayvideoV1::Site::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Site
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Deletes a site from a channel.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the site belongs.
+        # @param [String] url_or_app_id
+        #   Required. The URL or app ID of the site to delete.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::Empty] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::Empty]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def delete_partner_channel_site(partner_id, channel_id, url_or_app_id, advertiser_id: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:delete, 'v1/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::Empty::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::Empty
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
+          command.params['urlOrAppId'] = url_or_app_id unless url_or_app_id.nil?
+          command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
+          command.query['fields'] = fields unless fields.nil?
+          command.query['quotaUser'] = quota_user unless quota_user.nil?
+          execute_or_queue_command(command, &block)
+        end
+        
+        # Lists sites in a channel.
+        # @param [Fixnum] partner_id
+        #   The ID of the partner that owns the parent channel.
+        # @param [Fixnum] channel_id
+        #   Required. The ID of the parent channel to which the requested sites belong.
+        # @param [Fixnum] advertiser_id
+        #   The ID of the advertiser that owns the parent channel.
+        # @param [String] filter
+        #   Allows filtering by site fields.
+        #   Supported syntax:
+        #   * Filter expressions for site currently can only contain at most one
+        #   * restriction.
+        #   * A restriction has the form of ``field` `operator` `value``.
+        #   * The operator must be `CONTAINS (:)`.
+        #   * Supported fields:
+        #   - `urlOrAppId`
+        #   Examples:
+        #   * All sites for which the URL or app ID contains "google":
+        #   `urlOrAppId : "google"`
+        # @param [String] order_by
+        #   Field by which to sort the list.
+        #   Acceptable values are:
+        #   * `urlOrAppId` (default)
+        #   The default sorting order is ascending. To specify descending order for a
+        #   field, a suffix " desc" should be added to the field name. Example:
+        #   `urlOrAppId desc`.
+        # @param [Fixnum] page_size
+        #   Requested page size. Must be between `1` and `100`. If unspecified will
+        #   default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value
+        #   is specified.
+        # @param [String] page_token
+        #   A token identifying a page of results the server should return.
+        #   Typically, this is the value of
+        #   next_page_token returned from the
+        #   previous call to `ListSites` method. If not specified, the first page
+        #   of results will be returned.
+        # @param [String] fields
+        #   Selector specifying which fields to include in a partial response.
+        # @param [String] quota_user
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
+        # @param [Google::Apis::RequestOptions] options
+        #   Request-specific options
+        #
+        # @yield [result, err] Result & error if block supplied
+        # @yieldparam result [Google::Apis::DisplayvideoV1::ListSitesResponse] parsed result object
+        # @yieldparam err [StandardError] error object if request failed
+        #
+        # @return [Google::Apis::DisplayvideoV1::ListSitesResponse]
+        #
+        # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
+        # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
+        # @raise [Google::Apis::AuthorizationError] Authorization is required
+        def list_partner_channel_sites(partner_id, channel_id, advertiser_id: nil, filter: nil, order_by: nil, page_size: nil, page_token: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'v1/partners/{+partnerId}/channels/{+channelId}/sites', options)
+          command.response_representation = Google::Apis::DisplayvideoV1::ListSitesResponse::Representation
+          command.response_class = Google::Apis::DisplayvideoV1::ListSitesResponse
+          command.params['partnerId'] = partner_id unless partner_id.nil?
+          command.params['channelId'] = channel_id unless channel_id.nil?
           command.query['advertiserId'] = advertiser_id unless advertiser_id.nil?
           command.query['filter'] = filter unless filter.nil?
           command.query['orderBy'] = order_by unless order_by.nil?

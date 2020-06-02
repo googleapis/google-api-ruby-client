@@ -1815,6 +1815,14 @@ module Google
         # @return [Array<Google::Apis::RunV1alpha1::ResourceRecord>]
         attr_accessor :resource_records
       
+        # Cloud Run fully managed: not supported
+        # Cloud Run on GKE: supported
+        # Holds the URL that will serve the traffic of the DomainMapping.
+        # +optional
+        # Corresponds to the JSON property `url`
+        # @return [String]
+        attr_accessor :url
+      
         def initialize(**args)
            update!(**args)
         end
@@ -1825,6 +1833,7 @@ module Google
           @mapped_route_name = args[:mapped_route_name] if args.key?(:mapped_route_name)
           @observed_generation = args[:observed_generation] if args.key?(:observed_generation)
           @resource_records = args[:resource_records] if args.key?(:resource_records)
+          @url = args[:url] if args.key?(:url)
         end
       end
       

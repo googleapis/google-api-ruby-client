@@ -12,32 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-require 'google/apis/sourcerepo_v1/service.rb'
-require 'google/apis/sourcerepo_v1/classes.rb'
-require 'google/apis/sourcerepo_v1/representations.rb'
+require 'google/apis/recommender_v1/service.rb'
+require 'google/apis/recommender_v1/classes.rb'
+require 'google/apis/recommender_v1/representations.rb'
 
 module Google
   module Apis
-    # Cloud Source Repositories API
+    # Recommender API
     #
-    # Accesses source code repositories hosted by Google.
+    # 
     #
-    # @see https://cloud.google.com/source-repositories/docs/apis
-    module SourcerepoV1
+    # @see https://cloud.google.com/recommender/docs/
+    module RecommenderV1
       VERSION = 'V1'
-      REVISION = '20200520'
+      REVISION = '20200516'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'
-
-      # Manage your source code repositories
-      AUTH_SOURCE_FULL_CONTROL = 'https://www.googleapis.com/auth/source.full_control'
-
-      # View the contents of your source code repositories
-      AUTH_SOURCE_READ_ONLY = 'https://www.googleapis.com/auth/source.read_only'
-
-      # Manage the contents of your source code repositories
-      AUTH_SOURCE_READ_WRITE = 'https://www.googleapis.com/auth/source.read_write'
     end
   end
 end
