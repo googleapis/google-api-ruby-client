@@ -33,7 +33,8 @@ module Google
       :skip_serialization,
       :skip_deserialization,
       :api_format_version,
-      :use_opencensus)
+      :use_opencensus,
+      :quota_project)
 
     # General client options
     class ClientOptions
@@ -76,6 +77,8 @@ module Google
       #   @return [Fixnum] Version of the error format to request/expect.
       # @!attribute [rw] use_opencensus
       #   @return [Boolean] Whether OpenCensus spans should be generated for requests. Default is true.
+      # @!attribute [rw] quota_project
+      #   @return [String] Project ID to charge quota, or `nil` to default to the credentials-specified project.
 
       # Get the default options
       # @return [Google::Apis::RequestOptions]
@@ -105,5 +108,6 @@ module Google
     RequestOptions.default.skip_deserialization = false
     RequestOptions.default.api_format_version = nil
     RequestOptions.default.use_opencensus = true
+    RequestOptions.default.quota_project = nil
   end
 end
