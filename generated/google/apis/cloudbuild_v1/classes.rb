@@ -357,6 +357,15 @@ module Google
         # @return [Fixnum]
         attr_accessor :disk_size_gb
       
+        # Option to specify whether or not to apply bash style string
+        # operations to the substitutions.
+        # NOTE: this is always enabled for triggered builds and cannot be
+        # overridden in the build configuration file.
+        # Corresponds to the JSON property `dynamicSubstitutions`
+        # @return [Boolean]
+        attr_accessor :dynamic_substitutions
+        alias_method :dynamic_substitutions?, :dynamic_substitutions
+      
         # A list of global environment variable definitions that will exist for all
         # build steps in this build. If a variable is defined in both globally and in
         # a build step, the variable will use the build step value.
@@ -403,6 +412,8 @@ module Google
       
         # Option to specify behavior when there is an error in the substitution
         # checks.
+        # NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot
+        # be overridden in the build configuration file.
         # Corresponds to the JSON property `substitutionOption`
         # @return [String]
         attr_accessor :substitution_option
@@ -432,6 +443,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @disk_size_gb = args[:disk_size_gb] if args.key?(:disk_size_gb)
+          @dynamic_substitutions = args[:dynamic_substitutions] if args.key?(:dynamic_substitutions)
           @env = args[:env] if args.key?(:env)
           @log_streaming_option = args[:log_streaming_option] if args.key?(:log_streaming_option)
           @logging = args[:logging] if args.key?(:logging)
@@ -1030,8 +1042,8 @@ module Google
         # @return [String]
         attr_accessor :branch
       
-        # Configure builds to run only when a repository owner or collaborator
-        # comments `/gcbrun`.
+        # Configure builds to run whether a repository owner or collaborator need to
+        # comment `/gcbrun`.
         # Corresponds to the JSON property `commentControl`
         # @return [String]
         attr_accessor :comment_control

@@ -21,12 +21,12 @@ module Google
     # G Suite Marketplace API
     #
     # Lets your G Suite Marketplace applications integrate with Google's licensing
-    # service
+    # and billing services.
     #
-    # @see https://developers.google.com/google-apps/marketplace/v2/developers_guide
+    # @see https://developers.google.com/apps-marketplace
     module AppsmarketV2
       VERSION = 'V2'
-      REVISION = '20191025'
+      REVISION = '20200526'
 
       # View your installed application's licensing information
       AUTH_APPSMARKETPLACE_LICENSE = 'https://www.googleapis.com/auth/appsmarketplace.license'

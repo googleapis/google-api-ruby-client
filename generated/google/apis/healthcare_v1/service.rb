@@ -285,7 +285,7 @@ module Google
         
         # Updates dataset metadata.
         # @param [String] name
-        #   Output only. Resource name of the dataset, of the form
+        #   Resource name of the dataset, of the form
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id``.
         # @param [Google::Apis::HealthcareV1::Dataset] dataset_object
         # @param [String] update_mask
@@ -712,7 +712,7 @@ module Google
         
         # Updates the specified DICOM store.
         # @param [String] name
-        #   Output only. Resource name of the DICOM store, of the form
+        #   Resource name of the DICOM store, of the form
         #   `projects/`project_id`/locations/`location_id`/datasets/`dataset_id`/
         #   dicomStores/`dicom_store_id``.
         # @param [Google::Apis::HealthcareV1::DicomStore] dicom_store_object
@@ -2935,7 +2935,7 @@ module Google
         
         # Updates the HL7v2 store.
         # @param [String] name
-        #   Output only. Resource name of the HL7v2 store, of the form
+        #   Resource name of the HL7v2 store, of the form
         #   `projects/`project_id`/datasets/`dataset_id`/hl7V2Stores/`hl7v2_store_id``.
         # @param [Google::Apis::HealthcareV1::Hl7V2Store] hl7_v2_store_object
         # @param [String] update_mask

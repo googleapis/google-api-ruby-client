@@ -66,17 +66,6 @@ module Google
         # @return [Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo]
         attr_accessor :form_info
       
-        # Deprecated. Please use WebhookResponse.target_page or
-        # WebhookResponse.target_flow instead.
-        # Optional for WebhookResponse.
-        # The unique identifier of the next page. This field can be set by the
-        # webhook to immediately transition to a page different from `current_page`.
-        # Format: `projects/<Project ID>/locations/<Location ID>/agents/<Agent
-        # ID>/flows/<Flow ID>/pages/<Page ID>`.
-        # Corresponds to the JSON property `nextPage`
-        # @return [String]
-        attr_accessor :next_page
-      
         def initialize(**args)
            update!(**args)
         end
@@ -85,7 +74,6 @@ module Google
         def update!(**args)
           @current_page = args[:current_page] if args.key?(:current_page)
           @form_info = args[:form_info] if args.key?(:form_info)
-          @next_page = args[:next_page] if args.key?(:next_page)
         end
       end
       
@@ -100,12 +88,6 @@ module Google
         # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>]
         attr_accessor :parameter_info
       
-        # Always present for WebhookRequest. Ignored for WebhookResponse.
-        # The current state of the form.
-        # Corresponds to the JSON property `state`
-        # @return [String]
-        attr_accessor :state
-      
         def initialize(**args)
            update!(**args)
         end
@@ -113,7 +95,6 @@ module Google
         # Update properties of this object
         def update!(**args)
           @parameter_info = args[:parameter_info] if args.key?(:parameter_info)
-          @state = args[:state] if args.key?(:state)
         end
       end
       
@@ -136,14 +117,6 @@ module Google
         # @return [Boolean]
         attr_accessor :just_collected
         alias_method :just_collected?, :just_collected
-      
-        # Not set for WebhookRequest. Optional for WebhookResponse.
-        # The prompt to send to the user to fill a required form parameter. This
-        # field can be set by the webhook. If set, this field overrides the
-        # prompt defined for the form parameter.
-        # Corresponds to the JSON property `prompt`
-        # @return [Array<Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage>]
-        attr_accessor :prompt
       
         # Optional for both WebhookRequest and WebhookResponse.
         # Indicates whether the parameter is required. Optional parameters will
@@ -178,7 +151,6 @@ module Google
         def update!(**args)
           @display_name = args[:display_name] if args.key?(:display_name)
           @just_collected = args[:just_collected] if args.key?(:just_collected)
-          @prompt = args[:prompt] if args.key?(:prompt)
           @required = args[:required] if args.key?(:required)
           @state = args[:state] if args.key?(:state)
           @value = args[:value] if args.key?(:value)
@@ -579,7 +551,15 @@ module Google
         end
       end
       
-      # Represents a conversational agent.
+      # A Dialogflow agent is a virtual agent that handles conversations with your
+      # end-users. It is a natural language understanding module that understands the
+      # nuances of human language. Dialogflow translates end-user text or audio
+      # during a conversation to structured data that your apps and services can
+      # understand. You design and build a Dialogflow agent to handle the types of
+      # conversations required for your system.
+      # For more information about agents, see the
+      # [Agents
+      # documentation](https://cloud.google.com/dialogflow/docs/agents-overview).
       class GoogleCloudDialogflowV2Agent
         include Google::Apis::Core::Hashable
       

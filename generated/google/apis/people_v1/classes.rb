@@ -423,6 +423,64 @@ module Google
         end
       end
       
+      # A request to copy an other contact to my contacts group.
+      class CopyOtherContactToMyContactsGroupRequest
+        include Google::Apis::Core::Hashable
+      
+        # Required. A field mask to restrict which fields are copied into the new
+        # contact.
+        # Valid values are:
+        # * emailAddresses
+        # * names
+        # * phoneNumbers
+        # Corresponds to the JSON property `copyMask`
+        # @return [String]
+        attr_accessor :copy_mask
+      
+        # Optional. A field mask to restrict which fields on the person are returned.
+        # Multiple
+        # fields can be specified by separating them with commas. Defaults to empty
+        # if not set, which will skip the post mutate get. Valid values are:
+        # * addresses
+        # * ageRanges
+        # * biographies
+        # * birthdays
+        # * coverPhotos
+        # * emailAddresses
+        # * events
+        # * genders
+        # * imClients
+        # * interests
+        # * locales
+        # * memberships
+        # * metadata
+        # * names
+        # * nicknames
+        # * occupations
+        # * organizations
+        # * phoneNumbers
+        # * photos
+        # * relations
+        # * residences
+        # * sipAddresses
+        # * skills
+        # * urls
+        # * userDefined
+        # Corresponds to the JSON property `readMask`
+        # @return [String]
+        attr_accessor :read_mask
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @copy_mask = args[:copy_mask] if args.key?(:copy_mask)
+          @read_mask = args[:read_mask] if args.key?(:read_mask)
+        end
+      end
+      
       # A person's cover photo. A large image shown on the person's
       # profile page that represents who they are or what they care about.
       class CoverPhoto
@@ -952,6 +1010,42 @@ module Google
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
           @total_items = args[:total_items] if args.key?(:total_items)
+        end
+      end
+      
+      # The response to a request for the authenticated user's other contacts.
+      class ListOtherContactsResponse
+        include Google::Apis::Core::Hashable
+      
+        # A token, which can be sent as `page_token` to retrieve the next page.
+        # If this field is omitted, there are no subsequent pages.
+        # Corresponds to the JSON property `nextPageToken`
+        # @return [String]
+        attr_accessor :next_page_token
+      
+        # A token, which can be sent as `sync_token` to retrieve changes since the
+        # last request. Request must set `request_sync_token` to return the sync
+        # token.
+        # Corresponds to the JSON property `nextSyncToken`
+        # @return [String]
+        attr_accessor :next_sync_token
+      
+        # The list of other contacts returned as Person resources. Other contacts
+        # support a limited subset of supported fields. See
+        # ListOtherContactsRequest.request_mask for more detailed information.
+        # Corresponds to the JSON property `otherContacts`
+        # @return [Array<Google::Apis::PeopleV1::Person>]
+        attr_accessor :other_contacts
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
+          @next_sync_token = args[:next_sync_token] if args.key?(:next_sync_token)
+          @other_contacts = args[:other_contacts] if args.key?(:other_contacts)
         end
       end
       

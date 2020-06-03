@@ -38,7 +38,7 @@ module Google
       
         # (Deprecated)
         # Corresponds to the JSON property `editions`
-        # @return [Array<Google::Apis::AppsmarketV2::CustomerLicense::Edition>]
+        # @return [Array<Google::Apis::AppsmarketV2::Editions>]
         attr_accessor :editions
       
         # The ID of the customer license.
@@ -69,36 +69,86 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @state = args[:state] if args.key?(:state)
         end
-        
+      end
+      
+      # 
+      class Deletes
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `editionId`
+        # @return [String]
+        attr_accessor :edition_id
+      
         # 
-        class Edition
-          include Google::Apis::Core::Hashable
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `assignedSeats`
-          # @return [Fixnum]
-          attr_accessor :assigned_seats
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `editionId`
-          # @return [String]
-          attr_accessor :edition_id
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `seatCount`
-          # @return [Fixnum]
-          attr_accessor :seat_count
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @assigned_seats = args[:assigned_seats] if args.key?(:assigned_seats)
-            @edition_id = args[:edition_id] if args.key?(:edition_id)
-            @seat_count = args[:seat_count] if args.key?(:seat_count)
-          end
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edition_id = args[:edition_id] if args.key?(:edition_id)
+          @kind = args[:kind] if args.key?(:kind)
+        end
+      end
+      
+      # 
+      class Editions
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `assignedSeats`
+        # @return [Fixnum]
+        attr_accessor :assigned_seats
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `editionId`
+        # @return [String]
+        attr_accessor :edition_id
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `seatCount`
+        # @return [Fixnum]
+        attr_accessor :seat_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @assigned_seats = args[:assigned_seats] if args.key?(:assigned_seats)
+          @edition_id = args[:edition_id] if args.key?(:edition_id)
+          @seat_count = args[:seat_count] if args.key?(:seat_count)
+        end
+      end
+      
+      # 
+      class Expiries
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `editionId`
+        # @return [String]
+        attr_accessor :edition_id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edition_id = args[:edition_id] if args.key?(:edition_id)
+          @kind = args[:kind] if args.key?(:kind)
         end
       end
       
@@ -118,12 +168,12 @@ module Google
       
         # The list of deletion notifications.
         # Corresponds to the JSON property `deletes`
-        # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification::Delete>]
+        # @return [Array<Google::Apis::AppsmarketV2::Deletes>]
         attr_accessor :deletes
       
         # The list of expiry notifications.
         # Corresponds to the JSON property `expiries`
-        # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification::Expiry>]
+        # @return [Array<Google::Apis::AppsmarketV2::Expiries>]
         attr_accessor :expiries
       
         # The ID of the license notification.
@@ -138,15 +188,16 @@ module Google
       
         # The list of provisioning notifications.
         # Corresponds to the JSON property `provisions`
-        # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification::Provision>]
+        # @return [Array<Google::Apis::AppsmarketV2::Provisions>]
         attr_accessor :provisions
       
         # The list of reassignment notifications.
         # Corresponds to the JSON property `reassignments`
-        # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification::Reassignment>]
+        # @return [Array<Google::Apis::AppsmarketV2::Reassignments>]
         attr_accessor :reassignments
       
-        # The time the event occurred, measuring in milliseconds since the UNIX epoch.
+        # The time the event occurred, measuring in milliseconds since the UNIX
+        # epoch.
         # Corresponds to the JSON property `timestamp`
         # @return [Fixnum]
         attr_accessor :timestamp
@@ -166,124 +217,6 @@ module Google
           @provisions = args[:provisions] if args.key?(:provisions)
           @reassignments = args[:reassignments] if args.key?(:reassignments)
           @timestamp = args[:timestamp] if args.key?(:timestamp)
-        end
-        
-        # 
-        class Delete
-          include Google::Apis::Core::Hashable
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `editionId`
-          # @return [String]
-          attr_accessor :edition_id
-        
-          # 
-          # Corresponds to the JSON property `kind`
-          # @return [String]
-          attr_accessor :kind
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @edition_id = args[:edition_id] if args.key?(:edition_id)
-            @kind = args[:kind] if args.key?(:kind)
-          end
-        end
-        
-        # 
-        class Expiry
-          include Google::Apis::Core::Hashable
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `editionId`
-          # @return [String]
-          attr_accessor :edition_id
-        
-          # 
-          # Corresponds to the JSON property `kind`
-          # @return [String]
-          attr_accessor :kind
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @edition_id = args[:edition_id] if args.key?(:edition_id)
-            @kind = args[:kind] if args.key?(:kind)
-          end
-        end
-        
-        # 
-        class Provision
-          include Google::Apis::Core::Hashable
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `editionId`
-          # @return [String]
-          attr_accessor :edition_id
-        
-          # 
-          # Corresponds to the JSON property `kind`
-          # @return [String]
-          attr_accessor :kind
-        
-          # The number of seats that were provisioned.
-          # Corresponds to the JSON property `seatCount`
-          # @return [Fixnum]
-          attr_accessor :seat_count
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @edition_id = args[:edition_id] if args.key?(:edition_id)
-            @kind = args[:kind] if args.key?(:kind)
-            @seat_count = args[:seat_count] if args.key?(:seat_count)
-          end
-        end
-        
-        # 
-        class Reassignment
-          include Google::Apis::Core::Hashable
-        
-          # (Deprecated)
-          # Corresponds to the JSON property `editionId`
-          # @return [String]
-          attr_accessor :edition_id
-        
-          # 
-          # Corresponds to the JSON property `kind`
-          # @return [String]
-          attr_accessor :kind
-        
-          # 
-          # Corresponds to the JSON property `type`
-          # @return [String]
-          attr_accessor :type
-        
-          # The email address of the reassigned user.
-          # Corresponds to the JSON property `userId`
-          # @return [String]
-          attr_accessor :user_id
-        
-          def initialize(**args)
-             update!(**args)
-          end
-        
-          # Update properties of this object
-          def update!(**args)
-            @edition_id = args[:edition_id] if args.key?(:edition_id)
-            @kind = args[:kind] if args.key?(:kind)
-            @type = args[:type] if args.key?(:type)
-            @user_id = args[:user_id] if args.key?(:user_id)
-          end
         end
       end
       
@@ -306,8 +239,8 @@ module Google
         # - provisions -- A new license of the application has been provisioned.
         # - expiries -- A license of the application has expired.
         # - deletions -- An application has been deleted from a domain.
-        # - reassignments -- An administrator has assigned or revoked a seat license for
-        # the application on the provided domain.
+        # - reassignments -- An administrator has assigned or revoked a seat license
+        # for the application on the provided domain.
         # Corresponds to the JSON property `notifications`
         # @return [Array<Google::Apis::AppsmarketV2::LicenseNotification>]
         attr_accessor :notifications
@@ -321,6 +254,74 @@ module Google
           @kind = args[:kind] if args.key?(:kind)
           @next_page_token = args[:next_page_token] if args.key?(:next_page_token)
           @notifications = args[:notifications] if args.key?(:notifications)
+        end
+      end
+      
+      # 
+      class Provisions
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `editionId`
+        # @return [String]
+        attr_accessor :edition_id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # The number of seats that were provisioned.
+        # Corresponds to the JSON property `seatCount`
+        # @return [Fixnum]
+        attr_accessor :seat_count
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edition_id = args[:edition_id] if args.key?(:edition_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @seat_count = args[:seat_count] if args.key?(:seat_count)
+        end
+      end
+      
+      # 
+      class Reassignments
+        include Google::Apis::Core::Hashable
+      
+        # (Deprecated)
+        # Corresponds to the JSON property `editionId`
+        # @return [String]
+        attr_accessor :edition_id
+      
+        # 
+        # Corresponds to the JSON property `kind`
+        # @return [String]
+        attr_accessor :kind
+      
+        # 
+        # Corresponds to the JSON property `type`
+        # @return [String]
+        attr_accessor :type
+      
+        # The email address of the reassigned user.
+        # Corresponds to the JSON property `userId`
+        # @return [String]
+        attr_accessor :user_id
+      
+        def initialize(**args)
+           update!(**args)
+        end
+      
+        # Update properties of this object
+        def update!(**args)
+          @edition_id = args[:edition_id] if args.key?(:edition_id)
+          @kind = args[:kind] if args.key?(:kind)
+          @type = args[:type] if args.key?(:type)
+          @user_id = args[:user_id] if args.key?(:user_id)
         end
       end
       
@@ -362,10 +363,10 @@ module Google
         # The user's licensing status. One of:
         # - ACTIVE -- The user has a valid license and should be permitted to use the
         # application.
-        # - UNLICENSED -- The administrator of this user's domain never assigned a seat
-        # for the application to this user.
-        # - EXPIRED -- The administrator assigned a seat to this user, but the license
-        # is expired.
+        # - UNLICENSED -- The administrator of this user's domain never assigned a
+        # seat for the application to this user.
+        # - EXPIRED -- The administrator assigned a seat to this user, but the
+        # license is expired.
         # Corresponds to the JSON property `state`
         # @return [String]
         attr_accessor :state

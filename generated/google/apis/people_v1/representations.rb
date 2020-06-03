@@ -82,6 +82,12 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
       
+      class CopyOtherContactToMyContactsGroupRequest
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
       class CoverPhoto
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
@@ -167,6 +173,12 @@ module Google
       end
       
       class ListContactGroupsResponse
+        class Representation < Google::Apis::Core::JsonRepresentation; end
+      
+        include Google::Apis::Core::JsonObjectSupport
+      end
+      
+      class ListOtherContactsResponse
         class Representation < Google::Apis::Core::JsonRepresentation; end
       
         include Google::Apis::Core::JsonObjectSupport
@@ -448,6 +460,14 @@ module Google
         end
       end
       
+      class CopyOtherContactToMyContactsGroupRequest
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :copy_mask, as: 'copyMask'
+          property :read_mask, as: 'readMask'
+        end
+      end
+      
       class CoverPhoto
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
@@ -591,6 +611,16 @@ module Google
           property :next_page_token, as: 'nextPageToken'
           property :next_sync_token, as: 'nextSyncToken'
           property :total_items, as: 'totalItems'
+        end
+      end
+      
+      class ListOtherContactsResponse
+        # @private
+        class Representation < Google::Apis::Core::JsonRepresentation
+          property :next_page_token, as: 'nextPageToken'
+          property :next_sync_token, as: 'nextSyncToken'
+          collection :other_contacts, as: 'otherContacts', class: Google::Apis::PeopleV1::Person, decorator: Google::Apis::PeopleV1::Person::Representation
+      
         end
       end
       

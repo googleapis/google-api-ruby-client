@@ -285,6 +285,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :disk_size_gb, :numeric_string => true, as: 'diskSizeGb'
+          property :dynamic_substitutions, as: 'dynamicSubstitutions'
           collection :env, as: 'env'
           property :log_streaming_option, as: 'logStreamingOption'
           property :logging, as: 'logging'

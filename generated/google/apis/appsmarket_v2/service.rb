@@ -23,36 +23,33 @@ module Google
       # G Suite Marketplace API
       #
       # Lets your G Suite Marketplace applications integrate with Google's licensing
-      #  service
+      #  and billing services.
       #
       # @example
       #    require 'google/apis/appsmarket_v2'
       #
       #    Appsmarket = Google::Apis::AppsmarketV2 # Alias the module
-      #    service = Appsmarket::AppsmarketService.new
+      #    service = Appsmarket::GSuiteMarketplaceAPIService.new
       #
-      # @see https://developers.google.com/google-apps/marketplace/v2/developers_guide
-      class AppsmarketService < Google::Apis::Core::BaseService
+      # @see https://developers.google.com/apps-marketplace
+      class GSuiteMarketplaceAPIService < Google::Apis::Core::BaseService
         # @return [String]
         #  API key. Your API key identifies your project and provides you with API access,
         #  quota, and reports. Required unless you provide an OAuth 2.0 token.
         attr_accessor :key
 
         # @return [String]
-        #  An opaque string that represents a user for quota purposes. Must not exceed 40
-        #  characters.
+        #  Available to use for quota purposes for server-side applications. Can be any
+        #  arbitrary string assigned to a user, but should not exceed 40 characters.
         attr_accessor :quota_user
 
-        # @return [String]
-        #  Deprecated. Please use quotaUser instead.
-        attr_accessor :user_ip
-
         def initialize
-          super('https://www.googleapis.com/', 'appsmarket/v2/')
-          @batch_path = 'batch/appsmarket/v2'
+          super('https://appsmarket.googleapis.com/', '')
+          @batch_path = 'batch'
         end
         
-        # 
+        # Get the status of a license for a customer to determine if they have access
+        # for a given app.
         # @param [String] application_id
         #   Application Id
         # @param [String] customer_id
@@ -60,10 +57,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -76,34 +71,29 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_customer_license(application_id, customer_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'customerLicense/{applicationId}/{customerId}', options)
+        def get_customer_license(application_id, customer_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'appsmarket/v2/customerLicense/{applicationId}/{customerId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::CustomerLicense::Representation
           command.response_class = Google::Apis::AppsmarketV2::CustomerLicense
           command.params['applicationId'] = application_id unless application_id.nil?
           command.params['customerId'] = customer_id unless customer_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Get a list of licensing notifications with regards to a given app.
         # @param [String] application_id
         #   Application Id
         # @param [Fixnum] max_results
-        #   Maximum number of results to return
         # @param [String] start_token
-        #   Pagination token
         # @param [Fixnum] timestamp
         #   Timestamp in milliseconds since epoch
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -116,8 +106,8 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def list_license_notifications(application_id, max_results: nil, start_token: nil, timestamp: nil, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'licenseNotification/{applicationId}', options)
+        def list_license_notifications(application_id, max_results: nil, start_token: nil, timestamp: nil, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'appsmarket/v2/licenseNotification/{applicationId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::LicenseNotificationList::Representation
           command.response_class = Google::Apis::AppsmarketV2::LicenseNotificationList
           command.params['applicationId'] = application_id unless application_id.nil?
@@ -126,11 +116,10 @@ module Google
           command.query['timestamp'] = timestamp unless timestamp.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
         
-        # 
+        # Get the user's licensing status for their permission to use a given app.
         # @param [String] application_id
         #   Application Id
         # @param [String] user_id
@@ -138,10 +127,8 @@ module Google
         # @param [String] fields
         #   Selector specifying which fields to include in a partial response.
         # @param [String] quota_user
-        #   An opaque string that represents a user for quota purposes. Must not exceed 40
-        #   characters.
-        # @param [String] user_ip
-        #   Deprecated. Please use quotaUser instead.
+        #   Available to use for quota purposes for server-side applications. Can be any
+        #   arbitrary string assigned to a user, but should not exceed 40 characters.
         # @param [Google::Apis::RequestOptions] options
         #   Request-specific options
         #
@@ -154,15 +141,14 @@ module Google
         # @raise [Google::Apis::ServerError] An error occurred on the server and the request can be retried
         # @raise [Google::Apis::ClientError] The request is invalid and should not be retried without modification
         # @raise [Google::Apis::AuthorizationError] Authorization is required
-        def get_user_license(application_id, user_id, fields: nil, quota_user: nil, user_ip: nil, options: nil, &block)
-          command = make_simple_command(:get, 'userLicense/{applicationId}/{userId}', options)
+        def get_user_license(application_id, user_id, fields: nil, quota_user: nil, options: nil, &block)
+          command = make_simple_command(:get, 'appsmarket/v2/userLicense/{applicationId}/{userId}', options)
           command.response_representation = Google::Apis::AppsmarketV2::UserLicense::Representation
           command.response_class = Google::Apis::AppsmarketV2::UserLicense
           command.params['applicationId'] = application_id unless application_id.nil?
           command.params['userId'] = user_id unless user_id.nil?
           command.query['fields'] = fields unless fields.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
           execute_or_queue_command(command, &block)
         end
 
@@ -171,7 +157,6 @@ module Google
         def apply_command_defaults(command)
           command.query['key'] = key unless key.nil?
           command.query['quotaUser'] = quota_user unless quota_user.nil?
-          command.query['userIp'] = user_ip unless user_ip.nil?
         end
       end
     end

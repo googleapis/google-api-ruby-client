@@ -25,7 +25,7 @@ module Google
     # @see https://cloud.google.com/cloud-build/docs/
     module CloudbuildV1alpha2
       VERSION = 'V1alpha2'
-      REVISION = '20200520'
+      REVISION = '20200601'
 
       # View and manage your data across Google Cloud Platform services
       AUTH_CLOUD_PLATFORM = 'https://www.googleapis.com/auth/cloud-platform'

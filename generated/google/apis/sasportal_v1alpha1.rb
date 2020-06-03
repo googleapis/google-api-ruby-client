@@ -25,7 +25,7 @@ module Google
     # @see https://developers.google.com/spectrum-access-system/
     module SasportalV1alpha1
       VERSION = 'V1alpha1'
-      REVISION = '20200416'
+      REVISION = '20200601'
 
       # View your email address
       AUTH_USERINFO_EMAIL = 'https://www.googleapis.com/auth/userinfo.email'

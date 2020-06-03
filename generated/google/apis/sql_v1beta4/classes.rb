@@ -956,6 +956,12 @@ module Google
         # @return [String]
         attr_accessor :kind
       
+        # Option for export offload.
+        # Corresponds to the JSON property `offload`
+        # @return [Boolean]
+        attr_accessor :offload
+        alias_method :offload?, :offload
+      
         # Options for exporting data as SQL statements.
         # Corresponds to the JSON property `sqlExportOptions`
         # @return [Google::Apis::SqlV1beta4::ExportContext::SqlExportOptions]
@@ -981,6 +987,7 @@ module Google
           @databases = args[:databases] if args.key?(:databases)
           @file_type = args[:file_type] if args.key?(:file_type)
           @kind = args[:kind] if args.key?(:kind)
+          @offload = args[:offload] if args.key?(:offload)
           @sql_export_options = args[:sql_export_options] if args.key?(:sql_export_options)
           @uri = args[:uri] if args.key?(:uri)
         end

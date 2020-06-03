@@ -1086,7 +1086,6 @@ module Google
           property :current_page, as: 'currentPage'
           property :form_info, as: 'formInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfo::Representation
       
-          property :next_page, as: 'nextPage'
         end
       end
       
@@ -1095,7 +1094,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           collection :parameter_info, as: 'parameterInfo', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo::Representation
       
-          property :state, as: 'state'
         end
       end
       
@@ -1104,8 +1102,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :display_name, as: 'displayName'
           property :just_collected, as: 'justCollected'
-          collection :prompt, as: 'prompt', class: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage, decorator: Google::Apis::DialogflowV2::GoogleCloudDialogflowCxV3beta1ResponseMessage::Representation
-      
           property :required, as: 'required'
           property :state, as: 'state'
           property :value, as: 'value'
