@@ -161,8 +161,8 @@ module Google
       # "header": `
       # "date_range": `
       # "start_date": `"year": 2018, "month": 9, "day": 1`,
-      # "end_date": `"year": 2018, "month": 9, "day": 30`
-      # `
+      # "end_date": `"year": 2018, "month": 9, "day": 1`
+      # `,
       # "localization_settings": `
       # "currency_code": "USD",
       # "language_code": "en-US"
@@ -277,8 +277,8 @@ module Google
       # "header": `
       # "dateRange": `
       # "startDate": `"year": 2018, "month": 9, "day": 1`,
-      # "endDate": `"year": 2018, "month": 9, "day": 30`
-      # `
+      # "endDate": `"year": 2018, "month": 9, "day": 1`
+      # `,
       # "localizationSettings": `
       # "currencyCode": "USD",
       # "languageCode": "en-US"
@@ -299,9 +299,8 @@ module Google
       # `
       # `
       # `,
-      # ...
       # `
-      # "footer": `"matchingRowCount": 5`
+      # "footer": `"matchingRowCount": 1`
       # `]
       class GenerateNetworkReportResponse
         include Google::Apis::Core::Hashable

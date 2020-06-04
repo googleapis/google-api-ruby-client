@@ -895,12 +895,19 @@ module Google
       class InAppProductListing
         include Google::Apis::Core::Hashable
       
-        # 
+        # The localized entitlement benefits of the in-app product. These are supported
+        # only for subscriptions.
+        # Corresponds to the JSON property `benefits`
+        # @return [Array<String>]
+        attr_accessor :benefits
+      
+        # The localized description of the in-app product. These are deprecated for
+        # subscriptions.
         # Corresponds to the JSON property `description`
         # @return [String]
         attr_accessor :description
       
-        # 
+        # The localized title of the in-app product.
         # Corresponds to the JSON property `title`
         # @return [String]
         attr_accessor :title
@@ -911,6 +918,7 @@ module Google
       
         # Update properties of this object
         def update!(**args)
+          @benefits = args[:benefits] if args.key?(:benefits)
           @description = args[:description] if args.key?(:description)
           @title = args[:title] if args.key?(:title)
         end

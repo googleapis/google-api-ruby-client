@@ -692,6 +692,7 @@ module Google
       class InAppProductListing
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
+          collection :benefits, as: 'benefits'
           property :description, as: 'description'
           property :title, as: 'title'
         end
